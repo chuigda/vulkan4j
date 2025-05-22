@@ -121,6 +121,14 @@ public record VkMemoryRequirements2(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryRequirements2.BYTES));
         }
+
+        public VkMemoryRequirements2[] toArray() {
+            VkMemoryRequirements2[] ret = new VkMemoryRequirements2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryRequirements2 allocate(Arena arena) {

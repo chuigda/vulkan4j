@@ -113,6 +113,14 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMultiDrawInfoEXT.BYTES));
         }
+
+        public VkMultiDrawInfoEXT[] toArray() {
+            VkMultiDrawInfoEXT[] ret = new VkMultiDrawInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMultiDrawInfoEXT allocate(Arena arena) {

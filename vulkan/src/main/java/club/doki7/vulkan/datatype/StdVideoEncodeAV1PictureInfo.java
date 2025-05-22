@@ -136,6 +136,14 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeAV1PictureInfo.BYTES));
         }
+
+        public StdVideoEncodeAV1PictureInfo[] toArray() {
+            StdVideoEncodeAV1PictureInfo[] ret = new StdVideoEncodeAV1PictureInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeAV1PictureInfo allocate(Arena arena) {

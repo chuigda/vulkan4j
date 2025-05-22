@@ -122,6 +122,14 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(@NotNull MemorySeg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureGeometryInstancesDataKHR.BYTES));
         }
+
+        public VkAccelerationStructureGeometryInstancesDataKHR[] toArray() {
+            VkAccelerationStructureGeometryInstancesDataKHR[] ret = new VkAccelerationStructureGeometryInstancesDataKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureGeometryInstancesDataKHR allocate(Arena arena) {

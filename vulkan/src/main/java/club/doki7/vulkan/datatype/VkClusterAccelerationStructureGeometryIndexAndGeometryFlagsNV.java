@@ -115,6 +115,14 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES));
         }
+
+        public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] toArray() {
+            VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] ret = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV allocate(Arena arena) {

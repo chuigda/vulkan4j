@@ -117,6 +117,14 @@ public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkColorBlendEquationEXT.BYTES));
         }
+
+        public VkColorBlendEquationEXT[] toArray() {
+            VkColorBlendEquationEXT[] ret = new VkColorBlendEquationEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkColorBlendEquationEXT allocate(Arena arena) {

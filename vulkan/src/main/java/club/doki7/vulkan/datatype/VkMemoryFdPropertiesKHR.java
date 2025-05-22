@@ -121,6 +121,14 @@ public record VkMemoryFdPropertiesKHR(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryFdPropertiesKHR.BYTES));
         }
+
+        public VkMemoryFdPropertiesKHR[] toArray() {
+            VkMemoryFdPropertiesKHR[] ret = new VkMemoryFdPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryFdPropertiesKHR allocate(Arena arena) {

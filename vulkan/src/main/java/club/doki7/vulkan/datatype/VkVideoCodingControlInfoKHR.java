@@ -121,6 +121,14 @@ public record VkVideoCodingControlInfoKHR(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoCodingControlInfoKHR.BYTES));
         }
+
+        public VkVideoCodingControlInfoKHR[] toArray() {
+            VkVideoCodingControlInfoKHR[] ret = new VkVideoCodingControlInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoCodingControlInfoKHR allocate(Arena arena) {

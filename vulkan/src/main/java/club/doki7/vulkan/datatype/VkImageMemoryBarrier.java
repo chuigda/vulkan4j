@@ -128,6 +128,14 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageMemoryBarrier.BYTES));
         }
+
+        public VkImageMemoryBarrier[] toArray() {
+            VkImageMemoryBarrier[] ret = new VkImageMemoryBarrier[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageMemoryBarrier allocate(Arena arena) {

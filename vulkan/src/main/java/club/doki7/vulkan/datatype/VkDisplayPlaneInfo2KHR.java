@@ -122,6 +122,14 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplayPlaneInfo2KHR.BYTES));
         }
+
+        public VkDisplayPlaneInfo2KHR[] toArray() {
+            VkDisplayPlaneInfo2KHR[] ret = new VkDisplayPlaneInfo2KHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplayPlaneInfo2KHR allocate(Arena arena) {

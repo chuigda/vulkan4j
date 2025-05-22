@@ -123,6 +123,14 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceDeviceMemoryReportCreateInfoEXT.BYTES));
         }
+
+        public VkDeviceDeviceMemoryReportCreateInfoEXT[] toArray() {
+            VkDeviceDeviceMemoryReportCreateInfoEXT[] ret = new VkDeviceDeviceMemoryReportCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceDeviceMemoryReportCreateInfoEXT allocate(Arena arena) {

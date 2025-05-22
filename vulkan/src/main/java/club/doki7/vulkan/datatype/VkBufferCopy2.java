@@ -123,6 +123,14 @@ public record VkBufferCopy2(@NotNull MemorySegment segment) implements IVkBuffer
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferCopy2.BYTES));
         }
+
+        public VkBufferCopy2[] toArray() {
+            VkBufferCopy2[] ret = new VkBufferCopy2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferCopy2 allocate(Arena arena) {

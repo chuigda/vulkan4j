@@ -123,6 +123,14 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDirectDriverLoadingListLUNARG.BYTES));
         }
+
+        public VkDirectDriverLoadingListLUNARG[] toArray() {
+            VkDirectDriverLoadingListLUNARG[] ret = new VkDirectDriverLoadingListLUNARG[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDirectDriverLoadingListLUNARG allocate(Arena arena) {

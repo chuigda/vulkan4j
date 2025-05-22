@@ -127,6 +127,14 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IVkSRTDataN
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSRTDataNV.BYTES));
         }
+
+        public VkSRTDataNV[] toArray() {
+            VkSRTDataNV[] ret = new VkSRTDataNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSRTDataNV allocate(Arena arena) {

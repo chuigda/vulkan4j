@@ -119,6 +119,14 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1Quantization.BYTES));
         }
+
+        public StdVideoAV1Quantization[] toArray() {
+            StdVideoAV1Quantization[] ret = new StdVideoAV1Quantization[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1Quantization allocate(Arena arena) {

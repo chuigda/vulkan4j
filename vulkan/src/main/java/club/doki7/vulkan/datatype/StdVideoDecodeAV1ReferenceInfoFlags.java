@@ -113,6 +113,14 @@ public record StdVideoDecodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoDecodeAV1ReferenceInfoFlags.BYTES));
         }
+
+        public StdVideoDecodeAV1ReferenceInfoFlags[] toArray() {
+            StdVideoDecodeAV1ReferenceInfoFlags[] ret = new StdVideoDecodeAV1ReferenceInfoFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoDecodeAV1ReferenceInfoFlags allocate(Arena arena) {

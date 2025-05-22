@@ -121,6 +121,14 @@ public record VkPhysicalDevicePrivateDataFeatures(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePrivateDataFeatures.BYTES));
         }
+
+        public VkPhysicalDevicePrivateDataFeatures[] toArray() {
+            VkPhysicalDevicePrivateDataFeatures[] ret = new VkPhysicalDevicePrivateDataFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePrivateDataFeatures allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkMemoryGetSciBufInfoNV(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryGetSciBufInfoNV.BYTES));
         }
+
+        public VkMemoryGetSciBufInfoNV[] toArray() {
+            VkMemoryGetSciBufInfoNV[] ret = new VkMemoryGetSciBufInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryGetSciBufInfoNV allocate(Arena arena) {

@@ -128,6 +128,14 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkWriteDescriptorSet.BYTES));
         }
+
+        public VkWriteDescriptorSet[] toArray() {
+            VkWriteDescriptorSet[] ret = new VkWriteDescriptorSet[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkWriteDescriptorSet allocate(Arena arena) {

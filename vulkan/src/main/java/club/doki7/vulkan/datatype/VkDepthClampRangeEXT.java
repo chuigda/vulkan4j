@@ -113,6 +113,14 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDepthClampRangeEXT.BYTES));
         }
+
+        public VkDepthClampRangeEXT[] toArray() {
+            VkDepthClampRangeEXT[] ret = new VkDepthClampRangeEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDepthClampRangeEXT allocate(Arena arena) {

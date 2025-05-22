@@ -114,6 +114,14 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorBufferInfo.BYTES));
         }
+
+        public VkDescriptorBufferInfo[] toArray() {
+            VkDescriptorBufferInfo[] ret = new VkDescriptorBufferInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorBufferInfo allocate(Arena arena) {

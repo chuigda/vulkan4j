@@ -124,6 +124,14 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVertexInputAttributeDescription2EXT.BYTES));
         }
+
+        public VkVertexInputAttributeDescription2EXT[] toArray() {
+            VkVertexInputAttributeDescription2EXT[] ret = new VkVertexInputAttributeDescription2EXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVertexInputAttributeDescription2EXT allocate(Arena arena) {

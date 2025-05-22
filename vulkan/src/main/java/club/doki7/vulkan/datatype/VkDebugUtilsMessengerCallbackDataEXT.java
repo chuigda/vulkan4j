@@ -130,6 +130,14 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDebugUtilsMessengerCallbackDataEXT.BYTES));
         }
+
+        public VkDebugUtilsMessengerCallbackDataEXT[] toArray() {
+            VkDebugUtilsMessengerCallbackDataEXT[] ret = new VkDebugUtilsMessengerCallbackDataEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDebugUtilsMessengerCallbackDataEXT allocate(Arena arena) {

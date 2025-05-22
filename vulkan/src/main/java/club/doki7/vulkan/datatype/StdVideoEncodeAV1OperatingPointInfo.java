@@ -116,6 +116,14 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeAV1OperatingPointInfo.BYTES));
         }
+
+        public StdVideoEncodeAV1OperatingPointInfo[] toArray() {
+            StdVideoEncodeAV1OperatingPointInfo[] ret = new StdVideoEncodeAV1OperatingPointInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeAV1OperatingPointInfo allocate(Arena arena) {

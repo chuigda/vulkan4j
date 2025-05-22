@@ -122,6 +122,14 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderPassInputAttachmentAspectCreateInfo.BYTES));
         }
+
+        public VkRenderPassInputAttachmentAspectCreateInfo[] toArray() {
+            VkRenderPassInputAttachmentAspectCreateInfo[] ret = new VkRenderPassInputAttachmentAspectCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderPassInputAttachmentAspectCreateInfo allocate(Arena arena) {

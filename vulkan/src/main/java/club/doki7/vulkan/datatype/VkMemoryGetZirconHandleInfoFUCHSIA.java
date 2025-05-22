@@ -122,6 +122,14 @@ public record VkMemoryGetZirconHandleInfoFUCHSIA(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryGetZirconHandleInfoFUCHSIA.BYTES));
         }
+
+        public VkMemoryGetZirconHandleInfoFUCHSIA[] toArray() {
+            VkMemoryGetZirconHandleInfoFUCHSIA[] ret = new VkMemoryGetZirconHandleInfoFUCHSIA[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryGetZirconHandleInfoFUCHSIA allocate(Arena arena) {

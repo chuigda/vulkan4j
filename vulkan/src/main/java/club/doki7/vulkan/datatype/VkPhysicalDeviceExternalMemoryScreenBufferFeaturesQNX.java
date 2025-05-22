@@ -121,6 +121,14 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(@NotNull Mem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.BYTES));
         }
+
+        public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX[] toArray() {
+            VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX[] ret = new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX allocate(Arena arena) {

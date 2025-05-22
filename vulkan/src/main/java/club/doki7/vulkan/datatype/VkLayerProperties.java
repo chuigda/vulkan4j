@@ -115,6 +115,14 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkLayerProperties.BYTES));
         }
+
+        public VkLayerProperties[] toArray() {
+            VkLayerProperties[] ret = new VkLayerProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkLayerProperties allocate(Arena arena) {

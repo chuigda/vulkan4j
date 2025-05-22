@@ -121,6 +121,14 @@ public record VkDisplayPowerInfoEXT(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplayPowerInfoEXT.BYTES));
         }
+
+        public VkDisplayPowerInfoEXT[] toArray() {
+            VkDisplayPowerInfoEXT[] ret = new VkDisplayPowerInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplayPowerInfoEXT allocate(Arena arena) {

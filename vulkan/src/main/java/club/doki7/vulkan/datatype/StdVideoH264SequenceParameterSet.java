@@ -134,6 +134,14 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH264SequenceParameterSet.BYTES));
         }
+
+        public StdVideoH264SequenceParameterSet[] toArray() {
+            StdVideoH264SequenceParameterSet[] ret = new StdVideoH264SequenceParameterSet[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH264SequenceParameterSet allocate(Arena arena) {

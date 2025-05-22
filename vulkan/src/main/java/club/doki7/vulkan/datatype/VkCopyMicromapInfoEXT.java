@@ -123,6 +123,14 @@ public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyMicromapInfoEXT.BYTES));
         }
+
+        public VkCopyMicromapInfoEXT[] toArray() {
+            VkCopyMicromapInfoEXT[] ret = new VkCopyMicromapInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyMicromapInfoEXT allocate(Arena arena) {

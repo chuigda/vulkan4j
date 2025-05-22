@@ -121,6 +121,14 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceBufferMemoryRequirements.BYTES));
         }
+
+        public VkDeviceBufferMemoryRequirements[] toArray() {
+            VkDeviceBufferMemoryRequirements[] ret = new VkDeviceBufferMemoryRequirements[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceBufferMemoryRequirements allocate(Arena arena) {

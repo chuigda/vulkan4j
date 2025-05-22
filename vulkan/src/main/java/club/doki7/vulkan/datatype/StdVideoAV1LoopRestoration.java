@@ -111,6 +111,14 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1LoopRestoration.BYTES));
         }
+
+        public StdVideoAV1LoopRestoration[] toArray() {
+            StdVideoAV1LoopRestoration[] ret = new StdVideoAV1LoopRestoration[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1LoopRestoration allocate(Arena arena) {

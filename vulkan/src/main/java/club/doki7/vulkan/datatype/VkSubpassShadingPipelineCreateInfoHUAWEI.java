@@ -122,6 +122,14 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSubpassShadingPipelineCreateInfoHUAWEI.BYTES));
         }
+
+        public VkSubpassShadingPipelineCreateInfoHUAWEI[] toArray() {
+            VkSubpassShadingPipelineCreateInfoHUAWEI[] ret = new VkSubpassShadingPipelineCreateInfoHUAWEI[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSubpassShadingPipelineCreateInfoHUAWEI allocate(Arena arena) {

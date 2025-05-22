@@ -125,6 +125,14 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPartitionedAccelerationStructureInstancesInputNV.BYTES));
         }
+
+        public VkPartitionedAccelerationStructureInstancesInputNV[] toArray() {
+            VkPartitionedAccelerationStructureInstancesInputNV[] ret = new VkPartitionedAccelerationStructureInstancesInputNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPartitionedAccelerationStructureInstancesInputNV allocate(Arena arena) {

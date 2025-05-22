@@ -119,6 +119,14 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineColorBlendAttachmentState.BYTES));
         }
+
+        public VkPipelineColorBlendAttachmentState[] toArray() {
+            VkPipelineColorBlendAttachmentState[] ret = new VkPipelineColorBlendAttachmentState[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineColorBlendAttachmentState allocate(Arena arena) {

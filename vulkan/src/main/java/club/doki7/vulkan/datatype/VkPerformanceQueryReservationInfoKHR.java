@@ -121,6 +121,14 @@ public record VkPerformanceQueryReservationInfoKHR(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPerformanceQueryReservationInfoKHR.BYTES));
         }
+
+        public VkPerformanceQueryReservationInfoKHR[] toArray() {
+            VkPerformanceQueryReservationInfoKHR[] ret = new VkPerformanceQueryReservationInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPerformanceQueryReservationInfoKHR allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderBfloat16FeaturesKHR.BYTES));
         }
+
+        public VkPhysicalDeviceShaderBfloat16FeaturesKHR[] toArray() {
+            VkPhysicalDeviceShaderBfloat16FeaturesKHR[] ret = new VkPhysicalDeviceShaderBfloat16FeaturesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderBfloat16FeaturesKHR allocate(Arena arena) {

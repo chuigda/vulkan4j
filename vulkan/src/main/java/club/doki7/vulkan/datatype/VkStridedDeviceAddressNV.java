@@ -113,6 +113,14 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkStridedDeviceAddressNV.BYTES));
         }
+
+        public VkStridedDeviceAddressNV[] toArray() {
+            VkStridedDeviceAddressNV[] ret = new VkStridedDeviceAddressNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkStridedDeviceAddressNV allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryUnmapInfo.BYTES));
         }
+
+        public VkMemoryUnmapInfo[] toArray() {
+            VkMemoryUnmapInfo[] ret = new VkMemoryUnmapInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryUnmapInfo allocate(Arena arena) {

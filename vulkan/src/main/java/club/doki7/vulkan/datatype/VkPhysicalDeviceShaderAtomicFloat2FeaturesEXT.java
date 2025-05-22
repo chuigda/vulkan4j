@@ -132,6 +132,14 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT[] toArray() {
+            VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT[] ret = new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePerformanceQueryPropertiesKHR.BYTES));
         }
+
+        public VkPhysicalDevicePerformanceQueryPropertiesKHR[] toArray() {
+            VkPhysicalDevicePerformanceQueryPropertiesKHR[] ret = new VkPhysicalDevicePerformanceQueryPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePerformanceQueryPropertiesKHR allocate(Arena arena) {

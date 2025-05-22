@@ -113,6 +113,14 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBaseInStructure.BYTES));
         }
+
+        public VkBaseInStructure[] toArray() {
+            VkBaseInStructure[] ret = new VkBaseInStructure[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBaseInStructure allocate(Arena arena) {

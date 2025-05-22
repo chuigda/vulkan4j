@@ -121,6 +121,14 @@ public record VkSparseImageFormatProperties2(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSparseImageFormatProperties2.BYTES));
         }
+
+        public VkSparseImageFormatProperties2[] toArray() {
+            VkSparseImageFormatProperties2[] ret = new VkSparseImageFormatProperties2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSparseImageFormatProperties2 allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorGetInfoEXT.BYTES));
         }
+
+        public VkDescriptorGetInfoEXT[] toArray() {
+            VkDescriptorGetInfoEXT[] ret = new VkDescriptorGetInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorGetInfoEXT allocate(Arena arena) {

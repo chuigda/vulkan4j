@@ -122,6 +122,14 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineViewportExclusiveScissorStateCreateInfoNV.BYTES));
         }
+
+        public VkPipelineViewportExclusiveScissorStateCreateInfoNV[] toArray() {
+            VkPipelineViewportExclusiveScissorStateCreateInfoNV[] ret = new VkPipelineViewportExclusiveScissorStateCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineViewportExclusiveScissorStateCreateInfoNV allocate(Arena arena) {

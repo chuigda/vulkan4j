@@ -121,6 +121,14 @@ public record VkImagePlaneMemoryRequirementsInfo(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImagePlaneMemoryRequirementsInfo.BYTES));
         }
+
+        public VkImagePlaneMemoryRequirementsInfo[] toArray() {
+            VkImagePlaneMemoryRequirementsInfo[] ret = new VkImagePlaneMemoryRequirementsInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImagePlaneMemoryRequirementsInfo allocate(Arena arena) {

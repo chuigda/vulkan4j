@@ -123,6 +123,14 @@ public record VkPhysicalDeviceNestedCommandBufferFeaturesEXT(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceNestedCommandBufferFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceNestedCommandBufferFeaturesEXT[] toArray() {
+            VkPhysicalDeviceNestedCommandBufferFeaturesEXT[] ret = new VkPhysicalDeviceNestedCommandBufferFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkOpticalFlowExecuteInfoNV.BYTES));
         }
+
+        public VkOpticalFlowExecuteInfoNV[] toArray() {
+            VkOpticalFlowExecuteInfoNV[] ret = new VkOpticalFlowExecuteInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkOpticalFlowExecuteInfoNV allocate(Arena arena) {

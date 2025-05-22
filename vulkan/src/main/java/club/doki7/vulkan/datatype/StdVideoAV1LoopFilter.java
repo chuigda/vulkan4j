@@ -116,6 +116,14 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1LoopFilter.BYTES));
         }
+
+        public StdVideoAV1LoopFilter[] toArray() {
+            StdVideoAV1LoopFilter[] ret = new StdVideoAV1LoopFilter[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1LoopFilter allocate(Arena arena) {

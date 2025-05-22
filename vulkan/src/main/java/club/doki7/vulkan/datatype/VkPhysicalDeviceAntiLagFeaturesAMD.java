@@ -121,6 +121,14 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceAntiLagFeaturesAMD.BYTES));
         }
+
+        public VkPhysicalDeviceAntiLagFeaturesAMD[] toArray() {
+            VkPhysicalDeviceAntiLagFeaturesAMD[] ret = new VkPhysicalDeviceAntiLagFeaturesAMD[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceAntiLagFeaturesAMD allocate(Arena arena) {

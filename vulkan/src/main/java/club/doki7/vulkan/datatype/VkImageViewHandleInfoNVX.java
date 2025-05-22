@@ -123,6 +123,14 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageViewHandleInfoNVX.BYTES));
         }
+
+        public VkImageViewHandleInfoNVX[] toArray() {
+            VkImageViewHandleInfoNVX[] ret = new VkImageViewHandleInfoNVX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageViewHandleInfoNVX allocate(Arena arena) {

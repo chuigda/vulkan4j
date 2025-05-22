@@ -121,6 +121,14 @@ public record VkPhysicalDevicePortabilitySubsetPropertiesKHR(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePortabilitySubsetPropertiesKHR.BYTES));
         }
+
+        public VkPhysicalDevicePortabilitySubsetPropertiesKHR[] toArray() {
+            VkPhysicalDevicePortabilitySubsetPropertiesKHR[] ret = new VkPhysicalDevicePortabilitySubsetPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePortabilitySubsetPropertiesKHR allocate(Arena arena) {

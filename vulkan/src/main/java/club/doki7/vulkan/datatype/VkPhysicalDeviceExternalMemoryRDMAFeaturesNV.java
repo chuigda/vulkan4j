@@ -121,6 +121,14 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExternalMemoryRDMAFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV[] toArray() {
+            VkPhysicalDeviceExternalMemoryRDMAFeaturesNV[] ret = new VkPhysicalDeviceExternalMemoryRDMAFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceExternalMemoryRDMAFeaturesNV allocate(Arena arena) {

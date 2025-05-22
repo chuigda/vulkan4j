@@ -122,6 +122,14 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderPassFragmentDensityMapOffsetEndInfoEXT.BYTES));
         }
+
+        public VkRenderPassFragmentDensityMapOffsetEndInfoEXT[] toArray() {
+            VkRenderPassFragmentDensityMapOffsetEndInfoEXT[] ret = new VkRenderPassFragmentDensityMapOffsetEndInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderPassFragmentDensityMapOffsetEndInfoEXT allocate(Arena arena) {

@@ -143,6 +143,14 @@ public record VkPhysicalDeviceDescriptorIndexingProperties(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDescriptorIndexingProperties.BYTES));
         }
+
+        public VkPhysicalDeviceDescriptorIndexingProperties[] toArray() {
+            VkPhysicalDeviceDescriptorIndexingProperties[] ret = new VkPhysicalDeviceDescriptorIndexingProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDescriptorIndexingProperties allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDevicePipelineBinaryInternalCacheControlKHR.BYTES));
         }
+
+        public VkDevicePipelineBinaryInternalCacheControlKHR[] toArray() {
+            VkDevicePipelineBinaryInternalCacheControlKHR[] ret = new VkDevicePipelineBinaryInternalCacheControlKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDevicePipelineBinaryInternalCacheControlKHR allocate(Arena arena) {

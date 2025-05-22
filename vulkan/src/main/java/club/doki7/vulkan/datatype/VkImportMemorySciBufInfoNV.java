@@ -122,6 +122,14 @@ public record VkImportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImportMemorySciBufInfoNV.BYTES));
         }
+
+        public VkImportMemorySciBufInfoNV[] toArray() {
+            VkImportMemorySciBufInfoNV[] ret = new VkImportMemorySciBufInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImportMemorySciBufInfoNV allocate(Arena arena) {

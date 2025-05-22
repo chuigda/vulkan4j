@@ -124,6 +124,14 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDepthStencilResolveProperties.BYTES));
         }
+
+        public VkPhysicalDeviceDepthStencilResolveProperties[] toArray() {
+            VkPhysicalDeviceDepthStencilResolveProperties[] ret = new VkPhysicalDeviceDepthStencilResolveProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDepthStencilResolveProperties allocate(Arena arena) {

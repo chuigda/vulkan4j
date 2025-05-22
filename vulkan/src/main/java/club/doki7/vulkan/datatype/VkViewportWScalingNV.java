@@ -113,6 +113,14 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkViewportWScalingNV.BYTES));
         }
+
+        public VkViewportWScalingNV[] toArray() {
+            VkViewportWScalingNV[] ret = new VkViewportWScalingNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkViewportWScalingNV allocate(Arena arena) {

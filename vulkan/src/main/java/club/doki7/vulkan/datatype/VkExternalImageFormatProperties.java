@@ -121,6 +121,14 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExternalImageFormatProperties.BYTES));
         }
+
+        public VkExternalImageFormatProperties[] toArray() {
+            VkExternalImageFormatProperties[] ret = new VkExternalImageFormatProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExternalImageFormatProperties allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeH265NaluSliceSegmentInfoKHR[] toArray() {
+            VkVideoEncodeH265NaluSliceSegmentInfoKHR[] ret = new VkVideoEncodeH265NaluSliceSegmentInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeH265NaluSliceSegmentInfoKHR allocate(Arena arena) {

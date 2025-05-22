@@ -122,6 +122,14 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCommandBufferInheritanceRenderPassTransformInfoQCOM.BYTES));
         }
+
+        public VkCommandBufferInheritanceRenderPassTransformInfoQCOM[] toArray() {
+            VkCommandBufferInheritanceRenderPassTransformInfoQCOM[] ret = new VkCommandBufferInheritanceRenderPassTransformInfoQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM allocate(Arena arena) {

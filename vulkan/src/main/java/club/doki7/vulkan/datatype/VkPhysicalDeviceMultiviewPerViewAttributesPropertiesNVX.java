@@ -121,6 +121,14 @@ public record VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(@NotNull M
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.BYTES));
         }
+
+        public VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX[] toArray() {
+            VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX[] ret = new VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX allocate(Arena arena) {

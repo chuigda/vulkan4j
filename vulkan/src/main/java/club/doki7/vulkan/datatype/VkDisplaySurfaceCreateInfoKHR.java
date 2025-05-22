@@ -128,6 +128,14 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplaySurfaceCreateInfoKHR.BYTES));
         }
+
+        public VkDisplaySurfaceCreateInfoKHR[] toArray() {
+            VkDisplaySurfaceCreateInfoKHR[] ret = new VkDisplaySurfaceCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplaySurfaceCreateInfoKHR allocate(Arena arena) {

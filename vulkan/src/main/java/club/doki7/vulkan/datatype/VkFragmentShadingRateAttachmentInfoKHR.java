@@ -122,6 +122,14 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkFragmentShadingRateAttachmentInfoKHR.BYTES));
         }
+
+        public VkFragmentShadingRateAttachmentInfoKHR[] toArray() {
+            VkFragmentShadingRateAttachmentInfoKHR[] ret = new VkFragmentShadingRateAttachmentInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkFragmentShadingRateAttachmentInfoKHR allocate(Arena arena) {

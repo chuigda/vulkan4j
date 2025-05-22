@@ -123,6 +123,14 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkXlibSurfaceCreateInfoKHR.BYTES));
         }
+
+        public VkXlibSurfaceCreateInfoKHR[] toArray() {
+            VkXlibSurfaceCreateInfoKHR[] ret = new VkXlibSurfaceCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkXlibSurfaceCreateInfoKHR allocate(Arena arena) {

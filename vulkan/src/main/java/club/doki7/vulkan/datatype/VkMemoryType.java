@@ -113,6 +113,14 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryType.BYTES));
         }
+
+        public VkMemoryType[] toArray() {
+            VkMemoryType[] ret = new VkMemoryType[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryType allocate(Arena arena) {

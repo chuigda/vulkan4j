@@ -121,6 +121,14 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSubpassDescription.BYTES));
         }
+
+        public VkSubpassDescription[] toArray() {
+            VkSubpassDescription[] ret = new VkSubpassDescription[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSubpassDescription allocate(Arena arena) {

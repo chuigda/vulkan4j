@@ -123,6 +123,14 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265ShortTermRefPicSet.BYTES));
         }
+
+        public StdVideoH265ShortTermRefPicSet[] toArray() {
+            StdVideoH265ShortTermRefPicSet[] ret = new StdVideoH265ShortTermRefPicSet[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265ShortTermRefPicSet allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkSwapchainPresentModesCreateInfoEXT(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSwapchainPresentModesCreateInfoEXT.BYTES));
         }
+
+        public VkSwapchainPresentModesCreateInfoEXT[] toArray() {
+            VkSwapchainPresentModesCreateInfoEXT[] ret = new VkSwapchainPresentModesCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSwapchainPresentModesCreateInfoEXT allocate(Arena arena) {

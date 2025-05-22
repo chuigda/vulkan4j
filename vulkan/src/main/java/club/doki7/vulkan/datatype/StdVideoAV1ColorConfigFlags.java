@@ -115,6 +115,14 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1ColorConfigFlags.BYTES));
         }
+
+        public StdVideoAV1ColorConfigFlags[] toArray() {
+            StdVideoAV1ColorConfigFlags[] ret = new StdVideoAV1ColorConfigFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1ColorConfigFlags allocate(Arena arena) {

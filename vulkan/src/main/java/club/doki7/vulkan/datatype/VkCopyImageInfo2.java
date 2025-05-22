@@ -126,6 +126,14 @@ public record VkCopyImageInfo2(@NotNull MemorySegment segment) implements IVkCop
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyImageInfo2.BYTES));
         }
+
+        public VkCopyImageInfo2[] toArray() {
+            VkCopyImageInfo2[] ret = new VkCopyImageInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyImageInfo2 allocate(Arena arena) {

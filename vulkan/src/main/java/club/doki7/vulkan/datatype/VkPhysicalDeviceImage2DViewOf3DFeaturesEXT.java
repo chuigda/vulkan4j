@@ -122,6 +122,14 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[] toArray() {
+            VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[] ret = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT allocate(Arena arena) {

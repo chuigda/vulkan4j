@@ -121,6 +121,14 @@ public record VkLatencySubmissionPresentIdNV(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkLatencySubmissionPresentIdNV.BYTES));
         }
+
+        public VkLatencySubmissionPresentIdNV[] toArray() {
+            VkLatencySubmissionPresentIdNV[] ret = new VkLatencySubmissionPresentIdNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkLatencySubmissionPresentIdNV allocate(Arena arena) {

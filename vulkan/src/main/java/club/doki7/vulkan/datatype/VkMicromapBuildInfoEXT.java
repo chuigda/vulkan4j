@@ -131,6 +131,14 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMicromapBuildInfoEXT.BYTES));
         }
+
+        public VkMicromapBuildInfoEXT[] toArray() {
+            VkMicromapBuildInfoEXT[] ret = new VkMicromapBuildInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMicromapBuildInfoEXT allocate(Arena arena) {

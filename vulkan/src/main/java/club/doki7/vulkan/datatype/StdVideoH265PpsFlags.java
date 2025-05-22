@@ -141,6 +141,14 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265PpsFlags.BYTES));
         }
+
+        public StdVideoH265PpsFlags[] toArray() {
+            StdVideoH265PpsFlags[] ret = new StdVideoH265PpsFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265PpsFlags allocate(Arena arena) {

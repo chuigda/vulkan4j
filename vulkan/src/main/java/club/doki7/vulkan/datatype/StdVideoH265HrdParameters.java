@@ -124,6 +124,14 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265HrdParameters.BYTES));
         }
+
+        public StdVideoH265HrdParameters[] toArray() {
+            StdVideoH265HrdParameters[] ret = new StdVideoH265HrdParameters[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265HrdParameters allocate(Arena arena) {

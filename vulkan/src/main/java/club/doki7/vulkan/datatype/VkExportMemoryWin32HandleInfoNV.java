@@ -122,6 +122,14 @@ public record VkExportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExportMemoryWin32HandleInfoNV.BYTES));
         }
+
+        public VkExportMemoryWin32HandleInfoNV[] toArray() {
+            VkExportMemoryWin32HandleInfoNV[] ret = new VkExportMemoryWin32HandleInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExportMemoryWin32HandleInfoNV allocate(Arena arena) {

@@ -125,6 +125,14 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeAV1RateControlInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeAV1RateControlInfoKHR[] toArray() {
+            VkVideoEncodeAV1RateControlInfoKHR[] ret = new VkVideoEncodeAV1RateControlInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeAV1RateControlInfoKHR allocate(Arena arena) {

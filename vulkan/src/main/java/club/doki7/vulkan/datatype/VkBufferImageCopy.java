@@ -117,6 +117,14 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferImageCopy.BYTES));
         }
+
+        public VkBufferImageCopy[] toArray() {
+            VkBufferImageCopy[] ret = new VkBufferImageCopy[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferImageCopy allocate(Arena arena) {

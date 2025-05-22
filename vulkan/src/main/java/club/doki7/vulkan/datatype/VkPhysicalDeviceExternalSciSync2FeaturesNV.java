@@ -124,6 +124,14 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceExternalSciSync2FeaturesNV[] toArray() {
+            VkPhysicalDeviceExternalSciSync2FeaturesNV[] ret = new VkPhysicalDeviceExternalSciSync2FeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceExternalSciSync2FeaturesNV allocate(Arena arena) {

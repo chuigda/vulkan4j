@@ -127,6 +127,14 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineMultisampleStateCreateInfo.BYTES));
         }
+
+        public VkPipelineMultisampleStateCreateInfo[] toArray() {
+            VkPipelineMultisampleStateCreateInfo[] ret = new VkPipelineMultisampleStateCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineMultisampleStateCreateInfo allocate(Arena arena) {

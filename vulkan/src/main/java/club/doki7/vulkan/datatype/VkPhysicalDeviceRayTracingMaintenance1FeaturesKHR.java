@@ -122,6 +122,14 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES));
         }
+
+        public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR[] toArray() {
+            VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR[] ret = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR allocate(Arena arena) {

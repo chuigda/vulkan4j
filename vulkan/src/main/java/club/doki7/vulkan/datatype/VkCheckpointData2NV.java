@@ -122,6 +122,14 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCheckpointData2NV.BYTES));
         }
+
+        public VkCheckpointData2NV[] toArray() {
+            VkCheckpointData2NV[] ret = new VkCheckpointData2NV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCheckpointData2NV allocate(Arena arena) {

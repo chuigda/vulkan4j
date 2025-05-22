@@ -126,6 +126,14 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageViewCreateInfo.BYTES));
         }
+
+        public VkImageViewCreateInfo[] toArray() {
+            VkImageViewCreateInfo[] ret = new VkImageViewCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageViewCreateInfo allocate(Arena arena) {

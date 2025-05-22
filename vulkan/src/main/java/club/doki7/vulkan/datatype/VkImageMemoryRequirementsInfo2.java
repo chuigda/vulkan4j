@@ -121,6 +121,14 @@ public record VkImageMemoryRequirementsInfo2(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageMemoryRequirementsInfo2.BYTES));
         }
+
+        public VkImageMemoryRequirementsInfo2[] toArray() {
+            VkImageMemoryRequirementsInfo2[] ret = new VkImageMemoryRequirementsInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageMemoryRequirementsInfo2 allocate(Arena arena) {

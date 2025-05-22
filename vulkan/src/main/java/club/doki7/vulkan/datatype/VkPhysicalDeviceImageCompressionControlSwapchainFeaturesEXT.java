@@ -121,6 +121,14 @@ public record VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(@NotNu
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT[] toArray() {
+            VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT[] ret = new VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT allocate(Arena arena) {

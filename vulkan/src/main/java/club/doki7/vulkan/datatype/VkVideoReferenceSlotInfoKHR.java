@@ -122,6 +122,14 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoReferenceSlotInfoKHR.BYTES));
         }
+
+        public VkVideoReferenceSlotInfoKHR[] toArray() {
+            VkVideoReferenceSlotInfoKHR[] ret = new VkVideoReferenceSlotInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoReferenceSlotInfoKHR allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceTileMemoryHeapPropertiesQCOM.BYTES));
         }
+
+        public VkPhysicalDeviceTileMemoryHeapPropertiesQCOM[] toArray() {
+            VkPhysicalDeviceTileMemoryHeapPropertiesQCOM[] ret = new VkPhysicalDeviceTileMemoryHeapPropertiesQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceTileMemoryHeapPropertiesQCOM allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceCoherentMemoryFeaturesAMD.BYTES));
         }
+
+        public VkPhysicalDeviceCoherentMemoryFeaturesAMD[] toArray() {
+            VkPhysicalDeviceCoherentMemoryFeaturesAMD[] ret = new VkPhysicalDeviceCoherentMemoryFeaturesAMD[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceCoherentMemoryFeaturesAMD allocate(Arena arena) {

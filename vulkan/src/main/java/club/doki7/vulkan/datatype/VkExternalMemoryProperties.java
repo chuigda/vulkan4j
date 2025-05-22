@@ -114,6 +114,14 @@ public record VkExternalMemoryProperties(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExternalMemoryProperties.BYTES));
         }
+
+        public VkExternalMemoryProperties[] toArray() {
+            VkExternalMemoryProperties[] ret = new VkExternalMemoryProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExternalMemoryProperties allocate(Arena arena) {

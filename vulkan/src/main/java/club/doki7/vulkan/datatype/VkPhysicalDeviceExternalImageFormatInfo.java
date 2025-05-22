@@ -121,6 +121,14 @@ public record VkPhysicalDeviceExternalImageFormatInfo(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExternalImageFormatInfo.BYTES));
         }
+
+        public VkPhysicalDeviceExternalImageFormatInfo[] toArray() {
+            VkPhysicalDeviceExternalImageFormatInfo[] ret = new VkPhysicalDeviceExternalImageFormatInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceExternalImageFormatInfo allocate(Arena arena) {

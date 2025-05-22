@@ -121,6 +121,14 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBindMemoryStatus.BYTES));
         }
+
+        public VkBindMemoryStatus[] toArray() {
+            VkBindMemoryStatus[] ret = new VkBindMemoryStatus[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBindMemoryStatus allocate(Arena arena) {

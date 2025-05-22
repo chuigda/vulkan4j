@@ -125,6 +125,14 @@ public record VkCopyImageToMemoryInfo(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyImageToMemoryInfo.BYTES));
         }
+
+        public VkCopyImageToMemoryInfo[] toArray() {
+            VkCopyImageToMemoryInfo[] ret = new VkCopyImageToMemoryInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyImageToMemoryInfo allocate(Arena arena) {

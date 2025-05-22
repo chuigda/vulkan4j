@@ -124,6 +124,14 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeAV1GopRemainingFrameInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeAV1GopRemainingFrameInfoKHR[] toArray() {
+            VkVideoEncodeAV1GopRemainingFrameInfoKHR[] ret = new VkVideoEncodeAV1GopRemainingFrameInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeAV1GopRemainingFrameInfoKHR allocate(Arena arena) {

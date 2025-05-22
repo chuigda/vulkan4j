@@ -123,6 +123,14 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineCoverageToColorStateCreateInfoNV.BYTES));
         }
+
+        public VkPipelineCoverageToColorStateCreateInfoNV[] toArray() {
+            VkPipelineCoverageToColorStateCreateInfoNV[] ret = new VkPipelineCoverageToColorStateCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineCoverageToColorStateCreateInfoNV allocate(Arena arena) {

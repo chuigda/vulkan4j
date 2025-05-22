@@ -122,6 +122,14 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSamplerBorderColorComponentMappingCreateInfoEXT.BYTES));
         }
+
+        public VkSamplerBorderColorComponentMappingCreateInfoEXT[] toArray() {
+            VkSamplerBorderColorComponentMappingCreateInfoEXT[] ret = new VkSamplerBorderColorComponentMappingCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSamplerBorderColorComponentMappingCreateInfoEXT allocate(Arena arena) {

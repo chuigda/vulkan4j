@@ -117,6 +117,14 @@ public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyMemoryToImageIndirectCommandNV.BYTES));
         }
+
+        public VkCopyMemoryToImageIndirectCommandNV[] toArray() {
+            VkCopyMemoryToImageIndirectCommandNV[] ret = new VkCopyMemoryToImageIndirectCommandNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyMemoryToImageIndirectCommandNV allocate(Arena arena) {

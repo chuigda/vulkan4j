@@ -121,6 +121,14 @@ public record VkPhysicalDeviceClusterAccelerationStructureFeaturesNV(@NotNull Me
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceClusterAccelerationStructureFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceClusterAccelerationStructureFeaturesNV[] toArray() {
+            VkPhysicalDeviceClusterAccelerationStructureFeaturesNV[] ret = new VkPhysicalDeviceClusterAccelerationStructureFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceClusterAccelerationStructureFeaturesNV allocate(Arena arena) {

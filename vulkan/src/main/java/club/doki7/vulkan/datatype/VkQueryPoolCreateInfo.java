@@ -124,6 +124,14 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkQueryPoolCreateInfo.BYTES));
         }
+
+        public VkQueryPoolCreateInfo[] toArray() {
+            VkQueryPoolCreateInfo[] ret = new VkQueryPoolCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkQueryPoolCreateInfo allocate(Arena arena) {

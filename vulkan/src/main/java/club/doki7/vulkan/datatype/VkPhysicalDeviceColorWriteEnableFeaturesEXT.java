@@ -121,6 +121,14 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceColorWriteEnableFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceColorWriteEnableFeaturesEXT[] toArray() {
+            VkPhysicalDeviceColorWriteEnableFeaturesEXT[] ret = new VkPhysicalDeviceColorWriteEnableFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceColorWriteEnableFeaturesEXT allocate(Arena arena) {

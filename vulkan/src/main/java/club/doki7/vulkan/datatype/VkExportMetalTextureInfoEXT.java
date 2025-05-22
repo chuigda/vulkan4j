@@ -125,6 +125,14 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExportMetalTextureInfoEXT.BYTES));
         }
+
+        public VkExportMetalTextureInfoEXT[] toArray() {
+            VkExportMetalTextureInfoEXT[] ret = new VkExportMetalTextureInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExportMetalTextureInfoEXT allocate(Arena arena) {

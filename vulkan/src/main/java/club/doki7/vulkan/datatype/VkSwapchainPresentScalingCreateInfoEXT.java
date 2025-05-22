@@ -123,6 +123,14 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSwapchainPresentScalingCreateInfoEXT.BYTES));
         }
+
+        public VkSwapchainPresentScalingCreateInfoEXT[] toArray() {
+            VkSwapchainPresentScalingCreateInfoEXT[] ret = new VkSwapchainPresentScalingCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSwapchainPresentScalingCreateInfoEXT allocate(Arena arena) {

@@ -115,6 +115,14 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeAV1ReferenceInfo.BYTES));
         }
+
+        public StdVideoEncodeAV1ReferenceInfo[] toArray() {
+            StdVideoEncodeAV1ReferenceInfo[] ret = new StdVideoEncodeAV1ReferenceInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeAV1ReferenceInfo allocate(Arena arena) {

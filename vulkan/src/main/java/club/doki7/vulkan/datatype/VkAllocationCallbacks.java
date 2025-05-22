@@ -117,6 +117,14 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAllocationCallbacks.BYTES));
         }
+
+        public VkAllocationCallbacks[] toArray() {
+            VkAllocationCallbacks[] ret = new VkAllocationCallbacks[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAllocationCallbacks allocate(Arena arena) {

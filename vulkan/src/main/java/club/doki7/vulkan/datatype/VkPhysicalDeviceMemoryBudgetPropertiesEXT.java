@@ -122,6 +122,14 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceMemoryBudgetPropertiesEXT[] toArray() {
+            VkPhysicalDeviceMemoryBudgetPropertiesEXT[] ret = new VkPhysicalDeviceMemoryBudgetPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceMemoryBudgetPropertiesEXT allocate(Arena arena) {

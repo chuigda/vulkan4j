@@ -126,6 +126,14 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoFormatPropertiesKHR.BYTES));
         }
+
+        public VkVideoFormatPropertiesKHR[] toArray() {
+            VkVideoFormatPropertiesKHR[] ret = new VkVideoFormatPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoFormatPropertiesKHR allocate(Arena arena) {

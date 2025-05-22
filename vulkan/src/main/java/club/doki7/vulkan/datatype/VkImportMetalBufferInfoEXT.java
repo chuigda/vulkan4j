@@ -121,6 +121,14 @@ public record VkImportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImportMetalBufferInfoEXT.BYTES));
         }
+
+        public VkImportMetalBufferInfoEXT[] toArray() {
+            VkImportMetalBufferInfoEXT[] ret = new VkImportMetalBufferInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImportMetalBufferInfoEXT allocate(Arena arena) {

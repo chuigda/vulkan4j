@@ -121,6 +121,14 @@ public record VkDeviceEventInfoEXT(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceEventInfoEXT.BYTES));
         }
+
+        public VkDeviceEventInfoEXT[] toArray() {
+            VkDeviceEventInfoEXT[] ret = new VkDeviceEventInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceEventInfoEXT allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkCopyCommandTransformInfoQCOM(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyCommandTransformInfoQCOM.BYTES));
         }
+
+        public VkCopyCommandTransformInfoQCOM[] toArray() {
+            VkCopyCommandTransformInfoQCOM[] ret = new VkCopyCommandTransformInfoQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyCommandTransformInfoQCOM allocate(Arena arena) {

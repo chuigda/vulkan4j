@@ -122,6 +122,14 @@ public record VkDescriptorSetBindingReferenceVALVE(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorSetBindingReferenceVALVE.BYTES));
         }
+
+        public VkDescriptorSetBindingReferenceVALVE[] toArray() {
+            VkDescriptorSetBindingReferenceVALVE[] ret = new VkDescriptorSetBindingReferenceVALVE[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorSetBindingReferenceVALVE allocate(Arena arena) {

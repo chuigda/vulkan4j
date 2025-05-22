@@ -122,6 +122,14 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeatures(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderSubgroupRotateFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceShaderSubgroupRotateFeatures[] toArray() {
+            VkPhysicalDeviceShaderSubgroupRotateFeatures[] ret = new VkPhysicalDeviceShaderSubgroupRotateFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderSubgroupRotateFeatures allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkPhysicalDeviceHdrVividFeaturesHUAWEI(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceHdrVividFeaturesHUAWEI.BYTES));
         }
+
+        public VkPhysicalDeviceHdrVividFeaturesHUAWEI[] toArray() {
+            VkPhysicalDeviceHdrVividFeaturesHUAWEI[] ret = new VkPhysicalDeviceHdrVividFeaturesHUAWEI[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceHdrVividFeaturesHUAWEI allocate(Arena arena) {

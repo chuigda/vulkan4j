@@ -123,6 +123,14 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevice8BitStorageFeatures.BYTES));
         }
+
+        public VkPhysicalDevice8BitStorageFeatures[] toArray() {
+            VkPhysicalDevice8BitStorageFeatures[] ret = new VkPhysicalDevice8BitStorageFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevice8BitStorageFeatures allocate(Arena arena) {

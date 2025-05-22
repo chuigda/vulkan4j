@@ -124,6 +124,14 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeH265SessionParametersCreateInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeH265SessionParametersCreateInfoKHR[] toArray() {
+            VkVideoEncodeH265SessionParametersCreateInfoKHR[] ret = new VkVideoEncodeH265SessionParametersCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeH265SessionParametersCreateInfoKHR allocate(Arena arena) {

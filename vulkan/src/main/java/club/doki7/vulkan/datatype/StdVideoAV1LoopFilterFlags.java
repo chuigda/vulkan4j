@@ -113,6 +113,14 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1LoopFilterFlags.BYTES));
         }
+
+        public StdVideoAV1LoopFilterFlags[] toArray() {
+            StdVideoAV1LoopFilterFlags[] ret = new StdVideoAV1LoopFilterFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1LoopFilterFlags allocate(Arena arena) {

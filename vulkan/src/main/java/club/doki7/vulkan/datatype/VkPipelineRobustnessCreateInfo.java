@@ -124,6 +124,14 @@ public record VkPipelineRobustnessCreateInfo(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineRobustnessCreateInfo.BYTES));
         }
+
+        public VkPipelineRobustnessCreateInfo[] toArray() {
+            VkPipelineRobustnessCreateInfo[] ret = new VkPipelineRobustnessCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineRobustnessCreateInfo allocate(Arena arena) {

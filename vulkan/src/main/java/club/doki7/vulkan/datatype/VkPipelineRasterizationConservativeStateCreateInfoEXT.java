@@ -123,6 +123,14 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineRasterizationConservativeStateCreateInfoEXT.BYTES));
         }
+
+        public VkPipelineRasterizationConservativeStateCreateInfoEXT[] toArray() {
+            VkPipelineRasterizationConservativeStateCreateInfoEXT[] ret = new VkPipelineRasterizationConservativeStateCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineRasterizationConservativeStateCreateInfoEXT allocate(Arena arena) {

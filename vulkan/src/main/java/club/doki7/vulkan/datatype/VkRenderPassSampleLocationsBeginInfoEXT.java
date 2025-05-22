@@ -124,6 +124,14 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderPassSampleLocationsBeginInfoEXT.BYTES));
         }
+
+        public VkRenderPassSampleLocationsBeginInfoEXT[] toArray() {
+            VkRenderPassSampleLocationsBeginInfoEXT[] ret = new VkRenderPassSampleLocationsBeginInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderPassSampleLocationsBeginInfoEXT allocate(Arena arena) {

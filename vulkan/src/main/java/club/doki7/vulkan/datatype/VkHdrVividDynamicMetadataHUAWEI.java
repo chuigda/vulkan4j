@@ -122,6 +122,14 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkHdrVividDynamicMetadataHUAWEI.BYTES));
         }
+
+        public VkHdrVividDynamicMetadataHUAWEI[] toArray() {
+            VkHdrVividDynamicMetadataHUAWEI[] ret = new VkHdrVividDynamicMetadataHUAWEI[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkHdrVividDynamicMetadataHUAWEI allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeatures(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceVertexAttributeDivisorFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceVertexAttributeDivisorFeatures[] toArray() {
+            VkPhysicalDeviceVertexAttributeDivisorFeatures[] ret = new VkPhysicalDeviceVertexAttributeDivisorFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceVertexAttributeDivisorFeatures allocate(Arena arena) {

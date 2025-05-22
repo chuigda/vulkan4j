@@ -121,6 +121,14 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImageCompressionControlFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceImageCompressionControlFeaturesEXT[] toArray() {
+            VkPhysicalDeviceImageCompressionControlFeaturesEXT[] ret = new VkPhysicalDeviceImageCompressionControlFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImageCompressionControlFeaturesEXT allocate(Arena arena) {

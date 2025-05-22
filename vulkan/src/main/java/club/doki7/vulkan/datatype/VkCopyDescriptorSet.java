@@ -127,6 +127,14 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyDescriptorSet.BYTES));
         }
+
+        public VkCopyDescriptorSet[] toArray() {
+            VkCopyDescriptorSet[] ret = new VkCopyDescriptorSet[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyDescriptorSet allocate(Arena arena) {

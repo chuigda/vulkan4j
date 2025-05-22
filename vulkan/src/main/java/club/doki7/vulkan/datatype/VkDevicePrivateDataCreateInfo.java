@@ -121,6 +121,14 @@ public record VkDevicePrivateDataCreateInfo(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDevicePrivateDataCreateInfo.BYTES));
         }
+
+        public VkDevicePrivateDataCreateInfo[] toArray() {
+            VkDevicePrivateDataCreateInfo[] ret = new VkDevicePrivateDataCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDevicePrivateDataCreateInfo allocate(Arena arena) {

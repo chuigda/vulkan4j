@@ -114,6 +114,14 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDrawMeshTasksIndirectCommandEXT.BYTES));
         }
+
+        public VkDrawMeshTasksIndirectCommandEXT[] toArray() {
+            VkDrawMeshTasksIndirectCommandEXT[] ret = new VkDrawMeshTasksIndirectCommandEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDrawMeshTasksIndirectCommandEXT allocate(Arena arena) {

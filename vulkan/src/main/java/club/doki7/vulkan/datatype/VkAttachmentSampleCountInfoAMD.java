@@ -123,6 +123,14 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAttachmentSampleCountInfoAMD.BYTES));
         }
+
+        public VkAttachmentSampleCountInfoAMD[] toArray() {
+            VkAttachmentSampleCountInfoAMD[] ret = new VkAttachmentSampleCountInfoAMD[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAttachmentSampleCountInfoAMD allocate(Arena arena) {

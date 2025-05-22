@@ -126,6 +126,14 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRayTracingShaderGroupCreateInfoKHR.BYTES));
         }
+
+        public VkRayTracingShaderGroupCreateInfoKHR[] toArray() {
+            VkRayTracingShaderGroupCreateInfoKHR[] ret = new VkRayTracingShaderGroupCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRayTracingShaderGroupCreateInfoKHR allocate(Arena arena) {

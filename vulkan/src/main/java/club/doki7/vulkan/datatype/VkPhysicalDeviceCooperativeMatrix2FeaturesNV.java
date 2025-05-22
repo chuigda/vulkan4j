@@ -127,6 +127,14 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceCooperativeMatrix2FeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceCooperativeMatrix2FeaturesNV[] toArray() {
+            VkPhysicalDeviceCooperativeMatrix2FeaturesNV[] ret = new VkPhysicalDeviceCooperativeMatrix2FeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceCooperativeMatrix2FeaturesNV allocate(Arena arena) {

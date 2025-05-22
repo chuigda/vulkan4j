@@ -114,6 +114,14 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDispatchGraphCountInfoAMDX.BYTES));
         }
+
+        public VkDispatchGraphCountInfoAMDX[] toArray() {
+            VkDispatchGraphCountInfoAMDX[] ret = new VkDispatchGraphCountInfoAMDX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDispatchGraphCountInfoAMDX allocate(Arena arena) {

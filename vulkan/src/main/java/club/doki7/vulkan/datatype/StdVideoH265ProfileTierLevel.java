@@ -112,6 +112,14 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265ProfileTierLevel.BYTES));
         }
+
+        public StdVideoH265ProfileTierLevel[] toArray() {
+            StdVideoH265ProfileTierLevel[] ret = new StdVideoH265ProfileTierLevel[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265ProfileTierLevel allocate(Arena arena) {

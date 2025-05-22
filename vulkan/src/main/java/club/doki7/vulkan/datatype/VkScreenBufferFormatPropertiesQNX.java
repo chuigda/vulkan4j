@@ -129,6 +129,14 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkScreenBufferFormatPropertiesQNX.BYTES));
         }
+
+        public VkScreenBufferFormatPropertiesQNX[] toArray() {
+            VkScreenBufferFormatPropertiesQNX[] ret = new VkScreenBufferFormatPropertiesQNX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkScreenBufferFormatPropertiesQNX allocate(Arena arena) {

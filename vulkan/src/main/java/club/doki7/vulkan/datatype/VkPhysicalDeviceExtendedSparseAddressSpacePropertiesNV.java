@@ -123,6 +123,14 @@ public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(@NotNull Me
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.BYTES));
         }
+
+        public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV[] toArray() {
+            VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV[] ret = new VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV allocate(Arena arena) {

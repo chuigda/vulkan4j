@@ -128,6 +128,14 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClusterAccelerationStructureTriangleClusterInputNV.BYTES));
         }
+
+        public VkClusterAccelerationStructureTriangleClusterInputNV[] toArray() {
+            VkClusterAccelerationStructureTriangleClusterInputNV[] ret = new VkClusterAccelerationStructureTriangleClusterInputNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClusterAccelerationStructureTriangleClusterInputNV allocate(Arena arena) {

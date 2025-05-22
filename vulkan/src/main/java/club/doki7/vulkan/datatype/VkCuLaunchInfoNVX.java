@@ -132,6 +132,14 @@ public record VkCuLaunchInfoNVX(@NotNull MemorySegment segment) implements IVkCu
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCuLaunchInfoNVX.BYTES));
         }
+
+        public VkCuLaunchInfoNVX[] toArray() {
+            VkCuLaunchInfoNVX[] ret = new VkCuLaunchInfoNVX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCuLaunchInfoNVX allocate(Arena arena) {

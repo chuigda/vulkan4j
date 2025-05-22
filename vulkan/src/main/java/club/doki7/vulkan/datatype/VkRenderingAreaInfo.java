@@ -125,6 +125,14 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderingAreaInfo.BYTES));
         }
+
+        public VkRenderingAreaInfo[] toArray() {
+            VkRenderingAreaInfo[] ret = new VkRenderingAreaInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderingAreaInfo allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkMemoryBarrier(@NotNull MemorySegment segment) implements IVkMemo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryBarrier.BYTES));
         }
+
+        public VkMemoryBarrier[] toArray() {
+            VkMemoryBarrier[] ret = new VkMemoryBarrier[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryBarrier allocate(Arena arena) {

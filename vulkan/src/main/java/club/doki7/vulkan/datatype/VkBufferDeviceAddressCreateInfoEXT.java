@@ -121,6 +121,14 @@ public record VkBufferDeviceAddressCreateInfoEXT(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferDeviceAddressCreateInfoEXT.BYTES));
         }
+
+        public VkBufferDeviceAddressCreateInfoEXT[] toArray() {
+            VkBufferDeviceAddressCreateInfoEXT[] ret = new VkBufferDeviceAddressCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferDeviceAddressCreateInfoEXT allocate(Arena arena) {

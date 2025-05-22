@@ -122,6 +122,14 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineRasterizationDepthClipStateCreateInfoEXT.BYTES));
         }
+
+        public VkPipelineRasterizationDepthClipStateCreateInfoEXT[] toArray() {
+            VkPipelineRasterizationDepthClipStateCreateInfoEXT[] ret = new VkPipelineRasterizationDepthClipStateCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineRasterizationDepthClipStateCreateInfoEXT allocate(Arena arena) {

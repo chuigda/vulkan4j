@@ -116,6 +116,14 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeH265LongTermRefPics.BYTES));
         }
+
+        public StdVideoEncodeH265LongTermRefPics[] toArray() {
+            StdVideoEncodeH265LongTermRefPics[] ret = new StdVideoEncodeH265LongTermRefPics[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeH265LongTermRefPics allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] toArray() {
+            VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[] ret = new VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocate(Arena arena) {

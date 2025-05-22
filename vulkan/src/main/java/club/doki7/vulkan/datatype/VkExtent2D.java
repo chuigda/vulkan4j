@@ -113,6 +113,14 @@ public record VkExtent2D(@NotNull MemorySegment segment) implements IVkExtent2D 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExtent2D.BYTES));
         }
+
+        public VkExtent2D[] toArray() {
+            VkExtent2D[] ret = new VkExtent2D[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExtent2D allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkImportMemoryFdInfoKHR(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImportMemoryFdInfoKHR.BYTES));
         }
+
+        public VkImportMemoryFdInfoKHR[] toArray() {
+            VkImportMemoryFdInfoKHR[] ret = new VkImportMemoryFdInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImportMemoryFdInfoKHR allocate(Arena arena) {

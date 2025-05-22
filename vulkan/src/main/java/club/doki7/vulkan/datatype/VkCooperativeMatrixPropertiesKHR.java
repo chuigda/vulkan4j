@@ -129,6 +129,14 @@ public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCooperativeMatrixPropertiesKHR.BYTES));
         }
+
+        public VkCooperativeMatrixPropertiesKHR[] toArray() {
+            VkCooperativeMatrixPropertiesKHR[] ret = new VkCooperativeMatrixPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCooperativeMatrixPropertiesKHR allocate(Arena arena) {

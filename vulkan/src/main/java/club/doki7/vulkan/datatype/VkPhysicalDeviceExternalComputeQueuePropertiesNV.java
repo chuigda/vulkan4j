@@ -122,6 +122,14 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExternalComputeQueuePropertiesNV.BYTES));
         }
+
+        public VkPhysicalDeviceExternalComputeQueuePropertiesNV[] toArray() {
+            VkPhysicalDeviceExternalComputeQueuePropertiesNV[] ret = new VkPhysicalDeviceExternalComputeQueuePropertiesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceExternalComputeQueuePropertiesNV allocate(Arena arena) {

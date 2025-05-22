@@ -121,6 +121,14 @@ public record VkPhysicalDeviceShaderExpectAssumeFeatures(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderExpectAssumeFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceShaderExpectAssumeFeatures[] toArray() {
+            VkPhysicalDeviceShaderExpectAssumeFeatures[] ret = new VkPhysicalDeviceShaderExpectAssumeFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderExpectAssumeFeatures allocate(Arena arena) {

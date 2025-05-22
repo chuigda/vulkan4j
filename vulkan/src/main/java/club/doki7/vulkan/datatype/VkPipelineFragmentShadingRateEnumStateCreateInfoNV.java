@@ -123,6 +123,14 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES));
         }
+
+        public VkPipelineFragmentShadingRateEnumStateCreateInfoNV[] toArray() {
+            VkPipelineFragmentShadingRateEnumStateCreateInfoNV[] ret = new VkPipelineFragmentShadingRateEnumStateCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV allocate(Arena arena) {

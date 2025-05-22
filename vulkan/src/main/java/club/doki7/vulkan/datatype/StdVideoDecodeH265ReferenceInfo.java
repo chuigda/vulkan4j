@@ -111,6 +111,14 @@ public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoDecodeH265ReferenceInfo.BYTES));
         }
+
+        public StdVideoDecodeH265ReferenceInfo[] toArray() {
+            StdVideoDecodeH265ReferenceInfo[] ret = new StdVideoDecodeH265ReferenceInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoDecodeH265ReferenceInfo allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkSubresourceHostMemcpySize(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSubresourceHostMemcpySize.BYTES));
         }
+
+        public VkSubresourceHostMemcpySize[] toArray() {
+            VkSubresourceHostMemcpySize[] ret = new VkSubresourceHostMemcpySize[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSubresourceHostMemcpySize allocate(Arena arena) {

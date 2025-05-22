@@ -122,6 +122,14 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(@NotNull MemorySeg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceConditionalRenderingFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceConditionalRenderingFeaturesEXT[] toArray() {
+            VkPhysicalDeviceConditionalRenderingFeaturesEXT[] ret = new VkPhysicalDeviceConditionalRenderingFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceConditionalRenderingFeaturesEXT allocate(Arena arena) {

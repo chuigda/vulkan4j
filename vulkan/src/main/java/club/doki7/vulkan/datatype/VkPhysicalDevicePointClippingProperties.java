@@ -121,6 +121,14 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePointClippingProperties.BYTES));
         }
+
+        public VkPhysicalDevicePointClippingProperties[] toArray() {
+            VkPhysicalDevicePointClippingProperties[] ret = new VkPhysicalDevicePointClippingProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePointClippingProperties allocate(Arena arena) {

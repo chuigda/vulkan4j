@@ -121,6 +121,14 @@ public record VkPhysicalDeviceHostQueryResetFeatures(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceHostQueryResetFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceHostQueryResetFeatures[] toArray() {
+            VkPhysicalDeviceHostQueryResetFeatures[] ret = new VkPhysicalDeviceHostQueryResetFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceHostQueryResetFeatures allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorSetVariableDescriptorCountAllocateInfo.BYTES));
         }
+
+        public VkDescriptorSetVariableDescriptorCountAllocateInfo[] toArray() {
+            VkDescriptorSetVariableDescriptorCountAllocateInfo[] ret = new VkDescriptorSetVariableDescriptorCountAllocateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorSetVariableDescriptorCountAllocateInfo allocate(Arena arena) {

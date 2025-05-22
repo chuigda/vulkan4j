@@ -125,6 +125,14 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDebugUtilsMessengerCreateInfoEXT.BYTES));
         }
+
+        public VkDebugUtilsMessengerCreateInfoEXT[] toArray() {
+            VkDebugUtilsMessengerCreateInfoEXT[] ret = new VkDebugUtilsMessengerCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDebugUtilsMessengerCreateInfoEXT allocate(Arena arena) {

@@ -114,6 +114,14 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IVkExtent3D 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExtent3D.BYTES));
         }
+
+        public VkExtent3D[] toArray() {
+            VkExtent3D[] ret = new VkExtent3D[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExtent3D allocate(Arena arena) {

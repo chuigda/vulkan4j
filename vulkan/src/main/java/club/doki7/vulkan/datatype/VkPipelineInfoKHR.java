@@ -121,6 +121,14 @@ public record VkPipelineInfoKHR(@NotNull MemorySegment segment) implements IVkPi
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineInfoKHR.BYTES));
         }
+
+        public VkPipelineInfoKHR[] toArray() {
+            VkPipelineInfoKHR[] ret = new VkPipelineInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineInfoKHR allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkHostImageCopyDevicePerformanceQuery.BYTES));
         }
+
+        public VkHostImageCopyDevicePerformanceQuery[] toArray() {
+            VkHostImageCopyDevicePerformanceQuery[] ret = new VkHostImageCopyDevicePerformanceQuery[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkHostImageCopyDevicePerformanceQuery allocate(Arena arena) {

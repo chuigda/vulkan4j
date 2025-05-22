@@ -131,6 +131,14 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES));
         }
+
+        public VkAccelerationStructureGeometryLinearSweptSpheresDataNV[] toArray() {
+            VkAccelerationStructureGeometryLinearSweptSpheresDataNV[] ret = new VkAccelerationStructureGeometryLinearSweptSpheresDataNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureGeometryLinearSweptSpheresDataNV allocate(Arena arena) {

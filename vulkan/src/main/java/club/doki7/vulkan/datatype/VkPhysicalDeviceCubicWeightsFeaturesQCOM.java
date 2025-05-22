@@ -121,6 +121,14 @@ public record VkPhysicalDeviceCubicWeightsFeaturesQCOM(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceCubicWeightsFeaturesQCOM.BYTES));
         }
+
+        public VkPhysicalDeviceCubicWeightsFeaturesQCOM[] toArray() {
+            VkPhysicalDeviceCubicWeightsFeaturesQCOM[] ret = new VkPhysicalDeviceCubicWeightsFeaturesQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceCubicWeightsFeaturesQCOM allocate(Arena arena) {

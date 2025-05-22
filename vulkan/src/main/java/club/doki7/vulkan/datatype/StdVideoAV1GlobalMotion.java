@@ -111,6 +111,14 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1GlobalMotion.BYTES));
         }
+
+        public StdVideoAV1GlobalMotion[] toArray() {
+            StdVideoAV1GlobalMotion[] ret = new StdVideoAV1GlobalMotion[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1GlobalMotion allocate(Arena arena) {

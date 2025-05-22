@@ -119,6 +119,14 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeH264PictureInfo.BYTES));
         }
+
+        public StdVideoEncodeH264PictureInfo[] toArray() {
+            StdVideoEncodeH264PictureInfo[] ret = new StdVideoEncodeH264PictureInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeH264PictureInfo allocate(Arena arena) {

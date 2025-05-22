@@ -122,6 +122,14 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM.BYTES));
         }
+
+        public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM[] toArray() {
+            VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM[] ret = new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM allocate(Arena arena) {

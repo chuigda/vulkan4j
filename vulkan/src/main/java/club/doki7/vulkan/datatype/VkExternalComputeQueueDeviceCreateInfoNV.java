@@ -121,6 +121,14 @@ public record VkExternalComputeQueueDeviceCreateInfoNV(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExternalComputeQueueDeviceCreateInfoNV.BYTES));
         }
+
+        public VkExternalComputeQueueDeviceCreateInfoNV[] toArray() {
+            VkExternalComputeQueueDeviceCreateInfoNV[] ret = new VkExternalComputeQueueDeviceCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExternalComputeQueueDeviceCreateInfoNV allocate(Arena arena) {

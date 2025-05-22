@@ -123,6 +123,14 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShadingRateImagePropertiesNV.BYTES));
         }
+
+        public VkPhysicalDeviceShadingRateImagePropertiesNV[] toArray() {
+            VkPhysicalDeviceShadingRateImagePropertiesNV[] ret = new VkPhysicalDeviceShadingRateImagePropertiesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShadingRateImagePropertiesNV allocate(Arena arena) {

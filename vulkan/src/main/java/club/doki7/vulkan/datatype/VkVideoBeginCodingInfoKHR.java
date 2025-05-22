@@ -125,6 +125,14 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoBeginCodingInfoKHR.BYTES));
         }
+
+        public VkVideoBeginCodingInfoKHR[] toArray() {
+            VkVideoBeginCodingInfoKHR[] ret = new VkVideoBeginCodingInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoBeginCodingInfoKHR allocate(Arena arena) {

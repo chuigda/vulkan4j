@@ -114,6 +114,14 @@ public record VkBindVertexBufferIndirectCommandEXT(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBindVertexBufferIndirectCommandEXT.BYTES));
         }
+
+        public VkBindVertexBufferIndirectCommandEXT[] toArray() {
+            VkBindVertexBufferIndirectCommandEXT[] ret = new VkBindVertexBufferIndirectCommandEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBindVertexBufferIndirectCommandEXT allocate(Arena arena) {

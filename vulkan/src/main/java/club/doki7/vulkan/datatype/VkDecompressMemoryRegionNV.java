@@ -116,6 +116,14 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDecompressMemoryRegionNV.BYTES));
         }
+
+        public VkDecompressMemoryRegionNV[] toArray() {
+            VkDecompressMemoryRegionNV[] ret = new VkDecompressMemoryRegionNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDecompressMemoryRegionNV allocate(Arena arena) {

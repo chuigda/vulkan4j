@@ -129,6 +129,14 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoCapabilitiesKHR.BYTES));
         }
+
+        public VkVideoCapabilitiesKHR[] toArray() {
+            VkVideoCapabilitiesKHR[] ret = new VkVideoCapabilitiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoCapabilitiesKHR allocate(Arena arena) {

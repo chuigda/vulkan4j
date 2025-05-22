@@ -127,6 +127,14 @@ public record VkSubmitInfo2(@NotNull MemorySegment segment) implements IVkSubmit
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSubmitInfo2.BYTES));
         }
+
+        public VkSubmitInfo2[] toArray() {
+            VkSubmitInfo2[] ret = new VkSubmitInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSubmitInfo2 allocate(Arena arena) {

@@ -129,6 +129,14 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferMemoryBarrier2.BYTES));
         }
+
+        public VkBufferMemoryBarrier2[] toArray() {
+            VkBufferMemoryBarrier2[] ret = new VkBufferMemoryBarrier2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferMemoryBarrier2 allocate(Arena arena) {

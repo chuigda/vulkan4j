@@ -122,6 +122,14 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPresentIdKHR.BYTES));
         }
+
+        public VkPresentIdKHR[] toArray() {
+            VkPresentIdKHR[] ret = new VkPresentIdKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPresentIdKHR allocate(Arena arena) {

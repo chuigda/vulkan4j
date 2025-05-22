@@ -123,6 +123,14 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1SequenceHeader.BYTES));
         }
+
+        public StdVideoAV1SequenceHeader[] toArray() {
+            StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1SequenceHeader allocate(Arena arena) {

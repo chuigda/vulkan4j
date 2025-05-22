@@ -114,6 +114,14 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClearColorValue.BYTES));
         }
+
+        public VkClearColorValue[] toArray() {
+            VkClearColorValue[] ret = new VkClearColorValue[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClearColorValue allocate(Arena arena) {

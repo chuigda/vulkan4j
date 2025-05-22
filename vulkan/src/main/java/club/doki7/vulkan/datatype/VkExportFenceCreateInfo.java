@@ -121,6 +121,14 @@ public record VkExportFenceCreateInfo(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExportFenceCreateInfo.BYTES));
         }
+
+        public VkExportFenceCreateInfo[] toArray() {
+            VkExportFenceCreateInfo[] ret = new VkExportFenceCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExportFenceCreateInfo allocate(Arena arena) {

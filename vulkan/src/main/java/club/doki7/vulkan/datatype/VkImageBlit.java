@@ -115,6 +115,14 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IVkImageBli
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageBlit.BYTES));
         }
+
+        public VkImageBlit[] toArray() {
+            VkImageBlit[] ret = new VkImageBlit[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageBlit allocate(Arena arena) {

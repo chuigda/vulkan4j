@@ -122,6 +122,14 @@ public record VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(@NotNull Memor
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR.BYTES));
         }
+
+        public VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR[] toArray() {
+            VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR[] ret = new VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR allocate(Arena arena) {

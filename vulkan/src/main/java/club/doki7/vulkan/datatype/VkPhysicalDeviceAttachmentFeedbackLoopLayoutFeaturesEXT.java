@@ -121,6 +121,14 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(@NotNull M
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT[] toArray() {
+            VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT[] ret = new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT allocate(Arena arena) {

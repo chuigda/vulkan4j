@@ -125,6 +125,14 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferViewCreateInfo.BYTES));
         }
+
+        public VkBufferViewCreateInfo[] toArray() {
+            VkBufferViewCreateInfo[] ret = new VkBufferViewCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferViewCreateInfo allocate(Arena arena) {

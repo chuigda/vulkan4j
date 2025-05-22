@@ -128,6 +128,14 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkHdrMetadataEXT.BYTES));
         }
+
+        public VkHdrMetadataEXT[] toArray() {
+            VkHdrMetadataEXT[] ret = new VkHdrMetadataEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkHdrMetadataEXT allocate(Arena arena) {

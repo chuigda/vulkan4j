@@ -121,6 +121,14 @@ public record VkDisplaySurfaceStereoCreateInfoNV(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplaySurfaceStereoCreateInfoNV.BYTES));
         }
+
+        public VkDisplaySurfaceStereoCreateInfoNV[] toArray() {
+            VkDisplaySurfaceStereoCreateInfoNV[] ret = new VkDisplaySurfaceStereoCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplaySurfaceStereoCreateInfoNV allocate(Arena arena) {

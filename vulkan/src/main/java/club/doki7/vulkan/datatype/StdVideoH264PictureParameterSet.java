@@ -120,6 +120,14 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH264PictureParameterSet.BYTES));
         }
+
+        public StdVideoH264PictureParameterSet[] toArray() {
+            StdVideoH264PictureParameterSet[] ret = new StdVideoH264PictureParameterSet[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH264PictureParameterSet allocate(Arena arena) {

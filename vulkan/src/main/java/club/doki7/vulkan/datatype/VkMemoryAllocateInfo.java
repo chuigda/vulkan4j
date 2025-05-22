@@ -122,6 +122,14 @@ public record VkMemoryAllocateInfo(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryAllocateInfo.BYTES));
         }
+
+        public VkMemoryAllocateInfo[] toArray() {
+            VkMemoryAllocateInfo[] ret = new VkMemoryAllocateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryAllocateInfo allocate(Arena arena) {

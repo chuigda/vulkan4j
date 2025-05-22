@@ -123,6 +123,14 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExecutionGraphPipelineScratchSizeAMDX.BYTES));
         }
+
+        public VkExecutionGraphPipelineScratchSizeAMDX[] toArray() {
+            VkExecutionGraphPipelineScratchSizeAMDX[] ret = new VkExecutionGraphPipelineScratchSizeAMDX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExecutionGraphPipelineScratchSizeAMDX allocate(Arena arena) {

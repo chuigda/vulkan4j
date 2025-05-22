@@ -123,6 +123,14 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceGroupProperties.BYTES));
         }
+
+        public VkPhysicalDeviceGroupProperties[] toArray() {
+            VkPhysicalDeviceGroupProperties[] ret = new VkPhysicalDeviceGroupProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceGroupProperties allocate(Arena arena) {

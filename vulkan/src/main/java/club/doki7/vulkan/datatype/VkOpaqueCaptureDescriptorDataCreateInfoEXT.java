@@ -121,6 +121,14 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkOpaqueCaptureDescriptorDataCreateInfoEXT.BYTES));
         }
+
+        public VkOpaqueCaptureDescriptorDataCreateInfoEXT[] toArray() {
+            VkOpaqueCaptureDescriptorDataCreateInfoEXT[] ret = new VkOpaqueCaptureDescriptorDataCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkOpaqueCaptureDescriptorDataCreateInfoEXT allocate(Arena arena) {

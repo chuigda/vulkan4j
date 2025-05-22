@@ -118,6 +118,14 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1ColorConfig.BYTES));
         }
+
+        public StdVideoAV1ColorConfig[] toArray() {
+            StdVideoAV1ColorConfig[] ret = new StdVideoAV1ColorConfig[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1ColorConfig allocate(Arena arena) {

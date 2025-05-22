@@ -130,6 +130,14 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV.BYTES));
         }
+
+        public VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV[] toArray() {
+            VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV[] ret = new VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV allocate(Arena arena) {

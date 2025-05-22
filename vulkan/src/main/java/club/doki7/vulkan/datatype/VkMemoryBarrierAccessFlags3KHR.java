@@ -122,6 +122,14 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryBarrierAccessFlags3KHR.BYTES));
         }
+
+        public VkMemoryBarrierAccessFlags3KHR[] toArray() {
+            VkMemoryBarrierAccessFlags3KHR[] ret = new VkMemoryBarrierAccessFlags3KHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryBarrierAccessFlags3KHR allocate(Arena arena) {

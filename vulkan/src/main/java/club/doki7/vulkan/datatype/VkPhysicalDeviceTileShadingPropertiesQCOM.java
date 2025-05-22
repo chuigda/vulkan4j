@@ -124,6 +124,14 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceTileShadingPropertiesQCOM.BYTES));
         }
+
+        public VkPhysicalDeviceTileShadingPropertiesQCOM[] toArray() {
+            VkPhysicalDeviceTileShadingPropertiesQCOM[] ret = new VkPhysicalDeviceTileShadingPropertiesQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceTileShadingPropertiesQCOM allocate(Arena arena) {

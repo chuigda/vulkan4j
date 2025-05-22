@@ -121,6 +121,14 @@ public record VkVideoDecodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoDecodeH265CapabilitiesKHR.BYTES));
         }
+
+        public VkVideoDecodeH265CapabilitiesKHR[] toArray() {
+            VkVideoDecodeH265CapabilitiesKHR[] ret = new VkVideoDecodeH265CapabilitiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoDecodeH265CapabilitiesKHR allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkReleaseSwapchainImagesInfoEXT.BYTES));
         }
+
+        public VkReleaseSwapchainImagesInfoEXT[] toArray() {
+            VkReleaseSwapchainImagesInfoEXT[] ret = new VkReleaseSwapchainImagesInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkReleaseSwapchainImagesInfoEXT allocate(Arena arena) {

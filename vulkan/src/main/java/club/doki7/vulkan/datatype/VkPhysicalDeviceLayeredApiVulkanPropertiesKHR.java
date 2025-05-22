@@ -121,6 +121,14 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES));
         }
+
+        public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[] toArray() {
+            VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[] ret = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR allocate(Arena arena) {

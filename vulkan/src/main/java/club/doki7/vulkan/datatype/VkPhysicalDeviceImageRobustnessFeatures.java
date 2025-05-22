@@ -121,6 +121,14 @@ public record VkPhysicalDeviceImageRobustnessFeatures(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImageRobustnessFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceImageRobustnessFeatures[] toArray() {
+            VkPhysicalDeviceImageRobustnessFeatures[] ret = new VkPhysicalDeviceImageRobustnessFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImageRobustnessFeatures allocate(Arena arena) {

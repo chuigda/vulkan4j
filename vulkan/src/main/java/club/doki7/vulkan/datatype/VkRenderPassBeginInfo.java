@@ -125,6 +125,14 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderPassBeginInfo.BYTES));
         }
+
+        public VkRenderPassBeginInfo[] toArray() {
+            VkRenderPassBeginInfo[] ret = new VkRenderPassBeginInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderPassBeginInfo allocate(Arena arena) {

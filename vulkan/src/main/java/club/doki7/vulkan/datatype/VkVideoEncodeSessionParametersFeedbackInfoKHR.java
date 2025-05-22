@@ -121,6 +121,14 @@ public record VkVideoEncodeSessionParametersFeedbackInfoKHR(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeSessionParametersFeedbackInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeSessionParametersFeedbackInfoKHR[] toArray() {
+            VkVideoEncodeSessionParametersFeedbackInfoKHR[] ret = new VkVideoEncodeSessionParametersFeedbackInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeSessionParametersFeedbackInfoKHR allocate(Arena arena) {

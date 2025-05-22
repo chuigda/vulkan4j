@@ -128,6 +128,14 @@ public record VkSubpassDependency2(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSubpassDependency2.BYTES));
         }
+
+        public VkSubpassDependency2[] toArray() {
+            VkSubpassDependency2[] ret = new VkSubpassDependency2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSubpassDependency2 allocate(Arena arena) {

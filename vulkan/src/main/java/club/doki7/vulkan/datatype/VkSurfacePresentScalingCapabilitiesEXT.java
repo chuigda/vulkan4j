@@ -125,6 +125,14 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSurfacePresentScalingCapabilitiesEXT.BYTES));
         }
+
+        public VkSurfacePresentScalingCapabilitiesEXT[] toArray() {
+            VkSurfacePresentScalingCapabilitiesEXT[] ret = new VkSurfacePresentScalingCapabilitiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSurfacePresentScalingCapabilitiesEXT allocate(Arena arena) {

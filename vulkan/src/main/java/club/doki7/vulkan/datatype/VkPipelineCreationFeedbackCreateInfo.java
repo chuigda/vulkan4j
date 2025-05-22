@@ -123,6 +123,14 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineCreationFeedbackCreateInfo.BYTES));
         }
+
+        public VkPipelineCreationFeedbackCreateInfo[] toArray() {
+            VkPipelineCreationFeedbackCreateInfo[] ret = new VkPipelineCreationFeedbackCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineCreationFeedbackCreateInfo allocate(Arena arena) {

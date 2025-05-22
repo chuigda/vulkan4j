@@ -124,6 +124,14 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkGeneratedCommandsMemoryRequirementsInfoEXT.BYTES));
         }
+
+        public VkGeneratedCommandsMemoryRequirementsInfoEXT[] toArray() {
+            VkGeneratedCommandsMemoryRequirementsInfoEXT[] ret = new VkGeneratedCommandsMemoryRequirementsInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocate(Arena arena) {

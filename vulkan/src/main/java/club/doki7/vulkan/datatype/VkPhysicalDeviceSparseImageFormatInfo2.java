@@ -125,6 +125,14 @@ public record VkPhysicalDeviceSparseImageFormatInfo2(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceSparseImageFormatInfo2.BYTES));
         }
+
+        public VkPhysicalDeviceSparseImageFormatInfo2[] toArray() {
+            VkPhysicalDeviceSparseImageFormatInfo2[] ret = new VkPhysicalDeviceSparseImageFormatInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceSparseImageFormatInfo2 allocate(Arena arena) {

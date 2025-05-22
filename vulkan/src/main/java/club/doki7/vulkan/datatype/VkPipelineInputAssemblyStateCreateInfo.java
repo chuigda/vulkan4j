@@ -123,6 +123,14 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineInputAssemblyStateCreateInfo.BYTES));
         }
+
+        public VkPipelineInputAssemblyStateCreateInfo[] toArray() {
+            VkPipelineInputAssemblyStateCreateInfo[] ret = new VkPipelineInputAssemblyStateCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineInputAssemblyStateCreateInfo allocate(Arena arena) {

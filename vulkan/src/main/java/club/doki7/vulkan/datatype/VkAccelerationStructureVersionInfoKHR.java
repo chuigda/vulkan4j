@@ -121,6 +121,14 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureVersionInfoKHR.BYTES));
         }
+
+        public VkAccelerationStructureVersionInfoKHR[] toArray() {
+            VkAccelerationStructureVersionInfoKHR[] ret = new VkAccelerationStructureVersionInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureVersionInfoKHR allocate(Arena arena) {

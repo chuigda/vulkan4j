@@ -114,6 +114,14 @@ public record VkOffset3D(@NotNull MemorySegment segment) implements IVkOffset3D 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkOffset3D.BYTES));
         }
+
+        public VkOffset3D[] toArray() {
+            VkOffset3D[] ret = new VkOffset3D[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkOffset3D allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES));
         }
+
+        public VkPhysicalDeviceSchedulingControlsPropertiesARM[] toArray() {
+            VkPhysicalDeviceSchedulingControlsPropertiesARM[] ret = new VkPhysicalDeviceSchedulingControlsPropertiesARM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceSchedulingControlsPropertiesARM allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageViewSampleWeightCreateInfoQCOM.BYTES));
         }
+
+        public VkImageViewSampleWeightCreateInfoQCOM[] toArray() {
+            VkImageViewSampleWeightCreateInfoQCOM[] ret = new VkImageViewSampleWeightCreateInfoQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageViewSampleWeightCreateInfoQCOM allocate(Arena arena) {

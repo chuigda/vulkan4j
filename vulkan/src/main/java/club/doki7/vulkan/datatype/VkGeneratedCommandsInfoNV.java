@@ -133,6 +133,14 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkGeneratedCommandsInfoNV.BYTES));
         }
+
+        public VkGeneratedCommandsInfoNV[] toArray() {
+            VkGeneratedCommandsInfoNV[] ret = new VkGeneratedCommandsInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkGeneratedCommandsInfoNV allocate(Arena arena) {

@@ -124,6 +124,14 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES));
         }
+
+        public VkPhysicalDeviceTexelBufferAlignmentProperties[] toArray() {
+            VkPhysicalDeviceTexelBufferAlignmentProperties[] ret = new VkPhysicalDeviceTexelBufferAlignmentProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceTexelBufferAlignmentProperties allocate(Arena arena) {

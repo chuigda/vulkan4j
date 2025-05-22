@@ -114,6 +114,14 @@ public record VkVideoEncodeH265QpKHR(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeH265QpKHR.BYTES));
         }
+
+        public VkVideoEncodeH265QpKHR[] toArray() {
+            VkVideoEncodeH265QpKHR[] ret = new VkVideoEncodeH265QpKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeH265QpKHR allocate(Arena arena) {

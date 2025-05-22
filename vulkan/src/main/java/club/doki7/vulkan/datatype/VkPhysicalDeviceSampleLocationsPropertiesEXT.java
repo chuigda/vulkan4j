@@ -125,6 +125,14 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceSampleLocationsPropertiesEXT[] toArray() {
+            VkPhysicalDeviceSampleLocationsPropertiesEXT[] ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceSampleLocationsPropertiesEXT allocate(Arena arena) {

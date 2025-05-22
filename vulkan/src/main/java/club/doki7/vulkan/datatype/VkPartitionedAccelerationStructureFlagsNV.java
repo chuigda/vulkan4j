@@ -121,6 +121,14 @@ public record VkPartitionedAccelerationStructureFlagsNV(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPartitionedAccelerationStructureFlagsNV.BYTES));
         }
+
+        public VkPartitionedAccelerationStructureFlagsNV[] toArray() {
+            VkPartitionedAccelerationStructureFlagsNV[] ret = new VkPartitionedAccelerationStructureFlagsNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPartitionedAccelerationStructureFlagsNV allocate(Arena arena) {

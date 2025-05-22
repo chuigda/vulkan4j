@@ -121,6 +121,14 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryMapPlacedInfoEXT.BYTES));
         }
+
+        public VkMemoryMapPlacedInfoEXT[] toArray() {
+            VkMemoryMapPlacedInfoEXT[] ret = new VkMemoryMapPlacedInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryMapPlacedInfoEXT allocate(Arena arena) {

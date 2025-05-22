@@ -122,6 +122,14 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDebugMarkerMarkerInfoEXT.BYTES));
         }
+
+        public VkDebugMarkerMarkerInfoEXT[] toArray() {
+            VkDebugMarkerMarkerInfoEXT[] ret = new VkDebugMarkerMarkerInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDebugMarkerMarkerInfoEXT allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(@NotNull MemoryS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT[] toArray() {
+            VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT[] ret = new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT allocate(Arena arena) {

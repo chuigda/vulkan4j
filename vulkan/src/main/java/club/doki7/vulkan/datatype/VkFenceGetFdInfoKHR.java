@@ -122,6 +122,14 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkFenceGetFdInfoKHR.BYTES));
         }
+
+        public VkFenceGetFdInfoKHR[] toArray() {
+            VkFenceGetFdInfoKHR[] ret = new VkFenceGetFdInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkFenceGetFdInfoKHR allocate(Arena arena) {

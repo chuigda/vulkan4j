@@ -121,6 +121,14 @@ public record VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkQueryPoolVideoEncodeFeedbackCreateInfoKHR.BYTES));
         }
+
+        public VkQueryPoolVideoEncodeFeedbackCreateInfoKHR[] toArray() {
+            VkQueryPoolVideoEncodeFeedbackCreateInfoKHR[] ret = new VkQueryPoolVideoEncodeFeedbackCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkQueryPoolVideoEncodeFeedbackCreateInfoKHR allocate(Arena arena) {

@@ -115,6 +115,14 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCoarseSampleOrderCustomNV.BYTES));
         }
+
+        public VkCoarseSampleOrderCustomNV[] toArray() {
+            VkCoarseSampleOrderCustomNV[] ret = new VkCoarseSampleOrderCustomNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCoarseSampleOrderCustomNV allocate(Arena arena) {

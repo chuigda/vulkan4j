@@ -122,6 +122,14 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkIndirectExecutionSetPipelineInfoEXT.BYTES));
         }
+
+        public VkIndirectExecutionSetPipelineInfoEXT[] toArray() {
+            VkIndirectExecutionSetPipelineInfoEXT[] ret = new VkIndirectExecutionSetPipelineInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkIndirectExecutionSetPipelineInfoEXT allocate(Arena arena) {

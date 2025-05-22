@@ -122,6 +122,14 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageFormatListCreateInfo.BYTES));
         }
+
+        public VkImageFormatListCreateInfo[] toArray() {
+            VkImageFormatListCreateInfo[] ret = new VkImageFormatListCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageFormatListCreateInfo allocate(Arena arena) {

@@ -113,6 +113,14 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkIndirectExecutionSetInfoEXT.BYTES));
         }
+
+        public VkIndirectExecutionSetInfoEXT[] toArray() {
+            VkIndirectExecutionSetInfoEXT[] ret = new VkIndirectExecutionSetInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkIndirectExecutionSetInfoEXT allocate(Arena arena) {

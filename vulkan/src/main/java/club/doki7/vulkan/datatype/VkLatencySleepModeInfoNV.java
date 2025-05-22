@@ -123,6 +123,14 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkLatencySleepModeInfoNV.BYTES));
         }
+
+        public VkLatencySleepModeInfoNV[] toArray() {
+            VkLatencySleepModeInfoNV[] ret = new VkLatencySleepModeInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkLatencySleepModeInfoNV allocate(Arena arena) {

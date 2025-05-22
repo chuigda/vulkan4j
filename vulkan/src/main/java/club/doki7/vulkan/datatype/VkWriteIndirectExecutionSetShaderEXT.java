@@ -122,6 +122,14 @@ public record VkWriteIndirectExecutionSetShaderEXT(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkWriteIndirectExecutionSetShaderEXT.BYTES));
         }
+
+        public VkWriteIndirectExecutionSetShaderEXT[] toArray() {
+            VkWriteIndirectExecutionSetShaderEXT[] ret = new VkWriteIndirectExecutionSetShaderEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkWriteIndirectExecutionSetShaderEXT allocate(Arena arena) {

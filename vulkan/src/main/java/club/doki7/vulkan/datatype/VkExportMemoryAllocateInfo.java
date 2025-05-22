@@ -121,6 +121,14 @@ public record VkExportMemoryAllocateInfo(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExportMemoryAllocateInfo.BYTES));
         }
+
+        public VkExportMemoryAllocateInfo[] toArray() {
+            VkExportMemoryAllocateInfo[] ret = new VkExportMemoryAllocateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExportMemoryAllocateInfo allocate(Arena arena) {

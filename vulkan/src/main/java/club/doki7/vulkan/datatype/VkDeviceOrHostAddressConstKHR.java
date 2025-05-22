@@ -113,6 +113,14 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceOrHostAddressConstKHR.BYTES));
         }
+
+        public VkDeviceOrHostAddressConstKHR[] toArray() {
+            VkDeviceOrHostAddressConstKHR[] ret = new VkDeviceOrHostAddressConstKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceOrHostAddressConstKHR allocate(Arena arena) {

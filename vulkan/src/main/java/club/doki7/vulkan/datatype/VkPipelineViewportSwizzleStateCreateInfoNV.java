@@ -123,6 +123,14 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineViewportSwizzleStateCreateInfoNV.BYTES));
         }
+
+        public VkPipelineViewportSwizzleStateCreateInfoNV[] toArray() {
+            VkPipelineViewportSwizzleStateCreateInfoNV[] ret = new VkPipelineViewportSwizzleStateCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineViewportSwizzleStateCreateInfoNV allocate(Arena arena) {

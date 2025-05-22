@@ -117,6 +117,14 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSparseImageMemoryBind.BYTES));
         }
+
+        public VkSparseImageMemoryBind[] toArray() {
+            VkSparseImageMemoryBind[] ret = new VkSparseImageMemoryBind[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSparseImageMemoryBind allocate(Arena arena) {

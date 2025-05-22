@@ -136,6 +136,14 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSwapchainCreateInfoKHR.BYTES));
         }
+
+        public VkSwapchainCreateInfoKHR[] toArray() {
+            VkSwapchainCreateInfoKHR[] ret = new VkSwapchainCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSwapchainCreateInfoKHR allocate(Arena arena) {

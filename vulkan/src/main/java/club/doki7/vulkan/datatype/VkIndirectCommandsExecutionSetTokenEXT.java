@@ -113,6 +113,14 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkIndirectCommandsExecutionSetTokenEXT.BYTES));
         }
+
+        public VkIndirectCommandsExecutionSetTokenEXT[] toArray() {
+            VkIndirectCommandsExecutionSetTokenEXT[] ret = new VkIndirectCommandsExecutionSetTokenEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkIndirectCommandsExecutionSetTokenEXT allocate(Arena arena) {

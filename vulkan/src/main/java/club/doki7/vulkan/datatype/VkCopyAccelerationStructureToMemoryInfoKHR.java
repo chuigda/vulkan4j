@@ -123,6 +123,14 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyAccelerationStructureToMemoryInfoKHR.BYTES));
         }
+
+        public VkCopyAccelerationStructureToMemoryInfoKHR[] toArray() {
+            VkCopyAccelerationStructureToMemoryInfoKHR[] ret = new VkCopyAccelerationStructureToMemoryInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyAccelerationStructureToMemoryInfoKHR allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV[] toArray() {
+            VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV[] ret = new VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV allocate(Arena arena) {

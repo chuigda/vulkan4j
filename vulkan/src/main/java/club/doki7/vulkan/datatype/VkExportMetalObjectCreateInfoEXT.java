@@ -121,6 +121,14 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExportMetalObjectCreateInfoEXT.BYTES));
         }
+
+        public VkExportMetalObjectCreateInfoEXT[] toArray() {
+            VkExportMetalObjectCreateInfoEXT[] ret = new VkExportMetalObjectCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExportMetalObjectCreateInfoEXT allocate(Arena arena) {

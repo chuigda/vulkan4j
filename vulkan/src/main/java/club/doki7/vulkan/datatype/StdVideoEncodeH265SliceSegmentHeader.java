@@ -124,6 +124,14 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeH265SliceSegmentHeader.BYTES));
         }
+
+        public StdVideoEncodeH265SliceSegmentHeader[] toArray() {
+            StdVideoEncodeH265SliceSegmentHeader[] ret = new StdVideoEncodeH265SliceSegmentHeader[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeH265SliceSegmentHeader allocate(Arena arena) {

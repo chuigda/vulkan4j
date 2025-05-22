@@ -113,6 +113,14 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH264ScalingLists.BYTES));
         }
+
+        public StdVideoH264ScalingLists[] toArray() {
+            StdVideoH264ScalingLists[] ret = new StdVideoH264ScalingLists[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH264ScalingLists allocate(Arena arena) {

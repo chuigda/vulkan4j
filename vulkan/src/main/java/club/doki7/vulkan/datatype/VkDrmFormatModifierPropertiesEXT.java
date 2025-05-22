@@ -114,6 +114,14 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDrmFormatModifierPropertiesEXT.BYTES));
         }
+
+        public VkDrmFormatModifierPropertiesEXT[] toArray() {
+            VkDrmFormatModifierPropertiesEXT[] ret = new VkDrmFormatModifierPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDrmFormatModifierPropertiesEXT allocate(Arena arena) {

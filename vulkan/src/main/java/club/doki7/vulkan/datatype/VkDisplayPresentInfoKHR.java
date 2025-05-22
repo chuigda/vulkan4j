@@ -123,6 +123,14 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplayPresentInfoKHR.BYTES));
         }
+
+        public VkDisplayPresentInfoKHR[] toArray() {
+            VkDisplayPresentInfoKHR[] ret = new VkDisplayPresentInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplayPresentInfoKHR allocate(Arena arena) {

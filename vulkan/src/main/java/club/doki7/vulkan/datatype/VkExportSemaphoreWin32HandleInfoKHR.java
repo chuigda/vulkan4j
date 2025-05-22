@@ -123,6 +123,14 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExportSemaphoreWin32HandleInfoKHR.BYTES));
         }
+
+        public VkExportSemaphoreWin32HandleInfoKHR[] toArray() {
+            VkExportSemaphoreWin32HandleInfoKHR[] ret = new VkExportSemaphoreWin32HandleInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExportSemaphoreWin32HandleInfoKHR allocate(Arena arena) {

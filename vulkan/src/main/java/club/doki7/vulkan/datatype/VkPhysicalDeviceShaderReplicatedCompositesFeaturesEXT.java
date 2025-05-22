@@ -121,6 +121,14 @@ public record VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(@NotNull Mem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT[] toArray() {
+            VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT[] ret = new VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT allocate(Arena arena) {

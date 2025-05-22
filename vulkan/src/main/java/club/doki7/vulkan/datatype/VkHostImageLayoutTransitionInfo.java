@@ -124,6 +124,14 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkHostImageLayoutTransitionInfo.BYTES));
         }
+
+        public VkHostImageLayoutTransitionInfo[] toArray() {
+            VkHostImageLayoutTransitionInfo[] ret = new VkHostImageLayoutTransitionInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkHostImageLayoutTransitionInfo allocate(Arena arena) {

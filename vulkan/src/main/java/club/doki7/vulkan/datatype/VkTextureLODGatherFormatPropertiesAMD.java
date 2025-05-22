@@ -121,6 +121,14 @@ public record VkTextureLODGatherFormatPropertiesAMD(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkTextureLODGatherFormatPropertiesAMD.BYTES));
         }
+
+        public VkTextureLODGatherFormatPropertiesAMD[] toArray() {
+            VkTextureLODGatherFormatPropertiesAMD[] ret = new VkTextureLODGatherFormatPropertiesAMD[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkTextureLODGatherFormatPropertiesAMD allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkExternalFormatQNX(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExternalFormatQNX.BYTES));
         }
+
+        public VkExternalFormatQNX[] toArray() {
+            VkExternalFormatQNX[] ret = new VkExternalFormatQNX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExternalFormatQNX allocate(Arena arena) {

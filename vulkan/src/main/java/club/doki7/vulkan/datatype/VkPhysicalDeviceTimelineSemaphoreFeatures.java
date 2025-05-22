@@ -121,6 +121,14 @@ public record VkPhysicalDeviceTimelineSemaphoreFeatures(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceTimelineSemaphoreFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceTimelineSemaphoreFeatures[] toArray() {
+            VkPhysicalDeviceTimelineSemaphoreFeatures[] ret = new VkPhysicalDeviceTimelineSemaphoreFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceTimelineSemaphoreFeatures allocate(Arena arena) {

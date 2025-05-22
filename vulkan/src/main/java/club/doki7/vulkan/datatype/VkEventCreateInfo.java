@@ -121,6 +121,14 @@ public record VkEventCreateInfo(@NotNull MemorySegment segment) implements IVkEv
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkEventCreateInfo.BYTES));
         }
+
+        public VkEventCreateInfo[] toArray() {
+            VkEventCreateInfo[] ret = new VkEventCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkEventCreateInfo allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceOpacityMicromapPropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceOpacityMicromapPropertiesEXT[] toArray() {
+            VkPhysicalDeviceOpacityMicromapPropertiesEXT[] ret = new VkPhysicalDeviceOpacityMicromapPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceOpacityMicromapPropertiesEXT allocate(Arena arena) {

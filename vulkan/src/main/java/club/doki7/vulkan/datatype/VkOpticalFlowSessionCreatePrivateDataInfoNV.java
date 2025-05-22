@@ -123,6 +123,14 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkOpticalFlowSessionCreatePrivateDataInfoNV.BYTES));
         }
+
+        public VkOpticalFlowSessionCreatePrivateDataInfoNV[] toArray() {
+            VkOpticalFlowSessionCreatePrivateDataInfoNV[] ret = new VkOpticalFlowSessionCreatePrivateDataInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderPassAttachmentBeginInfo.BYTES));
         }
+
+        public VkRenderPassAttachmentBeginInfo[] toArray() {
+            VkRenderPassAttachmentBeginInfo[] ret = new VkRenderPassAttachmentBeginInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderPassAttachmentBeginInfo allocate(Arena arena) {

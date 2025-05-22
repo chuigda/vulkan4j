@@ -122,6 +122,14 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceGroupPresentCapabilitiesKHR.BYTES));
         }
+
+        public VkDeviceGroupPresentCapabilitiesKHR[] toArray() {
+            VkDeviceGroupPresentCapabilitiesKHR[] ret = new VkDeviceGroupPresentCapabilitiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceGroupPresentCapabilitiesKHR allocate(Arena arena) {

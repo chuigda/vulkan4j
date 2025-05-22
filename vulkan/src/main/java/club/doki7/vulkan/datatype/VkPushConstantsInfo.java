@@ -125,6 +125,14 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPushConstantsInfo.BYTES));
         }
+
+        public VkPushConstantsInfo[] toArray() {
+            VkPushConstantsInfo[] ret = new VkPushConstantsInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPushConstantsInfo allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkDisplayEventInfoEXT(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplayEventInfoEXT.BYTES));
         }
+
+        public VkDisplayEventInfoEXT[] toArray() {
+            VkDisplayEventInfoEXT[] ret = new VkDisplayEventInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplayEventInfoEXT allocate(Arena arena) {

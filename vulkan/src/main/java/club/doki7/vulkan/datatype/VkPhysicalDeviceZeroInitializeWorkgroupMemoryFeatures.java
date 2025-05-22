@@ -121,6 +121,14 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(@NotNull Mem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures[] toArray() {
+            VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures[] ret = new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures allocate(Arena arena) {

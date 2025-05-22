@@ -121,6 +121,14 @@ public record VkMemoryWin32HandlePropertiesKHR(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryWin32HandlePropertiesKHR.BYTES));
         }
+
+        public VkMemoryWin32HandlePropertiesKHR[] toArray() {
+            VkMemoryWin32HandlePropertiesKHR[] ret = new VkMemoryWin32HandlePropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryWin32HandlePropertiesKHR allocate(Arena arena) {

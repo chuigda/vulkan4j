@@ -121,6 +121,14 @@ public record VkPhysicalDeviceSurfaceInfo2KHR(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceSurfaceInfo2KHR.BYTES));
         }
+
+        public VkPhysicalDeviceSurfaceInfo2KHR[] toArray() {
+            VkPhysicalDeviceSurfaceInfo2KHR[] ret = new VkPhysicalDeviceSurfaceInfo2KHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceSurfaceInfo2KHR allocate(Arena arena) {

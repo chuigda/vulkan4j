@@ -121,6 +121,14 @@ public record VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(@NotNull Me
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV[] toArray() {
+            VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV[] ret = new VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV allocate(Arena arena) {

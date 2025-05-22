@@ -134,6 +134,14 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1FilmGrain.BYTES));
         }
+
+        public StdVideoAV1FilmGrain[] toArray() {
+            StdVideoAV1FilmGrain[] ret = new StdVideoAV1FilmGrain[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1FilmGrain allocate(Arena arena) {

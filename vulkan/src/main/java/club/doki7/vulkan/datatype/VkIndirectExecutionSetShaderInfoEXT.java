@@ -126,6 +126,14 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkIndirectExecutionSetShaderInfoEXT.BYTES));
         }
+
+        public VkIndirectExecutionSetShaderInfoEXT[] toArray() {
+            VkIndirectExecutionSetShaderInfoEXT[] ret = new VkIndirectExecutionSetShaderInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkIndirectExecutionSetShaderInfoEXT allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMetalSurfaceCreateInfoEXT.BYTES));
         }
+
+        public VkMetalSurfaceCreateInfoEXT[] toArray() {
+            VkMetalSurfaceCreateInfoEXT[] ret = new VkMetalSurfaceCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMetalSurfaceCreateInfoEXT allocate(Arena arena) {

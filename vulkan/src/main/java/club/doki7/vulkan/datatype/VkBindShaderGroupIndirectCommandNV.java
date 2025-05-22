@@ -112,6 +112,14 @@ public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBindShaderGroupIndirectCommandNV.BYTES));
         }
+
+        public VkBindShaderGroupIndirectCommandNV[] toArray() {
+            VkBindShaderGroupIndirectCommandNV[] ret = new VkBindShaderGroupIndirectCommandNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBindShaderGroupIndirectCommandNV allocate(Arena arena) {

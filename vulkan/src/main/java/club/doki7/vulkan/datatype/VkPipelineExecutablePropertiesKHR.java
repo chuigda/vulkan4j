@@ -124,6 +124,14 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineExecutablePropertiesKHR.BYTES));
         }
+
+        public VkPipelineExecutablePropertiesKHR[] toArray() {
+            VkPipelineExecutablePropertiesKHR[] ret = new VkPipelineExecutablePropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineExecutablePropertiesKHR allocate(Arena arena) {

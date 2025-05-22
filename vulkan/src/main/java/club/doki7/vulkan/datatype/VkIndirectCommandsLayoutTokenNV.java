@@ -133,6 +133,14 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkIndirectCommandsLayoutTokenNV.BYTES));
         }
+
+        public VkIndirectCommandsLayoutTokenNV[] toArray() {
+            VkIndirectCommandsLayoutTokenNV[] ret = new VkIndirectCommandsLayoutTokenNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkIndirectCommandsLayoutTokenNV allocate(Arena arena) {

@@ -120,6 +120,14 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAttachmentDescription.BYTES));
         }
+
+        public VkAttachmentDescription[] toArray() {
+            VkAttachmentDescription[] ret = new VkAttachmentDescription[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAttachmentDescription allocate(Arena arena) {

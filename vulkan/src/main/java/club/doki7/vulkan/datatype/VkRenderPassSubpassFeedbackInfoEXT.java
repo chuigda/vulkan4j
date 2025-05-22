@@ -114,6 +114,14 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderPassSubpassFeedbackInfoEXT.BYTES));
         }
+
+        public VkRenderPassSubpassFeedbackInfoEXT[] toArray() {
+            VkRenderPassSubpassFeedbackInfoEXT[] ret = new VkRenderPassSubpassFeedbackInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderPassSubpassFeedbackInfoEXT allocate(Arena arena) {

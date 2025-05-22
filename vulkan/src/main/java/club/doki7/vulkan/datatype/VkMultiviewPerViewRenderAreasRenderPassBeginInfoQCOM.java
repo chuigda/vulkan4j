@@ -122,6 +122,14 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES));
         }
+
+        public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM[] toArray() {
+            VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM[] ret = new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM allocate(Arena arena) {

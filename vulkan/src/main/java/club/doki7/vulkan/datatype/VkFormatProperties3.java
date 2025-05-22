@@ -123,6 +123,14 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkFormatProperties3.BYTES));
         }
+
+        public VkFormatProperties3[] toArray() {
+            VkFormatProperties3[] ret = new VkFormatProperties3[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkFormatProperties3 allocate(Arena arena) {

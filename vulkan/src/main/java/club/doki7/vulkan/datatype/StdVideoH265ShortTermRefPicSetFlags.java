@@ -112,6 +112,14 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265ShortTermRefPicSetFlags.BYTES));
         }
+
+        public StdVideoH265ShortTermRefPicSetFlags[] toArray() {
+            StdVideoH265ShortTermRefPicSetFlags[] ret = new StdVideoH265ShortTermRefPicSetFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265ShortTermRefPicSetFlags allocate(Arena arena) {

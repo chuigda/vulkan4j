@@ -114,6 +114,14 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeH264RefPicMarkingEntry.BYTES));
         }
+
+        public StdVideoEncodeH264RefPicMarkingEntry[] toArray() {
+            StdVideoEncodeH264RefPicMarkingEntry[] ret = new StdVideoEncodeH264RefPicMarkingEntry[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeH264RefPicMarkingEntry allocate(Arena arena) {

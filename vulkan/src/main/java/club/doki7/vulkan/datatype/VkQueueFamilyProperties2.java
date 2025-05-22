@@ -121,6 +121,14 @@ public record VkQueueFamilyProperties2(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkQueueFamilyProperties2.BYTES));
         }
+
+        public VkQueueFamilyProperties2[] toArray() {
+            VkQueueFamilyProperties2[] ret = new VkQueueFamilyProperties2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkQueueFamilyProperties2 allocate(Arena arena) {

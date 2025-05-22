@@ -121,6 +121,14 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImageViewImageFormatInfoEXT.BYTES));
         }
+
+        public VkPhysicalDeviceImageViewImageFormatInfoEXT[] toArray() {
+            VkPhysicalDeviceImageViewImageFormatInfoEXT[] ret = new VkPhysicalDeviceImageViewImageFormatInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImageViewImageFormatInfoEXT allocate(Arena arena) {

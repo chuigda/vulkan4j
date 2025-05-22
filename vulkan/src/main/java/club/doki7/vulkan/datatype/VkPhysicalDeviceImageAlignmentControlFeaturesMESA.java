@@ -121,6 +121,14 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(@NotNull MemoryS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImageAlignmentControlFeaturesMESA.BYTES));
         }
+
+        public VkPhysicalDeviceImageAlignmentControlFeaturesMESA[] toArray() {
+            VkPhysicalDeviceImageAlignmentControlFeaturesMESA[] ret = new VkPhysicalDeviceImageAlignmentControlFeaturesMESA[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA allocate(Arena arena) {

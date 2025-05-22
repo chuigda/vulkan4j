@@ -148,6 +148,14 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceMeshShaderPropertiesEXT[] toArray() {
+            VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = new VkPhysicalDeviceMeshShaderPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceMeshShaderPropertiesEXT allocate(Arena arena) {

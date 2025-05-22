@@ -110,6 +110,14 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * NvSciSyncFenceVKREF.BYTES));
         }
+
+        public NvSciSyncFenceVKREF[] toArray() {
+            NvSciSyncFenceVKREF[] ret = new NvSciSyncFenceVKREF[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static NvSciSyncFenceVKREF allocate(Arena arena) {

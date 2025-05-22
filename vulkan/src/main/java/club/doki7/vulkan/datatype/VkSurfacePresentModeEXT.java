@@ -121,6 +121,14 @@ public record VkSurfacePresentModeEXT(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSurfacePresentModeEXT.BYTES));
         }
+
+        public VkSurfacePresentModeEXT[] toArray() {
+            VkSurfacePresentModeEXT[] ret = new VkSurfacePresentModeEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSurfacePresentModeEXT allocate(Arena arena) {

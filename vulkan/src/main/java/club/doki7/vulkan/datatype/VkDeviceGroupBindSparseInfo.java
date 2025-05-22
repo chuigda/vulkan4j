@@ -122,6 +122,14 @@ public record VkDeviceGroupBindSparseInfo(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceGroupBindSparseInfo.BYTES));
         }
+
+        public VkDeviceGroupBindSparseInfo[] toArray() {
+            VkDeviceGroupBindSparseInfo[] ret = new VkDeviceGroupBindSparseInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceGroupBindSparseInfo allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDepthBiasRepresentationInfoEXT.BYTES));
         }
+
+        public VkDepthBiasRepresentationInfoEXT[] toArray() {
+            VkDepthBiasRepresentationInfoEXT[] ret = new VkDepthBiasRepresentationInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDepthBiasRepresentationInfoEXT allocate(Arena arena) {

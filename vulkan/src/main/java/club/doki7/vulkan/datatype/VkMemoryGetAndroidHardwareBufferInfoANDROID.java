@@ -121,6 +121,14 @@ public record VkMemoryGetAndroidHardwareBufferInfoANDROID(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryGetAndroidHardwareBufferInfoANDROID.BYTES));
         }
+
+        public VkMemoryGetAndroidHardwareBufferInfoANDROID[] toArray() {
+            VkMemoryGetAndroidHardwareBufferInfoANDROID[] ret = new VkMemoryGetAndroidHardwareBufferInfoANDROID[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryGetAndroidHardwareBufferInfoANDROID allocate(Arena arena) {

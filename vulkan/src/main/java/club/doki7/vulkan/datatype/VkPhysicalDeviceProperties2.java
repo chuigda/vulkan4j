@@ -121,6 +121,14 @@ public record VkPhysicalDeviceProperties2(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceProperties2.BYTES));
         }
+
+        public VkPhysicalDeviceProperties2[] toArray() {
+            VkPhysicalDeviceProperties2[] ret = new VkPhysicalDeviceProperties2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceProperties2 allocate(Arena arena) {

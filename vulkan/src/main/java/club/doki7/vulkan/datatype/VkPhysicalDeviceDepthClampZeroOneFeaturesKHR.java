@@ -121,6 +121,14 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDepthClampZeroOneFeaturesKHR.BYTES));
         }
+
+        public VkPhysicalDeviceDepthClampZeroOneFeaturesKHR[] toArray() {
+            VkPhysicalDeviceDepthClampZeroOneFeaturesKHR[] ret = new VkPhysicalDeviceDepthClampZeroOneFeaturesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDepthClampZeroOneFeaturesKHR allocate(Arena arena) {

@@ -124,6 +124,14 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyBufferInfo2.BYTES));
         }
+
+        public VkCopyBufferInfo2[] toArray() {
+            VkCopyBufferInfo2[] ret = new VkCopyBufferInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyBufferInfo2 allocate(Arena arena) {

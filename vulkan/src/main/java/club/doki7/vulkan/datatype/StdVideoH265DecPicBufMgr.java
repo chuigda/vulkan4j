@@ -112,6 +112,14 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265DecPicBufMgr.BYTES));
         }
+
+        public StdVideoH265DecPicBufMgr[] toArray() {
+            StdVideoH265DecPicBufMgr[] ret = new StdVideoH265DecPicBufMgr[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265DecPicBufMgr allocate(Arena arena) {

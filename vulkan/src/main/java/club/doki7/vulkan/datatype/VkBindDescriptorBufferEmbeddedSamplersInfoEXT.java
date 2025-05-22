@@ -123,6 +123,14 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES));
         }
+
+        public VkBindDescriptorBufferEmbeddedSamplersInfoEXT[] toArray() {
+            VkBindDescriptorBufferEmbeddedSamplersInfoEXT[] ret = new VkBindDescriptorBufferEmbeddedSamplersInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBindDescriptorBufferEmbeddedSamplersInfoEXT allocate(Arena arena) {

@@ -125,6 +125,14 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDebugUtilsObjectTagInfoEXT.BYTES));
         }
+
+        public VkDebugUtilsObjectTagInfoEXT[] toArray() {
+            VkDebugUtilsObjectTagInfoEXT[] ret = new VkDebugUtilsObjectTagInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDebugUtilsObjectTagInfoEXT allocate(Arena arena) {

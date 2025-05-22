@@ -122,6 +122,14 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRefreshObjectListKHR.BYTES));
         }
+
+        public VkRefreshObjectListKHR[] toArray() {
+            VkRefreshObjectListKHR[] ret = new VkRefreshObjectListKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRefreshObjectListKHR allocate(Arena arena) {

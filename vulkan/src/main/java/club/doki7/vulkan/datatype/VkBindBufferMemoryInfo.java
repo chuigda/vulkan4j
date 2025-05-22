@@ -123,6 +123,14 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBindBufferMemoryInfo.BYTES));
         }
+
+        public VkBindBufferMemoryInfo[] toArray() {
+            VkBindBufferMemoryInfo[] ret = new VkBindBufferMemoryInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBindBufferMemoryInfo allocate(Arena arena) {

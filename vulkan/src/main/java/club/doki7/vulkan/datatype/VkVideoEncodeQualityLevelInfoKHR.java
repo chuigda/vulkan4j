@@ -121,6 +121,14 @@ public record VkVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeQualityLevelInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeQualityLevelInfoKHR[] toArray() {
+            VkVideoEncodeQualityLevelInfoKHR[] ret = new VkVideoEncodeQualityLevelInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeQualityLevelInfoKHR allocate(Arena arena) {

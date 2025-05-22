@@ -122,6 +122,14 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkWriteDescriptorSetPartitionedAccelerationStructureNV.BYTES));
         }
+
+        public VkWriteDescriptorSetPartitionedAccelerationStructureNV[] toArray() {
+            VkWriteDescriptorSetPartitionedAccelerationStructureNV[] ret = new VkWriteDescriptorSetPartitionedAccelerationStructureNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkWriteDescriptorSetPartitionedAccelerationStructureNV allocate(Arena arena) {

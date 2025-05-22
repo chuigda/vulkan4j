@@ -113,6 +113,14 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1TimingInfo.BYTES));
         }
+
+        public StdVideoAV1TimingInfo[] toArray() {
+            StdVideoAV1TimingInfo[] ret = new StdVideoAV1TimingInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1TimingInfo allocate(Arena arena) {

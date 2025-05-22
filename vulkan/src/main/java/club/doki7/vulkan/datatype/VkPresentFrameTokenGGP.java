@@ -121,6 +121,14 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPresentFrameTokenGGP.BYTES));
         }
+
+        public VkPresentFrameTokenGGP[] toArray() {
+            VkPresentFrameTokenGGP[] ret = new VkPresentFrameTokenGGP[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPresentFrameTokenGGP allocate(Arena arena) {

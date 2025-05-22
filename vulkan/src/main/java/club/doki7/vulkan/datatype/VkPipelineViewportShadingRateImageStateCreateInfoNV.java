@@ -123,6 +123,14 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES));
         }
+
+        public VkPipelineViewportShadingRateImageStateCreateInfoNV[] toArray() {
+            VkPipelineViewportShadingRateImageStateCreateInfoNV[] ret = new VkPipelineViewportShadingRateImageStateCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineViewportShadingRateImageStateCreateInfoNV allocate(Arena arena) {

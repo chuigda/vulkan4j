@@ -116,6 +116,14 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSparseMemoryBind.BYTES));
         }
+
+        public VkSparseMemoryBind[] toArray() {
+            VkSparseMemoryBind[] ret = new VkSparseMemoryBind[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSparseMemoryBind allocate(Arena arena) {

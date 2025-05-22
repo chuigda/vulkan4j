@@ -123,6 +123,14 @@ public record VkPhysicalDeviceExternalBufferInfo(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExternalBufferInfo.BYTES));
         }
+
+        public VkPhysicalDeviceExternalBufferInfo[] toArray() {
+            VkPhysicalDeviceExternalBufferInfo[] ret = new VkPhysicalDeviceExternalBufferInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceExternalBufferInfo allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(@NotNull Mem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM.BYTES));
         }
+
+        public VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM[] toArray() {
+            VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM[] ret = new VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM allocate(Arena arena) {

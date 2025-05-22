@@ -113,6 +113,14 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExtensionProperties.BYTES));
         }
+
+        public VkExtensionProperties[] toArray() {
+            VkExtensionProperties[] ret = new VkExtensionProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExtensionProperties allocate(Arena arena) {

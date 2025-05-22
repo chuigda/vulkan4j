@@ -121,6 +121,14 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(@NotNull MemorySeg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceLinearColorAttachmentFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceLinearColorAttachmentFeaturesNV[] toArray() {
+            VkPhysicalDeviceLinearColorAttachmentFeaturesNV[] ret = new VkPhysicalDeviceLinearColorAttachmentFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceLinearColorAttachmentFeaturesNV allocate(Arena arena) {

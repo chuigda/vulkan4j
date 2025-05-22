@@ -121,6 +121,14 @@ public record VkExternalFormatANDROID(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExternalFormatANDROID.BYTES));
         }
+
+        public VkExternalFormatANDROID[] toArray() {
+            VkExternalFormatANDROID[] ret = new VkExternalFormatANDROID[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExternalFormatANDROID allocate(Arena arena) {

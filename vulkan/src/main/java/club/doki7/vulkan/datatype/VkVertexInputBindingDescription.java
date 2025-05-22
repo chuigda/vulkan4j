@@ -114,6 +114,14 @@ public record VkVertexInputBindingDescription(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVertexInputBindingDescription.BYTES));
         }
+
+        public VkVertexInputBindingDescription[] toArray() {
+            VkVertexInputBindingDescription[] ret = new VkVertexInputBindingDescription[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVertexInputBindingDescription allocate(Arena arena) {

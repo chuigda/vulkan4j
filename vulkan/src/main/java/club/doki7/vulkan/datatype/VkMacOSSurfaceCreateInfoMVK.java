@@ -122,6 +122,14 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMacOSSurfaceCreateInfoMVK.BYTES));
         }
+
+        public VkMacOSSurfaceCreateInfoMVK[] toArray() {
+            VkMacOSSurfaceCreateInfoMVK[] ret = new VkMacOSSurfaceCreateInfoMVK[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMacOSSurfaceCreateInfoMVK allocate(Arena arena) {

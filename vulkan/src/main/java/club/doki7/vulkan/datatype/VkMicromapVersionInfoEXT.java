@@ -121,6 +121,14 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMicromapVersionInfoEXT.BYTES));
         }
+
+        public VkMicromapVersionInfoEXT[] toArray() {
+            VkMicromapVersionInfoEXT[] ret = new VkMicromapVersionInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMicromapVersionInfoEXT allocate(Arena arena) {

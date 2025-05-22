@@ -122,6 +122,14 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSemaphoreGetFdInfoKHR.BYTES));
         }
+
+        public VkSemaphoreGetFdInfoKHR[] toArray() {
+            VkSemaphoreGetFdInfoKHR[] ret = new VkSemaphoreGetFdInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSemaphoreGetFdInfoKHR allocate(Arena arena) {

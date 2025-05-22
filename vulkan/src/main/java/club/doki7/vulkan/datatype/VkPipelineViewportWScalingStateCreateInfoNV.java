@@ -123,6 +123,14 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineViewportWScalingStateCreateInfoNV.BYTES));
         }
+
+        public VkPipelineViewportWScalingStateCreateInfoNV[] toArray() {
+            VkPipelineViewportWScalingStateCreateInfoNV[] ret = new VkPipelineViewportWScalingStateCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineViewportWScalingStateCreateInfoNV allocate(Arena arena) {

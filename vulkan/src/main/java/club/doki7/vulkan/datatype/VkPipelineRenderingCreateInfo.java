@@ -125,6 +125,14 @@ public record VkPipelineRenderingCreateInfo(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineRenderingCreateInfo.BYTES));
         }
+
+        public VkPipelineRenderingCreateInfo[] toArray() {
+            VkPipelineRenderingCreateInfo[] ret = new VkPipelineRenderingCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineRenderingCreateInfo allocate(Arena arena) {

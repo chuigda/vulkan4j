@@ -124,6 +124,14 @@ public record VkPhysicalDeviceDescriptorBufferFeaturesEXT(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDescriptorBufferFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceDescriptorBufferFeaturesEXT[] toArray() {
+            VkPhysicalDeviceDescriptorBufferFeaturesEXT[] ret = new VkPhysicalDeviceDescriptorBufferFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDescriptorBufferFeaturesEXT allocate(Arena arena) {

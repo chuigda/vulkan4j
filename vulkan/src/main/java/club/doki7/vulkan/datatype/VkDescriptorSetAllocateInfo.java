@@ -123,6 +123,14 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorSetAllocateInfo.BYTES));
         }
+
+        public VkDescriptorSetAllocateInfo[] toArray() {
+            VkDescriptorSetAllocateInfo[] ret = new VkDescriptorSetAllocateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorSetAllocateInfo allocate(Arena arena) {

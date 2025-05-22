@@ -121,6 +121,14 @@ public record VkPhysicalDeviceRayTracingValidationFeaturesNV(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceRayTracingValidationFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceRayTracingValidationFeaturesNV[] toArray() {
+            VkPhysicalDeviceRayTracingValidationFeaturesNV[] ret = new VkPhysicalDeviceRayTracingValidationFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceRayTracingValidationFeaturesNV allocate(Arena arena) {

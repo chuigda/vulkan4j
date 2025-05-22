@@ -115,6 +115,14 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkComponentMapping.BYTES));
         }
+
+        public VkComponentMapping[] toArray() {
+            VkComponentMapping[] ret = new VkComponentMapping[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkComponentMapping allocate(Arena arena) {

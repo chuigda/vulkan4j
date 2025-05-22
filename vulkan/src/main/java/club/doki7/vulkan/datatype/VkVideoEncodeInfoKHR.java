@@ -129,6 +129,14 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeInfoKHR[] toArray() {
+            VkVideoEncodeInfoKHR[] ret = new VkVideoEncodeInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeInfoKHR allocate(Arena arena) {

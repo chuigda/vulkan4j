@@ -122,6 +122,14 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceMeshShaderFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceMeshShaderFeaturesNV[] toArray() {
+            VkPhysicalDeviceMeshShaderFeaturesNV[] ret = new VkPhysicalDeviceMeshShaderFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceMeshShaderFeaturesNV allocate(Arena arena) {

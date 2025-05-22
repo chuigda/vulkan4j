@@ -114,6 +114,14 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceFaultVendorInfoEXT.BYTES));
         }
+
+        public VkDeviceFaultVendorInfoEXT[] toArray() {
+            VkDeviceFaultVendorInfoEXT[] ret = new VkDeviceFaultVendorInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceFaultVendorInfoEXT allocate(Arena arena) {

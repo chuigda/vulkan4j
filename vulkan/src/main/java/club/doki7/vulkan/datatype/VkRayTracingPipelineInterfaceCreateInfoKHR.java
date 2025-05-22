@@ -122,6 +122,14 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRayTracingPipelineInterfaceCreateInfoKHR.BYTES));
         }
+
+        public VkRayTracingPipelineInterfaceCreateInfoKHR[] toArray() {
+            VkRayTracingPipelineInterfaceCreateInfoKHR[] ret = new VkRayTracingPipelineInterfaceCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRayTracingPipelineInterfaceCreateInfoKHR allocate(Arena arena) {

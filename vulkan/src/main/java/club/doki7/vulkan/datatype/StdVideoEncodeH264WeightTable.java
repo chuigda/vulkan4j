@@ -120,6 +120,14 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeH264WeightTable.BYTES));
         }
+
+        public StdVideoEncodeH264WeightTable[] toArray() {
+            StdVideoEncodeH264WeightTable[] ret = new StdVideoEncodeH264WeightTable[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeH264WeightTable allocate(Arena arena) {

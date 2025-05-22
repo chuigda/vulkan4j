@@ -122,6 +122,14 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.BYTES));
         }
+
+        public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI[] toArray() {
+            VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI[] ret = new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI allocate(Arena arena) {

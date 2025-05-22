@@ -122,6 +122,14 @@ public record VkAttachmentDescriptionStencilLayout(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAttachmentDescriptionStencilLayout.BYTES));
         }
+
+        public VkAttachmentDescriptionStencilLayout[] toArray() {
+            VkAttachmentDescriptionStencilLayout[] ret = new VkAttachmentDescriptionStencilLayout[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAttachmentDescriptionStencilLayout allocate(Arena arena) {

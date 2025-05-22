@@ -121,6 +121,14 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT[] toArray() {
+            VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT[] ret = new VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT allocate(Arena arena) {

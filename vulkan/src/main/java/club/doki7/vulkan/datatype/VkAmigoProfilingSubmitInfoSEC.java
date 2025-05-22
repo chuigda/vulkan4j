@@ -122,6 +122,14 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAmigoProfilingSubmitInfoSEC.BYTES));
         }
+
+        public VkAmigoProfilingSubmitInfoSEC[] toArray() {
+            VkAmigoProfilingSubmitInfoSEC[] ret = new VkAmigoProfilingSubmitInfoSEC[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAmigoProfilingSubmitInfoSEC allocate(Arena arena) {

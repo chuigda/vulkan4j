@@ -121,6 +121,14 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferOpaqueCaptureAddressCreateInfo.BYTES));
         }
+
+        public VkBufferOpaqueCaptureAddressCreateInfo[] toArray() {
+            VkBufferOpaqueCaptureAddressCreateInfo[] ret = new VkBufferOpaqueCaptureAddressCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferOpaqueCaptureAddressCreateInfo allocate(Arena arena) {

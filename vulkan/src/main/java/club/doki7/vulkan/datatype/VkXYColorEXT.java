@@ -113,6 +113,14 @@ public record VkXYColorEXT(@NotNull MemorySegment segment) implements IVkXYColor
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkXYColorEXT.BYTES));
         }
+
+        public VkXYColorEXT[] toArray() {
+            VkXYColorEXT[] ret = new VkXYColorEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkXYColorEXT allocate(Arena arena) {

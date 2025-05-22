@@ -122,6 +122,14 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoSessionMemoryRequirementsKHR.BYTES));
         }
+
+        public VkVideoSessionMemoryRequirementsKHR[] toArray() {
+            VkVideoSessionMemoryRequirementsKHR[] ret = new VkVideoSessionMemoryRequirementsKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoSessionMemoryRequirementsKHR allocate(Arena arena) {

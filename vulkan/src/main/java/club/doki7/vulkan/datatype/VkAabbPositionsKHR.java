@@ -117,6 +117,14 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IVkA
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAabbPositionsKHR.BYTES));
         }
+
+        public VkAabbPositionsKHR[] toArray() {
+            VkAabbPositionsKHR[] ret = new VkAabbPositionsKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAabbPositionsKHR allocate(Arena arena) {

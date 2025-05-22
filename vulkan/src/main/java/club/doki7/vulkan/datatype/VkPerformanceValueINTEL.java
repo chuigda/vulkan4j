@@ -113,6 +113,14 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPerformanceValueINTEL.BYTES));
         }
+
+        public VkPerformanceValueINTEL[] toArray() {
+            VkPerformanceValueINTEL[] ret = new VkPerformanceValueINTEL[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPerformanceValueINTEL allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageViewMinLodCreateInfoEXT.BYTES));
         }
+
+        public VkImageViewMinLodCreateInfoEXT[] toArray() {
+            VkImageViewMinLodCreateInfoEXT[] ret = new VkImageViewMinLodCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageViewMinLodCreateInfoEXT allocate(Arena arena) {

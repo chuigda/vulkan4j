@@ -121,6 +121,14 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkFenceCreateInfo.BYTES));
         }
+
+        public VkFenceCreateInfo[] toArray() {
+            VkFenceCreateInfo[] ret = new VkFenceCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkFenceCreateInfo allocate(Arena arena) {

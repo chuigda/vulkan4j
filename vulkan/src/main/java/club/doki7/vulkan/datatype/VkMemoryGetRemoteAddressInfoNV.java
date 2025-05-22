@@ -122,6 +122,14 @@ public record VkMemoryGetRemoteAddressInfoNV(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryGetRemoteAddressInfoNV.BYTES));
         }
+
+        public VkMemoryGetRemoteAddressInfoNV[] toArray() {
+            VkMemoryGetRemoteAddressInfoNV[] ret = new VkMemoryGetRemoteAddressInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryGetRemoteAddressInfoNV allocate(Arena arena) {

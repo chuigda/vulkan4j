@@ -124,6 +124,14 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSampleLocationsInfoEXT.BYTES));
         }
+
+        public VkSampleLocationsInfoEXT[] toArray() {
+            VkSampleLocationsInfoEXT[] ret = new VkSampleLocationsInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSampleLocationsInfoEXT allocate(Arena arena) {

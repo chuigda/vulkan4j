@@ -121,6 +121,14 @@ public record VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(@NotNull M
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT[] toArray() {
+            VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT[] ret = new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT allocate(Arena arena) {

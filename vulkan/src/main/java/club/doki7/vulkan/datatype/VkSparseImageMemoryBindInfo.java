@@ -114,6 +114,14 @@ public record VkSparseImageMemoryBindInfo(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSparseImageMemoryBindInfo.BYTES));
         }
+
+        public VkSparseImageMemoryBindInfo[] toArray() {
+            VkSparseImageMemoryBindInfo[] ret = new VkSparseImageMemoryBindInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSparseImageMemoryBindInfo allocate(Arena arena) {

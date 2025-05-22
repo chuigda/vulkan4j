@@ -121,6 +121,14 @@ public record VkImageViewCaptureDescriptorDataInfoEXT(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageViewCaptureDescriptorDataInfoEXT.BYTES));
         }
+
+        public VkImageViewCaptureDescriptorDataInfoEXT[] toArray() {
+            VkImageViewCaptureDescriptorDataInfoEXT[] ret = new VkImageViewCaptureDescriptorDataInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageViewCaptureDescriptorDataInfoEXT allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCommandBufferBeginInfo.BYTES));
         }
+
+        public VkCommandBufferBeginInfo[] toArray() {
+            VkCommandBufferBeginInfo[] ret = new VkCommandBufferBeginInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCommandBufferBeginInfo allocate(Arena arena) {

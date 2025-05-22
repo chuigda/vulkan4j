@@ -124,6 +124,14 @@ public record VkMemoryMapInfo(@NotNull MemorySegment segment) implements IVkMemo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryMapInfo.BYTES));
         }
+
+        public VkMemoryMapInfo[] toArray() {
+            VkMemoryMapInfo[] ret = new VkMemoryMapInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryMapInfo allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineCreateFlags2CreateInfo.BYTES));
         }
+
+        public VkPipelineCreateFlags2CreateInfo[] toArray() {
+            VkPipelineCreateFlags2CreateInfo[] ret = new VkPipelineCreateFlags2CreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineCreateFlags2CreateInfo allocate(Arena arena) {

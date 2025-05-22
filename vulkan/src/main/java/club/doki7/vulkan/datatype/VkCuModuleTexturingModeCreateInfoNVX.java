@@ -121,6 +121,14 @@ public record VkCuModuleTexturingModeCreateInfoNVX(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCuModuleTexturingModeCreateInfoNVX.BYTES));
         }
+
+        public VkCuModuleTexturingModeCreateInfoNVX[] toArray() {
+            VkCuModuleTexturingModeCreateInfoNVX[] ret = new VkCuModuleTexturingModeCreateInfoNVX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCuModuleTexturingModeCreateInfoNVX allocate(Arena arena) {

@@ -125,6 +125,14 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkApplicationInfo.BYTES));
         }
+
+        public VkApplicationInfo[] toArray() {
+            VkApplicationInfo[] ret = new VkApplicationInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkApplicationInfo allocate(Arena arena) {

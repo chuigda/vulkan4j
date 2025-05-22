@@ -122,6 +122,14 @@ public record VkAcquireProfilingLockInfoKHR(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAcquireProfilingLockInfoKHR.BYTES));
         }
+
+        public VkAcquireProfilingLockInfoKHR[] toArray() {
+            VkAcquireProfilingLockInfoKHR[] ret = new VkAcquireProfilingLockInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAcquireProfilingLockInfoKHR allocate(Arena arena) {

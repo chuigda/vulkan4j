@@ -121,6 +121,14 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceQueueShaderCoreControlCreateInfoARM.BYTES));
         }
+
+        public VkDeviceQueueShaderCoreControlCreateInfoARM[] toArray() {
+            VkDeviceQueueShaderCoreControlCreateInfoARM[] ret = new VkDeviceQueueShaderCoreControlCreateInfoARM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceQueueShaderCoreControlCreateInfoARM allocate(Arena arena) {

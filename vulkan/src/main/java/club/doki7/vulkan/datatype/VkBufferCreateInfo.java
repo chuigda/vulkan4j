@@ -126,6 +126,14 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferCreateInfo.BYTES));
         }
+
+        public VkBufferCreateInfo[] toArray() {
+            VkBufferCreateInfo[] ret = new VkBufferCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferCreateInfo allocate(Arena arena) {

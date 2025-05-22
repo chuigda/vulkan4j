@@ -122,6 +122,14 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorSetLayoutHostMappingInfoVALVE.BYTES));
         }
+
+        public VkDescriptorSetLayoutHostMappingInfoVALVE[] toArray() {
+            VkDescriptorSetLayoutHostMappingInfoVALVE[] ret = new VkDescriptorSetLayoutHostMappingInfoVALVE[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorSetLayoutHostMappingInfoVALVE allocate(Arena arena) {

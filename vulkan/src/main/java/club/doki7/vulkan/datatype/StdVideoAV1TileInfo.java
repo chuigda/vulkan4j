@@ -119,6 +119,14 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1TileInfo.BYTES));
         }
+
+        public StdVideoAV1TileInfo[] toArray() {
+            StdVideoAV1TileInfo[] ret = new StdVideoAV1TileInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1TileInfo allocate(Arena arena) {

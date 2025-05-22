@@ -121,6 +121,14 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceOpticalFlowFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceOpticalFlowFeaturesNV[] toArray() {
+            VkPhysicalDeviceOpticalFlowFeaturesNV[] ret = new VkPhysicalDeviceOpticalFlowFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceOpticalFlowFeaturesNV allocate(Arena arena) {

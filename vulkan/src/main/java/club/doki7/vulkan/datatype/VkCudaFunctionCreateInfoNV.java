@@ -122,6 +122,14 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCudaFunctionCreateInfoNV.BYTES));
         }
+
+        public VkCudaFunctionCreateInfoNV[] toArray() {
+            VkCudaFunctionCreateInfoNV[] ret = new VkCudaFunctionCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCudaFunctionCreateInfoNV allocate(Arena arena) {

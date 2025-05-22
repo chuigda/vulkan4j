@@ -121,6 +121,14 @@ public record VkPhysicalDeviceMultiDrawPropertiesEXT(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceMultiDrawPropertiesEXT[] toArray() {
+            VkPhysicalDeviceMultiDrawPropertiesEXT[] ret = new VkPhysicalDeviceMultiDrawPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceMultiDrawPropertiesEXT allocate(Arena arena) {

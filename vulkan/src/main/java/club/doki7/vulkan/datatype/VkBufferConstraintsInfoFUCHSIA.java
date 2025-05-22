@@ -123,6 +123,14 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferConstraintsInfoFUCHSIA.BYTES));
         }
+
+        public VkBufferConstraintsInfoFUCHSIA[] toArray() {
+            VkBufferConstraintsInfoFUCHSIA[] ret = new VkBufferConstraintsInfoFUCHSIA[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferConstraintsInfoFUCHSIA allocate(Arena arena) {

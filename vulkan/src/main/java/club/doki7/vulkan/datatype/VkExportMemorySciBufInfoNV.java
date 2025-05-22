@@ -121,6 +121,14 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExportMemorySciBufInfoNV.BYTES));
         }
+
+        public VkExportMemorySciBufInfoNV[] toArray() {
+            VkExportMemorySciBufInfoNV[] ret = new VkExportMemorySciBufInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExportMemorySciBufInfoNV allocate(Arena arena) {

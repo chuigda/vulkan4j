@@ -128,6 +128,14 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSamplerYcbcrConversionCreateInfo.BYTES));
         }
+
+        public VkSamplerYcbcrConversionCreateInfo[] toArray() {
+            VkSamplerYcbcrConversionCreateInfo[] ret = new VkSamplerYcbcrConversionCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSamplerYcbcrConversionCreateInfo allocate(Arena arena) {

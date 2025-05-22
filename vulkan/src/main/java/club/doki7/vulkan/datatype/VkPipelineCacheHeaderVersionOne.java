@@ -116,6 +116,14 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineCacheHeaderVersionOne.BYTES));
         }
+
+        public VkPipelineCacheHeaderVersionOne[] toArray() {
+            VkPipelineCacheHeaderVersionOne[] ret = new VkPipelineCacheHeaderVersionOne[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineCacheHeaderVersionOne allocate(Arena arena) {

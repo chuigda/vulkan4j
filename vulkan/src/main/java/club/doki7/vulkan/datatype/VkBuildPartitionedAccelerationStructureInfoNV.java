@@ -126,6 +126,14 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBuildPartitionedAccelerationStructureInfoNV.BYTES));
         }
+
+        public VkBuildPartitionedAccelerationStructureInfoNV[] toArray() {
+            VkBuildPartitionedAccelerationStructureInfoNV[] ret = new VkBuildPartitionedAccelerationStructureInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBuildPartitionedAccelerationStructureInfoNV allocate(Arena arena) {

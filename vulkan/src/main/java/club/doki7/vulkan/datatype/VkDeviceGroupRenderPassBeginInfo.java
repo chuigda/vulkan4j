@@ -123,6 +123,14 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceGroupRenderPassBeginInfo.BYTES));
         }
+
+        public VkDeviceGroupRenderPassBeginInfo[] toArray() {
+            VkDeviceGroupRenderPassBeginInfo[] ret = new VkDeviceGroupRenderPassBeginInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceGroupRenderPassBeginInfo allocate(Arena arena) {

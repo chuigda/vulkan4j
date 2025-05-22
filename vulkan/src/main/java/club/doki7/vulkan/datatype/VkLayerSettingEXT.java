@@ -116,6 +116,14 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkLayerSettingEXT.BYTES));
         }
+
+        public VkLayerSettingEXT[] toArray() {
+            VkLayerSettingEXT[] ret = new VkLayerSettingEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkLayerSettingEXT allocate(Arena arena) {

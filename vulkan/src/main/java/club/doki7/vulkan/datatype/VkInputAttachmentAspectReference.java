@@ -114,6 +114,14 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkInputAttachmentAspectReference.BYTES));
         }
+
+        public VkInputAttachmentAspectReference[] toArray() {
+            VkInputAttachmentAspectReference[] ret = new VkInputAttachmentAspectReference[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkInputAttachmentAspectReference allocate(Arena arena) {

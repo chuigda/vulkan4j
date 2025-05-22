@@ -123,6 +123,14 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceQueueInfo2.BYTES));
         }
+
+        public VkDeviceQueueInfo2[] toArray() {
+            VkDeviceQueueInfo2[] ret = new VkDeviceQueueInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceQueueInfo2 allocate(Arena arena) {

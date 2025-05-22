@@ -113,6 +113,14 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVertexInputBindingDivisorDescription.BYTES));
         }
+
+        public VkVertexInputBindingDivisorDescription[] toArray() {
+            VkVertexInputBindingDivisorDescription[] ret = new VkVertexInputBindingDivisorDescription[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVertexInputBindingDivisorDescription allocate(Arena arena) {

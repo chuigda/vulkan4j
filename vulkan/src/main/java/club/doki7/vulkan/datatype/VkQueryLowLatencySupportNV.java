@@ -121,6 +121,14 @@ public record VkQueryLowLatencySupportNV(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkQueryLowLatencySupportNV.BYTES));
         }
+
+        public VkQueryLowLatencySupportNV[] toArray() {
+            VkQueryLowLatencySupportNV[] ret = new VkQueryLowLatencySupportNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkQueryLowLatencySupportNV allocate(Arena arena) {

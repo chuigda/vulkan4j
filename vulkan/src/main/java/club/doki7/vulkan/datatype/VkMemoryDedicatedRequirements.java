@@ -122,6 +122,14 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryDedicatedRequirements.BYTES));
         }
+
+        public VkMemoryDedicatedRequirements[] toArray() {
+            VkMemoryDedicatedRequirements[] ret = new VkMemoryDedicatedRequirements[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryDedicatedRequirements allocate(Arena arena) {

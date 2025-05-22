@@ -121,6 +121,14 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceQueueGlobalPriorityCreateInfo.BYTES));
         }
+
+        public VkDeviceQueueGlobalPriorityCreateInfo[] toArray() {
+            VkDeviceQueueGlobalPriorityCreateInfo[] ret = new VkDeviceQueueGlobalPriorityCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceQueueGlobalPriorityCreateInfo allocate(Arena arena) {

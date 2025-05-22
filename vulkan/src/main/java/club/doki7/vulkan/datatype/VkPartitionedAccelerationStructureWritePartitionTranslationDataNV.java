@@ -113,6 +113,14 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.BYTES));
         }
+
+        public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV[] toArray() {
+            VkPartitionedAccelerationStructureWritePartitionTranslationDataNV[] ret = new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV allocate(Arena arena) {

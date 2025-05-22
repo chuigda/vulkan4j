@@ -304,6 +304,17 @@ fun generateStructure(
             defun("public", "Ptr", "slice", "long end") {
                 +"return new Ptr(segment.asSlice(0, end * $className.BYTES));"
             }
+            +""
+
+            defun("public", "$className[]", "toArray") {
+                +"$className[] ret = new $className[(int) size()];"
+                +"for (long i = 0; i < size(); i++) {"
+                indent {
+                    +"ret[(int) i] = at(i);"
+                }
+                +"}"
+                +"return ret;"
+            }
         }
         +"}"
         +""

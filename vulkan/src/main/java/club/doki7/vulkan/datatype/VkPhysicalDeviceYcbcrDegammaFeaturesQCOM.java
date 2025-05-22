@@ -121,6 +121,14 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceYcbcrDegammaFeaturesQCOM.BYTES));
         }
+
+        public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM[] toArray() {
+            VkPhysicalDeviceYcbcrDegammaFeaturesQCOM[] ret = new VkPhysicalDeviceYcbcrDegammaFeaturesQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceYcbcrDegammaFeaturesQCOM allocate(Arena arena) {

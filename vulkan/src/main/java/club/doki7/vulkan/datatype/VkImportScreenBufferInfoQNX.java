@@ -121,6 +121,14 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImportScreenBufferInfoQNX.BYTES));
         }
+
+        public VkImportScreenBufferInfoQNX[] toArray() {
+            VkImportScreenBufferInfoQNX[] ret = new VkImportScreenBufferInfoQNX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImportScreenBufferInfoQNX allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDebugMarkerObjectNameInfoEXT.BYTES));
         }
+
+        public VkDebugMarkerObjectNameInfoEXT[] toArray() {
+            VkDebugMarkerObjectNameInfoEXT[] ret = new VkDebugMarkerObjectNameInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDebugMarkerObjectNameInfoEXT allocate(Arena arena) {

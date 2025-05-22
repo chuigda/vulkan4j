@@ -121,6 +121,14 @@ public record VkPhysicalDeviceSamplerYcbcrConversionFeatures(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceSamplerYcbcrConversionFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceSamplerYcbcrConversionFeatures[] toArray() {
+            VkPhysicalDeviceSamplerYcbcrConversionFeatures[] ret = new VkPhysicalDeviceSamplerYcbcrConversionFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceSamplerYcbcrConversionFeatures allocate(Arena arena) {

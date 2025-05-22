@@ -116,6 +116,14 @@ public record VkImageCopy(@NotNull MemorySegment segment) implements IVkImageCop
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageCopy.BYTES));
         }
+
+        public VkImageCopy[] toArray() {
+            VkImageCopy[] ret = new VkImageCopy[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageCopy allocate(Arena arena) {

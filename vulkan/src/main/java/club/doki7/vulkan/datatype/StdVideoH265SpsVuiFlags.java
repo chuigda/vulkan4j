@@ -128,6 +128,14 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265SpsVuiFlags.BYTES));
         }
+
+        public StdVideoH265SpsVuiFlags[] toArray() {
+            StdVideoH265SpsVuiFlags[] ret = new StdVideoH265SpsVuiFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265SpsVuiFlags allocate(Arena arena) {

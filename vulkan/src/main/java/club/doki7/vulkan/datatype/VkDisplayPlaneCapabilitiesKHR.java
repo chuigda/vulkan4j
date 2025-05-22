@@ -120,6 +120,14 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplayPlaneCapabilitiesKHR.BYTES));
         }
+
+        public VkDisplayPlaneCapabilitiesKHR[] toArray() {
+            VkDisplayPlaneCapabilitiesKHR[] ret = new VkDisplayPlaneCapabilitiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplayPlaneCapabilitiesKHR allocate(Arena arena) {

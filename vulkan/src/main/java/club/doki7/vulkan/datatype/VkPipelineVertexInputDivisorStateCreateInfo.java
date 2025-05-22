@@ -122,6 +122,14 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineVertexInputDivisorStateCreateInfo.BYTES));
         }
+
+        public VkPipelineVertexInputDivisorStateCreateInfo[] toArray() {
+            VkPipelineVertexInputDivisorStateCreateInfo[] ret = new VkPipelineVertexInputDivisorStateCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineVertexInputDivisorStateCreateInfo allocate(Arena arena) {

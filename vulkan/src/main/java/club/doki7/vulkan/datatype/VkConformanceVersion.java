@@ -115,6 +115,14 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkConformanceVersion.BYTES));
         }
+
+        public VkConformanceVersion[] toArray() {
+            VkConformanceVersion[] ret = new VkConformanceVersion[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkConformanceVersion allocate(Arena arena) {

@@ -126,6 +126,14 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoDecodeAV1PictureInfoKHR.BYTES));
         }
+
+        public VkVideoDecodeAV1PictureInfoKHR[] toArray() {
+            VkVideoDecodeAV1PictureInfoKHR[] ret = new VkVideoDecodeAV1PictureInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoDecodeAV1PictureInfoKHR allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderTileImagePropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceShaderTileImagePropertiesEXT[] toArray() {
+            VkPhysicalDeviceShaderTileImagePropertiesEXT[] ret = new VkPhysicalDeviceShaderTileImagePropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocate(Arena arena) {

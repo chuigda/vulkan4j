@@ -112,6 +112,14 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRefreshCycleDurationGOOGLE.BYTES));
         }
+
+        public VkRefreshCycleDurationGOOGLE[] toArray() {
+            VkRefreshCycleDurationGOOGLE[] ret = new VkRefreshCycleDurationGOOGLE[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRefreshCycleDurationGOOGLE allocate(Arena arena) {

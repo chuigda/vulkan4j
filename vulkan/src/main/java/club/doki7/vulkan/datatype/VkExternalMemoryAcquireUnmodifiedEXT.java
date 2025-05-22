@@ -121,6 +121,14 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExternalMemoryAcquireUnmodifiedEXT.BYTES));
         }
+
+        public VkExternalMemoryAcquireUnmodifiedEXT[] toArray() {
+            VkExternalMemoryAcquireUnmodifiedEXT[] ret = new VkExternalMemoryAcquireUnmodifiedEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExternalMemoryAcquireUnmodifiedEXT allocate(Arena arena) {

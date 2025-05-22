@@ -125,6 +125,14 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkTraceRaysIndirectCommand2KHR.BYTES));
         }
+
+        public VkTraceRaysIndirectCommand2KHR[] toArray() {
+            VkTraceRaysIndirectCommand2KHR[] ret = new VkTraceRaysIndirectCommand2KHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkTraceRaysIndirectCommand2KHR allocate(Arena arena) {

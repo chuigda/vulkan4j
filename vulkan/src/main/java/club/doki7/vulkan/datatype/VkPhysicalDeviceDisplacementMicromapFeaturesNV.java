@@ -121,6 +121,14 @@ public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDisplacementMicromapFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceDisplacementMicromapFeaturesNV[] toArray() {
+            VkPhysicalDeviceDisplacementMicromapFeaturesNV[] ret = new VkPhysicalDeviceDisplacementMicromapFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDisplacementMicromapFeaturesNV allocate(Arena arena) {

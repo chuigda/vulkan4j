@@ -132,6 +132,14 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceVulkan11Features.BYTES));
         }
+
+        public VkPhysicalDeviceVulkan11Features[] toArray() {
+            VkPhysicalDeviceVulkan11Features[] ret = new VkPhysicalDeviceVulkan11Features[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceVulkan11Features allocate(Arena arena) {

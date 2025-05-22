@@ -122,6 +122,14 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceSamplerFilterMinmaxProperties.BYTES));
         }
+
+        public VkPhysicalDeviceSamplerFilterMinmaxProperties[] toArray() {
+            VkPhysicalDeviceSamplerFilterMinmaxProperties[] ret = new VkPhysicalDeviceSamplerFilterMinmaxProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceSamplerFilterMinmaxProperties allocate(Arena arena) {

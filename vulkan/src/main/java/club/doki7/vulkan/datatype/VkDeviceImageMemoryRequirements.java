@@ -122,6 +122,14 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceImageMemoryRequirements.BYTES));
         }
+
+        public VkDeviceImageMemoryRequirements[] toArray() {
+            VkDeviceImageMemoryRequirements[] ret = new VkDeviceImageMemoryRequirements[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceImageMemoryRequirements allocate(Arena arena) {

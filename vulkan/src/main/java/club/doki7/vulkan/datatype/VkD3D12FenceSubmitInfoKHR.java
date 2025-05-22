@@ -124,6 +124,14 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkD3D12FenceSubmitInfoKHR.BYTES));
         }
+
+        public VkD3D12FenceSubmitInfoKHR[] toArray() {
+            VkD3D12FenceSubmitInfoKHR[] ret = new VkD3D12FenceSubmitInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkD3D12FenceSubmitInfoKHR allocate(Arena arena) {

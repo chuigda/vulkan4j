@@ -114,6 +114,14 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSparseBufferMemoryBindInfo.BYTES));
         }
+
+        public VkSparseBufferMemoryBindInfo[] toArray() {
+            VkSparseBufferMemoryBindInfo[] ret = new VkSparseBufferMemoryBindInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSparseBufferMemoryBindInfo allocate(Arena arena) {

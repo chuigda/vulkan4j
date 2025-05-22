@@ -121,6 +121,14 @@ public record VkInitializePerformanceApiInfoINTEL(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkInitializePerformanceApiInfoINTEL.BYTES));
         }
+
+        public VkInitializePerformanceApiInfoINTEL[] toArray() {
+            VkInitializePerformanceApiInfoINTEL[] ret = new VkInitializePerformanceApiInfoINTEL[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkInitializePerformanceApiInfoINTEL allocate(Arena arena) {

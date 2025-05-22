@@ -132,6 +132,14 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCudaLaunchInfoNV.BYTES));
         }
+
+        public VkCudaLaunchInfoNV[] toArray() {
+            VkCudaLaunchInfoNV[] ret = new VkCudaLaunchInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCudaLaunchInfoNV allocate(Arena arena) {

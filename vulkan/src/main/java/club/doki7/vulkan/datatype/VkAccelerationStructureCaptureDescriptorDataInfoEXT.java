@@ -122,6 +122,14 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureCaptureDescriptorDataInfoEXT.BYTES));
         }
+
+        public VkAccelerationStructureCaptureDescriptorDataInfoEXT[] toArray() {
+            VkAccelerationStructureCaptureDescriptorDataInfoEXT[] ret = new VkAccelerationStructureCaptureDescriptorDataInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureCaptureDescriptorDataInfoEXT allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkAccelerationStructureBuildSizesInfoKHR(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureBuildSizesInfoKHR.BYTES));
         }
+
+        public VkAccelerationStructureBuildSizesInfoKHR[] toArray() {
+            VkAccelerationStructureBuildSizesInfoKHR[] ret = new VkAccelerationStructureBuildSizesInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureBuildSizesInfoKHR allocate(Arena arena) {

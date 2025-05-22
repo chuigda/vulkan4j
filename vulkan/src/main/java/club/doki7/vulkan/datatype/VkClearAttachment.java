@@ -114,6 +114,14 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClearAttachment.BYTES));
         }
+
+        public VkClearAttachment[] toArray() {
+            VkClearAttachment[] ret = new VkClearAttachment[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClearAttachment allocate(Arena arena) {

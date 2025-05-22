@@ -116,6 +116,14 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorSetLayoutBinding.BYTES));
         }
+
+        public VkDescriptorSetLayoutBinding[] toArray() {
+            VkDescriptorSetLayoutBinding[] ret = new VkDescriptorSetLayoutBinding[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorSetLayoutBinding allocate(Arena arena) {

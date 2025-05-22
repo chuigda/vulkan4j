@@ -124,6 +124,14 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IVkGeo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkGeometryAABBNV.BYTES));
         }
+
+        public VkGeometryAABBNV[] toArray() {
+            VkGeometryAABBNV[] ret = new VkGeometryAABBNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkGeometryAABBNV allocate(Arena arena) {

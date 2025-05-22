@@ -122,6 +122,14 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineViewportDepthClampControlCreateInfoEXT.BYTES));
         }
+
+        public VkPipelineViewportDepthClampControlCreateInfoEXT[] toArray() {
+            VkPipelineViewportDepthClampControlCreateInfoEXT[] ret = new VkPipelineViewportDepthClampControlCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineViewportDepthClampControlCreateInfoEXT allocate(Arena arena) {

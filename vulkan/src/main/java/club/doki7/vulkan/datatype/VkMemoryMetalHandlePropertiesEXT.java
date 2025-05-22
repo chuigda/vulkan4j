@@ -121,6 +121,14 @@ public record VkMemoryMetalHandlePropertiesEXT(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryMetalHandlePropertiesEXT.BYTES));
         }
+
+        public VkMemoryMetalHandlePropertiesEXT[] toArray() {
+            VkMemoryMetalHandlePropertiesEXT[] ret = new VkMemoryMetalHandlePropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryMetalHandlePropertiesEXT allocate(Arena arena) {

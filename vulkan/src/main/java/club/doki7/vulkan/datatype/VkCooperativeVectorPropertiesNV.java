@@ -126,6 +126,14 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCooperativeVectorPropertiesNV.BYTES));
         }
+
+        public VkCooperativeVectorPropertiesNV[] toArray() {
+            VkCooperativeVectorPropertiesNV[] ret = new VkCooperativeVectorPropertiesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCooperativeVectorPropertiesNV allocate(Arena arena) {

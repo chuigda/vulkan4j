@@ -127,6 +127,14 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExecutionGraphPipelineCreateInfoAMDX.BYTES));
         }
+
+        public VkExecutionGraphPipelineCreateInfoAMDX[] toArray() {
+            VkExecutionGraphPipelineCreateInfoAMDX[] ret = new VkExecutionGraphPipelineCreateInfoAMDX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExecutionGraphPipelineCreateInfoAMDX allocate(Arena arena) {

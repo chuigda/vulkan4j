@@ -134,6 +134,14 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkLatencyTimingsFrameReportNV.BYTES));
         }
+
+        public VkLatencyTimingsFrameReportNV[] toArray() {
+            VkLatencyTimingsFrameReportNV[] ret = new VkLatencyTimingsFrameReportNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkLatencyTimingsFrameReportNV allocate(Arena arena) {

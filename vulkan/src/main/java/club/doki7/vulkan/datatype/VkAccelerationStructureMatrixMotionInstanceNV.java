@@ -119,6 +119,14 @@ public record VkAccelerationStructureMatrixMotionInstanceNV(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureMatrixMotionInstanceNV.BYTES));
         }
+
+        public VkAccelerationStructureMatrixMotionInstanceNV[] toArray() {
+            VkAccelerationStructureMatrixMotionInstanceNV[] ret = new VkAccelerationStructureMatrixMotionInstanceNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureMatrixMotionInstanceNV allocate(Arena arena) {

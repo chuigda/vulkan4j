@@ -124,6 +124,14 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderingInputAttachmentIndexInfo.BYTES));
         }
+
+        public VkRenderingInputAttachmentIndexInfo[] toArray() {
+            VkRenderingInputAttachmentIndexInfo[] ret = new VkRenderingInputAttachmentIndexInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderingInputAttachmentIndexInfo allocate(Arena arena) {

@@ -114,6 +114,14 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPartitionedAccelerationStructureUpdateInstanceDataNV.BYTES));
         }
+
+        public VkPartitionedAccelerationStructureUpdateInstanceDataNV[] toArray() {
+            VkPartitionedAccelerationStructureUpdateInstanceDataNV[] ret = new VkPartitionedAccelerationStructureUpdateInstanceDataNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPartitionedAccelerationStructureUpdateInstanceDataNV allocate(Arena arena) {

@@ -114,6 +114,14 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSpecializationMapEntry.BYTES));
         }
+
+        public VkSpecializationMapEntry[] toArray() {
+            VkSpecializationMapEntry[] ret = new VkSpecializationMapEntry[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSpecializationMapEntry allocate(Arena arena) {

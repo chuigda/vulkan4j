@@ -123,6 +123,14 @@ public record VkMicromapBuildSizesInfoEXT(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMicromapBuildSizesInfoEXT.BYTES));
         }
+
+        public VkMicromapBuildSizesInfoEXT[] toArray() {
+            VkMicromapBuildSizesInfoEXT[] ret = new VkMicromapBuildSizesInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMicromapBuildSizesInfoEXT allocate(Arena arena) {

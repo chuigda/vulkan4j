@@ -123,6 +123,14 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV[] toArray() {
+            VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV[] ret = new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV allocate(Arena arena) {

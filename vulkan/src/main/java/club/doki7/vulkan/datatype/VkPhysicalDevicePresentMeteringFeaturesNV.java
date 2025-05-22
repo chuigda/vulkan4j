@@ -121,6 +121,14 @@ public record VkPhysicalDevicePresentMeteringFeaturesNV(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePresentMeteringFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDevicePresentMeteringFeaturesNV[] toArray() {
+            VkPhysicalDevicePresentMeteringFeaturesNV[] ret = new VkPhysicalDevicePresentMeteringFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePresentMeteringFeaturesNV allocate(Arena arena) {

@@ -112,6 +112,14 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1TimingInfoFlags.BYTES));
         }
+
+        public StdVideoAV1TimingInfoFlags[] toArray() {
+            StdVideoAV1TimingInfoFlags[] ret = new StdVideoAV1TimingInfoFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1TimingInfoFlags allocate(Arena arena) {

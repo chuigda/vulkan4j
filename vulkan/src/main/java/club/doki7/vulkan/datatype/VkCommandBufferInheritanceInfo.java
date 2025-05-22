@@ -126,6 +126,14 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCommandBufferInheritanceInfo.BYTES));
         }
+
+        public VkCommandBufferInheritanceInfo[] toArray() {
+            VkCommandBufferInheritanceInfo[] ret = new VkCommandBufferInheritanceInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCommandBufferInheritanceInfo allocate(Arena arena) {

@@ -113,6 +113,14 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IVkS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSurfaceFormatKHR.BYTES));
         }
+
+        public VkSurfaceFormatKHR[] toArray() {
+            VkSurfaceFormatKHR[] ret = new VkSurfaceFormatKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSurfaceFormatKHR allocate(Arena arena) {

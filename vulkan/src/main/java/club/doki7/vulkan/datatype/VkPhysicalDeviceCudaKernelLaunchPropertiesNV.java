@@ -122,6 +122,14 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceCudaKernelLaunchPropertiesNV.BYTES));
         }
+
+        public VkPhysicalDeviceCudaKernelLaunchPropertiesNV[] toArray() {
+            VkPhysicalDeviceCudaKernelLaunchPropertiesNV[] ret = new VkPhysicalDeviceCudaKernelLaunchPropertiesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceCudaKernelLaunchPropertiesNV allocate(Arena arena) {

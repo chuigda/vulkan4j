@@ -124,6 +124,14 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSemaphoreWaitInfo.BYTES));
         }
+
+        public VkSemaphoreWaitInfo[] toArray() {
+            VkSemaphoreWaitInfo[] ret = new VkSemaphoreWaitInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSemaphoreWaitInfo allocate(Arena arena) {

@@ -116,6 +116,14 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkShaderResourceUsageAMD.BYTES));
         }
+
+        public VkShaderResourceUsageAMD[] toArray() {
+            VkShaderResourceUsageAMD[] ret = new VkShaderResourceUsageAMD[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkShaderResourceUsageAMD allocate(Arena arena) {

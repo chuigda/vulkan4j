@@ -121,6 +121,14 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePipelineRobustnessFeatures.BYTES));
         }
+
+        public VkPhysicalDevicePipelineRobustnessFeatures[] toArray() {
+            VkPhysicalDevicePipelineRobustnessFeatures[] ret = new VkPhysicalDevicePipelineRobustnessFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePipelineRobustnessFeatures allocate(Arena arena) {

@@ -128,6 +128,14 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorUpdateTemplateCreateInfo.BYTES));
         }
+
+        public VkDescriptorUpdateTemplateCreateInfo[] toArray() {
+            VkDescriptorUpdateTemplateCreateInfo[] ret = new VkDescriptorUpdateTemplateCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorUpdateTemplateCreateInfo allocate(Arena arena) {

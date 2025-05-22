@@ -122,6 +122,14 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkViSurfaceCreateInfoNN.BYTES));
         }
+
+        public VkViSurfaceCreateInfoNN[] toArray() {
+            VkViSurfaceCreateInfoNN[] ret = new VkViSurfaceCreateInfoNN[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkViSurfaceCreateInfoNN allocate(Arena arena) {

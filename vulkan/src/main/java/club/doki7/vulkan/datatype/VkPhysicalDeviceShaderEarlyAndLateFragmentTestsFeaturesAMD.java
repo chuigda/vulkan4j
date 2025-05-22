@@ -121,6 +121,14 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(@NotNul
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD.BYTES));
         }
+
+        public VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD[] toArray() {
+            VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD[] ret = new VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD allocate(Arena arena) {

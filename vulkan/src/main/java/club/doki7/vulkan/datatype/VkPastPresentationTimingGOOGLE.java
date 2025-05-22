@@ -116,6 +116,14 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPastPresentationTimingGOOGLE.BYTES));
         }
+
+        public VkPastPresentationTimingGOOGLE[] toArray() {
+            VkPastPresentationTimingGOOGLE[] ret = new VkPastPresentationTimingGOOGLE[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPastPresentationTimingGOOGLE allocate(Arena arena) {

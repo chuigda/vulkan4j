@@ -140,6 +140,14 @@ public record StdVideoEncodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeAV1PictureInfoFlags.BYTES));
         }
+
+        public StdVideoEncodeAV1PictureInfoFlags[] toArray() {
+            StdVideoEncodeAV1PictureInfoFlags[] ret = new StdVideoEncodeAV1PictureInfoFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeAV1PictureInfoFlags allocate(Arena arena) {

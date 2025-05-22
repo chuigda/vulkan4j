@@ -122,6 +122,14 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderingFragmentDensityMapAttachmentInfoEXT.BYTES));
         }
+
+        public VkRenderingFragmentDensityMapAttachmentInfoEXT[] toArray() {
+            VkRenderingFragmentDensityMapAttachmentInfoEXT[] ret = new VkRenderingFragmentDensityMapAttachmentInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderingFragmentDensityMapAttachmentInfoEXT allocate(Arena arena) {

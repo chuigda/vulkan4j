@@ -130,6 +130,14 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1SequenceHeaderFlags.BYTES));
         }
+
+        public StdVideoAV1SequenceHeaderFlags[] toArray() {
+            StdVideoAV1SequenceHeaderFlags[] ret = new StdVideoAV1SequenceHeaderFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1SequenceHeaderFlags allocate(Arena arena) {

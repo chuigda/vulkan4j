@@ -110,6 +110,14 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265PredictorPaletteEntries.BYTES));
         }
+
+        public StdVideoH265PredictorPaletteEntries[] toArray() {
+            StdVideoH265PredictorPaletteEntries[] ret = new StdVideoH265PredictorPaletteEntries[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265PredictorPaletteEntries allocate(Arena arena) {

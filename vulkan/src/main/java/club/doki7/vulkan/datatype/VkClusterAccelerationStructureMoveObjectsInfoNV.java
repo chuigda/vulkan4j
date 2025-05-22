@@ -112,6 +112,14 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES));
         }
+
+        public VkClusterAccelerationStructureMoveObjectsInfoNV[] toArray() {
+            VkClusterAccelerationStructureMoveObjectsInfoNV[] ret = new VkClusterAccelerationStructureMoveObjectsInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClusterAccelerationStructureMoveObjectsInfoNV allocate(Arena arena) {

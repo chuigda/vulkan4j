@@ -121,6 +121,14 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(@NotNull Memor
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.BYTES));
         }
+
+        public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo[] toArray() {
+            VkPipelineShaderStageRequiredSubgroupSizeCreateInfo[] ret = new VkPipelineShaderStageRequiredSubgroupSizeCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfo allocate(Arena arena) {

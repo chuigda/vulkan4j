@@ -124,6 +124,14 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceFragmentDensityMap2PropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT[] toArray() {
+            VkPhysicalDeviceFragmentDensityMap2PropertiesEXT[] ret = new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT allocate(Arena arena) {

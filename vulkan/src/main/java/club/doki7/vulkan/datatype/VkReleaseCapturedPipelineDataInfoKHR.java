@@ -121,6 +121,14 @@ public record VkReleaseCapturedPipelineDataInfoKHR(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkReleaseCapturedPipelineDataInfoKHR.BYTES));
         }
+
+        public VkReleaseCapturedPipelineDataInfoKHR[] toArray() {
+            VkReleaseCapturedPipelineDataInfoKHR[] ret = new VkReleaseCapturedPipelineDataInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkReleaseCapturedPipelineDataInfoKHR allocate(Arena arena) {

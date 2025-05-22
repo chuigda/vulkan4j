@@ -120,6 +120,14 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSubpassEndInfo.BYTES));
         }
+
+        public VkSubpassEndInfo[] toArray() {
+            VkSubpassEndInfo[] ret = new VkSubpassEndInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSubpassEndInfo allocate(Arena arena) {

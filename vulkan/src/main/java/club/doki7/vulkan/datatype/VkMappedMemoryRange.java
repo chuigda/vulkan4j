@@ -123,6 +123,14 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMappedMemoryRange.BYTES));
         }
+
+        public VkMappedMemoryRange[] toArray() {
+            VkMappedMemoryRange[] ret = new VkMappedMemoryRange[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMappedMemoryRange allocate(Arena arena) {

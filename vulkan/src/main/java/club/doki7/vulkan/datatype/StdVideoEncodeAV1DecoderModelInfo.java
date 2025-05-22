@@ -114,6 +114,14 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeAV1DecoderModelInfo.BYTES));
         }
+
+        public StdVideoEncodeAV1DecoderModelInfo[] toArray() {
+            StdVideoEncodeAV1DecoderModelInfo[] ret = new StdVideoEncodeAV1DecoderModelInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeAV1DecoderModelInfo allocate(Arena arena) {

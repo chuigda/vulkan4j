@@ -122,6 +122,14 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSwapchainPresentFenceInfoEXT.BYTES));
         }
+
+        public VkSwapchainPresentFenceInfoEXT[] toArray() {
+            VkSwapchainPresentFenceInfoEXT[] ret = new VkSwapchainPresentFenceInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSwapchainPresentFenceInfoEXT allocate(Arena arena) {

@@ -118,6 +118,14 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplayPropertiesKHR.BYTES));
         }
+
+        public VkDisplayPropertiesKHR[] toArray() {
+            VkDisplayPropertiesKHR[] ret = new VkDisplayPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplayPropertiesKHR allocate(Arena arena) {

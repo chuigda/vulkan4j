@@ -121,6 +121,14 @@ public record VkPhysicalDeviceImageProcessing2FeaturesQCOM(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImageProcessing2FeaturesQCOM.BYTES));
         }
+
+        public VkPhysicalDeviceImageProcessing2FeaturesQCOM[] toArray() {
+            VkPhysicalDeviceImageProcessing2FeaturesQCOM[] ret = new VkPhysicalDeviceImageProcessing2FeaturesQCOM[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImageProcessing2FeaturesQCOM allocate(Arena arena) {

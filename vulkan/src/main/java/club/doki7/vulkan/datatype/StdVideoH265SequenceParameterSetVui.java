@@ -135,6 +135,14 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265SequenceParameterSetVui.BYTES));
         }
+
+        public StdVideoH265SequenceParameterSetVui[] toArray() {
+            StdVideoH265SequenceParameterSetVui[] ret = new StdVideoH265SequenceParameterSetVui[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265SequenceParameterSetVui allocate(Arena arena) {

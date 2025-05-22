@@ -121,6 +121,14 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.BYTES));
         }
+
+        public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR[] toArray() {
+            VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR[] ret = new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkImageCompressionPropertiesEXT(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageCompressionPropertiesEXT.BYTES));
         }
+
+        public VkImageCompressionPropertiesEXT[] toArray() {
+            VkImageCompressionPropertiesEXT[] ret = new VkImageCompressionPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageCompressionPropertiesEXT allocate(Arena arena) {

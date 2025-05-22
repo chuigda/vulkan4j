@@ -121,6 +121,14 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES));
         }
+
+        public VkAccelerationStructureGeometryMotionTrianglesDataNV[] toArray() {
+            VkAccelerationStructureGeometryMotionTrianglesDataNV[] ret = new VkAccelerationStructureGeometryMotionTrianglesDataNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureGeometryMotionTrianglesDataNV allocate(Arena arena) {

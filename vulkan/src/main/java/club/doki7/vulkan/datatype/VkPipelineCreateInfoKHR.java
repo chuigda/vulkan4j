@@ -120,6 +120,14 @@ public record VkPipelineCreateInfoKHR(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineCreateInfoKHR.BYTES));
         }
+
+        public VkPipelineCreateInfoKHR[] toArray() {
+            VkPipelineCreateInfoKHR[] ret = new VkPipelineCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineCreateInfoKHR allocate(Arena arena) {

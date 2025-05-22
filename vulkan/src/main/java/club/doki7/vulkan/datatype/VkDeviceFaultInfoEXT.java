@@ -124,6 +124,14 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceFaultInfoEXT.BYTES));
         }
+
+        public VkDeviceFaultInfoEXT[] toArray() {
+            VkDeviceFaultInfoEXT[] ret = new VkDeviceFaultInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceFaultInfoEXT allocate(Arena arena) {

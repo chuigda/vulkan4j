@@ -121,6 +121,14 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES));
         }
+
+        public VkVideoFormatAV1QuantizationMapPropertiesKHR[] toArray() {
+            VkVideoFormatAV1QuantizationMapPropertiesKHR[] ret = new VkVideoFormatAV1QuantizationMapPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoFormatAV1QuantizationMapPropertiesKHR allocate(Arena arena) {

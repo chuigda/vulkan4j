@@ -129,6 +129,14 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkFrameBoundaryEXT.BYTES));
         }
+
+        public VkFrameBoundaryEXT[] toArray() {
+            VkFrameBoundaryEXT[] ret = new VkFrameBoundaryEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkFrameBoundaryEXT allocate(Arena arena) {

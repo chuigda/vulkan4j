@@ -121,6 +121,14 @@ public record VkRenderPassCreationControlEXT(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderPassCreationControlEXT.BYTES));
         }
+
+        public VkRenderPassCreationControlEXT[] toArray() {
+            VkRenderPassCreationControlEXT[] ret = new VkRenderPassCreationControlEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderPassCreationControlEXT allocate(Arena arena) {

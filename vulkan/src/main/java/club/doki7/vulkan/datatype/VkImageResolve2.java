@@ -125,6 +125,14 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageResolve2.BYTES));
         }
+
+        public VkImageResolve2[] toArray() {
+            VkImageResolve2[] ret = new VkImageResolve2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageResolve2 allocate(Arena arena) {

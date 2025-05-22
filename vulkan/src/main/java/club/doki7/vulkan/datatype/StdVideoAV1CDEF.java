@@ -115,6 +115,14 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1CDEF.BYTES));
         }
+
+        public StdVideoAV1CDEF[] toArray() {
+            StdVideoAV1CDEF[] ret = new StdVideoAV1CDEF[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1CDEF allocate(Arena arena) {

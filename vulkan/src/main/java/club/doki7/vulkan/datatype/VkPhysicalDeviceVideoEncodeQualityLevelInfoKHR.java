@@ -122,6 +122,14 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.BYTES));
         }
+
+        public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR[] toArray() {
+            VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR[] ret = new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR allocate(Arena arena) {

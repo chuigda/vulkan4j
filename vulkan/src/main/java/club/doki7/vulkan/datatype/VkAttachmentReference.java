@@ -113,6 +113,14 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAttachmentReference.BYTES));
         }
+
+        public VkAttachmentReference[] toArray() {
+            VkAttachmentReference[] ret = new VkAttachmentReference[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAttachmentReference allocate(Arena arena) {

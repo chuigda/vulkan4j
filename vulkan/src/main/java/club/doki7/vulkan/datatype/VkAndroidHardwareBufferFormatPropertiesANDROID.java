@@ -128,6 +128,14 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES));
         }
+
+        public VkAndroidHardwareBufferFormatPropertiesANDROID[] toArray() {
+            VkAndroidHardwareBufferFormatPropertiesANDROID[] ret = new VkAndroidHardwareBufferFormatPropertiesANDROID[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAndroidHardwareBufferFormatPropertiesANDROID allocate(Arena arena) {

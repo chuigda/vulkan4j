@@ -123,6 +123,14 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES));
         }
+
+        public VkPipelineColorBlendAdvancedStateCreateInfoEXT[] toArray() {
+            VkPipelineColorBlendAdvancedStateCreateInfoEXT[] ret = new VkPipelineColorBlendAdvancedStateCreateInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineColorBlendAdvancedStateCreateInfoEXT allocate(Arena arena) {

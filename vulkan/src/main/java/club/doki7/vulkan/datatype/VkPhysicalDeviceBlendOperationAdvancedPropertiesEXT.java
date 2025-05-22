@@ -126,6 +126,14 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT[] toArray() {
+            VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT[] ret = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocate(Arena arena) {

@@ -124,6 +124,14 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceDepthBiasControlFeaturesEXT[] toArray() {
+            VkPhysicalDeviceDepthBiasControlFeaturesEXT[] ret = new VkPhysicalDeviceDepthBiasControlFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocate(Arena arena) {

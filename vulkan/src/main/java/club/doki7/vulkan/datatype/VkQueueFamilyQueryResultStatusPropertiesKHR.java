@@ -121,6 +121,14 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkQueueFamilyQueryResultStatusPropertiesKHR.BYTES));
         }
+
+        public VkQueueFamilyQueryResultStatusPropertiesKHR[] toArray() {
+            VkQueueFamilyQueryResultStatusPropertiesKHR[] ret = new VkQueueFamilyQueryResultStatusPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkQueueFamilyQueryResultStatusPropertiesKHR allocate(Arena arena) {

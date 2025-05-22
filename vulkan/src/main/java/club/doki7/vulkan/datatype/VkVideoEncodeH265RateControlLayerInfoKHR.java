@@ -126,6 +126,14 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeH265RateControlLayerInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeH265RateControlLayerInfoKHR[] toArray() {
+            VkVideoEncodeH265RateControlLayerInfoKHR[] ret = new VkVideoEncodeH265RateControlLayerInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeH265RateControlLayerInfoKHR allocate(Arena arena) {

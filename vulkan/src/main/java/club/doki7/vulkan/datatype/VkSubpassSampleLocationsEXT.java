@@ -113,6 +113,14 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSubpassSampleLocationsEXT.BYTES));
         }
+
+        public VkSubpassSampleLocationsEXT[] toArray() {
+            VkSubpassSampleLocationsEXT[] ret = new VkSubpassSampleLocationsEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSubpassSampleLocationsEXT allocate(Arena arena) {

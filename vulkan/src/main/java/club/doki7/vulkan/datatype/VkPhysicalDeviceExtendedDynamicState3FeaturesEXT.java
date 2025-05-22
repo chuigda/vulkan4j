@@ -151,6 +151,14 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] toArray() {
+            VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT allocate(Arena arena) {

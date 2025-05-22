@@ -121,6 +121,14 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT[] toArray() {
+            VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT[] ret = new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT allocate(Arena arena) {

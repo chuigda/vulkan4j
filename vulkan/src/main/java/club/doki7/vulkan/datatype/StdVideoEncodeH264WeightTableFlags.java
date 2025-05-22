@@ -113,6 +113,14 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeH264WeightTableFlags.BYTES));
         }
+
+        public StdVideoEncodeH264WeightTableFlags[] toArray() {
+            StdVideoEncodeH264WeightTableFlags[] ret = new StdVideoEncodeH264WeightTableFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeH264WeightTableFlags allocate(Arena arena) {

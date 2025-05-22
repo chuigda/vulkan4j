@@ -114,6 +114,14 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMicromapTriangleEXT.BYTES));
         }
+
+        public VkMicromapTriangleEXT[] toArray() {
+            VkMicromapTriangleEXT[] ret = new VkMicromapTriangleEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMicromapTriangleEXT allocate(Arena arena) {

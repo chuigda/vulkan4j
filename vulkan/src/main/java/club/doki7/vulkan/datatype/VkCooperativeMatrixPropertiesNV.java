@@ -128,6 +128,14 @@ public record VkCooperativeMatrixPropertiesNV(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCooperativeMatrixPropertiesNV.BYTES));
         }
+
+        public VkCooperativeMatrixPropertiesNV[] toArray() {
+            VkCooperativeMatrixPropertiesNV[] ret = new VkCooperativeMatrixPropertiesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCooperativeMatrixPropertiesNV allocate(Arena arena) {

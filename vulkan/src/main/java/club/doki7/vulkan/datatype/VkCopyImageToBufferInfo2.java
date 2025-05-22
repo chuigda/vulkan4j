@@ -125,6 +125,14 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCopyImageToBufferInfo2.BYTES));
         }
+
+        public VkCopyImageToBufferInfo2[] toArray() {
+            VkCopyImageToBufferInfo2[] ret = new VkCopyImageToBufferInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCopyImageToBufferInfo2 allocate(Arena arena) {

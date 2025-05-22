@@ -135,6 +135,14 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeAV1QualityLevelPropertiesKHR.BYTES));
         }
+
+        public VkVideoEncodeAV1QualityLevelPropertiesKHR[] toArray() {
+            VkVideoEncodeAV1QualityLevelPropertiesKHR[] ret = new VkVideoEncodeAV1QualityLevelPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeAV1QualityLevelPropertiesKHR allocate(Arena arena) {

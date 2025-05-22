@@ -122,6 +122,14 @@ public record VkMemoryGetMetalHandleInfoEXT(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryGetMetalHandleInfoEXT.BYTES));
         }
+
+        public VkMemoryGetMetalHandleInfoEXT[] toArray() {
+            VkMemoryGetMetalHandleInfoEXT[] ret = new VkMemoryGetMetalHandleInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryGetMetalHandleInfoEXT allocate(Arena arena) {

@@ -120,6 +120,14 @@ public record VkRenderingEndInfoEXT(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderingEndInfoEXT.BYTES));
         }
+
+        public VkRenderingEndInfoEXT[] toArray() {
+            VkRenderingEndInfoEXT[] ret = new VkRenderingEndInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderingEndInfoEXT allocate(Arena arena) {

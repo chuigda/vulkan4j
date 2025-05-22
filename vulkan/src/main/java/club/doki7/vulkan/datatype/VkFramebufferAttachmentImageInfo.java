@@ -127,6 +127,14 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkFramebufferAttachmentImageInfo.BYTES));
         }
+
+        public VkFramebufferAttachmentImageInfo[] toArray() {
+            VkFramebufferAttachmentImageInfo[] ret = new VkFramebufferAttachmentImageInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkFramebufferAttachmentImageInfo allocate(Arena arena) {

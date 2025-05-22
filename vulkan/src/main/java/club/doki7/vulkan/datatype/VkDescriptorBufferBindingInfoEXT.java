@@ -122,6 +122,14 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDescriptorBufferBindingInfoEXT.BYTES));
         }
+
+        public VkDescriptorBufferBindingInfoEXT[] toArray() {
+            VkDescriptorBufferBindingInfoEXT[] ret = new VkDescriptorBufferBindingInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDescriptorBufferBindingInfoEXT allocate(Arena arena) {

@@ -127,6 +127,14 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDependencyInfo.BYTES));
         }
+
+        public VkDependencyInfo[] toArray() {
+            VkDependencyInfo[] ret = new VkDependencyInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDependencyInfo allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderingAttachmentLocationInfo.BYTES));
         }
+
+        public VkRenderingAttachmentLocationInfo[] toArray() {
+            VkRenderingAttachmentLocationInfo[] ret = new VkRenderingAttachmentLocationInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderingAttachmentLocationInfo allocate(Arena arena) {

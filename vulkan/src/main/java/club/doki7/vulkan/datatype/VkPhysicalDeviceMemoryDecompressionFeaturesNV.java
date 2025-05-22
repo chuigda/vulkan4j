@@ -121,6 +121,14 @@ public record VkPhysicalDeviceMemoryDecompressionFeaturesNV(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceMemoryDecompressionFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceMemoryDecompressionFeaturesNV[] toArray() {
+            VkPhysicalDeviceMemoryDecompressionFeaturesNV[] ret = new VkPhysicalDeviceMemoryDecompressionFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceMemoryDecompressionFeaturesNV allocate(Arena arena) {

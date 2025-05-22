@@ -123,6 +123,14 @@ public record VkImportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImportFenceSciSyncInfoNV.BYTES));
         }
+
+        public VkImportFenceSciSyncInfoNV[] toArray() {
+            VkImportFenceSciSyncInfoNV[] ret = new VkImportFenceSciSyncInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImportFenceSciSyncInfoNV allocate(Arena arena) {

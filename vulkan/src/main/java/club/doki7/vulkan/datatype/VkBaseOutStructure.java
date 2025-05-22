@@ -113,6 +113,14 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBaseOutStructure.BYTES));
         }
+
+        public VkBaseOutStructure[] toArray() {
+            VkBaseOutStructure[] ret = new VkBaseOutStructure[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBaseOutStructure allocate(Arena arena) {

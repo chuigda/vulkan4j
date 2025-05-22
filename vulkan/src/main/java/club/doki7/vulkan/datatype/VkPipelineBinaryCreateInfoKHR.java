@@ -123,6 +123,14 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineBinaryCreateInfoKHR.BYTES));
         }
+
+        public VkPipelineBinaryCreateInfoKHR[] toArray() {
+            VkPipelineBinaryCreateInfoKHR[] ret = new VkPipelineBinaryCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineBinaryCreateInfoKHR allocate(Arena arena) {

@@ -113,6 +113,14 @@ public record VkOffset2D(@NotNull MemorySegment segment) implements IVkOffset2D 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkOffset2D.BYTES));
         }
+
+        public VkOffset2D[] toArray() {
+            VkOffset2D[] ret = new VkOffset2D[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkOffset2D allocate(Arena arena) {

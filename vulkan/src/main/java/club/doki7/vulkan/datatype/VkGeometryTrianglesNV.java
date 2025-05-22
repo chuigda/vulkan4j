@@ -131,6 +131,14 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkGeometryTrianglesNV.BYTES));
         }
+
+        public VkGeometryTrianglesNV[] toArray() {
+            VkGeometryTrianglesNV[] ret = new VkGeometryTrianglesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkGeometryTrianglesNV allocate(Arena arena) {

@@ -122,6 +122,14 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkStreamDescriptorSurfaceCreateInfoGGP.BYTES));
         }
+
+        public VkStreamDescriptorSurfaceCreateInfoGGP[] toArray() {
+            VkStreamDescriptorSurfaceCreateInfoGGP[] ret = new VkStreamDescriptorSurfaceCreateInfoGGP[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkStreamDescriptorSurfaceCreateInfoGGP allocate(Arena arena) {

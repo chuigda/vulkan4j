@@ -114,6 +114,14 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRefreshObjectKHR.BYTES));
         }
+
+        public VkRefreshObjectKHR[] toArray() {
+            VkRefreshObjectKHR[] ret = new VkRefreshObjectKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRefreshObjectKHR allocate(Arena arena) {

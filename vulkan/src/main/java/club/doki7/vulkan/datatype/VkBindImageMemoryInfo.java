@@ -123,6 +123,14 @@ public record VkBindImageMemoryInfo(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBindImageMemoryInfo.BYTES));
         }
+
+        public VkBindImageMemoryInfo[] toArray() {
+            VkBindImageMemoryInfo[] ret = new VkBindImageMemoryInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBindImageMemoryInfo allocate(Arena arena) {

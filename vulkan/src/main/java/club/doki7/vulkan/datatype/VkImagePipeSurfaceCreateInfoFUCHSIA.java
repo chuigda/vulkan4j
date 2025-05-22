@@ -122,6 +122,14 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImagePipeSurfaceCreateInfoFUCHSIA.BYTES));
         }
+
+        public VkImagePipeSurfaceCreateInfoFUCHSIA[] toArray() {
+            VkImagePipeSurfaceCreateInfoFUCHSIA[] ret = new VkImagePipeSurfaceCreateInfoFUCHSIA[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImagePipeSurfaceCreateInfoFUCHSIA allocate(Arena arena) {

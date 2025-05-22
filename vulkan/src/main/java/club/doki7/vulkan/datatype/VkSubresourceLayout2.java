@@ -121,6 +121,14 @@ public record VkSubresourceLayout2(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSubresourceLayout2.BYTES));
         }
+
+        public VkSubresourceLayout2[] toArray() {
+            VkSubresourceLayout2[] ret = new VkSubresourceLayout2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSubresourceLayout2 allocate(Arena arena) {

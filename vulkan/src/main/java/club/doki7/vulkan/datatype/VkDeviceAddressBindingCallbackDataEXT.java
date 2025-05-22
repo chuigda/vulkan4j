@@ -124,6 +124,14 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDeviceAddressBindingCallbackDataEXT.BYTES));
         }
+
+        public VkDeviceAddressBindingCallbackDataEXT[] toArray() {
+            VkDeviceAddressBindingCallbackDataEXT[] ret = new VkDeviceAddressBindingCallbackDataEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDeviceAddressBindingCallbackDataEXT allocate(Arena arena) {

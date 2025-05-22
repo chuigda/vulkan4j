@@ -123,6 +123,14 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT[] toArray() {
+            VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT[] ret = new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT allocate(Arena arena) {

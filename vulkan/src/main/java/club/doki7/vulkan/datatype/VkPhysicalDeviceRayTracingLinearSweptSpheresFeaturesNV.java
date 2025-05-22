@@ -122,6 +122,14 @@ public record VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(@NotNull Me
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV[] toArray() {
+            VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV[] ret = new VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV allocate(Arena arena) {

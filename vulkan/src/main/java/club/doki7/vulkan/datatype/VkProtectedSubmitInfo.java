@@ -121,6 +121,14 @@ public record VkProtectedSubmitInfo(@NotNull MemorySegment segment) implements I
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkProtectedSubmitInfo.BYTES));
         }
+
+        public VkProtectedSubmitInfo[] toArray() {
+            VkProtectedSubmitInfo[] ret = new VkProtectedSubmitInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkProtectedSubmitInfo allocate(Arena arena) {

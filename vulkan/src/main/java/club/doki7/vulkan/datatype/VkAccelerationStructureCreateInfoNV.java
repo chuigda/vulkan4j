@@ -122,6 +122,14 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureCreateInfoNV.BYTES));
         }
+
+        public VkAccelerationStructureCreateInfoNV[] toArray() {
+            VkAccelerationStructureCreateInfoNV[] ret = new VkAccelerationStructureCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureCreateInfoNV allocate(Arena arena) {

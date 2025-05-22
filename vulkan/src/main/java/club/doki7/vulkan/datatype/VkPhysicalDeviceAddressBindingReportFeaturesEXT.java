@@ -121,6 +121,14 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(@NotNull MemorySeg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceAddressBindingReportFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceAddressBindingReportFeaturesEXT[] toArray() {
+            VkPhysicalDeviceAddressBindingReportFeaturesEXT[] ret = new VkPhysicalDeviceAddressBindingReportFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceAddressBindingReportFeaturesEXT allocate(Arena arena) {

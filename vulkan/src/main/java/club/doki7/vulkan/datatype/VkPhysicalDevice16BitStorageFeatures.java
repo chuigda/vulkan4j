@@ -124,6 +124,14 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevice16BitStorageFeatures.BYTES));
         }
+
+        public VkPhysicalDevice16BitStorageFeatures[] toArray() {
+            VkPhysicalDevice16BitStorageFeatures[] ret = new VkPhysicalDevice16BitStorageFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevice16BitStorageFeatures allocate(Arena arena) {

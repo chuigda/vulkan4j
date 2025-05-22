@@ -122,6 +122,14 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClusterAccelerationStructureClustersBottomLevelInputNV.BYTES));
         }
+
+        public VkClusterAccelerationStructureClustersBottomLevelInputNV[] toArray() {
+            VkClusterAccelerationStructureClustersBottomLevelInputNV[] ret = new VkClusterAccelerationStructureClustersBottomLevelInputNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClusterAccelerationStructureClustersBottomLevelInputNV allocate(Arena arena) {

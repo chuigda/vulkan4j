@@ -121,6 +121,14 @@ public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoDecodeAV1InlineSessionParametersInfoKHR.BYTES));
         }
+
+        public VkVideoDecodeAV1InlineSessionParametersInfoKHR[] toArray() {
+            VkVideoDecodeAV1InlineSessionParametersInfoKHR[] ret = new VkVideoDecodeAV1InlineSessionParametersInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoDecodeAV1InlineSessionParametersInfoKHR allocate(Arena arena) {

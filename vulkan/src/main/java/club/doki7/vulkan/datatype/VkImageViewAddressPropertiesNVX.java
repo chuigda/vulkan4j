@@ -122,6 +122,14 @@ public record VkImageViewAddressPropertiesNVX(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageViewAddressPropertiesNVX.BYTES));
         }
+
+        public VkImageViewAddressPropertiesNVX[] toArray() {
+            VkImageViewAddressPropertiesNVX[] ret = new VkImageViewAddressPropertiesNVX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageViewAddressPropertiesNVX allocate(Arena arena) {

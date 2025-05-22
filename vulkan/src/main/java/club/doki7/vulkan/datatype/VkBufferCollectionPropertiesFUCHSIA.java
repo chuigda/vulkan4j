@@ -131,6 +131,14 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferCollectionPropertiesFUCHSIA.BYTES));
         }
+
+        public VkBufferCollectionPropertiesFUCHSIA[] toArray() {
+            VkBufferCollectionPropertiesFUCHSIA[] ret = new VkBufferCollectionPropertiesFUCHSIA[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferCollectionPropertiesFUCHSIA allocate(Arena arena) {

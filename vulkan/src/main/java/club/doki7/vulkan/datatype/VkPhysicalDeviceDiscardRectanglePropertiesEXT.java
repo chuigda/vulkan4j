@@ -121,6 +121,14 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceDiscardRectanglePropertiesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceDiscardRectanglePropertiesEXT[] toArray() {
+            VkPhysicalDeviceDiscardRectanglePropertiesEXT[] ret = new VkPhysicalDeviceDiscardRectanglePropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceDiscardRectanglePropertiesEXT allocate(Arena arena) {

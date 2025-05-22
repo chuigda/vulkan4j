@@ -123,6 +123,14 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExportMetalSharedEventInfoEXT.BYTES));
         }
+
+        public VkExportMetalSharedEventInfoEXT[] toArray() {
+            VkExportMetalSharedEventInfoEXT[] ret = new VkExportMetalSharedEventInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExportMetalSharedEventInfoEXT allocate(Arena arena) {

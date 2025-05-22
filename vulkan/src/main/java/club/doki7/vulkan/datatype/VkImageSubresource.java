@@ -114,6 +114,14 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageSubresource.BYTES));
         }
+
+        public VkImageSubresource[] toArray() {
+            VkImageSubresource[] ret = new VkImageSubresource[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageSubresource allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(@NotNull Memor
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT[] toArray() {
+            VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT[] ret = new VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT allocate(Arena arena) {

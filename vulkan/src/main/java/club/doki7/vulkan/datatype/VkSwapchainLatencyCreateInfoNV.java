@@ -121,6 +121,14 @@ public record VkSwapchainLatencyCreateInfoNV(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSwapchainLatencyCreateInfoNV.BYTES));
         }
+
+        public VkSwapchainLatencyCreateInfoNV[] toArray() {
+            VkSwapchainLatencyCreateInfoNV[] ret = new VkSwapchainLatencyCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSwapchainLatencyCreateInfoNV allocate(Arena arena) {

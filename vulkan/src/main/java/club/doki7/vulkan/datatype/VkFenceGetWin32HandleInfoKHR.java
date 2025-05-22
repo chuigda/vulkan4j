@@ -122,6 +122,14 @@ public record VkFenceGetWin32HandleInfoKHR(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkFenceGetWin32HandleInfoKHR.BYTES));
         }
+
+        public VkFenceGetWin32HandleInfoKHR[] toArray() {
+            VkFenceGetWin32HandleInfoKHR[] ret = new VkFenceGetWin32HandleInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkFenceGetWin32HandleInfoKHR allocate(Arena arena) {

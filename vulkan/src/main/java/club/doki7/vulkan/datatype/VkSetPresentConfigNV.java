@@ -122,6 +122,14 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IV
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSetPresentConfigNV.BYTES));
         }
+
+        public VkSetPresentConfigNV[] toArray() {
+            VkSetPresentConfigNV[] ret = new VkSetPresentConfigNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSetPresentConfigNV allocate(Arena arena) {

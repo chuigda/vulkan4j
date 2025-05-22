@@ -122,6 +122,14 @@ public record VkDrmFormatModifierPropertiesList2EXT(@NotNull MemorySegment segme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDrmFormatModifierPropertiesList2EXT.BYTES));
         }
+
+        public VkDrmFormatModifierPropertiesList2EXT[] toArray() {
+            VkDrmFormatModifierPropertiesList2EXT[] ret = new VkDrmFormatModifierPropertiesList2EXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDrmFormatModifierPropertiesList2EXT allocate(Arena arena) {

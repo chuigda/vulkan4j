@@ -122,6 +122,14 @@ public record VkMemoryDedicatedAllocateInfo(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMemoryDedicatedAllocateInfo.BYTES));
         }
+
+        public VkMemoryDedicatedAllocateInfo[] toArray() {
+            VkMemoryDedicatedAllocateInfo[] ret = new VkMemoryDedicatedAllocateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMemoryDedicatedAllocateInfo allocate(Arena arena) {

@@ -128,6 +128,14 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRenderingInfo.BYTES));
         }
+
+        public VkRenderingInfo[] toArray() {
+            VkRenderingInfo[] ret = new VkRenderingInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRenderingInfo allocate(Arena arena) {

@@ -217,6 +217,14 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceLimits.BYTES));
         }
+
+        public VkPhysicalDeviceLimits[] toArray() {
+            VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceLimits allocate(Arena arena) {

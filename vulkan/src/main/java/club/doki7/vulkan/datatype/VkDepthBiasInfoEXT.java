@@ -123,6 +123,14 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDepthBiasInfoEXT.BYTES));
         }
+
+        public VkDepthBiasInfoEXT[] toArray() {
+            VkDepthBiasInfoEXT[] ret = new VkDepthBiasInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDepthBiasInfoEXT allocate(Arena arena) {

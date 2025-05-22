@@ -122,6 +122,14 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(@NotNull MemorySeg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePerStageDescriptorSetFeaturesNV.BYTES));
         }
+
+        public VkPhysicalDevicePerStageDescriptorSetFeaturesNV[] toArray() {
+            VkPhysicalDevicePerStageDescriptorSetFeaturesNV[] ret = new VkPhysicalDevicePerStageDescriptorSetFeaturesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePerStageDescriptorSetFeaturesNV allocate(Arena arena) {

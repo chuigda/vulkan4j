@@ -122,6 +122,14 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPresentRegionsKHR.BYTES));
         }
+
+        public VkPresentRegionsKHR[] toArray() {
+            VkPresentRegionsKHR[] ret = new VkPresentRegionsKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPresentRegionsKHR allocate(Arena arena) {

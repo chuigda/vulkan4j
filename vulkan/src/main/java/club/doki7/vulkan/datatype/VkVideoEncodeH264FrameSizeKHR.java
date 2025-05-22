@@ -114,6 +114,14 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeH264FrameSizeKHR.BYTES));
         }
+
+        public VkVideoEncodeH264FrameSizeKHR[] toArray() {
+            VkVideoEncodeH264FrameSizeKHR[] ret = new VkVideoEncodeH264FrameSizeKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeH264FrameSizeKHR allocate(Arena arena) {

@@ -129,6 +129,14 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureGeometrySpheresDataNV.BYTES));
         }
+
+        public VkAccelerationStructureGeometrySpheresDataNV[] toArray() {
+            VkAccelerationStructureGeometrySpheresDataNV[] ret = new VkAccelerationStructureGeometrySpheresDataNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureGeometrySpheresDataNV allocate(Arena arena) {

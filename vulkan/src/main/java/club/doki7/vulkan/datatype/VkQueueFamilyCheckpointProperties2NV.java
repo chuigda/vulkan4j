@@ -121,6 +121,14 @@ public record VkQueueFamilyCheckpointProperties2NV(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkQueueFamilyCheckpointProperties2NV.BYTES));
         }
+
+        public VkQueueFamilyCheckpointProperties2NV[] toArray() {
+            VkQueueFamilyCheckpointProperties2NV[] ret = new VkQueueFamilyCheckpointProperties2NV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkQueueFamilyCheckpointProperties2NV allocate(Arena arena) {

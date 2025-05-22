@@ -113,6 +113,14 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IVkClearVa
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClearValue.BYTES));
         }
+
+        public VkClearValue[] toArray() {
+            VkClearValue[] ret = new VkClearValue[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClearValue allocate(Arena arena) {

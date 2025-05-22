@@ -113,6 +113,14 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAttachmentSampleLocationsEXT.BYTES));
         }
+
+        public VkAttachmentSampleLocationsEXT[] toArray() {
+            VkAttachmentSampleLocationsEXT[] ret = new VkAttachmentSampleLocationsEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAttachmentSampleLocationsEXT allocate(Arena arena) {

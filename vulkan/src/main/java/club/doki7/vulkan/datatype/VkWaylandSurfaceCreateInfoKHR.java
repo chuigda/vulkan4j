@@ -123,6 +123,14 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkWaylandSurfaceCreateInfoKHR.BYTES));
         }
+
+        public VkWaylandSurfaceCreateInfoKHR[] toArray() {
+            VkWaylandSurfaceCreateInfoKHR[] ret = new VkWaylandSurfaceCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkWaylandSurfaceCreateInfoKHR allocate(Arena arena) {

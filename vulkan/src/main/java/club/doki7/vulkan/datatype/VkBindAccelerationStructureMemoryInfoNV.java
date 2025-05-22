@@ -125,6 +125,14 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBindAccelerationStructureMemoryInfoNV.BYTES));
         }
+
+        public VkBindAccelerationStructureMemoryInfoNV[] toArray() {
+            VkBindAccelerationStructureMemoryInfoNV[] ret = new VkBindAccelerationStructureMemoryInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBindAccelerationStructureMemoryInfoNV allocate(Arena arena) {

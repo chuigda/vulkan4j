@@ -115,6 +115,14 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageSubresourceLayers.BYTES));
         }
+
+        public VkImageSubresourceLayers[] toArray() {
+            VkImageSubresourceLayers[] ret = new VkImageSubresourceLayers[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageSubresourceLayers allocate(Arena arena) {

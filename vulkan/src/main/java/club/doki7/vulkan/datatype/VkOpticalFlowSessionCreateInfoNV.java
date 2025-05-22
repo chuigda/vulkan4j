@@ -129,6 +129,14 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkOpticalFlowSessionCreateInfoNV.BYTES));
         }
+
+        public VkOpticalFlowSessionCreateInfoNV[] toArray() {
+            VkOpticalFlowSessionCreateInfoNV[] ret = new VkOpticalFlowSessionCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkOpticalFlowSessionCreateInfoNV allocate(Arena arena) {

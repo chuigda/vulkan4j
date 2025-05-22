@@ -121,6 +121,14 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceImagelessFramebufferFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceImagelessFramebufferFeatures[] toArray() {
+            VkPhysicalDeviceImagelessFramebufferFeatures[] ret = new VkPhysicalDeviceImagelessFramebufferFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceImagelessFramebufferFeatures allocate(Arena arena) {

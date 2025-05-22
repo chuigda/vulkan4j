@@ -121,6 +121,14 @@ public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkOpticalFlowImageFormatInfoNV.BYTES));
         }
+
+        public VkOpticalFlowImageFormatInfoNV[] toArray() {
+            VkOpticalFlowImageFormatInfoNV[] ret = new VkOpticalFlowImageFormatInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkOpticalFlowImageFormatInfoNV allocate(Arena arena) {

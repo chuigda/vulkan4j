@@ -121,6 +121,14 @@ public record VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(@NotNull Memo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR.BYTES));
         }
+
+        public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR[] toArray() {
+            VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR[] ret = new VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR allocate(Arena arena) {

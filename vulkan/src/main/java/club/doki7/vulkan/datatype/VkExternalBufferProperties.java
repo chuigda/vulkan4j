@@ -121,6 +121,14 @@ public record VkExternalBufferProperties(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExternalBufferProperties.BYTES));
         }
+
+        public VkExternalBufferProperties[] toArray() {
+            VkExternalBufferProperties[] ret = new VkExternalBufferProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExternalBufferProperties allocate(Arena arena) {

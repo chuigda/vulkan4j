@@ -125,6 +125,14 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAcquireNextImageInfoKHR.BYTES));
         }
+
+        public VkAcquireNextImageInfoKHR[] toArray() {
+            VkAcquireNextImageInfoKHR[] ret = new VkAcquireNextImageInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAcquireNextImageInfoKHR allocate(Arena arena) {

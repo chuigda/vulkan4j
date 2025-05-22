@@ -114,6 +114,14 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IVkClearRec
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClearRect.BYTES));
         }
+
+        public VkClearRect[] toArray() {
+            VkClearRect[] ret = new VkClearRect[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClearRect allocate(Arena arena) {

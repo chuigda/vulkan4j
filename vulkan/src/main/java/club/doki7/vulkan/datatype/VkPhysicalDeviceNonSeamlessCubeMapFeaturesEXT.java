@@ -121,6 +121,14 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(@NotNull MemorySegme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT[] toArray() {
+            VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT[] ret = new VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT allocate(Arena arena) {

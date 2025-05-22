@@ -121,6 +121,14 @@ public record VkDedicatedAllocationImageCreateInfoNV(@NotNull MemorySegment segm
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDedicatedAllocationImageCreateInfoNV.BYTES));
         }
+
+        public VkDedicatedAllocationImageCreateInfoNV[] toArray() {
+            VkDedicatedAllocationImageCreateInfoNV[] ret = new VkDedicatedAllocationImageCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDedicatedAllocationImageCreateInfoNV allocate(Arena arena) {

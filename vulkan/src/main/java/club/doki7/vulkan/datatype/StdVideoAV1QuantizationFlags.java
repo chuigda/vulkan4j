@@ -113,6 +113,14 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoAV1QuantizationFlags.BYTES));
         }
+
+        public StdVideoAV1QuantizationFlags[] toArray() {
+            StdVideoAV1QuantizationFlags[] ret = new StdVideoAV1QuantizationFlags[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoAV1QuantizationFlags allocate(Arena arena) {

@@ -123,6 +123,14 @@ public record VkConditionalRenderingBeginInfoEXT(@NotNull MemorySegment segment)
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkConditionalRenderingBeginInfoEXT.BYTES));
         }
+
+        public VkConditionalRenderingBeginInfoEXT[] toArray() {
+            VkConditionalRenderingBeginInfoEXT[] ret = new VkConditionalRenderingBeginInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkConditionalRenderingBeginInfoEXT allocate(Arena arena) {

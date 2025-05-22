@@ -122,6 +122,14 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceLayeredApiPropertiesListKHR.BYTES));
         }
+
+        public VkPhysicalDeviceLayeredApiPropertiesListKHR[] toArray() {
+            VkPhysicalDeviceLayeredApiPropertiesListKHR[] ret = new VkPhysicalDeviceLayeredApiPropertiesListKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceLayeredApiPropertiesListKHR allocate(Arena arena) {

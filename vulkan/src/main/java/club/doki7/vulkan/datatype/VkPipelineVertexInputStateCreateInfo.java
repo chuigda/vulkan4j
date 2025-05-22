@@ -125,6 +125,14 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineVertexInputStateCreateInfo.BYTES));
         }
+
+        public VkPipelineVertexInputStateCreateInfo[] toArray() {
+            VkPipelineVertexInputStateCreateInfo[] ret = new VkPipelineVertexInputStateCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineVertexInputStateCreateInfo allocate(Arena arena) {

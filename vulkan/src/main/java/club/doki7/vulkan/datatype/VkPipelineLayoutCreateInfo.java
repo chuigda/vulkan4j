@@ -125,6 +125,14 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineLayoutCreateInfo.BYTES));
         }
+
+        public VkPipelineLayoutCreateInfo[] toArray() {
+            VkPipelineLayoutCreateInfo[] ret = new VkPipelineLayoutCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineLayoutCreateInfo allocate(Arena arena) {

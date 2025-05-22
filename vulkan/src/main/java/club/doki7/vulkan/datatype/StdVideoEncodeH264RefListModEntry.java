@@ -112,6 +112,14 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoEncodeH264RefListModEntry.BYTES));
         }
+
+        public StdVideoEncodeH264RefListModEntry[] toArray() {
+            StdVideoEncodeH264RefListModEntry[] ret = new StdVideoEncodeH264RefListModEntry[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoEncodeH264RefListModEntry allocate(Arena arena) {

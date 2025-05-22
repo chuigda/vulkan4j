@@ -121,6 +121,14 @@ public record VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(@NotNull MemoryS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT[] toArray() {
+            VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT[] ret = new VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT allocate(Arena arena) {

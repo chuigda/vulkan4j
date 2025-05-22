@@ -123,6 +123,14 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkClusterAccelerationStructureMoveObjectsInputNV.BYTES));
         }
+
+        public VkClusterAccelerationStructureMoveObjectsInputNV[] toArray() {
+            VkClusterAccelerationStructureMoveObjectsInputNV[] ret = new VkClusterAccelerationStructureMoveObjectsInputNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkClusterAccelerationStructureMoveObjectsInputNV allocate(Arena arena) {

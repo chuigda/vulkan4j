@@ -124,6 +124,14 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkTimelineSemaphoreSubmitInfo.BYTES));
         }
+
+        public VkTimelineSemaphoreSubmitInfo[] toArray() {
+            VkTimelineSemaphoreSubmitInfo[] ret = new VkTimelineSemaphoreSubmitInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkTimelineSemaphoreSubmitInfo allocate(Arena arena) {

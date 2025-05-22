@@ -121,6 +121,14 @@ public record VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(@NotNull Me
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT.BYTES));
         }
+
+        public VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT[] toArray() {
+            VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT[] ret = new VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT allocate(Arena arena) {

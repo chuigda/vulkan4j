@@ -123,6 +123,14 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeH265PictureInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeH265PictureInfoKHR[] toArray() {
+            VkVideoEncodeH265PictureInfoKHR[] ret = new VkVideoEncodeH265PictureInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeH265PictureInfoKHR allocate(Arena arena) {

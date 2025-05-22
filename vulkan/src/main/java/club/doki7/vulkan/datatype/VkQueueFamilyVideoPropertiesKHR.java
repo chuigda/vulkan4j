@@ -121,6 +121,14 @@ public record VkQueueFamilyVideoPropertiesKHR(@NotNull MemorySegment segment) im
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkQueueFamilyVideoPropertiesKHR.BYTES));
         }
+
+        public VkQueueFamilyVideoPropertiesKHR[] toArray() {
+            VkQueueFamilyVideoPropertiesKHR[] ret = new VkQueueFamilyVideoPropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkQueueFamilyVideoPropertiesKHR allocate(Arena arena) {

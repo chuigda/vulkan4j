@@ -122,6 +122,14 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderCoreProperties2AMD.BYTES));
         }
+
+        public VkPhysicalDeviceShaderCoreProperties2AMD[] toArray() {
+            VkPhysicalDeviceShaderCoreProperties2AMD[] ret = new VkPhysicalDeviceShaderCoreProperties2AMD[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderCoreProperties2AMD allocate(Arena arena) {

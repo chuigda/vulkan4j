@@ -121,6 +121,14 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkImageSwapchainCreateInfoKHR.BYTES));
         }
+
+        public VkImageSwapchainCreateInfoKHR[] toArray() {
+            VkImageSwapchainCreateInfoKHR[] ret = new VkImageSwapchainCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkImageSwapchainCreateInfoKHR allocate(Arena arena) {

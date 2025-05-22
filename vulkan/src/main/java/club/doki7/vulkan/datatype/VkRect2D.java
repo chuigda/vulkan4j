@@ -113,6 +113,14 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IVkRect2D {
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkRect2D.BYTES));
         }
+
+        public VkRect2D[] toArray() {
+            VkRect2D[] ret = new VkRect2D[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkRect2D allocate(Arena arena) {

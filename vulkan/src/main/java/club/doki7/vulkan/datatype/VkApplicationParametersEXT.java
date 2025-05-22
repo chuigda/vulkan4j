@@ -124,6 +124,14 @@ public record VkApplicationParametersEXT(@NotNull MemorySegment segment) impleme
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkApplicationParametersEXT.BYTES));
         }
+
+        public VkApplicationParametersEXT[] toArray() {
+            VkApplicationParametersEXT[] ret = new VkApplicationParametersEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkApplicationParametersEXT allocate(Arena arena) {

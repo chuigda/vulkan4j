@@ -122,6 +122,14 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCuFunctionCreateInfoNVX.BYTES));
         }
+
+        public VkCuFunctionCreateInfoNVX[] toArray() {
+            VkCuFunctionCreateInfoNVX[] ret = new VkCuFunctionCreateInfoNVX[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCuFunctionCreateInfoNVX allocate(Arena arena) {

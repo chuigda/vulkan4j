@@ -121,6 +121,14 @@ public record VkBufferCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segmen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferCaptureDescriptorDataInfoEXT.BYTES));
         }
+
+        public VkBufferCaptureDescriptorDataInfoEXT[] toArray() {
+            VkBufferCaptureDescriptorDataInfoEXT[] ret = new VkBufferCaptureDescriptorDataInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferCaptureDescriptorDataInfoEXT allocate(Arena arena) {

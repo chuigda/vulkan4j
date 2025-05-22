@@ -114,6 +114,14 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * StdVideoH265SubLayerHrdParameters.BYTES));
         }
+
+        public StdVideoH265SubLayerHrdParameters[] toArray() {
+            StdVideoH265SubLayerHrdParameters[] ret = new StdVideoH265SubLayerHrdParameters[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static StdVideoH265SubLayerHrdParameters allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkSurfaceCapabilities2KHR(@NotNull MemorySegment segment) implemen
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSurfaceCapabilities2KHR.BYTES));
         }
+
+        public VkSurfaceCapabilities2KHR[] toArray() {
+            VkSurfaceCapabilities2KHR[] ret = new VkSurfaceCapabilities2KHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSurfaceCapabilities2KHR allocate(Arena arena) {

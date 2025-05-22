@@ -121,6 +121,14 @@ public record VkCommandBufferInheritanceConditionalRenderingInfoEXT(@NotNull Mem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCommandBufferInheritanceConditionalRenderingInfoEXT.BYTES));
         }
+
+        public VkCommandBufferInheritanceConditionalRenderingInfoEXT[] toArray() {
+            VkCommandBufferInheritanceConditionalRenderingInfoEXT[] ret = new VkCommandBufferInheritanceConditionalRenderingInfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCommandBufferInheritanceConditionalRenderingInfoEXT allocate(Arena arena) {

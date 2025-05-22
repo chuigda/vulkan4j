@@ -130,6 +130,14 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkCooperativeMatrixFlexibleDimensionsPropertiesNV.BYTES));
         }
+
+        public VkCooperativeMatrixFlexibleDimensionsPropertiesNV[] toArray() {
+            VkCooperativeMatrixFlexibleDimensionsPropertiesNV[] ret = new VkCooperativeMatrixFlexibleDimensionsPropertiesNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkCooperativeMatrixFlexibleDimensionsPropertiesNV allocate(Arena arena) {

@@ -121,6 +121,14 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES));
         }
+
+        public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures[] toArray() {
+            VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures[] ret = new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures allocate(Arena arena) {

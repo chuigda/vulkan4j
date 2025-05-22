@@ -121,6 +121,14 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSurfaceFullScreenExclusiveWin32InfoEXT.BYTES));
         }
+
+        public VkSurfaceFullScreenExclusiveWin32InfoEXT[] toArray() {
+            VkSurfaceFullScreenExclusiveWin32InfoEXT[] ret = new VkSurfaceFullScreenExclusiveWin32InfoEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSurfaceFullScreenExclusiveWin32InfoEXT allocate(Arena arena) {

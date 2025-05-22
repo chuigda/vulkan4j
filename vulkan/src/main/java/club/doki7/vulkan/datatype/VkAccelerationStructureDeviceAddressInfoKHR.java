@@ -121,6 +121,14 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkAccelerationStructureDeviceAddressInfoKHR.BYTES));
         }
+
+        public VkAccelerationStructureDeviceAddressInfoKHR[] toArray() {
+            VkAccelerationStructureDeviceAddressInfoKHR[] ret = new VkAccelerationStructureDeviceAddressInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkAccelerationStructureDeviceAddressInfoKHR allocate(Arena arena) {

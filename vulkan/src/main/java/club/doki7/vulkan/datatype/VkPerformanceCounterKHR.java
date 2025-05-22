@@ -124,6 +124,14 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPerformanceCounterKHR.BYTES));
         }
+
+        public VkPerformanceCounterKHR[] toArray() {
+            VkPerformanceCounterKHR[] ret = new VkPerformanceCounterKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPerformanceCounterKHR allocate(Arena arena) {

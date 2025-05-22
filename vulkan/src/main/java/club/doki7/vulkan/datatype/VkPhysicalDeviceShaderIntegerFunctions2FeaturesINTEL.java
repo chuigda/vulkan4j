@@ -121,6 +121,14 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(@NotNull Memo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.BYTES));
         }
+
+        public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL[] toArray() {
+            VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL[] ret = new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL allocate(Arena arena) {

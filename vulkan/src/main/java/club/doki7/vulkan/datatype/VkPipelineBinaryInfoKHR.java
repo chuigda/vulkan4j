@@ -122,6 +122,14 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPipelineBinaryInfoKHR.BYTES));
         }
+
+        public VkPipelineBinaryInfoKHR[] toArray() {
+            VkPipelineBinaryInfoKHR[] ret = new VkPipelineBinaryInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPipelineBinaryInfoKHR allocate(Arena arena) {

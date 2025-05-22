@@ -121,6 +121,14 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBufferUsageFlags2CreateInfo.BYTES));
         }
+
+        public VkBufferUsageFlags2CreateInfo[] toArray() {
+            VkBufferUsageFlags2CreateInfo[] ret = new VkBufferUsageFlags2CreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBufferUsageFlags2CreateInfo allocate(Arena arena) {

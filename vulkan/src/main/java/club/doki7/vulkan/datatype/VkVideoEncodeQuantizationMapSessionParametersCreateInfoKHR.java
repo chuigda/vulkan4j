@@ -121,6 +121,14 @@ public record VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR(@NotNul
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR.BYTES));
         }
+
+        public VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR[] toArray() {
+            VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR[] ret = new VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR allocate(Arena arena) {

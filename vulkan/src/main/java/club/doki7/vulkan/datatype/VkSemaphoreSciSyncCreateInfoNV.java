@@ -122,6 +122,14 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkSemaphoreSciSyncCreateInfoNV.BYTES));
         }
+
+        public VkSemaphoreSciSyncCreateInfoNV[] toArray() {
+            VkSemaphoreSciSyncCreateInfoNV[] ret = new VkSemaphoreSciSyncCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkSemaphoreSciSyncCreateInfoNV allocate(Arena arena) {

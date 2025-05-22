@@ -121,6 +121,14 @@ public record VkExternalMemoryImageCreateInfoNV(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkExternalMemoryImageCreateInfoNV.BYTES));
         }
+
+        public VkExternalMemoryImageCreateInfoNV[] toArray() {
+            VkExternalMemoryImageCreateInfoNV[] ret = new VkExternalMemoryImageCreateInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkExternalMemoryImageCreateInfoNV allocate(Arena arena) {

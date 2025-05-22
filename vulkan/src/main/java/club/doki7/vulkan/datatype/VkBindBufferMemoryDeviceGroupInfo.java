@@ -122,6 +122,14 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkBindBufferMemoryDeviceGroupInfo.BYTES));
         }
+
+        public VkBindBufferMemoryDeviceGroupInfo[] toArray() {
+            VkBindBufferMemoryDeviceGroupInfo[] ret = new VkBindBufferMemoryDeviceGroupInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkBindBufferMemoryDeviceGroupInfo allocate(Arena arena) {

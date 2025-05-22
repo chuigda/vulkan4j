@@ -114,6 +114,14 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkMicromapUsageEXT.BYTES));
         }
+
+        public VkMicromapUsageEXT[] toArray() {
+            VkMicromapUsageEXT[] ret = new VkMicromapUsageEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkMicromapUsageEXT allocate(Arena arena) {

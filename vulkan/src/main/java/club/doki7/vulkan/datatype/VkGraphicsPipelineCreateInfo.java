@@ -137,6 +137,14 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkGraphicsPipelineCreateInfo.BYTES));
         }
+
+        public VkGraphicsPipelineCreateInfo[] toArray() {
+            VkGraphicsPipelineCreateInfo[] ret = new VkGraphicsPipelineCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkGraphicsPipelineCreateInfo allocate(Arena arena) {

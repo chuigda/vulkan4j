@@ -121,6 +121,14 @@ public record VkDisplayModeProperties2KHR(@NotNull MemorySegment segment) implem
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkDisplayModeProperties2KHR.BYTES));
         }
+
+        public VkDisplayModeProperties2KHR[] toArray() {
+            VkDisplayModeProperties2KHR[] ret = new VkDisplayModeProperties2KHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkDisplayModeProperties2KHR allocate(Arena arena) {

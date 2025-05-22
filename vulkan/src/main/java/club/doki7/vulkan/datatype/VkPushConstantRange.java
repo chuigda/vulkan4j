@@ -114,6 +114,14 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkPushConstantRange.BYTES));
         }
+
+        public VkPushConstantRange[] toArray() {
+            VkPushConstantRange[] ret = new VkPushConstantRange[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkPushConstantRange allocate(Arena arena) {

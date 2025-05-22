@@ -113,6 +113,14 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IVkGeo
         public Ptr slice(long end) {
             return new Ptr(segment.asSlice(0, end * VkGeometryDataNV.BYTES));
         }
+
+        public VkGeometryDataNV[] toArray() {
+            VkGeometryDataNV[] ret = new VkGeometryDataNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
     }
 
     public static VkGeometryDataNV allocate(Arena arena) {
