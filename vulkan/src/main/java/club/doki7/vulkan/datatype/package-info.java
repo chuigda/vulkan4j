@@ -51,9 +51,9 @@
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassBeginInfo {
 ///     // ...
-///     VkRect2D renderArea; // @link substring="VkRect2D" target="VkRect2D" @link substring="renderArea" target="#renderArea"
-///     uint32_t clearValueCount; // optional // @link substring="clearValueCount" target="#clearValueCount"
-///     VkClearValue const* pClearValues; // @link substring="VkClearValue" target="VkClearValue" @link substring="pClearValues" target="#pClearValues"
+///     VkRect2D renderArea; // @link substring="VkRect2D" target="VkRect2D"
+///     uint32_t clearValueCount;
+///     VkClearValue const* pClearValues; // @link substring="VkClearValue" target="VkClearValue"
 /// } VkRenderPassBeginInfo;
 /// }
 ///
