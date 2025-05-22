@@ -29,8 +29,8 @@ public final class VkEntryCommands {
     // region command wrappers
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateInstance.html"><code>vkCreateInstance</code></a>
     public @enumtype(VkResult.class) int createInstance(
-        @pointer(target=IVkInstanceCreateInfo.class) IVkInstanceCreateInfo pCreateInfo,
-        @Nullable @pointer(target=IVkAllocationCallbacks.class) IVkAllocationCallbacks pAllocator,
+        @pointer(target=IVkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
+        @Nullable @pointer(target=IVkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
         @pointer(target=VkInstance.class) VkInstance.Ptr pInstance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateInstance);

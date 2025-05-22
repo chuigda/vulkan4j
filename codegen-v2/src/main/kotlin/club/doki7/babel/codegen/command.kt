@@ -244,7 +244,11 @@ private fun generateInputOutputType(type: CType, optional: Boolean): String {
         is CVoidType -> "void"
         is CPointerType -> when (type.pointee) {
             is CNonRefType -> "${nullablePrefix}${type.pointee.jPtrType}"
-            is CStructType -> "${nullablePrefix}@pointer(target=${type.pointee.jType}.class) ${type.pointee.jType}"
+            is CStructType -> if (type.pointerToOne) {
+                "${nullablePrefix}@pointer(target=${type.pointee.jType}.class) ${type.pointee.name}"
+            } else {
+                "${nullablePrefix}@pointer(target=${type.pointee.jType}.class) ${type.pointee.jType}"
+            }
             is CHandleType -> "${nullablePrefix}@pointer(target=${type.pointee.name}.class) ${type.pointee.name}.Ptr"
             is CPointerType -> "${nullablePrefix}PointerPtr"
             is CVoidType -> type.jType
