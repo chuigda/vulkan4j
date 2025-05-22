@@ -2,6 +2,12 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#ifdef _MSC_VER
+#   define EXPORT __declspec(dllexport)
+#else
+#   define EXPORT __attribute__((visibility("default")))
+#endif
+
 #define ASSERT_EQ(a, b) do { if ((a) != (b)) { \
     fprintf(stderr, "Assertion failed: %s == %s\n", #a, #b); \
     exit(EXIT_FAILURE); \
@@ -19,7 +25,7 @@ struct Bitfield1 {
 };
 
 // pattern 1: 10101010
-extern void checkBitfield1(struct Bitfield1 const* bf1) {
+EXPORT extern void checkBitfield1(struct Bitfield1 const* bf1) {
     ASSERT_EQ(bf1->bit1, 1);
     ASSERT_EQ(bf1->bit2, 0);
     ASSERT_EQ(bf1->bit3, 1);
@@ -31,7 +37,7 @@ extern void checkBitfield1(struct Bitfield1 const* bf1) {
 }
 
 // pattern 2: 01010101
-extern void checkBitfield2(struct Bitfield1 const* bf1) {
+EXPORT extern void checkBitfield2(struct Bitfield1 const* bf1) {
     ASSERT_EQ(bf1->bit1, 0);
     ASSERT_EQ(bf1->bit2, 1);
     ASSERT_EQ(bf1->bit3, 0);
@@ -43,7 +49,7 @@ extern void checkBitfield2(struct Bitfield1 const* bf1) {
 }
 
 // pattern 3: 11110000
-extern void checkBitfield3(struct Bitfield1 const* bf1) {
+EXPORT extern void checkBitfield3(struct Bitfield1 const* bf1) {
     ASSERT_EQ(bf1->bit1, 1);
     ASSERT_EQ(bf1->bit2, 1);
     ASSERT_EQ(bf1->bit3, 1);
@@ -55,7 +61,7 @@ extern void checkBitfield3(struct Bitfield1 const* bf1) {
 }
 
 // pattern 4: 00001111
-extern void checkBitfield4(struct Bitfield1 const* bf1) {
+EXPORT extern void checkBitfield4(struct Bitfield1 const* bf1) {
     ASSERT_EQ(bf1->bit1, 0);
     ASSERT_EQ(bf1->bit2, 0);
     ASSERT_EQ(bf1->bit3, 0);
@@ -72,7 +78,7 @@ struct Bitfield2 {
 };
 
 // pattern: 0x0D00_0721
-extern void checkBitfield5(struct Bitfield2 *bf2) {
+EXPORT extern void checkBitfield5(struct Bitfield2 *bf2) {
     ASSERT_EQ(bf2->ayachi_ne, 0x0D0007);
     ASSERT_EQ(bf2->ne, 0x21);
 }

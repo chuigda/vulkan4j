@@ -46,6 +46,10 @@ build/
 *.so
 *.lib
 *.a
+*.pdb
+*.ilk
+*.exp
+*.obj
 
 # Assembly plugin produced files
 tutorial/dependency-reduced-pom.xml
