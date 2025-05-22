@@ -25,7 +25,12 @@ class CVoidType : CType {
 
 val voidType = CVoidType()
 
-data class CPointerType(val pointee: CType, val const: Boolean, val comment: String?) : CType {
+data class CPointerType(
+    val pointee: CType,
+    val const: Boolean,
+    val pointerToOne: Boolean,
+    val comment: String?,
+) : CType {
     override val jType: String = if (comment != null) {
         """@pointer(comment="$comment") MemorySegment"""
     }
@@ -161,7 +166,7 @@ data class CFloatType(override val byteSize: Int) : CFixedSizeType {
 }
 
 data class CStructType(val name: String): CType {
-    override val jType: String = name
+    override val jType: String = "I$name"
     override val jLayout: String = "$name.LAYOUT"
     override val jLayoutType: String = "StructLayout"
     override val cType: String = name
@@ -249,7 +254,7 @@ private val cSizeType = CPlatformDependentIntType(
     "PointerPtr"
 )
 
-private val pvoidType = CPointerType(voidType, false, null)
+private val pvoidType = CPointerType(voidType, const = false, pointerToOne = false, comment = null)
 
 private val knownTypes = mapOf(
     // Fundamental types
@@ -341,7 +346,7 @@ private val knownTypes = mapOf(
     "HINSTANCE" to pvoidType,
     "HMONITOR" to pvoidType,
     "HWND" to pvoidType,
-    "LPCWSTR" to CPointerType(uint16Type, true, null),
+    "LPCWSTR" to CPointerType(uint16Type, const = true, pointerToOne = false, comment = null),
     "SECURITY_ATTRIBUTES" to voidType,
     "HGLRC" to pvoidType,
 
@@ -398,7 +403,7 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
             }
 
             val pointee = lowerType(registry, refRegistries, type.pointee)
-            CPointerType(pointee, type.const, comment=null)
+            CPointerType(pointee, type.const, type.pointerToOne, comment=null)
         }
         is IdentifierType -> lowerIdentifierType(registry, refRegistries, type)
     }
@@ -445,7 +450,7 @@ fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBas
         CHandleType(type.ident.value)
     }
     else if (registry.functionTypedefs.contains(type.ident)) {
-        CPointerType(voidType, false, comment=type.ident.value)
+        CPointerType(voidType, false, pointerToOne = true, comment=type.ident.value)
     }
     else if (registry.aliases.contains(type.ident)) {
         val alias = registry.aliases[type.ident]!!

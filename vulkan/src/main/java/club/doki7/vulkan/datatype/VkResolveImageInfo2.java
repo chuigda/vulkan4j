@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -35,13 +36,13 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_RESOLVE_IMAGE_INFO_2`
 ///
-/// The {@code allocate} ({@link VkResolveImageInfo2#allocate(Arena)}, {@link VkResolveImageInfo2#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkResolveImageInfo2#allocate(Arena)}, {@link VkResolveImageInfo2#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkResolveImageInfo2#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -51,19 +52,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkResolveImageInfo2.html"><code>VkResolveImageInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IPointer {
+public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVkResolveImageInfo2 {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkResolveImageInfo2.html"><code>VkResolveImageInfo2</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkResolveImageInfo2}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkResolveImageInfo2 to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkResolveImageInfo2.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkResolveImageInfo2 {
+        public long size() {
+            return segment.byteSize() / VkResolveImageInfo2.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkResolveImageInfo2 at(long index) {
+            return new VkResolveImageInfo2(segment.asSlice(index * VkResolveImageInfo2.BYTES, VkResolveImageInfo2.BYTES));
+        }
+
+        public void write(long index, @NotNull VkResolveImageInfo2 value) {
+            MemorySegment s = segment.asSlice(index * VkResolveImageInfo2.BYTES, VkResolveImageInfo2.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkResolveImageInfo2.BYTES, VkResolveImageInfo2.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkResolveImageInfo2.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkResolveImageInfo2.BYTES,
+                (end - start) * VkResolveImageInfo2.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkResolveImageInfo2.BYTES));
+        }
+
+        public VkResolveImageInfo2[] toArray() {
+            VkResolveImageInfo2[] ret = new VkResolveImageInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkResolveImageInfo2 allocate(Arena arena) {
         VkResolveImageInfo2 ret = new VkResolveImageInfo2(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.RESOLVE_IMAGE_INFO_2);
         return ret;
     }
 
-    public static VkResolveImageInfo2[] allocate(Arena arena, int count) {
+    public static VkResolveImageInfo2.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkResolveImageInfo2[] ret = new VkResolveImageInfo2[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkResolveImageInfo2(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.RESOLVE_IMAGE_INFO_2);
+        VkResolveImageInfo2.Ptr ret = new VkResolveImageInfo2.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.RESOLVE_IMAGE_INFO_2);
         }
         return ret;
     }
@@ -71,14 +154,6 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IPo
     public static VkResolveImageInfo2 clone(Arena arena, VkResolveImageInfo2 src) {
         VkResolveImageInfo2 ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkResolveImageInfo2[] clone(Arena arena, VkResolveImageInfo2[] src) {
-        VkResolveImageInfo2[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -154,31 +229,27 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IPo
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @Nullable VkImageResolve2 pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkImageResolve2(s);
-    }
-
-    public void pRegions(@Nullable VkImageResolve2 value) {
+    public void pRegions(@Nullable IVkImageResolve2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkImageResolve2[] pRegions(int assumedCount) {
+    @unsafe public @Nullable VkImageResolve2.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkImageResolve2.BYTES);
-        VkImageResolve2[] ret = new VkImageResolve2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkImageResolve2(s.asSlice(i * VkImageResolve2.BYTES, VkImageResolve2.BYTES));
+        return new VkImageResolve2.Ptr(s);
+    }
+
+    public @Nullable VkImageResolve2 pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkImageResolve2(s);
     }
 
     public @pointer(target=VkImageResolve2.class) MemorySegment pRegionsRaw() {

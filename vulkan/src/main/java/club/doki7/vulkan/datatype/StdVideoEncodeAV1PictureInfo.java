@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -53,7 +54,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -61,31 +62,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1PictureInfo {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoEncodeAV1PictureInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoEncodeAV1PictureInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoEncodeAV1PictureInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1PictureInfo {
+        public long size() {
+            return segment.byteSize() / StdVideoEncodeAV1PictureInfo.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoEncodeAV1PictureInfo at(long index) {
+            return new StdVideoEncodeAV1PictureInfo(segment.asSlice(index * StdVideoEncodeAV1PictureInfo.BYTES, StdVideoEncodeAV1PictureInfo.BYTES));
+        }
+
+        public void write(long index, @NotNull StdVideoEncodeAV1PictureInfo value) {
+            MemorySegment s = segment.asSlice(index * StdVideoEncodeAV1PictureInfo.BYTES, StdVideoEncodeAV1PictureInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * StdVideoEncodeAV1PictureInfo.BYTES, StdVideoEncodeAV1PictureInfo.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * StdVideoEncodeAV1PictureInfo.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * StdVideoEncodeAV1PictureInfo.BYTES,
+                (end - start) * StdVideoEncodeAV1PictureInfo.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * StdVideoEncodeAV1PictureInfo.BYTES));
+        }
+
+        public StdVideoEncodeAV1PictureInfo[] toArray() {
+            StdVideoEncodeAV1PictureInfo[] ret = new StdVideoEncodeAV1PictureInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static StdVideoEncodeAV1PictureInfo allocate(Arena arena) {
         return new StdVideoEncodeAV1PictureInfo(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoEncodeAV1PictureInfo[] allocate(Arena arena, int count) {
+    public static StdVideoEncodeAV1PictureInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeAV1PictureInfo[] ret = new StdVideoEncodeAV1PictureInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1PictureInfo(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeAV1PictureInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeAV1PictureInfo clone(Arena arena, StdVideoEncodeAV1PictureInfo src) {
         StdVideoEncodeAV1PictureInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoEncodeAV1PictureInfo[] clone(Arena arena, StdVideoEncodeAV1PictureInfo[] src) {
-        StdVideoEncodeAV1PictureInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -226,31 +298,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$delta_frame_id_minus_1, OFFSET$delta_frame_id_minus_1, value);
     }
 
-    public @Nullable StdVideoAV1TileInfo pTileInfo() {
-        MemorySegment s = pTileInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1TileInfo(s);
-    }
-
-    public void pTileInfo(@Nullable StdVideoAV1TileInfo value) {
+    public void pTileInfo(@Nullable IStdVideoAV1TileInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTileInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1TileInfo[] pTileInfo(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1TileInfo.Ptr pTileInfo(int assumedCount) {
         MemorySegment s = pTileInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1TileInfo.BYTES);
-        StdVideoAV1TileInfo[] ret = new StdVideoAV1TileInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1TileInfo(s.asSlice(i * StdVideoAV1TileInfo.BYTES, StdVideoAV1TileInfo.BYTES));
+        return new StdVideoAV1TileInfo.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1TileInfo pTileInfo() {
+        MemorySegment s = pTileInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1TileInfo(s);
     }
 
     public @pointer(target=StdVideoAV1TileInfo.class) MemorySegment pTileInfoRaw() {
@@ -261,31 +329,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pTileInfo, OFFSET$pTileInfo, value);
     }
 
-    public @Nullable StdVideoAV1Quantization pQuantization() {
-        MemorySegment s = pQuantizationRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1Quantization(s);
-    }
-
-    public void pQuantization(@Nullable StdVideoAV1Quantization value) {
+    public void pQuantization(@Nullable IStdVideoAV1Quantization value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQuantizationRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1Quantization[] pQuantization(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1Quantization.Ptr pQuantization(int assumedCount) {
         MemorySegment s = pQuantizationRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1Quantization.BYTES);
-        StdVideoAV1Quantization[] ret = new StdVideoAV1Quantization[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1Quantization(s.asSlice(i * StdVideoAV1Quantization.BYTES, StdVideoAV1Quantization.BYTES));
+        return new StdVideoAV1Quantization.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1Quantization pQuantization() {
+        MemorySegment s = pQuantizationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1Quantization(s);
     }
 
     public @pointer(target=StdVideoAV1Quantization.class) MemorySegment pQuantizationRaw() {
@@ -296,31 +360,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pQuantization, OFFSET$pQuantization, value);
     }
 
-    public @Nullable StdVideoAV1Segmentation pSegmentation() {
-        MemorySegment s = pSegmentationRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1Segmentation(s);
-    }
-
-    public void pSegmentation(@Nullable StdVideoAV1Segmentation value) {
+    public void pSegmentation(@Nullable IStdVideoAV1Segmentation value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSegmentationRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1Segmentation[] pSegmentation(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1Segmentation.Ptr pSegmentation(int assumedCount) {
         MemorySegment s = pSegmentationRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1Segmentation.BYTES);
-        StdVideoAV1Segmentation[] ret = new StdVideoAV1Segmentation[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1Segmentation(s.asSlice(i * StdVideoAV1Segmentation.BYTES, StdVideoAV1Segmentation.BYTES));
+        return new StdVideoAV1Segmentation.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1Segmentation pSegmentation() {
+        MemorySegment s = pSegmentationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1Segmentation(s);
     }
 
     public @pointer(target=StdVideoAV1Segmentation.class) MemorySegment pSegmentationRaw() {
@@ -331,31 +391,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pSegmentation, OFFSET$pSegmentation, value);
     }
 
-    public @Nullable StdVideoAV1LoopFilter pLoopFilter() {
-        MemorySegment s = pLoopFilterRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1LoopFilter(s);
-    }
-
-    public void pLoopFilter(@Nullable StdVideoAV1LoopFilter value) {
+    public void pLoopFilter(@Nullable IStdVideoAV1LoopFilter value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLoopFilterRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1LoopFilter[] pLoopFilter(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1LoopFilter.Ptr pLoopFilter(int assumedCount) {
         MemorySegment s = pLoopFilterRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1LoopFilter.BYTES);
-        StdVideoAV1LoopFilter[] ret = new StdVideoAV1LoopFilter[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1LoopFilter(s.asSlice(i * StdVideoAV1LoopFilter.BYTES, StdVideoAV1LoopFilter.BYTES));
+        return new StdVideoAV1LoopFilter.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1LoopFilter pLoopFilter() {
+        MemorySegment s = pLoopFilterRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1LoopFilter(s);
     }
 
     public @pointer(target=StdVideoAV1LoopFilter.class) MemorySegment pLoopFilterRaw() {
@@ -366,31 +422,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pLoopFilter, OFFSET$pLoopFilter, value);
     }
 
-    public @Nullable StdVideoAV1CDEF pCDEF() {
-        MemorySegment s = pCDEFRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1CDEF(s);
-    }
-
-    public void pCDEF(@Nullable StdVideoAV1CDEF value) {
+    public void pCDEF(@Nullable IStdVideoAV1CDEF value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCDEFRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1CDEF[] pCDEF(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1CDEF.Ptr pCDEF(int assumedCount) {
         MemorySegment s = pCDEFRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1CDEF.BYTES);
-        StdVideoAV1CDEF[] ret = new StdVideoAV1CDEF[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1CDEF(s.asSlice(i * StdVideoAV1CDEF.BYTES, StdVideoAV1CDEF.BYTES));
+        return new StdVideoAV1CDEF.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1CDEF pCDEF() {
+        MemorySegment s = pCDEFRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1CDEF(s);
     }
 
     public @pointer(target=StdVideoAV1CDEF.class) MemorySegment pCDEFRaw() {
@@ -401,31 +453,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pCDEF, OFFSET$pCDEF, value);
     }
 
-    public @Nullable StdVideoAV1LoopRestoration pLoopRestoration() {
-        MemorySegment s = pLoopRestorationRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1LoopRestoration(s);
-    }
-
-    public void pLoopRestoration(@Nullable StdVideoAV1LoopRestoration value) {
+    public void pLoopRestoration(@Nullable IStdVideoAV1LoopRestoration value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLoopRestorationRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1LoopRestoration[] pLoopRestoration(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1LoopRestoration.Ptr pLoopRestoration(int assumedCount) {
         MemorySegment s = pLoopRestorationRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1LoopRestoration.BYTES);
-        StdVideoAV1LoopRestoration[] ret = new StdVideoAV1LoopRestoration[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1LoopRestoration(s.asSlice(i * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES));
+        return new StdVideoAV1LoopRestoration.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1LoopRestoration pLoopRestoration() {
+        MemorySegment s = pLoopRestorationRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1LoopRestoration(s);
     }
 
     public @pointer(target=StdVideoAV1LoopRestoration.class) MemorySegment pLoopRestorationRaw() {
@@ -436,31 +484,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pLoopRestoration, OFFSET$pLoopRestoration, value);
     }
 
-    public @Nullable StdVideoAV1GlobalMotion pGlobalMotion() {
-        MemorySegment s = pGlobalMotionRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1GlobalMotion(s);
-    }
-
-    public void pGlobalMotion(@Nullable StdVideoAV1GlobalMotion value) {
+    public void pGlobalMotion(@Nullable IStdVideoAV1GlobalMotion value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGlobalMotionRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1GlobalMotion[] pGlobalMotion(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1GlobalMotion.Ptr pGlobalMotion(int assumedCount) {
         MemorySegment s = pGlobalMotionRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1GlobalMotion.BYTES);
-        StdVideoAV1GlobalMotion[] ret = new StdVideoAV1GlobalMotion[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1GlobalMotion(s.asSlice(i * StdVideoAV1GlobalMotion.BYTES, StdVideoAV1GlobalMotion.BYTES));
+        return new StdVideoAV1GlobalMotion.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1GlobalMotion pGlobalMotion() {
+        MemorySegment s = pGlobalMotionRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1GlobalMotion(s);
     }
 
     public @pointer(target=StdVideoAV1GlobalMotion.class) MemorySegment pGlobalMotionRaw() {
@@ -471,31 +515,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pGlobalMotion, OFFSET$pGlobalMotion, value);
     }
 
-    public @Nullable StdVideoEncodeAV1ExtensionHeader pExtensionHeader() {
-        MemorySegment s = pExtensionHeaderRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeAV1ExtensionHeader(s);
-    }
-
-    public void pExtensionHeader(@Nullable StdVideoEncodeAV1ExtensionHeader value) {
+    public void pExtensionHeader(@Nullable IStdVideoEncodeAV1ExtensionHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExtensionHeaderRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader[] pExtensionHeader(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader.Ptr pExtensionHeader(int assumedCount) {
         MemorySegment s = pExtensionHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeAV1ExtensionHeader.BYTES);
-        StdVideoEncodeAV1ExtensionHeader[] ret = new StdVideoEncodeAV1ExtensionHeader[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeAV1ExtensionHeader(s.asSlice(i * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES));
+        return new StdVideoEncodeAV1ExtensionHeader.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeAV1ExtensionHeader pExtensionHeader() {
+        MemorySegment s = pExtensionHeaderRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoEncodeAV1ExtensionHeader(s);
     }
 
     public @pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {

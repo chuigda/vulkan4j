@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -38,13 +39,13 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2`
 ///
-/// The {@code allocate} ({@link VkRenderPassCreateInfo2#allocate(Arena)}, {@link VkRenderPassCreateInfo2#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkRenderPassCreateInfo2#allocate(Arena)}, {@link VkRenderPassCreateInfo2#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkRenderPassCreateInfo2#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -54,19 +55,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassCreateInfo2.html"><code>VkRenderPassCreateInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements IPointer {
+public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements IVkRenderPassCreateInfo2 {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkRenderPassCreateInfo2.html"><code>VkRenderPassCreateInfo2</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkRenderPassCreateInfo2}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkRenderPassCreateInfo2 to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkRenderPassCreateInfo2.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkRenderPassCreateInfo2 {
+        public long size() {
+            return segment.byteSize() / VkRenderPassCreateInfo2.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkRenderPassCreateInfo2 at(long index) {
+            return new VkRenderPassCreateInfo2(segment.asSlice(index * VkRenderPassCreateInfo2.BYTES, VkRenderPassCreateInfo2.BYTES));
+        }
+
+        public void write(long index, @NotNull VkRenderPassCreateInfo2 value) {
+            MemorySegment s = segment.asSlice(index * VkRenderPassCreateInfo2.BYTES, VkRenderPassCreateInfo2.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkRenderPassCreateInfo2.BYTES, VkRenderPassCreateInfo2.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkRenderPassCreateInfo2.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkRenderPassCreateInfo2.BYTES,
+                (end - start) * VkRenderPassCreateInfo2.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkRenderPassCreateInfo2.BYTES));
+        }
+
+        public VkRenderPassCreateInfo2[] toArray() {
+            VkRenderPassCreateInfo2[] ret = new VkRenderPassCreateInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkRenderPassCreateInfo2 allocate(Arena arena) {
         VkRenderPassCreateInfo2 ret = new VkRenderPassCreateInfo2(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.RENDER_PASS_CREATE_INFO_2);
         return ret;
     }
 
-    public static VkRenderPassCreateInfo2[] allocate(Arena arena, int count) {
+    public static VkRenderPassCreateInfo2.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkRenderPassCreateInfo2[] ret = new VkRenderPassCreateInfo2[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkRenderPassCreateInfo2(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.RENDER_PASS_CREATE_INFO_2);
+        VkRenderPassCreateInfo2.Ptr ret = new VkRenderPassCreateInfo2.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.RENDER_PASS_CREATE_INFO_2);
         }
         return ret;
     }
@@ -74,14 +157,6 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
     public static VkRenderPassCreateInfo2 clone(Arena arena, VkRenderPassCreateInfo2 src) {
         VkRenderPassCreateInfo2 ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkRenderPassCreateInfo2[] clone(Arena arena, VkRenderPassCreateInfo2[] src) {
-        VkRenderPassCreateInfo2[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -125,31 +200,27 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
-    public @Nullable VkAttachmentDescription2 pAttachments() {
-        MemorySegment s = pAttachmentsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkAttachmentDescription2(s);
-    }
-
-    public void pAttachments(@Nullable VkAttachmentDescription2 value) {
+    public void pAttachments(@Nullable IVkAttachmentDescription2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentDescription2[] pAttachments(int assumedCount) {
+    @unsafe public @Nullable VkAttachmentDescription2.Ptr pAttachments(int assumedCount) {
         MemorySegment s = pAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkAttachmentDescription2.BYTES);
-        VkAttachmentDescription2[] ret = new VkAttachmentDescription2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkAttachmentDescription2(s.asSlice(i * VkAttachmentDescription2.BYTES, VkAttachmentDescription2.BYTES));
+        return new VkAttachmentDescription2.Ptr(s);
+    }
+
+    public @Nullable VkAttachmentDescription2 pAttachments() {
+        MemorySegment s = pAttachmentsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkAttachmentDescription2(s);
     }
 
     public @pointer(target=VkAttachmentDescription2.class) MemorySegment pAttachmentsRaw() {
@@ -168,31 +239,27 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
     }
 
-    public @Nullable VkSubpassDescription2 pSubpasses() {
-        MemorySegment s = pSubpassesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSubpassDescription2(s);
-    }
-
-    public void pSubpasses(@Nullable VkSubpassDescription2 value) {
+    public void pSubpasses(@Nullable IVkSubpassDescription2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubpassesRaw(s);
     }
 
-    @unsafe public @Nullable VkSubpassDescription2[] pSubpasses(int assumedCount) {
+    @unsafe public @Nullable VkSubpassDescription2.Ptr pSubpasses(int assumedCount) {
         MemorySegment s = pSubpassesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSubpassDescription2.BYTES);
-        VkSubpassDescription2[] ret = new VkSubpassDescription2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassDescription2(s.asSlice(i * VkSubpassDescription2.BYTES, VkSubpassDescription2.BYTES));
+        return new VkSubpassDescription2.Ptr(s);
+    }
+
+    public @Nullable VkSubpassDescription2 pSubpasses() {
+        MemorySegment s = pSubpassesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkSubpassDescription2(s);
     }
 
     public @pointer(target=VkSubpassDescription2.class) MemorySegment pSubpassesRaw() {
@@ -211,31 +278,27 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
     }
 
-    public @Nullable VkSubpassDependency2 pDependencies() {
-        MemorySegment s = pDependenciesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSubpassDependency2(s);
-    }
-
-    public void pDependencies(@Nullable VkSubpassDependency2 value) {
+    public void pDependencies(@Nullable IVkSubpassDependency2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDependenciesRaw(s);
     }
 
-    @unsafe public @Nullable VkSubpassDependency2[] pDependencies(int assumedCount) {
+    @unsafe public @Nullable VkSubpassDependency2.Ptr pDependencies(int assumedCount) {
         MemorySegment s = pDependenciesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSubpassDependency2.BYTES);
-        VkSubpassDependency2[] ret = new VkSubpassDependency2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSubpassDependency2(s.asSlice(i * VkSubpassDependency2.BYTES, VkSubpassDependency2.BYTES));
+        return new VkSubpassDependency2.Ptr(s);
+    }
+
+    public @Nullable VkSubpassDependency2 pDependencies() {
+        MemorySegment s = pDependenciesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkSubpassDependency2(s);
     }
 
     public @pointer(target=VkSubpassDependency2.class) MemorySegment pDependenciesRaw() {

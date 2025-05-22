@@ -7,7 +7,7 @@
 /// {@link club.doki7.ffm.ptr} types when representing pointer to or array of enums.
 ///
 /// In order to tell what enum type an integral value represents, we use the annotation
-/// {@link club.doki7.ffm.annotation.enumtype}. For example:
+/// {@link club.doki7.ffm.annotation.enumtype @enumtype}. For example:
 ///
 /// {@snippet :
 /// public record VkBufferCreateInfo(MemorySegment segment) {
@@ -23,9 +23,9 @@
 /// }
 /// }
 ///
-/// The {@link club.doki7.ffm.annotation.enumtype} annotation provides useful in-IDE and JavaDoc
-/// links, so you can Ctrl-Click on the annotation argument to jump to the definition of the bitmask
-/// type.
+/// The {@link club.doki7.ffm.annotation.enumtype @enumtype} annotation provides useful in-IDE and
+/// JavaDoc links, so you can Ctrl-Click on the annotation argument to jump to the definition of the
+/// bitmask type.
 ///
 /// Also, there's a handy {@code explain} function to explain a bitmask integral value. For example:
 ///

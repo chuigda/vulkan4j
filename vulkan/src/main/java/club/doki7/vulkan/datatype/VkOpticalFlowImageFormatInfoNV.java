@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -30,13 +31,13 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV`
 ///
-/// The {@code allocate} ({@link VkOpticalFlowImageFormatInfoNV#allocate(Arena)}, {@link VkOpticalFlowImageFormatInfoNV#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkOpticalFlowImageFormatInfoNV#allocate(Arena)}, {@link VkOpticalFlowImageFormatInfoNV#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkOpticalFlowImageFormatInfoNV#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -46,19 +47,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowImageFormatInfoNV.html"><code>VkOpticalFlowImageFormatInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) implements IPointer {
+public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) implements IVkOpticalFlowImageFormatInfoNV {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOpticalFlowImageFormatInfoNV.html"><code>VkOpticalFlowImageFormatInfoNV</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkOpticalFlowImageFormatInfoNV}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkOpticalFlowImageFormatInfoNV to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkOpticalFlowImageFormatInfoNV.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkOpticalFlowImageFormatInfoNV {
+        public long size() {
+            return segment.byteSize() / VkOpticalFlowImageFormatInfoNV.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkOpticalFlowImageFormatInfoNV at(long index) {
+            return new VkOpticalFlowImageFormatInfoNV(segment.asSlice(index * VkOpticalFlowImageFormatInfoNV.BYTES, VkOpticalFlowImageFormatInfoNV.BYTES));
+        }
+
+        public void write(long index, @NotNull VkOpticalFlowImageFormatInfoNV value) {
+            MemorySegment s = segment.asSlice(index * VkOpticalFlowImageFormatInfoNV.BYTES, VkOpticalFlowImageFormatInfoNV.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkOpticalFlowImageFormatInfoNV.BYTES, VkOpticalFlowImageFormatInfoNV.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkOpticalFlowImageFormatInfoNV.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkOpticalFlowImageFormatInfoNV.BYTES,
+                (end - start) * VkOpticalFlowImageFormatInfoNV.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkOpticalFlowImageFormatInfoNV.BYTES));
+        }
+
+        public VkOpticalFlowImageFormatInfoNV[] toArray() {
+            VkOpticalFlowImageFormatInfoNV[] ret = new VkOpticalFlowImageFormatInfoNV[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkOpticalFlowImageFormatInfoNV allocate(Arena arena) {
         VkOpticalFlowImageFormatInfoNV ret = new VkOpticalFlowImageFormatInfoNV(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV);
         return ret;
     }
 
-    public static VkOpticalFlowImageFormatInfoNV[] allocate(Arena arena, int count) {
+    public static VkOpticalFlowImageFormatInfoNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkOpticalFlowImageFormatInfoNV[] ret = new VkOpticalFlowImageFormatInfoNV[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkOpticalFlowImageFormatInfoNV(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV);
+        VkOpticalFlowImageFormatInfoNV.Ptr ret = new VkOpticalFlowImageFormatInfoNV.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.OPTICAL_FLOW_IMAGE_FORMAT_INFO_NV);
         }
         return ret;
     }
@@ -66,14 +149,6 @@ public record VkOpticalFlowImageFormatInfoNV(@NotNull MemorySegment segment) imp
     public static VkOpticalFlowImageFormatInfoNV clone(Arena arena, VkOpticalFlowImageFormatInfoNV src) {
         VkOpticalFlowImageFormatInfoNV ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkOpticalFlowImageFormatInfoNV[] clone(Arena arena, VkOpticalFlowImageFormatInfoNV[] src) {
-        VkOpticalFlowImageFormatInfoNV[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

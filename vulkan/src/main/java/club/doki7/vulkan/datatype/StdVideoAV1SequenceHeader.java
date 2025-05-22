@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -48,31 +49,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implements IStdVideoAV1SequenceHeader {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoAV1SequenceHeader}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoAV1SequenceHeader to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoAV1SequenceHeader.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1SequenceHeader {
+        public long size() {
+            return segment.byteSize() / StdVideoAV1SequenceHeader.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoAV1SequenceHeader at(long index) {
+            return new StdVideoAV1SequenceHeader(segment.asSlice(index * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
+        }
+
+        public void write(long index, @NotNull StdVideoAV1SequenceHeader value) {
+            MemorySegment s = segment.asSlice(index * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * StdVideoAV1SequenceHeader.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * StdVideoAV1SequenceHeader.BYTES,
+                (end - start) * StdVideoAV1SequenceHeader.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * StdVideoAV1SequenceHeader.BYTES));
+        }
+
+        public StdVideoAV1SequenceHeader[] toArray() {
+            StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static StdVideoAV1SequenceHeader allocate(Arena arena) {
         return new StdVideoAV1SequenceHeader(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoAV1SequenceHeader[] allocate(Arena arena, int count) {
+    public static StdVideoAV1SequenceHeader.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1SequenceHeader[] ret = new StdVideoAV1SequenceHeader[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1SequenceHeader(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new StdVideoAV1SequenceHeader.Ptr(segment);
     }
 
     public static StdVideoAV1SequenceHeader clone(Arena arena, StdVideoAV1SequenceHeader src) {
         StdVideoAV1SequenceHeader ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoAV1SequenceHeader[] clone(Arena arena, StdVideoAV1SequenceHeader[] src) {
-        StdVideoAV1SequenceHeader[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -165,31 +237,27 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     }
 
 
-    public @Nullable StdVideoAV1ColorConfig pColorConfig() {
-        MemorySegment s = pColorConfigRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1ColorConfig(s);
-    }
-
-    public void pColorConfig(@Nullable StdVideoAV1ColorConfig value) {
+    public void pColorConfig(@Nullable IStdVideoAV1ColorConfig value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorConfigRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1ColorConfig[] pColorConfig(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1ColorConfig.Ptr pColorConfig(int assumedCount) {
         MemorySegment s = pColorConfigRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1ColorConfig.BYTES);
-        StdVideoAV1ColorConfig[] ret = new StdVideoAV1ColorConfig[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1ColorConfig(s.asSlice(i * StdVideoAV1ColorConfig.BYTES, StdVideoAV1ColorConfig.BYTES));
+        return new StdVideoAV1ColorConfig.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1ColorConfig pColorConfig() {
+        MemorySegment s = pColorConfigRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1ColorConfig(s);
     }
 
     public @pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
@@ -200,31 +268,27 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pColorConfig, OFFSET$pColorConfig, value);
     }
 
-    public @Nullable StdVideoAV1TimingInfo pTimingInfo() {
-        MemorySegment s = pTimingInfoRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoAV1TimingInfo(s);
-    }
-
-    public void pTimingInfo(@Nullable StdVideoAV1TimingInfo value) {
+    public void pTimingInfo(@Nullable IStdVideoAV1TimingInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimingInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1TimingInfo[] pTimingInfo(int assumedCount) {
+    @unsafe public @Nullable StdVideoAV1TimingInfo.Ptr pTimingInfo(int assumedCount) {
         MemorySegment s = pTimingInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoAV1TimingInfo.BYTES);
-        StdVideoAV1TimingInfo[] ret = new StdVideoAV1TimingInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoAV1TimingInfo(s.asSlice(i * StdVideoAV1TimingInfo.BYTES, StdVideoAV1TimingInfo.BYTES));
+        return new StdVideoAV1TimingInfo.Ptr(s);
+    }
+
+    public @Nullable StdVideoAV1TimingInfo pTimingInfo() {
+        MemorySegment s = pTimingInfoRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoAV1TimingInfo(s);
     }
 
     public @pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {
