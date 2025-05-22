@@ -9,9 +9,9 @@
 /// }
 ///
 /// In {@code vulkan4j} ecosystem, opaque handles are represented with a Java record type containing
-/// a single {@link java.lang.foreign.MemorySegment} field. That segment is basically the opaque
-/// handle itself You may think that it is pointing to a hypothetical {@code OpaqueStruct}
-/// structure.
+/// a single {@link java.lang.foreign.MemorySegment MemorySegment} field. That segment is basically
+/// the opaque handle itself You may think that it is pointing to a hypothetical
+/// {@code OpaqueStruct} structure.
 ///
 /// Handles themselves cannot be allocated, because the layout of the memory block it points to is
 /// completely unknown: C APIs use opaque handles intentionally to hide these details. There are
@@ -43,6 +43,6 @@
 /// of that handle type, instead of a handle instance containing a {@code null} or
 /// {@code MemorySegment.NULL}. We made this choice because it is always easier to analyse whether
 /// a Java reference is {@code null} or not: there have been many tools (JSR305 for example) to
-/// help you with that. See the documentation of {@link club.doki7.ffm.IPointer#segment()} for more
-/// details.
+/// help you with that. See the documentation of
+/// {@link club.doki7.ffm.IPointer#segment() IPointer#segment()} for more details.
 package club.doki7.vulkan.handle;

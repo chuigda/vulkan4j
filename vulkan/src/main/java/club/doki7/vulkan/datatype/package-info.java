@@ -3,8 +3,8 @@
 /// ## Quick start
 ///
 /// In {@code vulkan4j} ecosystem, structures are represented with a Java record type containing
-/// a single {@link java.lang.foreign.MemorySegment} field. That segment is the pointer to the
-/// first byte of the structure in native memory.
+/// a single {@link java.lang.foreign.MemorySegment MemorySegment} field. That segment is the\
+/// pointer to the first byte of the structure in native memory.
 ///
 /// To allocate a structure, you can use the {@code allocate} series functions:
 ///
@@ -42,11 +42,11 @@
 /// In C, a structure is a contiguous block of memory. An array of structure is just a larger
 /// contiguous block of memory, containing multiple structures. As a result, when viewed from Java
 /// side, a single structure itself is indistinguishable from an array of structures: they are both
-/// {@link java.lang.foreign.MemorySegment}s. In order to improve API usability, we use {@code Ptr}
-/// types to represent an array of / a pointer to structure(s).
+/// {@link java.lang.foreign.MemorySegment MemorySegment}s. In order to improve API usability, we
+/// use {@code Ptr} types to represent an array of / a pointer to structure(s).
 ///
-/// Let's take {@link club.doki7.vulkan.datatype.VkRenderPassBeginInfo} as an example. the layout
-/// of that structure is basically:
+/// Let's take {@link club.doki7.vulkan.datatype.VkRenderPassBeginInfo VkRenderPassBeginInfo} as an
+/// example. the layout of that structure is basically:
 ///
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassBeginInfo {
@@ -59,8 +59,9 @@
 ///
 /// Here {@code renderArea} is a single structure, while {@code pClearValues} is a pointer to an
 /// array of {@code VkClearValue} structures. Thus, we directly use
-/// {@link club.doki7.vulkan.datatype.VkRect2D} to represent {@code renderArea}, while
-/// {@link club.doki7.vulkan.datatype.VkClearValue.Ptr} to represent {@code pClearValues}.
+/// {@link club.doki7.vulkan.datatype.VkRect2D VkRect2D} to represent {@code renderArea}, while
+/// {@link club.doki7.vulkan.datatype.VkClearValue.Ptr VkClearValue.Ptr} to represent
+/// {@code pClearValues}.
 ///
 /// For APIs that accept pointer to / array of structures, their corresponding {@code vulkan4j}
 /// wrappers are designed to accept both {@code StructureType} and {@code StructureType.Ptr} via the
