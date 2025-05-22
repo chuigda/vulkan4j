@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -51,7 +52,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -71,7 +72,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
     /// {@code StdVideoAV1FilmGrain.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
@@ -83,6 +84,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         public long size() {
             return segment.byteSize() / StdVideoAV1FilmGrain.BYTES;
         }
+
         /// Returns (a pointer to) the structure at the given index.
         ///
         /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
@@ -92,11 +94,48 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         public @NotNull StdVideoAV1FilmGrain at(long index) {
             return new StdVideoAV1FilmGrain(segment.asSlice(index * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES));
         }
+
         public void write(long index, @NotNull StdVideoAV1FilmGrain value) {
             MemorySegment s = segment.asSlice(index * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES);
             s.copyFrom(value.segment);
         }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * StdVideoAV1FilmGrain.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * StdVideoAV1FilmGrain.BYTES,
+                (end - start) * StdVideoAV1FilmGrain.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * StdVideoAV1FilmGrain.BYTES));
+        }
     }
+
     public static StdVideoAV1FilmGrain allocate(Arena arena) {
         return new StdVideoAV1FilmGrain(arena.allocate(LAYOUT));
     }
@@ -104,8 +143,6 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     public static StdVideoAV1FilmGrain.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         StdVideoAV1FilmGrain.Ptr ret = new StdVideoAV1FilmGrain.Ptr(segment);
-        for (long i = 0; i < count; i ++) {
-        }
         return ret;
     }
 

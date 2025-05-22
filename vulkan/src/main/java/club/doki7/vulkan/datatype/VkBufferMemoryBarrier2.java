@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +45,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -66,7 +67,7 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
     /// {@code VkBufferMemoryBarrier2.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
@@ -78,6 +79,7 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
         public long size() {
             return segment.byteSize() / VkBufferMemoryBarrier2.BYTES;
         }
+
         /// Returns (a pointer to) the structure at the given index.
         ///
         /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
@@ -87,11 +89,48 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
         public @NotNull VkBufferMemoryBarrier2 at(long index) {
             return new VkBufferMemoryBarrier2(segment.asSlice(index * VkBufferMemoryBarrier2.BYTES, VkBufferMemoryBarrier2.BYTES));
         }
+
         public void write(long index, @NotNull VkBufferMemoryBarrier2 value) {
             MemorySegment s = segment.asSlice(index * VkBufferMemoryBarrier2.BYTES, VkBufferMemoryBarrier2.BYTES);
             s.copyFrom(value.segment);
         }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkBufferMemoryBarrier2.BYTES, VkBufferMemoryBarrier2.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkBufferMemoryBarrier2.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkBufferMemoryBarrier2.BYTES,
+                (end - start) * VkBufferMemoryBarrier2.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkBufferMemoryBarrier2.BYTES));
+        }
     }
+
     public static VkBufferMemoryBarrier2 allocate(Arena arena) {
         VkBufferMemoryBarrier2 ret = new VkBufferMemoryBarrier2(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.BUFFER_MEMORY_BARRIER_2);
@@ -101,7 +140,7 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
     public static VkBufferMemoryBarrier2.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkBufferMemoryBarrier2.Ptr ret = new VkBufferMemoryBarrier2.Ptr(segment);
-        for (long i = 0; i < count; i ++) {
+        for (long i = 0; i < count; i++) {
             ret.at(i).sType(VkStructureType.BUFFER_MEMORY_BARRIER_2);
         }
         return ret;

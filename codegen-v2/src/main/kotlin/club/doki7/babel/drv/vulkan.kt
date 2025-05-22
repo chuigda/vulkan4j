@@ -68,9 +68,13 @@ internal fun vulkanMain() {
             .writeText(render(structureDoc))
     }
 
-    for (unions in vulkanRegistry.unions.values) {
-        val structureDoc = generateStructure(vulkanRegistry, unions, true, codegenOptions)
-        File("$packageDir/datatype/${unions.name}.java")
+    for (union in vulkanRegistry.unions.values) {
+        val structureInterfaceDoc = generateStructureInterface(union, codegenOptions)
+        File("$packageDir/datatype/I${union.name}.java")
+            .writeText(render(structureInterfaceDoc))
+
+        val structureDoc = generateStructure(vulkanRegistry, union, true, codegenOptions)
+        File("$packageDir/datatype/${union.name}.java")
             .writeText(render(structureDoc))
     }
 

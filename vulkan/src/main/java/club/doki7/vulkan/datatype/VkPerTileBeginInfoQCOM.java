@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +36,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -57,7 +58,7 @@ public record VkPerTileBeginInfoQCOM(@NotNull MemorySegment segment) implements 
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
     /// {@code VkPerTileBeginInfoQCOM.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
@@ -69,6 +70,7 @@ public record VkPerTileBeginInfoQCOM(@NotNull MemorySegment segment) implements 
         public long size() {
             return segment.byteSize() / VkPerTileBeginInfoQCOM.BYTES;
         }
+
         /// Returns (a pointer to) the structure at the given index.
         ///
         /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
@@ -78,11 +80,48 @@ public record VkPerTileBeginInfoQCOM(@NotNull MemorySegment segment) implements 
         public @NotNull VkPerTileBeginInfoQCOM at(long index) {
             return new VkPerTileBeginInfoQCOM(segment.asSlice(index * VkPerTileBeginInfoQCOM.BYTES, VkPerTileBeginInfoQCOM.BYTES));
         }
+
         public void write(long index, @NotNull VkPerTileBeginInfoQCOM value) {
             MemorySegment s = segment.asSlice(index * VkPerTileBeginInfoQCOM.BYTES, VkPerTileBeginInfoQCOM.BYTES);
             s.copyFrom(value.segment);
         }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPerTileBeginInfoQCOM.BYTES, VkPerTileBeginInfoQCOM.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPerTileBeginInfoQCOM.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPerTileBeginInfoQCOM.BYTES,
+                (end - start) * VkPerTileBeginInfoQCOM.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPerTileBeginInfoQCOM.BYTES));
+        }
     }
+
     public static VkPerTileBeginInfoQCOM allocate(Arena arena) {
         VkPerTileBeginInfoQCOM ret = new VkPerTileBeginInfoQCOM(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PER_TILE_BEGIN_INFO_QCOM);
@@ -92,7 +131,7 @@ public record VkPerTileBeginInfoQCOM(@NotNull MemorySegment segment) implements 
     public static VkPerTileBeginInfoQCOM.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPerTileBeginInfoQCOM.Ptr ret = new VkPerTileBeginInfoQCOM.Ptr(segment);
-        for (long i = 0; i < count; i ++) {
+        for (long i = 0; i < count; i++) {
             ret.at(i).sType(VkStructureType.PER_TILE_BEGIN_INFO_QCOM);
         }
         return ret;

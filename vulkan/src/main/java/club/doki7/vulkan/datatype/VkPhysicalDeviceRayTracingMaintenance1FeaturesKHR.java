@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +38,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -59,7 +60,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
     /// {@code VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
@@ -71,6 +72,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES;
         }
+
         /// Returns (a pointer to) the structure at the given index.
         ///
         /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
@@ -80,11 +82,48 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         public @NotNull VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR at(long index) {
             return new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(segment.asSlice(index * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES, VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES));
         }
+
         public void write(long index, @NotNull VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR value) {
             MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES, VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES);
             s.copyFrom(value.segment);
         }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES, VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES,
+                (end - start) * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.BYTES));
+        }
     }
+
     public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR allocate(Arena arena) {
         VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR ret = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR);
@@ -94,7 +133,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
     public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
         VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.Ptr ret = new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.Ptr(segment);
-        for (long i = 0; i < count; i ++) {
+        for (long i = 0; i < count; i++) {
             ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR);
         }
         return ret;
