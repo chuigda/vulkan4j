@@ -41,16 +41,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1OperatingPointInfo {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoEncodeAV1OperatingPointInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoEncodeAV1OperatingPointInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoEncodeAV1OperatingPointInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1OperatingPointInfo {
+        public long size() {
+            return segment.byteSize() / StdVideoEncodeAV1OperatingPointInfo.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoEncodeAV1OperatingPointInfo at(long index) {
+            return new StdVideoEncodeAV1OperatingPointInfo(segment.asSlice(index * StdVideoEncodeAV1OperatingPointInfo.BYTES, StdVideoEncodeAV1OperatingPointInfo.BYTES));
+        }
+        public void write(long index, @NotNull StdVideoEncodeAV1OperatingPointInfo value) {
+            MemorySegment s = segment.asSlice(index * StdVideoEncodeAV1OperatingPointInfo.BYTES, StdVideoEncodeAV1OperatingPointInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static StdVideoEncodeAV1OperatingPointInfo allocate(Arena arena) {
         return new StdVideoEncodeAV1OperatingPointInfo(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoEncodeAV1OperatingPointInfo[] allocate(Arena arena, int count) {
+    public static StdVideoEncodeAV1OperatingPointInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeAV1OperatingPointInfo[] ret = new StdVideoEncodeAV1OperatingPointInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeAV1OperatingPointInfo(segment.asSlice(i * BYTES, BYTES));
+        StdVideoEncodeAV1OperatingPointInfo.Ptr ret = new StdVideoEncodeAV1OperatingPointInfo.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -58,14 +94,6 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
     public static StdVideoEncodeAV1OperatingPointInfo clone(Arena arena, StdVideoEncodeAV1OperatingPointInfo src) {
         StdVideoEncodeAV1OperatingPointInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoEncodeAV1OperatingPointInfo[] clone(Arena arena, StdVideoEncodeAV1OperatingPointInfo[] src) {
-        StdVideoEncodeAV1OperatingPointInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

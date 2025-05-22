@@ -31,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO`
 ///
-/// The {@code allocate} ({@link VkDescriptorSetLayoutBindingFlagsCreateInfo#allocate(Arena)}, {@link VkDescriptorSetLayoutBindingFlagsCreateInfo#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkDescriptorSetLayoutBindingFlagsCreateInfo#allocate(Arena)}, {@link VkDescriptorSetLayoutBindingFlagsCreateInfo#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkDescriptorSetLayoutBindingFlagsCreateInfo#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -47,19 +47,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorSetLayoutBindingFlagsCreateInfo.html"><code>VkDescriptorSetLayoutBindingFlagsCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment segment) implements IPointer {
+public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment segment) implements IVkDescriptorSetLayoutBindingFlagsCreateInfo {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDescriptorSetLayoutBindingFlagsCreateInfo.html"><code>VkDescriptorSetLayoutBindingFlagsCreateInfo</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkDescriptorSetLayoutBindingFlagsCreateInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkDescriptorSetLayoutBindingFlagsCreateInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkDescriptorSetLayoutBindingFlagsCreateInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDescriptorSetLayoutBindingFlagsCreateInfo {
+        public long size() {
+            return segment.byteSize() / VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo at(long index) {
+            return new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment.asSlice(index * VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES, VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES));
+        }
+        public void write(long index, @NotNull VkDescriptorSetLayoutBindingFlagsCreateInfo value) {
+            MemorySegment s = segment.asSlice(index * VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES, VkDescriptorSetLayoutBindingFlagsCreateInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkDescriptorSetLayoutBindingFlagsCreateInfo allocate(Arena arena) {
         VkDescriptorSetLayoutBindingFlagsCreateInfo ret = new VkDescriptorSetLayoutBindingFlagsCreateInfo(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO);
         return ret;
     }
 
-    public static VkDescriptorSetLayoutBindingFlagsCreateInfo[] allocate(Arena arena, int count) {
+    public static VkDescriptorSetLayoutBindingFlagsCreateInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDescriptorSetLayoutBindingFlagsCreateInfo[] ret = new VkDescriptorSetLayoutBindingFlagsCreateInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDescriptorSetLayoutBindingFlagsCreateInfo(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO);
+        VkDescriptorSetLayoutBindingFlagsCreateInfo.Ptr ret = new VkDescriptorSetLayoutBindingFlagsCreateInfo.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO);
         }
         return ret;
     }
@@ -67,14 +103,6 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
     public static VkDescriptorSetLayoutBindingFlagsCreateInfo clone(Arena arena, VkDescriptorSetLayoutBindingFlagsCreateInfo src) {
         VkDescriptorSetLayoutBindingFlagsCreateInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkDescriptorSetLayoutBindingFlagsCreateInfo[] clone(Arena arena, VkDescriptorSetLayoutBindingFlagsCreateInfo[] src) {
-        VkDescriptorSetLayoutBindingFlagsCreateInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

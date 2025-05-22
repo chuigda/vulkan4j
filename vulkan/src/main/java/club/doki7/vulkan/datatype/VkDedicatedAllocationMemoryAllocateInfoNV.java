@@ -31,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV`
 ///
-/// The {@code allocate} ({@link VkDedicatedAllocationMemoryAllocateInfoNV#allocate(Arena)}, {@link VkDedicatedAllocationMemoryAllocateInfoNV#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkDedicatedAllocationMemoryAllocateInfoNV#allocate(Arena)}, {@link VkDedicatedAllocationMemoryAllocateInfoNV#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkDedicatedAllocationMemoryAllocateInfoNV#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -47,19 +47,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDedicatedAllocationMemoryAllocateInfoNV.html"><code>VkDedicatedAllocationMemoryAllocateInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment segment) implements IPointer {
+public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment segment) implements IVkDedicatedAllocationMemoryAllocateInfoNV {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDedicatedAllocationMemoryAllocateInfoNV.html"><code>VkDedicatedAllocationMemoryAllocateInfoNV</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkDedicatedAllocationMemoryAllocateInfoNV}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkDedicatedAllocationMemoryAllocateInfoNV to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkDedicatedAllocationMemoryAllocateInfoNV.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDedicatedAllocationMemoryAllocateInfoNV {
+        public long size() {
+            return segment.byteSize() / VkDedicatedAllocationMemoryAllocateInfoNV.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkDedicatedAllocationMemoryAllocateInfoNV at(long index) {
+            return new VkDedicatedAllocationMemoryAllocateInfoNV(segment.asSlice(index * VkDedicatedAllocationMemoryAllocateInfoNV.BYTES, VkDedicatedAllocationMemoryAllocateInfoNV.BYTES));
+        }
+        public void write(long index, @NotNull VkDedicatedAllocationMemoryAllocateInfoNV value) {
+            MemorySegment s = segment.asSlice(index * VkDedicatedAllocationMemoryAllocateInfoNV.BYTES, VkDedicatedAllocationMemoryAllocateInfoNV.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkDedicatedAllocationMemoryAllocateInfoNV allocate(Arena arena) {
         VkDedicatedAllocationMemoryAllocateInfoNV ret = new VkDedicatedAllocationMemoryAllocateInfoNV(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV);
         return ret;
     }
 
-    public static VkDedicatedAllocationMemoryAllocateInfoNV[] allocate(Arena arena, int count) {
+    public static VkDedicatedAllocationMemoryAllocateInfoNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDedicatedAllocationMemoryAllocateInfoNV[] ret = new VkDedicatedAllocationMemoryAllocateInfoNV[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDedicatedAllocationMemoryAllocateInfoNV(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV);
+        VkDedicatedAllocationMemoryAllocateInfoNV.Ptr ret = new VkDedicatedAllocationMemoryAllocateInfoNV.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV);
         }
         return ret;
     }
@@ -67,14 +103,6 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment s
     public static VkDedicatedAllocationMemoryAllocateInfoNV clone(Arena arena, VkDedicatedAllocationMemoryAllocateInfoNV src) {
         VkDedicatedAllocationMemoryAllocateInfoNV ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkDedicatedAllocationMemoryAllocateInfoNV[] clone(Arena arena, VkDedicatedAllocationMemoryAllocateInfoNV[] src) {
-        VkDedicatedAllocationMemoryAllocateInfoNV[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

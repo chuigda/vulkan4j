@@ -39,16 +39,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOffset3D.html"><code>VkOffset3D</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkOffset3D(@NotNull MemorySegment segment) implements IPointer {
+public record VkOffset3D(@NotNull MemorySegment segment) implements IVkOffset3D {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkOffset3D.html"><code>VkOffset3D</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkOffset3D}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkOffset3D to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkOffset3D.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkOffset3D {
+        public long size() {
+            return segment.byteSize() / VkOffset3D.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkOffset3D at(long index) {
+            return new VkOffset3D(segment.asSlice(index * VkOffset3D.BYTES, VkOffset3D.BYTES));
+        }
+        public void write(long index, @NotNull VkOffset3D value) {
+            MemorySegment s = segment.asSlice(index * VkOffset3D.BYTES, VkOffset3D.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkOffset3D allocate(Arena arena) {
         return new VkOffset3D(arena.allocate(LAYOUT));
     }
 
-    public static VkOffset3D[] allocate(Arena arena, int count) {
+    public static VkOffset3D.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkOffset3D[] ret = new VkOffset3D[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkOffset3D(segment.asSlice(i * BYTES, BYTES));
+        VkOffset3D.Ptr ret = new VkOffset3D.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -56,14 +92,6 @@ public record VkOffset3D(@NotNull MemorySegment segment) implements IPointer {
     public static VkOffset3D clone(Arena arena, VkOffset3D src) {
         VkOffset3D ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkOffset3D[] clone(Arena arena, VkOffset3D[] src) {
-        VkOffset3D[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

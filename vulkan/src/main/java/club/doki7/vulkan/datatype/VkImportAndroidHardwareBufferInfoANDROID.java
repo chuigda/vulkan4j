@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID`
 ///
-/// The {@code allocate} ({@link VkImportAndroidHardwareBufferInfoANDROID#allocate(Arena)}, {@link VkImportAndroidHardwareBufferInfoANDROID#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkImportAndroidHardwareBufferInfoANDROID#allocate(Arena)}, {@link VkImportAndroidHardwareBufferInfoANDROID#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkImportAndroidHardwareBufferInfoANDROID#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -46,19 +46,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportAndroidHardwareBufferInfoANDROID.html"><code>VkImportAndroidHardwareBufferInfoANDROID</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkImportAndroidHardwareBufferInfoANDROID(@NotNull MemorySegment segment) implements IPointer {
+public record VkImportAndroidHardwareBufferInfoANDROID(@NotNull MemorySegment segment) implements IVkImportAndroidHardwareBufferInfoANDROID {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportAndroidHardwareBufferInfoANDROID.html"><code>VkImportAndroidHardwareBufferInfoANDROID</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkImportAndroidHardwareBufferInfoANDROID}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkImportAndroidHardwareBufferInfoANDROID to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkImportAndroidHardwareBufferInfoANDROID.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkImportAndroidHardwareBufferInfoANDROID {
+        public long size() {
+            return segment.byteSize() / VkImportAndroidHardwareBufferInfoANDROID.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkImportAndroidHardwareBufferInfoANDROID at(long index) {
+            return new VkImportAndroidHardwareBufferInfoANDROID(segment.asSlice(index * VkImportAndroidHardwareBufferInfoANDROID.BYTES, VkImportAndroidHardwareBufferInfoANDROID.BYTES));
+        }
+        public void write(long index, @NotNull VkImportAndroidHardwareBufferInfoANDROID value) {
+            MemorySegment s = segment.asSlice(index * VkImportAndroidHardwareBufferInfoANDROID.BYTES, VkImportAndroidHardwareBufferInfoANDROID.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkImportAndroidHardwareBufferInfoANDROID allocate(Arena arena) {
         VkImportAndroidHardwareBufferInfoANDROID ret = new VkImportAndroidHardwareBufferInfoANDROID(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID);
         return ret;
     }
 
-    public static VkImportAndroidHardwareBufferInfoANDROID[] allocate(Arena arena, int count) {
+    public static VkImportAndroidHardwareBufferInfoANDROID.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImportAndroidHardwareBufferInfoANDROID[] ret = new VkImportAndroidHardwareBufferInfoANDROID[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImportAndroidHardwareBufferInfoANDROID(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID);
+        VkImportAndroidHardwareBufferInfoANDROID.Ptr ret = new VkImportAndroidHardwareBufferInfoANDROID.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID);
         }
         return ret;
     }
@@ -66,14 +102,6 @@ public record VkImportAndroidHardwareBufferInfoANDROID(@NotNull MemorySegment se
     public static VkImportAndroidHardwareBufferInfoANDROID clone(Arena arena, VkImportAndroidHardwareBufferInfoANDROID src) {
         VkImportAndroidHardwareBufferInfoANDROID ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkImportAndroidHardwareBufferInfoANDROID[] clone(Arena arena, VkImportAndroidHardwareBufferInfoANDROID[] src) {
-        VkImportAndroidHardwareBufferInfoANDROID[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

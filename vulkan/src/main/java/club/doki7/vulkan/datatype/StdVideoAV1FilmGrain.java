@@ -59,16 +59,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IStdVideoAV1FilmGrain {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoAV1FilmGrain}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoAV1FilmGrain to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoAV1FilmGrain.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1FilmGrain {
+        public long size() {
+            return segment.byteSize() / StdVideoAV1FilmGrain.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoAV1FilmGrain at(long index) {
+            return new StdVideoAV1FilmGrain(segment.asSlice(index * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES));
+        }
+        public void write(long index, @NotNull StdVideoAV1FilmGrain value) {
+            MemorySegment s = segment.asSlice(index * StdVideoAV1FilmGrain.BYTES, StdVideoAV1FilmGrain.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static StdVideoAV1FilmGrain allocate(Arena arena) {
         return new StdVideoAV1FilmGrain(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoAV1FilmGrain[] allocate(Arena arena, int count) {
+    public static StdVideoAV1FilmGrain.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1FilmGrain[] ret = new StdVideoAV1FilmGrain[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1FilmGrain(segment.asSlice(i * BYTES, BYTES));
+        StdVideoAV1FilmGrain.Ptr ret = new StdVideoAV1FilmGrain.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -76,14 +112,6 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IP
     public static StdVideoAV1FilmGrain clone(Arena arena, StdVideoAV1FilmGrain src) {
         StdVideoAV1FilmGrain ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoAV1FilmGrain[] clone(Arena arena, StdVideoAV1FilmGrain[] src) {
-        StdVideoAV1FilmGrain[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

@@ -38,7 +38,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2`
 ///
-/// The {@code allocate} ({@link VkAttachmentDescription2#allocate(Arena)}, {@link VkAttachmentDescription2#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkAttachmentDescription2#allocate(Arena)}, {@link VkAttachmentDescription2#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkAttachmentDescription2#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -54,19 +54,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescription2.html"><code>VkAttachmentDescription2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkAttachmentDescription2(@NotNull MemorySegment segment) implements IPointer {
+public record VkAttachmentDescription2(@NotNull MemorySegment segment) implements IVkAttachmentDescription2 {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAttachmentDescription2.html"><code>VkAttachmentDescription2</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkAttachmentDescription2}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkAttachmentDescription2 to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkAttachmentDescription2.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAttachmentDescription2 {
+        public long size() {
+            return segment.byteSize() / VkAttachmentDescription2.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkAttachmentDescription2 at(long index) {
+            return new VkAttachmentDescription2(segment.asSlice(index * VkAttachmentDescription2.BYTES, VkAttachmentDescription2.BYTES));
+        }
+        public void write(long index, @NotNull VkAttachmentDescription2 value) {
+            MemorySegment s = segment.asSlice(index * VkAttachmentDescription2.BYTES, VkAttachmentDescription2.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkAttachmentDescription2 allocate(Arena arena) {
         VkAttachmentDescription2 ret = new VkAttachmentDescription2(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.ATTACHMENT_DESCRIPTION_2);
         return ret;
     }
 
-    public static VkAttachmentDescription2[] allocate(Arena arena, int count) {
+    public static VkAttachmentDescription2.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAttachmentDescription2[] ret = new VkAttachmentDescription2[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAttachmentDescription2(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.ATTACHMENT_DESCRIPTION_2);
+        VkAttachmentDescription2.Ptr ret = new VkAttachmentDescription2.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.ATTACHMENT_DESCRIPTION_2);
         }
         return ret;
     }
@@ -74,14 +110,6 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
     public static VkAttachmentDescription2 clone(Arena arena, VkAttachmentDescription2 src) {
         VkAttachmentDescription2 ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkAttachmentDescription2[] clone(Arena arena, VkAttachmentDescription2[] src) {
-        VkAttachmentDescription2[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES`
 ///
-/// The {@code allocate} ({@link VkPhysicalDevice8BitStorageFeatures#allocate(Arena)}, {@link VkPhysicalDevice8BitStorageFeatures#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDevice8BitStorageFeatures#allocate(Arena)}, {@link VkPhysicalDevice8BitStorageFeatures#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDevice8BitStorageFeatures#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -48,19 +48,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevice8BitStorageFeatures.html"><code>VkPhysicalDevice8BitStorageFeatures</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment) implements IVkPhysicalDevice8BitStorageFeatures {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDevice8BitStorageFeatures.html"><code>VkPhysicalDevice8BitStorageFeatures</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDevice8BitStorageFeatures}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDevice8BitStorageFeatures to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDevice8BitStorageFeatures.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDevice8BitStorageFeatures {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDevice8BitStorageFeatures.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDevice8BitStorageFeatures at(long index) {
+            return new VkPhysicalDevice8BitStorageFeatures(segment.asSlice(index * VkPhysicalDevice8BitStorageFeatures.BYTES, VkPhysicalDevice8BitStorageFeatures.BYTES));
+        }
+        public void write(long index, @NotNull VkPhysicalDevice8BitStorageFeatures value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDevice8BitStorageFeatures.BYTES, VkPhysicalDevice8BitStorageFeatures.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkPhysicalDevice8BitStorageFeatures allocate(Arena arena) {
         VkPhysicalDevice8BitStorageFeatures ret = new VkPhysicalDevice8BitStorageFeatures(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES);
         return ret;
     }
 
-    public static VkPhysicalDevice8BitStorageFeatures[] allocate(Arena arena, int count) {
+    public static VkPhysicalDevice8BitStorageFeatures.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDevice8BitStorageFeatures[] ret = new VkPhysicalDevice8BitStorageFeatures[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDevice8BitStorageFeatures(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES);
+        VkPhysicalDevice8BitStorageFeatures.Ptr ret = new VkPhysicalDevice8BitStorageFeatures.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES);
         }
         return ret;
     }
@@ -68,14 +104,6 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
     public static VkPhysicalDevice8BitStorageFeatures clone(Arena arena, VkPhysicalDevice8BitStorageFeatures src) {
         VkPhysicalDevice8BitStorageFeatures ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDevice8BitStorageFeatures[] clone(Arena arena, VkPhysicalDevice8BitStorageFeatures[] src) {
-        VkPhysicalDevice8BitStorageFeatures[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

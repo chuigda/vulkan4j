@@ -39,16 +39,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryKeysAndDataKHR.html"><code>VkPipelineBinaryKeysAndDataKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) implements IVkPipelineBinaryKeysAndDataKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineBinaryKeysAndDataKHR.html"><code>VkPipelineBinaryKeysAndDataKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPipelineBinaryKeysAndDataKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPipelineBinaryKeysAndDataKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPipelineBinaryKeysAndDataKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineBinaryKeysAndDataKHR {
+        public long size() {
+            return segment.byteSize() / VkPipelineBinaryKeysAndDataKHR.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPipelineBinaryKeysAndDataKHR at(long index) {
+            return new VkPipelineBinaryKeysAndDataKHR(segment.asSlice(index * VkPipelineBinaryKeysAndDataKHR.BYTES, VkPipelineBinaryKeysAndDataKHR.BYTES));
+        }
+        public void write(long index, @NotNull VkPipelineBinaryKeysAndDataKHR value) {
+            MemorySegment s = segment.asSlice(index * VkPipelineBinaryKeysAndDataKHR.BYTES, VkPipelineBinaryKeysAndDataKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkPipelineBinaryKeysAndDataKHR allocate(Arena arena) {
         return new VkPipelineBinaryKeysAndDataKHR(arena.allocate(LAYOUT));
     }
 
-    public static VkPipelineBinaryKeysAndDataKHR[] allocate(Arena arena, int count) {
+    public static VkPipelineBinaryKeysAndDataKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineBinaryKeysAndDataKHR[] ret = new VkPipelineBinaryKeysAndDataKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineBinaryKeysAndDataKHR(segment.asSlice(i * BYTES, BYTES));
+        VkPipelineBinaryKeysAndDataKHR.Ptr ret = new VkPipelineBinaryKeysAndDataKHR.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -56,14 +92,6 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
     public static VkPipelineBinaryKeysAndDataKHR clone(Arena arena, VkPipelineBinaryKeysAndDataKHR src) {
         VkPipelineBinaryKeysAndDataKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPipelineBinaryKeysAndDataKHR[] clone(Arena arena, VkPipelineBinaryKeysAndDataKHR[] src) {
-        VkPipelineBinaryKeysAndDataKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

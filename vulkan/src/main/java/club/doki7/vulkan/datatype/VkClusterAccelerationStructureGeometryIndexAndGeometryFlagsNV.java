@@ -40,16 +40,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.html"><code>VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@NotNull MemorySegment segment) implements IPointer {
+public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@NotNull MemorySegment segment) implements IVkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.html"><code>VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {
+        public long size() {
+            return segment.byteSize() / VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV at(long index) {
+            return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.asSlice(index * VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES, VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES));
+        }
+        public void write(long index, @NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {
+            MemorySegment s = segment.asSlice(index * VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES, VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV allocate(Arena arena) {
         return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(arena.allocate(LAYOUT));
     }
 
-    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] allocate(Arena arena, int count) {
+    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] ret = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.asSlice(i * BYTES, BYTES));
+        VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Ptr ret = new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -57,14 +93,6 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
     public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV clone(Arena arena, VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV src) {
         VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] clone(Arena arena, VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] src) {
-        VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

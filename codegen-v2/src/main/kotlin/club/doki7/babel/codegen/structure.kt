@@ -61,6 +61,28 @@ sealed class LayoutField(
     data class Bitfield(val bitfieldName: String, val offset: Int, val bits: Int)
 }
 
+fun generateStructureInterface(
+    structure: Structure,
+    codegenOptions: CodegenOptions
+) = buildDoc {
+    val packageName = codegenOptions.packageName
+    val className = structure.name.toString()
+
+    +"package $packageName.datatype;"
+    +""
+    imports("club.doki7.ffm.IPointer")
+    +""
+    +"/// Auxiliary interface for unifying {@link $className} and {@link ${className}.Ptr} operations."
+    +"///"
+    +"/// See package level documentation for more details."
+    +"public sealed interface I${className}"
+    indent {
+        +"extends IPointer"
+        +"permits $className, ${className}.Ptr"
+    }
+    +"{}"
+}
+
 fun generateStructure(
     registryBase: RegistryBase,
     structure: Structure,
@@ -174,7 +196,7 @@ fun generateStructure(
             +"/// - `${it.name} = ${it.values!!.original}`"
         }
         +"///"
-        +"/// The {@code allocate} ({@link $className#allocate(Arena)}, {@link $className#allocate(Arena, int)})"
+        +"/// The {@code allocate} ({@link $className#allocate(Arena)}, {@link $className#allocate(Arena, long)})"
         +"/// functions will automatically initialize these fields. Also, you may call {@link $className#autoInit}"
         +"/// to initialize these fields manually for non-allocated instances."
     }
@@ -196,9 +218,51 @@ fun generateStructure(
 
     +"@ValueBasedCandidate"
     +"@UnsafeConstructor"
-    +"public record $className(@NotNull MemorySegment segment) implements IPointer {"
+    +"public record $className(@NotNull MemorySegment segment) implements I${className} {"
 
     indent {
+        +"/// Represents a pointer to / an array of $seeLink structure(s) in native memory."
+        +"///"
+        +"/// Technically speaking, this type has no difference with {@link $className}. This type"
+        +"/// is introduced mainly for user to distinguish between a pointer to a single structure"
+        +"/// and a pointer to (potentially) an array of structure(s). APIs should use interface"
+        +"/// I$className to handle both types uniformly. See package level documentation for more"
+        +"/// details."
+        +"///"
+        +"/// ## Contracts"
+        +"///"
+        +"/// The property {@link #segment()} should always be not-null"
+        +"/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to"
+        +"/// {@code $className.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java"
+        +"/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details."
+        +"///"
+        +"/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not"
+        +"/// perform any runtime check. The constructor can be useful for automatic code generators."
+        +"@ValueBasedCandidate"
+        +"@UnsafeConstructor"
+        +"public record Ptr(@NotNull MemorySegment segment) implements I${className} {"
+        indent {
+            defun("public", "long", "size") {
+                +"return segment.byteSize() / $className.BYTES;"
+            }
+
+            +"/// Returns (a pointer to) the structure at the given index."
+            +"///"
+            +"/// Note that unlike {@code read} series functions ({@link IntPtr#read()} for"
+            +"/// example), modification on returned structure will be reflected on the original"
+            +"/// structure array. So this function is called {@code at} to explicitly"
+            +"/// indicate that the returned structure is a view of the original structure."
+            defun("public @NotNull", className, "at", "long index") {
+                +"return new $className(segment.asSlice(index * $className.BYTES, $className.BYTES));"
+            }
+
+            defun("public", "void", "write", "long index", "@NotNull $className value") {
+                +"MemorySegment s = segment.asSlice(index * $className.BYTES, $className.BYTES);"
+                +"s.copyFrom(value.segment);"
+            }
+        }
+        +"}"
+
         defun("public static", className, "allocate", "Arena arena") {
             if (autoInitMembers.isNotEmpty()) {
                 +"$className ret = new $className(arena.allocate(LAYOUT));"
@@ -215,17 +279,16 @@ fun generateStructure(
         }
         +""
 
-        defun("public static", "$className[]", "allocate", "Arena arena", "int count") {
+        defun("public static", "$className.Ptr", "allocate", "Arena arena", "long count") {
             +"MemorySegment segment = arena.allocate(LAYOUT, count);"
-            +"$className[] ret = new $className[count];"
-            "for (int i = 0; i < count; i ++)" {
-                +"ret[i] = new $className(segment.asSlice(i * BYTES, BYTES));"
+            +"$className.Ptr ret = new $className.Ptr(segment);"
+            "for (long i = 0; i < count; i ++)" {
                 if (autoInitMembers.isNotEmpty()) {
                     if (autoInitMembers.size == 1) {
                         val it = autoInitMembers.first()
-                        +"ret[i].${it.name}(${(it.type as IdentifierType).ident}.${it.values});"
+                        +"ret.at(i).${it.name}(${(it.type as IdentifierType).ident}.${it.values});"
                     } else {
-                        +"ret[i].autoInit();"
+                        +"ret.at(i).autoInit();"
                     }
                 }
             }
@@ -236,15 +299,6 @@ fun generateStructure(
         defun("public static", className, "clone", "Arena arena", "$className src") {
             +"$className ret = allocate(arena);"
             +"ret.segment.copyFrom(src.segment);"
-            +"return ret;"
-        }
-        +""
-
-        defun("public static", "$className[]", "clone", "Arena arena", "$className[] src") {
-            +"$className[] ret = allocate(arena, src.length);"
-            "for (int i = 0; i < src.length; i ++)" {
-                +"ret[i].segment.copyFrom(src[i].segment);"
-            }
             +"return ret;"
         }
         +""

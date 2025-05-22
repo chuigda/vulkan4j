@@ -37,16 +37,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implements IStdVideoAV1TileInfoFlags {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoAV1TileInfoFlags}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoAV1TileInfoFlags to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoAV1TileInfoFlags.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1TileInfoFlags {
+        public long size() {
+            return segment.byteSize() / StdVideoAV1TileInfoFlags.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoAV1TileInfoFlags at(long index) {
+            return new StdVideoAV1TileInfoFlags(segment.asSlice(index * StdVideoAV1TileInfoFlags.BYTES, StdVideoAV1TileInfoFlags.BYTES));
+        }
+        public void write(long index, @NotNull StdVideoAV1TileInfoFlags value) {
+            MemorySegment s = segment.asSlice(index * StdVideoAV1TileInfoFlags.BYTES, StdVideoAV1TileInfoFlags.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static StdVideoAV1TileInfoFlags allocate(Arena arena) {
         return new StdVideoAV1TileInfoFlags(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoAV1TileInfoFlags[] allocate(Arena arena, int count) {
+    public static StdVideoAV1TileInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1TileInfoFlags[] ret = new StdVideoAV1TileInfoFlags[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1TileInfoFlags(segment.asSlice(i * BYTES, BYTES));
+        StdVideoAV1TileInfoFlags.Ptr ret = new StdVideoAV1TileInfoFlags.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -54,14 +90,6 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
     public static StdVideoAV1TileInfoFlags clone(Arena arena, StdVideoAV1TileInfoFlags src) {
         StdVideoAV1TileInfoFlags ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoAV1TileInfoFlags[] clone(Arena arena, StdVideoAV1TileInfoFlags[] src) {
-        StdVideoAV1TileInfoFlags[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

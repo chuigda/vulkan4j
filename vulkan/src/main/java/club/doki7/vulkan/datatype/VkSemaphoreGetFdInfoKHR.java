@@ -31,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR`
 ///
-/// The {@code allocate} ({@link VkSemaphoreGetFdInfoKHR#allocate(Arena)}, {@link VkSemaphoreGetFdInfoKHR#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkSemaphoreGetFdInfoKHR#allocate(Arena)}, {@link VkSemaphoreGetFdInfoKHR#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkSemaphoreGetFdInfoKHR#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -47,19 +47,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSemaphoreGetFdInfoKHR.html"><code>VkSemaphoreGetFdInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements IVkSemaphoreGetFdInfoKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSemaphoreGetFdInfoKHR.html"><code>VkSemaphoreGetFdInfoKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkSemaphoreGetFdInfoKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkSemaphoreGetFdInfoKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkSemaphoreGetFdInfoKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkSemaphoreGetFdInfoKHR {
+        public long size() {
+            return segment.byteSize() / VkSemaphoreGetFdInfoKHR.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkSemaphoreGetFdInfoKHR at(long index) {
+            return new VkSemaphoreGetFdInfoKHR(segment.asSlice(index * VkSemaphoreGetFdInfoKHR.BYTES, VkSemaphoreGetFdInfoKHR.BYTES));
+        }
+        public void write(long index, @NotNull VkSemaphoreGetFdInfoKHR value) {
+            MemorySegment s = segment.asSlice(index * VkSemaphoreGetFdInfoKHR.BYTES, VkSemaphoreGetFdInfoKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkSemaphoreGetFdInfoKHR allocate(Arena arena) {
         VkSemaphoreGetFdInfoKHR ret = new VkSemaphoreGetFdInfoKHR(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.SEMAPHORE_GET_FD_INFO_KHR);
         return ret;
     }
 
-    public static VkSemaphoreGetFdInfoKHR[] allocate(Arena arena, int count) {
+    public static VkSemaphoreGetFdInfoKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSemaphoreGetFdInfoKHR[] ret = new VkSemaphoreGetFdInfoKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSemaphoreGetFdInfoKHR(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.SEMAPHORE_GET_FD_INFO_KHR);
+        VkSemaphoreGetFdInfoKHR.Ptr ret = new VkSemaphoreGetFdInfoKHR.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.SEMAPHORE_GET_FD_INFO_KHR);
         }
         return ret;
     }
@@ -67,14 +103,6 @@ public record VkSemaphoreGetFdInfoKHR(@NotNull MemorySegment segment) implements
     public static VkSemaphoreGetFdInfoKHR clone(Arena arena, VkSemaphoreGetFdInfoKHR src) {
         VkSemaphoreGetFdInfoKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkSemaphoreGetFdInfoKHR[] clone(Arena arena, VkSemaphoreGetFdInfoKHR[] src) {
-        VkSemaphoreGetFdInfoKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

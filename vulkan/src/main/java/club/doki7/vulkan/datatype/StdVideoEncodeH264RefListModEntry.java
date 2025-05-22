@@ -37,16 +37,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) implements IStdVideoEncodeH264RefListModEntry {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoEncodeH264RefListModEntry}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoEncodeH264RefListModEntry to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoEncodeH264RefListModEntry.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264RefListModEntry {
+        public long size() {
+            return segment.byteSize() / StdVideoEncodeH264RefListModEntry.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoEncodeH264RefListModEntry at(long index) {
+            return new StdVideoEncodeH264RefListModEntry(segment.asSlice(index * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES));
+        }
+        public void write(long index, @NotNull StdVideoEncodeH264RefListModEntry value) {
+            MemorySegment s = segment.asSlice(index * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static StdVideoEncodeH264RefListModEntry allocate(Arena arena) {
         return new StdVideoEncodeH264RefListModEntry(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoEncodeH264RefListModEntry[] allocate(Arena arena, int count) {
+    public static StdVideoEncodeH264RefListModEntry.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264RefListModEntry[] ret = new StdVideoEncodeH264RefListModEntry[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264RefListModEntry(segment.asSlice(i * BYTES, BYTES));
+        StdVideoEncodeH264RefListModEntry.Ptr ret = new StdVideoEncodeH264RefListModEntry.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -54,14 +90,6 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
     public static StdVideoEncodeH264RefListModEntry clone(Arena arena, StdVideoEncodeH264RefListModEntry src) {
         StdVideoEncodeH264RefListModEntry ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoEncodeH264RefListModEntry[] clone(Arena arena, StdVideoEncodeH264RefListModEntry[] src) {
-        StdVideoEncodeH264RefListModEntry[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

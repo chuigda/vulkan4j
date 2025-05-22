@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV`
 ///
-/// The {@code allocate} ({@link VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV#allocate(Arena)}, {@link VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV#allocate(Arena)}, {@link VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -46,19 +46,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.html"><code>VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(@NotNull MemorySegment segment) implements IVkPhysicalDeviceRayTracingInvocationReorderFeaturesNV {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.html"><code>VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceRayTracingInvocationReorderFeaturesNV to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceRayTracingInvocationReorderFeaturesNV {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV at(long index) {
+            return new VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(segment.asSlice(index * VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.BYTES, VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.BYTES));
+        }
+        public void write(long index, @NotNull VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.BYTES, VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV allocate(Arena arena) {
         VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV ret = new VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV);
         return ret;
     }
 
-    public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV[] ret = new VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV);
+        VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.Ptr ret = new VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV);
         }
         return ret;
     }
@@ -66,14 +102,6 @@ public record VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(@NotNull Mem
     public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV clone(Arena arena, VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV src) {
         VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV[] clone(Arena arena, VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV[] src) {
-        VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

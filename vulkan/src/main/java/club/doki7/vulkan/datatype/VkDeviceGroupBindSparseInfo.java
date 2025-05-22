@@ -31,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO`
 ///
-/// The {@code allocate} ({@link VkDeviceGroupBindSparseInfo#allocate(Arena)}, {@link VkDeviceGroupBindSparseInfo#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkDeviceGroupBindSparseInfo#allocate(Arena)}, {@link VkDeviceGroupBindSparseInfo#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkDeviceGroupBindSparseInfo#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -47,19 +47,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupBindSparseInfo.html"><code>VkDeviceGroupBindSparseInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkDeviceGroupBindSparseInfo(@NotNull MemorySegment segment) implements IPointer {
+public record VkDeviceGroupBindSparseInfo(@NotNull MemorySegment segment) implements IVkDeviceGroupBindSparseInfo {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkDeviceGroupBindSparseInfo.html"><code>VkDeviceGroupBindSparseInfo</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkDeviceGroupBindSparseInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkDeviceGroupBindSparseInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkDeviceGroupBindSparseInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceGroupBindSparseInfo {
+        public long size() {
+            return segment.byteSize() / VkDeviceGroupBindSparseInfo.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkDeviceGroupBindSparseInfo at(long index) {
+            return new VkDeviceGroupBindSparseInfo(segment.asSlice(index * VkDeviceGroupBindSparseInfo.BYTES, VkDeviceGroupBindSparseInfo.BYTES));
+        }
+        public void write(long index, @NotNull VkDeviceGroupBindSparseInfo value) {
+            MemorySegment s = segment.asSlice(index * VkDeviceGroupBindSparseInfo.BYTES, VkDeviceGroupBindSparseInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkDeviceGroupBindSparseInfo allocate(Arena arena) {
         VkDeviceGroupBindSparseInfo ret = new VkDeviceGroupBindSparseInfo(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.DEVICE_GROUP_BIND_SPARSE_INFO);
         return ret;
     }
 
-    public static VkDeviceGroupBindSparseInfo[] allocate(Arena arena, int count) {
+    public static VkDeviceGroupBindSparseInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkDeviceGroupBindSparseInfo[] ret = new VkDeviceGroupBindSparseInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkDeviceGroupBindSparseInfo(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.DEVICE_GROUP_BIND_SPARSE_INFO);
+        VkDeviceGroupBindSparseInfo.Ptr ret = new VkDeviceGroupBindSparseInfo.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.DEVICE_GROUP_BIND_SPARSE_INFO);
         }
         return ret;
     }
@@ -67,14 +103,6 @@ public record VkDeviceGroupBindSparseInfo(@NotNull MemorySegment segment) implem
     public static VkDeviceGroupBindSparseInfo clone(Arena arena, VkDeviceGroupBindSparseInfo src) {
         VkDeviceGroupBindSparseInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkDeviceGroupBindSparseInfo[] clone(Arena arena, VkDeviceGroupBindSparseInfo[] src) {
-        VkDeviceGroupBindSparseInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

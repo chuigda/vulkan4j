@@ -34,7 +34,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2`
 ///
-/// The {@code allocate} ({@link VkPhysicalDeviceImageFormatInfo2#allocate(Arena)}, {@link VkPhysicalDeviceImageFormatInfo2#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDeviceImageFormatInfo2#allocate(Arena)}, {@link VkPhysicalDeviceImageFormatInfo2#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceImageFormatInfo2#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -50,19 +50,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageFormatInfo2.html"><code>VkPhysicalDeviceImageFormatInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) implements IVkPhysicalDeviceImageFormatInfo2 {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageFormatInfo2.html"><code>VkPhysicalDeviceImageFormatInfo2</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceImageFormatInfo2}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceImageFormatInfo2 to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceImageFormatInfo2.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceImageFormatInfo2 {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceImageFormatInfo2.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceImageFormatInfo2 at(long index) {
+            return new VkPhysicalDeviceImageFormatInfo2(segment.asSlice(index * VkPhysicalDeviceImageFormatInfo2.BYTES, VkPhysicalDeviceImageFormatInfo2.BYTES));
+        }
+        public void write(long index, @NotNull VkPhysicalDeviceImageFormatInfo2 value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceImageFormatInfo2.BYTES, VkPhysicalDeviceImageFormatInfo2.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkPhysicalDeviceImageFormatInfo2 allocate(Arena arena) {
         VkPhysicalDeviceImageFormatInfo2 ret = new VkPhysicalDeviceImageFormatInfo2(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2);
         return ret;
     }
 
-    public static VkPhysicalDeviceImageFormatInfo2[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceImageFormatInfo2.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceImageFormatInfo2[] ret = new VkPhysicalDeviceImageFormatInfo2[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceImageFormatInfo2(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2);
+        VkPhysicalDeviceImageFormatInfo2.Ptr ret = new VkPhysicalDeviceImageFormatInfo2.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2);
         }
         return ret;
     }
@@ -70,14 +106,6 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
     public static VkPhysicalDeviceImageFormatInfo2 clone(Arena arena, VkPhysicalDeviceImageFormatInfo2 src) {
         VkPhysicalDeviceImageFormatInfo2 ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceImageFormatInfo2[] clone(Arena arena, VkPhysicalDeviceImageFormatInfo2[] src) {
-        VkPhysicalDeviceImageFormatInfo2[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

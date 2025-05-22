@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR`
 ///
-/// The {@code allocate} ({@link VkCopyAccelerationStructureToMemoryInfoKHR#allocate(Arena)}, {@link VkCopyAccelerationStructureToMemoryInfoKHR#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkCopyAccelerationStructureToMemoryInfoKHR#allocate(Arena)}, {@link VkCopyAccelerationStructureToMemoryInfoKHR#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkCopyAccelerationStructureToMemoryInfoKHR#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -48,19 +48,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyAccelerationStructureToMemoryInfoKHR.html"><code>VkCopyAccelerationStructureToMemoryInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment segment) implements IVkCopyAccelerationStructureToMemoryInfoKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyAccelerationStructureToMemoryInfoKHR.html"><code>VkCopyAccelerationStructureToMemoryInfoKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkCopyAccelerationStructureToMemoryInfoKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkCopyAccelerationStructureToMemoryInfoKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkCopyAccelerationStructureToMemoryInfoKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkCopyAccelerationStructureToMemoryInfoKHR {
+        public long size() {
+            return segment.byteSize() / VkCopyAccelerationStructureToMemoryInfoKHR.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkCopyAccelerationStructureToMemoryInfoKHR at(long index) {
+            return new VkCopyAccelerationStructureToMemoryInfoKHR(segment.asSlice(index * VkCopyAccelerationStructureToMemoryInfoKHR.BYTES, VkCopyAccelerationStructureToMemoryInfoKHR.BYTES));
+        }
+        public void write(long index, @NotNull VkCopyAccelerationStructureToMemoryInfoKHR value) {
+            MemorySegment s = segment.asSlice(index * VkCopyAccelerationStructureToMemoryInfoKHR.BYTES, VkCopyAccelerationStructureToMemoryInfoKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkCopyAccelerationStructureToMemoryInfoKHR allocate(Arena arena) {
         VkCopyAccelerationStructureToMemoryInfoKHR ret = new VkCopyAccelerationStructureToMemoryInfoKHR(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR);
         return ret;
     }
 
-    public static VkCopyAccelerationStructureToMemoryInfoKHR[] allocate(Arena arena, int count) {
+    public static VkCopyAccelerationStructureToMemoryInfoKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkCopyAccelerationStructureToMemoryInfoKHR[] ret = new VkCopyAccelerationStructureToMemoryInfoKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCopyAccelerationStructureToMemoryInfoKHR(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR);
+        VkCopyAccelerationStructureToMemoryInfoKHR.Ptr ret = new VkCopyAccelerationStructureToMemoryInfoKHR.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.COPY_ACCELERATION_STRUCTURE_TO_MEMORY_INFO_KHR);
         }
         return ret;
     }
@@ -68,14 +104,6 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment 
     public static VkCopyAccelerationStructureToMemoryInfoKHR clone(Arena arena, VkCopyAccelerationStructureToMemoryInfoKHR src) {
         VkCopyAccelerationStructureToMemoryInfoKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkCopyAccelerationStructureToMemoryInfoKHR[] clone(Arena arena, VkCopyAccelerationStructureToMemoryInfoKHR[] src) {
-        VkCopyAccelerationStructureToMemoryInfoKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

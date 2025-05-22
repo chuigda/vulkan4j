@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO`
 ///
-/// The {@code allocate} ({@link VkBufferDeviceAddressInfo#allocate(Arena)}, {@link VkBufferDeviceAddressInfo#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkBufferDeviceAddressInfo#allocate(Arena)}, {@link VkBufferDeviceAddressInfo#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkBufferDeviceAddressInfo#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -46,19 +46,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferDeviceAddressInfo.html"><code>VkBufferDeviceAddressInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkBufferDeviceAddressInfo(@NotNull MemorySegment segment) implements IPointer {
+public record VkBufferDeviceAddressInfo(@NotNull MemorySegment segment) implements IVkBufferDeviceAddressInfo {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferDeviceAddressInfo.html"><code>VkBufferDeviceAddressInfo</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkBufferDeviceAddressInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkBufferDeviceAddressInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkBufferDeviceAddressInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkBufferDeviceAddressInfo {
+        public long size() {
+            return segment.byteSize() / VkBufferDeviceAddressInfo.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkBufferDeviceAddressInfo at(long index) {
+            return new VkBufferDeviceAddressInfo(segment.asSlice(index * VkBufferDeviceAddressInfo.BYTES, VkBufferDeviceAddressInfo.BYTES));
+        }
+        public void write(long index, @NotNull VkBufferDeviceAddressInfo value) {
+            MemorySegment s = segment.asSlice(index * VkBufferDeviceAddressInfo.BYTES, VkBufferDeviceAddressInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkBufferDeviceAddressInfo allocate(Arena arena) {
         VkBufferDeviceAddressInfo ret = new VkBufferDeviceAddressInfo(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.BUFFER_DEVICE_ADDRESS_INFO);
         return ret;
     }
 
-    public static VkBufferDeviceAddressInfo[] allocate(Arena arena, int count) {
+    public static VkBufferDeviceAddressInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBufferDeviceAddressInfo[] ret = new VkBufferDeviceAddressInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferDeviceAddressInfo(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.BUFFER_DEVICE_ADDRESS_INFO);
+        VkBufferDeviceAddressInfo.Ptr ret = new VkBufferDeviceAddressInfo.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.BUFFER_DEVICE_ADDRESS_INFO);
         }
         return ret;
     }
@@ -66,14 +102,6 @@ public record VkBufferDeviceAddressInfo(@NotNull MemorySegment segment) implemen
     public static VkBufferDeviceAddressInfo clone(Arena arena, VkBufferDeviceAddressInfo src) {
         VkBufferDeviceAddressInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkBufferDeviceAddressInfo[] clone(Arena arena, VkBufferDeviceAddressInfo[] src) {
-        VkBufferDeviceAddressInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

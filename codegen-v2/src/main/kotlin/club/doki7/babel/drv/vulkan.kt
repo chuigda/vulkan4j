@@ -8,6 +8,7 @@ import club.doki7.babel.codegen.generateEnumeration
 import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.codegen.generateStructure
+import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.vulkan.VulkanRegistryExt
 import club.doki7.babel.extract.vulkan.extractVulkanRegistry
 import club.doki7.babel.registry.Bitmask
@@ -58,25 +59,19 @@ internal fun vulkanMain() {
     }
 
     for (structure in vulkanRegistry.structures.values) {
-        try {
-            val structureDoc = generateStructure(vulkanRegistry, structure, false, codegenOptions)
-            File("$packageDir/datatype/${structure.name}.java")
-                .writeText(render(structureDoc))
-        } catch (e: Throwable) {
-            e.printStackTrace()
-            log.severe("Failed to generate structure ${structure.name}: ${e.message}")
-        }
+        val structureInterfaceDoc = generateStructureInterface(structure, codegenOptions)
+        File("$packageDir/datatype/I${structure.name}.java")
+            .writeText(render(structureInterfaceDoc))
+
+        val structureDoc = generateStructure(vulkanRegistry, structure, false, codegenOptions)
+        File("$packageDir/datatype/${structure.name}.java")
+            .writeText(render(structureDoc))
     }
 
     for (unions in vulkanRegistry.unions.values) {
-        try {
-            val structureDoc = generateStructure(vulkanRegistry, unions, true, codegenOptions)
-            File("$packageDir/datatype/${unions.name}.java")
-                .writeText(render(structureDoc))
-        } catch (e: Throwable) {
-            e.printStackTrace()
-            log.severe("Failed to generate union ${unions.name}: ${e.message}")
-        }
+        val structureDoc = generateStructure(vulkanRegistry, unions, true, codegenOptions)
+        File("$packageDir/datatype/${unions.name}.java")
+            .writeText(render(structureDoc))
     }
 
     for (handle in vulkanRegistry.opaqueHandleTypedefs.values) {

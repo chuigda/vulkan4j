@@ -31,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP`
 ///
-/// The {@code allocate} ({@link VkStreamDescriptorSurfaceCreateInfoGGP#allocate(Arena)}, {@link VkStreamDescriptorSurfaceCreateInfoGGP#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkStreamDescriptorSurfaceCreateInfoGGP#allocate(Arena)}, {@link VkStreamDescriptorSurfaceCreateInfoGGP#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkStreamDescriptorSurfaceCreateInfoGGP#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -47,19 +47,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStreamDescriptorSurfaceCreateInfoGGP.html"><code>VkStreamDescriptorSurfaceCreateInfoGGP</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segment) implements IPointer {
+public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segment) implements IVkStreamDescriptorSurfaceCreateInfoGGP {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStreamDescriptorSurfaceCreateInfoGGP.html"><code>VkStreamDescriptorSurfaceCreateInfoGGP</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkStreamDescriptorSurfaceCreateInfoGGP}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkStreamDescriptorSurfaceCreateInfoGGP to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkStreamDescriptorSurfaceCreateInfoGGP.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkStreamDescriptorSurfaceCreateInfoGGP {
+        public long size() {
+            return segment.byteSize() / VkStreamDescriptorSurfaceCreateInfoGGP.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkStreamDescriptorSurfaceCreateInfoGGP at(long index) {
+            return new VkStreamDescriptorSurfaceCreateInfoGGP(segment.asSlice(index * VkStreamDescriptorSurfaceCreateInfoGGP.BYTES, VkStreamDescriptorSurfaceCreateInfoGGP.BYTES));
+        }
+        public void write(long index, @NotNull VkStreamDescriptorSurfaceCreateInfoGGP value) {
+            MemorySegment s = segment.asSlice(index * VkStreamDescriptorSurfaceCreateInfoGGP.BYTES, VkStreamDescriptorSurfaceCreateInfoGGP.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkStreamDescriptorSurfaceCreateInfoGGP allocate(Arena arena) {
         VkStreamDescriptorSurfaceCreateInfoGGP ret = new VkStreamDescriptorSurfaceCreateInfoGGP(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP);
         return ret;
     }
 
-    public static VkStreamDescriptorSurfaceCreateInfoGGP[] allocate(Arena arena, int count) {
+    public static VkStreamDescriptorSurfaceCreateInfoGGP.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkStreamDescriptorSurfaceCreateInfoGGP[] ret = new VkStreamDescriptorSurfaceCreateInfoGGP[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkStreamDescriptorSurfaceCreateInfoGGP(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP);
+        VkStreamDescriptorSurfaceCreateInfoGGP.Ptr ret = new VkStreamDescriptorSurfaceCreateInfoGGP.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP);
         }
         return ret;
     }
@@ -67,14 +103,6 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segm
     public static VkStreamDescriptorSurfaceCreateInfoGGP clone(Arena arena, VkStreamDescriptorSurfaceCreateInfoGGP src) {
         VkStreamDescriptorSurfaceCreateInfoGGP ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkStreamDescriptorSurfaceCreateInfoGGP[] clone(Arena arena, VkStreamDescriptorSurfaceCreateInfoGGP[] src) {
-        VkStreamDescriptorSurfaceCreateInfoGGP[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

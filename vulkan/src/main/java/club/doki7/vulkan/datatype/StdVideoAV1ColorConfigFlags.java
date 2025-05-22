@@ -40,16 +40,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implements IStdVideoAV1ColorConfigFlags {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoAV1ColorConfigFlags}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoAV1ColorConfigFlags to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoAV1ColorConfigFlags.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1ColorConfigFlags {
+        public long size() {
+            return segment.byteSize() / StdVideoAV1ColorConfigFlags.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoAV1ColorConfigFlags at(long index) {
+            return new StdVideoAV1ColorConfigFlags(segment.asSlice(index * StdVideoAV1ColorConfigFlags.BYTES, StdVideoAV1ColorConfigFlags.BYTES));
+        }
+        public void write(long index, @NotNull StdVideoAV1ColorConfigFlags value) {
+            MemorySegment s = segment.asSlice(index * StdVideoAV1ColorConfigFlags.BYTES, StdVideoAV1ColorConfigFlags.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static StdVideoAV1ColorConfigFlags allocate(Arena arena) {
         return new StdVideoAV1ColorConfigFlags(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoAV1ColorConfigFlags[] allocate(Arena arena, int count) {
+    public static StdVideoAV1ColorConfigFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoAV1ColorConfigFlags[] ret = new StdVideoAV1ColorConfigFlags[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoAV1ColorConfigFlags(segment.asSlice(i * BYTES, BYTES));
+        StdVideoAV1ColorConfigFlags.Ptr ret = new StdVideoAV1ColorConfigFlags.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -57,14 +93,6 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
     public static StdVideoAV1ColorConfigFlags clone(Arena arena, StdVideoAV1ColorConfigFlags src) {
         StdVideoAV1ColorConfigFlags ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoAV1ColorConfigFlags[] clone(Arena arena, StdVideoAV1ColorConfigFlags[] src) {
-        StdVideoAV1ColorConfigFlags[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

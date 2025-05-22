@@ -37,7 +37,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID`
 ///
-/// The {@code allocate} ({@link VkAndroidHardwareBufferFormatPropertiesANDROID#allocate(Arena)}, {@link VkAndroidHardwareBufferFormatPropertiesANDROID#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkAndroidHardwareBufferFormatPropertiesANDROID#allocate(Arena)}, {@link VkAndroidHardwareBufferFormatPropertiesANDROID#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkAndroidHardwareBufferFormatPropertiesANDROID#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -53,19 +53,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidHardwareBufferFormatPropertiesANDROID.html"><code>VkAndroidHardwareBufferFormatPropertiesANDROID</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegment segment) implements IPointer {
+public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegment segment) implements IVkAndroidHardwareBufferFormatPropertiesANDROID {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAndroidHardwareBufferFormatPropertiesANDROID.html"><code>VkAndroidHardwareBufferFormatPropertiesANDROID</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkAndroidHardwareBufferFormatPropertiesANDROID}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkAndroidHardwareBufferFormatPropertiesANDROID to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkAndroidHardwareBufferFormatPropertiesANDROID.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAndroidHardwareBufferFormatPropertiesANDROID {
+        public long size() {
+            return segment.byteSize() / VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkAndroidHardwareBufferFormatPropertiesANDROID at(long index) {
+            return new VkAndroidHardwareBufferFormatPropertiesANDROID(segment.asSlice(index * VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES, VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES));
+        }
+        public void write(long index, @NotNull VkAndroidHardwareBufferFormatPropertiesANDROID value) {
+            MemorySegment s = segment.asSlice(index * VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES, VkAndroidHardwareBufferFormatPropertiesANDROID.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkAndroidHardwareBufferFormatPropertiesANDROID allocate(Arena arena) {
         VkAndroidHardwareBufferFormatPropertiesANDROID ret = new VkAndroidHardwareBufferFormatPropertiesANDROID(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID);
         return ret;
     }
 
-    public static VkAndroidHardwareBufferFormatPropertiesANDROID[] allocate(Arena arena, int count) {
+    public static VkAndroidHardwareBufferFormatPropertiesANDROID.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAndroidHardwareBufferFormatPropertiesANDROID[] ret = new VkAndroidHardwareBufferFormatPropertiesANDROID[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAndroidHardwareBufferFormatPropertiesANDROID(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID);
+        VkAndroidHardwareBufferFormatPropertiesANDROID.Ptr ret = new VkAndroidHardwareBufferFormatPropertiesANDROID.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID);
         }
         return ret;
     }
@@ -73,14 +109,6 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
     public static VkAndroidHardwareBufferFormatPropertiesANDROID clone(Arena arena, VkAndroidHardwareBufferFormatPropertiesANDROID src) {
         VkAndroidHardwareBufferFormatPropertiesANDROID ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkAndroidHardwareBufferFormatPropertiesANDROID[] clone(Arena arena, VkAndroidHardwareBufferFormatPropertiesANDROID[] src) {
-        VkAndroidHardwareBufferFormatPropertiesANDROID[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

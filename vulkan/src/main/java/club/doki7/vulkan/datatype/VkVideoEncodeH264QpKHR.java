@@ -39,16 +39,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264QpKHR.html"><code>VkVideoEncodeH264QpKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkVideoEncodeH264QpKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkVideoEncodeH264QpKHR(@NotNull MemorySegment segment) implements IVkVideoEncodeH264QpKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH264QpKHR.html"><code>VkVideoEncodeH264QpKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkVideoEncodeH264QpKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkVideoEncodeH264QpKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkVideoEncodeH264QpKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH264QpKHR {
+        public long size() {
+            return segment.byteSize() / VkVideoEncodeH264QpKHR.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkVideoEncodeH264QpKHR at(long index) {
+            return new VkVideoEncodeH264QpKHR(segment.asSlice(index * VkVideoEncodeH264QpKHR.BYTES, VkVideoEncodeH264QpKHR.BYTES));
+        }
+        public void write(long index, @NotNull VkVideoEncodeH264QpKHR value) {
+            MemorySegment s = segment.asSlice(index * VkVideoEncodeH264QpKHR.BYTES, VkVideoEncodeH264QpKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkVideoEncodeH264QpKHR allocate(Arena arena) {
         return new VkVideoEncodeH264QpKHR(arena.allocate(LAYOUT));
     }
 
-    public static VkVideoEncodeH264QpKHR[] allocate(Arena arena, int count) {
+    public static VkVideoEncodeH264QpKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVideoEncodeH264QpKHR[] ret = new VkVideoEncodeH264QpKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH264QpKHR(segment.asSlice(i * BYTES, BYTES));
+        VkVideoEncodeH264QpKHR.Ptr ret = new VkVideoEncodeH264QpKHR.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -56,14 +92,6 @@ public record VkVideoEncodeH264QpKHR(@NotNull MemorySegment segment) implements 
     public static VkVideoEncodeH264QpKHR clone(Arena arena, VkVideoEncodeH264QpKHR src) {
         VkVideoEncodeH264QpKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkVideoEncodeH264QpKHR[] clone(Arena arena, VkVideoEncodeH264QpKHR[] src) {
-        VkVideoEncodeH264QpKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

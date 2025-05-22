@@ -30,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD`
 ///
-/// The {@code allocate} ({@link VkPipelineCompilerControlCreateInfoAMD#allocate(Arena)}, {@link VkPipelineCompilerControlCreateInfoAMD#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPipelineCompilerControlCreateInfoAMD#allocate(Arena)}, {@link VkPipelineCompilerControlCreateInfoAMD#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPipelineCompilerControlCreateInfoAMD#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -46,19 +46,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCompilerControlCreateInfoAMD.html"><code>VkPipelineCompilerControlCreateInfoAMD</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segment) implements IPointer {
+public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segment) implements IVkPipelineCompilerControlCreateInfoAMD {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineCompilerControlCreateInfoAMD.html"><code>VkPipelineCompilerControlCreateInfoAMD</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPipelineCompilerControlCreateInfoAMD}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPipelineCompilerControlCreateInfoAMD to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPipelineCompilerControlCreateInfoAMD.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineCompilerControlCreateInfoAMD {
+        public long size() {
+            return segment.byteSize() / VkPipelineCompilerControlCreateInfoAMD.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPipelineCompilerControlCreateInfoAMD at(long index) {
+            return new VkPipelineCompilerControlCreateInfoAMD(segment.asSlice(index * VkPipelineCompilerControlCreateInfoAMD.BYTES, VkPipelineCompilerControlCreateInfoAMD.BYTES));
+        }
+        public void write(long index, @NotNull VkPipelineCompilerControlCreateInfoAMD value) {
+            MemorySegment s = segment.asSlice(index * VkPipelineCompilerControlCreateInfoAMD.BYTES, VkPipelineCompilerControlCreateInfoAMD.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkPipelineCompilerControlCreateInfoAMD allocate(Arena arena) {
         VkPipelineCompilerControlCreateInfoAMD ret = new VkPipelineCompilerControlCreateInfoAMD(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD);
         return ret;
     }
 
-    public static VkPipelineCompilerControlCreateInfoAMD[] allocate(Arena arena, int count) {
+    public static VkPipelineCompilerControlCreateInfoAMD.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPipelineCompilerControlCreateInfoAMD[] ret = new VkPipelineCompilerControlCreateInfoAMD[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPipelineCompilerControlCreateInfoAMD(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD);
+        VkPipelineCompilerControlCreateInfoAMD.Ptr ret = new VkPipelineCompilerControlCreateInfoAMD.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD);
         }
         return ret;
     }
@@ -66,14 +102,6 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
     public static VkPipelineCompilerControlCreateInfoAMD clone(Arena arena, VkPipelineCompilerControlCreateInfoAMD src) {
         VkPipelineCompilerControlCreateInfoAMD ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPipelineCompilerControlCreateInfoAMD[] clone(Arena arena, VkPipelineCompilerControlCreateInfoAMD[] src) {
-        VkPipelineCompilerControlCreateInfoAMD[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

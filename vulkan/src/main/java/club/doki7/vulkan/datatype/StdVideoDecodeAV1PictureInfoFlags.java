@@ -65,16 +65,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) implements IStdVideoDecodeAV1PictureInfoFlags {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoDecodeAV1PictureInfoFlags}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoDecodeAV1PictureInfoFlags to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoDecodeAV1PictureInfoFlags.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeAV1PictureInfoFlags {
+        public long size() {
+            return segment.byteSize() / StdVideoDecodeAV1PictureInfoFlags.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoDecodeAV1PictureInfoFlags at(long index) {
+            return new StdVideoDecodeAV1PictureInfoFlags(segment.asSlice(index * StdVideoDecodeAV1PictureInfoFlags.BYTES, StdVideoDecodeAV1PictureInfoFlags.BYTES));
+        }
+        public void write(long index, @NotNull StdVideoDecodeAV1PictureInfoFlags value) {
+            MemorySegment s = segment.asSlice(index * StdVideoDecodeAV1PictureInfoFlags.BYTES, StdVideoDecodeAV1PictureInfoFlags.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static StdVideoDecodeAV1PictureInfoFlags allocate(Arena arena) {
         return new StdVideoDecodeAV1PictureInfoFlags(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoDecodeAV1PictureInfoFlags[] allocate(Arena arena, int count) {
+    public static StdVideoDecodeAV1PictureInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoDecodeAV1PictureInfoFlags[] ret = new StdVideoDecodeAV1PictureInfoFlags[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeAV1PictureInfoFlags(segment.asSlice(i * BYTES, BYTES));
+        StdVideoDecodeAV1PictureInfoFlags.Ptr ret = new StdVideoDecodeAV1PictureInfoFlags.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -82,14 +118,6 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
     public static StdVideoDecodeAV1PictureInfoFlags clone(Arena arena, StdVideoDecodeAV1PictureInfoFlags src) {
         StdVideoDecodeAV1PictureInfoFlags ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoDecodeAV1PictureInfoFlags[] clone(Arena arena, StdVideoDecodeAV1PictureInfoFlags[] src) {
-        StdVideoDecodeAV1PictureInfoFlags[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

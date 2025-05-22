@@ -38,7 +38,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX`
 ///
-/// The {@code allocate} ({@link VkScreenBufferFormatPropertiesQNX#allocate(Arena)}, {@link VkScreenBufferFormatPropertiesQNX#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkScreenBufferFormatPropertiesQNX#allocate(Arena)}, {@link VkScreenBufferFormatPropertiesQNX#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkScreenBufferFormatPropertiesQNX#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -54,19 +54,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkScreenBufferFormatPropertiesQNX.html"><code>VkScreenBufferFormatPropertiesQNX</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) implements IPointer {
+public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) implements IVkScreenBufferFormatPropertiesQNX {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkScreenBufferFormatPropertiesQNX.html"><code>VkScreenBufferFormatPropertiesQNX</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkScreenBufferFormatPropertiesQNX}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkScreenBufferFormatPropertiesQNX to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkScreenBufferFormatPropertiesQNX.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkScreenBufferFormatPropertiesQNX {
+        public long size() {
+            return segment.byteSize() / VkScreenBufferFormatPropertiesQNX.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkScreenBufferFormatPropertiesQNX at(long index) {
+            return new VkScreenBufferFormatPropertiesQNX(segment.asSlice(index * VkScreenBufferFormatPropertiesQNX.BYTES, VkScreenBufferFormatPropertiesQNX.BYTES));
+        }
+        public void write(long index, @NotNull VkScreenBufferFormatPropertiesQNX value) {
+            MemorySegment s = segment.asSlice(index * VkScreenBufferFormatPropertiesQNX.BYTES, VkScreenBufferFormatPropertiesQNX.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkScreenBufferFormatPropertiesQNX allocate(Arena arena) {
         VkScreenBufferFormatPropertiesQNX ret = new VkScreenBufferFormatPropertiesQNX(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.SCREEN_BUFFER_FORMAT_PROPERTIES_QNX);
         return ret;
     }
 
-    public static VkScreenBufferFormatPropertiesQNX[] allocate(Arena arena, int count) {
+    public static VkScreenBufferFormatPropertiesQNX.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkScreenBufferFormatPropertiesQNX[] ret = new VkScreenBufferFormatPropertiesQNX[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkScreenBufferFormatPropertiesQNX(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.SCREEN_BUFFER_FORMAT_PROPERTIES_QNX);
+        VkScreenBufferFormatPropertiesQNX.Ptr ret = new VkScreenBufferFormatPropertiesQNX.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.SCREEN_BUFFER_FORMAT_PROPERTIES_QNX);
         }
         return ret;
     }
@@ -74,14 +110,6 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
     public static VkScreenBufferFormatPropertiesQNX clone(Arena arena, VkScreenBufferFormatPropertiesQNX src) {
         VkScreenBufferFormatPropertiesQNX ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkScreenBufferFormatPropertiesQNX[] clone(Arena arena, VkScreenBufferFormatPropertiesQNX[] src) {
-        VkScreenBufferFormatPropertiesQNX[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

@@ -33,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO`
 ///
-/// The {@code allocate} ({@link VkTimelineSemaphoreSubmitInfo#allocate(Arena)}, {@link VkTimelineSemaphoreSubmitInfo#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkTimelineSemaphoreSubmitInfo#allocate(Arena)}, {@link VkTimelineSemaphoreSubmitInfo#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkTimelineSemaphoreSubmitInfo#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -49,19 +49,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTimelineSemaphoreSubmitInfo.html"><code>VkTimelineSemaphoreSubmitInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements IPointer {
+public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements IVkTimelineSemaphoreSubmitInfo {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkTimelineSemaphoreSubmitInfo.html"><code>VkTimelineSemaphoreSubmitInfo</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkTimelineSemaphoreSubmitInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkTimelineSemaphoreSubmitInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkTimelineSemaphoreSubmitInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkTimelineSemaphoreSubmitInfo {
+        public long size() {
+            return segment.byteSize() / VkTimelineSemaphoreSubmitInfo.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkTimelineSemaphoreSubmitInfo at(long index) {
+            return new VkTimelineSemaphoreSubmitInfo(segment.asSlice(index * VkTimelineSemaphoreSubmitInfo.BYTES, VkTimelineSemaphoreSubmitInfo.BYTES));
+        }
+        public void write(long index, @NotNull VkTimelineSemaphoreSubmitInfo value) {
+            MemorySegment s = segment.asSlice(index * VkTimelineSemaphoreSubmitInfo.BYTES, VkTimelineSemaphoreSubmitInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkTimelineSemaphoreSubmitInfo allocate(Arena arena) {
         VkTimelineSemaphoreSubmitInfo ret = new VkTimelineSemaphoreSubmitInfo(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.TIMELINE_SEMAPHORE_SUBMIT_INFO);
         return ret;
     }
 
-    public static VkTimelineSemaphoreSubmitInfo[] allocate(Arena arena, int count) {
+    public static VkTimelineSemaphoreSubmitInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkTimelineSemaphoreSubmitInfo[] ret = new VkTimelineSemaphoreSubmitInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkTimelineSemaphoreSubmitInfo(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.TIMELINE_SEMAPHORE_SUBMIT_INFO);
+        VkTimelineSemaphoreSubmitInfo.Ptr ret = new VkTimelineSemaphoreSubmitInfo.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.TIMELINE_SEMAPHORE_SUBMIT_INFO);
         }
         return ret;
     }
@@ -69,14 +105,6 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
     public static VkTimelineSemaphoreSubmitInfo clone(Arena arena, VkTimelineSemaphoreSubmitInfo src) {
         VkTimelineSemaphoreSubmitInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkTimelineSemaphoreSubmitInfo[] clone(Arena arena, VkTimelineSemaphoreSubmitInfo[] src) {
-        VkTimelineSemaphoreSubmitInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

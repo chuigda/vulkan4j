@@ -37,16 +37,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segment) implements IStdVideoDecodeH265ReferenceInfoFlags {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoDecodeH265ReferenceInfoFlags}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoDecodeH265ReferenceInfoFlags to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoDecodeH265ReferenceInfoFlags.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeH265ReferenceInfoFlags {
+        public long size() {
+            return segment.byteSize() / StdVideoDecodeH265ReferenceInfoFlags.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoDecodeH265ReferenceInfoFlags at(long index) {
+            return new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(index * StdVideoDecodeH265ReferenceInfoFlags.BYTES, StdVideoDecodeH265ReferenceInfoFlags.BYTES));
+        }
+        public void write(long index, @NotNull StdVideoDecodeH265ReferenceInfoFlags value) {
+            MemorySegment s = segment.asSlice(index * StdVideoDecodeH265ReferenceInfoFlags.BYTES, StdVideoDecodeH265ReferenceInfoFlags.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static StdVideoDecodeH265ReferenceInfoFlags allocate(Arena arena) {
         return new StdVideoDecodeH265ReferenceInfoFlags(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoDecodeH265ReferenceInfoFlags[] allocate(Arena arena, int count) {
+    public static StdVideoDecodeH265ReferenceInfoFlags.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoDecodeH265ReferenceInfoFlags[] ret = new StdVideoDecodeH265ReferenceInfoFlags[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(i * BYTES, BYTES));
+        StdVideoDecodeH265ReferenceInfoFlags.Ptr ret = new StdVideoDecodeH265ReferenceInfoFlags.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -54,14 +90,6 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
     public static StdVideoDecodeH265ReferenceInfoFlags clone(Arena arena, StdVideoDecodeH265ReferenceInfoFlags src) {
         StdVideoDecodeH265ReferenceInfoFlags ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoDecodeH265ReferenceInfoFlags[] clone(Arena arena, StdVideoDecodeH265ReferenceInfoFlags[] src) {
-        StdVideoDecodeH265ReferenceInfoFlags[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

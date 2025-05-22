@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR`
 ///
-/// The {@code allocate} ({@link VkImportMemoryWin32HandleInfoKHR#allocate(Arena)}, {@link VkImportMemoryWin32HandleInfoKHR#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkImportMemoryWin32HandleInfoKHR#allocate(Arena)}, {@link VkImportMemoryWin32HandleInfoKHR#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkImportMemoryWin32HandleInfoKHR#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -48,19 +48,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryWin32HandleInfoKHR.html"><code>VkImportMemoryWin32HandleInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) implements IVkImportMemoryWin32HandleInfoKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImportMemoryWin32HandleInfoKHR.html"><code>VkImportMemoryWin32HandleInfoKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkImportMemoryWin32HandleInfoKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkImportMemoryWin32HandleInfoKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkImportMemoryWin32HandleInfoKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkImportMemoryWin32HandleInfoKHR {
+        public long size() {
+            return segment.byteSize() / VkImportMemoryWin32HandleInfoKHR.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkImportMemoryWin32HandleInfoKHR at(long index) {
+            return new VkImportMemoryWin32HandleInfoKHR(segment.asSlice(index * VkImportMemoryWin32HandleInfoKHR.BYTES, VkImportMemoryWin32HandleInfoKHR.BYTES));
+        }
+        public void write(long index, @NotNull VkImportMemoryWin32HandleInfoKHR value) {
+            MemorySegment s = segment.asSlice(index * VkImportMemoryWin32HandleInfoKHR.BYTES, VkImportMemoryWin32HandleInfoKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkImportMemoryWin32HandleInfoKHR allocate(Arena arena) {
         VkImportMemoryWin32HandleInfoKHR ret = new VkImportMemoryWin32HandleInfoKHR(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
         return ret;
     }
 
-    public static VkImportMemoryWin32HandleInfoKHR[] allocate(Arena arena, int count) {
+    public static VkImportMemoryWin32HandleInfoKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkImportMemoryWin32HandleInfoKHR[] ret = new VkImportMemoryWin32HandleInfoKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkImportMemoryWin32HandleInfoKHR(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
+        VkImportMemoryWin32HandleInfoKHR.Ptr ret = new VkImportMemoryWin32HandleInfoKHR.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
         }
         return ret;
     }
@@ -68,14 +104,6 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
     public static VkImportMemoryWin32HandleInfoKHR clone(Arena arena, VkImportMemoryWin32HandleInfoKHR src) {
         VkImportMemoryWin32HandleInfoKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkImportMemoryWin32HandleInfoKHR[] clone(Arena arena, VkImportMemoryWin32HandleInfoKHR[] src) {
-        VkImportMemoryWin32HandleInfoKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

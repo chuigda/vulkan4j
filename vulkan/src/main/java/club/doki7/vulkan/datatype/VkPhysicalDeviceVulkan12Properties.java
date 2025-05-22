@@ -81,7 +81,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES`
 ///
-/// The {@code allocate} ({@link VkPhysicalDeviceVulkan12Properties#allocate(Arena)}, {@link VkPhysicalDeviceVulkan12Properties#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDeviceVulkan12Properties#allocate(Arena)}, {@link VkPhysicalDeviceVulkan12Properties#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceVulkan12Properties#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -97,19 +97,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan12Properties.html"><code>VkPhysicalDeviceVulkan12Properties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment) implements IVkPhysicalDeviceVulkan12Properties {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceVulkan12Properties.html"><code>VkPhysicalDeviceVulkan12Properties</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceVulkan12Properties}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceVulkan12Properties to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceVulkan12Properties.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceVulkan12Properties {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceVulkan12Properties.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceVulkan12Properties at(long index) {
+            return new VkPhysicalDeviceVulkan12Properties(segment.asSlice(index * VkPhysicalDeviceVulkan12Properties.BYTES, VkPhysicalDeviceVulkan12Properties.BYTES));
+        }
+        public void write(long index, @NotNull VkPhysicalDeviceVulkan12Properties value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceVulkan12Properties.BYTES, VkPhysicalDeviceVulkan12Properties.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkPhysicalDeviceVulkan12Properties allocate(Arena arena) {
         VkPhysicalDeviceVulkan12Properties ret = new VkPhysicalDeviceVulkan12Properties(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES);
         return ret;
     }
 
-    public static VkPhysicalDeviceVulkan12Properties[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceVulkan12Properties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceVulkan12Properties[] ret = new VkPhysicalDeviceVulkan12Properties[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceVulkan12Properties(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES);
+        VkPhysicalDeviceVulkan12Properties.Ptr ret = new VkPhysicalDeviceVulkan12Properties.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES);
         }
         return ret;
     }
@@ -117,14 +153,6 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
     public static VkPhysicalDeviceVulkan12Properties clone(Arena arena, VkPhysicalDeviceVulkan12Properties src) {
         VkPhysicalDeviceVulkan12Properties ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceVulkan12Properties[] clone(Arena arena, VkPhysicalDeviceVulkan12Properties[] src) {
-        VkPhysicalDeviceVulkan12Properties[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

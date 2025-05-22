@@ -38,16 +38,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStridedDeviceAddressNV.html"><code>VkStridedDeviceAddressNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implements IPointer {
+public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implements IVkStridedDeviceAddressNV {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStridedDeviceAddressNV.html"><code>VkStridedDeviceAddressNV</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkStridedDeviceAddressNV}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkStridedDeviceAddressNV to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkStridedDeviceAddressNV.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkStridedDeviceAddressNV {
+        public long size() {
+            return segment.byteSize() / VkStridedDeviceAddressNV.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkStridedDeviceAddressNV at(long index) {
+            return new VkStridedDeviceAddressNV(segment.asSlice(index * VkStridedDeviceAddressNV.BYTES, VkStridedDeviceAddressNV.BYTES));
+        }
+        public void write(long index, @NotNull VkStridedDeviceAddressNV value) {
+            MemorySegment s = segment.asSlice(index * VkStridedDeviceAddressNV.BYTES, VkStridedDeviceAddressNV.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkStridedDeviceAddressNV allocate(Arena arena) {
         return new VkStridedDeviceAddressNV(arena.allocate(LAYOUT));
     }
 
-    public static VkStridedDeviceAddressNV[] allocate(Arena arena, int count) {
+    public static VkStridedDeviceAddressNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkStridedDeviceAddressNV[] ret = new VkStridedDeviceAddressNV[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkStridedDeviceAddressNV(segment.asSlice(i * BYTES, BYTES));
+        VkStridedDeviceAddressNV.Ptr ret = new VkStridedDeviceAddressNV.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -55,14 +91,6 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
     public static VkStridedDeviceAddressNV clone(Arena arena, VkStridedDeviceAddressNV src) {
         VkStridedDeviceAddressNV ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkStridedDeviceAddressNV[] clone(Arena arena, VkStridedDeviceAddressNV[] src) {
-        VkStridedDeviceAddressNV[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

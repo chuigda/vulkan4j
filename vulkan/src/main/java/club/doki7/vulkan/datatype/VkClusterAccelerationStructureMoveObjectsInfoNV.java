@@ -37,16 +37,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureMoveObjectsInfoNV.html"><code>VkClusterAccelerationStructureMoveObjectsInfoNV</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySegment segment) implements IPointer {
+public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySegment segment) implements IVkClusterAccelerationStructureMoveObjectsInfoNV {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkClusterAccelerationStructureMoveObjectsInfoNV.html"><code>VkClusterAccelerationStructureMoveObjectsInfoNV</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkClusterAccelerationStructureMoveObjectsInfoNV}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkClusterAccelerationStructureMoveObjectsInfoNV to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkClusterAccelerationStructureMoveObjectsInfoNV.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkClusterAccelerationStructureMoveObjectsInfoNV {
+        public long size() {
+            return segment.byteSize() / VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkClusterAccelerationStructureMoveObjectsInfoNV at(long index) {
+            return new VkClusterAccelerationStructureMoveObjectsInfoNV(segment.asSlice(index * VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES, VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES));
+        }
+        public void write(long index, @NotNull VkClusterAccelerationStructureMoveObjectsInfoNV value) {
+            MemorySegment s = segment.asSlice(index * VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES, VkClusterAccelerationStructureMoveObjectsInfoNV.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkClusterAccelerationStructureMoveObjectsInfoNV allocate(Arena arena) {
         return new VkClusterAccelerationStructureMoveObjectsInfoNV(arena.allocate(LAYOUT));
     }
 
-    public static VkClusterAccelerationStructureMoveObjectsInfoNV[] allocate(Arena arena, int count) {
+    public static VkClusterAccelerationStructureMoveObjectsInfoNV.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkClusterAccelerationStructureMoveObjectsInfoNV[] ret = new VkClusterAccelerationStructureMoveObjectsInfoNV[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkClusterAccelerationStructureMoveObjectsInfoNV(segment.asSlice(i * BYTES, BYTES));
+        VkClusterAccelerationStructureMoveObjectsInfoNV.Ptr ret = new VkClusterAccelerationStructureMoveObjectsInfoNV.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -54,14 +90,6 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
     public static VkClusterAccelerationStructureMoveObjectsInfoNV clone(Arena arena, VkClusterAccelerationStructureMoveObjectsInfoNV src) {
         VkClusterAccelerationStructureMoveObjectsInfoNV ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkClusterAccelerationStructureMoveObjectsInfoNV[] clone(Arena arena, VkClusterAccelerationStructureMoveObjectsInfoNV[] src) {
-        VkClusterAccelerationStructureMoveObjectsInfoNV[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

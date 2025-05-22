@@ -43,16 +43,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilOpState.html"><code>VkStencilOpState</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkStencilOpState(@NotNull MemorySegment segment) implements IPointer {
+public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkStencilOpState {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkStencilOpState.html"><code>VkStencilOpState</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkStencilOpState}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkStencilOpState to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkStencilOpState.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkStencilOpState {
+        public long size() {
+            return segment.byteSize() / VkStencilOpState.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkStencilOpState at(long index) {
+            return new VkStencilOpState(segment.asSlice(index * VkStencilOpState.BYTES, VkStencilOpState.BYTES));
+        }
+        public void write(long index, @NotNull VkStencilOpState value) {
+            MemorySegment s = segment.asSlice(index * VkStencilOpState.BYTES, VkStencilOpState.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkStencilOpState allocate(Arena arena) {
         return new VkStencilOpState(arena.allocate(LAYOUT));
     }
 
-    public static VkStencilOpState[] allocate(Arena arena, int count) {
+    public static VkStencilOpState.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkStencilOpState[] ret = new VkStencilOpState[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkStencilOpState(segment.asSlice(i * BYTES, BYTES));
+        VkStencilOpState.Ptr ret = new VkStencilOpState.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -60,14 +96,6 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IPoint
     public static VkStencilOpState clone(Arena arena, VkStencilOpState src) {
         VkStencilOpState ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkStencilOpState[] clone(Arena arena, VkStencilOpState[] src) {
-        VkStencilOpState[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

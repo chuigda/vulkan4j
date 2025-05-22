@@ -34,7 +34,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR`
 ///
-/// The {@code allocate} ({@link VkVideoEncodeH265RateControlInfoKHR#allocate(Arena)}, {@link VkVideoEncodeH265RateControlInfoKHR#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkVideoEncodeH265RateControlInfoKHR#allocate(Arena)}, {@link VkVideoEncodeH265RateControlInfoKHR#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkVideoEncodeH265RateControlInfoKHR#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
@@ -50,19 +50,55 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265RateControlInfoKHR.html"><code>VkVideoEncodeH265RateControlInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment) implements IVkVideoEncodeH265RateControlInfoKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265RateControlInfoKHR.html"><code>VkVideoEncodeH265RateControlInfoKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkVideoEncodeH265RateControlInfoKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkVideoEncodeH265RateControlInfoKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkVideoEncodeH265RateControlInfoKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH265RateControlInfoKHR {
+        public long size() {
+            return segment.byteSize() / VkVideoEncodeH265RateControlInfoKHR.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkVideoEncodeH265RateControlInfoKHR at(long index) {
+            return new VkVideoEncodeH265RateControlInfoKHR(segment.asSlice(index * VkVideoEncodeH265RateControlInfoKHR.BYTES, VkVideoEncodeH265RateControlInfoKHR.BYTES));
+        }
+        public void write(long index, @NotNull VkVideoEncodeH265RateControlInfoKHR value) {
+            MemorySegment s = segment.asSlice(index * VkVideoEncodeH265RateControlInfoKHR.BYTES, VkVideoEncodeH265RateControlInfoKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkVideoEncodeH265RateControlInfoKHR allocate(Arena arena) {
         VkVideoEncodeH265RateControlInfoKHR ret = new VkVideoEncodeH265RateControlInfoKHR(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR);
         return ret;
     }
 
-    public static VkVideoEncodeH265RateControlInfoKHR[] allocate(Arena arena, int count) {
+    public static VkVideoEncodeH265RateControlInfoKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVideoEncodeH265RateControlInfoKHR[] ret = new VkVideoEncodeH265RateControlInfoKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH265RateControlInfoKHR(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR);
+        VkVideoEncodeH265RateControlInfoKHR.Ptr ret = new VkVideoEncodeH265RateControlInfoKHR.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
+            ret.at(i).sType(VkStructureType.VIDEO_ENCODE_H265_RATE_CONTROL_INFO_KHR);
         }
         return ret;
     }
@@ -70,14 +106,6 @@ public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment
     public static VkVideoEncodeH265RateControlInfoKHR clone(Arena arena, VkVideoEncodeH265RateControlInfoKHR src) {
         VkVideoEncodeH265RateControlInfoKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkVideoEncodeH265RateControlInfoKHR[] clone(Arena arena, VkVideoEncodeH265RateControlInfoKHR[] src) {
-        VkVideoEncodeH265RateControlInfoKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 

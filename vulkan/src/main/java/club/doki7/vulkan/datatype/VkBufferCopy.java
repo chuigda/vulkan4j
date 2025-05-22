@@ -39,16 +39,52 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCopy.html"><code>VkBufferCopy</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkBufferCopy(@NotNull MemorySegment segment) implements IPointer {
+public record VkBufferCopy(@NotNull MemorySegment segment) implements IVkBufferCopy {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBufferCopy.html"><code>VkBufferCopy</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkBufferCopy}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkBufferCopy to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkBufferCopy.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkBufferCopy {
+        public long size() {
+            return segment.byteSize() / VkBufferCopy.BYTES;
+        }
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkBufferCopy at(long index) {
+            return new VkBufferCopy(segment.asSlice(index * VkBufferCopy.BYTES, VkBufferCopy.BYTES));
+        }
+        public void write(long index, @NotNull VkBufferCopy value) {
+            MemorySegment s = segment.asSlice(index * VkBufferCopy.BYTES, VkBufferCopy.BYTES);
+            s.copyFrom(value.segment);
+        }
+    }
     public static VkBufferCopy allocate(Arena arena) {
         return new VkBufferCopy(arena.allocate(LAYOUT));
     }
 
-    public static VkBufferCopy[] allocate(Arena arena, int count) {
+    public static VkBufferCopy.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBufferCopy[] ret = new VkBufferCopy[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBufferCopy(segment.asSlice(i * BYTES, BYTES));
+        VkBufferCopy.Ptr ret = new VkBufferCopy.Ptr(segment);
+        for (long i = 0; i < count; i ++) {
         }
         return ret;
     }
@@ -56,14 +92,6 @@ public record VkBufferCopy(@NotNull MemorySegment segment) implements IPointer {
     public static VkBufferCopy clone(Arena arena, VkBufferCopy src) {
         VkBufferCopy ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkBufferCopy[] clone(Arena arena, VkBufferCopy[] src) {
-        VkBufferCopy[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
