@@ -62,7 +62,10 @@
 /// {@link club.doki7.vulkan.datatype.VkRect2D} to represent {@code renderArea}, while
 /// {@link club.doki7.vulkan.datatype.VkClearValue.Ptr} to represent {@code pClearValues}.
 ///
-/// {@code vulkan4j} APIs are designed to accept both {@code StructureType} and
-/// {@code StructureType.Ptr} via the interface {@code IStructureType} interface, so you don't need
-/// to bother which one to allocate.
+/// For APIs that accept pointer to / array of structures, their corresponding {@code vulkan4j}
+/// wrappers are designed to accept both {@code StructureType} and {@code StructureType.Ptr} via the
+/// interface {@code IStructureType} interface, so you don't need to bother which type to allocate.
+/// However, when the metadata explicitly indicates that the API accepts only one structure, the
+/// wrapper enforces you to use the {@code StructureType}. This is to prevent accidental passing of
+/// an array of structures to an API that only accepts a single structure.
 package club.doki7.vulkan.datatype;
