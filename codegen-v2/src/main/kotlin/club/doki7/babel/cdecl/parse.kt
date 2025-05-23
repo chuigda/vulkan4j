@@ -301,7 +301,7 @@ private class CParser(private val tokens: List<Token>) {
 }
 
 fun parseStructFieldDecl(source: List<String>, startLine: Int): Pair<StructFieldDecl, Int> {
-    val (tokens, lastLine) = CTokenizer(source, startLine).tokenize(',')
+    val (tokens, lastLine) = CTokenizer(source, startLine).tokenize(';')
     val (name, ty) = CParser(tokens).parseDeclaration()
     return Pair(
         StructFieldDecl(
@@ -316,12 +316,15 @@ fun parseStructFieldDecl(source: List<String>, startLine: Int): Pair<StructField
 fun parseFunctionDecl(source: List<String>, startLine: Int): Pair<FunctionDecl, Int> {
     val (tokens, lastLine) = CTokenizer(source, startLine).tokenize(';')
     val (name, ty) = CParser(tokens).parseDeclaration()
+
+    val rawFunctionType = (ty as RawFunctionType);
+
     return Pair(
         FunctionDecl(
             functionName = name,
-            returnType = ty,
-            params = emptyList(),
-            syntaxTrivia = emptyList()
+            returnType = rawFunctionType.returnType,
+            params = rawFunctionType.params.map { FunctionParamDecl(it.second, it.first, emptyList()) },
+            syntaxTrivia = rawFunctionType.syntaxTrivia
         ),
         lastLine
     )

@@ -109,6 +109,7 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
             curLine++
             curCol = 0
         }
+
         syntaxError("Unexpected end of file", curLine, curCol)
     }
 
