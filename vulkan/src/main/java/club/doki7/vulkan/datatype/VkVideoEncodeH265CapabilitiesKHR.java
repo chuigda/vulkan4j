@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -42,16 +43,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_KHR`
 ///
-/// The {@code allocate} ({@link VkVideoEncodeH265CapabilitiesKHR#allocate(Arena)}, {@link VkVideoEncodeH265CapabilitiesKHR#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkVideoEncodeH265CapabilitiesKHR#allocate(Arena)}, {@link VkVideoEncodeH265CapabilitiesKHR#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkVideoEncodeH265CapabilitiesKHR#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -61,19 +63,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265CapabilitiesKHR.html"><code>VkVideoEncodeH265CapabilitiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) implements IVkVideoEncodeH265CapabilitiesKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoEncodeH265CapabilitiesKHR.html"><code>VkVideoEncodeH265CapabilitiesKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkVideoEncodeH265CapabilitiesKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkVideoEncodeH265CapabilitiesKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkVideoEncodeH265CapabilitiesKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH265CapabilitiesKHR {
+        public long size() {
+            return segment.byteSize() / VkVideoEncodeH265CapabilitiesKHR.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkVideoEncodeH265CapabilitiesKHR at(long index) {
+            return new VkVideoEncodeH265CapabilitiesKHR(segment.asSlice(index * VkVideoEncodeH265CapabilitiesKHR.BYTES, VkVideoEncodeH265CapabilitiesKHR.BYTES));
+        }
+
+        public void write(long index, @NotNull VkVideoEncodeH265CapabilitiesKHR value) {
+            MemorySegment s = segment.asSlice(index * VkVideoEncodeH265CapabilitiesKHR.BYTES, VkVideoEncodeH265CapabilitiesKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkVideoEncodeH265CapabilitiesKHR.BYTES, VkVideoEncodeH265CapabilitiesKHR.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkVideoEncodeH265CapabilitiesKHR.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkVideoEncodeH265CapabilitiesKHR.BYTES,
+                (end - start) * VkVideoEncodeH265CapabilitiesKHR.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkVideoEncodeH265CapabilitiesKHR.BYTES));
+        }
+
+        public VkVideoEncodeH265CapabilitiesKHR[] toArray() {
+            VkVideoEncodeH265CapabilitiesKHR[] ret = new VkVideoEncodeH265CapabilitiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkVideoEncodeH265CapabilitiesKHR allocate(Arena arena) {
         VkVideoEncodeH265CapabilitiesKHR ret = new VkVideoEncodeH265CapabilitiesKHR(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.VIDEO_ENCODE_H265_CAPABILITIES_KHR);
         return ret;
     }
 
-    public static VkVideoEncodeH265CapabilitiesKHR[] allocate(Arena arena, int count) {
+    public static VkVideoEncodeH265CapabilitiesKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVideoEncodeH265CapabilitiesKHR[] ret = new VkVideoEncodeH265CapabilitiesKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoEncodeH265CapabilitiesKHR(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.VIDEO_ENCODE_H265_CAPABILITIES_KHR);
+        VkVideoEncodeH265CapabilitiesKHR.Ptr ret = new VkVideoEncodeH265CapabilitiesKHR.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.VIDEO_ENCODE_H265_CAPABILITIES_KHR);
         }
         return ret;
     }
@@ -81,14 +165,6 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
     public static VkVideoEncodeH265CapabilitiesKHR clone(Arena arena, VkVideoEncodeH265CapabilitiesKHR src) {
         VkVideoEncodeH265CapabilitiesKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkVideoEncodeH265CapabilitiesKHR[] clone(Arena arena, VkVideoEncodeH265CapabilitiesKHR[] src) {
-        VkVideoEncodeH265CapabilitiesKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -266,24 +342,24 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$maxLevelIdc = PathElement.groupElement("PATH$maxLevelIdc");
-    public static final PathElement PATH$maxSliceSegmentCount = PathElement.groupElement("PATH$maxSliceSegmentCount");
-    public static final PathElement PATH$maxTiles = PathElement.groupElement("PATH$maxTiles");
-    public static final PathElement PATH$ctbSizes = PathElement.groupElement("PATH$ctbSizes");
-    public static final PathElement PATH$transformBlockSizes = PathElement.groupElement("PATH$transformBlockSizes");
-    public static final PathElement PATH$maxPPictureL0ReferenceCount = PathElement.groupElement("PATH$maxPPictureL0ReferenceCount");
-    public static final PathElement PATH$maxBPictureL0ReferenceCount = PathElement.groupElement("PATH$maxBPictureL0ReferenceCount");
-    public static final PathElement PATH$maxL1ReferenceCount = PathElement.groupElement("PATH$maxL1ReferenceCount");
-    public static final PathElement PATH$maxSubLayerCount = PathElement.groupElement("PATH$maxSubLayerCount");
-    public static final PathElement PATH$expectDyadicTemporalSubLayerPattern = PathElement.groupElement("PATH$expectDyadicTemporalSubLayerPattern");
-    public static final PathElement PATH$minQp = PathElement.groupElement("PATH$minQp");
-    public static final PathElement PATH$maxQp = PathElement.groupElement("PATH$maxQp");
-    public static final PathElement PATH$prefersGopRemainingFrames = PathElement.groupElement("PATH$prefersGopRemainingFrames");
-    public static final PathElement PATH$requiresGopRemainingFrames = PathElement.groupElement("PATH$requiresGopRemainingFrames");
-    public static final PathElement PATH$stdSyntaxFlags = PathElement.groupElement("PATH$stdSyntaxFlags");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$maxLevelIdc = PathElement.groupElement("maxLevelIdc");
+    public static final PathElement PATH$maxSliceSegmentCount = PathElement.groupElement("maxSliceSegmentCount");
+    public static final PathElement PATH$maxTiles = PathElement.groupElement("maxTiles");
+    public static final PathElement PATH$ctbSizes = PathElement.groupElement("ctbSizes");
+    public static final PathElement PATH$transformBlockSizes = PathElement.groupElement("transformBlockSizes");
+    public static final PathElement PATH$maxPPictureL0ReferenceCount = PathElement.groupElement("maxPPictureL0ReferenceCount");
+    public static final PathElement PATH$maxBPictureL0ReferenceCount = PathElement.groupElement("maxBPictureL0ReferenceCount");
+    public static final PathElement PATH$maxL1ReferenceCount = PathElement.groupElement("maxL1ReferenceCount");
+    public static final PathElement PATH$maxSubLayerCount = PathElement.groupElement("maxSubLayerCount");
+    public static final PathElement PATH$expectDyadicTemporalSubLayerPattern = PathElement.groupElement("expectDyadicTemporalSubLayerPattern");
+    public static final PathElement PATH$minQp = PathElement.groupElement("minQp");
+    public static final PathElement PATH$maxQp = PathElement.groupElement("maxQp");
+    public static final PathElement PATH$prefersGopRemainingFrames = PathElement.groupElement("prefersGopRemainingFrames");
+    public static final PathElement PATH$requiresGopRemainingFrames = PathElement.groupElement("requiresGopRemainingFrames");
+    public static final PathElement PATH$stdSyntaxFlags = PathElement.groupElement("stdSyntaxFlags");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

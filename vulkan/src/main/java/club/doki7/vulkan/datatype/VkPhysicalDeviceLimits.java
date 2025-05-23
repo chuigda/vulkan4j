@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -132,7 +133,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -142,31 +143,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLimits.html"><code>VkPhysicalDeviceLimits</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements IVkPhysicalDeviceLimits {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceLimits.html"><code>VkPhysicalDeviceLimits</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceLimits}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceLimits to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceLimits.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceLimits {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceLimits.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceLimits at(long index) {
+            return new VkPhysicalDeviceLimits(segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES));
+        }
+
+        public void write(long index, @NotNull VkPhysicalDeviceLimits value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPhysicalDeviceLimits.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPhysicalDeviceLimits.BYTES,
+                (end - start) * VkPhysicalDeviceLimits.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceLimits.BYTES));
+        }
+
+        public VkPhysicalDeviceLimits[] toArray() {
+            VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkPhysicalDeviceLimits allocate(Arena arena) {
         return new VkPhysicalDeviceLimits(arena.allocate(LAYOUT));
     }
 
-    public static VkPhysicalDeviceLimits[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceLimits.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceLimits[] ret = new VkPhysicalDeviceLimits[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceLimits(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new VkPhysicalDeviceLimits.Ptr(segment);
     }
 
     public static VkPhysicalDeviceLimits clone(Arena arena, VkPhysicalDeviceLimits src) {
         VkPhysicalDeviceLimits ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceLimits[] clone(Arena arena, VkPhysicalDeviceLimits[] src) {
-        VkPhysicalDeviceLimits[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -1128,112 +1200,112 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$maxImageDimension1D = PathElement.groupElement("PATH$maxImageDimension1D");
-    public static final PathElement PATH$maxImageDimension2D = PathElement.groupElement("PATH$maxImageDimension2D");
-    public static final PathElement PATH$maxImageDimension3D = PathElement.groupElement("PATH$maxImageDimension3D");
-    public static final PathElement PATH$maxImageDimensionCube = PathElement.groupElement("PATH$maxImageDimensionCube");
-    public static final PathElement PATH$maxImageArrayLayers = PathElement.groupElement("PATH$maxImageArrayLayers");
-    public static final PathElement PATH$maxTexelBufferElements = PathElement.groupElement("PATH$maxTexelBufferElements");
-    public static final PathElement PATH$maxUniformBufferRange = PathElement.groupElement("PATH$maxUniformBufferRange");
-    public static final PathElement PATH$maxStorageBufferRange = PathElement.groupElement("PATH$maxStorageBufferRange");
-    public static final PathElement PATH$maxPushConstantsSize = PathElement.groupElement("PATH$maxPushConstantsSize");
-    public static final PathElement PATH$maxMemoryAllocationCount = PathElement.groupElement("PATH$maxMemoryAllocationCount");
-    public static final PathElement PATH$maxSamplerAllocationCount = PathElement.groupElement("PATH$maxSamplerAllocationCount");
-    public static final PathElement PATH$bufferImageGranularity = PathElement.groupElement("PATH$bufferImageGranularity");
-    public static final PathElement PATH$sparseAddressSpaceSize = PathElement.groupElement("PATH$sparseAddressSpaceSize");
-    public static final PathElement PATH$maxBoundDescriptorSets = PathElement.groupElement("PATH$maxBoundDescriptorSets");
-    public static final PathElement PATH$maxPerStageDescriptorSamplers = PathElement.groupElement("PATH$maxPerStageDescriptorSamplers");
-    public static final PathElement PATH$maxPerStageDescriptorUniformBuffers = PathElement.groupElement("PATH$maxPerStageDescriptorUniformBuffers");
-    public static final PathElement PATH$maxPerStageDescriptorStorageBuffers = PathElement.groupElement("PATH$maxPerStageDescriptorStorageBuffers");
-    public static final PathElement PATH$maxPerStageDescriptorSampledImages = PathElement.groupElement("PATH$maxPerStageDescriptorSampledImages");
-    public static final PathElement PATH$maxPerStageDescriptorStorageImages = PathElement.groupElement("PATH$maxPerStageDescriptorStorageImages");
-    public static final PathElement PATH$maxPerStageDescriptorInputAttachments = PathElement.groupElement("PATH$maxPerStageDescriptorInputAttachments");
-    public static final PathElement PATH$maxPerStageResources = PathElement.groupElement("PATH$maxPerStageResources");
-    public static final PathElement PATH$maxDescriptorSetSamplers = PathElement.groupElement("PATH$maxDescriptorSetSamplers");
-    public static final PathElement PATH$maxDescriptorSetUniformBuffers = PathElement.groupElement("PATH$maxDescriptorSetUniformBuffers");
-    public static final PathElement PATH$maxDescriptorSetUniformBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetUniformBuffersDynamic");
-    public static final PathElement PATH$maxDescriptorSetStorageBuffers = PathElement.groupElement("PATH$maxDescriptorSetStorageBuffers");
-    public static final PathElement PATH$maxDescriptorSetStorageBuffersDynamic = PathElement.groupElement("PATH$maxDescriptorSetStorageBuffersDynamic");
-    public static final PathElement PATH$maxDescriptorSetSampledImages = PathElement.groupElement("PATH$maxDescriptorSetSampledImages");
-    public static final PathElement PATH$maxDescriptorSetStorageImages = PathElement.groupElement("PATH$maxDescriptorSetStorageImages");
-    public static final PathElement PATH$maxDescriptorSetInputAttachments = PathElement.groupElement("PATH$maxDescriptorSetInputAttachments");
-    public static final PathElement PATH$maxVertexInputAttributes = PathElement.groupElement("PATH$maxVertexInputAttributes");
-    public static final PathElement PATH$maxVertexInputBindings = PathElement.groupElement("PATH$maxVertexInputBindings");
-    public static final PathElement PATH$maxVertexInputAttributeOffset = PathElement.groupElement("PATH$maxVertexInputAttributeOffset");
-    public static final PathElement PATH$maxVertexInputBindingStride = PathElement.groupElement("PATH$maxVertexInputBindingStride");
-    public static final PathElement PATH$maxVertexOutputComponents = PathElement.groupElement("PATH$maxVertexOutputComponents");
-    public static final PathElement PATH$maxTessellationGenerationLevel = PathElement.groupElement("PATH$maxTessellationGenerationLevel");
-    public static final PathElement PATH$maxTessellationPatchSize = PathElement.groupElement("PATH$maxTessellationPatchSize");
-    public static final PathElement PATH$maxTessellationControlPerVertexInputComponents = PathElement.groupElement("PATH$maxTessellationControlPerVertexInputComponents");
-    public static final PathElement PATH$maxTessellationControlPerVertexOutputComponents = PathElement.groupElement("PATH$maxTessellationControlPerVertexOutputComponents");
-    public static final PathElement PATH$maxTessellationControlPerPatchOutputComponents = PathElement.groupElement("PATH$maxTessellationControlPerPatchOutputComponents");
-    public static final PathElement PATH$maxTessellationControlTotalOutputComponents = PathElement.groupElement("PATH$maxTessellationControlTotalOutputComponents");
-    public static final PathElement PATH$maxTessellationEvaluationInputComponents = PathElement.groupElement("PATH$maxTessellationEvaluationInputComponents");
-    public static final PathElement PATH$maxTessellationEvaluationOutputComponents = PathElement.groupElement("PATH$maxTessellationEvaluationOutputComponents");
-    public static final PathElement PATH$maxGeometryShaderInvocations = PathElement.groupElement("PATH$maxGeometryShaderInvocations");
-    public static final PathElement PATH$maxGeometryInputComponents = PathElement.groupElement("PATH$maxGeometryInputComponents");
-    public static final PathElement PATH$maxGeometryOutputComponents = PathElement.groupElement("PATH$maxGeometryOutputComponents");
-    public static final PathElement PATH$maxGeometryOutputVertices = PathElement.groupElement("PATH$maxGeometryOutputVertices");
-    public static final PathElement PATH$maxGeometryTotalOutputComponents = PathElement.groupElement("PATH$maxGeometryTotalOutputComponents");
-    public static final PathElement PATH$maxFragmentInputComponents = PathElement.groupElement("PATH$maxFragmentInputComponents");
-    public static final PathElement PATH$maxFragmentOutputAttachments = PathElement.groupElement("PATH$maxFragmentOutputAttachments");
-    public static final PathElement PATH$maxFragmentDualSrcAttachments = PathElement.groupElement("PATH$maxFragmentDualSrcAttachments");
-    public static final PathElement PATH$maxFragmentCombinedOutputResources = PathElement.groupElement("PATH$maxFragmentCombinedOutputResources");
-    public static final PathElement PATH$maxComputeSharedMemorySize = PathElement.groupElement("PATH$maxComputeSharedMemorySize");
-    public static final PathElement PATH$maxComputeWorkGroupCount = PathElement.groupElement("PATH$maxComputeWorkGroupCount");
-    public static final PathElement PATH$maxComputeWorkGroupInvocations = PathElement.groupElement("PATH$maxComputeWorkGroupInvocations");
-    public static final PathElement PATH$maxComputeWorkGroupSize = PathElement.groupElement("PATH$maxComputeWorkGroupSize");
-    public static final PathElement PATH$subPixelPrecisionBits = PathElement.groupElement("PATH$subPixelPrecisionBits");
-    public static final PathElement PATH$subTexelPrecisionBits = PathElement.groupElement("PATH$subTexelPrecisionBits");
-    public static final PathElement PATH$mipmapPrecisionBits = PathElement.groupElement("PATH$mipmapPrecisionBits");
-    public static final PathElement PATH$maxDrawIndexedIndexValue = PathElement.groupElement("PATH$maxDrawIndexedIndexValue");
-    public static final PathElement PATH$maxDrawIndirectCount = PathElement.groupElement("PATH$maxDrawIndirectCount");
-    public static final PathElement PATH$maxSamplerLodBias = PathElement.groupElement("PATH$maxSamplerLodBias");
-    public static final PathElement PATH$maxSamplerAnisotropy = PathElement.groupElement("PATH$maxSamplerAnisotropy");
-    public static final PathElement PATH$maxViewports = PathElement.groupElement("PATH$maxViewports");
-    public static final PathElement PATH$maxViewportDimensions = PathElement.groupElement("PATH$maxViewportDimensions");
-    public static final PathElement PATH$viewportBoundsRange = PathElement.groupElement("PATH$viewportBoundsRange");
-    public static final PathElement PATH$viewportSubPixelBits = PathElement.groupElement("PATH$viewportSubPixelBits");
-    public static final PathElement PATH$minMemoryMapAlignment = PathElement.groupElement("PATH$minMemoryMapAlignment");
-    public static final PathElement PATH$minTexelBufferOffsetAlignment = PathElement.groupElement("PATH$minTexelBufferOffsetAlignment");
-    public static final PathElement PATH$minUniformBufferOffsetAlignment = PathElement.groupElement("PATH$minUniformBufferOffsetAlignment");
-    public static final PathElement PATH$minStorageBufferOffsetAlignment = PathElement.groupElement("PATH$minStorageBufferOffsetAlignment");
-    public static final PathElement PATH$minTexelOffset = PathElement.groupElement("PATH$minTexelOffset");
-    public static final PathElement PATH$maxTexelOffset = PathElement.groupElement("PATH$maxTexelOffset");
-    public static final PathElement PATH$minTexelGatherOffset = PathElement.groupElement("PATH$minTexelGatherOffset");
-    public static final PathElement PATH$maxTexelGatherOffset = PathElement.groupElement("PATH$maxTexelGatherOffset");
-    public static final PathElement PATH$minInterpolationOffset = PathElement.groupElement("PATH$minInterpolationOffset");
-    public static final PathElement PATH$maxInterpolationOffset = PathElement.groupElement("PATH$maxInterpolationOffset");
-    public static final PathElement PATH$subPixelInterpolationOffsetBits = PathElement.groupElement("PATH$subPixelInterpolationOffsetBits");
-    public static final PathElement PATH$maxFramebufferWidth = PathElement.groupElement("PATH$maxFramebufferWidth");
-    public static final PathElement PATH$maxFramebufferHeight = PathElement.groupElement("PATH$maxFramebufferHeight");
-    public static final PathElement PATH$maxFramebufferLayers = PathElement.groupElement("PATH$maxFramebufferLayers");
-    public static final PathElement PATH$framebufferColorSampleCounts = PathElement.groupElement("PATH$framebufferColorSampleCounts");
-    public static final PathElement PATH$framebufferDepthSampleCounts = PathElement.groupElement("PATH$framebufferDepthSampleCounts");
-    public static final PathElement PATH$framebufferStencilSampleCounts = PathElement.groupElement("PATH$framebufferStencilSampleCounts");
-    public static final PathElement PATH$framebufferNoAttachmentsSampleCounts = PathElement.groupElement("PATH$framebufferNoAttachmentsSampleCounts");
-    public static final PathElement PATH$maxColorAttachments = PathElement.groupElement("PATH$maxColorAttachments");
-    public static final PathElement PATH$sampledImageColorSampleCounts = PathElement.groupElement("PATH$sampledImageColorSampleCounts");
-    public static final PathElement PATH$sampledImageIntegerSampleCounts = PathElement.groupElement("PATH$sampledImageIntegerSampleCounts");
-    public static final PathElement PATH$sampledImageDepthSampleCounts = PathElement.groupElement("PATH$sampledImageDepthSampleCounts");
-    public static final PathElement PATH$sampledImageStencilSampleCounts = PathElement.groupElement("PATH$sampledImageStencilSampleCounts");
-    public static final PathElement PATH$storageImageSampleCounts = PathElement.groupElement("PATH$storageImageSampleCounts");
-    public static final PathElement PATH$maxSampleMaskWords = PathElement.groupElement("PATH$maxSampleMaskWords");
-    public static final PathElement PATH$timestampComputeAndGraphics = PathElement.groupElement("PATH$timestampComputeAndGraphics");
-    public static final PathElement PATH$timestampPeriod = PathElement.groupElement("PATH$timestampPeriod");
-    public static final PathElement PATH$maxClipDistances = PathElement.groupElement("PATH$maxClipDistances");
-    public static final PathElement PATH$maxCullDistances = PathElement.groupElement("PATH$maxCullDistances");
-    public static final PathElement PATH$maxCombinedClipAndCullDistances = PathElement.groupElement("PATH$maxCombinedClipAndCullDistances");
-    public static final PathElement PATH$discreteQueuePriorities = PathElement.groupElement("PATH$discreteQueuePriorities");
-    public static final PathElement PATH$pointSizeRange = PathElement.groupElement("PATH$pointSizeRange");
-    public static final PathElement PATH$lineWidthRange = PathElement.groupElement("PATH$lineWidthRange");
-    public static final PathElement PATH$pointSizeGranularity = PathElement.groupElement("PATH$pointSizeGranularity");
-    public static final PathElement PATH$lineWidthGranularity = PathElement.groupElement("PATH$lineWidthGranularity");
-    public static final PathElement PATH$strictLines = PathElement.groupElement("PATH$strictLines");
-    public static final PathElement PATH$standardSampleLocations = PathElement.groupElement("PATH$standardSampleLocations");
-    public static final PathElement PATH$optimalBufferCopyOffsetAlignment = PathElement.groupElement("PATH$optimalBufferCopyOffsetAlignment");
-    public static final PathElement PATH$optimalBufferCopyRowPitchAlignment = PathElement.groupElement("PATH$optimalBufferCopyRowPitchAlignment");
-    public static final PathElement PATH$nonCoherentAtomSize = PathElement.groupElement("PATH$nonCoherentAtomSize");
+    public static final PathElement PATH$maxImageDimension1D = PathElement.groupElement("maxImageDimension1D");
+    public static final PathElement PATH$maxImageDimension2D = PathElement.groupElement("maxImageDimension2D");
+    public static final PathElement PATH$maxImageDimension3D = PathElement.groupElement("maxImageDimension3D");
+    public static final PathElement PATH$maxImageDimensionCube = PathElement.groupElement("maxImageDimensionCube");
+    public static final PathElement PATH$maxImageArrayLayers = PathElement.groupElement("maxImageArrayLayers");
+    public static final PathElement PATH$maxTexelBufferElements = PathElement.groupElement("maxTexelBufferElements");
+    public static final PathElement PATH$maxUniformBufferRange = PathElement.groupElement("maxUniformBufferRange");
+    public static final PathElement PATH$maxStorageBufferRange = PathElement.groupElement("maxStorageBufferRange");
+    public static final PathElement PATH$maxPushConstantsSize = PathElement.groupElement("maxPushConstantsSize");
+    public static final PathElement PATH$maxMemoryAllocationCount = PathElement.groupElement("maxMemoryAllocationCount");
+    public static final PathElement PATH$maxSamplerAllocationCount = PathElement.groupElement("maxSamplerAllocationCount");
+    public static final PathElement PATH$bufferImageGranularity = PathElement.groupElement("bufferImageGranularity");
+    public static final PathElement PATH$sparseAddressSpaceSize = PathElement.groupElement("sparseAddressSpaceSize");
+    public static final PathElement PATH$maxBoundDescriptorSets = PathElement.groupElement("maxBoundDescriptorSets");
+    public static final PathElement PATH$maxPerStageDescriptorSamplers = PathElement.groupElement("maxPerStageDescriptorSamplers");
+    public static final PathElement PATH$maxPerStageDescriptorUniformBuffers = PathElement.groupElement("maxPerStageDescriptorUniformBuffers");
+    public static final PathElement PATH$maxPerStageDescriptorStorageBuffers = PathElement.groupElement("maxPerStageDescriptorStorageBuffers");
+    public static final PathElement PATH$maxPerStageDescriptorSampledImages = PathElement.groupElement("maxPerStageDescriptorSampledImages");
+    public static final PathElement PATH$maxPerStageDescriptorStorageImages = PathElement.groupElement("maxPerStageDescriptorStorageImages");
+    public static final PathElement PATH$maxPerStageDescriptorInputAttachments = PathElement.groupElement("maxPerStageDescriptorInputAttachments");
+    public static final PathElement PATH$maxPerStageResources = PathElement.groupElement("maxPerStageResources");
+    public static final PathElement PATH$maxDescriptorSetSamplers = PathElement.groupElement("maxDescriptorSetSamplers");
+    public static final PathElement PATH$maxDescriptorSetUniformBuffers = PathElement.groupElement("maxDescriptorSetUniformBuffers");
+    public static final PathElement PATH$maxDescriptorSetUniformBuffersDynamic = PathElement.groupElement("maxDescriptorSetUniformBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetStorageBuffers = PathElement.groupElement("maxDescriptorSetStorageBuffers");
+    public static final PathElement PATH$maxDescriptorSetStorageBuffersDynamic = PathElement.groupElement("maxDescriptorSetStorageBuffersDynamic");
+    public static final PathElement PATH$maxDescriptorSetSampledImages = PathElement.groupElement("maxDescriptorSetSampledImages");
+    public static final PathElement PATH$maxDescriptorSetStorageImages = PathElement.groupElement("maxDescriptorSetStorageImages");
+    public static final PathElement PATH$maxDescriptorSetInputAttachments = PathElement.groupElement("maxDescriptorSetInputAttachments");
+    public static final PathElement PATH$maxVertexInputAttributes = PathElement.groupElement("maxVertexInputAttributes");
+    public static final PathElement PATH$maxVertexInputBindings = PathElement.groupElement("maxVertexInputBindings");
+    public static final PathElement PATH$maxVertexInputAttributeOffset = PathElement.groupElement("maxVertexInputAttributeOffset");
+    public static final PathElement PATH$maxVertexInputBindingStride = PathElement.groupElement("maxVertexInputBindingStride");
+    public static final PathElement PATH$maxVertexOutputComponents = PathElement.groupElement("maxVertexOutputComponents");
+    public static final PathElement PATH$maxTessellationGenerationLevel = PathElement.groupElement("maxTessellationGenerationLevel");
+    public static final PathElement PATH$maxTessellationPatchSize = PathElement.groupElement("maxTessellationPatchSize");
+    public static final PathElement PATH$maxTessellationControlPerVertexInputComponents = PathElement.groupElement("maxTessellationControlPerVertexInputComponents");
+    public static final PathElement PATH$maxTessellationControlPerVertexOutputComponents = PathElement.groupElement("maxTessellationControlPerVertexOutputComponents");
+    public static final PathElement PATH$maxTessellationControlPerPatchOutputComponents = PathElement.groupElement("maxTessellationControlPerPatchOutputComponents");
+    public static final PathElement PATH$maxTessellationControlTotalOutputComponents = PathElement.groupElement("maxTessellationControlTotalOutputComponents");
+    public static final PathElement PATH$maxTessellationEvaluationInputComponents = PathElement.groupElement("maxTessellationEvaluationInputComponents");
+    public static final PathElement PATH$maxTessellationEvaluationOutputComponents = PathElement.groupElement("maxTessellationEvaluationOutputComponents");
+    public static final PathElement PATH$maxGeometryShaderInvocations = PathElement.groupElement("maxGeometryShaderInvocations");
+    public static final PathElement PATH$maxGeometryInputComponents = PathElement.groupElement("maxGeometryInputComponents");
+    public static final PathElement PATH$maxGeometryOutputComponents = PathElement.groupElement("maxGeometryOutputComponents");
+    public static final PathElement PATH$maxGeometryOutputVertices = PathElement.groupElement("maxGeometryOutputVertices");
+    public static final PathElement PATH$maxGeometryTotalOutputComponents = PathElement.groupElement("maxGeometryTotalOutputComponents");
+    public static final PathElement PATH$maxFragmentInputComponents = PathElement.groupElement("maxFragmentInputComponents");
+    public static final PathElement PATH$maxFragmentOutputAttachments = PathElement.groupElement("maxFragmentOutputAttachments");
+    public static final PathElement PATH$maxFragmentDualSrcAttachments = PathElement.groupElement("maxFragmentDualSrcAttachments");
+    public static final PathElement PATH$maxFragmentCombinedOutputResources = PathElement.groupElement("maxFragmentCombinedOutputResources");
+    public static final PathElement PATH$maxComputeSharedMemorySize = PathElement.groupElement("maxComputeSharedMemorySize");
+    public static final PathElement PATH$maxComputeWorkGroupCount = PathElement.groupElement("maxComputeWorkGroupCount");
+    public static final PathElement PATH$maxComputeWorkGroupInvocations = PathElement.groupElement("maxComputeWorkGroupInvocations");
+    public static final PathElement PATH$maxComputeWorkGroupSize = PathElement.groupElement("maxComputeWorkGroupSize");
+    public static final PathElement PATH$subPixelPrecisionBits = PathElement.groupElement("subPixelPrecisionBits");
+    public static final PathElement PATH$subTexelPrecisionBits = PathElement.groupElement("subTexelPrecisionBits");
+    public static final PathElement PATH$mipmapPrecisionBits = PathElement.groupElement("mipmapPrecisionBits");
+    public static final PathElement PATH$maxDrawIndexedIndexValue = PathElement.groupElement("maxDrawIndexedIndexValue");
+    public static final PathElement PATH$maxDrawIndirectCount = PathElement.groupElement("maxDrawIndirectCount");
+    public static final PathElement PATH$maxSamplerLodBias = PathElement.groupElement("maxSamplerLodBias");
+    public static final PathElement PATH$maxSamplerAnisotropy = PathElement.groupElement("maxSamplerAnisotropy");
+    public static final PathElement PATH$maxViewports = PathElement.groupElement("maxViewports");
+    public static final PathElement PATH$maxViewportDimensions = PathElement.groupElement("maxViewportDimensions");
+    public static final PathElement PATH$viewportBoundsRange = PathElement.groupElement("viewportBoundsRange");
+    public static final PathElement PATH$viewportSubPixelBits = PathElement.groupElement("viewportSubPixelBits");
+    public static final PathElement PATH$minMemoryMapAlignment = PathElement.groupElement("minMemoryMapAlignment");
+    public static final PathElement PATH$minTexelBufferOffsetAlignment = PathElement.groupElement("minTexelBufferOffsetAlignment");
+    public static final PathElement PATH$minUniformBufferOffsetAlignment = PathElement.groupElement("minUniformBufferOffsetAlignment");
+    public static final PathElement PATH$minStorageBufferOffsetAlignment = PathElement.groupElement("minStorageBufferOffsetAlignment");
+    public static final PathElement PATH$minTexelOffset = PathElement.groupElement("minTexelOffset");
+    public static final PathElement PATH$maxTexelOffset = PathElement.groupElement("maxTexelOffset");
+    public static final PathElement PATH$minTexelGatherOffset = PathElement.groupElement("minTexelGatherOffset");
+    public static final PathElement PATH$maxTexelGatherOffset = PathElement.groupElement("maxTexelGatherOffset");
+    public static final PathElement PATH$minInterpolationOffset = PathElement.groupElement("minInterpolationOffset");
+    public static final PathElement PATH$maxInterpolationOffset = PathElement.groupElement("maxInterpolationOffset");
+    public static final PathElement PATH$subPixelInterpolationOffsetBits = PathElement.groupElement("subPixelInterpolationOffsetBits");
+    public static final PathElement PATH$maxFramebufferWidth = PathElement.groupElement("maxFramebufferWidth");
+    public static final PathElement PATH$maxFramebufferHeight = PathElement.groupElement("maxFramebufferHeight");
+    public static final PathElement PATH$maxFramebufferLayers = PathElement.groupElement("maxFramebufferLayers");
+    public static final PathElement PATH$framebufferColorSampleCounts = PathElement.groupElement("framebufferColorSampleCounts");
+    public static final PathElement PATH$framebufferDepthSampleCounts = PathElement.groupElement("framebufferDepthSampleCounts");
+    public static final PathElement PATH$framebufferStencilSampleCounts = PathElement.groupElement("framebufferStencilSampleCounts");
+    public static final PathElement PATH$framebufferNoAttachmentsSampleCounts = PathElement.groupElement("framebufferNoAttachmentsSampleCounts");
+    public static final PathElement PATH$maxColorAttachments = PathElement.groupElement("maxColorAttachments");
+    public static final PathElement PATH$sampledImageColorSampleCounts = PathElement.groupElement("sampledImageColorSampleCounts");
+    public static final PathElement PATH$sampledImageIntegerSampleCounts = PathElement.groupElement("sampledImageIntegerSampleCounts");
+    public static final PathElement PATH$sampledImageDepthSampleCounts = PathElement.groupElement("sampledImageDepthSampleCounts");
+    public static final PathElement PATH$sampledImageStencilSampleCounts = PathElement.groupElement("sampledImageStencilSampleCounts");
+    public static final PathElement PATH$storageImageSampleCounts = PathElement.groupElement("storageImageSampleCounts");
+    public static final PathElement PATH$maxSampleMaskWords = PathElement.groupElement("maxSampleMaskWords");
+    public static final PathElement PATH$timestampComputeAndGraphics = PathElement.groupElement("timestampComputeAndGraphics");
+    public static final PathElement PATH$timestampPeriod = PathElement.groupElement("timestampPeriod");
+    public static final PathElement PATH$maxClipDistances = PathElement.groupElement("maxClipDistances");
+    public static final PathElement PATH$maxCullDistances = PathElement.groupElement("maxCullDistances");
+    public static final PathElement PATH$maxCombinedClipAndCullDistances = PathElement.groupElement("maxCombinedClipAndCullDistances");
+    public static final PathElement PATH$discreteQueuePriorities = PathElement.groupElement("discreteQueuePriorities");
+    public static final PathElement PATH$pointSizeRange = PathElement.groupElement("pointSizeRange");
+    public static final PathElement PATH$lineWidthRange = PathElement.groupElement("lineWidthRange");
+    public static final PathElement PATH$pointSizeGranularity = PathElement.groupElement("pointSizeGranularity");
+    public static final PathElement PATH$lineWidthGranularity = PathElement.groupElement("lineWidthGranularity");
+    public static final PathElement PATH$strictLines = PathElement.groupElement("strictLines");
+    public static final PathElement PATH$standardSampleLocations = PathElement.groupElement("standardSampleLocations");
+    public static final PathElement PATH$optimalBufferCopyOffsetAlignment = PathElement.groupElement("optimalBufferCopyOffsetAlignment");
+    public static final PathElement PATH$optimalBufferCopyRowPitchAlignment = PathElement.groupElement("optimalBufferCopyRowPitchAlignment");
+    public static final PathElement PATH$nonCoherentAtomSize = PathElement.groupElement("nonCoherentAtomSize");
 
     public static final OfInt LAYOUT$maxImageDimension1D = (OfInt) LAYOUT.select(PATH$maxImageDimension1D);
     public static final OfInt LAYOUT$maxImageDimension2D = (OfInt) LAYOUT.select(PATH$maxImageDimension2D);

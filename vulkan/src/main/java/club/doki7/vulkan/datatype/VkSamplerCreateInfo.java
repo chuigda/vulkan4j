@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -42,16 +43,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO`
 ///
-/// The {@code allocate} ({@link VkSamplerCreateInfo#allocate(Arena)}, {@link VkSamplerCreateInfo#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkSamplerCreateInfo#allocate(Arena)}, {@link VkSamplerCreateInfo#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkSamplerCreateInfo#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -61,19 +63,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerCreateInfo.html"><code>VkSamplerCreateInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IPointer {
+public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVkSamplerCreateInfo {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSamplerCreateInfo.html"><code>VkSamplerCreateInfo</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkSamplerCreateInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkSamplerCreateInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkSamplerCreateInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkSamplerCreateInfo {
+        public long size() {
+            return segment.byteSize() / VkSamplerCreateInfo.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkSamplerCreateInfo at(long index) {
+            return new VkSamplerCreateInfo(segment.asSlice(index * VkSamplerCreateInfo.BYTES, VkSamplerCreateInfo.BYTES));
+        }
+
+        public void write(long index, @NotNull VkSamplerCreateInfo value) {
+            MemorySegment s = segment.asSlice(index * VkSamplerCreateInfo.BYTES, VkSamplerCreateInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkSamplerCreateInfo.BYTES, VkSamplerCreateInfo.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkSamplerCreateInfo.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkSamplerCreateInfo.BYTES,
+                (end - start) * VkSamplerCreateInfo.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkSamplerCreateInfo.BYTES));
+        }
+
+        public VkSamplerCreateInfo[] toArray() {
+            VkSamplerCreateInfo[] ret = new VkSamplerCreateInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkSamplerCreateInfo allocate(Arena arena) {
         VkSamplerCreateInfo ret = new VkSamplerCreateInfo(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.SAMPLER_CREATE_INFO);
         return ret;
     }
 
-    public static VkSamplerCreateInfo[] allocate(Arena arena, int count) {
+    public static VkSamplerCreateInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSamplerCreateInfo[] ret = new VkSamplerCreateInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSamplerCreateInfo(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.SAMPLER_CREATE_INFO);
+        VkSamplerCreateInfo.Ptr ret = new VkSamplerCreateInfo.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.SAMPLER_CREATE_INFO);
         }
         return ret;
     }
@@ -81,14 +165,6 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IPo
     public static VkSamplerCreateInfo clone(Arena arena, VkSamplerCreateInfo src) {
         VkSamplerCreateInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkSamplerCreateInfo[] clone(Arena arena, VkSamplerCreateInfo[] src) {
-        VkSamplerCreateInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -266,24 +342,24 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IPo
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$magFilter = PathElement.groupElement("PATH$magFilter");
-    public static final PathElement PATH$minFilter = PathElement.groupElement("PATH$minFilter");
-    public static final PathElement PATH$mipmapMode = PathElement.groupElement("PATH$mipmapMode");
-    public static final PathElement PATH$addressModeU = PathElement.groupElement("PATH$addressModeU");
-    public static final PathElement PATH$addressModeV = PathElement.groupElement("PATH$addressModeV");
-    public static final PathElement PATH$addressModeW = PathElement.groupElement("PATH$addressModeW");
-    public static final PathElement PATH$mipLodBias = PathElement.groupElement("PATH$mipLodBias");
-    public static final PathElement PATH$anisotropyEnable = PathElement.groupElement("PATH$anisotropyEnable");
-    public static final PathElement PATH$maxAnisotropy = PathElement.groupElement("PATH$maxAnisotropy");
-    public static final PathElement PATH$compareEnable = PathElement.groupElement("PATH$compareEnable");
-    public static final PathElement PATH$compareOp = PathElement.groupElement("PATH$compareOp");
-    public static final PathElement PATH$minLod = PathElement.groupElement("PATH$minLod");
-    public static final PathElement PATH$maxLod = PathElement.groupElement("PATH$maxLod");
-    public static final PathElement PATH$borderColor = PathElement.groupElement("PATH$borderColor");
-    public static final PathElement PATH$unnormalizedCoordinates = PathElement.groupElement("PATH$unnormalizedCoordinates");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$magFilter = PathElement.groupElement("magFilter");
+    public static final PathElement PATH$minFilter = PathElement.groupElement("minFilter");
+    public static final PathElement PATH$mipmapMode = PathElement.groupElement("mipmapMode");
+    public static final PathElement PATH$addressModeU = PathElement.groupElement("addressModeU");
+    public static final PathElement PATH$addressModeV = PathElement.groupElement("addressModeV");
+    public static final PathElement PATH$addressModeW = PathElement.groupElement("addressModeW");
+    public static final PathElement PATH$mipLodBias = PathElement.groupElement("mipLodBias");
+    public static final PathElement PATH$anisotropyEnable = PathElement.groupElement("anisotropyEnable");
+    public static final PathElement PATH$maxAnisotropy = PathElement.groupElement("maxAnisotropy");
+    public static final PathElement PATH$compareEnable = PathElement.groupElement("compareEnable");
+    public static final PathElement PATH$compareOp = PathElement.groupElement("compareOp");
+    public static final PathElement PATH$minLod = PathElement.groupElement("minLod");
+    public static final PathElement PATH$maxLod = PathElement.groupElement("maxLod");
+    public static final PathElement PATH$borderColor = PathElement.groupElement("borderColor");
+    public static final PathElement PATH$unnormalizedCoordinates = PathElement.groupElement("unnormalizedCoordinates");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

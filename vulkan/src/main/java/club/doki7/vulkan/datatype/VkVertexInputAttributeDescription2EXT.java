@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -30,16 +31,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT`
 ///
-/// The {@code allocate} ({@link VkVertexInputAttributeDescription2EXT#allocate(Arena)}, {@link VkVertexInputAttributeDescription2EXT#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkVertexInputAttributeDescription2EXT#allocate(Arena)}, {@link VkVertexInputAttributeDescription2EXT#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkVertexInputAttributeDescription2EXT#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -49,19 +51,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputAttributeDescription2EXT.html"><code>VkVertexInputAttributeDescription2EXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segment) implements IPointer {
+public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segment) implements IVkVertexInputAttributeDescription2EXT {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVertexInputAttributeDescription2EXT.html"><code>VkVertexInputAttributeDescription2EXT</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkVertexInputAttributeDescription2EXT}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkVertexInputAttributeDescription2EXT to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkVertexInputAttributeDescription2EXT.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVertexInputAttributeDescription2EXT {
+        public long size() {
+            return segment.byteSize() / VkVertexInputAttributeDescription2EXT.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkVertexInputAttributeDescription2EXT at(long index) {
+            return new VkVertexInputAttributeDescription2EXT(segment.asSlice(index * VkVertexInputAttributeDescription2EXT.BYTES, VkVertexInputAttributeDescription2EXT.BYTES));
+        }
+
+        public void write(long index, @NotNull VkVertexInputAttributeDescription2EXT value) {
+            MemorySegment s = segment.asSlice(index * VkVertexInputAttributeDescription2EXT.BYTES, VkVertexInputAttributeDescription2EXT.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkVertexInputAttributeDescription2EXT.BYTES, VkVertexInputAttributeDescription2EXT.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkVertexInputAttributeDescription2EXT.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkVertexInputAttributeDescription2EXT.BYTES,
+                (end - start) * VkVertexInputAttributeDescription2EXT.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkVertexInputAttributeDescription2EXT.BYTES));
+        }
+
+        public VkVertexInputAttributeDescription2EXT[] toArray() {
+            VkVertexInputAttributeDescription2EXT[] ret = new VkVertexInputAttributeDescription2EXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkVertexInputAttributeDescription2EXT allocate(Arena arena) {
         VkVertexInputAttributeDescription2EXT ret = new VkVertexInputAttributeDescription2EXT(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT);
         return ret;
     }
 
-    public static VkVertexInputAttributeDescription2EXT[] allocate(Arena arena, int count) {
+    public static VkVertexInputAttributeDescription2EXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVertexInputAttributeDescription2EXT[] ret = new VkVertexInputAttributeDescription2EXT[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVertexInputAttributeDescription2EXT(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT);
+        VkVertexInputAttributeDescription2EXT.Ptr ret = new VkVertexInputAttributeDescription2EXT.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT);
         }
         return ret;
     }
@@ -69,14 +153,6 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
     public static VkVertexInputAttributeDescription2EXT clone(Arena arena, VkVertexInputAttributeDescription2EXT src) {
         VkVertexInputAttributeDescription2EXT ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkVertexInputAttributeDescription2EXT[] clone(Arena arena, VkVertexInputAttributeDescription2EXT[] src) {
-        VkVertexInputAttributeDescription2EXT[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -146,12 +222,12 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$location = PathElement.groupElement("PATH$location");
-    public static final PathElement PATH$binding = PathElement.groupElement("PATH$binding");
-    public static final PathElement PATH$format = PathElement.groupElement("PATH$format");
-    public static final PathElement PATH$offset = PathElement.groupElement("PATH$offset");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$location = PathElement.groupElement("location");
+    public static final PathElement PATH$binding = PathElement.groupElement("binding");
+    public static final PathElement PATH$format = PathElement.groupElement("format");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

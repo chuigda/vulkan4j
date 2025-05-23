@@ -183,9 +183,15 @@ private fun extractCommand(e: Element): Command {
 
 private fun extractParam(e: Element): Param {
     val len = e.getAttributeText("len")
+    val type = extractType(e.getFirstElement("type")!!)
+
+    if (len == null && type is PointerType) {
+        type.pointerToOne = true
+    }
+
     return Param(
         name = e.getFirstElement("name")!!.textContent,
-        type = extractType(e.getFirstElement("type")!!),
+        type = type,
         len = len?.intern(),
         argLen = len?.split("->")?.map { it.intern() },
         optional = e.getAttributeText("optional")?.startsWith("true") ?: false,

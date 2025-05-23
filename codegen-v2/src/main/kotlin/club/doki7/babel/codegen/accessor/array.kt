@@ -42,30 +42,15 @@ private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: Layout
 private fun generateStructureArrayAccessor(elementType: CStructType, member: LayoutField.Typed) = buildDoc {
     val rawName = "${member.name}Raw"
 
-    defun("public", "MemorySegment", rawName) {
-        +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
+    defun("public", "${elementType.name}.Ptr", member.name) {
+        +"return new ${elementType.name}.Ptr($rawName());"
     }
-
     +""
 
-    defun("public", "${elementType.name}[]", member.name) {
+    defun("public", "void", member.name, "${elementType.name}.Ptr value") {
         +"MemorySegment s = $rawName;"
-        +"${elementType.name}[] arr = new ${elementType.name}[(int) ${member.layoutName}.elementCount()];"
-        "for (int i = 0; i < arr.length; i ++)" {
-            +"arr[i] = new ${elementType.name}(s.asSlice(i * ${elementType.name}.BYTES, ${elementType.name}.BYTES));"
-        }
-        +"return arr;"
+        +"s.copyFrom(value.segment());"
     }
-
-    +""
-
-    defun("public", "void", member.name, "${elementType.name}[] value") {
-        +"MemorySegment s = $rawName;"
-        "for (int i = 0; i < value.length; i++)" {
-            +"MemorySegment.copy(value[i].segment(), 0, s, i * ${elementType.name}.BYTES, ${elementType.name}.BYTES);"
-        }
-    }
-
     +""
 
     val atName = "${member.name}At"
@@ -74,12 +59,16 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Lay
         +"MemorySegment s = $rawName();"
         +"return new ${elementType.name}(s.asSlice(index * ${elementType.name}.BYTES, ${elementType.name}.BYTES));"
     }
-
     +""
 
     defun("public", "void", atName, "int index", "${elementType.name} value") {
         +"MemorySegment s = $rawName();"
         +"MemorySegment.copy(value.segment(), 0, s, index * ${elementType.name}.BYTES, ${elementType.name}.BYTES);"
+    }
+    +""
+
+    defun("public", "MemorySegment", rawName) {
+        +"return segment.asSlice(${member.offsetName}, ${member.sizeName});"
     }
 }
 

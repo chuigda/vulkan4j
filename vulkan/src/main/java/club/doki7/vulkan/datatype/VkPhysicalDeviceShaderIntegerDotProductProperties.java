@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -56,16 +57,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES`
 ///
-/// The {@code allocate} ({@link VkPhysicalDeviceShaderIntegerDotProductProperties#allocate(Arena)}, {@link VkPhysicalDeviceShaderIntegerDotProductProperties#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDeviceShaderIntegerDotProductProperties#allocate(Arena)}, {@link VkPhysicalDeviceShaderIntegerDotProductProperties#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceShaderIntegerDotProductProperties#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -75,19 +77,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderIntegerDotProductProperties.html"><code>VkPhysicalDeviceShaderIntegerDotProductProperties</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceShaderIntegerDotProductProperties(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceShaderIntegerDotProductProperties(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderIntegerDotProductProperties {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderIntegerDotProductProperties.html"><code>VkPhysicalDeviceShaderIntegerDotProductProperties</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceShaderIntegerDotProductProperties}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceShaderIntegerDotProductProperties to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceShaderIntegerDotProductProperties.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderIntegerDotProductProperties {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceShaderIntegerDotProductProperties at(long index) {
+            return new VkPhysicalDeviceShaderIntegerDotProductProperties(segment.asSlice(index * VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES, VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES));
+        }
+
+        public void write(long index, @NotNull VkPhysicalDeviceShaderIntegerDotProductProperties value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES, VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES, VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES,
+                (end - start) * VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderIntegerDotProductProperties.BYTES));
+        }
+
+        public VkPhysicalDeviceShaderIntegerDotProductProperties[] toArray() {
+            VkPhysicalDeviceShaderIntegerDotProductProperties[] ret = new VkPhysicalDeviceShaderIntegerDotProductProperties[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkPhysicalDeviceShaderIntegerDotProductProperties allocate(Arena arena) {
         VkPhysicalDeviceShaderIntegerDotProductProperties ret = new VkPhysicalDeviceShaderIntegerDotProductProperties(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES);
         return ret;
     }
 
-    public static VkPhysicalDeviceShaderIntegerDotProductProperties[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceShaderIntegerDotProductProperties.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceShaderIntegerDotProductProperties[] ret = new VkPhysicalDeviceShaderIntegerDotProductProperties[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderIntegerDotProductProperties(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES);
+        VkPhysicalDeviceShaderIntegerDotProductProperties.Ptr ret = new VkPhysicalDeviceShaderIntegerDotProductProperties.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES);
         }
         return ret;
     }
@@ -95,14 +179,6 @@ public record VkPhysicalDeviceShaderIntegerDotProductProperties(@NotNull MemoryS
     public static VkPhysicalDeviceShaderIntegerDotProductProperties clone(Arena arena, VkPhysicalDeviceShaderIntegerDotProductProperties src) {
         VkPhysicalDeviceShaderIntegerDotProductProperties ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceShaderIntegerDotProductProperties[] clone(Arena arena, VkPhysicalDeviceShaderIntegerDotProductProperties[] src) {
-        VkPhysicalDeviceShaderIntegerDotProductProperties[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -406,38 +482,38 @@ public record VkPhysicalDeviceShaderIntegerDotProductProperties(@NotNull MemoryS
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$integerDotProduct8BitUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProduct8BitUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProduct8BitSignedAccelerated = PathElement.groupElement("PATH$integerDotProduct8BitSignedAccelerated");
-    public static final PathElement PATH$integerDotProduct8BitMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProduct8BitMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProduct4x8BitPackedUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProduct4x8BitPackedUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProduct4x8BitPackedSignedAccelerated = PathElement.groupElement("PATH$integerDotProduct4x8BitPackedSignedAccelerated");
-    public static final PathElement PATH$integerDotProduct4x8BitPackedMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProduct4x8BitPackedMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProduct16BitUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProduct16BitUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProduct16BitSignedAccelerated = PathElement.groupElement("PATH$integerDotProduct16BitSignedAccelerated");
-    public static final PathElement PATH$integerDotProduct16BitMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProduct16BitMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProduct32BitUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProduct32BitUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProduct32BitSignedAccelerated = PathElement.groupElement("PATH$integerDotProduct32BitSignedAccelerated");
-    public static final PathElement PATH$integerDotProduct32BitMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProduct32BitMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProduct64BitUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProduct64BitUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProduct64BitSignedAccelerated = PathElement.groupElement("PATH$integerDotProduct64BitSignedAccelerated");
-    public static final PathElement PATH$integerDotProduct64BitMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProduct64BitMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating8BitSignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating8BitSignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating16BitSignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating16BitSignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating32BitSignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating32BitSignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating64BitSignedAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating64BitSignedAccelerated");
-    public static final PathElement PATH$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = PathElement.groupElement("PATH$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$integerDotProduct8BitUnsignedAccelerated = PathElement.groupElement("integerDotProduct8BitUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProduct8BitSignedAccelerated = PathElement.groupElement("integerDotProduct8BitSignedAccelerated");
+    public static final PathElement PATH$integerDotProduct8BitMixedSignednessAccelerated = PathElement.groupElement("integerDotProduct8BitMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProduct4x8BitPackedUnsignedAccelerated = PathElement.groupElement("integerDotProduct4x8BitPackedUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProduct4x8BitPackedSignedAccelerated = PathElement.groupElement("integerDotProduct4x8BitPackedSignedAccelerated");
+    public static final PathElement PATH$integerDotProduct4x8BitPackedMixedSignednessAccelerated = PathElement.groupElement("integerDotProduct4x8BitPackedMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProduct16BitUnsignedAccelerated = PathElement.groupElement("integerDotProduct16BitUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProduct16BitSignedAccelerated = PathElement.groupElement("integerDotProduct16BitSignedAccelerated");
+    public static final PathElement PATH$integerDotProduct16BitMixedSignednessAccelerated = PathElement.groupElement("integerDotProduct16BitMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProduct32BitUnsignedAccelerated = PathElement.groupElement("integerDotProduct32BitUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProduct32BitSignedAccelerated = PathElement.groupElement("integerDotProduct32BitSignedAccelerated");
+    public static final PathElement PATH$integerDotProduct32BitMixedSignednessAccelerated = PathElement.groupElement("integerDotProduct32BitMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProduct64BitUnsignedAccelerated = PathElement.groupElement("integerDotProduct64BitUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProduct64BitSignedAccelerated = PathElement.groupElement("integerDotProduct64BitSignedAccelerated");
+    public static final PathElement PATH$integerDotProduct64BitMixedSignednessAccelerated = PathElement.groupElement("integerDotProduct64BitMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating8BitSignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating8BitSignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating16BitSignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating16BitSignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating32BitSignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating32BitSignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating64BitSignedAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating64BitSignedAccelerated");
+    public static final PathElement PATH$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

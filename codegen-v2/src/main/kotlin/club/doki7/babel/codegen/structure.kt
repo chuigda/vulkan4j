@@ -61,6 +61,28 @@ sealed class LayoutField(
     data class Bitfield(val bitfieldName: String, val offset: Int, val bits: Int)
 }
 
+fun generateStructureInterface(
+    structure: Structure,
+    codegenOptions: CodegenOptions
+) = buildDoc {
+    val packageName = codegenOptions.packageName
+    val className = structure.name.toString()
+
+    +"package $packageName.datatype;"
+    +""
+    imports("club.doki7.ffm.IPointer")
+    +""
+    +"/// Auxiliary interface for unifying {@link $className} and {@link ${className}.Ptr} operations."
+    +"///"
+    +"/// See package level documentation for more details."
+    +"public sealed interface I${className}"
+    indent {
+        +"extends IPointer"
+        +"permits $className, ${className}.Ptr"
+    }
+    +"{}"
+}
+
 fun generateStructure(
     registryBase: RegistryBase,
     structure: Structure,
@@ -84,6 +106,7 @@ fun generateStructure(
     +""
     imports("java.lang.foreign.*")
     imports("java.lang.foreign.ValueLayout.*", true)
+    imports("java.util.List")
     +""
     imports("org.jetbrains.annotations.Nullable")
     imports("org.jetbrains.annotations.NotNull")
@@ -169,12 +192,13 @@ fun generateStructure(
     val autoInitMembers = structure.members.filter { it.values != null && it.type is IdentifierType }
     if (autoInitMembers.isNotEmpty()) {
         +"/// ## Auto initialization"
+        +"///"
         +"/// This structure has the following members that can be automatically initialized:"
         autoInitMembers.forEach {
             +"/// - `${it.name} = ${it.values!!.original}`"
         }
         +"///"
-        +"/// The {@code allocate} ({@link $className#allocate(Arena)}, {@link $className#allocate(Arena, int)})"
+        +"/// The {@code allocate} ({@link $className#allocate(Arena)}, {@link $className#allocate(Arena, long)})"
         +"/// functions will automatically initialize these fields. Also, you may call {@link $className#autoInit}"
         +"/// to initialize these fields manually for non-allocated instances."
     }
@@ -182,7 +206,7 @@ fun generateStructure(
     +"/// ## Contracts"
     +"///"
     +"/// The property {@link #segment()} should always be not-null"
-    +"/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to"
+    +"/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to"
     +"/// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java"
     +"/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details."
     +"///"
@@ -196,9 +220,106 @@ fun generateStructure(
 
     +"@ValueBasedCandidate"
     +"@UnsafeConstructor"
-    +"public record $className(@NotNull MemorySegment segment) implements IPointer {"
+    +"public record $className(@NotNull MemorySegment segment) implements I${className} {"
 
     indent {
+        +"/// Represents a pointer to / an array of $seeLink structure(s) in native memory."
+        +"///"
+        +"/// Technically speaking, this type has no difference with {@link $className}. This type"
+        +"/// is introduced mainly for user to distinguish between a pointer to a single structure"
+        +"/// and a pointer to (potentially) an array of structure(s). APIs should use interface"
+        +"/// I$className to handle both types uniformly. See package level documentation for more"
+        +"/// details."
+        +"///"
+        +"/// ## Contracts"
+        +"///"
+        +"/// The property {@link #segment()} should always be not-null"
+        +"/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to"
+        +"/// {@code $className.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java"
+        +"/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details."
+        +"///"
+        +"/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not"
+        +"/// perform any runtime check. The constructor can be useful for automatic code generators."
+        +"@ValueBasedCandidate"
+        +"@UnsafeConstructor"
+        +"public record Ptr(@NotNull MemorySegment segment) implements I${className} {"
+        indent {
+            defun("public", "long", "size") {
+                +"return segment.byteSize() / $className.BYTES;"
+            }
+            +""
+
+            +"/// Returns (a pointer to) the structure at the given index."
+            +"///"
+            +"/// Note that unlike {@code read} series functions ({@link IntPtr#read()} for"
+            +"/// example), modification on returned structure will be reflected on the original"
+            +"/// structure array. So this function is called {@code at} to explicitly"
+            +"/// indicate that the returned structure is a view of the original structure."
+            defun("public @NotNull", className, "at", "long index") {
+                +"return new $className(segment.asSlice(index * $className.BYTES, $className.BYTES));"
+            }
+            +""
+
+            defun("public", "void", "write", "long index", "@NotNull $className value") {
+                +"MemorySegment s = segment.asSlice(index * $className.BYTES, $className.BYTES);"
+                +"s.copyFrom(value.segment);"
+            }
+            +""
+
+            +"/// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,"
+            +"/// create a new view {@link Ptr} that uses the same backing storage as this"
+            +"/// {@link Ptr}, but with the new size. Since there is actually no way to really check"
+            +"/// whether the new size is valid, while buffer overflow is undefined behavior, this method is"
+            +"/// marked as {@link unsafe}."
+            +"///"
+            +"/// This method could be useful when handling data returned from some C API, where the size of"
+            +"/// the data is not known in advance."
+            +"///"
+            +"/// If the size of the underlying segment is actually known in advance and correctly set, and"
+            +"/// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)"
+            +"/// instead."
+            +"@unsafe"
+            defun("public @NotNull", "Ptr", "reinterpret", "long index") {
+                +"return new Ptr(segment.asSlice(index * $className.BYTES, $className.BYTES));"
+            }
+            +""
+
+            defun("public @NotNull", "Ptr", "offset", "long offset") {
+                +"return new Ptr(segment.asSlice(offset * $className.BYTES));"
+            }
+            +""
+
+            +"/// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,"
+            +"/// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics"
+            +"/// (offset + newSize). Be careful with the difference"
+            defun("public @NotNull", "Ptr", "slice", "long start", "long end") {
+                +"return new Ptr(segment.asSlice("
+                indent {
+                    +"start * $className.BYTES,"
+                    +"(end - start) * $className.BYTES"
+                }
+                +"));"
+            }
+            +""
+
+            defun("public", "Ptr", "slice", "long end") {
+                +"return new Ptr(segment.asSlice(0, end * $className.BYTES));"
+            }
+            +""
+
+            defun("public", "$className[]", "toArray") {
+                +"$className[] ret = new $className[(int) size()];"
+                +"for (long i = 0; i < size(); i++) {"
+                indent {
+                    +"ret[(int) i] = at(i);"
+                }
+                +"}"
+                +"return ret;"
+            }
+        }
+        +"}"
+        +""
+
         defun("public static", className, "allocate", "Arena arena") {
             if (autoInitMembers.isNotEmpty()) {
                 +"$className ret = new $className(arena.allocate(LAYOUT));"
@@ -215,36 +336,28 @@ fun generateStructure(
         }
         +""
 
-        defun("public static", "$className[]", "allocate", "Arena arena", "int count") {
+        defun("public static", "$className.Ptr", "allocate", "Arena arena", "long count") {
             +"MemorySegment segment = arena.allocate(LAYOUT, count);"
-            +"$className[] ret = new $className[count];"
-            "for (int i = 0; i < count; i ++)" {
-                +"ret[i] = new $className(segment.asSlice(i * BYTES, BYTES));"
-                if (autoInitMembers.isNotEmpty()) {
+            if (autoInitMembers.isNotEmpty()) {
+                +"$className.Ptr ret = new $className.Ptr(segment);"
+                "for (long i = 0; i < count; i++)" {
                     if (autoInitMembers.size == 1) {
                         val it = autoInitMembers.first()
-                        +"ret[i].${it.name}(${(it.type as IdentifierType).ident}.${it.values});"
+                        +"ret.at(i).${it.name}(${(it.type as IdentifierType).ident}.${it.values});"
                     } else {
-                        +"ret[i].autoInit();"
+                        +"ret.at(i).autoInit();"
                     }
                 }
+                +"return ret;"
+            } else {
+                +"return new $className.Ptr(segment);"
             }
-            +"return ret;"
         }
         +""
 
         defun("public static", className, "clone", "Arena arena", "$className src") {
             +"$className ret = allocate(arena);"
             +"ret.segment.copyFrom(src.segment);"
-            +"return ret;"
-        }
-        +""
-
-        defun("public static", "$className[]", "clone", "Arena arena", "$className[] src") {
-            +"$className[] ret = allocate(arena, src.length);"
-            "for (int i = 0; i < src.length; i ++)" {
-                +"ret[i].segment.copyFrom(src[i].segment);"
-            }
             +"return ret;"
         }
         +""
@@ -297,7 +410,7 @@ fun generateStructure(
             if (layout is LayoutField.Typed && layout.name.isUnusedReservedField()) {
                 return@forEach
             }
-            defConst("PathElement", layout.pathName, "PathElement.groupElement(\"${layout.pathName}\")")
+            defConst("PathElement", layout.pathName, "PathElement.groupElement(\"${layout.name}\")")
         }
 
         +""

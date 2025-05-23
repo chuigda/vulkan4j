@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -32,16 +33,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR`
 ///
-/// The {@code allocate} ({@link VkVideoDecodeH265SessionParametersAddInfoKHR#allocate(Arena)}, {@link VkVideoDecodeH265SessionParametersAddInfoKHR#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkVideoDecodeH265SessionParametersAddInfoKHR#allocate(Arena)}, {@link VkVideoDecodeH265SessionParametersAddInfoKHR#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkVideoDecodeH265SessionParametersAddInfoKHR#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -51,19 +53,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeH265SessionParametersAddInfoKHR.html"><code>VkVideoDecodeH265SessionParametersAddInfoKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegment segment) implements IVkVideoDecodeH265SessionParametersAddInfoKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkVideoDecodeH265SessionParametersAddInfoKHR.html"><code>VkVideoDecodeH265SessionParametersAddInfoKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkVideoDecodeH265SessionParametersAddInfoKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkVideoDecodeH265SessionParametersAddInfoKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkVideoDecodeH265SessionParametersAddInfoKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeH265SessionParametersAddInfoKHR {
+        public long size() {
+            return segment.byteSize() / VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkVideoDecodeH265SessionParametersAddInfoKHR at(long index) {
+            return new VkVideoDecodeH265SessionParametersAddInfoKHR(segment.asSlice(index * VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES, VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES));
+        }
+
+        public void write(long index, @NotNull VkVideoDecodeH265SessionParametersAddInfoKHR value) {
+            MemorySegment s = segment.asSlice(index * VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES, VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES, VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES,
+                (end - start) * VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkVideoDecodeH265SessionParametersAddInfoKHR.BYTES));
+        }
+
+        public VkVideoDecodeH265SessionParametersAddInfoKHR[] toArray() {
+            VkVideoDecodeH265SessionParametersAddInfoKHR[] ret = new VkVideoDecodeH265SessionParametersAddInfoKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkVideoDecodeH265SessionParametersAddInfoKHR allocate(Arena arena) {
         VkVideoDecodeH265SessionParametersAddInfoKHR ret = new VkVideoDecodeH265SessionParametersAddInfoKHR(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR);
         return ret;
     }
 
-    public static VkVideoDecodeH265SessionParametersAddInfoKHR[] allocate(Arena arena, int count) {
+    public static VkVideoDecodeH265SessionParametersAddInfoKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkVideoDecodeH265SessionParametersAddInfoKHR[] ret = new VkVideoDecodeH265SessionParametersAddInfoKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkVideoDecodeH265SessionParametersAddInfoKHR(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR);
+        VkVideoDecodeH265SessionParametersAddInfoKHR.Ptr ret = new VkVideoDecodeH265SessionParametersAddInfoKHR.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR);
         }
         return ret;
     }
@@ -71,14 +155,6 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
     public static VkVideoDecodeH265SessionParametersAddInfoKHR clone(Arena arena, VkVideoDecodeH265SessionParametersAddInfoKHR src) {
         VkVideoDecodeH265SessionParametersAddInfoKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkVideoDecodeH265SessionParametersAddInfoKHR[] clone(Arena arena, VkVideoDecodeH265SessionParametersAddInfoKHR[] src) {
-        VkVideoDecodeH265SessionParametersAddInfoKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -114,31 +190,27 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$stdVPSCount, OFFSET$stdVPSCount, value);
     }
 
-    public @Nullable StdVideoH265VideoParameterSet pStdVPSs() {
-        MemorySegment s = pStdVPSsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH265VideoParameterSet(s);
-    }
-
-    public void pStdVPSs(@Nullable StdVideoH265VideoParameterSet value) {
+    public void pStdVPSs(@Nullable IStdVideoH265VideoParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdVPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265VideoParameterSet[] pStdVPSs(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265VideoParameterSet.Ptr pStdVPSs(int assumedCount) {
         MemorySegment s = pStdVPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265VideoParameterSet.BYTES);
-        StdVideoH265VideoParameterSet[] ret = new StdVideoH265VideoParameterSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265VideoParameterSet(s.asSlice(i * StdVideoH265VideoParameterSet.BYTES, StdVideoH265VideoParameterSet.BYTES));
+        return new StdVideoH265VideoParameterSet.Ptr(s);
+    }
+
+    public @Nullable StdVideoH265VideoParameterSet pStdVPSs() {
+        MemorySegment s = pStdVPSsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoH265VideoParameterSet(s);
     }
 
     public @pointer(target=StdVideoH265VideoParameterSet.class) MemorySegment pStdVPSsRaw() {
@@ -157,31 +229,27 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$stdSPSCount, OFFSET$stdSPSCount, value);
     }
 
-    public @Nullable StdVideoH265SequenceParameterSet pStdSPSs() {
-        MemorySegment s = pStdSPSsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH265SequenceParameterSet(s);
-    }
-
-    public void pStdSPSs(@Nullable StdVideoH265SequenceParameterSet value) {
+    public void pStdSPSs(@Nullable IStdVideoH265SequenceParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265SequenceParameterSet[] pStdSPSs(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265SequenceParameterSet.Ptr pStdSPSs(int assumedCount) {
         MemorySegment s = pStdSPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265SequenceParameterSet.BYTES);
-        StdVideoH265SequenceParameterSet[] ret = new StdVideoH265SequenceParameterSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265SequenceParameterSet(s.asSlice(i * StdVideoH265SequenceParameterSet.BYTES, StdVideoH265SequenceParameterSet.BYTES));
+        return new StdVideoH265SequenceParameterSet.Ptr(s);
+    }
+
+    public @Nullable StdVideoH265SequenceParameterSet pStdSPSs() {
+        MemorySegment s = pStdSPSsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoH265SequenceParameterSet(s);
     }
 
     public @pointer(target=StdVideoH265SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
@@ -200,31 +268,27 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$stdPPSCount, OFFSET$stdPPSCount, value);
     }
 
-    public @Nullable StdVideoH265PictureParameterSet pStdPPSs() {
-        MemorySegment s = pStdPPSsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH265PictureParameterSet(s);
-    }
-
-    public void pStdPPSs(@Nullable StdVideoH265PictureParameterSet value) {
+    public void pStdPPSs(@Nullable IStdVideoH265PictureParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265PictureParameterSet[] pStdPPSs(int assumedCount) {
+    @unsafe public @Nullable StdVideoH265PictureParameterSet.Ptr pStdPPSs(int assumedCount) {
         MemorySegment s = pStdPPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH265PictureParameterSet.BYTES);
-        StdVideoH265PictureParameterSet[] ret = new StdVideoH265PictureParameterSet[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH265PictureParameterSet(s.asSlice(i * StdVideoH265PictureParameterSet.BYTES, StdVideoH265PictureParameterSet.BYTES));
+        return new StdVideoH265PictureParameterSet.Ptr(s);
+    }
+
+    public @Nullable StdVideoH265PictureParameterSet pStdPPSs() {
+        MemorySegment s = pStdPPSsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoH265PictureParameterSet(s);
     }
 
     public @pointer(target=StdVideoH265PictureParameterSet.class) MemorySegment pStdPPSsRaw() {
@@ -247,14 +311,14 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$stdVPSCount = PathElement.groupElement("PATH$stdVPSCount");
-    public static final PathElement PATH$pStdVPSs = PathElement.groupElement("PATH$pStdVPSs");
-    public static final PathElement PATH$stdSPSCount = PathElement.groupElement("PATH$stdSPSCount");
-    public static final PathElement PATH$pStdSPSs = PathElement.groupElement("PATH$pStdSPSs");
-    public static final PathElement PATH$stdPPSCount = PathElement.groupElement("PATH$stdPPSCount");
-    public static final PathElement PATH$pStdPPSs = PathElement.groupElement("PATH$pStdPPSs");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$stdVPSCount = PathElement.groupElement("stdVPSCount");
+    public static final PathElement PATH$pStdVPSs = PathElement.groupElement("pStdVPSs");
+    public static final PathElement PATH$stdSPSCount = PathElement.groupElement("stdSPSCount");
+    public static final PathElement PATH$pStdSPSs = PathElement.groupElement("pStdSPSs");
+    public static final PathElement PATH$stdPPSCount = PathElement.groupElement("stdPPSCount");
+    public static final PathElement PATH$pStdPPSs = PathElement.groupElement("pStdPPSs");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

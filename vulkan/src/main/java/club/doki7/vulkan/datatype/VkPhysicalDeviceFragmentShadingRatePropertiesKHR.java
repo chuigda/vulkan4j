@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -43,16 +44,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR`
 ///
-/// The {@code allocate} ({@link VkPhysicalDeviceFragmentShadingRatePropertiesKHR#allocate(Arena)}, {@link VkPhysicalDeviceFragmentShadingRatePropertiesKHR#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDeviceFragmentShadingRatePropertiesKHR#allocate(Arena)}, {@link VkPhysicalDeviceFragmentShadingRatePropertiesKHR#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceFragmentShadingRatePropertiesKHR#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -62,19 +64,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShadingRatePropertiesKHR.html"><code>VkPhysicalDeviceFragmentShadingRatePropertiesKHR</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySegment segment) implements IVkPhysicalDeviceFragmentShadingRatePropertiesKHR {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFragmentShadingRatePropertiesKHR.html"><code>VkPhysicalDeviceFragmentShadingRatePropertiesKHR</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceFragmentShadingRatePropertiesKHR}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceFragmentShadingRatePropertiesKHR to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceFragmentShadingRatePropertiesKHR.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceFragmentShadingRatePropertiesKHR {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceFragmentShadingRatePropertiesKHR at(long index) {
+            return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES, VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES));
+        }
+
+        public void write(long index, @NotNull VkPhysicalDeviceFragmentShadingRatePropertiesKHR value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES, VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES, VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES,
+                (end - start) * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES));
+        }
+
+        public VkPhysicalDeviceFragmentShadingRatePropertiesKHR[] toArray() {
+            VkPhysicalDeviceFragmentShadingRatePropertiesKHR[] ret = new VkPhysicalDeviceFragmentShadingRatePropertiesKHR[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocate(Arena arena) {
         VkPhysicalDeviceFragmentShadingRatePropertiesKHR ret = new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR);
         return ret;
     }
 
-    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceFragmentShadingRatePropertiesKHR[] ret = new VkPhysicalDeviceFragmentShadingRatePropertiesKHR[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR);
+        VkPhysicalDeviceFragmentShadingRatePropertiesKHR.Ptr ret = new VkPhysicalDeviceFragmentShadingRatePropertiesKHR.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR);
         }
         return ret;
     }
@@ -82,14 +166,6 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
     public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR clone(Arena arena, VkPhysicalDeviceFragmentShadingRatePropertiesKHR src) {
         VkPhysicalDeviceFragmentShadingRatePropertiesKHR ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR[] clone(Arena arena, VkPhysicalDeviceFragmentShadingRatePropertiesKHR[] src) {
-        VkPhysicalDeviceFragmentShadingRatePropertiesKHR[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -276,25 +352,25 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$minFragmentShadingRateAttachmentTexelSize = PathElement.groupElement("PATH$minFragmentShadingRateAttachmentTexelSize");
-    public static final PathElement PATH$maxFragmentShadingRateAttachmentTexelSize = PathElement.groupElement("PATH$maxFragmentShadingRateAttachmentTexelSize");
-    public static final PathElement PATH$maxFragmentShadingRateAttachmentTexelSizeAspectRatio = PathElement.groupElement("PATH$maxFragmentShadingRateAttachmentTexelSizeAspectRatio");
-    public static final PathElement PATH$primitiveFragmentShadingRateWithMultipleViewports = PathElement.groupElement("PATH$primitiveFragmentShadingRateWithMultipleViewports");
-    public static final PathElement PATH$layeredShadingRateAttachments = PathElement.groupElement("PATH$layeredShadingRateAttachments");
-    public static final PathElement PATH$fragmentShadingRateNonTrivialCombinerOps = PathElement.groupElement("PATH$fragmentShadingRateNonTrivialCombinerOps");
-    public static final PathElement PATH$maxFragmentSize = PathElement.groupElement("PATH$maxFragmentSize");
-    public static final PathElement PATH$maxFragmentSizeAspectRatio = PathElement.groupElement("PATH$maxFragmentSizeAspectRatio");
-    public static final PathElement PATH$maxFragmentShadingRateCoverageSamples = PathElement.groupElement("PATH$maxFragmentShadingRateCoverageSamples");
-    public static final PathElement PATH$maxFragmentShadingRateRasterizationSamples = PathElement.groupElement("PATH$maxFragmentShadingRateRasterizationSamples");
-    public static final PathElement PATH$fragmentShadingRateWithShaderDepthStencilWrites = PathElement.groupElement("PATH$fragmentShadingRateWithShaderDepthStencilWrites");
-    public static final PathElement PATH$fragmentShadingRateWithSampleMask = PathElement.groupElement("PATH$fragmentShadingRateWithSampleMask");
-    public static final PathElement PATH$fragmentShadingRateWithShaderSampleMask = PathElement.groupElement("PATH$fragmentShadingRateWithShaderSampleMask");
-    public static final PathElement PATH$fragmentShadingRateWithConservativeRasterization = PathElement.groupElement("PATH$fragmentShadingRateWithConservativeRasterization");
-    public static final PathElement PATH$fragmentShadingRateWithFragmentShaderInterlock = PathElement.groupElement("PATH$fragmentShadingRateWithFragmentShaderInterlock");
-    public static final PathElement PATH$fragmentShadingRateWithCustomSampleLocations = PathElement.groupElement("PATH$fragmentShadingRateWithCustomSampleLocations");
-    public static final PathElement PATH$fragmentShadingRateStrictMultiplyCombiner = PathElement.groupElement("PATH$fragmentShadingRateStrictMultiplyCombiner");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$minFragmentShadingRateAttachmentTexelSize = PathElement.groupElement("minFragmentShadingRateAttachmentTexelSize");
+    public static final PathElement PATH$maxFragmentShadingRateAttachmentTexelSize = PathElement.groupElement("maxFragmentShadingRateAttachmentTexelSize");
+    public static final PathElement PATH$maxFragmentShadingRateAttachmentTexelSizeAspectRatio = PathElement.groupElement("maxFragmentShadingRateAttachmentTexelSizeAspectRatio");
+    public static final PathElement PATH$primitiveFragmentShadingRateWithMultipleViewports = PathElement.groupElement("primitiveFragmentShadingRateWithMultipleViewports");
+    public static final PathElement PATH$layeredShadingRateAttachments = PathElement.groupElement("layeredShadingRateAttachments");
+    public static final PathElement PATH$fragmentShadingRateNonTrivialCombinerOps = PathElement.groupElement("fragmentShadingRateNonTrivialCombinerOps");
+    public static final PathElement PATH$maxFragmentSize = PathElement.groupElement("maxFragmentSize");
+    public static final PathElement PATH$maxFragmentSizeAspectRatio = PathElement.groupElement("maxFragmentSizeAspectRatio");
+    public static final PathElement PATH$maxFragmentShadingRateCoverageSamples = PathElement.groupElement("maxFragmentShadingRateCoverageSamples");
+    public static final PathElement PATH$maxFragmentShadingRateRasterizationSamples = PathElement.groupElement("maxFragmentShadingRateRasterizationSamples");
+    public static final PathElement PATH$fragmentShadingRateWithShaderDepthStencilWrites = PathElement.groupElement("fragmentShadingRateWithShaderDepthStencilWrites");
+    public static final PathElement PATH$fragmentShadingRateWithSampleMask = PathElement.groupElement("fragmentShadingRateWithSampleMask");
+    public static final PathElement PATH$fragmentShadingRateWithShaderSampleMask = PathElement.groupElement("fragmentShadingRateWithShaderSampleMask");
+    public static final PathElement PATH$fragmentShadingRateWithConservativeRasterization = PathElement.groupElement("fragmentShadingRateWithConservativeRasterization");
+    public static final PathElement PATH$fragmentShadingRateWithFragmentShaderInterlock = PathElement.groupElement("fragmentShadingRateWithFragmentShaderInterlock");
+    public static final PathElement PATH$fragmentShadingRateWithCustomSampleLocations = PathElement.groupElement("fragmentShadingRateWithCustomSampleLocations");
+    public static final PathElement PATH$fragmentShadingRateStrictMultiplyCombiner = PathElement.groupElement("fragmentShadingRateStrictMultiplyCombiner");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

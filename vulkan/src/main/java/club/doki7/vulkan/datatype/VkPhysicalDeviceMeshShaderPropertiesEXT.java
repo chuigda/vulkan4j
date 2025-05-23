@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -54,16 +55,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT`
 ///
-/// The {@code allocate} ({@link VkPhysicalDeviceMeshShaderPropertiesEXT#allocate(Arena)}, {@link VkPhysicalDeviceMeshShaderPropertiesEXT#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDeviceMeshShaderPropertiesEXT#allocate(Arena)}, {@link VkPhysicalDeviceMeshShaderPropertiesEXT#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceMeshShaderPropertiesEXT#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -73,19 +75,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMeshShaderPropertiesEXT.html"><code>VkPhysicalDeviceMeshShaderPropertiesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMeshShaderPropertiesEXT {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceMeshShaderPropertiesEXT.html"><code>VkPhysicalDeviceMeshShaderPropertiesEXT</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceMeshShaderPropertiesEXT}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceMeshShaderPropertiesEXT to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceMeshShaderPropertiesEXT.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMeshShaderPropertiesEXT {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceMeshShaderPropertiesEXT at(long index) {
+            return new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(index * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES, VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES));
+        }
+
+        public void write(long index, @NotNull VkPhysicalDeviceMeshShaderPropertiesEXT value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES, VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES, VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES,
+                (end - start) * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES));
+        }
+
+        public VkPhysicalDeviceMeshShaderPropertiesEXT[] toArray() {
+            VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = new VkPhysicalDeviceMeshShaderPropertiesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkPhysicalDeviceMeshShaderPropertiesEXT allocate(Arena arena) {
         VkPhysicalDeviceMeshShaderPropertiesEXT ret = new VkPhysicalDeviceMeshShaderPropertiesEXT(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT);
         return ret;
     }
 
-    public static VkPhysicalDeviceMeshShaderPropertiesEXT[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceMeshShaderPropertiesEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = new VkPhysicalDeviceMeshShaderPropertiesEXT[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT);
+        VkPhysicalDeviceMeshShaderPropertiesEXT.Ptr ret = new VkPhysicalDeviceMeshShaderPropertiesEXT.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT);
         }
         return ret;
     }
@@ -93,14 +177,6 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
     public static VkPhysicalDeviceMeshShaderPropertiesEXT clone(Arena arena, VkPhysicalDeviceMeshShaderPropertiesEXT src) {
         VkPhysicalDeviceMeshShaderPropertiesEXT ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceMeshShaderPropertiesEXT[] clone(Arena arena, VkPhysicalDeviceMeshShaderPropertiesEXT[] src) {
-        VkPhysicalDeviceMeshShaderPropertiesEXT[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -386,36 +462,36 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$maxTaskWorkGroupTotalCount = PathElement.groupElement("PATH$maxTaskWorkGroupTotalCount");
-    public static final PathElement PATH$maxTaskWorkGroupCount = PathElement.groupElement("PATH$maxTaskWorkGroupCount");
-    public static final PathElement PATH$maxTaskWorkGroupInvocations = PathElement.groupElement("PATH$maxTaskWorkGroupInvocations");
-    public static final PathElement PATH$maxTaskWorkGroupSize = PathElement.groupElement("PATH$maxTaskWorkGroupSize");
-    public static final PathElement PATH$maxTaskPayloadSize = PathElement.groupElement("PATH$maxTaskPayloadSize");
-    public static final PathElement PATH$maxTaskSharedMemorySize = PathElement.groupElement("PATH$maxTaskSharedMemorySize");
-    public static final PathElement PATH$maxTaskPayloadAndSharedMemorySize = PathElement.groupElement("PATH$maxTaskPayloadAndSharedMemorySize");
-    public static final PathElement PATH$maxMeshWorkGroupTotalCount = PathElement.groupElement("PATH$maxMeshWorkGroupTotalCount");
-    public static final PathElement PATH$maxMeshWorkGroupCount = PathElement.groupElement("PATH$maxMeshWorkGroupCount");
-    public static final PathElement PATH$maxMeshWorkGroupInvocations = PathElement.groupElement("PATH$maxMeshWorkGroupInvocations");
-    public static final PathElement PATH$maxMeshWorkGroupSize = PathElement.groupElement("PATH$maxMeshWorkGroupSize");
-    public static final PathElement PATH$maxMeshSharedMemorySize = PathElement.groupElement("PATH$maxMeshSharedMemorySize");
-    public static final PathElement PATH$maxMeshPayloadAndSharedMemorySize = PathElement.groupElement("PATH$maxMeshPayloadAndSharedMemorySize");
-    public static final PathElement PATH$maxMeshOutputMemorySize = PathElement.groupElement("PATH$maxMeshOutputMemorySize");
-    public static final PathElement PATH$maxMeshPayloadAndOutputMemorySize = PathElement.groupElement("PATH$maxMeshPayloadAndOutputMemorySize");
-    public static final PathElement PATH$maxMeshOutputComponents = PathElement.groupElement("PATH$maxMeshOutputComponents");
-    public static final PathElement PATH$maxMeshOutputVertices = PathElement.groupElement("PATH$maxMeshOutputVertices");
-    public static final PathElement PATH$maxMeshOutputPrimitives = PathElement.groupElement("PATH$maxMeshOutputPrimitives");
-    public static final PathElement PATH$maxMeshOutputLayers = PathElement.groupElement("PATH$maxMeshOutputLayers");
-    public static final PathElement PATH$maxMeshMultiviewViewCount = PathElement.groupElement("PATH$maxMeshMultiviewViewCount");
-    public static final PathElement PATH$meshOutputPerVertexGranularity = PathElement.groupElement("PATH$meshOutputPerVertexGranularity");
-    public static final PathElement PATH$meshOutputPerPrimitiveGranularity = PathElement.groupElement("PATH$meshOutputPerPrimitiveGranularity");
-    public static final PathElement PATH$maxPreferredTaskWorkGroupInvocations = PathElement.groupElement("PATH$maxPreferredTaskWorkGroupInvocations");
-    public static final PathElement PATH$maxPreferredMeshWorkGroupInvocations = PathElement.groupElement("PATH$maxPreferredMeshWorkGroupInvocations");
-    public static final PathElement PATH$prefersLocalInvocationVertexOutput = PathElement.groupElement("PATH$prefersLocalInvocationVertexOutput");
-    public static final PathElement PATH$prefersLocalInvocationPrimitiveOutput = PathElement.groupElement("PATH$prefersLocalInvocationPrimitiveOutput");
-    public static final PathElement PATH$prefersCompactVertexOutput = PathElement.groupElement("PATH$prefersCompactVertexOutput");
-    public static final PathElement PATH$prefersCompactPrimitiveOutput = PathElement.groupElement("PATH$prefersCompactPrimitiveOutput");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$maxTaskWorkGroupTotalCount = PathElement.groupElement("maxTaskWorkGroupTotalCount");
+    public static final PathElement PATH$maxTaskWorkGroupCount = PathElement.groupElement("maxTaskWorkGroupCount");
+    public static final PathElement PATH$maxTaskWorkGroupInvocations = PathElement.groupElement("maxTaskWorkGroupInvocations");
+    public static final PathElement PATH$maxTaskWorkGroupSize = PathElement.groupElement("maxTaskWorkGroupSize");
+    public static final PathElement PATH$maxTaskPayloadSize = PathElement.groupElement("maxTaskPayloadSize");
+    public static final PathElement PATH$maxTaskSharedMemorySize = PathElement.groupElement("maxTaskSharedMemorySize");
+    public static final PathElement PATH$maxTaskPayloadAndSharedMemorySize = PathElement.groupElement("maxTaskPayloadAndSharedMemorySize");
+    public static final PathElement PATH$maxMeshWorkGroupTotalCount = PathElement.groupElement("maxMeshWorkGroupTotalCount");
+    public static final PathElement PATH$maxMeshWorkGroupCount = PathElement.groupElement("maxMeshWorkGroupCount");
+    public static final PathElement PATH$maxMeshWorkGroupInvocations = PathElement.groupElement("maxMeshWorkGroupInvocations");
+    public static final PathElement PATH$maxMeshWorkGroupSize = PathElement.groupElement("maxMeshWorkGroupSize");
+    public static final PathElement PATH$maxMeshSharedMemorySize = PathElement.groupElement("maxMeshSharedMemorySize");
+    public static final PathElement PATH$maxMeshPayloadAndSharedMemorySize = PathElement.groupElement("maxMeshPayloadAndSharedMemorySize");
+    public static final PathElement PATH$maxMeshOutputMemorySize = PathElement.groupElement("maxMeshOutputMemorySize");
+    public static final PathElement PATH$maxMeshPayloadAndOutputMemorySize = PathElement.groupElement("maxMeshPayloadAndOutputMemorySize");
+    public static final PathElement PATH$maxMeshOutputComponents = PathElement.groupElement("maxMeshOutputComponents");
+    public static final PathElement PATH$maxMeshOutputVertices = PathElement.groupElement("maxMeshOutputVertices");
+    public static final PathElement PATH$maxMeshOutputPrimitives = PathElement.groupElement("maxMeshOutputPrimitives");
+    public static final PathElement PATH$maxMeshOutputLayers = PathElement.groupElement("maxMeshOutputLayers");
+    public static final PathElement PATH$maxMeshMultiviewViewCount = PathElement.groupElement("maxMeshMultiviewViewCount");
+    public static final PathElement PATH$meshOutputPerVertexGranularity = PathElement.groupElement("meshOutputPerVertexGranularity");
+    public static final PathElement PATH$meshOutputPerPrimitiveGranularity = PathElement.groupElement("meshOutputPerPrimitiveGranularity");
+    public static final PathElement PATH$maxPreferredTaskWorkGroupInvocations = PathElement.groupElement("maxPreferredTaskWorkGroupInvocations");
+    public static final PathElement PATH$maxPreferredMeshWorkGroupInvocations = PathElement.groupElement("maxPreferredMeshWorkGroupInvocations");
+    public static final PathElement PATH$prefersLocalInvocationVertexOutput = PathElement.groupElement("prefersLocalInvocationVertexOutput");
+    public static final PathElement PATH$prefersLocalInvocationPrimitiveOutput = PathElement.groupElement("prefersLocalInvocationPrimitiveOutput");
+    public static final PathElement PATH$prefersCompactVertexOutput = PathElement.groupElement("prefersCompactVertexOutput");
+    public static final PathElement PATH$prefersCompactPrimitiveOutput = PathElement.groupElement("prefersCompactPrimitiveOutput");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

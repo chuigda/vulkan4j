@@ -40,6 +40,7 @@
     --selected-link-color: #ffffff; /* Assuming white link on selected blue background */
     --title-color: #24292f; /* settings.headerForeground or main foreground */
     --link-color: #0969da; /* textLink.foreground */
+    --toc-link-color: #0969da; /* textLink.foreground */
     --link-color-active: #0969da; /* textLink.activeForeground */
 
     /* 特定功能颜色 */
@@ -78,6 +79,7 @@
         --selected-link-color: #ffffff; /* Assuming white link on selected blue background for contrast */
         --title-color: #c9d1d9; /* settings.headerForeground or main foreground */
         --link-color: #58a6ff; /* textLink.foreground */
+        --toc-link-color: #58a6ff; /* textLink.foreground */
         --link-color-active: #58a6ff; /* textLink.activeForeground */
 
         /* 特定功能颜色 */

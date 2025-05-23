@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +39,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -46,31 +47,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segment) implements IStdVideoEncodeH264ReferenceListsInfo {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoEncodeH264ReferenceListsInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoEncodeH264ReferenceListsInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoEncodeH264ReferenceListsInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264ReferenceListsInfo {
+        public long size() {
+            return segment.byteSize() / StdVideoEncodeH264ReferenceListsInfo.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoEncodeH264ReferenceListsInfo at(long index) {
+            return new StdVideoEncodeH264ReferenceListsInfo(segment.asSlice(index * StdVideoEncodeH264ReferenceListsInfo.BYTES, StdVideoEncodeH264ReferenceListsInfo.BYTES));
+        }
+
+        public void write(long index, @NotNull StdVideoEncodeH264ReferenceListsInfo value) {
+            MemorySegment s = segment.asSlice(index * StdVideoEncodeH264ReferenceListsInfo.BYTES, StdVideoEncodeH264ReferenceListsInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * StdVideoEncodeH264ReferenceListsInfo.BYTES, StdVideoEncodeH264ReferenceListsInfo.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * StdVideoEncodeH264ReferenceListsInfo.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * StdVideoEncodeH264ReferenceListsInfo.BYTES,
+                (end - start) * StdVideoEncodeH264ReferenceListsInfo.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * StdVideoEncodeH264ReferenceListsInfo.BYTES));
+        }
+
+        public StdVideoEncodeH264ReferenceListsInfo[] toArray() {
+            StdVideoEncodeH264ReferenceListsInfo[] ret = new StdVideoEncodeH264ReferenceListsInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static StdVideoEncodeH264ReferenceListsInfo allocate(Arena arena) {
         return new StdVideoEncodeH264ReferenceListsInfo(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoEncodeH264ReferenceListsInfo[] allocate(Arena arena, int count) {
+    public static StdVideoEncodeH264ReferenceListsInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264ReferenceListsInfo[] ret = new StdVideoEncodeH264ReferenceListsInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264ReferenceListsInfo(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH264ReferenceListsInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeH264ReferenceListsInfo clone(Arena arena, StdVideoEncodeH264ReferenceListsInfo src) {
         StdVideoEncodeH264ReferenceListsInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoEncodeH264ReferenceListsInfo[] clone(Arena arena, StdVideoEncodeH264ReferenceListsInfo[] src) {
-        StdVideoEncodeH264ReferenceListsInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -139,31 +211,27 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     }
 
 
-    public @Nullable StdVideoEncodeH264RefListModEntry pRefList0ModOperations() {
-        MemorySegment s = pRefList0ModOperationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264RefListModEntry(s);
-    }
-
-    public void pRefList0ModOperations(@Nullable StdVideoEncodeH264RefListModEntry value) {
+    public void pRefList0ModOperations(@Nullable IStdVideoEncodeH264RefListModEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefList0ModOperationsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264RefListModEntry[] pRefList0ModOperations(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH264RefListModEntry.Ptr pRefList0ModOperations(int assumedCount) {
         MemorySegment s = pRefList0ModOperationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264RefListModEntry.BYTES);
-        StdVideoEncodeH264RefListModEntry[] ret = new StdVideoEncodeH264RefListModEntry[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264RefListModEntry(s.asSlice(i * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES));
+        return new StdVideoEncodeH264RefListModEntry.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH264RefListModEntry pRefList0ModOperations() {
+        MemorySegment s = pRefList0ModOperationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoEncodeH264RefListModEntry(s);
     }
 
     public @pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment pRefList0ModOperationsRaw() {
@@ -174,31 +242,27 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pRefList0ModOperations, OFFSET$pRefList0ModOperations, value);
     }
 
-    public @Nullable StdVideoEncodeH264RefListModEntry pRefList1ModOperations() {
-        MemorySegment s = pRefList1ModOperationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264RefListModEntry(s);
-    }
-
-    public void pRefList1ModOperations(@Nullable StdVideoEncodeH264RefListModEntry value) {
+    public void pRefList1ModOperations(@Nullable IStdVideoEncodeH264RefListModEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefList1ModOperationsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264RefListModEntry[] pRefList1ModOperations(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH264RefListModEntry.Ptr pRefList1ModOperations(int assumedCount) {
         MemorySegment s = pRefList1ModOperationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264RefListModEntry.BYTES);
-        StdVideoEncodeH264RefListModEntry[] ret = new StdVideoEncodeH264RefListModEntry[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264RefListModEntry(s.asSlice(i * StdVideoEncodeH264RefListModEntry.BYTES, StdVideoEncodeH264RefListModEntry.BYTES));
+        return new StdVideoEncodeH264RefListModEntry.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH264RefListModEntry pRefList1ModOperations() {
+        MemorySegment s = pRefList1ModOperationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoEncodeH264RefListModEntry(s);
     }
 
     public @pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment pRefList1ModOperationsRaw() {
@@ -209,31 +273,27 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pRefList1ModOperations, OFFSET$pRefList1ModOperations, value);
     }
 
-    public @Nullable StdVideoEncodeH264RefPicMarkingEntry pRefPicMarkingOperations() {
-        MemorySegment s = pRefPicMarkingOperationsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264RefPicMarkingEntry(s);
-    }
-
-    public void pRefPicMarkingOperations(@Nullable StdVideoEncodeH264RefPicMarkingEntry value) {
+    public void pRefPicMarkingOperations(@Nullable IStdVideoEncodeH264RefPicMarkingEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefPicMarkingOperationsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264RefPicMarkingEntry[] pRefPicMarkingOperations(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH264RefPicMarkingEntry.Ptr pRefPicMarkingOperations(int assumedCount) {
         MemorySegment s = pRefPicMarkingOperationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264RefPicMarkingEntry.BYTES);
-        StdVideoEncodeH264RefPicMarkingEntry[] ret = new StdVideoEncodeH264RefPicMarkingEntry[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264RefPicMarkingEntry(s.asSlice(i * StdVideoEncodeH264RefPicMarkingEntry.BYTES, StdVideoEncodeH264RefPicMarkingEntry.BYTES));
+        return new StdVideoEncodeH264RefPicMarkingEntry.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH264RefPicMarkingEntry pRefPicMarkingOperations() {
+        MemorySegment s = pRefPicMarkingOperationsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoEncodeH264RefPicMarkingEntry(s);
     }
 
     public @pointer(target=StdVideoEncodeH264RefPicMarkingEntry.class) MemorySegment pRefPicMarkingOperationsRaw() {
@@ -260,17 +320,17 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_active_minus1");
-    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_active_minus1");
-    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("PATH$RefPicList0");
-    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("PATH$RefPicList1");
-    public static final PathElement PATH$refList0ModOpCount = PathElement.groupElement("PATH$refList0ModOpCount");
-    public static final PathElement PATH$refList1ModOpCount = PathElement.groupElement("PATH$refList1ModOpCount");
-    public static final PathElement PATH$refPicMarkingOpCount = PathElement.groupElement("PATH$refPicMarkingOpCount");
-    public static final PathElement PATH$pRefList0ModOperations = PathElement.groupElement("PATH$pRefList0ModOperations");
-    public static final PathElement PATH$pRefList1ModOperations = PathElement.groupElement("PATH$pRefList1ModOperations");
-    public static final PathElement PATH$pRefPicMarkingOperations = PathElement.groupElement("PATH$pRefPicMarkingOperations");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$num_ref_idx_l0_active_minus1 = PathElement.groupElement("num_ref_idx_l0_active_minus1");
+    public static final PathElement PATH$num_ref_idx_l1_active_minus1 = PathElement.groupElement("num_ref_idx_l1_active_minus1");
+    public static final PathElement PATH$RefPicList0 = PathElement.groupElement("RefPicList0");
+    public static final PathElement PATH$RefPicList1 = PathElement.groupElement("RefPicList1");
+    public static final PathElement PATH$refList0ModOpCount = PathElement.groupElement("refList0ModOpCount");
+    public static final PathElement PATH$refList1ModOpCount = PathElement.groupElement("refList1ModOpCount");
+    public static final PathElement PATH$refPicMarkingOpCount = PathElement.groupElement("refPicMarkingOpCount");
+    public static final PathElement PATH$pRefList0ModOperations = PathElement.groupElement("pRefList0ModOperations");
+    public static final PathElement PATH$pRefList1ModOperations = PathElement.groupElement("pRefList1ModOperations");
+    public static final PathElement PATH$pRefPicMarkingOperations = PathElement.groupElement("pRefPicMarkingOperations");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);

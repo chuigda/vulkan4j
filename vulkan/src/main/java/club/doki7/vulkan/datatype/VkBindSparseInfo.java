@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -36,16 +37,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_BIND_SPARSE_INFO`
 ///
-/// The {@code allocate} ({@link VkBindSparseInfo#allocate(Arena)}, {@link VkBindSparseInfo#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkBindSparseInfo#allocate(Arena)}, {@link VkBindSparseInfo#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkBindSparseInfo#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -55,19 +57,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindSparseInfo.html"><code>VkBindSparseInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPointer {
+public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBindSparseInfo {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkBindSparseInfo.html"><code>VkBindSparseInfo</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkBindSparseInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkBindSparseInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkBindSparseInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkBindSparseInfo {
+        public long size() {
+            return segment.byteSize() / VkBindSparseInfo.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkBindSparseInfo at(long index) {
+            return new VkBindSparseInfo(segment.asSlice(index * VkBindSparseInfo.BYTES, VkBindSparseInfo.BYTES));
+        }
+
+        public void write(long index, @NotNull VkBindSparseInfo value) {
+            MemorySegment s = segment.asSlice(index * VkBindSparseInfo.BYTES, VkBindSparseInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkBindSparseInfo.BYTES, VkBindSparseInfo.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkBindSparseInfo.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkBindSparseInfo.BYTES,
+                (end - start) * VkBindSparseInfo.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkBindSparseInfo.BYTES));
+        }
+
+        public VkBindSparseInfo[] toArray() {
+            VkBindSparseInfo[] ret = new VkBindSparseInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkBindSparseInfo allocate(Arena arena) {
         VkBindSparseInfo ret = new VkBindSparseInfo(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.BIND_SPARSE_INFO);
         return ret;
     }
 
-    public static VkBindSparseInfo[] allocate(Arena arena, int count) {
+    public static VkBindSparseInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkBindSparseInfo[] ret = new VkBindSparseInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkBindSparseInfo(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.BIND_SPARSE_INFO);
+        VkBindSparseInfo.Ptr ret = new VkBindSparseInfo.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.BIND_SPARSE_INFO);
         }
         return ret;
     }
@@ -75,14 +159,6 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
     public static VkBindSparseInfo clone(Arena arena, VkBindSparseInfo src) {
         VkBindSparseInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkBindSparseInfo[] clone(Arena arena, VkBindSparseInfo[] src) {
-        VkBindSparseInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -151,31 +227,27 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$bufferBindCount, OFFSET$bufferBindCount, value);
     }
 
-    public @Nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
-        MemorySegment s = pBufferBindsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSparseBufferMemoryBindInfo(s);
-    }
-
-    public void pBufferBinds(@Nullable VkSparseBufferMemoryBindInfo value) {
+    public void pBufferBinds(@Nullable IVkSparseBufferMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseBufferMemoryBindInfo[] pBufferBinds(int assumedCount) {
+    @unsafe public @Nullable VkSparseBufferMemoryBindInfo.Ptr pBufferBinds(int assumedCount) {
         MemorySegment s = pBufferBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSparseBufferMemoryBindInfo.BYTES);
-        VkSparseBufferMemoryBindInfo[] ret = new VkSparseBufferMemoryBindInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseBufferMemoryBindInfo(s.asSlice(i * VkSparseBufferMemoryBindInfo.BYTES, VkSparseBufferMemoryBindInfo.BYTES));
+        return new VkSparseBufferMemoryBindInfo.Ptr(s);
+    }
+
+    public @Nullable VkSparseBufferMemoryBindInfo pBufferBinds() {
+        MemorySegment s = pBufferBindsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkSparseBufferMemoryBindInfo(s);
     }
 
     public @pointer(target=VkSparseBufferMemoryBindInfo.class) MemorySegment pBufferBindsRaw() {
@@ -194,31 +266,27 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount, value);
     }
 
-    public @Nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
-        MemorySegment s = pImageOpaqueBindsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSparseImageOpaqueMemoryBindInfo(s);
-    }
-
-    public void pImageOpaqueBinds(@Nullable VkSparseImageOpaqueMemoryBindInfo value) {
+    public void pImageOpaqueBinds(@Nullable IVkSparseImageOpaqueMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageOpaqueBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseImageOpaqueMemoryBindInfo[] pImageOpaqueBinds(int assumedCount) {
+    @unsafe public @Nullable VkSparseImageOpaqueMemoryBindInfo.Ptr pImageOpaqueBinds(int assumedCount) {
         MemorySegment s = pImageOpaqueBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSparseImageOpaqueMemoryBindInfo.BYTES);
-        VkSparseImageOpaqueMemoryBindInfo[] ret = new VkSparseImageOpaqueMemoryBindInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseImageOpaqueMemoryBindInfo(s.asSlice(i * VkSparseImageOpaqueMemoryBindInfo.BYTES, VkSparseImageOpaqueMemoryBindInfo.BYTES));
+        return new VkSparseImageOpaqueMemoryBindInfo.Ptr(s);
+    }
+
+    public @Nullable VkSparseImageOpaqueMemoryBindInfo pImageOpaqueBinds() {
+        MemorySegment s = pImageOpaqueBindsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkSparseImageOpaqueMemoryBindInfo(s);
     }
 
     public @pointer(target=VkSparseImageOpaqueMemoryBindInfo.class) MemorySegment pImageOpaqueBindsRaw() {
@@ -237,31 +305,27 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
         segment.set(LAYOUT$imageBindCount, OFFSET$imageBindCount, value);
     }
 
-    public @Nullable VkSparseImageMemoryBindInfo pImageBinds() {
-        MemorySegment s = pImageBindsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSparseImageMemoryBindInfo(s);
-    }
-
-    public void pImageBinds(@Nullable VkSparseImageMemoryBindInfo value) {
+    public void pImageBinds(@Nullable IVkSparseImageMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseImageMemoryBindInfo[] pImageBinds(int assumedCount) {
+    @unsafe public @Nullable VkSparseImageMemoryBindInfo.Ptr pImageBinds(int assumedCount) {
         MemorySegment s = pImageBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSparseImageMemoryBindInfo.BYTES);
-        VkSparseImageMemoryBindInfo[] ret = new VkSparseImageMemoryBindInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSparseImageMemoryBindInfo(s.asSlice(i * VkSparseImageMemoryBindInfo.BYTES, VkSparseImageMemoryBindInfo.BYTES));
+        return new VkSparseImageMemoryBindInfo.Ptr(s);
+    }
+
+    public @Nullable VkSparseImageMemoryBindInfo pImageBinds() {
+        MemorySegment s = pImageBindsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkSparseImageMemoryBindInfo(s);
     }
 
     public @pointer(target=VkSparseImageMemoryBindInfo.class) MemorySegment pImageBindsRaw() {
@@ -321,18 +385,18 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IPoint
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("PATH$waitSemaphoreCount");
-    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("PATH$pWaitSemaphores");
-    public static final PathElement PATH$bufferBindCount = PathElement.groupElement("PATH$bufferBindCount");
-    public static final PathElement PATH$pBufferBinds = PathElement.groupElement("PATH$pBufferBinds");
-    public static final PathElement PATH$imageOpaqueBindCount = PathElement.groupElement("PATH$imageOpaqueBindCount");
-    public static final PathElement PATH$pImageOpaqueBinds = PathElement.groupElement("PATH$pImageOpaqueBinds");
-    public static final PathElement PATH$imageBindCount = PathElement.groupElement("PATH$imageBindCount");
-    public static final PathElement PATH$pImageBinds = PathElement.groupElement("PATH$pImageBinds");
-    public static final PathElement PATH$signalSemaphoreCount = PathElement.groupElement("PATH$signalSemaphoreCount");
-    public static final PathElement PATH$pSignalSemaphores = PathElement.groupElement("PATH$pSignalSemaphores");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$waitSemaphoreCount = PathElement.groupElement("waitSemaphoreCount");
+    public static final PathElement PATH$pWaitSemaphores = PathElement.groupElement("pWaitSemaphores");
+    public static final PathElement PATH$bufferBindCount = PathElement.groupElement("bufferBindCount");
+    public static final PathElement PATH$pBufferBinds = PathElement.groupElement("pBufferBinds");
+    public static final PathElement PATH$imageOpaqueBindCount = PathElement.groupElement("imageOpaqueBindCount");
+    public static final PathElement PATH$pImageOpaqueBinds = PathElement.groupElement("pImageOpaqueBinds");
+    public static final PathElement PATH$imageBindCount = PathElement.groupElement("imageBindCount");
+    public static final PathElement PATH$pImageBinds = PathElement.groupElement("pImageBinds");
+    public static final PathElement PATH$signalSemaphoreCount = PathElement.groupElement("signalSemaphoreCount");
+    public static final PathElement PATH$pSignalSemaphores = PathElement.groupElement("pSignalSemaphores");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

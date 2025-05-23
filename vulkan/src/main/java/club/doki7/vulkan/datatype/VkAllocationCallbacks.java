@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +33,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -42,31 +43,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAllocationCallbacks.html"><code>VkAllocationCallbacks</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements IPointer {
+public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements IVkAllocationCallbacks {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkAllocationCallbacks.html"><code>VkAllocationCallbacks</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkAllocationCallbacks}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkAllocationCallbacks to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkAllocationCallbacks.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAllocationCallbacks {
+        public long size() {
+            return segment.byteSize() / VkAllocationCallbacks.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkAllocationCallbacks at(long index) {
+            return new VkAllocationCallbacks(segment.asSlice(index * VkAllocationCallbacks.BYTES, VkAllocationCallbacks.BYTES));
+        }
+
+        public void write(long index, @NotNull VkAllocationCallbacks value) {
+            MemorySegment s = segment.asSlice(index * VkAllocationCallbacks.BYTES, VkAllocationCallbacks.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkAllocationCallbacks.BYTES, VkAllocationCallbacks.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkAllocationCallbacks.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkAllocationCallbacks.BYTES,
+                (end - start) * VkAllocationCallbacks.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkAllocationCallbacks.BYTES));
+        }
+
+        public VkAllocationCallbacks[] toArray() {
+            VkAllocationCallbacks[] ret = new VkAllocationCallbacks[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkAllocationCallbacks allocate(Arena arena) {
         return new VkAllocationCallbacks(arena.allocate(LAYOUT));
     }
 
-    public static VkAllocationCallbacks[] allocate(Arena arena, int count) {
+    public static VkAllocationCallbacks.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkAllocationCallbacks[] ret = new VkAllocationCallbacks[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkAllocationCallbacks(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new VkAllocationCallbacks.Ptr(segment);
     }
 
     public static VkAllocationCallbacks clone(Arena arena, VkAllocationCallbacks src) {
         VkAllocationCallbacks ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkAllocationCallbacks[] clone(Arena arena, VkAllocationCallbacks[] src) {
-        VkAllocationCallbacks[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -152,12 +224,12 @@ public record VkAllocationCallbacks(@NotNull MemorySegment segment) implements I
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pUserData = PathElement.groupElement("PATH$pUserData");
-    public static final PathElement PATH$pfnAllocation = PathElement.groupElement("PATH$pfnAllocation");
-    public static final PathElement PATH$pfnReallocation = PathElement.groupElement("PATH$pfnReallocation");
-    public static final PathElement PATH$pfnFree = PathElement.groupElement("PATH$pfnFree");
-    public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement("PATH$pfnInternalAllocation");
-    public static final PathElement PATH$pfnInternalFree = PathElement.groupElement("PATH$pfnInternalFree");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
+    public static final PathElement PATH$pfnAllocation = PathElement.groupElement("pfnAllocation");
+    public static final PathElement PATH$pfnReallocation = PathElement.groupElement("pfnReallocation");
+    public static final PathElement PATH$pfnFree = PathElement.groupElement("pfnFree");
+    public static final PathElement PATH$pfnInternalAllocation = PathElement.groupElement("pfnInternalAllocation");
+    public static final PathElement PATH$pfnInternalFree = PathElement.groupElement("pfnInternalFree");
 
     public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
     public static final AddressLayout LAYOUT$pfnAllocation = (AddressLayout) LAYOUT.select(PATH$pfnAllocation);

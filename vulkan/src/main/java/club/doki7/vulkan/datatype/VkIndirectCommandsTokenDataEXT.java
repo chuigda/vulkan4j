@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -30,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -40,18 +41,97 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenDataEXT.html"><code>VkIndirectCommandsTokenDataEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) implements IPointer {
+public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) implements IVkIndirectCommandsTokenDataEXT {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkIndirectCommandsTokenDataEXT.html"><code>VkIndirectCommandsTokenDataEXT</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkIndirectCommandsTokenDataEXT}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkIndirectCommandsTokenDataEXT to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkIndirectCommandsTokenDataEXT.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkIndirectCommandsTokenDataEXT {
+        public long size() {
+            return segment.byteSize() / VkIndirectCommandsTokenDataEXT.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkIndirectCommandsTokenDataEXT at(long index) {
+            return new VkIndirectCommandsTokenDataEXT(segment.asSlice(index * VkIndirectCommandsTokenDataEXT.BYTES, VkIndirectCommandsTokenDataEXT.BYTES));
+        }
+
+        public void write(long index, @NotNull VkIndirectCommandsTokenDataEXT value) {
+            MemorySegment s = segment.asSlice(index * VkIndirectCommandsTokenDataEXT.BYTES, VkIndirectCommandsTokenDataEXT.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkIndirectCommandsTokenDataEXT.BYTES, VkIndirectCommandsTokenDataEXT.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkIndirectCommandsTokenDataEXT.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkIndirectCommandsTokenDataEXT.BYTES,
+                (end - start) * VkIndirectCommandsTokenDataEXT.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkIndirectCommandsTokenDataEXT.BYTES));
+        }
+
+        public VkIndirectCommandsTokenDataEXT[] toArray() {
+            VkIndirectCommandsTokenDataEXT[] ret = new VkIndirectCommandsTokenDataEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkIndirectCommandsTokenDataEXT allocate(Arena arena) {
         return new VkIndirectCommandsTokenDataEXT(arena.allocate(LAYOUT));
     }
 
-    public static VkIndirectCommandsTokenDataEXT[] allocate(Arena arena, int count) {
+    public static VkIndirectCommandsTokenDataEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkIndirectCommandsTokenDataEXT[] ret = new VkIndirectCommandsTokenDataEXT[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkIndirectCommandsTokenDataEXT(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new VkIndirectCommandsTokenDataEXT.Ptr(segment);
     }
 
     public static VkIndirectCommandsTokenDataEXT clone(Arena arena, VkIndirectCommandsTokenDataEXT src) {
@@ -60,12 +140,19 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static VkIndirectCommandsTokenDataEXT[] clone(Arena arena, VkIndirectCommandsTokenDataEXT[] src) {
-        VkIndirectCommandsTokenDataEXT[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
+    public void pPushConstant(@Nullable IVkIndirectCommandsPushConstantTokenEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pPushConstantRaw(s);
+    }
+
+    @unsafe public @Nullable VkIndirectCommandsPushConstantTokenEXT.Ptr pPushConstant(int assumedCount) {
+        MemorySegment s = pPushConstantRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+
+        s = s.reinterpret(assumedCount * VkIndirectCommandsPushConstantTokenEXT.BYTES);
+        return new VkIndirectCommandsPushConstantTokenEXT.Ptr(s);
     }
 
     public @Nullable VkIndirectCommandsPushConstantTokenEXT pPushConstant() {
@@ -76,31 +163,27 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsPushConstantTokenEXT(s);
     }
 
-    public void pPushConstant(@Nullable VkIndirectCommandsPushConstantTokenEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pPushConstantRaw(s);
-    }
-
-    @unsafe public @Nullable VkIndirectCommandsPushConstantTokenEXT[] pPushConstant(int assumedCount) {
-        MemorySegment s = pPushConstantRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkIndirectCommandsPushConstantTokenEXT.BYTES);
-        VkIndirectCommandsPushConstantTokenEXT[] ret = new VkIndirectCommandsPushConstantTokenEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsPushConstantTokenEXT(s.asSlice(i * VkIndirectCommandsPushConstantTokenEXT.BYTES, VkIndirectCommandsPushConstantTokenEXT.BYTES));
-        }
-        return ret;
-    }
-
     public @pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment pPushConstantRaw() {
         return segment.get(LAYOUT$pPushConstant, OFFSET$pPushConstant);
     }
 
     public void pPushConstantRaw(@pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pPushConstant, OFFSET$pPushConstant, value);
+    }
+
+    public void pVertexBuffer(@Nullable IVkIndirectCommandsVertexBufferTokenEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pVertexBufferRaw(s);
+    }
+
+    @unsafe public @Nullable VkIndirectCommandsVertexBufferTokenEXT.Ptr pVertexBuffer(int assumedCount) {
+        MemorySegment s = pVertexBufferRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkIndirectCommandsVertexBufferTokenEXT.BYTES);
+        return new VkIndirectCommandsVertexBufferTokenEXT.Ptr(s);
     }
 
     public @Nullable VkIndirectCommandsVertexBufferTokenEXT pVertexBuffer() {
@@ -111,31 +194,27 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsVertexBufferTokenEXT(s);
     }
 
-    public void pVertexBuffer(@Nullable VkIndirectCommandsVertexBufferTokenEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pVertexBufferRaw(s);
-    }
-
-    @unsafe public @Nullable VkIndirectCommandsVertexBufferTokenEXT[] pVertexBuffer(int assumedCount) {
-        MemorySegment s = pVertexBufferRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkIndirectCommandsVertexBufferTokenEXT.BYTES);
-        VkIndirectCommandsVertexBufferTokenEXT[] ret = new VkIndirectCommandsVertexBufferTokenEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsVertexBufferTokenEXT(s.asSlice(i * VkIndirectCommandsVertexBufferTokenEXT.BYTES, VkIndirectCommandsVertexBufferTokenEXT.BYTES));
-        }
-        return ret;
-    }
-
     public @pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment pVertexBufferRaw() {
         return segment.get(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer);
     }
 
     public void pVertexBufferRaw(@pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer, value);
+    }
+
+    public void pIndexBuffer(@Nullable IVkIndirectCommandsIndexBufferTokenEXT value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pIndexBufferRaw(s);
+    }
+
+    @unsafe public @Nullable VkIndirectCommandsIndexBufferTokenEXT.Ptr pIndexBuffer(int assumedCount) {
+        MemorySegment s = pIndexBufferRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkIndirectCommandsIndexBufferTokenEXT.BYTES);
+        return new VkIndirectCommandsIndexBufferTokenEXT.Ptr(s);
     }
 
     public @Nullable VkIndirectCommandsIndexBufferTokenEXT pIndexBuffer() {
@@ -146,25 +225,6 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsIndexBufferTokenEXT(s);
     }
 
-    public void pIndexBuffer(@Nullable VkIndirectCommandsIndexBufferTokenEXT value) {
-        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
-        pIndexBufferRaw(s);
-    }
-
-    @unsafe public @Nullable VkIndirectCommandsIndexBufferTokenEXT[] pIndexBuffer(int assumedCount) {
-        MemorySegment s = pIndexBufferRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-
-        s = s.reinterpret(assumedCount * VkIndirectCommandsIndexBufferTokenEXT.BYTES);
-        VkIndirectCommandsIndexBufferTokenEXT[] ret = new VkIndirectCommandsIndexBufferTokenEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsIndexBufferTokenEXT(s.asSlice(i * VkIndirectCommandsIndexBufferTokenEXT.BYTES, VkIndirectCommandsIndexBufferTokenEXT.BYTES));
-        }
-        return ret;
-    }
-
     public @pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment pIndexBufferRaw() {
         return segment.get(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer);
     }
@@ -173,31 +233,27 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer, value);
     }
 
-    public @Nullable VkIndirectCommandsExecutionSetTokenEXT pExecutionSet() {
-        MemorySegment s = pExecutionSetRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkIndirectCommandsExecutionSetTokenEXT(s);
-    }
-
-    public void pExecutionSet(@Nullable VkIndirectCommandsExecutionSetTokenEXT value) {
+    public void pExecutionSet(@Nullable IVkIndirectCommandsExecutionSetTokenEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExecutionSetRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsExecutionSetTokenEXT[] pExecutionSet(int assumedCount) {
+    @unsafe public @Nullable VkIndirectCommandsExecutionSetTokenEXT.Ptr pExecutionSet(int assumedCount) {
         MemorySegment s = pExecutionSetRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkIndirectCommandsExecutionSetTokenEXT.BYTES);
-        VkIndirectCommandsExecutionSetTokenEXT[] ret = new VkIndirectCommandsExecutionSetTokenEXT[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkIndirectCommandsExecutionSetTokenEXT(s.asSlice(i * VkIndirectCommandsExecutionSetTokenEXT.BYTES, VkIndirectCommandsExecutionSetTokenEXT.BYTES));
+        return new VkIndirectCommandsExecutionSetTokenEXT.Ptr(s);
+    }
+
+    public @Nullable VkIndirectCommandsExecutionSetTokenEXT pExecutionSet() {
+        MemorySegment s = pExecutionSetRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkIndirectCommandsExecutionSetTokenEXT(s);
     }
 
     public @pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment pExecutionSetRaw() {
@@ -216,10 +272,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$pPushConstant = PathElement.groupElement("PATH$pPushConstant");
-    public static final PathElement PATH$pVertexBuffer = PathElement.groupElement("PATH$pVertexBuffer");
-    public static final PathElement PATH$pIndexBuffer = PathElement.groupElement("PATH$pIndexBuffer");
-    public static final PathElement PATH$pExecutionSet = PathElement.groupElement("PATH$pExecutionSet");
+    public static final PathElement PATH$pPushConstant = PathElement.groupElement("pPushConstant");
+    public static final PathElement PATH$pVertexBuffer = PathElement.groupElement("pVertexBuffer");
+    public static final PathElement PATH$pIndexBuffer = PathElement.groupElement("pIndexBuffer");
+    public static final PathElement PATH$pExecutionSet = PathElement.groupElement("pExecutionSet");
 
     public static final AddressLayout LAYOUT$pPushConstant = (AddressLayout) LAYOUT.select(PATH$pPushConstant);
     public static final AddressLayout LAYOUT$pVertexBuffer = (AddressLayout) LAYOUT.select(PATH$pVertexBuffer);

@@ -17,7 +17,7 @@ public final class VulkanLoader {
     ///
     /// This function is implemented in terms of {@link System#loadLibrary(String)}. On Windows it
     /// will try {@code "vulkan-1"} ({@code vulkan-1.dll}), and on other platforms it will try
-    /// {@code "vulkan"} ({@code libvulkan.so}).
+    /// {@code "vulkan"} ({@code libvulkan.so} or {@code libvulkan.dylib}).
     ///
     /// Instead of using this function, you may also implement your own Vulkan library loading
     /// logic.
@@ -29,8 +29,13 @@ public final class VulkanLoader {
     /// you may need to set the  {@code LD_LIBRARY_PATH} environment variable to include the
     /// directory where {@code libvulkan.so} is installed.
     ///
-    /// <b>macOS is not supported by this moment</b> because the library author does not have access
-    /// to macOS computer. Help is welcome.
+    /// <b>Notice for macOS users</b>: According to my observation, as long as the
+    /// {@code libvulkan.dylib} is contained in the {@code java.library.path}, it will be loaded
+    /// correctly. Since {@code java.library.path} includes {@code .} (i.e. {@code cwd}), when
+    /// developing on macOS, you may simply symlink the {@code libvulkan.dylib} (provided by
+    /// MoltenVk) to the project root directory. But by this moment the project maintainer don't
+    /// have any knowledge on macOS software packaging. You may need to implement your own loading
+    /// logic when packaging and releasing software. Contributions are welcome.
     ///
     /// @throws SecurityException see {@link System#loadLibrary(String)}
     /// @throws UnsatisfiedLinkError see {@link System#loadLibrary(String)}

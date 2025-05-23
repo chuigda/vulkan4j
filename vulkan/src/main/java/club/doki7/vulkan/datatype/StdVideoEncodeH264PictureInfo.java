@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +37,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -44,31 +45,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) implements IStdVideoEncodeH264PictureInfo {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoEncodeH264PictureInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoEncodeH264PictureInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoEncodeH264PictureInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264PictureInfo {
+        public long size() {
+            return segment.byteSize() / StdVideoEncodeH264PictureInfo.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoEncodeH264PictureInfo at(long index) {
+            return new StdVideoEncodeH264PictureInfo(segment.asSlice(index * StdVideoEncodeH264PictureInfo.BYTES, StdVideoEncodeH264PictureInfo.BYTES));
+        }
+
+        public void write(long index, @NotNull StdVideoEncodeH264PictureInfo value) {
+            MemorySegment s = segment.asSlice(index * StdVideoEncodeH264PictureInfo.BYTES, StdVideoEncodeH264PictureInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * StdVideoEncodeH264PictureInfo.BYTES, StdVideoEncodeH264PictureInfo.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * StdVideoEncodeH264PictureInfo.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * StdVideoEncodeH264PictureInfo.BYTES,
+                (end - start) * StdVideoEncodeH264PictureInfo.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * StdVideoEncodeH264PictureInfo.BYTES));
+        }
+
+        public StdVideoEncodeH264PictureInfo[] toArray() {
+            StdVideoEncodeH264PictureInfo[] ret = new StdVideoEncodeH264PictureInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static StdVideoEncodeH264PictureInfo allocate(Arena arena) {
         return new StdVideoEncodeH264PictureInfo(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoEncodeH264PictureInfo[] allocate(Arena arena, int count) {
+    public static StdVideoEncodeH264PictureInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoEncodeH264PictureInfo[] ret = new StdVideoEncodeH264PictureInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoEncodeH264PictureInfo(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new StdVideoEncodeH264PictureInfo.Ptr(segment);
     }
 
     public static StdVideoEncodeH264PictureInfo clone(Arena arena, StdVideoEncodeH264PictureInfo src) {
         StdVideoEncodeH264PictureInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoEncodeH264PictureInfo[] clone(Arena arena, StdVideoEncodeH264PictureInfo[] src) {
-        StdVideoEncodeH264PictureInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -137,31 +209,27 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     }
 
 
-    public @Nullable StdVideoEncodeH264ReferenceListsInfo pRefLists() {
-        MemorySegment s = pRefListsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoEncodeH264ReferenceListsInfo(s);
-    }
-
-    public void pRefLists(@Nullable StdVideoEncodeH264ReferenceListsInfo value) {
+    public void pRefLists(@Nullable IStdVideoEncodeH264ReferenceListsInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264ReferenceListsInfo[] pRefLists(int assumedCount) {
+    @unsafe public @Nullable StdVideoEncodeH264ReferenceListsInfo.Ptr pRefLists(int assumedCount) {
         MemorySegment s = pRefListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoEncodeH264ReferenceListsInfo.BYTES);
-        StdVideoEncodeH264ReferenceListsInfo[] ret = new StdVideoEncodeH264ReferenceListsInfo[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoEncodeH264ReferenceListsInfo(s.asSlice(i * StdVideoEncodeH264ReferenceListsInfo.BYTES, StdVideoEncodeH264ReferenceListsInfo.BYTES));
+        return new StdVideoEncodeH264ReferenceListsInfo.Ptr(s);
+    }
+
+    public @Nullable StdVideoEncodeH264ReferenceListsInfo pRefLists() {
+        MemorySegment s = pRefListsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoEncodeH264ReferenceListsInfo(s);
     }
 
     public @pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
@@ -186,15 +254,15 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("PATH$seq_parameter_set_id");
-    public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("PATH$pic_parameter_set_id");
-    public static final PathElement PATH$idr_pic_id = PathElement.groupElement("PATH$idr_pic_id");
-    public static final PathElement PATH$primary_pic_type = PathElement.groupElement("PATH$primary_pic_type");
-    public static final PathElement PATH$frame_num = PathElement.groupElement("PATH$frame_num");
-    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PATH$PicOrderCnt");
-    public static final PathElement PATH$temporal_id = PathElement.groupElement("PATH$temporal_id");
-    public static final PathElement PATH$pRefLists = PathElement.groupElement("PATH$pRefLists");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("seq_parameter_set_id");
+    public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("pic_parameter_set_id");
+    public static final PathElement PATH$idr_pic_id = PathElement.groupElement("idr_pic_id");
+    public static final PathElement PATH$primary_pic_type = PathElement.groupElement("primary_pic_type");
+    public static final PathElement PATH$frame_num = PathElement.groupElement("frame_num");
+    public static final PathElement PATH$PicOrderCnt = PathElement.groupElement("PicOrderCnt");
+    public static final PathElement PATH$temporal_id = PathElement.groupElement("temporal_id");
+    public static final PathElement PATH$pRefLists = PathElement.groupElement("pRefLists");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$seq_parameter_set_id);

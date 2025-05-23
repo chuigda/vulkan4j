@@ -244,8 +244,12 @@ private fun generateInputOutputType(type: CType, optional: Boolean): String {
         is CVoidType -> "void"
         is CPointerType -> when (type.pointee) {
             is CNonRefType -> "${nullablePrefix}${type.pointee.jPtrType}"
-            is CStructType -> "${nullablePrefix}@pointer(target=${type.pointee.name}.class) ${type.pointee.name}"
-            is CHandleType -> "${nullablePrefix}@pointer(target=${type.pointee.name}.class) ${type.pointee.name}.Ptr"
+            is CStructType -> if (type.pointerToOne) {
+                "$nullablePrefix@pointer ${type.pointee.name}"
+            } else {
+                "$nullablePrefix@pointer ${type.pointee.jType}"
+            }
+            is CHandleType -> "${nullablePrefix}@pointer ${type.pointee.name}.Ptr"
             is CPointerType -> "${nullablePrefix}PointerPtr"
             is CVoidType -> type.jType
             else -> error("unsupported pointer type: $type")
@@ -255,7 +259,7 @@ private fun generateInputOutputType(type: CType, optional: Boolean): String {
             val flattened = type.flattened
             when (flattened.element) {
                 is CNonRefType -> flattened.element.jPtrType
-                is CStructType -> "${flattened.element.name}[]"
+                is CStructType -> flattened.element.jType
                 else -> error("unsupported array type: $type")
             }
         }
@@ -285,7 +289,7 @@ private fun generateInputConvert(type: CType, param: Param) = when (type) {
         val flattened = type.flattened
         when (flattened.element) {
             is CNonRefType -> "${param.name}.segment()"
-            is CStructType, is CHandleType -> "(${param.name} != null && ${param.name}.length != 0) ? ${param.name}[0].segment() : MemorySegment.NULL"
+            is CStructType, is CHandleType -> "(${param.name} != null && ${param.name}.length != 0) ? ${param.name}.segment() : MemorySegment.NULL"
             else -> throw Exception("unsupported array type: $type")
         }
     }

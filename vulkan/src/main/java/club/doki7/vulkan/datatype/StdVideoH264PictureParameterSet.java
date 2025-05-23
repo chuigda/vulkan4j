@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +38,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -45,31 +46,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) implements IPointer {
+public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) implements IStdVideoH264PictureParameterSet {
+    /// Represents a pointer to / an array of null structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link StdVideoH264PictureParameterSet}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IStdVideoH264PictureParameterSet to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code StdVideoH264PictureParameterSet.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH264PictureParameterSet {
+        public long size() {
+            return segment.byteSize() / StdVideoH264PictureParameterSet.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull StdVideoH264PictureParameterSet at(long index) {
+            return new StdVideoH264PictureParameterSet(segment.asSlice(index * StdVideoH264PictureParameterSet.BYTES, StdVideoH264PictureParameterSet.BYTES));
+        }
+
+        public void write(long index, @NotNull StdVideoH264PictureParameterSet value) {
+            MemorySegment s = segment.asSlice(index * StdVideoH264PictureParameterSet.BYTES, StdVideoH264PictureParameterSet.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * StdVideoH264PictureParameterSet.BYTES, StdVideoH264PictureParameterSet.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * StdVideoH264PictureParameterSet.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * StdVideoH264PictureParameterSet.BYTES,
+                (end - start) * StdVideoH264PictureParameterSet.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * StdVideoH264PictureParameterSet.BYTES));
+        }
+
+        public StdVideoH264PictureParameterSet[] toArray() {
+            StdVideoH264PictureParameterSet[] ret = new StdVideoH264PictureParameterSet[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static StdVideoH264PictureParameterSet allocate(Arena arena) {
         return new StdVideoH264PictureParameterSet(arena.allocate(LAYOUT));
     }
 
-    public static StdVideoH264PictureParameterSet[] allocate(Arena arena, int count) {
+    public static StdVideoH264PictureParameterSet.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        StdVideoH264PictureParameterSet[] ret = new StdVideoH264PictureParameterSet[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new StdVideoH264PictureParameterSet(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new StdVideoH264PictureParameterSet.Ptr(segment);
     }
 
     public static StdVideoH264PictureParameterSet clone(Arena arena, StdVideoH264PictureParameterSet src) {
         StdVideoH264PictureParameterSet ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static StdVideoH264PictureParameterSet[] clone(Arena arena, StdVideoH264PictureParameterSet[] src) {
-        StdVideoH264PictureParameterSet[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -153,31 +225,27 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$second_chroma_qp_index_offset, OFFSET$second_chroma_qp_index_offset, value);
     }
 
-    public @Nullable StdVideoH264ScalingLists pScalingLists() {
-        MemorySegment s = pScalingListsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new StdVideoH264ScalingLists(s);
-    }
-
-    public void pScalingLists(@Nullable StdVideoH264ScalingLists value) {
+    public void pScalingLists(@Nullable IStdVideoH264ScalingLists value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pScalingListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264ScalingLists[] pScalingLists(int assumedCount) {
+    @unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {
         MemorySegment s = pScalingListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * StdVideoH264ScalingLists.BYTES);
-        StdVideoH264ScalingLists[] ret = new StdVideoH264ScalingLists[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new StdVideoH264ScalingLists(s.asSlice(i * StdVideoH264ScalingLists.BYTES, StdVideoH264ScalingLists.BYTES));
+        return new StdVideoH264ScalingLists.Ptr(s);
+    }
+
+    public @Nullable StdVideoH264ScalingLists pScalingLists() {
+        MemorySegment s = pScalingListsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new StdVideoH264ScalingLists(s);
     }
 
     public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
@@ -203,17 +271,17 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$flags = PathElement.groupElement("PATH$flags");
-    public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("PATH$seq_parameter_set_id");
-    public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("PATH$pic_parameter_set_id");
-    public static final PathElement PATH$num_ref_idx_l0_default_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l0_default_active_minus1");
-    public static final PathElement PATH$num_ref_idx_l1_default_active_minus1 = PathElement.groupElement("PATH$num_ref_idx_l1_default_active_minus1");
-    public static final PathElement PATH$weighted_bipred_idc = PathElement.groupElement("PATH$weighted_bipred_idc");
-    public static final PathElement PATH$pic_init_qp_minus26 = PathElement.groupElement("PATH$pic_init_qp_minus26");
-    public static final PathElement PATH$pic_init_qs_minus26 = PathElement.groupElement("PATH$pic_init_qs_minus26");
-    public static final PathElement PATH$chroma_qp_index_offset = PathElement.groupElement("PATH$chroma_qp_index_offset");
-    public static final PathElement PATH$second_chroma_qp_index_offset = PathElement.groupElement("PATH$second_chroma_qp_index_offset");
-    public static final PathElement PATH$pScalingLists = PathElement.groupElement("PATH$pScalingLists");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$seq_parameter_set_id = PathElement.groupElement("seq_parameter_set_id");
+    public static final PathElement PATH$pic_parameter_set_id = PathElement.groupElement("pic_parameter_set_id");
+    public static final PathElement PATH$num_ref_idx_l0_default_active_minus1 = PathElement.groupElement("num_ref_idx_l0_default_active_minus1");
+    public static final PathElement PATH$num_ref_idx_l1_default_active_minus1 = PathElement.groupElement("num_ref_idx_l1_default_active_minus1");
+    public static final PathElement PATH$weighted_bipred_idc = PathElement.groupElement("weighted_bipred_idc");
+    public static final PathElement PATH$pic_init_qp_minus26 = PathElement.groupElement("pic_init_qp_minus26");
+    public static final PathElement PATH$pic_init_qs_minus26 = PathElement.groupElement("pic_init_qs_minus26");
+    public static final PathElement PATH$chroma_qp_index_offset = PathElement.groupElement("chroma_qp_index_offset");
+    public static final PathElement PATH$second_chroma_qp_index_offset = PathElement.groupElement("second_chroma_qp_index_offset");
+    public static final PathElement PATH$pScalingLists = PathElement.groupElement("pScalingLists");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$seq_parameter_set_id = (OfByte) LAYOUT.select(PATH$seq_parameter_set_id);

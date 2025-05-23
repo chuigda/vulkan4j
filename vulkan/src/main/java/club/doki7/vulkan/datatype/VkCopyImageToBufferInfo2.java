@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -31,16 +32,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_COPY_IMAGE_TO_BUFFER_INFO_2`
 ///
-/// The {@code allocate} ({@link VkCopyImageToBufferInfo2#allocate(Arena)}, {@link VkCopyImageToBufferInfo2#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkCopyImageToBufferInfo2#allocate(Arena)}, {@link VkCopyImageToBufferInfo2#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkCopyImageToBufferInfo2#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -50,19 +52,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyImageToBufferInfo2.html"><code>VkCopyImageToBufferInfo2</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implements IPointer {
+public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implements IVkCopyImageToBufferInfo2 {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkCopyImageToBufferInfo2.html"><code>VkCopyImageToBufferInfo2</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkCopyImageToBufferInfo2}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkCopyImageToBufferInfo2 to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkCopyImageToBufferInfo2.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkCopyImageToBufferInfo2 {
+        public long size() {
+            return segment.byteSize() / VkCopyImageToBufferInfo2.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkCopyImageToBufferInfo2 at(long index) {
+            return new VkCopyImageToBufferInfo2(segment.asSlice(index * VkCopyImageToBufferInfo2.BYTES, VkCopyImageToBufferInfo2.BYTES));
+        }
+
+        public void write(long index, @NotNull VkCopyImageToBufferInfo2 value) {
+            MemorySegment s = segment.asSlice(index * VkCopyImageToBufferInfo2.BYTES, VkCopyImageToBufferInfo2.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkCopyImageToBufferInfo2.BYTES, VkCopyImageToBufferInfo2.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkCopyImageToBufferInfo2.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkCopyImageToBufferInfo2.BYTES,
+                (end - start) * VkCopyImageToBufferInfo2.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkCopyImageToBufferInfo2.BYTES));
+        }
+
+        public VkCopyImageToBufferInfo2[] toArray() {
+            VkCopyImageToBufferInfo2[] ret = new VkCopyImageToBufferInfo2[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkCopyImageToBufferInfo2 allocate(Arena arena) {
         VkCopyImageToBufferInfo2 ret = new VkCopyImageToBufferInfo2(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.COPY_IMAGE_TO_BUFFER_INFO_2);
         return ret;
     }
 
-    public static VkCopyImageToBufferInfo2[] allocate(Arena arena, int count) {
+    public static VkCopyImageToBufferInfo2.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkCopyImageToBufferInfo2[] ret = new VkCopyImageToBufferInfo2[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkCopyImageToBufferInfo2(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.COPY_IMAGE_TO_BUFFER_INFO_2);
+        VkCopyImageToBufferInfo2.Ptr ret = new VkCopyImageToBufferInfo2.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.COPY_IMAGE_TO_BUFFER_INFO_2);
         }
         return ret;
     }
@@ -70,14 +154,6 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
     public static VkCopyImageToBufferInfo2 clone(Arena arena, VkCopyImageToBufferInfo2 src) {
         VkCopyImageToBufferInfo2 ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkCopyImageToBufferInfo2[] clone(Arena arena, VkCopyImageToBufferInfo2[] src) {
-        VkCopyImageToBufferInfo2[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -145,31 +221,27 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
     }
 
-    public @Nullable VkBufferImageCopy2 pRegions() {
-        MemorySegment s = pRegionsRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkBufferImageCopy2(s);
-    }
-
-    public void pRegions(@Nullable VkBufferImageCopy2 value) {
+    public void pRegions(@Nullable IVkBufferImageCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkBufferImageCopy2[] pRegions(int assumedCount) {
+    @unsafe public @Nullable VkBufferImageCopy2.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkBufferImageCopy2.BYTES);
-        VkBufferImageCopy2[] ret = new VkBufferImageCopy2[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkBufferImageCopy2(s.asSlice(i * VkBufferImageCopy2.BYTES, VkBufferImageCopy2.BYTES));
+        return new VkBufferImageCopy2.Ptr(s);
+    }
+
+    public @Nullable VkBufferImageCopy2 pRegions() {
+        MemorySegment s = pRegionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkBufferImageCopy2(s);
     }
 
     public @pointer(target=VkBufferImageCopy2.class) MemorySegment pRegionsRaw() {
@@ -191,13 +263,13 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$srcImage = PathElement.groupElement("PATH$srcImage");
-    public static final PathElement PATH$srcImageLayout = PathElement.groupElement("PATH$srcImageLayout");
-    public static final PathElement PATH$dstBuffer = PathElement.groupElement("PATH$dstBuffer");
-    public static final PathElement PATH$regionCount = PathElement.groupElement("PATH$regionCount");
-    public static final PathElement PATH$pRegions = PathElement.groupElement("PATH$pRegions");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$srcImage = PathElement.groupElement("srcImage");
+    public static final PathElement PATH$srcImageLayout = PathElement.groupElement("srcImageLayout");
+    public static final PathElement PATH$dstBuffer = PathElement.groupElement("dstBuffer");
+    public static final PathElement PATH$regionCount = PathElement.groupElement("regionCount");
+    public static final PathElement PATH$pRegions = PathElement.groupElement("pRegions");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

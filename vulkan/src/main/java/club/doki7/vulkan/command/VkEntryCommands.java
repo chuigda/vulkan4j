@@ -29,9 +29,9 @@ public final class VkEntryCommands {
     // region command wrappers
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateInstance.html"><code>vkCreateInstance</code></a>
     public @enumtype(VkResult.class) int createInstance(
-        @pointer(target=VkInstanceCreateInfo.class) VkInstanceCreateInfo pCreateInfo,
-        @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks pAllocator,
-        @pointer(target=VkInstance.class) VkInstance.Ptr pInstance
+        @pointer VkInstanceCreateInfo pCreateInfo,
+        @Nullable @pointer VkAllocationCallbacks pAllocator,
+        @pointer VkInstance.Ptr pInstance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateInstance);
         try {
@@ -49,7 +49,7 @@ public final class VkEntryCommands {
     public @enumtype(VkResult.class) int enumerateInstanceExtensionProperties(
         @Nullable BytePtr pLayerName,
         @unsigned IntPtr pPropertyCount,
-        @Nullable @pointer(target=VkExtensionProperties.class) VkExtensionProperties pProperties
+        @Nullable @pointer IVkExtensionProperties pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceExtensionProperties);
         try {
@@ -66,7 +66,7 @@ public final class VkEntryCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceLayerProperties.html"><code>vkEnumerateInstanceLayerProperties</code></a>
     public @enumtype(VkResult.class) int enumerateInstanceLayerProperties(
         @unsigned IntPtr pPropertyCount,
-        @Nullable @pointer(target=VkLayerProperties.class) VkLayerProperties pProperties
+        @Nullable @pointer IVkLayerProperties pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceLayerProperties);
         try {

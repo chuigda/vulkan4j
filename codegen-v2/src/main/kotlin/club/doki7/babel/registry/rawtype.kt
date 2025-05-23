@@ -14,6 +14,10 @@ data class ArrayType(val element: Type, val length: Identifier) : Type {
     override val cDisplay = "${element.cDisplay}[$length]"
 }
 
-data class PointerType(val pointee: Type, val const: Boolean = false) : Type {
+data class PointerType(
+    val pointee: Type,
+    val const: Boolean = false,
+    var pointerToOne: Boolean = false
+) : Type {
     override val cDisplay = "${pointee.cDisplay}${if (const) " const" else ""}*"
 }

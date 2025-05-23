@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -81,7 +82,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -91,31 +92,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures.html"><code>VkPhysicalDeviceFeatures</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implements IVkPhysicalDeviceFeatures {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceFeatures.html"><code>VkPhysicalDeviceFeatures</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceFeatures}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceFeatures to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceFeatures.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceFeatures {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceFeatures.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceFeatures at(long index) {
+            return new VkPhysicalDeviceFeatures(segment.asSlice(index * VkPhysicalDeviceFeatures.BYTES, VkPhysicalDeviceFeatures.BYTES));
+        }
+
+        public void write(long index, @NotNull VkPhysicalDeviceFeatures value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceFeatures.BYTES, VkPhysicalDeviceFeatures.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPhysicalDeviceFeatures.BYTES, VkPhysicalDeviceFeatures.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPhysicalDeviceFeatures.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPhysicalDeviceFeatures.BYTES,
+                (end - start) * VkPhysicalDeviceFeatures.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceFeatures.BYTES));
+        }
+
+        public VkPhysicalDeviceFeatures[] toArray() {
+            VkPhysicalDeviceFeatures[] ret = new VkPhysicalDeviceFeatures[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkPhysicalDeviceFeatures allocate(Arena arena) {
         return new VkPhysicalDeviceFeatures(arena.allocate(LAYOUT));
     }
 
-    public static VkPhysicalDeviceFeatures[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceFeatures.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceFeatures[] ret = new VkPhysicalDeviceFeatures[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceFeatures(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new VkPhysicalDeviceFeatures.Ptr(segment);
     }
 
     public static VkPhysicalDeviceFeatures clone(Arena arena, VkPhysicalDeviceFeatures src) {
         VkPhysicalDeviceFeatures ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceFeatures[] clone(Arena arena, VkPhysicalDeviceFeatures[] src) {
-        VkPhysicalDeviceFeatures[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -618,61 +690,61 @@ public record VkPhysicalDeviceFeatures(@NotNull MemorySegment segment) implement
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$robustBufferAccess = PathElement.groupElement("PATH$robustBufferAccess");
-    public static final PathElement PATH$fullDrawIndexUint32 = PathElement.groupElement("PATH$fullDrawIndexUint32");
-    public static final PathElement PATH$imageCubeArray = PathElement.groupElement("PATH$imageCubeArray");
-    public static final PathElement PATH$independentBlend = PathElement.groupElement("PATH$independentBlend");
-    public static final PathElement PATH$geometryShader = PathElement.groupElement("PATH$geometryShader");
-    public static final PathElement PATH$tessellationShader = PathElement.groupElement("PATH$tessellationShader");
-    public static final PathElement PATH$sampleRateShading = PathElement.groupElement("PATH$sampleRateShading");
-    public static final PathElement PATH$dualSrcBlend = PathElement.groupElement("PATH$dualSrcBlend");
-    public static final PathElement PATH$logicOp = PathElement.groupElement("PATH$logicOp");
-    public static final PathElement PATH$multiDrawIndirect = PathElement.groupElement("PATH$multiDrawIndirect");
-    public static final PathElement PATH$drawIndirectFirstInstance = PathElement.groupElement("PATH$drawIndirectFirstInstance");
-    public static final PathElement PATH$depthClamp = PathElement.groupElement("PATH$depthClamp");
-    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("PATH$depthBiasClamp");
-    public static final PathElement PATH$fillModeNonSolid = PathElement.groupElement("PATH$fillModeNonSolid");
-    public static final PathElement PATH$depthBounds = PathElement.groupElement("PATH$depthBounds");
-    public static final PathElement PATH$wideLines = PathElement.groupElement("PATH$wideLines");
-    public static final PathElement PATH$largePoints = PathElement.groupElement("PATH$largePoints");
-    public static final PathElement PATH$alphaToOne = PathElement.groupElement("PATH$alphaToOne");
-    public static final PathElement PATH$multiViewport = PathElement.groupElement("PATH$multiViewport");
-    public static final PathElement PATH$samplerAnisotropy = PathElement.groupElement("PATH$samplerAnisotropy");
-    public static final PathElement PATH$textureCompressionETC2 = PathElement.groupElement("PATH$textureCompressionETC2");
-    public static final PathElement PATH$textureCompressionASTC_LDR = PathElement.groupElement("PATH$textureCompressionASTC_LDR");
-    public static final PathElement PATH$textureCompressionBC = PathElement.groupElement("PATH$textureCompressionBC");
-    public static final PathElement PATH$occlusionQueryPrecise = PathElement.groupElement("PATH$occlusionQueryPrecise");
-    public static final PathElement PATH$pipelineStatisticsQuery = PathElement.groupElement("PATH$pipelineStatisticsQuery");
-    public static final PathElement PATH$vertexPipelineStoresAndAtomics = PathElement.groupElement("PATH$vertexPipelineStoresAndAtomics");
-    public static final PathElement PATH$fragmentStoresAndAtomics = PathElement.groupElement("PATH$fragmentStoresAndAtomics");
-    public static final PathElement PATH$shaderTessellationAndGeometryPointSize = PathElement.groupElement("PATH$shaderTessellationAndGeometryPointSize");
-    public static final PathElement PATH$shaderImageGatherExtended = PathElement.groupElement("PATH$shaderImageGatherExtended");
-    public static final PathElement PATH$shaderStorageImageExtendedFormats = PathElement.groupElement("PATH$shaderStorageImageExtendedFormats");
-    public static final PathElement PATH$shaderStorageImageMultisample = PathElement.groupElement("PATH$shaderStorageImageMultisample");
-    public static final PathElement PATH$shaderStorageImageReadWithoutFormat = PathElement.groupElement("PATH$shaderStorageImageReadWithoutFormat");
-    public static final PathElement PATH$shaderStorageImageWriteWithoutFormat = PathElement.groupElement("PATH$shaderStorageImageWriteWithoutFormat");
-    public static final PathElement PATH$shaderUniformBufferArrayDynamicIndexing = PathElement.groupElement("PATH$shaderUniformBufferArrayDynamicIndexing");
-    public static final PathElement PATH$shaderSampledImageArrayDynamicIndexing = PathElement.groupElement("PATH$shaderSampledImageArrayDynamicIndexing");
-    public static final PathElement PATH$shaderStorageBufferArrayDynamicIndexing = PathElement.groupElement("PATH$shaderStorageBufferArrayDynamicIndexing");
-    public static final PathElement PATH$shaderStorageImageArrayDynamicIndexing = PathElement.groupElement("PATH$shaderStorageImageArrayDynamicIndexing");
-    public static final PathElement PATH$shaderClipDistance = PathElement.groupElement("PATH$shaderClipDistance");
-    public static final PathElement PATH$shaderCullDistance = PathElement.groupElement("PATH$shaderCullDistance");
-    public static final PathElement PATH$shaderFloat64 = PathElement.groupElement("PATH$shaderFloat64");
-    public static final PathElement PATH$shaderInt64 = PathElement.groupElement("PATH$shaderInt64");
-    public static final PathElement PATH$shaderInt16 = PathElement.groupElement("PATH$shaderInt16");
-    public static final PathElement PATH$shaderResourceResidency = PathElement.groupElement("PATH$shaderResourceResidency");
-    public static final PathElement PATH$shaderResourceMinLod = PathElement.groupElement("PATH$shaderResourceMinLod");
-    public static final PathElement PATH$sparseBinding = PathElement.groupElement("PATH$sparseBinding");
-    public static final PathElement PATH$sparseResidencyBuffer = PathElement.groupElement("PATH$sparseResidencyBuffer");
-    public static final PathElement PATH$sparseResidencyImage2D = PathElement.groupElement("PATH$sparseResidencyImage2D");
-    public static final PathElement PATH$sparseResidencyImage3D = PathElement.groupElement("PATH$sparseResidencyImage3D");
-    public static final PathElement PATH$sparseResidency2Samples = PathElement.groupElement("PATH$sparseResidency2Samples");
-    public static final PathElement PATH$sparseResidency4Samples = PathElement.groupElement("PATH$sparseResidency4Samples");
-    public static final PathElement PATH$sparseResidency8Samples = PathElement.groupElement("PATH$sparseResidency8Samples");
-    public static final PathElement PATH$sparseResidency16Samples = PathElement.groupElement("PATH$sparseResidency16Samples");
-    public static final PathElement PATH$sparseResidencyAliased = PathElement.groupElement("PATH$sparseResidencyAliased");
-    public static final PathElement PATH$variableMultisampleRate = PathElement.groupElement("PATH$variableMultisampleRate");
-    public static final PathElement PATH$inheritedQueries = PathElement.groupElement("PATH$inheritedQueries");
+    public static final PathElement PATH$robustBufferAccess = PathElement.groupElement("robustBufferAccess");
+    public static final PathElement PATH$fullDrawIndexUint32 = PathElement.groupElement("fullDrawIndexUint32");
+    public static final PathElement PATH$imageCubeArray = PathElement.groupElement("imageCubeArray");
+    public static final PathElement PATH$independentBlend = PathElement.groupElement("independentBlend");
+    public static final PathElement PATH$geometryShader = PathElement.groupElement("geometryShader");
+    public static final PathElement PATH$tessellationShader = PathElement.groupElement("tessellationShader");
+    public static final PathElement PATH$sampleRateShading = PathElement.groupElement("sampleRateShading");
+    public static final PathElement PATH$dualSrcBlend = PathElement.groupElement("dualSrcBlend");
+    public static final PathElement PATH$logicOp = PathElement.groupElement("logicOp");
+    public static final PathElement PATH$multiDrawIndirect = PathElement.groupElement("multiDrawIndirect");
+    public static final PathElement PATH$drawIndirectFirstInstance = PathElement.groupElement("drawIndirectFirstInstance");
+    public static final PathElement PATH$depthClamp = PathElement.groupElement("depthClamp");
+    public static final PathElement PATH$depthBiasClamp = PathElement.groupElement("depthBiasClamp");
+    public static final PathElement PATH$fillModeNonSolid = PathElement.groupElement("fillModeNonSolid");
+    public static final PathElement PATH$depthBounds = PathElement.groupElement("depthBounds");
+    public static final PathElement PATH$wideLines = PathElement.groupElement("wideLines");
+    public static final PathElement PATH$largePoints = PathElement.groupElement("largePoints");
+    public static final PathElement PATH$alphaToOne = PathElement.groupElement("alphaToOne");
+    public static final PathElement PATH$multiViewport = PathElement.groupElement("multiViewport");
+    public static final PathElement PATH$samplerAnisotropy = PathElement.groupElement("samplerAnisotropy");
+    public static final PathElement PATH$textureCompressionETC2 = PathElement.groupElement("textureCompressionETC2");
+    public static final PathElement PATH$textureCompressionASTC_LDR = PathElement.groupElement("textureCompressionASTC_LDR");
+    public static final PathElement PATH$textureCompressionBC = PathElement.groupElement("textureCompressionBC");
+    public static final PathElement PATH$occlusionQueryPrecise = PathElement.groupElement("occlusionQueryPrecise");
+    public static final PathElement PATH$pipelineStatisticsQuery = PathElement.groupElement("pipelineStatisticsQuery");
+    public static final PathElement PATH$vertexPipelineStoresAndAtomics = PathElement.groupElement("vertexPipelineStoresAndAtomics");
+    public static final PathElement PATH$fragmentStoresAndAtomics = PathElement.groupElement("fragmentStoresAndAtomics");
+    public static final PathElement PATH$shaderTessellationAndGeometryPointSize = PathElement.groupElement("shaderTessellationAndGeometryPointSize");
+    public static final PathElement PATH$shaderImageGatherExtended = PathElement.groupElement("shaderImageGatherExtended");
+    public static final PathElement PATH$shaderStorageImageExtendedFormats = PathElement.groupElement("shaderStorageImageExtendedFormats");
+    public static final PathElement PATH$shaderStorageImageMultisample = PathElement.groupElement("shaderStorageImageMultisample");
+    public static final PathElement PATH$shaderStorageImageReadWithoutFormat = PathElement.groupElement("shaderStorageImageReadWithoutFormat");
+    public static final PathElement PATH$shaderStorageImageWriteWithoutFormat = PathElement.groupElement("shaderStorageImageWriteWithoutFormat");
+    public static final PathElement PATH$shaderUniformBufferArrayDynamicIndexing = PathElement.groupElement("shaderUniformBufferArrayDynamicIndexing");
+    public static final PathElement PATH$shaderSampledImageArrayDynamicIndexing = PathElement.groupElement("shaderSampledImageArrayDynamicIndexing");
+    public static final PathElement PATH$shaderStorageBufferArrayDynamicIndexing = PathElement.groupElement("shaderStorageBufferArrayDynamicIndexing");
+    public static final PathElement PATH$shaderStorageImageArrayDynamicIndexing = PathElement.groupElement("shaderStorageImageArrayDynamicIndexing");
+    public static final PathElement PATH$shaderClipDistance = PathElement.groupElement("shaderClipDistance");
+    public static final PathElement PATH$shaderCullDistance = PathElement.groupElement("shaderCullDistance");
+    public static final PathElement PATH$shaderFloat64 = PathElement.groupElement("shaderFloat64");
+    public static final PathElement PATH$shaderInt64 = PathElement.groupElement("shaderInt64");
+    public static final PathElement PATH$shaderInt16 = PathElement.groupElement("shaderInt16");
+    public static final PathElement PATH$shaderResourceResidency = PathElement.groupElement("shaderResourceResidency");
+    public static final PathElement PATH$shaderResourceMinLod = PathElement.groupElement("shaderResourceMinLod");
+    public static final PathElement PATH$sparseBinding = PathElement.groupElement("sparseBinding");
+    public static final PathElement PATH$sparseResidencyBuffer = PathElement.groupElement("sparseResidencyBuffer");
+    public static final PathElement PATH$sparseResidencyImage2D = PathElement.groupElement("sparseResidencyImage2D");
+    public static final PathElement PATH$sparseResidencyImage3D = PathElement.groupElement("sparseResidencyImage3D");
+    public static final PathElement PATH$sparseResidency2Samples = PathElement.groupElement("sparseResidency2Samples");
+    public static final PathElement PATH$sparseResidency4Samples = PathElement.groupElement("sparseResidency4Samples");
+    public static final PathElement PATH$sparseResidency8Samples = PathElement.groupElement("sparseResidency8Samples");
+    public static final PathElement PATH$sparseResidency16Samples = PathElement.groupElement("sparseResidency16Samples");
+    public static final PathElement PATH$sparseResidencyAliased = PathElement.groupElement("sparseResidencyAliased");
+    public static final PathElement PATH$variableMultisampleRate = PathElement.groupElement("variableMultisampleRate");
+    public static final PathElement PATH$inheritedQueries = PathElement.groupElement("inheritedQueries");
 
     public static final OfInt LAYOUT$robustBufferAccess = (OfInt) LAYOUT.select(PATH$robustBufferAccess);
     public static final OfInt LAYOUT$fullDrawIndexUint32 = (OfInt) LAYOUT.select(PATH$fullDrawIndexUint32);

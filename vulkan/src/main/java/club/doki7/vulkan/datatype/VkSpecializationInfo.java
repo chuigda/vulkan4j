@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -30,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -40,31 +41,102 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSpecializationInfo.html"><code>VkSpecializationInfo</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IPointer {
+public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IVkSpecializationInfo {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSpecializationInfo.html"><code>VkSpecializationInfo</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkSpecializationInfo}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkSpecializationInfo to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkSpecializationInfo.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkSpecializationInfo {
+        public long size() {
+            return segment.byteSize() / VkSpecializationInfo.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkSpecializationInfo at(long index) {
+            return new VkSpecializationInfo(segment.asSlice(index * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
+        }
+
+        public void write(long index, @NotNull VkSpecializationInfo value) {
+            MemorySegment s = segment.asSlice(index * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkSpecializationInfo.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkSpecializationInfo.BYTES,
+                (end - start) * VkSpecializationInfo.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkSpecializationInfo.BYTES));
+        }
+
+        public VkSpecializationInfo[] toArray() {
+            VkSpecializationInfo[] ret = new VkSpecializationInfo[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkSpecializationInfo allocate(Arena arena) {
         return new VkSpecializationInfo(arena.allocate(LAYOUT));
     }
 
-    public static VkSpecializationInfo[] allocate(Arena arena, int count) {
+    public static VkSpecializationInfo.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkSpecializationInfo[] ret = new VkSpecializationInfo[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkSpecializationInfo(segment.asSlice(i * BYTES, BYTES));
-        }
-        return ret;
+        return new VkSpecializationInfo.Ptr(segment);
     }
 
     public static VkSpecializationInfo clone(Arena arena, VkSpecializationInfo src) {
         VkSpecializationInfo ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkSpecializationInfo[] clone(Arena arena, VkSpecializationInfo[] src) {
-        VkSpecializationInfo[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -76,31 +148,27 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
         segment.set(LAYOUT$mapEntryCount, OFFSET$mapEntryCount, value);
     }
 
-    public @Nullable VkSpecializationMapEntry pMapEntries() {
-        MemorySegment s = pMapEntriesRaw();
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkSpecializationMapEntry(s);
-    }
-
-    public void pMapEntries(@Nullable VkSpecializationMapEntry value) {
+    public void pMapEntries(@Nullable IVkSpecializationMapEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMapEntriesRaw(s);
     }
 
-    @unsafe public @Nullable VkSpecializationMapEntry[] pMapEntries(int assumedCount) {
+    @unsafe public @Nullable VkSpecializationMapEntry.Ptr pMapEntries(int assumedCount) {
         MemorySegment s = pMapEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
         }
 
         s = s.reinterpret(assumedCount * VkSpecializationMapEntry.BYTES);
-        VkSpecializationMapEntry[] ret = new VkSpecializationMapEntry[assumedCount];
-        for (int i = 0; i < assumedCount; i ++) {
-            ret[i] = new VkSpecializationMapEntry(s.asSlice(i * VkSpecializationMapEntry.BYTES, VkSpecializationMapEntry.BYTES));
+        return new VkSpecializationMapEntry.Ptr(s);
+    }
+
+    public @Nullable VkSpecializationMapEntry pMapEntries() {
+        MemorySegment s = pMapEntriesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
         }
-        return ret;
+        return new VkSpecializationMapEntry(s);
     }
 
     public @pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
@@ -139,10 +207,10 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IP
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$mapEntryCount = PathElement.groupElement("PATH$mapEntryCount");
-    public static final PathElement PATH$pMapEntries = PathElement.groupElement("PATH$pMapEntries");
-    public static final PathElement PATH$dataSize = PathElement.groupElement("PATH$dataSize");
-    public static final PathElement PATH$pData = PathElement.groupElement("PATH$pData");
+    public static final PathElement PATH$mapEntryCount = PathElement.groupElement("mapEntryCount");
+    public static final PathElement PATH$pMapEntries = PathElement.groupElement("pMapEntries");
+    public static final PathElement PATH$dataSize = PathElement.groupElement("dataSize");
+    public static final PathElement PATH$pData = PathElement.groupElement("pData");
 
     public static final OfInt LAYOUT$mapEntryCount = (OfInt) LAYOUT.select(PATH$mapEntryCount);
     public static final AddressLayout LAYOUT$pMapEntries = (AddressLayout) LAYOUT.select(PATH$pMapEntries);

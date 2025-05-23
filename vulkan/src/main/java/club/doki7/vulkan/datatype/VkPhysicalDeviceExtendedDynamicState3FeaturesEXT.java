@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -57,16 +58,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT`
 ///
-/// The {@code allocate} ({@link VkPhysicalDeviceExtendedDynamicState3FeaturesEXT#allocate(Arena)}, {@link VkPhysicalDeviceExtendedDynamicState3FeaturesEXT#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDeviceExtendedDynamicState3FeaturesEXT#allocate(Arena)}, {@link VkPhysicalDeviceExtendedDynamicState3FeaturesEXT#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceExtendedDynamicState3FeaturesEXT#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -76,19 +78,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.html"><code>VkPhysicalDeviceExtendedDynamicState3FeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySegment segment) implements IVkPhysicalDeviceExtendedDynamicState3FeaturesEXT {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.html"><code>VkPhysicalDeviceExtendedDynamicState3FeaturesEXT</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceExtendedDynamicState3FeaturesEXT}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceExtendedDynamicState3FeaturesEXT to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceExtendedDynamicState3FeaturesEXT {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceExtendedDynamicState3FeaturesEXT at(long index) {
+            return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.asSlice(index * VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES, VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES));
+        }
+
+        public void write(long index, @NotNull VkPhysicalDeviceExtendedDynamicState3FeaturesEXT value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES, VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES, VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES,
+                (end - start) * VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.BYTES));
+        }
+
+        public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] toArray() {
+            VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT allocate(Arena arena) {
         VkPhysicalDeviceExtendedDynamicState3FeaturesEXT ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT);
         return ret;
     }
 
-    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT);
+        VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.Ptr ret = new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT);
         }
         return ret;
     }
@@ -96,14 +180,6 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
     public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT clone(Arena arena, VkPhysicalDeviceExtendedDynamicState3FeaturesEXT src) {
         VkPhysicalDeviceExtendedDynamicState3FeaturesEXT ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] clone(Arena arena, VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] src) {
-        VkPhysicalDeviceExtendedDynamicState3FeaturesEXT[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -416,39 +492,39 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$extendedDynamicState3TessellationDomainOrigin = PathElement.groupElement("PATH$extendedDynamicState3TessellationDomainOrigin");
-    public static final PathElement PATH$extendedDynamicState3DepthClampEnable = PathElement.groupElement("PATH$extendedDynamicState3DepthClampEnable");
-    public static final PathElement PATH$extendedDynamicState3PolygonMode = PathElement.groupElement("PATH$extendedDynamicState3PolygonMode");
-    public static final PathElement PATH$extendedDynamicState3RasterizationSamples = PathElement.groupElement("PATH$extendedDynamicState3RasterizationSamples");
-    public static final PathElement PATH$extendedDynamicState3SampleMask = PathElement.groupElement("PATH$extendedDynamicState3SampleMask");
-    public static final PathElement PATH$extendedDynamicState3AlphaToCoverageEnable = PathElement.groupElement("PATH$extendedDynamicState3AlphaToCoverageEnable");
-    public static final PathElement PATH$extendedDynamicState3AlphaToOneEnable = PathElement.groupElement("PATH$extendedDynamicState3AlphaToOneEnable");
-    public static final PathElement PATH$extendedDynamicState3LogicOpEnable = PathElement.groupElement("PATH$extendedDynamicState3LogicOpEnable");
-    public static final PathElement PATH$extendedDynamicState3ColorBlendEnable = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendEnable");
-    public static final PathElement PATH$extendedDynamicState3ColorBlendEquation = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendEquation");
-    public static final PathElement PATH$extendedDynamicState3ColorWriteMask = PathElement.groupElement("PATH$extendedDynamicState3ColorWriteMask");
-    public static final PathElement PATH$extendedDynamicState3RasterizationStream = PathElement.groupElement("PATH$extendedDynamicState3RasterizationStream");
-    public static final PathElement PATH$extendedDynamicState3ConservativeRasterizationMode = PathElement.groupElement("PATH$extendedDynamicState3ConservativeRasterizationMode");
-    public static final PathElement PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize = PathElement.groupElement("PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize");
-    public static final PathElement PATH$extendedDynamicState3DepthClipEnable = PathElement.groupElement("PATH$extendedDynamicState3DepthClipEnable");
-    public static final PathElement PATH$extendedDynamicState3SampleLocationsEnable = PathElement.groupElement("PATH$extendedDynamicState3SampleLocationsEnable");
-    public static final PathElement PATH$extendedDynamicState3ColorBlendAdvanced = PathElement.groupElement("PATH$extendedDynamicState3ColorBlendAdvanced");
-    public static final PathElement PATH$extendedDynamicState3ProvokingVertexMode = PathElement.groupElement("PATH$extendedDynamicState3ProvokingVertexMode");
-    public static final PathElement PATH$extendedDynamicState3LineRasterizationMode = PathElement.groupElement("PATH$extendedDynamicState3LineRasterizationMode");
-    public static final PathElement PATH$extendedDynamicState3LineStippleEnable = PathElement.groupElement("PATH$extendedDynamicState3LineStippleEnable");
-    public static final PathElement PATH$extendedDynamicState3DepthClipNegativeOneToOne = PathElement.groupElement("PATH$extendedDynamicState3DepthClipNegativeOneToOne");
-    public static final PathElement PATH$extendedDynamicState3ViewportWScalingEnable = PathElement.groupElement("PATH$extendedDynamicState3ViewportWScalingEnable");
-    public static final PathElement PATH$extendedDynamicState3ViewportSwizzle = PathElement.groupElement("PATH$extendedDynamicState3ViewportSwizzle");
-    public static final PathElement PATH$extendedDynamicState3CoverageToColorEnable = PathElement.groupElement("PATH$extendedDynamicState3CoverageToColorEnable");
-    public static final PathElement PATH$extendedDynamicState3CoverageToColorLocation = PathElement.groupElement("PATH$extendedDynamicState3CoverageToColorLocation");
-    public static final PathElement PATH$extendedDynamicState3CoverageModulationMode = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationMode");
-    public static final PathElement PATH$extendedDynamicState3CoverageModulationTableEnable = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationTableEnable");
-    public static final PathElement PATH$extendedDynamicState3CoverageModulationTable = PathElement.groupElement("PATH$extendedDynamicState3CoverageModulationTable");
-    public static final PathElement PATH$extendedDynamicState3CoverageReductionMode = PathElement.groupElement("PATH$extendedDynamicState3CoverageReductionMode");
-    public static final PathElement PATH$extendedDynamicState3RepresentativeFragmentTestEnable = PathElement.groupElement("PATH$extendedDynamicState3RepresentativeFragmentTestEnable");
-    public static final PathElement PATH$extendedDynamicState3ShadingRateImageEnable = PathElement.groupElement("PATH$extendedDynamicState3ShadingRateImageEnable");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$extendedDynamicState3TessellationDomainOrigin = PathElement.groupElement("extendedDynamicState3TessellationDomainOrigin");
+    public static final PathElement PATH$extendedDynamicState3DepthClampEnable = PathElement.groupElement("extendedDynamicState3DepthClampEnable");
+    public static final PathElement PATH$extendedDynamicState3PolygonMode = PathElement.groupElement("extendedDynamicState3PolygonMode");
+    public static final PathElement PATH$extendedDynamicState3RasterizationSamples = PathElement.groupElement("extendedDynamicState3RasterizationSamples");
+    public static final PathElement PATH$extendedDynamicState3SampleMask = PathElement.groupElement("extendedDynamicState3SampleMask");
+    public static final PathElement PATH$extendedDynamicState3AlphaToCoverageEnable = PathElement.groupElement("extendedDynamicState3AlphaToCoverageEnable");
+    public static final PathElement PATH$extendedDynamicState3AlphaToOneEnable = PathElement.groupElement("extendedDynamicState3AlphaToOneEnable");
+    public static final PathElement PATH$extendedDynamicState3LogicOpEnable = PathElement.groupElement("extendedDynamicState3LogicOpEnable");
+    public static final PathElement PATH$extendedDynamicState3ColorBlendEnable = PathElement.groupElement("extendedDynamicState3ColorBlendEnable");
+    public static final PathElement PATH$extendedDynamicState3ColorBlendEquation = PathElement.groupElement("extendedDynamicState3ColorBlendEquation");
+    public static final PathElement PATH$extendedDynamicState3ColorWriteMask = PathElement.groupElement("extendedDynamicState3ColorWriteMask");
+    public static final PathElement PATH$extendedDynamicState3RasterizationStream = PathElement.groupElement("extendedDynamicState3RasterizationStream");
+    public static final PathElement PATH$extendedDynamicState3ConservativeRasterizationMode = PathElement.groupElement("extendedDynamicState3ConservativeRasterizationMode");
+    public static final PathElement PATH$extendedDynamicState3ExtraPrimitiveOverestimationSize = PathElement.groupElement("extendedDynamicState3ExtraPrimitiveOverestimationSize");
+    public static final PathElement PATH$extendedDynamicState3DepthClipEnable = PathElement.groupElement("extendedDynamicState3DepthClipEnable");
+    public static final PathElement PATH$extendedDynamicState3SampleLocationsEnable = PathElement.groupElement("extendedDynamicState3SampleLocationsEnable");
+    public static final PathElement PATH$extendedDynamicState3ColorBlendAdvanced = PathElement.groupElement("extendedDynamicState3ColorBlendAdvanced");
+    public static final PathElement PATH$extendedDynamicState3ProvokingVertexMode = PathElement.groupElement("extendedDynamicState3ProvokingVertexMode");
+    public static final PathElement PATH$extendedDynamicState3LineRasterizationMode = PathElement.groupElement("extendedDynamicState3LineRasterizationMode");
+    public static final PathElement PATH$extendedDynamicState3LineStippleEnable = PathElement.groupElement("extendedDynamicState3LineStippleEnable");
+    public static final PathElement PATH$extendedDynamicState3DepthClipNegativeOneToOne = PathElement.groupElement("extendedDynamicState3DepthClipNegativeOneToOne");
+    public static final PathElement PATH$extendedDynamicState3ViewportWScalingEnable = PathElement.groupElement("extendedDynamicState3ViewportWScalingEnable");
+    public static final PathElement PATH$extendedDynamicState3ViewportSwizzle = PathElement.groupElement("extendedDynamicState3ViewportSwizzle");
+    public static final PathElement PATH$extendedDynamicState3CoverageToColorEnable = PathElement.groupElement("extendedDynamicState3CoverageToColorEnable");
+    public static final PathElement PATH$extendedDynamicState3CoverageToColorLocation = PathElement.groupElement("extendedDynamicState3CoverageToColorLocation");
+    public static final PathElement PATH$extendedDynamicState3CoverageModulationMode = PathElement.groupElement("extendedDynamicState3CoverageModulationMode");
+    public static final PathElement PATH$extendedDynamicState3CoverageModulationTableEnable = PathElement.groupElement("extendedDynamicState3CoverageModulationTableEnable");
+    public static final PathElement PATH$extendedDynamicState3CoverageModulationTable = PathElement.groupElement("extendedDynamicState3CoverageModulationTable");
+    public static final PathElement PATH$extendedDynamicState3CoverageReductionMode = PathElement.groupElement("extendedDynamicState3CoverageReductionMode");
+    public static final PathElement PATH$extendedDynamicState3RepresentativeFragmentTestEnable = PathElement.groupElement("extendedDynamicState3RepresentativeFragmentTestEnable");
+    public static final PathElement PATH$extendedDynamicState3ShadingRateImageEnable = PathElement.groupElement("extendedDynamicState3ShadingRateImageEnable");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);

@@ -2,6 +2,7 @@ package club.doki7.vulkan.datatype;
 
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -38,16 +39,17 @@ import static club.doki7.vulkan.VkConstants.*;
 /// }
 ///
 /// ## Auto initialization
+///
 /// This structure has the following members that can be automatically initialized:
 /// - `sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT`
 ///
-/// The {@code allocate} ({@link VkPhysicalDeviceShaderAtomicFloatFeaturesEXT#allocate(Arena)}, {@link VkPhysicalDeviceShaderAtomicFloatFeaturesEXT#allocate(Arena, int)})
+/// The {@code allocate} ({@link VkPhysicalDeviceShaderAtomicFloatFeaturesEXT#allocate(Arena)}, {@link VkPhysicalDeviceShaderAtomicFloatFeaturesEXT#allocate(Arena, long)})
 /// functions will automatically initialize these fields. Also, you may call {@link VkPhysicalDeviceShaderAtomicFloatFeaturesEXT#autoInit}
 /// to initialize these fields manually for non-allocated instances.
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@code LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///
@@ -57,19 +59,101 @@ import static club.doki7.vulkan.VkConstants.*;
 /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.html"><code>VkPhysicalDeviceShaderAtomicFloatFeaturesEXT</code></a>
 @ValueBasedCandidate
 @UnsafeConstructor
-public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegment segment) implements IPointer {
+public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderAtomicFloatFeaturesEXT {
+    /// Represents a pointer to / an array of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.html"><code>VkPhysicalDeviceShaderAtomicFloatFeaturesEXT</code></a> structure(s) in native memory.
+    ///
+    /// Technically speaking, this type has no difference with {@link VkPhysicalDeviceShaderAtomicFloatFeaturesEXT}. This type
+    /// is introduced mainly for user to distinguish between a pointer to a single structure
+    /// and a pointer to (potentially) an array of structure(s). APIs should use interface
+    /// IVkPhysicalDeviceShaderAtomicFloatFeaturesEXT to handle both types uniformly. See package level documentation for more
+    /// details.
+    ///
+    /// ## Contracts
+    ///
+    /// The property {@link #segment()} should always be not-null
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// {@code VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.LAYOUT.byteAlignment()} bytes. To represent null pointer, you may use a Java
+    /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
+    ///
+    /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
+    /// perform any runtime check. The constructor can be useful for automatic code generators.
+    @ValueBasedCandidate
+    @UnsafeConstructor
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderAtomicFloatFeaturesEXT {
+        public long size() {
+            return segment.byteSize() / VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES;
+        }
+
+        /// Returns (a pointer to) the structure at the given index.
+        ///
+        /// Note that unlike {@code read} series functions ({@link IntPtr#read()} for
+        /// example), modification on returned structure will be reflected on the original
+        /// structure array. So this function is called {@code at} to explicitly
+        /// indicate that the returned structure is a view of the original structure.
+        public @NotNull VkPhysicalDeviceShaderAtomicFloatFeaturesEXT at(long index) {
+            return new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(segment.asSlice(index * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES, VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES));
+        }
+
+        public void write(long index, @NotNull VkPhysicalDeviceShaderAtomicFloatFeaturesEXT value) {
+            MemorySegment s = segment.asSlice(index * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES, VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES);
+            s.copyFrom(value.segment);
+        }
+
+        /// Assume the {@link Ptr} is capable of holding at least {@code newSize} structures,
+        /// create a new view {@link Ptr} that uses the same backing storage as this
+        /// {@link Ptr}, but with the new size. Since there is actually no way to really check
+        /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
+        /// marked as {@link unsafe}.
+        ///
+        /// This method could be useful when handling data returned from some C API, where the size of
+        /// the data is not known in advance.
+        ///
+        /// If the size of the underlying segment is actually known in advance and correctly set, and
+        /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
+        /// instead.
+        @unsafe
+        public @NotNull Ptr reinterpret(long index) {
+            return new Ptr(segment.asSlice(index * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES, VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES));
+        }
+
+        public @NotNull Ptr offset(long offset) {
+            return new Ptr(segment.asSlice(offset * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES));
+        }
+
+        /// Note that this function uses the {@link List#subList(int, int)} semantics (left inclusive,
+        /// right exclusive interval), not {@link MemorySegment#asSlice(long, long)} semantics
+        /// (offset + newSize). Be careful with the difference
+        public @NotNull Ptr slice(long start, long end) {
+            return new Ptr(segment.asSlice(
+                start * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES,
+                (end - start) * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES
+            ));
+        }
+
+        public Ptr slice(long end) {
+            return new Ptr(segment.asSlice(0, end * VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.BYTES));
+        }
+
+        public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] toArray() {
+            VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] ret = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[(int) size()];
+            for (long i = 0; i < size(); i++) {
+                ret[(int) i] = at(i);
+            }
+            return ret;
+        }
+    }
+
     public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocate(Arena arena) {
         VkPhysicalDeviceShaderAtomicFloatFeaturesEXT ret = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(arena.allocate(LAYOUT));
         ret.sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT);
         return ret;
     }
 
-    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] allocate(Arena arena, int count) {
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.Ptr allocate(Arena arena, long count) {
         MemorySegment segment = arena.allocate(LAYOUT, count);
-        VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] ret = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[count];
-        for (int i = 0; i < count; i ++) {
-            ret[i] = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(segment.asSlice(i * BYTES, BYTES));
-            ret[i].sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT);
+        VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.Ptr ret = new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT.Ptr(segment);
+        for (long i = 0; i < count; i++) {
+            ret.at(i).sType(VkStructureType.PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT);
         }
         return ret;
     }
@@ -77,14 +161,6 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
     public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT clone(Arena arena, VkPhysicalDeviceShaderAtomicFloatFeaturesEXT src) {
         VkPhysicalDeviceShaderAtomicFloatFeaturesEXT ret = allocate(arena);
         ret.segment.copyFrom(src.segment);
-        return ret;
-    }
-
-    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] clone(Arena arena, VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] src) {
-        VkPhysicalDeviceShaderAtomicFloatFeaturesEXT[] ret = allocate(arena, src.length);
-        for (int i = 0; i < src.length; i ++) {
-            ret[i].segment.copyFrom(src[i].segment);
-        }
         return ret;
     }
 
@@ -226,20 +302,20 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
     );
     public static final long BYTES = LAYOUT.byteSize();
 
-    public static final PathElement PATH$sType = PathElement.groupElement("PATH$sType");
-    public static final PathElement PATH$pNext = PathElement.groupElement("PATH$pNext");
-    public static final PathElement PATH$shaderBufferFloat32Atomics = PathElement.groupElement("PATH$shaderBufferFloat32Atomics");
-    public static final PathElement PATH$shaderBufferFloat32AtomicAdd = PathElement.groupElement("PATH$shaderBufferFloat32AtomicAdd");
-    public static final PathElement PATH$shaderBufferFloat64Atomics = PathElement.groupElement("PATH$shaderBufferFloat64Atomics");
-    public static final PathElement PATH$shaderBufferFloat64AtomicAdd = PathElement.groupElement("PATH$shaderBufferFloat64AtomicAdd");
-    public static final PathElement PATH$shaderSharedFloat32Atomics = PathElement.groupElement("PATH$shaderSharedFloat32Atomics");
-    public static final PathElement PATH$shaderSharedFloat32AtomicAdd = PathElement.groupElement("PATH$shaderSharedFloat32AtomicAdd");
-    public static final PathElement PATH$shaderSharedFloat64Atomics = PathElement.groupElement("PATH$shaderSharedFloat64Atomics");
-    public static final PathElement PATH$shaderSharedFloat64AtomicAdd = PathElement.groupElement("PATH$shaderSharedFloat64AtomicAdd");
-    public static final PathElement PATH$shaderImageFloat32Atomics = PathElement.groupElement("PATH$shaderImageFloat32Atomics");
-    public static final PathElement PATH$shaderImageFloat32AtomicAdd = PathElement.groupElement("PATH$shaderImageFloat32AtomicAdd");
-    public static final PathElement PATH$sparseImageFloat32Atomics = PathElement.groupElement("PATH$sparseImageFloat32Atomics");
-    public static final PathElement PATH$sparseImageFloat32AtomicAdd = PathElement.groupElement("PATH$sparseImageFloat32AtomicAdd");
+    public static final PathElement PATH$sType = PathElement.groupElement("sType");
+    public static final PathElement PATH$pNext = PathElement.groupElement("pNext");
+    public static final PathElement PATH$shaderBufferFloat32Atomics = PathElement.groupElement("shaderBufferFloat32Atomics");
+    public static final PathElement PATH$shaderBufferFloat32AtomicAdd = PathElement.groupElement("shaderBufferFloat32AtomicAdd");
+    public static final PathElement PATH$shaderBufferFloat64Atomics = PathElement.groupElement("shaderBufferFloat64Atomics");
+    public static final PathElement PATH$shaderBufferFloat64AtomicAdd = PathElement.groupElement("shaderBufferFloat64AtomicAdd");
+    public static final PathElement PATH$shaderSharedFloat32Atomics = PathElement.groupElement("shaderSharedFloat32Atomics");
+    public static final PathElement PATH$shaderSharedFloat32AtomicAdd = PathElement.groupElement("shaderSharedFloat32AtomicAdd");
+    public static final PathElement PATH$shaderSharedFloat64Atomics = PathElement.groupElement("shaderSharedFloat64Atomics");
+    public static final PathElement PATH$shaderSharedFloat64AtomicAdd = PathElement.groupElement("shaderSharedFloat64AtomicAdd");
+    public static final PathElement PATH$shaderImageFloat32Atomics = PathElement.groupElement("shaderImageFloat32Atomics");
+    public static final PathElement PATH$shaderImageFloat32AtomicAdd = PathElement.groupElement("shaderImageFloat32AtomicAdd");
+    public static final PathElement PATH$sparseImageFloat32Atomics = PathElement.groupElement("sparseImageFloat32Atomics");
+    public static final PathElement PATH$sparseImageFloat32AtomicAdd = PathElement.groupElement("sparseImageFloat32AtomicAdd");
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
