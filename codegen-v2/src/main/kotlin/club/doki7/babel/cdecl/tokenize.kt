@@ -6,9 +6,7 @@ internal enum class TokenType {
     INTEGER,
     STRING,
 
-    MACRO,
-    MACRO_CALL,
-    COMMENT,
+    TRIVIA,
 
     EOI
 }
@@ -75,25 +73,30 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
                 when (token.value) {
                     in knownCallLikeMacros -> {
                         val internalTokens = mutableListOf<Token>()
+                        var internalToken = next()
+                        if (internalToken.type != TokenType.SYMBOL || internalToken.value != "(") {
+                            syntaxError("Expected '(', found: ${internalToken.value}", curLine, curCol)
+                        }
+                        internalTokens.add(internalToken)
                         while (true) {
-                            val internalToken = next()
+                            internalToken = next()
                             if (internalToken.type == TokenType.EOI) {
                                 syntaxError("Unterminated macro call", curLine, curCol)
                             }
 
                             internalTokens.add(internalToken)
-                            if (internalToken.type == TokenType.SYMBOL && internalToken.value == "(") {
+                            if (internalToken.type == TokenType.SYMBOL && internalToken.value == ")") {
                                 break
                             }
                         }
                         Token(
-                            TokenType.MACRO_CALL,
+                            TokenType.TRIVIA,
                             token.value + internalTokens.joinToString(" ") { it.value },
                             token.line,
                             token.col
                         )
                     }
-                    in knownMacros -> token.copy(type = TokenType.MACRO)
+                    in knownMacros -> token.copy(type = TokenType.TRIVIA)
                     else -> token
                 }
             }
@@ -140,7 +143,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
         val commentContent = source[curLine].substring(startCol)
         curLine++
         curCol = 0
-        return Token(TokenType.COMMENT, commentContent, curLine - 1, startCol)
+        return Token(TokenType.TRIVIA, commentContent, curLine - 1, startCol)
     }
 
     private fun readBlockComment(): Token {
@@ -152,7 +155,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
             while (curCol < source[curLine].length) {
                 if (source[curLine][curCol] == '*' && curCol + 1 < source[curLine].length && source[curLine][curCol + 1] == '/') {
                     curCol += 2
-                    return Token(TokenType.COMMENT, content.toString(), startLine, startCol)
+                    return Token(TokenType.TRIVIA, content.toString(), startLine, startCol)
                 }
                 content.append(source[curLine][curCol])
                 curCol++
@@ -185,7 +188,8 @@ internal val knownMacros = setOf(
     "VMA_EXTENDS_VK_STRUCT",
     "VMA_NULLABLE",
     "VMA_NOT_NULL",
-    "VMA_NOT_NULL_NON_DISPATCHABLE"
+    "VMA_NOT_NULL_NON_DISPATCHABLE",
+    "VKAPI_PTR"
 )
 
 private val knownCallLikeMacros = setOf(
