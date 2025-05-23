@@ -1,127 +1,108 @@
 package club.doki7.babel.cdecl
 
-abstract class BaseToken(
-    val value: String,
-    val line: Int,
-    val col: Int,
-) {
-    override fun toString(): String {
-        return "$line:$col:$value"
-    }
-}
-
-const val CONST = "const"
-const val VOLATILE = "volatile"
-const val TYPEDEF = "typedef"
-
-enum class TokenType {
+internal enum class TokenType {
     IDENT,
     SYMBOL,
-    QUALIFIER,
-    KEYWORD,
-    TRIVIA,
     INTEGER,
-    EOI
-}
-
-class Token(
-    val type: TokenType,
-    value: String,
-    line: Int,
-    col: Int,
-): BaseToken(value, line, col)
-
-private enum class RawTokenType {
-    IDENT,
     STRING,
+
+    MACRO,
+    MACRO_CALL,
     COMMENT,
-    SYMBOL,
-    INTEGER,
+
     EOI
 }
 
-private class RawToken(
-    val type: RawTokenType,
-    value: String,
-    line: Int,
-    col: Int,
-) : BaseToken(value, line, col) {
-    fun toToken(): Token {
-        return Token(
-            when (type) {
-                RawTokenType.IDENT -> TokenType.IDENT
-                RawTokenType.STRING -> syntaxError("Invalid string literal", this)
-                RawTokenType.COMMENT -> TokenType.TRIVIA
-                RawTokenType.SYMBOL -> TokenType.SYMBOL
-                RawTokenType.INTEGER -> TokenType.INTEGER
-                RawTokenType.EOI -> TokenType.EOI
-            },
-            value,
-            line,
-            col,
-        )
+internal data class Token(val type: TokenType, val value: String, val line: Int, val col: Int) {
+    override fun toString(): String {
+        return "$type $value"
     }
 }
 
-private fun syntaxError(reason: String, token: RawToken): Nothing = syntaxError(reason, token.line, token.col)
-
-class CTokenizer(private val source: List<String>, var curLine: Int) {
+internal class Tokenizer(private val source: List<String>, private var curLine: Int) {
     private var curCol = 0
 
-    private val curChar: Char
-        inline get() = source[curLine][curCol]
+    private val curChar: Char inline get() = source[curLine][curCol]
 
-    fun tokenize(stopAtChar: Char, noTransform: Boolean = false): Pair<List<Token>, Int> {
-        val tokens = mutableListOf<RawToken>()
-        while (curLine < source.size) {
-            while (curCol < source[curLine].length) {
-                skipWhitespace()
-                if (isEof())
-                    break
-                val line = source[curLine]
-                val c = line[curCol]
-                if (c == stopAtChar) {
-                    tokens.add(RawToken(RawTokenType.EOI, c.toString(), curLine, curCol))
-                    // always advance to the next line
-                    return Pair(postprocessMacros(tokens, noTransform), curLine + 1)
-                } else if (c == '/') {
-                    val commentToken = if (curCol + 1 < line.length && line[curCol + 1] == '/') {
-                        readLineComment()
-                    } else if (curCol + 1 < line.length && line[curCol + 1] == '*') {
-                        readBlockComment()
-                    } else {
-                        syntaxError("Unexpected character: $c", curLine, curCol)
+    private var savedToken: Token? = null
+
+    fun next(): Token {
+        if (savedToken != null) {
+            val token = savedToken!!
+            savedToken = null
+            return token
+        }
+
+        return nextTokenImpl()
+    }
+
+    fun peek(): Token {
+        if (savedToken != null) {
+            return savedToken!!
+        }
+
+        savedToken = nextTokenImpl()
+        return savedToken!!
+    }
+
+    fun nextTokenImpl(): Token {
+        skipWhitespace()
+        if (curLine >= source.size) {
+            return Token(TokenType.EOI, "", curLine, curCol)
+        }
+
+        val line = source[curLine]
+        val c = line[curCol]
+
+        return if (c == '/') {
+            if (curCol + 1 < line.length && line[curCol + 1] == '/') {
+                readLineComment()
+            } else if (curCol + 1 < line.length && line[curCol + 1] == '*') {
+                readBlockComment()
+            } else {
+                syntaxError("Unexpected character: $c", curLine, curCol)
+            }
+        } else if (c.isSymbolChar()) {
+            val token = Token(TokenType.SYMBOL, c.toString(), curLine, curCol)
+            curCol++
+            token
+        } else if (c.isDigit()) {
+            readInteger()
+        } else if (c == '"') {
+            readString()
+        } else if (c.isIdentStartingChar()) {
+            readIdent().let { token ->
+                when (token.value) {
+                    in knownCallLikeMacros -> {
+                        val internalTokens = mutableListOf<Token>()
+                        while (true) {
+                            val internalToken = next()
+                            if (internalToken.type == TokenType.EOI) {
+                                syntaxError("Unterminated macro call", curLine, curCol)
+                            }
+
+                            internalTokens.add(internalToken)
+                            if (internalToken.type == TokenType.SYMBOL && internalToken.value == "(") {
+                                break
+                            }
+                        }
+                        Token(
+                            TokenType.MACRO_CALL,
+                            token.value + internalTokens.joinToString(" ") { it.value },
+                            token.line,
+                            token.col
+                        )
                     }
-                    tokens.add(commentToken)
-                } else if (c.isSymbolChar()) {
-                    tokens.add(RawToken(RawTokenType.SYMBOL, c.toString(), curLine, curCol))
-                    curCol++
-                } else if (c.isDigit()) {
-                    tokens.add(readInteger())
-                } else if (c.isIdentStartingChar()) {
-                    tokens.add(readIdent())
-                } else if (c == '"') {
-                    tokens.add(readString())
-                } else {
-                    syntaxError("Unexpected character: $c", curLine, curCol)
+                    in knownMacros -> token.copy(type = TokenType.MACRO)
+                    else -> token
                 }
             }
-            curLine++
-            curCol = 0
+        } else {
+            syntaxError("Unexpected character: $c", curLine, curCol)
         }
-
-        syntaxError("Unexpected end of file", curLine, curCol)
     }
 
-    private fun readIdent(): RawToken {
-        val start = curCol
-        while (curCol < source[curLine].length && curChar.isIdentChar()) {
-            curCol++
-        }
-        return RawToken(RawTokenType.IDENT, source[curLine].substring(start, curCol), curLine, start)
-    }
-
-    private fun readInteger(): RawToken {
+    private fun readInteger(): Token {
         val start = curCol
         while (curCol < source[curLine].length && (curChar.isDigit() || curChar == '_' || curChar == 'x')) {
             curCol++
@@ -129,10 +110,18 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
         if (!source[curLine][curCol].isSymbolChar()) {
             syntaxError("Unexpected character: $curChar", curLine, curCol)
         }
-        return RawToken(RawTokenType.INTEGER, source[curLine].substring(start, curCol), curLine, start)
+        return Token(TokenType.INTEGER, source[curLine].substring(start, curCol), curLine, start)
     }
 
-    private fun readString(): RawToken {
+    private fun readIdent(): Token {
+        val start = curCol
+        while (curCol < source[curLine].length && curChar.isIdentChar()) {
+            curCol++
+        }
+        return Token(TokenType.IDENT, source[curLine].substring(start, curCol), curLine, start)
+    }
+
+    private fun readString(): Token {
         curCol++
         val start = curCol
         while (curCol < source[curLine].length && source[curLine][curCol] != '"') {
@@ -142,19 +131,19 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
             syntaxError("Unterminated string literal", curLine, start)
         }
         curCol++
-        return RawToken(RawTokenType.STRING, source[curLine].substring(start, curCol - 1), curLine, start)
+        return Token(TokenType.STRING, source[curLine].substring(start, curCol - 1), curLine, start)
     }
 
-    private fun readLineComment(): RawToken {
+    private fun readLineComment(): Token {
         curCol += 2
         val startCol = curCol
         val commentContent = source[curLine].substring(startCol)
         curLine++
         curCol = 0
-        return RawToken(RawTokenType.COMMENT, commentContent, curLine - 1, startCol)
+        return Token(TokenType.COMMENT, commentContent, curLine - 1, startCol)
     }
 
-    private fun readBlockComment(): RawToken {
+    private fun readBlockComment(): Token {
         curCol += 2
         val content = StringBuilder()
         val startLine = curLine
@@ -163,7 +152,7 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
             while (curCol < source[curLine].length) {
                 if (source[curLine][curCol] == '*' && curCol + 1 < source[curLine].length && source[curLine][curCol + 1] == '/') {
                     curCol += 2
-                    return RawToken(RawTokenType.COMMENT, content.toString(), startLine, startCol)
+                    return Token(TokenType.COMMENT, content.toString(), startLine, startCol)
                 }
                 content.append(source[curLine][curCol])
                 curCol++
@@ -179,6 +168,7 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
             while (curCol < source[curLine].length && source[curLine][curCol].isWhitespace()) {
                 curCol++
             }
+
             if (curCol >= source[curLine].length) {
                 curLine++
                 curCol = 0
@@ -187,82 +177,19 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
             }
         }
     }
-
-    private fun isEof(): Boolean = curLine >= source.size
 }
 
-private fun postprocessMacros(tokens: List<RawToken>, noTransform: Boolean = false): List<Token> {
-    val result = mutableListOf<Token>()
-    var pos = 0
-    while (pos < tokens.size) {
-        val curToken = tokens[pos]
-        when (curToken.type) {
-            RawTokenType.IDENT -> {
-                if (!noTransform && curToken.value.isLikelyMacro() && pos + 1 < tokens.size
-                    && tokens[pos + 1].type == RawTokenType.SYMBOL
-                    && tokens[pos + 1].value == "("
-                ) {
-                    // macro as function
-                    val sb = StringBuilder()
-                    sb.append(tokens[pos].value) // macro name
-                    pos++
-                    sb.append(tokens[pos].value) // (
-                    if (pos + 1 >= tokens.size) {
-                        syntaxError("Unexpected end of tokens", tokens[pos].line, tokens[pos].col)
-                    }
-                    pos++
-                    when (tokens[pos].type) {
-                        RawTokenType.IDENT -> {
-                            sb.append(tokens[pos].value) // identifier
-                            pos++
-                        }
+internal val knownMacros = setOf(
+    "VMA_CALL_PRE",
+    "VMA_CALL_POST",
+    "VMA_EXTENDS_VK_STRUCT",
+    "VMA_NULLABLE",
+    "VMA_NOT_NULL",
+    "VMA_NOT_NULL_NON_DISPATCHABLE"
+)
 
-                        RawTokenType.STRING -> {
-                            sb.append("\"")
-                            sb.append(tokens[pos].value) // string
-                            sb.append("\"")
-                            pos++
-                        }
-
-                        else -> {}
-                    }
-                    if (pos >= tokens.size) {
-                        syntaxError("Unexpected end of tokens", tokens.last().line, tokens.last().col)
-                    }
-                    if (tokens[pos].type != RawTokenType.SYMBOL || tokens[pos].value != ")") {
-                        syntaxError("Expected ')'", tokens[pos])
-                    }
-                    sb.append(tokens[pos].value) // )
-                    result.add(Token(TokenType.TRIVIA, sb.toString(), curToken.line, curToken.col))
-                } else if (!noTransform && curToken.value.isLikelyMacro()) {
-                    // macro without args
-                    result.add(Token(TokenType.TRIVIA, curToken.value, curToken.line, curToken.col))
-                } else if (isTypeQualifier(curToken.value)) {
-                    // type qualifier
-                    result.add(Token(TokenType.QUALIFIER, curToken.value, curToken.line, curToken.col))
-                } else if (isKeyword(curToken.value)) {
-                    // keyword
-                    result.add(Token(TokenType.KEYWORD, curToken.value, curToken.line, curToken.col))
-                } else {
-                    // normal identifier
-                    result.add(curToken.toToken())
-                }
-            }
-            else -> {
-                // other tokens
-                result.add(curToken.toToken())
-            }
-        }
-        pos++
-    }
-    return result
-}
-
-private val typeQualifiers = arrayOf(CONST, VOLATILE)
-
-private fun isTypeQualifier(s: String): Boolean = s in typeQualifiers
-
-private val keywords = arrayOf(TYPEDEF)
-
-private fun isKeyword(s: String): Boolean = s in keywords
-
+private val knownCallLikeMacros = setOf(
+    "VMA_LEN_IF_NOT_NULL",
+    "VMA_EXTENDS_VK_STRUCT",
+    "VMA_LEN_IF_NOT_NULL"
+)
