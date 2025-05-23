@@ -35,7 +35,39 @@ build/
 .DS_Store
 
 # Downloaded vk.xml
-vkxml2java/vk.xml
+/vk4j/vkxml2java/vk.xml
 
-# Generated .java files
-src/main/java/tech/icey/vk4j/struct/*.java
+# Generated auxiliary programs
+*.exe
+
+# C/C++ build output
+*.o
+*.dll
+*.so
+*.lib
+*.a
+*.pdb
+*.ilk
+*.exp
+*.obj
+
+# Assembly plugin produced files
+tutorial/dependency-reduced-pom.xml
+
+# Flatten plugin produced files
+**/.flattened-pom.xml
+
+# Code Generator Input
+codegen/input/*
+!codegen/input/download.sh
+!codegen/input/Doxyfile.vma
+
+# VMA build input
+vma/vma_build/vk_mem_alloc.h
+
+# Python __pycache__
+**/__pycache__/
+
+# Javadoc output
+
+javadoc_gen

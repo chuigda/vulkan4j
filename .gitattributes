@@ -1,0 +1,23 @@
+vulkan/src/main/java/club/doki7/vulkan/bitmask/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/command/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/datatype/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/enumtype/*.java linguist-generated
+vulkan/src/main/java/club/doki7/vulkan/handle/*.java linguist-generated
+
+gles2/src/main/java/club/doki7/gles2/GLES2.java linguist-generated
+gles2/src/main/java/club/doki7/gles2/GLES2Constants.java linguist-generated
+
+glfw/src/main/java/tech/icey/glfw/datatype/*.java linguist-generated
+glfw/src/main/java/tech/icey/glfw/handle/*.java linguist-generated
+glfw/src/main/java/tech/icey/glfw/GLFW.java linguist-generated
+glfw/src/main/java/tech/icey/glfw/GLFWConstants.java linguist-generated
+glfw/src/main/java/tech/icey/glfw/GLFWFunctionTypes.java linguist-generated
+
+vma/src/main/java/tech/icey/vma/VMA.java linguist-generated
+vma/src/main/java/tech/icey/vma/bitmask/*.java linguist-generated
+vma/src/main/java/tech/icey/vma/datatype/*.java linguist-generated
+vma/src/main/java/tech/icey/vma/enumtype/*.java linguist-generated
+vma/src/main/java/tech/icey/vma/handle/*.java linguist-generated
+
+tutorial/src/main/java/* linguist-documentation
+tutorial/src/main/java/ch28/Main.java -linguist-documentation

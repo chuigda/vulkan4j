@@ -4,14 +4,106 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>tech.icey</groupId>
-    <artifactId>vk4j</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>club.doki7</groupId>
+    <artifactId>root</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>root</name>
+
+    <inceptionYear>2024</inceptionYear>
+    <organization>
+        <name>Doki Doki 7th Design Club!</name>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The 3-Clause BSD License</name>
+            <url>https://opensource.org/licenses/BSD-3-Clause</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Chuigda Whitegive</name>
+            <email>icey@icey.tech</email>
+            <organization>Doki Doki 7th Design Club!</organization>
+            <organizationUrl>https://self.icey.tech</organizationUrl>
+        </developer>
+    </developers>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <revision>0.1.1</revision>
+        <maven.compiler.release>22</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <modules>
+        <module>codegen-v2</module>
+
+        <module>ffm-plus</module>
+        <module>vulkan</module>
+        <module>gles2</module>
+        <!-- <module>codegen</module> -->
+        <!-- <module>vk4j</module>
+        <module>glfw</module>
+        <module>tutorial</module>
+        <module>vma</module>
+        -->
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.21.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.9.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.2</version>
+                <configuration>
+                    <bottom><![CDATA[Copyright &copy; ${project.inceptionYear}-{currentYear} ${project.organization.name}. Licensed under the BSD 3-Clause License.]]></bottom>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                        <configuration>
+                            <skippedModules>codegen-v2</skippedModules>
+                            <windowtitle>vulkan4j</windowtitle>
+                            <doctitle><![CDATA[<code>vulkan4j</code>: CG library bindings implemented with FFM APIs]]></doctitle>
+                            <additionalOptions>
+                                <additionalOption>--add-stylesheet</additionalOption>
+                                <additionalOption>${project.basedir}/misc/github-colorblind.css</additionalOption>
+                                <additionalOption>-overview</additionalOption>
+                                <additionalOption>${project.basedir}/misc/overview.html</additionalOption>
+                                <additionalOption>--allow-script-in-comments</additionalOption>
+                            </additionalOptions>
+                        </configuration>
+                    </reportSet>
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
