@@ -21,6 +21,7 @@ enum class TokenType {
     KEYWORD,
     TRIVIA,
     INTEGER,
+    EOI
 }
 
 class Token(
@@ -36,6 +37,7 @@ private enum class RawTokenType {
     COMMENT,
     SYMBOL,
     INTEGER,
+    EOI
 }
 
 private class RawToken(
@@ -52,6 +54,7 @@ private class RawToken(
                 RawTokenType.COMMENT -> TokenType.TRIVIA
                 RawTokenType.SYMBOL -> TokenType.SYMBOL
                 RawTokenType.INTEGER -> TokenType.INTEGER
+                RawTokenType.EOI -> TokenType.EOI
             },
             value,
             line,
@@ -78,7 +81,9 @@ class CTokenizer(private val source: List<String>, var curLine: Int) {
                 val line = source[curLine]
                 val c = line[curCol]
                 if (c == stopAtChar) {
-                    return Pair(postprocessMacros(tokens, noTransform), curLine)
+                    tokens.add(RawToken(RawTokenType.EOI, c.toString(), curLine, curCol))
+                    // always advance to the next line
+                    return Pair(postprocessMacros(tokens, noTransform), curLine + 1)
                 } else if (c == '/') {
                     val commentToken = if (curCol + 1 < line.length && line[curCol + 1] == '/') {
                         readLineComment()

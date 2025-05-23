@@ -9,13 +9,7 @@ private class CParser(private val tokens: List<Token>) {
     private val curToken: Token
         inline get() = tokens[pos]
 
-    private val hasEnded: Boolean
-        inline get() = pos >= tokens.size
-
     private fun expect(type: TokenType, value: String? = null) {
-        if (hasEnded) {
-            unexpectedEnd()
-        }
         if (curToken.type != type) {
             syntaxError("Expected token of type '$type' but found '${curToken.type}'", curToken)
         }
@@ -24,17 +18,9 @@ private class CParser(private val tokens: List<Token>) {
         }
     }
 
-    private fun unexpectedEnd(reason: String = "") {
-        syntaxError(
-            "Unexpected end of tokens${if (reason == "") {""} else {", $reason"}}",
-            tokens.last().line,
-            tokens.last().col
-        )
-    }
-
     private fun getAndSkipTrivia(): List<String> {
         val trivia = mutableListOf<String>()
-        while (!hasEnded && curToken.type == TokenType.TRIVIA) {
+        while (curToken.type == TokenType.TRIVIA) {
             trivia.add(curToken.value)
             pos++
         }
@@ -48,9 +34,6 @@ private class CParser(private val tokens: List<Token>) {
         var typeName: String? = null
         while (true) {
             trivia.addAll(getAndSkipTrivia())
-            if (hasEnded) {
-                break
-            }
             when (curToken.type) {
                 TokenType.QUALIFIER -> {
                     if (curToken.value == CONST || curToken.value == VOLATILE) {
@@ -83,9 +66,6 @@ private class CParser(private val tokens: List<Token>) {
         var ty: RawPointerType? = null
         while (true) {
             trivia.addAll(getAndSkipTrivia())
-            if (hasEnded) {
-                break
-            }
             when (curToken.type) {
                 TokenType.SYMBOL -> {
                     if (curToken.value == "*") {
@@ -118,24 +98,17 @@ private class CParser(private val tokens: List<Token>) {
 
     private fun parseParameterList(): List<Pair<String, RawType>> {
         val params = mutableListOf<Pair<String, RawType>>()
-        if (hasEnded) {
-            unexpectedEnd("expected ')' or parameter declaration")
-        }
         while (true) {
             if (curToken.type == TokenType.SYMBOL && curToken.value == ")") {
                 break
             }
             params.add(parseDeclaration())
-            if (hasEnded) {
-                unexpectedEnd("expected ',' or ')'")
+            if (curToken.type == TokenType.SYMBOL && curToken.value == ",") {
+                pos++
+            } else if (curToken.type == TokenType.SYMBOL && curToken.value == ")") {
+                break
             } else {
-                if (curToken.type == TokenType.SYMBOL && curToken.value == ",") {
-                    pos++
-                } else if (curToken.type == TokenType.SYMBOL && curToken.value == ")") {
-                    break
-                } else {
-                    syntaxError("expected ',' or ')'", curToken)
-                }
+                syntaxError("expected ',' or ')'", curToken)
             }
         }
         pos++
@@ -143,9 +116,6 @@ private class CParser(private val tokens: List<Token>) {
     }
 
     private fun parseArrayLength(): String {
-        if (hasEnded) {
-            unexpectedEnd("expected array length")
-        }
         if (curToken.type != TokenType.INTEGER) {
             syntaxError("expected array length", curToken)
         }
@@ -162,9 +132,6 @@ private class CParser(private val tokens: List<Token>) {
         while (true) {
             val trivia = mutableListOf<String>()
             trivia.addAll(getAndSkipTrivia())
-            if (hasEnded) {
-                break
-            }
             when (curToken.type) {
                 TokenType.IDENT -> {
                     if (name != "") {
@@ -316,13 +283,13 @@ private class CParser(private val tokens: List<Token>) {
         expect(TokenType.SYMBOL, "=")
         pos++
         trivia.addAll(getAndSkipTrivia())
-        if (hasEnded || curToken.type != TokenType.INTEGER && curToken.type != TokenType.IDENT) {
+        if (curToken.type != TokenType.INTEGER && curToken.type != TokenType.IDENT) {
             syntaxError("expected integer or identifier", curToken)
         }
         val value = curToken.value
         pos++
         trivia.addAll(getAndSkipTrivia())
-        if (hasEnded || curToken.type != TokenType.SYMBOL || curToken.value != ",") {
+        if (curToken.type != TokenType.SYMBOL || curToken.value != ",") {
             syntaxError("expected ','", curToken)
         }
         return EnumeratorDecl(
