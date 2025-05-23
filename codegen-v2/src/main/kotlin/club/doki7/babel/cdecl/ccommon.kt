@@ -16,5 +16,11 @@ fun String.isLikelyMacro(): Boolean = this.isValidIdent() && this.isAllCapital()
 // Mainly Microsoft(R) Windows(R) typedefs. Fuck Microsoft Windows.
 private val allCapitalTypeNames = setOf(
     "HWND",
-    "HINSTANCE"
-);
+    "HINSTANCE",
+    "DWORD",
+    "HANDLE",
+    "HMONITOR",
+    "HGLRC",
+    "SECURITY_ATTRIBUTES",
+    "LPCWSTR"
+)

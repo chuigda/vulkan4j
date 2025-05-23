@@ -337,13 +337,13 @@ private val knownTypes = mapOf(
 
     // Windows
     "DWORD" to uint32Type,
-    "HANDLE" to pvoidType,
-    "HINSTANCE" to pvoidType,
-    "HMONITOR" to pvoidType,
-    "HWND" to pvoidType,
-    "LPCWSTR" to CPointerType(uint16Type, true, null),
+    "HANDLE" to CPointerType(voidType, false, "HANDLE"),
+    "HINSTANCE" to CPointerType(voidType, false, "HINSTANCE"),
+    "HMONITOR" to CPointerType(voidType, false, "HMONITOR"),
+    "HWND" to CPointerType(voidType, false, "HWND"),
+    "LPCWSTR" to CPointerType(uint16Type, true, "LPCWSTR"),
     "SECURITY_ATTRIBUTES" to voidType,
-    "HGLRC" to pvoidType,
+    "HGLRC" to CPointerType(voidType, false, "HGLRC"),
 
     // X11
     "Display" to pvoidType,

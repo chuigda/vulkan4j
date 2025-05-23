@@ -17,15 +17,15 @@ private class CParser(private val tokens: List<Token>) {
             unexpectedEnd()
         }
         if (curToken.type != type) {
-            error("Expected token of type '$type' but found '${curToken.type}'", curToken)
+            syntaxError("Expected token of type '$type' but found '${curToken.type}'", curToken)
         }
         if (value != null && curToken.value != value) {
-            error("Expected '$value' but found '${curToken.value}'", curToken)
+            syntaxError("Expected '$value' but found '${curToken.value}'", curToken)
         }
     }
 
     private fun unexpectedEnd(reason: String = "") {
-        error(
+        syntaxError(
             "Unexpected end of tokens${if (reason == "") {""} else {", $reason"}}",
             tokens.last().line,
             tokens.last().col
@@ -56,7 +56,7 @@ private class CParser(private val tokens: List<Token>) {
                     if (curToken.value == CONST || curToken.value == VOLATILE) {
                         modifiers.add(curToken.value)
                     } else {
-                        error("unexpected qualifier", curToken)
+                        syntaxError("unexpected qualifier", curToken)
                     }
                 }
                 TokenType.IDENT -> {
@@ -72,7 +72,7 @@ private class CParser(private val tokens: List<Token>) {
             pos++
         }
         if (typeName == null) {
-            error("expected type name", curToken)
+            syntaxError("expected type name", curToken)
         }
         return RawIdentifierType(typeName, modifiers, trivia)
     }
@@ -101,12 +101,12 @@ private class CParser(private val tokens: List<Token>) {
                 }
                 TokenType.QUALIFIER -> {
                     if (ty == null) {
-                        error("expected pointer before qualifier", curToken)
+                        syntaxError("expected pointer before qualifier", curToken)
                     }
                     when (curToken.value) {
                         CONST -> ty.const = true
                         VOLATILE -> ty.volatile = true
-                        else -> error("unexpected qualifier", curToken)
+                        else -> syntaxError("unexpected qualifier", curToken)
                     }
                 }
                 else -> break
@@ -134,7 +134,7 @@ private class CParser(private val tokens: List<Token>) {
                 } else if (curToken.type == TokenType.SYMBOL && curToken.value == ")") {
                     break
                 } else {
-                    error("expected ',' or ')'", curToken)
+                    syntaxError("expected ',' or ')'", curToken)
                 }
             }
         }
@@ -147,7 +147,7 @@ private class CParser(private val tokens: List<Token>) {
             unexpectedEnd("expected array length")
         }
         if (curToken.type != TokenType.INTEGER) {
-            error("expected array length", curToken)
+            syntaxError("expected array length", curToken)
         }
         val length = curToken.value
         pos++
@@ -168,7 +168,7 @@ private class CParser(private val tokens: List<Token>) {
             when (curToken.type) {
                 TokenType.IDENT -> {
                     if (name != "") {
-                        error("unexpected identifier", curToken)
+                        syntaxError("unexpected identifier", curToken)
                     } else {
                         name = curToken.value
                     }
@@ -193,7 +193,7 @@ private class CParser(private val tokens: List<Token>) {
                                     ty
                                 }
                                 continue // if function param parse ok, then continue to next loop
-                            } catch (e: ParseException) {
+                            } catch (e: SyntaxError) {
                                 if (ty != null) {
                                     throw e
                                 }
@@ -221,7 +221,7 @@ private class CParser(private val tokens: List<Token>) {
             pos++
         }
         if (name == "" && ty == null) {
-            error("expected identifier or type", curToken)
+            syntaxError("expected identifier or type", curToken)
         }
         return name to ty
     }
@@ -291,7 +291,7 @@ private class CParser(private val tokens: List<Token>) {
                     directType
                 }
                 else -> {
-                    error("invalid type, expected pointer, array, or function", curToken)
+                    syntaxError("invalid type, expected pointer, array, or function", curToken)
                 }
             }
         } else {
@@ -317,13 +317,13 @@ private class CParser(private val tokens: List<Token>) {
         pos++
         trivia.addAll(getAndSkipTrivia())
         if (hasEnded || curToken.type != TokenType.INTEGER && curToken.type != TokenType.IDENT) {
-            error("expected integer or identifier", curToken)
+            syntaxError("expected integer or identifier", curToken)
         }
         val value = curToken.value
         pos++
         trivia.addAll(getAndSkipTrivia())
         if (hasEnded || curToken.type != TokenType.SYMBOL || curToken.value != ",") {
-            error("expected ','", curToken)
+            syntaxError("expected ','", curToken)
         }
         return EnumeratorDecl(
             name = name,
@@ -395,13 +395,12 @@ fun main() {
     //         const VkDeviceSize* VMA_NULLABLE VMA_LEN_IF_NOT_NULL(allocationCount) offsets,
     //         const VkDeviceSize* VMA_NULLABLE VMA_LEN_IF_NOT_NULL(allocationCount) sizes);
     // """.trimIndent().split('\n')
-    val source = """void (VKAPI_PTR* )(
+    val source = """void (VKAPI_PTR* PFN_vmaAllocateDeviceMemoryFunction)(
     VmaAllocator VMA_NOT_NULL                    allocator,
     uint32_t                                     memoryType,
     VkDeviceMemory VMA_NOT_NULL_NON_DISPATCHABLE memory,
-    VkDeviceSize                                 size,PFN_vmaAllocateDeviceMemoryFunction
+    VkDeviceSize                                 size,
     void* VMA_NULLABLE                           pUserData);""".trimIndent().split("\n")
-    // val source = """VmaAllocator VMA_NOT_NULL allocator;""".split('\n')
     val (tokens, lastLine) = CTokenizer(source, 0).tokenize(';')
     val (name, ty) = CParser(tokens).parseDeclaration()
     println("name: $name, type: $ty")
