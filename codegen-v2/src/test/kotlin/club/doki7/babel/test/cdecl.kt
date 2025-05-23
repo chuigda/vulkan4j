@@ -97,5 +97,9 @@ VMA_CALL_PRE VkResult VMA_CALL_POST vmaFlushAllocation(
         assertTrue { (fieldDecl.fieldType as RawPointerType).pointee is RawIdentifierType }
         val ty = (fieldDecl.fieldType as RawPointerType).pointee as RawIdentifierType
         assertEquals("VkDeviceSize", ty.ident)
+
+        assertEquals(2, fieldDecl.fieldType.syntaxTrivia.size)
+        assertEquals("VMA_NULLABLE", fieldDecl.fieldType.syntaxTrivia[0])
+        assertEquals("VMA_LEN_IF_NOT_NULL(\"VkPhysicalDeviceMemoryProperties::memoryHeapCount\")", fieldDecl.fieldType.syntaxTrivia[1])
     }
 }
