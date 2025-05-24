@@ -1,6 +1,6 @@
 package club.doki7.babel.cdecl
 
-internal enum class TokenType {
+internal enum class TokenKind {
     IDENT,
     SYMBOL,
     INTEGER,
@@ -11,9 +11,9 @@ internal enum class TokenType {
     EOI
 }
 
-internal data class Token(val type: TokenType, val value: String, val line: Int, val col: Int) {
+internal data class Token(val kind: TokenKind, val value: String, val line: Int, val col: Int) {
     override fun toString(): String {
-        return "$type $value"
+        return "$kind $value"
     }
 }
 
@@ -46,7 +46,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
     fun nextTokenImpl(): Token {
         skipWhitespace()
         if (curLine >= source.size) {
-            return Token(TokenType.EOI, "", curLine, curCol)
+            return Token(TokenKind.EOI, "", curLine, curCol)
         }
 
         val line = source[curLine]
@@ -61,7 +61,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
                 syntaxError("Unexpected character: $c", curLine, curCol)
             }
         } else if (c.isSymbolChar()) {
-            val token = Token(TokenType.SYMBOL, c.toString(), curLine, curCol)
+            val token = Token(TokenKind.SYMBOL, c.toString(), curLine, curCol)
             curCol++
             token
         } else if (c.isDigit()) {
@@ -74,29 +74,29 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
                     in knownCallLikeMacros -> {
                         val internalTokens = mutableListOf<Token>()
                         var internalToken = next()
-                        if (internalToken.type != TokenType.SYMBOL || internalToken.value != "(") {
+                        if (internalToken.kind != TokenKind.SYMBOL || internalToken.value != "(") {
                             syntaxError("Expected '(', found: ${internalToken.value}", curLine, curCol)
                         }
                         internalTokens.add(internalToken)
                         while (true) {
                             internalToken = next()
-                            if (internalToken.type == TokenType.EOI) {
+                            if (internalToken.kind == TokenKind.EOI) {
                                 syntaxError("Unterminated macro call", curLine, curCol)
                             }
 
                             internalTokens.add(internalToken)
-                            if (internalToken.type == TokenType.SYMBOL && internalToken.value == ")") {
+                            if (internalToken.kind == TokenKind.SYMBOL && internalToken.value == ")") {
                                 break
                             }
                         }
                         Token(
-                            TokenType.TRIVIA,
+                            TokenKind.TRIVIA,
                             token.value + internalTokens.joinToString(" ") { it.value },
                             token.line,
                             token.col
                         )
                     }
-                    in knownMacros -> token.copy(type = TokenType.TRIVIA)
+                    in knownMacros -> token.copy(kind = TokenKind.TRIVIA)
                     else -> token
                 }
             }
@@ -113,7 +113,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
         if (!source[curLine][curCol].isSymbolChar()) {
             syntaxError("Unexpected character: $curChar", curLine, curCol)
         }
-        return Token(TokenType.INTEGER, source[curLine].substring(start, curCol), curLine, start)
+        return Token(TokenKind.INTEGER, source[curLine].substring(start, curCol), curLine, start)
     }
 
     private fun readIdent(): Token {
@@ -121,7 +121,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
         while (curCol < source[curLine].length && curChar.isIdentChar()) {
             curCol++
         }
-        return Token(TokenType.IDENT, source[curLine].substring(start, curCol), curLine, start)
+        return Token(TokenKind.IDENT, source[curLine].substring(start, curCol), curLine, start)
     }
 
     private fun readString(): Token {
@@ -134,7 +134,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
             syntaxError("Unterminated string literal", curLine, start)
         }
         curCol++
-        return Token(TokenType.STRING, source[curLine].substring(start, curCol - 1), curLine, start)
+        return Token(TokenKind.STRING, source[curLine].substring(start, curCol - 1), curLine, start)
     }
 
     private fun readLineComment(): Token {
@@ -143,7 +143,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
         val commentContent = source[curLine].substring(startCol)
         curLine++
         curCol = 0
-        return Token(TokenType.TRIVIA, commentContent, curLine - 1, startCol)
+        return Token(TokenKind.TRIVIA, commentContent, curLine - 1, startCol)
     }
 
     private fun readBlockComment(): Token {
@@ -155,7 +155,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
             while (curCol < source[curLine].length) {
                 if (source[curLine][curCol] == '*' && curCol + 1 < source[curLine].length && source[curLine][curCol + 1] == '/') {
                     curCol += 2
-                    return Token(TokenType.TRIVIA, content.toString(), startLine, startCol)
+                    return Token(TokenKind.TRIVIA, content.toString(), startLine, startCol)
                 }
                 content.append(source[curLine][curCol])
                 curCol++

@@ -27,29 +27,28 @@ data class EnumeratorDecl(
     override val syntaxTrivia: List<String>
 ) : Decl
 
-sealed interface RawType { val syntaxTrivia: List<String> }
+sealed interface RawType { val syntaxTrivia: MutableList<String> }
 
 data class RawIdentifierType(
     val ident: String,
-    val modifiers: List<String>,
-    override val syntaxTrivia: List<String>
+    override val syntaxTrivia: MutableList<String>
 ) : RawType
 
 data class RawPointerType(
     var pointee: RawType,
     var const: Boolean,
-    override val syntaxTrivia: List<String>
+    override val syntaxTrivia: MutableList<String>
 ) : RawType
 
 data class RawArrayType(
     var element: RawType,
     val size: String,
-    override val syntaxTrivia: List<String>
+    override val syntaxTrivia: MutableList<String>
 ) : RawType
 
 data class RawFunctionType(
     val functionName: String,
     var returnType: RawType,
     val params: List<Pair<String, RawType>>,
-    override val syntaxTrivia: List<String>
+    override val syntaxTrivia: MutableList<String>
 ) : RawType

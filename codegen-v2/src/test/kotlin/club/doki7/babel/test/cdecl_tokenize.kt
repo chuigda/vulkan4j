@@ -1,14 +1,14 @@
 package club.doki7.babel.test
 
-import club.doki7.babel.cdecl.TokenType
+import club.doki7.babel.cdecl.TokenKind
 import club.doki7.babel.cdecl.Tokenizer
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-import club.doki7.babel.cdecl.TokenType.*
+import club.doki7.babel.cdecl.TokenKind.*
 
 class TestTokenize {
-    private fun testTokenize(source: String, tokenTypes: List<TokenType>, tokenValues: List<String>) {
+    private fun testTokenize(source: String, tokenKinds: List<TokenKind>, tokenValues: List<String>) {
         val tokenizer = Tokenizer(source.split("\n"), 0)
 
         var idx = 0
@@ -16,8 +16,8 @@ class TestTokenize {
             val peekedToken = tokenizer.peek()
             val token = tokenizer.next()
             assertEquals(peekedToken, token)
-            assertEquals(tokenTypes[idx], token.type)
-            if (token.type == EOI) {
+            assertEquals(tokenKinds[idx], token.kind)
+            if (token.kind == EOI) {
                 break
             }
 
