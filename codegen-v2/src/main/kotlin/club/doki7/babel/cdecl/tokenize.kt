@@ -194,6 +194,5 @@ internal val knownMacros = setOf(
 
 private val knownCallLikeMacros = setOf(
     "VMA_LEN_IF_NOT_NULL",
-    "VMA_EXTENDS_VK_STRUCT",
-    "VMA_LEN_IF_NOT_NULL"
+    "VMA_EXTENDS_VK_STRUCT"
 )
