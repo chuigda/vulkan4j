@@ -500,7 +500,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glBufferData"><code>glBufferData</code></a>
     public void bufferData(
         @NativeType("GLenum") int target,
-        long size,
+        @NativeType("GLsizeiptr") long size,
         @Pointer(comment="void*") MemorySegment data,
         @NativeType("GLenum") int usage
     ) {
@@ -520,8 +520,8 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glBufferSubData"><code>glBufferSubData</code></a>
     public void bufferSubData(
         @NativeType("GLenum") int target,
-        long offset,
-        long size,
+        @NativeType("GLintptr") long offset,
+        @NativeType("GLsizeiptr") long size,
         @Pointer(comment="void*") MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferSubData);

@@ -46,7 +46,17 @@ data class CPointerType(
 
     override val jLayoutType: String = "AddressLayout"
 
-    override val cType: String = """${pointee.cType}${if (const) " const" else ""}*"""
+    override val cType: String = buildString {
+        if (pointee is CFixedIntType && pointee.comment != null) {
+            append(pointee.comment)
+        } else {
+            append(pointee.cType)
+        }
+        if (const) {
+            append(" const")
+        }
+        append("*")
+    }
 }
 
 data class CHandleType(val name: String) : CType {
@@ -144,14 +154,26 @@ data class CFixedIntType(
 
 data class CPlatformDependentIntType(
     override val cType: String,
-    override val jType: String,
-    override val jLayout: String,
     override val jTypeNoSign: String,
-    override val jPtrType: String,
+    override val jLayout: String,
     override val jPtrTypeNoAnnotation: String,
     override val comment: String? = null
 ) : CNonRefType {
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `CPlatformDependentIntType`")
+
+    override val jType: String get() = buildString {
+        if (comment != null) {
+            append("@NativeType(\"$comment\") ")
+        }
+        append(jTypeNoSign)
+    }
+
+    override val jPtrType: String get() = buildString {
+        if (comment != null) {
+            append("@Pointer(comment=\"$comment\") ")
+        }
+        append(jPtrTypeNoAnnotation)
+    }
 }
 
 data class CFloatType(
@@ -173,11 +195,12 @@ data class CFloatType(
         8 -> "OfDouble"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val cType: String = when (byteSize) {
-        4 -> "float"
-        8 -> "double"
-        else -> error("unsupported byte size: $byteSize")
-    }
+    override val cType: String = comment
+        ?: when (byteSize) {
+            4 -> "float"
+            8 -> "double"
+            else -> error("unsupported byte size: $byteSize")
+        }
     override val jTypeNoSign: String get() = jType
     override val jPtrType: String get() = when (byteSize) {
         4 -> "FloatPtr"
@@ -264,20 +287,16 @@ private val doubleType = CFloatType(8)
 private val cIntType = int32Type
 private val cUIntType = uint32Type
 private val cLongType = CPlatformDependentIntType(
-    "long",
-    "long",
-    "NativeLayout.C_LONG",
-    "long",
-    "CLongPtr",
-    "CLongPtr"
+    cType = "long",
+    jTypeNoSign = "long",
+    jLayout = "NativeLayout.C_LONG",
+    jPtrTypeNoAnnotation = "CLongPtr",
 )
 private val cSizeType = CPlatformDependentIntType(
-    "size_t",
-    "long",
-    "NativeLayout.C_SIZE_T",
-    "long",
-    "PointerPtr",
-    "PointerPtr"
+    cType = "size_t",
+    jTypeNoSign = "long",
+    jLayout = "NativeLayout.C_SIZE_T",
+    jPtrTypeNoAnnotation = "PointerPtr",
 )
 
 private fun pvoidType(comment: String) = CPointerType(voidType, const = false, pointerToOne = false, comment = comment)
@@ -318,7 +337,7 @@ private val knownTypes = mapOf(
     "GLshort" to int16Type.copy(comment = "GLshort"),
     "Glushort" to uint16Type.copy(comment = "GLushort"),
     "GLfloat" to floatType.copy(comment = "GLfloat"),
-    "GLvoid" to voidType,
+    "GLvoid" to voidType.copy(cType = "GLvoid"),
     "GLenum" to int32Type.copy(comment = "GLenum"),
     "GLsizei" to int32Type.copy(comment = "GLsizei"),
     "GLsizeiptr" to cSizeType.copy(comment = "GLsizeiptr"),
@@ -374,7 +393,7 @@ private val knownTypes = mapOf(
     "HWND" to pvoidType("HWND"),
     "LPCWSTR" to CPointerType(uint16Type, const = true, pointerToOne = false, comment = "LPCWSTR"),
     "HGLRC" to pvoidType("HGLRC"),
-    "SECURITY_ATTRIBUTES" to voidType,
+    "SECURITY_ATTRIBUTES" to voidType.copy(cType = "SECURITY_ATTRIBUTES"),
 
     // X11
     "Display" to pvoidType("Display"),

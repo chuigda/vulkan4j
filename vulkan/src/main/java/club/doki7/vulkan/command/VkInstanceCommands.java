@@ -1816,7 +1816,7 @@ public final class VkInstanceCommands {
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex,
         PointerPtr dpy,
-        long visualID
+        @NativeType("VisualID") long visualID
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR);
         try {
@@ -1835,7 +1835,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getRandROutputDisplayEXT(
         VkPhysicalDevice physicalDevice,
         PointerPtr dpy,
-        long rrOutput,
+        @NativeType("RROutput") long rrOutput,
         @Pointer VkDisplayKHR.Ptr pDisplay
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRandROutputDisplayEXT);
