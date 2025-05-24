@@ -180,27 +180,27 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderBFloat16Type() {
+    public @NativeType("VkBool32") @Unsigned int shaderBFloat16Type() {
         return segment.get(LAYOUT$shaderBFloat16Type, OFFSET$shaderBFloat16Type);
     }
 
-    public void shaderBFloat16Type(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderBFloat16Type(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16Type, OFFSET$shaderBFloat16Type, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderBFloat16DotProduct() {
+    public @NativeType("VkBool32") @Unsigned int shaderBFloat16DotProduct() {
         return segment.get(LAYOUT$shaderBFloat16DotProduct, OFFSET$shaderBFloat16DotProduct);
     }
 
-    public void shaderBFloat16DotProduct(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderBFloat16DotProduct(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16DotProduct, OFFSET$shaderBFloat16DotProduct, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderBFloat16CooperativeMatrix() {
+    public @NativeType("VkBool32") @Unsigned int shaderBFloat16CooperativeMatrix() {
         return segment.get(LAYOUT$shaderBFloat16CooperativeMatrix, OFFSET$shaderBFloat16CooperativeMatrix);
     }
 
-    public void shaderBFloat16CooperativeMatrix(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderBFloat16CooperativeMatrix(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16CooperativeMatrix, OFFSET$shaderBFloat16CooperativeMatrix, value);
     }
 

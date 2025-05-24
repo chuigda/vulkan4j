@@ -210,35 +210,35 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int combinedImageSamplerDescriptorSingleArray() {
+    public @NativeType("VkBool32") @Unsigned int combinedImageSamplerDescriptorSingleArray() {
         return segment.get(LAYOUT$combinedImageSamplerDescriptorSingleArray, OFFSET$combinedImageSamplerDescriptorSingleArray);
     }
 
-    public void combinedImageSamplerDescriptorSingleArray(@Unsigned @NativeType("VkBool32") int value) {
+    public void combinedImageSamplerDescriptorSingleArray(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$combinedImageSamplerDescriptorSingleArray, OFFSET$combinedImageSamplerDescriptorSingleArray, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int bufferlessPushDescriptors() {
+    public @NativeType("VkBool32") @Unsigned int bufferlessPushDescriptors() {
         return segment.get(LAYOUT$bufferlessPushDescriptors, OFFSET$bufferlessPushDescriptors);
     }
 
-    public void bufferlessPushDescriptors(@Unsigned @NativeType("VkBool32") int value) {
+    public void bufferlessPushDescriptors(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bufferlessPushDescriptors, OFFSET$bufferlessPushDescriptors, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int allowSamplerImageViewPostSubmitCreation() {
+    public @NativeType("VkBool32") @Unsigned int allowSamplerImageViewPostSubmitCreation() {
         return segment.get(LAYOUT$allowSamplerImageViewPostSubmitCreation, OFFSET$allowSamplerImageViewPostSubmitCreation);
     }
 
-    public void allowSamplerImageViewPostSubmitCreation(@Unsigned @NativeType("VkBool32") int value) {
+    public void allowSamplerImageViewPostSubmitCreation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$allowSamplerImageViewPostSubmitCreation, OFFSET$allowSamplerImageViewPostSubmitCreation, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long descriptorBufferOffsetAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long descriptorBufferOffsetAlignment() {
         return segment.get(LAYOUT$descriptorBufferOffsetAlignment, OFFSET$descriptorBufferOffsetAlignment);
     }
 
-    public void descriptorBufferOffsetAlignment(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void descriptorBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$descriptorBufferOffsetAlignment, OFFSET$descriptorBufferOffsetAlignment, value);
     }
 
@@ -434,43 +434,43 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegme
         NativeLayout.writeCSizeT(segment, OFFSET$accelerationStructureDescriptorSize, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long maxSamplerDescriptorBufferRange() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxSamplerDescriptorBufferRange() {
         return segment.get(LAYOUT$maxSamplerDescriptorBufferRange, OFFSET$maxSamplerDescriptorBufferRange);
     }
 
-    public void maxSamplerDescriptorBufferRange(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void maxSamplerDescriptorBufferRange(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxSamplerDescriptorBufferRange, OFFSET$maxSamplerDescriptorBufferRange, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long maxResourceDescriptorBufferRange() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxResourceDescriptorBufferRange() {
         return segment.get(LAYOUT$maxResourceDescriptorBufferRange, OFFSET$maxResourceDescriptorBufferRange);
     }
 
-    public void maxResourceDescriptorBufferRange(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void maxResourceDescriptorBufferRange(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxResourceDescriptorBufferRange, OFFSET$maxResourceDescriptorBufferRange, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long samplerDescriptorBufferAddressSpaceSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long samplerDescriptorBufferAddressSpaceSize() {
         return segment.get(LAYOUT$samplerDescriptorBufferAddressSpaceSize, OFFSET$samplerDescriptorBufferAddressSpaceSize);
     }
 
-    public void samplerDescriptorBufferAddressSpaceSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void samplerDescriptorBufferAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$samplerDescriptorBufferAddressSpaceSize, OFFSET$samplerDescriptorBufferAddressSpaceSize, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long resourceDescriptorBufferAddressSpaceSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long resourceDescriptorBufferAddressSpaceSize() {
         return segment.get(LAYOUT$resourceDescriptorBufferAddressSpaceSize, OFFSET$resourceDescriptorBufferAddressSpaceSize);
     }
 
-    public void resourceDescriptorBufferAddressSpaceSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void resourceDescriptorBufferAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$resourceDescriptorBufferAddressSpaceSize, OFFSET$resourceDescriptorBufferAddressSpaceSize, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long descriptorBufferAddressSpaceSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long descriptorBufferAddressSpaceSize() {
         return segment.get(LAYOUT$descriptorBufferAddressSpaceSize, OFFSET$descriptorBufferAddressSpaceSize);
     }
 
-    public void descriptorBufferAddressSpaceSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void descriptorBufferAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$descriptorBufferAddressSpaceSize, OFFSET$descriptorBufferAddressSpaceSize, value);
     }
 

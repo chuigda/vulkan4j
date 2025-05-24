@@ -257,11 +257,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$mipLodBias, OFFSET$mipLodBias, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int anisotropyEnable() {
+    public @NativeType("VkBool32") @Unsigned int anisotropyEnable() {
         return segment.get(LAYOUT$anisotropyEnable, OFFSET$anisotropyEnable);
     }
 
-    public void anisotropyEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void anisotropyEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$anisotropyEnable, OFFSET$anisotropyEnable, value);
     }
 
@@ -273,11 +273,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$maxAnisotropy, OFFSET$maxAnisotropy, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int compareEnable() {
+    public @NativeType("VkBool32") @Unsigned int compareEnable() {
         return segment.get(LAYOUT$compareEnable, OFFSET$compareEnable);
     }
 
-    public void compareEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void compareEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$compareEnable, OFFSET$compareEnable, value);
     }
 
@@ -313,11 +313,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$borderColor, OFFSET$borderColor, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int unnormalizedCoordinates() {
+    public @NativeType("VkBool32") @Unsigned int unnormalizedCoordinates() {
         return segment.get(LAYOUT$unnormalizedCoordinates, OFFSET$unnormalizedCoordinates);
     }
 
-    public void unnormalizedCoordinates(@Unsigned @NativeType("VkBool32") int value) {
+    public void unnormalizedCoordinates(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$unnormalizedCoordinates, OFFSET$unnormalizedCoordinates, value);
     }
 

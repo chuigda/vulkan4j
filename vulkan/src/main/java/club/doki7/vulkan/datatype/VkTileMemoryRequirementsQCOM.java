@@ -179,19 +179,19 @@ public record VkTileMemoryRequirementsQCOM(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long alignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long alignment() {
         return segment.get(LAYOUT$alignment, OFFSET$alignment);
     }
 
-    public void alignment(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$alignment, OFFSET$alignment, value);
     }
 

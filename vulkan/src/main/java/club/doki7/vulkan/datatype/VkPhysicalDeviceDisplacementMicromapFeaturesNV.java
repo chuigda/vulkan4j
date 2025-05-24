@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDisplacementMicromapFeaturesNV(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int displacementMicromap() {
+    public @NativeType("VkBool32") @Unsigned int displacementMicromap() {
         return segment.get(LAYOUT$displacementMicromap, OFFSET$displacementMicromap);
     }
 
-    public void displacementMicromap(@Unsigned @NativeType("VkBool32") int value) {
+    public void displacementMicromap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$displacementMicromap, OFFSET$displacementMicromap, value);
     }
 

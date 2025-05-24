@@ -151,11 +151,11 @@ public record VkIndirectCommandsStreamNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long offset() {
+    public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 

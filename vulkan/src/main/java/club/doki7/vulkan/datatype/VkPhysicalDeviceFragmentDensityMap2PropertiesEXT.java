@@ -181,19 +181,19 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int subsampledLoads() {
+    public @NativeType("VkBool32") @Unsigned int subsampledLoads() {
         return segment.get(LAYOUT$subsampledLoads, OFFSET$subsampledLoads);
     }
 
-    public void subsampledLoads(@Unsigned @NativeType("VkBool32") int value) {
+    public void subsampledLoads(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subsampledLoads, OFFSET$subsampledLoads, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int subsampledCoarseReconstructionEarlyAccess() {
+    public @NativeType("VkBool32") @Unsigned int subsampledCoarseReconstructionEarlyAccess() {
         return segment.get(LAYOUT$subsampledCoarseReconstructionEarlyAccess, OFFSET$subsampledCoarseReconstructionEarlyAccess);
     }
 
-    public void subsampledCoarseReconstructionEarlyAccess(@Unsigned @NativeType("VkBool32") int value) {
+    public void subsampledCoarseReconstructionEarlyAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subsampledCoarseReconstructionEarlyAccess, OFFSET$subsampledCoarseReconstructionEarlyAccess, value);
     }
 

@@ -217,11 +217,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacementBiasAndScaleBuffer, SIZE$displacementBiasAndScaleBuffer);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long displacementBiasAndScaleStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long displacementBiasAndScaleStride() {
         return segment.get(LAYOUT$displacementBiasAndScaleStride, OFFSET$displacementBiasAndScaleStride);
     }
 
-    public void displacementBiasAndScaleStride(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void displacementBiasAndScaleStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$displacementBiasAndScaleStride, OFFSET$displacementBiasAndScaleStride, value);
     }
 
@@ -233,11 +233,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacementVectorBuffer, SIZE$displacementVectorBuffer);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long displacementVectorStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long displacementVectorStride() {
         return segment.get(LAYOUT$displacementVectorStride, OFFSET$displacementVectorStride);
     }
 
-    public void displacementVectorStride(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void displacementVectorStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$displacementVectorStride, OFFSET$displacementVectorStride, value);
     }
 
@@ -249,11 +249,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacedMicromapPrimitiveFlags, SIZE$displacedMicromapPrimitiveFlags);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long displacedMicromapPrimitiveFlagsStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long displacedMicromapPrimitiveFlagsStride() {
         return segment.get(LAYOUT$displacedMicromapPrimitiveFlagsStride, OFFSET$displacedMicromapPrimitiveFlagsStride);
     }
 
-    public void displacedMicromapPrimitiveFlagsStride(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void displacedMicromapPrimitiveFlagsStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$displacedMicromapPrimitiveFlagsStride, OFFSET$displacedMicromapPrimitiveFlagsStride, value);
     }
 
@@ -273,11 +273,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long indexStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long indexStride() {
         return segment.get(LAYOUT$indexStride, OFFSET$indexStride);
     }
 
-    public void indexStride(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void indexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$indexStride, OFFSET$indexStride, value);
     }
 

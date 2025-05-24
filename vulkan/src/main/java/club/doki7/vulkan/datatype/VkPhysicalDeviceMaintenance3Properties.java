@@ -187,11 +187,11 @@ public record VkPhysicalDeviceMaintenance3Properties(@NotNull MemorySegment segm
         segment.set(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long maxMemoryAllocationSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxMemoryAllocationSize() {
         return segment.get(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize);
     }
 
-    public void maxMemoryAllocationSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void maxMemoryAllocationSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize, value);
     }
 

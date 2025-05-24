@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRayQueryFeaturesKHR(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int rayQuery() {
+    public @NativeType("VkBool32") @Unsigned int rayQuery() {
         return segment.get(LAYOUT$rayQuery, OFFSET$rayQuery);
     }
 
-    public void rayQuery(@Unsigned @NativeType("VkBool32") int value) {
+    public void rayQuery(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayQuery, OFFSET$rayQuery, value);
     }
 

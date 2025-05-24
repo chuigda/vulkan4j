@@ -198,11 +198,11 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         segment.set(LAYOUT$description, OFFSET$description, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int isText() {
+    public @NativeType("VkBool32") @Unsigned int isText() {
         return segment.get(LAYOUT$isText, OFFSET$isText);
     }
 
-    public void isText(@Unsigned @NativeType("VkBool32") int value) {
+    public void isText(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$isText, OFFSET$isText, value);
     }
 

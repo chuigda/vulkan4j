@@ -196,11 +196,11 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$vendorInfoCount, OFFSET$vendorInfoCount, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long vendorBinarySize() {
+    public @NativeType("VkDeviceSize") @Unsigned long vendorBinarySize() {
         return segment.get(LAYOUT$vendorBinarySize, OFFSET$vendorBinarySize);
     }
 
-    public void vendorBinarySize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void vendorBinarySize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$vendorBinarySize, OFFSET$vendorBinarySize, value);
     }
 

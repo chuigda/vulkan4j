@@ -187,11 +187,11 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(@NotNull MemorySegment
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long stride() {
+    public @NativeType("VkDeviceSize") @Unsigned long stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void stride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
     }
 

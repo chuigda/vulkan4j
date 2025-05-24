@@ -242,11 +242,11 @@ public record VkCooperativeMatrixPropertiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$ResultType, OFFSET$ResultType, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int saturatingAccumulation() {
+    public @NativeType("VkBool32") @Unsigned int saturatingAccumulation() {
         return segment.get(LAYOUT$saturatingAccumulation, OFFSET$saturatingAccumulation);
     }
 
-    public void saturatingAccumulation(@Unsigned @NativeType("VkBool32") int value) {
+    public void saturatingAccumulation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$saturatingAccumulation, OFFSET$saturatingAccumulation, value);
     }
 

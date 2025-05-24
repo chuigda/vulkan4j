@@ -205,11 +205,11 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$supportedOperations, OFFSET$supportedOperations, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int quadOperationsInAllStages() {
+    public @NativeType("VkBool32") @Unsigned int quadOperationsInAllStages() {
         return segment.get(LAYOUT$quadOperationsInAllStages, OFFSET$quadOperationsInAllStages);
     }
 
-    public void quadOperationsInAllStages(@Unsigned @NativeType("VkBool32") int value) {
+    public void quadOperationsInAllStages(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$quadOperationsInAllStages, OFFSET$quadOperationsInAllStages, value);
     }
 

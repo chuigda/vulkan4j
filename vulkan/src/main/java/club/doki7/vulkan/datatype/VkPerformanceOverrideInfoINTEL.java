@@ -188,11 +188,11 @@ public record VkPerformanceOverrideInfoINTEL(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int enable() {
+    public @NativeType("VkBool32") @Unsigned int enable() {
         return segment.get(LAYOUT$enable, OFFSET$enable);
     }
 
-    public void enable(@Unsigned @NativeType("VkBool32") int value) {
+    public void enable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$enable, OFFSET$enable, value);
     }
 

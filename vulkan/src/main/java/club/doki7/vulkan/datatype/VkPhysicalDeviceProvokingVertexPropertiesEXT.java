@@ -179,19 +179,19 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int provokingVertexModePerPipeline() {
+    public @NativeType("VkBool32") @Unsigned int provokingVertexModePerPipeline() {
         return segment.get(LAYOUT$provokingVertexModePerPipeline, OFFSET$provokingVertexModePerPipeline);
     }
 
-    public void provokingVertexModePerPipeline(@Unsigned @NativeType("VkBool32") int value) {
+    public void provokingVertexModePerPipeline(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$provokingVertexModePerPipeline, OFFSET$provokingVertexModePerPipeline, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int transformFeedbackPreservesTriangleFanProvokingVertex() {
+    public @NativeType("VkBool32") @Unsigned int transformFeedbackPreservesTriangleFanProvokingVertex() {
         return segment.get(LAYOUT$transformFeedbackPreservesTriangleFanProvokingVertex, OFFSET$transformFeedbackPreservesTriangleFanProvokingVertex);
     }
 
-    public void transformFeedbackPreservesTriangleFanProvokingVertex(@Unsigned @NativeType("VkBool32") int value) {
+    public void transformFeedbackPreservesTriangleFanProvokingVertex(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackPreservesTriangleFanProvokingVertex, OFFSET$transformFeedbackPreservesTriangleFanProvokingVertex, value);
     }
 

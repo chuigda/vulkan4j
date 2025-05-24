@@ -178,11 +178,11 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int nonSeamlessCubeMap() {
+    public @NativeType("VkBool32") @Unsigned int nonSeamlessCubeMap() {
         return segment.get(LAYOUT$nonSeamlessCubeMap, OFFSET$nonSeamlessCubeMap);
     }
 
-    public void nonSeamlessCubeMap(@Unsigned @NativeType("VkBool32") int value) {
+    public void nonSeamlessCubeMap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nonSeamlessCubeMap, OFFSET$nonSeamlessCubeMap, value);
     }
 

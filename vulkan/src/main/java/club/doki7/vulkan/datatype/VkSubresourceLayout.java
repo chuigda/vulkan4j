@@ -142,43 +142,43 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long offset() {
+    public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long rowPitch() {
+    public @NativeType("VkDeviceSize") @Unsigned long rowPitch() {
         return segment.get(LAYOUT$rowPitch, OFFSET$rowPitch);
     }
 
-    public void rowPitch(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void rowPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$rowPitch, OFFSET$rowPitch, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long arrayPitch() {
+    public @NativeType("VkDeviceSize") @Unsigned long arrayPitch() {
         return segment.get(LAYOUT$arrayPitch, OFFSET$arrayPitch);
     }
 
-    public void arrayPitch(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void arrayPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$arrayPitch, OFFSET$arrayPitch, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long depthPitch() {
+    public @NativeType("VkDeviceSize") @Unsigned long depthPitch() {
         return segment.get(LAYOUT$depthPitch, OFFSET$depthPitch);
     }
 
-    public void depthPitch(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void depthPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$depthPitch, OFFSET$depthPitch, value);
     }
 

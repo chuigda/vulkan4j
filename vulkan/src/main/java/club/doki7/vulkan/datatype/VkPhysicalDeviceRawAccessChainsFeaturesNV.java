@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderRawAccessChains() {
+    public @NativeType("VkBool32") @Unsigned int shaderRawAccessChains() {
         return segment.get(LAYOUT$shaderRawAccessChains, OFFSET$shaderRawAccessChains);
     }
 
-    public void shaderRawAccessChains(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderRawAccessChains(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRawAccessChains, OFFSET$shaderRawAccessChains, value);
     }
 

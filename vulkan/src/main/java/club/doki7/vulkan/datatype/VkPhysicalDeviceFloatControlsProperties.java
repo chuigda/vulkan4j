@@ -210,123 +210,123 @@ public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSignedZeroInfNanPreserveFloat16() {
+    public @NativeType("VkBool32") @Unsigned int shaderSignedZeroInfNanPreserveFloat16() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat16, OFFSET$shaderSignedZeroInfNanPreserveFloat16);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat16(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSignedZeroInfNanPreserveFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat16, OFFSET$shaderSignedZeroInfNanPreserveFloat16, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSignedZeroInfNanPreserveFloat32() {
+    public @NativeType("VkBool32") @Unsigned int shaderSignedZeroInfNanPreserveFloat32() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat32, OFFSET$shaderSignedZeroInfNanPreserveFloat32);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat32(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSignedZeroInfNanPreserveFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat32, OFFSET$shaderSignedZeroInfNanPreserveFloat32, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSignedZeroInfNanPreserveFloat64() {
+    public @NativeType("VkBool32") @Unsigned int shaderSignedZeroInfNanPreserveFloat64() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat64, OFFSET$shaderSignedZeroInfNanPreserveFloat64);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat64(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSignedZeroInfNanPreserveFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat64, OFFSET$shaderSignedZeroInfNanPreserveFloat64, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderDenormPreserveFloat16() {
+    public @NativeType("VkBool32") @Unsigned int shaderDenormPreserveFloat16() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat16, OFFSET$shaderDenormPreserveFloat16);
     }
 
-    public void shaderDenormPreserveFloat16(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderDenormPreserveFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat16, OFFSET$shaderDenormPreserveFloat16, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderDenormPreserveFloat32() {
+    public @NativeType("VkBool32") @Unsigned int shaderDenormPreserveFloat32() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat32, OFFSET$shaderDenormPreserveFloat32);
     }
 
-    public void shaderDenormPreserveFloat32(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderDenormPreserveFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat32, OFFSET$shaderDenormPreserveFloat32, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderDenormPreserveFloat64() {
+    public @NativeType("VkBool32") @Unsigned int shaderDenormPreserveFloat64() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat64, OFFSET$shaderDenormPreserveFloat64);
     }
 
-    public void shaderDenormPreserveFloat64(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderDenormPreserveFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat64, OFFSET$shaderDenormPreserveFloat64, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderDenormFlushToZeroFloat16() {
+    public @NativeType("VkBool32") @Unsigned int shaderDenormFlushToZeroFloat16() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat16, OFFSET$shaderDenormFlushToZeroFloat16);
     }
 
-    public void shaderDenormFlushToZeroFloat16(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderDenormFlushToZeroFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat16, OFFSET$shaderDenormFlushToZeroFloat16, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderDenormFlushToZeroFloat32() {
+    public @NativeType("VkBool32") @Unsigned int shaderDenormFlushToZeroFloat32() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat32, OFFSET$shaderDenormFlushToZeroFloat32);
     }
 
-    public void shaderDenormFlushToZeroFloat32(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderDenormFlushToZeroFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat32, OFFSET$shaderDenormFlushToZeroFloat32, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderDenormFlushToZeroFloat64() {
+    public @NativeType("VkBool32") @Unsigned int shaderDenormFlushToZeroFloat64() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat64, OFFSET$shaderDenormFlushToZeroFloat64);
     }
 
-    public void shaderDenormFlushToZeroFloat64(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderDenormFlushToZeroFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat64, OFFSET$shaderDenormFlushToZeroFloat64, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderRoundingModeRTEFloat16() {
+    public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTEFloat16() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat16, OFFSET$shaderRoundingModeRTEFloat16);
     }
 
-    public void shaderRoundingModeRTEFloat16(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderRoundingModeRTEFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat16, OFFSET$shaderRoundingModeRTEFloat16, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderRoundingModeRTEFloat32() {
+    public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTEFloat32() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat32, OFFSET$shaderRoundingModeRTEFloat32);
     }
 
-    public void shaderRoundingModeRTEFloat32(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderRoundingModeRTEFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat32, OFFSET$shaderRoundingModeRTEFloat32, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderRoundingModeRTEFloat64() {
+    public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTEFloat64() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat64, OFFSET$shaderRoundingModeRTEFloat64);
     }
 
-    public void shaderRoundingModeRTEFloat64(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderRoundingModeRTEFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat64, OFFSET$shaderRoundingModeRTEFloat64, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderRoundingModeRTZFloat16() {
+    public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTZFloat16() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat16, OFFSET$shaderRoundingModeRTZFloat16);
     }
 
-    public void shaderRoundingModeRTZFloat16(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderRoundingModeRTZFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat16, OFFSET$shaderRoundingModeRTZFloat16, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderRoundingModeRTZFloat32() {
+    public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTZFloat32() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat32, OFFSET$shaderRoundingModeRTZFloat32);
     }
 
-    public void shaderRoundingModeRTZFloat32(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderRoundingModeRTZFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat32, OFFSET$shaderRoundingModeRTZFloat32, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderRoundingModeRTZFloat64() {
+    public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTZFloat64() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat64, OFFSET$shaderRoundingModeRTZFloat64);
     }
 
-    public void shaderRoundingModeRTZFloat64(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderRoundingModeRTZFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat64, OFFSET$shaderRoundingModeRTZFloat64, value);
     }
 

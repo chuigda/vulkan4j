@@ -178,11 +178,11 @@ public record VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int meshAndTaskShaderDerivatives() {
+    public @NativeType("VkBool32") @Unsigned int meshAndTaskShaderDerivatives() {
         return segment.get(LAYOUT$meshAndTaskShaderDerivatives, OFFSET$meshAndTaskShaderDerivatives);
     }
 
-    public void meshAndTaskShaderDerivatives(@Unsigned @NativeType("VkBool32") int value) {
+    public void meshAndTaskShaderDerivatives(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$meshAndTaskShaderDerivatives, OFFSET$meshAndTaskShaderDerivatives, value);
     }
 

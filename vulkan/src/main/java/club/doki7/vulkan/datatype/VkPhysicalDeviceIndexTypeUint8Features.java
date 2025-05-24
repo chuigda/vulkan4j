@@ -178,11 +178,11 @@ public record VkPhysicalDeviceIndexTypeUint8Features(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int indexTypeUint8() {
+    public @NativeType("VkBool32") @Unsigned int indexTypeUint8() {
         return segment.get(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8);
     }
 
-    public void indexTypeUint8(@Unsigned @NativeType("VkBool32") int value) {
+    public void indexTypeUint8(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8, value);
     }
 

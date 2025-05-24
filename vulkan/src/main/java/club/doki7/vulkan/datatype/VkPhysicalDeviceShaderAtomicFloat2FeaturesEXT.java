@@ -189,99 +189,99 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat16Atomics() {
+    public @NativeType("VkBool32") @Unsigned int shaderBufferFloat16Atomics() {
         return segment.get(LAYOUT$shaderBufferFloat16Atomics, OFFSET$shaderBufferFloat16Atomics);
     }
 
-    public void shaderBufferFloat16Atomics(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderBufferFloat16Atomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat16Atomics, OFFSET$shaderBufferFloat16Atomics, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat16AtomicAdd() {
+    public @NativeType("VkBool32") @Unsigned int shaderBufferFloat16AtomicAdd() {
         return segment.get(LAYOUT$shaderBufferFloat16AtomicAdd, OFFSET$shaderBufferFloat16AtomicAdd);
     }
 
-    public void shaderBufferFloat16AtomicAdd(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderBufferFloat16AtomicAdd(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat16AtomicAdd, OFFSET$shaderBufferFloat16AtomicAdd, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat16AtomicMinMax() {
+    public @NativeType("VkBool32") @Unsigned int shaderBufferFloat16AtomicMinMax() {
         return segment.get(LAYOUT$shaderBufferFloat16AtomicMinMax, OFFSET$shaderBufferFloat16AtomicMinMax);
     }
 
-    public void shaderBufferFloat16AtomicMinMax(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderBufferFloat16AtomicMinMax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat16AtomicMinMax, OFFSET$shaderBufferFloat16AtomicMinMax, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat32AtomicMinMax() {
+    public @NativeType("VkBool32") @Unsigned int shaderBufferFloat32AtomicMinMax() {
         return segment.get(LAYOUT$shaderBufferFloat32AtomicMinMax, OFFSET$shaderBufferFloat32AtomicMinMax);
     }
 
-    public void shaderBufferFloat32AtomicMinMax(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderBufferFloat32AtomicMinMax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat32AtomicMinMax, OFFSET$shaderBufferFloat32AtomicMinMax, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat64AtomicMinMax() {
+    public @NativeType("VkBool32") @Unsigned int shaderBufferFloat64AtomicMinMax() {
         return segment.get(LAYOUT$shaderBufferFloat64AtomicMinMax, OFFSET$shaderBufferFloat64AtomicMinMax);
     }
 
-    public void shaderBufferFloat64AtomicMinMax(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderBufferFloat64AtomicMinMax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat64AtomicMinMax, OFFSET$shaderBufferFloat64AtomicMinMax, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat16Atomics() {
+    public @NativeType("VkBool32") @Unsigned int shaderSharedFloat16Atomics() {
         return segment.get(LAYOUT$shaderSharedFloat16Atomics, OFFSET$shaderSharedFloat16Atomics);
     }
 
-    public void shaderSharedFloat16Atomics(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSharedFloat16Atomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat16Atomics, OFFSET$shaderSharedFloat16Atomics, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat16AtomicAdd() {
+    public @NativeType("VkBool32") @Unsigned int shaderSharedFloat16AtomicAdd() {
         return segment.get(LAYOUT$shaderSharedFloat16AtomicAdd, OFFSET$shaderSharedFloat16AtomicAdd);
     }
 
-    public void shaderSharedFloat16AtomicAdd(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSharedFloat16AtomicAdd(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat16AtomicAdd, OFFSET$shaderSharedFloat16AtomicAdd, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat16AtomicMinMax() {
+    public @NativeType("VkBool32") @Unsigned int shaderSharedFloat16AtomicMinMax() {
         return segment.get(LAYOUT$shaderSharedFloat16AtomicMinMax, OFFSET$shaderSharedFloat16AtomicMinMax);
     }
 
-    public void shaderSharedFloat16AtomicMinMax(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSharedFloat16AtomicMinMax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat16AtomicMinMax, OFFSET$shaderSharedFloat16AtomicMinMax, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat32AtomicMinMax() {
+    public @NativeType("VkBool32") @Unsigned int shaderSharedFloat32AtomicMinMax() {
         return segment.get(LAYOUT$shaderSharedFloat32AtomicMinMax, OFFSET$shaderSharedFloat32AtomicMinMax);
     }
 
-    public void shaderSharedFloat32AtomicMinMax(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSharedFloat32AtomicMinMax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat32AtomicMinMax, OFFSET$shaderSharedFloat32AtomicMinMax, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat64AtomicMinMax() {
+    public @NativeType("VkBool32") @Unsigned int shaderSharedFloat64AtomicMinMax() {
         return segment.get(LAYOUT$shaderSharedFloat64AtomicMinMax, OFFSET$shaderSharedFloat64AtomicMinMax);
     }
 
-    public void shaderSharedFloat64AtomicMinMax(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSharedFloat64AtomicMinMax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat64AtomicMinMax, OFFSET$shaderSharedFloat64AtomicMinMax, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderImageFloat32AtomicMinMax() {
+    public @NativeType("VkBool32") @Unsigned int shaderImageFloat32AtomicMinMax() {
         return segment.get(LAYOUT$shaderImageFloat32AtomicMinMax, OFFSET$shaderImageFloat32AtomicMinMax);
     }
 
-    public void shaderImageFloat32AtomicMinMax(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderImageFloat32AtomicMinMax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderImageFloat32AtomicMinMax, OFFSET$shaderImageFloat32AtomicMinMax, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int sparseImageFloat32AtomicMinMax() {
+    public @NativeType("VkBool32") @Unsigned int sparseImageFloat32AtomicMinMax() {
         return segment.get(LAYOUT$sparseImageFloat32AtomicMinMax, OFFSET$sparseImageFloat32AtomicMinMax);
     }
 
-    public void sparseImageFloat32AtomicMinMax(@Unsigned @NativeType("VkBool32") int value) {
+    public void sparseImageFloat32AtomicMinMax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sparseImageFloat32AtomicMinMax, OFFSET$sparseImageFloat32AtomicMinMax, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int presentModeFifoLatestReady() {
+    public @NativeType("VkBool32") @Unsigned int presentModeFifoLatestReady() {
         return segment.get(LAYOUT$presentModeFifoLatestReady, OFFSET$presentModeFifoLatestReady);
     }
 
-    public void presentModeFifoLatestReady(@Unsigned @NativeType("VkBool32") int value) {
+    public void presentModeFifoLatestReady(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$presentModeFifoLatestReady, OFFSET$presentModeFifoLatestReady, value);
     }
 

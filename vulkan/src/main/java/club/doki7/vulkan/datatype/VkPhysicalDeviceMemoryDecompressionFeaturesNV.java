@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMemoryDecompressionFeaturesNV(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int memoryDecompression() {
+    public @NativeType("VkBool32") @Unsigned int memoryDecompression() {
         return segment.get(LAYOUT$memoryDecompression, OFFSET$memoryDecompression);
     }
 
-    public void memoryDecompression(@Unsigned @NativeType("VkBool32") int value) {
+    public void memoryDecompression(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$memoryDecompression, OFFSET$memoryDecompression, value);
     }
 

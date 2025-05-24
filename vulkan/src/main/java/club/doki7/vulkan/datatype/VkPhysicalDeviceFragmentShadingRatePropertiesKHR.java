@@ -218,27 +218,27 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         segment.set(LAYOUT$maxFragmentShadingRateAttachmentTexelSizeAspectRatio, OFFSET$maxFragmentShadingRateAttachmentTexelSizeAspectRatio, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int primitiveFragmentShadingRateWithMultipleViewports() {
+    public @NativeType("VkBool32") @Unsigned int primitiveFragmentShadingRateWithMultipleViewports() {
         return segment.get(LAYOUT$primitiveFragmentShadingRateWithMultipleViewports, OFFSET$primitiveFragmentShadingRateWithMultipleViewports);
     }
 
-    public void primitiveFragmentShadingRateWithMultipleViewports(@Unsigned @NativeType("VkBool32") int value) {
+    public void primitiveFragmentShadingRateWithMultipleViewports(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveFragmentShadingRateWithMultipleViewports, OFFSET$primitiveFragmentShadingRateWithMultipleViewports, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int layeredShadingRateAttachments() {
+    public @NativeType("VkBool32") @Unsigned int layeredShadingRateAttachments() {
         return segment.get(LAYOUT$layeredShadingRateAttachments, OFFSET$layeredShadingRateAttachments);
     }
 
-    public void layeredShadingRateAttachments(@Unsigned @NativeType("VkBool32") int value) {
+    public void layeredShadingRateAttachments(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$layeredShadingRateAttachments, OFFSET$layeredShadingRateAttachments, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateNonTrivialCombinerOps() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateNonTrivialCombinerOps() {
         return segment.get(LAYOUT$fragmentShadingRateNonTrivialCombinerOps, OFFSET$fragmentShadingRateNonTrivialCombinerOps);
     }
 
-    public void fragmentShadingRateNonTrivialCombinerOps(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateNonTrivialCombinerOps(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateNonTrivialCombinerOps, OFFSET$fragmentShadingRateNonTrivialCombinerOps, value);
     }
 
@@ -274,59 +274,59 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         segment.set(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateWithShaderDepthStencilWrites() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateWithShaderDepthStencilWrites() {
         return segment.get(LAYOUT$fragmentShadingRateWithShaderDepthStencilWrites, OFFSET$fragmentShadingRateWithShaderDepthStencilWrites);
     }
 
-    public void fragmentShadingRateWithShaderDepthStencilWrites(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateWithShaderDepthStencilWrites(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithShaderDepthStencilWrites, OFFSET$fragmentShadingRateWithShaderDepthStencilWrites, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateWithSampleMask() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateWithSampleMask() {
         return segment.get(LAYOUT$fragmentShadingRateWithSampleMask, OFFSET$fragmentShadingRateWithSampleMask);
     }
 
-    public void fragmentShadingRateWithSampleMask(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateWithSampleMask(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithSampleMask, OFFSET$fragmentShadingRateWithSampleMask, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateWithShaderSampleMask() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateWithShaderSampleMask() {
         return segment.get(LAYOUT$fragmentShadingRateWithShaderSampleMask, OFFSET$fragmentShadingRateWithShaderSampleMask);
     }
 
-    public void fragmentShadingRateWithShaderSampleMask(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateWithShaderSampleMask(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithShaderSampleMask, OFFSET$fragmentShadingRateWithShaderSampleMask, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateWithConservativeRasterization() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateWithConservativeRasterization() {
         return segment.get(LAYOUT$fragmentShadingRateWithConservativeRasterization, OFFSET$fragmentShadingRateWithConservativeRasterization);
     }
 
-    public void fragmentShadingRateWithConservativeRasterization(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateWithConservativeRasterization(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithConservativeRasterization, OFFSET$fragmentShadingRateWithConservativeRasterization, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateWithFragmentShaderInterlock() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateWithFragmentShaderInterlock() {
         return segment.get(LAYOUT$fragmentShadingRateWithFragmentShaderInterlock, OFFSET$fragmentShadingRateWithFragmentShaderInterlock);
     }
 
-    public void fragmentShadingRateWithFragmentShaderInterlock(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateWithFragmentShaderInterlock(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithFragmentShaderInterlock, OFFSET$fragmentShadingRateWithFragmentShaderInterlock, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateWithCustomSampleLocations() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateWithCustomSampleLocations() {
         return segment.get(LAYOUT$fragmentShadingRateWithCustomSampleLocations, OFFSET$fragmentShadingRateWithCustomSampleLocations);
     }
 
-    public void fragmentShadingRateWithCustomSampleLocations(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateWithCustomSampleLocations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithCustomSampleLocations, OFFSET$fragmentShadingRateWithCustomSampleLocations, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateStrictMultiplyCombiner() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateStrictMultiplyCombiner() {
         return segment.get(LAYOUT$fragmentShadingRateStrictMultiplyCombiner, OFFSET$fragmentShadingRateStrictMultiplyCombiner);
     }
 
-    public void fragmentShadingRateStrictMultiplyCombiner(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateStrictMultiplyCombiner(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateStrictMultiplyCombiner, OFFSET$fragmentShadingRateStrictMultiplyCombiner, value);
     }
 

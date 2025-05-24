@@ -187,11 +187,11 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$stdProfile, OFFSET$stdProfile, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int filmGrainSupport() {
+    public @NativeType("VkBool32") @Unsigned int filmGrainSupport() {
         return segment.get(LAYOUT$filmGrainSupport, OFFSET$filmGrainSupport);
     }
 
-    public void filmGrainSupport(@Unsigned @NativeType("VkBool32") int value) {
+    public void filmGrainSupport(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$filmGrainSupport, OFFSET$filmGrainSupport, value);
     }
 

@@ -195,19 +195,19 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int depthTestEnable() {
+    public @NativeType("VkBool32") @Unsigned int depthTestEnable() {
         return segment.get(LAYOUT$depthTestEnable, OFFSET$depthTestEnable);
     }
 
-    public void depthTestEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void depthTestEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthTestEnable, OFFSET$depthTestEnable, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int depthWriteEnable() {
+    public @NativeType("VkBool32") @Unsigned int depthWriteEnable() {
         return segment.get(LAYOUT$depthWriteEnable, OFFSET$depthWriteEnable);
     }
 
-    public void depthWriteEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void depthWriteEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthWriteEnable, OFFSET$depthWriteEnable, value);
     }
 
@@ -219,19 +219,19 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$depthCompareOp, OFFSET$depthCompareOp, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int depthBoundsTestEnable() {
+    public @NativeType("VkBool32") @Unsigned int depthBoundsTestEnable() {
         return segment.get(LAYOUT$depthBoundsTestEnable, OFFSET$depthBoundsTestEnable);
     }
 
-    public void depthBoundsTestEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void depthBoundsTestEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthBoundsTestEnable, OFFSET$depthBoundsTestEnable, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int stencilTestEnable() {
+    public @NativeType("VkBool32") @Unsigned int stencilTestEnable() {
         return segment.get(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable);
     }
 
-    public void stencilTestEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void stencilTestEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable, value);
     }
 

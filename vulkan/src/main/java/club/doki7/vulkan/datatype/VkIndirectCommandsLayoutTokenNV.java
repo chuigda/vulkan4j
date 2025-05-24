@@ -222,11 +222,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int vertexDynamicStride() {
+    public @NativeType("VkBool32") @Unsigned int vertexDynamicStride() {
         return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
     }
 
-    public void vertexDynamicStride(@Unsigned @NativeType("VkBool32") int value) {
+    public void vertexDynamicStride(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
     }
 

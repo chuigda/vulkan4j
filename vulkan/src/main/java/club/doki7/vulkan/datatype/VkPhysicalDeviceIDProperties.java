@@ -214,11 +214,11 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int deviceLUIDValid() {
+    public @NativeType("VkBool32") @Unsigned int deviceLUIDValid() {
         return segment.get(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid);
     }
 
-    public void deviceLUIDValid(@Unsigned @NativeType("VkBool32") int value) {
+    public void deviceLUIDValid(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid, value);
     }
 

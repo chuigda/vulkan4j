@@ -180,27 +180,27 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int primitivesGeneratedQuery() {
+    public @NativeType("VkBool32") @Unsigned int primitivesGeneratedQuery() {
         return segment.get(LAYOUT$primitivesGeneratedQuery, OFFSET$primitivesGeneratedQuery);
     }
 
-    public void primitivesGeneratedQuery(@Unsigned @NativeType("VkBool32") int value) {
+    public void primitivesGeneratedQuery(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitivesGeneratedQuery, OFFSET$primitivesGeneratedQuery, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int primitivesGeneratedQueryWithRasterizerDiscard() {
+    public @NativeType("VkBool32") @Unsigned int primitivesGeneratedQueryWithRasterizerDiscard() {
         return segment.get(LAYOUT$primitivesGeneratedQueryWithRasterizerDiscard, OFFSET$primitivesGeneratedQueryWithRasterizerDiscard);
     }
 
-    public void primitivesGeneratedQueryWithRasterizerDiscard(@Unsigned @NativeType("VkBool32") int value) {
+    public void primitivesGeneratedQueryWithRasterizerDiscard(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitivesGeneratedQueryWithRasterizerDiscard, OFFSET$primitivesGeneratedQueryWithRasterizerDiscard, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int primitivesGeneratedQueryWithNonZeroStreams() {
+    public @NativeType("VkBool32") @Unsigned int primitivesGeneratedQueryWithNonZeroStreams() {
         return segment.get(LAYOUT$primitivesGeneratedQueryWithNonZeroStreams, OFFSET$primitivesGeneratedQueryWithNonZeroStreams);
     }
 
-    public void primitivesGeneratedQueryWithNonZeroStreams(@Unsigned @NativeType("VkBool32") int value) {
+    public void primitivesGeneratedQueryWithNonZeroStreams(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitivesGeneratedQueryWithNonZeroStreams, OFFSET$primitivesGeneratedQueryWithNonZeroStreams, value);
     }
 

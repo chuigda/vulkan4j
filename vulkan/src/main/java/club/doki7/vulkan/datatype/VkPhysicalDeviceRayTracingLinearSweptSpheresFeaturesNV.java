@@ -179,19 +179,19 @@ public record VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(@NotNull Me
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int spheres() {
+    public @NativeType("VkBool32") @Unsigned int spheres() {
         return segment.get(LAYOUT$spheres, OFFSET$spheres);
     }
 
-    public void spheres(@Unsigned @NativeType("VkBool32") int value) {
+    public void spheres(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$spheres, OFFSET$spheres, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int linearSweptSpheres() {
+    public @NativeType("VkBool32") @Unsigned int linearSweptSpheres() {
         return segment.get(LAYOUT$linearSweptSpheres, OFFSET$linearSweptSpheres);
     }
 
-    public void linearSweptSpheres(@Unsigned @NativeType("VkBool32") int value) {
+    public void linearSweptSpheres(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$linearSweptSpheres, OFFSET$linearSweptSpheres, value);
     }
 

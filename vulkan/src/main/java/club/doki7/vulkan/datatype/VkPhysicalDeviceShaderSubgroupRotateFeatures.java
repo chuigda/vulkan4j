@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShaderSubgroupRotateFeatures(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSubgroupRotate() {
+    public @NativeType("VkBool32") @Unsigned int shaderSubgroupRotate() {
         return segment.get(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate);
     }
 
-    public void shaderSubgroupRotate(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSubgroupRotate(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSubgroupRotateClustered() {
+    public @NativeType("VkBool32") @Unsigned int shaderSubgroupRotateClustered() {
         return segment.get(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered);
     }
 
-    public void shaderSubgroupRotateClustered(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSubgroupRotateClustered(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered, value);
     }
 

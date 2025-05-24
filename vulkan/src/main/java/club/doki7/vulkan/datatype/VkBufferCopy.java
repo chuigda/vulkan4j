@@ -140,27 +140,27 @@ public record VkBufferCopy(@NotNull MemorySegment segment) implements IVkBufferC
         return ret;
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long srcOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long srcOffset() {
         return segment.get(LAYOUT$srcOffset, OFFSET$srcOffset);
     }
 
-    public void srcOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void srcOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$srcOffset, OFFSET$srcOffset, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long dstOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long dstOffset() {
         return segment.get(LAYOUT$dstOffset, OFFSET$dstOffset);
     }
 
-    public void dstOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void dstOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$dstOffset, OFFSET$dstOffset, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 

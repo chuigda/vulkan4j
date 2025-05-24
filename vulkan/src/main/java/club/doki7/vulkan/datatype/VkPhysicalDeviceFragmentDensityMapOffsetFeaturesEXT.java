@@ -178,11 +178,11 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentDensityMapOffset() {
+    public @NativeType("VkBool32") @Unsigned int fragmentDensityMapOffset() {
         return segment.get(LAYOUT$fragmentDensityMapOffset, OFFSET$fragmentDensityMapOffset);
     }
 
-    public void fragmentDensityMapOffset(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentDensityMapOffset(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityMapOffset, OFFSET$fragmentDensityMapOffset, value);
     }
 

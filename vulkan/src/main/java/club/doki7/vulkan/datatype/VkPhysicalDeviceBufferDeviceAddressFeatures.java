@@ -180,27 +180,27 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int bufferDeviceAddress() {
+    public @NativeType("VkBool32") @Unsigned int bufferDeviceAddress() {
         return segment.get(LAYOUT$bufferDeviceAddress, OFFSET$bufferDeviceAddress);
     }
 
-    public void bufferDeviceAddress(@Unsigned @NativeType("VkBool32") int value) {
+    public void bufferDeviceAddress(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddress, OFFSET$bufferDeviceAddress, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int bufferDeviceAddressCaptureReplay() {
+    public @NativeType("VkBool32") @Unsigned int bufferDeviceAddressCaptureReplay() {
         return segment.get(LAYOUT$bufferDeviceAddressCaptureReplay, OFFSET$bufferDeviceAddressCaptureReplay);
     }
 
-    public void bufferDeviceAddressCaptureReplay(@Unsigned @NativeType("VkBool32") int value) {
+    public void bufferDeviceAddressCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddressCaptureReplay, OFFSET$bufferDeviceAddressCaptureReplay, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int bufferDeviceAddressMultiDevice() {
+    public @NativeType("VkBool32") @Unsigned int bufferDeviceAddressMultiDevice() {
         return segment.get(LAYOUT$bufferDeviceAddressMultiDevice, OFFSET$bufferDeviceAddressMultiDevice);
     }
 
-    public void bufferDeviceAddressMultiDevice(@Unsigned @NativeType("VkBool32") int value) {
+    public void bufferDeviceAddressMultiDevice(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddressMultiDevice, OFFSET$bufferDeviceAddressMultiDevice, value);
     }
 

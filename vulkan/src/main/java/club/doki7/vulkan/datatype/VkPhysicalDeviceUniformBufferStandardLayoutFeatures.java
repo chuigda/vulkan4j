@@ -178,11 +178,11 @@ public record VkPhysicalDeviceUniformBufferStandardLayoutFeatures(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int uniformBufferStandardLayout() {
+    public @NativeType("VkBool32") @Unsigned int uniformBufferStandardLayout() {
         return segment.get(LAYOUT$uniformBufferStandardLayout, OFFSET$uniformBufferStandardLayout);
     }
 
-    public void uniformBufferStandardLayout(@Unsigned @NativeType("VkBool32") int value) {
+    public void uniformBufferStandardLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$uniformBufferStandardLayout, OFFSET$uniformBufferStandardLayout, value);
     }
 

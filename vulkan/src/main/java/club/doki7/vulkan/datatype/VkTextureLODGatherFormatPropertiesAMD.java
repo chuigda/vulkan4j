@@ -178,11 +178,11 @@ public record VkTextureLODGatherFormatPropertiesAMD(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int supportsTextureGatherLODBiasAMD() {
+    public @NativeType("VkBool32") @Unsigned int supportsTextureGatherLODBiasAMD() {
         return segment.get(LAYOUT$supportsTextureGatherLODBiasAMD, OFFSET$supportsTextureGatherLODBiasAMD);
     }
 
-    public void supportsTextureGatherLODBiasAMD(@Unsigned @NativeType("VkBool32") int value) {
+    public void supportsTextureGatherLODBiasAMD(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$supportsTextureGatherLODBiasAMD, OFFSET$supportsTextureGatherLODBiasAMD, value);
     }
 

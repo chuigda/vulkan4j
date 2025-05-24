@@ -178,11 +178,11 @@ public record VkSwapchainPresentBarrierCreateInfoNV(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int presentBarrierEnable() {
+    public @NativeType("VkBool32") @Unsigned int presentBarrierEnable() {
         return segment.get(LAYOUT$presentBarrierEnable, OFFSET$presentBarrierEnable);
     }
 
-    public void presentBarrierEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void presentBarrierEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$presentBarrierEnable, OFFSET$presentBarrierEnable, value);
     }
 

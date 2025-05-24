@@ -179,19 +179,19 @@ public record VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int computeDerivativeGroupQuads() {
+    public @NativeType("VkBool32") @Unsigned int computeDerivativeGroupQuads() {
         return segment.get(LAYOUT$computeDerivativeGroupQuads, OFFSET$computeDerivativeGroupQuads);
     }
 
-    public void computeDerivativeGroupQuads(@Unsigned @NativeType("VkBool32") int value) {
+    public void computeDerivativeGroupQuads(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$computeDerivativeGroupQuads, OFFSET$computeDerivativeGroupQuads, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int computeDerivativeGroupLinear() {
+    public @NativeType("VkBool32") @Unsigned int computeDerivativeGroupLinear() {
         return segment.get(LAYOUT$computeDerivativeGroupLinear, OFFSET$computeDerivativeGroupLinear);
     }
 
-    public void computeDerivativeGroupLinear(@Unsigned @NativeType("VkBool32") int value) {
+    public void computeDerivativeGroupLinear(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$computeDerivativeGroupLinear, OFFSET$computeDerivativeGroupLinear, value);
     }
 

@@ -209,11 +209,11 @@ public record VkImportSemaphoreZirconHandleInfoFUCHSIA(@NotNull MemorySegment se
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
     }
 
-    public @Unsigned @NativeType("zx_handle_t") int zirconHandle() {
+    public @NativeType("zx_handle_t") @Unsigned int zirconHandle() {
         return segment.get(LAYOUT$zirconHandle, OFFSET$zirconHandle);
     }
 
-    public void zirconHandle(@Unsigned @NativeType("zx_handle_t") int value) {
+    public void zirconHandle(@NativeType("zx_handle_t") @Unsigned int value) {
         segment.set(LAYOUT$zirconHandle, OFFSET$zirconHandle, value);
     }
 

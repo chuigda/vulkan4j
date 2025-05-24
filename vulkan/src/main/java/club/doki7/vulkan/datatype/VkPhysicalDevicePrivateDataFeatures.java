@@ -178,11 +178,11 @@ public record VkPhysicalDevicePrivateDataFeatures(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int privateData() {
+    public @NativeType("VkBool32") @Unsigned int privateData() {
         return segment.get(LAYOUT$privateData, OFFSET$privateData);
     }
 
-    public void privateData(@Unsigned @NativeType("VkBool32") int value) {
+    public void privateData(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$privateData, OFFSET$privateData, value);
     }
 

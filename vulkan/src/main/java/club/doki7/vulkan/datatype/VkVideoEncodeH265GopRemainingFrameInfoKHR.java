@@ -181,11 +181,11 @@ public record VkVideoEncodeH265GopRemainingFrameInfoKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int useGopRemainingFrames() {
+    public @NativeType("VkBool32") @Unsigned int useGopRemainingFrames() {
         return segment.get(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames);
     }
 
-    public void useGopRemainingFrames(@Unsigned @NativeType("VkBool32") int value) {
+    public void useGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames, value);
     }
 

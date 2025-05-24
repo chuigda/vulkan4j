@@ -178,11 +178,11 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int allowCommandBufferQueryCopies() {
+    public @NativeType("VkBool32") @Unsigned int allowCommandBufferQueryCopies() {
         return segment.get(LAYOUT$allowCommandBufferQueryCopies, OFFSET$allowCommandBufferQueryCopies);
     }
 
-    public void allowCommandBufferQueryCopies(@Unsigned @NativeType("VkBool32") int value) {
+    public void allowCommandBufferQueryCopies(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$allowCommandBufferQueryCopies, OFFSET$allowCommandBufferQueryCopies, value);
     }
 

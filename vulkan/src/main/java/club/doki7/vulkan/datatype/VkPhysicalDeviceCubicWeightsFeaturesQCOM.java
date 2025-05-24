@@ -178,11 +178,11 @@ public record VkPhysicalDeviceCubicWeightsFeaturesQCOM(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int selectableCubicWeights() {
+    public @NativeType("VkBool32") @Unsigned int selectableCubicWeights() {
         return segment.get(LAYOUT$selectableCubicWeights, OFFSET$selectableCubicWeights);
     }
 
-    public void selectableCubicWeights(@Unsigned @NativeType("VkBool32") int value) {
+    public void selectableCubicWeights(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$selectableCubicWeights, OFFSET$selectableCubicWeights, value);
     }
 

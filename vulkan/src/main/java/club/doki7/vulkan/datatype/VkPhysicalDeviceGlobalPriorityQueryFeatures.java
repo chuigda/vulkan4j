@@ -178,11 +178,11 @@ public record VkPhysicalDeviceGlobalPriorityQueryFeatures(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int globalPriorityQuery() {
+    public @NativeType("VkBool32") @Unsigned int globalPriorityQuery() {
         return segment.get(LAYOUT$globalPriorityQuery, OFFSET$globalPriorityQuery);
     }
 
-    public void globalPriorityQuery(@Unsigned @NativeType("VkBool32") int value) {
+    public void globalPriorityQuery(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$globalPriorityQuery, OFFSET$globalPriorityQuery, value);
     }
 

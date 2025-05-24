@@ -189,19 +189,19 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         segment.set(LAYOUT$cooperativeVectorSupportedStages, OFFSET$cooperativeVectorSupportedStages, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int cooperativeVectorTrainingFloat16Accumulation() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeVectorTrainingFloat16Accumulation() {
         return segment.get(LAYOUT$cooperativeVectorTrainingFloat16Accumulation, OFFSET$cooperativeVectorTrainingFloat16Accumulation);
     }
 
-    public void cooperativeVectorTrainingFloat16Accumulation(@Unsigned @NativeType("VkBool32") int value) {
+    public void cooperativeVectorTrainingFloat16Accumulation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTrainingFloat16Accumulation, OFFSET$cooperativeVectorTrainingFloat16Accumulation, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int cooperativeVectorTrainingFloat32Accumulation() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeVectorTrainingFloat32Accumulation() {
         return segment.get(LAYOUT$cooperativeVectorTrainingFloat32Accumulation, OFFSET$cooperativeVectorTrainingFloat32Accumulation);
     }
 
-    public void cooperativeVectorTrainingFloat32Accumulation(@Unsigned @NativeType("VkBool32") int value) {
+    public void cooperativeVectorTrainingFloat32Accumulation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTrainingFloat32Accumulation, OFFSET$cooperativeVectorTrainingFloat32Accumulation, value);
     }
 

@@ -191,11 +191,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 

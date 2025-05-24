@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long minPlacedMemoryMapAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long minPlacedMemoryMapAlignment() {
         return segment.get(LAYOUT$minPlacedMemoryMapAlignment, OFFSET$minPlacedMemoryMapAlignment);
     }
 
-    public void minPlacedMemoryMapAlignment(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void minPlacedMemoryMapAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minPlacedMemoryMapAlignment, OFFSET$minPlacedMemoryMapAlignment, value);
     }
 

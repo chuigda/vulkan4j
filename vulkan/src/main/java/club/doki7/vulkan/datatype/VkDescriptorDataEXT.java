@@ -420,11 +420,11 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pStorageBuffer, OFFSET$pStorageBuffer, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long accelerationStructure() {
+    public @NativeType("VkDeviceAddress") @Unsigned long accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void accelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 

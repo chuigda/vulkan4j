@@ -142,19 +142,19 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
         return ret;
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long resourceOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long resourceOffset() {
         return segment.get(LAYOUT$resourceOffset, OFFSET$resourceOffset);
     }
 
-    public void resourceOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void resourceOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$resourceOffset, OFFSET$resourceOffset, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
@@ -170,11 +170,11 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long memoryOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
     }
 

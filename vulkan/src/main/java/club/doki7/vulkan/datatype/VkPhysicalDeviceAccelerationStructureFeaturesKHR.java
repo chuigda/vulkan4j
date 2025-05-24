@@ -182,43 +182,43 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int accelerationStructure() {
+    public @NativeType("VkBool32") @Unsigned int accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@Unsigned @NativeType("VkBool32") int value) {
+    public void accelerationStructure(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int accelerationStructureCaptureReplay() {
+    public @NativeType("VkBool32") @Unsigned int accelerationStructureCaptureReplay() {
         return segment.get(LAYOUT$accelerationStructureCaptureReplay, OFFSET$accelerationStructureCaptureReplay);
     }
 
-    public void accelerationStructureCaptureReplay(@Unsigned @NativeType("VkBool32") int value) {
+    public void accelerationStructureCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureCaptureReplay, OFFSET$accelerationStructureCaptureReplay, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int accelerationStructureIndirectBuild() {
+    public @NativeType("VkBool32") @Unsigned int accelerationStructureIndirectBuild() {
         return segment.get(LAYOUT$accelerationStructureIndirectBuild, OFFSET$accelerationStructureIndirectBuild);
     }
 
-    public void accelerationStructureIndirectBuild(@Unsigned @NativeType("VkBool32") int value) {
+    public void accelerationStructureIndirectBuild(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureIndirectBuild, OFFSET$accelerationStructureIndirectBuild, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int accelerationStructureHostCommands() {
+    public @NativeType("VkBool32") @Unsigned int accelerationStructureHostCommands() {
         return segment.get(LAYOUT$accelerationStructureHostCommands, OFFSET$accelerationStructureHostCommands);
     }
 
-    public void accelerationStructureHostCommands(@Unsigned @NativeType("VkBool32") int value) {
+    public void accelerationStructureHostCommands(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureHostCommands, OFFSET$accelerationStructureHostCommands, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int descriptorBindingAccelerationStructureUpdateAfterBind() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingAccelerationStructureUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind, OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind);
     }
 
-    public void descriptorBindingAccelerationStructureUpdateAfterBind(@Unsigned @NativeType("VkBool32") int value) {
+    public void descriptorBindingAccelerationStructureUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind, OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind, value);
     }
 

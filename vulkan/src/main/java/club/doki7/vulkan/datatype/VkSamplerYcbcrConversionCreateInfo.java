@@ -241,11 +241,11 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         segment.set(LAYOUT$chromaFilter, OFFSET$chromaFilter, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int forceExplicitReconstruction() {
+    public @NativeType("VkBool32") @Unsigned int forceExplicitReconstruction() {
         return segment.get(LAYOUT$forceExplicitReconstruction, OFFSET$forceExplicitReconstruction);
     }
 
-    public void forceExplicitReconstruction(@Unsigned @NativeType("VkBool32") int value) {
+    public void forceExplicitReconstruction(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$forceExplicitReconstruction, OFFSET$forceExplicitReconstruction, value);
     }
 

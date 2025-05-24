@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSubgroupClock() {
+    public @NativeType("VkBool32") @Unsigned int shaderSubgroupClock() {
         return segment.get(LAYOUT$shaderSubgroupClock, OFFSET$shaderSubgroupClock);
     }
 
-    public void shaderSubgroupClock(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSubgroupClock(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupClock, OFFSET$shaderSubgroupClock, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderDeviceClock() {
+    public @NativeType("VkBool32") @Unsigned int shaderDeviceClock() {
         return segment.get(LAYOUT$shaderDeviceClock, OFFSET$shaderDeviceClock);
     }
 
-    public void shaderDeviceClock(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderDeviceClock(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDeviceClock, OFFSET$shaderDeviceClock, value);
     }
 

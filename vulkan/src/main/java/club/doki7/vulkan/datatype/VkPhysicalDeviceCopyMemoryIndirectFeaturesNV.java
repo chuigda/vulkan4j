@@ -178,11 +178,11 @@ public record VkPhysicalDeviceCopyMemoryIndirectFeaturesNV(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int indirectCopy() {
+    public @NativeType("VkBool32") @Unsigned int indirectCopy() {
         return segment.get(LAYOUT$indirectCopy, OFFSET$indirectCopy);
     }
 
-    public void indirectCopy(@Unsigned @NativeType("VkBool32") int value) {
+    public void indirectCopy(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$indirectCopy, OFFSET$indirectCopy, value);
     }
 

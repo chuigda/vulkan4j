@@ -215,11 +215,11 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int occlusionQueryEnable() {
+    public @NativeType("VkBool32") @Unsigned int occlusionQueryEnable() {
         return segment.get(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable);
     }
 
-    public void occlusionQueryEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void occlusionQueryEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable, value);
     }
 

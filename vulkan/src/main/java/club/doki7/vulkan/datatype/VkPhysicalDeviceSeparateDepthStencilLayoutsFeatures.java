@@ -178,11 +178,11 @@ public record VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int separateDepthStencilLayouts() {
+    public @NativeType("VkBool32") @Unsigned int separateDepthStencilLayouts() {
         return segment.get(LAYOUT$separateDepthStencilLayouts, OFFSET$separateDepthStencilLayouts);
     }
 
-    public void separateDepthStencilLayouts(@Unsigned @NativeType("VkBool32") int value) {
+    public void separateDepthStencilLayouts(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$separateDepthStencilLayouts, OFFSET$separateDepthStencilLayouts, value);
     }
 

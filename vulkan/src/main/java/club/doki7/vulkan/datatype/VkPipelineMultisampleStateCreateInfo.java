@@ -200,11 +200,11 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int sampleShadingEnable() {
+    public @NativeType("VkBool32") @Unsigned int sampleShadingEnable() {
         return segment.get(LAYOUT$sampleShadingEnable, OFFSET$sampleShadingEnable);
     }
 
-    public void sampleShadingEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void sampleShadingEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sampleShadingEnable, OFFSET$sampleShadingEnable, value);
     }
 
@@ -220,7 +220,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @Unsigned @Pointer(comment="VkSampleMask") IntPtr pSampleMask() {
+    public @Nullable @Pointer(comment="VkSampleMask") @Unsigned IntPtr pSampleMask() {
         MemorySegment s = pSampleMaskRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -228,7 +228,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return new IntPtr(s);
     }
 
-    public void pSampleMask(@Nullable @Unsigned @Pointer(comment="VkSampleMask") IntPtr value) {
+    public void pSampleMask(@Nullable @Pointer(comment="VkSampleMask") @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleMaskRaw(s);
     }
@@ -241,19 +241,19 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int alphaToCoverageEnable() {
+    public @NativeType("VkBool32") @Unsigned int alphaToCoverageEnable() {
         return segment.get(LAYOUT$alphaToCoverageEnable, OFFSET$alphaToCoverageEnable);
     }
 
-    public void alphaToCoverageEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void alphaToCoverageEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$alphaToCoverageEnable, OFFSET$alphaToCoverageEnable, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int alphaToOneEnable() {
+    public @NativeType("VkBool32") @Unsigned int alphaToOneEnable() {
         return segment.get(LAYOUT$alphaToOneEnable, OFFSET$alphaToOneEnable);
     }
 
-    public void alphaToOneEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void alphaToOneEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$alphaToOneEnable, OFFSET$alphaToOneEnable, value);
     }
 

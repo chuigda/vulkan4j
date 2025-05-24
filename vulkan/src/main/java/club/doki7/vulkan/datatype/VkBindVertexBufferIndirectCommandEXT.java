@@ -140,11 +140,11 @@ public record VkBindVertexBufferIndirectCommandEXT(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long bufferAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long bufferAddress() {
         return segment.get(LAYOUT$bufferAddress, OFFSET$bufferAddress);
     }
 
-    public void bufferAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void bufferAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$bufferAddress, OFFSET$bufferAddress, value);
     }
 

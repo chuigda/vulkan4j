@@ -210,19 +210,19 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long offset() {
+    public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long range() {
+    public @NativeType("VkDeviceSize") @Unsigned long range() {
         return segment.get(LAYOUT$range, OFFSET$range);
     }
 
-    public void range(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void range(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$range, OFFSET$range, value);
     }
 

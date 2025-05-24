@@ -183,51 +183,51 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int rectangularLines() {
+    public @NativeType("VkBool32") @Unsigned int rectangularLines() {
         return segment.get(LAYOUT$rectangularLines, OFFSET$rectangularLines);
     }
 
-    public void rectangularLines(@Unsigned @NativeType("VkBool32") int value) {
+    public void rectangularLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rectangularLines, OFFSET$rectangularLines, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int bresenhamLines() {
+    public @NativeType("VkBool32") @Unsigned int bresenhamLines() {
         return segment.get(LAYOUT$bresenhamLines, OFFSET$bresenhamLines);
     }
 
-    public void bresenhamLines(@Unsigned @NativeType("VkBool32") int value) {
+    public void bresenhamLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bresenhamLines, OFFSET$bresenhamLines, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int smoothLines() {
+    public @NativeType("VkBool32") @Unsigned int smoothLines() {
         return segment.get(LAYOUT$smoothLines, OFFSET$smoothLines);
     }
 
-    public void smoothLines(@Unsigned @NativeType("VkBool32") int value) {
+    public void smoothLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$smoothLines, OFFSET$smoothLines, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int stippledRectangularLines() {
+    public @NativeType("VkBool32") @Unsigned int stippledRectangularLines() {
         return segment.get(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines);
     }
 
-    public void stippledRectangularLines(@Unsigned @NativeType("VkBool32") int value) {
+    public void stippledRectangularLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int stippledBresenhamLines() {
+    public @NativeType("VkBool32") @Unsigned int stippledBresenhamLines() {
         return segment.get(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines);
     }
 
-    public void stippledBresenhamLines(@Unsigned @NativeType("VkBool32") int value) {
+    public void stippledBresenhamLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int stippledSmoothLines() {
+    public @NativeType("VkBool32") @Unsigned int stippledSmoothLines() {
         return segment.get(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines);
     }
 
-    public void stippledSmoothLines(@Unsigned @NativeType("VkBool32") int value) {
+    public void stippledSmoothLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines, value);
     }
 

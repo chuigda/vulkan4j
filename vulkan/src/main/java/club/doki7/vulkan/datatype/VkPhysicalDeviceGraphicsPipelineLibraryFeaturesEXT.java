@@ -178,11 +178,11 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int graphicsPipelineLibrary() {
+    public @NativeType("VkBool32") @Unsigned int graphicsPipelineLibrary() {
         return segment.get(LAYOUT$graphicsPipelineLibrary, OFFSET$graphicsPipelineLibrary);
     }
 
-    public void graphicsPipelineLibrary(@Unsigned @NativeType("VkBool32") int value) {
+    public void graphicsPipelineLibrary(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$graphicsPipelineLibrary, OFFSET$graphicsPipelineLibrary, value);
     }
 

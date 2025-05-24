@@ -178,11 +178,11 @@ public record VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int clusterShadingRate() {
+    public @NativeType("VkBool32") @Unsigned int clusterShadingRate() {
         return segment.get(LAYOUT$clusterShadingRate, OFFSET$clusterShadingRate);
     }
 
-    public void clusterShadingRate(@Unsigned @NativeType("VkBool32") int value) {
+    public void clusterShadingRate(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clusterShadingRate, OFFSET$clusterShadingRate, value);
     }
 

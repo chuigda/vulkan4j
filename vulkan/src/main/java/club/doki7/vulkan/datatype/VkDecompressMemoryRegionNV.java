@@ -142,35 +142,35 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long srcAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long srcAddress() {
         return segment.get(LAYOUT$srcAddress, OFFSET$srcAddress);
     }
 
-    public void srcAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void srcAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$srcAddress, OFFSET$srcAddress, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long dstAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long dstAddress() {
         return segment.get(LAYOUT$dstAddress, OFFSET$dstAddress);
     }
 
-    public void dstAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void dstAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$dstAddress, OFFSET$dstAddress, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long compressedSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long compressedSize() {
         return segment.get(LAYOUT$compressedSize, OFFSET$compressedSize);
     }
 
-    public void compressedSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void compressedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$compressedSize, OFFSET$compressedSize, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long decompressedSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long decompressedSize() {
         return segment.get(LAYOUT$decompressedSize, OFFSET$decompressedSize);
     }
 
-    public void decompressedSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void decompressedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$decompressedSize, OFFSET$decompressedSize, value);
     }
 

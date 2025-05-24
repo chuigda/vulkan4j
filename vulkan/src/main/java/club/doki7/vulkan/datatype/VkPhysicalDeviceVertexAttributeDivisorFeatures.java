@@ -179,19 +179,19 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeatures(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int vertexAttributeInstanceRateDivisor() {
+    public @NativeType("VkBool32") @Unsigned int vertexAttributeInstanceRateDivisor() {
         return segment.get(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor);
     }
 
-    public void vertexAttributeInstanceRateDivisor(@Unsigned @NativeType("VkBool32") int value) {
+    public void vertexAttributeInstanceRateDivisor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int vertexAttributeInstanceRateZeroDivisor() {
+    public @NativeType("VkBool32") @Unsigned int vertexAttributeInstanceRateZeroDivisor() {
         return segment.get(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor);
     }
 
-    public void vertexAttributeInstanceRateZeroDivisor(@Unsigned @NativeType("VkBool32") int value) {
+    public void vertexAttributeInstanceRateZeroDivisor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor, value);
     }
 

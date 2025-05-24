@@ -178,11 +178,11 @@ public record VkPhysicalDeviceVideoMaintenance2FeaturesKHR(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int videoMaintenance2() {
+    public @NativeType("VkBool32") @Unsigned int videoMaintenance2() {
         return segment.get(LAYOUT$videoMaintenance2, OFFSET$videoMaintenance2);
     }
 
-    public void videoMaintenance2(@Unsigned @NativeType("VkBool32") int value) {
+    public void videoMaintenance2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$videoMaintenance2, OFFSET$videoMaintenance2, value);
     }
 

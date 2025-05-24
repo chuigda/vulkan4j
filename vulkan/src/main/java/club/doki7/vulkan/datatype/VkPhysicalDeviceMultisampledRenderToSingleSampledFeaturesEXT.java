@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(@NotN
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int multisampledRenderToSingleSampled() {
+    public @NativeType("VkBool32") @Unsigned int multisampledRenderToSingleSampled() {
         return segment.get(LAYOUT$multisampledRenderToSingleSampled, OFFSET$multisampledRenderToSingleSampled);
     }
 
-    public void multisampledRenderToSingleSampled(@Unsigned @NativeType("VkBool32") int value) {
+    public void multisampledRenderToSingleSampled(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multisampledRenderToSingleSampled, OFFSET$multisampledRenderToSingleSampled, value);
     }
 

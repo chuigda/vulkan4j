@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(@NotNull M
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int perViewPositionAllComponents() {
+    public @NativeType("VkBool32") @Unsigned int perViewPositionAllComponents() {
         return segment.get(LAYOUT$perViewPositionAllComponents, OFFSET$perViewPositionAllComponents);
     }
 
-    public void perViewPositionAllComponents(@Unsigned @NativeType("VkBool32") int value) {
+    public void perViewPositionAllComponents(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$perViewPositionAllComponents, OFFSET$perViewPositionAllComponents, value);
     }
 

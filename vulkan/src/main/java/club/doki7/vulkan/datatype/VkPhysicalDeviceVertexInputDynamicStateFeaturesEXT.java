@@ -178,11 +178,11 @@ public record VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int vertexInputDynamicState() {
+    public @NativeType("VkBool32") @Unsigned int vertexInputDynamicState() {
         return segment.get(LAYOUT$vertexInputDynamicState, OFFSET$vertexInputDynamicState);
     }
 
-    public void vertexInputDynamicState(@Unsigned @NativeType("VkBool32") int value) {
+    public void vertexInputDynamicState(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexInputDynamicState, OFFSET$vertexInputDynamicState, value);
     }
 

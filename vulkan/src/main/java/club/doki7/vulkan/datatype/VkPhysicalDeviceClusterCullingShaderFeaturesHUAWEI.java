@@ -179,19 +179,19 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int clustercullingShader() {
+    public @NativeType("VkBool32") @Unsigned int clustercullingShader() {
         return segment.get(LAYOUT$clustercullingShader, OFFSET$clustercullingShader);
     }
 
-    public void clustercullingShader(@Unsigned @NativeType("VkBool32") int value) {
+    public void clustercullingShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clustercullingShader, OFFSET$clustercullingShader, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int multiviewClusterCullingShader() {
+    public @NativeType("VkBool32") @Unsigned int multiviewClusterCullingShader() {
         return segment.get(LAYOUT$multiviewClusterCullingShader, OFFSET$multiviewClusterCullingShader);
     }
 
-    public void multiviewClusterCullingShader(@Unsigned @NativeType("VkBool32") int value) {
+    public void multiviewClusterCullingShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewClusterCullingShader, OFFSET$multiviewClusterCullingShader, value);
     }
 

@@ -192,123 +192,123 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int constantAlphaColorBlendFactors() {
+    public @NativeType("VkBool32") @Unsigned int constantAlphaColorBlendFactors() {
         return segment.get(LAYOUT$constantAlphaColorBlendFactors, OFFSET$constantAlphaColorBlendFactors);
     }
 
-    public void constantAlphaColorBlendFactors(@Unsigned @NativeType("VkBool32") int value) {
+    public void constantAlphaColorBlendFactors(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$constantAlphaColorBlendFactors, OFFSET$constantAlphaColorBlendFactors, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int events() {
+    public @NativeType("VkBool32") @Unsigned int events() {
         return segment.get(LAYOUT$events, OFFSET$events);
     }
 
-    public void events(@Unsigned @NativeType("VkBool32") int value) {
+    public void events(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$events, OFFSET$events, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int imageViewFormatReinterpretation() {
+    public @NativeType("VkBool32") @Unsigned int imageViewFormatReinterpretation() {
         return segment.get(LAYOUT$imageViewFormatReinterpretation, OFFSET$imageViewFormatReinterpretation);
     }
 
-    public void imageViewFormatReinterpretation(@Unsigned @NativeType("VkBool32") int value) {
+    public void imageViewFormatReinterpretation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageViewFormatReinterpretation, OFFSET$imageViewFormatReinterpretation, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int imageViewFormatSwizzle() {
+    public @NativeType("VkBool32") @Unsigned int imageViewFormatSwizzle() {
         return segment.get(LAYOUT$imageViewFormatSwizzle, OFFSET$imageViewFormatSwizzle);
     }
 
-    public void imageViewFormatSwizzle(@Unsigned @NativeType("VkBool32") int value) {
+    public void imageViewFormatSwizzle(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageViewFormatSwizzle, OFFSET$imageViewFormatSwizzle, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int imageView2DOn3DImage() {
+    public @NativeType("VkBool32") @Unsigned int imageView2DOn3DImage() {
         return segment.get(LAYOUT$imageView2DOn3DImage, OFFSET$imageView2DOn3DImage);
     }
 
-    public void imageView2DOn3DImage(@Unsigned @NativeType("VkBool32") int value) {
+    public void imageView2DOn3DImage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageView2DOn3DImage, OFFSET$imageView2DOn3DImage, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int multisampleArrayImage() {
+    public @NativeType("VkBool32") @Unsigned int multisampleArrayImage() {
         return segment.get(LAYOUT$multisampleArrayImage, OFFSET$multisampleArrayImage);
     }
 
-    public void multisampleArrayImage(@Unsigned @NativeType("VkBool32") int value) {
+    public void multisampleArrayImage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multisampleArrayImage, OFFSET$multisampleArrayImage, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int mutableComparisonSamplers() {
+    public @NativeType("VkBool32") @Unsigned int mutableComparisonSamplers() {
         return segment.get(LAYOUT$mutableComparisonSamplers, OFFSET$mutableComparisonSamplers);
     }
 
-    public void mutableComparisonSamplers(@Unsigned @NativeType("VkBool32") int value) {
+    public void mutableComparisonSamplers(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$mutableComparisonSamplers, OFFSET$mutableComparisonSamplers, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int pointPolygons() {
+    public @NativeType("VkBool32") @Unsigned int pointPolygons() {
         return segment.get(LAYOUT$pointPolygons, OFFSET$pointPolygons);
     }
 
-    public void pointPolygons(@Unsigned @NativeType("VkBool32") int value) {
+    public void pointPolygons(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pointPolygons, OFFSET$pointPolygons, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int samplerMipLodBias() {
+    public @NativeType("VkBool32") @Unsigned int samplerMipLodBias() {
         return segment.get(LAYOUT$samplerMipLodBias, OFFSET$samplerMipLodBias);
     }
 
-    public void samplerMipLodBias(@Unsigned @NativeType("VkBool32") int value) {
+    public void samplerMipLodBias(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$samplerMipLodBias, OFFSET$samplerMipLodBias, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int separateStencilMaskRef() {
+    public @NativeType("VkBool32") @Unsigned int separateStencilMaskRef() {
         return segment.get(LAYOUT$separateStencilMaskRef, OFFSET$separateStencilMaskRef);
     }
 
-    public void separateStencilMaskRef(@Unsigned @NativeType("VkBool32") int value) {
+    public void separateStencilMaskRef(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$separateStencilMaskRef, OFFSET$separateStencilMaskRef, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderSampleRateInterpolationFunctions() {
+    public @NativeType("VkBool32") @Unsigned int shaderSampleRateInterpolationFunctions() {
         return segment.get(LAYOUT$shaderSampleRateInterpolationFunctions, OFFSET$shaderSampleRateInterpolationFunctions);
     }
 
-    public void shaderSampleRateInterpolationFunctions(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderSampleRateInterpolationFunctions(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSampleRateInterpolationFunctions, OFFSET$shaderSampleRateInterpolationFunctions, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int tessellationIsolines() {
+    public @NativeType("VkBool32") @Unsigned int tessellationIsolines() {
         return segment.get(LAYOUT$tessellationIsolines, OFFSET$tessellationIsolines);
     }
 
-    public void tessellationIsolines(@Unsigned @NativeType("VkBool32") int value) {
+    public void tessellationIsolines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$tessellationIsolines, OFFSET$tessellationIsolines, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int tessellationPointMode() {
+    public @NativeType("VkBool32") @Unsigned int tessellationPointMode() {
         return segment.get(LAYOUT$tessellationPointMode, OFFSET$tessellationPointMode);
     }
 
-    public void tessellationPointMode(@Unsigned @NativeType("VkBool32") int value) {
+    public void tessellationPointMode(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$tessellationPointMode, OFFSET$tessellationPointMode, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int triangleFans() {
+    public @NativeType("VkBool32") @Unsigned int triangleFans() {
         return segment.get(LAYOUT$triangleFans, OFFSET$triangleFans);
     }
 
-    public void triangleFans(@Unsigned @NativeType("VkBool32") int value) {
+    public void triangleFans(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$triangleFans, OFFSET$triangleFans, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int vertexAttributeAccessBeyondStride() {
+    public @NativeType("VkBool32") @Unsigned int vertexAttributeAccessBeyondStride() {
         return segment.get(LAYOUT$vertexAttributeAccessBeyondStride, OFFSET$vertexAttributeAccessBeyondStride);
     }
 
-    public void vertexAttributeAccessBeyondStride(@Unsigned @NativeType("VkBool32") int value) {
+    public void vertexAttributeAccessBeyondStride(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeAccessBeyondStride, OFFSET$vertexAttributeAccessBeyondStride, value);
     }
 

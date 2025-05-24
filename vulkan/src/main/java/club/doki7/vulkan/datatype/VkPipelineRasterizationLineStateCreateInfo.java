@@ -189,11 +189,11 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         segment.set(LAYOUT$lineRasterizationMode, OFFSET$lineRasterizationMode, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int stippledLineEnable() {
+    public @NativeType("VkBool32") @Unsigned int stippledLineEnable() {
         return segment.get(LAYOUT$stippledLineEnable, OFFSET$stippledLineEnable);
     }
 
-    public void stippledLineEnable(@Unsigned @NativeType("VkBool32") int value) {
+    public void stippledLineEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledLineEnable, OFFSET$stippledLineEnable, value);
     }
 

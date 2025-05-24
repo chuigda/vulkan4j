@@ -369,19 +369,19 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$maxQIndex, OFFSET$maxQIndex, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int prefersGopRemainingFrames() {
+    public @NativeType("VkBool32") @Unsigned int prefersGopRemainingFrames() {
         return segment.get(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames);
     }
 
-    public void prefersGopRemainingFrames(@Unsigned @NativeType("VkBool32") int value) {
+    public void prefersGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int requiresGopRemainingFrames() {
+    public @NativeType("VkBool32") @Unsigned int requiresGopRemainingFrames() {
         return segment.get(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames);
     }
 
-    public void requiresGopRemainingFrames(@Unsigned @NativeType("VkBool32") int value) {
+    public void requiresGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
     }
 

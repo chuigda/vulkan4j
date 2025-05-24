@@ -178,11 +178,11 @@ public record VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int nativeUnalignedPerformance() {
+    public @NativeType("VkBool32") @Unsigned int nativeUnalignedPerformance() {
         return segment.get(LAYOUT$nativeUnalignedPerformance, OFFSET$nativeUnalignedPerformance);
     }
 
-    public void nativeUnalignedPerformance(@Unsigned @NativeType("VkBool32") int value) {
+    public void nativeUnalignedPerformance(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nativeUnalignedPerformance, OFFSET$nativeUnalignedPerformance, value);
     }
 

@@ -181,35 +181,35 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int workgroupMemoryExplicitLayout() {
+    public @NativeType("VkBool32") @Unsigned int workgroupMemoryExplicitLayout() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout, OFFSET$workgroupMemoryExplicitLayout);
     }
 
-    public void workgroupMemoryExplicitLayout(@Unsigned @NativeType("VkBool32") int value) {
+    public void workgroupMemoryExplicitLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout, OFFSET$workgroupMemoryExplicitLayout, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int workgroupMemoryExplicitLayoutScalarBlockLayout() {
+    public @NativeType("VkBool32") @Unsigned int workgroupMemoryExplicitLayoutScalarBlockLayout() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout, OFFSET$workgroupMemoryExplicitLayoutScalarBlockLayout);
     }
 
-    public void workgroupMemoryExplicitLayoutScalarBlockLayout(@Unsigned @NativeType("VkBool32") int value) {
+    public void workgroupMemoryExplicitLayoutScalarBlockLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout, OFFSET$workgroupMemoryExplicitLayoutScalarBlockLayout, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int workgroupMemoryExplicitLayout8BitAccess() {
+    public @NativeType("VkBool32") @Unsigned int workgroupMemoryExplicitLayout8BitAccess() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout8BitAccess, OFFSET$workgroupMemoryExplicitLayout8BitAccess);
     }
 
-    public void workgroupMemoryExplicitLayout8BitAccess(@Unsigned @NativeType("VkBool32") int value) {
+    public void workgroupMemoryExplicitLayout8BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout8BitAccess, OFFSET$workgroupMemoryExplicitLayout8BitAccess, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int workgroupMemoryExplicitLayout16BitAccess() {
+    public @NativeType("VkBool32") @Unsigned int workgroupMemoryExplicitLayout16BitAccess() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout16BitAccess, OFFSET$workgroupMemoryExplicitLayout16BitAccess);
     }
 
-    public void workgroupMemoryExplicitLayout16BitAccess(@Unsigned @NativeType("VkBool32") int value) {
+    public void workgroupMemoryExplicitLayout16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout16BitAccess, OFFSET$workgroupMemoryExplicitLayout16BitAccess, value);
     }
 

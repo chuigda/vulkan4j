@@ -178,11 +178,11 @@ public record VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int externalFormatResolve() {
+    public @NativeType("VkBool32") @Unsigned int externalFormatResolve() {
         return segment.get(LAYOUT$externalFormatResolve, OFFSET$externalFormatResolve);
     }
 
-    public void externalFormatResolve(@Unsigned @NativeType("VkBool32") int value) {
+    public void externalFormatResolve(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$externalFormatResolve, OFFSET$externalFormatResolve, value);
     }
 

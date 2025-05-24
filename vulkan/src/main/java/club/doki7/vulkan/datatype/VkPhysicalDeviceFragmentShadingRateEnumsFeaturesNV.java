@@ -180,27 +180,27 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateEnums() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateEnums() {
         return segment.get(LAYOUT$fragmentShadingRateEnums, OFFSET$fragmentShadingRateEnums);
     }
 
-    public void fragmentShadingRateEnums(@Unsigned @NativeType("VkBool32") int value) {
+    public void fragmentShadingRateEnums(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateEnums, OFFSET$fragmentShadingRateEnums, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int supersampleFragmentShadingRates() {
+    public @NativeType("VkBool32") @Unsigned int supersampleFragmentShadingRates() {
         return segment.get(LAYOUT$supersampleFragmentShadingRates, OFFSET$supersampleFragmentShadingRates);
     }
 
-    public void supersampleFragmentShadingRates(@Unsigned @NativeType("VkBool32") int value) {
+    public void supersampleFragmentShadingRates(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$supersampleFragmentShadingRates, OFFSET$supersampleFragmentShadingRates, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int noInvocationFragmentShadingRates() {
+    public @NativeType("VkBool32") @Unsigned int noInvocationFragmentShadingRates() {
         return segment.get(LAYOUT$noInvocationFragmentShadingRates, OFFSET$noInvocationFragmentShadingRates);
     }
 
-    public void noInvocationFragmentShadingRates(@Unsigned @NativeType("VkBool32") int value) {
+    public void noInvocationFragmentShadingRates(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$noInvocationFragmentShadingRates, OFFSET$noInvocationFragmentShadingRates, value);
     }
 

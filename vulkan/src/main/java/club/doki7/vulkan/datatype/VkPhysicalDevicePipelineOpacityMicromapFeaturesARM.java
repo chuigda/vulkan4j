@@ -178,11 +178,11 @@ public record VkPhysicalDevicePipelineOpacityMicromapFeaturesARM(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int pipelineOpacityMicromap() {
+    public @NativeType("VkBool32") @Unsigned int pipelineOpacityMicromap() {
         return segment.get(LAYOUT$pipelineOpacityMicromap, OFFSET$pipelineOpacityMicromap);
     }
 
-    public void pipelineOpacityMicromap(@Unsigned @NativeType("VkBool32") int value) {
+    public void pipelineOpacityMicromap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineOpacityMicromap, OFFSET$pipelineOpacityMicromap, value);
     }
 

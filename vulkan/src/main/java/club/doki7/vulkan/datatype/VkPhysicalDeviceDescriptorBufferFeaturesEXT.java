@@ -181,35 +181,35 @@ public record VkPhysicalDeviceDescriptorBufferFeaturesEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int descriptorBuffer() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBuffer() {
         return segment.get(LAYOUT$descriptorBuffer, OFFSET$descriptorBuffer);
     }
 
-    public void descriptorBuffer(@Unsigned @NativeType("VkBool32") int value) {
+    public void descriptorBuffer(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBuffer, OFFSET$descriptorBuffer, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int descriptorBufferCaptureReplay() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBufferCaptureReplay() {
         return segment.get(LAYOUT$descriptorBufferCaptureReplay, OFFSET$descriptorBufferCaptureReplay);
     }
 
-    public void descriptorBufferCaptureReplay(@Unsigned @NativeType("VkBool32") int value) {
+    public void descriptorBufferCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBufferCaptureReplay, OFFSET$descriptorBufferCaptureReplay, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int descriptorBufferImageLayoutIgnored() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBufferImageLayoutIgnored() {
         return segment.get(LAYOUT$descriptorBufferImageLayoutIgnored, OFFSET$descriptorBufferImageLayoutIgnored);
     }
 
-    public void descriptorBufferImageLayoutIgnored(@Unsigned @NativeType("VkBool32") int value) {
+    public void descriptorBufferImageLayoutIgnored(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBufferImageLayoutIgnored, OFFSET$descriptorBufferImageLayoutIgnored, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int descriptorBufferPushDescriptors() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBufferPushDescriptors() {
         return segment.get(LAYOUT$descriptorBufferPushDescriptors, OFFSET$descriptorBufferPushDescriptors);
     }
 
-    public void descriptorBufferPushDescriptors(@Unsigned @NativeType("VkBool32") int value) {
+    public void descriptorBufferPushDescriptors(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBufferPushDescriptors, OFFSET$descriptorBufferPushDescriptors, value);
     }
 

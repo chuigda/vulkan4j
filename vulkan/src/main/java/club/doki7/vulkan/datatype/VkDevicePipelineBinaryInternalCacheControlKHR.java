@@ -178,11 +178,11 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int disableInternalCache() {
+    public @NativeType("VkBool32") @Unsigned int disableInternalCache() {
         return segment.get(LAYOUT$disableInternalCache, OFFSET$disableInternalCache);
     }
 
-    public void disableInternalCache(@Unsigned @NativeType("VkBool32") int value) {
+    public void disableInternalCache(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$disableInternalCache, OFFSET$disableInternalCache, value);
     }
 

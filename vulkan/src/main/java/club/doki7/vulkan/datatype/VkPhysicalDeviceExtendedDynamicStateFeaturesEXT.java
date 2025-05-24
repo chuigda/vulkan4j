@@ -178,11 +178,11 @@ public record VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int extendedDynamicState() {
+    public @NativeType("VkBool32") @Unsigned int extendedDynamicState() {
         return segment.get(LAYOUT$extendedDynamicState, OFFSET$extendedDynamicState);
     }
 
-    public void extendedDynamicState(@Unsigned @NativeType("VkBool32") int value) {
+    public void extendedDynamicState(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState, OFFSET$extendedDynamicState, value);
     }
 

@@ -179,11 +179,11 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long compactedSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long compactedSize() {
         return segment.get(LAYOUT$compactedSize, OFFSET$compactedSize);
     }
 
-    public void compactedSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void compactedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$compactedSize, OFFSET$compactedSize, value);
     }
 

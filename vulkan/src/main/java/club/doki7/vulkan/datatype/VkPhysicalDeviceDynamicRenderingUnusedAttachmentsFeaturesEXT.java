@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int dynamicRenderingUnusedAttachments() {
+    public @NativeType("VkBool32") @Unsigned int dynamicRenderingUnusedAttachments() {
         return segment.get(LAYOUT$dynamicRenderingUnusedAttachments, OFFSET$dynamicRenderingUnusedAttachments);
     }
 
-    public void dynamicRenderingUnusedAttachments(@Unsigned @NativeType("VkBool32") int value) {
+    public void dynamicRenderingUnusedAttachments(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicRenderingUnusedAttachments, OFFSET$dynamicRenderingUnusedAttachments, value);
     }
 

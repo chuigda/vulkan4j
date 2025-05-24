@@ -192,11 +192,11 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         pAttributes(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("DWORD") int dwAccess() {
+    public @NativeType("DWORD") @Unsigned int dwAccess() {
         return segment.get(LAYOUT$dwAccess, OFFSET$dwAccess);
     }
 
-    public void dwAccess(@Unsigned @NativeType("DWORD") int value) {
+    public void dwAccess(@NativeType("DWORD") @Unsigned int value) {
         segment.set(LAYOUT$dwAccess, OFFSET$dwAccess, value);
     }
 

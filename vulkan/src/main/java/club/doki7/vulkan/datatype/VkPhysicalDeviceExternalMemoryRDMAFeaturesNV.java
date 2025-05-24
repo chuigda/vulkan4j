@@ -178,11 +178,11 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int externalMemoryRDMA() {
+    public @NativeType("VkBool32") @Unsigned int externalMemoryRDMA() {
         return segment.get(LAYOUT$externalMemoryRDMA, OFFSET$externalMemoryRDMA);
     }
 
-    public void externalMemoryRDMA(@Unsigned @NativeType("VkBool32") int value) {
+    public void externalMemoryRDMA(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$externalMemoryRDMA, OFFSET$externalMemoryRDMA, value);
     }
 

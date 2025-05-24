@@ -210,11 +210,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         segment.set(LAYOUT$partitionIndex, OFFSET$partitionIndex, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long accelerationStructure() {
+    public @NativeType("VkDeviceAddress") @Unsigned long accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void accelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 

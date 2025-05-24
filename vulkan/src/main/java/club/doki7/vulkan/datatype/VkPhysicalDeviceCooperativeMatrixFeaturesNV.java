@@ -179,19 +179,19 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int cooperativeMatrix() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrix() {
         return segment.get(LAYOUT$cooperativeMatrix, OFFSET$cooperativeMatrix);
     }
 
-    public void cooperativeMatrix(@Unsigned @NativeType("VkBool32") int value) {
+    public void cooperativeMatrix(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrix, OFFSET$cooperativeMatrix, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int cooperativeMatrixRobustBufferAccess() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrixRobustBufferAccess() {
         return segment.get(LAYOUT$cooperativeMatrixRobustBufferAccess, OFFSET$cooperativeMatrixRobustBufferAccess);
     }
 
-    public void cooperativeMatrixRobustBufferAccess(@Unsigned @NativeType("VkBool32") int value) {
+    public void cooperativeMatrixRobustBufferAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixRobustBufferAccess, OFFSET$cooperativeMatrixRobustBufferAccess, value);
     }
 

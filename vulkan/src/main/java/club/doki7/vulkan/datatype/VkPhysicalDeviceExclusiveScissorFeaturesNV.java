@@ -178,11 +178,11 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int exclusiveScissor() {
+    public @NativeType("VkBool32") @Unsigned int exclusiveScissor() {
         return segment.get(LAYOUT$exclusiveScissor, OFFSET$exclusiveScissor);
     }
 
-    public void exclusiveScissor(@Unsigned @NativeType("VkBool32") int value) {
+    public void exclusiveScissor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$exclusiveScissor, OFFSET$exclusiveScissor, value);
     }
 

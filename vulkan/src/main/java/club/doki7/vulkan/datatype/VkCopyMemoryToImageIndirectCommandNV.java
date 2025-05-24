@@ -143,11 +143,11 @@ public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long srcAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long srcAddress() {
         return segment.get(LAYOUT$srcAddress, OFFSET$srcAddress);
     }
 
-    public void srcAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void srcAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$srcAddress, OFFSET$srcAddress, value);
     }
 

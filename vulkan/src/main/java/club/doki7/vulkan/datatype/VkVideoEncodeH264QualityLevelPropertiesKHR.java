@@ -250,11 +250,11 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         segment.set(LAYOUT$preferredMaxL1ReferenceCount, OFFSET$preferredMaxL1ReferenceCount, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int preferredStdEntropyCodingModeFlag() {
+    public @NativeType("VkBool32") @Unsigned int preferredStdEntropyCodingModeFlag() {
         return segment.get(LAYOUT$preferredStdEntropyCodingModeFlag, OFFSET$preferredStdEntropyCodingModeFlag);
     }
 
-    public void preferredStdEntropyCodingModeFlag(@Unsigned @NativeType("VkBool32") int value) {
+    public void preferredStdEntropyCodingModeFlag(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$preferredStdEntropyCodingModeFlag, OFFSET$preferredStdEntropyCodingModeFlag, value);
     }
 

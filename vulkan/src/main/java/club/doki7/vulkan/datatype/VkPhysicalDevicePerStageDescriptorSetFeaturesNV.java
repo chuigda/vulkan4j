@@ -179,19 +179,19 @@ public record VkPhysicalDevicePerStageDescriptorSetFeaturesNV(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int perStageDescriptorSet() {
+    public @NativeType("VkBool32") @Unsigned int perStageDescriptorSet() {
         return segment.get(LAYOUT$perStageDescriptorSet, OFFSET$perStageDescriptorSet);
     }
 
-    public void perStageDescriptorSet(@Unsigned @NativeType("VkBool32") int value) {
+    public void perStageDescriptorSet(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$perStageDescriptorSet, OFFSET$perStageDescriptorSet, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int dynamicPipelineLayout() {
+    public @NativeType("VkBool32") @Unsigned int dynamicPipelineLayout() {
         return segment.get(LAYOUT$dynamicPipelineLayout, OFFSET$dynamicPipelineLayout);
     }
 
-    public void dynamicPipelineLayout(@Unsigned @NativeType("VkBool32") int value) {
+    public void dynamicPipelineLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicPipelineLayout, OFFSET$dynamicPipelineLayout, value);
     }
 

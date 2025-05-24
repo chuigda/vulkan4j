@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int descriptorSetHostMapping() {
+    public @NativeType("VkBool32") @Unsigned int descriptorSetHostMapping() {
         return segment.get(LAYOUT$descriptorSetHostMapping, OFFSET$descriptorSetHostMapping);
     }
 
-    public void descriptorSetHostMapping(@Unsigned @NativeType("VkBool32") int value) {
+    public void descriptorSetHostMapping(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorSetHostMapping, OFFSET$descriptorSetHostMapping, value);
     }
 

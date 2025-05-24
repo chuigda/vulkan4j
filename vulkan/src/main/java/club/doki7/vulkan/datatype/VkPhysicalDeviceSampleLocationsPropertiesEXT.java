@@ -214,11 +214,11 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$sampleLocationSubPixelBits, OFFSET$sampleLocationSubPixelBits, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int variableSampleLocations() {
+    public @NativeType("VkBool32") @Unsigned int variableSampleLocations() {
         return segment.get(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations);
     }
 
-    public void variableSampleLocations(@Unsigned @NativeType("VkBool32") int value) {
+    public void variableSampleLocations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations, value);
     }
 

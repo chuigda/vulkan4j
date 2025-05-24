@@ -178,11 +178,11 @@ public record VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int advancedBlendCoherentOperations() {
+    public @NativeType("VkBool32") @Unsigned int advancedBlendCoherentOperations() {
         return segment.get(LAYOUT$advancedBlendCoherentOperations, OFFSET$advancedBlendCoherentOperations);
     }
 
-    public void advancedBlendCoherentOperations(@Unsigned @NativeType("VkBool32") int value) {
+    public void advancedBlendCoherentOperations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$advancedBlendCoherentOperations, OFFSET$advancedBlendCoherentOperations, value);
     }
 

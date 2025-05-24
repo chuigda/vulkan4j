@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shadingRateImage() {
+    public @NativeType("VkBool32") @Unsigned int shadingRateImage() {
         return segment.get(LAYOUT$shadingRateImage, OFFSET$shadingRateImage);
     }
 
-    public void shadingRateImage(@Unsigned @NativeType("VkBool32") int value) {
+    public void shadingRateImage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shadingRateImage, OFFSET$shadingRateImage, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shadingRateCoarseSampleOrder() {
+    public @NativeType("VkBool32") @Unsigned int shadingRateCoarseSampleOrder() {
         return segment.get(LAYOUT$shadingRateCoarseSampleOrder, OFFSET$shadingRateCoarseSampleOrder);
     }
 
-    public void shadingRateCoarseSampleOrder(@Unsigned @NativeType("VkBool32") int value) {
+    public void shadingRateCoarseSampleOrder(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shadingRateCoarseSampleOrder, OFFSET$shadingRateCoarseSampleOrder, value);
     }
 

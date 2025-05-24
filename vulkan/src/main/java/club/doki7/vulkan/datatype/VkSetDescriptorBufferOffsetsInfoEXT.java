@@ -248,7 +248,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @Unsigned @Pointer(comment="VkDeviceSize") LongPtr pOffsets() {
+    public @Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr pOffsets() {
         MemorySegment s = pOffsetsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -256,7 +256,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new LongPtr(s);
     }
 
-    public void pOffsets(@Nullable @Unsigned @Pointer(comment="VkDeviceSize") LongPtr value) {
+    public void pOffsets(@Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pOffsetsRaw(s);
     }

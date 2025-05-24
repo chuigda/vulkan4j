@@ -178,11 +178,11 @@ public record VkVideoEncodeSessionParametersFeedbackInfoKHR(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int hasOverrides() {
+    public @NativeType("VkBool32") @Unsigned int hasOverrides() {
         return segment.get(LAYOUT$hasOverrides, OFFSET$hasOverrides);
     }
 
-    public void hasOverrides(@Unsigned @NativeType("VkBool32") int value) {
+    public void hasOverrides(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hasOverrides, OFFSET$hasOverrides, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int inheritedViewportScissor2D() {
+    public @NativeType("VkBool32") @Unsigned int inheritedViewportScissor2D() {
         return segment.get(LAYOUT$inheritedViewportScissor2D, OFFSET$inheritedViewportScissor2D);
     }
 
-    public void inheritedViewportScissor2D(@Unsigned @NativeType("VkBool32") int value) {
+    public void inheritedViewportScissor2D(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$inheritedViewportScissor2D, OFFSET$inheritedViewportScissor2D, value);
     }
 

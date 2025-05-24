@@ -178,11 +178,11 @@ public record VkPhysicalDevicePipelinePropertiesFeaturesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int pipelinePropertiesIdentifier() {
+    public @NativeType("VkBool32") @Unsigned int pipelinePropertiesIdentifier() {
         return segment.get(LAYOUT$pipelinePropertiesIdentifier, OFFSET$pipelinePropertiesIdentifier);
     }
 
-    public void pipelinePropertiesIdentifier(@Unsigned @NativeType("VkBool32") int value) {
+    public void pipelinePropertiesIdentifier(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelinePropertiesIdentifier, OFFSET$pipelinePropertiesIdentifier, value);
     }
 

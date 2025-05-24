@@ -178,11 +178,11 @@ public record VkPhysicalDeviceTileMemoryHeapFeaturesQCOM(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int tileMemoryHeap() {
+    public @NativeType("VkBool32") @Unsigned int tileMemoryHeap() {
         return segment.get(LAYOUT$tileMemoryHeap, OFFSET$tileMemoryHeap);
     }
 
-    public void tileMemoryHeap(@Unsigned @NativeType("VkBool32") int value) {
+    public void tileMemoryHeap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$tileMemoryHeap, OFFSET$tileMemoryHeap, value);
     }
 

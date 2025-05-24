@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int shaderCoreBuiltins() {
+    public @NativeType("VkBool32") @Unsigned int shaderCoreBuiltins() {
         return segment.get(LAYOUT$shaderCoreBuiltins, OFFSET$shaderCoreBuiltins);
     }
 
-    public void shaderCoreBuiltins(@Unsigned @NativeType("VkBool32") int value) {
+    public void shaderCoreBuiltins(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderCoreBuiltins, OFFSET$shaderCoreBuiltins, value);
     }
 

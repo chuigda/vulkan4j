@@ -326,11 +326,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
     }
 
-    public @Unsigned @NativeType("VkBool32") int clipped() {
+    public @NativeType("VkBool32") @Unsigned int clipped() {
         return segment.get(LAYOUT$clipped, OFFSET$clipped);
     }
 
-    public void clipped(@Unsigned @NativeType("VkBool32") int value) {
+    public void clipped(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clipped, OFFSET$clipped, value);
     }
 

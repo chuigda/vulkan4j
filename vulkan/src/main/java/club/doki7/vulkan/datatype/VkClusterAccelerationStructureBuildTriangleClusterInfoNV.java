@@ -261,43 +261,43 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         segment.set(LAYOUT$opacityMicromapIndexBufferStride, OFFSET$opacityMicromapIndexBufferStride, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long indexBuffer() {
+    public @NativeType("VkDeviceAddress") @Unsigned long indexBuffer() {
         return segment.get(LAYOUT$indexBuffer, OFFSET$indexBuffer);
     }
 
-    public void indexBuffer(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void indexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$indexBuffer, OFFSET$indexBuffer, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long vertexBuffer() {
+    public @NativeType("VkDeviceAddress") @Unsigned long vertexBuffer() {
         return segment.get(LAYOUT$vertexBuffer, OFFSET$vertexBuffer);
     }
 
-    public void vertexBuffer(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void vertexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$vertexBuffer, OFFSET$vertexBuffer, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long geometryIndexAndFlagsBuffer() {
+    public @NativeType("VkDeviceAddress") @Unsigned long geometryIndexAndFlagsBuffer() {
         return segment.get(LAYOUT$geometryIndexAndFlagsBuffer, OFFSET$geometryIndexAndFlagsBuffer);
     }
 
-    public void geometryIndexAndFlagsBuffer(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void geometryIndexAndFlagsBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$geometryIndexAndFlagsBuffer, OFFSET$geometryIndexAndFlagsBuffer, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long opacityMicromapArray() {
+    public @NativeType("VkDeviceAddress") @Unsigned long opacityMicromapArray() {
         return segment.get(LAYOUT$opacityMicromapArray, OFFSET$opacityMicromapArray);
     }
 
-    public void opacityMicromapArray(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void opacityMicromapArray(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$opacityMicromapArray, OFFSET$opacityMicromapArray, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long opacityMicromapIndexBuffer() {
+    public @NativeType("VkDeviceAddress") @Unsigned long opacityMicromapIndexBuffer() {
         return segment.get(LAYOUT$opacityMicromapIndexBuffer, OFFSET$opacityMicromapIndexBuffer);
     }
 
-    public void opacityMicromapIndexBuffer(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void opacityMicromapIndexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$opacityMicromapIndexBuffer, OFFSET$opacityMicromapIndexBuffer, value);
     }
 

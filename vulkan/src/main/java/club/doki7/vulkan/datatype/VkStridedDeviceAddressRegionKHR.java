@@ -140,27 +140,27 @@ public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long deviceAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long stride() {
+    public @NativeType("VkDeviceSize") @Unsigned long stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void stride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 

@@ -219,35 +219,35 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long indirectAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long indirectAddress() {
         return segment.get(LAYOUT$indirectAddress, OFFSET$indirectAddress);
     }
 
-    public void indirectAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void indirectAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$indirectAddress, OFFSET$indirectAddress, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long indirectAddressSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long indirectAddressSize() {
         return segment.get(LAYOUT$indirectAddressSize, OFFSET$indirectAddressSize);
     }
 
-    public void indirectAddressSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void indirectAddressSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$indirectAddressSize, OFFSET$indirectAddressSize, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long preprocessAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long preprocessAddress() {
         return segment.get(LAYOUT$preprocessAddress, OFFSET$preprocessAddress);
     }
 
-    public void preprocessAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void preprocessAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$preprocessAddress, OFFSET$preprocessAddress, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceSize") long preprocessSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long preprocessSize() {
         return segment.get(LAYOUT$preprocessSize, OFFSET$preprocessSize);
     }
 
-    public void preprocessSize(@Unsigned @NativeType("VkDeviceSize") long value) {
+    public void preprocessSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
     }
 
@@ -259,11 +259,11 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$maxSequenceCount, OFFSET$maxSequenceCount, value);
     }
 
-    public @Unsigned @NativeType("VkDeviceAddress") long sequenceCountAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long sequenceCountAddress() {
         return segment.get(LAYOUT$sequenceCountAddress, OFFSET$sequenceCountAddress);
     }
 
-    public void sequenceCountAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
+    public void sequenceCountAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$sequenceCountAddress, OFFSET$sequenceCountAddress, value);
     }
 

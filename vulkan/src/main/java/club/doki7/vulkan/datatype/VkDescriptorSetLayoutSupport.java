@@ -178,11 +178,11 @@ public record VkDescriptorSetLayoutSupport(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int supported() {
+    public @NativeType("VkBool32") @Unsigned int supported() {
         return segment.get(LAYOUT$supported, OFFSET$supported);
     }
 
-    public void supported(@Unsigned @NativeType("VkBool32") int value) {
+    public void supported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$supported, OFFSET$supported, value);
     }
 

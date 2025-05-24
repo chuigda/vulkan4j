@@ -180,11 +180,11 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int nullColorAttachmentWithExternalFormatResolve() {
+    public @NativeType("VkBool32") @Unsigned int nullColorAttachmentWithExternalFormatResolve() {
         return segment.get(LAYOUT$nullColorAttachmentWithExternalFormatResolve, OFFSET$nullColorAttachmentWithExternalFormatResolve);
     }
 
-    public void nullColorAttachmentWithExternalFormatResolve(@Unsigned @NativeType("VkBool32") int value) {
+    public void nullColorAttachmentWithExternalFormatResolve(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nullColorAttachmentWithExternalFormatResolve, OFFSET$nullColorAttachmentWithExternalFormatResolve, value);
     }
 

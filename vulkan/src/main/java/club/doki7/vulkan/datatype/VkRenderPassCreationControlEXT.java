@@ -178,11 +178,11 @@ public record VkRenderPassCreationControlEXT(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned @NativeType("VkBool32") int disallowMerging() {
+    public @NativeType("VkBool32") @Unsigned int disallowMerging() {
         return segment.get(LAYOUT$disallowMerging, OFFSET$disallowMerging);
     }
 
-    public void disallowMerging(@Unsigned @NativeType("VkBool32") int value) {
+    public void disallowMerging(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$disallowMerging, OFFSET$disallowMerging, value);
     }
 
