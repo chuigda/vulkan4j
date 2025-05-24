@@ -13,7 +13,9 @@ class TestTokenize {
 
         var idx = 0
         while (true) {
+            val peekedToken = tokenizer.peek()
             val token = tokenizer.next()
+            assertEquals(peekedToken, token)
             assertEquals(tokenTypes[idx], token.type)
             if (token.type == EOI) {
                 break
@@ -121,6 +123,24 @@ class TestTokenize {
             "const", "VkDeviceSize", "*", "VMA_NULLABLE",
             "@VMA_LEN_IF_NOT_NULL(\"VkPhysicalDeviceMemoryProperties::memoryHeapCount\")",
             "pHeapSizeLimit", ";",
+            ""
+        )
+
+        testTokenize(src, tokenTypes, tokenValues)
+    }
+
+    @Test
+    fun testStructField2() {
+        val src = "VmaDetailedStatistics memoryType[VK_MAX_MEMORY_TYPES];"
+
+        val tokenTypes = listOf(
+            // 'VmaDetailedStatistics', 'memoryType', '[', 'VK_MAX_MEMORY_TYPES', ']', ';'
+            IDENT, IDENT, SYMBOL, IDENT, SYMBOL, SYMBOL,
+            EOI
+        )
+
+        val tokenValues = listOf(
+            "VmaDetailedStatistics", "memoryType", "[", "VK_MAX_MEMORY_TYPES", "]", ";",
             ""
         )
 
