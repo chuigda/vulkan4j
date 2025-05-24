@@ -107,7 +107,7 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -115,7 +115,7 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDevicePortabilitySubsetFeaturesKHR.BYTES, VkPhysicalDevicePortabilitySubsetFeaturesKHR.BYTES));
         }
@@ -172,19 +172,19 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -192,123 +192,123 @@ public record VkPhysicalDevicePortabilitySubsetFeaturesKHR(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int constantAlphaColorBlendFactors() {
+    public @NativeType("VkBool32") @Unsigned int constantAlphaColorBlendFactors() {
         return segment.get(LAYOUT$constantAlphaColorBlendFactors, OFFSET$constantAlphaColorBlendFactors);
     }
 
-    public void constantAlphaColorBlendFactors(@unsigned int value) {
+    public void constantAlphaColorBlendFactors(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$constantAlphaColorBlendFactors, OFFSET$constantAlphaColorBlendFactors, value);
     }
 
-    public @unsigned int events() {
+    public @NativeType("VkBool32") @Unsigned int events() {
         return segment.get(LAYOUT$events, OFFSET$events);
     }
 
-    public void events(@unsigned int value) {
+    public void events(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$events, OFFSET$events, value);
     }
 
-    public @unsigned int imageViewFormatReinterpretation() {
+    public @NativeType("VkBool32") @Unsigned int imageViewFormatReinterpretation() {
         return segment.get(LAYOUT$imageViewFormatReinterpretation, OFFSET$imageViewFormatReinterpretation);
     }
 
-    public void imageViewFormatReinterpretation(@unsigned int value) {
+    public void imageViewFormatReinterpretation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageViewFormatReinterpretation, OFFSET$imageViewFormatReinterpretation, value);
     }
 
-    public @unsigned int imageViewFormatSwizzle() {
+    public @NativeType("VkBool32") @Unsigned int imageViewFormatSwizzle() {
         return segment.get(LAYOUT$imageViewFormatSwizzle, OFFSET$imageViewFormatSwizzle);
     }
 
-    public void imageViewFormatSwizzle(@unsigned int value) {
+    public void imageViewFormatSwizzle(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageViewFormatSwizzle, OFFSET$imageViewFormatSwizzle, value);
     }
 
-    public @unsigned int imageView2DOn3DImage() {
+    public @NativeType("VkBool32") @Unsigned int imageView2DOn3DImage() {
         return segment.get(LAYOUT$imageView2DOn3DImage, OFFSET$imageView2DOn3DImage);
     }
 
-    public void imageView2DOn3DImage(@unsigned int value) {
+    public void imageView2DOn3DImage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageView2DOn3DImage, OFFSET$imageView2DOn3DImage, value);
     }
 
-    public @unsigned int multisampleArrayImage() {
+    public @NativeType("VkBool32") @Unsigned int multisampleArrayImage() {
         return segment.get(LAYOUT$multisampleArrayImage, OFFSET$multisampleArrayImage);
     }
 
-    public void multisampleArrayImage(@unsigned int value) {
+    public void multisampleArrayImage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multisampleArrayImage, OFFSET$multisampleArrayImage, value);
     }
 
-    public @unsigned int mutableComparisonSamplers() {
+    public @NativeType("VkBool32") @Unsigned int mutableComparisonSamplers() {
         return segment.get(LAYOUT$mutableComparisonSamplers, OFFSET$mutableComparisonSamplers);
     }
 
-    public void mutableComparisonSamplers(@unsigned int value) {
+    public void mutableComparisonSamplers(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$mutableComparisonSamplers, OFFSET$mutableComparisonSamplers, value);
     }
 
-    public @unsigned int pointPolygons() {
+    public @NativeType("VkBool32") @Unsigned int pointPolygons() {
         return segment.get(LAYOUT$pointPolygons, OFFSET$pointPolygons);
     }
 
-    public void pointPolygons(@unsigned int value) {
+    public void pointPolygons(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pointPolygons, OFFSET$pointPolygons, value);
     }
 
-    public @unsigned int samplerMipLodBias() {
+    public @NativeType("VkBool32") @Unsigned int samplerMipLodBias() {
         return segment.get(LAYOUT$samplerMipLodBias, OFFSET$samplerMipLodBias);
     }
 
-    public void samplerMipLodBias(@unsigned int value) {
+    public void samplerMipLodBias(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$samplerMipLodBias, OFFSET$samplerMipLodBias, value);
     }
 
-    public @unsigned int separateStencilMaskRef() {
+    public @NativeType("VkBool32") @Unsigned int separateStencilMaskRef() {
         return segment.get(LAYOUT$separateStencilMaskRef, OFFSET$separateStencilMaskRef);
     }
 
-    public void separateStencilMaskRef(@unsigned int value) {
+    public void separateStencilMaskRef(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$separateStencilMaskRef, OFFSET$separateStencilMaskRef, value);
     }
 
-    public @unsigned int shaderSampleRateInterpolationFunctions() {
+    public @NativeType("VkBool32") @Unsigned int shaderSampleRateInterpolationFunctions() {
         return segment.get(LAYOUT$shaderSampleRateInterpolationFunctions, OFFSET$shaderSampleRateInterpolationFunctions);
     }
 
-    public void shaderSampleRateInterpolationFunctions(@unsigned int value) {
+    public void shaderSampleRateInterpolationFunctions(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSampleRateInterpolationFunctions, OFFSET$shaderSampleRateInterpolationFunctions, value);
     }
 
-    public @unsigned int tessellationIsolines() {
+    public @NativeType("VkBool32") @Unsigned int tessellationIsolines() {
         return segment.get(LAYOUT$tessellationIsolines, OFFSET$tessellationIsolines);
     }
 
-    public void tessellationIsolines(@unsigned int value) {
+    public void tessellationIsolines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$tessellationIsolines, OFFSET$tessellationIsolines, value);
     }
 
-    public @unsigned int tessellationPointMode() {
+    public @NativeType("VkBool32") @Unsigned int tessellationPointMode() {
         return segment.get(LAYOUT$tessellationPointMode, OFFSET$tessellationPointMode);
     }
 
-    public void tessellationPointMode(@unsigned int value) {
+    public void tessellationPointMode(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$tessellationPointMode, OFFSET$tessellationPointMode, value);
     }
 
-    public @unsigned int triangleFans() {
+    public @NativeType("VkBool32") @Unsigned int triangleFans() {
         return segment.get(LAYOUT$triangleFans, OFFSET$triangleFans);
     }
 
-    public void triangleFans(@unsigned int value) {
+    public void triangleFans(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$triangleFans, OFFSET$triangleFans, value);
     }
 
-    public @unsigned int vertexAttributeAccessBeyondStride() {
+    public @NativeType("VkBool32") @Unsigned int vertexAttributeAccessBeyondStride() {
         return segment.get(LAYOUT$vertexAttributeAccessBeyondStride, OFFSET$vertexAttributeAccessBeyondStride);
     }
 
-    public void vertexAttributeAccessBeyondStride(@unsigned int value) {
+    public void vertexAttributeAccessBeyondStride(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeAccessBeyondStride, OFFSET$vertexAttributeAccessBeyondStride, value);
     }
 

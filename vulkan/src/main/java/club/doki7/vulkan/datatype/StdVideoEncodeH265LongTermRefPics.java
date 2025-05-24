@@ -87,7 +87,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH265LongTermRefPics.BYTES, StdVideoEncodeH265LongTermRefPics.BYTES));
         }
@@ -142,59 +142,59 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @unsigned byte num_long_term_sps() {
+    public @Unsigned byte num_long_term_sps() {
         return segment.get(LAYOUT$num_long_term_sps, OFFSET$num_long_term_sps);
     }
 
-    public void num_long_term_sps(@unsigned byte value) {
+    public void num_long_term_sps(@Unsigned byte value) {
         segment.set(LAYOUT$num_long_term_sps, OFFSET$num_long_term_sps, value);
     }
 
-    public @unsigned byte num_long_term_pics() {
+    public @Unsigned byte num_long_term_pics() {
         return segment.get(LAYOUT$num_long_term_pics, OFFSET$num_long_term_pics);
     }
 
-    public void num_long_term_pics(@unsigned byte value) {
+    public void num_long_term_pics(@Unsigned byte value) {
         segment.set(LAYOUT$num_long_term_pics, OFFSET$num_long_term_pics, value);
     }
 
-    public @unsigned byte lt_idx_sps() {
+    public @Unsigned byte lt_idx_sps() {
         return segment.get(LAYOUT$lt_idx_sps, OFFSET$lt_idx_sps);
     }
 
-    public void lt_idx_sps(@unsigned byte value) {
+    public void lt_idx_sps(@Unsigned byte value) {
         segment.set(LAYOUT$lt_idx_sps, OFFSET$lt_idx_sps, value);
     }
 
-    public @unsigned byte poc_lsb_lt() {
+    public @Unsigned byte poc_lsb_lt() {
         return segment.get(LAYOUT$poc_lsb_lt, OFFSET$poc_lsb_lt);
     }
 
-    public void poc_lsb_lt(@unsigned byte value) {
+    public void poc_lsb_lt(@Unsigned byte value) {
         segment.set(LAYOUT$poc_lsb_lt, OFFSET$poc_lsb_lt, value);
     }
 
-    public @unsigned short used_by_curr_pic_lt_flag() {
+    public @Unsigned short used_by_curr_pic_lt_flag() {
         return segment.get(LAYOUT$used_by_curr_pic_lt_flag, OFFSET$used_by_curr_pic_lt_flag);
     }
 
-    public void used_by_curr_pic_lt_flag(@unsigned short value) {
+    public void used_by_curr_pic_lt_flag(@Unsigned short value) {
         segment.set(LAYOUT$used_by_curr_pic_lt_flag, OFFSET$used_by_curr_pic_lt_flag, value);
     }
 
-    public @unsigned byte delta_poc_msb_present_flag() {
+    public @Unsigned byte delta_poc_msb_present_flag() {
         return segment.get(LAYOUT$delta_poc_msb_present_flag, OFFSET$delta_poc_msb_present_flag);
     }
 
-    public void delta_poc_msb_present_flag(@unsigned byte value) {
+    public void delta_poc_msb_present_flag(@Unsigned byte value) {
         segment.set(LAYOUT$delta_poc_msb_present_flag, OFFSET$delta_poc_msb_present_flag, value);
     }
 
-    public @unsigned byte delta_poc_msb_cycle_lt() {
+    public @Unsigned byte delta_poc_msb_cycle_lt() {
         return segment.get(LAYOUT$delta_poc_msb_cycle_lt, OFFSET$delta_poc_msb_cycle_lt);
     }
 
-    public void delta_poc_msb_cycle_lt(@unsigned byte value) {
+    public void delta_poc_msb_cycle_lt(@Unsigned byte value) {
         segment.set(LAYOUT$delta_poc_msb_cycle_lt, OFFSET$delta_poc_msb_cycle_lt, value);
     }
 

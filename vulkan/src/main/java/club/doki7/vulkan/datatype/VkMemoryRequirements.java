@@ -85,7 +85,7 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkMemoryRequirements.BYTES, VkMemoryRequirements.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @unsigned long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@unsigned long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @unsigned long alignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long alignment() {
         return segment.get(LAYOUT$alignment, OFFSET$alignment);
     }
 
-    public void alignment(@unsigned long value) {
+    public void alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$alignment, OFFSET$alignment, value);
     }
 
-    public @unsigned int memoryTypeBits() {
+    public @Unsigned int memoryTypeBits() {
         return segment.get(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits);
     }
 
-    public void memoryTypeBits(@unsigned int value) {
+    public void memoryTypeBits(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
     }
 

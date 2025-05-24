@@ -117,7 +117,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -125,7 +125,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceVulkan14Properties.BYTES, VkPhysicalDeviceVulkan14Properties.BYTES));
         }
@@ -182,19 +182,19 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_4_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -202,163 +202,163 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int lineSubPixelPrecisionBits() {
+    public @Unsigned int lineSubPixelPrecisionBits() {
         return segment.get(LAYOUT$lineSubPixelPrecisionBits, OFFSET$lineSubPixelPrecisionBits);
     }
 
-    public void lineSubPixelPrecisionBits(@unsigned int value) {
+    public void lineSubPixelPrecisionBits(@Unsigned int value) {
         segment.set(LAYOUT$lineSubPixelPrecisionBits, OFFSET$lineSubPixelPrecisionBits, value);
     }
 
-    public @unsigned int maxVertexAttribDivisor() {
+    public @Unsigned int maxVertexAttribDivisor() {
         return segment.get(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor);
     }
 
-    public void maxVertexAttribDivisor(@unsigned int value) {
+    public void maxVertexAttribDivisor(@Unsigned int value) {
         segment.set(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor, value);
     }
 
-    public @unsigned int supportsNonZeroFirstInstance() {
+    public @NativeType("VkBool32") @Unsigned int supportsNonZeroFirstInstance() {
         return segment.get(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance);
     }
 
-    public void supportsNonZeroFirstInstance(@unsigned int value) {
+    public void supportsNonZeroFirstInstance(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance, value);
     }
 
-    public @unsigned int maxPushDescriptors() {
+    public @Unsigned int maxPushDescriptors() {
         return segment.get(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors);
     }
 
-    public void maxPushDescriptors(@unsigned int value) {
+    public void maxPushDescriptors(@Unsigned int value) {
         segment.set(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors, value);
     }
 
-    public @unsigned int dynamicRenderingLocalReadDepthStencilAttachments() {
+    public @NativeType("VkBool32") @Unsigned int dynamicRenderingLocalReadDepthStencilAttachments() {
         return segment.get(LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments, OFFSET$dynamicRenderingLocalReadDepthStencilAttachments);
     }
 
-    public void dynamicRenderingLocalReadDepthStencilAttachments(@unsigned int value) {
+    public void dynamicRenderingLocalReadDepthStencilAttachments(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments, OFFSET$dynamicRenderingLocalReadDepthStencilAttachments, value);
     }
 
-    public @unsigned int dynamicRenderingLocalReadMultisampledAttachments() {
+    public @NativeType("VkBool32") @Unsigned int dynamicRenderingLocalReadMultisampledAttachments() {
         return segment.get(LAYOUT$dynamicRenderingLocalReadMultisampledAttachments, OFFSET$dynamicRenderingLocalReadMultisampledAttachments);
     }
 
-    public void dynamicRenderingLocalReadMultisampledAttachments(@unsigned int value) {
+    public void dynamicRenderingLocalReadMultisampledAttachments(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicRenderingLocalReadMultisampledAttachments, OFFSET$dynamicRenderingLocalReadMultisampledAttachments, value);
     }
 
-    public @unsigned int earlyFragmentMultisampleCoverageAfterSampleCounting() {
+    public @NativeType("VkBool32") @Unsigned int earlyFragmentMultisampleCoverageAfterSampleCounting() {
         return segment.get(LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting);
     }
 
-    public void earlyFragmentMultisampleCoverageAfterSampleCounting(@unsigned int value) {
+    public void earlyFragmentMultisampleCoverageAfterSampleCounting(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting, value);
     }
 
-    public @unsigned int earlyFragmentSampleMaskTestBeforeSampleCounting() {
+    public @NativeType("VkBool32") @Unsigned int earlyFragmentSampleMaskTestBeforeSampleCounting() {
         return segment.get(LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting);
     }
 
-    public void earlyFragmentSampleMaskTestBeforeSampleCounting(@unsigned int value) {
+    public void earlyFragmentSampleMaskTestBeforeSampleCounting(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting, value);
     }
 
-    public @unsigned int depthStencilSwizzleOneSupport() {
+    public @NativeType("VkBool32") @Unsigned int depthStencilSwizzleOneSupport() {
         return segment.get(LAYOUT$depthStencilSwizzleOneSupport, OFFSET$depthStencilSwizzleOneSupport);
     }
 
-    public void depthStencilSwizzleOneSupport(@unsigned int value) {
+    public void depthStencilSwizzleOneSupport(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthStencilSwizzleOneSupport, OFFSET$depthStencilSwizzleOneSupport, value);
     }
 
-    public @unsigned int polygonModePointSize() {
+    public @NativeType("VkBool32") @Unsigned int polygonModePointSize() {
         return segment.get(LAYOUT$polygonModePointSize, OFFSET$polygonModePointSize);
     }
 
-    public void polygonModePointSize(@unsigned int value) {
+    public void polygonModePointSize(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$polygonModePointSize, OFFSET$polygonModePointSize, value);
     }
 
-    public @unsigned int nonStrictSinglePixelWideLinesUseParallelogram() {
+    public @NativeType("VkBool32") @Unsigned int nonStrictSinglePixelWideLinesUseParallelogram() {
         return segment.get(LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, OFFSET$nonStrictSinglePixelWideLinesUseParallelogram);
     }
 
-    public void nonStrictSinglePixelWideLinesUseParallelogram(@unsigned int value) {
+    public void nonStrictSinglePixelWideLinesUseParallelogram(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, OFFSET$nonStrictSinglePixelWideLinesUseParallelogram, value);
     }
 
-    public @unsigned int nonStrictWideLinesUseParallelogram() {
+    public @NativeType("VkBool32") @Unsigned int nonStrictWideLinesUseParallelogram() {
         return segment.get(LAYOUT$nonStrictWideLinesUseParallelogram, OFFSET$nonStrictWideLinesUseParallelogram);
     }
 
-    public void nonStrictWideLinesUseParallelogram(@unsigned int value) {
+    public void nonStrictWideLinesUseParallelogram(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nonStrictWideLinesUseParallelogram, OFFSET$nonStrictWideLinesUseParallelogram, value);
     }
 
-    public @unsigned int blockTexelViewCompatibleMultipleLayers() {
+    public @NativeType("VkBool32") @Unsigned int blockTexelViewCompatibleMultipleLayers() {
         return segment.get(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers);
     }
 
-    public void blockTexelViewCompatibleMultipleLayers(@unsigned int value) {
+    public void blockTexelViewCompatibleMultipleLayers(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers, value);
     }
 
-    public @unsigned int maxCombinedImageSamplerDescriptorCount() {
+    public @Unsigned int maxCombinedImageSamplerDescriptorCount() {
         return segment.get(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount);
     }
 
-    public void maxCombinedImageSamplerDescriptorCount(@unsigned int value) {
+    public void maxCombinedImageSamplerDescriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount, value);
     }
 
-    public @unsigned int fragmentShadingRateClampCombinerInputs() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateClampCombinerInputs() {
         return segment.get(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs);
     }
 
-    public void fragmentShadingRateClampCombinerInputs(@unsigned int value) {
+    public void fragmentShadingRateClampCombinerInputs(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs, value);
     }
 
-    public @enumtype(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessStorageBuffers() {
+    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessStorageBuffers() {
         return segment.get(LAYOUT$defaultRobustnessStorageBuffers, OFFSET$defaultRobustnessStorageBuffers);
     }
 
-    public void defaultRobustnessStorageBuffers(@enumtype(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public void defaultRobustnessStorageBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessStorageBuffers, OFFSET$defaultRobustnessStorageBuffers, value);
     }
 
-    public @enumtype(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessUniformBuffers() {
+    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessUniformBuffers() {
         return segment.get(LAYOUT$defaultRobustnessUniformBuffers, OFFSET$defaultRobustnessUniformBuffers);
     }
 
-    public void defaultRobustnessUniformBuffers(@enumtype(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public void defaultRobustnessUniformBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessUniformBuffers, OFFSET$defaultRobustnessUniformBuffers, value);
     }
 
-    public @enumtype(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessVertexInputs() {
+    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessVertexInputs() {
         return segment.get(LAYOUT$defaultRobustnessVertexInputs, OFFSET$defaultRobustnessVertexInputs);
     }
 
-    public void defaultRobustnessVertexInputs(@enumtype(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public void defaultRobustnessVertexInputs(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessVertexInputs, OFFSET$defaultRobustnessVertexInputs, value);
     }
 
-    public @enumtype(VkPipelineRobustnessImageBehavior.class) int defaultRobustnessImages() {
+    public @EnumType(VkPipelineRobustnessImageBehavior.class) int defaultRobustnessImages() {
         return segment.get(LAYOUT$defaultRobustnessImages, OFFSET$defaultRobustnessImages);
     }
 
-    public void defaultRobustnessImages(@enumtype(VkPipelineRobustnessImageBehavior.class) int value) {
+    public void defaultRobustnessImages(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessImages, OFFSET$defaultRobustnessImages, value);
     }
 
-    public @unsigned int copySrcLayoutCount() {
+    public @Unsigned int copySrcLayoutCount() {
         return segment.get(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount);
     }
 
-    public void copySrcLayoutCount(@unsigned int value) {
+    public void copySrcLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount, value);
     }
 
@@ -367,7 +367,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkImageLayout.class) IntPtr pCopySrcLayouts() {
+    public @Nullable @EnumType(VkImageLayout.class) IntPtr pCopySrcLayouts() {
         MemorySegment s = pCopySrcLayoutsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -375,24 +375,24 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         return new IntPtr(s);
     }
 
-    public void pCopySrcLayouts(@Nullable @enumtype(VkImageLayout.class) IntPtr value) {
+    public void pCopySrcLayouts(@Nullable @EnumType(VkImageLayout.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopySrcLayoutsRaw(s);
     }
 
-    public @pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
+    public @Pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
         return segment.get(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts);
     }
 
-    public void pCopySrcLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
+    public void pCopySrcLayoutsRaw(@Pointer(target=VkImageLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
 
-    public @unsigned int copyDstLayoutCount() {
+    public @Unsigned int copyDstLayoutCount() {
         return segment.get(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount);
     }
 
-    public void copyDstLayoutCount(@unsigned int value) {
+    public void copyDstLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount, value);
     }
 
@@ -401,7 +401,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkImageLayout.class) IntPtr pCopyDstLayouts() {
+    public @Nullable @EnumType(VkImageLayout.class) IntPtr pCopyDstLayouts() {
         MemorySegment s = pCopyDstLayoutsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -409,32 +409,32 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         return new IntPtr(s);
     }
 
-    public void pCopyDstLayouts(@Nullable @enumtype(VkImageLayout.class) IntPtr value) {
+    public void pCopyDstLayouts(@Nullable @EnumType(VkImageLayout.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
     }
 
-    public @pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
+    public @Pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
         return segment.get(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts);
     }
 
-    public void pCopyDstLayoutsRaw(@pointer(target=VkImageLayout.class) MemorySegment value) {
+    public void pCopyDstLayoutsRaw(@Pointer(target=VkImageLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
 
-    public @unsigned byte optimalTilingLayoutUUID() {
+    public @Unsigned byte optimalTilingLayoutUUID() {
         return segment.get(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID);
     }
 
-    public void optimalTilingLayoutUUID(@unsigned byte value) {
+    public void optimalTilingLayoutUUID(@Unsigned byte value) {
         segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
     }
 
-    public @unsigned int identicalMemoryTypeRequirements() {
+    public @NativeType("VkBool32") @Unsigned int identicalMemoryTypeRequirements() {
         return segment.get(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements);
     }
 
-    public void identicalMemoryTypeRequirements(@unsigned int value) {
+    public void identicalMemoryTypeRequirements(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
     }
 

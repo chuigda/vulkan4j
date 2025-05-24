@@ -13,7 +13,7 @@ public final class VkViewportCoordinateSwizzleNV {
     public static final int POSITIVE_W = 0x6;
     public static final int NEGATIVE_W = 0x7;
 
-    public static String explain(@enumtype(VkViewportCoordinateSwizzleNV.class) int value) {
+    public static String explain(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         return switch (value) {
             case VkViewportCoordinateSwizzleNV.NEGATIVE_W -> "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV";
             case VkViewportCoordinateSwizzleNV.NEGATIVE_X -> "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV";

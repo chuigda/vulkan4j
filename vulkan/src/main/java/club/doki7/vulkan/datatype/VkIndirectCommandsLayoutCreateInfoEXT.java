@@ -98,7 +98,7 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -106,7 +106,7 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectCommandsLayoutCreateInfoEXT.BYTES, VkIndirectCommandsLayoutCreateInfoEXT.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,27 +183,27 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags() {
+    public @EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkIndirectCommandsLayoutUsageFlagsEXT.class) int value) {
+    public void flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int shaderStages() {
+    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public void shaderStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
     }
 
-    public @unsigned int indirectStride() {
+    public @Unsigned int indirectStride() {
         return segment.get(LAYOUT$indirectStride, OFFSET$indirectStride);
     }
 
-    public void indirectStride(@unsigned int value) {
+    public void indirectStride(@Unsigned int value) {
         segment.set(LAYOUT$indirectStride, OFFSET$indirectStride, value);
     }
 
@@ -219,11 +219,11 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int tokenCount() {
+    public @Unsigned int tokenCount() {
         return segment.get(LAYOUT$tokenCount, OFFSET$tokenCount);
     }
 
-    public void tokenCount(@unsigned int value) {
+    public void tokenCount(@Unsigned int value) {
         segment.set(LAYOUT$tokenCount, OFFSET$tokenCount, value);
     }
 
@@ -232,7 +232,7 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         pTokensRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsLayoutTokenEXT.Ptr pTokens(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectCommandsLayoutTokenEXT.Ptr pTokens(int assumedCount) {
         MemorySegment s = pTokensRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -250,11 +250,11 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return new VkIndirectCommandsLayoutTokenEXT(s);
     }
 
-    public @pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment pTokensRaw() {
+    public @Pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment pTokensRaw() {
         return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
     }
 
-    public void pTokensRaw(@pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment value) {
+    public void pTokensRaw(@Pointer(target=VkIndirectCommandsLayoutTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
 

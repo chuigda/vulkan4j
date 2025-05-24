@@ -8,7 +8,7 @@ public final class StdVideoAV1TxMode {
     public static final int STD_VIDEO_AV1_TX_MODE_SELECT = 0x2;
     public static final int STD_VIDEO_AV1_TX_MODE_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoAV1TxMode.class) int value) {
+    public static String explain(@EnumType(StdVideoAV1TxMode.class) int value) {
         return switch (value) {
             case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_INVALID -> "STD_VIDEO_AV1_TX_MODE_INVALID";
             case StdVideoAV1TxMode.STD_VIDEO_AV1_TX_MODE_LARGEST -> "STD_VIDEO_AV1_TX_MODE_LARGEST";

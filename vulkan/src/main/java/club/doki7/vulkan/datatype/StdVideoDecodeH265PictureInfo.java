@@ -91,7 +91,7 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -99,7 +99,7 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoDecodeH265PictureInfo.BYTES, StdVideoDecodeH265PictureInfo.BYTES));
         }
@@ -154,35 +154,35 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte sps_video_parameter_set_id() {
+    public @Unsigned byte sps_video_parameter_set_id() {
         return segment.get(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id);
     }
 
-    public void sps_video_parameter_set_id(@unsigned byte value) {
+    public void sps_video_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id, value);
     }
 
-    public @unsigned byte pps_seq_parameter_set_id() {
+    public @Unsigned byte pps_seq_parameter_set_id() {
         return segment.get(LAYOUT$pps_seq_parameter_set_id, OFFSET$pps_seq_parameter_set_id);
     }
 
-    public void pps_seq_parameter_set_id(@unsigned byte value) {
+    public void pps_seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pps_seq_parameter_set_id, OFFSET$pps_seq_parameter_set_id, value);
     }
 
-    public @unsigned byte pps_pic_parameter_set_id() {
+    public @Unsigned byte pps_pic_parameter_set_id() {
         return segment.get(LAYOUT$pps_pic_parameter_set_id, OFFSET$pps_pic_parameter_set_id);
     }
 
-    public void pps_pic_parameter_set_id(@unsigned byte value) {
+    public void pps_pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pps_pic_parameter_set_id, OFFSET$pps_pic_parameter_set_id, value);
     }
 
-    public @unsigned byte NumDeltaPocsOfRefRpsIdx() {
+    public @Unsigned byte NumDeltaPocsOfRefRpsIdx() {
         return segment.get(LAYOUT$NumDeltaPocsOfRefRpsIdx, OFFSET$NumDeltaPocsOfRefRpsIdx);
     }
 
-    public void NumDeltaPocsOfRefRpsIdx(@unsigned byte value) {
+    public void NumDeltaPocsOfRefRpsIdx(@Unsigned byte value) {
         segment.set(LAYOUT$NumDeltaPocsOfRefRpsIdx, OFFSET$NumDeltaPocsOfRefRpsIdx, value);
     }
 
@@ -194,36 +194,36 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
     }
 
-    public @unsigned short NumBitsForSTRefPicSetInSlice() {
+    public @Unsigned short NumBitsForSTRefPicSetInSlice() {
         return segment.get(LAYOUT$NumBitsForSTRefPicSetInSlice, OFFSET$NumBitsForSTRefPicSetInSlice);
     }
 
-    public void NumBitsForSTRefPicSetInSlice(@unsigned short value) {
+    public void NumBitsForSTRefPicSetInSlice(@Unsigned short value) {
         segment.set(LAYOUT$NumBitsForSTRefPicSetInSlice, OFFSET$NumBitsForSTRefPicSetInSlice, value);
     }
 
 
-    public @unsigned byte RefPicSetStCurrBefore() {
+    public @Unsigned byte RefPicSetStCurrBefore() {
         return segment.get(LAYOUT$RefPicSetStCurrBefore, OFFSET$RefPicSetStCurrBefore);
     }
 
-    public void RefPicSetStCurrBefore(@unsigned byte value) {
+    public void RefPicSetStCurrBefore(@Unsigned byte value) {
         segment.set(LAYOUT$RefPicSetStCurrBefore, OFFSET$RefPicSetStCurrBefore, value);
     }
 
-    public @unsigned byte RefPicSetStCurrAfter() {
+    public @Unsigned byte RefPicSetStCurrAfter() {
         return segment.get(LAYOUT$RefPicSetStCurrAfter, OFFSET$RefPicSetStCurrAfter);
     }
 
-    public void RefPicSetStCurrAfter(@unsigned byte value) {
+    public void RefPicSetStCurrAfter(@Unsigned byte value) {
         segment.set(LAYOUT$RefPicSetStCurrAfter, OFFSET$RefPicSetStCurrAfter, value);
     }
 
-    public @unsigned byte RefPicSetLtCurr() {
+    public @Unsigned byte RefPicSetLtCurr() {
         return segment.get(LAYOUT$RefPicSetLtCurr, OFFSET$RefPicSetLtCurr);
     }
 
-    public void RefPicSetLtCurr(@unsigned byte value) {
+    public void RefPicSetLtCurr(@Unsigned byte value) {
         segment.set(LAYOUT$RefPicSetLtCurr, OFFSET$RefPicSetLtCurr, value);
     }
 

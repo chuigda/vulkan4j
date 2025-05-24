@@ -88,7 +88,7 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IS
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -96,7 +96,7 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IS
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH265HrdFlags.BYTES, StdVideoH265HrdFlags.BYTES));
         }
@@ -183,32 +183,32 @@ public record StdVideoH265HrdFlags(@NotNull MemorySegment segment) implements IS
         BitfieldUtil.writeBit(s, 3, value);
     }
 
-    public @unsigned int fixed_pic_rate_general_flag() {
+    public @Unsigned int fixed_pic_rate_general_flag() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag, LAYOUT$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag);
         return BitfieldUtil.readBits(s, 4, 12);
     }
 
-    public void fixed_pic_rate_general_flag(@unsigned int value) {
+    public void fixed_pic_rate_general_flag(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag, LAYOUT$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag);
         BitfieldUtil.writeBits(s, 4, 12, value);
     }
 
-    public @unsigned int fixed_pic_rate_within_cvs_flag() {
+    public @Unsigned int fixed_pic_rate_within_cvs_flag() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag, LAYOUT$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag);
         return BitfieldUtil.readBits(s, 12, 20);
     }
 
-    public void fixed_pic_rate_within_cvs_flag(@unsigned int value) {
+    public void fixed_pic_rate_within_cvs_flag(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag, LAYOUT$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag);
         BitfieldUtil.writeBits(s, 12, 20, value);
     }
 
-    public @unsigned int low_delay_hrd_flag() {
+    public @Unsigned int low_delay_hrd_flag() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag, LAYOUT$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag);
         return BitfieldUtil.readBits(s, 20, 28);
     }
 
-    public void low_delay_hrd_flag(@unsigned int value) {
+    public void low_delay_hrd_flag(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag, LAYOUT$bitfield$nal_hrd_parameters_present_flag$low_delay_hrd_flag);
         BitfieldUtil.writeBits(s, 20, 28, value);
     }

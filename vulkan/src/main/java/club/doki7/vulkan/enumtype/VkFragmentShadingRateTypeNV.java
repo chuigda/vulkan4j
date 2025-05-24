@@ -7,7 +7,7 @@ public final class VkFragmentShadingRateTypeNV {
     public static final int FRAGMENT_SIZE = 0x0;
     public static final int ENUMS = 0x1;
 
-    public static String explain(@enumtype(VkFragmentShadingRateTypeNV.class) int value) {
+    public static String explain(@EnumType(VkFragmentShadingRateTypeNV.class) int value) {
         return switch (value) {
             case VkFragmentShadingRateTypeNV.ENUMS -> "VK_FRAGMENT_SHADING_RATE_TYPE_ENUMS_NV";
             case VkFragmentShadingRateTypeNV.FRAGMENT_SIZE -> "VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV";

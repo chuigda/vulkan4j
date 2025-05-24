@@ -105,7 +105,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -113,7 +113,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectCommandsLayoutTokenNV.BYTES, VkIndirectCommandsLayoutTokenNV.BYTES));
         }
@@ -170,19 +170,19 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_TOKEN_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -190,43 +190,43 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkIndirectCommandsTokenTypeNV.class) int tokenType() {
+    public @EnumType(VkIndirectCommandsTokenTypeNV.class) int tokenType() {
         return segment.get(LAYOUT$tokenType, OFFSET$tokenType);
     }
 
-    public void tokenType(@enumtype(VkIndirectCommandsTokenTypeNV.class) int value) {
+    public void tokenType(@EnumType(VkIndirectCommandsTokenTypeNV.class) int value) {
         segment.set(LAYOUT$tokenType, OFFSET$tokenType, value);
     }
 
-    public @unsigned int stream() {
+    public @Unsigned int stream() {
         return segment.get(LAYOUT$stream, OFFSET$stream);
     }
 
-    public void stream(@unsigned int value) {
+    public void stream(@Unsigned int value) {
         segment.set(LAYOUT$stream, OFFSET$stream, value);
     }
 
-    public @unsigned int offset() {
+    public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@unsigned int value) {
+    public void offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public @unsigned int vertexBindingUnit() {
+    public @Unsigned int vertexBindingUnit() {
         return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
     }
 
-    public void vertexBindingUnit(@unsigned int value) {
+    public void vertexBindingUnit(@Unsigned int value) {
         segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
     }
 
-    public @unsigned int vertexDynamicStride() {
+    public @NativeType("VkBool32") @Unsigned int vertexDynamicStride() {
         return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
     }
 
-    public void vertexDynamicStride(@unsigned int value) {
+    public void vertexDynamicStride(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
     }
 
@@ -242,43 +242,43 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
+    public @EnumType(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
         return segment.get(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags);
     }
 
-    public void pushconstantShaderStageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+    public void pushconstantShaderStageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
     }
 
-    public @unsigned int pushconstantOffset() {
+    public @Unsigned int pushconstantOffset() {
         return segment.get(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset);
     }
 
-    public void pushconstantOffset(@unsigned int value) {
+    public void pushconstantOffset(@Unsigned int value) {
         segment.set(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset, value);
     }
 
-    public @unsigned int pushconstantSize() {
+    public @Unsigned int pushconstantSize() {
         return segment.get(LAYOUT$pushconstantSize, OFFSET$pushconstantSize);
     }
 
-    public void pushconstantSize(@unsigned int value) {
+    public void pushconstantSize(@Unsigned int value) {
         segment.set(LAYOUT$pushconstantSize, OFFSET$pushconstantSize, value);
     }
 
-    public @enumtype(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
+    public @EnumType(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
         return segment.get(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags);
     }
 
-    public void indirectStateFlags(@enumtype(VkIndirectStateFlagsNV.class) int value) {
+    public void indirectStateFlags(@EnumType(VkIndirectStateFlagsNV.class) int value) {
         segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
     }
 
-    public @unsigned int indexTypeCount() {
+    public @Unsigned int indexTypeCount() {
         return segment.get(LAYOUT$indexTypeCount, OFFSET$indexTypeCount);
     }
 
-    public void indexTypeCount(@unsigned int value) {
+    public void indexTypeCount(@Unsigned int value) {
         segment.set(LAYOUT$indexTypeCount, OFFSET$indexTypeCount, value);
     }
 
@@ -287,7 +287,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkIndexType.class) IntPtr pIndexTypes() {
+    public @Nullable @EnumType(VkIndexType.class) IntPtr pIndexTypes() {
         MemorySegment s = pIndexTypesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -295,16 +295,16 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pIndexTypes(@Nullable @enumtype(VkIndexType.class) IntPtr value) {
+    public void pIndexTypes(@Nullable @EnumType(VkIndexType.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypesRaw(s);
     }
 
-    public @pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
+    public @Pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
         return segment.get(LAYOUT$pIndexTypes, OFFSET$pIndexTypes);
     }
 
-    public void pIndexTypesRaw(@pointer(target=VkIndexType.class) MemorySegment value) {
+    public void pIndexTypesRaw(@Pointer(target=VkIndexType.class) MemorySegment value) {
         segment.set(LAYOUT$pIndexTypes, OFFSET$pIndexTypes, value);
     }
 
@@ -312,7 +312,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pIndexTypeValues() {
+    public @Nullable @Unsigned IntPtr pIndexTypeValues() {
         MemorySegment s = pIndexTypeValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -320,16 +320,16 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pIndexTypeValues(@Nullable @unsigned IntPtr value) {
+    public void pIndexTypeValues(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypeValuesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pIndexTypeValuesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pIndexTypeValuesRaw() {
         return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
     }
 
-    public void pIndexTypeValuesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pIndexTypeValuesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
     }
 

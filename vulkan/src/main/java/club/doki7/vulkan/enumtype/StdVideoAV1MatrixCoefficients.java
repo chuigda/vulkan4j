@@ -20,7 +20,7 @@ public final class StdVideoAV1MatrixCoefficients {
     public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_ICTCP = 0xe;
     public static final int STD_VIDEO_AV1_MATRIX_COEFFICIENTS_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoAV1MatrixCoefficients.class) int value) {
+    public static String explain(@EnumType(StdVideoAV1MatrixCoefficients.class) int value) {
         return switch (value) {
             case StdVideoAV1MatrixCoefficients.STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL -> "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL";
             case StdVideoAV1MatrixCoefficients.STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL -> "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL";

@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkFenceCreateFlags {
     public static final int SIGNALED = 0x1;
 
-    public static String explain(@enumtype(VkFenceCreateFlags.class) int flags) {
+    public static String explain(@EnumType(VkFenceCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & SIGNALED) != 0) {
             detectedFlagBits.add("VK_FENCE_CREATE_SIGNALED_BIT");

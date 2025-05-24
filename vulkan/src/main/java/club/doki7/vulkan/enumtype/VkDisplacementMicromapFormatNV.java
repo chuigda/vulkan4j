@@ -8,7 +8,7 @@ public final class VkDisplacementMicromapFormatNV {
     public static final int _256_TRIANGLES_128_BYTES = 0x2;
     public static final int _1024_TRIANGLES_128_BYTES = 0x3;
 
-    public static String explain(@enumtype(VkDisplacementMicromapFormatNV.class) int value) {
+    public static String explain(@EnumType(VkDisplacementMicromapFormatNV.class) int value) {
         return switch (value) {
             case VkDisplacementMicromapFormatNV._1024_TRIANGLES_128_BYTES -> "VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV";
             case VkDisplacementMicromapFormatNV._256_TRIANGLES_128_BYTES -> "VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV";

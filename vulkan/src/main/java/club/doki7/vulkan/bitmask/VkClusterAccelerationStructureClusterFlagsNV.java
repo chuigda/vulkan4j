@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkClusterAccelerationStructureClusterFlagsNV {
     public static final int ALLOW_DISABLE_OPACITY_MICROMAPS = 0x1;
 
-    public static String explain(@enumtype(VkClusterAccelerationStructureClusterFlagsNV.class) int flags) {
+    public static String explain(@EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_DISABLE_OPACITY_MICROMAPS) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_CLUSTER_ALLOW_DISABLE_OPACITY_MICROMAPS_NV");

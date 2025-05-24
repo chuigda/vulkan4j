@@ -8,7 +8,7 @@ public final class StdVideoH264DisableDeblockingFilterIdc {
     public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL = 0x2;
     public static final int STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH264DisableDeblockingFilterIdc.class) int value) {
+    public static String explain(@EnumType(StdVideoH264DisableDeblockingFilterIdc.class) int value) {
         return switch (value) {
             case StdVideoH264DisableDeblockingFilterIdc.STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED -> "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED";
             case StdVideoH264DisableDeblockingFilterIdc.STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED -> "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED";

@@ -84,7 +84,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPresentRegionKHR.BYTES, VkPresentRegionKHR.BYTES));
         }
@@ -139,11 +139,11 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         return ret;
     }
 
-    public @unsigned int rectangleCount() {
+    public @Unsigned int rectangleCount() {
         return segment.get(LAYOUT$rectangleCount, OFFSET$rectangleCount);
     }
 
-    public void rectangleCount(@unsigned int value) {
+    public void rectangleCount(@Unsigned int value) {
         segment.set(LAYOUT$rectangleCount, OFFSET$rectangleCount, value);
     }
 
@@ -152,7 +152,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         pRectanglesRaw(s);
     }
 
-    @unsafe public @Nullable VkRectLayerKHR.Ptr pRectangles(int assumedCount) {
+    @Unsafe public @Nullable VkRectLayerKHR.Ptr pRectangles(int assumedCount) {
         MemorySegment s = pRectanglesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -170,11 +170,11 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         return new VkRectLayerKHR(s);
     }
 
-    public @pointer(target=VkRectLayerKHR.class) MemorySegment pRectanglesRaw() {
+    public @Pointer(target=VkRectLayerKHR.class) MemorySegment pRectanglesRaw() {
         return segment.get(LAYOUT$pRectangles, OFFSET$pRectangles);
     }
 
-    public void pRectanglesRaw(@pointer(target=VkRectLayerKHR.class) MemorySegment value) {
+    public void pRectanglesRaw(@Pointer(target=VkRectLayerKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pRectangles, OFFSET$pRectangles, value);
     }
 

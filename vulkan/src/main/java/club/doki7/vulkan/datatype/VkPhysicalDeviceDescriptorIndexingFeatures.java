@@ -112,7 +112,7 @@ public record VkPhysicalDeviceDescriptorIndexingFeatures(@NotNull MemorySegment 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -120,7 +120,7 @@ public record VkPhysicalDeviceDescriptorIndexingFeatures(@NotNull MemorySegment 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceDescriptorIndexingFeatures.BYTES, VkPhysicalDeviceDescriptorIndexingFeatures.BYTES));
         }
@@ -177,19 +177,19 @@ public record VkPhysicalDeviceDescriptorIndexingFeatures(@NotNull MemorySegment 
         sType(VkStructureType.PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -197,163 +197,163 @@ public record VkPhysicalDeviceDescriptorIndexingFeatures(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderInputAttachmentArrayDynamicIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderInputAttachmentArrayDynamicIndexing() {
         return segment.get(LAYOUT$shaderInputAttachmentArrayDynamicIndexing, OFFSET$shaderInputAttachmentArrayDynamicIndexing);
     }
 
-    public void shaderInputAttachmentArrayDynamicIndexing(@unsigned int value) {
+    public void shaderInputAttachmentArrayDynamicIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderInputAttachmentArrayDynamicIndexing, OFFSET$shaderInputAttachmentArrayDynamicIndexing, value);
     }
 
-    public @unsigned int shaderUniformTexelBufferArrayDynamicIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderUniformTexelBufferArrayDynamicIndexing() {
         return segment.get(LAYOUT$shaderUniformTexelBufferArrayDynamicIndexing, OFFSET$shaderUniformTexelBufferArrayDynamicIndexing);
     }
 
-    public void shaderUniformTexelBufferArrayDynamicIndexing(@unsigned int value) {
+    public void shaderUniformTexelBufferArrayDynamicIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderUniformTexelBufferArrayDynamicIndexing, OFFSET$shaderUniformTexelBufferArrayDynamicIndexing, value);
     }
 
-    public @unsigned int shaderStorageTexelBufferArrayDynamicIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderStorageTexelBufferArrayDynamicIndexing() {
         return segment.get(LAYOUT$shaderStorageTexelBufferArrayDynamicIndexing, OFFSET$shaderStorageTexelBufferArrayDynamicIndexing);
     }
 
-    public void shaderStorageTexelBufferArrayDynamicIndexing(@unsigned int value) {
+    public void shaderStorageTexelBufferArrayDynamicIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderStorageTexelBufferArrayDynamicIndexing, OFFSET$shaderStorageTexelBufferArrayDynamicIndexing, value);
     }
 
-    public @unsigned int shaderUniformBufferArrayNonUniformIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderUniformBufferArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderUniformBufferArrayNonUniformIndexing, OFFSET$shaderUniformBufferArrayNonUniformIndexing);
     }
 
-    public void shaderUniformBufferArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderUniformBufferArrayNonUniformIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderUniformBufferArrayNonUniformIndexing, OFFSET$shaderUniformBufferArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderSampledImageArrayNonUniformIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderSampledImageArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderSampledImageArrayNonUniformIndexing, OFFSET$shaderSampledImageArrayNonUniformIndexing);
     }
 
-    public void shaderSampledImageArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderSampledImageArrayNonUniformIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSampledImageArrayNonUniformIndexing, OFFSET$shaderSampledImageArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderStorageBufferArrayNonUniformIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderStorageBufferArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderStorageBufferArrayNonUniformIndexing, OFFSET$shaderStorageBufferArrayNonUniformIndexing);
     }
 
-    public void shaderStorageBufferArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderStorageBufferArrayNonUniformIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderStorageBufferArrayNonUniformIndexing, OFFSET$shaderStorageBufferArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderStorageImageArrayNonUniformIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderStorageImageArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderStorageImageArrayNonUniformIndexing, OFFSET$shaderStorageImageArrayNonUniformIndexing);
     }
 
-    public void shaderStorageImageArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderStorageImageArrayNonUniformIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderStorageImageArrayNonUniformIndexing, OFFSET$shaderStorageImageArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderInputAttachmentArrayNonUniformIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderInputAttachmentArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderInputAttachmentArrayNonUniformIndexing, OFFSET$shaderInputAttachmentArrayNonUniformIndexing);
     }
 
-    public void shaderInputAttachmentArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderInputAttachmentArrayNonUniformIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderInputAttachmentArrayNonUniformIndexing, OFFSET$shaderInputAttachmentArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderUniformTexelBufferArrayNonUniformIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderUniformTexelBufferArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderUniformTexelBufferArrayNonUniformIndexing, OFFSET$shaderUniformTexelBufferArrayNonUniformIndexing);
     }
 
-    public void shaderUniformTexelBufferArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderUniformTexelBufferArrayNonUniformIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderUniformTexelBufferArrayNonUniformIndexing, OFFSET$shaderUniformTexelBufferArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderStorageTexelBufferArrayNonUniformIndexing() {
+    public @NativeType("VkBool32") @Unsigned int shaderStorageTexelBufferArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderStorageTexelBufferArrayNonUniformIndexing, OFFSET$shaderStorageTexelBufferArrayNonUniformIndexing);
     }
 
-    public void shaderStorageTexelBufferArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderStorageTexelBufferArrayNonUniformIndexing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderStorageTexelBufferArrayNonUniformIndexing, OFFSET$shaderStorageTexelBufferArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int descriptorBindingUniformBufferUpdateAfterBind() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingUniformBufferUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingUniformBufferUpdateAfterBind, OFFSET$descriptorBindingUniformBufferUpdateAfterBind);
     }
 
-    public void descriptorBindingUniformBufferUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingUniformBufferUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingUniformBufferUpdateAfterBind, OFFSET$descriptorBindingUniformBufferUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingSampledImageUpdateAfterBind() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingSampledImageUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingSampledImageUpdateAfterBind, OFFSET$descriptorBindingSampledImageUpdateAfterBind);
     }
 
-    public void descriptorBindingSampledImageUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingSampledImageUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingSampledImageUpdateAfterBind, OFFSET$descriptorBindingSampledImageUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingStorageImageUpdateAfterBind() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingStorageImageUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingStorageImageUpdateAfterBind, OFFSET$descriptorBindingStorageImageUpdateAfterBind);
     }
 
-    public void descriptorBindingStorageImageUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingStorageImageUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingStorageImageUpdateAfterBind, OFFSET$descriptorBindingStorageImageUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingStorageBufferUpdateAfterBind() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingStorageBufferUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingStorageBufferUpdateAfterBind, OFFSET$descriptorBindingStorageBufferUpdateAfterBind);
     }
 
-    public void descriptorBindingStorageBufferUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingStorageBufferUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingStorageBufferUpdateAfterBind, OFFSET$descriptorBindingStorageBufferUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingUniformTexelBufferUpdateAfterBind() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingUniformTexelBufferUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingUniformTexelBufferUpdateAfterBind, OFFSET$descriptorBindingUniformTexelBufferUpdateAfterBind);
     }
 
-    public void descriptorBindingUniformTexelBufferUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingUniformTexelBufferUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingUniformTexelBufferUpdateAfterBind, OFFSET$descriptorBindingUniformTexelBufferUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingStorageTexelBufferUpdateAfterBind() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingStorageTexelBufferUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingStorageTexelBufferUpdateAfterBind, OFFSET$descriptorBindingStorageTexelBufferUpdateAfterBind);
     }
 
-    public void descriptorBindingStorageTexelBufferUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingStorageTexelBufferUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingStorageTexelBufferUpdateAfterBind, OFFSET$descriptorBindingStorageTexelBufferUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingUpdateUnusedWhilePending() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingUpdateUnusedWhilePending() {
         return segment.get(LAYOUT$descriptorBindingUpdateUnusedWhilePending, OFFSET$descriptorBindingUpdateUnusedWhilePending);
     }
 
-    public void descriptorBindingUpdateUnusedWhilePending(@unsigned int value) {
+    public void descriptorBindingUpdateUnusedWhilePending(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingUpdateUnusedWhilePending, OFFSET$descriptorBindingUpdateUnusedWhilePending, value);
     }
 
-    public @unsigned int descriptorBindingPartiallyBound() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingPartiallyBound() {
         return segment.get(LAYOUT$descriptorBindingPartiallyBound, OFFSET$descriptorBindingPartiallyBound);
     }
 
-    public void descriptorBindingPartiallyBound(@unsigned int value) {
+    public void descriptorBindingPartiallyBound(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingPartiallyBound, OFFSET$descriptorBindingPartiallyBound, value);
     }
 
-    public @unsigned int descriptorBindingVariableDescriptorCount() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingVariableDescriptorCount() {
         return segment.get(LAYOUT$descriptorBindingVariableDescriptorCount, OFFSET$descriptorBindingVariableDescriptorCount);
     }
 
-    public void descriptorBindingVariableDescriptorCount(@unsigned int value) {
+    public void descriptorBindingVariableDescriptorCount(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingVariableDescriptorCount, OFFSET$descriptorBindingVariableDescriptorCount, value);
     }
 
-    public @unsigned int runtimeDescriptorArray() {
+    public @NativeType("VkBool32") @Unsigned int runtimeDescriptorArray() {
         return segment.get(LAYOUT$runtimeDescriptorArray, OFFSET$runtimeDescriptorArray);
     }
 
-    public void runtimeDescriptorArray(@unsigned int value) {
+    public void runtimeDescriptorArray(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$runtimeDescriptorArray, OFFSET$runtimeDescriptorArray, value);
     }
 

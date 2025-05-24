@@ -8,7 +8,7 @@ public final class StdVideoH264CabacInitIdc {
     public static final int STD_VIDEO_H264_CABAC_INIT_IDC_2 = 0x2;
     public static final int STD_VIDEO_H264_CABAC_INIT_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH264CabacInitIdc.class) int value) {
+    public static String explain(@EnumType(StdVideoH264CabacInitIdc.class) int value) {
         return switch (value) {
             case StdVideoH264CabacInitIdc.STD_VIDEO_H264_CABAC_INIT_IDC_0 -> "STD_VIDEO_H264_CABAC_INIT_IDC_0";
             case StdVideoH264CabacInitIdc.STD_VIDEO_H264_CABAC_INIT_IDC_1 -> "STD_VIDEO_H264_CABAC_INIT_IDC_1";

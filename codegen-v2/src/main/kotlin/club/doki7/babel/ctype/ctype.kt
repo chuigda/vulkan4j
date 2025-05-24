@@ -16,11 +16,10 @@ sealed interface CType {
     val jDescriptorParamLayout: String get() = jLayout
 }
 
-class CVoidType : CType {
+data class CVoidType(override val cType: String = "void") : CType {
     override val jType: String = "void"
     override val jLayout: String get() = error("should not call `jLayout` on `void`")
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `void`")
-    override val cType: String = "void"
 }
 
 val voidType = CVoidType()
@@ -32,13 +31,13 @@ data class CPointerType(
     val comment: String?,
 ) : CType {
     override val jType: String = if (comment != null) {
-        """@pointer(comment="$comment") MemorySegment"""
+        """@Pointer(comment="$comment") MemorySegment"""
     }
     else {
-        """@pointer(comment="void*") MemorySegment"""
+        """@Pointer(comment="void*") MemorySegment"""
     }
 
-    override val jLayout: String = if (pointee == voidType) {
+    override val jLayout: String = if (pointee is CVoidType) {
         "ValueLayout.ADDRESS"
     }
     else {
@@ -47,7 +46,17 @@ data class CPointerType(
 
     override val jLayoutType: String = "AddressLayout"
 
-    override val cType: String = """${pointee.cType}${if (const) " const" else ""}*"""
+    override val cType: String = buildString {
+        if (pointee is CFixedIntType && pointee.comment != null) {
+            append(pointee.comment)
+        } else {
+            append(pointee.cType)
+        }
+        if (const) {
+            append(" const")
+        }
+        append("*")
+    }
 }
 
 data class CHandleType(val name: String) : CType {
@@ -80,6 +89,7 @@ sealed interface CNonRefType : CType {
     val jTypeNoSign: String
     val jPtrType: String
     val jPtrTypeNoAnnotation: String
+    val comment: String?
 }
 
 sealed interface CFixedSizeType : CNonRefType {
@@ -87,11 +97,21 @@ sealed interface CFixedSizeType : CNonRefType {
 }
 
 data class CFixedIntType(
-    val cName: String,
+    override val cType: String,
     override val byteSize: Int,
-    val unsigned: Boolean
+    val unsigned: Boolean,
+    override val comment: String? = null
 ) : CFixedSizeType {
-    override val jType: String get() = """${if (unsigned) "@unsigned " else ""}$jTypeNoSign"""
+    override val jType: String get() = buildString {
+        if (comment != null) {
+            append("@NativeType(\"$comment\") ")
+        }
+        if (unsigned) {
+            append("@Unsigned ")
+        }
+        append(jTypeNoSign)
+    }
+
     override val jLayout: String get() = when (byteSize) {
         1 -> "ValueLayout.JAVA_BYTE"
         2 -> "ValueLayout.JAVA_SHORT"
@@ -106,7 +126,6 @@ data class CFixedIntType(
         8 -> "OfLong"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val cType: String = cName
     override val jTypeNoSign: String get() = when (byteSize) {
         1 -> "byte"
         2 -> "short"
@@ -114,7 +133,16 @@ data class CFixedIntType(
         8 -> "long"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val jPtrType: String get() = """${if (unsigned) "@unsigned " else ""}$jPtrTypeNoAnnotation"""
+    override val jPtrType: String get() = buildString {
+        if (comment != null) {
+            append("@Pointer(comment=\"$comment\") ")
+        }
+        if (unsigned) {
+            append("@Unsigned ")
+        }
+        append(jPtrTypeNoAnnotation)
+    }
+
     override val jPtrTypeNoAnnotation: String get() = when (byteSize) {
         1 -> "BytePtr"
         2 -> "ShortPtr"
@@ -126,16 +154,32 @@ data class CFixedIntType(
 
 data class CPlatformDependentIntType(
     override val cType: String,
-    override val jType: String,
-    override val jLayout: String,
     override val jTypeNoSign: String,
-    override val jPtrType: String,
-    override val jPtrTypeNoAnnotation: String
+    override val jLayout: String,
+    override val jPtrTypeNoAnnotation: String,
+    override val comment: String? = null
 ) : CNonRefType {
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `CPlatformDependentIntType`")
+
+    override val jType: String get() = buildString {
+        if (comment != null) {
+            append("@NativeType(\"$comment\") ")
+        }
+        append(jTypeNoSign)
+    }
+
+    override val jPtrType: String get() = buildString {
+        if (comment != null) {
+            append("@Pointer(comment=\"$comment\") ")
+        }
+        append(jPtrTypeNoAnnotation)
+    }
 }
 
-data class CFloatType(override val byteSize: Int) : CFixedSizeType {
+data class CFloatType(
+    override val byteSize: Int,
+    override val comment: String? = null
+) : CFixedSizeType {
     override val jType: String get() = when (byteSize) {
         4 -> "float"
         8 -> "double"
@@ -151,11 +195,12 @@ data class CFloatType(override val byteSize: Int) : CFixedSizeType {
         8 -> "OfDouble"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val cType: String = when (byteSize) {
-        4 -> "float"
-        8 -> "double"
-        else -> error("unsupported byte size: $byteSize")
-    }
+    override val cType: String = comment
+        ?: when (byteSize) {
+            4 -> "float"
+            8 -> "double"
+            else -> error("unsupported byte size: $byteSize")
+        }
     override val jTypeNoSign: String get() = jType
     override val jPtrType: String get() = when (byteSize) {
         4 -> "FloatPtr"
@@ -172,13 +217,17 @@ data class CStructType(val name: String): CType {
     override val cType: String = name
 }
 
-data class CEnumType(val name: String, val bitwidth: Int? = null): CFixedSizeType {
+data class CEnumType(
+    val name: String,
+    val bitwidth: Int? = null,
+    override val comment: String? = null
+): CFixedSizeType {
     override val jType: String get() = when (bitwidth) {
         null, 32 -> {
-            "@enumtype($name.class) int"
+            "@EnumType($name.class) int"
         }
         64 -> {
-            "@enumtype($name.class) long"
+            "@EnumType($name.class) long"
         }
         else -> {
             error("unsupported bitwidth: $bitwidth")
@@ -212,8 +261,8 @@ data class CEnumType(val name: String, val bitwidth: Int? = null): CFixedSizeTyp
     }
 
     override val jPtrType: String = when (bitwidth) {
-        null, 32 -> "@enumtype($name.class) IntPtr"
-        64 -> "@enumtype($name.class) LongPtr"
+        null, 32 -> "@EnumType($name.class) IntPtr"
+        64 -> "@EnumType($name.class) LongPtr"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 
@@ -224,37 +273,33 @@ data class CEnumType(val name: String, val bitwidth: Int? = null): CFixedSizeTyp
     }
 }
 
-private val int8Type = CFixedIntType("byte", 1, false)
-private val uint8Type = CFixedIntType("byte", 1, true)
-private val int16Type = CFixedIntType("short", 2, false)
-private val uint16Type = CFixedIntType("short", 2, true)
-private val int32Type = CFixedIntType("int", 4, false)
-private val uint32Type = CFixedIntType("int", 4, true)
-private val int64Type = CFixedIntType("long", 8, false)
-private val uint64Type = CFixedIntType("long", 8, true)
+private val int8Type = CFixedIntType("int8_t", 1, false)
+private val uint8Type = CFixedIntType("uint8_t", 1, true)
+private val int16Type = CFixedIntType("int16_t", 2, false)
+private val uint16Type = CFixedIntType("uint16_t", 2, true)
+private val int32Type = CFixedIntType("int32_t", 4, false)
+private val uint32Type = CFixedIntType("uint32_t", 4, true)
+private val int64Type = CFixedIntType("int64_t", 8, false)
+private val uint64Type = CFixedIntType("uint64_t", 8, true)
 private val floatType = CFloatType(4)
 private val doubleType = CFloatType(8)
 
 private val cIntType = int32Type
 private val cUIntType = uint32Type
 private val cLongType = CPlatformDependentIntType(
-    "long",
-    "long",
-    "NativeLayout.C_LONG",
-    "long",
-    "CLongPtr",
-    "CLongPtr"
+    cType = "long",
+    jTypeNoSign = "long",
+    jLayout = "NativeLayout.C_LONG",
+    jPtrTypeNoAnnotation = "CLongPtr",
 )
 private val cSizeType = CPlatformDependentIntType(
-    "size_t",
-    "long",
-    "NativeLayout.C_SIZE_T",
-    "long",
-    "PointerPtr",
-    "PointerPtr"
+    cType = "size_t",
+    jTypeNoSign = "long",
+    jLayout = "NativeLayout.C_SIZE_T",
+    jPtrTypeNoAnnotation = "PointerPtr",
 )
 
-private val pvoidType = CPointerType(voidType, const = false, pointerToOne = false, comment = null)
+private fun pvoidType(comment: String) = CPointerType(voidType, const = false, pointerToOne = false, comment = comment)
 
 private val knownTypes = mapOf(
     // Fundamental types
@@ -281,105 +326,104 @@ private val knownTypes = mapOf(
     "unsigned short" to uint16Type,
 
     // GLES2 base types
-    "GLbyte" to int8Type,
-    "GLubyte" to uint8Type,
-    "GLchar" to int8Type,
-    "GLuchar" to uint8Type,
-    "GLclampf" to floatType,
-    "GLfixed" to int32Type,
-    "GLint" to int32Type,
-    "GLuint" to uint32Type,
-    "GLshort" to int16Type,
-    "Glushort" to uint16Type,
-    "GLfloat" to floatType,
-    "GLvoid" to voidType,
-    "GLenum" to int32Type,
-    "GLsizei" to int32Type,
-    "GLsizeiptr" to cSizeType,
-    "GLintptr" to cSizeType,
-    "GLbitfield" to uint32Type,
-    "GLboolean" to uint8Type,
+    "GLbyte" to int8Type.copy(comment = "GLbyte"),
+    "GLubyte" to uint8Type.copy(comment = "GLubyte"),
+    "GLchar" to int8Type.copy(comment = "GLchar"),
+    "GLuchar" to uint8Type.copy(comment = "GLuchar"),
+    "GLclampf" to floatType.copy(comment = "GLclampf"),
+    "GLfixed" to int32Type.copy(comment = "GLfixed"),
+    "GLint" to int32Type.copy(comment = "GLint"),
+    "GLuint" to uint32Type.copy(comment = "GLuint"),
+    "GLshort" to int16Type.copy(comment = "GLshort"),
+    "Glushort" to uint16Type.copy(comment = "GLushort"),
+    "GLfloat" to floatType.copy(comment = "GLfloat"),
+    "GLvoid" to voidType.copy(cType = "GLvoid"),
+    "GLenum" to int32Type.copy(comment = "GLenum"),
+    "GLsizei" to int32Type.copy(comment = "GLsizei"),
+    "GLsizeiptr" to cSizeType.copy(comment = "GLsizeiptr"),
+    "GLintptr" to cSizeType.copy(comment = "GLintptr"),
+    "GLbitfield" to uint32Type.copy(comment = "GLbitfield"),
+    "GLboolean" to uint8Type.copy(comment = "GLboolean"),
 
     // Vulkan base types
-    "VkSampleMask" to uint32Type,
-    "VkBool32" to uint32Type,
-    "VkFlags" to uint32Type,
-    "VkFlags64" to uint64Type,
-    "VkDeviceSize" to uint64Type,
-    "VkDeviceAddress" to uint64Type,
-    "VkRemoteAddressNV" to pvoidType,
+    "VkSampleMask" to uint32Type.copy(comment = "VkSampleMask"),
+    "VkBool32" to uint32Type.copy(comment = "VkBool32"),
+    "VkFlags" to uint32Type.copy(comment = "VkFlags"),
+    "VkFlags64" to uint64Type.copy(comment = "VkFlags64"),
+    "VkDeviceSize" to uint64Type.copy(comment = "VkDeviceSize"),
+    "VkDeviceAddress" to uint64Type.copy(comment = "VkDeviceAddress"),
+    "VkRemoteAddressNV" to pvoidType("VkRemoteAddressNV"),
 
     // Android
-    "ANativeWindow" to pvoidType,
-    "AHardwareBuffer" to pvoidType,
+    "ANativeWindow" to pvoidType("ANativeWindow"),
+    "AHardwareBuffer" to pvoidType("AHardwareBuffer"),
 
     // DirectFB
-    "IDirectFB" to pvoidType,
-    "IDirectFBSurface" to pvoidType,
+    "IDirectFB" to pvoidType("IDirectFB"),
+    "IDirectFBSurface" to pvoidType("IDirectFBSurface"),
 
     // iOS or macOS
-    "id" to pvoidType,
-    "CAMetalLayer" to pvoidType,
-    "GgpFrameToken" to uint32Type,
-    "GgpStreamDescriptor" to uint32Type,
-    "IOSurfaceRef" to pvoidType,
-    "MTLBuffer_id" to pvoidType,
-    "MTLCommandQueue_id" to pvoidType,
-    "MTLDevice_id" to pvoidType,
-    "MTLSharedEvent_id" to pvoidType,
-    "MTLTexture_id" to pvoidType,
-    "CGDirectDisplayID" to uint32Type,
+    "id" to pvoidType("id"),
+    "CAMetalLayer" to pvoidType("CAMetalLayer"),
+    "GgpFrameToken" to uint32Type.copy(comment = "GgpFrameToken"),
+    "GgpStreamDescriptor" to uint32Type.copy(comment = "GgpStreamDescriptor"),
+    "IOSurfaceRef" to pvoidType("IOSurfaceRef"),
+    "MTLBuffer_id" to pvoidType("MTLBuffer_id"),
+    "MTLCommandQueue_id" to pvoidType("MTLCommandQueue_id"),
+    "MTLDevice_id" to pvoidType("MTLDevice_id"),
+    "MTLSharedEvent_id" to pvoidType("MTLSharedEvent_id"),
+    "MTLTexture_id" to pvoidType("MTLTexture_id"),
+    "CGDirectDisplayID" to uint32Type.copy(comment = "CGDirectDisplayID"),
 
     // QNX
-    "_screen_buffer" to pvoidType,
-    "_screen_context" to pvoidType,
-    "_screen_window" to pvoidType,
+    "_screen_buffer" to pvoidType("_screen_buffer"),
+    "_screen_context" to pvoidType("_screen_context"),
+    "_screen_window" to pvoidType("_screen_window"),
 
     // Wayland
-    "wl_display" to pvoidType,
-    "wl_surface" to pvoidType,
-    "wl_output" to voidType,
+    "wl_display" to pvoidType("wl_display"),
+    "wl_surface" to pvoidType("wl_surface"),
+    "wl_output" to voidType.copy(cType = "wl_output"),
 
     // Windows
-    "DWORD" to uint32Type,
-    "HANDLE" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HANDLE"),
-    "HINSTANCE" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HINSTANCE"),
-    "HMONITOR" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HMONITOR"),
-    "HWND" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HWND"),
+    "DWORD" to uint32Type.copy(comment = "DWORD"),
+    "HANDLE" to pvoidType("HANDLE"),
+    "HINSTANCE" to pvoidType("HINSTANCE"),
+    "HMONITOR" to pvoidType("HMONITOR"),
+    "HWND" to pvoidType("HWND"),
     "LPCWSTR" to CPointerType(uint16Type, const = true, pointerToOne = false, comment = "LPCWSTR"),
-    "HGLRC" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HGLRC"),
-    "SECURITY_ATTRIBUTES" to voidType,
+    "HGLRC" to pvoidType("HGLRC"),
+    "SECURITY_ATTRIBUTES" to voidType.copy(cType = "SECURITY_ATTRIBUTES"),
 
     // X11
-    "Display" to pvoidType,
-    "RROutput" to cLongType,
-    "RRCrtc" to cLongType,
-    "VisualID" to cLongType,
-    "Window" to cLongType,
-    "GLXContext" to pvoidType,
-    "GLXWindow" to cLongType,
-    "xcb_connection_t" to voidType,
-    "xcb_visualid_t" to uint32Type,
-    "xcb_window_t" to uint32Type,
-    "xcb_handle_t" to uint32Type,
+    "Display" to pvoidType("Display"),
+    "RROutput" to cLongType.copy(comment = "RROutput"),
+    "RRCrtc" to cLongType.copy(comment = "RRCrtc"),
+    "VisualID" to cLongType.copy(comment = "VisualID"),
+    "Window" to cLongType.copy(comment = "Window"),
+    "GLXContext" to pvoidType("GLXContext"),
+    "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
+    "xcb_connection_t" to voidType.copy(cType = "xcb_connection_t"),
+    "xcb_visualid_t" to uint32Type.copy(comment = "xcb_visualid_t"),
+    "xcb_window_t" to uint32Type.copy(comment = "xcb_window_t"),
+    "xcb_handle_t" to uint32Type.copy(comment = "xcb_handle_t"),
 
     // EGL
-    "EGLDisplay" to pvoidType,
-    "EGLContext" to pvoidType,
-    "EGLSurface" to pvoidType,
+    "EGLDisplay" to pvoidType("EGLDisplay"),
+    "EGLContext" to pvoidType("EGLContext"),
+    "EGLSurface" to pvoidType("EGLSurface"),
 
     // MESA
-    "OSMesaContext" to pvoidType,
+    "OSMesaContext" to pvoidType("OSMesaContext"),
 
     // NvSciBuf / NvSciSync
-    "NvSciBufAttrList" to pvoidType,
-    "NvSciBufObj" to pvoidType,
-    "NvSciSyncAttrList" to pvoidType,
-    "NvSciSyncObj" to pvoidType,
-    "NvSciSyncFence" to CArrayType(uint64Type, "6"),
+    "NvSciBufAttrList" to pvoidType("NvSciBufAttrList"),
+    "NvSciBufObj" to pvoidType("NvSciBufObj"),
+    "NvSciSyncAttrList" to pvoidType("NvSciSyncAttrList"),
+    "NvSciSyncObj" to pvoidType("NvSciSyncObj"),
 
     // FUCHSIA
-    "zx_handle_t" to uint32Type,
+    "zx_handle_t" to uint32Type.copy(comment = "zx_handle_t"),
 )
 
 fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {

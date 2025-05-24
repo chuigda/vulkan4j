@@ -1,9 +1,9 @@
 package club.doki7.ffm.ptr;
 
 import club.doki7.ffm.IPointer;
+import club.doki7.ffm.annotation.Unsafe;
 import club.doki7.ffm.annotation.UnsafeConstructor;
 import club.doki7.ffm.annotation.ValueBasedCandidate;
-import club.doki7.ffm.annotation.unsafe;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -67,7 +67,7 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
     /// create a new view {@link PointerPtr} that uses the same backing storage as this
     /// {@link PointerPtr}, but with the new size. Since there is actually no way to really check
     /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-    /// marked as {@link unsafe}.
+    /// marked as {@link Unsafe}.
     ///
     /// This method could be useful when handling data returned from some C API, where the size of
     /// the data is not known in advance.
@@ -75,7 +75,7 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
     /// If the size of the underlying segment is actually known in advance and correctly set, and
     /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
     /// instead.
-    @unsafe
+    @Unsafe
     public @NotNull PointerPtr reinterpret(long newSize) {
         return new PointerPtr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
     }

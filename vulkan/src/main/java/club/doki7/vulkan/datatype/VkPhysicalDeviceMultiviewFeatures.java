@@ -95,7 +95,7 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceMultiviewFeatures.BYTES, VkPhysicalDeviceMultiviewFeatures.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
         sType(VkStructureType.PHYSICAL_DEVICE_MULTIVIEW_FEATURES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int multiview() {
+    public @NativeType("VkBool32") @Unsigned int multiview() {
         return segment.get(LAYOUT$multiview, OFFSET$multiview);
     }
 
-    public void multiview(@unsigned int value) {
+    public void multiview(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiview, OFFSET$multiview, value);
     }
 
-    public @unsigned int multiviewGeometryShader() {
+    public @NativeType("VkBool32") @Unsigned int multiviewGeometryShader() {
         return segment.get(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader);
     }
 
-    public void multiviewGeometryShader(@unsigned int value) {
+    public void multiviewGeometryShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader, value);
     }
 
-    public @unsigned int multiviewTessellationShader() {
+    public @NativeType("VkBool32") @Unsigned int multiviewTessellationShader() {
         return segment.get(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader);
     }
 
-    public void multiviewTessellationShader(@unsigned int value) {
+    public void multiviewTessellationShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader, value);
     }
 

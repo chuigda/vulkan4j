@@ -26,7 +26,7 @@ public final class VkShaderStageFlags {
     public static final int TESSELLATION_EVALUATION = 0x4;
     public static final int VERTEX = 0x1;
 
-    public static String explain(@enumtype(VkShaderStageFlags.class) int flags) {
+    public static String explain(@EnumType(VkShaderStageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALL) != 0) {
             detectedFlagBits.add("VK_SHADER_STAGE_ALL");

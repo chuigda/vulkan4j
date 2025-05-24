@@ -29,7 +29,7 @@ public final class StdVideoAV1Level {
     public static final int STD_VIDEO_AV1_LEVEL_7_3 = 0x17;
     public static final int STD_VIDEO_AV1_LEVEL_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoAV1Level.class) int value) {
+    public static String explain(@EnumType(StdVideoAV1Level.class) int value) {
         return switch (value) {
             case StdVideoAV1Level.STD_VIDEO_AV1_LEVEL_2_0 -> "STD_VIDEO_AV1_LEVEL_2_0";
             case StdVideoAV1Level.STD_VIDEO_AV1_LEVEL_2_1 -> "STD_VIDEO_AV1_LEVEL_2_1";

@@ -10,7 +10,7 @@ public final class VkSystemAllocationScope {
     public static final int DEVICE = 0x3;
     public static final int INSTANCE = 0x4;
 
-    public static String explain(@enumtype(VkSystemAllocationScope.class) int value) {
+    public static String explain(@EnumType(VkSystemAllocationScope.class) int value) {
         return switch (value) {
             case VkSystemAllocationScope.CACHE -> "VK_SYSTEM_ALLOCATION_SCOPE_CACHE";
             case VkSystemAllocationScope.COMMAND -> "VK_SYSTEM_ALLOCATION_SCOPE_COMMAND";

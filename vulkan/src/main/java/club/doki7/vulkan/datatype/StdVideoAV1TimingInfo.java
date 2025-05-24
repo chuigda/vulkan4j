@@ -84,7 +84,7 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoAV1TimingInfo.BYTES, StdVideoAV1TimingInfo.BYTES));
         }
@@ -147,27 +147,27 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned int num_units_in_display_tick() {
+    public @Unsigned int num_units_in_display_tick() {
         return segment.get(LAYOUT$num_units_in_display_tick, OFFSET$num_units_in_display_tick);
     }
 
-    public void num_units_in_display_tick(@unsigned int value) {
+    public void num_units_in_display_tick(@Unsigned int value) {
         segment.set(LAYOUT$num_units_in_display_tick, OFFSET$num_units_in_display_tick, value);
     }
 
-    public @unsigned int time_scale() {
+    public @Unsigned int time_scale() {
         return segment.get(LAYOUT$time_scale, OFFSET$time_scale);
     }
 
-    public void time_scale(@unsigned int value) {
+    public void time_scale(@Unsigned int value) {
         segment.set(LAYOUT$time_scale, OFFSET$time_scale, value);
     }
 
-    public @unsigned int num_ticks_per_picture_minus_1() {
+    public @Unsigned int num_ticks_per_picture_minus_1() {
         return segment.get(LAYOUT$num_ticks_per_picture_minus_1, OFFSET$num_ticks_per_picture_minus_1);
     }
 
-    public void num_ticks_per_picture_minus_1(@unsigned int value) {
+    public void num_ticks_per_picture_minus_1(@Unsigned int value) {
         segment.set(LAYOUT$num_ticks_per_picture_minus_1, OFFSET$num_ticks_per_picture_minus_1, value);
     }
 

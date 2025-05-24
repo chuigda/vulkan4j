@@ -17,7 +17,7 @@ public final class VkSurfaceTransformFlagsKHR {
     public static final int ROTATE_270 = 0x8;
     public static final int ROTATE_90 = 0x2;
 
-    public static String explain(@enumtype(VkSurfaceTransformFlagsKHR.class) int flags) {
+    public static String explain(@EnumType(VkSurfaceTransformFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & HORIZONTAL_MIRROR) != 0) {
             detectedFlagBits.add("VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR");

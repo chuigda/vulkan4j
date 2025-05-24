@@ -9,7 +9,7 @@ public final class VkCopyMicromapModeEXT {
     public static final int DESERIALIZE = 0x2;
     public static final int COMPACT = 0x3;
 
-    public static String explain(@enumtype(VkCopyMicromapModeEXT.class) int value) {
+    public static String explain(@EnumType(VkCopyMicromapModeEXT.class) int value) {
         return switch (value) {
             case VkCopyMicromapModeEXT.CLONE -> "VK_COPY_MICROMAP_MODE_CLONE_EXT";
             case VkCopyMicromapModeEXT.COMPACT -> "VK_COPY_MICROMAP_MODE_COMPACT_EXT";

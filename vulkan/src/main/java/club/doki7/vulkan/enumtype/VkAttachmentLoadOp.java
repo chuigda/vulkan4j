@@ -9,7 +9,7 @@ public final class VkAttachmentLoadOp {
     public static final int DONT_CARE = 0x2;
     public static final int NONE = 0x3ba0e480;
 
-    public static String explain(@enumtype(VkAttachmentLoadOp.class) int value) {
+    public static String explain(@EnumType(VkAttachmentLoadOp.class) int value) {
         return switch (value) {
             case VkAttachmentLoadOp.CLEAR -> "VK_ATTACHMENT_LOAD_OP_CLEAR";
             case VkAttachmentLoadOp.DONT_CARE -> "VK_ATTACHMENT_LOAD_OP_DONT_CARE";

@@ -8,7 +8,7 @@ public final class VkSciSyncClientTypeNV {
     public static final int WAITER = 0x1;
     public static final int SIGNALER_WAITER = 0x2;
 
-    public static String explain(@enumtype(VkSciSyncClientTypeNV.class) int value) {
+    public static String explain(@EnumType(VkSciSyncClientTypeNV.class) int value) {
         return switch (value) {
             case VkSciSyncClientTypeNV.SIGNALER -> "VK_SCI_SYNC_CLIENT_TYPE_SIGNALER_NV";
             case VkSciSyncClientTypeNV.SIGNALER_WAITER -> "VK_SCI_SYNC_CLIENT_TYPE_SIGNALER_WAITER_NV";

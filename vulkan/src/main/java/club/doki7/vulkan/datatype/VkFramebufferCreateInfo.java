@@ -99,7 +99,7 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -107,7 +107,7 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkFramebufferCreateInfo.BYTES, VkFramebufferCreateInfo.BYTES));
         }
@@ -164,19 +164,19 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         sType(VkStructureType.FRAMEBUFFER_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,11 +184,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkFramebufferCreateFlags.class) int flags() {
+    public @EnumType(VkFramebufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkFramebufferCreateFlags.class) int value) {
+    public void flags(@EnumType(VkFramebufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -204,11 +204,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int attachmentCount() {
+    public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@unsigned int value) {
+    public void attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
@@ -229,35 +229,35 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         pAttachmentsRaw(s);
     }
 
-    public @pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
+    public @Pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
         return segment.get(LAYOUT$pAttachments, OFFSET$pAttachments);
     }
 
-    public void pAttachmentsRaw(@pointer(target=VkImageView.class) MemorySegment value) {
+    public void pAttachmentsRaw(@Pointer(target=VkImageView.class) MemorySegment value) {
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
-    public @unsigned int width() {
+    public @Unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@unsigned int value) {
+    public void width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
     }
 
-    public @unsigned int height() {
+    public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@unsigned int value) {
+    public void height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
     }
 
-    public @unsigned int layers() {
+    public @Unsigned int layers() {
         return segment.get(LAYOUT$layers, OFFSET$layers);
     }
 
-    public void layers(@unsigned int value) {
+    public void layers(@Unsigned int value) {
         segment.set(LAYOUT$layers, OFFSET$layers, value);
     }
 

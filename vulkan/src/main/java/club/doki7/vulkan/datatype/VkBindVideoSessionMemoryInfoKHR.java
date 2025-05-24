@@ -96,7 +96,7 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBindVideoSessionMemoryInfoKHR.BYTES, VkBindVideoSessionMemoryInfoKHR.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.BIND_VIDEO_SESSION_MEMORY_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,11 +181,11 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int memoryBindIndex() {
+    public @Unsigned int memoryBindIndex() {
         return segment.get(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex);
     }
 
-    public void memoryBindIndex(@unsigned int value) {
+    public void memoryBindIndex(@Unsigned int value) {
         segment.set(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex, value);
     }
 
@@ -201,19 +201,19 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long memoryOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@unsigned long value) {
+    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
     }
 
-    public @unsigned long memorySize() {
+    public @NativeType("VkDeviceSize") @Unsigned long memorySize() {
         return segment.get(LAYOUT$memorySize, OFFSET$memorySize);
     }
 
-    public void memorySize(@unsigned long value) {
+    public void memorySize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memorySize, OFFSET$memorySize, value);
     }
 

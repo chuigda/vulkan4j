@@ -95,7 +95,7 @@ public record VkDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDebugUtilsObjectNameInfoEXT.BYTES, VkDebugUtilsObjectNameInfoEXT.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
         sType(VkStructureType.DEBUG_UTILS_OBJECT_NAME_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,19 +180,19 @@ public record VkDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkObjectType.class) int objectType() {
+    public @EnumType(VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public void objectType(@enumtype(VkObjectType.class) int value) {
+    public void objectType(@EnumType(VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
     }
 
-    public @unsigned long objectHandle() {
+    public @Unsigned long objectHandle() {
         return segment.get(LAYOUT$objectHandle, OFFSET$objectHandle);
     }
 
-    public void objectHandle(@unsigned long value) {
+    public void objectHandle(@Unsigned long value) {
         segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
     }
 
@@ -213,11 +213,11 @@ public record VkDebugUtilsObjectNameInfoEXT(@NotNull MemorySegment segment) impl
         pObjectNameRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment pObjectNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pObjectNameRaw() {
         return segment.get(LAYOUT$pObjectName, OFFSET$pObjectName);
     }
 
-    public void pObjectNameRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void pObjectNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
     }
 

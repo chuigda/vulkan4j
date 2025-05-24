@@ -10,7 +10,7 @@ public final class VkClusterAccelerationStructureOpTypeNV {
     public static final int BUILD_TRIANGLE_CLUSTER_TEMPLATE = 0x3;
     public static final int INSTANTIATE_TRIANGLE_CLUSTER = 0x4;
 
-    public static String explain(@enumtype(VkClusterAccelerationStructureOpTypeNV.class) int value) {
+    public static String explain(@EnumType(VkClusterAccelerationStructureOpTypeNV.class) int value) {
         return switch (value) {
             case VkClusterAccelerationStructureOpTypeNV.BUILD_CLUSTERS_BOTTOM_LEVEL -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV";
             case VkClusterAccelerationStructureOpTypeNV.BUILD_TRIANGLE_CLUSTER -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV";

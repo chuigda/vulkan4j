@@ -104,7 +104,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -112,7 +112,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.BYTES));
         }
@@ -169,19 +169,19 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -189,99 +189,99 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxIndirectPipelineCount() {
+    public @Unsigned int maxIndirectPipelineCount() {
         return segment.get(LAYOUT$maxIndirectPipelineCount, OFFSET$maxIndirectPipelineCount);
     }
 
-    public void maxIndirectPipelineCount(@unsigned int value) {
+    public void maxIndirectPipelineCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectPipelineCount, OFFSET$maxIndirectPipelineCount, value);
     }
 
-    public @unsigned int maxIndirectShaderObjectCount() {
+    public @Unsigned int maxIndirectShaderObjectCount() {
         return segment.get(LAYOUT$maxIndirectShaderObjectCount, OFFSET$maxIndirectShaderObjectCount);
     }
 
-    public void maxIndirectShaderObjectCount(@unsigned int value) {
+    public void maxIndirectShaderObjectCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectShaderObjectCount, OFFSET$maxIndirectShaderObjectCount, value);
     }
 
-    public @unsigned int maxIndirectSequenceCount() {
+    public @Unsigned int maxIndirectSequenceCount() {
         return segment.get(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount);
     }
 
-    public void maxIndirectSequenceCount(@unsigned int value) {
+    public void maxIndirectSequenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount, value);
     }
 
-    public @unsigned int maxIndirectCommandsTokenCount() {
+    public @Unsigned int maxIndirectCommandsTokenCount() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount);
     }
 
-    public void maxIndirectCommandsTokenCount(@unsigned int value) {
+    public void maxIndirectCommandsTokenCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount, value);
     }
 
-    public @unsigned int maxIndirectCommandsTokenOffset() {
+    public @Unsigned int maxIndirectCommandsTokenOffset() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset);
     }
 
-    public void maxIndirectCommandsTokenOffset(@unsigned int value) {
+    public void maxIndirectCommandsTokenOffset(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset, value);
     }
 
-    public @unsigned int maxIndirectCommandsIndirectStride() {
+    public @Unsigned int maxIndirectCommandsIndirectStride() {
         return segment.get(LAYOUT$maxIndirectCommandsIndirectStride, OFFSET$maxIndirectCommandsIndirectStride);
     }
 
-    public void maxIndirectCommandsIndirectStride(@unsigned int value) {
+    public void maxIndirectCommandsIndirectStride(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsIndirectStride, OFFSET$maxIndirectCommandsIndirectStride, value);
     }
 
-    public @enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
+    public @EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
         return segment.get(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes);
     }
 
-    public void supportedIndirectCommandsInputModes(@enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+    public void supportedIndirectCommandsInputModes(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
+    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages);
     }
 
-    public void supportedIndirectCommandsShaderStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void supportedIndirectCommandsShaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
+    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding);
     }
 
-    public void supportedIndirectCommandsShaderStagesPipelineBinding(@enumtype(VkShaderStageFlags.class) int value) {
+    public void supportedIndirectCommandsShaderStagesPipelineBinding(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
+    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding);
     }
 
-    public void supportedIndirectCommandsShaderStagesShaderBinding(@enumtype(VkShaderStageFlags.class) int value) {
+    public void supportedIndirectCommandsShaderStagesShaderBinding(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding, value);
     }
 
-    public @unsigned int deviceGeneratedCommandsTransformFeedback() {
+    public @NativeType("VkBool32") @Unsigned int deviceGeneratedCommandsTransformFeedback() {
         return segment.get(LAYOUT$deviceGeneratedCommandsTransformFeedback, OFFSET$deviceGeneratedCommandsTransformFeedback);
     }
 
-    public void deviceGeneratedCommandsTransformFeedback(@unsigned int value) {
+    public void deviceGeneratedCommandsTransformFeedback(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCommandsTransformFeedback, OFFSET$deviceGeneratedCommandsTransformFeedback, value);
     }
 
-    public @unsigned int deviceGeneratedCommandsMultiDrawIndirectCount() {
+    public @NativeType("VkBool32") @Unsigned int deviceGeneratedCommandsMultiDrawIndirectCount() {
         return segment.get(LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount, OFFSET$deviceGeneratedCommandsMultiDrawIndirectCount);
     }
 
-    public void deviceGeneratedCommandsMultiDrawIndirectCount(@unsigned int value) {
+    public void deviceGeneratedCommandsMultiDrawIndirectCount(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount, OFFSET$deviceGeneratedCommandsMultiDrawIndirectCount, value);
     }
 

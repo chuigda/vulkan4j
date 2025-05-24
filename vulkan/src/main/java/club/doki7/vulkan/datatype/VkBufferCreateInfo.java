@@ -98,7 +98,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -106,7 +106,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBufferCreateInfo.BYTES, VkBufferCreateInfo.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         sType(VkStructureType.BUFFER_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,43 +183,43 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkBufferCreateFlags.class) int flags() {
+    public @EnumType(VkBufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkBufferCreateFlags.class) int value) {
+    public void flags(@EnumType(VkBufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@unsigned long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @enumtype(VkBufferUsageFlags.class) int usage() {
+    public @EnumType(VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@enumtype(VkBufferUsageFlags.class) int value) {
+    public void usage(@EnumType(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
     }
 
-    public @enumtype(VkSharingMode.class) int sharingMode() {
+    public @EnumType(VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public void sharingMode(@enumtype(VkSharingMode.class) int value) {
+    public void sharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
     }
 
-    public @unsigned int queueFamilyIndexCount() {
+    public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@unsigned int value) {
+    public void queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
@@ -227,7 +227,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pQueueFamilyIndices() {
+    public @Nullable @Unsigned IntPtr pQueueFamilyIndices() {
         MemorySegment s = pQueueFamilyIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -235,16 +235,16 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
+    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 

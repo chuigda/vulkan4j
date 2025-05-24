@@ -7,7 +7,7 @@ public final class VkCommandBufferLevel {
     public static final int PRIMARY = 0x0;
     public static final int SECONDARY = 0x1;
 
-    public static String explain(@enumtype(VkCommandBufferLevel.class) int value) {
+    public static String explain(@EnumType(VkCommandBufferLevel.class) int value) {
         return switch (value) {
             case VkCommandBufferLevel.PRIMARY -> "VK_COMMAND_BUFFER_LEVEL_PRIMARY";
             case VkCommandBufferLevel.SECONDARY -> "VK_COMMAND_BUFFER_LEVEL_SECONDARY";

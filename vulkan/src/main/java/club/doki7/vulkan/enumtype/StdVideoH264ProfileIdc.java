@@ -9,7 +9,7 @@ public final class StdVideoH264ProfileIdc {
     public static final int STD_VIDEO_H264_PROFILE_IDC_HIGH_444_PREDICTIVE = 0xf4;
     public static final int STD_VIDEO_H264_PROFILE_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH264ProfileIdc.class) int value) {
+    public static String explain(@EnumType(StdVideoH264ProfileIdc.class) int value) {
         return switch (value) {
             case StdVideoH264ProfileIdc.STD_VIDEO_H264_PROFILE_IDC_BASELINE -> "STD_VIDEO_H264_PROFILE_IDC_BASELINE";
             case StdVideoH264ProfileIdc.STD_VIDEO_H264_PROFILE_IDC_HIGH -> "STD_VIDEO_H264_PROFILE_IDC_HIGH";

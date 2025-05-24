@@ -8,7 +8,7 @@ public final class VkDisplayPowerStateEXT {
     public static final int SUSPEND = 0x1;
     public static final int ON = 0x2;
 
-    public static String explain(@enumtype(VkDisplayPowerStateEXT.class) int value) {
+    public static String explain(@EnumType(VkDisplayPowerStateEXT.class) int value) {
         return switch (value) {
             case VkDisplayPowerStateEXT.OFF -> "VK_DISPLAY_POWER_STATE_OFF_EXT";
             case VkDisplayPowerStateEXT.ON -> "VK_DISPLAY_POWER_STATE_ON_EXT";

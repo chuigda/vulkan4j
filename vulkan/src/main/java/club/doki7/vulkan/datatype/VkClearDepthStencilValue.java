@@ -84,7 +84,7 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkClearDepthStencilValue.BYTES, VkClearDepthStencilValue.BYTES));
         }
@@ -147,11 +147,11 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$depth, OFFSET$depth, value);
     }
 
-    public @unsigned int stencil() {
+    public @Unsigned int stencil() {
         return segment.get(LAYOUT$stencil, OFFSET$stencil);
     }
 
-    public void stencil(@unsigned int value) {
+    public void stencil(@Unsigned int value) {
         segment.set(LAYOUT$stencil, OFFSET$stencil, value);
     }
 

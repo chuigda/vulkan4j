@@ -13,7 +13,7 @@ public final class VkQueryResultFlags {
     public static final int WITH_AVAILABILITY = 0x4;
     public static final int WITH_STATUS_KHR = 0x10;
 
-    public static String explain(@enumtype(VkQueryResultFlags.class) int flags) {
+    public static String explain(@EnumType(VkQueryResultFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _64) != 0) {
             detectedFlagBits.add("VK_QUERY_RESULT_64_BIT");

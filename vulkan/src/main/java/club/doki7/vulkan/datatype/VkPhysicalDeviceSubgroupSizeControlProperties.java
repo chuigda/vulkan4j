@@ -96,7 +96,7 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceSubgroupSizeControlProperties.BYTES, VkPhysicalDeviceSubgroupSizeControlProperties.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,35 +181,35 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int minSubgroupSize() {
+    public @Unsigned int minSubgroupSize() {
         return segment.get(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize);
     }
 
-    public void minSubgroupSize(@unsigned int value) {
+    public void minSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize, value);
     }
 
-    public @unsigned int maxSubgroupSize() {
+    public @Unsigned int maxSubgroupSize() {
         return segment.get(LAYOUT$maxSubgroupSize, OFFSET$maxSubgroupSize);
     }
 
-    public void maxSubgroupSize(@unsigned int value) {
+    public void maxSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$maxSubgroupSize, OFFSET$maxSubgroupSize, value);
     }
 
-    public @unsigned int maxComputeWorkgroupSubgroups() {
+    public @Unsigned int maxComputeWorkgroupSubgroups() {
         return segment.get(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups);
     }
 
-    public void maxComputeWorkgroupSubgroups(@unsigned int value) {
+    public void maxComputeWorkgroupSubgroups(@Unsigned int value) {
         segment.set(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
+    public @EnumType(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
         return segment.get(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages);
     }
 
-    public void requiredSubgroupSizeStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void requiredSubgroupSizeStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages, value);
     }
 

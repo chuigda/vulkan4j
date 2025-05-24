@@ -10,7 +10,7 @@ public final class VkPipelineDepthStencilStateCreateFlags {
     public static final int RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT = 0x1;
     public static final int RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_EXT = 0x2;
 
-    public static String explain(@enumtype(VkPipelineDepthStencilStateCreateFlags.class) int flags) {
+    public static String explain(@EnumType(VkPipelineDepthStencilStateCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT) != 0) {
             detectedFlagBits.add("VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT");

@@ -9,7 +9,7 @@ public final class VkCopyAccelerationStructureModeKHR {
     public static final int SERIALIZE = 0x2;
     public static final int DESERIALIZE = 0x3;
 
-    public static String explain(@enumtype(VkCopyAccelerationStructureModeKHR.class) int value) {
+    public static String explain(@EnumType(VkCopyAccelerationStructureModeKHR.class) int value) {
         return switch (value) {
             case VkCopyAccelerationStructureModeKHR.CLONE -> "VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR";
             case VkCopyAccelerationStructureModeKHR.COMPACT -> "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR";

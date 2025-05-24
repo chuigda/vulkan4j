@@ -88,7 +88,7 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -96,7 +96,7 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBufferImageCopy.BYTES, VkBufferImageCopy.BYTES));
         }
@@ -143,27 +143,27 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
         return ret;
     }
 
-    public @unsigned long bufferOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long bufferOffset() {
         return segment.get(LAYOUT$bufferOffset, OFFSET$bufferOffset);
     }
 
-    public void bufferOffset(@unsigned long value) {
+    public void bufferOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$bufferOffset, OFFSET$bufferOffset, value);
     }
 
-    public @unsigned int bufferRowLength() {
+    public @Unsigned int bufferRowLength() {
         return segment.get(LAYOUT$bufferRowLength, OFFSET$bufferRowLength);
     }
 
-    public void bufferRowLength(@unsigned int value) {
+    public void bufferRowLength(@Unsigned int value) {
         segment.set(LAYOUT$bufferRowLength, OFFSET$bufferRowLength, value);
     }
 
-    public @unsigned int bufferImageHeight() {
+    public @Unsigned int bufferImageHeight() {
         return segment.get(LAYOUT$bufferImageHeight, OFFSET$bufferImageHeight);
     }
 
-    public void bufferImageHeight(@unsigned int value) {
+    public void bufferImageHeight(@Unsigned int value) {
         segment.set(LAYOUT$bufferImageHeight, OFFSET$bufferImageHeight, value);
     }
 

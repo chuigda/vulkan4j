@@ -10,7 +10,7 @@ public final class VkPerformanceValueTypeINTEL {
     public static final int BOOL = 0x3;
     public static final int STRING = 0x4;
 
-    public static String explain(@enumtype(VkPerformanceValueTypeINTEL.class) int value) {
+    public static String explain(@EnumType(VkPerformanceValueTypeINTEL.class) int value) {
         return switch (value) {
             case VkPerformanceValueTypeINTEL.BOOL -> "VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL";
             case VkPerformanceValueTypeINTEL.FLOAT -> "VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL";

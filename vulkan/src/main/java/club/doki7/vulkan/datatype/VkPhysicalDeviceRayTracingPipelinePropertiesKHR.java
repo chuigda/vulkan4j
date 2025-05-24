@@ -100,7 +100,7 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(@NotNull MemorySeg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -108,7 +108,7 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(@NotNull MemorySeg
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceRayTracingPipelinePropertiesKHR.BYTES, VkPhysicalDeviceRayTracingPipelinePropertiesKHR.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(@NotNull MemorySeg
         sType(VkStructureType.PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,67 +185,67 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderGroupHandleSize() {
+    public @Unsigned int shaderGroupHandleSize() {
         return segment.get(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize);
     }
 
-    public void shaderGroupHandleSize(@unsigned int value) {
+    public void shaderGroupHandleSize(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize, value);
     }
 
-    public @unsigned int maxRayRecursionDepth() {
+    public @Unsigned int maxRayRecursionDepth() {
         return segment.get(LAYOUT$maxRayRecursionDepth, OFFSET$maxRayRecursionDepth);
     }
 
-    public void maxRayRecursionDepth(@unsigned int value) {
+    public void maxRayRecursionDepth(@Unsigned int value) {
         segment.set(LAYOUT$maxRayRecursionDepth, OFFSET$maxRayRecursionDepth, value);
     }
 
-    public @unsigned int maxShaderGroupStride() {
+    public @Unsigned int maxShaderGroupStride() {
         return segment.get(LAYOUT$maxShaderGroupStride, OFFSET$maxShaderGroupStride);
     }
 
-    public void maxShaderGroupStride(@unsigned int value) {
+    public void maxShaderGroupStride(@Unsigned int value) {
         segment.set(LAYOUT$maxShaderGroupStride, OFFSET$maxShaderGroupStride, value);
     }
 
-    public @unsigned int shaderGroupBaseAlignment() {
+    public @Unsigned int shaderGroupBaseAlignment() {
         return segment.get(LAYOUT$shaderGroupBaseAlignment, OFFSET$shaderGroupBaseAlignment);
     }
 
-    public void shaderGroupBaseAlignment(@unsigned int value) {
+    public void shaderGroupBaseAlignment(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupBaseAlignment, OFFSET$shaderGroupBaseAlignment, value);
     }
 
-    public @unsigned int shaderGroupHandleCaptureReplaySize() {
+    public @Unsigned int shaderGroupHandleCaptureReplaySize() {
         return segment.get(LAYOUT$shaderGroupHandleCaptureReplaySize, OFFSET$shaderGroupHandleCaptureReplaySize);
     }
 
-    public void shaderGroupHandleCaptureReplaySize(@unsigned int value) {
+    public void shaderGroupHandleCaptureReplaySize(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupHandleCaptureReplaySize, OFFSET$shaderGroupHandleCaptureReplaySize, value);
     }
 
-    public @unsigned int maxRayDispatchInvocationCount() {
+    public @Unsigned int maxRayDispatchInvocationCount() {
         return segment.get(LAYOUT$maxRayDispatchInvocationCount, OFFSET$maxRayDispatchInvocationCount);
     }
 
-    public void maxRayDispatchInvocationCount(@unsigned int value) {
+    public void maxRayDispatchInvocationCount(@Unsigned int value) {
         segment.set(LAYOUT$maxRayDispatchInvocationCount, OFFSET$maxRayDispatchInvocationCount, value);
     }
 
-    public @unsigned int shaderGroupHandleAlignment() {
+    public @Unsigned int shaderGroupHandleAlignment() {
         return segment.get(LAYOUT$shaderGroupHandleAlignment, OFFSET$shaderGroupHandleAlignment);
     }
 
-    public void shaderGroupHandleAlignment(@unsigned int value) {
+    public void shaderGroupHandleAlignment(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupHandleAlignment, OFFSET$shaderGroupHandleAlignment, value);
     }
 
-    public @unsigned int maxRayHitAttributeSize() {
+    public @Unsigned int maxRayHitAttributeSize() {
         return segment.get(LAYOUT$maxRayHitAttributeSize, OFFSET$maxRayHitAttributeSize);
     }
 
-    public void maxRayHitAttributeSize(@unsigned int value) {
+    public void maxRayHitAttributeSize(@Unsigned int value) {
         segment.set(LAYOUT$maxRayHitAttributeSize, OFFSET$maxRayHitAttributeSize, value);
     }
 

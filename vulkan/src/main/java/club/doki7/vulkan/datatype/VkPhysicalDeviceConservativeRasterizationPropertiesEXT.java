@@ -101,7 +101,7 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -109,7 +109,7 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES, VkPhysicalDeviceConservativeRasterizationPropertiesEXT.BYTES));
         }
@@ -166,19 +166,19 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         sType(VkStructureType.PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -210,51 +210,51 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         segment.set(LAYOUT$extraPrimitiveOverestimationSizeGranularity, OFFSET$extraPrimitiveOverestimationSizeGranularity, value);
     }
 
-    public @unsigned int primitiveUnderestimation() {
+    public @NativeType("VkBool32") @Unsigned int primitiveUnderestimation() {
         return segment.get(LAYOUT$primitiveUnderestimation, OFFSET$primitiveUnderestimation);
     }
 
-    public void primitiveUnderestimation(@unsigned int value) {
+    public void primitiveUnderestimation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveUnderestimation, OFFSET$primitiveUnderestimation, value);
     }
 
-    public @unsigned int conservativePointAndLineRasterization() {
+    public @NativeType("VkBool32") @Unsigned int conservativePointAndLineRasterization() {
         return segment.get(LAYOUT$conservativePointAndLineRasterization, OFFSET$conservativePointAndLineRasterization);
     }
 
-    public void conservativePointAndLineRasterization(@unsigned int value) {
+    public void conservativePointAndLineRasterization(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$conservativePointAndLineRasterization, OFFSET$conservativePointAndLineRasterization, value);
     }
 
-    public @unsigned int degenerateTrianglesRasterized() {
+    public @NativeType("VkBool32") @Unsigned int degenerateTrianglesRasterized() {
         return segment.get(LAYOUT$degenerateTrianglesRasterized, OFFSET$degenerateTrianglesRasterized);
     }
 
-    public void degenerateTrianglesRasterized(@unsigned int value) {
+    public void degenerateTrianglesRasterized(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$degenerateTrianglesRasterized, OFFSET$degenerateTrianglesRasterized, value);
     }
 
-    public @unsigned int degenerateLinesRasterized() {
+    public @NativeType("VkBool32") @Unsigned int degenerateLinesRasterized() {
         return segment.get(LAYOUT$degenerateLinesRasterized, OFFSET$degenerateLinesRasterized);
     }
 
-    public void degenerateLinesRasterized(@unsigned int value) {
+    public void degenerateLinesRasterized(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$degenerateLinesRasterized, OFFSET$degenerateLinesRasterized, value);
     }
 
-    public @unsigned int fullyCoveredFragmentShaderInputVariable() {
+    public @NativeType("VkBool32") @Unsigned int fullyCoveredFragmentShaderInputVariable() {
         return segment.get(LAYOUT$fullyCoveredFragmentShaderInputVariable, OFFSET$fullyCoveredFragmentShaderInputVariable);
     }
 
-    public void fullyCoveredFragmentShaderInputVariable(@unsigned int value) {
+    public void fullyCoveredFragmentShaderInputVariable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fullyCoveredFragmentShaderInputVariable, OFFSET$fullyCoveredFragmentShaderInputVariable, value);
     }
 
-    public @unsigned int conservativeRasterizationPostDepthCoverage() {
+    public @NativeType("VkBool32") @Unsigned int conservativeRasterizationPostDepthCoverage() {
         return segment.get(LAYOUT$conservativeRasterizationPostDepthCoverage, OFFSET$conservativeRasterizationPostDepthCoverage);
     }
 
-    public void conservativeRasterizationPostDepthCoverage(@unsigned int value) {
+    public void conservativeRasterizationPostDepthCoverage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$conservativeRasterizationPostDepthCoverage, OFFSET$conservativeRasterizationPostDepthCoverage, value);
     }
 

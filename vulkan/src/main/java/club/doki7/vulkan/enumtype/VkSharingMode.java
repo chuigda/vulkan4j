@@ -7,7 +7,7 @@ public final class VkSharingMode {
     public static final int EXCLUSIVE = 0x0;
     public static final int CONCURRENT = 0x1;
 
-    public static String explain(@enumtype(VkSharingMode.class) int value) {
+    public static String explain(@EnumType(VkSharingMode.class) int value) {
         return switch (value) {
             case VkSharingMode.CONCURRENT -> "VK_SHARING_MODE_CONCURRENT";
             case VkSharingMode.EXCLUSIVE -> "VK_SHARING_MODE_EXCLUSIVE";

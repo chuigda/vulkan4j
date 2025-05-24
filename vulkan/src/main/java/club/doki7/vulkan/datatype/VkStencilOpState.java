@@ -89,7 +89,7 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -97,7 +97,7 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkStencilOpState.BYTES, VkStencilOpState.BYTES));
         }
@@ -144,59 +144,59 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
         return ret;
     }
 
-    public @enumtype(VkStencilOp.class) int failOp() {
+    public @EnumType(VkStencilOp.class) int failOp() {
         return segment.get(LAYOUT$failOp, OFFSET$failOp);
     }
 
-    public void failOp(@enumtype(VkStencilOp.class) int value) {
+    public void failOp(@EnumType(VkStencilOp.class) int value) {
         segment.set(LAYOUT$failOp, OFFSET$failOp, value);
     }
 
-    public @enumtype(VkStencilOp.class) int passOp() {
+    public @EnumType(VkStencilOp.class) int passOp() {
         return segment.get(LAYOUT$passOp, OFFSET$passOp);
     }
 
-    public void passOp(@enumtype(VkStencilOp.class) int value) {
+    public void passOp(@EnumType(VkStencilOp.class) int value) {
         segment.set(LAYOUT$passOp, OFFSET$passOp, value);
     }
 
-    public @enumtype(VkStencilOp.class) int depthFailOp() {
+    public @EnumType(VkStencilOp.class) int depthFailOp() {
         return segment.get(LAYOUT$depthFailOp, OFFSET$depthFailOp);
     }
 
-    public void depthFailOp(@enumtype(VkStencilOp.class) int value) {
+    public void depthFailOp(@EnumType(VkStencilOp.class) int value) {
         segment.set(LAYOUT$depthFailOp, OFFSET$depthFailOp, value);
     }
 
-    public @enumtype(VkCompareOp.class) int compareOp() {
+    public @EnumType(VkCompareOp.class) int compareOp() {
         return segment.get(LAYOUT$compareOp, OFFSET$compareOp);
     }
 
-    public void compareOp(@enumtype(VkCompareOp.class) int value) {
+    public void compareOp(@EnumType(VkCompareOp.class) int value) {
         segment.set(LAYOUT$compareOp, OFFSET$compareOp, value);
     }
 
-    public @unsigned int compareMask() {
+    public @Unsigned int compareMask() {
         return segment.get(LAYOUT$compareMask, OFFSET$compareMask);
     }
 
-    public void compareMask(@unsigned int value) {
+    public void compareMask(@Unsigned int value) {
         segment.set(LAYOUT$compareMask, OFFSET$compareMask, value);
     }
 
-    public @unsigned int writeMask() {
+    public @Unsigned int writeMask() {
         return segment.get(LAYOUT$writeMask, OFFSET$writeMask);
     }
 
-    public void writeMask(@unsigned int value) {
+    public void writeMask(@Unsigned int value) {
         segment.set(LAYOUT$writeMask, OFFSET$writeMask, value);
     }
 
-    public @unsigned int reference() {
+    public @Unsigned int reference() {
         return segment.get(LAYOUT$reference, OFFSET$reference);
     }
 
-    public void reference(@unsigned int value) {
+    public void reference(@Unsigned int value) {
         segment.set(LAYOUT$reference, OFFSET$reference, value);
     }
 

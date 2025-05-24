@@ -103,7 +103,7 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -111,7 +111,7 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkGeometryTrianglesNV.BYTES, VkGeometryTrianglesNV.BYTES));
         }
@@ -168,19 +168,19 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.GEOMETRY_TRIANGLES_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -200,35 +200,35 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$vertexData, OFFSET$vertexData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long vertexOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long vertexOffset() {
         return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
     }
 
-    public void vertexOffset(@unsigned long value) {
+    public void vertexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
     }
 
-    public @unsigned int vertexCount() {
+    public @Unsigned int vertexCount() {
         return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
     }
 
-    public void vertexCount(@unsigned int value) {
+    public void vertexCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
     }
 
-    public @unsigned long vertexStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
 
-    public void vertexStride(@unsigned long value) {
+    public void vertexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
     }
 
-    public @enumtype(VkFormat.class) int vertexFormat() {
+    public @EnumType(VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public void vertexFormat(@enumtype(VkFormat.class) int value) {
+    public void vertexFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
     }
 
@@ -244,27 +244,27 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$indexData, OFFSET$indexData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long indexOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long indexOffset() {
         return segment.get(LAYOUT$indexOffset, OFFSET$indexOffset);
     }
 
-    public void indexOffset(@unsigned long value) {
+    public void indexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$indexOffset, OFFSET$indexOffset, value);
     }
 
-    public @unsigned int indexCount() {
+    public @Unsigned int indexCount() {
         return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
     }
 
-    public void indexCount(@unsigned int value) {
+    public void indexCount(@Unsigned int value) {
         segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
     }
 
-    public @enumtype(VkIndexType.class) int indexType() {
+    public @EnumType(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public void indexType(@enumtype(VkIndexType.class) int value) {
+    public void indexType(@EnumType(VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
     }
 
@@ -280,11 +280,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$transformData, OFFSET$transformData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long transformOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long transformOffset() {
         return segment.get(LAYOUT$transformOffset, OFFSET$transformOffset);
     }
 
-    public void transformOffset(@unsigned long value) {
+    public void transformOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$transformOffset, OFFSET$transformOffset, value);
     }
 

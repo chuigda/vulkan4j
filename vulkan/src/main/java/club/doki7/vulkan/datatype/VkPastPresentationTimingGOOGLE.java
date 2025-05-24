@@ -87,7 +87,7 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPastPresentationTimingGOOGLE.BYTES, VkPastPresentationTimingGOOGLE.BYTES));
         }
@@ -142,43 +142,43 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @unsigned int presentID() {
+    public @Unsigned int presentID() {
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }
 
-    public void presentID(@unsigned int value) {
+    public void presentID(@Unsigned int value) {
         segment.set(LAYOUT$presentID, OFFSET$presentID, value);
     }
 
-    public @unsigned long desiredPresentTime() {
+    public @Unsigned long desiredPresentTime() {
         return segment.get(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime);
     }
 
-    public void desiredPresentTime(@unsigned long value) {
+    public void desiredPresentTime(@Unsigned long value) {
         segment.set(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime, value);
     }
 
-    public @unsigned long actualPresentTime() {
+    public @Unsigned long actualPresentTime() {
         return segment.get(LAYOUT$actualPresentTime, OFFSET$actualPresentTime);
     }
 
-    public void actualPresentTime(@unsigned long value) {
+    public void actualPresentTime(@Unsigned long value) {
         segment.set(LAYOUT$actualPresentTime, OFFSET$actualPresentTime, value);
     }
 
-    public @unsigned long earliestPresentTime() {
+    public @Unsigned long earliestPresentTime() {
         return segment.get(LAYOUT$earliestPresentTime, OFFSET$earliestPresentTime);
     }
 
-    public void earliestPresentTime(@unsigned long value) {
+    public void earliestPresentTime(@Unsigned long value) {
         segment.set(LAYOUT$earliestPresentTime, OFFSET$earliestPresentTime, value);
     }
 
-    public @unsigned long presentMargin() {
+    public @Unsigned long presentMargin() {
         return segment.get(LAYOUT$presentMargin, OFFSET$presentMargin);
     }
 
-    public void presentMargin(@unsigned long value) {
+    public void presentMargin(@Unsigned long value) {
         segment.set(LAYOUT$presentMargin, OFFSET$presentMargin, value);
     }
 

@@ -7,7 +7,7 @@ public final class VkRasterizationOrderAMD {
     public static final int STRICT = 0x0;
     public static final int RELAXED = 0x1;
 
-    public static String explain(@enumtype(VkRasterizationOrderAMD.class) int value) {
+    public static String explain(@EnumType(VkRasterizationOrderAMD.class) int value) {
         return switch (value) {
             case VkRasterizationOrderAMD.RELAXED -> "VK_RASTERIZATION_ORDER_RELAXED_AMD";
             case VkRasterizationOrderAMD.STRICT -> "VK_RASTERIZATION_ORDER_STRICT_AMD";

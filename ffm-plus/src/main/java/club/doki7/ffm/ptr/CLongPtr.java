@@ -2,9 +2,9 @@ package club.doki7.ffm.ptr;
 
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.annotation.Unsafe;
 import club.doki7.ffm.annotation.UnsafeConstructor;
 import club.doki7.ffm.annotation.ValueBasedCandidate;
-import club.doki7.ffm.annotation.unsafe;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -32,7 +32,7 @@ public record CLongPtr(MemorySegment segment) implements IPointer {
         NativeLayout.writeCLong(segment, index, value);
     }
 
-    @unsafe
+    @Unsafe
     public CLongPtr reinterpret(long newSize) {
         return new CLongPtr(segment.reinterpret(newSize * NativeLayout.C_LONG_SIZE));
     }

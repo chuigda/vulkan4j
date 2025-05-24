@@ -96,7 +96,7 @@ public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDevicePipelineRobustnessProperties.BYTES, VkPhysicalDevicePipelineRobustnessProperties.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,35 +181,35 @@ public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessStorageBuffers() {
+    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessStorageBuffers() {
         return segment.get(LAYOUT$defaultRobustnessStorageBuffers, OFFSET$defaultRobustnessStorageBuffers);
     }
 
-    public void defaultRobustnessStorageBuffers(@enumtype(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public void defaultRobustnessStorageBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessStorageBuffers, OFFSET$defaultRobustnessStorageBuffers, value);
     }
 
-    public @enumtype(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessUniformBuffers() {
+    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessUniformBuffers() {
         return segment.get(LAYOUT$defaultRobustnessUniformBuffers, OFFSET$defaultRobustnessUniformBuffers);
     }
 
-    public void defaultRobustnessUniformBuffers(@enumtype(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public void defaultRobustnessUniformBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessUniformBuffers, OFFSET$defaultRobustnessUniformBuffers, value);
     }
 
-    public @enumtype(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessVertexInputs() {
+    public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessVertexInputs() {
         return segment.get(LAYOUT$defaultRobustnessVertexInputs, OFFSET$defaultRobustnessVertexInputs);
     }
 
-    public void defaultRobustnessVertexInputs(@enumtype(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public void defaultRobustnessVertexInputs(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessVertexInputs, OFFSET$defaultRobustnessVertexInputs, value);
     }
 
-    public @enumtype(VkPipelineRobustnessImageBehavior.class) int defaultRobustnessImages() {
+    public @EnumType(VkPipelineRobustnessImageBehavior.class) int defaultRobustnessImages() {
         return segment.get(LAYOUT$defaultRobustnessImages, OFFSET$defaultRobustnessImages);
     }
 
-    public void defaultRobustnessImages(@enumtype(VkPipelineRobustnessImageBehavior.class) int value) {
+    public void defaultRobustnessImages(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessImages, OFFSET$defaultRobustnessImages, value);
     }
 

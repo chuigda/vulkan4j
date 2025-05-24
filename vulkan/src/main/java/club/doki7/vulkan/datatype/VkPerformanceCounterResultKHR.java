@@ -88,7 +88,7 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -96,7 +96,7 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPerformanceCounterResultKHR.BYTES, VkPerformanceCounterResultKHR.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$int64, OFFSET$int64, value);
     }
 
-    public @unsigned int uint32() {
+    public @Unsigned int uint32() {
         return segment.get(LAYOUT$uint32, OFFSET$uint32);
     }
 
-    public void uint32(@unsigned int value) {
+    public void uint32(@Unsigned int value) {
         segment.set(LAYOUT$uint32, OFFSET$uint32, value);
     }
 
-    public @unsigned long uint64() {
+    public @Unsigned long uint64() {
         return segment.get(LAYOUT$uint64, OFFSET$uint64);
     }
 
-    public void uint64(@unsigned long value) {
+    public void uint64(@Unsigned long value) {
         segment.set(LAYOUT$uint64, OFFSET$uint64, value);
     }
 

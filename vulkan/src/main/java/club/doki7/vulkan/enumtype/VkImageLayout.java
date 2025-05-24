@@ -35,7 +35,7 @@ public final class VkImageLayout {
     public static final int ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT = 0x3b9ff638;
     public static final int VIDEO_ENCODE_QUANTIZATION_MAP_KHR = 0x3ba33a28;
 
-    public static String explain(@enumtype(VkImageLayout.class) int value) {
+    public static String explain(@EnumType(VkImageLayout.class) int value) {
         return switch (value) {
             case VkImageLayout.ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT -> "VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT";
             case VkImageLayout.ATTACHMENT_OPTIMAL -> "VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL";

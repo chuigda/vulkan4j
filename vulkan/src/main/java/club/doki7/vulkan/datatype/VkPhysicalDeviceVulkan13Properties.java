@@ -137,7 +137,7 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -145,7 +145,7 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceVulkan13Properties.BYTES, VkPhysicalDeviceVulkan13Properties.BYTES));
         }
@@ -202,19 +202,19 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -222,363 +222,363 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int minSubgroupSize() {
+    public @Unsigned int minSubgroupSize() {
         return segment.get(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize);
     }
 
-    public void minSubgroupSize(@unsigned int value) {
+    public void minSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize, value);
     }
 
-    public @unsigned int maxSubgroupSize() {
+    public @Unsigned int maxSubgroupSize() {
         return segment.get(LAYOUT$maxSubgroupSize, OFFSET$maxSubgroupSize);
     }
 
-    public void maxSubgroupSize(@unsigned int value) {
+    public void maxSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$maxSubgroupSize, OFFSET$maxSubgroupSize, value);
     }
 
-    public @unsigned int maxComputeWorkgroupSubgroups() {
+    public @Unsigned int maxComputeWorkgroupSubgroups() {
         return segment.get(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups);
     }
 
-    public void maxComputeWorkgroupSubgroups(@unsigned int value) {
+    public void maxComputeWorkgroupSubgroups(@Unsigned int value) {
         segment.set(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
+    public @EnumType(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
         return segment.get(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages);
     }
 
-    public void requiredSubgroupSizeStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void requiredSubgroupSizeStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages, value);
     }
 
-    public @unsigned int maxInlineUniformBlockSize() {
+    public @Unsigned int maxInlineUniformBlockSize() {
         return segment.get(LAYOUT$maxInlineUniformBlockSize, OFFSET$maxInlineUniformBlockSize);
     }
 
-    public void maxInlineUniformBlockSize(@unsigned int value) {
+    public void maxInlineUniformBlockSize(@Unsigned int value) {
         segment.set(LAYOUT$maxInlineUniformBlockSize, OFFSET$maxInlineUniformBlockSize, value);
     }
 
-    public @unsigned int maxPerStageDescriptorInlineUniformBlocks() {
+    public @Unsigned int maxPerStageDescriptorInlineUniformBlocks() {
         return segment.get(LAYOUT$maxPerStageDescriptorInlineUniformBlocks, OFFSET$maxPerStageDescriptorInlineUniformBlocks);
     }
 
-    public void maxPerStageDescriptorInlineUniformBlocks(@unsigned int value) {
+    public void maxPerStageDescriptorInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorInlineUniformBlocks, OFFSET$maxPerStageDescriptorInlineUniformBlocks, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, OFFSET$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, OFFSET$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, value);
     }
 
-    public @unsigned int maxDescriptorSetInlineUniformBlocks() {
+    public @Unsigned int maxDescriptorSetInlineUniformBlocks() {
         return segment.get(LAYOUT$maxDescriptorSetInlineUniformBlocks, OFFSET$maxDescriptorSetInlineUniformBlocks);
     }
 
-    public void maxDescriptorSetInlineUniformBlocks(@unsigned int value) {
+    public void maxDescriptorSetInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetInlineUniformBlocks, OFFSET$maxDescriptorSetInlineUniformBlocks, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, OFFSET$maxDescriptorSetUpdateAfterBindInlineUniformBlocks);
     }
 
-    public void maxDescriptorSetUpdateAfterBindInlineUniformBlocks(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, OFFSET$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, value);
     }
 
-    public @unsigned int maxInlineUniformTotalSize() {
+    public @Unsigned int maxInlineUniformTotalSize() {
         return segment.get(LAYOUT$maxInlineUniformTotalSize, OFFSET$maxInlineUniformTotalSize);
     }
 
-    public void maxInlineUniformTotalSize(@unsigned int value) {
+    public void maxInlineUniformTotalSize(@Unsigned int value) {
         segment.set(LAYOUT$maxInlineUniformTotalSize, OFFSET$maxInlineUniformTotalSize, value);
     }
 
-    public @unsigned int integerDotProduct8BitUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct8BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct8BitUnsignedAccelerated, OFFSET$integerDotProduct8BitUnsignedAccelerated);
     }
 
-    public void integerDotProduct8BitUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProduct8BitUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct8BitUnsignedAccelerated, OFFSET$integerDotProduct8BitUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct8BitSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct8BitSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct8BitSignedAccelerated, OFFSET$integerDotProduct8BitSignedAccelerated);
     }
 
-    public void integerDotProduct8BitSignedAccelerated(@unsigned int value) {
+    public void integerDotProduct8BitSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct8BitSignedAccelerated, OFFSET$integerDotProduct8BitSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct8BitMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct8BitMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProduct8BitMixedSignednessAccelerated, OFFSET$integerDotProduct8BitMixedSignednessAccelerated);
     }
 
-    public void integerDotProduct8BitMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProduct8BitMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct8BitMixedSignednessAccelerated, OFFSET$integerDotProduct8BitMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct4x8BitPackedUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct4x8BitPackedUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct4x8BitPackedUnsignedAccelerated, OFFSET$integerDotProduct4x8BitPackedUnsignedAccelerated);
     }
 
-    public void integerDotProduct4x8BitPackedUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProduct4x8BitPackedUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct4x8BitPackedUnsignedAccelerated, OFFSET$integerDotProduct4x8BitPackedUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct4x8BitPackedSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct4x8BitPackedSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct4x8BitPackedSignedAccelerated, OFFSET$integerDotProduct4x8BitPackedSignedAccelerated);
     }
 
-    public void integerDotProduct4x8BitPackedSignedAccelerated(@unsigned int value) {
+    public void integerDotProduct4x8BitPackedSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct4x8BitPackedSignedAccelerated, OFFSET$integerDotProduct4x8BitPackedSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct4x8BitPackedMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct4x8BitPackedMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProduct4x8BitPackedMixedSignednessAccelerated, OFFSET$integerDotProduct4x8BitPackedMixedSignednessAccelerated);
     }
 
-    public void integerDotProduct4x8BitPackedMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProduct4x8BitPackedMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct4x8BitPackedMixedSignednessAccelerated, OFFSET$integerDotProduct4x8BitPackedMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct16BitUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct16BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct16BitUnsignedAccelerated, OFFSET$integerDotProduct16BitUnsignedAccelerated);
     }
 
-    public void integerDotProduct16BitUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProduct16BitUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct16BitUnsignedAccelerated, OFFSET$integerDotProduct16BitUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct16BitSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct16BitSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct16BitSignedAccelerated, OFFSET$integerDotProduct16BitSignedAccelerated);
     }
 
-    public void integerDotProduct16BitSignedAccelerated(@unsigned int value) {
+    public void integerDotProduct16BitSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct16BitSignedAccelerated, OFFSET$integerDotProduct16BitSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct16BitMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct16BitMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProduct16BitMixedSignednessAccelerated, OFFSET$integerDotProduct16BitMixedSignednessAccelerated);
     }
 
-    public void integerDotProduct16BitMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProduct16BitMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct16BitMixedSignednessAccelerated, OFFSET$integerDotProduct16BitMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct32BitUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct32BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct32BitUnsignedAccelerated, OFFSET$integerDotProduct32BitUnsignedAccelerated);
     }
 
-    public void integerDotProduct32BitUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProduct32BitUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct32BitUnsignedAccelerated, OFFSET$integerDotProduct32BitUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct32BitSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct32BitSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct32BitSignedAccelerated, OFFSET$integerDotProduct32BitSignedAccelerated);
     }
 
-    public void integerDotProduct32BitSignedAccelerated(@unsigned int value) {
+    public void integerDotProduct32BitSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct32BitSignedAccelerated, OFFSET$integerDotProduct32BitSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct32BitMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct32BitMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProduct32BitMixedSignednessAccelerated, OFFSET$integerDotProduct32BitMixedSignednessAccelerated);
     }
 
-    public void integerDotProduct32BitMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProduct32BitMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct32BitMixedSignednessAccelerated, OFFSET$integerDotProduct32BitMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct64BitUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct64BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct64BitUnsignedAccelerated, OFFSET$integerDotProduct64BitUnsignedAccelerated);
     }
 
-    public void integerDotProduct64BitUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProduct64BitUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct64BitUnsignedAccelerated, OFFSET$integerDotProduct64BitUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct64BitSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct64BitSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProduct64BitSignedAccelerated, OFFSET$integerDotProduct64BitSignedAccelerated);
     }
 
-    public void integerDotProduct64BitSignedAccelerated(@unsigned int value) {
+    public void integerDotProduct64BitSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct64BitSignedAccelerated, OFFSET$integerDotProduct64BitSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProduct64BitMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProduct64BitMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProduct64BitMixedSignednessAccelerated, OFFSET$integerDotProduct64BitMixedSignednessAccelerated);
     }
 
-    public void integerDotProduct64BitMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProduct64BitMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProduct64BitMixedSignednessAccelerated, OFFSET$integerDotProduct64BitMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating8BitUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating8BitSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating8BitSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating8BitSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating8BitSignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating8BitSignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating8BitSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating8BitSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating8BitSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating16BitUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating16BitSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating16BitSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating16BitSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating16BitSignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating16BitSignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating16BitSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating16BitSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating16BitSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating32BitUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating32BitSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating32BitSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating32BitSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating32BitSignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating32BitSignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating32BitSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating32BitSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating32BitSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating64BitUnsignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating64BitSignedAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating64BitSignedAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating64BitSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating64BitSignedAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating64BitSignedAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating64BitSignedAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating64BitSignedAccelerated, OFFSET$integerDotProductAccumulatingSaturating64BitSignedAccelerated, value);
     }
 
-    public @unsigned int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated() {
         return segment.get(LAYOUT$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated);
     }
 
-    public void integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(@unsigned int value) {
+    public void integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated, OFFSET$integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated, value);
     }
 
-    public @unsigned long storageTexelBufferOffsetAlignmentBytes() {
+    public @NativeType("VkDeviceSize") @Unsigned long storageTexelBufferOffsetAlignmentBytes() {
         return segment.get(LAYOUT$storageTexelBufferOffsetAlignmentBytes, OFFSET$storageTexelBufferOffsetAlignmentBytes);
     }
 
-    public void storageTexelBufferOffsetAlignmentBytes(@unsigned long value) {
+    public void storageTexelBufferOffsetAlignmentBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$storageTexelBufferOffsetAlignmentBytes, OFFSET$storageTexelBufferOffsetAlignmentBytes, value);
     }
 
-    public @unsigned int storageTexelBufferOffsetSingleTexelAlignment() {
+    public @NativeType("VkBool32") @Unsigned int storageTexelBufferOffsetSingleTexelAlignment() {
         return segment.get(LAYOUT$storageTexelBufferOffsetSingleTexelAlignment, OFFSET$storageTexelBufferOffsetSingleTexelAlignment);
     }
 
-    public void storageTexelBufferOffsetSingleTexelAlignment(@unsigned int value) {
+    public void storageTexelBufferOffsetSingleTexelAlignment(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storageTexelBufferOffsetSingleTexelAlignment, OFFSET$storageTexelBufferOffsetSingleTexelAlignment, value);
     }
 
-    public @unsigned long uniformTexelBufferOffsetAlignmentBytes() {
+    public @NativeType("VkDeviceSize") @Unsigned long uniformTexelBufferOffsetAlignmentBytes() {
         return segment.get(LAYOUT$uniformTexelBufferOffsetAlignmentBytes, OFFSET$uniformTexelBufferOffsetAlignmentBytes);
     }
 
-    public void uniformTexelBufferOffsetAlignmentBytes(@unsigned long value) {
+    public void uniformTexelBufferOffsetAlignmentBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$uniformTexelBufferOffsetAlignmentBytes, OFFSET$uniformTexelBufferOffsetAlignmentBytes, value);
     }
 
-    public @unsigned int uniformTexelBufferOffsetSingleTexelAlignment() {
+    public @NativeType("VkBool32") @Unsigned int uniformTexelBufferOffsetSingleTexelAlignment() {
         return segment.get(LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment, OFFSET$uniformTexelBufferOffsetSingleTexelAlignment);
     }
 
-    public void uniformTexelBufferOffsetSingleTexelAlignment(@unsigned int value) {
+    public void uniformTexelBufferOffsetSingleTexelAlignment(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment, OFFSET$uniformTexelBufferOffsetSingleTexelAlignment, value);
     }
 
-    public @unsigned long maxBufferSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxBufferSize() {
         return segment.get(LAYOUT$maxBufferSize, OFFSET$maxBufferSize);
     }
 
-    public void maxBufferSize(@unsigned long value) {
+    public void maxBufferSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxBufferSize, OFFSET$maxBufferSize, value);
     }
 

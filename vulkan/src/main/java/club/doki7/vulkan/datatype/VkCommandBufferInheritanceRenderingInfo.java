@@ -99,7 +99,7 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -107,7 +107,7 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkCommandBufferInheritanceRenderingInfo.BYTES, VkCommandBufferInheritanceRenderingInfo.BYTES));
         }
@@ -164,19 +164,19 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         sType(VkStructureType.COMMAND_BUFFER_INHERITANCE_RENDERING_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,27 +184,27 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkRenderingFlags.class) int flags() {
+    public @EnumType(VkRenderingFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkRenderingFlags.class) int value) {
+    public void flags(@EnumType(VkRenderingFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int viewMask() {
+    public @Unsigned int viewMask() {
         return segment.get(LAYOUT$viewMask, OFFSET$viewMask);
     }
 
-    public void viewMask(@unsigned int value) {
+    public void viewMask(@Unsigned int value) {
         segment.set(LAYOUT$viewMask, OFFSET$viewMask, value);
     }
 
-    public @unsigned int colorAttachmentCount() {
+    public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@unsigned int value) {
+    public void colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
@@ -213,7 +213,7 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkFormat.class) IntPtr pColorAttachmentFormats() {
+    public @Nullable @EnumType(VkFormat.class) IntPtr pColorAttachmentFormats() {
         MemorySegment s = pColorAttachmentFormatsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -221,40 +221,40 @@ public record VkCommandBufferInheritanceRenderingInfo(@NotNull MemorySegment seg
         return new IntPtr(s);
     }
 
-    public void pColorAttachmentFormats(@Nullable @enumtype(VkFormat.class) IntPtr value) {
+    public void pColorAttachmentFormats(@Nullable @EnumType(VkFormat.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentFormatsRaw(s);
     }
 
-    public @pointer(target=VkFormat.class) MemorySegment pColorAttachmentFormatsRaw() {
+    public @Pointer(target=VkFormat.class) MemorySegment pColorAttachmentFormatsRaw() {
         return segment.get(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats);
     }
 
-    public void pColorAttachmentFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
+    public void pColorAttachmentFormatsRaw(@Pointer(target=VkFormat.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentFormats, OFFSET$pColorAttachmentFormats, value);
     }
 
-    public @enumtype(VkFormat.class) int depthAttachmentFormat() {
+    public @EnumType(VkFormat.class) int depthAttachmentFormat() {
         return segment.get(LAYOUT$depthAttachmentFormat, OFFSET$depthAttachmentFormat);
     }
 
-    public void depthAttachmentFormat(@enumtype(VkFormat.class) int value) {
+    public void depthAttachmentFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$depthAttachmentFormat, OFFSET$depthAttachmentFormat, value);
     }
 
-    public @enumtype(VkFormat.class) int stencilAttachmentFormat() {
+    public @EnumType(VkFormat.class) int stencilAttachmentFormat() {
         return segment.get(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat);
     }
 
-    public void stencilAttachmentFormat(@enumtype(VkFormat.class) int value) {
+    public void stencilAttachmentFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public void rasterizationSamples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
     }
 

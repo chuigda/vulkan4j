@@ -101,7 +101,7 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -109,7 +109,7 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoCapabilitiesKHR.BYTES, VkVideoCapabilitiesKHR.BYTES));
         }
@@ -166,19 +166,19 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.VIDEO_CAPABILITIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -186,27 +186,27 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoCapabilityFlagsKHR.class) int flags() {
+    public @EnumType(VkVideoCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkVideoCapabilityFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkVideoCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned long minBitstreamBufferOffsetAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long minBitstreamBufferOffsetAlignment() {
         return segment.get(LAYOUT$minBitstreamBufferOffsetAlignment, OFFSET$minBitstreamBufferOffsetAlignment);
     }
 
-    public void minBitstreamBufferOffsetAlignment(@unsigned long value) {
+    public void minBitstreamBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minBitstreamBufferOffsetAlignment, OFFSET$minBitstreamBufferOffsetAlignment, value);
     }
 
-    public @unsigned long minBitstreamBufferSizeAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long minBitstreamBufferSizeAlignment() {
         return segment.get(LAYOUT$minBitstreamBufferSizeAlignment, OFFSET$minBitstreamBufferSizeAlignment);
     }
 
-    public void minBitstreamBufferSizeAlignment(@unsigned long value) {
+    public void minBitstreamBufferSizeAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minBitstreamBufferSizeAlignment, OFFSET$minBitstreamBufferSizeAlignment, value);
     }
 
@@ -234,19 +234,19 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxCodedExtent, SIZE$maxCodedExtent);
     }
 
-    public @unsigned int maxDpbSlots() {
+    public @Unsigned int maxDpbSlots() {
         return segment.get(LAYOUT$maxDpbSlots, OFFSET$maxDpbSlots);
     }
 
-    public void maxDpbSlots(@unsigned int value) {
+    public void maxDpbSlots(@Unsigned int value) {
         segment.set(LAYOUT$maxDpbSlots, OFFSET$maxDpbSlots, value);
     }
 
-    public @unsigned int maxActiveReferencePictures() {
+    public @Unsigned int maxActiveReferencePictures() {
         return segment.get(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures);
     }
 
-    public void maxActiveReferencePictures(@unsigned int value) {
+    public void maxActiveReferencePictures(@Unsigned int value) {
         segment.set(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures, value);
     }
 

@@ -8,7 +8,7 @@ public final class VkShaderInfoTypeAMD {
     public static final int BINARY = 0x1;
     public static final int DISASSEMBLY = 0x2;
 
-    public static String explain(@enumtype(VkShaderInfoTypeAMD.class) int value) {
+    public static String explain(@EnumType(VkShaderInfoTypeAMD.class) int value) {
         return switch (value) {
             case VkShaderInfoTypeAMD.BINARY -> "VK_SHADER_INFO_TYPE_BINARY_AMD";
             case VkShaderInfoTypeAMD.DISASSEMBLY -> "VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD";

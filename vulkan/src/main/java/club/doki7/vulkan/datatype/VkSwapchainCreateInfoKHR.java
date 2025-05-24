@@ -108,7 +108,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -116,7 +116,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSwapchainCreateInfoKHR.BYTES, VkSwapchainCreateInfoKHR.BYTES));
         }
@@ -173,19 +173,19 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         sType(VkStructureType.SWAPCHAIN_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -193,11 +193,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkSwapchainCreateFlagsKHR.class) int flags() {
+    public @EnumType(VkSwapchainCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkSwapchainCreateFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkSwapchainCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -213,27 +213,27 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$surface, OFFSET$surface, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int minImageCount() {
+    public @Unsigned int minImageCount() {
         return segment.get(LAYOUT$minImageCount, OFFSET$minImageCount);
     }
 
-    public void minImageCount(@unsigned int value) {
+    public void minImageCount(@Unsigned int value) {
         segment.set(LAYOUT$minImageCount, OFFSET$minImageCount, value);
     }
 
-    public @enumtype(VkFormat.class) int imageFormat() {
+    public @EnumType(VkFormat.class) int imageFormat() {
         return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
     }
 
-    public void imageFormat(@enumtype(VkFormat.class) int value) {
+    public void imageFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
     }
 
-    public @enumtype(VkColorSpaceKHR.class) int imageColorSpace() {
+    public @EnumType(VkColorSpaceKHR.class) int imageColorSpace() {
         return segment.get(LAYOUT$imageColorSpace, OFFSET$imageColorSpace);
     }
 
-    public void imageColorSpace(@enumtype(VkColorSpaceKHR.class) int value) {
+    public void imageColorSpace(@EnumType(VkColorSpaceKHR.class) int value) {
         segment.set(LAYOUT$imageColorSpace, OFFSET$imageColorSpace, value);
     }
 
@@ -245,35 +245,35 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
     }
 
-    public @unsigned int imageArrayLayers() {
+    public @Unsigned int imageArrayLayers() {
         return segment.get(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers);
     }
 
-    public void imageArrayLayers(@unsigned int value) {
+    public void imageArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers, value);
     }
 
-    public @enumtype(VkImageUsageFlags.class) int imageUsage() {
+    public @EnumType(VkImageUsageFlags.class) int imageUsage() {
         return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
     }
 
-    public void imageUsage(@enumtype(VkImageUsageFlags.class) int value) {
+    public void imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
     }
 
-    public @enumtype(VkSharingMode.class) int imageSharingMode() {
+    public @EnumType(VkSharingMode.class) int imageSharingMode() {
         return segment.get(LAYOUT$imageSharingMode, OFFSET$imageSharingMode);
     }
 
-    public void imageSharingMode(@enumtype(VkSharingMode.class) int value) {
+    public void imageSharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$imageSharingMode, OFFSET$imageSharingMode, value);
     }
 
-    public @unsigned int queueFamilyIndexCount() {
+    public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@unsigned int value) {
+    public void queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
@@ -281,7 +281,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pQueueFamilyIndices() {
+    public @Nullable @Unsigned IntPtr pQueueFamilyIndices() {
         MemorySegment s = pQueueFamilyIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -289,48 +289,48 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
+    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int preTransform() {
+    public @EnumType(VkSurfaceTransformFlagsKHR.class) int preTransform() {
         return segment.get(LAYOUT$preTransform, OFFSET$preTransform);
     }
 
-    public void preTransform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+    public void preTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$preTransform, OFFSET$preTransform, value);
     }
 
-    public @enumtype(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
+    public @EnumType(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
         return segment.get(LAYOUT$compositeAlpha, OFFSET$compositeAlpha);
     }
 
-    public void compositeAlpha(@enumtype(VkCompositeAlphaFlagsKHR.class) int value) {
+    public void compositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$compositeAlpha, OFFSET$compositeAlpha, value);
     }
 
-    public @enumtype(VkPresentModeKHR.class) int presentMode() {
+    public @EnumType(VkPresentModeKHR.class) int presentMode() {
         return segment.get(LAYOUT$presentMode, OFFSET$presentMode);
     }
 
-    public void presentMode(@enumtype(VkPresentModeKHR.class) int value) {
+    public void presentMode(@EnumType(VkPresentModeKHR.class) int value) {
         segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
     }
 
-    public @unsigned int clipped() {
+    public @NativeType("VkBool32") @Unsigned int clipped() {
         return segment.get(LAYOUT$clipped, OFFSET$clipped);
     }
 
-    public void clipped(@unsigned int value) {
+    public void clipped(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clipped, OFFSET$clipped, value);
     }
 

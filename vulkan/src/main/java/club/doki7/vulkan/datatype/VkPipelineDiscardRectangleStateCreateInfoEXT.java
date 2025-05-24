@@ -96,7 +96,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineDiscardRectangleStateCreateInfoEXT.BYTES, VkPipelineDiscardRectangleStateCreateInfoEXT.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         sType(VkStructureType.PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,27 +181,27 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
+    public @EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
+    public void flags(@EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkDiscardRectangleModeEXT.class) int discardRectangleMode() {
+    public @EnumType(VkDiscardRectangleModeEXT.class) int discardRectangleMode() {
         return segment.get(LAYOUT$discardRectangleMode, OFFSET$discardRectangleMode);
     }
 
-    public void discardRectangleMode(@enumtype(VkDiscardRectangleModeEXT.class) int value) {
+    public void discardRectangleMode(@EnumType(VkDiscardRectangleModeEXT.class) int value) {
         segment.set(LAYOUT$discardRectangleMode, OFFSET$discardRectangleMode, value);
     }
 
-    public @unsigned int discardRectangleCount() {
+    public @Unsigned int discardRectangleCount() {
         return segment.get(LAYOUT$discardRectangleCount, OFFSET$discardRectangleCount);
     }
 
-    public void discardRectangleCount(@unsigned int value) {
+    public void discardRectangleCount(@Unsigned int value) {
         segment.set(LAYOUT$discardRectangleCount, OFFSET$discardRectangleCount, value);
     }
 
@@ -210,7 +210,7 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         pDiscardRectanglesRaw(s);
     }
 
-    @unsafe public @Nullable VkRect2D.Ptr pDiscardRectangles(int assumedCount) {
+    @Unsafe public @Nullable VkRect2D.Ptr pDiscardRectangles(int assumedCount) {
         MemorySegment s = pDiscardRectanglesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -228,11 +228,11 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         return new VkRect2D(s);
     }
 
-    public @pointer(target=VkRect2D.class) MemorySegment pDiscardRectanglesRaw() {
+    public @Pointer(target=VkRect2D.class) MemorySegment pDiscardRectanglesRaw() {
         return segment.get(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles);
     }
 
-    public void pDiscardRectanglesRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pDiscardRectanglesRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
         segment.set(LAYOUT$pDiscardRectangles, OFFSET$pDiscardRectangles, value);
     }
 

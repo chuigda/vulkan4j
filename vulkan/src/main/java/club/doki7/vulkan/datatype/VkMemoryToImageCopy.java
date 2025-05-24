@@ -98,7 +98,7 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -106,7 +106,7 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkMemoryToImageCopy.BYTES, VkMemoryToImageCopy.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.MEMORY_TO_IMAGE_COPY);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,11 +183,11 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment pHostPointer() {
+    public @Pointer(comment="void*") MemorySegment pHostPointer() {
         return segment.get(LAYOUT$pHostPointer, OFFSET$pHostPointer);
     }
 
-    public void pHostPointer(@pointer(comment="void*") MemorySegment value) {
+    public void pHostPointer(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pHostPointer, OFFSET$pHostPointer, value);
     }
 
@@ -195,19 +195,19 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         pHostPointer(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int memoryRowLength() {
+    public @Unsigned int memoryRowLength() {
         return segment.get(LAYOUT$memoryRowLength, OFFSET$memoryRowLength);
     }
 
-    public void memoryRowLength(@unsigned int value) {
+    public void memoryRowLength(@Unsigned int value) {
         segment.set(LAYOUT$memoryRowLength, OFFSET$memoryRowLength, value);
     }
 
-    public @unsigned int memoryImageHeight() {
+    public @Unsigned int memoryImageHeight() {
         return segment.get(LAYOUT$memoryImageHeight, OFFSET$memoryImageHeight);
     }
 
-    public void memoryImageHeight(@unsigned int value) {
+    public void memoryImageHeight(@Unsigned int value) {
         segment.set(LAYOUT$memoryImageHeight, OFFSET$memoryImageHeight, value);
     }
 

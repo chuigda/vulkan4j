@@ -9,7 +9,7 @@ public final class StdVideoH264ModificationOfPicNumsIdc {
     public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_END = 0x3;
     public static final int STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH264ModificationOfPicNumsIdc.class) int value) {
+    public static String explain(@EnumType(StdVideoH264ModificationOfPicNumsIdc.class) int value) {
         return switch (value) {
             case StdVideoH264ModificationOfPicNumsIdc.STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_END -> "STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_END";
             case StdVideoH264ModificationOfPicNumsIdc.STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_INVALID -> "STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_INVALID";

@@ -87,7 +87,7 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSubresourceLayout.BYTES, VkSubresourceLayout.BYTES));
         }
@@ -142,43 +142,43 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @unsigned long offset() {
+    public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@unsigned long value) {
+    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public @unsigned long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@unsigned long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @unsigned long rowPitch() {
+    public @NativeType("VkDeviceSize") @Unsigned long rowPitch() {
         return segment.get(LAYOUT$rowPitch, OFFSET$rowPitch);
     }
 
-    public void rowPitch(@unsigned long value) {
+    public void rowPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$rowPitch, OFFSET$rowPitch, value);
     }
 
-    public @unsigned long arrayPitch() {
+    public @NativeType("VkDeviceSize") @Unsigned long arrayPitch() {
         return segment.get(LAYOUT$arrayPitch, OFFSET$arrayPitch);
     }
 
-    public void arrayPitch(@unsigned long value) {
+    public void arrayPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$arrayPitch, OFFSET$arrayPitch, value);
     }
 
-    public @unsigned long depthPitch() {
+    public @NativeType("VkDeviceSize") @Unsigned long depthPitch() {
         return segment.get(LAYOUT$depthPitch, OFFSET$depthPitch);
     }
 
-    public void depthPitch(@unsigned long value) {
+    public void depthPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$depthPitch, OFFSET$depthPitch, value);
     }
 

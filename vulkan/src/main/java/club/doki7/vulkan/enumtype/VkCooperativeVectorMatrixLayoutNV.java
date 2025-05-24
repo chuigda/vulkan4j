@@ -9,7 +9,7 @@ public final class VkCooperativeVectorMatrixLayoutNV {
     public static final int INFERENCING_OPTIMAL = 0x2;
     public static final int TRAINING_OPTIMAL = 0x3;
 
-    public static String explain(@enumtype(VkCooperativeVectorMatrixLayoutNV.class) int value) {
+    public static String explain(@EnumType(VkCooperativeVectorMatrixLayoutNV.class) int value) {
         return switch (value) {
             case VkCooperativeVectorMatrixLayoutNV.COLUMN_MAJOR -> "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV";
             case VkCooperativeVectorMatrixLayoutNV.INFERENCING_OPTIMAL -> "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV";

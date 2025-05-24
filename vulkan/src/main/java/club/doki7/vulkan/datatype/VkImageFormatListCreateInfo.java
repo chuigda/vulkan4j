@@ -94,7 +94,7 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageFormatListCreateInfo.BYTES, VkImageFormatListCreateInfo.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         sType(VkStructureType.IMAGE_FORMAT_LIST_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int viewFormatCount() {
+    public @Unsigned int viewFormatCount() {
         return segment.get(LAYOUT$viewFormatCount, OFFSET$viewFormatCount);
     }
 
-    public void viewFormatCount(@unsigned int value) {
+    public void viewFormatCount(@Unsigned int value) {
         segment.set(LAYOUT$viewFormatCount, OFFSET$viewFormatCount, value);
     }
 
@@ -192,7 +192,7 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkFormat.class) IntPtr pViewFormats() {
+    public @Nullable @EnumType(VkFormat.class) IntPtr pViewFormats() {
         MemorySegment s = pViewFormatsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -200,16 +200,16 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         return new IntPtr(s);
     }
 
-    public void pViewFormats(@Nullable @enumtype(VkFormat.class) IntPtr value) {
+    public void pViewFormats(@Nullable @EnumType(VkFormat.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewFormatsRaw(s);
     }
 
-    public @pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
+    public @Pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {
         return segment.get(LAYOUT$pViewFormats, OFFSET$pViewFormats);
     }
 
-    public void pViewFormatsRaw(@pointer(target=VkFormat.class) MemorySegment value) {
+    public void pViewFormatsRaw(@Pointer(target=VkFormat.class) MemorySegment value) {
         segment.set(LAYOUT$pViewFormats, OFFSET$pViewFormats, value);
     }
 

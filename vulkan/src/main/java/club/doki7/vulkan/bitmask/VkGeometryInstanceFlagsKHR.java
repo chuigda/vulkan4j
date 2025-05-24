@@ -14,7 +14,7 @@ public final class VkGeometryInstanceFlagsKHR {
     public static final int TRIANGLE_FACING_CULL_DISABLE = 0x1;
     public static final int TRIANGLE_FLIP_FACING = 0x2;
 
-    public static String explain(@enumtype(VkGeometryInstanceFlagsKHR.class) int flags) {
+    public static String explain(@EnumType(VkGeometryInstanceFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DISABLE_OPACITY_MICROMAPS_EXT) != 0) {
             detectedFlagBits.add("VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_EXT");

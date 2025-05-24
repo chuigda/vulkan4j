@@ -100,7 +100,7 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -108,7 +108,7 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeH265QualityLevelPropertiesKHR.BYTES, VkVideoEncodeH265QualityLevelPropertiesKHR.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
         sType(VkStructureType.VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,43 +185,43 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeH265RateControlFlagsKHR.class) int preferredRateControlFlags() {
+    public @EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int preferredRateControlFlags() {
         return segment.get(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags);
     }
 
-    public void preferredRateControlFlags(@enumtype(VkVideoEncodeH265RateControlFlagsKHR.class) int value) {
+    public void preferredRateControlFlags(@EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags, value);
     }
 
-    public @unsigned int preferredGopFrameCount() {
+    public @Unsigned int preferredGopFrameCount() {
         return segment.get(LAYOUT$preferredGopFrameCount, OFFSET$preferredGopFrameCount);
     }
 
-    public void preferredGopFrameCount(@unsigned int value) {
+    public void preferredGopFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredGopFrameCount, OFFSET$preferredGopFrameCount, value);
     }
 
-    public @unsigned int preferredIdrPeriod() {
+    public @Unsigned int preferredIdrPeriod() {
         return segment.get(LAYOUT$preferredIdrPeriod, OFFSET$preferredIdrPeriod);
     }
 
-    public void preferredIdrPeriod(@unsigned int value) {
+    public void preferredIdrPeriod(@Unsigned int value) {
         segment.set(LAYOUT$preferredIdrPeriod, OFFSET$preferredIdrPeriod, value);
     }
 
-    public @unsigned int preferredConsecutiveBFrameCount() {
+    public @Unsigned int preferredConsecutiveBFrameCount() {
         return segment.get(LAYOUT$preferredConsecutiveBFrameCount, OFFSET$preferredConsecutiveBFrameCount);
     }
 
-    public void preferredConsecutiveBFrameCount(@unsigned int value) {
+    public void preferredConsecutiveBFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredConsecutiveBFrameCount, OFFSET$preferredConsecutiveBFrameCount, value);
     }
 
-    public @unsigned int preferredSubLayerCount() {
+    public @Unsigned int preferredSubLayerCount() {
         return segment.get(LAYOUT$preferredSubLayerCount, OFFSET$preferredSubLayerCount);
     }
 
-    public void preferredSubLayerCount(@unsigned int value) {
+    public void preferredSubLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredSubLayerCount, OFFSET$preferredSubLayerCount, value);
     }
 
@@ -233,19 +233,19 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$preferredConstantQp, SIZE$preferredConstantQp);
     }
 
-    public @unsigned int preferredMaxL0ReferenceCount() {
+    public @Unsigned int preferredMaxL0ReferenceCount() {
         return segment.get(LAYOUT$preferredMaxL0ReferenceCount, OFFSET$preferredMaxL0ReferenceCount);
     }
 
-    public void preferredMaxL0ReferenceCount(@unsigned int value) {
+    public void preferredMaxL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxL0ReferenceCount, OFFSET$preferredMaxL0ReferenceCount, value);
     }
 
-    public @unsigned int preferredMaxL1ReferenceCount() {
+    public @Unsigned int preferredMaxL1ReferenceCount() {
         return segment.get(LAYOUT$preferredMaxL1ReferenceCount, OFFSET$preferredMaxL1ReferenceCount);
     }
 
-    public void preferredMaxL1ReferenceCount(@unsigned int value) {
+    public void preferredMaxL1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxL1ReferenceCount, OFFSET$preferredMaxL1ReferenceCount, value);
     }
 

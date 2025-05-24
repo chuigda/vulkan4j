@@ -105,7 +105,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -113,7 +113,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH264SequenceParameterSet.BYTES, StdVideoH264SequenceParameterSet.BYTES));
         }
@@ -168,67 +168,67 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @enumtype(StdVideoH264ProfileIdc.class) int profile_idc() {
+    public @EnumType(StdVideoH264ProfileIdc.class) int profile_idc() {
         return segment.get(LAYOUT$profile_idc, OFFSET$profile_idc);
     }
 
-    public void profile_idc(@enumtype(StdVideoH264ProfileIdc.class) int value) {
+    public void profile_idc(@EnumType(StdVideoH264ProfileIdc.class) int value) {
         segment.set(LAYOUT$profile_idc, OFFSET$profile_idc, value);
     }
 
-    public @enumtype(StdVideoH264LevelIdc.class) int level_idc() {
+    public @EnumType(StdVideoH264LevelIdc.class) int level_idc() {
         return segment.get(LAYOUT$level_idc, OFFSET$level_idc);
     }
 
-    public void level_idc(@enumtype(StdVideoH264LevelIdc.class) int value) {
+    public void level_idc(@EnumType(StdVideoH264LevelIdc.class) int value) {
         segment.set(LAYOUT$level_idc, OFFSET$level_idc, value);
     }
 
-    public @enumtype(StdVideoH264ChromaFormatIdc.class) int chroma_format_idc() {
+    public @EnumType(StdVideoH264ChromaFormatIdc.class) int chroma_format_idc() {
         return segment.get(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc);
     }
 
-    public void chroma_format_idc(@enumtype(StdVideoH264ChromaFormatIdc.class) int value) {
+    public void chroma_format_idc(@EnumType(StdVideoH264ChromaFormatIdc.class) int value) {
         segment.set(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc, value);
     }
 
-    public @unsigned byte seq_parameter_set_id() {
+    public @Unsigned byte seq_parameter_set_id() {
         return segment.get(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id);
     }
 
-    public void seq_parameter_set_id(@unsigned byte value) {
+    public void seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id, value);
     }
 
-    public @unsigned byte bit_depth_luma_minus8() {
+    public @Unsigned byte bit_depth_luma_minus8() {
         return segment.get(LAYOUT$bit_depth_luma_minus8, OFFSET$bit_depth_luma_minus8);
     }
 
-    public void bit_depth_luma_minus8(@unsigned byte value) {
+    public void bit_depth_luma_minus8(@Unsigned byte value) {
         segment.set(LAYOUT$bit_depth_luma_minus8, OFFSET$bit_depth_luma_minus8, value);
     }
 
-    public @unsigned byte bit_depth_chroma_minus8() {
+    public @Unsigned byte bit_depth_chroma_minus8() {
         return segment.get(LAYOUT$bit_depth_chroma_minus8, OFFSET$bit_depth_chroma_minus8);
     }
 
-    public void bit_depth_chroma_minus8(@unsigned byte value) {
+    public void bit_depth_chroma_minus8(@Unsigned byte value) {
         segment.set(LAYOUT$bit_depth_chroma_minus8, OFFSET$bit_depth_chroma_minus8, value);
     }
 
-    public @unsigned byte log2_max_frame_num_minus4() {
+    public @Unsigned byte log2_max_frame_num_minus4() {
         return segment.get(LAYOUT$log2_max_frame_num_minus4, OFFSET$log2_max_frame_num_minus4);
     }
 
-    public void log2_max_frame_num_minus4(@unsigned byte value) {
+    public void log2_max_frame_num_minus4(@Unsigned byte value) {
         segment.set(LAYOUT$log2_max_frame_num_minus4, OFFSET$log2_max_frame_num_minus4, value);
     }
 
-    public @enumtype(StdVideoH264PocType.class) int pic_order_cnt_type() {
+    public @EnumType(StdVideoH264PocType.class) int pic_order_cnt_type() {
         return segment.get(LAYOUT$pic_order_cnt_type, OFFSET$pic_order_cnt_type);
     }
 
-    public void pic_order_cnt_type(@enumtype(StdVideoH264PocType.class) int value) {
+    public void pic_order_cnt_type(@EnumType(StdVideoH264PocType.class) int value) {
         segment.set(LAYOUT$pic_order_cnt_type, OFFSET$pic_order_cnt_type, value);
     }
 
@@ -248,76 +248,76 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$offset_for_top_to_bottom_field, OFFSET$offset_for_top_to_bottom_field, value);
     }
 
-    public @unsigned byte log2_max_pic_order_cnt_lsb_minus4() {
+    public @Unsigned byte log2_max_pic_order_cnt_lsb_minus4() {
         return segment.get(LAYOUT$log2_max_pic_order_cnt_lsb_minus4, OFFSET$log2_max_pic_order_cnt_lsb_minus4);
     }
 
-    public void log2_max_pic_order_cnt_lsb_minus4(@unsigned byte value) {
+    public void log2_max_pic_order_cnt_lsb_minus4(@Unsigned byte value) {
         segment.set(LAYOUT$log2_max_pic_order_cnt_lsb_minus4, OFFSET$log2_max_pic_order_cnt_lsb_minus4, value);
     }
 
-    public @unsigned byte num_ref_frames_in_pic_order_cnt_cycle() {
+    public @Unsigned byte num_ref_frames_in_pic_order_cnt_cycle() {
         return segment.get(LAYOUT$num_ref_frames_in_pic_order_cnt_cycle, OFFSET$num_ref_frames_in_pic_order_cnt_cycle);
     }
 
-    public void num_ref_frames_in_pic_order_cnt_cycle(@unsigned byte value) {
+    public void num_ref_frames_in_pic_order_cnt_cycle(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_frames_in_pic_order_cnt_cycle, OFFSET$num_ref_frames_in_pic_order_cnt_cycle, value);
     }
 
-    public @unsigned byte max_num_ref_frames() {
+    public @Unsigned byte max_num_ref_frames() {
         return segment.get(LAYOUT$max_num_ref_frames, OFFSET$max_num_ref_frames);
     }
 
-    public void max_num_ref_frames(@unsigned byte value) {
+    public void max_num_ref_frames(@Unsigned byte value) {
         segment.set(LAYOUT$max_num_ref_frames, OFFSET$max_num_ref_frames, value);
     }
 
 
-    public @unsigned int pic_width_in_mbs_minus1() {
+    public @Unsigned int pic_width_in_mbs_minus1() {
         return segment.get(LAYOUT$pic_width_in_mbs_minus1, OFFSET$pic_width_in_mbs_minus1);
     }
 
-    public void pic_width_in_mbs_minus1(@unsigned int value) {
+    public void pic_width_in_mbs_minus1(@Unsigned int value) {
         segment.set(LAYOUT$pic_width_in_mbs_minus1, OFFSET$pic_width_in_mbs_minus1, value);
     }
 
-    public @unsigned int pic_height_in_map_units_minus1() {
+    public @Unsigned int pic_height_in_map_units_minus1() {
         return segment.get(LAYOUT$pic_height_in_map_units_minus1, OFFSET$pic_height_in_map_units_minus1);
     }
 
-    public void pic_height_in_map_units_minus1(@unsigned int value) {
+    public void pic_height_in_map_units_minus1(@Unsigned int value) {
         segment.set(LAYOUT$pic_height_in_map_units_minus1, OFFSET$pic_height_in_map_units_minus1, value);
     }
 
-    public @unsigned int frame_crop_left_offset() {
+    public @Unsigned int frame_crop_left_offset() {
         return segment.get(LAYOUT$frame_crop_left_offset, OFFSET$frame_crop_left_offset);
     }
 
-    public void frame_crop_left_offset(@unsigned int value) {
+    public void frame_crop_left_offset(@Unsigned int value) {
         segment.set(LAYOUT$frame_crop_left_offset, OFFSET$frame_crop_left_offset, value);
     }
 
-    public @unsigned int frame_crop_right_offset() {
+    public @Unsigned int frame_crop_right_offset() {
         return segment.get(LAYOUT$frame_crop_right_offset, OFFSET$frame_crop_right_offset);
     }
 
-    public void frame_crop_right_offset(@unsigned int value) {
+    public void frame_crop_right_offset(@Unsigned int value) {
         segment.set(LAYOUT$frame_crop_right_offset, OFFSET$frame_crop_right_offset, value);
     }
 
-    public @unsigned int frame_crop_top_offset() {
+    public @Unsigned int frame_crop_top_offset() {
         return segment.get(LAYOUT$frame_crop_top_offset, OFFSET$frame_crop_top_offset);
     }
 
-    public void frame_crop_top_offset(@unsigned int value) {
+    public void frame_crop_top_offset(@Unsigned int value) {
         segment.set(LAYOUT$frame_crop_top_offset, OFFSET$frame_crop_top_offset, value);
     }
 
-    public @unsigned int frame_crop_bottom_offset() {
+    public @Unsigned int frame_crop_bottom_offset() {
         return segment.get(LAYOUT$frame_crop_bottom_offset, OFFSET$frame_crop_bottom_offset);
     }
 
-    public void frame_crop_bottom_offset(@unsigned int value) {
+    public void frame_crop_bottom_offset(@Unsigned int value) {
         segment.set(LAYOUT$frame_crop_bottom_offset, OFFSET$frame_crop_bottom_offset, value);
     }
 
@@ -339,11 +339,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pOffsetForRefFrameRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pOffsetForRefFrameRaw() {
+    public @Pointer(comment="int32_t*") MemorySegment pOffsetForRefFrameRaw() {
         return segment.get(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame);
     }
 
-    public void pOffsetForRefFrameRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pOffsetForRefFrameRaw(@Pointer(comment="int32_t*") MemorySegment value) {
         segment.set(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame, value);
     }
 
@@ -352,7 +352,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pScalingListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {
         MemorySegment s = pScalingListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -370,11 +370,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return new StdVideoH264ScalingLists(s);
     }
 
-    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
+    public @Pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
+    public void pScalingListsRaw(@Pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 
@@ -383,7 +383,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pSequenceParameterSetVuiRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264SequenceParameterSetVui.Ptr pSequenceParameterSetVui(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH264SequenceParameterSetVui.Ptr pSequenceParameterSetVui(int assumedCount) {
         MemorySegment s = pSequenceParameterSetVuiRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -401,11 +401,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return new StdVideoH264SequenceParameterSetVui(s);
     }
 
-    public @pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment pSequenceParameterSetVuiRaw() {
+    public @Pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment pSequenceParameterSetVuiRaw() {
         return segment.get(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui);
     }
 
-    public void pSequenceParameterSetVuiRaw(@pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment value) {
+    public void pSequenceParameterSetVuiRaw(@Pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment value) {
         segment.set(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui, value);
     }
 

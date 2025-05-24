@@ -98,7 +98,7 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -106,7 +106,7 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageViewCreateInfo.BYTES, VkImageViewCreateInfo.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.IMAGE_VIEW_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,11 +183,11 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageViewCreateFlags.class) int flags() {
+    public @EnumType(VkImageViewCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkImageViewCreateFlags.class) int value) {
+    public void flags(@EnumType(VkImageViewCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -203,19 +203,19 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageViewType.class) int viewType() {
+    public @EnumType(VkImageViewType.class) int viewType() {
         return segment.get(LAYOUT$viewType, OFFSET$viewType);
     }
 
-    public void viewType(@enumtype(VkImageViewType.class) int value) {
+    public void viewType(@EnumType(VkImageViewType.class) int value) {
         segment.set(LAYOUT$viewType, OFFSET$viewType, value);
     }
 
-    public @enumtype(VkFormat.class) int format() {
+    public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@enumtype(VkFormat.class) int value) {
+    public void format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 

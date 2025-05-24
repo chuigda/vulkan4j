@@ -93,7 +93,7 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -101,7 +101,7 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBindMemoryStatus.BYTES, VkBindMemoryStatus.BYTES));
         }
@@ -158,19 +158,19 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         sType(VkStructureType.BIND_MEMORY_STATUS);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,7 +183,7 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkResult.class) IntPtr pResult() {
+    public @Nullable @EnumType(VkResult.class) IntPtr pResult() {
         MemorySegment s = pResultRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -191,16 +191,16 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         return new IntPtr(s);
     }
 
-    public void pResult(@Nullable @enumtype(VkResult.class) IntPtr value) {
+    public void pResult(@Nullable @EnumType(VkResult.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultRaw(s);
     }
 
-    public @pointer(target=VkResult.class) MemorySegment pResultRaw() {
+    public @Pointer(target=VkResult.class) MemorySegment pResultRaw() {
         return segment.get(LAYOUT$pResult, OFFSET$pResult);
     }
 
-    public void pResultRaw(@pointer(target=VkResult.class) MemorySegment value) {
+    public void pResultRaw(@Pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResult, OFFSET$pResult, value);
     }
 

@@ -8,7 +8,7 @@ public final class VkClusterAccelerationStructureTypeNV {
     public static final int TRIANGLE_CLUSTER = 0x1;
     public static final int TRIANGLE_CLUSTER_TEMPLATE = 0x2;
 
-    public static String explain(@enumtype(VkClusterAccelerationStructureTypeNV.class) int value) {
+    public static String explain(@EnumType(VkClusterAccelerationStructureTypeNV.class) int value) {
         return switch (value) {
             case VkClusterAccelerationStructureTypeNV.CLUSTERS_BOTTOM_LEVEL -> "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_CLUSTERS_BOTTOM_LEVEL_NV";
             case VkClusterAccelerationStructureTypeNV.TRIANGLE_CLUSTER -> "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_NV";

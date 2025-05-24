@@ -95,7 +95,7 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkQueryPoolPerformanceCreateInfoKHR.BYTES, VkQueryPoolPerformanceCreateInfoKHR.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         sType(VkStructureType.QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,19 +180,19 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int queueFamilyIndex() {
+    public @Unsigned int queueFamilyIndex() {
         return segment.get(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex);
     }
 
-    public void queueFamilyIndex(@unsigned int value) {
+    public void queueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex, value);
     }
 
-    public @unsigned int counterIndexCount() {
+    public @Unsigned int counterIndexCount() {
         return segment.get(LAYOUT$counterIndexCount, OFFSET$counterIndexCount);
     }
 
-    public void counterIndexCount(@unsigned int value) {
+    public void counterIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$counterIndexCount, OFFSET$counterIndexCount, value);
     }
 
@@ -200,7 +200,7 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pCounterIndices() {
+    public @Nullable @Unsigned IntPtr pCounterIndices() {
         MemorySegment s = pCounterIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -208,16 +208,16 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         return new IntPtr(s);
     }
 
-    public void pCounterIndices(@Nullable @unsigned IntPtr value) {
+    public void pCounterIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCounterIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pCounterIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pCounterIndicesRaw() {
         return segment.get(LAYOUT$pCounterIndices, OFFSET$pCounterIndices);
     }
 
-    public void pCounterIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pCounterIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCounterIndices, OFFSET$pCounterIndices, value);
     }
 

@@ -96,7 +96,7 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSemaphoreWaitInfo.BYTES, VkSemaphoreWaitInfo.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.SEMAPHORE_WAIT_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,19 +181,19 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkSemaphoreWaitFlags.class) int flags() {
+    public @EnumType(VkSemaphoreWaitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkSemaphoreWaitFlags.class) int value) {
+    public void flags(@EnumType(VkSemaphoreWaitFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int semaphoreCount() {
+    public @Unsigned int semaphoreCount() {
         return segment.get(LAYOUT$semaphoreCount, OFFSET$semaphoreCount);
     }
 
-    public void semaphoreCount(@unsigned int value) {
+    public void semaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$semaphoreCount, OFFSET$semaphoreCount, value);
     }
 
@@ -214,11 +214,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         pSemaphoresRaw(s);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
         return segment.get(LAYOUT$pSemaphores, OFFSET$pSemaphores);
     }
 
-    public void pSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
 
@@ -226,7 +226,7 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pValues() {
+    public @Nullable @Unsigned LongPtr pValues() {
         MemorySegment s = pValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -234,16 +234,16 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return new LongPtr(s);
     }
 
-    public void pValues(@Nullable @unsigned LongPtr value) {
+    public void pValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pValuesRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pValuesRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pValuesRaw() {
         return segment.get(LAYOUT$pValues, OFFSET$pValues);
     }
 
-    public void pValuesRaw(@pointer(comment="long*") MemorySegment value) {
+    public void pValuesRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 

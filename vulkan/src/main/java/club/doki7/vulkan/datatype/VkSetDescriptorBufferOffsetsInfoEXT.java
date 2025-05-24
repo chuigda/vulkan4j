@@ -98,7 +98,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -106,7 +106,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSetDescriptorBufferOffsetsInfoEXT.BYTES, VkSetDescriptorBufferOffsetsInfoEXT.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         sType(VkStructureType.SET_DESCRIPTOR_BUFFER_OFFSETS_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,11 +183,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
+    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 
@@ -203,19 +203,19 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int firstSet() {
+    public @Unsigned int firstSet() {
         return segment.get(LAYOUT$firstSet, OFFSET$firstSet);
     }
 
-    public void firstSet(@unsigned int value) {
+    public void firstSet(@Unsigned int value) {
         segment.set(LAYOUT$firstSet, OFFSET$firstSet, value);
     }
 
-    public @unsigned int setCount() {
+    public @Unsigned int setCount() {
         return segment.get(LAYOUT$setCount, OFFSET$setCount);
     }
 
-    public void setCount(@unsigned int value) {
+    public void setCount(@Unsigned int value) {
         segment.set(LAYOUT$setCount, OFFSET$setCount, value);
     }
 
@@ -223,7 +223,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pBufferIndices() {
+    public @Nullable @Unsigned IntPtr pBufferIndices() {
         MemorySegment s = pBufferIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -231,16 +231,16 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new IntPtr(s);
     }
 
-    public void pBufferIndices(@Nullable @unsigned IntPtr value) {
+    public void pBufferIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pBufferIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pBufferIndicesRaw() {
         return segment.get(LAYOUT$pBufferIndices, OFFSET$pBufferIndices);
     }
 
-    public void pBufferIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pBufferIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
     }
 
@@ -248,7 +248,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pOffsets() {
+    public @Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr pOffsets() {
         MemorySegment s = pOffsetsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -256,16 +256,16 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new LongPtr(s);
     }
 
-    public void pOffsets(@Nullable @unsigned LongPtr value) {
+    public void pOffsets(@Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pOffsetsRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pOffsetsRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pOffsetsRaw() {
         return segment.get(LAYOUT$pOffsets, OFFSET$pOffsets);
     }
 
-    public void pOffsetsRaw(@pointer(comment="long*") MemorySegment value) {
+    public void pOffsetsRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
     }
 

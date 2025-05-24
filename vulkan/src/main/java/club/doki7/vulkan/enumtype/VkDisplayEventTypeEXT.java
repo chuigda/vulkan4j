@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 public final class VkDisplayEventTypeEXT {
     public static final int FIRST_PIXEL_OUT = 0x0;
 
-    public static String explain(@enumtype(VkDisplayEventTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkDisplayEventTypeEXT.class) int value) {
         return switch (value) {
             case VkDisplayEventTypeEXT.FIRST_PIXEL_OUT -> "VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT";
             default -> "UNKNOWN(" + value + ")";

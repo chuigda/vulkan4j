@@ -9,7 +9,7 @@ public final class VkPolygonMode {
     public static final int POINT = 0x2;
     public static final int FILL_RECTANGLE_NV = 0x3b9d1fa8;
 
-    public static String explain(@enumtype(VkPolygonMode.class) int value) {
+    public static String explain(@EnumType(VkPolygonMode.class) int value) {
         return switch (value) {
             case VkPolygonMode.FILL -> "VK_POLYGON_MODE_FILL";
             case VkPolygonMode.FILL_RECTANGLE_NV -> "VK_POLYGON_MODE_FILL_RECTANGLE_NV";

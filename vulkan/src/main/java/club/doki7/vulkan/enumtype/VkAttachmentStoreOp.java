@@ -8,7 +8,7 @@ public final class VkAttachmentStoreOp {
     public static final int DONT_CARE = 0x1;
     public static final int NONE = 0x3b9f61c8;
 
-    public static String explain(@enumtype(VkAttachmentStoreOp.class) int value) {
+    public static String explain(@EnumType(VkAttachmentStoreOp.class) int value) {
         return switch (value) {
             case VkAttachmentStoreOp.DONT_CARE -> "VK_ATTACHMENT_STORE_OP_DONT_CARE";
             case VkAttachmentStoreOp.NONE -> "VK_ATTACHMENT_STORE_OP_NONE";

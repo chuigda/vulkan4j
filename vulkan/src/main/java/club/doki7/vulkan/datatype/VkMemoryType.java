@@ -84,7 +84,7 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkMemoryType.BYTES, VkMemoryType.BYTES));
         }
@@ -139,19 +139,19 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         return ret;
     }
 
-    public @enumtype(VkMemoryPropertyFlags.class) int propertyFlags() {
+    public @EnumType(VkMemoryPropertyFlags.class) int propertyFlags() {
         return segment.get(LAYOUT$propertyFlags, OFFSET$propertyFlags);
     }
 
-    public void propertyFlags(@enumtype(VkMemoryPropertyFlags.class) int value) {
+    public void propertyFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$propertyFlags, OFFSET$propertyFlags, value);
     }
 
-    public @unsigned int heapIndex() {
+    public @Unsigned int heapIndex() {
         return segment.get(LAYOUT$heapIndex, OFFSET$heapIndex);
     }
 
-    public void heapIndex(@unsigned int value) {
+    public void heapIndex(@Unsigned int value) {
         segment.set(LAYOUT$heapIndex, OFFSET$heapIndex, value);
     }
 

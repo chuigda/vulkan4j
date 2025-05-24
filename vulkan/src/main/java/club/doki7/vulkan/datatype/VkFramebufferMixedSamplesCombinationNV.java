@@ -96,7 +96,7 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkFramebufferMixedSamplesCombinationNV.BYTES, VkFramebufferMixedSamplesCombinationNV.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         sType(VkStructureType.FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,35 +181,35 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkCoverageReductionModeNV.class) int coverageReductionMode() {
+    public @EnumType(VkCoverageReductionModeNV.class) int coverageReductionMode() {
         return segment.get(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode);
     }
 
-    public void coverageReductionMode(@enumtype(VkCoverageReductionModeNV.class) int value) {
+    public void coverageReductionMode(@EnumType(VkCoverageReductionModeNV.class) int value) {
         segment.set(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public void rasterizationSamples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int depthStencilSamples() {
+    public @EnumType(VkSampleCountFlags.class) int depthStencilSamples() {
         return segment.get(LAYOUT$depthStencilSamples, OFFSET$depthStencilSamples);
     }
 
-    public void depthStencilSamples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void depthStencilSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$depthStencilSamples, OFFSET$depthStencilSamples, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int colorSamples() {
+    public @EnumType(VkSampleCountFlags.class) int colorSamples() {
         return segment.get(LAYOUT$colorSamples, OFFSET$colorSamples);
     }
 
-    public void colorSamples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void colorSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$colorSamples, OFFSET$colorSamples, value);
     }
 

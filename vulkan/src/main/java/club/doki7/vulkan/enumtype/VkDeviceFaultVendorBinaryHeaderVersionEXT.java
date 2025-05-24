@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 public final class VkDeviceFaultVendorBinaryHeaderVersionEXT {
     public static final int ONE = 0x1;
 
-    public static String explain(@enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
+    public static String explain(@EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
         return switch (value) {
             case VkDeviceFaultVendorBinaryHeaderVersionEXT.ONE -> "VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT";
             default -> "UNKNOWN(" + value + ")";

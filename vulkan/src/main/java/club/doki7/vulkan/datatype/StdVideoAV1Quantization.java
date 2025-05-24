@@ -90,7 +90,7 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -98,7 +98,7 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoAV1Quantization.BYTES, StdVideoAV1Quantization.BYTES));
         }
@@ -153,11 +153,11 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte base_q_idx() {
+    public @Unsigned byte base_q_idx() {
         return segment.get(LAYOUT$base_q_idx, OFFSET$base_q_idx);
     }
 
-    public void base_q_idx(@unsigned byte value) {
+    public void base_q_idx(@Unsigned byte value) {
         segment.set(LAYOUT$base_q_idx, OFFSET$base_q_idx, value);
     }
 
@@ -201,27 +201,27 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$DeltaQVAc, OFFSET$DeltaQVAc, value);
     }
 
-    public @unsigned byte qm_y() {
+    public @Unsigned byte qm_y() {
         return segment.get(LAYOUT$qm_y, OFFSET$qm_y);
     }
 
-    public void qm_y(@unsigned byte value) {
+    public void qm_y(@Unsigned byte value) {
         segment.set(LAYOUT$qm_y, OFFSET$qm_y, value);
     }
 
-    public @unsigned byte qm_u() {
+    public @Unsigned byte qm_u() {
         return segment.get(LAYOUT$qm_u, OFFSET$qm_u);
     }
 
-    public void qm_u(@unsigned byte value) {
+    public void qm_u(@Unsigned byte value) {
         segment.set(LAYOUT$qm_u, OFFSET$qm_u, value);
     }
 
-    public @unsigned byte qm_v() {
+    public @Unsigned byte qm_v() {
         return segment.get(LAYOUT$qm_v, OFFSET$qm_v);
     }
 
-    public void qm_v(@unsigned byte value) {
+    public void qm_v(@Unsigned byte value) {
         segment.set(LAYOUT$qm_v, OFFSET$qm_v, value);
     }
 

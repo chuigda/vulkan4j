@@ -100,7 +100,7 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -108,7 +108,7 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDisplaySurfaceCreateInfoKHR.BYTES, VkDisplaySurfaceCreateInfoKHR.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         sType(VkStructureType.DISPLAY_SURFACE_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,11 +185,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
+    public @EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -205,27 +205,27 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$displayMode, OFFSET$displayMode, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int planeIndex() {
+    public @Unsigned int planeIndex() {
         return segment.get(LAYOUT$planeIndex, OFFSET$planeIndex);
     }
 
-    public void planeIndex(@unsigned int value) {
+    public void planeIndex(@Unsigned int value) {
         segment.set(LAYOUT$planeIndex, OFFSET$planeIndex, value);
     }
 
-    public @unsigned int planeStackIndex() {
+    public @Unsigned int planeStackIndex() {
         return segment.get(LAYOUT$planeStackIndex, OFFSET$planeStackIndex);
     }
 
-    public void planeStackIndex(@unsigned int value) {
+    public void planeStackIndex(@Unsigned int value) {
         segment.set(LAYOUT$planeStackIndex, OFFSET$planeStackIndex, value);
     }
 
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int transform() {
+    public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public void transform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+    public void transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
     }
 
@@ -237,11 +237,11 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$globalAlpha, OFFSET$globalAlpha, value);
     }
 
-    public @enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
+    public @EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
         return segment.get(LAYOUT$alphaMode, OFFSET$alphaMode);
     }
 
-    public void alphaMode(@enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+    public void alphaMode(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
     }
 

@@ -13,7 +13,7 @@ public final class VkLayerSettingTypeEXT {
     public static final int FLOAT64 = 0x6;
     public static final int STRING = 0x7;
 
-    public static String explain(@enumtype(VkLayerSettingTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkLayerSettingTypeEXT.class) int value) {
         return switch (value) {
             case VkLayerSettingTypeEXT.BOOL32 -> "VK_LAYER_SETTING_TYPE_BOOL32_EXT";
             case VkLayerSettingTypeEXT.FLOAT32 -> "VK_LAYER_SETTING_TYPE_FLOAT32_EXT";

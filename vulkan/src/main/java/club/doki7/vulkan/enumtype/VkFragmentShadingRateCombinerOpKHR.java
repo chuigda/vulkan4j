@@ -10,7 +10,7 @@ public final class VkFragmentShadingRateCombinerOpKHR {
     public static final int MAX = 0x3;
     public static final int MUL = 0x4;
 
-    public static String explain(@enumtype(VkFragmentShadingRateCombinerOpKHR.class) int value) {
+    public static String explain(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) int value) {
         return switch (value) {
             case VkFragmentShadingRateCombinerOpKHR.KEEP -> "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR";
             case VkFragmentShadingRateCombinerOpKHR.MAX -> "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR";

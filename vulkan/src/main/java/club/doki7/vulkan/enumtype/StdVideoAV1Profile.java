@@ -8,7 +8,7 @@ public final class StdVideoAV1Profile {
     public static final int STD_VIDEO_AV1_PROFILE_PROFESSIONAL = 0x2;
     public static final int STD_VIDEO_AV1_PROFILE_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoAV1Profile.class) int value) {
+    public static String explain(@EnumType(StdVideoAV1Profile.class) int value) {
         return switch (value) {
             case StdVideoAV1Profile.STD_VIDEO_AV1_PROFILE_HIGH -> "STD_VIDEO_AV1_PROFILE_HIGH";
             case StdVideoAV1Profile.STD_VIDEO_AV1_PROFILE_INVALID -> "STD_VIDEO_AV1_PROFILE_INVALID";

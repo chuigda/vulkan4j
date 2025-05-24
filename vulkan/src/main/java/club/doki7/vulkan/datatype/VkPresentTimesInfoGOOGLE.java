@@ -94,7 +94,7 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPresentTimesInfoGOOGLE.BYTES, VkPresentTimesInfoGOOGLE.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         sType(VkStructureType.PRESENT_TIMES_INFO_GOOGLE);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int swapchainCount() {
+    public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@unsigned int value) {
+    public void swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
@@ -192,7 +192,7 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         pTimesRaw(s);
     }
 
-    @unsafe public @Nullable VkPresentTimeGOOGLE.Ptr pTimes(int assumedCount) {
+    @Unsafe public @Nullable VkPresentTimeGOOGLE.Ptr pTimes(int assumedCount) {
         MemorySegment s = pTimesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         return new VkPresentTimeGOOGLE(s);
     }
 
-    public @pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {
+    public @Pointer(target=VkPresentTimeGOOGLE.class) MemorySegment pTimesRaw() {
         return segment.get(LAYOUT$pTimes, OFFSET$pTimes);
     }
 
-    public void pTimesRaw(@pointer(target=VkPresentTimeGOOGLE.class) MemorySegment value) {
+    public void pTimesRaw(@Pointer(target=VkPresentTimeGOOGLE.class) MemorySegment value) {
         segment.set(LAYOUT$pTimes, OFFSET$pTimes, value);
     }
 

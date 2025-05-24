@@ -7,7 +7,7 @@ public final class VkDescriptorUpdateTemplateType {
     public static final int DESCRIPTOR_SET = 0x0;
     public static final int PUSH_DESCRIPTORS = 0x1;
 
-    public static String explain(@enumtype(VkDescriptorUpdateTemplateType.class) int value) {
+    public static String explain(@EnumType(VkDescriptorUpdateTemplateType.class) int value) {
         return switch (value) {
             case VkDescriptorUpdateTemplateType.DESCRIPTOR_SET -> "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET";
             case VkDescriptorUpdateTemplateType.PUSH_DESCRIPTORS -> "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS";

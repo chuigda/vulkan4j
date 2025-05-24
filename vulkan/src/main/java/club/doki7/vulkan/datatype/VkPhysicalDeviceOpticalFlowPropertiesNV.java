@@ -103,7 +103,7 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -111,7 +111,7 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceOpticalFlowPropertiesNV.BYTES, VkPhysicalDeviceOpticalFlowPropertiesNV.BYTES));
         }
@@ -168,19 +168,19 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         sType(VkStructureType.PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -188,91 +188,91 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
+    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
         return segment.get(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes);
     }
 
-    public void supportedOutputGridSizes(@enumtype(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public void supportedOutputGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes, value);
     }
 
-    public @enumtype(VkOpticalFlowGridSizeFlagsNV.class) int supportedHintGridSizes() {
+    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int supportedHintGridSizes() {
         return segment.get(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes);
     }
 
-    public void supportedHintGridSizes(@enumtype(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public void supportedHintGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes, value);
     }
 
-    public @unsigned int hintSupported() {
+    public @NativeType("VkBool32") @Unsigned int hintSupported() {
         return segment.get(LAYOUT$hintSupported, OFFSET$hintSupported);
     }
 
-    public void hintSupported(@unsigned int value) {
+    public void hintSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hintSupported, OFFSET$hintSupported, value);
     }
 
-    public @unsigned int costSupported() {
+    public @NativeType("VkBool32") @Unsigned int costSupported() {
         return segment.get(LAYOUT$costSupported, OFFSET$costSupported);
     }
 
-    public void costSupported(@unsigned int value) {
+    public void costSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$costSupported, OFFSET$costSupported, value);
     }
 
-    public @unsigned int bidirectionalFlowSupported() {
+    public @NativeType("VkBool32") @Unsigned int bidirectionalFlowSupported() {
         return segment.get(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported);
     }
 
-    public void bidirectionalFlowSupported(@unsigned int value) {
+    public void bidirectionalFlowSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported, value);
     }
 
-    public @unsigned int globalFlowSupported() {
+    public @NativeType("VkBool32") @Unsigned int globalFlowSupported() {
         return segment.get(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported);
     }
 
-    public void globalFlowSupported(@unsigned int value) {
+    public void globalFlowSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported, value);
     }
 
-    public @unsigned int minWidth() {
+    public @Unsigned int minWidth() {
         return segment.get(LAYOUT$minWidth, OFFSET$minWidth);
     }
 
-    public void minWidth(@unsigned int value) {
+    public void minWidth(@Unsigned int value) {
         segment.set(LAYOUT$minWidth, OFFSET$minWidth, value);
     }
 
-    public @unsigned int minHeight() {
+    public @Unsigned int minHeight() {
         return segment.get(LAYOUT$minHeight, OFFSET$minHeight);
     }
 
-    public void minHeight(@unsigned int value) {
+    public void minHeight(@Unsigned int value) {
         segment.set(LAYOUT$minHeight, OFFSET$minHeight, value);
     }
 
-    public @unsigned int maxWidth() {
+    public @Unsigned int maxWidth() {
         return segment.get(LAYOUT$maxWidth, OFFSET$maxWidth);
     }
 
-    public void maxWidth(@unsigned int value) {
+    public void maxWidth(@Unsigned int value) {
         segment.set(LAYOUT$maxWidth, OFFSET$maxWidth, value);
     }
 
-    public @unsigned int maxHeight() {
+    public @Unsigned int maxHeight() {
         return segment.get(LAYOUT$maxHeight, OFFSET$maxHeight);
     }
 
-    public void maxHeight(@unsigned int value) {
+    public void maxHeight(@Unsigned int value) {
         segment.set(LAYOUT$maxHeight, OFFSET$maxHeight, value);
     }
 
-    public @unsigned int maxNumRegionsOfInterest() {
+    public @Unsigned int maxNumRegionsOfInterest() {
         return segment.get(LAYOUT$maxNumRegionsOfInterest, OFFSET$maxNumRegionsOfInterest);
     }
 
-    public void maxNumRegionsOfInterest(@unsigned int value) {
+    public void maxNumRegionsOfInterest(@Unsigned int value) {
         segment.set(LAYOUT$maxNumRegionsOfInterest, OFFSET$maxNumRegionsOfInterest, value);
     }
 

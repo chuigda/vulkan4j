@@ -12,7 +12,7 @@ public final class VkColorComponentFlags {
     public static final int G = 0x2;
     public static final int R = 0x1;
 
-    public static String explain(@enumtype(VkColorComponentFlags.class) int flags) {
+    public static String explain(@EnumType(VkColorComponentFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & A) != 0) {
             detectedFlagBits.add("VK_COLOR_COMPONENT_A_BIT");

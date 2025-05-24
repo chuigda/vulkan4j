@@ -96,7 +96,7 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageConstraintsInfoFUCHSIA.BYTES, VkImageConstraintsInfoFUCHSIA.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         sType(VkStructureType.IMAGE_CONSTRAINTS_INFO_FUCHSIA);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,11 +181,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int formatConstraintsCount() {
+    public @Unsigned int formatConstraintsCount() {
         return segment.get(LAYOUT$formatConstraintsCount, OFFSET$formatConstraintsCount);
     }
 
-    public void formatConstraintsCount(@unsigned int value) {
+    public void formatConstraintsCount(@Unsigned int value) {
         segment.set(LAYOUT$formatConstraintsCount, OFFSET$formatConstraintsCount, value);
     }
 
@@ -194,7 +194,7 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         pFormatConstraintsRaw(s);
     }
 
-    @unsafe public @Nullable VkImageFormatConstraintsInfoFUCHSIA.Ptr pFormatConstraints(int assumedCount) {
+    @Unsafe public @Nullable VkImageFormatConstraintsInfoFUCHSIA.Ptr pFormatConstraints(int assumedCount) {
         MemorySegment s = pFormatConstraintsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -212,11 +212,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return new VkImageFormatConstraintsInfoFUCHSIA(s);
     }
 
-    public @pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment pFormatConstraintsRaw() {
+    public @Pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment pFormatConstraintsRaw() {
         return segment.get(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints);
     }
 
-    public void pFormatConstraintsRaw(@pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment value) {
+    public void pFormatConstraintsRaw(@Pointer(target=VkImageFormatConstraintsInfoFUCHSIA.class) MemorySegment value) {
         segment.set(LAYOUT$pFormatConstraints, OFFSET$pFormatConstraints, value);
     }
 
@@ -228,11 +228,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
     }
 
-    public @enumtype(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
+    public @EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
+    public void flags(@EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 

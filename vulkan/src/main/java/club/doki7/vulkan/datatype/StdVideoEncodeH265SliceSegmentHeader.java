@@ -95,7 +95,7 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH265SliceSegmentHeader.BYTES, StdVideoEncodeH265SliceSegmentHeader.BYTES));
         }
@@ -158,35 +158,35 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @enumtype(StdVideoH265SliceType.class) int slice_type() {
+    public @EnumType(StdVideoH265SliceType.class) int slice_type() {
         return segment.get(LAYOUT$slice_type, OFFSET$slice_type);
     }
 
-    public void slice_type(@enumtype(StdVideoH265SliceType.class) int value) {
+    public void slice_type(@EnumType(StdVideoH265SliceType.class) int value) {
         segment.set(LAYOUT$slice_type, OFFSET$slice_type, value);
     }
 
-    public @unsigned int slice_segment_address() {
+    public @Unsigned int slice_segment_address() {
         return segment.get(LAYOUT$slice_segment_address, OFFSET$slice_segment_address);
     }
 
-    public void slice_segment_address(@unsigned int value) {
+    public void slice_segment_address(@Unsigned int value) {
         segment.set(LAYOUT$slice_segment_address, OFFSET$slice_segment_address, value);
     }
 
-    public @unsigned byte collocated_ref_idx() {
+    public @Unsigned byte collocated_ref_idx() {
         return segment.get(LAYOUT$collocated_ref_idx, OFFSET$collocated_ref_idx);
     }
 
-    public void collocated_ref_idx(@unsigned byte value) {
+    public void collocated_ref_idx(@Unsigned byte value) {
         segment.set(LAYOUT$collocated_ref_idx, OFFSET$collocated_ref_idx, value);
     }
 
-    public @unsigned byte MaxNumMergeCand() {
+    public @Unsigned byte MaxNumMergeCand() {
         return segment.get(LAYOUT$MaxNumMergeCand, OFFSET$MaxNumMergeCand);
     }
 
-    public void MaxNumMergeCand(@unsigned byte value) {
+    public void MaxNumMergeCand(@Unsigned byte value) {
         segment.set(LAYOUT$MaxNumMergeCand, OFFSET$MaxNumMergeCand, value);
     }
 
@@ -260,7 +260,7 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         pWeightTableRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH265WeightTable.Ptr pWeightTable(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeH265WeightTable.Ptr pWeightTable(int assumedCount) {
         MemorySegment s = pWeightTableRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -278,11 +278,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return new StdVideoEncodeH265WeightTable(s);
     }
 
-    public @pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {
+    public @Pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {
         return segment.get(LAYOUT$pWeightTable, OFFSET$pWeightTable);
     }
 
-    public void pWeightTableRaw(@pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment value) {
+    public void pWeightTableRaw(@Pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment value) {
         segment.set(LAYOUT$pWeightTable, OFFSET$pWeightTable, value);
     }
 

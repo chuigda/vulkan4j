@@ -96,7 +96,7 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSampleLocationsInfoEXT.BYTES, VkSampleLocationsInfoEXT.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         sType(VkStructureType.SAMPLE_LOCATIONS_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,11 +181,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
+    public @EnumType(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
         return segment.get(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel);
     }
 
-    public void sampleLocationsPerPixel(@enumtype(VkSampleCountFlags.class) int value) {
+    public void sampleLocationsPerPixel(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel, value);
     }
 
@@ -197,11 +197,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationGridSize, SIZE$sampleLocationGridSize);
     }
 
-    public @unsigned int sampleLocationsCount() {
+    public @Unsigned int sampleLocationsCount() {
         return segment.get(LAYOUT$sampleLocationsCount, OFFSET$sampleLocationsCount);
     }
 
-    public void sampleLocationsCount(@unsigned int value) {
+    public void sampleLocationsCount(@Unsigned int value) {
         segment.set(LAYOUT$sampleLocationsCount, OFFSET$sampleLocationsCount, value);
     }
 
@@ -210,7 +210,7 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         pSampleLocationsRaw(s);
     }
 
-    @unsafe public @Nullable VkSampleLocationEXT.Ptr pSampleLocations(int assumedCount) {
+    @Unsafe public @Nullable VkSampleLocationEXT.Ptr pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -228,11 +228,11 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return new VkSampleLocationEXT(s);
     }
 
-    public @pointer(target=VkSampleLocationEXT.class) MemorySegment pSampleLocationsRaw() {
+    public @Pointer(target=VkSampleLocationEXT.class) MemorySegment pSampleLocationsRaw() {
         return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
     }
 
-    public void pSampleLocationsRaw(@pointer(target=VkSampleLocationEXT.class) MemorySegment value) {
+    public void pSampleLocationsRaw(@Pointer(target=VkSampleLocationEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 

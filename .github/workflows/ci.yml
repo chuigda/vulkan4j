@@ -1,0 +1,31 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 22
+      uses: actions/setup-java@v4
+      with:
+        java-version: '22'
+        distribution: 'liberica'
+        cache: maven
+    - name: Setup GCC
+      uses: egor-tensin/setup-gcc@v1
+    - name: Give build.sh priviledge to run
+      working-directory: ./misc/test_binary/
+      run: chmod +x ./build.sh
+    - name: Build testing-use native binaries
+      working-directory: ./misc/test_binary/
+      run: ./build.sh
+    - name: Run test with maven
+      run: mvn -B test --file pom.xml

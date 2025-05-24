@@ -95,7 +95,7 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkCommandBufferAllocateInfo.BYTES, VkCommandBufferAllocateInfo.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         sType(VkStructureType.COMMAND_BUFFER_ALLOCATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -192,19 +192,19 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$commandPool, OFFSET$commandPool, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkCommandBufferLevel.class) int level() {
+    public @EnumType(VkCommandBufferLevel.class) int level() {
         return segment.get(LAYOUT$level, OFFSET$level);
     }
 
-    public void level(@enumtype(VkCommandBufferLevel.class) int value) {
+    public void level(@EnumType(VkCommandBufferLevel.class) int value) {
         segment.set(LAYOUT$level, OFFSET$level, value);
     }
 
-    public @unsigned int commandBufferCount() {
+    public @Unsigned int commandBufferCount() {
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
-    public void commandBufferCount(@unsigned int value) {
+    public void commandBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
     }
 

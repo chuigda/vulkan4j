@@ -94,7 +94,7 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.BYTES, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         sType(VkStructureType.PHYSICAL_DEVICE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,7 +184,7 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         pVideoProfileRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pVideoProfile(int assumedCount) {
+    @Unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pVideoProfile(int assumedCount) {
         MemorySegment s = pVideoProfileRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -202,19 +202,19 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
+    public @Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
         return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
     }
 
-    public void pVideoProfileRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+    public void pVideoProfileRaw(@Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
     }
 
-    public @unsigned int qualityLevel() {
+    public @Unsigned int qualityLevel() {
         return segment.get(LAYOUT$qualityLevel, OFFSET$qualityLevel);
     }
 
-    public void qualityLevel(@unsigned int value) {
+    public void qualityLevel(@Unsigned int value) {
         segment.set(LAYOUT$qualityLevel, OFFSET$qualityLevel, value);
     }
 

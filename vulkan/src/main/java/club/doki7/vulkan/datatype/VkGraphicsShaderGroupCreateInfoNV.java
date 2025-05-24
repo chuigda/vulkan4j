@@ -96,7 +96,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkGraphicsShaderGroupCreateInfoNV.BYTES, VkGraphicsShaderGroupCreateInfoNV.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         sType(VkStructureType.GRAPHICS_SHADER_GROUP_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,11 +181,11 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int stageCount() {
+    public @Unsigned int stageCount() {
         return segment.get(LAYOUT$stageCount, OFFSET$stageCount);
     }
 
-    public void stageCount(@unsigned int value) {
+    public void stageCount(@Unsigned int value) {
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
@@ -194,7 +194,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         pStagesRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -212,11 +212,11 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
+    public @Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
+    public void pStagesRaw(@Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
@@ -225,7 +225,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         pVertexInputStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineVertexInputStateCreateInfo.Ptr pVertexInputState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineVertexInputStateCreateInfo.Ptr pVertexInputState(int assumedCount) {
         MemorySegment s = pVertexInputStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -243,11 +243,11 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return new VkPipelineVertexInputStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment pVertexInputStateRaw() {
+    public @Pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment pVertexInputStateRaw() {
         return segment.get(LAYOUT$pVertexInputState, OFFSET$pVertexInputState);
     }
 
-    public void pVertexInputStateRaw(@pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment value) {
+    public void pVertexInputStateRaw(@Pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
 
@@ -256,7 +256,7 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         pTessellationStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineTessellationStateCreateInfo.Ptr pTessellationState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineTessellationStateCreateInfo.Ptr pTessellationState(int assumedCount) {
         MemorySegment s = pTessellationStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -274,11 +274,11 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return new VkPipelineTessellationStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment pTessellationStateRaw() {
+    public @Pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment pTessellationStateRaw() {
         return segment.get(LAYOUT$pTessellationState, OFFSET$pTessellationState);
     }
 
-    public void pTessellationStateRaw(@pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment value) {
+    public void pTessellationStateRaw(@Pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
 

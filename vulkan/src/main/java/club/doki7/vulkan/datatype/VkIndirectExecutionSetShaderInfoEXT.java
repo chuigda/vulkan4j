@@ -98,7 +98,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -106,7 +106,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectExecutionSetShaderInfoEXT.BYTES, VkIndirectExecutionSetShaderInfoEXT.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         sType(VkStructureType.INDIRECT_EXECUTION_SET_SHADER_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,11 +183,11 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderCount() {
+    public @Unsigned int shaderCount() {
         return segment.get(LAYOUT$shaderCount, OFFSET$shaderCount);
     }
 
-    public void shaderCount(@unsigned int value) {
+    public void shaderCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderCount, OFFSET$shaderCount, value);
     }
 
@@ -208,11 +208,11 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         pInitialShadersRaw(s);
     }
 
-    public @pointer(target=VkShaderEXT.class) MemorySegment pInitialShadersRaw() {
+    public @Pointer(target=VkShaderEXT.class) MemorySegment pInitialShadersRaw() {
         return segment.get(LAYOUT$pInitialShaders, OFFSET$pInitialShaders);
     }
 
-    public void pInitialShadersRaw(@pointer(target=VkShaderEXT.class) MemorySegment value) {
+    public void pInitialShadersRaw(@Pointer(target=VkShaderEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pInitialShaders, OFFSET$pInitialShaders, value);
     }
 
@@ -221,7 +221,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         pSetLayoutInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT.Ptr pSetLayoutInfos(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectExecutionSetShaderLayoutInfoEXT.Ptr pSetLayoutInfos(int assumedCount) {
         MemorySegment s = pSetLayoutInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -239,27 +239,27 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         return new VkIndirectExecutionSetShaderLayoutInfoEXT(s);
     }
 
-    public @pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment pSetLayoutInfosRaw() {
+    public @Pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment pSetLayoutInfosRaw() {
         return segment.get(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos);
     }
 
-    public void pSetLayoutInfosRaw(@pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment value) {
+    public void pSetLayoutInfosRaw(@Pointer(target=VkIndirectExecutionSetShaderLayoutInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos, value);
     }
 
-    public @unsigned int maxShaderCount() {
+    public @Unsigned int maxShaderCount() {
         return segment.get(LAYOUT$maxShaderCount, OFFSET$maxShaderCount);
     }
 
-    public void maxShaderCount(@unsigned int value) {
+    public void maxShaderCount(@Unsigned int value) {
         segment.set(LAYOUT$maxShaderCount, OFFSET$maxShaderCount, value);
     }
 
-    public @unsigned int pushConstantRangeCount() {
+    public @Unsigned int pushConstantRangeCount() {
         return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
     }
 
-    public void pushConstantRangeCount(@unsigned int value) {
+    public void pushConstantRangeCount(@Unsigned int value) {
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
     }
 
@@ -268,7 +268,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         pPushConstantRangesRaw(s);
     }
 
-    @unsafe public @Nullable VkPushConstantRange.Ptr pPushConstantRanges(int assumedCount) {
+    @Unsafe public @Nullable VkPushConstantRange.Ptr pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -286,11 +286,11 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         return new VkPushConstantRange(s);
     }
 
-    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
+    public @Pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
         return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
     }
 
-    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
+    public void pPushConstantRangesRaw(@Pointer(target=VkPushConstantRange.class) MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 

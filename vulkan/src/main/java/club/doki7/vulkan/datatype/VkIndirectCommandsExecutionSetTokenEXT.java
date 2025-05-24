@@ -84,7 +84,7 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectCommandsExecutionSetTokenEXT.BYTES, VkIndirectCommandsExecutionSetTokenEXT.BYTES));
         }
@@ -139,19 +139,19 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         return ret;
     }
 
-    public @enumtype(VkIndirectExecutionSetInfoTypeEXT.class) int type() {
+    public @EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
+    public void type(@EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int shaderStages() {
+    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public void shaderStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkConditionalRenderingFlagsEXT {
     public static final int INVERTED = 0x1;
 
-    public static String explain(@enumtype(VkConditionalRenderingFlagsEXT.class) int flags) {
+    public static String explain(@EnumType(VkConditionalRenderingFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INVERTED) != 0) {
             detectedFlagBits.add("VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT");

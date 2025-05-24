@@ -13,7 +13,7 @@ public final class VkBorderColor {
     public static final int FLOAT_CUSTOM_EXT = 0x3b9f2b1b;
     public static final int INT_CUSTOM_EXT = 0x3b9f2b1c;
 
-    public static String explain(@enumtype(VkBorderColor.class) int value) {
+    public static String explain(@EnumType(VkBorderColor.class) int value) {
         return switch (value) {
             case VkBorderColor.FLOAT_CUSTOM_EXT -> "VK_BORDER_COLOR_FLOAT_CUSTOM_EXT";
             case VkBorderColor.FLOAT_OPAQUE_BLACK -> "VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK";

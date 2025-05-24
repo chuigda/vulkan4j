@@ -16,7 +16,7 @@ public final class VkPerformanceCounterUnitKHR {
     public static final int HERTZ = 0x9;
     public static final int CYCLES = 0xa;
 
-    public static String explain(@enumtype(VkPerformanceCounterUnitKHR.class) int value) {
+    public static String explain(@EnumType(VkPerformanceCounterUnitKHR.class) int value) {
         return switch (value) {
             case VkPerformanceCounterUnitKHR.AMPS -> "VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR";
             case VkPerformanceCounterUnitKHR.BYTES -> "VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR";

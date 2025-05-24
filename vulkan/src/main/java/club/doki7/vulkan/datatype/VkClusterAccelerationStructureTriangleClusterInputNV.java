@@ -100,7 +100,7 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -108,7 +108,7 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkClusterAccelerationStructureTriangleClusterInputNV.BYTES, VkClusterAccelerationStructureTriangleClusterInputNV.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         sType(VkStructureType.CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,67 +185,67 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkFormat.class) int vertexFormat() {
+    public @EnumType(VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public void vertexFormat(@enumtype(VkFormat.class) int value) {
+    public void vertexFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
     }
 
-    public @unsigned int maxGeometryIndexValue() {
+    public @Unsigned int maxGeometryIndexValue() {
         return segment.get(LAYOUT$maxGeometryIndexValue, OFFSET$maxGeometryIndexValue);
     }
 
-    public void maxGeometryIndexValue(@unsigned int value) {
+    public void maxGeometryIndexValue(@Unsigned int value) {
         segment.set(LAYOUT$maxGeometryIndexValue, OFFSET$maxGeometryIndexValue, value);
     }
 
-    public @unsigned int maxClusterUniqueGeometryCount() {
+    public @Unsigned int maxClusterUniqueGeometryCount() {
         return segment.get(LAYOUT$maxClusterUniqueGeometryCount, OFFSET$maxClusterUniqueGeometryCount);
     }
 
-    public void maxClusterUniqueGeometryCount(@unsigned int value) {
+    public void maxClusterUniqueGeometryCount(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterUniqueGeometryCount, OFFSET$maxClusterUniqueGeometryCount, value);
     }
 
-    public @unsigned int maxClusterTriangleCount() {
+    public @Unsigned int maxClusterTriangleCount() {
         return segment.get(LAYOUT$maxClusterTriangleCount, OFFSET$maxClusterTriangleCount);
     }
 
-    public void maxClusterTriangleCount(@unsigned int value) {
+    public void maxClusterTriangleCount(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterTriangleCount, OFFSET$maxClusterTriangleCount, value);
     }
 
-    public @unsigned int maxClusterVertexCount() {
+    public @Unsigned int maxClusterVertexCount() {
         return segment.get(LAYOUT$maxClusterVertexCount, OFFSET$maxClusterVertexCount);
     }
 
-    public void maxClusterVertexCount(@unsigned int value) {
+    public void maxClusterVertexCount(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterVertexCount, OFFSET$maxClusterVertexCount, value);
     }
 
-    public @unsigned int maxTotalTriangleCount() {
+    public @Unsigned int maxTotalTriangleCount() {
         return segment.get(LAYOUT$maxTotalTriangleCount, OFFSET$maxTotalTriangleCount);
     }
 
-    public void maxTotalTriangleCount(@unsigned int value) {
+    public void maxTotalTriangleCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTotalTriangleCount, OFFSET$maxTotalTriangleCount, value);
     }
 
-    public @unsigned int maxTotalVertexCount() {
+    public @Unsigned int maxTotalVertexCount() {
         return segment.get(LAYOUT$maxTotalVertexCount, OFFSET$maxTotalVertexCount);
     }
 
-    public void maxTotalVertexCount(@unsigned int value) {
+    public void maxTotalVertexCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTotalVertexCount, OFFSET$maxTotalVertexCount, value);
     }
 
-    public @unsigned int minPositionTruncateBitCount() {
+    public @Unsigned int minPositionTruncateBitCount() {
         return segment.get(LAYOUT$minPositionTruncateBitCount, OFFSET$minPositionTruncateBitCount);
     }
 
-    public void minPositionTruncateBitCount(@unsigned int value) {
+    public void minPositionTruncateBitCount(@Unsigned int value) {
         segment.set(LAYOUT$minPositionTruncateBitCount, OFFSET$minPositionTruncateBitCount, value);
     }
 

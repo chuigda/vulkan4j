@@ -86,7 +86,7 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -94,7 +94,7 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkComponentMapping.BYTES, VkComponentMapping.BYTES));
         }
@@ -141,35 +141,35 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
         return ret;
     }
 
-    public @enumtype(VkComponentSwizzle.class) int r() {
+    public @EnumType(VkComponentSwizzle.class) int r() {
         return segment.get(LAYOUT$r, OFFSET$r);
     }
 
-    public void r(@enumtype(VkComponentSwizzle.class) int value) {
+    public void r(@EnumType(VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$r, OFFSET$r, value);
     }
 
-    public @enumtype(VkComponentSwizzle.class) int g() {
+    public @EnumType(VkComponentSwizzle.class) int g() {
         return segment.get(LAYOUT$g, OFFSET$g);
     }
 
-    public void g(@enumtype(VkComponentSwizzle.class) int value) {
+    public void g(@EnumType(VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$g, OFFSET$g, value);
     }
 
-    public @enumtype(VkComponentSwizzle.class) int b() {
+    public @EnumType(VkComponentSwizzle.class) int b() {
         return segment.get(LAYOUT$b, OFFSET$b);
     }
 
-    public void b(@enumtype(VkComponentSwizzle.class) int value) {
+    public void b(@EnumType(VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$b, OFFSET$b, value);
     }
 
-    public @enumtype(VkComponentSwizzle.class) int a() {
+    public @EnumType(VkComponentSwizzle.class) int a() {
         return segment.get(LAYOUT$a, OFFSET$a);
     }
 
-    public void a(@enumtype(VkComponentSwizzle.class) int value) {
+    public void a(@EnumType(VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$a, OFFSET$a, value);
     }
 

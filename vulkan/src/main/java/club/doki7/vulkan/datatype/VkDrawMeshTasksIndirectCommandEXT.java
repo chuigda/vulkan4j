@@ -85,7 +85,7 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDrawMeshTasksIndirectCommandEXT.BYTES, VkDrawMeshTasksIndirectCommandEXT.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @unsigned int groupCountX() {
+    public @Unsigned int groupCountX() {
         return segment.get(LAYOUT$groupCountX, OFFSET$groupCountX);
     }
 
-    public void groupCountX(@unsigned int value) {
+    public void groupCountX(@Unsigned int value) {
         segment.set(LAYOUT$groupCountX, OFFSET$groupCountX, value);
     }
 
-    public @unsigned int groupCountY() {
+    public @Unsigned int groupCountY() {
         return segment.get(LAYOUT$groupCountY, OFFSET$groupCountY);
     }
 
-    public void groupCountY(@unsigned int value) {
+    public void groupCountY(@Unsigned int value) {
         segment.set(LAYOUT$groupCountY, OFFSET$groupCountY, value);
     }
 
-    public @unsigned int groupCountZ() {
+    public @Unsigned int groupCountZ() {
         return segment.get(LAYOUT$groupCountZ, OFFSET$groupCountZ);
     }
 
-    public void groupCountZ(@unsigned int value) {
+    public void groupCountZ(@Unsigned int value) {
         segment.set(LAYOUT$groupCountZ, OFFSET$groupCountZ, value);
     }
 

@@ -83,7 +83,7 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -91,7 +91,7 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH265DecPicBufMgr.BYTES, StdVideoH265DecPicBufMgr.BYTES));
         }
@@ -138,27 +138,27 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @unsigned int max_latency_increase_plus1() {
+    public @Unsigned int max_latency_increase_plus1() {
         return segment.get(LAYOUT$max_latency_increase_plus1, OFFSET$max_latency_increase_plus1);
     }
 
-    public void max_latency_increase_plus1(@unsigned int value) {
+    public void max_latency_increase_plus1(@Unsigned int value) {
         segment.set(LAYOUT$max_latency_increase_plus1, OFFSET$max_latency_increase_plus1, value);
     }
 
-    public @unsigned byte max_dec_pic_buffering_minus1() {
+    public @Unsigned byte max_dec_pic_buffering_minus1() {
         return segment.get(LAYOUT$max_dec_pic_buffering_minus1, OFFSET$max_dec_pic_buffering_minus1);
     }
 
-    public void max_dec_pic_buffering_minus1(@unsigned byte value) {
+    public void max_dec_pic_buffering_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$max_dec_pic_buffering_minus1, OFFSET$max_dec_pic_buffering_minus1, value);
     }
 
-    public @unsigned byte max_num_reorder_pics() {
+    public @Unsigned byte max_num_reorder_pics() {
         return segment.get(LAYOUT$max_num_reorder_pics, OFFSET$max_num_reorder_pics);
     }
 
-    public void max_num_reorder_pics(@unsigned byte value) {
+    public void max_num_reorder_pics(@Unsigned byte value) {
         segment.set(LAYOUT$max_num_reorder_pics, OFFSET$max_num_reorder_pics, value);
     }
 

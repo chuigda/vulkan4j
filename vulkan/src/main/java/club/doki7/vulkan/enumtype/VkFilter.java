@@ -8,7 +8,7 @@ public final class VkFilter {
     public static final int LINEAR = 0x1;
     public static final int CUBIC_EXT = 0x3b9b0498;
 
-    public static String explain(@enumtype(VkFilter.class) int value) {
+    public static String explain(@EnumType(VkFilter.class) int value) {
         return switch (value) {
             case VkFilter.CUBIC_EXT -> "VK_FILTER_CUBIC_EXT";
             case VkFilter.LINEAR -> "VK_FILTER_LINEAR";

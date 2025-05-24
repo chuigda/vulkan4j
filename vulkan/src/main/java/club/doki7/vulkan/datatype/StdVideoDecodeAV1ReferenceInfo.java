@@ -85,7 +85,7 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoDecodeAV1ReferenceInfo.BYTES, StdVideoDecodeAV1ReferenceInfo.BYTES));
         }
@@ -148,35 +148,35 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte frame_type() {
+    public @Unsigned byte frame_type() {
         return segment.get(LAYOUT$frame_type, OFFSET$frame_type);
     }
 
-    public void frame_type(@unsigned byte value) {
+    public void frame_type(@Unsigned byte value) {
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
     }
 
-    public @unsigned byte RefFrameSignBias() {
+    public @Unsigned byte RefFrameSignBias() {
         return segment.get(LAYOUT$RefFrameSignBias, OFFSET$RefFrameSignBias);
     }
 
-    public void RefFrameSignBias(@unsigned byte value) {
+    public void RefFrameSignBias(@Unsigned byte value) {
         segment.set(LAYOUT$RefFrameSignBias, OFFSET$RefFrameSignBias, value);
     }
 
-    public @unsigned byte OrderHint() {
+    public @Unsigned byte OrderHint() {
         return segment.get(LAYOUT$OrderHint, OFFSET$OrderHint);
     }
 
-    public void OrderHint(@unsigned byte value) {
+    public void OrderHint(@Unsigned byte value) {
         segment.set(LAYOUT$OrderHint, OFFSET$OrderHint, value);
     }
 
-    public @unsigned byte SavedOrderHints() {
+    public @Unsigned byte SavedOrderHints() {
         return segment.get(LAYOUT$SavedOrderHints, OFFSET$SavedOrderHints);
     }
 
-    public void SavedOrderHints(@unsigned byte value) {
+    public void SavedOrderHints(@Unsigned byte value) {
         segment.set(LAYOUT$SavedOrderHints, OFFSET$SavedOrderHints, value);
     }
 

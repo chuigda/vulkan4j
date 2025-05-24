@@ -95,7 +95,7 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT.BYTES, VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         sType(VkStructureType.PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int rasterizationOrderColorAttachmentAccess() {
+    public @NativeType("VkBool32") @Unsigned int rasterizationOrderColorAttachmentAccess() {
         return segment.get(LAYOUT$rasterizationOrderColorAttachmentAccess, OFFSET$rasterizationOrderColorAttachmentAccess);
     }
 
-    public void rasterizationOrderColorAttachmentAccess(@unsigned int value) {
+    public void rasterizationOrderColorAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rasterizationOrderColorAttachmentAccess, OFFSET$rasterizationOrderColorAttachmentAccess, value);
     }
 
-    public @unsigned int rasterizationOrderDepthAttachmentAccess() {
+    public @NativeType("VkBool32") @Unsigned int rasterizationOrderDepthAttachmentAccess() {
         return segment.get(LAYOUT$rasterizationOrderDepthAttachmentAccess, OFFSET$rasterizationOrderDepthAttachmentAccess);
     }
 
-    public void rasterizationOrderDepthAttachmentAccess(@unsigned int value) {
+    public void rasterizationOrderDepthAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rasterizationOrderDepthAttachmentAccess, OFFSET$rasterizationOrderDepthAttachmentAccess, value);
     }
 
-    public @unsigned int rasterizationOrderStencilAttachmentAccess() {
+    public @NativeType("VkBool32") @Unsigned int rasterizationOrderStencilAttachmentAccess() {
         return segment.get(LAYOUT$rasterizationOrderStencilAttachmentAccess, OFFSET$rasterizationOrderStencilAttachmentAccess);
     }
 
-    public void rasterizationOrderStencilAttachmentAccess(@unsigned int value) {
+    public void rasterizationOrderStencilAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rasterizationOrderStencilAttachmentAccess, OFFSET$rasterizationOrderStencilAttachmentAccess, value);
     }
 

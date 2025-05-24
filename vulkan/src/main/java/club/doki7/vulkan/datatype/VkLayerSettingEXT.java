@@ -87,7 +87,7 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkLayerSettingEXT.BYTES, VkLayerSettingEXT.BYTES));
         }
@@ -159,11 +159,11 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         pLayerNameRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment pLayerNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pLayerNameRaw() {
         return segment.get(LAYOUT$pLayerName, OFFSET$pLayerName);
     }
 
-    public void pLayerNameRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void pLayerNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
     }
 
@@ -184,35 +184,35 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         pSettingNameRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment pSettingNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pSettingNameRaw() {
         return segment.get(LAYOUT$pSettingName, OFFSET$pSettingName);
     }
 
-    public void pSettingNameRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void pSettingNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
 
-    public @enumtype(VkLayerSettingTypeEXT.class) int type() {
+    public @EnumType(VkLayerSettingTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkLayerSettingTypeEXT.class) int value) {
+    public void type(@EnumType(VkLayerSettingTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @unsigned int valueCount() {
+    public @Unsigned int valueCount() {
         return segment.get(LAYOUT$valueCount, OFFSET$valueCount);
     }
 
-    public void valueCount(@unsigned int value) {
+    public void valueCount(@Unsigned int value) {
         segment.set(LAYOUT$valueCount, OFFSET$valueCount, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pValues() {
+    public @Pointer(comment="void*") MemorySegment pValues() {
         return segment.get(LAYOUT$pValues, OFFSET$pValues);
     }
 
-    public void pValues(@pointer(comment="void*") MemorySegment value) {
+    public void pValues(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 

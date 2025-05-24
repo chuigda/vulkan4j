@@ -96,7 +96,7 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.BYTES, VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
         sType(VkStructureType.PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,35 +181,35 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int workgroupMemoryExplicitLayout() {
+    public @NativeType("VkBool32") @Unsigned int workgroupMemoryExplicitLayout() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout, OFFSET$workgroupMemoryExplicitLayout);
     }
 
-    public void workgroupMemoryExplicitLayout(@unsigned int value) {
+    public void workgroupMemoryExplicitLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout, OFFSET$workgroupMemoryExplicitLayout, value);
     }
 
-    public @unsigned int workgroupMemoryExplicitLayoutScalarBlockLayout() {
+    public @NativeType("VkBool32") @Unsigned int workgroupMemoryExplicitLayoutScalarBlockLayout() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout, OFFSET$workgroupMemoryExplicitLayoutScalarBlockLayout);
     }
 
-    public void workgroupMemoryExplicitLayoutScalarBlockLayout(@unsigned int value) {
+    public void workgroupMemoryExplicitLayoutScalarBlockLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout, OFFSET$workgroupMemoryExplicitLayoutScalarBlockLayout, value);
     }
 
-    public @unsigned int workgroupMemoryExplicitLayout8BitAccess() {
+    public @NativeType("VkBool32") @Unsigned int workgroupMemoryExplicitLayout8BitAccess() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout8BitAccess, OFFSET$workgroupMemoryExplicitLayout8BitAccess);
     }
 
-    public void workgroupMemoryExplicitLayout8BitAccess(@unsigned int value) {
+    public void workgroupMemoryExplicitLayout8BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout8BitAccess, OFFSET$workgroupMemoryExplicitLayout8BitAccess, value);
     }
 
-    public @unsigned int workgroupMemoryExplicitLayout16BitAccess() {
+    public @NativeType("VkBool32") @Unsigned int workgroupMemoryExplicitLayout16BitAccess() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout16BitAccess, OFFSET$workgroupMemoryExplicitLayout16BitAccess);
     }
 
-    public void workgroupMemoryExplicitLayout16BitAccess(@unsigned int value) {
+    public void workgroupMemoryExplicitLayout16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout16BitAccess, OFFSET$workgroupMemoryExplicitLayout16BitAccess, value);
     }
 

@@ -95,7 +95,7 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.BYTES, VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int fragmentShadingRateEnums() {
+    public @NativeType("VkBool32") @Unsigned int fragmentShadingRateEnums() {
         return segment.get(LAYOUT$fragmentShadingRateEnums, OFFSET$fragmentShadingRateEnums);
     }
 
-    public void fragmentShadingRateEnums(@unsigned int value) {
+    public void fragmentShadingRateEnums(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateEnums, OFFSET$fragmentShadingRateEnums, value);
     }
 
-    public @unsigned int supersampleFragmentShadingRates() {
+    public @NativeType("VkBool32") @Unsigned int supersampleFragmentShadingRates() {
         return segment.get(LAYOUT$supersampleFragmentShadingRates, OFFSET$supersampleFragmentShadingRates);
     }
 
-    public void supersampleFragmentShadingRates(@unsigned int value) {
+    public void supersampleFragmentShadingRates(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$supersampleFragmentShadingRates, OFFSET$supersampleFragmentShadingRates, value);
     }
 
-    public @unsigned int noInvocationFragmentShadingRates() {
+    public @NativeType("VkBool32") @Unsigned int noInvocationFragmentShadingRates() {
         return segment.get(LAYOUT$noInvocationFragmentShadingRates, OFFSET$noInvocationFragmentShadingRates);
     }
 
-    public void noInvocationFragmentShadingRates(@unsigned int value) {
+    public void noInvocationFragmentShadingRates(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$noInvocationFragmentShadingRates, OFFSET$noInvocationFragmentShadingRates, value);
     }
 

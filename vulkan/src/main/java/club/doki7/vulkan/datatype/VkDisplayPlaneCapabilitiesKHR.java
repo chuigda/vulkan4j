@@ -91,7 +91,7 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -99,7 +99,7 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDisplayPlaneCapabilitiesKHR.BYTES, VkDisplayPlaneCapabilitiesKHR.BYTES));
         }
@@ -146,11 +146,11 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int supportedAlpha() {
+    public @EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int supportedAlpha() {
         return segment.get(LAYOUT$supportedAlpha, OFFSET$supportedAlpha);
     }
 
-    public void supportedAlpha(@enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+    public void supportedAlpha(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedAlpha, OFFSET$supportedAlpha, value);
     }
 

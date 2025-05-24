@@ -7,7 +7,7 @@ public final class VkShaderCodeTypeEXT {
     public static final int BINARY = 0x0;
     public static final int SPIRV = 0x1;
 
-    public static String explain(@enumtype(VkShaderCodeTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkShaderCodeTypeEXT.class) int value) {
         return switch (value) {
             case VkShaderCodeTypeEXT.BINARY -> "VK_SHADER_CODE_TYPE_BINARY_EXT";
             case VkShaderCodeTypeEXT.SPIRV -> "VK_SHADER_CODE_TYPE_SPIRV_EXT";

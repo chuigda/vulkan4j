@@ -24,7 +24,7 @@ public final class VkBlendFactor {
     public static final int SRC1_ALPHA = 0x11;
     public static final int ONE_MINUS_SRC1_ALPHA = 0x12;
 
-    public static String explain(@enumtype(VkBlendFactor.class) int value) {
+    public static String explain(@EnumType(VkBlendFactor.class) int value) {
         return switch (value) {
             case VkBlendFactor.CONSTANT_ALPHA -> "VK_BLEND_FACTOR_CONSTANT_ALPHA";
             case VkBlendFactor.CONSTANT_COLOR -> "VK_BLEND_FACTOR_CONSTANT_COLOR";

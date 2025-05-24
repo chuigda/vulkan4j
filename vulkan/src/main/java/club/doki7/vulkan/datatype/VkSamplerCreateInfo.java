@@ -108,7 +108,7 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -116,7 +116,7 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSamplerCreateInfo.BYTES, VkSamplerCreateInfo.BYTES));
         }
@@ -173,19 +173,19 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.SAMPLER_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -193,59 +193,59 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkSamplerCreateFlags.class) int flags() {
+    public @EnumType(VkSamplerCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkSamplerCreateFlags.class) int value) {
+    public void flags(@EnumType(VkSamplerCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkFilter.class) int magFilter() {
+    public @EnumType(VkFilter.class) int magFilter() {
         return segment.get(LAYOUT$magFilter, OFFSET$magFilter);
     }
 
-    public void magFilter(@enumtype(VkFilter.class) int value) {
+    public void magFilter(@EnumType(VkFilter.class) int value) {
         segment.set(LAYOUT$magFilter, OFFSET$magFilter, value);
     }
 
-    public @enumtype(VkFilter.class) int minFilter() {
+    public @EnumType(VkFilter.class) int minFilter() {
         return segment.get(LAYOUT$minFilter, OFFSET$minFilter);
     }
 
-    public void minFilter(@enumtype(VkFilter.class) int value) {
+    public void minFilter(@EnumType(VkFilter.class) int value) {
         segment.set(LAYOUT$minFilter, OFFSET$minFilter, value);
     }
 
-    public @enumtype(VkSamplerMipmapMode.class) int mipmapMode() {
+    public @EnumType(VkSamplerMipmapMode.class) int mipmapMode() {
         return segment.get(LAYOUT$mipmapMode, OFFSET$mipmapMode);
     }
 
-    public void mipmapMode(@enumtype(VkSamplerMipmapMode.class) int value) {
+    public void mipmapMode(@EnumType(VkSamplerMipmapMode.class) int value) {
         segment.set(LAYOUT$mipmapMode, OFFSET$mipmapMode, value);
     }
 
-    public @enumtype(VkSamplerAddressMode.class) int addressModeU() {
+    public @EnumType(VkSamplerAddressMode.class) int addressModeU() {
         return segment.get(LAYOUT$addressModeU, OFFSET$addressModeU);
     }
 
-    public void addressModeU(@enumtype(VkSamplerAddressMode.class) int value) {
+    public void addressModeU(@EnumType(VkSamplerAddressMode.class) int value) {
         segment.set(LAYOUT$addressModeU, OFFSET$addressModeU, value);
     }
 
-    public @enumtype(VkSamplerAddressMode.class) int addressModeV() {
+    public @EnumType(VkSamplerAddressMode.class) int addressModeV() {
         return segment.get(LAYOUT$addressModeV, OFFSET$addressModeV);
     }
 
-    public void addressModeV(@enumtype(VkSamplerAddressMode.class) int value) {
+    public void addressModeV(@EnumType(VkSamplerAddressMode.class) int value) {
         segment.set(LAYOUT$addressModeV, OFFSET$addressModeV, value);
     }
 
-    public @enumtype(VkSamplerAddressMode.class) int addressModeW() {
+    public @EnumType(VkSamplerAddressMode.class) int addressModeW() {
         return segment.get(LAYOUT$addressModeW, OFFSET$addressModeW);
     }
 
-    public void addressModeW(@enumtype(VkSamplerAddressMode.class) int value) {
+    public void addressModeW(@EnumType(VkSamplerAddressMode.class) int value) {
         segment.set(LAYOUT$addressModeW, OFFSET$addressModeW, value);
     }
 
@@ -257,11 +257,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$mipLodBias, OFFSET$mipLodBias, value);
     }
 
-    public @unsigned int anisotropyEnable() {
+    public @NativeType("VkBool32") @Unsigned int anisotropyEnable() {
         return segment.get(LAYOUT$anisotropyEnable, OFFSET$anisotropyEnable);
     }
 
-    public void anisotropyEnable(@unsigned int value) {
+    public void anisotropyEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$anisotropyEnable, OFFSET$anisotropyEnable, value);
     }
 
@@ -273,19 +273,19 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$maxAnisotropy, OFFSET$maxAnisotropy, value);
     }
 
-    public @unsigned int compareEnable() {
+    public @NativeType("VkBool32") @Unsigned int compareEnable() {
         return segment.get(LAYOUT$compareEnable, OFFSET$compareEnable);
     }
 
-    public void compareEnable(@unsigned int value) {
+    public void compareEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$compareEnable, OFFSET$compareEnable, value);
     }
 
-    public @enumtype(VkCompareOp.class) int compareOp() {
+    public @EnumType(VkCompareOp.class) int compareOp() {
         return segment.get(LAYOUT$compareOp, OFFSET$compareOp);
     }
 
-    public void compareOp(@enumtype(VkCompareOp.class) int value) {
+    public void compareOp(@EnumType(VkCompareOp.class) int value) {
         segment.set(LAYOUT$compareOp, OFFSET$compareOp, value);
     }
 
@@ -305,19 +305,19 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$maxLod, OFFSET$maxLod, value);
     }
 
-    public @enumtype(VkBorderColor.class) int borderColor() {
+    public @EnumType(VkBorderColor.class) int borderColor() {
         return segment.get(LAYOUT$borderColor, OFFSET$borderColor);
     }
 
-    public void borderColor(@enumtype(VkBorderColor.class) int value) {
+    public void borderColor(@EnumType(VkBorderColor.class) int value) {
         segment.set(LAYOUT$borderColor, OFFSET$borderColor, value);
     }
 
-    public @unsigned int unnormalizedCoordinates() {
+    public @NativeType("VkBool32") @Unsigned int unnormalizedCoordinates() {
         return segment.get(LAYOUT$unnormalizedCoordinates, OFFSET$unnormalizedCoordinates);
     }
 
-    public void unnormalizedCoordinates(@unsigned int value) {
+    public void unnormalizedCoordinates(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$unnormalizedCoordinates, OFFSET$unnormalizedCoordinates, value);
     }
 

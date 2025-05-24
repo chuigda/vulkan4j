@@ -99,7 +99,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -107,7 +107,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSubmitInfo.BYTES, VkSubmitInfo.BYTES));
         }
@@ -164,19 +164,19 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         sType(VkStructureType.SUBMIT_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,11 +184,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int waitSemaphoreCount() {
+    public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@unsigned int value) {
+    public void waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
@@ -209,11 +209,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         pWaitSemaphoresRaw(s);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
         return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pWaitSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
@@ -222,7 +222,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkPipelineStageFlags.class) IntPtr pWaitDstStageMask() {
+    public @Nullable @EnumType(VkPipelineStageFlags.class) IntPtr pWaitDstStageMask() {
         MemorySegment s = pWaitDstStageMaskRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -230,24 +230,24 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return new IntPtr(s);
     }
 
-    public void pWaitDstStageMask(@Nullable @enumtype(VkPipelineStageFlags.class) IntPtr value) {
+    public void pWaitDstStageMask(@Nullable @EnumType(VkPipelineStageFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);
     }
 
-    public @pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
+    public @Pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
         return segment.get(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask);
     }
 
-    public void pWaitDstStageMaskRaw(@pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
+    public void pWaitDstStageMaskRaw(@Pointer(target=VkPipelineStageFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
     }
 
-    public @unsigned int commandBufferCount() {
+    public @Unsigned int commandBufferCount() {
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
-    public void commandBufferCount(@unsigned int value) {
+    public void commandBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
     }
 
@@ -268,19 +268,19 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         pCommandBuffersRaw(s);
     }
 
-    public @pointer(target=VkCommandBuffer.class) MemorySegment pCommandBuffersRaw() {
+    public @Pointer(target=VkCommandBuffer.class) MemorySegment pCommandBuffersRaw() {
         return segment.get(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers);
     }
 
-    public void pCommandBuffersRaw(@pointer(target=VkCommandBuffer.class) MemorySegment value) {
+    public void pCommandBuffersRaw(@Pointer(target=VkCommandBuffer.class) MemorySegment value) {
         segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
 
-    public @unsigned int signalSemaphoreCount() {
+    public @Unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
-    public void signalSemaphoreCount(@unsigned int value) {
+    public void signalSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
     }
 
@@ -301,11 +301,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         pSignalSemaphoresRaw(s);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {
         return segment.get(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores);
     }
 
-    public void pSignalSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pSignalSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphores, OFFSET$pSignalSemaphores, value);
     }
 

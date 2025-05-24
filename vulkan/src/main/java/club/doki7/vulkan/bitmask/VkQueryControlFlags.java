@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkQueryControlFlags {
     public static final int PRECISE = 0x1;
 
-    public static String explain(@enumtype(VkQueryControlFlags.class) int flags) {
+    public static String explain(@EnumType(VkQueryControlFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PRECISE) != 0) {
             detectedFlagBits.add("VK_QUERY_CONTROL_PRECISE_BIT");

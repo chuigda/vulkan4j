@@ -9,7 +9,7 @@ public final class VkCoverageModulationModeNV {
     public static final int ALPHA = 0x2;
     public static final int RGBA = 0x3;
 
-    public static String explain(@enumtype(VkCoverageModulationModeNV.class) int value) {
+    public static String explain(@EnumType(VkCoverageModulationModeNV.class) int value) {
         return switch (value) {
             case VkCoverageModulationModeNV.ALPHA -> "VK_COVERAGE_MODULATION_MODE_ALPHA_NV";
             case VkCoverageModulationModeNV.NONE -> "VK_COVERAGE_MODULATION_MODE_NONE_NV";

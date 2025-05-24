@@ -91,7 +91,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -99,7 +99,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES, VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES));
         }
@@ -162,59 +162,59 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         segment.set(LAYOUT$explicitAABB, OFFSET$explicitAABB, value);
     }
 
-    public @unsigned int instanceID() {
+    public @Unsigned int instanceID() {
         return segment.get(LAYOUT$instanceID, OFFSET$instanceID);
     }
 
-    public void instanceID(@unsigned int value) {
+    public void instanceID(@Unsigned int value) {
         segment.set(LAYOUT$instanceID, OFFSET$instanceID, value);
     }
 
-    public @unsigned int instanceMask() {
+    public @Unsigned int instanceMask() {
         return segment.get(LAYOUT$instanceMask, OFFSET$instanceMask);
     }
 
-    public void instanceMask(@unsigned int value) {
+    public void instanceMask(@Unsigned int value) {
         segment.set(LAYOUT$instanceMask, OFFSET$instanceMask, value);
     }
 
-    public @unsigned int instanceContributionToHitGroupIndex() {
+    public @Unsigned int instanceContributionToHitGroupIndex() {
         return segment.get(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex);
     }
 
-    public void instanceContributionToHitGroupIndex(@unsigned int value) {
+    public void instanceContributionToHitGroupIndex(@Unsigned int value) {
         segment.set(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex, value);
     }
 
-    public @enumtype(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
+    public @EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
         return segment.get(LAYOUT$instanceFlags, OFFSET$instanceFlags);
     }
 
-    public void instanceFlags(@enumtype(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
+    public void instanceFlags(@EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$instanceFlags, OFFSET$instanceFlags, value);
     }
 
-    public @unsigned int instanceIndex() {
+    public @Unsigned int instanceIndex() {
         return segment.get(LAYOUT$instanceIndex, OFFSET$instanceIndex);
     }
 
-    public void instanceIndex(@unsigned int value) {
+    public void instanceIndex(@Unsigned int value) {
         segment.set(LAYOUT$instanceIndex, OFFSET$instanceIndex, value);
     }
 
-    public @unsigned int partitionIndex() {
+    public @Unsigned int partitionIndex() {
         return segment.get(LAYOUT$partitionIndex, OFFSET$partitionIndex);
     }
 
-    public void partitionIndex(@unsigned int value) {
+    public void partitionIndex(@Unsigned int value) {
         segment.set(LAYOUT$partitionIndex, OFFSET$partitionIndex, value);
     }
 
-    public @unsigned long accelerationStructure() {
+    public @NativeType("VkDeviceAddress") @Unsigned long accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@unsigned long value) {
+    public void accelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 

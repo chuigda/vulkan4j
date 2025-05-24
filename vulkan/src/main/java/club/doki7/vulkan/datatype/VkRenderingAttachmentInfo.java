@@ -100,7 +100,7 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -108,7 +108,7 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRenderingAttachmentInfo.BYTES, VkRenderingAttachmentInfo.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.RENDERING_ATTACHMENT_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -197,19 +197,19 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageLayout.class) int imageLayout() {
+    public @EnumType(VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
+    public void imageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
     }
 
-    public @enumtype(VkResolveModeFlags.class) int resolveMode() {
+    public @EnumType(VkResolveModeFlags.class) int resolveMode() {
         return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
     }
 
-    public void resolveMode(@enumtype(VkResolveModeFlags.class) int value) {
+    public void resolveMode(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
     }
 
@@ -225,27 +225,27 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$resolveImageView, OFFSET$resolveImageView, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageLayout.class) int resolveImageLayout() {
+    public @EnumType(VkImageLayout.class) int resolveImageLayout() {
         return segment.get(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout);
     }
 
-    public void resolveImageLayout(@enumtype(VkImageLayout.class) int value) {
+    public void resolveImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout, value);
     }
 
-    public @enumtype(VkAttachmentLoadOp.class) int loadOp() {
+    public @EnumType(VkAttachmentLoadOp.class) int loadOp() {
         return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
     }
 
-    public void loadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
+    public void loadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
     }
 
-    public @enumtype(VkAttachmentStoreOp.class) int storeOp() {
+    public @EnumType(VkAttachmentStoreOp.class) int storeOp() {
         return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
     }
 
-    public void storeOp(@enumtype(VkAttachmentStoreOp.class) int value) {
+    public void storeOp(@EnumType(VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
     }
 

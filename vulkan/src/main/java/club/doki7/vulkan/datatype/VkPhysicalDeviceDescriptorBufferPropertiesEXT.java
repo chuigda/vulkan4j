@@ -125,7 +125,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -133,7 +133,7 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceDescriptorBufferPropertiesEXT.BYTES, VkPhysicalDeviceDescriptorBufferPropertiesEXT.BYTES));
         }
@@ -190,19 +190,19 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -210,267 +210,267 @@ public record VkPhysicalDeviceDescriptorBufferPropertiesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int combinedImageSamplerDescriptorSingleArray() {
+    public @NativeType("VkBool32") @Unsigned int combinedImageSamplerDescriptorSingleArray() {
         return segment.get(LAYOUT$combinedImageSamplerDescriptorSingleArray, OFFSET$combinedImageSamplerDescriptorSingleArray);
     }
 
-    public void combinedImageSamplerDescriptorSingleArray(@unsigned int value) {
+    public void combinedImageSamplerDescriptorSingleArray(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$combinedImageSamplerDescriptorSingleArray, OFFSET$combinedImageSamplerDescriptorSingleArray, value);
     }
 
-    public @unsigned int bufferlessPushDescriptors() {
+    public @NativeType("VkBool32") @Unsigned int bufferlessPushDescriptors() {
         return segment.get(LAYOUT$bufferlessPushDescriptors, OFFSET$bufferlessPushDescriptors);
     }
 
-    public void bufferlessPushDescriptors(@unsigned int value) {
+    public void bufferlessPushDescriptors(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bufferlessPushDescriptors, OFFSET$bufferlessPushDescriptors, value);
     }
 
-    public @unsigned int allowSamplerImageViewPostSubmitCreation() {
+    public @NativeType("VkBool32") @Unsigned int allowSamplerImageViewPostSubmitCreation() {
         return segment.get(LAYOUT$allowSamplerImageViewPostSubmitCreation, OFFSET$allowSamplerImageViewPostSubmitCreation);
     }
 
-    public void allowSamplerImageViewPostSubmitCreation(@unsigned int value) {
+    public void allowSamplerImageViewPostSubmitCreation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$allowSamplerImageViewPostSubmitCreation, OFFSET$allowSamplerImageViewPostSubmitCreation, value);
     }
 
-    public @unsigned long descriptorBufferOffsetAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long descriptorBufferOffsetAlignment() {
         return segment.get(LAYOUT$descriptorBufferOffsetAlignment, OFFSET$descriptorBufferOffsetAlignment);
     }
 
-    public void descriptorBufferOffsetAlignment(@unsigned long value) {
+    public void descriptorBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$descriptorBufferOffsetAlignment, OFFSET$descriptorBufferOffsetAlignment, value);
     }
 
-    public @unsigned int maxDescriptorBufferBindings() {
+    public @Unsigned int maxDescriptorBufferBindings() {
         return segment.get(LAYOUT$maxDescriptorBufferBindings, OFFSET$maxDescriptorBufferBindings);
     }
 
-    public void maxDescriptorBufferBindings(@unsigned int value) {
+    public void maxDescriptorBufferBindings(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorBufferBindings, OFFSET$maxDescriptorBufferBindings, value);
     }
 
-    public @unsigned int maxResourceDescriptorBufferBindings() {
+    public @Unsigned int maxResourceDescriptorBufferBindings() {
         return segment.get(LAYOUT$maxResourceDescriptorBufferBindings, OFFSET$maxResourceDescriptorBufferBindings);
     }
 
-    public void maxResourceDescriptorBufferBindings(@unsigned int value) {
+    public void maxResourceDescriptorBufferBindings(@Unsigned int value) {
         segment.set(LAYOUT$maxResourceDescriptorBufferBindings, OFFSET$maxResourceDescriptorBufferBindings, value);
     }
 
-    public @unsigned int maxSamplerDescriptorBufferBindings() {
+    public @Unsigned int maxSamplerDescriptorBufferBindings() {
         return segment.get(LAYOUT$maxSamplerDescriptorBufferBindings, OFFSET$maxSamplerDescriptorBufferBindings);
     }
 
-    public void maxSamplerDescriptorBufferBindings(@unsigned int value) {
+    public void maxSamplerDescriptorBufferBindings(@Unsigned int value) {
         segment.set(LAYOUT$maxSamplerDescriptorBufferBindings, OFFSET$maxSamplerDescriptorBufferBindings, value);
     }
 
-    public @unsigned int maxEmbeddedImmutableSamplerBindings() {
+    public @Unsigned int maxEmbeddedImmutableSamplerBindings() {
         return segment.get(LAYOUT$maxEmbeddedImmutableSamplerBindings, OFFSET$maxEmbeddedImmutableSamplerBindings);
     }
 
-    public void maxEmbeddedImmutableSamplerBindings(@unsigned int value) {
+    public void maxEmbeddedImmutableSamplerBindings(@Unsigned int value) {
         segment.set(LAYOUT$maxEmbeddedImmutableSamplerBindings, OFFSET$maxEmbeddedImmutableSamplerBindings, value);
     }
 
-    public @unsigned int maxEmbeddedImmutableSamplers() {
+    public @Unsigned int maxEmbeddedImmutableSamplers() {
         return segment.get(LAYOUT$maxEmbeddedImmutableSamplers, OFFSET$maxEmbeddedImmutableSamplers);
     }
 
-    public void maxEmbeddedImmutableSamplers(@unsigned int value) {
+    public void maxEmbeddedImmutableSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxEmbeddedImmutableSamplers, OFFSET$maxEmbeddedImmutableSamplers, value);
     }
 
-    public @unsigned long bufferCaptureReplayDescriptorDataSize() {
+    public @Unsigned long bufferCaptureReplayDescriptorDataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$bufferCaptureReplayDescriptorDataSize);
     }
 
-    public void bufferCaptureReplayDescriptorDataSize(@unsigned long value) {
+    public void bufferCaptureReplayDescriptorDataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$bufferCaptureReplayDescriptorDataSize, value);
     }
 
-    public @unsigned long imageCaptureReplayDescriptorDataSize() {
+    public @Unsigned long imageCaptureReplayDescriptorDataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$imageCaptureReplayDescriptorDataSize);
     }
 
-    public void imageCaptureReplayDescriptorDataSize(@unsigned long value) {
+    public void imageCaptureReplayDescriptorDataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$imageCaptureReplayDescriptorDataSize, value);
     }
 
-    public @unsigned long imageViewCaptureReplayDescriptorDataSize() {
+    public @Unsigned long imageViewCaptureReplayDescriptorDataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$imageViewCaptureReplayDescriptorDataSize);
     }
 
-    public void imageViewCaptureReplayDescriptorDataSize(@unsigned long value) {
+    public void imageViewCaptureReplayDescriptorDataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$imageViewCaptureReplayDescriptorDataSize, value);
     }
 
-    public @unsigned long samplerCaptureReplayDescriptorDataSize() {
+    public @Unsigned long samplerCaptureReplayDescriptorDataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$samplerCaptureReplayDescriptorDataSize);
     }
 
-    public void samplerCaptureReplayDescriptorDataSize(@unsigned long value) {
+    public void samplerCaptureReplayDescriptorDataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$samplerCaptureReplayDescriptorDataSize, value);
     }
 
-    public @unsigned long accelerationStructureCaptureReplayDescriptorDataSize() {
+    public @Unsigned long accelerationStructureCaptureReplayDescriptorDataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$accelerationStructureCaptureReplayDescriptorDataSize);
     }
 
-    public void accelerationStructureCaptureReplayDescriptorDataSize(@unsigned long value) {
+    public void accelerationStructureCaptureReplayDescriptorDataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$accelerationStructureCaptureReplayDescriptorDataSize, value);
     }
 
-    public @unsigned long samplerDescriptorSize() {
+    public @Unsigned long samplerDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$samplerDescriptorSize);
     }
 
-    public void samplerDescriptorSize(@unsigned long value) {
+    public void samplerDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$samplerDescriptorSize, value);
     }
 
-    public @unsigned long combinedImageSamplerDescriptorSize() {
+    public @Unsigned long combinedImageSamplerDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$combinedImageSamplerDescriptorSize);
     }
 
-    public void combinedImageSamplerDescriptorSize(@unsigned long value) {
+    public void combinedImageSamplerDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$combinedImageSamplerDescriptorSize, value);
     }
 
-    public @unsigned long sampledImageDescriptorSize() {
+    public @Unsigned long sampledImageDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$sampledImageDescriptorSize);
     }
 
-    public void sampledImageDescriptorSize(@unsigned long value) {
+    public void sampledImageDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$sampledImageDescriptorSize, value);
     }
 
-    public @unsigned long storageImageDescriptorSize() {
+    public @Unsigned long storageImageDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$storageImageDescriptorSize);
     }
 
-    public void storageImageDescriptorSize(@unsigned long value) {
+    public void storageImageDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$storageImageDescriptorSize, value);
     }
 
-    public @unsigned long uniformTexelBufferDescriptorSize() {
+    public @Unsigned long uniformTexelBufferDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$uniformTexelBufferDescriptorSize);
     }
 
-    public void uniformTexelBufferDescriptorSize(@unsigned long value) {
+    public void uniformTexelBufferDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$uniformTexelBufferDescriptorSize, value);
     }
 
-    public @unsigned long robustUniformTexelBufferDescriptorSize() {
+    public @Unsigned long robustUniformTexelBufferDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$robustUniformTexelBufferDescriptorSize);
     }
 
-    public void robustUniformTexelBufferDescriptorSize(@unsigned long value) {
+    public void robustUniformTexelBufferDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$robustUniformTexelBufferDescriptorSize, value);
     }
 
-    public @unsigned long storageTexelBufferDescriptorSize() {
+    public @Unsigned long storageTexelBufferDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$storageTexelBufferDescriptorSize);
     }
 
-    public void storageTexelBufferDescriptorSize(@unsigned long value) {
+    public void storageTexelBufferDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$storageTexelBufferDescriptorSize, value);
     }
 
-    public @unsigned long robustStorageTexelBufferDescriptorSize() {
+    public @Unsigned long robustStorageTexelBufferDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$robustStorageTexelBufferDescriptorSize);
     }
 
-    public void robustStorageTexelBufferDescriptorSize(@unsigned long value) {
+    public void robustStorageTexelBufferDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$robustStorageTexelBufferDescriptorSize, value);
     }
 
-    public @unsigned long uniformBufferDescriptorSize() {
+    public @Unsigned long uniformBufferDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$uniformBufferDescriptorSize);
     }
 
-    public void uniformBufferDescriptorSize(@unsigned long value) {
+    public void uniformBufferDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$uniformBufferDescriptorSize, value);
     }
 
-    public @unsigned long robustUniformBufferDescriptorSize() {
+    public @Unsigned long robustUniformBufferDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$robustUniformBufferDescriptorSize);
     }
 
-    public void robustUniformBufferDescriptorSize(@unsigned long value) {
+    public void robustUniformBufferDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$robustUniformBufferDescriptorSize, value);
     }
 
-    public @unsigned long storageBufferDescriptorSize() {
+    public @Unsigned long storageBufferDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$storageBufferDescriptorSize);
     }
 
-    public void storageBufferDescriptorSize(@unsigned long value) {
+    public void storageBufferDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$storageBufferDescriptorSize, value);
     }
 
-    public @unsigned long robustStorageBufferDescriptorSize() {
+    public @Unsigned long robustStorageBufferDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$robustStorageBufferDescriptorSize);
     }
 
-    public void robustStorageBufferDescriptorSize(@unsigned long value) {
+    public void robustStorageBufferDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$robustStorageBufferDescriptorSize, value);
     }
 
-    public @unsigned long inputAttachmentDescriptorSize() {
+    public @Unsigned long inputAttachmentDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$inputAttachmentDescriptorSize);
     }
 
-    public void inputAttachmentDescriptorSize(@unsigned long value) {
+    public void inputAttachmentDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$inputAttachmentDescriptorSize, value);
     }
 
-    public @unsigned long accelerationStructureDescriptorSize() {
+    public @Unsigned long accelerationStructureDescriptorSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$accelerationStructureDescriptorSize);
     }
 
-    public void accelerationStructureDescriptorSize(@unsigned long value) {
+    public void accelerationStructureDescriptorSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$accelerationStructureDescriptorSize, value);
     }
 
-    public @unsigned long maxSamplerDescriptorBufferRange() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxSamplerDescriptorBufferRange() {
         return segment.get(LAYOUT$maxSamplerDescriptorBufferRange, OFFSET$maxSamplerDescriptorBufferRange);
     }
 
-    public void maxSamplerDescriptorBufferRange(@unsigned long value) {
+    public void maxSamplerDescriptorBufferRange(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxSamplerDescriptorBufferRange, OFFSET$maxSamplerDescriptorBufferRange, value);
     }
 
-    public @unsigned long maxResourceDescriptorBufferRange() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxResourceDescriptorBufferRange() {
         return segment.get(LAYOUT$maxResourceDescriptorBufferRange, OFFSET$maxResourceDescriptorBufferRange);
     }
 
-    public void maxResourceDescriptorBufferRange(@unsigned long value) {
+    public void maxResourceDescriptorBufferRange(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxResourceDescriptorBufferRange, OFFSET$maxResourceDescriptorBufferRange, value);
     }
 
-    public @unsigned long samplerDescriptorBufferAddressSpaceSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long samplerDescriptorBufferAddressSpaceSize() {
         return segment.get(LAYOUT$samplerDescriptorBufferAddressSpaceSize, OFFSET$samplerDescriptorBufferAddressSpaceSize);
     }
 
-    public void samplerDescriptorBufferAddressSpaceSize(@unsigned long value) {
+    public void samplerDescriptorBufferAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$samplerDescriptorBufferAddressSpaceSize, OFFSET$samplerDescriptorBufferAddressSpaceSize, value);
     }
 
-    public @unsigned long resourceDescriptorBufferAddressSpaceSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long resourceDescriptorBufferAddressSpaceSize() {
         return segment.get(LAYOUT$resourceDescriptorBufferAddressSpaceSize, OFFSET$resourceDescriptorBufferAddressSpaceSize);
     }
 
-    public void resourceDescriptorBufferAddressSpaceSize(@unsigned long value) {
+    public void resourceDescriptorBufferAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$resourceDescriptorBufferAddressSpaceSize, OFFSET$resourceDescriptorBufferAddressSpaceSize, value);
     }
 
-    public @unsigned long descriptorBufferAddressSpaceSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long descriptorBufferAddressSpaceSize() {
         return segment.get(LAYOUT$descriptorBufferAddressSpaceSize, OFFSET$descriptorBufferAddressSpaceSize);
     }
 
-    public void descriptorBufferAddressSpaceSize(@unsigned long value) {
+    public void descriptorBufferAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$descriptorBufferAddressSpaceSize, OFFSET$descriptorBufferAddressSpaceSize, value);
     }
 

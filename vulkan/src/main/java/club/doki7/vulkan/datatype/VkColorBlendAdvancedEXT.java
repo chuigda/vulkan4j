@@ -87,7 +87,7 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkColorBlendAdvancedEXT.BYTES, VkColorBlendAdvancedEXT.BYTES));
         }
@@ -142,43 +142,43 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @enumtype(VkBlendOp.class) int advancedBlendOp() {
+    public @EnumType(VkBlendOp.class) int advancedBlendOp() {
         return segment.get(LAYOUT$advancedBlendOp, OFFSET$advancedBlendOp);
     }
 
-    public void advancedBlendOp(@enumtype(VkBlendOp.class) int value) {
+    public void advancedBlendOp(@EnumType(VkBlendOp.class) int value) {
         segment.set(LAYOUT$advancedBlendOp, OFFSET$advancedBlendOp, value);
     }
 
-    public @unsigned int srcPremultiplied() {
+    public @NativeType("VkBool32") @Unsigned int srcPremultiplied() {
         return segment.get(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied);
     }
 
-    public void srcPremultiplied(@unsigned int value) {
+    public void srcPremultiplied(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied, value);
     }
 
-    public @unsigned int dstPremultiplied() {
+    public @NativeType("VkBool32") @Unsigned int dstPremultiplied() {
         return segment.get(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied);
     }
 
-    public void dstPremultiplied(@unsigned int value) {
+    public void dstPremultiplied(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied, value);
     }
 
-    public @enumtype(VkBlendOverlapEXT.class) int blendOverlap() {
+    public @EnumType(VkBlendOverlapEXT.class) int blendOverlap() {
         return segment.get(LAYOUT$blendOverlap, OFFSET$blendOverlap);
     }
 
-    public void blendOverlap(@enumtype(VkBlendOverlapEXT.class) int value) {
+    public void blendOverlap(@EnumType(VkBlendOverlapEXT.class) int value) {
         segment.set(LAYOUT$blendOverlap, OFFSET$blendOverlap, value);
     }
 
-    public @unsigned int clampResults() {
+    public @NativeType("VkBool32") @Unsigned int clampResults() {
         return segment.get(LAYOUT$clampResults, OFFSET$clampResults);
     }
 
-    public void clampResults(@unsigned int value) {
+    public void clampResults(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clampResults, OFFSET$clampResults, value);
     }
 

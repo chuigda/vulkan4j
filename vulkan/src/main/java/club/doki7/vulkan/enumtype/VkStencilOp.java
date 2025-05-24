@@ -13,7 +13,7 @@ public final class VkStencilOp {
     public static final int INCREMENT_AND_WRAP = 0x6;
     public static final int DECREMENT_AND_WRAP = 0x7;
 
-    public static String explain(@enumtype(VkStencilOp.class) int value) {
+    public static String explain(@EnumType(VkStencilOp.class) int value) {
         return switch (value) {
             case VkStencilOp.DECREMENT_AND_CLAMP -> "VK_STENCIL_OP_DECREMENT_AND_CLAMP";
             case VkStencilOp.DECREMENT_AND_WRAP -> "VK_STENCIL_OP_DECREMENT_AND_WRAP";

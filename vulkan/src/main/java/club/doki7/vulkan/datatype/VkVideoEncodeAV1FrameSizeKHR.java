@@ -85,7 +85,7 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeAV1FrameSizeKHR.BYTES, VkVideoEncodeAV1FrameSizeKHR.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public @unsigned int intraFrameSize() {
+    public @Unsigned int intraFrameSize() {
         return segment.get(LAYOUT$intraFrameSize, OFFSET$intraFrameSize);
     }
 
-    public void intraFrameSize(@unsigned int value) {
+    public void intraFrameSize(@Unsigned int value) {
         segment.set(LAYOUT$intraFrameSize, OFFSET$intraFrameSize, value);
     }
 
-    public @unsigned int predictiveFrameSize() {
+    public @Unsigned int predictiveFrameSize() {
         return segment.get(LAYOUT$predictiveFrameSize, OFFSET$predictiveFrameSize);
     }
 
-    public void predictiveFrameSize(@unsigned int value) {
+    public void predictiveFrameSize(@Unsigned int value) {
         segment.set(LAYOUT$predictiveFrameSize, OFFSET$predictiveFrameSize, value);
     }
 
-    public @unsigned int bipredictiveFrameSize() {
+    public @Unsigned int bipredictiveFrameSize() {
         return segment.get(LAYOUT$bipredictiveFrameSize, OFFSET$bipredictiveFrameSize);
     }
 
-    public void bipredictiveFrameSize(@unsigned int value) {
+    public void bipredictiveFrameSize(@Unsigned int value) {
         segment.set(LAYOUT$bipredictiveFrameSize, OFFSET$bipredictiveFrameSize, value);
     }
 

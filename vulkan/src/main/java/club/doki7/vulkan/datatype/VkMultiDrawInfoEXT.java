@@ -84,7 +84,7 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkMultiDrawInfoEXT.BYTES, VkMultiDrawInfoEXT.BYTES));
         }
@@ -139,19 +139,19 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
         return ret;
     }
 
-    public @unsigned int firstVertex() {
+    public @Unsigned int firstVertex() {
         return segment.get(LAYOUT$firstVertex, OFFSET$firstVertex);
     }
 
-    public void firstVertex(@unsigned int value) {
+    public void firstVertex(@Unsigned int value) {
         segment.set(LAYOUT$firstVertex, OFFSET$firstVertex, value);
     }
 
-    public @unsigned int vertexCount() {
+    public @Unsigned int vertexCount() {
         return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
     }
 
-    public void vertexCount(@unsigned int value) {
+    public void vertexCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
     }
 

@@ -107,7 +107,7 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -115,7 +115,7 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceVulkan13Features.BYTES, VkPhysicalDeviceVulkan13Features.BYTES));
         }
@@ -172,19 +172,19 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_3_FEATURES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -192,123 +192,123 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int robustImageAccess() {
+    public @NativeType("VkBool32") @Unsigned int robustImageAccess() {
         return segment.get(LAYOUT$robustImageAccess, OFFSET$robustImageAccess);
     }
 
-    public void robustImageAccess(@unsigned int value) {
+    public void robustImageAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$robustImageAccess, OFFSET$robustImageAccess, value);
     }
 
-    public @unsigned int inlineUniformBlock() {
+    public @NativeType("VkBool32") @Unsigned int inlineUniformBlock() {
         return segment.get(LAYOUT$inlineUniformBlock, OFFSET$inlineUniformBlock);
     }
 
-    public void inlineUniformBlock(@unsigned int value) {
+    public void inlineUniformBlock(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$inlineUniformBlock, OFFSET$inlineUniformBlock, value);
     }
 
-    public @unsigned int descriptorBindingInlineUniformBlockUpdateAfterBind() {
+    public @NativeType("VkBool32") @Unsigned int descriptorBindingInlineUniformBlockUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind, OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind);
     }
 
-    public void descriptorBindingInlineUniformBlockUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingInlineUniformBlockUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind, OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind, value);
     }
 
-    public @unsigned int pipelineCreationCacheControl() {
+    public @NativeType("VkBool32") @Unsigned int pipelineCreationCacheControl() {
         return segment.get(LAYOUT$pipelineCreationCacheControl, OFFSET$pipelineCreationCacheControl);
     }
 
-    public void pipelineCreationCacheControl(@unsigned int value) {
+    public void pipelineCreationCacheControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineCreationCacheControl, OFFSET$pipelineCreationCacheControl, value);
     }
 
-    public @unsigned int privateData() {
+    public @NativeType("VkBool32") @Unsigned int privateData() {
         return segment.get(LAYOUT$privateData, OFFSET$privateData);
     }
 
-    public void privateData(@unsigned int value) {
+    public void privateData(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$privateData, OFFSET$privateData, value);
     }
 
-    public @unsigned int shaderDemoteToHelperInvocation() {
+    public @NativeType("VkBool32") @Unsigned int shaderDemoteToHelperInvocation() {
         return segment.get(LAYOUT$shaderDemoteToHelperInvocation, OFFSET$shaderDemoteToHelperInvocation);
     }
 
-    public void shaderDemoteToHelperInvocation(@unsigned int value) {
+    public void shaderDemoteToHelperInvocation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDemoteToHelperInvocation, OFFSET$shaderDemoteToHelperInvocation, value);
     }
 
-    public @unsigned int shaderTerminateInvocation() {
+    public @NativeType("VkBool32") @Unsigned int shaderTerminateInvocation() {
         return segment.get(LAYOUT$shaderTerminateInvocation, OFFSET$shaderTerminateInvocation);
     }
 
-    public void shaderTerminateInvocation(@unsigned int value) {
+    public void shaderTerminateInvocation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderTerminateInvocation, OFFSET$shaderTerminateInvocation, value);
     }
 
-    public @unsigned int subgroupSizeControl() {
+    public @NativeType("VkBool32") @Unsigned int subgroupSizeControl() {
         return segment.get(LAYOUT$subgroupSizeControl, OFFSET$subgroupSizeControl);
     }
 
-    public void subgroupSizeControl(@unsigned int value) {
+    public void subgroupSizeControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subgroupSizeControl, OFFSET$subgroupSizeControl, value);
     }
 
-    public @unsigned int computeFullSubgroups() {
+    public @NativeType("VkBool32") @Unsigned int computeFullSubgroups() {
         return segment.get(LAYOUT$computeFullSubgroups, OFFSET$computeFullSubgroups);
     }
 
-    public void computeFullSubgroups(@unsigned int value) {
+    public void computeFullSubgroups(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$computeFullSubgroups, OFFSET$computeFullSubgroups, value);
     }
 
-    public @unsigned int synchronization2() {
+    public @NativeType("VkBool32") @Unsigned int synchronization2() {
         return segment.get(LAYOUT$synchronization2, OFFSET$synchronization2);
     }
 
-    public void synchronization2(@unsigned int value) {
+    public void synchronization2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$synchronization2, OFFSET$synchronization2, value);
     }
 
-    public @unsigned int textureCompressionASTC_HDR() {
+    public @NativeType("VkBool32") @Unsigned int textureCompressionASTC_HDR() {
         return segment.get(LAYOUT$textureCompressionASTC_HDR, OFFSET$textureCompressionASTC_HDR);
     }
 
-    public void textureCompressionASTC_HDR(@unsigned int value) {
+    public void textureCompressionASTC_HDR(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$textureCompressionASTC_HDR, OFFSET$textureCompressionASTC_HDR, value);
     }
 
-    public @unsigned int shaderZeroInitializeWorkgroupMemory() {
+    public @NativeType("VkBool32") @Unsigned int shaderZeroInitializeWorkgroupMemory() {
         return segment.get(LAYOUT$shaderZeroInitializeWorkgroupMemory, OFFSET$shaderZeroInitializeWorkgroupMemory);
     }
 
-    public void shaderZeroInitializeWorkgroupMemory(@unsigned int value) {
+    public void shaderZeroInitializeWorkgroupMemory(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderZeroInitializeWorkgroupMemory, OFFSET$shaderZeroInitializeWorkgroupMemory, value);
     }
 
-    public @unsigned int dynamicRendering() {
+    public @NativeType("VkBool32") @Unsigned int dynamicRendering() {
         return segment.get(LAYOUT$dynamicRendering, OFFSET$dynamicRendering);
     }
 
-    public void dynamicRendering(@unsigned int value) {
+    public void dynamicRendering(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicRendering, OFFSET$dynamicRendering, value);
     }
 
-    public @unsigned int shaderIntegerDotProduct() {
+    public @NativeType("VkBool32") @Unsigned int shaderIntegerDotProduct() {
         return segment.get(LAYOUT$shaderIntegerDotProduct, OFFSET$shaderIntegerDotProduct);
     }
 
-    public void shaderIntegerDotProduct(@unsigned int value) {
+    public void shaderIntegerDotProduct(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderIntegerDotProduct, OFFSET$shaderIntegerDotProduct, value);
     }
 
-    public @unsigned int maintenance4() {
+    public @NativeType("VkBool32") @Unsigned int maintenance4() {
         return segment.get(LAYOUT$maintenance4, OFFSET$maintenance4);
     }
 
-    public void maintenance4(@unsigned int value) {
+    public void maintenance4(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$maintenance4, OFFSET$maintenance4, value);
     }
 

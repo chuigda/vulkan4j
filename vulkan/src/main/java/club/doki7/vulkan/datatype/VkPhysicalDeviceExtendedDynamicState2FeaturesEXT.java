@@ -95,7 +95,7 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceExtendedDynamicState2FeaturesEXT.BYTES, VkPhysicalDeviceExtendedDynamicState2FeaturesEXT.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
         sType(VkStructureType.PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int extendedDynamicState2() {
+    public @NativeType("VkBool32") @Unsigned int extendedDynamicState2() {
         return segment.get(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2);
     }
 
-    public void extendedDynamicState2(@unsigned int value) {
+    public void extendedDynamicState2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2, value);
     }
 
-    public @unsigned int extendedDynamicState2LogicOp() {
+    public @NativeType("VkBool32") @Unsigned int extendedDynamicState2LogicOp() {
         return segment.get(LAYOUT$extendedDynamicState2LogicOp, OFFSET$extendedDynamicState2LogicOp);
     }
 
-    public void extendedDynamicState2LogicOp(@unsigned int value) {
+    public void extendedDynamicState2LogicOp(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2LogicOp, OFFSET$extendedDynamicState2LogicOp, value);
     }
 
-    public @unsigned int extendedDynamicState2PatchControlPoints() {
+    public @NativeType("VkBool32") @Unsigned int extendedDynamicState2PatchControlPoints() {
         return segment.get(LAYOUT$extendedDynamicState2PatchControlPoints, OFFSET$extendedDynamicState2PatchControlPoints);
     }
 
-    public void extendedDynamicState2PatchControlPoints(@unsigned int value) {
+    public void extendedDynamicState2PatchControlPoints(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2PatchControlPoints, OFFSET$extendedDynamicState2PatchControlPoints, value);
     }
 
