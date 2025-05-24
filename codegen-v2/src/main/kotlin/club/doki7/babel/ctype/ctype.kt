@@ -254,7 +254,7 @@ private val cSizeType = CPlatformDependentIntType(
     "PointerPtr"
 )
 
-private val pvoidType = CPointerType(voidType, const = false, pointerToOne = false, comment = null)
+private fun pvoidType(comment: String) = CPointerType(voidType, const = false, pointerToOne = false, comment = comment)
 
 private val knownTypes = mapOf(
     // Fundamental types
@@ -307,56 +307,56 @@ private val knownTypes = mapOf(
     "VkFlags64" to uint64Type,
     "VkDeviceSize" to uint64Type,
     "VkDeviceAddress" to uint64Type,
-    "VkRemoteAddressNV" to pvoidType,
+    "VkRemoteAddressNV" to pvoidType("VkRemoteAddressNV"),
 
     // Android
-    "ANativeWindow" to pvoidType,
-    "AHardwareBuffer" to pvoidType,
+    "ANativeWindow" to pvoidType("ANativeWindow"),
+    "AHardwareBuffer" to pvoidType("AHardwareBuffer"),
 
     // DirectFB
-    "IDirectFB" to pvoidType,
-    "IDirectFBSurface" to pvoidType,
+    "IDirectFB" to pvoidType("IDirectFB"),
+    "IDirectFBSurface" to pvoidType("IDirectFBSurface"),
 
     // iOS or macOS
-    "id" to pvoidType,
-    "CAMetalLayer" to pvoidType,
+    "id" to pvoidType("id"),
+    "CAMetalLayer" to pvoidType("CAMetalLayer"),
     "GgpFrameToken" to uint32Type,
     "GgpStreamDescriptor" to uint32Type,
-    "IOSurfaceRef" to pvoidType,
-    "MTLBuffer_id" to pvoidType,
-    "MTLCommandQueue_id" to pvoidType,
-    "MTLDevice_id" to pvoidType,
-    "MTLSharedEvent_id" to pvoidType,
-    "MTLTexture_id" to pvoidType,
+    "IOSurfaceRef" to pvoidType("IOSurfaceRef"),
+    "MTLBuffer_id" to pvoidType("MTLBuffer_id"),
+    "MTLCommandQueue_id" to pvoidType("MTLCommandQueue_id"),
+    "MTLDevice_id" to pvoidType("MTLDevice_id"),
+    "MTLSharedEvent_id" to pvoidType("MTLSharedEvent_id"),
+    "MTLTexture_id" to pvoidType("MTLTexture_id"),
     "CGDirectDisplayID" to uint32Type,
 
     // QNX
-    "_screen_buffer" to pvoidType,
-    "_screen_context" to pvoidType,
-    "_screen_window" to pvoidType,
+    "_screen_buffer" to pvoidType("_screen_buffer"),
+    "_screen_context" to pvoidType("_screen_context"),
+    "_screen_window" to pvoidType("_screen_window"),
 
     // Wayland
-    "wl_display" to pvoidType,
-    "wl_surface" to pvoidType,
+    "wl_display" to pvoidType("wl_display"),
+    "wl_surface" to pvoidType("wl_surface"),
     "wl_output" to voidType,
 
     // Windows
     "DWORD" to uint32Type,
-    "HANDLE" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HANDLE"),
-    "HINSTANCE" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HINSTANCE"),
-    "HMONITOR" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HMONITOR"),
-    "HWND" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HWND"),
+    "HANDLE" to pvoidType("HANDLE"),
+    "HINSTANCE" to pvoidType("HINSTANCE"),
+    "HMONITOR" to pvoidType("HMONITOR"),
+    "HWND" to pvoidType("HWND"),
     "LPCWSTR" to CPointerType(uint16Type, const = true, pointerToOne = false, comment = "LPCWSTR"),
-    "HGLRC" to CPointerType(voidType, const = false, pointerToOne = true, comment = "HGLRC"),
+    "HGLRC" to pvoidType("HGLRC"),
     "SECURITY_ATTRIBUTES" to voidType,
 
     // X11
-    "Display" to pvoidType,
+    "Display" to pvoidType("Display"),
     "RROutput" to cLongType,
     "RRCrtc" to cLongType,
     "VisualID" to cLongType,
     "Window" to cLongType,
-    "GLXContext" to pvoidType,
+    "GLXContext" to pvoidType("GLXContext"),
     "GLXWindow" to cLongType,
     "xcb_connection_t" to voidType,
     "xcb_visualid_t" to uint32Type,
@@ -364,18 +364,18 @@ private val knownTypes = mapOf(
     "xcb_handle_t" to uint32Type,
 
     // EGL
-    "EGLDisplay" to pvoidType,
-    "EGLContext" to pvoidType,
-    "EGLSurface" to pvoidType,
+    "EGLDisplay" to pvoidType("EGLDisplay"),
+    "EGLContext" to pvoidType("EGLContext"),
+    "EGLSurface" to pvoidType("EGLSurface"),
 
     // MESA
-    "OSMesaContext" to pvoidType,
+    "OSMesaContext" to pvoidType("OSMesaContext"),
 
     // NvSciBuf / NvSciSync
-    "NvSciBufAttrList" to pvoidType,
-    "NvSciBufObj" to pvoidType,
-    "NvSciSyncAttrList" to pvoidType,
-    "NvSciSyncObj" to pvoidType,
+    "NvSciBufAttrList" to pvoidType("NvSciBufAttrList"),
+    "NvSciBufObj" to pvoidType("NvSciBufObj"),
+    "NvSciSyncAttrList" to pvoidType("NvSciSyncAttrList"),
+    "NvSciSyncObj" to pvoidType("NvSciSyncObj"),
     "NvSciSyncFence" to CArrayType(uint64Type, "6"),
 
     // FUCHSIA
