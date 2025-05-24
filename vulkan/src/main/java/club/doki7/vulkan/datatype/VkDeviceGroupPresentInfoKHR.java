@@ -205,11 +205,11 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         pDeviceMasksRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pDeviceMasksRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pDeviceMasksRaw() {
         return segment.get(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks);
     }
 
-    public void pDeviceMasksRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pDeviceMasksRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks, value);
     }
 

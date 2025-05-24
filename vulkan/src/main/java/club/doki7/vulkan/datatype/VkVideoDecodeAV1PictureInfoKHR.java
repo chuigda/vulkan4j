@@ -255,11 +255,11 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         pTileOffsetsRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pTileOffsetsRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pTileOffsetsRaw() {
         return segment.get(LAYOUT$pTileOffsets, OFFSET$pTileOffsets);
     }
 
-    public void pTileOffsetsRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pTileOffsetsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pTileOffsets, OFFSET$pTileOffsets, value);
     }
 
@@ -280,11 +280,11 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         pTileSizesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pTileSizesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pTileSizesRaw() {
         return segment.get(LAYOUT$pTileSizes, OFFSET$pTileSizes);
     }
 
-    public void pTileSizesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pTileSizesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pTileSizes, OFFSET$pTileSizes, value);
     }
 

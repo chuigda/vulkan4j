@@ -204,11 +204,11 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         pDescriptorCountsRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pDescriptorCountsRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pDescriptorCountsRaw() {
         return segment.get(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts);
     }
 
-    public void pDescriptorCountsRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pDescriptorCountsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDescriptorCounts, OFFSET$pDescriptorCounts, value);
     }
 

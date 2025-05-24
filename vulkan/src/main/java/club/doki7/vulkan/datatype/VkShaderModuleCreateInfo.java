@@ -213,11 +213,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         pCodeRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pCodeRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pCodeRaw() {
         return segment.get(LAYOUT$pCode, OFFSET$pCode);
     }
 
-    public void pCodeRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pCodeRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 

@@ -196,11 +196,11 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         pLabelNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pLabelNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pLabelNameRaw() {
         return segment.get(LAYOUT$pLabelName, OFFSET$pLabelName);
     }
 
-    public void pLabelNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pLabelNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pLabelName, OFFSET$pLabelName, value);
     }
 

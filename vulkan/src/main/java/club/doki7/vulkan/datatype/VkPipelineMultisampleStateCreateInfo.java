@@ -233,11 +233,11 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         pSampleMaskRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pSampleMaskRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pSampleMaskRaw() {
         return segment.get(LAYOUT$pSampleMask, OFFSET$pSampleMask);
     }
 
-    public void pSampleMaskRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pSampleMaskRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
     }
 

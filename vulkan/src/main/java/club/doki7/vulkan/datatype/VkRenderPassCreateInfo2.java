@@ -336,11 +336,11 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         pCorrelatedViewMasksRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pCorrelatedViewMasksRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pCorrelatedViewMasksRaw() {
         return segment.get(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks);
     }
 
-    public void pCorrelatedViewMasksRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pCorrelatedViewMasksRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCorrelatedViewMasks, OFFSET$pCorrelatedViewMasks, value);
     }
 

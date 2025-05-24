@@ -204,11 +204,11 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         pIdentifierRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pIdentifierRaw() {
+    public @Pointer(comment="uint8_t*") MemorySegment pIdentifierRaw() {
         return segment.get(LAYOUT$pIdentifier, OFFSET$pIdentifier);
     }
 
-    public void pIdentifierRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pIdentifierRaw(@Pointer(comment="uint8_t*") MemorySegment value) {
         segment.set(LAYOUT$pIdentifier, OFFSET$pIdentifier, value);
     }
 

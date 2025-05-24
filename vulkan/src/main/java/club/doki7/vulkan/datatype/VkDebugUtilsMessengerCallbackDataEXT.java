@@ -212,11 +212,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pMessageIdNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pMessageIdNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pMessageIdNameRaw() {
         return segment.get(LAYOUT$pMessageIdName, OFFSET$pMessageIdName);
     }
 
-    public void pMessageIdNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pMessageIdNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
     }
 
@@ -245,11 +245,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pMessageRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pMessageRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pMessageRaw() {
         return segment.get(LAYOUT$pMessage, OFFSET$pMessage);
     }
 
-    public void pMessageRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pMessageRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
     }
 

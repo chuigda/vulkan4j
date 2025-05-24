@@ -266,11 +266,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         pImageIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pImageIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pImageIndicesRaw() {
         return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
     }
 
-    public void pImageIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pImageIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
 

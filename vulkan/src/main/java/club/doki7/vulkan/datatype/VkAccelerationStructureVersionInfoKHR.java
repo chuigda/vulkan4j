@@ -195,11 +195,11 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
         pVersionDataRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pVersionDataRaw() {
+    public @Pointer(comment="uint8_t*") MemorySegment pVersionDataRaw() {
         return segment.get(LAYOUT$pVersionData, OFFSET$pVersionData);
     }
 
-    public void pVersionDataRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pVersionDataRaw(@Pointer(comment="uint8_t*") MemorySegment value) {
         segment.set(LAYOUT$pVersionData, OFFSET$pVersionData, value);
     }
 

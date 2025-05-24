@@ -204,11 +204,11 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         pPresentIdsRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pPresentIdsRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pPresentIdsRaw() {
         return segment.get(LAYOUT$pPresentIds, OFFSET$pPresentIds);
     }
 
-    public void pPresentIdsRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pPresentIdsRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pPresentIds, OFFSET$pPresentIds, value);
     }
 

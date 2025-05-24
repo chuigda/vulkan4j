@@ -263,11 +263,11 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         pStreamStridesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pStreamStridesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pStreamStridesRaw() {
         return segment.get(LAYOUT$pStreamStrides, OFFSET$pStreamStrides);
     }
 
-    public void pStreamStridesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pStreamStridesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pStreamStrides, OFFSET$pStreamStrides, value);
     }
 

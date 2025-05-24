@@ -206,11 +206,11 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         pDeviceIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {
         return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
     }
 
-    public void pDeviceIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
 

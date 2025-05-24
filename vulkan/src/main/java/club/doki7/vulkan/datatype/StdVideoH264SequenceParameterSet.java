@@ -339,11 +339,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pOffsetForRefFrameRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pOffsetForRefFrameRaw() {
+    public @Pointer(comment="int32_t*") MemorySegment pOffsetForRefFrameRaw() {
         return segment.get(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame);
     }
 
-    public void pOffsetForRefFrameRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pOffsetForRefFrameRaw(@Pointer(comment="int32_t*") MemorySegment value) {
         segment.set(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame, value);
     }
 

@@ -204,11 +204,11 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         pColorWriteEnablesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pColorWriteEnablesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pColorWriteEnablesRaw() {
         return segment.get(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables);
     }
 
-    public void pColorWriteEnablesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pColorWriteEnablesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pColorWriteEnables, OFFSET$pColorWriteEnables, value);
     }
 

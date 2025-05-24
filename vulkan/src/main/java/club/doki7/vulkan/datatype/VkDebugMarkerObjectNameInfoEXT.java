@@ -213,11 +213,11 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         pObjectNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pObjectNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pObjectNameRaw() {
         return segment.get(LAYOUT$pObjectName, OFFSET$pObjectName);
     }
 
-    public void pObjectNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pObjectNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pObjectName, OFFSET$pObjectName, value);
     }
 

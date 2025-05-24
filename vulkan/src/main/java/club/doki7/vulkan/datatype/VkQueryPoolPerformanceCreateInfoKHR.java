@@ -213,11 +213,11 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         pCounterIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pCounterIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pCounterIndicesRaw() {
         return segment.get(LAYOUT$pCounterIndices, OFFSET$pCounterIndices);
     }
 
-    public void pCounterIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pCounterIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCounterIndices, OFFSET$pCounterIndices, value);
     }
 

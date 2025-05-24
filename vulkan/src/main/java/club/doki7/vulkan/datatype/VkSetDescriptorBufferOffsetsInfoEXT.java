@@ -236,11 +236,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         pBufferIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pBufferIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pBufferIndicesRaw() {
         return segment.get(LAYOUT$pBufferIndices, OFFSET$pBufferIndices);
     }
 
-    public void pBufferIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pBufferIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
     }
 
@@ -261,11 +261,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         pOffsetsRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pOffsetsRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pOffsetsRaw() {
         return segment.get(LAYOUT$pOffsets, OFFSET$pOffsets);
     }
 
-    public void pOffsetsRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pOffsetsRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
     }
 

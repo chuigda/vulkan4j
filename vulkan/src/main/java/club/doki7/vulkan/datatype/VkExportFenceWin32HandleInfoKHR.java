@@ -217,11 +217,11 @@ public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         nameRaw(s);
     }
 
-    public @Pointer(comment="short*") MemorySegment nameRaw() {
+    public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {
         return segment.get(LAYOUT$name, OFFSET$name);
     }
 
-    public void nameRaw(@Pointer(comment="short*") MemorySegment value) {
+    public void nameRaw(@Pointer(comment="uint16_t*") MemorySegment value) {
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
 

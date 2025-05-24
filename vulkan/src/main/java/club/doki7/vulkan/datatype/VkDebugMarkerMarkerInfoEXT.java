@@ -196,11 +196,11 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         pMarkerNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pMarkerNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pMarkerNameRaw() {
         return segment.get(LAYOUT$pMarkerName, OFFSET$pMarkerName);
     }
 
-    public void pMarkerNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pMarkerNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pMarkerName, OFFSET$pMarkerName, value);
     }
 

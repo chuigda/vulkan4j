@@ -80,6 +80,7 @@ sealed interface CNonRefType : CType {
     val jTypeNoSign: String
     val jPtrType: String
     val jPtrTypeNoAnnotation: String
+    val comment: String?
 }
 
 sealed interface CFixedSizeType : CNonRefType {
@@ -87,9 +88,10 @@ sealed interface CFixedSizeType : CNonRefType {
 }
 
 data class CFixedIntType(
-    val cName: String,
+    override val cType: String,
     override val byteSize: Int,
-    val unsigned: Boolean
+    val unsigned: Boolean,
+    override val comment: String? = null
 ) : CFixedSizeType {
     override val jType: String get() = """${if (unsigned) "@Unsigned " else ""}$jTypeNoSign"""
     override val jLayout: String get() = when (byteSize) {
@@ -106,7 +108,6 @@ data class CFixedIntType(
         8 -> "OfLong"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val cType: String = cName
     override val jTypeNoSign: String get() = when (byteSize) {
         1 -> "byte"
         2 -> "short"
@@ -130,12 +131,16 @@ data class CPlatformDependentIntType(
     override val jLayout: String,
     override val jTypeNoSign: String,
     override val jPtrType: String,
-    override val jPtrTypeNoAnnotation: String
+    override val jPtrTypeNoAnnotation: String,
+    override val comment: String? = null
 ) : CNonRefType {
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `CPlatformDependentIntType`")
 }
 
-data class CFloatType(override val byteSize: Int) : CFixedSizeType {
+data class CFloatType(
+    override val byteSize: Int,
+    override val comment: String? = null
+) : CFixedSizeType {
     override val jType: String get() = when (byteSize) {
         4 -> "float"
         8 -> "double"
@@ -172,7 +177,11 @@ data class CStructType(val name: String): CType {
     override val cType: String = name
 }
 
-data class CEnumType(val name: String, val bitwidth: Int? = null): CFixedSizeType {
+data class CEnumType(
+    val name: String,
+    val bitwidth: Int? = null,
+    override val comment: String? = null
+): CFixedSizeType {
     override val jType: String get() = when (bitwidth) {
         null, 32 -> {
             "@EnumType($name.class) int"
@@ -224,14 +233,14 @@ data class CEnumType(val name: String, val bitwidth: Int? = null): CFixedSizeTyp
     }
 }
 
-private val int8Type = CFixedIntType("byte", 1, false)
-private val uint8Type = CFixedIntType("byte", 1, true)
-private val int16Type = CFixedIntType("short", 2, false)
-private val uint16Type = CFixedIntType("short", 2, true)
-private val int32Type = CFixedIntType("int", 4, false)
-private val uint32Type = CFixedIntType("int", 4, true)
-private val int64Type = CFixedIntType("long", 8, false)
-private val uint64Type = CFixedIntType("long", 8, true)
+private val int8Type = CFixedIntType("int8_t", 1, false)
+private val uint8Type = CFixedIntType("uint8_t", 1, true)
+private val int16Type = CFixedIntType("int16_t", 2, false)
+private val uint16Type = CFixedIntType("uint16_t", 2, true)
+private val int32Type = CFixedIntType("int32_t", 4, false)
+private val uint32Type = CFixedIntType("uint32_t", 4, true)
+private val int64Type = CFixedIntType("int64_t", 8, false)
+private val uint64Type = CFixedIntType("uint64_t", 8, true)
 private val floatType = CFloatType(4)
 private val doubleType = CFloatType(8)
 

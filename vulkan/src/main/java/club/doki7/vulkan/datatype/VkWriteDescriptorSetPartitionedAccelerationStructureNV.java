@@ -204,11 +204,11 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         pAccelerationStructuresRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pAccelerationStructuresRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pAccelerationStructuresRaw() {
         return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
     }
 
-    public void pAccelerationStructuresRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pAccelerationStructuresRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 

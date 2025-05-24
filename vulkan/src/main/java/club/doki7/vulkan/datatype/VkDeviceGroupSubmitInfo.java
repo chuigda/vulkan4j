@@ -208,11 +208,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         pWaitSemaphoreDeviceIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
         return segment.get(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices);
     }
 
-    public void pWaitSemaphoreDeviceIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pWaitSemaphoreDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices, value);
     }
 
@@ -241,11 +241,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         pCommandBufferDeviceMasksRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pCommandBufferDeviceMasksRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pCommandBufferDeviceMasksRaw() {
         return segment.get(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks);
     }
 
-    public void pCommandBufferDeviceMasksRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pCommandBufferDeviceMasksRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks, value);
     }
 
@@ -274,11 +274,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         pSignalSemaphoreDeviceIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pSignalSemaphoreDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pSignalSemaphoreDeviceIndicesRaw() {
         return segment.get(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices);
     }
 
-    public void pSignalSemaphoreDeviceIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pSignalSemaphoreDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices, value);
     }
 

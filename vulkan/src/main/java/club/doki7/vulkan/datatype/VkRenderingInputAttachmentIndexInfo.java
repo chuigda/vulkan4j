@@ -206,11 +206,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pColorAttachmentInputIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pColorAttachmentInputIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pColorAttachmentInputIndicesRaw() {
         return segment.get(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices);
     }
 
-    public void pColorAttachmentInputIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pColorAttachmentInputIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices, value);
     }
 
@@ -231,11 +231,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pDepthInputAttachmentIndexRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pDepthInputAttachmentIndexRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pDepthInputAttachmentIndexRaw() {
         return segment.get(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex);
     }
 
-    public void pDepthInputAttachmentIndexRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pDepthInputAttachmentIndexRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex, value);
     }
 
@@ -256,11 +256,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pStencilInputAttachmentIndexRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pStencilInputAttachmentIndexRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pStencilInputAttachmentIndexRaw() {
         return segment.get(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex);
     }
 
-    public void pStencilInputAttachmentIndexRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pStencilInputAttachmentIndexRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex, value);
     }
 
