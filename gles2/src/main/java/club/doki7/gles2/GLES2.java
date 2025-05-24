@@ -501,7 +501,7 @@ public final class GLES2 {
     public void bufferData(
         int target,
         long size,
-        @pointer(comment="void*") MemorySegment data,
+        @Pointer(comment="void*") MemorySegment data,
         int usage
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferData);
@@ -522,7 +522,7 @@ public final class GLES2 {
         int target,
         long offset,
         long size,
-        @pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBufferSubData);
         try {
@@ -656,7 +656,7 @@ public final class GLES2 {
         int height,
         int border,
         int imageSize,
-        @pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexImage2D);
         try {
@@ -685,7 +685,7 @@ public final class GLES2 {
         int height,
         int format,
         int imageSize,
-        @pointer(comment="void*") MemorySegment data
+        @Pointer(comment="void*") MemorySegment data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompressedTexSubImage2D);
         try {
@@ -1003,7 +1003,7 @@ public final class GLES2 {
         int mode,
         int count,
         int type,
-        @pointer(comment="void*") MemorySegment indices
+        @Pointer(comment="void*") MemorySegment indices
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDrawElements);
         try {
@@ -1860,7 +1860,7 @@ public final class GLES2 {
         int height,
         int format,
         int type,
-        @pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glReadPixels);
         try {
@@ -1950,7 +1950,7 @@ public final class GLES2 {
         int count,
         @Nullable @unsigned IntPtr shaders,
         int binaryFormat,
-        @pointer(comment="void*") MemorySegment binary,
+        @Pointer(comment="void*") MemorySegment binary,
         int length
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glShaderBinary);
@@ -2103,7 +2103,7 @@ public final class GLES2 {
         int border,
         int format,
         int type,
-        @pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexImage2D);
         try {
@@ -2205,7 +2205,7 @@ public final class GLES2 {
         int height,
         int format,
         int type,
-        @pointer(comment="void*") MemorySegment pixels
+        @Pointer(comment="void*") MemorySegment pixels
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexSubImage2D);
         try {
@@ -2756,7 +2756,7 @@ public final class GLES2 {
         int type,
         @unsigned byte normalized,
         int stride,
-        @pointer(comment="void*") MemorySegment pointer
+        @Pointer(comment="void*") MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttribPointer);
         try {

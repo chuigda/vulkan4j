@@ -103,7 +103,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH265HrdParameters.BYTES, StdVideoH265HrdParameters.BYTES));
         }
@@ -252,7 +252,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         pSubLayerHrdParametersNalRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265SubLayerHrdParameters.Ptr pSubLayerHrdParametersNal(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH265SubLayerHrdParameters.Ptr pSubLayerHrdParametersNal(int assumedCount) {
         MemorySegment s = pSubLayerHrdParametersNalRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -270,11 +270,11 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return new StdVideoH265SubLayerHrdParameters(s);
     }
 
-    public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersNalRaw() {
+    public @Pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersNalRaw() {
         return segment.get(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal);
     }
 
-    public void pSubLayerHrdParametersNalRaw(@pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
+    public void pSubLayerHrdParametersNalRaw(@Pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
         segment.set(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal, value);
     }
 
@@ -283,7 +283,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         pSubLayerHrdParametersVclRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265SubLayerHrdParameters.Ptr pSubLayerHrdParametersVcl(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH265SubLayerHrdParameters.Ptr pSubLayerHrdParametersVcl(int assumedCount) {
         MemorySegment s = pSubLayerHrdParametersVclRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -301,11 +301,11 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return new StdVideoH265SubLayerHrdParameters(s);
     }
 
-    public @pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersVclRaw() {
+    public @Pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment pSubLayerHrdParametersVclRaw() {
         return segment.get(LAYOUT$pSubLayerHrdParametersVcl, OFFSET$pSubLayerHrdParametersVcl);
     }
 
-    public void pSubLayerHrdParametersVclRaw(@pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
+    public void pSubLayerHrdParametersVclRaw(@Pointer(target=StdVideoH265SubLayerHrdParameters.class) MemorySegment value) {
         segment.set(LAYOUT$pSubLayerHrdParametersVcl, OFFSET$pSubLayerHrdParametersVcl, value);
     }
 

@@ -102,7 +102,7 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBindBufferMemoryDeviceGroupInfo.BYTES, VkBindBufferMemoryDeviceGroupInfo.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         sType(VkStructureType.BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -204,11 +204,11 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         pDeviceIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pDeviceIndicesRaw() {
+    public @Pointer(comment="int*") MemorySegment pDeviceIndicesRaw() {
         return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
     }
 
-    public void pDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pDeviceIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
 

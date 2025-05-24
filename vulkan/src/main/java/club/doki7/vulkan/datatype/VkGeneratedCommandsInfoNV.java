@@ -113,7 +113,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkGeneratedCommandsInfoNV.BYTES, VkGeneratedCommandsInfoNV.BYTES));
         }
@@ -170,19 +170,19 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.GENERATED_COMMANDS_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -190,11 +190,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
+    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
@@ -235,7 +235,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         pStreamsRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsStreamNV.Ptr pStreams(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectCommandsStreamNV.Ptr pStreams(int assumedCount) {
         MemorySegment s = pStreamsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -253,11 +253,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkIndirectCommandsStreamNV(s);
     }
 
-    public @pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment pStreamsRaw() {
+    public @Pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment pStreamsRaw() {
         return segment.get(LAYOUT$pStreams, OFFSET$pStreams);
     }
 
-    public void pStreamsRaw(@pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment value) {
+    public void pStreamsRaw(@Pointer(target=VkIndirectCommandsStreamNV.class) MemorySegment value) {
         segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
 

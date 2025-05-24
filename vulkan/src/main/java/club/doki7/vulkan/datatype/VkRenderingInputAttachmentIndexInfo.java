@@ -104,7 +104,7 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRenderingInputAttachmentIndexInfo.BYTES, VkRenderingInputAttachmentIndexInfo.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         sType(VkStructureType.RENDERING_INPUT_ATTACHMENT_INDEX_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -206,11 +206,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pColorAttachmentInputIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pColorAttachmentInputIndicesRaw() {
+    public @Pointer(comment="int*") MemorySegment pColorAttachmentInputIndicesRaw() {
         return segment.get(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices);
     }
 
-    public void pColorAttachmentInputIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pColorAttachmentInputIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentInputIndices, OFFSET$pColorAttachmentInputIndices, value);
     }
 
@@ -231,11 +231,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pDepthInputAttachmentIndexRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pDepthInputAttachmentIndexRaw() {
+    public @Pointer(comment="int*") MemorySegment pDepthInputAttachmentIndexRaw() {
         return segment.get(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex);
     }
 
-    public void pDepthInputAttachmentIndexRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pDepthInputAttachmentIndexRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pDepthInputAttachmentIndex, OFFSET$pDepthInputAttachmentIndex, value);
     }
 
@@ -256,11 +256,11 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         pStencilInputAttachmentIndexRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pStencilInputAttachmentIndexRaw() {
+    public @Pointer(comment="int*") MemorySegment pStencilInputAttachmentIndexRaw() {
         return segment.get(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex);
     }
 
-    public void pStencilInputAttachmentIndexRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pStencilInputAttachmentIndexRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pStencilInputAttachmentIndex, OFFSET$pStencilInputAttachmentIndex, value);
     }
 

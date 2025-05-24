@@ -99,7 +99,7 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAttachmentDescription.BYTES, VkAttachmentDescription.BYTES));
         }
@@ -146,75 +146,75 @@ public record VkAttachmentDescription(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @enumtype(VkAttachmentDescriptionFlags.class) int flags() {
+    public @EnumType(VkAttachmentDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkAttachmentDescriptionFlags.class) int value) {
+    public void flags(@EnumType(VkAttachmentDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkFormat.class) int format() {
+    public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@enumtype(VkFormat.class) int value) {
+    public void format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int samples() {
+    public @EnumType(VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public void samples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void samples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
     }
 
-    public @enumtype(VkAttachmentLoadOp.class) int loadOp() {
+    public @EnumType(VkAttachmentLoadOp.class) int loadOp() {
         return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
     }
 
-    public void loadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
+    public void loadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
     }
 
-    public @enumtype(VkAttachmentStoreOp.class) int storeOp() {
+    public @EnumType(VkAttachmentStoreOp.class) int storeOp() {
         return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
     }
 
-    public void storeOp(@enumtype(VkAttachmentStoreOp.class) int value) {
+    public void storeOp(@EnumType(VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
     }
 
-    public @enumtype(VkAttachmentLoadOp.class) int stencilLoadOp() {
+    public @EnumType(VkAttachmentLoadOp.class) int stencilLoadOp() {
         return segment.get(LAYOUT$stencilLoadOp, OFFSET$stencilLoadOp);
     }
 
-    public void stencilLoadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
+    public void stencilLoadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$stencilLoadOp, OFFSET$stencilLoadOp, value);
     }
 
-    public @enumtype(VkAttachmentStoreOp.class) int stencilStoreOp() {
+    public @EnumType(VkAttachmentStoreOp.class) int stencilStoreOp() {
         return segment.get(LAYOUT$stencilStoreOp, OFFSET$stencilStoreOp);
     }
 
-    public void stencilStoreOp(@enumtype(VkAttachmentStoreOp.class) int value) {
+    public void stencilStoreOp(@EnumType(VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$stencilStoreOp, OFFSET$stencilStoreOp, value);
     }
 
-    public @enumtype(VkImageLayout.class) int initialLayout() {
+    public @EnumType(VkImageLayout.class) int initialLayout() {
         return segment.get(LAYOUT$initialLayout, OFFSET$initialLayout);
     }
 
-    public void initialLayout(@enumtype(VkImageLayout.class) int value) {
+    public void initialLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$initialLayout, OFFSET$initialLayout, value);
     }
 
-    public @enumtype(VkImageLayout.class) int finalLayout() {
+    public @EnumType(VkImageLayout.class) int finalLayout() {
         return segment.get(LAYOUT$finalLayout, OFFSET$finalLayout);
     }
 
-    public void finalLayout(@enumtype(VkImageLayout.class) int value) {
+    public void finalLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$finalLayout, OFFSET$finalLayout, value);
     }
 

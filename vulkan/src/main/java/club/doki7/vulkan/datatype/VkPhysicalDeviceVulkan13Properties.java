@@ -145,7 +145,7 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceVulkan13Properties.BYTES, VkPhysicalDeviceVulkan13Properties.BYTES));
         }
@@ -202,19 +202,19 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -246,11 +246,11 @@ public record VkPhysicalDeviceVulkan13Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
+    public @EnumType(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
         return segment.get(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages);
     }
 
-    public void requiredSubgroupSizeStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void requiredSubgroupSizeStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages, value);
     }
 

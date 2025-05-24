@@ -109,7 +109,7 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoSessionCreateInfoKHR.BYTES, VkVideoSessionCreateInfoKHR.BYTES));
         }
@@ -166,19 +166,19 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         sType(VkStructureType.VIDEO_SESSION_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -194,11 +194,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex, value);
     }
 
-    public @enumtype(VkVideoSessionCreateFlagsKHR.class) int flags() {
+    public @EnumType(VkVideoSessionCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkVideoSessionCreateFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkVideoSessionCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -207,7 +207,7 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         pVideoProfileRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pVideoProfile(int assumedCount) {
+    @Unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pVideoProfile(int assumedCount) {
         MemorySegment s = pVideoProfileRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -225,19 +225,19 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
+    public @Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pVideoProfileRaw() {
         return segment.get(LAYOUT$pVideoProfile, OFFSET$pVideoProfile);
     }
 
-    public void pVideoProfileRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+    public void pVideoProfileRaw(@Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pVideoProfile, OFFSET$pVideoProfile, value);
     }
 
-    public @enumtype(VkFormat.class) int pictureFormat() {
+    public @EnumType(VkFormat.class) int pictureFormat() {
         return segment.get(LAYOUT$pictureFormat, OFFSET$pictureFormat);
     }
 
-    public void pictureFormat(@enumtype(VkFormat.class) int value) {
+    public void pictureFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$pictureFormat, OFFSET$pictureFormat, value);
     }
 
@@ -249,11 +249,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxCodedExtent, SIZE$maxCodedExtent);
     }
 
-    public @enumtype(VkFormat.class) int referencePictureFormat() {
+    public @EnumType(VkFormat.class) int referencePictureFormat() {
         return segment.get(LAYOUT$referencePictureFormat, OFFSET$referencePictureFormat);
     }
 
-    public void referencePictureFormat(@enumtype(VkFormat.class) int value) {
+    public void referencePictureFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$referencePictureFormat, OFFSET$referencePictureFormat, value);
     }
 
@@ -278,7 +278,7 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         pStdHeaderVersionRaw(s);
     }
 
-    @unsafe public @Nullable VkExtensionProperties.Ptr pStdHeaderVersion(int assumedCount) {
+    @Unsafe public @Nullable VkExtensionProperties.Ptr pStdHeaderVersion(int assumedCount) {
         MemorySegment s = pStdHeaderVersionRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -296,11 +296,11 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return new VkExtensionProperties(s);
     }
 
-    public @pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {
+    public @Pointer(target=VkExtensionProperties.class) MemorySegment pStdHeaderVersionRaw() {
         return segment.get(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion);
     }
 
-    public void pStdHeaderVersionRaw(@pointer(target=VkExtensionProperties.class) MemorySegment value) {
+    public void pStdHeaderVersionRaw(@Pointer(target=VkExtensionProperties.class) MemorySegment value) {
         segment.set(LAYOUT$pStdHeaderVersion, OFFSET$pStdHeaderVersion, value);
     }
 

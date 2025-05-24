@@ -104,7 +104,7 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceFaultInfoEXT.BYTES, VkDeviceFaultInfoEXT.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.DEVICE_FAULT_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -194,7 +194,7 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         pAddressInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkDeviceFaultAddressInfoEXT.Ptr pAddressInfos(int assumedCount) {
+    @Unsafe public @Nullable VkDeviceFaultAddressInfoEXT.Ptr pAddressInfos(int assumedCount) {
         MemorySegment s = pAddressInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -212,11 +212,11 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return new VkDeviceFaultAddressInfoEXT(s);
     }
 
-    public @pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment pAddressInfosRaw() {
+    public @Pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment pAddressInfosRaw() {
         return segment.get(LAYOUT$pAddressInfos, OFFSET$pAddressInfos);
     }
 
-    public void pAddressInfosRaw(@pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment value) {
+    public void pAddressInfosRaw(@Pointer(target=VkDeviceFaultAddressInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
 
@@ -225,7 +225,7 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         pVendorInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkDeviceFaultVendorInfoEXT.Ptr pVendorInfos(int assumedCount) {
+    @Unsafe public @Nullable VkDeviceFaultVendorInfoEXT.Ptr pVendorInfos(int assumedCount) {
         MemorySegment s = pVendorInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -243,19 +243,19 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return new VkDeviceFaultVendorInfoEXT(s);
     }
 
-    public @pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment pVendorInfosRaw() {
+    public @Pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment pVendorInfosRaw() {
         return segment.get(LAYOUT$pVendorInfos, OFFSET$pVendorInfos);
     }
 
-    public void pVendorInfosRaw(@pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment value) {
+    public void pVendorInfosRaw(@Pointer(target=VkDeviceFaultVendorInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pVendorInfos, OFFSET$pVendorInfos, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pVendorBinaryData() {
+    public @Pointer(comment="void*") MemorySegment pVendorBinaryData() {
         return segment.get(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData);
     }
 
-    public void pVendorBinaryData(@pointer(comment="void*") MemorySegment value) {
+    public void pVendorBinaryData(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData, value);
     }
 

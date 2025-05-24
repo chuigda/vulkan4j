@@ -8,7 +8,7 @@ public final class VkShaderFloatControlsIndependence {
     public static final int ALL = 0x1;
     public static final int NONE = 0x2;
 
-    public static String explain(@enumtype(VkShaderFloatControlsIndependence.class) int value) {
+    public static String explain(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
         return switch (value) {
             case VkShaderFloatControlsIndependence._32_BIT_ONLY -> "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY";
             case VkShaderFloatControlsIndependence.ALL -> "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL";

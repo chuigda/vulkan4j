@@ -17,7 +17,7 @@ public final class VkFragmentShadingRateNV {
     public static final int _16_INVOCATIONS_PER_PIXEL = 0xe;
     public static final int NO_INVOCATIONS = 0xf;
 
-    public static String explain(@enumtype(VkFragmentShadingRateNV.class) int value) {
+    public static String explain(@EnumType(VkFragmentShadingRateNV.class) int value) {
         return switch (value) {
             case VkFragmentShadingRateNV._16_INVOCATIONS_PER_PIXEL -> "VK_FRAGMENT_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV";
             case VkFragmentShadingRateNV._1_INVOCATION_PER_1X2_PIXELS -> "VK_FRAGMENT_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV";

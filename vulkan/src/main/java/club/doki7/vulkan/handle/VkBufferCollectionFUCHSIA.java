@@ -94,7 +94,7 @@ public record VkBufferCollectionFUCHSIA(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }

@@ -108,7 +108,7 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkClusterAccelerationStructureBuildTriangleClusterInfoNV.BYTES, VkClusterAccelerationStructureBuildTriangleClusterInfoNV.BYTES));
         }
@@ -163,11 +163,11 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         segment.set(LAYOUT$clusterID, OFFSET$clusterID, value);
     }
 
-    public @enumtype(VkClusterAccelerationStructureClusterFlagsNV.class) int clusterFlags() {
+    public @EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int clusterFlags() {
         return segment.get(LAYOUT$clusterFlags, OFFSET$clusterFlags);
     }
 
-    public void clusterFlags(@enumtype(VkClusterAccelerationStructureClusterFlagsNV.class) int value) {
+    public void clusterFlags(@EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int value) {
         segment.set(LAYOUT$clusterFlags, OFFSET$clusterFlags, value);
     }
 

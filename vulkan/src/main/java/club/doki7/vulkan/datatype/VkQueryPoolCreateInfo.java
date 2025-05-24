@@ -104,7 +104,7 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkQueryPoolCreateInfo.BYTES, VkQueryPoolCreateInfo.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.QUERY_POOL_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,19 +181,19 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkQueryPoolCreateFlags.class) int flags() {
+    public @EnumType(VkQueryPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkQueryPoolCreateFlags.class) int value) {
+    public void flags(@EnumType(VkQueryPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkQueryType.class) int queryType() {
+    public @EnumType(VkQueryType.class) int queryType() {
         return segment.get(LAYOUT$queryType, OFFSET$queryType);
     }
 
-    public void queryType(@enumtype(VkQueryType.class) int value) {
+    public void queryType(@EnumType(VkQueryType.class) int value) {
         segment.set(LAYOUT$queryType, OFFSET$queryType, value);
     }
 
@@ -205,11 +205,11 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$queryCount, OFFSET$queryCount, value);
     }
 
-    public @enumtype(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
+    public @EnumType(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
         return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
     }
 
-    public void pipelineStatistics(@enumtype(VkQueryPipelineStatisticFlags.class) int value) {
+    public void pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
     }
 

@@ -105,7 +105,7 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDebugUtilsObjectTagInfoEXT.BYTES, VkDebugUtilsObjectTagInfoEXT.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         sType(VkStructureType.DEBUG_UTILS_OBJECT_TAG_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,11 +182,11 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkObjectType.class) int objectType() {
+    public @EnumType(VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public void objectType(@enumtype(VkObjectType.class) int value) {
+    public void objectType(@EnumType(VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
     }
 
@@ -214,11 +214,11 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pTag() {
+    public @Pointer(comment="void*") MemorySegment pTag() {
         return segment.get(LAYOUT$pTag, OFFSET$pTag);
     }
 
-    public void pTag(@pointer(comment="void*") MemorySegment value) {
+    public void pTag(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 

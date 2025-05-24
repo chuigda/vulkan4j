@@ -113,7 +113,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH264SequenceParameterSet.BYTES, StdVideoH264SequenceParameterSet.BYTES));
         }
@@ -168,27 +168,27 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @enumtype(StdVideoH264ProfileIdc.class) int profile_idc() {
+    public @EnumType(StdVideoH264ProfileIdc.class) int profile_idc() {
         return segment.get(LAYOUT$profile_idc, OFFSET$profile_idc);
     }
 
-    public void profile_idc(@enumtype(StdVideoH264ProfileIdc.class) int value) {
+    public void profile_idc(@EnumType(StdVideoH264ProfileIdc.class) int value) {
         segment.set(LAYOUT$profile_idc, OFFSET$profile_idc, value);
     }
 
-    public @enumtype(StdVideoH264LevelIdc.class) int level_idc() {
+    public @EnumType(StdVideoH264LevelIdc.class) int level_idc() {
         return segment.get(LAYOUT$level_idc, OFFSET$level_idc);
     }
 
-    public void level_idc(@enumtype(StdVideoH264LevelIdc.class) int value) {
+    public void level_idc(@EnumType(StdVideoH264LevelIdc.class) int value) {
         segment.set(LAYOUT$level_idc, OFFSET$level_idc, value);
     }
 
-    public @enumtype(StdVideoH264ChromaFormatIdc.class) int chroma_format_idc() {
+    public @EnumType(StdVideoH264ChromaFormatIdc.class) int chroma_format_idc() {
         return segment.get(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc);
     }
 
-    public void chroma_format_idc(@enumtype(StdVideoH264ChromaFormatIdc.class) int value) {
+    public void chroma_format_idc(@EnumType(StdVideoH264ChromaFormatIdc.class) int value) {
         segment.set(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc, value);
     }
 
@@ -224,11 +224,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$log2_max_frame_num_minus4, OFFSET$log2_max_frame_num_minus4, value);
     }
 
-    public @enumtype(StdVideoH264PocType.class) int pic_order_cnt_type() {
+    public @EnumType(StdVideoH264PocType.class) int pic_order_cnt_type() {
         return segment.get(LAYOUT$pic_order_cnt_type, OFFSET$pic_order_cnt_type);
     }
 
-    public void pic_order_cnt_type(@enumtype(StdVideoH264PocType.class) int value) {
+    public void pic_order_cnt_type(@EnumType(StdVideoH264PocType.class) int value) {
         segment.set(LAYOUT$pic_order_cnt_type, OFFSET$pic_order_cnt_type, value);
     }
 
@@ -339,11 +339,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pOffsetForRefFrameRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pOffsetForRefFrameRaw() {
+    public @Pointer(comment="int*") MemorySegment pOffsetForRefFrameRaw() {
         return segment.get(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame);
     }
 
-    public void pOffsetForRefFrameRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pOffsetForRefFrameRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pOffsetForRefFrame, OFFSET$pOffsetForRefFrame, value);
     }
 
@@ -352,7 +352,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pScalingListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {
         MemorySegment s = pScalingListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -370,11 +370,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return new StdVideoH264ScalingLists(s);
     }
 
-    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
+    public @Pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
+    public void pScalingListsRaw(@Pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 
@@ -383,7 +383,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         pSequenceParameterSetVuiRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264SequenceParameterSetVui.Ptr pSequenceParameterSetVui(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH264SequenceParameterSetVui.Ptr pSequenceParameterSetVui(int assumedCount) {
         MemorySegment s = pSequenceParameterSetVuiRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -401,11 +401,11 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
         return new StdVideoH264SequenceParameterSetVui(s);
     }
 
-    public @pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment pSequenceParameterSetVuiRaw() {
+    public @Pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment pSequenceParameterSetVuiRaw() {
         return segment.get(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui);
     }
 
-    public void pSequenceParameterSetVuiRaw(@pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment value) {
+    public void pSequenceParameterSetVuiRaw(@Pointer(target=StdVideoH264SequenceParameterSetVui.class) MemorySegment value) {
         segment.set(LAYOUT$pSequenceParameterSetVui, OFFSET$pSequenceParameterSetVui, value);
     }
 

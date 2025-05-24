@@ -103,7 +103,7 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoDecodeH265PictureInfoKHR.BYTES, VkVideoDecodeH265PictureInfoKHR.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.VIDEO_DECODE_H265_PICTURE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,7 +185,7 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         pStdPictureInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoDecodeH265PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
+    @Unsafe public @Nullable StdVideoDecodeH265PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
         MemorySegment s = pStdPictureInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -203,11 +203,11 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return new StdVideoDecodeH265PictureInfo(s);
     }
 
-    public @pointer(target=StdVideoDecodeH265PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
+    public @Pointer(target=StdVideoDecodeH265PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
         return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
     }
 
-    public void pStdPictureInfoRaw(@pointer(target=StdVideoDecodeH265PictureInfo.class) MemorySegment value) {
+    public void pStdPictureInfoRaw(@Pointer(target=StdVideoDecodeH265PictureInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
@@ -236,11 +236,11 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         pSliceSegmentOffsetsRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pSliceSegmentOffsetsRaw() {
+    public @Pointer(comment="int*") MemorySegment pSliceSegmentOffsetsRaw() {
         return segment.get(LAYOUT$pSliceSegmentOffsets, OFFSET$pSliceSegmentOffsets);
     }
 
-    public void pSliceSegmentOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pSliceSegmentOffsetsRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pSliceSegmentOffsets, OFFSET$pSliceSegmentOffsets, value);
     }
 

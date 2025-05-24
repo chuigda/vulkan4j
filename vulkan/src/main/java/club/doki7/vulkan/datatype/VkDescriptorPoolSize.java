@@ -92,7 +92,7 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDescriptorPoolSize.BYTES, VkDescriptorPoolSize.BYTES));
         }
@@ -139,11 +139,11 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @enumtype(VkDescriptorType.class) int type() {
+    public @EnumType(VkDescriptorType.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkDescriptorType.class) int value) {
+    public void type(@EnumType(VkDescriptorType.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 

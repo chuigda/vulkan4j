@@ -94,7 +94,7 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkViewportSwizzleNV.BYTES, VkViewportSwizzleNV.BYTES));
         }
@@ -141,35 +141,35 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @enumtype(VkViewportCoordinateSwizzleNV.class) int x() {
+    public @EnumType(VkViewportCoordinateSwizzleNV.class) int x() {
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(@enumtype(VkViewportCoordinateSwizzleNV.class) int value) {
+    public void x(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
     }
 
-    public @enumtype(VkViewportCoordinateSwizzleNV.class) int y() {
+    public @EnumType(VkViewportCoordinateSwizzleNV.class) int y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(@enumtype(VkViewportCoordinateSwizzleNV.class) int value) {
+    public void y(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
     }
 
-    public @enumtype(VkViewportCoordinateSwizzleNV.class) int z() {
+    public @EnumType(VkViewportCoordinateSwizzleNV.class) int z() {
         return segment.get(LAYOUT$z, OFFSET$z);
     }
 
-    public void z(@enumtype(VkViewportCoordinateSwizzleNV.class) int value) {
+    public void z(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$z, OFFSET$z, value);
     }
 
-    public @enumtype(VkViewportCoordinateSwizzleNV.class) int w() {
+    public @EnumType(VkViewportCoordinateSwizzleNV.class) int w() {
         return segment.get(LAYOUT$w, OFFSET$w);
     }
 
-    public void w(@enumtype(VkViewportCoordinateSwizzleNV.class) int value) {
+    public void w(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$w, OFFSET$w, value);
     }
 

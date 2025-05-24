@@ -7,7 +7,7 @@ public final class VkAntiLagStageAMD {
     public static final int INPUT = 0x0;
     public static final int PRESENT = 0x1;
 
-    public static String explain(@enumtype(VkAntiLagStageAMD.class) int value) {
+    public static String explain(@EnumType(VkAntiLagStageAMD.class) int value) {
         return switch (value) {
             case VkAntiLagStageAMD.INPUT -> "VK_ANTI_LAG_STAGE_INPUT_AMD";
             case VkAntiLagStageAMD.PRESENT -> "VK_ANTI_LAG_STAGE_PRESENT_AMD";

@@ -92,7 +92,7 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBaseOutStructure.BYTES, VkBaseOutStructure.BYTES));
         }
@@ -139,11 +139,11 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         return ret;
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
@@ -152,7 +152,7 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         pNextRaw(s);
     }
 
-    @unsafe public @Nullable VkBaseOutStructure.Ptr pNext(int assumedCount) {
+    @Unsafe public @Nullable VkBaseOutStructure.Ptr pNext(int assumedCount) {
         MemorySegment s = pNextRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -170,11 +170,11 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         return new VkBaseOutStructure(s);
     }
 
-    public @pointer(target=VkBaseOutStructure.class) MemorySegment pNextRaw() {
+    public @Pointer(target=VkBaseOutStructure.class) MemorySegment pNextRaw() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNextRaw(@pointer(target=VkBaseOutStructure.class) MemorySegment value) {
+    public void pNextRaw(@Pointer(target=VkBaseOutStructure.class) MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 

@@ -97,7 +97,7 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDisplayPropertiesKHR.BYTES, VkDisplayPropertiesKHR.BYTES));
         }
@@ -173,11 +173,11 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         displayNameRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment displayNameRaw() {
+    public @Pointer(comment="byte*") MemorySegment displayNameRaw() {
         return segment.get(LAYOUT$displayName, OFFSET$displayName);
     }
 
-    public void displayNameRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void displayNameRaw(@Pointer(comment="byte*") MemorySegment value) {
         segment.set(LAYOUT$displayName, OFFSET$displayName, value);
     }
 
@@ -197,11 +197,11 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalResolution, SIZE$physicalResolution);
     }
 
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
+    public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public void supportedTransforms(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+    public void supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
     }
 

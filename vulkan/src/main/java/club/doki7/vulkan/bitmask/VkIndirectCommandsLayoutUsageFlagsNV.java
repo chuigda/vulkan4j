@@ -11,7 +11,7 @@ public final class VkIndirectCommandsLayoutUsageFlagsNV {
     public static final int INDEXED_SEQUENCES = 0x2;
     public static final int UNORDERED_SEQUENCES = 0x4;
 
-    public static String explain(@enumtype(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags) {
+    public static String explain(@EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXPLICIT_PREPROCESS) != 0) {
             detectedFlagBits.add("VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV");

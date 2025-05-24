@@ -92,7 +92,7 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH265ReferenceInfo.BYTES, StdVideoEncodeH265ReferenceInfo.BYTES));
         }
@@ -147,11 +147,11 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @enumtype(StdVideoH265PictureType.class) int pic_type() {
+    public @EnumType(StdVideoH265PictureType.class) int pic_type() {
         return segment.get(LAYOUT$pic_type, OFFSET$pic_type);
     }
 
-    public void pic_type(@enumtype(StdVideoH265PictureType.class) int value) {
+    public void pic_type(@EnumType(StdVideoH265PictureType.class) int value) {
         segment.set(LAYOUT$pic_type, OFFSET$pic_type, value);
     }
 

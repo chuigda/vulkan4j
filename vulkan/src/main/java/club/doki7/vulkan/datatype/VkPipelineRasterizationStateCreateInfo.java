@@ -111,7 +111,7 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineRasterizationStateCreateInfo.BYTES, VkPipelineRasterizationStateCreateInfo.BYTES));
         }
@@ -168,19 +168,19 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         sType(VkStructureType.PIPELINE_RASTERIZATION_STATE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -188,11 +188,11 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineRasterizationStateCreateFlags.class) int flags() {
+    public @EnumType(VkPipelineRasterizationStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineRasterizationStateCreateFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineRasterizationStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -212,27 +212,27 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$rasterizerDiscardEnable, OFFSET$rasterizerDiscardEnable, value);
     }
 
-    public @enumtype(VkPolygonMode.class) int polygonMode() {
+    public @EnumType(VkPolygonMode.class) int polygonMode() {
         return segment.get(LAYOUT$polygonMode, OFFSET$polygonMode);
     }
 
-    public void polygonMode(@enumtype(VkPolygonMode.class) int value) {
+    public void polygonMode(@EnumType(VkPolygonMode.class) int value) {
         segment.set(LAYOUT$polygonMode, OFFSET$polygonMode, value);
     }
 
-    public @enumtype(VkCullModeFlags.class) int cullMode() {
+    public @EnumType(VkCullModeFlags.class) int cullMode() {
         return segment.get(LAYOUT$cullMode, OFFSET$cullMode);
     }
 
-    public void cullMode(@enumtype(VkCullModeFlags.class) int value) {
+    public void cullMode(@EnumType(VkCullModeFlags.class) int value) {
         segment.set(LAYOUT$cullMode, OFFSET$cullMode, value);
     }
 
-    public @enumtype(VkFrontFace.class) int frontFace() {
+    public @EnumType(VkFrontFace.class) int frontFace() {
         return segment.get(LAYOUT$frontFace, OFFSET$frontFace);
     }
 
-    public void frontFace(@enumtype(VkFrontFace.class) int value) {
+    public void frontFace(@EnumType(VkFrontFace.class) int value) {
         segment.set(LAYOUT$frontFace, OFFSET$frontFace, value);
     }
 

@@ -94,7 +94,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
         }
@@ -154,7 +154,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         pMapEntriesRaw(s);
     }
 
-    @unsafe public @Nullable VkSpecializationMapEntry.Ptr pMapEntries(int assumedCount) {
+    @Unsafe public @Nullable VkSpecializationMapEntry.Ptr pMapEntries(int assumedCount) {
         MemorySegment s = pMapEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -172,11 +172,11 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return new VkSpecializationMapEntry(s);
     }
 
-    public @pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
+    public @Pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
         return segment.get(LAYOUT$pMapEntries, OFFSET$pMapEntries);
     }
 
-    public void pMapEntriesRaw(@pointer(target=VkSpecializationMapEntry.class) MemorySegment value) {
+    public void pMapEntriesRaw(@Pointer(target=VkSpecializationMapEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
 
@@ -188,11 +188,11 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@pointer(comment="void*") MemorySegment value) {
+    public void pData(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 

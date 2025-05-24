@@ -7,7 +7,7 @@ public final class VkDiscardRectangleModeEXT {
     public static final int INCLUSIVE = 0x0;
     public static final int EXCLUSIVE = 0x1;
 
-    public static String explain(@enumtype(VkDiscardRectangleModeEXT.class) int value) {
+    public static String explain(@EnumType(VkDiscardRectangleModeEXT.class) int value) {
         return switch (value) {
             case VkDiscardRectangleModeEXT.EXCLUSIVE -> "VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT";
             case VkDiscardRectangleModeEXT.INCLUSIVE -> "VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT";

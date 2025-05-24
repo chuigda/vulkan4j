@@ -103,7 +103,7 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES, VkPipelineFragmentShadingRateEnumStateCreateInfoNV.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         sType(VkStructureType.PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,27 +180,27 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkFragmentShadingRateTypeNV.class) int shadingRateType() {
+    public @EnumType(VkFragmentShadingRateTypeNV.class) int shadingRateType() {
         return segment.get(LAYOUT$shadingRateType, OFFSET$shadingRateType);
     }
 
-    public void shadingRateType(@enumtype(VkFragmentShadingRateTypeNV.class) int value) {
+    public void shadingRateType(@EnumType(VkFragmentShadingRateTypeNV.class) int value) {
         segment.set(LAYOUT$shadingRateType, OFFSET$shadingRateType, value);
     }
 
-    public @enumtype(VkFragmentShadingRateNV.class) int shadingRate() {
+    public @EnumType(VkFragmentShadingRateNV.class) int shadingRate() {
         return segment.get(LAYOUT$shadingRate, OFFSET$shadingRate);
     }
 
-    public void shadingRate(@enumtype(VkFragmentShadingRateNV.class) int value) {
+    public void shadingRate(@EnumType(VkFragmentShadingRateNV.class) int value) {
         segment.set(LAYOUT$shadingRate, OFFSET$shadingRate, value);
     }
 
-    public @enumtype(VkFragmentShadingRateCombinerOpKHR.class) int combinerOps() {
+    public @EnumType(VkFragmentShadingRateCombinerOpKHR.class) int combinerOps() {
         return segment.get(LAYOUT$combinerOps, OFFSET$combinerOps);
     }
 
-    public void combinerOps(@enumtype(VkFragmentShadingRateCombinerOpKHR.class) int value) {
+    public void combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) int value) {
         segment.set(LAYOUT$combinerOps, OFFSET$combinerOps, value);
     }
 

@@ -9,7 +9,7 @@ public final class VkPipelineRobustnessImageBehavior {
     public static final int ROBUST_IMAGE_ACCESS = 0x2;
     public static final int ROBUST_IMAGE_ACCESS_2 = 0x3;
 
-    public static String explain(@enumtype(VkPipelineRobustnessImageBehavior.class) int value) {
+    public static String explain(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
         return switch (value) {
             case VkPipelineRobustnessImageBehavior.DEVICE_DEFAULT -> "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT";
             case VkPipelineRobustnessImageBehavior.DISABLED -> "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED";

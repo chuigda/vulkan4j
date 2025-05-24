@@ -10,7 +10,7 @@ public final class VkSamplerYcbcrModelConversion {
     public static final int YCBCR_601 = 0x3;
     public static final int YCBCR_2020 = 0x4;
 
-    public static String explain(@enumtype(VkSamplerYcbcrModelConversion.class) int value) {
+    public static String explain(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
         return switch (value) {
             case VkSamplerYcbcrModelConversion.RGB_IDENTITY -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY";
             case VkSamplerYcbcrModelConversion.YCBCR_2020 -> "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020";

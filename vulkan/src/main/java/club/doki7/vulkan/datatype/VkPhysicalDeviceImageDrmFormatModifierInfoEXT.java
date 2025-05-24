@@ -104,7 +104,7 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES, VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -189,11 +189,11 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
     }
 
-    public @enumtype(VkSharingMode.class) int sharingMode() {
+    public @EnumType(VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public void sharingMode(@enumtype(VkSharingMode.class) int value) {
+    public void sharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
     }
 
@@ -222,11 +222,11 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         pQueueFamilyIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 

@@ -94,7 +94,7 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkCoarseSampleOrderCustomNV.BYTES, VkCoarseSampleOrderCustomNV.BYTES));
         }
@@ -141,11 +141,11 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         return ret;
     }
 
-    public @enumtype(VkShadingRatePaletteEntryNV.class) int shadingRate() {
+    public @EnumType(VkShadingRatePaletteEntryNV.class) int shadingRate() {
         return segment.get(LAYOUT$shadingRate, OFFSET$shadingRate);
     }
 
-    public void shadingRate(@enumtype(VkShadingRatePaletteEntryNV.class) int value) {
+    public void shadingRate(@EnumType(VkShadingRatePaletteEntryNV.class) int value) {
         segment.set(LAYOUT$shadingRate, OFFSET$shadingRate, value);
     }
 
@@ -170,7 +170,7 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         pSampleLocationsRaw(s);
     }
 
-    @unsafe public @Nullable VkCoarseSampleLocationNV.Ptr pSampleLocations(int assumedCount) {
+    @Unsafe public @Nullable VkCoarseSampleLocationNV.Ptr pSampleLocations(int assumedCount) {
         MemorySegment s = pSampleLocationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -188,11 +188,11 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         return new VkCoarseSampleLocationNV(s);
     }
 
-    public @pointer(target=VkCoarseSampleLocationNV.class) MemorySegment pSampleLocationsRaw() {
+    public @Pointer(target=VkCoarseSampleLocationNV.class) MemorySegment pSampleLocationsRaw() {
         return segment.get(LAYOUT$pSampleLocations, OFFSET$pSampleLocations);
     }
 
-    public void pSampleLocationsRaw(@pointer(target=VkCoarseSampleLocationNV.class) MemorySegment value) {
+    public void pSampleLocationsRaw(@Pointer(target=VkCoarseSampleLocationNV.class) MemorySegment value) {
         segment.set(LAYOUT$pSampleLocations, OFFSET$pSampleLocations, value);
     }
 

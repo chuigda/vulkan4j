@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkFenceImportFlags {
     public static final int TEMPORARY = 0x1;
 
-    public static String explain(@enumtype(VkFenceImportFlags.class) int flags) {
+    public static String explain(@EnumType(VkFenceImportFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & TEMPORARY) != 0) {
             detectedFlagBits.add("VK_FENCE_IMPORT_TEMPORARY_BIT");

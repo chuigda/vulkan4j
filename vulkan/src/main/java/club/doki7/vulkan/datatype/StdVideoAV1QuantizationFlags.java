@@ -92,7 +92,7 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoAV1QuantizationFlags.BYTES, StdVideoAV1QuantizationFlags.BYTES));
         }

@@ -103,7 +103,7 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkExternalFenceProperties.BYTES, VkExternalFenceProperties.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.EXTERNAL_FENCE_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,27 +180,27 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
+    public @EnumType(VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public void exportFromImportedHandleTypes(@enumtype(VkExternalFenceHandleTypeFlags.class) int value) {
+    public void exportFromImportedHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
     }
 
-    public @enumtype(VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
+    public @EnumType(VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public void compatibleHandleTypes(@enumtype(VkExternalFenceHandleTypeFlags.class) int value) {
+    public void compatibleHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
     }
 
-    public @enumtype(VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
+    public @EnumType(VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
         return segment.get(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures);
     }
 
-    public void externalFenceFeatures(@enumtype(VkExternalFenceFeatureFlags.class) int value) {
+    public void externalFenceFeatures(@EnumType(VkExternalFenceFeatureFlags.class) int value) {
         segment.set(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures, value);
     }
 

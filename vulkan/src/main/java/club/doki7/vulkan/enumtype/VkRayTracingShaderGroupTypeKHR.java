@@ -8,7 +8,7 @@ public final class VkRayTracingShaderGroupTypeKHR {
     public static final int TRIANGLES_HIT_GROUP = 0x1;
     public static final int PROCEDURAL_HIT_GROUP = 0x2;
 
-    public static String explain(@enumtype(VkRayTracingShaderGroupTypeKHR.class) int value) {
+    public static String explain(@EnumType(VkRayTracingShaderGroupTypeKHR.class) int value) {
         return switch (value) {
             case VkRayTracingShaderGroupTypeKHR.GENERAL -> "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR";
             case VkRayTracingShaderGroupTypeKHR.PROCEDURAL_HIT_GROUP -> "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR";

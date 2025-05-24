@@ -104,7 +104,7 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceSubgroupProperties.BYTES, VkPhysicalDeviceSubgroupProperties.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_SUBGROUP_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -189,19 +189,19 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$subgroupSize, OFFSET$subgroupSize, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int supportedStages() {
+    public @EnumType(VkShaderStageFlags.class) int supportedStages() {
         return segment.get(LAYOUT$supportedStages, OFFSET$supportedStages);
     }
 
-    public void supportedStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void supportedStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedStages, OFFSET$supportedStages, value);
     }
 
-    public @enumtype(VkSubgroupFeatureFlags.class) int supportedOperations() {
+    public @EnumType(VkSubgroupFeatureFlags.class) int supportedOperations() {
         return segment.get(LAYOUT$supportedOperations, OFFSET$supportedOperations);
     }
 
-    public void supportedOperations(@enumtype(VkSubgroupFeatureFlags.class) int value) {
+    public void supportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$supportedOperations, OFFSET$supportedOperations, value);
     }
 

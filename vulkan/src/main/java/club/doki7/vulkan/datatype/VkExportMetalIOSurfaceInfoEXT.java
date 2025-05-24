@@ -102,7 +102,7 @@ public record VkExportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkExportMetalIOSurfaceInfoEXT.BYTES, VkExportMetalIOSurfaceInfoEXT.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkExportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         sType(VkStructureType.EXPORT_METAL_IO_SURFACE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -191,11 +191,11 @@ public record VkExportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="IOSurfaceRef") MemorySegment ioSurface() {
+    public @Pointer(comment="IOSurfaceRef") MemorySegment ioSurface() {
         return segment.get(LAYOUT$ioSurface, OFFSET$ioSurface);
     }
 
-    public void ioSurface(@pointer(comment="IOSurfaceRef") MemorySegment value) {
+    public void ioSurface(@Pointer(comment="IOSurfaceRef") MemorySegment value) {
         segment.set(LAYOUT$ioSurface, OFFSET$ioSurface, value);
     }
 

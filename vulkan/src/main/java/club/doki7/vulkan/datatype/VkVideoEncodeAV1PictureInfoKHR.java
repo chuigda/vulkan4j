@@ -107,7 +107,7 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeAV1PictureInfoKHR.BYTES, VkVideoEncodeAV1PictureInfoKHR.BYTES));
         }
@@ -164,19 +164,19 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         sType(VkStructureType.VIDEO_ENCODE_AV1_PICTURE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,19 +184,19 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeAV1PredictionModeKHR.class) int predictionMode() {
+    public @EnumType(VkVideoEncodeAV1PredictionModeKHR.class) int predictionMode() {
         return segment.get(LAYOUT$predictionMode, OFFSET$predictionMode);
     }
 
-    public void predictionMode(@enumtype(VkVideoEncodeAV1PredictionModeKHR.class) int value) {
+    public void predictionMode(@EnumType(VkVideoEncodeAV1PredictionModeKHR.class) int value) {
         segment.set(LAYOUT$predictionMode, OFFSET$predictionMode, value);
     }
 
-    public @enumtype(VkVideoEncodeAV1RateControlGroupKHR.class) int rateControlGroup() {
+    public @EnumType(VkVideoEncodeAV1RateControlGroupKHR.class) int rateControlGroup() {
         return segment.get(LAYOUT$rateControlGroup, OFFSET$rateControlGroup);
     }
 
-    public void rateControlGroup(@enumtype(VkVideoEncodeAV1RateControlGroupKHR.class) int value) {
+    public void rateControlGroup(@EnumType(VkVideoEncodeAV1RateControlGroupKHR.class) int value) {
         segment.set(LAYOUT$rateControlGroup, OFFSET$rateControlGroup, value);
     }
 
@@ -213,7 +213,7 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         pStdPictureInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeAV1PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeAV1PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
         MemorySegment s = pStdPictureInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -231,11 +231,11 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return new StdVideoEncodeAV1PictureInfo(s);
     }
 
-    public @pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
+    public @Pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment pStdPictureInfoRaw() {
         return segment.get(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo);
     }
 
-    public void pStdPictureInfoRaw(@pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment value) {
+    public void pStdPictureInfoRaw(@Pointer(target=StdVideoEncodeAV1PictureInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 

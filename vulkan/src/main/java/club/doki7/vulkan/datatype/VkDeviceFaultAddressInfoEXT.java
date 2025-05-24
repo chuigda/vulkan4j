@@ -93,7 +93,7 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceFaultAddressInfoEXT.BYTES, VkDeviceFaultAddressInfoEXT.BYTES));
         }
@@ -140,11 +140,11 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         return ret;
     }
 
-    public @enumtype(VkDeviceFaultAddressTypeEXT.class) int addressType() {
+    public @EnumType(VkDeviceFaultAddressTypeEXT.class) int addressType() {
         return segment.get(LAYOUT$addressType, OFFSET$addressType);
     }
 
-    public void addressType(@enumtype(VkDeviceFaultAddressTypeEXT.class) int value) {
+    public void addressType(@EnumType(VkDeviceFaultAddressTypeEXT.class) int value) {
         segment.set(LAYOUT$addressType, OFFSET$addressType, value);
     }
 

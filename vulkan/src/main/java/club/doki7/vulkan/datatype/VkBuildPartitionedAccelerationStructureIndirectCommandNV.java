@@ -93,7 +93,7 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES, VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES));
         }
@@ -140,11 +140,11 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         return ret;
     }
 
-    public @enumtype(VkPartitionedAccelerationStructureOpTypeNV.class) int opType() {
+    public @EnumType(VkPartitionedAccelerationStructureOpTypeNV.class) int opType() {
         return segment.get(LAYOUT$opType, OFFSET$opType);
     }
 
-    public void opType(@enumtype(VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
+    public void opType(@EnumType(VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
         segment.set(LAYOUT$opType, OFFSET$opType, value);
     }
 

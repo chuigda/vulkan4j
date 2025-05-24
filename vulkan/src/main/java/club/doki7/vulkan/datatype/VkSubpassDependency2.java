@@ -108,7 +108,7 @@ public record VkSubpassDependency2(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSubpassDependency2.BYTES, VkSubpassDependency2.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkSubpassDependency2(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.SUBPASS_DEPENDENCY_2);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -201,43 +201,43 @@ public record VkSubpassDependency2(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$dstSubpass, OFFSET$dstSubpass, value);
     }
 
-    public @enumtype(VkPipelineStageFlags.class) int srcStageMask() {
+    public @EnumType(VkPipelineStageFlags.class) int srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public void srcStageMask(@enumtype(VkPipelineStageFlags.class) int value) {
+    public void srcStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
     }
 
-    public @enumtype(VkPipelineStageFlags.class) int dstStageMask() {
+    public @EnumType(VkPipelineStageFlags.class) int dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public void dstStageMask(@enumtype(VkPipelineStageFlags.class) int value) {
+    public void dstStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
     }
 
-    public @enumtype(VkAccessFlags.class) int srcAccessMask() {
+    public @EnumType(VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public void srcAccessMask(@enumtype(VkAccessFlags.class) int value) {
+    public void srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
     }
 
-    public @enumtype(VkAccessFlags.class) int dstAccessMask() {
+    public @EnumType(VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public void dstAccessMask(@enumtype(VkAccessFlags.class) int value) {
+    public void dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
     }
 
-    public @enumtype(VkDependencyFlags.class) int dependencyFlags() {
+    public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public void dependencyFlags(@enumtype(VkDependencyFlags.class) int value) {
+    public void dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
     }
 

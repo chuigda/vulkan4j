@@ -114,7 +114,7 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH265SequenceParameterSetVui.BYTES, StdVideoH265SequenceParameterSetVui.BYTES));
         }
@@ -169,11 +169,11 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @enumtype(StdVideoH265AspectRatioIdc.class) int aspect_ratio_idc() {
+    public @EnumType(StdVideoH265AspectRatioIdc.class) int aspect_ratio_idc() {
         return segment.get(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc);
     }
 
-    public void aspect_ratio_idc(@enumtype(StdVideoH265AspectRatioIdc.class) int value) {
+    public void aspect_ratio_idc(@EnumType(StdVideoH265AspectRatioIdc.class) int value) {
         segment.set(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc, value);
     }
 
@@ -345,7 +345,7 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         pHrdParametersRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265HrdParameters.Ptr pHrdParameters(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH265HrdParameters.Ptr pHrdParameters(int assumedCount) {
         MemorySegment s = pHrdParametersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -363,11 +363,11 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         return new StdVideoH265HrdParameters(s);
     }
 
-    public @pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
+    public @Pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
         return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
     }
 
-    public void pHrdParametersRaw(@pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
+    public void pHrdParametersRaw(@Pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
         segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 

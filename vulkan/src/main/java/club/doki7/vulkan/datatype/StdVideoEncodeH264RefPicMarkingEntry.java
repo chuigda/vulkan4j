@@ -93,7 +93,7 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH264RefPicMarkingEntry.BYTES, StdVideoEncodeH264RefPicMarkingEntry.BYTES));
         }
@@ -140,11 +140,11 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         return ret;
     }
 
-    public @enumtype(StdVideoH264MemMgmtControlOp.class) int memory_management_control_operation() {
+    public @EnumType(StdVideoH264MemMgmtControlOp.class) int memory_management_control_operation() {
         return segment.get(LAYOUT$memory_management_control_operation, OFFSET$memory_management_control_operation);
     }
 
-    public void memory_management_control_operation(@enumtype(StdVideoH264MemMgmtControlOp.class) int value) {
+    public void memory_management_control_operation(@EnumType(StdVideoH264MemMgmtControlOp.class) int value) {
         segment.set(LAYOUT$memory_management_control_operation, OFFSET$memory_management_control_operation, value);
     }
 

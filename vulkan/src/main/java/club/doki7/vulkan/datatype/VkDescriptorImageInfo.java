@@ -93,7 +93,7 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDescriptorImageInfo.BYTES, VkDescriptorImageInfo.BYTES));
         }
@@ -164,11 +164,11 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageLayout.class) int imageLayout() {
+    public @EnumType(VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public void imageLayout(@enumtype(VkImageLayout.class) int value) {
+    public void imageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
     }
 

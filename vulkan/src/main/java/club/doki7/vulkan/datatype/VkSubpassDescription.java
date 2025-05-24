@@ -100,7 +100,7 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSubpassDescription.BYTES, VkSubpassDescription.BYTES));
         }
@@ -147,19 +147,19 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @enumtype(VkSubpassDescriptionFlags.class) int flags() {
+    public @EnumType(VkSubpassDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkSubpassDescriptionFlags.class) int value) {
+    public void flags(@EnumType(VkSubpassDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
+    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
@@ -176,7 +176,7 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         pInputAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference.Ptr pInputAttachments(int assumedCount) {
+    @Unsafe public @Nullable VkAttachmentReference.Ptr pInputAttachments(int assumedCount) {
         MemorySegment s = pInputAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -194,11 +194,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return new VkAttachmentReference(s);
     }
 
-    public @pointer(target=VkAttachmentReference.class) MemorySegment pInputAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentReference.class) MemorySegment pInputAttachmentsRaw() {
         return segment.get(LAYOUT$pInputAttachments, OFFSET$pInputAttachments);
     }
 
-    public void pInputAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
+    public void pInputAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) MemorySegment value) {
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
 
@@ -215,7 +215,7 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         pColorAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference.Ptr pColorAttachments(int assumedCount) {
+    @Unsafe public @Nullable VkAttachmentReference.Ptr pColorAttachments(int assumedCount) {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -233,11 +233,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return new VkAttachmentReference(s);
     }
 
-    public @pointer(target=VkAttachmentReference.class) MemorySegment pColorAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentReference.class) MemorySegment pColorAttachmentsRaw() {
         return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
     }
 
-    public void pColorAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
+    public void pColorAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
@@ -246,7 +246,7 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         pResolveAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference.Ptr pResolveAttachments(int assumedCount) {
+    @Unsafe public @Nullable VkAttachmentReference.Ptr pResolveAttachments(int assumedCount) {
         MemorySegment s = pResolveAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -264,11 +264,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return new VkAttachmentReference(s);
     }
 
-    public @pointer(target=VkAttachmentReference.class) MemorySegment pResolveAttachmentsRaw() {
+    public @Pointer(target=VkAttachmentReference.class) MemorySegment pResolveAttachmentsRaw() {
         return segment.get(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments);
     }
 
-    public void pResolveAttachmentsRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
+    public void pResolveAttachmentsRaw(@Pointer(target=VkAttachmentReference.class) MemorySegment value) {
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
 
@@ -277,7 +277,7 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         pDepthStencilAttachmentRaw(s);
     }
 
-    @unsafe public @Nullable VkAttachmentReference.Ptr pDepthStencilAttachment(int assumedCount) {
+    @Unsafe public @Nullable VkAttachmentReference.Ptr pDepthStencilAttachment(int assumedCount) {
         MemorySegment s = pDepthStencilAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -295,11 +295,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         return new VkAttachmentReference(s);
     }
 
-    public @pointer(target=VkAttachmentReference.class) MemorySegment pDepthStencilAttachmentRaw() {
+    public @Pointer(target=VkAttachmentReference.class) MemorySegment pDepthStencilAttachmentRaw() {
         return segment.get(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment);
     }
 
-    public void pDepthStencilAttachmentRaw(@pointer(target=VkAttachmentReference.class) MemorySegment value) {
+    public void pDepthStencilAttachmentRaw(@Pointer(target=VkAttachmentReference.class) MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
 
@@ -328,11 +328,11 @@ public record VkSubpassDescription(@NotNull MemorySegment segment) implements IV
         pPreserveAttachmentsRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pPreserveAttachmentsRaw() {
+    public @Pointer(comment="int*") MemorySegment pPreserveAttachmentsRaw() {
         return segment.get(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments);
     }
 
-    public void pPreserveAttachmentsRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pPreserveAttachmentsRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
     }
 

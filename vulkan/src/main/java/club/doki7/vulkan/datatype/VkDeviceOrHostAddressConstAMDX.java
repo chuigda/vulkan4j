@@ -92,7 +92,7 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceOrHostAddressConstAMDX.BYTES, VkDeviceOrHostAddressConstAMDX.BYTES));
         }
@@ -147,11 +147,11 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
     }
 
-    public @pointer(comment="void*") MemorySegment hostAddress() {
+    public @Pointer(comment="void*") MemorySegment hostAddress() {
         return segment.get(LAYOUT$hostAddress, OFFSET$hostAddress);
     }
 
-    public void hostAddress(@pointer(comment="void*") MemorySegment value) {
+    public void hostAddress(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
     }
 

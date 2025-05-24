@@ -96,7 +96,7 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDescriptorUpdateTemplateEntry.BYTES, VkDescriptorUpdateTemplateEntry.BYTES));
         }
@@ -167,11 +167,11 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
     }
 
-    public @enumtype(VkDescriptorType.class) int descriptorType() {
+    public @EnumType(VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public void descriptorType(@enumtype(VkDescriptorType.class) int value) {
+    public void descriptorType(@EnumType(VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
     }
 

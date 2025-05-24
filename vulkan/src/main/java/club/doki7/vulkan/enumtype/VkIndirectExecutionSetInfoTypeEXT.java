@@ -7,7 +7,7 @@ public final class VkIndirectExecutionSetInfoTypeEXT {
     public static final int PIPELINES = 0x0;
     public static final int SHADER_OBJECTS = 0x1;
 
-    public static String explain(@enumtype(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
         return switch (value) {
             case VkIndirectExecutionSetInfoTypeEXT.PIPELINES -> "VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT";
             case VkIndirectExecutionSetInfoTypeEXT.SHADER_OBJECTS -> "VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT";

@@ -78,7 +78,7 @@ public final class VkDynamicState {
     public static final int ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT = 0x3ba2c8e0;
     public static final int DEPTH_CLAMP_RANGE_EXT = 0x3ba3ab70;
 
-    public static String explain(@enumtype(VkDynamicState.class) int value) {
+    public static String explain(@EnumType(VkDynamicState.class) int value) {
         return switch (value) {
             case VkDynamicState.ALPHA_TO_COVERAGE_ENABLE_EXT -> "VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT";
             case VkDynamicState.ALPHA_TO_ONE_ENABLE_EXT -> "VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT";

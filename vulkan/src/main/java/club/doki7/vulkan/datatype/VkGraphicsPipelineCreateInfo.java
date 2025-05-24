@@ -117,7 +117,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkGraphicsPipelineCreateInfo.BYTES, VkGraphicsPipelineCreateInfo.BYTES));
         }
@@ -174,19 +174,19 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         sType(VkStructureType.GRAPHICS_PIPELINE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -194,11 +194,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineCreateFlags.class) int flags() {
+    public @EnumType(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineCreateFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -215,7 +215,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pStagesRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -233,11 +233,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
+    public @Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
+    public void pStagesRaw(@Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
@@ -246,7 +246,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pVertexInputStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineVertexInputStateCreateInfo.Ptr pVertexInputState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineVertexInputStateCreateInfo.Ptr pVertexInputState(int assumedCount) {
         MemorySegment s = pVertexInputStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -264,11 +264,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineVertexInputStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment pVertexInputStateRaw() {
+    public @Pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment pVertexInputStateRaw() {
         return segment.get(LAYOUT$pVertexInputState, OFFSET$pVertexInputState);
     }
 
-    public void pVertexInputStateRaw(@pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment value) {
+    public void pVertexInputStateRaw(@Pointer(target=VkPipelineVertexInputStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
 
@@ -277,7 +277,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pInputAssemblyStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineInputAssemblyStateCreateInfo.Ptr pInputAssemblyState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineInputAssemblyStateCreateInfo.Ptr pInputAssemblyState(int assumedCount) {
         MemorySegment s = pInputAssemblyStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -295,11 +295,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineInputAssemblyStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineInputAssemblyStateCreateInfo.class) MemorySegment pInputAssemblyStateRaw() {
+    public @Pointer(target=VkPipelineInputAssemblyStateCreateInfo.class) MemorySegment pInputAssemblyStateRaw() {
         return segment.get(LAYOUT$pInputAssemblyState, OFFSET$pInputAssemblyState);
     }
 
-    public void pInputAssemblyStateRaw(@pointer(target=VkPipelineInputAssemblyStateCreateInfo.class) MemorySegment value) {
+    public void pInputAssemblyStateRaw(@Pointer(target=VkPipelineInputAssemblyStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pInputAssemblyState, OFFSET$pInputAssemblyState, value);
     }
 
@@ -308,7 +308,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pTessellationStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineTessellationStateCreateInfo.Ptr pTessellationState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineTessellationStateCreateInfo.Ptr pTessellationState(int assumedCount) {
         MemorySegment s = pTessellationStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -326,11 +326,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineTessellationStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment pTessellationStateRaw() {
+    public @Pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment pTessellationStateRaw() {
         return segment.get(LAYOUT$pTessellationState, OFFSET$pTessellationState);
     }
 
-    public void pTessellationStateRaw(@pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment value) {
+    public void pTessellationStateRaw(@Pointer(target=VkPipelineTessellationStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pTessellationState, OFFSET$pTessellationState, value);
     }
 
@@ -339,7 +339,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pViewportStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineViewportStateCreateInfo.Ptr pViewportState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineViewportStateCreateInfo.Ptr pViewportState(int assumedCount) {
         MemorySegment s = pViewportStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -357,11 +357,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineViewportStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineViewportStateCreateInfo.class) MemorySegment pViewportStateRaw() {
+    public @Pointer(target=VkPipelineViewportStateCreateInfo.class) MemorySegment pViewportStateRaw() {
         return segment.get(LAYOUT$pViewportState, OFFSET$pViewportState);
     }
 
-    public void pViewportStateRaw(@pointer(target=VkPipelineViewportStateCreateInfo.class) MemorySegment value) {
+    public void pViewportStateRaw(@Pointer(target=VkPipelineViewportStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pViewportState, OFFSET$pViewportState, value);
     }
 
@@ -370,7 +370,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pRasterizationStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineRasterizationStateCreateInfo.Ptr pRasterizationState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineRasterizationStateCreateInfo.Ptr pRasterizationState(int assumedCount) {
         MemorySegment s = pRasterizationStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -388,11 +388,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineRasterizationStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineRasterizationStateCreateInfo.class) MemorySegment pRasterizationStateRaw() {
+    public @Pointer(target=VkPipelineRasterizationStateCreateInfo.class) MemorySegment pRasterizationStateRaw() {
         return segment.get(LAYOUT$pRasterizationState, OFFSET$pRasterizationState);
     }
 
-    public void pRasterizationStateRaw(@pointer(target=VkPipelineRasterizationStateCreateInfo.class) MemorySegment value) {
+    public void pRasterizationStateRaw(@Pointer(target=VkPipelineRasterizationStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pRasterizationState, OFFSET$pRasterizationState, value);
     }
 
@@ -401,7 +401,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pMultisampleStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineMultisampleStateCreateInfo.Ptr pMultisampleState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineMultisampleStateCreateInfo.Ptr pMultisampleState(int assumedCount) {
         MemorySegment s = pMultisampleStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -419,11 +419,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineMultisampleStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineMultisampleStateCreateInfo.class) MemorySegment pMultisampleStateRaw() {
+    public @Pointer(target=VkPipelineMultisampleStateCreateInfo.class) MemorySegment pMultisampleStateRaw() {
         return segment.get(LAYOUT$pMultisampleState, OFFSET$pMultisampleState);
     }
 
-    public void pMultisampleStateRaw(@pointer(target=VkPipelineMultisampleStateCreateInfo.class) MemorySegment value) {
+    public void pMultisampleStateRaw(@Pointer(target=VkPipelineMultisampleStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pMultisampleState, OFFSET$pMultisampleState, value);
     }
 
@@ -432,7 +432,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pDepthStencilStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineDepthStencilStateCreateInfo.Ptr pDepthStencilState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineDepthStencilStateCreateInfo.Ptr pDepthStencilState(int assumedCount) {
         MemorySegment s = pDepthStencilStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -450,11 +450,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineDepthStencilStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineDepthStencilStateCreateInfo.class) MemorySegment pDepthStencilStateRaw() {
+    public @Pointer(target=VkPipelineDepthStencilStateCreateInfo.class) MemorySegment pDepthStencilStateRaw() {
         return segment.get(LAYOUT$pDepthStencilState, OFFSET$pDepthStencilState);
     }
 
-    public void pDepthStencilStateRaw(@pointer(target=VkPipelineDepthStencilStateCreateInfo.class) MemorySegment value) {
+    public void pDepthStencilStateRaw(@Pointer(target=VkPipelineDepthStencilStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pDepthStencilState, OFFSET$pDepthStencilState, value);
     }
 
@@ -463,7 +463,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pColorBlendStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineColorBlendStateCreateInfo.Ptr pColorBlendState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineColorBlendStateCreateInfo.Ptr pColorBlendState(int assumedCount) {
         MemorySegment s = pColorBlendStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -481,11 +481,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineColorBlendStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineColorBlendStateCreateInfo.class) MemorySegment pColorBlendStateRaw() {
+    public @Pointer(target=VkPipelineColorBlendStateCreateInfo.class) MemorySegment pColorBlendStateRaw() {
         return segment.get(LAYOUT$pColorBlendState, OFFSET$pColorBlendState);
     }
 
-    public void pColorBlendStateRaw(@pointer(target=VkPipelineColorBlendStateCreateInfo.class) MemorySegment value) {
+    public void pColorBlendStateRaw(@Pointer(target=VkPipelineColorBlendStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pColorBlendState, OFFSET$pColorBlendState, value);
     }
 
@@ -494,7 +494,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         pDynamicStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineDynamicStateCreateInfo.Ptr pDynamicState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineDynamicStateCreateInfo.Ptr pDynamicState(int assumedCount) {
         MemorySegment s = pDynamicStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -512,11 +512,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         return new VkPipelineDynamicStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment pDynamicStateRaw() {
+    public @Pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment pDynamicStateRaw() {
         return segment.get(LAYOUT$pDynamicState, OFFSET$pDynamicState);
     }
 
-    public void pDynamicStateRaw(@pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment value) {
+    public void pDynamicStateRaw(@Pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pDynamicState, OFFSET$pDynamicState, value);
     }
 

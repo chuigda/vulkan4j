@@ -95,7 +95,7 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDecompressMemoryRegionNV.BYTES, VkDecompressMemoryRegionNV.BYTES));
         }
@@ -174,11 +174,11 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$decompressedSize, OFFSET$decompressedSize, value);
     }
 
-    public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
+    public @EnumType(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
         return segment.get(LAYOUT$decompressionMethod, OFFSET$decompressionMethod);
     }
 
-    public void decompressionMethod(@enumtype(VkMemoryDecompressionMethodFlagsNV.class) long value) {
+    public void decompressionMethod(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethod, OFFSET$decompressionMethod, value);
     }
 

@@ -93,7 +93,7 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPushConstantRange.BYTES, VkPushConstantRange.BYTES));
         }
@@ -140,11 +140,11 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
+    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 

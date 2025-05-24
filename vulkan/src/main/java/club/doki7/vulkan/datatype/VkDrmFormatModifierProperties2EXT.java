@@ -93,7 +93,7 @@ public record VkDrmFormatModifierProperties2EXT(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDrmFormatModifierProperties2EXT.BYTES, VkDrmFormatModifierProperties2EXT.BYTES));
         }
@@ -156,11 +156,11 @@ public record VkDrmFormatModifierProperties2EXT(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
     }
 
-    public @enumtype(VkFormatFeatureFlags2.class) long drmFormatModifierTilingFeatures() {
+    public @EnumType(VkFormatFeatureFlags2.class) long drmFormatModifierTilingFeatures() {
         return segment.get(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures);
     }
 
-    public void drmFormatModifierTilingFeatures(@enumtype(VkFormatFeatureFlags2.class) long value) {
+    public void drmFormatModifierTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures, value);
     }
 

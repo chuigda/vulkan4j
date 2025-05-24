@@ -7,7 +7,7 @@ public final class VkSciSyncPrimitiveTypeNV {
     public static final int FENCE = 0x0;
     public static final int SEMAPHORE = 0x1;
 
-    public static String explain(@enumtype(VkSciSyncPrimitiveTypeNV.class) int value) {
+    public static String explain(@EnumType(VkSciSyncPrimitiveTypeNV.class) int value) {
         return switch (value) {
             case VkSciSyncPrimitiveTypeNV.FENCE -> "VK_SCI_SYNC_PRIMITIVE_TYPE_FENCE_NV";
             case VkSciSyncPrimitiveTypeNV.SEMAPHORE -> "VK_SCI_SYNC_PRIMITIVE_TYPE_SEMAPHORE_NV";

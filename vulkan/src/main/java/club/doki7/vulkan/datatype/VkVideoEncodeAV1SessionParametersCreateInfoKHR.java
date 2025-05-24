@@ -104,7 +104,7 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeAV1SessionParametersCreateInfoKHR.BYTES, VkVideoEncodeAV1SessionParametersCreateInfoKHR.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         sType(VkStructureType.VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -186,7 +186,7 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         pStdSequenceHeaderRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1SequenceHeader.Ptr pStdSequenceHeader(int assumedCount) {
+    @Unsafe public @Nullable StdVideoAV1SequenceHeader.Ptr pStdSequenceHeader(int assumedCount) {
         MemorySegment s = pStdSequenceHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -204,11 +204,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoAV1SequenceHeader(s);
     }
 
-    public @pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
+    public @Pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment pStdSequenceHeaderRaw() {
         return segment.get(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader);
     }
 
-    public void pStdSequenceHeaderRaw(@pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
+    public void pStdSequenceHeaderRaw(@Pointer(target=StdVideoAV1SequenceHeader.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
     }
 
@@ -217,7 +217,7 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         pStdDecoderModelInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeAV1DecoderModelInfo.Ptr pStdDecoderModelInfo(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeAV1DecoderModelInfo.Ptr pStdDecoderModelInfo(int assumedCount) {
         MemorySegment s = pStdDecoderModelInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -235,11 +235,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoEncodeAV1DecoderModelInfo(s);
     }
 
-    public @pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment pStdDecoderModelInfoRaw() {
+    public @Pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment pStdDecoderModelInfoRaw() {
         return segment.get(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo);
     }
 
-    public void pStdDecoderModelInfoRaw(@pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment value) {
+    public void pStdDecoderModelInfoRaw(@Pointer(target=StdVideoEncodeAV1DecoderModelInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdDecoderModelInfo, OFFSET$pStdDecoderModelInfo, value);
     }
 
@@ -256,7 +256,7 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         pStdOperatingPointsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeAV1OperatingPointInfo.Ptr pStdOperatingPoints(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeAV1OperatingPointInfo.Ptr pStdOperatingPoints(int assumedCount) {
         MemorySegment s = pStdOperatingPointsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -274,11 +274,11 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return new StdVideoEncodeAV1OperatingPointInfo(s);
     }
 
-    public @pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment pStdOperatingPointsRaw() {
+    public @Pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment pStdOperatingPointsRaw() {
         return segment.get(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints);
     }
 
-    public void pStdOperatingPointsRaw(@pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment value) {
+    public void pStdOperatingPointsRaw(@Pointer(target=StdVideoEncodeAV1OperatingPointInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStdOperatingPoints, OFFSET$pStdOperatingPoints, value);
     }
 

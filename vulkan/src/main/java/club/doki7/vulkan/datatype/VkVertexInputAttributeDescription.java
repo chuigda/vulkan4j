@@ -94,7 +94,7 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVertexInputAttributeDescription.BYTES, VkVertexInputAttributeDescription.BYTES));
         }
@@ -157,11 +157,11 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$binding, OFFSET$binding, value);
     }
 
-    public @enumtype(VkFormat.class) int format() {
+    public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@enumtype(VkFormat.class) int value) {
+    public void format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 

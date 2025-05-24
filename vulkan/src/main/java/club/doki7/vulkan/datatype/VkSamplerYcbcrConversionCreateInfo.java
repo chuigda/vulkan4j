@@ -108,7 +108,7 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSamplerYcbcrConversionCreateInfo.BYTES, VkSamplerYcbcrConversionCreateInfo.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         sType(VkStructureType.SAMPLER_YCBCR_CONVERSION_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,27 +185,27 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkFormat.class) int format() {
+    public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@enumtype(VkFormat.class) int value) {
+    public void format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public @enumtype(VkSamplerYcbcrModelConversion.class) int ycbcrModel() {
+    public @EnumType(VkSamplerYcbcrModelConversion.class) int ycbcrModel() {
         return segment.get(LAYOUT$ycbcrModel, OFFSET$ycbcrModel);
     }
 
-    public void ycbcrModel(@enumtype(VkSamplerYcbcrModelConversion.class) int value) {
+    public void ycbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
         segment.set(LAYOUT$ycbcrModel, OFFSET$ycbcrModel, value);
     }
 
-    public @enumtype(VkSamplerYcbcrRange.class) int ycbcrRange() {
+    public @EnumType(VkSamplerYcbcrRange.class) int ycbcrRange() {
         return segment.get(LAYOUT$ycbcrRange, OFFSET$ycbcrRange);
     }
 
-    public void ycbcrRange(@enumtype(VkSamplerYcbcrRange.class) int value) {
+    public void ycbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
         segment.set(LAYOUT$ycbcrRange, OFFSET$ycbcrRange, value);
     }
 
@@ -217,27 +217,27 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 
-    public @enumtype(VkChromaLocation.class) int xChromaOffset() {
+    public @EnumType(VkChromaLocation.class) int xChromaOffset() {
         return segment.get(LAYOUT$xChromaOffset, OFFSET$xChromaOffset);
     }
 
-    public void xChromaOffset(@enumtype(VkChromaLocation.class) int value) {
+    public void xChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$xChromaOffset, OFFSET$xChromaOffset, value);
     }
 
-    public @enumtype(VkChromaLocation.class) int yChromaOffset() {
+    public @EnumType(VkChromaLocation.class) int yChromaOffset() {
         return segment.get(LAYOUT$yChromaOffset, OFFSET$yChromaOffset);
     }
 
-    public void yChromaOffset(@enumtype(VkChromaLocation.class) int value) {
+    public void yChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$yChromaOffset, OFFSET$yChromaOffset, value);
     }
 
-    public @enumtype(VkFilter.class) int chromaFilter() {
+    public @EnumType(VkFilter.class) int chromaFilter() {
         return segment.get(LAYOUT$chromaFilter, OFFSET$chromaFilter);
     }
 
-    public void chromaFilter(@enumtype(VkFilter.class) int value) {
+    public void chromaFilter(@EnumType(VkFilter.class) int value) {
         segment.set(LAYOUT$chromaFilter, OFFSET$chromaFilter, value);
     }
 

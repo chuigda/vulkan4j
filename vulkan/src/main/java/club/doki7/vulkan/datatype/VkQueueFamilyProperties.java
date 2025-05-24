@@ -94,7 +94,7 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkQueueFamilyProperties.BYTES, VkQueueFamilyProperties.BYTES));
         }
@@ -141,11 +141,11 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @enumtype(VkQueueFlags.class) int queueFlags() {
+    public @EnumType(VkQueueFlags.class) int queueFlags() {
         return segment.get(LAYOUT$queueFlags, OFFSET$queueFlags);
     }
 
-    public void queueFlags(@enumtype(VkQueueFlags.class) int value) {
+    public void queueFlags(@EnumType(VkQueueFlags.class) int value) {
         segment.set(LAYOUT$queueFlags, OFFSET$queueFlags, value);
     }
 

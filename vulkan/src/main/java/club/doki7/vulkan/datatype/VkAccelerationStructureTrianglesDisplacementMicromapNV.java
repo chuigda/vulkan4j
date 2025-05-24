@@ -116,7 +116,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES, VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES));
         }
@@ -173,19 +173,19 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -193,19 +193,19 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkFormat.class) int displacementBiasAndScaleFormat() {
+    public @EnumType(VkFormat.class) int displacementBiasAndScaleFormat() {
         return segment.get(LAYOUT$displacementBiasAndScaleFormat, OFFSET$displacementBiasAndScaleFormat);
     }
 
-    public void displacementBiasAndScaleFormat(@enumtype(VkFormat.class) int value) {
+    public void displacementBiasAndScaleFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$displacementBiasAndScaleFormat, OFFSET$displacementBiasAndScaleFormat, value);
     }
 
-    public @enumtype(VkFormat.class) int displacementVectorFormat() {
+    public @EnumType(VkFormat.class) int displacementVectorFormat() {
         return segment.get(LAYOUT$displacementVectorFormat, OFFSET$displacementVectorFormat);
     }
 
-    public void displacementVectorFormat(@enumtype(VkFormat.class) int value) {
+    public void displacementVectorFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$displacementVectorFormat, OFFSET$displacementVectorFormat, value);
     }
 
@@ -257,11 +257,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         segment.set(LAYOUT$displacedMicromapPrimitiveFlagsStride, OFFSET$displacedMicromapPrimitiveFlagsStride, value);
     }
 
-    public @enumtype(VkIndexType.class) int indexType() {
+    public @EnumType(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public void indexType(@enumtype(VkIndexType.class) int value) {
+    public void indexType(@EnumType(VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
     }
 
@@ -302,7 +302,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         pUsageCountsRaw(s);
     }
 
-    @unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
+    @Unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
         MemorySegment s = pUsageCountsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -320,11 +320,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return new VkMicromapUsageEXT(s);
     }
 
-    public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+    public @Pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
         return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void pUsageCountsRaw(@pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
@@ -344,11 +344,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         ppUsageCountsRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+    public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
         return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
+    public void ppUsageCountsRaw(@Pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
     }
 

@@ -95,7 +95,7 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPerformanceValueDataINTEL.BYTES, VkPerformanceValueDataINTEL.BYTES));
         }
@@ -191,11 +191,11 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         valueStringRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment valueStringRaw() {
+    public @Pointer(comment="byte*") MemorySegment valueStringRaw() {
         return segment.get(LAYOUT$valueString, OFFSET$valueString);
     }
 
-    public void valueStringRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void valueStringRaw(@Pointer(comment="byte*") MemorySegment value) {
         segment.set(LAYOUT$valueString, OFFSET$valueString, value);
     }
 

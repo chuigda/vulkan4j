@@ -104,7 +104,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkGraphicsPipelineShaderGroupsCreateInfoNV.BYTES, VkGraphicsPipelineShaderGroupsCreateInfoNV.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         sType(VkStructureType.GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -194,7 +194,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         pGroupsRaw(s);
     }
 
-    @unsafe public @Nullable VkGraphicsShaderGroupCreateInfoNV.Ptr pGroups(int assumedCount) {
+    @Unsafe public @Nullable VkGraphicsShaderGroupCreateInfoNV.Ptr pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -212,11 +212,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return new VkGraphicsShaderGroupCreateInfoNV(s);
     }
 
-    public @pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
+    public @Pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment pGroupsRaw() {
         return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
     }
 
-    public void pGroupsRaw(@pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment value) {
+    public void pGroupsRaw(@Pointer(target=VkGraphicsShaderGroupCreateInfoNV.class) MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
@@ -245,11 +245,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         pPipelinesRaw(s);
     }
 
-    public @pointer(target=VkPipeline.class) MemorySegment pPipelinesRaw() {
+    public @Pointer(target=VkPipeline.class) MemorySegment pPipelinesRaw() {
         return segment.get(LAYOUT$pPipelines, OFFSET$pPipelines);
     }
 
-    public void pPipelinesRaw(@pointer(target=VkPipeline.class) MemorySegment value) {
+    public void pPipelinesRaw(@Pointer(target=VkPipeline.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelines, OFFSET$pPipelines, value);
     }
 

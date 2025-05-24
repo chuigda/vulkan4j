@@ -107,7 +107,7 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBindDescriptorSetsInfo.BYTES, VkBindDescriptorSetsInfo.BYTES));
         }
@@ -164,19 +164,19 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         sType(VkStructureType.BIND_DESCRIPTOR_SETS_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,11 +184,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
+    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 
@@ -237,11 +237,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         pDescriptorSetsRaw(s);
     }
 
-    public @pointer(target=VkDescriptorSet.class) MemorySegment pDescriptorSetsRaw() {
+    public @Pointer(target=VkDescriptorSet.class) MemorySegment pDescriptorSetsRaw() {
         return segment.get(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets);
     }
 
-    public void pDescriptorSetsRaw(@pointer(target=VkDescriptorSet.class) MemorySegment value) {
+    public void pDescriptorSetsRaw(@Pointer(target=VkDescriptorSet.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorSets, OFFSET$pDescriptorSets, value);
     }
 
@@ -270,11 +270,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         pDynamicOffsetsRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pDynamicOffsetsRaw() {
+    public @Pointer(comment="int*") MemorySegment pDynamicOffsetsRaw() {
         return segment.get(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets);
     }
 
-    public void pDynamicOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pDynamicOffsetsRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
     }
 

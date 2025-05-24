@@ -116,7 +116,7 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeH265CapabilitiesKHR.BYTES, VkVideoEncodeH265CapabilitiesKHR.BYTES));
         }
@@ -173,19 +173,19 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         sType(VkStructureType.VIDEO_ENCODE_H265_CAPABILITIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -193,19 +193,19 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeH265CapabilityFlagsKHR.class) int flags() {
+    public @EnumType(VkVideoEncodeH265CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkVideoEncodeH265CapabilityFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkVideoEncodeH265CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(StdVideoH265LevelIdc.class) int maxLevelIdc() {
+    public @EnumType(StdVideoH265LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public void maxLevelIdc(@enumtype(StdVideoH265LevelIdc.class) int value) {
+    public void maxLevelIdc(@EnumType(StdVideoH265LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
     }
 
@@ -225,19 +225,19 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTiles, SIZE$maxTiles);
     }
 
-    public @enumtype(VkVideoEncodeH265CtbSizeFlagsKHR.class) int ctbSizes() {
+    public @EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int ctbSizes() {
         return segment.get(LAYOUT$ctbSizes, OFFSET$ctbSizes);
     }
 
-    public void ctbSizes(@enumtype(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
+    public void ctbSizes(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$ctbSizes, OFFSET$ctbSizes, value);
     }
 
-    public @enumtype(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int transformBlockSizes() {
+    public @EnumType(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int transformBlockSizes() {
         return segment.get(LAYOUT$transformBlockSizes, OFFSET$transformBlockSizes);
     }
 
-    public void transformBlockSizes(@enumtype(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int value) {
+    public void transformBlockSizes(@EnumType(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$transformBlockSizes, OFFSET$transformBlockSizes, value);
     }
 
@@ -313,11 +313,11 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
     }
 
-    public @enumtype(VkVideoEncodeH265StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @EnumType(VkVideoEncodeH265StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public void stdSyntaxFlags(@enumtype(VkVideoEncodeH265StdFlagsKHR.class) int value) {
+    public void stdSyntaxFlags(@EnumType(VkVideoEncodeH265StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
     }
 

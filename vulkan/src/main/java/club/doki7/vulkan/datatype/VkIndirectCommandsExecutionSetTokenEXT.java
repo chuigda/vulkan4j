@@ -92,7 +92,7 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectCommandsExecutionSetTokenEXT.BYTES, VkIndirectCommandsExecutionSetTokenEXT.BYTES));
         }
@@ -139,19 +139,19 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         return ret;
     }
 
-    public @enumtype(VkIndirectExecutionSetInfoTypeEXT.class) int type() {
+    public @EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
+    public void type(@EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int shaderStages() {
+    public @EnumType(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public void shaderStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
     }
 

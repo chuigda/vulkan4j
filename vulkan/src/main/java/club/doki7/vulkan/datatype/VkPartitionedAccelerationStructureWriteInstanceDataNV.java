@@ -99,7 +99,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES, VkPartitionedAccelerationStructureWriteInstanceDataNV.BYTES));
         }
@@ -186,11 +186,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         segment.set(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex, value);
     }
 
-    public @enumtype(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
+    public @EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
         return segment.get(LAYOUT$instanceFlags, OFFSET$instanceFlags);
     }
 
-    public void instanceFlags(@enumtype(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
+    public void instanceFlags(@EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$instanceFlags, OFFSET$instanceFlags, value);
     }
 

@@ -7,7 +7,7 @@ public final class VkPerformanceParameterTypeINTEL {
     public static final int HW_COUNTERS_SUPPORTED = 0x0;
     public static final int STREAM_MARKER_VALID_BITS = 0x1;
 
-    public static String explain(@enumtype(VkPerformanceParameterTypeINTEL.class) int value) {
+    public static String explain(@EnumType(VkPerformanceParameterTypeINTEL.class) int value) {
         return switch (value) {
             case VkPerformanceParameterTypeINTEL.HW_COUNTERS_SUPPORTED -> "VK_PERFORMANCE_PARAMETER_TYPE_HW_COUNTERS_SUPPORTED_INTEL";
             case VkPerformanceParameterTypeINTEL.STREAM_MARKER_VALID_BITS -> "VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL";

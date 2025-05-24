@@ -32,7 +32,7 @@ public final class VkDriverId {
     public static final int MESA_HONEYKRISP = 0x1a;
     public static final int VULKAN_SC_EMULATION_ON_VULKAN = 0x1b;
 
-    public static String explain(@enumtype(VkDriverId.class) int value) {
+    public static String explain(@EnumType(VkDriverId.class) int value) {
         return switch (value) {
             case VkDriverId.AMD_OPEN_SOURCE -> "VK_DRIVER_ID_AMD_OPEN_SOURCE";
             case VkDriverId.AMD_PROPRIETARY -> "VK_DRIVER_ID_AMD_PROPRIETARY";

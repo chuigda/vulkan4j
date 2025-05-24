@@ -10,7 +10,7 @@ public final class VkVideoEncodeTuningModeKHR {
     public static final int ULTRA_LOW_LATENCY = 0x3;
     public static final int LOSSLESS = 0x4;
 
-    public static String explain(@enumtype(VkVideoEncodeTuningModeKHR.class) int value) {
+    public static String explain(@EnumType(VkVideoEncodeTuningModeKHR.class) int value) {
         return switch (value) {
             case VkVideoEncodeTuningModeKHR.DEFAULT -> "VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR";
             case VkVideoEncodeTuningModeKHR.HIGH_QUALITY -> "VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR";

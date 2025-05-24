@@ -113,7 +113,7 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageCreateInfo.BYTES, VkImageCreateInfo.BYTES));
         }
@@ -170,19 +170,19 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         sType(VkStructureType.IMAGE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -190,27 +190,27 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageCreateFlags.class) int flags() {
+    public @EnumType(VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkImageCreateFlags.class) int value) {
+    public void flags(@EnumType(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkImageType.class) int imageType() {
+    public @EnumType(VkImageType.class) int imageType() {
         return segment.get(LAYOUT$imageType, OFFSET$imageType);
     }
 
-    public void imageType(@enumtype(VkImageType.class) int value) {
+    public void imageType(@EnumType(VkImageType.class) int value) {
         segment.set(LAYOUT$imageType, OFFSET$imageType, value);
     }
 
-    public @enumtype(VkFormat.class) int format() {
+    public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@enumtype(VkFormat.class) int value) {
+    public void format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
@@ -238,35 +238,35 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         segment.set(LAYOUT$arrayLayers, OFFSET$arrayLayers, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int samples() {
+    public @EnumType(VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public void samples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void samples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
     }
 
-    public @enumtype(VkImageTiling.class) int tiling() {
+    public @EnumType(VkImageTiling.class) int tiling() {
         return segment.get(LAYOUT$tiling, OFFSET$tiling);
     }
 
-    public void tiling(@enumtype(VkImageTiling.class) int value) {
+    public void tiling(@EnumType(VkImageTiling.class) int value) {
         segment.set(LAYOUT$tiling, OFFSET$tiling, value);
     }
 
-    public @enumtype(VkImageUsageFlags.class) int usage() {
+    public @EnumType(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@enumtype(VkImageUsageFlags.class) int value) {
+    public void usage(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
     }
 
-    public @enumtype(VkSharingMode.class) int sharingMode() {
+    public @EnumType(VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public void sharingMode(@enumtype(VkSharingMode.class) int value) {
+    public void sharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
     }
 
@@ -295,19 +295,19 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         pQueueFamilyIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
-    public @enumtype(VkImageLayout.class) int initialLayout() {
+    public @EnumType(VkImageLayout.class) int initialLayout() {
         return segment.get(LAYOUT$initialLayout, OFFSET$initialLayout);
     }
 
-    public void initialLayout(@enumtype(VkImageLayout.class) int value) {
+    public void initialLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$initialLayout, OFFSET$initialLayout, value);
     }
 

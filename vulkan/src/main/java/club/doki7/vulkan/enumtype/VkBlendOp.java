@@ -56,7 +56,7 @@ public final class VkBlendOp {
     public static final int GREEN_EXT = 0x3b9d0c4c;
     public static final int BLUE_EXT = 0x3b9d0c4d;
 
-    public static String explain(@enumtype(VkBlendOp.class) int value) {
+    public static String explain(@EnumType(VkBlendOp.class) int value) {
         return switch (value) {
             case VkBlendOp.ADD -> "VK_BLEND_OP_ADD";
             case VkBlendOp.BLUE_EXT -> "VK_BLEND_OP_BLUE_EXT";

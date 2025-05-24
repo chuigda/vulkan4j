@@ -93,7 +93,7 @@ public record VkExternalMemoryProperties(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkExternalMemoryProperties.BYTES, VkExternalMemoryProperties.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkExternalMemoryProperties(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @enumtype(VkExternalMemoryFeatureFlags.class) int externalMemoryFeatures() {
+    public @EnumType(VkExternalMemoryFeatureFlags.class) int externalMemoryFeatures() {
         return segment.get(LAYOUT$externalMemoryFeatures, OFFSET$externalMemoryFeatures);
     }
 
-    public void externalMemoryFeatures(@enumtype(VkExternalMemoryFeatureFlags.class) int value) {
+    public void externalMemoryFeatures(@EnumType(VkExternalMemoryFeatureFlags.class) int value) {
         segment.set(LAYOUT$externalMemoryFeatures, OFFSET$externalMemoryFeatures, value);
     }
 
-    public @enumtype(VkExternalMemoryHandleTypeFlags.class) int exportFromImportedHandleTypes() {
+    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public void exportFromImportedHandleTypes(@enumtype(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public void exportFromImportedHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
     }
 
-    public @enumtype(VkExternalMemoryHandleTypeFlags.class) int compatibleHandleTypes() {
+    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public void compatibleHandleTypes(@enumtype(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public void compatibleHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
     }
 

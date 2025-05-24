@@ -92,7 +92,7 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineBinaryDataKHR.BYTES, VkPipelineBinaryDataKHR.BYTES));
         }
@@ -147,11 +147,11 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@pointer(comment="void*") MemorySegment value) {
+    public void pData(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 

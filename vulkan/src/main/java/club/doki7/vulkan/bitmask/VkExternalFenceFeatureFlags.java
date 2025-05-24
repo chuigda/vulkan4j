@@ -10,7 +10,7 @@ public final class VkExternalFenceFeatureFlags {
     public static final int EXPORTABLE = 0x1;
     public static final int IMPORTABLE = 0x2;
 
-    public static String explain(@enumtype(VkExternalFenceFeatureFlags.class) int flags) {
+    public static String explain(@EnumType(VkExternalFenceFeatureFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EXPORTABLE) != 0) {
             detectedFlagBits.add("VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT");

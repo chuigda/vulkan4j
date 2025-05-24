@@ -111,7 +111,7 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBufferCollectionPropertiesFUCHSIA.BYTES, VkBufferCollectionPropertiesFUCHSIA.BYTES));
         }
@@ -168,19 +168,19 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         sType(VkStructureType.BUFFER_COLLECTION_PROPERTIES_FUCHSIA);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -220,11 +220,11 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         segment.set(LAYOUT$sysmemPixelFormat, OFFSET$sysmemPixelFormat, value);
     }
 
-    public @enumtype(VkFormatFeatureFlags.class) int formatFeatures() {
+    public @EnumType(VkFormatFeatureFlags.class) int formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public void formatFeatures(@enumtype(VkFormatFeatureFlags.class) int value) {
+    public void formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
     }
 
@@ -244,35 +244,35 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
     }
 
-    public @enumtype(VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
+    public @EnumType(VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
         return segment.get(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel);
     }
 
-    public void suggestedYcbcrModel(@enumtype(VkSamplerYcbcrModelConversion.class) int value) {
+    public void suggestedYcbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel, value);
     }
 
-    public @enumtype(VkSamplerYcbcrRange.class) int suggestedYcbcrRange() {
+    public @EnumType(VkSamplerYcbcrRange.class) int suggestedYcbcrRange() {
         return segment.get(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange);
     }
 
-    public void suggestedYcbcrRange(@enumtype(VkSamplerYcbcrRange.class) int value) {
+    public void suggestedYcbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange, value);
     }
 
-    public @enumtype(VkChromaLocation.class) int suggestedXChromaOffset() {
+    public @EnumType(VkChromaLocation.class) int suggestedXChromaOffset() {
         return segment.get(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset);
     }
 
-    public void suggestedXChromaOffset(@enumtype(VkChromaLocation.class) int value) {
+    public void suggestedXChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset, value);
     }
 
-    public @enumtype(VkChromaLocation.class) int suggestedYChromaOffset() {
+    public @EnumType(VkChromaLocation.class) int suggestedYChromaOffset() {
         return segment.get(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset);
     }
 
-    public void suggestedYChromaOffset(@enumtype(VkChromaLocation.class) int value) {
+    public void suggestedYChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset, value);
     }
 

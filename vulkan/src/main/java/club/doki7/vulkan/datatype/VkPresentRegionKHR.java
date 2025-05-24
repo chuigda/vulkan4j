@@ -92,7 +92,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPresentRegionKHR.BYTES, VkPresentRegionKHR.BYTES));
         }
@@ -152,7 +152,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         pRectanglesRaw(s);
     }
 
-    @unsafe public @Nullable VkRectLayerKHR.Ptr pRectangles(int assumedCount) {
+    @Unsafe public @Nullable VkRectLayerKHR.Ptr pRectangles(int assumedCount) {
         MemorySegment s = pRectanglesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -170,11 +170,11 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         return new VkRectLayerKHR(s);
     }
 
-    public @pointer(target=VkRectLayerKHR.class) MemorySegment pRectanglesRaw() {
+    public @Pointer(target=VkRectLayerKHR.class) MemorySegment pRectanglesRaw() {
         return segment.get(LAYOUT$pRectangles, OFFSET$pRectangles);
     }
 
-    public void pRectanglesRaw(@pointer(target=VkRectLayerKHR.class) MemorySegment value) {
+    public void pRectanglesRaw(@Pointer(target=VkRectLayerKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pRectangles, OFFSET$pRectangles, value);
     }
 

@@ -110,7 +110,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDebugUtilsMessengerCallbackDataEXT.BYTES, VkDebugUtilsMessengerCallbackDataEXT.BYTES));
         }
@@ -167,19 +167,19 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         sType(VkStructureType.DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -187,11 +187,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
+    public @EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
+    public void flags(@EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -212,11 +212,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pMessageIdNameRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment pMessageIdNameRaw() {
+    public @Pointer(comment="byte*") MemorySegment pMessageIdNameRaw() {
         return segment.get(LAYOUT$pMessageIdName, OFFSET$pMessageIdName);
     }
 
-    public void pMessageIdNameRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void pMessageIdNameRaw(@Pointer(comment="byte*") MemorySegment value) {
         segment.set(LAYOUT$pMessageIdName, OFFSET$pMessageIdName, value);
     }
 
@@ -245,11 +245,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pMessageRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment pMessageRaw() {
+    public @Pointer(comment="byte*") MemorySegment pMessageRaw() {
         return segment.get(LAYOUT$pMessage, OFFSET$pMessage);
     }
 
-    public void pMessageRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void pMessageRaw(@Pointer(comment="byte*") MemorySegment value) {
         segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
     }
 
@@ -266,7 +266,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pQueueLabelsRaw(s);
     }
 
-    @unsafe public @Nullable VkDebugUtilsLabelEXT.Ptr pQueueLabels(int assumedCount) {
+    @Unsafe public @Nullable VkDebugUtilsLabelEXT.Ptr pQueueLabels(int assumedCount) {
         MemorySegment s = pQueueLabelsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -284,11 +284,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsLabelEXT(s);
     }
 
-    public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pQueueLabelsRaw() {
+    public @Pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pQueueLabelsRaw() {
         return segment.get(LAYOUT$pQueueLabels, OFFSET$pQueueLabels);
     }
 
-    public void pQueueLabelsRaw(@pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
+    public void pQueueLabelsRaw(@Pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
 
@@ -305,7 +305,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pCmdBufLabelsRaw(s);
     }
 
-    @unsafe public @Nullable VkDebugUtilsLabelEXT.Ptr pCmdBufLabels(int assumedCount) {
+    @Unsafe public @Nullable VkDebugUtilsLabelEXT.Ptr pCmdBufLabels(int assumedCount) {
         MemorySegment s = pCmdBufLabelsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -323,11 +323,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsLabelEXT(s);
     }
 
-    public @pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pCmdBufLabelsRaw() {
+    public @Pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment pCmdBufLabelsRaw() {
         return segment.get(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels);
     }
 
-    public void pCmdBufLabelsRaw(@pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
+    public void pCmdBufLabelsRaw(@Pointer(target=VkDebugUtilsLabelEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
 
@@ -344,7 +344,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         pObjectsRaw(s);
     }
 
-    @unsafe public @Nullable VkDebugUtilsObjectNameInfoEXT.Ptr pObjects(int assumedCount) {
+    @Unsafe public @Nullable VkDebugUtilsObjectNameInfoEXT.Ptr pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -362,11 +362,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new VkDebugUtilsObjectNameInfoEXT(s);
     }
 
-    public @pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment pObjectsRaw() {
+    public @Pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment pObjectsRaw() {
         return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
     }
 
-    public void pObjectsRaw(@pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment value) {
+    public void pObjectsRaw(@Pointer(target=VkDebugUtilsObjectNameInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 

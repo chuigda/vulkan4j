@@ -97,7 +97,7 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoAV1ColorConfig.BYTES, StdVideoAV1ColorConfig.BYTES));
         }
@@ -177,35 +177,35 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
     }
 
 
-    public @enumtype(StdVideoAV1ColorPrimaries.class) int color_primaries() {
+    public @EnumType(StdVideoAV1ColorPrimaries.class) int color_primaries() {
         return segment.get(LAYOUT$color_primaries, OFFSET$color_primaries);
     }
 
-    public void color_primaries(@enumtype(StdVideoAV1ColorPrimaries.class) int value) {
+    public void color_primaries(@EnumType(StdVideoAV1ColorPrimaries.class) int value) {
         segment.set(LAYOUT$color_primaries, OFFSET$color_primaries, value);
     }
 
-    public @enumtype(StdVideoAV1TransferCharacteristics.class) int transfer_characteristics() {
+    public @EnumType(StdVideoAV1TransferCharacteristics.class) int transfer_characteristics() {
         return segment.get(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics);
     }
 
-    public void transfer_characteristics(@enumtype(StdVideoAV1TransferCharacteristics.class) int value) {
+    public void transfer_characteristics(@EnumType(StdVideoAV1TransferCharacteristics.class) int value) {
         segment.set(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics, value);
     }
 
-    public @enumtype(StdVideoAV1MatrixCoefficients.class) int matrix_coefficients() {
+    public @EnumType(StdVideoAV1MatrixCoefficients.class) int matrix_coefficients() {
         return segment.get(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients);
     }
 
-    public void matrix_coefficients(@enumtype(StdVideoAV1MatrixCoefficients.class) int value) {
+    public void matrix_coefficients(@EnumType(StdVideoAV1MatrixCoefficients.class) int value) {
         segment.set(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients, value);
     }
 
-    public @enumtype(StdVideoAV1ChromaSamplePosition.class) int chroma_sample_position() {
+    public @EnumType(StdVideoAV1ChromaSamplePosition.class) int chroma_sample_position() {
         return segment.get(LAYOUT$chroma_sample_position, OFFSET$chroma_sample_position);
     }
 
-    public void chroma_sample_position(@enumtype(StdVideoAV1ChromaSamplePosition.class) int value) {
+    public void chroma_sample_position(@EnumType(StdVideoAV1ChromaSamplePosition.class) int value) {
         segment.set(LAYOUT$chroma_sample_position, OFFSET$chroma_sample_position, value);
     }
 

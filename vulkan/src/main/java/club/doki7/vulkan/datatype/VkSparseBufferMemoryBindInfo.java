@@ -93,7 +93,7 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSparseBufferMemoryBindInfo.BYTES, VkSparseBufferMemoryBindInfo.BYTES));
         }
@@ -165,7 +165,7 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
         pBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseMemoryBind.Ptr pBinds(int assumedCount) {
+    @Unsafe public @Nullable VkSparseMemoryBind.Ptr pBinds(int assumedCount) {
         MemorySegment s = pBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -183,11 +183,11 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
         return new VkSparseMemoryBind(s);
     }
 
-    public @pointer(target=VkSparseMemoryBind.class) MemorySegment pBindsRaw() {
+    public @Pointer(target=VkSparseMemoryBind.class) MemorySegment pBindsRaw() {
         return segment.get(LAYOUT$pBinds, OFFSET$pBinds);
     }
 
-    public void pBindsRaw(@pointer(target=VkSparseMemoryBind.class) MemorySegment value) {
+    public void pBindsRaw(@Pointer(target=VkSparseMemoryBind.class) MemorySegment value) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
 

@@ -124,7 +124,7 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeAV1CapabilitiesKHR.BYTES, VkVideoEncodeAV1CapabilitiesKHR.BYTES));
         }
@@ -181,19 +181,19 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         sType(VkStructureType.VIDEO_ENCODE_AV1_CAPABILITIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -201,19 +201,19 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags() {
+    public @EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkVideoEncodeAV1CapabilityFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(StdVideoAV1Level.class) int maxLevel() {
+    public @EnumType(StdVideoAV1Level.class) int maxLevel() {
         return segment.get(LAYOUT$maxLevel, OFFSET$maxLevel);
     }
 
-    public void maxLevel(@enumtype(StdVideoAV1Level.class) int value) {
+    public void maxLevel(@EnumType(StdVideoAV1Level.class) int value) {
         segment.set(LAYOUT$maxLevel, OFFSET$maxLevel, value);
     }
 
@@ -249,11 +249,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTileSize, SIZE$maxTileSize);
     }
 
-    public @enumtype(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int superblockSizes() {
+    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int superblockSizes() {
         return segment.get(LAYOUT$superblockSizes, OFFSET$superblockSizes);
     }
 
-    public void superblockSizes(@enumtype(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public void superblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$superblockSizes, OFFSET$superblockSizes, value);
     }
 
@@ -385,11 +385,11 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
     }
 
-    public @enumtype(VkVideoEncodeAV1StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public void stdSyntaxFlags(@enumtype(VkVideoEncodeAV1StdFlagsKHR.class) int value) {
+    public void stdSyntaxFlags(@EnumType(VkVideoEncodeAV1StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
     }
 

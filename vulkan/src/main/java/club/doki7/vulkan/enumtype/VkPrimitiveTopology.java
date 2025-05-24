@@ -16,7 +16,7 @@ public final class VkPrimitiveTopology {
     public static final int TRIANGLE_STRIP_WITH_ADJACENCY = 0x9;
     public static final int PATCH_LIST = 0xa;
 
-    public static String explain(@enumtype(VkPrimitiveTopology.class) int value) {
+    public static String explain(@EnumType(VkPrimitiveTopology.class) int value) {
         return switch (value) {
             case VkPrimitiveTopology.LINE_LIST -> "VK_PRIMITIVE_TOPOLOGY_LINE_LIST";
             case VkPrimitiveTopology.LINE_LIST_WITH_ADJACENCY -> "VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY";

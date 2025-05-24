@@ -104,7 +104,7 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceQueueCreateInfo.BYTES, VkDeviceQueueCreateInfo.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         sType(VkStructureType.DEVICE_QUEUE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,11 +181,11 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDeviceQueueCreateFlags.class) int flags() {
+    public @EnumType(VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkDeviceQueueCreateFlags.class) int value) {
+    public void flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -222,11 +222,11 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         pQueuePrioritiesRaw(s);
     }
 
-    public @pointer(comment="float*") MemorySegment pQueuePrioritiesRaw() {
+    public @Pointer(comment="float*") MemorySegment pQueuePrioritiesRaw() {
         return segment.get(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities);
     }
 
-    public void pQueuePrioritiesRaw(@pointer(comment="float*") MemorySegment value) {
+    public void pQueuePrioritiesRaw(@Pointer(comment="float*") MemorySegment value) {
         segment.set(LAYOUT$pQueuePriorities, OFFSET$pQueuePriorities, value);
     }
 

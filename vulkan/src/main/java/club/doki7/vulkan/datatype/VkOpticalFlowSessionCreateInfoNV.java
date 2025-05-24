@@ -109,7 +109,7 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkOpticalFlowSessionCreateInfoNV.BYTES, VkOpticalFlowSessionCreateInfoNV.BYTES));
         }
@@ -166,19 +166,19 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         sType(VkStructureType.OPTICAL_FLOW_SESSION_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -202,59 +202,59 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$height, OFFSET$height, value);
     }
 
-    public @enumtype(VkFormat.class) int imageFormat() {
+    public @EnumType(VkFormat.class) int imageFormat() {
         return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
     }
 
-    public void imageFormat(@enumtype(VkFormat.class) int value) {
+    public void imageFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
     }
 
-    public @enumtype(VkFormat.class) int flowVectorFormat() {
+    public @EnumType(VkFormat.class) int flowVectorFormat() {
         return segment.get(LAYOUT$flowVectorFormat, OFFSET$flowVectorFormat);
     }
 
-    public void flowVectorFormat(@enumtype(VkFormat.class) int value) {
+    public void flowVectorFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$flowVectorFormat, OFFSET$flowVectorFormat, value);
     }
 
-    public @enumtype(VkFormat.class) int costFormat() {
+    public @EnumType(VkFormat.class) int costFormat() {
         return segment.get(LAYOUT$costFormat, OFFSET$costFormat);
     }
 
-    public void costFormat(@enumtype(VkFormat.class) int value) {
+    public void costFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$costFormat, OFFSET$costFormat, value);
     }
 
-    public @enumtype(VkOpticalFlowGridSizeFlagsNV.class) int outputGridSize() {
+    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int outputGridSize() {
         return segment.get(LAYOUT$outputGridSize, OFFSET$outputGridSize);
     }
 
-    public void outputGridSize(@enumtype(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public void outputGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$outputGridSize, OFFSET$outputGridSize, value);
     }
 
-    public @enumtype(VkOpticalFlowGridSizeFlagsNV.class) int hintGridSize() {
+    public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int hintGridSize() {
         return segment.get(LAYOUT$hintGridSize, OFFSET$hintGridSize);
     }
 
-    public void hintGridSize(@enumtype(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public void hintGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$hintGridSize, OFFSET$hintGridSize, value);
     }
 
-    public @enumtype(VkOpticalFlowPerformanceLevelNV.class) int performanceLevel() {
+    public @EnumType(VkOpticalFlowPerformanceLevelNV.class) int performanceLevel() {
         return segment.get(LAYOUT$performanceLevel, OFFSET$performanceLevel);
     }
 
-    public void performanceLevel(@enumtype(VkOpticalFlowPerformanceLevelNV.class) int value) {
+    public void performanceLevel(@EnumType(VkOpticalFlowPerformanceLevelNV.class) int value) {
         segment.set(LAYOUT$performanceLevel, OFFSET$performanceLevel, value);
     }
 
-    public @enumtype(VkOpticalFlowSessionCreateFlagsNV.class) int flags() {
+    public @EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkOpticalFlowSessionCreateFlagsNV.class) int value) {
+    public void flags(@EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 

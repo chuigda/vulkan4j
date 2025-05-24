@@ -13,7 +13,7 @@ public final class VkCompareOp {
     public static final int GREATER_OR_EQUAL = 0x6;
     public static final int ALWAYS = 0x7;
 
-    public static String explain(@enumtype(VkCompareOp.class) int value) {
+    public static String explain(@EnumType(VkCompareOp.class) int value) {
         return switch (value) {
             case VkCompareOp.ALWAYS -> "VK_COMPARE_OP_ALWAYS";
             case VkCompareOp.EQUAL -> "VK_COMPARE_OP_EQUAL";

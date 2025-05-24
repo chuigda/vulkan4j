@@ -107,7 +107,7 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDependencyInfo.BYTES, VkDependencyInfo.BYTES));
         }
@@ -164,19 +164,19 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         sType(VkStructureType.DEPENDENCY_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,11 +184,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDependencyFlags.class) int dependencyFlags() {
+    public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public void dependencyFlags(@enumtype(VkDependencyFlags.class) int value) {
+    public void dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
     }
 
@@ -205,7 +205,7 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         pMemoryBarriersRaw(s);
     }
 
-    @unsafe public @Nullable VkMemoryBarrier2.Ptr pMemoryBarriers(int assumedCount) {
+    @Unsafe public @Nullable VkMemoryBarrier2.Ptr pMemoryBarriers(int assumedCount) {
         MemorySegment s = pMemoryBarriersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -223,11 +223,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return new VkMemoryBarrier2(s);
     }
 
-    public @pointer(target=VkMemoryBarrier2.class) MemorySegment pMemoryBarriersRaw() {
+    public @Pointer(target=VkMemoryBarrier2.class) MemorySegment pMemoryBarriersRaw() {
         return segment.get(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers);
     }
 
-    public void pMemoryBarriersRaw(@pointer(target=VkMemoryBarrier2.class) MemorySegment value) {
+    public void pMemoryBarriersRaw(@Pointer(target=VkMemoryBarrier2.class) MemorySegment value) {
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
 
@@ -244,7 +244,7 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         pBufferMemoryBarriersRaw(s);
     }
 
-    @unsafe public @Nullable VkBufferMemoryBarrier2.Ptr pBufferMemoryBarriers(int assumedCount) {
+    @Unsafe public @Nullable VkBufferMemoryBarrier2.Ptr pBufferMemoryBarriers(int assumedCount) {
         MemorySegment s = pBufferMemoryBarriersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -262,11 +262,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return new VkBufferMemoryBarrier2(s);
     }
 
-    public @pointer(target=VkBufferMemoryBarrier2.class) MemorySegment pBufferMemoryBarriersRaw() {
+    public @Pointer(target=VkBufferMemoryBarrier2.class) MemorySegment pBufferMemoryBarriersRaw() {
         return segment.get(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers);
     }
 
-    public void pBufferMemoryBarriersRaw(@pointer(target=VkBufferMemoryBarrier2.class) MemorySegment value) {
+    public void pBufferMemoryBarriersRaw(@Pointer(target=VkBufferMemoryBarrier2.class) MemorySegment value) {
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
 
@@ -283,7 +283,7 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         pImageMemoryBarriersRaw(s);
     }
 
-    @unsafe public @Nullable VkImageMemoryBarrier2.Ptr pImageMemoryBarriers(int assumedCount) {
+    @Unsafe public @Nullable VkImageMemoryBarrier2.Ptr pImageMemoryBarriers(int assumedCount) {
         MemorySegment s = pImageMemoryBarriersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -301,11 +301,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return new VkImageMemoryBarrier2(s);
     }
 
-    public @pointer(target=VkImageMemoryBarrier2.class) MemorySegment pImageMemoryBarriersRaw() {
+    public @Pointer(target=VkImageMemoryBarrier2.class) MemorySegment pImageMemoryBarriersRaw() {
         return segment.get(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers);
     }
 
-    public void pImageMemoryBarriersRaw(@pointer(target=VkImageMemoryBarrier2.class) MemorySegment value) {
+    public void pImageMemoryBarriersRaw(@Pointer(target=VkImageMemoryBarrier2.class) MemorySegment value) {
         segment.set(LAYOUT$pImageMemoryBarriers, OFFSET$pImageMemoryBarriers, value);
     }
 

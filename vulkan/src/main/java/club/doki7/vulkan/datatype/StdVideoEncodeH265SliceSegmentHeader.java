@@ -103,7 +103,7 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH265SliceSegmentHeader.BYTES, StdVideoEncodeH265SliceSegmentHeader.BYTES));
         }
@@ -158,11 +158,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @enumtype(StdVideoH265SliceType.class) int slice_type() {
+    public @EnumType(StdVideoH265SliceType.class) int slice_type() {
         return segment.get(LAYOUT$slice_type, OFFSET$slice_type);
     }
 
-    public void slice_type(@enumtype(StdVideoH265SliceType.class) int value) {
+    public void slice_type(@EnumType(StdVideoH265SliceType.class) int value) {
         segment.set(LAYOUT$slice_type, OFFSET$slice_type, value);
     }
 
@@ -260,7 +260,7 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         pWeightTableRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH265WeightTable.Ptr pWeightTable(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeH265WeightTable.Ptr pWeightTable(int assumedCount) {
         MemorySegment s = pWeightTableRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -278,11 +278,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return new StdVideoEncodeH265WeightTable(s);
     }
 
-    public @pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {
+    public @Pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment pWeightTableRaw() {
         return segment.get(LAYOUT$pWeightTable, OFFSET$pWeightTable);
     }
 
-    public void pWeightTableRaw(@pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment value) {
+    public void pWeightTableRaw(@Pointer(target=StdVideoEncodeH265WeightTable.class) MemorySegment value) {
         segment.set(LAYOUT$pWeightTable, OFFSET$pWeightTable, value);
     }
 

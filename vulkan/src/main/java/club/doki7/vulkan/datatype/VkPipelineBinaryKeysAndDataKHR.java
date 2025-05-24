@@ -93,7 +93,7 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineBinaryKeysAndDataKHR.BYTES, VkPipelineBinaryKeysAndDataKHR.BYTES));
         }
@@ -153,7 +153,7 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         pPipelineBinaryKeysRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineBinaryKeyKHR.Ptr pPipelineBinaryKeys(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineBinaryKeyKHR.Ptr pPipelineBinaryKeys(int assumedCount) {
         MemorySegment s = pPipelineBinaryKeysRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -171,11 +171,11 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return new VkPipelineBinaryKeyKHR(s);
     }
 
-    public @pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
+    public @Pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
         return segment.get(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys);
     }
 
-    public void pPipelineBinaryKeysRaw(@pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment value) {
+    public void pPipelineBinaryKeysRaw(@Pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
     }
 
@@ -184,7 +184,7 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         pPipelineBinaryDataRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineBinaryDataKHR.Ptr pPipelineBinaryData(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineBinaryDataKHR.Ptr pPipelineBinaryData(int assumedCount) {
         MemorySegment s = pPipelineBinaryDataRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -202,11 +202,11 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return new VkPipelineBinaryDataKHR(s);
     }
 
-    public @pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {
+    public @Pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {
         return segment.get(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData);
     }
 
-    public void pPipelineBinaryDataRaw(@pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment value) {
+    public void pPipelineBinaryDataRaw(@Pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData, value);
     }
 

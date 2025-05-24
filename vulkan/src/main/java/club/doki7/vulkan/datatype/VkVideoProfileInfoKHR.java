@@ -104,7 +104,7 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoProfileInfoKHR.BYTES, VkVideoProfileInfoKHR.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         sType(VkStructureType.VIDEO_PROFILE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,35 +181,35 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperation() {
+    public @EnumType(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperation() {
         return segment.get(LAYOUT$videoCodecOperation, OFFSET$videoCodecOperation);
     }
 
-    public void videoCodecOperation(@enumtype(VkVideoCodecOperationFlagsKHR.class) int value) {
+    public void videoCodecOperation(@EnumType(VkVideoCodecOperationFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoCodecOperation, OFFSET$videoCodecOperation, value);
     }
 
-    public @enumtype(VkVideoChromaSubsamplingFlagsKHR.class) int chromaSubsampling() {
+    public @EnumType(VkVideoChromaSubsamplingFlagsKHR.class) int chromaSubsampling() {
         return segment.get(LAYOUT$chromaSubsampling, OFFSET$chromaSubsampling);
     }
 
-    public void chromaSubsampling(@enumtype(VkVideoChromaSubsamplingFlagsKHR.class) int value) {
+    public void chromaSubsampling(@EnumType(VkVideoChromaSubsamplingFlagsKHR.class) int value) {
         segment.set(LAYOUT$chromaSubsampling, OFFSET$chromaSubsampling, value);
     }
 
-    public @enumtype(VkVideoComponentBitDepthFlagsKHR.class) int lumaBitDepth() {
+    public @EnumType(VkVideoComponentBitDepthFlagsKHR.class) int lumaBitDepth() {
         return segment.get(LAYOUT$lumaBitDepth, OFFSET$lumaBitDepth);
     }
 
-    public void lumaBitDepth(@enumtype(VkVideoComponentBitDepthFlagsKHR.class) int value) {
+    public void lumaBitDepth(@EnumType(VkVideoComponentBitDepthFlagsKHR.class) int value) {
         segment.set(LAYOUT$lumaBitDepth, OFFSET$lumaBitDepth, value);
     }
 
-    public @enumtype(VkVideoComponentBitDepthFlagsKHR.class) int chromaBitDepth() {
+    public @EnumType(VkVideoComponentBitDepthFlagsKHR.class) int chromaBitDepth() {
         return segment.get(LAYOUT$chromaBitDepth, OFFSET$chromaBitDepth);
     }
 
-    public void chromaBitDepth(@enumtype(VkVideoComponentBitDepthFlagsKHR.class) int value) {
+    public void chromaBitDepth(@EnumType(VkVideoComponentBitDepthFlagsKHR.class) int value) {
         segment.set(LAYOUT$chromaBitDepth, OFFSET$chromaBitDepth, value);
     }
 

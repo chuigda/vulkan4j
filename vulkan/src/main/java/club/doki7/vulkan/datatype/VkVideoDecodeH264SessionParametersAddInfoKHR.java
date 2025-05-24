@@ -104,7 +104,7 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoDecodeH264SessionParametersAddInfoKHR.BYTES, VkVideoDecodeH264SessionParametersAddInfoKHR.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         sType(VkStructureType.VIDEO_DECODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -194,7 +194,7 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         pStdSPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264SequenceParameterSet.Ptr pStdSPSs(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH264SequenceParameterSet.Ptr pStdSPSs(int assumedCount) {
         MemorySegment s = pStdSPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -212,11 +212,11 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH264SequenceParameterSet(s);
     }
 
-    public @pointer(target=StdVideoH264SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
+    public @Pointer(target=StdVideoH264SequenceParameterSet.class) MemorySegment pStdSPSsRaw() {
         return segment.get(LAYOUT$pStdSPSs, OFFSET$pStdSPSs);
     }
 
-    public void pStdSPSsRaw(@pointer(target=StdVideoH264SequenceParameterSet.class) MemorySegment value) {
+    public void pStdSPSsRaw(@Pointer(target=StdVideoH264SequenceParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSPSs, OFFSET$pStdSPSs, value);
     }
 
@@ -233,7 +233,7 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         pStdPPSsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264PictureParameterSet.Ptr pStdPPSs(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH264PictureParameterSet.Ptr pStdPPSs(int assumedCount) {
         MemorySegment s = pStdPPSsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -251,11 +251,11 @@ public record VkVideoDecodeH264SessionParametersAddInfoKHR(@NotNull MemorySegmen
         return new StdVideoH264PictureParameterSet(s);
     }
 
-    public @pointer(target=StdVideoH264PictureParameterSet.class) MemorySegment pStdPPSsRaw() {
+    public @Pointer(target=StdVideoH264PictureParameterSet.class) MemorySegment pStdPPSsRaw() {
         return segment.get(LAYOUT$pStdPPSs, OFFSET$pStdPPSs);
     }
 
-    public void pStdPPSsRaw(@pointer(target=StdVideoH264PictureParameterSet.class) MemorySegment value) {
+    public void pStdPPSsRaw(@Pointer(target=StdVideoH264PictureParameterSet.class) MemorySegment value) {
         segment.set(LAYOUT$pStdPPSs, OFFSET$pStdPPSs, value);
     }
 

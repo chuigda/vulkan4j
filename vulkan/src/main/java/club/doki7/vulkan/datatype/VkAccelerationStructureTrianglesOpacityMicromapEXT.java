@@ -108,7 +108,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES, VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         sType(VkStructureType.ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,11 +185,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkIndexType.class) int indexType() {
+    public @EnumType(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public void indexType(@enumtype(VkIndexType.class) int value) {
+    public void indexType(@EnumType(VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
     }
 
@@ -230,7 +230,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         pUsageCountsRaw(s);
     }
 
-    @unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
+    @Unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
         MemorySegment s = pUsageCountsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -248,11 +248,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return new VkMicromapUsageEXT(s);
     }
 
-    public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+    public @Pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
         return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void pUsageCountsRaw(@pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
@@ -272,11 +272,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         ppUsageCountsRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+    public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
         return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
+    public void ppUsageCountsRaw(@Pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
     }
 

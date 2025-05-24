@@ -100,7 +100,7 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSurfaceCapabilitiesKHR.BYTES, VkSurfaceCapabilitiesKHR.BYTES));
         }
@@ -195,35 +195,35 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers, value);
     }
 
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
+    public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public void supportedTransforms(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+    public void supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
     }
 
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int currentTransform() {
+    public @EnumType(VkSurfaceTransformFlagsKHR.class) int currentTransform() {
         return segment.get(LAYOUT$currentTransform, OFFSET$currentTransform);
     }
 
-    public void currentTransform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+    public void currentTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$currentTransform, OFFSET$currentTransform, value);
     }
 
-    public @enumtype(VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
+    public @EnumType(VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
         return segment.get(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha);
     }
 
-    public void supportedCompositeAlpha(@enumtype(VkCompositeAlphaFlagsKHR.class) int value) {
+    public void supportedCompositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha, value);
     }
 
-    public @enumtype(VkImageUsageFlags.class) int supportedUsageFlags() {
+    public @EnumType(VkImageUsageFlags.class) int supportedUsageFlags() {
         return segment.get(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags);
     }
 
-    public void supportedUsageFlags(@enumtype(VkImageUsageFlags.class) int value) {
+    public void supportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags, value);
     }
 

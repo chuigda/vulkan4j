@@ -103,7 +103,7 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDirectFBSurfaceCreateInfoEXT.BYTES, VkDirectFBSurfaceCreateInfoEXT.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         sType(VkStructureType.DIRECTFB_SURFACE_CREATE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,11 +180,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
+    public @EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
+    public void flags(@EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -204,11 +204,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         dfbRaw(s);
     }
 
-    public @pointer(comment="IDirectFB*") MemorySegment dfbRaw() {
+    public @Pointer(comment="IDirectFB*") MemorySegment dfbRaw() {
         return segment.get(LAYOUT$dfb, OFFSET$dfb);
     }
 
-    public void dfbRaw(@pointer(comment="IDirectFB*") MemorySegment value) {
+    public void dfbRaw(@Pointer(comment="IDirectFB*") MemorySegment value) {
         segment.set(LAYOUT$dfb, OFFSET$dfb, value);
     }
 
@@ -228,11 +228,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         surfaceRaw(s);
     }
 
-    public @pointer(comment="IDirectFBSurface*") MemorySegment surfaceRaw() {
+    public @Pointer(comment="IDirectFBSurface*") MemorySegment surfaceRaw() {
         return segment.get(LAYOUT$surface, OFFSET$surface);
     }
 
-    public void surfaceRaw(@pointer(comment="IDirectFBSurface*") MemorySegment value) {
+    public void surfaceRaw(@Pointer(comment="IDirectFBSurface*") MemorySegment value) {
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 

@@ -20,7 +20,7 @@ public final class VkIndirectCommandsTokenTypeEXT {
     public static final int DRAW_MESH_TASKS_COUNT = 0x3b9fcb41;
     public static final int TRACE_RAYS2 = 0x3ba0add4;
 
-    public static String explain(@enumtype(VkIndirectCommandsTokenTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkIndirectCommandsTokenTypeEXT.class) int value) {
         return switch (value) {
             case VkIndirectCommandsTokenTypeEXT.DISPATCH -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT";
             case VkIndirectCommandsTokenTypeEXT.DRAW_COUNT -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT";

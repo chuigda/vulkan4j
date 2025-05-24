@@ -102,7 +102,7 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageDrmFormatModifierListCreateInfoEXT.BYTES, VkImageDrmFormatModifierListCreateInfoEXT.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         sType(VkStructureType.IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -204,11 +204,11 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         pDrmFormatModifiersRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pDrmFormatModifiersRaw() {
+    public @Pointer(comment="long*") MemorySegment pDrmFormatModifiersRaw() {
         return segment.get(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers);
     }
 
-    public void pDrmFormatModifiersRaw(@pointer(comment="long*") MemorySegment value) {
+    public void pDrmFormatModifiersRaw(@Pointer(comment="long*") MemorySegment value) {
         segment.set(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers, value);
     }
 

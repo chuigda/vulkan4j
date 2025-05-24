@@ -8,7 +8,7 @@ public final class VkConservativeRasterizationModeEXT {
     public static final int OVERESTIMATE = 0x1;
     public static final int UNDERESTIMATE = 0x2;
 
-    public static String explain(@enumtype(VkConservativeRasterizationModeEXT.class) int value) {
+    public static String explain(@EnumType(VkConservativeRasterizationModeEXT.class) int value) {
         return switch (value) {
             case VkConservativeRasterizationModeEXT.DISABLED -> "VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT";
             case VkConservativeRasterizationModeEXT.OVERESTIMATE -> "VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT";

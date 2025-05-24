@@ -105,7 +105,7 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineVertexInputStateCreateInfo.BYTES, VkPipelineVertexInputStateCreateInfo.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         sType(VkStructureType.PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,11 +182,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineVertexInputStateCreateFlags.class) int flags() {
+    public @EnumType(VkPipelineVertexInputStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineVertexInputStateCreateFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineVertexInputStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -203,7 +203,7 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         pVertexBindingDescriptionsRaw(s);
     }
 
-    @unsafe public @Nullable VkVertexInputBindingDescription.Ptr pVertexBindingDescriptions(int assumedCount) {
+    @Unsafe public @Nullable VkVertexInputBindingDescription.Ptr pVertexBindingDescriptions(int assumedCount) {
         MemorySegment s = pVertexBindingDescriptionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -221,11 +221,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return new VkVertexInputBindingDescription(s);
     }
 
-    public @pointer(target=VkVertexInputBindingDescription.class) MemorySegment pVertexBindingDescriptionsRaw() {
+    public @Pointer(target=VkVertexInputBindingDescription.class) MemorySegment pVertexBindingDescriptionsRaw() {
         return segment.get(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions);
     }
 
-    public void pVertexBindingDescriptionsRaw(@pointer(target=VkVertexInputBindingDescription.class) MemorySegment value) {
+    public void pVertexBindingDescriptionsRaw(@Pointer(target=VkVertexInputBindingDescription.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
     }
 
@@ -242,7 +242,7 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         pVertexAttributeDescriptionsRaw(s);
     }
 
-    @unsafe public @Nullable VkVertexInputAttributeDescription.Ptr pVertexAttributeDescriptions(int assumedCount) {
+    @Unsafe public @Nullable VkVertexInputAttributeDescription.Ptr pVertexAttributeDescriptions(int assumedCount) {
         MemorySegment s = pVertexAttributeDescriptionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -260,11 +260,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return new VkVertexInputAttributeDescription(s);
     }
 
-    public @pointer(target=VkVertexInputAttributeDescription.class) MemorySegment pVertexAttributeDescriptionsRaw() {
+    public @Pointer(target=VkVertexInputAttributeDescription.class) MemorySegment pVertexAttributeDescriptionsRaw() {
         return segment.get(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions);
     }
 
-    public void pVertexAttributeDescriptionsRaw(@pointer(target=VkVertexInputAttributeDescription.class) MemorySegment value) {
+    public void pVertexAttributeDescriptionsRaw(@Pointer(target=VkVertexInputAttributeDescription.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexAttributeDescriptions, OFFSET$pVertexAttributeDescriptions, value);
     }
 

@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 public final class VkInternalAllocationType {
     public static final int EXECUTABLE = 0x0;
 
-    public static String explain(@enumtype(VkInternalAllocationType.class) int value) {
+    public static String explain(@EnumType(VkInternalAllocationType.class) int value) {
         return switch (value) {
             case VkInternalAllocationType.EXECUTABLE -> "VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE";
             default -> "UNKNOWN(" + value + ")";

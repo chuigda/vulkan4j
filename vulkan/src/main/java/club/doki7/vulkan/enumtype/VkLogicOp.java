@@ -21,7 +21,7 @@ public final class VkLogicOp {
     public static final int NAND = 0xe;
     public static final int SET = 0xf;
 
-    public static String explain(@enumtype(VkLogicOp.class) int value) {
+    public static String explain(@EnumType(VkLogicOp.class) int value) {
         return switch (value) {
             case VkLogicOp.AND -> "VK_LOGIC_OP_AND";
             case VkLogicOp.AND_INVERTED -> "VK_LOGIC_OP_AND_INVERTED";

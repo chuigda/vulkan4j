@@ -104,7 +104,7 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVertexInputBindingDescription2EXT.BYTES, VkVertexInputBindingDescription2EXT.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         sType(VkStructureType.VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -197,11 +197,11 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$stride, OFFSET$stride, value);
     }
 
-    public @enumtype(VkVertexInputRate.class) int inputRate() {
+    public @EnumType(VkVertexInputRate.class) int inputRate() {
         return segment.get(LAYOUT$inputRate, OFFSET$inputRate);
     }
 
-    public void inputRate(@enumtype(VkVertexInputRate.class) int value) {
+    public void inputRate(@EnumType(VkVertexInputRate.class) int value) {
         segment.set(LAYOUT$inputRate, OFFSET$inputRate, value);
     }
 

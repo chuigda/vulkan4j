@@ -7,7 +7,7 @@ public final class VkTessellationDomainOrigin {
     public static final int UPPER_LEFT = 0x0;
     public static final int LOWER_LEFT = 0x1;
 
-    public static String explain(@enumtype(VkTessellationDomainOrigin.class) int value) {
+    public static String explain(@EnumType(VkTessellationDomainOrigin.class) int value) {
         return switch (value) {
             case VkTessellationDomainOrigin.LOWER_LEFT -> "VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT";
             case VkTessellationDomainOrigin.UPPER_LEFT -> "VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT";

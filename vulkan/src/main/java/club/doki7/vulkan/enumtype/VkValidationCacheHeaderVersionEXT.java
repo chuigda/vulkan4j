@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 public final class VkValidationCacheHeaderVersionEXT {
     public static final int ONE = 0x1;
 
-    public static String explain(@enumtype(VkValidationCacheHeaderVersionEXT.class) int value) {
+    public static String explain(@EnumType(VkValidationCacheHeaderVersionEXT.class) int value) {
         return switch (value) {
             case VkValidationCacheHeaderVersionEXT.ONE -> "VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT";
             default -> "UNKNOWN(" + value + ")";

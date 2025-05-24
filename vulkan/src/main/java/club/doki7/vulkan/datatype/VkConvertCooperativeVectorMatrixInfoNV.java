@@ -112,7 +112,7 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkConvertCooperativeVectorMatrixInfoNV.BYTES, VkConvertCooperativeVectorMatrixInfoNV.BYTES));
         }
@@ -169,19 +169,19 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         sType(VkStructureType.CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -222,11 +222,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         pDstSizeRaw(s);
     }
 
-    public @pointer(comment="size_t*") MemorySegment pDstSizeRaw() {
+    public @Pointer(comment="size_t*") MemorySegment pDstSizeRaw() {
         return segment.get(LAYOUT$pDstSize, OFFSET$pDstSize);
     }
 
-    public void pDstSizeRaw(@pointer(comment="size_t*") MemorySegment value) {
+    public void pDstSizeRaw(@Pointer(comment="size_t*") MemorySegment value) {
         segment.set(LAYOUT$pDstSize, OFFSET$pDstSize, value);
     }
 
@@ -238,19 +238,19 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstData, SIZE$dstData);
     }
 
-    public @enumtype(VkComponentTypeKHR.class) int srcComponentType() {
+    public @EnumType(VkComponentTypeKHR.class) int srcComponentType() {
         return segment.get(LAYOUT$srcComponentType, OFFSET$srcComponentType);
     }
 
-    public void srcComponentType(@enumtype(VkComponentTypeKHR.class) int value) {
+    public void srcComponentType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$srcComponentType, OFFSET$srcComponentType, value);
     }
 
-    public @enumtype(VkComponentTypeKHR.class) int dstComponentType() {
+    public @EnumType(VkComponentTypeKHR.class) int dstComponentType() {
         return segment.get(LAYOUT$dstComponentType, OFFSET$dstComponentType);
     }
 
-    public void dstComponentType(@enumtype(VkComponentTypeKHR.class) int value) {
+    public void dstComponentType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$dstComponentType, OFFSET$dstComponentType, value);
     }
 
@@ -270,11 +270,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$numColumns, OFFSET$numColumns, value);
     }
 
-    public @enumtype(VkCooperativeVectorMatrixLayoutNV.class) int srcLayout() {
+    public @EnumType(VkCooperativeVectorMatrixLayoutNV.class) int srcLayout() {
         return segment.get(LAYOUT$srcLayout, OFFSET$srcLayout);
     }
 
-    public void srcLayout(@enumtype(VkCooperativeVectorMatrixLayoutNV.class) int value) {
+    public void srcLayout(@EnumType(VkCooperativeVectorMatrixLayoutNV.class) int value) {
         segment.set(LAYOUT$srcLayout, OFFSET$srcLayout, value);
     }
 
@@ -286,11 +286,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         NativeLayout.writeCSizeT(segment, OFFSET$srcStride, value);
     }
 
-    public @enumtype(VkCooperativeVectorMatrixLayoutNV.class) int dstLayout() {
+    public @EnumType(VkCooperativeVectorMatrixLayoutNV.class) int dstLayout() {
         return segment.get(LAYOUT$dstLayout, OFFSET$dstLayout);
     }
 
-    public void dstLayout(@enumtype(VkCooperativeVectorMatrixLayoutNV.class) int value) {
+    public void dstLayout(@EnumType(VkCooperativeVectorMatrixLayoutNV.class) int value) {
         segment.set(LAYOUT$dstLayout, OFFSET$dstLayout, value);
     }
 

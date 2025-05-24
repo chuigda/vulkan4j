@@ -95,7 +95,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineCacheHeaderVersionOne.BYTES, VkPipelineCacheHeaderVersionOne.BYTES));
         }
@@ -150,11 +150,11 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$headerSize, OFFSET$headerSize, value);
     }
 
-    public @enumtype(VkPipelineCacheHeaderVersion.class) int headerVersion() {
+    public @EnumType(VkPipelineCacheHeaderVersion.class) int headerVersion() {
         return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
     }
 
-    public void headerVersion(@enumtype(VkPipelineCacheHeaderVersion.class) int value) {
+    public void headerVersion(@EnumType(VkPipelineCacheHeaderVersion.class) int value) {
         segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
     }
 

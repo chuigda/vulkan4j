@@ -99,7 +99,7 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDisplayPlaneCapabilitiesKHR.BYTES, VkDisplayPlaneCapabilitiesKHR.BYTES));
         }
@@ -146,11 +146,11 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int supportedAlpha() {
+    public @EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int supportedAlpha() {
         return segment.get(LAYOUT$supportedAlpha, OFFSET$supportedAlpha);
     }
 
-    public void supportedAlpha(@enumtype(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+    public void supportedAlpha(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedAlpha, OFFSET$supportedAlpha, value);
     }
 

@@ -98,7 +98,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoAV1TileInfo.BYTES, StdVideoAV1TileInfo.BYTES));
         }
@@ -203,11 +203,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         pMiColStartsRaw(s);
     }
 
-    public @pointer(comment="short*") MemorySegment pMiColStartsRaw() {
+    public @Pointer(comment="short*") MemorySegment pMiColStartsRaw() {
         return segment.get(LAYOUT$pMiColStarts, OFFSET$pMiColStarts);
     }
 
-    public void pMiColStartsRaw(@pointer(comment="short*") MemorySegment value) {
+    public void pMiColStartsRaw(@Pointer(comment="short*") MemorySegment value) {
         segment.set(LAYOUT$pMiColStarts, OFFSET$pMiColStarts, value);
     }
 
@@ -228,11 +228,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         pMiRowStartsRaw(s);
     }
 
-    public @pointer(comment="short*") MemorySegment pMiRowStartsRaw() {
+    public @Pointer(comment="short*") MemorySegment pMiRowStartsRaw() {
         return segment.get(LAYOUT$pMiRowStarts, OFFSET$pMiRowStarts);
     }
 
-    public void pMiRowStartsRaw(@pointer(comment="short*") MemorySegment value) {
+    public void pMiRowStartsRaw(@Pointer(comment="short*") MemorySegment value) {
         segment.set(LAYOUT$pMiRowStarts, OFFSET$pMiRowStarts, value);
     }
 
@@ -253,11 +253,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         pWidthInSbsMinus1Raw(s);
     }
 
-    public @pointer(comment="short*") MemorySegment pWidthInSbsMinus1Raw() {
+    public @Pointer(comment="short*") MemorySegment pWidthInSbsMinus1Raw() {
         return segment.get(LAYOUT$pWidthInSbsMinus1, OFFSET$pWidthInSbsMinus1);
     }
 
-    public void pWidthInSbsMinus1Raw(@pointer(comment="short*") MemorySegment value) {
+    public void pWidthInSbsMinus1Raw(@Pointer(comment="short*") MemorySegment value) {
         segment.set(LAYOUT$pWidthInSbsMinus1, OFFSET$pWidthInSbsMinus1, value);
     }
 
@@ -278,11 +278,11 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         pHeightInSbsMinus1Raw(s);
     }
 
-    public @pointer(comment="short*") MemorySegment pHeightInSbsMinus1Raw() {
+    public @Pointer(comment="short*") MemorySegment pHeightInSbsMinus1Raw() {
         return segment.get(LAYOUT$pHeightInSbsMinus1, OFFSET$pHeightInSbsMinus1);
     }
 
-    public void pHeightInSbsMinus1Raw(@pointer(comment="short*") MemorySegment value) {
+    public void pHeightInSbsMinus1Raw(@Pointer(comment="short*") MemorySegment value) {
         segment.set(LAYOUT$pHeightInSbsMinus1, OFFSET$pHeightInSbsMinus1, value);
     }
 

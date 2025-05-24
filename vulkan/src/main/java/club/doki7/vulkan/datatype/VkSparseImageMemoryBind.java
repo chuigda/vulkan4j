@@ -96,7 +96,7 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSparseImageMemoryBind.BYTES, VkSparseImageMemoryBind.BYTES));
         }
@@ -187,11 +187,11 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
     }
 
-    public @enumtype(VkSparseMemoryBindFlags.class) int flags() {
+    public @EnumType(VkSparseMemoryBindFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkSparseMemoryBindFlags.class) int value) {
+    public void flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 

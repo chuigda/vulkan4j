@@ -90,7 +90,7 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES));
         }
@@ -137,11 +137,11 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @enumtype(StdVideoAV1FrameRestorationType.class) int FrameRestorationType() {
+    public @EnumType(StdVideoAV1FrameRestorationType.class) int FrameRestorationType() {
         return segment.get(LAYOUT$FrameRestorationType, OFFSET$FrameRestorationType);
     }
 
-    public void FrameRestorationType(@enumtype(StdVideoAV1FrameRestorationType.class) int value) {
+    public void FrameRestorationType(@EnumType(StdVideoAV1FrameRestorationType.class) int value) {
         segment.set(LAYOUT$FrameRestorationType, OFFSET$FrameRestorationType, value);
     }
 

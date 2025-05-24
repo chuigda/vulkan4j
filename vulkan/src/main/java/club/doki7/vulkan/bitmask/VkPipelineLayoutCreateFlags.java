@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkPipelineLayoutCreateFlags {
     public static final int INDEPENDENT_SETS_EXT = 0x2;
 
-    public static String explain(@enumtype(VkPipelineLayoutCreateFlags.class) int flags) {
+    public static String explain(@EnumType(VkPipelineLayoutCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INDEPENDENT_SETS_EXT) != 0) {
             detectedFlagBits.add("VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT");

@@ -105,7 +105,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineLayoutCreateInfo.BYTES, VkPipelineLayoutCreateInfo.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.PIPELINE_LAYOUT_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,11 +182,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineLayoutCreateFlags.class) int flags() {
+    public @EnumType(VkPipelineLayoutCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineLayoutCreateFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineLayoutCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -215,11 +215,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         pSetLayoutsRaw(s);
     }
 
-    public @pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
+    public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
         return segment.get(LAYOUT$pSetLayouts, OFFSET$pSetLayouts);
     }
 
-    public void pSetLayoutsRaw(@pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
+    public void pSetLayoutsRaw(@Pointer(target=VkDescriptorSetLayout.class) MemorySegment value) {
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
@@ -236,7 +236,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         pPushConstantRangesRaw(s);
     }
 
-    @unsafe public @Nullable VkPushConstantRange.Ptr pPushConstantRanges(int assumedCount) {
+    @Unsafe public @Nullable VkPushConstantRange.Ptr pPushConstantRanges(int assumedCount) {
         MemorySegment s = pPushConstantRangesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -254,11 +254,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return new VkPushConstantRange(s);
     }
 
-    public @pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
+    public @Pointer(target=VkPushConstantRange.class) MemorySegment pPushConstantRangesRaw() {
         return segment.get(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges);
     }
 
-    public void pPushConstantRangesRaw(@pointer(target=VkPushConstantRange.class) MemorySegment value) {
+    public void pPushConstantRangesRaw(@Pointer(target=VkPushConstantRange.class) MemorySegment value) {
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 

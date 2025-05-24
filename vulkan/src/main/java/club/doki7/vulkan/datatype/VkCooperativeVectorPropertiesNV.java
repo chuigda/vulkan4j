@@ -106,7 +106,7 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkCooperativeVectorPropertiesNV.BYTES, VkCooperativeVectorPropertiesNV.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         sType(VkStructureType.COOPERATIVE_VECTOR_PROPERTIES_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,43 +183,43 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkComponentTypeKHR.class) int inputType() {
+    public @EnumType(VkComponentTypeKHR.class) int inputType() {
         return segment.get(LAYOUT$inputType, OFFSET$inputType);
     }
 
-    public void inputType(@enumtype(VkComponentTypeKHR.class) int value) {
+    public void inputType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$inputType, OFFSET$inputType, value);
     }
 
-    public @enumtype(VkComponentTypeKHR.class) int inputInterpretation() {
+    public @EnumType(VkComponentTypeKHR.class) int inputInterpretation() {
         return segment.get(LAYOUT$inputInterpretation, OFFSET$inputInterpretation);
     }
 
-    public void inputInterpretation(@enumtype(VkComponentTypeKHR.class) int value) {
+    public void inputInterpretation(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$inputInterpretation, OFFSET$inputInterpretation, value);
     }
 
-    public @enumtype(VkComponentTypeKHR.class) int matrixInterpretation() {
+    public @EnumType(VkComponentTypeKHR.class) int matrixInterpretation() {
         return segment.get(LAYOUT$matrixInterpretation, OFFSET$matrixInterpretation);
     }
 
-    public void matrixInterpretation(@enumtype(VkComponentTypeKHR.class) int value) {
+    public void matrixInterpretation(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$matrixInterpretation, OFFSET$matrixInterpretation, value);
     }
 
-    public @enumtype(VkComponentTypeKHR.class) int biasInterpretation() {
+    public @EnumType(VkComponentTypeKHR.class) int biasInterpretation() {
         return segment.get(LAYOUT$biasInterpretation, OFFSET$biasInterpretation);
     }
 
-    public void biasInterpretation(@enumtype(VkComponentTypeKHR.class) int value) {
+    public void biasInterpretation(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$biasInterpretation, OFFSET$biasInterpretation, value);
     }
 
-    public @enumtype(VkComponentTypeKHR.class) int resultType() {
+    public @EnumType(VkComponentTypeKHR.class) int resultType() {
         return segment.get(LAYOUT$resultType, OFFSET$resultType);
     }
 
-    public void resultType(@enumtype(VkComponentTypeKHR.class) int value) {
+    public void resultType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$resultType, OFFSET$resultType, value);
     }
 

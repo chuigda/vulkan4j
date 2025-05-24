@@ -106,7 +106,7 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAccelerationStructureCreateInfoKHR.BYTES, VkAccelerationStructureCreateInfoKHR.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         sType(VkStructureType.ACCELERATION_STRUCTURE_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,11 +183,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkAccelerationStructureCreateFlagsKHR.class) int createFlags() {
+    public @EnumType(VkAccelerationStructureCreateFlagsKHR.class) int createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public void createFlags(@enumtype(VkAccelerationStructureCreateFlagsKHR.class) int value) {
+    public void createFlags(@EnumType(VkAccelerationStructureCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
     }
 
@@ -219,11 +219,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @enumtype(VkAccelerationStructureTypeKHR.class) int type() {
+    public @EnumType(VkAccelerationStructureTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkAccelerationStructureTypeKHR.class) int value) {
+    public void type(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 

@@ -100,7 +100,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH264ReferenceListsInfo.BYTES, StdVideoEncodeH264ReferenceListsInfo.BYTES));
         }
@@ -217,7 +217,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         pRefList0ModOperationsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264RefListModEntry.Ptr pRefList0ModOperations(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeH264RefListModEntry.Ptr pRefList0ModOperations(int assumedCount) {
         MemorySegment s = pRefList0ModOperationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -235,11 +235,11 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         return new StdVideoEncodeH264RefListModEntry(s);
     }
 
-    public @pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment pRefList0ModOperationsRaw() {
+    public @Pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment pRefList0ModOperationsRaw() {
         return segment.get(LAYOUT$pRefList0ModOperations, OFFSET$pRefList0ModOperations);
     }
 
-    public void pRefList0ModOperationsRaw(@pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment value) {
+    public void pRefList0ModOperationsRaw(@Pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pRefList0ModOperations, OFFSET$pRefList0ModOperations, value);
     }
 
@@ -248,7 +248,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         pRefList1ModOperationsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264RefListModEntry.Ptr pRefList1ModOperations(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeH264RefListModEntry.Ptr pRefList1ModOperations(int assumedCount) {
         MemorySegment s = pRefList1ModOperationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -266,11 +266,11 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         return new StdVideoEncodeH264RefListModEntry(s);
     }
 
-    public @pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment pRefList1ModOperationsRaw() {
+    public @Pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment pRefList1ModOperationsRaw() {
         return segment.get(LAYOUT$pRefList1ModOperations, OFFSET$pRefList1ModOperations);
     }
 
-    public void pRefList1ModOperationsRaw(@pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment value) {
+    public void pRefList1ModOperationsRaw(@Pointer(target=StdVideoEncodeH264RefListModEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pRefList1ModOperations, OFFSET$pRefList1ModOperations, value);
     }
 
@@ -279,7 +279,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         pRefPicMarkingOperationsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264RefPicMarkingEntry.Ptr pRefPicMarkingOperations(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeH264RefPicMarkingEntry.Ptr pRefPicMarkingOperations(int assumedCount) {
         MemorySegment s = pRefPicMarkingOperationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -297,11 +297,11 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         return new StdVideoEncodeH264RefPicMarkingEntry(s);
     }
 
-    public @pointer(target=StdVideoEncodeH264RefPicMarkingEntry.class) MemorySegment pRefPicMarkingOperationsRaw() {
+    public @Pointer(target=StdVideoEncodeH264RefPicMarkingEntry.class) MemorySegment pRefPicMarkingOperationsRaw() {
         return segment.get(LAYOUT$pRefPicMarkingOperations, OFFSET$pRefPicMarkingOperations);
     }
 
-    public void pRefPicMarkingOperationsRaw(@pointer(target=StdVideoEncodeH264RefPicMarkingEntry.class) MemorySegment value) {
+    public void pRefPicMarkingOperationsRaw(@Pointer(target=StdVideoEncodeH264RefPicMarkingEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pRefPicMarkingOperations, OFFSET$pRefPicMarkingOperations, value);
     }
 

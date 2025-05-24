@@ -93,7 +93,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRenderPassSubpassFeedbackInfoEXT.BYTES, VkRenderPassSubpassFeedbackInfoEXT.BYTES));
         }
@@ -140,11 +140,11 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public @enumtype(VkSubpassMergeStatusEXT.class) int subpassMergeStatus() {
+    public @EnumType(VkSubpassMergeStatusEXT.class) int subpassMergeStatus() {
         return segment.get(LAYOUT$subpassMergeStatus, OFFSET$subpassMergeStatus);
     }
 
-    public void subpassMergeStatus(@enumtype(VkSubpassMergeStatusEXT.class) int value) {
+    public void subpassMergeStatus(@EnumType(VkSubpassMergeStatusEXT.class) int value) {
         segment.set(LAYOUT$subpassMergeStatus, OFFSET$subpassMergeStatus, value);
     }
 

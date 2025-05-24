@@ -104,7 +104,7 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceDepthStencilResolveProperties.BYTES, VkPhysicalDeviceDepthStencilResolveProperties.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,19 +181,19 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkResolveModeFlags.class) int supportedDepthResolveModes() {
+    public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public void supportedDepthResolveModes(@enumtype(VkResolveModeFlags.class) int value) {
+    public void supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
     }
 
-    public @enumtype(VkResolveModeFlags.class) int supportedStencilResolveModes() {
+    public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public void supportedStencilResolveModes(@enumtype(VkResolveModeFlags.class) int value) {
+    public void supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
     }
 

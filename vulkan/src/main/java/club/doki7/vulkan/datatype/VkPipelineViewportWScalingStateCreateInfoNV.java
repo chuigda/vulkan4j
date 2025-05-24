@@ -103,7 +103,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineViewportWScalingStateCreateInfoNV.BYTES, VkPipelineViewportWScalingStateCreateInfoNV.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         sType(VkStructureType.PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -201,7 +201,7 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         pViewportWScalingsRaw(s);
     }
 
-    @unsafe public @Nullable VkViewportWScalingNV.Ptr pViewportWScalings(int assumedCount) {
+    @Unsafe public @Nullable VkViewportWScalingNV.Ptr pViewportWScalings(int assumedCount) {
         MemorySegment s = pViewportWScalingsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -219,11 +219,11 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         return new VkViewportWScalingNV(s);
     }
 
-    public @pointer(target=VkViewportWScalingNV.class) MemorySegment pViewportWScalingsRaw() {
+    public @Pointer(target=VkViewportWScalingNV.class) MemorySegment pViewportWScalingsRaw() {
         return segment.get(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings);
     }
 
-    public void pViewportWScalingsRaw(@pointer(target=VkViewportWScalingNV.class) MemorySegment value) {
+    public void pViewportWScalingsRaw(@Pointer(target=VkViewportWScalingNV.class) MemorySegment value) {
         segment.set(LAYOUT$pViewportWScalings, OFFSET$pViewportWScalings, value);
     }
 

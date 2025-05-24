@@ -102,7 +102,7 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoProfileListInfoKHR.BYTES, VkVideoProfileListInfoKHR.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.VIDEO_PROFILE_LIST_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -192,7 +192,7 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         pProfilesRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pProfiles(int assumedCount) {
+    @Unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pProfiles(int assumedCount) {
         MemorySegment s = pProfilesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkVideoProfileInfoKHR(s);
     }
 
-    public @pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pProfilesRaw() {
+    public @Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment pProfilesRaw() {
         return segment.get(LAYOUT$pProfiles, OFFSET$pProfiles);
     }
 
-    public void pProfilesRaw(@pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
+    public void pProfilesRaw(@Pointer(target=VkVideoProfileInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pProfiles, OFFSET$pProfiles, value);
     }
 

@@ -92,7 +92,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectExecutionSetInfoEXT.BYTES, VkIndirectExecutionSetInfoEXT.BYTES));
         }
@@ -144,7 +144,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         pPipelineInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectExecutionSetPipelineInfoEXT.Ptr pPipelineInfo(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectExecutionSetPipelineInfoEXT.Ptr pPipelineInfo(int assumedCount) {
         MemorySegment s = pPipelineInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -162,11 +162,11 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return new VkIndirectExecutionSetPipelineInfoEXT(s);
     }
 
-    public @pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment pPipelineInfoRaw() {
+    public @Pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment pPipelineInfoRaw() {
         return segment.get(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo);
     }
 
-    public void pPipelineInfoRaw(@pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment value) {
+    public void pPipelineInfoRaw(@Pointer(target=VkIndirectExecutionSetPipelineInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo, value);
     }
 
@@ -175,7 +175,7 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         pShaderInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectExecutionSetShaderInfoEXT.Ptr pShaderInfo(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectExecutionSetShaderInfoEXT.Ptr pShaderInfo(int assumedCount) {
         MemorySegment s = pShaderInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -193,11 +193,11 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return new VkIndirectExecutionSetShaderInfoEXT(s);
     }
 
-    public @pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment pShaderInfoRaw() {
+    public @Pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment pShaderInfoRaw() {
         return segment.get(LAYOUT$pShaderInfo, OFFSET$pShaderInfo);
     }
 
-    public void pShaderInfoRaw(@pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment value) {
+    public void pShaderInfoRaw(@Pointer(target=VkIndirectExecutionSetShaderInfoEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pShaderInfo, OFFSET$pShaderInfo, value);
     }
 

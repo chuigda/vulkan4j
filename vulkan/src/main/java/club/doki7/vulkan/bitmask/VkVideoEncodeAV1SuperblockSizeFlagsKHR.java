@@ -10,7 +10,7 @@ public final class VkVideoEncodeAV1SuperblockSizeFlagsKHR {
     public static final int VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128 = 0x2;
     public static final int VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64 = 0x1;
 
-    public static String explain(@enumtype(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int flags) {
+    public static String explain(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_KHR");

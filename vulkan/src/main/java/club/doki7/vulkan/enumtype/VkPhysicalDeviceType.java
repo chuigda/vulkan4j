@@ -10,7 +10,7 @@ public final class VkPhysicalDeviceType {
     public static final int VIRTUAL_GPU = 0x3;
     public static final int CPU = 0x4;
 
-    public static String explain(@enumtype(VkPhysicalDeviceType.class) int value) {
+    public static String explain(@EnumType(VkPhysicalDeviceType.class) int value) {
         return switch (value) {
             case VkPhysicalDeviceType.CPU -> "VK_PHYSICAL_DEVICE_TYPE_CPU";
             case VkPhysicalDeviceType.DISCRETE_GPU -> "VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU";

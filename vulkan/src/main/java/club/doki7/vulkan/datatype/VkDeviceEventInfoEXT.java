@@ -101,7 +101,7 @@ public record VkDeviceEventInfoEXT(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceEventInfoEXT.BYTES, VkDeviceEventInfoEXT.BYTES));
         }
@@ -158,19 +158,19 @@ public record VkDeviceEventInfoEXT(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.DEVICE_EVENT_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -178,11 +178,11 @@ public record VkDeviceEventInfoEXT(@NotNull MemorySegment segment) implements IV
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDeviceEventTypeEXT.class) int deviceEvent() {
+    public @EnumType(VkDeviceEventTypeEXT.class) int deviceEvent() {
         return segment.get(LAYOUT$deviceEvent, OFFSET$deviceEvent);
     }
 
-    public void deviceEvent(@enumtype(VkDeviceEventTypeEXT.class) int value) {
+    public void deviceEvent(@EnumType(VkDeviceEventTypeEXT.class) int value) {
         segment.set(LAYOUT$deviceEvent, OFFSET$deviceEvent, value);
     }
 

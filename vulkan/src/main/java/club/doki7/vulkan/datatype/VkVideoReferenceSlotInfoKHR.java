@@ -102,7 +102,7 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoReferenceSlotInfoKHR.BYTES, VkVideoReferenceSlotInfoKHR.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         sType(VkStructureType.VIDEO_REFERENCE_SLOT_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -192,7 +192,7 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         pPictureResourceRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoPictureResourceInfoKHR.Ptr pPictureResource(int assumedCount) {
+    @Unsafe public @Nullable VkVideoPictureResourceInfoKHR.Ptr pPictureResource(int assumedCount) {
         MemorySegment s = pPictureResourceRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         return new VkVideoPictureResourceInfoKHR(s);
     }
 
-    public @pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment pPictureResourceRaw() {
+    public @Pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment pPictureResourceRaw() {
         return segment.get(LAYOUT$pPictureResource, OFFSET$pPictureResource);
     }
 
-    public void pPictureResourceRaw(@pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment value) {
+    public void pPictureResourceRaw(@Pointer(target=VkVideoPictureResourceInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPictureResource, OFFSET$pPictureResource, value);
     }
 

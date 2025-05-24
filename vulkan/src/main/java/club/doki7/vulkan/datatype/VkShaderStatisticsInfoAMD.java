@@ -97,7 +97,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkShaderStatisticsInfoAMD.BYTES, VkShaderStatisticsInfoAMD.BYTES));
         }
@@ -144,11 +144,11 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @enumtype(VkShaderStageFlags.class) int shaderStageMask() {
+    public @EnumType(VkShaderStageFlags.class) int shaderStageMask() {
         return segment.get(LAYOUT$shaderStageMask, OFFSET$shaderStageMask);
     }
 
-    public void shaderStageMask(@enumtype(VkShaderStageFlags.class) int value) {
+    public void shaderStageMask(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStageMask, OFFSET$shaderStageMask, value);
     }
 

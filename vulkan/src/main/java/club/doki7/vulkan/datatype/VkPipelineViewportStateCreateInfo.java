@@ -105,7 +105,7 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineViewportStateCreateInfo.BYTES, VkPipelineViewportStateCreateInfo.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         sType(VkStructureType.PIPELINE_VIEWPORT_STATE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,11 +182,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineViewportStateCreateFlags.class) int flags() {
+    public @EnumType(VkPipelineViewportStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineViewportStateCreateFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineViewportStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -203,7 +203,7 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         pViewportsRaw(s);
     }
 
-    @unsafe public @Nullable VkViewport.Ptr pViewports(int assumedCount) {
+    @Unsafe public @Nullable VkViewport.Ptr pViewports(int assumedCount) {
         MemorySegment s = pViewportsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -221,11 +221,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return new VkViewport(s);
     }
 
-    public @pointer(target=VkViewport.class) MemorySegment pViewportsRaw() {
+    public @Pointer(target=VkViewport.class) MemorySegment pViewportsRaw() {
         return segment.get(LAYOUT$pViewports, OFFSET$pViewports);
     }
 
-    public void pViewportsRaw(@pointer(target=VkViewport.class) MemorySegment value) {
+    public void pViewportsRaw(@Pointer(target=VkViewport.class) MemorySegment value) {
         segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
     }
 
@@ -242,7 +242,7 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         pScissorsRaw(s);
     }
 
-    @unsafe public @Nullable VkRect2D.Ptr pScissors(int assumedCount) {
+    @Unsafe public @Nullable VkRect2D.Ptr pScissors(int assumedCount) {
         MemorySegment s = pScissorsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -260,11 +260,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return new VkRect2D(s);
     }
 
-    public @pointer(target=VkRect2D.class) MemorySegment pScissorsRaw() {
+    public @Pointer(target=VkRect2D.class) MemorySegment pScissorsRaw() {
         return segment.get(LAYOUT$pScissors, OFFSET$pScissors);
     }
 
-    public void pScissorsRaw(@pointer(target=VkRect2D.class) MemorySegment value) {
+    public void pScissorsRaw(@Pointer(target=VkRect2D.class) MemorySegment value) {
         segment.set(LAYOUT$pScissors, OFFSET$pScissors, value);
     }
 

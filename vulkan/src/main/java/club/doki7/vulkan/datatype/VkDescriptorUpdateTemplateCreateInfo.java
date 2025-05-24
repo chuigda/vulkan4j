@@ -108,7 +108,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDescriptorUpdateTemplateCreateInfo.BYTES, VkDescriptorUpdateTemplateCreateInfo.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         sType(VkStructureType.DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,11 +185,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
+    public @EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
+    public void flags(@EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -206,7 +206,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         pDescriptorUpdateEntriesRaw(s);
     }
 
-    @unsafe public @Nullable VkDescriptorUpdateTemplateEntry.Ptr pDescriptorUpdateEntries(int assumedCount) {
+    @Unsafe public @Nullable VkDescriptorUpdateTemplateEntry.Ptr pDescriptorUpdateEntries(int assumedCount) {
         MemorySegment s = pDescriptorUpdateEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -224,19 +224,19 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return new VkDescriptorUpdateTemplateEntry(s);
     }
 
-    public @pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment pDescriptorUpdateEntriesRaw() {
+    public @Pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment pDescriptorUpdateEntriesRaw() {
         return segment.get(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries);
     }
 
-    public void pDescriptorUpdateEntriesRaw(@pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment value) {
+    public void pDescriptorUpdateEntriesRaw(@Pointer(target=VkDescriptorUpdateTemplateEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorUpdateEntries, OFFSET$pDescriptorUpdateEntries, value);
     }
 
-    public @enumtype(VkDescriptorUpdateTemplateType.class) int templateType() {
+    public @EnumType(VkDescriptorUpdateTemplateType.class) int templateType() {
         return segment.get(LAYOUT$templateType, OFFSET$templateType);
     }
 
-    public void templateType(@enumtype(VkDescriptorUpdateTemplateType.class) int value) {
+    public void templateType(@EnumType(VkDescriptorUpdateTemplateType.class) int value) {
         segment.set(LAYOUT$templateType, OFFSET$templateType, value);
     }
 
@@ -252,11 +252,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
+    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 

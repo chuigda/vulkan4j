@@ -13,7 +13,7 @@ public final class VkVideoEncodeAV1CapabilityFlagsKHR {
     public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX = 0x1;
     public static final int VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY = 0x4;
 
-    public static String explain(@enumtype(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags) {
+    public static String explain(@EnumType(VkVideoEncodeAV1CapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR");

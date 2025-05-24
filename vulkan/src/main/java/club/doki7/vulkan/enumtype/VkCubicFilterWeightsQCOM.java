@@ -9,7 +9,7 @@ public final class VkCubicFilterWeightsQCOM {
     public static final int B_SPLINE = 0x2;
     public static final int MITCHELL_NETRAVALI = 0x3;
 
-    public static String explain(@enumtype(VkCubicFilterWeightsQCOM.class) int value) {
+    public static String explain(@EnumType(VkCubicFilterWeightsQCOM.class) int value) {
         return switch (value) {
             case VkCubicFilterWeightsQCOM.B_SPLINE -> "VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM";
             case VkCubicFilterWeightsQCOM.CATMULL_ROM -> "VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM";

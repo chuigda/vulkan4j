@@ -9,7 +9,7 @@ public final class VkScopeKHR {
     public static final int SUBGROUP = 0x3;
     public static final int QUEUE_FAMILY = 0x5;
 
-    public static String explain(@enumtype(VkScopeKHR.class) int value) {
+    public static String explain(@EnumType(VkScopeKHR.class) int value) {
         return switch (value) {
             case VkScopeKHR.DEVICE -> "VK_SCOPE_DEVICE_KHR";
             case VkScopeKHR.QUEUE_FAMILY -> "VK_SCOPE_QUEUE_FAMILY_KHR";

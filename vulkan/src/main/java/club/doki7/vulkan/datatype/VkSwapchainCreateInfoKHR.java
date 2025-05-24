@@ -116,7 +116,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSwapchainCreateInfoKHR.BYTES, VkSwapchainCreateInfoKHR.BYTES));
         }
@@ -173,19 +173,19 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         sType(VkStructureType.SWAPCHAIN_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -193,11 +193,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkSwapchainCreateFlagsKHR.class) int flags() {
+    public @EnumType(VkSwapchainCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkSwapchainCreateFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkSwapchainCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -221,19 +221,19 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$minImageCount, OFFSET$minImageCount, value);
     }
 
-    public @enumtype(VkFormat.class) int imageFormat() {
+    public @EnumType(VkFormat.class) int imageFormat() {
         return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
     }
 
-    public void imageFormat(@enumtype(VkFormat.class) int value) {
+    public void imageFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
     }
 
-    public @enumtype(VkColorSpaceKHR.class) int imageColorSpace() {
+    public @EnumType(VkColorSpaceKHR.class) int imageColorSpace() {
         return segment.get(LAYOUT$imageColorSpace, OFFSET$imageColorSpace);
     }
 
-    public void imageColorSpace(@enumtype(VkColorSpaceKHR.class) int value) {
+    public void imageColorSpace(@EnumType(VkColorSpaceKHR.class) int value) {
         segment.set(LAYOUT$imageColorSpace, OFFSET$imageColorSpace, value);
     }
 
@@ -253,19 +253,19 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers, value);
     }
 
-    public @enumtype(VkImageUsageFlags.class) int imageUsage() {
+    public @EnumType(VkImageUsageFlags.class) int imageUsage() {
         return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
     }
 
-    public void imageUsage(@enumtype(VkImageUsageFlags.class) int value) {
+    public void imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
     }
 
-    public @enumtype(VkSharingMode.class) int imageSharingMode() {
+    public @EnumType(VkSharingMode.class) int imageSharingMode() {
         return segment.get(LAYOUT$imageSharingMode, OFFSET$imageSharingMode);
     }
 
-    public void imageSharingMode(@enumtype(VkSharingMode.class) int value) {
+    public void imageSharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$imageSharingMode, OFFSET$imageSharingMode, value);
     }
 
@@ -294,35 +294,35 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         pQueueFamilyIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int preTransform() {
+    public @EnumType(VkSurfaceTransformFlagsKHR.class) int preTransform() {
         return segment.get(LAYOUT$preTransform, OFFSET$preTransform);
     }
 
-    public void preTransform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+    public void preTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$preTransform, OFFSET$preTransform, value);
     }
 
-    public @enumtype(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
+    public @EnumType(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
         return segment.get(LAYOUT$compositeAlpha, OFFSET$compositeAlpha);
     }
 
-    public void compositeAlpha(@enumtype(VkCompositeAlphaFlagsKHR.class) int value) {
+    public void compositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$compositeAlpha, OFFSET$compositeAlpha, value);
     }
 
-    public @enumtype(VkPresentModeKHR.class) int presentMode() {
+    public @EnumType(VkPresentModeKHR.class) int presentMode() {
         return segment.get(LAYOUT$presentMode, OFFSET$presentMode);
     }
 
-    public void presentMode(@enumtype(VkPresentModeKHR.class) int value) {
+    public void presentMode(@EnumType(VkPresentModeKHR.class) int value) {
         segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
     }
 

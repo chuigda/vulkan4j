@@ -106,7 +106,7 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRenderPassMultiviewCreateInfo.BYTES, VkRenderPassMultiviewCreateInfo.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         sType(VkStructureType.RENDER_PASS_MULTIVIEW_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -208,11 +208,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         pViewMasksRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pViewMasksRaw() {
+    public @Pointer(comment="int*") MemorySegment pViewMasksRaw() {
         return segment.get(LAYOUT$pViewMasks, OFFSET$pViewMasks);
     }
 
-    public void pViewMasksRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pViewMasksRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
     }
 
@@ -241,11 +241,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         pViewOffsetsRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pViewOffsetsRaw() {
+    public @Pointer(comment="int*") MemorySegment pViewOffsetsRaw() {
         return segment.get(LAYOUT$pViewOffsets, OFFSET$pViewOffsets);
     }
 
-    public void pViewOffsetsRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pViewOffsetsRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
     }
 
@@ -274,11 +274,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         pCorrelationMasksRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pCorrelationMasksRaw() {
+    public @Pointer(comment="int*") MemorySegment pCorrelationMasksRaw() {
         return segment.get(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks);
     }
 
-    public void pCorrelationMasksRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pCorrelationMasksRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pCorrelationMasks, OFFSET$pCorrelationMasks, value);
     }
 

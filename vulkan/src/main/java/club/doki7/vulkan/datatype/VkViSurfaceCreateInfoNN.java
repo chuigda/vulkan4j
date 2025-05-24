@@ -102,7 +102,7 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkViSurfaceCreateInfoNN.BYTES, VkViSurfaceCreateInfoNN.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         sType(VkStructureType.VI_SURFACE_CREATE_INFO_NN);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,19 +179,19 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkViSurfaceCreateFlagsNN.class) int flags() {
+    public @EnumType(VkViSurfaceCreateFlagsNN.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkViSurfaceCreateFlagsNN.class) int value) {
+    public void flags(@EnumType(VkViSurfaceCreateFlagsNN.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="void*") MemorySegment window() {
+    public @Pointer(comment="void*") MemorySegment window() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
-    public void window(@pointer(comment="void*") MemorySegment value) {
+    public void window(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 

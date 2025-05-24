@@ -124,7 +124,7 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH265PictureParameterSet.BYTES, StdVideoH265PictureParameterSet.BYTES));
         }
@@ -427,7 +427,7 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         pScalingListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265ScalingLists.Ptr pScalingLists(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH265ScalingLists.Ptr pScalingLists(int assumedCount) {
         MemorySegment s = pScalingListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -445,11 +445,11 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         return new StdVideoH265ScalingLists(s);
     }
 
-    public @pointer(target=StdVideoH265ScalingLists.class) MemorySegment pScalingListsRaw() {
+    public @Pointer(target=StdVideoH265ScalingLists.class) MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@pointer(target=StdVideoH265ScalingLists.class) MemorySegment value) {
+    public void pScalingListsRaw(@Pointer(target=StdVideoH265ScalingLists.class) MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 
@@ -458,7 +458,7 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         pPredictorPaletteEntriesRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265PredictorPaletteEntries.Ptr pPredictorPaletteEntries(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH265PredictorPaletteEntries.Ptr pPredictorPaletteEntries(int assumedCount) {
         MemorySegment s = pPredictorPaletteEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -476,11 +476,11 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         return new StdVideoH265PredictorPaletteEntries(s);
     }
 
-    public @pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment pPredictorPaletteEntriesRaw() {
+    public @Pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment pPredictorPaletteEntriesRaw() {
         return segment.get(LAYOUT$pPredictorPaletteEntries, OFFSET$pPredictorPaletteEntries);
     }
 
-    public void pPredictorPaletteEntriesRaw(@pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment value) {
+    public void pPredictorPaletteEntriesRaw(@Pointer(target=StdVideoH265PredictorPaletteEntries.class) MemorySegment value) {
         segment.set(LAYOUT$pPredictorPaletteEntries, OFFSET$pPredictorPaletteEntries, value);
     }
 

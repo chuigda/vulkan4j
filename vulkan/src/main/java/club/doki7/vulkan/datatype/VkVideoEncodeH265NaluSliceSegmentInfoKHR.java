@@ -102,7 +102,7 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES, VkVideoEncodeH265NaluSliceSegmentInfoKHR.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         sType(VkStructureType.VIDEO_ENCODE_H265_NALU_SLICE_SEGMENT_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -192,7 +192,7 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         pStdSliceSegmentHeaderRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH265SliceSegmentHeader.Ptr pStdSliceSegmentHeader(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeH265SliceSegmentHeader.Ptr pStdSliceSegmentHeader(int assumedCount) {
         MemorySegment s = pStdSliceSegmentHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         return new StdVideoEncodeH265SliceSegmentHeader(s);
     }
 
-    public @pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) MemorySegment pStdSliceSegmentHeaderRaw() {
+    public @Pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) MemorySegment pStdSliceSegmentHeaderRaw() {
         return segment.get(LAYOUT$pStdSliceSegmentHeader, OFFSET$pStdSliceSegmentHeader);
     }
 
-    public void pStdSliceSegmentHeaderRaw(@pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) MemorySegment value) {
+    public void pStdSliceSegmentHeaderRaw(@Pointer(target=StdVideoEncodeH265SliceSegmentHeader.class) MemorySegment value) {
         segment.set(LAYOUT$pStdSliceSegmentHeader, OFFSET$pStdSliceSegmentHeader, value);
     }
 

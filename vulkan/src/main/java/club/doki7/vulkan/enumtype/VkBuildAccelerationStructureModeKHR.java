@@ -7,7 +7,7 @@ public final class VkBuildAccelerationStructureModeKHR {
     public static final int BUILD = 0x0;
     public static final int UPDATE = 0x1;
 
-    public static String explain(@enumtype(VkBuildAccelerationStructureModeKHR.class) int value) {
+    public static String explain(@EnumType(VkBuildAccelerationStructureModeKHR.class) int value) {
         return switch (value) {
             case VkBuildAccelerationStructureModeKHR.BUILD -> "VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR";
             case VkBuildAccelerationStructureModeKHR.UPDATE -> "VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR";

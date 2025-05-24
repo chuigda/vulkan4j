@@ -28,10 +28,10 @@ public final class VkEntryCommands {
 
     // region command wrappers
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateInstance.html"><code>vkCreateInstance</code></a>
-    public @enumtype(VkResult.class) int createInstance(
-        @pointer VkInstanceCreateInfo pCreateInfo,
-        @Nullable @pointer VkAllocationCallbacks pAllocator,
-        @pointer VkInstance.Ptr pInstance
+    public @EnumType(VkResult.class) int createInstance(
+        @Pointer VkInstanceCreateInfo pCreateInfo,
+        @Nullable @Pointer VkAllocationCallbacks pAllocator,
+        @Pointer VkInstance.Ptr pInstance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCreateInstance);
         try {
@@ -46,10 +46,10 @@ public final class VkEntryCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceExtensionProperties.html"><code>vkEnumerateInstanceExtensionProperties</code></a>
-    public @enumtype(VkResult.class) int enumerateInstanceExtensionProperties(
+    public @EnumType(VkResult.class) int enumerateInstanceExtensionProperties(
         @Nullable BytePtr pLayerName,
         @unsigned IntPtr pPropertyCount,
-        @Nullable @pointer IVkExtensionProperties pProperties
+        @Nullable @Pointer IVkExtensionProperties pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceExtensionProperties);
         try {
@@ -64,9 +64,9 @@ public final class VkEntryCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceLayerProperties.html"><code>vkEnumerateInstanceLayerProperties</code></a>
-    public @enumtype(VkResult.class) int enumerateInstanceLayerProperties(
+    public @EnumType(VkResult.class) int enumerateInstanceLayerProperties(
         @unsigned IntPtr pPropertyCount,
-        @Nullable @pointer IVkLayerProperties pProperties
+        @Nullable @Pointer IVkLayerProperties pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceLayerProperties);
         try {
@@ -80,7 +80,7 @@ public final class VkEntryCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateInstanceVersion.html"><code>vkEnumerateInstanceVersion</code></a>
-    public @enumtype(VkResult.class) int enumerateInstanceVersion(
+    public @EnumType(VkResult.class) int enumerateInstanceVersion(
         @unsigned IntPtr pApiVersion
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateInstanceVersion);

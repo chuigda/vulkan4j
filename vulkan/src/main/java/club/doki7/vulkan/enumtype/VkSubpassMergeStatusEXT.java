@@ -19,7 +19,7 @@ public final class VkSubpassMergeStatusEXT {
     public static final int NOT_MERGED_SINGLE_SUBPASS = 0xc;
     public static final int NOT_MERGED_UNSPECIFIED = 0xd;
 
-    public static String explain(@enumtype(VkSubpassMergeStatusEXT.class) int value) {
+    public static String explain(@EnumType(VkSubpassMergeStatusEXT.class) int value) {
         return switch (value) {
             case VkSubpassMergeStatusEXT.DISALLOWED -> "VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT";
             case VkSubpassMergeStatusEXT.MERGED -> "VK_SUBPASS_MERGE_STATUS_MERGED_EXT";

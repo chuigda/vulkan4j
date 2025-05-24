@@ -196,7 +196,7 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceLimits.BYTES, VkPhysicalDeviceLimits.BYTES));
         }
@@ -883,35 +883,35 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$maxFramebufferLayers, OFFSET$maxFramebufferLayers, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int framebufferColorSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int framebufferColorSampleCounts() {
         return segment.get(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts);
     }
 
-    public void framebufferColorSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void framebufferColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
         return segment.get(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts);
     }
 
-    public void framebufferDepthSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void framebufferDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
         return segment.get(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts);
     }
 
-    public void framebufferStencilSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void framebufferStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
         return segment.get(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts);
     }
 
-    public void framebufferNoAttachmentsSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void framebufferNoAttachmentsSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts, value);
     }
 
@@ -923,43 +923,43 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$maxColorAttachments, OFFSET$maxColorAttachments, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
         return segment.get(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts);
     }
 
-    public void sampledImageColorSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void sampledImageColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
         return segment.get(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts);
     }
 
-    public void sampledImageIntegerSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void sampledImageIntegerSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
         return segment.get(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts);
     }
 
-    public void sampledImageDepthSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void sampledImageDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
         return segment.get(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts);
     }
 
-    public void sampledImageStencilSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void sampledImageStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int storageImageSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int storageImageSampleCounts() {
         return segment.get(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts);
     }
 
-    public void storageImageSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void storageImageSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts, value);
     }
 

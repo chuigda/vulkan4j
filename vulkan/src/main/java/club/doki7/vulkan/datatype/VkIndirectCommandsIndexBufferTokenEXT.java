@@ -91,7 +91,7 @@ public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectCommandsIndexBufferTokenEXT.BYTES, VkIndirectCommandsIndexBufferTokenEXT.BYTES));
         }
@@ -138,11 +138,11 @@ public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segme
         return ret;
     }
 
-    public @enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int mode() {
+    public @EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+    public void mode(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
     }
 

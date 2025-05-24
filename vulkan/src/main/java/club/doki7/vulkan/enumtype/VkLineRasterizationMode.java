@@ -9,7 +9,7 @@ public final class VkLineRasterizationMode {
     public static final int BRESENHAM = 0x2;
     public static final int RECTANGULAR_SMOOTH = 0x3;
 
-    public static String explain(@enumtype(VkLineRasterizationMode.class) int value) {
+    public static String explain(@EnumType(VkLineRasterizationMode.class) int value) {
         return switch (value) {
             case VkLineRasterizationMode.BRESENHAM -> "VK_LINE_RASTERIZATION_MODE_BRESENHAM";
             case VkLineRasterizationMode.DEFAULT -> "VK_LINE_RASTERIZATION_MODE_DEFAULT";

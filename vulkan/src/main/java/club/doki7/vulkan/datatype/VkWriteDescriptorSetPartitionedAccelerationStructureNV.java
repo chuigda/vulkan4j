@@ -102,7 +102,7 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkWriteDescriptorSetPartitionedAccelerationStructureNV.BYTES, VkWriteDescriptorSetPartitionedAccelerationStructureNV.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         sType(VkStructureType.WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -204,11 +204,11 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         pAccelerationStructuresRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pAccelerationStructuresRaw() {
+    public @Pointer(comment="long*") MemorySegment pAccelerationStructuresRaw() {
         return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
     }
 
-    public void pAccelerationStructuresRaw(@pointer(comment="long*") MemorySegment value) {
+    public void pAccelerationStructuresRaw(@Pointer(comment="long*") MemorySegment value) {
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 

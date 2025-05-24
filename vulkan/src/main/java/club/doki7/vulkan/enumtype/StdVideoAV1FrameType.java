@@ -9,7 +9,7 @@ public final class StdVideoAV1FrameType {
     public static final int STD_VIDEO_AV1_FRAME_TYPE_SWITCH = 0x3;
     public static final int STD_VIDEO_AV1_FRAME_TYPE_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoAV1FrameType.class) int value) {
+    public static String explain(@EnumType(StdVideoAV1FrameType.class) int value) {
         return switch (value) {
             case StdVideoAV1FrameType.STD_VIDEO_AV1_FRAME_TYPE_INTER -> "STD_VIDEO_AV1_FRAME_TYPE_INTER";
             case StdVideoAV1FrameType.STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY -> "STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY";

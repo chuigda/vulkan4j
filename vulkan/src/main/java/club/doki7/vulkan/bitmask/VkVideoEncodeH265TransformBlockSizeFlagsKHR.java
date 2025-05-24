@@ -12,7 +12,7 @@ public final class VkVideoEncodeH265TransformBlockSizeFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4 = 0x1;
     public static final int VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8 = 0x2;
 
-    public static String explain(@enumtype(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int flags) {
+    public static String explain(@EnumType(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_KHR");

@@ -95,7 +95,7 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageFormatProperties.BYTES, VkImageFormatProperties.BYTES));
         }
@@ -166,11 +166,11 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$maxArrayLayers, OFFSET$maxArrayLayers, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int sampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int sampleCounts() {
         return segment.get(LAYOUT$sampleCounts, OFFSET$sampleCounts);
     }
 
-    public void sampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
     }
 

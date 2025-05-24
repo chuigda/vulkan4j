@@ -92,7 +92,7 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkMemoryHeap.BYTES, VkMemoryHeap.BYTES));
         }
@@ -147,11 +147,11 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @enumtype(VkMemoryHeapFlags.class) int flags() {
+    public @EnumType(VkMemoryHeapFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkMemoryHeapFlags.class) int value) {
+    public void flags(@EnumType(VkMemoryHeapFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 

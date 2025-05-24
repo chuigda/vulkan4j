@@ -93,7 +93,7 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkClusterAccelerationStructureOpInputNV.BYTES, VkClusterAccelerationStructureOpInputNV.BYTES));
         }
@@ -145,7 +145,7 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         pClustersBottomLevelRaw(s);
     }
 
-    @unsafe public @Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV.Ptr pClustersBottomLevel(int assumedCount) {
+    @Unsafe public @Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV.Ptr pClustersBottomLevel(int assumedCount) {
         MemorySegment s = pClustersBottomLevelRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -163,11 +163,11 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return new VkClusterAccelerationStructureClustersBottomLevelInputNV(s);
     }
 
-    public @pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment pClustersBottomLevelRaw() {
+    public @Pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment pClustersBottomLevelRaw() {
         return segment.get(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel);
     }
 
-    public void pClustersBottomLevelRaw(@pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment value) {
+    public void pClustersBottomLevelRaw(@Pointer(target=VkClusterAccelerationStructureClustersBottomLevelInputNV.class) MemorySegment value) {
         segment.set(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel, value);
     }
 
@@ -176,7 +176,7 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         pTriangleClustersRaw(s);
     }
 
-    @unsafe public @Nullable VkClusterAccelerationStructureTriangleClusterInputNV.Ptr pTriangleClusters(int assumedCount) {
+    @Unsafe public @Nullable VkClusterAccelerationStructureTriangleClusterInputNV.Ptr pTriangleClusters(int assumedCount) {
         MemorySegment s = pTriangleClustersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -194,11 +194,11 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return new VkClusterAccelerationStructureTriangleClusterInputNV(s);
     }
 
-    public @pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment pTriangleClustersRaw() {
+    public @Pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment pTriangleClustersRaw() {
         return segment.get(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters);
     }
 
-    public void pTriangleClustersRaw(@pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment value) {
+    public void pTriangleClustersRaw(@Pointer(target=VkClusterAccelerationStructureTriangleClusterInputNV.class) MemorySegment value) {
         segment.set(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters, value);
     }
 
@@ -207,7 +207,7 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         pMoveObjectsRaw(s);
     }
 
-    @unsafe public @Nullable VkClusterAccelerationStructureMoveObjectsInputNV.Ptr pMoveObjects(int assumedCount) {
+    @Unsafe public @Nullable VkClusterAccelerationStructureMoveObjectsInputNV.Ptr pMoveObjects(int assumedCount) {
         MemorySegment s = pMoveObjectsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -225,11 +225,11 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return new VkClusterAccelerationStructureMoveObjectsInputNV(s);
     }
 
-    public @pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment pMoveObjectsRaw() {
+    public @Pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment pMoveObjectsRaw() {
         return segment.get(LAYOUT$pMoveObjects, OFFSET$pMoveObjects);
     }
 
-    public void pMoveObjectsRaw(@pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment value) {
+    public void pMoveObjectsRaw(@Pointer(target=VkClusterAccelerationStructureMoveObjectsInputNV.class) MemorySegment value) {
         segment.set(LAYOUT$pMoveObjects, OFFSET$pMoveObjects, value);
     }
 

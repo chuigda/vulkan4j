@@ -100,7 +100,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH265VideoParameterSet.BYTES, StdVideoH265VideoParameterSet.BYTES));
         }
@@ -203,7 +203,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         pDecPicBufMgrRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265DecPicBufMgr.Ptr pDecPicBufMgr(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH265DecPicBufMgr.Ptr pDecPicBufMgr(int assumedCount) {
         MemorySegment s = pDecPicBufMgrRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -221,11 +221,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265DecPicBufMgr(s);
     }
 
-    public @pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment pDecPicBufMgrRaw() {
+    public @Pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment pDecPicBufMgrRaw() {
         return segment.get(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr);
     }
 
-    public void pDecPicBufMgrRaw(@pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment value) {
+    public void pDecPicBufMgrRaw(@Pointer(target=StdVideoH265DecPicBufMgr.class) MemorySegment value) {
         segment.set(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr, value);
     }
 
@@ -234,7 +234,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         pHrdParametersRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265HrdParameters.Ptr pHrdParameters(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH265HrdParameters.Ptr pHrdParameters(int assumedCount) {
         MemorySegment s = pHrdParametersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -252,11 +252,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265HrdParameters(s);
     }
 
-    public @pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
+    public @Pointer(target=StdVideoH265HrdParameters.class) MemorySegment pHrdParametersRaw() {
         return segment.get(LAYOUT$pHrdParameters, OFFSET$pHrdParameters);
     }
 
-    public void pHrdParametersRaw(@pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
+    public void pHrdParametersRaw(@Pointer(target=StdVideoH265HrdParameters.class) MemorySegment value) {
         segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 
@@ -265,7 +265,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         pProfileTierLevelRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH265ProfileTierLevel.Ptr pProfileTierLevel(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH265ProfileTierLevel.Ptr pProfileTierLevel(int assumedCount) {
         MemorySegment s = pProfileTierLevelRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -283,11 +283,11 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265ProfileTierLevel(s);
     }
 
-    public @pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment pProfileTierLevelRaw() {
+    public @Pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment pProfileTierLevelRaw() {
         return segment.get(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel);
     }
 
-    public void pProfileTierLevelRaw(@pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment value) {
+    public void pProfileTierLevelRaw(@Pointer(target=StdVideoH265ProfileTierLevel.class) MemorySegment value) {
         segment.set(LAYOUT$pProfileTierLevel, OFFSET$pProfileTierLevel, value);
     }
 

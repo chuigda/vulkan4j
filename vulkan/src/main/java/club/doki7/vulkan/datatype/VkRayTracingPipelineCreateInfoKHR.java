@@ -112,7 +112,7 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRayTracingPipelineCreateInfoKHR.BYTES, VkRayTracingPipelineCreateInfoKHR.BYTES));
         }
@@ -169,19 +169,19 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         sType(VkStructureType.RAY_TRACING_PIPELINE_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -189,11 +189,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineCreateFlags.class) int flags() {
+    public @EnumType(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineCreateFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -210,7 +210,7 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         pStagesRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
         MemorySegment s = pStagesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -228,11 +228,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return new VkPipelineShaderStageCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
+    public @Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment pStagesRaw() {
         return segment.get(LAYOUT$pStages, OFFSET$pStages);
     }
 
-    public void pStagesRaw(@pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
+    public void pStagesRaw(@Pointer(target=VkPipelineShaderStageCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
@@ -249,7 +249,7 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         pGroupsRaw(s);
     }
 
-    @unsafe public @Nullable VkRayTracingShaderGroupCreateInfoKHR.Ptr pGroups(int assumedCount) {
+    @Unsafe public @Nullable VkRayTracingShaderGroupCreateInfoKHR.Ptr pGroups(int assumedCount) {
         MemorySegment s = pGroupsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -267,11 +267,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return new VkRayTracingShaderGroupCreateInfoKHR(s);
     }
 
-    public @pointer(target=VkRayTracingShaderGroupCreateInfoKHR.class) MemorySegment pGroupsRaw() {
+    public @Pointer(target=VkRayTracingShaderGroupCreateInfoKHR.class) MemorySegment pGroupsRaw() {
         return segment.get(LAYOUT$pGroups, OFFSET$pGroups);
     }
 
-    public void pGroupsRaw(@pointer(target=VkRayTracingShaderGroupCreateInfoKHR.class) MemorySegment value) {
+    public void pGroupsRaw(@Pointer(target=VkRayTracingShaderGroupCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
@@ -288,7 +288,7 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         pLibraryInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineLibraryCreateInfoKHR.Ptr pLibraryInfo(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineLibraryCreateInfoKHR.Ptr pLibraryInfo(int assumedCount) {
         MemorySegment s = pLibraryInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -306,11 +306,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return new VkPipelineLibraryCreateInfoKHR(s);
     }
 
-    public @pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {
+    public @Pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment pLibraryInfoRaw() {
         return segment.get(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo);
     }
 
-    public void pLibraryInfoRaw(@pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment value) {
+    public void pLibraryInfoRaw(@Pointer(target=VkPipelineLibraryCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pLibraryInfo, OFFSET$pLibraryInfo, value);
     }
 
@@ -319,7 +319,7 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         pLibraryInterfaceRaw(s);
     }
 
-    @unsafe public @Nullable VkRayTracingPipelineInterfaceCreateInfoKHR.Ptr pLibraryInterface(int assumedCount) {
+    @Unsafe public @Nullable VkRayTracingPipelineInterfaceCreateInfoKHR.Ptr pLibraryInterface(int assumedCount) {
         MemorySegment s = pLibraryInterfaceRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -337,11 +337,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return new VkRayTracingPipelineInterfaceCreateInfoKHR(s);
     }
 
-    public @pointer(target=VkRayTracingPipelineInterfaceCreateInfoKHR.class) MemorySegment pLibraryInterfaceRaw() {
+    public @Pointer(target=VkRayTracingPipelineInterfaceCreateInfoKHR.class) MemorySegment pLibraryInterfaceRaw() {
         return segment.get(LAYOUT$pLibraryInterface, OFFSET$pLibraryInterface);
     }
 
-    public void pLibraryInterfaceRaw(@pointer(target=VkRayTracingPipelineInterfaceCreateInfoKHR.class) MemorySegment value) {
+    public void pLibraryInterfaceRaw(@Pointer(target=VkRayTracingPipelineInterfaceCreateInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pLibraryInterface, OFFSET$pLibraryInterface, value);
     }
 
@@ -350,7 +350,7 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         pDynamicStateRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineDynamicStateCreateInfo.Ptr pDynamicState(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineDynamicStateCreateInfo.Ptr pDynamicState(int assumedCount) {
         MemorySegment s = pDynamicStateRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -368,11 +368,11 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         return new VkPipelineDynamicStateCreateInfo(s);
     }
 
-    public @pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment pDynamicStateRaw() {
+    public @Pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment pDynamicStateRaw() {
         return segment.get(LAYOUT$pDynamicState, OFFSET$pDynamicState);
     }
 
-    public void pDynamicStateRaw(@pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment value) {
+    public void pDynamicStateRaw(@Pointer(target=VkPipelineDynamicStateCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pDynamicState, OFFSET$pDynamicState, value);
     }
 

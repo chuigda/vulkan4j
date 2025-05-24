@@ -99,7 +99,7 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceProperties.BYTES, VkPhysicalDeviceProperties.BYTES));
         }
@@ -178,11 +178,11 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
     }
 
-    public @enumtype(VkPhysicalDeviceType.class) int deviceType() {
+    public @EnumType(VkPhysicalDeviceType.class) int deviceType() {
         return segment.get(LAYOUT$deviceType, OFFSET$deviceType);
     }
 
-    public void deviceType(@enumtype(VkPhysicalDeviceType.class) int value) {
+    public void deviceType(@EnumType(VkPhysicalDeviceType.class) int value) {
         segment.set(LAYOUT$deviceType, OFFSET$deviceType, value);
     }
 

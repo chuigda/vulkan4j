@@ -101,7 +101,7 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkExportMemorySciBufInfoNV.BYTES, VkExportMemorySciBufInfoNV.BYTES));
         }
@@ -158,19 +158,19 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.EXPORT_MEMORY_SCI_BUF_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -178,11 +178,11 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="NvSciBufAttrList") MemorySegment pAttributes() {
+    public @Pointer(comment="NvSciBufAttrList") MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
-    public void pAttributes(@pointer(comment="NvSciBufAttrList") MemorySegment value) {
+    public void pAttributes(@Pointer(comment="NvSciBufAttrList") MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
     }
 

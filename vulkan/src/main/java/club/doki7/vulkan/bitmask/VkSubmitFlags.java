@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkSubmitFlags {
     public static final int PROTECTED = 0x1;
 
-    public static String explain(@enumtype(VkSubmitFlags.class) int flags) {
+    public static String explain(@EnumType(VkSubmitFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & PROTECTED) != 0) {
             detectedFlagBits.add("VK_SUBMIT_PROTECTED_BIT");

@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkCommandPoolResetFlags {
     public static final int RELEASE_RESOURCES = 0x1;
 
-    public static String explain(@enumtype(VkCommandPoolResetFlags.class) int flags) {
+    public static String explain(@EnumType(VkCommandPoolResetFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & RELEASE_RESOURCES) != 0) {
             detectedFlagBits.add("VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT");

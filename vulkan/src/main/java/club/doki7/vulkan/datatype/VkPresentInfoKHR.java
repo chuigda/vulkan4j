@@ -106,7 +106,7 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPresentInfoKHR.BYTES, VkPresentInfoKHR.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         sType(VkStructureType.PRESENT_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -208,11 +208,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         pWaitSemaphoresRaw(s);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
         return segment.get(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores);
     }
 
-    public void pWaitSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pWaitSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
@@ -241,11 +241,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         pSwapchainsRaw(s);
     }
 
-    public @pointer(target=VkSwapchainKHR.class) MemorySegment pSwapchainsRaw() {
+    public @Pointer(target=VkSwapchainKHR.class) MemorySegment pSwapchainsRaw() {
         return segment.get(LAYOUT$pSwapchains, OFFSET$pSwapchains);
     }
 
-    public void pSwapchainsRaw(@pointer(target=VkSwapchainKHR.class) MemorySegment value) {
+    public void pSwapchainsRaw(@Pointer(target=VkSwapchainKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pSwapchains, OFFSET$pSwapchains, value);
     }
 
@@ -266,11 +266,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         pImageIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pImageIndicesRaw() {
+    public @Pointer(comment="int*") MemorySegment pImageIndicesRaw() {
         return segment.get(LAYOUT$pImageIndices, OFFSET$pImageIndices);
     }
 
-    public void pImageIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pImageIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pImageIndices, OFFSET$pImageIndices, value);
     }
 
@@ -279,7 +279,7 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkResult.class) IntPtr pResults() {
+    public @Nullable @EnumType(VkResult.class) IntPtr pResults() {
         MemorySegment s = pResultsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -287,16 +287,16 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return new IntPtr(s);
     }
 
-    public void pResults(@Nullable @enumtype(VkResult.class) IntPtr value) {
+    public void pResults(@Nullable @EnumType(VkResult.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);
     }
 
-    public @pointer(target=VkResult.class) MemorySegment pResultsRaw() {
+    public @Pointer(target=VkResult.class) MemorySegment pResultsRaw() {
         return segment.get(LAYOUT$pResults, OFFSET$pResults);
     }
 
-    public void pResultsRaw(@pointer(target=VkResult.class) MemorySegment value) {
+    public void pResultsRaw(@Pointer(target=VkResult.class) MemorySegment value) {
         segment.set(LAYOUT$pResults, OFFSET$pResults, value);
     }
 

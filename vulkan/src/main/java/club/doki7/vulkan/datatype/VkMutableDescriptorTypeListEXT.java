@@ -92,7 +92,7 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkMutableDescriptorTypeListEXT.BYTES, VkMutableDescriptorTypeListEXT.BYTES));
         }
@@ -152,7 +152,7 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkDescriptorType.class) IntPtr pDescriptorTypes() {
+    public @Nullable @EnumType(VkDescriptorType.class) IntPtr pDescriptorTypes() {
         MemorySegment s = pDescriptorTypesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -160,16 +160,16 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         return new IntPtr(s);
     }
 
-    public void pDescriptorTypes(@Nullable @enumtype(VkDescriptorType.class) IntPtr value) {
+    public void pDescriptorTypes(@Nullable @EnumType(VkDescriptorType.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorTypesRaw(s);
     }
 
-    public @pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {
+    public @Pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {
         return segment.get(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes);
     }
 
-    public void pDescriptorTypesRaw(@pointer(target=VkDescriptorType.class) MemorySegment value) {
+    public void pDescriptorTypesRaw(@Pointer(target=VkDescriptorType.class) MemorySegment value) {
         segment.set(LAYOUT$pDescriptorTypes, OFFSET$pDescriptorTypes, value);
     }
 

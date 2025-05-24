@@ -102,7 +102,7 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkCommandBufferBeginInfo.BYTES, VkCommandBufferBeginInfo.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         sType(VkStructureType.COMMAND_BUFFER_BEGIN_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkCommandBufferUsageFlags.class) int flags() {
+    public @EnumType(VkCommandBufferUsageFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkCommandBufferUsageFlags.class) int value) {
+    public void flags(@EnumType(VkCommandBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -192,7 +192,7 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         pInheritanceInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkCommandBufferInheritanceInfo.Ptr pInheritanceInfo(int assumedCount) {
+    @Unsafe public @Nullable VkCommandBufferInheritanceInfo.Ptr pInheritanceInfo(int assumedCount) {
         MemorySegment s = pInheritanceInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         return new VkCommandBufferInheritanceInfo(s);
     }
 
-    public @pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment pInheritanceInfoRaw() {
+    public @Pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment pInheritanceInfoRaw() {
         return segment.get(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo);
     }
 
-    public void pInheritanceInfoRaw(@pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment value) {
+    public void pInheritanceInfoRaw(@Pointer(target=VkCommandBufferInheritanceInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pInheritanceInfo, OFFSET$pInheritanceInfo, value);
     }
 

@@ -12,7 +12,7 @@ public final class VkCompositeAlphaFlagsKHR {
     public static final int POST_MULTIPLIED = 0x4;
     public static final int PRE_MULTIPLIED = 0x2;
 
-    public static String explain(@enumtype(VkCompositeAlphaFlagsKHR.class) int flags) {
+    public static String explain(@EnumType(VkCompositeAlphaFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & INHERIT) != 0) {
             detectedFlagBits.add("VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR");

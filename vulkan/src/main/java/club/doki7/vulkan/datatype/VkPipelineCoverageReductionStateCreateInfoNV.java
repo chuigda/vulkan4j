@@ -102,7 +102,7 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineCoverageReductionStateCreateInfoNV.BYTES, VkPipelineCoverageReductionStateCreateInfoNV.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
         sType(VkStructureType.PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,19 +179,19 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineCoverageReductionStateCreateFlagsNV.class) int flags() {
+    public @EnumType(VkPipelineCoverageReductionStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineCoverageReductionStateCreateFlagsNV.class) int value) {
+    public void flags(@EnumType(VkPipelineCoverageReductionStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkCoverageReductionModeNV.class) int coverageReductionMode() {
+    public @EnumType(VkCoverageReductionModeNV.class) int coverageReductionMode() {
         return segment.get(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode);
     }
 
-    public void coverageReductionMode(@enumtype(VkCoverageReductionModeNV.class) int value) {
+    public void coverageReductionMode(@EnumType(VkCoverageReductionModeNV.class) int value) {
         segment.set(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode, value);
     }
 

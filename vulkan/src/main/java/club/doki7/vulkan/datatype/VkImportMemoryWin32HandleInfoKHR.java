@@ -103,7 +103,7 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImportMemoryWin32HandleInfoKHR.BYTES, VkImportMemoryWin32HandleInfoKHR.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         sType(VkStructureType.IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,19 +180,19 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkExternalMemoryHandleTypeFlags.class) int handleType() {
+    public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@enumtype(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public void handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
     }
 
-    public @pointer(comment="HANDLE") MemorySegment handle() {
+    public @Pointer(comment="HANDLE") MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@pointer(comment="HANDLE") MemorySegment value) {
+    public void handle(@Pointer(comment="HANDLE") MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
@@ -217,11 +217,11 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         nameRaw(s);
     }
 
-    public @pointer(comment="short*") MemorySegment nameRaw() {
+    public @Pointer(comment="short*") MemorySegment nameRaw() {
         return segment.get(LAYOUT$name, OFFSET$name);
     }
 
-    public void nameRaw(@pointer(comment="short*") MemorySegment value) {
+    public void nameRaw(@Pointer(comment="short*") MemorySegment value) {
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
 

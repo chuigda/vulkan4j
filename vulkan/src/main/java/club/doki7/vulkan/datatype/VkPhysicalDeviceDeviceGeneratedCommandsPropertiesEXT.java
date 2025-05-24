@@ -112,7 +112,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.BYTES));
         }
@@ -169,19 +169,19 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -237,35 +237,35 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         segment.set(LAYOUT$maxIndirectCommandsIndirectStride, OFFSET$maxIndirectCommandsIndirectStride, value);
     }
 
-    public @enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
+    public @EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
         return segment.get(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes);
     }
 
-    public void supportedIndirectCommandsInputModes(@enumtype(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+    public void supportedIndirectCommandsInputModes(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
+    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages);
     }
 
-    public void supportedIndirectCommandsShaderStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void supportedIndirectCommandsShaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
+    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding);
     }
 
-    public void supportedIndirectCommandsShaderStagesPipelineBinding(@enumtype(VkShaderStageFlags.class) int value) {
+    public void supportedIndirectCommandsShaderStagesPipelineBinding(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
+    public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding);
     }
 
-    public void supportedIndirectCommandsShaderStagesShaderBinding(@enumtype(VkShaderStageFlags.class) int value) {
+    public void supportedIndirectCommandsShaderStagesShaderBinding(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding, value);
     }
 

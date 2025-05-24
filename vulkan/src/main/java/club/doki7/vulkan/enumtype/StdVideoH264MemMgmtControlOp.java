@@ -12,7 +12,7 @@ public final class StdVideoH264MemMgmtControlOp {
     public static final int STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_MARK_CURRENT_AS_LONG_TERM = 0x6;
     public static final int STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH264MemMgmtControlOp.class) int value) {
+    public static String explain(@EnumType(StdVideoH264MemMgmtControlOp.class) int value) {
         return switch (value) {
             case StdVideoH264MemMgmtControlOp.STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_END -> "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_END";
             case StdVideoH264MemMgmtControlOp.STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_INVALID -> "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_INVALID";

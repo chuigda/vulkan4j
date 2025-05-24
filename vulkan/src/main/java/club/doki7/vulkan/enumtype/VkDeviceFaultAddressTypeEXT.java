@@ -12,7 +12,7 @@ public final class VkDeviceFaultAddressTypeEXT {
     public static final int INSTRUCTION_POINTER_INVALID = 0x5;
     public static final int INSTRUCTION_POINTER_FAULT = 0x6;
 
-    public static String explain(@enumtype(VkDeviceFaultAddressTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkDeviceFaultAddressTypeEXT.class) int value) {
         return switch (value) {
             case VkDeviceFaultAddressTypeEXT.EXECUTE_INVALID -> "VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT";
             case VkDeviceFaultAddressTypeEXT.INSTRUCTION_POINTER_FAULT -> "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT";

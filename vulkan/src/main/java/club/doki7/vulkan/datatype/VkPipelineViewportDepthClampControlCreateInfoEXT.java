@@ -102,7 +102,7 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineViewportDepthClampControlCreateInfoEXT.BYTES, VkPipelineViewportDepthClampControlCreateInfoEXT.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         sType(VkStructureType.PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDepthClampModeEXT.class) int depthClampMode() {
+    public @EnumType(VkDepthClampModeEXT.class) int depthClampMode() {
         return segment.get(LAYOUT$depthClampMode, OFFSET$depthClampMode);
     }
 
-    public void depthClampMode(@enumtype(VkDepthClampModeEXT.class) int value) {
+    public void depthClampMode(@EnumType(VkDepthClampModeEXT.class) int value) {
         segment.set(LAYOUT$depthClampMode, OFFSET$depthClampMode, value);
     }
 
@@ -192,7 +192,7 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         pDepthClampRangeRaw(s);
     }
 
-    @unsafe public @Nullable VkDepthClampRangeEXT.Ptr pDepthClampRange(int assumedCount) {
+    @Unsafe public @Nullable VkDepthClampRangeEXT.Ptr pDepthClampRange(int assumedCount) {
         MemorySegment s = pDepthClampRangeRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         return new VkDepthClampRangeEXT(s);
     }
 
-    public @pointer(target=VkDepthClampRangeEXT.class) MemorySegment pDepthClampRangeRaw() {
+    public @Pointer(target=VkDepthClampRangeEXT.class) MemorySegment pDepthClampRangeRaw() {
         return segment.get(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange);
     }
 
-    public void pDepthClampRangeRaw(@pointer(target=VkDepthClampRangeEXT.class) MemorySegment value) {
+    public void pDepthClampRangeRaw(@Pointer(target=VkDepthClampRangeEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pDepthClampRange, OFFSET$pDepthClampRange, value);
     }
 

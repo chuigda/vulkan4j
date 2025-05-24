@@ -103,7 +103,7 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageCompressionControlEXT.BYTES, VkImageCompressionControlEXT.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         sType(VkStructureType.IMAGE_COMPRESSION_CONTROL_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,11 +180,11 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageCompressionFlagsEXT.class) int flags() {
+    public @EnumType(VkImageCompressionFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkImageCompressionFlagsEXT.class) int value) {
+    public void flags(@EnumType(VkImageCompressionFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -201,7 +201,7 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkImageCompressionFixedRateFlagsEXT.class) IntPtr pFixedRateFlags() {
+    public @Nullable @EnumType(VkImageCompressionFixedRateFlagsEXT.class) IntPtr pFixedRateFlags() {
         MemorySegment s = pFixedRateFlagsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -209,16 +209,16 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         return new IntPtr(s);
     }
 
-    public void pFixedRateFlags(@Nullable @enumtype(VkImageCompressionFixedRateFlagsEXT.class) IntPtr value) {
+    public void pFixedRateFlags(@Nullable @EnumType(VkImageCompressionFixedRateFlagsEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFixedRateFlagsRaw(s);
     }
 
-    public @pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment pFixedRateFlagsRaw() {
+    public @Pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment pFixedRateFlagsRaw() {
         return segment.get(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags);
     }
 
-    public void pFixedRateFlagsRaw(@pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment value) {
+    public void pFixedRateFlagsRaw(@Pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pFixedRateFlags, OFFSET$pFixedRateFlags, value);
     }
 

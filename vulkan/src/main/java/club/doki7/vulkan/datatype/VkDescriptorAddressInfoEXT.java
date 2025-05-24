@@ -103,7 +103,7 @@ public record VkDescriptorAddressInfoEXT(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDescriptorAddressInfoEXT.BYTES, VkDescriptorAddressInfoEXT.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkDescriptorAddressInfoEXT(@NotNull MemorySegment segment) impleme
         sType(VkStructureType.DESCRIPTOR_ADDRESS_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -196,11 +196,11 @@ public record VkDescriptorAddressInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$range, OFFSET$range, value);
     }
 
-    public @enumtype(VkFormat.class) int format() {
+    public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@enumtype(VkFormat.class) int value) {
+    public void format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 

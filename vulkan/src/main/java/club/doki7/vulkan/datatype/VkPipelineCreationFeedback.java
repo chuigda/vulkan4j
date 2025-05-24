@@ -92,7 +92,7 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineCreationFeedback.BYTES, VkPipelineCreationFeedback.BYTES));
         }
@@ -139,11 +139,11 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @enumtype(VkPipelineCreationFeedbackFlags.class) int flags() {
+    public @EnumType(VkPipelineCreationFeedbackFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineCreationFeedbackFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineCreationFeedbackFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 

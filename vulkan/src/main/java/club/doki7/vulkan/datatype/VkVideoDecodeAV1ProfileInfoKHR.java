@@ -102,7 +102,7 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoDecodeAV1ProfileInfoKHR.BYTES, VkVideoDecodeAV1ProfileInfoKHR.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         sType(VkStructureType.VIDEO_DECODE_AV1_PROFILE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(StdVideoAV1Profile.class) int stdProfile() {
+    public @EnumType(StdVideoAV1Profile.class) int stdProfile() {
         return segment.get(LAYOUT$stdProfile, OFFSET$stdProfile);
     }
 
-    public void stdProfile(@enumtype(StdVideoAV1Profile.class) int value) {
+    public void stdProfile(@EnumType(StdVideoAV1Profile.class) int value) {
         segment.set(LAYOUT$stdProfile, OFFSET$stdProfile, value);
     }
 

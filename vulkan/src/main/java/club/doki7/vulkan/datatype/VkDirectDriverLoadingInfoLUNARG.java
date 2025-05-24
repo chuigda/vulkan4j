@@ -102,7 +102,7 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDirectDriverLoadingInfoLUNARG.BYTES, VkDirectDriverLoadingInfoLUNARG.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         sType(VkStructureType.DIRECT_DRIVER_LOADING_INFO_LUNARG);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,19 +179,19 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
+    public @EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkDirectDriverLoadingFlagsLUNARG.class) int value) {
+    public void flags(@EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment pfnGetInstanceProcAddr() {
+    public @Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment pfnGetInstanceProcAddr() {
         return segment.get(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr);
     }
 
-    public void pfnGetInstanceProcAddr(@pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment value) {
+    public void pfnGetInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment value) {
         segment.set(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr, value);
     }
 

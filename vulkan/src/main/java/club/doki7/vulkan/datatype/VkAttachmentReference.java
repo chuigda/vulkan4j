@@ -92,7 +92,7 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAttachmentReference.BYTES, VkAttachmentReference.BYTES));
         }
@@ -147,11 +147,11 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$attachment, OFFSET$attachment, value);
     }
 
-    public @enumtype(VkImageLayout.class) int layout() {
+    public @EnumType(VkImageLayout.class) int layout() {
         return segment.get(LAYOUT$layout, OFFSET$layout);
     }
 
-    public void layout(@enumtype(VkImageLayout.class) int value) {
+    public void layout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value);
     }
 

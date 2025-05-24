@@ -106,7 +106,7 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkResolveImageInfo2.BYTES, VkResolveImageInfo2.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.RESOLVE_IMAGE_INFO_2);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -195,11 +195,11 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$srcImage, OFFSET$srcImage, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageLayout.class) int srcImageLayout() {
+    public @EnumType(VkImageLayout.class) int srcImageLayout() {
         return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
     }
 
-    public void srcImageLayout(@enumtype(VkImageLayout.class) int value) {
+    public void srcImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
     }
 
@@ -215,11 +215,11 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$dstImage, OFFSET$dstImage, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkImageLayout.class) int dstImageLayout() {
+    public @EnumType(VkImageLayout.class) int dstImageLayout() {
         return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
     }
 
-    public void dstImageLayout(@enumtype(VkImageLayout.class) int value) {
+    public void dstImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
     }
 
@@ -236,7 +236,7 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
         pRegionsRaw(s);
     }
 
-    @unsafe public @Nullable VkImageResolve2.Ptr pRegions(int assumedCount) {
+    @Unsafe public @Nullable VkImageResolve2.Ptr pRegions(int assumedCount) {
         MemorySegment s = pRegionsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -254,11 +254,11 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
         return new VkImageResolve2(s);
     }
 
-    public @pointer(target=VkImageResolve2.class) MemorySegment pRegionsRaw() {
+    public @Pointer(target=VkImageResolve2.class) MemorySegment pRegionsRaw() {
         return segment.get(LAYOUT$pRegions, OFFSET$pRegions);
     }
 
-    public void pRegionsRaw(@pointer(target=VkImageResolve2.class) MemorySegment value) {
+    public void pRegionsRaw(@Pointer(target=VkImageResolve2.class) MemorySegment value) {
         segment.set(LAYOUT$pRegions, OFFSET$pRegions, value);
     }
 

@@ -39,7 +39,7 @@ public final class VkPipelineCreateFlags {
     public static final int RETAIN_LINK_TIME_OPTIMIZATION_INFO_EXT = 0x800000;
     public static final int VIEW_INDEX_FROM_DEVICE_INDEX = 0x8;
 
-    public static String explain(@enumtype(VkPipelineCreateFlags.class) int flags) {
+    public static String explain(@EnumType(VkPipelineCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_DERIVATIVES) != 0) {
             detectedFlagBits.add("VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT");

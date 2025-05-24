@@ -13,7 +13,7 @@ public final class VkDescriptorPoolCreateFlags {
     public static final int HOST_ONLY_EXT = 0x4;
     public static final int UPDATE_AFTER_BIND = 0x2;
 
-    public static String explain(@enumtype(VkDescriptorPoolCreateFlags.class) int flags) {
+    public static String explain(@EnumType(VkDescriptorPoolCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_OVERALLOCATION_POOLS_NV) != 0) {
             detectedFlagBits.add("VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV");

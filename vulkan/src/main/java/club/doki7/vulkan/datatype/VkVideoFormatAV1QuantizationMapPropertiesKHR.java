@@ -101,7 +101,7 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES, VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES));
         }
@@ -158,19 +158,19 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         sType(VkStructureType.VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -178,11 +178,11 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
+    public @EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int compatibleSuperblockSizes() {
         return segment.get(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes);
     }
 
-    public void compatibleSuperblockSizes(@enumtype(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
+    public void compatibleSuperblockSizes(@EnumType(VkVideoEncodeAV1SuperblockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$compatibleSuperblockSizes, OFFSET$compatibleSuperblockSizes, value);
     }
 

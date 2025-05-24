@@ -92,7 +92,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkShadingRatePaletteNV.BYTES, VkShadingRatePaletteNV.BYTES));
         }
@@ -152,7 +152,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntPtr pShadingRatePaletteEntries() {
+    public @Nullable @EnumType(VkShadingRatePaletteEntryNV.class) IntPtr pShadingRatePaletteEntries() {
         MemorySegment s = pShadingRatePaletteEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -160,16 +160,16 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         return new IntPtr(s);
     }
 
-    public void pShadingRatePaletteEntries(@Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntPtr value) {
+    public void pShadingRatePaletteEntries(@Nullable @EnumType(VkShadingRatePaletteEntryNV.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePaletteEntriesRaw(s);
     }
 
-    public @pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
+    public @Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
         return segment.get(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries);
     }
 
-    public void pShadingRatePaletteEntriesRaw(@pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
+    public void pShadingRatePaletteEntriesRaw(@Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries, value);
     }
 

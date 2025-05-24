@@ -7,7 +7,7 @@ public final class VkOutOfBandQueueTypeNV {
     public static final int RENDER = 0x0;
     public static final int PRESENT = 0x1;
 
-    public static String explain(@enumtype(VkOutOfBandQueueTypeNV.class) int value) {
+    public static String explain(@EnumType(VkOutOfBandQueueTypeNV.class) int value) {
         return switch (value) {
             case VkOutOfBandQueueTypeNV.PRESENT -> "VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV";
             case VkOutOfBandQueueTypeNV.RENDER -> "VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV";

@@ -101,7 +101,7 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkExportSemaphoreCreateInfo.BYTES, VkExportSemaphoreCreateInfo.BYTES));
         }
@@ -158,19 +158,19 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
         sType(VkStructureType.EXPORT_SEMAPHORE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -178,11 +178,11 @@ public record VkExportSemaphoreCreateInfo(@NotNull MemorySegment segment) implem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkExternalSemaphoreHandleTypeFlags.class) int handleTypes() {
+    public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleTypes() {
         return segment.get(LAYOUT$handleTypes, OFFSET$handleTypes);
     }
 
-    public void handleTypes(@enumtype(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public void handleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleTypes, OFFSET$handleTypes, value);
     }
 

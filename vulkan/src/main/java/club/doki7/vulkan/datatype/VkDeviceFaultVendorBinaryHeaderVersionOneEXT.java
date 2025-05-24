@@ -101,7 +101,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES, VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES));
         }
@@ -156,11 +156,11 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$headerSize, OFFSET$headerSize, value);
     }
 
-    public @enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int headerVersion() {
+    public @EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int headerVersion() {
         return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
     }
 
-    public void headerVersion(@enumtype(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
+    public void headerVersion(@EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
         segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
     }
 

@@ -94,7 +94,7 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeAV1ReferenceInfo.BYTES, StdVideoEncodeAV1ReferenceInfo.BYTES));
         }
@@ -157,11 +157,11 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$RefFrameId, OFFSET$RefFrameId, value);
     }
 
-    public @enumtype(StdVideoAV1FrameType.class) int frame_type() {
+    public @EnumType(StdVideoAV1FrameType.class) int frame_type() {
         return segment.get(LAYOUT$frame_type, OFFSET$frame_type);
     }
 
-    public void frame_type(@enumtype(StdVideoAV1FrameType.class) int value) {
+    public void frame_type(@EnumType(StdVideoAV1FrameType.class) int value) {
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
     }
 
@@ -179,7 +179,7 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         pExtensionHeaderRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader.Ptr pExtensionHeader(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader.Ptr pExtensionHeader(int assumedCount) {
         MemorySegment s = pExtensionHeaderRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -197,11 +197,11 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return new StdVideoEncodeAV1ExtensionHeader(s);
     }
 
-    public @pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {
+    public @Pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment pExtensionHeaderRaw() {
         return segment.get(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader);
     }
 
-    public void pExtensionHeaderRaw(@pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment value) {
+    public void pExtensionHeaderRaw(@Pointer(target=StdVideoEncodeAV1ExtensionHeader.class) MemorySegment value) {
         segment.set(LAYOUT$pExtensionHeader, OFFSET$pExtensionHeader, value);
     }
 

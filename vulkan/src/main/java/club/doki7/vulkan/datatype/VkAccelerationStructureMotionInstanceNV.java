@@ -93,7 +93,7 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAccelerationStructureMotionInstanceNV.BYTES, VkAccelerationStructureMotionInstanceNV.BYTES));
         }
@@ -140,19 +140,19 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public @enumtype(VkAccelerationStructureMotionInstanceTypeNV.class) int type() {
+    public @EnumType(VkAccelerationStructureMotionInstanceTypeNV.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
+    public void type(@EnumType(VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @enumtype(VkAccelerationStructureMotionInstanceFlagsNV.class) int flags() {
+    public @EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkAccelerationStructureMotionInstanceFlagsNV.class) int value) {
+    public void flags(@EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 

@@ -117,7 +117,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES, VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES));
         }
@@ -174,19 +174,19 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -266,11 +266,11 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         segment.set(LAYOUT$maxFragmentShadingRateCoverageSamples, OFFSET$maxFragmentShadingRateCoverageSamples, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int maxFragmentShadingRateRasterizationSamples() {
+    public @EnumType(VkSampleCountFlags.class) int maxFragmentShadingRateRasterizationSamples() {
         return segment.get(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples);
     }
 
-    public void maxFragmentShadingRateRasterizationSamples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void maxFragmentShadingRateRasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples, value);
     }
 

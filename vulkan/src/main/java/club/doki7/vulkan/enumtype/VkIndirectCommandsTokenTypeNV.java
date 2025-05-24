@@ -16,7 +16,7 @@ public final class VkIndirectCommandsTokenTypeNV {
     public static final int PIPELINE = 0x3ba151e3;
     public static final int DISPATCH = 0x3ba151e4;
 
-    public static String explain(@enumtype(VkIndirectCommandsTokenTypeNV.class) int value) {
+    public static String explain(@EnumType(VkIndirectCommandsTokenTypeNV.class) int value) {
         return switch (value) {
             case VkIndirectCommandsTokenTypeNV.DISPATCH -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV";
             case VkIndirectCommandsTokenTypeNV.DRAW_INDEXED -> "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV";

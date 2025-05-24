@@ -103,7 +103,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES, VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         sType(VkStructureType.PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,11 +180,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkCoarseSampleOrderTypeNV.class) int sampleOrderType() {
+    public @EnumType(VkCoarseSampleOrderTypeNV.class) int sampleOrderType() {
         return segment.get(LAYOUT$sampleOrderType, OFFSET$sampleOrderType);
     }
 
-    public void sampleOrderType(@enumtype(VkCoarseSampleOrderTypeNV.class) int value) {
+    public void sampleOrderType(@EnumType(VkCoarseSampleOrderTypeNV.class) int value) {
         segment.set(LAYOUT$sampleOrderType, OFFSET$sampleOrderType, value);
     }
 
@@ -201,7 +201,7 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         pCustomSampleOrdersRaw(s);
     }
 
-    @unsafe public @Nullable VkCoarseSampleOrderCustomNV.Ptr pCustomSampleOrders(int assumedCount) {
+    @Unsafe public @Nullable VkCoarseSampleOrderCustomNV.Ptr pCustomSampleOrders(int assumedCount) {
         MemorySegment s = pCustomSampleOrdersRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -219,11 +219,11 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         return new VkCoarseSampleOrderCustomNV(s);
     }
 
-    public @pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment pCustomSampleOrdersRaw() {
+    public @Pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment pCustomSampleOrdersRaw() {
         return segment.get(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders);
     }
 
-    public void pCustomSampleOrdersRaw(@pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment value) {
+    public void pCustomSampleOrdersRaw(@Pointer(target=VkCoarseSampleOrderCustomNV.class) MemorySegment value) {
         segment.set(LAYOUT$pCustomSampleOrders, OFFSET$pCustomSampleOrders, value);
     }
 

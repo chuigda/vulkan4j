@@ -9,7 +9,7 @@ public final class VkVideoEncodeAV1PredictionModeKHR {
     public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND = 0x2;
     public static final int VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND = 0x3;
 
-    public static String explain(@enumtype(VkVideoEncodeAV1PredictionModeKHR.class) int value) {
+    public static String explain(@EnumType(VkVideoEncodeAV1PredictionModeKHR.class) int value) {
         return switch (value) {
             case VkVideoEncodeAV1PredictionModeKHR.VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND -> "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR";
             case VkVideoEncodeAV1PredictionModeKHR.VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY -> "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR";

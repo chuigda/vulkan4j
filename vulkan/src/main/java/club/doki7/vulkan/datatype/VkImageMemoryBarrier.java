@@ -108,7 +108,7 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageMemoryBarrier.BYTES, VkImageMemoryBarrier.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
         sType(VkStructureType.IMAGE_MEMORY_BARRIER);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,35 +185,35 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkAccessFlags.class) int srcAccessMask() {
+    public @EnumType(VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public void srcAccessMask(@enumtype(VkAccessFlags.class) int value) {
+    public void srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
     }
 
-    public @enumtype(VkAccessFlags.class) int dstAccessMask() {
+    public @EnumType(VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public void dstAccessMask(@enumtype(VkAccessFlags.class) int value) {
+    public void dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
     }
 
-    public @enumtype(VkImageLayout.class) int oldLayout() {
+    public @EnumType(VkImageLayout.class) int oldLayout() {
         return segment.get(LAYOUT$oldLayout, OFFSET$oldLayout);
     }
 
-    public void oldLayout(@enumtype(VkImageLayout.class) int value) {
+    public void oldLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$oldLayout, OFFSET$oldLayout, value);
     }
 
-    public @enumtype(VkImageLayout.class) int newLayout() {
+    public @EnumType(VkImageLayout.class) int newLayout() {
         return segment.get(LAYOUT$newLayout, OFFSET$newLayout);
     }
 
-    public void newLayout(@enumtype(VkImageLayout.class) int value) {
+    public void newLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$newLayout, OFFSET$newLayout, value);
     }
 

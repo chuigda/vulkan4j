@@ -7,7 +7,7 @@ public final class VkBlockMatchWindowCompareModeQCOM {
     public static final int MIN = 0x0;
     public static final int MAX = 0x1;
 
-    public static String explain(@enumtype(VkBlockMatchWindowCompareModeQCOM.class) int value) {
+    public static String explain(@EnumType(VkBlockMatchWindowCompareModeQCOM.class) int value) {
         return switch (value) {
             case VkBlockMatchWindowCompareModeQCOM.MAX -> "VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM";
             case VkBlockMatchWindowCompareModeQCOM.MIN -> "VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM";

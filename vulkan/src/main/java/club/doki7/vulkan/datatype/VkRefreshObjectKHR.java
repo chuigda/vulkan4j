@@ -93,7 +93,7 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRefreshObjectKHR.BYTES, VkRefreshObjectKHR.BYTES));
         }
@@ -140,11 +140,11 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         return ret;
     }
 
-    public @enumtype(VkObjectType.class) int objectType() {
+    public @EnumType(VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public void objectType(@enumtype(VkObjectType.class) int value) {
+    public void objectType(@EnumType(VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
     }
 
@@ -156,11 +156,11 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
     }
 
-    public @enumtype(VkRefreshObjectFlagsKHR.class) int flags() {
+    public @EnumType(VkRefreshObjectFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkRefreshObjectFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkRefreshObjectFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 

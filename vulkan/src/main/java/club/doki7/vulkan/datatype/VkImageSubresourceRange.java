@@ -95,7 +95,7 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageSubresourceRange.BYTES, VkImageSubresourceRange.BYTES));
         }
@@ -142,11 +142,11 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @enumtype(VkImageAspectFlags.class) int aspectMask() {
+    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@enumtype(VkImageAspectFlags.class) int value) {
+    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
     }
 

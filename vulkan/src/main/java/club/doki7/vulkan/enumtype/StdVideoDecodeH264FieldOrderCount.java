@@ -7,7 +7,7 @@ public final class StdVideoDecodeH264FieldOrderCount {
     public static final int STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM = 0x1;
     public static final int STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoDecodeH264FieldOrderCount.class) int value) {
+    public static String explain(@EnumType(StdVideoDecodeH264FieldOrderCount.class) int value) {
         return switch (value) {
             case StdVideoDecodeH264FieldOrderCount.STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM -> "STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM";
             case StdVideoDecodeH264FieldOrderCount.STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID -> "STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_INVALID";

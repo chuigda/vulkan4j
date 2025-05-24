@@ -92,7 +92,7 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPerformanceValueINTEL.BYTES, VkPerformanceValueINTEL.BYTES));
         }
@@ -139,11 +139,11 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @enumtype(VkPerformanceValueTypeINTEL.class) int type() {
+    public @EnumType(VkPerformanceValueTypeINTEL.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkPerformanceValueTypeINTEL.class) int value) {
+    public void type(@EnumType(VkPerformanceValueTypeINTEL.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 

@@ -102,7 +102,7 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRenderPassFragmentDensityMapOffsetEndInfoEXT.BYTES, VkRenderPassFragmentDensityMapOffsetEndInfoEXT.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         sType(VkStructureType.RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -192,7 +192,7 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         pFragmentDensityOffsetsRaw(s);
     }
 
-    @unsafe public @Nullable VkOffset2D.Ptr pFragmentDensityOffsets(int assumedCount) {
+    @Unsafe public @Nullable VkOffset2D.Ptr pFragmentDensityOffsets(int assumedCount) {
         MemorySegment s = pFragmentDensityOffsetsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         return new VkOffset2D(s);
     }
 
-    public @pointer(target=VkOffset2D.class) MemorySegment pFragmentDensityOffsetsRaw() {
+    public @Pointer(target=VkOffset2D.class) MemorySegment pFragmentDensityOffsetsRaw() {
         return segment.get(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets);
     }
 
-    public void pFragmentDensityOffsetsRaw(@pointer(target=VkOffset2D.class) MemorySegment value) {
+    public void pFragmentDensityOffsetsRaw(@Pointer(target=VkOffset2D.class) MemorySegment value) {
         segment.set(LAYOUT$pFragmentDensityOffsets, OFFSET$pFragmentDensityOffsets, value);
     }
 

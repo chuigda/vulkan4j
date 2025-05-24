@@ -104,7 +104,7 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSemaphoreWaitInfo.BYTES, VkSemaphoreWaitInfo.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         sType(VkStructureType.SEMAPHORE_WAIT_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,11 +181,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkSemaphoreWaitFlags.class) int flags() {
+    public @EnumType(VkSemaphoreWaitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkSemaphoreWaitFlags.class) int value) {
+    public void flags(@EnumType(VkSemaphoreWaitFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -214,11 +214,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         pSemaphoresRaw(s);
     }
 
-    public @pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
+    public @Pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
         return segment.get(LAYOUT$pSemaphores, OFFSET$pSemaphores);
     }
 
-    public void pSemaphoresRaw(@pointer(target=VkSemaphore.class) MemorySegment value) {
+    public void pSemaphoresRaw(@Pointer(target=VkSemaphore.class) MemorySegment value) {
         segment.set(LAYOUT$pSemaphores, OFFSET$pSemaphores, value);
     }
 
@@ -239,11 +239,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         pValuesRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pValuesRaw() {
+    public @Pointer(comment="long*") MemorySegment pValuesRaw() {
         return segment.get(LAYOUT$pValues, OFFSET$pValues);
     }
 
-    public void pValuesRaw(@pointer(comment="long*") MemorySegment value) {
+    public void pValuesRaw(@Pointer(comment="long*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 

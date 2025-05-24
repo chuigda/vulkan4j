@@ -103,7 +103,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES, VkPipelineViewportShadingRateImageStateCreateInfoNV.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         sType(VkStructureType.PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -201,7 +201,7 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         pShadingRatePalettesRaw(s);
     }
 
-    @unsafe public @Nullable VkShadingRatePaletteNV.Ptr pShadingRatePalettes(int assumedCount) {
+    @Unsafe public @Nullable VkShadingRatePaletteNV.Ptr pShadingRatePalettes(int assumedCount) {
         MemorySegment s = pShadingRatePalettesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -219,11 +219,11 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return new VkShadingRatePaletteNV(s);
     }
 
-    public @pointer(target=VkShadingRatePaletteNV.class) MemorySegment pShadingRatePalettesRaw() {
+    public @Pointer(target=VkShadingRatePaletteNV.class) MemorySegment pShadingRatePalettesRaw() {
         return segment.get(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes);
     }
 
-    public void pShadingRatePalettesRaw(@pointer(target=VkShadingRatePaletteNV.class) MemorySegment value) {
+    public void pShadingRatePalettesRaw(@Pointer(target=VkShadingRatePaletteNV.class) MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePalettes, OFFSET$pShadingRatePalettes, value);
     }
 

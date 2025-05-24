@@ -90,7 +90,7 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES));
         }

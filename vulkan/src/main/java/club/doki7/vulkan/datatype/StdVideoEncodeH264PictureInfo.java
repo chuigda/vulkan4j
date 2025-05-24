@@ -98,7 +98,7 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH264PictureInfo.BYTES, StdVideoEncodeH264PictureInfo.BYTES));
         }
@@ -177,11 +177,11 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$idr_pic_id, OFFSET$idr_pic_id, value);
     }
 
-    public @enumtype(StdVideoH264PictureType.class) int primary_pic_type() {
+    public @EnumType(StdVideoH264PictureType.class) int primary_pic_type() {
         return segment.get(LAYOUT$primary_pic_type, OFFSET$primary_pic_type);
     }
 
-    public void primary_pic_type(@enumtype(StdVideoH264PictureType.class) int value) {
+    public void primary_pic_type(@EnumType(StdVideoH264PictureType.class) int value) {
         segment.set(LAYOUT$primary_pic_type, OFFSET$primary_pic_type, value);
     }
 
@@ -215,7 +215,7 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         pRefListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264ReferenceListsInfo.Ptr pRefLists(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeH264ReferenceListsInfo.Ptr pRefLists(int assumedCount) {
         MemorySegment s = pRefListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -233,11 +233,11 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH264ReferenceListsInfo(s);
     }
 
-    public @pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
+    public @Pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment pRefListsRaw() {
         return segment.get(LAYOUT$pRefLists, OFFSET$pRefLists);
     }
 
-    public void pRefListsRaw(@pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment value) {
+    public void pRefListsRaw(@Pointer(target=StdVideoEncodeH264ReferenceListsInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
     }
 

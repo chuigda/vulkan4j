@@ -7,7 +7,7 @@ public final class VkValidationCheckEXT {
     public static final int ALL = 0x0;
     public static final int SHADERS = 0x1;
 
-    public static String explain(@enumtype(VkValidationCheckEXT.class) int value) {
+    public static String explain(@EnumType(VkValidationCheckEXT.class) int value) {
         return switch (value) {
             case VkValidationCheckEXT.ALL -> "VK_VALIDATION_CHECK_ALL_EXT";
             case VkValidationCheckEXT.SHADERS -> "VK_VALIDATION_CHECK_SHADERS_EXT";

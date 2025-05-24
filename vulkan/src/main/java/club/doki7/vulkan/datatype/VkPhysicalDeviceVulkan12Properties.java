@@ -152,7 +152,7 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceVulkan12Properties.BYTES, VkPhysicalDeviceVulkan12Properties.BYTES));
         }
@@ -209,19 +209,19 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -229,11 +229,11 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDriverId.class) int driverID() {
+    public @EnumType(VkDriverId.class) int driverID() {
         return segment.get(LAYOUT$driverID, OFFSET$driverID);
     }
 
-    public void driverID(@enumtype(VkDriverId.class) int value) {
+    public void driverID(@EnumType(VkDriverId.class) int value) {
         segment.set(LAYOUT$driverID, OFFSET$driverID, value);
     }
 
@@ -261,19 +261,19 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, SIZE$conformanceVersion);
     }
 
-    public @enumtype(VkShaderFloatControlsIndependence.class) int denormBehaviorIndependence() {
+    public @EnumType(VkShaderFloatControlsIndependence.class) int denormBehaviorIndependence() {
         return segment.get(LAYOUT$denormBehaviorIndependence, OFFSET$denormBehaviorIndependence);
     }
 
-    public void denormBehaviorIndependence(@enumtype(VkShaderFloatControlsIndependence.class) int value) {
+    public void denormBehaviorIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
         segment.set(LAYOUT$denormBehaviorIndependence, OFFSET$denormBehaviorIndependence, value);
     }
 
-    public @enumtype(VkShaderFloatControlsIndependence.class) int roundingModeIndependence() {
+    public @EnumType(VkShaderFloatControlsIndependence.class) int roundingModeIndependence() {
         return segment.get(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence);
     }
 
-    public void roundingModeIndependence(@enumtype(VkShaderFloatControlsIndependence.class) int value) {
+    public void roundingModeIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
         segment.set(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence, value);
     }
 
@@ -581,19 +581,19 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments, OFFSET$maxDescriptorSetUpdateAfterBindInputAttachments, value);
     }
 
-    public @enumtype(VkResolveModeFlags.class) int supportedDepthResolveModes() {
+    public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public void supportedDepthResolveModes(@enumtype(VkResolveModeFlags.class) int value) {
+    public void supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
     }
 
-    public @enumtype(VkResolveModeFlags.class) int supportedStencilResolveModes() {
+    public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public void supportedStencilResolveModes(@enumtype(VkResolveModeFlags.class) int value) {
+    public void supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
     }
 
@@ -637,11 +637,11 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$maxTimelineSemaphoreValueDifference, OFFSET$maxTimelineSemaphoreValueDifference, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int framebufferIntegerColorSampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int framebufferIntegerColorSampleCounts() {
         return segment.get(LAYOUT$framebufferIntegerColorSampleCounts, OFFSET$framebufferIntegerColorSampleCounts);
     }
 
-    public void framebufferIntegerColorSampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void framebufferIntegerColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferIntegerColorSampleCounts, OFFSET$framebufferIntegerColorSampleCounts, value);
     }
 

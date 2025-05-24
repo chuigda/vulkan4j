@@ -103,7 +103,7 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDirectDriverLoadingListLUNARG.BYTES, VkDirectDriverLoadingListLUNARG.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         sType(VkStructureType.DIRECT_DRIVER_LOADING_LIST_LUNARG);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,11 +180,11 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDirectDriverLoadingModeLUNARG.class) int mode() {
+    public @EnumType(VkDirectDriverLoadingModeLUNARG.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@enumtype(VkDirectDriverLoadingModeLUNARG.class) int value) {
+    public void mode(@EnumType(VkDirectDriverLoadingModeLUNARG.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
     }
 
@@ -201,7 +201,7 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         pDriversRaw(s);
     }
 
-    @unsafe public @Nullable VkDirectDriverLoadingInfoLUNARG.Ptr pDrivers(int assumedCount) {
+    @Unsafe public @Nullable VkDirectDriverLoadingInfoLUNARG.Ptr pDrivers(int assumedCount) {
         MemorySegment s = pDriversRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -219,11 +219,11 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         return new VkDirectDriverLoadingInfoLUNARG(s);
     }
 
-    public @pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment pDriversRaw() {
+    public @Pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment pDriversRaw() {
         return segment.get(LAYOUT$pDrivers, OFFSET$pDrivers);
     }
 
-    public void pDriversRaw(@pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment value) {
+    public void pDriversRaw(@Pointer(target=VkDirectDriverLoadingInfoLUNARG.class) MemorySegment value) {
         segment.set(LAYOUT$pDrivers, OFFSET$pDrivers, value);
     }
 
