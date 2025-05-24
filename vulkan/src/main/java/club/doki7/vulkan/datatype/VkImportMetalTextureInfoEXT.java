@@ -187,11 +187,11 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$plane, OFFSET$plane, value);
     }
 
-    public @pointer(comment="void*") MemorySegment mtlTexture() {
+    public @pointer(comment="MTLTexture_id") MemorySegment mtlTexture() {
         return segment.get(LAYOUT$mtlTexture, OFFSET$mtlTexture);
     }
 
-    public void mtlTexture(@pointer(comment="void*") MemorySegment value) {
+    public void mtlTexture(@pointer(comment="MTLTexture_id") MemorySegment value) {
         segment.set(LAYOUT$mtlTexture, OFFSET$mtlTexture, value);
     }
 

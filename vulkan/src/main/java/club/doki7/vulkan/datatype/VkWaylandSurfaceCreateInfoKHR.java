@@ -204,11 +204,11 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         displayRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment displayRaw() {
+    public @pointer(comment="wl_display*") MemorySegment displayRaw() {
         return segment.get(LAYOUT$display, OFFSET$display);
     }
 
-    public void displayRaw(@pointer(comment="void**") MemorySegment value) {
+    public void displayRaw(@pointer(comment="wl_display*") MemorySegment value) {
         segment.set(LAYOUT$display, OFFSET$display, value);
     }
 
@@ -228,11 +228,11 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         surfaceRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment surfaceRaw() {
+    public @pointer(comment="wl_surface*") MemorySegment surfaceRaw() {
         return segment.get(LAYOUT$surface, OFFSET$surface);
     }
 
-    public void surfaceRaw(@pointer(comment="void**") MemorySegment value) {
+    public void surfaceRaw(@pointer(comment="wl_surface*") MemorySegment value) {
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 

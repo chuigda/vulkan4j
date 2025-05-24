@@ -187,11 +187,11 @@ public record VkImportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment handle() {
+    public @pointer(comment="NvSciBufObj") MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@pointer(comment="void*") MemorySegment value) {
+    public void handle(@pointer(comment="NvSciBufObj") MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 

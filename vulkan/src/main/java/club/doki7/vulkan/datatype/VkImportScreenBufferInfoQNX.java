@@ -194,11 +194,11 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
         bufferRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment bufferRaw() {
+    public @pointer(comment="_screen_buffer*") MemorySegment bufferRaw() {
         return segment.get(LAYOUT$buffer, OFFSET$buffer);
     }
 
-    public void bufferRaw(@pointer(comment="void**") MemorySegment value) {
+    public void bufferRaw(@pointer(comment="_screen_buffer*") MemorySegment value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value);
     }
 

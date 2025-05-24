@@ -204,11 +204,11 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         contextRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment contextRaw() {
+    public @pointer(comment="_screen_context*") MemorySegment contextRaw() {
         return segment.get(LAYOUT$context, OFFSET$context);
     }
 
-    public void contextRaw(@pointer(comment="void**") MemorySegment value) {
+    public void contextRaw(@pointer(comment="_screen_context*") MemorySegment value) {
         segment.set(LAYOUT$context, OFFSET$context, value);
     }
 
@@ -228,11 +228,11 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         windowRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment windowRaw() {
+    public @pointer(comment="_screen_window*") MemorySegment windowRaw() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
-    public void windowRaw(@pointer(comment="void**") MemorySegment value) {
+    public void windowRaw(@pointer(comment="_screen_window*") MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 

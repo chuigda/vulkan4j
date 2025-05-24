@@ -203,11 +203,11 @@ public record VkAndroidSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         windowRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment windowRaw() {
+    public @pointer(comment="ANativeWindow*") MemorySegment windowRaw() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
-    public void windowRaw(@pointer(comment="void**") MemorySegment value) {
+    public void windowRaw(@pointer(comment="ANativeWindow*") MemorySegment value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 

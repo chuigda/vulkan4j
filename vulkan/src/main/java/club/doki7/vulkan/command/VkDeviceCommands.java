@@ -11131,7 +11131,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int getPhysicalDeviceExternalMemorySciBufPropertiesNV(
         VkPhysicalDevice physicalDevice,
         @enumtype(VkExternalMemoryHandleTypeFlags.class) int handleType,
-        @pointer(comment="void*") MemorySegment handle,
+        @pointer(comment="NvSciBufObj") MemorySegment handle,
         @pointer VkMemorySciBufPropertiesNV pMemorySciBufProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV);
@@ -11262,7 +11262,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceSciBufAttributesNV.html"><code>vkGetPhysicalDeviceSciBufAttributesNV</code></a>
     public @enumtype(VkResult.class) int getPhysicalDeviceSciBufAttributesNV(
         VkPhysicalDevice physicalDevice,
-        @pointer(comment="void*") MemorySegment pAttributes
+        @pointer(comment="NvSciBufAttrList") MemorySegment pAttributes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSciBufAttributesNV);
         try {
@@ -11279,7 +11279,7 @@ public final class VkDeviceCommands {
     public @enumtype(VkResult.class) int getPhysicalDeviceSciSyncAttributesNV(
         VkPhysicalDevice physicalDevice,
         @pointer VkSciSyncAttributesInfoNV pSciSyncAttributesInfo,
-        @pointer(comment="void*") MemorySegment pAttributes
+        @pointer(comment="NvSciSyncAttrList") MemorySegment pAttributes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSciSyncAttributesNV);
         try {

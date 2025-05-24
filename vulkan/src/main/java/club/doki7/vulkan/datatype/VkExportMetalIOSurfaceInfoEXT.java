@@ -191,11 +191,11 @@ public record VkExportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment ioSurface() {
+    public @pointer(comment="IOSurfaceRef") MemorySegment ioSurface() {
         return segment.get(LAYOUT$ioSurface, OFFSET$ioSurface);
     }
 
-    public void ioSurface(@pointer(comment="void*") MemorySegment value) {
+    public void ioSurface(@pointer(comment="IOSurfaceRef") MemorySegment value) {
         segment.set(LAYOUT$ioSurface, OFFSET$ioSurface, value);
     }
 

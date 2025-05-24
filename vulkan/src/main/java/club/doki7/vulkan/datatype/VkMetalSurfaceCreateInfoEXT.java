@@ -203,11 +203,11 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         pLayerRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment pLayerRaw() {
+    public @pointer(comment="CAMetalLayer*") MemorySegment pLayerRaw() {
         return segment.get(LAYOUT$pLayer, OFFSET$pLayer);
     }
 
-    public void pLayerRaw(@pointer(comment="void**") MemorySegment value) {
+    public void pLayerRaw(@pointer(comment="CAMetalLayer*") MemorySegment value) {
         segment.set(LAYOUT$pLayer, OFFSET$pLayer, value);
     }
 
