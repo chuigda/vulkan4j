@@ -3,6 +3,7 @@ package club.doki7.babel.extract.vma
 import club.doki7.babel.cdecl.EnumeratorDecl
 import club.doki7.babel.cdecl.FunctionDecl
 import club.doki7.babel.cdecl.RawFunctionType
+import club.doki7.babel.cdecl.RawIdentifierType
 import club.doki7.babel.cdecl.TypedefDecl
 import club.doki7.babel.cdecl.parseBlockDoxygen
 import club.doki7.babel.cdecl.parseEnumeratorDecl
@@ -78,6 +79,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
             val handleName = curLine.removePrefix("VK_DEFINE_HANDLE(").removeSuffix(")").trim()
             val handle = OpaqueHandleTypedef(name = handleName)
             handle.originalDoc = savedDoc
+            opaqueHandleTypedefs[handle.name] = handle
             savedDoc = null
             index++
         }
@@ -85,6 +87,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
             val handleName = curLine.removePrefix("VK_DEFINE_NON_DISPATCHABLE_HANDLE(").removeSuffix(")").trim()
             val handle = OpaqueHandleTypedef(name = handleName)
             handle.originalDoc = savedDoc
+            opaqueHandleTypedefs[handle.name] = handle
             savedDoc = null
             index++
         }
@@ -300,5 +303,11 @@ private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
 private fun morphFunctionTypedef(typedef: TypedefDecl) = FunctionTypedef(
     name = typedef.name,
     params = (typedef.aliasedType as RawFunctionType).params.map { it.second.toType() },
-    result = typedef.aliasedType.returnType.toType(),
+    result =
+        if (typedef.aliasedType.returnType is RawIdentifierType &&
+            (typedef.aliasedType.returnType as RawIdentifierType).ident == "void") {
+            null
+        } else {
+            typedef.aliasedType.returnType.toType()
+        },
 )

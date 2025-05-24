@@ -16,7 +16,7 @@ fun gles2Main() {
 
     val codegenOptions = CodegenOptions(
         packageName = "club.doki7.gles2",
-        extraImport = mutableListOf(),
+        extraImport = listOf(),
         constantClassName = "GLES2Constants",
         functionTypeClassName = "GLES2FunctionTypes",
         refRegistries = emptyList(),

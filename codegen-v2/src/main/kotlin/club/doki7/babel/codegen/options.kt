@@ -5,7 +5,7 @@ import club.doki7.babel.registry.RegistryBase
 
 data class CodegenOptions(
     val packageName: String,
-    val extraImport: MutableList<String>,
+    val extraImport: List<String>,
     val constantClassName: String,
     val functionTypeClassName: String,
 

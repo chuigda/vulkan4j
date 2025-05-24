@@ -26,12 +26,12 @@ import java.io.File
 
 private const val packageDir = "vulkan/src/main/java/club/doki7/vulkan"
 
-internal fun vulkanMain() {
+internal fun vulkanMain(): Registry<VulkanRegistryExt> {
     val vulkanRegistry = extractVulkanRegistry()
 
     val codegenOptions = CodegenOptions(
         packageName = "club.doki7.vulkan",
-        extraImport = mutableListOf(),
+        extraImport = listOf(),
         constantClassName = "VkConstants",
         functionTypeClassName = "VkFunctionTypes",
         refRegistries = emptyList(),
@@ -135,6 +135,8 @@ internal fun vulkanMain() {
         .writeText(render(instanceCommandsDoc))
     File("$packageDir/command/VkDeviceCommands.java")
         .writeText(render(deviceCommandsDoc))
+
+    return vulkanRegistry
 }
 
 private enum class CommandType {
