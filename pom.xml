@@ -44,6 +44,7 @@
         <module>ffm-plus</module>
         <module>vulkan</module>
         <module>gles2</module>
+        <module>vulkan4j-lwjgl-natives-compat</module>
         <!-- <module>codegen</module> -->
         <!-- <module>vk4j</module>
         <module>glfw</module>
