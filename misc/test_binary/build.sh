@@ -8,9 +8,3 @@ for file in $(ls *.c); do
   cc "${file%.c}.o" -shared -o "lib${file%.c}.so"
 done
 
-echo "Current working directory: $PWD"
-ls -l
-
-for file in $(ls *.so); do
-  chmod +x "$file"
-done

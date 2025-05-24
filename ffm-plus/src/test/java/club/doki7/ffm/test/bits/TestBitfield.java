@@ -17,7 +17,8 @@ public class TestBitfield {
         String userDir = System.getProperty("user.dir");
         String path = userDir;
         if (userDir.contains("vulkan4j")) {
-            path = userDir.substring(0, userDir.indexOf("vulkan4j") + "vulkan4j".length());
+            int index = userDir.lastIndexOf("vulkan4j");
+            path = userDir.substring(0, index + "vulkan4j".length());
         }
 
         if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
