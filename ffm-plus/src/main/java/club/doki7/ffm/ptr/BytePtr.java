@@ -1,9 +1,9 @@
 package club.doki7.ffm.ptr;
 
 import club.doki7.ffm.IPointer;
+import club.doki7.ffm.annotation.Unsafe;
 import club.doki7.ffm.annotation.UnsafeConstructor;
 import club.doki7.ffm.annotation.ValueBasedCandidate;
-import club.doki7.ffm.annotation.unsafe;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -55,7 +55,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
     /// This function requires the size of the underlying memory segment to be set correctly. If the
     /// size is not known in advance and correctly set (for example, the {@link BytePtr} or the
     /// underlying {@link MemorySegment} is returned from some C API), you may use
-    /// {@link BytePtr#readString} (note that it is {@link unsafe}) instead.
+    /// {@link BytePtr#readString} (note that it is {@link Unsafe}) instead.
     public @NotNull String readStringSafe() {
         return segment.getString(0);
     }
@@ -63,12 +63,12 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
     /// Assumes the {@link BytePtr} is a null-terminated string, reads the string from the beginning
     /// of the underlying memory segment, until the first NUL byte is encountered.
     ///
-    /// This function is {@link unsafe} because it does not check the size of the underlying memory
+    /// This function is {@link Unsafe} because it does not check the size of the underlying memory
     /// segment. This function is suitable for the cases that the size of the underlying memory
     /// segment is not known in advance and correctly set (for example, the {@link BytePtr} or the
     /// underlying {@link MemorySegment} is returned from some C API). If the size is correctly set,
     /// you may use {@link BytePtr#readStringSafe} instead.
-    @unsafe
+    @Unsafe
     public @NotNull String readString() {
         MemorySegment reinterpreted = segment.reinterpret(Long.MAX_VALUE);
         return reinterpreted.getString(0);
@@ -77,7 +77,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
     /// Assume the {@link BytePtr} is capable of holding at least {@code newSize} bytes, create a
     /// new view {@link BytePtr} that uses the same backing storage as this {@link BytePtr}, but
     /// with the new size. Since there is actually no way to really check whether the new size is
-    /// valid, while buffer overflow is undefined behavior, this method is marked as {@link unsafe}.
+    /// valid, while buffer overflow is undefined behavior, this method is marked as {@link Unsafe}.
     ///
     /// This method could be useful when handling data returned from some C API, where the size of
     /// data is not known in advance.
@@ -85,7 +85,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
     /// If the size of the underlying segment is actually known in advance and correctly set, and
     /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
     /// instead.
-    @unsafe
+    @Unsafe
     public @NotNull BytePtr reinterpret(long newSize) {
         return new BytePtr(segment.reinterpret(newSize));
     }

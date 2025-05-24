@@ -97,7 +97,7 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -105,7 +105,7 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineShaderStageCreateInfo.BYTES, VkPipelineShaderStageCreateInfo.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         sType(VkStructureType.PIPELINE_SHADER_STAGE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,19 +182,19 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineShaderStageCreateFlags.class) int flags() {
+    public @EnumType(VkPipelineShaderStageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineShaderStageCreateFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineShaderStageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int stage() {
+    public @EnumType(VkShaderStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public void stage(@enumtype(VkShaderStageFlags.class) int value) {
+    public void stage(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
     }
 
@@ -227,11 +227,11 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         pNameRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment pNameRaw() {
+    public @Pointer(comment="byte*") MemorySegment pNameRaw() {
         return segment.get(LAYOUT$pName, OFFSET$pName);
     }
 
-    public void pNameRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void pNameRaw(@Pointer(comment="byte*") MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
@@ -240,7 +240,7 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         pSpecializationInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkSpecializationInfo.Ptr pSpecializationInfo(int assumedCount) {
+    @Unsafe public @Nullable VkSpecializationInfo.Ptr pSpecializationInfo(int assumedCount) {
         MemorySegment s = pSpecializationInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -258,11 +258,11 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return new VkSpecializationInfo(s);
     }
 
-    public @pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
+    public @Pointer(target=VkSpecializationInfo.class) MemorySegment pSpecializationInfoRaw() {
         return segment.get(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo);
     }
 
-    public void pSpecializationInfoRaw(@pointer(target=VkSpecializationInfo.class) MemorySegment value) {
+    public void pSpecializationInfoRaw(@Pointer(target=VkSpecializationInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pSpecializationInfo, OFFSET$pSpecializationInfo, value);
     }
 

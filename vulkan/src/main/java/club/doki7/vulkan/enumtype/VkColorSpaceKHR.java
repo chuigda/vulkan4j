@@ -21,7 +21,7 @@ public final class VkColorSpaceKHR {
     public static final int EXTENDED_SRGB_NONLINEAR_EXT = 0x3b9c604e;
     public static final int DISPLAY_NATIVE_AMD = 0x3b9e0a08;
 
-    public static String explain(@enumtype(VkColorSpaceKHR.class) int value) {
+    public static String explain(@EnumType(VkColorSpaceKHR.class) int value) {
         return switch (value) {
             case VkColorSpaceKHR.ADOBERGB_LINEAR_EXT -> "VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT";
             case VkColorSpaceKHR.ADOBERGB_NONLINEAR_EXT -> "VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT";

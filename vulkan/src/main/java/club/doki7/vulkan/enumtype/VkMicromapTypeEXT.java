@@ -7,7 +7,7 @@ public final class VkMicromapTypeEXT {
     public static final int OPACITY_MICROMAP = 0x0;
     public static final int DISPLACEMENT_MICROMAP_NV = 0x3ba0d8c8;
 
-    public static String explain(@enumtype(VkMicromapTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkMicromapTypeEXT.class) int value) {
         return switch (value) {
             case VkMicromapTypeEXT.DISPLACEMENT_MICROMAP_NV -> "VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV";
             case VkMicromapTypeEXT.OPACITY_MICROMAP -> "VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT";

@@ -96,7 +96,7 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeRateControlLayerInfoKHR.BYTES, VkVideoEncodeRateControlLayerInfoKHR.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
         sType(VkStructureType.VIDEO_ENCODE_RATE_CONTROL_LAYER_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,35 +181,35 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long averageBitrate() {
+    public @Unsigned long averageBitrate() {
         return segment.get(LAYOUT$averageBitrate, OFFSET$averageBitrate);
     }
 
-    public void averageBitrate(@unsigned long value) {
+    public void averageBitrate(@Unsigned long value) {
         segment.set(LAYOUT$averageBitrate, OFFSET$averageBitrate, value);
     }
 
-    public @unsigned long maxBitrate() {
+    public @Unsigned long maxBitrate() {
         return segment.get(LAYOUT$maxBitrate, OFFSET$maxBitrate);
     }
 
-    public void maxBitrate(@unsigned long value) {
+    public void maxBitrate(@Unsigned long value) {
         segment.set(LAYOUT$maxBitrate, OFFSET$maxBitrate, value);
     }
 
-    public @unsigned int frameRateNumerator() {
+    public @Unsigned int frameRateNumerator() {
         return segment.get(LAYOUT$frameRateNumerator, OFFSET$frameRateNumerator);
     }
 
-    public void frameRateNumerator(@unsigned int value) {
+    public void frameRateNumerator(@Unsigned int value) {
         segment.set(LAYOUT$frameRateNumerator, OFFSET$frameRateNumerator, value);
     }
 
-    public @unsigned int frameRateDenominator() {
+    public @Unsigned int frameRateDenominator() {
         return segment.get(LAYOUT$frameRateDenominator, OFFSET$frameRateDenominator);
     }
 
-    public void frameRateDenominator(@unsigned int value) {
+    public void frameRateDenominator(@Unsigned int value) {
         segment.set(LAYOUT$frameRateDenominator, OFFSET$frameRateDenominator, value);
     }
 

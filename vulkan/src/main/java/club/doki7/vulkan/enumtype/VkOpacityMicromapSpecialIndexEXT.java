@@ -10,7 +10,7 @@ public final class VkOpacityMicromapSpecialIndexEXT {
     public static final int FULLY_UNKNOWN_OPAQUE = 0xfffffffc;
     public static final int CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV = 0xfffffffb;
 
-    public static String explain(@enumtype(VkOpacityMicromapSpecialIndexEXT.class) int value) {
+    public static String explain(@EnumType(VkOpacityMicromapSpecialIndexEXT.class) int value) {
         return switch (value) {
             case VkOpacityMicromapSpecialIndexEXT.CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV -> "VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV";
             case VkOpacityMicromapSpecialIndexEXT.FULLY_OPAQUE -> "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT";

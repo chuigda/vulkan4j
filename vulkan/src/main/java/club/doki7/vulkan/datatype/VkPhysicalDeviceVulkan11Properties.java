@@ -107,7 +107,7 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -115,7 +115,7 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceVulkan11Properties.BYTES, VkPhysicalDeviceVulkan11Properties.BYTES));
         }
@@ -172,19 +172,19 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -192,123 +192,123 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned byte deviceUUID() {
+    public @Unsigned byte deviceUUID() {
         return segment.get(LAYOUT$deviceUUID, OFFSET$deviceUUID);
     }
 
-    public void deviceUUID(@unsigned byte value) {
+    public void deviceUUID(@Unsigned byte value) {
         segment.set(LAYOUT$deviceUUID, OFFSET$deviceUUID, value);
     }
 
-    public @unsigned byte driverUUID() {
+    public @Unsigned byte driverUUID() {
         return segment.get(LAYOUT$driverUUID, OFFSET$driverUUID);
     }
 
-    public void driverUUID(@unsigned byte value) {
+    public void driverUUID(@Unsigned byte value) {
         segment.set(LAYOUT$driverUUID, OFFSET$driverUUID, value);
     }
 
-    public @unsigned byte deviceLUID() {
+    public @Unsigned byte deviceLUID() {
         return segment.get(LAYOUT$deviceLUID, OFFSET$deviceLUID);
     }
 
-    public void deviceLUID(@unsigned byte value) {
+    public void deviceLUID(@Unsigned byte value) {
         segment.set(LAYOUT$deviceLUID, OFFSET$deviceLUID, value);
     }
 
-    public @unsigned int deviceNodeMask() {
+    public @Unsigned int deviceNodeMask() {
         return segment.get(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask);
     }
 
-    public void deviceNodeMask(@unsigned int value) {
+    public void deviceNodeMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask, value);
     }
 
-    public @unsigned int deviceLUIDValid() {
+    public @Unsigned int deviceLUIDValid() {
         return segment.get(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid);
     }
 
-    public void deviceLUIDValid(@unsigned int value) {
+    public void deviceLUIDValid(@Unsigned int value) {
         segment.set(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid, value);
     }
 
-    public @unsigned int subgroupSize() {
+    public @Unsigned int subgroupSize() {
         return segment.get(LAYOUT$subgroupSize, OFFSET$subgroupSize);
     }
 
-    public void subgroupSize(@unsigned int value) {
+    public void subgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$subgroupSize, OFFSET$subgroupSize, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int subgroupSupportedStages() {
+    public @EnumType(VkShaderStageFlags.class) int subgroupSupportedStages() {
         return segment.get(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages);
     }
 
-    public void subgroupSupportedStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void subgroupSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages, value);
     }
 
-    public @enumtype(VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
+    public @EnumType(VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
         return segment.get(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations);
     }
 
-    public void subgroupSupportedOperations(@enumtype(VkSubgroupFeatureFlags.class) int value) {
+    public void subgroupSupportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations, value);
     }
 
-    public @unsigned int subgroupQuadOperationsInAllStages() {
+    public @Unsigned int subgroupQuadOperationsInAllStages() {
         return segment.get(LAYOUT$subgroupQuadOperationsInAllStages, OFFSET$subgroupQuadOperationsInAllStages);
     }
 
-    public void subgroupQuadOperationsInAllStages(@unsigned int value) {
+    public void subgroupQuadOperationsInAllStages(@Unsigned int value) {
         segment.set(LAYOUT$subgroupQuadOperationsInAllStages, OFFSET$subgroupQuadOperationsInAllStages, value);
     }
 
-    public @enumtype(VkPointClippingBehavior.class) int pointClippingBehavior() {
+    public @EnumType(VkPointClippingBehavior.class) int pointClippingBehavior() {
         return segment.get(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior);
     }
 
-    public void pointClippingBehavior(@enumtype(VkPointClippingBehavior.class) int value) {
+    public void pointClippingBehavior(@EnumType(VkPointClippingBehavior.class) int value) {
         segment.set(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior, value);
     }
 
-    public @unsigned int maxMultiviewViewCount() {
+    public @Unsigned int maxMultiviewViewCount() {
         return segment.get(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount);
     }
 
-    public void maxMultiviewViewCount(@unsigned int value) {
+    public void maxMultiviewViewCount(@Unsigned int value) {
         segment.set(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount, value);
     }
 
-    public @unsigned int maxMultiviewInstanceIndex() {
+    public @Unsigned int maxMultiviewInstanceIndex() {
         return segment.get(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex);
     }
 
-    public void maxMultiviewInstanceIndex(@unsigned int value) {
+    public void maxMultiviewInstanceIndex(@Unsigned int value) {
         segment.set(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex, value);
     }
 
-    public @unsigned int protectedNoFault() {
+    public @Unsigned int protectedNoFault() {
         return segment.get(LAYOUT$protectedNoFault, OFFSET$protectedNoFault);
     }
 
-    public void protectedNoFault(@unsigned int value) {
+    public void protectedNoFault(@Unsigned int value) {
         segment.set(LAYOUT$protectedNoFault, OFFSET$protectedNoFault, value);
     }
 
-    public @unsigned int maxPerSetDescriptors() {
+    public @Unsigned int maxPerSetDescriptors() {
         return segment.get(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors);
     }
 
-    public void maxPerSetDescriptors(@unsigned int value) {
+    public void maxPerSetDescriptors(@Unsigned int value) {
         segment.set(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors, value);
     }
 
-    public @unsigned long maxMemoryAllocationSize() {
+    public @Unsigned long maxMemoryAllocationSize() {
         return segment.get(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize);
     }
 
-    public void maxMemoryAllocationSize(@unsigned long value) {
+    public void maxMemoryAllocationSize(@Unsigned long value) {
         segment.set(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize, value);
     }
 

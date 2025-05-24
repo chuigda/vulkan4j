@@ -87,7 +87,7 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceSparseProperties.BYTES, VkPhysicalDeviceSparseProperties.BYTES));
         }
@@ -142,43 +142,43 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public @unsigned int residencyStandard2DBlockShape() {
+    public @Unsigned int residencyStandard2DBlockShape() {
         return segment.get(LAYOUT$residencyStandard2DBlockShape, OFFSET$residencyStandard2DBlockShape);
     }
 
-    public void residencyStandard2DBlockShape(@unsigned int value) {
+    public void residencyStandard2DBlockShape(@Unsigned int value) {
         segment.set(LAYOUT$residencyStandard2DBlockShape, OFFSET$residencyStandard2DBlockShape, value);
     }
 
-    public @unsigned int residencyStandard2DMultisampleBlockShape() {
+    public @Unsigned int residencyStandard2DMultisampleBlockShape() {
         return segment.get(LAYOUT$residencyStandard2DMultisampleBlockShape, OFFSET$residencyStandard2DMultisampleBlockShape);
     }
 
-    public void residencyStandard2DMultisampleBlockShape(@unsigned int value) {
+    public void residencyStandard2DMultisampleBlockShape(@Unsigned int value) {
         segment.set(LAYOUT$residencyStandard2DMultisampleBlockShape, OFFSET$residencyStandard2DMultisampleBlockShape, value);
     }
 
-    public @unsigned int residencyStandard3DBlockShape() {
+    public @Unsigned int residencyStandard3DBlockShape() {
         return segment.get(LAYOUT$residencyStandard3DBlockShape, OFFSET$residencyStandard3DBlockShape);
     }
 
-    public void residencyStandard3DBlockShape(@unsigned int value) {
+    public void residencyStandard3DBlockShape(@Unsigned int value) {
         segment.set(LAYOUT$residencyStandard3DBlockShape, OFFSET$residencyStandard3DBlockShape, value);
     }
 
-    public @unsigned int residencyAlignedMipSize() {
+    public @Unsigned int residencyAlignedMipSize() {
         return segment.get(LAYOUT$residencyAlignedMipSize, OFFSET$residencyAlignedMipSize);
     }
 
-    public void residencyAlignedMipSize(@unsigned int value) {
+    public void residencyAlignedMipSize(@Unsigned int value) {
         segment.set(LAYOUT$residencyAlignedMipSize, OFFSET$residencyAlignedMipSize, value);
     }
 
-    public @unsigned int residencyNonResidentStrict() {
+    public @Unsigned int residencyNonResidentStrict() {
         return segment.get(LAYOUT$residencyNonResidentStrict, OFFSET$residencyNonResidentStrict);
     }
 
-    public void residencyNonResidentStrict(@unsigned int value) {
+    public void residencyNonResidentStrict(@Unsigned int value) {
         segment.set(LAYOUT$residencyNonResidentStrict, OFFSET$residencyNonResidentStrict, value);
     }
 

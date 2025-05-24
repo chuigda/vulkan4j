@@ -46,7 +46,7 @@ public final class VkDebugReportObjectTypeEXT {
     public static final int CUDA_FUNCTION_NV = 0x3b9f7939;
     public static final int BUFFER_COLLECTION_FUCHSIA = 0x3ba05fb0;
 
-    public static String explain(@enumtype(VkDebugReportObjectTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkDebugReportObjectTypeEXT.class) int value) {
         return switch (value) {
             case VkDebugReportObjectTypeEXT.ACCELERATION_STRUCTURE_KHR -> "VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR_EXT";
             case VkDebugReportObjectTypeEXT.ACCELERATION_STRUCTURE_NV -> "VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT";

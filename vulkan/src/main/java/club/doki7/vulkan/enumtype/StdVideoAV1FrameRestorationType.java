@@ -9,7 +9,7 @@ public final class StdVideoAV1FrameRestorationType {
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_SWITCHABLE = 0x3;
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoAV1FrameRestorationType.class) int value) {
+    public static String explain(@EnumType(StdVideoAV1FrameRestorationType.class) int value) {
         return switch (value) {
             case StdVideoAV1FrameRestorationType.STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID -> "STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID";
             case StdVideoAV1FrameRestorationType.STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE -> "STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE";

@@ -94,7 +94,7 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRefreshObjectListKHR.BYTES, VkRefreshObjectListKHR.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.REFRESH_OBJECT_LIST_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int objectCount() {
+    public @Unsigned int objectCount() {
         return segment.get(LAYOUT$objectCount, OFFSET$objectCount);
     }
 
-    public void objectCount(@unsigned int value) {
+    public void objectCount(@Unsigned int value) {
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
     }
 
@@ -192,7 +192,7 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         pObjectsRaw(s);
     }
 
-    @unsafe public @Nullable VkRefreshObjectKHR.Ptr pObjects(int assumedCount) {
+    @Unsafe public @Nullable VkRefreshObjectKHR.Ptr pObjects(int assumedCount) {
         MemorySegment s = pObjectsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         return new VkRefreshObjectKHR(s);
     }
 
-    public @pointer(target=VkRefreshObjectKHR.class) MemorySegment pObjectsRaw() {
+    public @Pointer(target=VkRefreshObjectKHR.class) MemorySegment pObjectsRaw() {
         return segment.get(LAYOUT$pObjects, OFFSET$pObjects);
     }
 
-    public void pObjectsRaw(@pointer(target=VkRefreshObjectKHR.class) MemorySegment value) {
+    public void pObjectsRaw(@Pointer(target=VkRefreshObjectKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pObjects, OFFSET$pObjects, value);
     }
 

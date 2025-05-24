@@ -89,7 +89,7 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -97,7 +97,7 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IVk
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSubpassDependency.BYTES, VkSubpassDependency.BYTES));
         }
@@ -144,59 +144,59 @@ public record VkSubpassDependency(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @unsigned int srcSubpass() {
+    public @Unsigned int srcSubpass() {
         return segment.get(LAYOUT$srcSubpass, OFFSET$srcSubpass);
     }
 
-    public void srcSubpass(@unsigned int value) {
+    public void srcSubpass(@Unsigned int value) {
         segment.set(LAYOUT$srcSubpass, OFFSET$srcSubpass, value);
     }
 
-    public @unsigned int dstSubpass() {
+    public @Unsigned int dstSubpass() {
         return segment.get(LAYOUT$dstSubpass, OFFSET$dstSubpass);
     }
 
-    public void dstSubpass(@unsigned int value) {
+    public void dstSubpass(@Unsigned int value) {
         segment.set(LAYOUT$dstSubpass, OFFSET$dstSubpass, value);
     }
 
-    public @enumtype(VkPipelineStageFlags.class) int srcStageMask() {
+    public @EnumType(VkPipelineStageFlags.class) int srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public void srcStageMask(@enumtype(VkPipelineStageFlags.class) int value) {
+    public void srcStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
     }
 
-    public @enumtype(VkPipelineStageFlags.class) int dstStageMask() {
+    public @EnumType(VkPipelineStageFlags.class) int dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public void dstStageMask(@enumtype(VkPipelineStageFlags.class) int value) {
+    public void dstStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
     }
 
-    public @enumtype(VkAccessFlags.class) int srcAccessMask() {
+    public @EnumType(VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public void srcAccessMask(@enumtype(VkAccessFlags.class) int value) {
+    public void srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
     }
 
-    public @enumtype(VkAccessFlags.class) int dstAccessMask() {
+    public @EnumType(VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public void dstAccessMask(@enumtype(VkAccessFlags.class) int value) {
+    public void dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
     }
 
-    public @enumtype(VkDependencyFlags.class) int dependencyFlags() {
+    public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public void dependencyFlags(@enumtype(VkDependencyFlags.class) int value) {
+    public void dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
     }
 

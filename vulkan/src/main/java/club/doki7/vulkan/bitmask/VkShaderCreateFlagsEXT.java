@@ -16,7 +16,7 @@ public final class VkShaderCreateFlagsEXT {
     public static final int NO_TASK_SHADER = 0x8;
     public static final int REQUIRE_FULL_SUBGROUPS = 0x4;
 
-    public static String explain(@enumtype(VkShaderCreateFlagsEXT.class) int flags) {
+    public static String explain(@EnumType(VkShaderCreateFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_VARYING_SUBGROUP_SIZE) != 0) {
             detectedFlagBits.add("VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT");

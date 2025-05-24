@@ -86,7 +86,7 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -94,7 +94,7 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectCommandsTokenDataEXT.BYTES, VkIndirectCommandsTokenDataEXT.BYTES));
         }
@@ -146,7 +146,7 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         pPushConstantRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsPushConstantTokenEXT.Ptr pPushConstant(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectCommandsPushConstantTokenEXT.Ptr pPushConstant(int assumedCount) {
         MemorySegment s = pPushConstantRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -164,11 +164,11 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsPushConstantTokenEXT(s);
     }
 
-    public @pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment pPushConstantRaw() {
+    public @Pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment pPushConstantRaw() {
         return segment.get(LAYOUT$pPushConstant, OFFSET$pPushConstant);
     }
 
-    public void pPushConstantRaw(@pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment value) {
+    public void pPushConstantRaw(@Pointer(target=VkIndirectCommandsPushConstantTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pPushConstant, OFFSET$pPushConstant, value);
     }
 
@@ -177,7 +177,7 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         pVertexBufferRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsVertexBufferTokenEXT.Ptr pVertexBuffer(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectCommandsVertexBufferTokenEXT.Ptr pVertexBuffer(int assumedCount) {
         MemorySegment s = pVertexBufferRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -195,11 +195,11 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsVertexBufferTokenEXT(s);
     }
 
-    public @pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment pVertexBufferRaw() {
+    public @Pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment pVertexBufferRaw() {
         return segment.get(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer);
     }
 
-    public void pVertexBufferRaw(@pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment value) {
+    public void pVertexBufferRaw(@Pointer(target=VkIndirectCommandsVertexBufferTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer, value);
     }
 
@@ -208,7 +208,7 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         pIndexBufferRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsIndexBufferTokenEXT.Ptr pIndexBuffer(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectCommandsIndexBufferTokenEXT.Ptr pIndexBuffer(int assumedCount) {
         MemorySegment s = pIndexBufferRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -226,11 +226,11 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsIndexBufferTokenEXT(s);
     }
 
-    public @pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment pIndexBufferRaw() {
+    public @Pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment pIndexBufferRaw() {
         return segment.get(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer);
     }
 
-    public void pIndexBufferRaw(@pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment value) {
+    public void pIndexBufferRaw(@Pointer(target=VkIndirectCommandsIndexBufferTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer, value);
     }
 
@@ -239,7 +239,7 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         pExecutionSetRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsExecutionSetTokenEXT.Ptr pExecutionSet(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectCommandsExecutionSetTokenEXT.Ptr pExecutionSet(int assumedCount) {
         MemorySegment s = pExecutionSetRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -257,11 +257,11 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return new VkIndirectCommandsExecutionSetTokenEXT(s);
     }
 
-    public @pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment pExecutionSetRaw() {
+    public @Pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment pExecutionSetRaw() {
         return segment.get(LAYOUT$pExecutionSet, OFFSET$pExecutionSet);
     }
 
-    public void pExecutionSetRaw(@pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment value) {
+    public void pExecutionSetRaw(@Pointer(target=VkIndirectCommandsExecutionSetTokenEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pExecutionSet, OFFSET$pExecutionSet, value);
     }
 

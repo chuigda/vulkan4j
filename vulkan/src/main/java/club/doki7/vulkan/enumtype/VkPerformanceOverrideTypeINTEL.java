@@ -7,7 +7,7 @@ public final class VkPerformanceOverrideTypeINTEL {
     public static final int NULL_HARDWARE = 0x0;
     public static final int FLUSH_GPU_CACHES = 0x1;
 
-    public static String explain(@enumtype(VkPerformanceOverrideTypeINTEL.class) int value) {
+    public static String explain(@EnumType(VkPerformanceOverrideTypeINTEL.class) int value) {
         return switch (value) {
             case VkPerformanceOverrideTypeINTEL.FLUSH_GPU_CACHES -> "VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL";
             case VkPerformanceOverrideTypeINTEL.NULL_HARDWARE -> "VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL";

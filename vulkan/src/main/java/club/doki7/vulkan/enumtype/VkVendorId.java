@@ -13,7 +13,7 @@ public final class VkVendorId {
     public static final int POCL = 0x10006;
     public static final int MOBILEYE = 0x10007;
 
-    public static String explain(@enumtype(VkVendorId.class) int value) {
+    public static String explain(@EnumType(VkVendorId.class) int value) {
         return switch (value) {
             case VkVendorId.CODEPLAY -> "VK_VENDOR_ID_CODEPLAY";
             case VkVendorId.KAZAN -> "VK_VENDOR_ID_KAZAN";

@@ -85,7 +85,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSparseImageOpaqueMemoryBindInfo.BYTES, VkSparseImageOpaqueMemoryBindInfo.BYTES));
         }
@@ -152,11 +152,11 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int bindCount() {
+    public @Unsigned int bindCount() {
         return segment.get(LAYOUT$bindCount, OFFSET$bindCount);
     }
 
-    public void bindCount(@unsigned int value) {
+    public void bindCount(@Unsigned int value) {
         segment.set(LAYOUT$bindCount, OFFSET$bindCount, value);
     }
 
@@ -165,7 +165,7 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         pBindsRaw(s);
     }
 
-    @unsafe public @Nullable VkSparseMemoryBind.Ptr pBinds(int assumedCount) {
+    @Unsafe public @Nullable VkSparseMemoryBind.Ptr pBinds(int assumedCount) {
         MemorySegment s = pBindsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -183,11 +183,11 @@ public record VkSparseImageOpaqueMemoryBindInfo(@NotNull MemorySegment segment) 
         return new VkSparseMemoryBind(s);
     }
 
-    public @pointer(target=VkSparseMemoryBind.class) MemorySegment pBindsRaw() {
+    public @Pointer(target=VkSparseMemoryBind.class) MemorySegment pBindsRaw() {
         return segment.get(LAYOUT$pBinds, OFFSET$pBinds);
     }
 
-    public void pBindsRaw(@pointer(target=VkSparseMemoryBind.class) MemorySegment value) {
+    public void pBindsRaw(@Pointer(target=VkSparseMemoryBind.class) MemorySegment value) {
         segment.set(LAYOUT$pBinds, OFFSET$pBinds, value);
     }
 

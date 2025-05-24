@@ -84,7 +84,7 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH265ReferenceInfo.BYTES, StdVideoEncodeH265ReferenceInfo.BYTES));
         }
@@ -147,11 +147,11 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @enumtype(StdVideoH265PictureType.class) int pic_type() {
+    public @EnumType(StdVideoH265PictureType.class) int pic_type() {
         return segment.get(LAYOUT$pic_type, OFFSET$pic_type);
     }
 
-    public void pic_type(@enumtype(StdVideoH265PictureType.class) int value) {
+    public void pic_type(@EnumType(StdVideoH265PictureType.class) int value) {
         segment.set(LAYOUT$pic_type, OFFSET$pic_type, value);
     }
 
@@ -163,11 +163,11 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
     }
 
-    public @unsigned byte TemporalId() {
+    public @Unsigned byte TemporalId() {
         return segment.get(LAYOUT$TemporalId, OFFSET$TemporalId);
     }
 
-    public void TemporalId(@unsigned byte value) {
+    public void TemporalId(@Unsigned byte value) {
         segment.set(LAYOUT$TemporalId, OFFSET$TemporalId, value);
     }
 

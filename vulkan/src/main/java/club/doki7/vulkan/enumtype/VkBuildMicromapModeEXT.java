@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 public final class VkBuildMicromapModeEXT {
     public static final int BUILD = 0x0;
 
-    public static String explain(@enumtype(VkBuildMicromapModeEXT.class) int value) {
+    public static String explain(@EnumType(VkBuildMicromapModeEXT.class) int value) {
         return switch (value) {
             case VkBuildMicromapModeEXT.BUILD -> "VK_BUILD_MICROMAP_MODE_BUILD_EXT";
             default -> "UNKNOWN(" + value + ")";

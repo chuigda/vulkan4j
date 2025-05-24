@@ -95,7 +95,7 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES, VkPipelineColorBlendAdvancedStateCreateInfoEXT.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         sType(VkStructureType.PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,27 +180,27 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int srcPremultiplied() {
+    public @Unsigned int srcPremultiplied() {
         return segment.get(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied);
     }
 
-    public void srcPremultiplied(@unsigned int value) {
+    public void srcPremultiplied(@Unsigned int value) {
         segment.set(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied, value);
     }
 
-    public @unsigned int dstPremultiplied() {
+    public @Unsigned int dstPremultiplied() {
         return segment.get(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied);
     }
 
-    public void dstPremultiplied(@unsigned int value) {
+    public void dstPremultiplied(@Unsigned int value) {
         segment.set(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied, value);
     }
 
-    public @enumtype(VkBlendOverlapEXT.class) int blendOverlap() {
+    public @EnumType(VkBlendOverlapEXT.class) int blendOverlap() {
         return segment.get(LAYOUT$blendOverlap, OFFSET$blendOverlap);
     }
 
-    public void blendOverlap(@enumtype(VkBlendOverlapEXT.class) int value) {
+    public void blendOverlap(@EnumType(VkBlendOverlapEXT.class) int value) {
         segment.set(LAYOUT$blendOverlap, OFFSET$blendOverlap, value);
     }
 

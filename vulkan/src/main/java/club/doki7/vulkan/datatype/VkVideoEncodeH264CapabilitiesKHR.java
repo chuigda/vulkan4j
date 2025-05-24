@@ -105,7 +105,7 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -113,7 +113,7 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeH264CapabilitiesKHR.BYTES, VkVideoEncodeH264CapabilitiesKHR.BYTES));
         }
@@ -170,19 +170,19 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         sType(VkStructureType.VIDEO_ENCODE_H264_CAPABILITIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -190,67 +190,67 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeH264CapabilityFlagsKHR.class) int flags() {
+    public @EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkVideoEncodeH264CapabilityFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(StdVideoH264LevelIdc.class) int maxLevelIdc() {
+    public @EnumType(StdVideoH264LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public void maxLevelIdc(@enumtype(StdVideoH264LevelIdc.class) int value) {
+    public void maxLevelIdc(@EnumType(StdVideoH264LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
     }
 
-    public @unsigned int maxSliceCount() {
+    public @Unsigned int maxSliceCount() {
         return segment.get(LAYOUT$maxSliceCount, OFFSET$maxSliceCount);
     }
 
-    public void maxSliceCount(@unsigned int value) {
+    public void maxSliceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSliceCount, OFFSET$maxSliceCount, value);
     }
 
-    public @unsigned int maxPPictureL0ReferenceCount() {
+    public @Unsigned int maxPPictureL0ReferenceCount() {
         return segment.get(LAYOUT$maxPPictureL0ReferenceCount, OFFSET$maxPPictureL0ReferenceCount);
     }
 
-    public void maxPPictureL0ReferenceCount(@unsigned int value) {
+    public void maxPPictureL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxPPictureL0ReferenceCount, OFFSET$maxPPictureL0ReferenceCount, value);
     }
 
-    public @unsigned int maxBPictureL0ReferenceCount() {
+    public @Unsigned int maxBPictureL0ReferenceCount() {
         return segment.get(LAYOUT$maxBPictureL0ReferenceCount, OFFSET$maxBPictureL0ReferenceCount);
     }
 
-    public void maxBPictureL0ReferenceCount(@unsigned int value) {
+    public void maxBPictureL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBPictureL0ReferenceCount, OFFSET$maxBPictureL0ReferenceCount, value);
     }
 
-    public @unsigned int maxL1ReferenceCount() {
+    public @Unsigned int maxL1ReferenceCount() {
         return segment.get(LAYOUT$maxL1ReferenceCount, OFFSET$maxL1ReferenceCount);
     }
 
-    public void maxL1ReferenceCount(@unsigned int value) {
+    public void maxL1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxL1ReferenceCount, OFFSET$maxL1ReferenceCount, value);
     }
 
-    public @unsigned int maxTemporalLayerCount() {
+    public @Unsigned int maxTemporalLayerCount() {
         return segment.get(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount);
     }
 
-    public void maxTemporalLayerCount(@unsigned int value) {
+    public void maxTemporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount, value);
     }
 
-    public @unsigned int expectDyadicTemporalLayerPattern() {
+    public @Unsigned int expectDyadicTemporalLayerPattern() {
         return segment.get(LAYOUT$expectDyadicTemporalLayerPattern, OFFSET$expectDyadicTemporalLayerPattern);
     }
 
-    public void expectDyadicTemporalLayerPattern(@unsigned int value) {
+    public void expectDyadicTemporalLayerPattern(@Unsigned int value) {
         segment.set(LAYOUT$expectDyadicTemporalLayerPattern, OFFSET$expectDyadicTemporalLayerPattern, value);
     }
 
@@ -270,27 +270,27 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$maxQp, OFFSET$maxQp, value);
     }
 
-    public @unsigned int prefersGopRemainingFrames() {
+    public @Unsigned int prefersGopRemainingFrames() {
         return segment.get(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames);
     }
 
-    public void prefersGopRemainingFrames(@unsigned int value) {
+    public void prefersGopRemainingFrames(@Unsigned int value) {
         segment.set(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames, value);
     }
 
-    public @unsigned int requiresGopRemainingFrames() {
+    public @Unsigned int requiresGopRemainingFrames() {
         return segment.get(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames);
     }
 
-    public void requiresGopRemainingFrames(@unsigned int value) {
+    public void requiresGopRemainingFrames(@Unsigned int value) {
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
     }
 
-    public @enumtype(VkVideoEncodeH264StdFlagsKHR.class) int stdSyntaxFlags() {
+    public @EnumType(VkVideoEncodeH264StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public void stdSyntaxFlags(@enumtype(VkVideoEncodeH264StdFlagsKHR.class) int value) {
+    public void stdSyntaxFlags(@EnumType(VkVideoEncodeH264StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
     }
 

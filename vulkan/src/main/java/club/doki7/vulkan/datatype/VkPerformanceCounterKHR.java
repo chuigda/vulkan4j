@@ -96,7 +96,7 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPerformanceCounterKHR.BYTES, VkPerformanceCounterKHR.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         sType(VkStructureType.PERFORMANCE_COUNTER_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,35 +181,35 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPerformanceCounterUnitKHR.class) int unit() {
+    public @EnumType(VkPerformanceCounterUnitKHR.class) int unit() {
         return segment.get(LAYOUT$unit, OFFSET$unit);
     }
 
-    public void unit(@enumtype(VkPerformanceCounterUnitKHR.class) int value) {
+    public void unit(@EnumType(VkPerformanceCounterUnitKHR.class) int value) {
         segment.set(LAYOUT$unit, OFFSET$unit, value);
     }
 
-    public @enumtype(VkPerformanceCounterScopeKHR.class) int scope() {
+    public @EnumType(VkPerformanceCounterScopeKHR.class) int scope() {
         return segment.get(LAYOUT$scope, OFFSET$scope);
     }
 
-    public void scope(@enumtype(VkPerformanceCounterScopeKHR.class) int value) {
+    public void scope(@EnumType(VkPerformanceCounterScopeKHR.class) int value) {
         segment.set(LAYOUT$scope, OFFSET$scope, value);
     }
 
-    public @enumtype(VkPerformanceCounterStorageKHR.class) int storage() {
+    public @EnumType(VkPerformanceCounterStorageKHR.class) int storage() {
         return segment.get(LAYOUT$storage, OFFSET$storage);
     }
 
-    public void storage(@enumtype(VkPerformanceCounterStorageKHR.class) int value) {
+    public void storage(@EnumType(VkPerformanceCounterStorageKHR.class) int value) {
         segment.set(LAYOUT$storage, OFFSET$storage, value);
     }
 
-    public @unsigned byte uuid() {
+    public @Unsigned byte uuid() {
         return segment.get(LAYOUT$uuid, OFFSET$uuid);
     }
 
-    public void uuid(@unsigned byte value) {
+    public void uuid(@Unsigned byte value) {
         segment.set(LAYOUT$uuid, OFFSET$uuid, value);
     }
 

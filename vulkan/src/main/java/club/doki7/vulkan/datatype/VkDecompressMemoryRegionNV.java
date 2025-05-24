@@ -87,7 +87,7 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDecompressMemoryRegionNV.BYTES, VkDecompressMemoryRegionNV.BYTES));
         }
@@ -142,43 +142,43 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @unsigned long srcAddress() {
+    public @Unsigned long srcAddress() {
         return segment.get(LAYOUT$srcAddress, OFFSET$srcAddress);
     }
 
-    public void srcAddress(@unsigned long value) {
+    public void srcAddress(@Unsigned long value) {
         segment.set(LAYOUT$srcAddress, OFFSET$srcAddress, value);
     }
 
-    public @unsigned long dstAddress() {
+    public @Unsigned long dstAddress() {
         return segment.get(LAYOUT$dstAddress, OFFSET$dstAddress);
     }
 
-    public void dstAddress(@unsigned long value) {
+    public void dstAddress(@Unsigned long value) {
         segment.set(LAYOUT$dstAddress, OFFSET$dstAddress, value);
     }
 
-    public @unsigned long compressedSize() {
+    public @Unsigned long compressedSize() {
         return segment.get(LAYOUT$compressedSize, OFFSET$compressedSize);
     }
 
-    public void compressedSize(@unsigned long value) {
+    public void compressedSize(@Unsigned long value) {
         segment.set(LAYOUT$compressedSize, OFFSET$compressedSize, value);
     }
 
-    public @unsigned long decompressedSize() {
+    public @Unsigned long decompressedSize() {
         return segment.get(LAYOUT$decompressedSize, OFFSET$decompressedSize);
     }
 
-    public void decompressedSize(@unsigned long value) {
+    public void decompressedSize(@Unsigned long value) {
         segment.set(LAYOUT$decompressedSize, OFFSET$decompressedSize, value);
     }
 
-    public @enumtype(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
+    public @EnumType(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
         return segment.get(LAYOUT$decompressionMethod, OFFSET$decompressionMethod);
     }
 
-    public void decompressionMethod(@enumtype(VkMemoryDecompressionMethodFlagsNV.class) long value) {
+    public void decompressionMethod(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethod, OFFSET$decompressionMethod, value);
     }
 

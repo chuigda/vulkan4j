@@ -85,7 +85,7 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkMicromapTriangleEXT.BYTES, VkMicromapTriangleEXT.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public @unsigned int dataOffset() {
+    public @Unsigned int dataOffset() {
         return segment.get(LAYOUT$dataOffset, OFFSET$dataOffset);
     }
 
-    public void dataOffset(@unsigned int value) {
+    public void dataOffset(@Unsigned int value) {
         segment.set(LAYOUT$dataOffset, OFFSET$dataOffset, value);
     }
 
-    public @unsigned short subdivisionLevel() {
+    public @Unsigned short subdivisionLevel() {
         return segment.get(LAYOUT$subdivisionLevel, OFFSET$subdivisionLevel);
     }
 
-    public void subdivisionLevel(@unsigned short value) {
+    public void subdivisionLevel(@Unsigned short value) {
         segment.set(LAYOUT$subdivisionLevel, OFFSET$subdivisionLevel, value);
     }
 
-    public @unsigned short format() {
+    public @Unsigned short format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@unsigned short value) {
+    public void format(@Unsigned short value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 

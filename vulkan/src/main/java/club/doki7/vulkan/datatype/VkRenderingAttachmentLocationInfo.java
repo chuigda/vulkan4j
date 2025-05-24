@@ -94,7 +94,7 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRenderingAttachmentLocationInfo.BYTES, VkRenderingAttachmentLocationInfo.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         sType(VkStructureType.RENDERING_ATTACHMENT_LOCATION_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int colorAttachmentCount() {
+    public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@unsigned int value) {
+    public void colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
@@ -191,7 +191,7 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pColorAttachmentLocations() {
+    public @Nullable @Unsigned IntPtr pColorAttachmentLocations() {
         MemorySegment s = pColorAttachmentLocationsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -199,16 +199,16 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         return new IntPtr(s);
     }
 
-    public void pColorAttachmentLocations(@Nullable @unsigned IntPtr value) {
+    public void pColorAttachmentLocations(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentLocationsRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pColorAttachmentLocationsRaw() {
+    public @Pointer(comment="int*") MemorySegment pColorAttachmentLocationsRaw() {
         return segment.get(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations);
     }
 
-    public void pColorAttachmentLocationsRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pColorAttachmentLocationsRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations, value);
     }
 

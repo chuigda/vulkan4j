@@ -10,7 +10,7 @@ public final class VkDeviceMemoryReportEventTypeEXT {
     public static final int UNIMPORT = 0x3;
     public static final int ALLOCATION_FAILED = 0x4;
 
-    public static String explain(@enumtype(VkDeviceMemoryReportEventTypeEXT.class) int value) {
+    public static String explain(@EnumType(VkDeviceMemoryReportEventTypeEXT.class) int value) {
         return switch (value) {
             case VkDeviceMemoryReportEventTypeEXT.ALLOCATE -> "VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT";
             case VkDeviceMemoryReportEventTypeEXT.ALLOCATION_FAILED -> "VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATION_FAILED_EXT";

@@ -86,7 +86,7 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -94,7 +94,7 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineExecutableStatisticValueKHR.BYTES, VkPipelineExecutableStatisticValueKHR.BYTES));
         }
@@ -141,11 +141,11 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         return ret;
     }
 
-    public @unsigned int b32() {
+    public @Unsigned int b32() {
         return segment.get(LAYOUT$b32, OFFSET$b32);
     }
 
-    public void b32(@unsigned int value) {
+    public void b32(@Unsigned int value) {
         segment.set(LAYOUT$b32, OFFSET$b32, value);
     }
 
@@ -157,11 +157,11 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         segment.set(LAYOUT$i64, OFFSET$i64, value);
     }
 
-    public @unsigned long u64() {
+    public @Unsigned long u64() {
         return segment.get(LAYOUT$u64, OFFSET$u64);
     }
 
-    public void u64(@unsigned long value) {
+    public void u64(@Unsigned long value) {
         segment.set(LAYOUT$u64, OFFSET$u64, value);
     }
 

@@ -96,7 +96,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkTimelineSemaphoreSubmitInfo.BYTES, VkTimelineSemaphoreSubmitInfo.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         sType(VkStructureType.TIMELINE_SEMAPHORE_SUBMIT_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,11 +181,11 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int waitSemaphoreValueCount() {
+    public @Unsigned int waitSemaphoreValueCount() {
         return segment.get(LAYOUT$waitSemaphoreValueCount, OFFSET$waitSemaphoreValueCount);
     }
 
-    public void waitSemaphoreValueCount(@unsigned int value) {
+    public void waitSemaphoreValueCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreValueCount, OFFSET$waitSemaphoreValueCount, value);
     }
 
@@ -193,7 +193,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pWaitSemaphoreValues() {
+    public @Nullable @Unsigned LongPtr pWaitSemaphoreValues() {
         MemorySegment s = pWaitSemaphoreValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -201,24 +201,24 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return new LongPtr(s);
     }
 
-    public void pWaitSemaphoreValues(@Nullable @unsigned LongPtr value) {
+    public void pWaitSemaphoreValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreValuesRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pWaitSemaphoreValuesRaw() {
+    public @Pointer(comment="long*") MemorySegment pWaitSemaphoreValuesRaw() {
         return segment.get(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues);
     }
 
-    public void pWaitSemaphoreValuesRaw(@pointer(comment="long*") MemorySegment value) {
+    public void pWaitSemaphoreValuesRaw(@Pointer(comment="long*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
     }
 
-    public @unsigned int signalSemaphoreValueCount() {
+    public @Unsigned int signalSemaphoreValueCount() {
         return segment.get(LAYOUT$signalSemaphoreValueCount, OFFSET$signalSemaphoreValueCount);
     }
 
-    public void signalSemaphoreValueCount(@unsigned int value) {
+    public void signalSemaphoreValueCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreValueCount, OFFSET$signalSemaphoreValueCount, value);
     }
 
@@ -226,7 +226,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pSignalSemaphoreValues() {
+    public @Nullable @Unsigned LongPtr pSignalSemaphoreValues() {
         MemorySegment s = pSignalSemaphoreValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -234,16 +234,16 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return new LongPtr(s);
     }
 
-    public void pSignalSemaphoreValues(@Nullable @unsigned LongPtr value) {
+    public void pSignalSemaphoreValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreValuesRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pSignalSemaphoreValuesRaw() {
+    public @Pointer(comment="long*") MemorySegment pSignalSemaphoreValuesRaw() {
         return segment.get(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues);
     }
 
-    public void pSignalSemaphoreValuesRaw(@pointer(comment="long*") MemorySegment value) {
+    public void pSignalSemaphoreValuesRaw(@Pointer(comment="long*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreValues, OFFSET$pSignalSemaphoreValues, value);
     }
 

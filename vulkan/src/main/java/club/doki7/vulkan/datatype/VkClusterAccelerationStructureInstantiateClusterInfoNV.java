@@ -88,7 +88,7 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -96,7 +96,7 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkClusterAccelerationStructureInstantiateClusterInfoNV.BYTES, VkClusterAccelerationStructureInstantiateClusterInfoNV.BYTES));
         }
@@ -143,29 +143,29 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         return ret;
     }
 
-    public @unsigned int clusterIdOffset() {
+    public @Unsigned int clusterIdOffset() {
         return segment.get(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset);
     }
 
-    public void clusterIdOffset(@unsigned int value) {
+    public void clusterIdOffset(@Unsigned int value) {
         segment.set(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset, value);
     }
 
-    public @unsigned int geometryIndexOffset() {
+    public @Unsigned int geometryIndexOffset() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset$reserved, LAYOUT$bitfield$geometryIndexOffset$reserved);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void geometryIndexOffset(@unsigned int value) {
+    public void geometryIndexOffset(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset$reserved, LAYOUT$bitfield$geometryIndexOffset$reserved);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
-    public @unsigned long clusterTemplateAddress() {
+    public @Unsigned long clusterTemplateAddress() {
         return segment.get(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress);
     }
 
-    public void clusterTemplateAddress(@unsigned long value) {
+    public void clusterTemplateAddress(@Unsigned long value) {
         segment.set(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress, value);
     }
 

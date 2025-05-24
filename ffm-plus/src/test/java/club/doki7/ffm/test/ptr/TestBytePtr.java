@@ -40,7 +40,7 @@ public class TestBytePtr {
         try (Arena arena = Arena.ofConfined()) {
             BytePtr ptr = BytePtr.allocate(arena, 10);
             BytePtr reinterpreted = ptr.reinterpret(5);
-            assertEquals(5, reinterpreted.size()); // unsafe 但逻辑正确性测试
+            assertEquals(5, reinterpreted.size()); // Unsafe 但逻辑正确性测试
         }
     }
 
@@ -72,7 +72,7 @@ public class TestBytePtr {
             BytePtr strPtr = BytePtr.allocateString(arena, input);
 
             assertEquals(input, strPtr.readStringSafe());
-            assertTrue(strPtr.readString().startsWith("hello")); // unsafe 测试
+            assertTrue(strPtr.readString().startsWith("hello")); // Unsafe 测试
         }
     }
 

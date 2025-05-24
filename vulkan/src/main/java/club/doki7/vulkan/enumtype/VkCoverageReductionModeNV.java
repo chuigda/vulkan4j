@@ -7,7 +7,7 @@ public final class VkCoverageReductionModeNV {
     public static final int MERGE = 0x0;
     public static final int TRUNCATE = 0x1;
 
-    public static String explain(@enumtype(VkCoverageReductionModeNV.class) int value) {
+    public static String explain(@EnumType(VkCoverageReductionModeNV.class) int value) {
         return switch (value) {
             case VkCoverageReductionModeNV.MERGE -> "VK_COVERAGE_REDUCTION_MODE_MERGE_NV";
             case VkCoverageReductionModeNV.TRUNCATE -> "VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV";

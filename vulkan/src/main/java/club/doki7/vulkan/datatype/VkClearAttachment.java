@@ -85,7 +85,7 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkClearAttachment.BYTES, VkClearAttachment.BYTES));
         }
@@ -140,19 +140,19 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
         return ret;
     }
 
-    public @enumtype(VkImageAspectFlags.class) int aspectMask() {
+    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@enumtype(VkImageAspectFlags.class) int value) {
+    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
     }
 
-    public @unsigned int colorAttachment() {
+    public @Unsigned int colorAttachment() {
         return segment.get(LAYOUT$colorAttachment, OFFSET$colorAttachment);
     }
 
-    public void colorAttachment(@unsigned int value) {
+    public void colorAttachment(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachment, OFFSET$colorAttachment, value);
     }
 

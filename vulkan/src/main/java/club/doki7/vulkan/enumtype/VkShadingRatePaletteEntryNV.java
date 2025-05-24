@@ -17,7 +17,7 @@ public final class VkShadingRatePaletteEntryNV {
     public static final int _1_INVOCATION_PER_2X4_PIXELS = 0xa;
     public static final int _1_INVOCATION_PER_4X4_PIXELS = 0xb;
 
-    public static String explain(@enumtype(VkShadingRatePaletteEntryNV.class) int value) {
+    public static String explain(@EnumType(VkShadingRatePaletteEntryNV.class) int value) {
         return switch (value) {
             case VkShadingRatePaletteEntryNV._16_INVOCATIONS_PER_PIXEL -> "VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV";
             case VkShadingRatePaletteEntryNV._1_INVOCATION_PER_1X2_PIXELS -> "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_1X2_PIXELS_NV";

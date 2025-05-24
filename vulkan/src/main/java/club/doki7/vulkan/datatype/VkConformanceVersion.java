@@ -86,7 +86,7 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -94,7 +94,7 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkConformanceVersion.BYTES, VkConformanceVersion.BYTES));
         }
@@ -141,35 +141,35 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @unsigned byte major() {
+    public @Unsigned byte major() {
         return segment.get(LAYOUT$major, OFFSET$major);
     }
 
-    public void major(@unsigned byte value) {
+    public void major(@Unsigned byte value) {
         segment.set(LAYOUT$major, OFFSET$major, value);
     }
 
-    public @unsigned byte minor() {
+    public @Unsigned byte minor() {
         return segment.get(LAYOUT$minor, OFFSET$minor);
     }
 
-    public void minor(@unsigned byte value) {
+    public void minor(@Unsigned byte value) {
         segment.set(LAYOUT$minor, OFFSET$minor, value);
     }
 
-    public @unsigned byte subminor() {
+    public @Unsigned byte subminor() {
         return segment.get(LAYOUT$subminor, OFFSET$subminor);
     }
 
-    public void subminor(@unsigned byte value) {
+    public void subminor(@Unsigned byte value) {
         segment.set(LAYOUT$subminor, OFFSET$subminor, value);
     }
 
-    public @unsigned byte patch() {
+    public @Unsigned byte patch() {
         return segment.get(LAYOUT$patch, OFFSET$patch);
     }
 
-    public void patch(@unsigned byte value) {
+    public void patch(@Unsigned byte value) {
         segment.set(LAYOUT$patch, OFFSET$patch, value);
     }
 

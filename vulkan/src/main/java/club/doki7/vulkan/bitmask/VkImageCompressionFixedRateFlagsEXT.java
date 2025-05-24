@@ -33,7 +33,7 @@ public final class VkImageCompressionFixedRateFlagsEXT {
     public static final int _9BPC = 0x100;
     public static final int NONE = 0x0;
 
-    public static String explain(@enumtype(VkImageCompressionFixedRateFlagsEXT.class) int flags) {
+    public static String explain(@EnumType(VkImageCompressionFixedRateFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _10BPC) != 0) {
             detectedFlagBits.add("VK_IMAGE_COMPRESSION_FIXED_RATE_10BPC_BIT_EXT");

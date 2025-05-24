@@ -54,7 +54,7 @@ public final class VkResult {
     public static final int VK_PIPELINE_BINARY_MISSING_KHR = 0x3ba228b8;
     public static final int VK_ERROR_NOT_ENOUGH_SPACE_KHR = 0xc45dd748;
 
-    public static String explain(@enumtype(VkResult.class) int value) {
+    public static String explain(@EnumType(VkResult.class) int value) {
         return switch (value) {
             case VkResult.VK_ERROR_COMPRESSION_EXHAUSTED_EXT -> "VK_ERROR_COMPRESSION_EXHAUSTED_EXT";
             case VkResult.VK_ERROR_DEVICE_LOST -> "VK_ERROR_DEVICE_LOST";

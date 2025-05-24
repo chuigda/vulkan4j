@@ -9,7 +9,7 @@ public final class VkShaderGroupShaderKHR {
     public static final int ANY_HIT = 0x2;
     public static final int INTERSECTION = 0x3;
 
-    public static String explain(@enumtype(VkShaderGroupShaderKHR.class) int value) {
+    public static String explain(@EnumType(VkShaderGroupShaderKHR.class) int value) {
         return switch (value) {
             case VkShaderGroupShaderKHR.ANY_HIT -> "VK_SHADER_GROUP_SHADER_ANY_HIT_KHR";
             case VkShaderGroupShaderKHR.CLOSEST_HIT -> "VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR";

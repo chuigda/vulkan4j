@@ -17,7 +17,7 @@ public final class VkMemoryPropertyFlags {
     public static final int PROTECTED = 0x20;
     public static final int RDMA_CAPABLE_NV = 0x100;
 
-    public static String explain(@enumtype(VkMemoryPropertyFlags.class) int flags) {
+    public static String explain(@EnumType(VkMemoryPropertyFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & DEVICE_COHERENT_AMD) != 0) {
             detectedFlagBits.add("VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD");

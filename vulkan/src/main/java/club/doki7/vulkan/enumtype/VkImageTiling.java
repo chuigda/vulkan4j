@@ -8,7 +8,7 @@ public final class VkImageTiling {
     public static final int LINEAR = 0x1;
     public static final int DRM_FORMAT_MODIFIER_EXT = 0x3b9d3330;
 
-    public static String explain(@enumtype(VkImageTiling.class) int value) {
+    public static String explain(@EnumType(VkImageTiling.class) int value) {
         return switch (value) {
             case VkImageTiling.DRM_FORMAT_MODIFIER_EXT -> "VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT";
             case VkImageTiling.LINEAR -> "VK_IMAGE_TILING_LINEAR";

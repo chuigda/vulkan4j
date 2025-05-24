@@ -98,7 +98,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -106,7 +106,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceGroupSubmitInfo.BYTES, VkDeviceGroupSubmitInfo.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         sType(VkStructureType.DEVICE_GROUP_SUBMIT_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,11 +183,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int waitSemaphoreCount() {
+    public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@unsigned int value) {
+    public void waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
@@ -195,7 +195,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pWaitSemaphoreDeviceIndices() {
+    public @Nullable @Unsigned IntPtr pWaitSemaphoreDeviceIndices() {
         MemorySegment s = pWaitSemaphoreDeviceIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -203,24 +203,24 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pWaitSemaphoreDeviceIndices(@Nullable @unsigned IntPtr value) {
+    public void pWaitSemaphoreDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreDeviceIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
+    public @Pointer(comment="int*") MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
         return segment.get(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices);
     }
 
-    public void pWaitSemaphoreDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pWaitSemaphoreDeviceIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices, value);
     }
 
-    public @unsigned int commandBufferCount() {
+    public @Unsigned int commandBufferCount() {
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
-    public void commandBufferCount(@unsigned int value) {
+    public void commandBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
     }
 
@@ -228,7 +228,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pCommandBufferDeviceMasks() {
+    public @Nullable @Unsigned IntPtr pCommandBufferDeviceMasks() {
         MemorySegment s = pCommandBufferDeviceMasksRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -236,24 +236,24 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pCommandBufferDeviceMasks(@Nullable @unsigned IntPtr value) {
+    public void pCommandBufferDeviceMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBufferDeviceMasksRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pCommandBufferDeviceMasksRaw() {
+    public @Pointer(comment="int*") MemorySegment pCommandBufferDeviceMasksRaw() {
         return segment.get(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks);
     }
 
-    public void pCommandBufferDeviceMasksRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pCommandBufferDeviceMasksRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks, value);
     }
 
-    public @unsigned int signalSemaphoreCount() {
+    public @Unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
-    public void signalSemaphoreCount(@unsigned int value) {
+    public void signalSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
     }
 
@@ -261,7 +261,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pSignalSemaphoreDeviceIndices() {
+    public @Nullable @Unsigned IntPtr pSignalSemaphoreDeviceIndices() {
         MemorySegment s = pSignalSemaphoreDeviceIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -269,16 +269,16 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pSignalSemaphoreDeviceIndices(@Nullable @unsigned IntPtr value) {
+    public void pSignalSemaphoreDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreDeviceIndicesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pSignalSemaphoreDeviceIndicesRaw() {
+    public @Pointer(comment="int*") MemorySegment pSignalSemaphoreDeviceIndicesRaw() {
         return segment.get(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices);
     }
 
-    public void pSignalSemaphoreDeviceIndicesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pSignalSemaphoreDeviceIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pSignalSemaphoreDeviceIndices, OFFSET$pSignalSemaphoreDeviceIndices, value);
     }
 

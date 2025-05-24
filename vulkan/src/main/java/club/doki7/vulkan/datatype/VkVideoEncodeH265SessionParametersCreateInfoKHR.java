@@ -96,7 +96,7 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeH265SessionParametersCreateInfoKHR.BYTES, VkVideoEncodeH265SessionParametersCreateInfoKHR.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         sType(VkStructureType.VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,27 +181,27 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxStdVPSCount() {
+    public @Unsigned int maxStdVPSCount() {
         return segment.get(LAYOUT$maxStdVPSCount, OFFSET$maxStdVPSCount);
     }
 
-    public void maxStdVPSCount(@unsigned int value) {
+    public void maxStdVPSCount(@Unsigned int value) {
         segment.set(LAYOUT$maxStdVPSCount, OFFSET$maxStdVPSCount, value);
     }
 
-    public @unsigned int maxStdSPSCount() {
+    public @Unsigned int maxStdSPSCount() {
         return segment.get(LAYOUT$maxStdSPSCount, OFFSET$maxStdSPSCount);
     }
 
-    public void maxStdSPSCount(@unsigned int value) {
+    public void maxStdSPSCount(@Unsigned int value) {
         segment.set(LAYOUT$maxStdSPSCount, OFFSET$maxStdSPSCount, value);
     }
 
-    public @unsigned int maxStdPPSCount() {
+    public @Unsigned int maxStdPPSCount() {
         return segment.get(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount);
     }
 
-    public void maxStdPPSCount(@unsigned int value) {
+    public void maxStdPPSCount(@Unsigned int value) {
         segment.set(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount, value);
     }
 
@@ -210,7 +210,7 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         pParametersAddInfoRaw(s);
     }
 
-    @unsafe public @Nullable VkVideoEncodeH265SessionParametersAddInfoKHR.Ptr pParametersAddInfo(int assumedCount) {
+    @Unsafe public @Nullable VkVideoEncodeH265SessionParametersAddInfoKHR.Ptr pParametersAddInfo(int assumedCount) {
         MemorySegment s = pParametersAddInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -228,11 +228,11 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         return new VkVideoEncodeH265SessionParametersAddInfoKHR(s);
     }
 
-    public @pointer(target=VkVideoEncodeH265SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {
+    public @Pointer(target=VkVideoEncodeH265SessionParametersAddInfoKHR.class) MemorySegment pParametersAddInfoRaw() {
         return segment.get(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo);
     }
 
-    public void pParametersAddInfoRaw(@pointer(target=VkVideoEncodeH265SessionParametersAddInfoKHR.class) MemorySegment value) {
+    public void pParametersAddInfoRaw(@Pointer(target=VkVideoEncodeH265SessionParametersAddInfoKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pParametersAddInfo, OFFSET$pParametersAddInfo, value);
     }
 

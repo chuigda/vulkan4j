@@ -96,7 +96,7 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceCooperativeVectorPropertiesNV.BYTES, VkPhysicalDeviceCooperativeVectorPropertiesNV.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         sType(VkStructureType.PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,35 +181,35 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int cooperativeVectorSupportedStages() {
+    public @EnumType(VkShaderStageFlags.class) int cooperativeVectorSupportedStages() {
         return segment.get(LAYOUT$cooperativeVectorSupportedStages, OFFSET$cooperativeVectorSupportedStages);
     }
 
-    public void cooperativeVectorSupportedStages(@enumtype(VkShaderStageFlags.class) int value) {
+    public void cooperativeVectorSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$cooperativeVectorSupportedStages, OFFSET$cooperativeVectorSupportedStages, value);
     }
 
-    public @unsigned int cooperativeVectorTrainingFloat16Accumulation() {
+    public @Unsigned int cooperativeVectorTrainingFloat16Accumulation() {
         return segment.get(LAYOUT$cooperativeVectorTrainingFloat16Accumulation, OFFSET$cooperativeVectorTrainingFloat16Accumulation);
     }
 
-    public void cooperativeVectorTrainingFloat16Accumulation(@unsigned int value) {
+    public void cooperativeVectorTrainingFloat16Accumulation(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTrainingFloat16Accumulation, OFFSET$cooperativeVectorTrainingFloat16Accumulation, value);
     }
 
-    public @unsigned int cooperativeVectorTrainingFloat32Accumulation() {
+    public @Unsigned int cooperativeVectorTrainingFloat32Accumulation() {
         return segment.get(LAYOUT$cooperativeVectorTrainingFloat32Accumulation, OFFSET$cooperativeVectorTrainingFloat32Accumulation);
     }
 
-    public void cooperativeVectorTrainingFloat32Accumulation(@unsigned int value) {
+    public void cooperativeVectorTrainingFloat32Accumulation(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTrainingFloat32Accumulation, OFFSET$cooperativeVectorTrainingFloat32Accumulation, value);
     }
 
-    public @unsigned int maxCooperativeVectorComponents() {
+    public @Unsigned int maxCooperativeVectorComponents() {
         return segment.get(LAYOUT$maxCooperativeVectorComponents, OFFSET$maxCooperativeVectorComponents);
     }
 
-    public void maxCooperativeVectorComponents(@unsigned int value) {
+    public void maxCooperativeVectorComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxCooperativeVectorComponents, OFFSET$maxCooperativeVectorComponents, value);
     }
 

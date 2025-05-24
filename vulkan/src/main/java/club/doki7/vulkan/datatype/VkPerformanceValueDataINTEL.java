@@ -87,7 +87,7 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPerformanceValueDataINTEL.BYTES, VkPerformanceValueDataINTEL.BYTES));
         }
@@ -142,19 +142,19 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         return ret;
     }
 
-    public @unsigned int value32() {
+    public @Unsigned int value32() {
         return segment.get(LAYOUT$value32, OFFSET$value32);
     }
 
-    public void value32(@unsigned int value) {
+    public void value32(@Unsigned int value) {
         segment.set(LAYOUT$value32, OFFSET$value32, value);
     }
 
-    public @unsigned long value64() {
+    public @Unsigned long value64() {
         return segment.get(LAYOUT$value64, OFFSET$value64);
     }
 
-    public void value64(@unsigned long value) {
+    public void value64(@Unsigned long value) {
         segment.set(LAYOUT$value64, OFFSET$value64, value);
     }
 
@@ -166,11 +166,11 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$valueFloat, OFFSET$valueFloat, value);
     }
 
-    public @unsigned int valueBool() {
+    public @Unsigned int valueBool() {
         return segment.get(LAYOUT$valueBool, OFFSET$valueBool);
     }
 
-    public void valueBool(@unsigned int value) {
+    public void valueBool(@Unsigned int value) {
         segment.set(LAYOUT$valueBool, OFFSET$valueBool, value);
     }
 
@@ -191,11 +191,11 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         valueStringRaw(s);
     }
 
-    public @pointer(comment="byte*") MemorySegment valueStringRaw() {
+    public @Pointer(comment="byte*") MemorySegment valueStringRaw() {
         return segment.get(LAYOUT$valueString, OFFSET$valueString);
     }
 
-    public void valueStringRaw(@pointer(comment="byte*") MemorySegment value) {
+    public void valueStringRaw(@Pointer(comment="byte*") MemorySegment value) {
         segment.set(LAYOUT$valueString, OFFSET$valueString, value);
     }
 

@@ -86,7 +86,7 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -94,7 +94,7 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageSubresourceLayers.BYTES, VkImageSubresourceLayers.BYTES));
         }
@@ -141,35 +141,35 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @enumtype(VkImageAspectFlags.class) int aspectMask() {
+    public @EnumType(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@enumtype(VkImageAspectFlags.class) int value) {
+    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
     }
 
-    public @unsigned int mipLevel() {
+    public @Unsigned int mipLevel() {
         return segment.get(LAYOUT$mipLevel, OFFSET$mipLevel);
     }
 
-    public void mipLevel(@unsigned int value) {
+    public void mipLevel(@Unsigned int value) {
         segment.set(LAYOUT$mipLevel, OFFSET$mipLevel, value);
     }
 
-    public @unsigned int baseArrayLayer() {
+    public @Unsigned int baseArrayLayer() {
         return segment.get(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer);
     }
 
-    public void baseArrayLayer(@unsigned int value) {
+    public void baseArrayLayer(@Unsigned int value) {
         segment.set(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer, value);
     }
 
-    public @unsigned int layerCount() {
+    public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@unsigned int value) {
+    public void layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
     }
 

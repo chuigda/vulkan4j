@@ -8,7 +8,7 @@ public final class VkAccelerationStructureMemoryRequirementsTypeNV {
     public static final int BUILD_SCRATCH = 0x1;
     public static final int UPDATE_SCRATCH = 0x2;
 
-    public static String explain(@enumtype(VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
+    public static String explain(@EnumType(VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
         return switch (value) {
             case VkAccelerationStructureMemoryRequirementsTypeNV.BUILD_SCRATCH -> "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV";
             case VkAccelerationStructureMemoryRequirementsTypeNV.OBJECT -> "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV";

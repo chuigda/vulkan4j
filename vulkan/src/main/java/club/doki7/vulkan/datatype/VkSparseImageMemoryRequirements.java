@@ -87,7 +87,7 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSparseImageMemoryRequirements.BYTES, VkSparseImageMemoryRequirements.BYTES));
         }
@@ -150,35 +150,35 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$formatProperties, SIZE$formatProperties);
     }
 
-    public @unsigned int imageMipTailFirstLod() {
+    public @Unsigned int imageMipTailFirstLod() {
         return segment.get(LAYOUT$imageMipTailFirstLod, OFFSET$imageMipTailFirstLod);
     }
 
-    public void imageMipTailFirstLod(@unsigned int value) {
+    public void imageMipTailFirstLod(@Unsigned int value) {
         segment.set(LAYOUT$imageMipTailFirstLod, OFFSET$imageMipTailFirstLod, value);
     }
 
-    public @unsigned long imageMipTailSize() {
+    public @Unsigned long imageMipTailSize() {
         return segment.get(LAYOUT$imageMipTailSize, OFFSET$imageMipTailSize);
     }
 
-    public void imageMipTailSize(@unsigned long value) {
+    public void imageMipTailSize(@Unsigned long value) {
         segment.set(LAYOUT$imageMipTailSize, OFFSET$imageMipTailSize, value);
     }
 
-    public @unsigned long imageMipTailOffset() {
+    public @Unsigned long imageMipTailOffset() {
         return segment.get(LAYOUT$imageMipTailOffset, OFFSET$imageMipTailOffset);
     }
 
-    public void imageMipTailOffset(@unsigned long value) {
+    public void imageMipTailOffset(@Unsigned long value) {
         segment.set(LAYOUT$imageMipTailOffset, OFFSET$imageMipTailOffset, value);
     }
 
-    public @unsigned long imageMipTailStride() {
+    public @Unsigned long imageMipTailStride() {
         return segment.get(LAYOUT$imageMipTailStride, OFFSET$imageMipTailStride);
     }
 
-    public void imageMipTailStride(@unsigned long value) {
+    public void imageMipTailStride(@Unsigned long value) {
         segment.set(LAYOUT$imageMipTailStride, OFFSET$imageMipTailStride, value);
     }
 

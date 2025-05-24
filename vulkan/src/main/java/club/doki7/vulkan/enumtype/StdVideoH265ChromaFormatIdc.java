@@ -9,7 +9,7 @@ public final class StdVideoH265ChromaFormatIdc {
     public static final int STD_VIDEO_H265_CHROMA_FORMAT_IDC_444 = 0x3;
     public static final int STD_VIDEO_H265_CHROMA_FORMAT_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH265ChromaFormatIdc.class) int value) {
+    public static String explain(@EnumType(StdVideoH265ChromaFormatIdc.class) int value) {
         return switch (value) {
             case StdVideoH265ChromaFormatIdc.STD_VIDEO_H265_CHROMA_FORMAT_IDC_420 -> "STD_VIDEO_H265_CHROMA_FORMAT_IDC_420";
             case StdVideoH265ChromaFormatIdc.STD_VIDEO_H265_CHROMA_FORMAT_IDC_422 -> "STD_VIDEO_H265_CHROMA_FORMAT_IDC_422";

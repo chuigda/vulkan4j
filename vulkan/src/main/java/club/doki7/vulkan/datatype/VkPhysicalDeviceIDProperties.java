@@ -97,7 +97,7 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -105,7 +105,7 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceIDProperties.BYTES, VkPhysicalDeviceIDProperties.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         sType(VkStructureType.PHYSICAL_DEVICE_ID_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,43 +182,43 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned byte deviceUUID() {
+    public @Unsigned byte deviceUUID() {
         return segment.get(LAYOUT$deviceUUID, OFFSET$deviceUUID);
     }
 
-    public void deviceUUID(@unsigned byte value) {
+    public void deviceUUID(@Unsigned byte value) {
         segment.set(LAYOUT$deviceUUID, OFFSET$deviceUUID, value);
     }
 
-    public @unsigned byte driverUUID() {
+    public @Unsigned byte driverUUID() {
         return segment.get(LAYOUT$driverUUID, OFFSET$driverUUID);
     }
 
-    public void driverUUID(@unsigned byte value) {
+    public void driverUUID(@Unsigned byte value) {
         segment.set(LAYOUT$driverUUID, OFFSET$driverUUID, value);
     }
 
-    public @unsigned byte deviceLUID() {
+    public @Unsigned byte deviceLUID() {
         return segment.get(LAYOUT$deviceLUID, OFFSET$deviceLUID);
     }
 
-    public void deviceLUID(@unsigned byte value) {
+    public void deviceLUID(@Unsigned byte value) {
         segment.set(LAYOUT$deviceLUID, OFFSET$deviceLUID, value);
     }
 
-    public @unsigned int deviceNodeMask() {
+    public @Unsigned int deviceNodeMask() {
         return segment.get(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask);
     }
 
-    public void deviceNodeMask(@unsigned int value) {
+    public void deviceNodeMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask, value);
     }
 
-    public @unsigned int deviceLUIDValid() {
+    public @Unsigned int deviceLUIDValid() {
         return segment.get(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid);
     }
 
-    public void deviceLUIDValid(@unsigned int value) {
+    public void deviceLUIDValid(@Unsigned int value) {
         segment.set(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid, value);
     }
 

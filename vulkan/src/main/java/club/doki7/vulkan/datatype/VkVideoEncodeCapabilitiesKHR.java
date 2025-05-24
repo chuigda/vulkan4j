@@ -99,7 +99,7 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -107,7 +107,7 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeCapabilitiesKHR.BYTES, VkVideoEncodeCapabilitiesKHR.BYTES));
         }
@@ -164,19 +164,19 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         sType(VkStructureType.VIDEO_ENCODE_CAPABILITIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,43 +184,43 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeCapabilityFlagsKHR.class) int flags() {
+    public @EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkVideoEncodeCapabilityFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlModes() {
+    public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlModes() {
         return segment.get(LAYOUT$rateControlModes, OFFSET$rateControlModes);
     }
 
-    public void rateControlModes(@enumtype(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public void rateControlModes(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$rateControlModes, OFFSET$rateControlModes, value);
     }
 
-    public @unsigned int maxRateControlLayers() {
+    public @Unsigned int maxRateControlLayers() {
         return segment.get(LAYOUT$maxRateControlLayers, OFFSET$maxRateControlLayers);
     }
 
-    public void maxRateControlLayers(@unsigned int value) {
+    public void maxRateControlLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxRateControlLayers, OFFSET$maxRateControlLayers, value);
     }
 
-    public @unsigned long maxBitrate() {
+    public @Unsigned long maxBitrate() {
         return segment.get(LAYOUT$maxBitrate, OFFSET$maxBitrate);
     }
 
-    public void maxBitrate(@unsigned long value) {
+    public void maxBitrate(@Unsigned long value) {
         segment.set(LAYOUT$maxBitrate, OFFSET$maxBitrate, value);
     }
 
-    public @unsigned int maxQualityLevels() {
+    public @Unsigned int maxQualityLevels() {
         return segment.get(LAYOUT$maxQualityLevels, OFFSET$maxQualityLevels);
     }
 
-    public void maxQualityLevels(@unsigned int value) {
+    public void maxQualityLevels(@Unsigned int value) {
         segment.set(LAYOUT$maxQualityLevels, OFFSET$maxQualityLevels, value);
     }
 
@@ -232,11 +232,11 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$encodeInputPictureGranularity, SIZE$encodeInputPictureGranularity);
     }
 
-    public @enumtype(VkVideoEncodeFeedbackFlagsKHR.class) int supportedEncodeFeedbackFlags() {
+    public @EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int supportedEncodeFeedbackFlags() {
         return segment.get(LAYOUT$supportedEncodeFeedbackFlags, OFFSET$supportedEncodeFeedbackFlags);
     }
 
-    public void supportedEncodeFeedbackFlags(@enumtype(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
+    public void supportedEncodeFeedbackFlags(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedEncodeFeedbackFlags, OFFSET$supportedEncodeFeedbackFlags, value);
     }
 

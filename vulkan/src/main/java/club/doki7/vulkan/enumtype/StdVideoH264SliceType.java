@@ -8,7 +8,7 @@ public final class StdVideoH264SliceType {
     public static final int STD_VIDEO_H264_SLICE_TYPE_I = 0x2;
     public static final int STD_VIDEO_H264_SLICE_TYPE_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH264SliceType.class) int value) {
+    public static String explain(@EnumType(StdVideoH264SliceType.class) int value) {
         return switch (value) {
             case StdVideoH264SliceType.STD_VIDEO_H264_SLICE_TYPE_B -> "STD_VIDEO_H264_SLICE_TYPE_B";
             case StdVideoH264SliceType.STD_VIDEO_H264_SLICE_TYPE_I -> "STD_VIDEO_H264_SLICE_TYPE_I";

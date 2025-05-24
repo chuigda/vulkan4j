@@ -11,7 +11,7 @@ public final class VkClusterAccelerationStructureIndexFormatFlagsNV {
     public static final int _32BIT = 0x4;
     public static final int _8BIT = 0x1;
 
-    public static String explain(@enumtype(VkClusterAccelerationStructureIndexFormatFlagsNV.class) int flags) {
+    public static String explain(@EnumType(VkClusterAccelerationStructureIndexFormatFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & _16BIT) != 0) {
             detectedFlagBits.add("VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_16BIT_NV");

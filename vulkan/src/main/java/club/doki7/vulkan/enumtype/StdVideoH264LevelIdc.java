@@ -24,7 +24,7 @@ public final class StdVideoH264LevelIdc {
     public static final int STD_VIDEO_H264_LEVEL_IDC_6_2 = 0x12;
     public static final int STD_VIDEO_H264_LEVEL_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH264LevelIdc.class) int value) {
+    public static String explain(@EnumType(StdVideoH264LevelIdc.class) int value) {
         return switch (value) {
             case StdVideoH264LevelIdc.STD_VIDEO_H264_LEVEL_IDC_1_0 -> "STD_VIDEO_H264_LEVEL_IDC_1_0";
             case StdVideoH264LevelIdc.STD_VIDEO_H264_LEVEL_IDC_1_1 -> "STD_VIDEO_H264_LEVEL_IDC_1_1";

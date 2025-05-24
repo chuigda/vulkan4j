@@ -95,7 +95,7 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeUsageInfoKHR.BYTES, VkVideoEncodeUsageInfoKHR.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.VIDEO_ENCODE_USAGE_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,27 +180,27 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
+    public @EnumType(VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
         return segment.get(LAYOUT$videoUsageHints, OFFSET$videoUsageHints);
     }
 
-    public void videoUsageHints(@enumtype(VkVideoEncodeUsageFlagsKHR.class) int value) {
+    public void videoUsageHints(@EnumType(VkVideoEncodeUsageFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoUsageHints, OFFSET$videoUsageHints, value);
     }
 
-    public @enumtype(VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
+    public @EnumType(VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
         return segment.get(LAYOUT$videoContentHints, OFFSET$videoContentHints);
     }
 
-    public void videoContentHints(@enumtype(VkVideoEncodeContentFlagsKHR.class) int value) {
+    public void videoContentHints(@EnumType(VkVideoEncodeContentFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoContentHints, OFFSET$videoContentHints, value);
     }
 
-    public @enumtype(VkVideoEncodeTuningModeKHR.class) int tuningMode() {
+    public @EnumType(VkVideoEncodeTuningModeKHR.class) int tuningMode() {
         return segment.get(LAYOUT$tuningMode, OFFSET$tuningMode);
     }
 
-    public void tuningMode(@enumtype(VkVideoEncodeTuningModeKHR.class) int value) {
+    public void tuningMode(@EnumType(VkVideoEncodeTuningModeKHR.class) int value) {
         segment.set(LAYOUT$tuningMode, OFFSET$tuningMode, value);
     }
 

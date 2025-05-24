@@ -11,7 +11,7 @@ public final class VkPerformanceCounterStorageKHR {
     public static final int FLOAT32 = 0x4;
     public static final int FLOAT64 = 0x5;
 
-    public static String explain(@enumtype(VkPerformanceCounterStorageKHR.class) int value) {
+    public static String explain(@EnumType(VkPerformanceCounterStorageKHR.class) int value) {
         return switch (value) {
             case VkPerformanceCounterStorageKHR.FLOAT32 -> "VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR";
             case VkPerformanceCounterStorageKHR.FLOAT64 -> "VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR";

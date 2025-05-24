@@ -103,7 +103,7 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -111,7 +111,7 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSurfaceCapabilities2EXT.BYTES, VkSurfaceCapabilities2EXT.BYTES));
         }
@@ -168,19 +168,19 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         sType(VkStructureType.SURFACE_CAPABILITIES_2_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -188,19 +188,19 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int minImageCount() {
+    public @Unsigned int minImageCount() {
         return segment.get(LAYOUT$minImageCount, OFFSET$minImageCount);
     }
 
-    public void minImageCount(@unsigned int value) {
+    public void minImageCount(@Unsigned int value) {
         segment.set(LAYOUT$minImageCount, OFFSET$minImageCount, value);
     }
 
-    public @unsigned int maxImageCount() {
+    public @Unsigned int maxImageCount() {
         return segment.get(LAYOUT$maxImageCount, OFFSET$maxImageCount);
     }
 
-    public void maxImageCount(@unsigned int value) {
+    public void maxImageCount(@Unsigned int value) {
         segment.set(LAYOUT$maxImageCount, OFFSET$maxImageCount, value);
     }
 
@@ -228,51 +228,51 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxImageExtent, SIZE$maxImageExtent);
     }
 
-    public @unsigned int maxImageArrayLayers() {
+    public @Unsigned int maxImageArrayLayers() {
         return segment.get(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers);
     }
 
-    public void maxImageArrayLayers(@unsigned int value) {
+    public void maxImageArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers, value);
     }
 
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
+    public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public void supportedTransforms(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+    public void supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
     }
 
-    public @enumtype(VkSurfaceTransformFlagsKHR.class) int currentTransform() {
+    public @EnumType(VkSurfaceTransformFlagsKHR.class) int currentTransform() {
         return segment.get(LAYOUT$currentTransform, OFFSET$currentTransform);
     }
 
-    public void currentTransform(@enumtype(VkSurfaceTransformFlagsKHR.class) int value) {
+    public void currentTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$currentTransform, OFFSET$currentTransform, value);
     }
 
-    public @enumtype(VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
+    public @EnumType(VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
         return segment.get(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha);
     }
 
-    public void supportedCompositeAlpha(@enumtype(VkCompositeAlphaFlagsKHR.class) int value) {
+    public void supportedCompositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha, value);
     }
 
-    public @enumtype(VkImageUsageFlags.class) int supportedUsageFlags() {
+    public @EnumType(VkImageUsageFlags.class) int supportedUsageFlags() {
         return segment.get(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags);
     }
 
-    public void supportedUsageFlags(@enumtype(VkImageUsageFlags.class) int value) {
+    public void supportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags, value);
     }
 
-    public @enumtype(VkSurfaceCounterFlagsEXT.class) int supportedSurfaceCounters() {
+    public @EnumType(VkSurfaceCounterFlagsEXT.class) int supportedSurfaceCounters() {
         return segment.get(LAYOUT$supportedSurfaceCounters, OFFSET$supportedSurfaceCounters);
     }
 
-    public void supportedSurfaceCounters(@enumtype(VkSurfaceCounterFlagsEXT.class) int value) {
+    public void supportedSurfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedSurfaceCounters, OFFSET$supportedSurfaceCounters, value);
     }
 

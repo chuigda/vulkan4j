@@ -85,7 +85,7 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeAV1DecoderModelInfo.BYTES, StdVideoEncodeAV1DecoderModelInfo.BYTES));
         }
@@ -140,36 +140,36 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @unsigned byte buffer_delay_length_minus_1() {
+    public @Unsigned byte buffer_delay_length_minus_1() {
         return segment.get(LAYOUT$buffer_delay_length_minus_1, OFFSET$buffer_delay_length_minus_1);
     }
 
-    public void buffer_delay_length_minus_1(@unsigned byte value) {
+    public void buffer_delay_length_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$buffer_delay_length_minus_1, OFFSET$buffer_delay_length_minus_1, value);
     }
 
-    public @unsigned byte buffer_removal_time_length_minus_1() {
+    public @Unsigned byte buffer_removal_time_length_minus_1() {
         return segment.get(LAYOUT$buffer_removal_time_length_minus_1, OFFSET$buffer_removal_time_length_minus_1);
     }
 
-    public void buffer_removal_time_length_minus_1(@unsigned byte value) {
+    public void buffer_removal_time_length_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$buffer_removal_time_length_minus_1, OFFSET$buffer_removal_time_length_minus_1, value);
     }
 
-    public @unsigned byte frame_presentation_time_length_minus_1() {
+    public @Unsigned byte frame_presentation_time_length_minus_1() {
         return segment.get(LAYOUT$frame_presentation_time_length_minus_1, OFFSET$frame_presentation_time_length_minus_1);
     }
 
-    public void frame_presentation_time_length_minus_1(@unsigned byte value) {
+    public void frame_presentation_time_length_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$frame_presentation_time_length_minus_1, OFFSET$frame_presentation_time_length_minus_1, value);
     }
 
 
-    public @unsigned int num_units_in_decoding_tick() {
+    public @Unsigned int num_units_in_decoding_tick() {
         return segment.get(LAYOUT$num_units_in_decoding_tick, OFFSET$num_units_in_decoding_tick);
     }
 
-    public void num_units_in_decoding_tick(@unsigned int value) {
+    public void num_units_in_decoding_tick(@Unsigned int value) {
         segment.set(LAYOUT$num_units_in_decoding_tick, OFFSET$num_units_in_decoding_tick, value);
     }
 

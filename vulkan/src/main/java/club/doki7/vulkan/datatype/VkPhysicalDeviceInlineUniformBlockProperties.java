@@ -97,7 +97,7 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -105,7 +105,7 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceInlineUniformBlockProperties.BYTES, VkPhysicalDeviceInlineUniformBlockProperties.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
         sType(VkStructureType.PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,43 +182,43 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxInlineUniformBlockSize() {
+    public @Unsigned int maxInlineUniformBlockSize() {
         return segment.get(LAYOUT$maxInlineUniformBlockSize, OFFSET$maxInlineUniformBlockSize);
     }
 
-    public void maxInlineUniformBlockSize(@unsigned int value) {
+    public void maxInlineUniformBlockSize(@Unsigned int value) {
         segment.set(LAYOUT$maxInlineUniformBlockSize, OFFSET$maxInlineUniformBlockSize, value);
     }
 
-    public @unsigned int maxPerStageDescriptorInlineUniformBlocks() {
+    public @Unsigned int maxPerStageDescriptorInlineUniformBlocks() {
         return segment.get(LAYOUT$maxPerStageDescriptorInlineUniformBlocks, OFFSET$maxPerStageDescriptorInlineUniformBlocks);
     }
 
-    public void maxPerStageDescriptorInlineUniformBlocks(@unsigned int value) {
+    public void maxPerStageDescriptorInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorInlineUniformBlocks, OFFSET$maxPerStageDescriptorInlineUniformBlocks, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, OFFSET$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, OFFSET$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, value);
     }
 
-    public @unsigned int maxDescriptorSetInlineUniformBlocks() {
+    public @Unsigned int maxDescriptorSetInlineUniformBlocks() {
         return segment.get(LAYOUT$maxDescriptorSetInlineUniformBlocks, OFFSET$maxDescriptorSetInlineUniformBlocks);
     }
 
-    public void maxDescriptorSetInlineUniformBlocks(@unsigned int value) {
+    public void maxDescriptorSetInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetInlineUniformBlocks, OFFSET$maxDescriptorSetInlineUniformBlocks, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, OFFSET$maxDescriptorSetUpdateAfterBindInlineUniformBlocks);
     }
 
-    public void maxDescriptorSetUpdateAfterBindInlineUniformBlocks(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, OFFSET$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, value);
     }
 

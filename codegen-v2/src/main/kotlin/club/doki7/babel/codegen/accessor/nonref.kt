@@ -30,13 +30,13 @@ private fun generatePlatformDependentIntAccessor(type: CPlatformDependentIntType
         }
         "size_t" -> {
             buildDoc {
-                defun("public", "@unsigned long", member.name) {
+                defun("public", "@Unsigned long", member.name) {
                     +"return NativeLayout.readCSizeT(segment, ${member.offsetName});"
                 }
 
                 +""
 
-                defun("public", "void", member.name, "@unsigned long value") {
+                defun("public", "void", member.name, "@Unsigned long value") {
                     +"NativeLayout.writeCSizeT(segment, ${member.offsetName}, value);"
                 }
             }

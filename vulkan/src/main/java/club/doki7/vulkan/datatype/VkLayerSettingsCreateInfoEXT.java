@@ -94,7 +94,7 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkLayerSettingsCreateInfoEXT.BYTES, VkLayerSettingsCreateInfoEXT.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         sType(VkStructureType.LAYER_SETTINGS_CREATE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int settingCount() {
+    public @Unsigned int settingCount() {
         return segment.get(LAYOUT$settingCount, OFFSET$settingCount);
     }
 
-    public void settingCount(@unsigned int value) {
+    public void settingCount(@Unsigned int value) {
         segment.set(LAYOUT$settingCount, OFFSET$settingCount, value);
     }
 
@@ -192,7 +192,7 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         pSettingsRaw(s);
     }
 
-    @unsafe public @Nullable VkLayerSettingEXT.Ptr pSettings(int assumedCount) {
+    @Unsafe public @Nullable VkLayerSettingEXT.Ptr pSettings(int assumedCount) {
         MemorySegment s = pSettingsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -210,11 +210,11 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         return new VkLayerSettingEXT(s);
     }
 
-    public @pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {
+    public @Pointer(target=VkLayerSettingEXT.class) MemorySegment pSettingsRaw() {
         return segment.get(LAYOUT$pSettings, OFFSET$pSettings);
     }
 
-    public void pSettingsRaw(@pointer(target=VkLayerSettingEXT.class) MemorySegment value) {
+    public void pSettingsRaw(@Pointer(target=VkLayerSettingEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pSettings, OFFSET$pSettings, value);
     }
 

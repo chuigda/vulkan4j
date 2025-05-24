@@ -245,11 +245,11 @@ private fun generateInputOutputType(type: CType, optional: Boolean): String {
         is CPointerType -> when (type.pointee) {
             is CNonRefType -> "${nullablePrefix}${type.pointee.jPtrType}"
             is CStructType -> if (type.pointerToOne) {
-                "$nullablePrefix@pointer ${type.pointee.name}"
+                "$nullablePrefix@Pointer ${type.pointee.name}"
             } else {
-                "$nullablePrefix@pointer ${type.pointee.jType}"
+                "$nullablePrefix@Pointer ${type.pointee.jType}"
             }
-            is CHandleType -> "${nullablePrefix}@pointer ${type.pointee.name}.Ptr"
+            is CHandleType -> "${nullablePrefix}@Pointer ${type.pointee.name}.Ptr"
             is CPointerType -> "${nullablePrefix}PointerPtr"
             is CVoidType -> type.jType
             else -> error("unsupported pointer type: $type")

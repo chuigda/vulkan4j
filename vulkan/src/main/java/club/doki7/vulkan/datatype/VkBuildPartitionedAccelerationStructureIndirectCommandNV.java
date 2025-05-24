@@ -85,7 +85,7 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES, VkBuildPartitionedAccelerationStructureIndirectCommandNV.BYTES));
         }
@@ -140,19 +140,19 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         return ret;
     }
 
-    public @enumtype(VkPartitionedAccelerationStructureOpTypeNV.class) int opType() {
+    public @EnumType(VkPartitionedAccelerationStructureOpTypeNV.class) int opType() {
         return segment.get(LAYOUT$opType, OFFSET$opType);
     }
 
-    public void opType(@enumtype(VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
+    public void opType(@EnumType(VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
         segment.set(LAYOUT$opType, OFFSET$opType, value);
     }
 
-    public @unsigned int argCount() {
+    public @Unsigned int argCount() {
         return segment.get(LAYOUT$argCount, OFFSET$argCount);
     }
 
-    public void argCount(@unsigned int value) {
+    public void argCount(@Unsigned int value) {
         segment.set(LAYOUT$argCount, OFFSET$argCount, value);
     }
 

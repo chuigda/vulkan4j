@@ -12,7 +12,7 @@ public final class VkDebugUtilsMessageSeverityFlagsEXT {
     public static final int VERBOSE = 0x1;
     public static final int WARNING = 0x100;
 
-    public static String explain(@enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int flags) {
+    public static String explain(@EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ERROR) != 0) {
             detectedFlagBits.add("VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT");

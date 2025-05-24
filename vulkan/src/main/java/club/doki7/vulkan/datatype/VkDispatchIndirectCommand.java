@@ -85,7 +85,7 @@ public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDispatchIndirectCommand.BYTES, VkDispatchIndirectCommand.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @unsigned int x() {
+    public @Unsigned int x() {
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(@unsigned int value) {
+    public void x(@Unsigned int value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
     }
 
-    public @unsigned int y() {
+    public @Unsigned int y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(@unsigned int value) {
+    public void y(@Unsigned int value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
     }
 
-    public @unsigned int z() {
+    public @Unsigned int z() {
         return segment.get(LAYOUT$z, OFFSET$z);
     }
 
-    public void z(@unsigned int value) {
+    public void z(@Unsigned int value) {
         segment.set(LAYOUT$z, OFFSET$z, value);
     }
 

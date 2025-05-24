@@ -13,7 +13,7 @@ public final class VkOpticalFlowSessionCreateFlagsNV {
     public static final int ENABLE_GLOBAL_FLOW = 0x4;
     public static final int ENABLE_HINT = 0x1;
 
-    public static String explain(@enumtype(VkOpticalFlowSessionCreateFlagsNV.class) int flags) {
+    public static String explain(@EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ALLOW_REGIONS) != 0) {
             detectedFlagBits.add("VK_OPTICAL_FLOW_SESSION_CREATE_ALLOW_REGIONS_BIT_NV");

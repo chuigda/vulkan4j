@@ -12,7 +12,7 @@ public final class VkVideoEncodeCapabilityFlagsKHR {
     public static final int PRECEDING_EXTERNALLY_ENCODED_BYTES = 0x1;
     public static final int QUANTIZATION_DELTA_MAP = 0x4;
 
-    public static String explain(@enumtype(VkVideoEncodeCapabilityFlagsKHR.class) int flags) {
+    public static String explain(@EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & EMPHASIS_MAP) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_CAPABILITY_EMPHASIS_MAP_BIT_KHR");

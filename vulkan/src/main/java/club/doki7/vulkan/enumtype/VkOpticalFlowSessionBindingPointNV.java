@@ -14,7 +14,7 @@ public final class VkOpticalFlowSessionBindingPointNV {
     public static final int BACKWARD_COST = 0x7;
     public static final int GLOBAL_FLOW = 0x8;
 
-    public static String explain(@enumtype(VkOpticalFlowSessionBindingPointNV.class) int value) {
+    public static String explain(@EnumType(VkOpticalFlowSessionBindingPointNV.class) int value) {
         return switch (value) {
             case VkOpticalFlowSessionBindingPointNV.BACKWARD_COST -> "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV";
             case VkOpticalFlowSessionBindingPointNV.BACKWARD_FLOW_VECTOR -> "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_FLOW_VECTOR_NV";

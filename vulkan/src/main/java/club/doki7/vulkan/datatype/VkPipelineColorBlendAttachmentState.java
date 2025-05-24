@@ -90,7 +90,7 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -98,7 +98,7 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineColorBlendAttachmentState.BYTES, VkPipelineColorBlendAttachmentState.BYTES));
         }
@@ -145,67 +145,67 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         return ret;
     }
 
-    public @unsigned int blendEnable() {
+    public @Unsigned int blendEnable() {
         return segment.get(LAYOUT$blendEnable, OFFSET$blendEnable);
     }
 
-    public void blendEnable(@unsigned int value) {
+    public void blendEnable(@Unsigned int value) {
         segment.set(LAYOUT$blendEnable, OFFSET$blendEnable, value);
     }
 
-    public @enumtype(VkBlendFactor.class) int srcColorBlendFactor() {
+    public @EnumType(VkBlendFactor.class) int srcColorBlendFactor() {
         return segment.get(LAYOUT$srcColorBlendFactor, OFFSET$srcColorBlendFactor);
     }
 
-    public void srcColorBlendFactor(@enumtype(VkBlendFactor.class) int value) {
+    public void srcColorBlendFactor(@EnumType(VkBlendFactor.class) int value) {
         segment.set(LAYOUT$srcColorBlendFactor, OFFSET$srcColorBlendFactor, value);
     }
 
-    public @enumtype(VkBlendFactor.class) int dstColorBlendFactor() {
+    public @EnumType(VkBlendFactor.class) int dstColorBlendFactor() {
         return segment.get(LAYOUT$dstColorBlendFactor, OFFSET$dstColorBlendFactor);
     }
 
-    public void dstColorBlendFactor(@enumtype(VkBlendFactor.class) int value) {
+    public void dstColorBlendFactor(@EnumType(VkBlendFactor.class) int value) {
         segment.set(LAYOUT$dstColorBlendFactor, OFFSET$dstColorBlendFactor, value);
     }
 
-    public @enumtype(VkBlendOp.class) int colorBlendOp() {
+    public @EnumType(VkBlendOp.class) int colorBlendOp() {
         return segment.get(LAYOUT$colorBlendOp, OFFSET$colorBlendOp);
     }
 
-    public void colorBlendOp(@enumtype(VkBlendOp.class) int value) {
+    public void colorBlendOp(@EnumType(VkBlendOp.class) int value) {
         segment.set(LAYOUT$colorBlendOp, OFFSET$colorBlendOp, value);
     }
 
-    public @enumtype(VkBlendFactor.class) int srcAlphaBlendFactor() {
+    public @EnumType(VkBlendFactor.class) int srcAlphaBlendFactor() {
         return segment.get(LAYOUT$srcAlphaBlendFactor, OFFSET$srcAlphaBlendFactor);
     }
 
-    public void srcAlphaBlendFactor(@enumtype(VkBlendFactor.class) int value) {
+    public void srcAlphaBlendFactor(@EnumType(VkBlendFactor.class) int value) {
         segment.set(LAYOUT$srcAlphaBlendFactor, OFFSET$srcAlphaBlendFactor, value);
     }
 
-    public @enumtype(VkBlendFactor.class) int dstAlphaBlendFactor() {
+    public @EnumType(VkBlendFactor.class) int dstAlphaBlendFactor() {
         return segment.get(LAYOUT$dstAlphaBlendFactor, OFFSET$dstAlphaBlendFactor);
     }
 
-    public void dstAlphaBlendFactor(@enumtype(VkBlendFactor.class) int value) {
+    public void dstAlphaBlendFactor(@EnumType(VkBlendFactor.class) int value) {
         segment.set(LAYOUT$dstAlphaBlendFactor, OFFSET$dstAlphaBlendFactor, value);
     }
 
-    public @enumtype(VkBlendOp.class) int alphaBlendOp() {
+    public @EnumType(VkBlendOp.class) int alphaBlendOp() {
         return segment.get(LAYOUT$alphaBlendOp, OFFSET$alphaBlendOp);
     }
 
-    public void alphaBlendOp(@enumtype(VkBlendOp.class) int value) {
+    public void alphaBlendOp(@EnumType(VkBlendOp.class) int value) {
         segment.set(LAYOUT$alphaBlendOp, OFFSET$alphaBlendOp, value);
     }
 
-    public @enumtype(VkColorComponentFlags.class) int colorWriteMask() {
+    public @EnumType(VkColorComponentFlags.class) int colorWriteMask() {
         return segment.get(LAYOUT$colorWriteMask, OFFSET$colorWriteMask);
     }
 
-    public void colorWriteMask(@enumtype(VkColorComponentFlags.class) int value) {
+    public void colorWriteMask(@EnumType(VkColorComponentFlags.class) int value) {
         segment.set(LAYOUT$colorWriteMask, OFFSET$colorWriteMask, value);
     }
 

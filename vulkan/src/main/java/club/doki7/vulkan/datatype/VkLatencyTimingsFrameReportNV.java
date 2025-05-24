@@ -106,7 +106,7 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -114,7 +114,7 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkLatencyTimingsFrameReportNV.BYTES, VkLatencyTimingsFrameReportNV.BYTES));
         }
@@ -171,19 +171,19 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         sType(VkStructureType.LATENCY_TIMINGS_FRAME_REPORT_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -191,115 +191,115 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long presentID() {
+    public @Unsigned long presentID() {
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }
 
-    public void presentID(@unsigned long value) {
+    public void presentID(@Unsigned long value) {
         segment.set(LAYOUT$presentID, OFFSET$presentID, value);
     }
 
-    public @unsigned long inputSampleTimeUs() {
+    public @Unsigned long inputSampleTimeUs() {
         return segment.get(LAYOUT$inputSampleTimeUs, OFFSET$inputSampleTimeUs);
     }
 
-    public void inputSampleTimeUs(@unsigned long value) {
+    public void inputSampleTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$inputSampleTimeUs, OFFSET$inputSampleTimeUs, value);
     }
 
-    public @unsigned long simStartTimeUs() {
+    public @Unsigned long simStartTimeUs() {
         return segment.get(LAYOUT$simStartTimeUs, OFFSET$simStartTimeUs);
     }
 
-    public void simStartTimeUs(@unsigned long value) {
+    public void simStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$simStartTimeUs, OFFSET$simStartTimeUs, value);
     }
 
-    public @unsigned long simEndTimeUs() {
+    public @Unsigned long simEndTimeUs() {
         return segment.get(LAYOUT$simEndTimeUs, OFFSET$simEndTimeUs);
     }
 
-    public void simEndTimeUs(@unsigned long value) {
+    public void simEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$simEndTimeUs, OFFSET$simEndTimeUs, value);
     }
 
-    public @unsigned long renderSubmitStartTimeUs() {
+    public @Unsigned long renderSubmitStartTimeUs() {
         return segment.get(LAYOUT$renderSubmitStartTimeUs, OFFSET$renderSubmitStartTimeUs);
     }
 
-    public void renderSubmitStartTimeUs(@unsigned long value) {
+    public void renderSubmitStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$renderSubmitStartTimeUs, OFFSET$renderSubmitStartTimeUs, value);
     }
 
-    public @unsigned long renderSubmitEndTimeUs() {
+    public @Unsigned long renderSubmitEndTimeUs() {
         return segment.get(LAYOUT$renderSubmitEndTimeUs, OFFSET$renderSubmitEndTimeUs);
     }
 
-    public void renderSubmitEndTimeUs(@unsigned long value) {
+    public void renderSubmitEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$renderSubmitEndTimeUs, OFFSET$renderSubmitEndTimeUs, value);
     }
 
-    public @unsigned long presentStartTimeUs() {
+    public @Unsigned long presentStartTimeUs() {
         return segment.get(LAYOUT$presentStartTimeUs, OFFSET$presentStartTimeUs);
     }
 
-    public void presentStartTimeUs(@unsigned long value) {
+    public void presentStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$presentStartTimeUs, OFFSET$presentStartTimeUs, value);
     }
 
-    public @unsigned long presentEndTimeUs() {
+    public @Unsigned long presentEndTimeUs() {
         return segment.get(LAYOUT$presentEndTimeUs, OFFSET$presentEndTimeUs);
     }
 
-    public void presentEndTimeUs(@unsigned long value) {
+    public void presentEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$presentEndTimeUs, OFFSET$presentEndTimeUs, value);
     }
 
-    public @unsigned long driverStartTimeUs() {
+    public @Unsigned long driverStartTimeUs() {
         return segment.get(LAYOUT$driverStartTimeUs, OFFSET$driverStartTimeUs);
     }
 
-    public void driverStartTimeUs(@unsigned long value) {
+    public void driverStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$driverStartTimeUs, OFFSET$driverStartTimeUs, value);
     }
 
-    public @unsigned long driverEndTimeUs() {
+    public @Unsigned long driverEndTimeUs() {
         return segment.get(LAYOUT$driverEndTimeUs, OFFSET$driverEndTimeUs);
     }
 
-    public void driverEndTimeUs(@unsigned long value) {
+    public void driverEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$driverEndTimeUs, OFFSET$driverEndTimeUs, value);
     }
 
-    public @unsigned long osRenderQueueStartTimeUs() {
+    public @Unsigned long osRenderQueueStartTimeUs() {
         return segment.get(LAYOUT$osRenderQueueStartTimeUs, OFFSET$osRenderQueueStartTimeUs);
     }
 
-    public void osRenderQueueStartTimeUs(@unsigned long value) {
+    public void osRenderQueueStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$osRenderQueueStartTimeUs, OFFSET$osRenderQueueStartTimeUs, value);
     }
 
-    public @unsigned long osRenderQueueEndTimeUs() {
+    public @Unsigned long osRenderQueueEndTimeUs() {
         return segment.get(LAYOUT$osRenderQueueEndTimeUs, OFFSET$osRenderQueueEndTimeUs);
     }
 
-    public void osRenderQueueEndTimeUs(@unsigned long value) {
+    public void osRenderQueueEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$osRenderQueueEndTimeUs, OFFSET$osRenderQueueEndTimeUs, value);
     }
 
-    public @unsigned long gpuRenderStartTimeUs() {
+    public @Unsigned long gpuRenderStartTimeUs() {
         return segment.get(LAYOUT$gpuRenderStartTimeUs, OFFSET$gpuRenderStartTimeUs);
     }
 
-    public void gpuRenderStartTimeUs(@unsigned long value) {
+    public void gpuRenderStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$gpuRenderStartTimeUs, OFFSET$gpuRenderStartTimeUs, value);
     }
 
-    public @unsigned long gpuRenderEndTimeUs() {
+    public @Unsigned long gpuRenderEndTimeUs() {
         return segment.get(LAYOUT$gpuRenderEndTimeUs, OFFSET$gpuRenderEndTimeUs);
     }
 
-    public void gpuRenderEndTimeUs(@unsigned long value) {
+    public void gpuRenderEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$gpuRenderEndTimeUs, OFFSET$gpuRenderEndTimeUs, value);
     }
 

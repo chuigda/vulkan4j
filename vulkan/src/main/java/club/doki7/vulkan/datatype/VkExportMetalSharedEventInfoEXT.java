@@ -95,7 +95,7 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkExportMetalSharedEventInfoEXT.BYTES, VkExportMetalSharedEventInfoEXT.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         sType(VkStructureType.EXPORT_METAL_SHARED_EVENT_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -204,11 +204,11 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$event, OFFSET$event, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="MTLSharedEvent_id") MemorySegment mtlSharedEvent() {
+    public @Pointer(comment="MTLSharedEvent_id") MemorySegment mtlSharedEvent() {
         return segment.get(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent);
     }
 
-    public void mtlSharedEvent(@pointer(comment="MTLSharedEvent_id") MemorySegment value) {
+    public void mtlSharedEvent(@Pointer(comment="MTLSharedEvent_id") MemorySegment value) {
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
     }
 

@@ -85,7 +85,7 @@ public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkBindIndexBufferIndirectCommandNV.BYTES, VkBindIndexBufferIndirectCommandNV.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public @unsigned long bufferAddress() {
+    public @Unsigned long bufferAddress() {
         return segment.get(LAYOUT$bufferAddress, OFFSET$bufferAddress);
     }
 
-    public void bufferAddress(@unsigned long value) {
+    public void bufferAddress(@Unsigned long value) {
         segment.set(LAYOUT$bufferAddress, OFFSET$bufferAddress, value);
     }
 
-    public @unsigned int size() {
+    public @Unsigned int size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@unsigned int value) {
+    public void size(@Unsigned int value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @enumtype(VkIndexType.class) int indexType() {
+    public @EnumType(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public void indexType(@enumtype(VkIndexType.class) int value) {
+    public void indexType(@EnumType(VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
     }
 

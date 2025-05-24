@@ -95,7 +95,7 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAttachmentSampleCountInfoAMD.BYTES, VkAttachmentSampleCountInfoAMD.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         sType(VkStructureType.ATTACHMENT_SAMPLE_COUNT_INFO_AMD);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,11 +180,11 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int colorAttachmentCount() {
+    public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@unsigned int value) {
+    public void colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
@@ -193,7 +193,7 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkSampleCountFlags.class) IntPtr pColorAttachmentSamples() {
+    public @Nullable @EnumType(VkSampleCountFlags.class) IntPtr pColorAttachmentSamples() {
         MemorySegment s = pColorAttachmentSamplesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -201,24 +201,24 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return new IntPtr(s);
     }
 
-    public void pColorAttachmentSamples(@Nullable @enumtype(VkSampleCountFlags.class) IntPtr value) {
+    public void pColorAttachmentSamples(@Nullable @EnumType(VkSampleCountFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentSamplesRaw(s);
     }
 
-    public @pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
+    public @Pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
         return segment.get(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples);
     }
 
-    public void pColorAttachmentSamplesRaw(@pointer(target=VkSampleCountFlags.class) MemorySegment value) {
+    public void pColorAttachmentSamplesRaw(@Pointer(target=VkSampleCountFlags.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentSamples, OFFSET$pColorAttachmentSamples, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int depthStencilAttachmentSamples() {
+    public @EnumType(VkSampleCountFlags.class) int depthStencilAttachmentSamples() {
         return segment.get(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples);
     }
 
-    public void depthStencilAttachmentSamples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void depthStencilAttachmentSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples, value);
     }
 

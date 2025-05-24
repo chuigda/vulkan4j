@@ -7,7 +7,7 @@ public final class VkSamplerYcbcrRange {
     public static final int ITU_FULL = 0x0;
     public static final int ITU_NARROW = 0x1;
 
-    public static String explain(@enumtype(VkSamplerYcbcrRange.class) int value) {
+    public static String explain(@EnumType(VkSamplerYcbcrRange.class) int value) {
         return switch (value) {
             case VkSamplerYcbcrRange.ITU_FULL -> "VK_SAMPLER_YCBCR_RANGE_ITU_FULL";
             case VkSamplerYcbcrRange.ITU_NARROW -> "VK_SAMPLER_YCBCR_RANGE_ITU_NARROW";

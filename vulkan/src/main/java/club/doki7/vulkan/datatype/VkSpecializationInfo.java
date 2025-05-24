@@ -86,7 +86,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -94,7 +94,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkSpecializationInfo.BYTES, VkSpecializationInfo.BYTES));
         }
@@ -141,11 +141,11 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @unsigned int mapEntryCount() {
+    public @Unsigned int mapEntryCount() {
         return segment.get(LAYOUT$mapEntryCount, OFFSET$mapEntryCount);
     }
 
-    public void mapEntryCount(@unsigned int value) {
+    public void mapEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$mapEntryCount, OFFSET$mapEntryCount, value);
     }
 
@@ -154,7 +154,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         pMapEntriesRaw(s);
     }
 
-    @unsafe public @Nullable VkSpecializationMapEntry.Ptr pMapEntries(int assumedCount) {
+    @Unsafe public @Nullable VkSpecializationMapEntry.Ptr pMapEntries(int assumedCount) {
         MemorySegment s = pMapEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -172,27 +172,27 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return new VkSpecializationMapEntry(s);
     }
 
-    public @pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
+    public @Pointer(target=VkSpecializationMapEntry.class) MemorySegment pMapEntriesRaw() {
         return segment.get(LAYOUT$pMapEntries, OFFSET$pMapEntries);
     }
 
-    public void pMapEntriesRaw(@pointer(target=VkSpecializationMapEntry.class) MemorySegment value) {
+    public void pMapEntriesRaw(@Pointer(target=VkSpecializationMapEntry.class) MemorySegment value) {
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
 
-    public @unsigned long dataSize() {
+    public @Unsigned long dataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
     }
 
-    public void dataSize(@unsigned long value) {
+    public void dataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pData() {
+    public @Pointer(comment="void*") MemorySegment pData() {
         return segment.get(LAYOUT$pData, OFFSET$pData);
     }
 
-    public void pData(@pointer(comment="void*") MemorySegment value) {
+    public void pData(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 

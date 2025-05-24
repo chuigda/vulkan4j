@@ -104,7 +104,7 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -112,7 +112,7 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceVulkan11Features.BYTES, VkPhysicalDeviceVulkan11Features.BYTES));
         }
@@ -169,19 +169,19 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
         sType(VkStructureType.PHYSICAL_DEVICE_VULKAN_1_1_FEATURES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -189,99 +189,99 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int storageBuffer16BitAccess() {
+    public @Unsigned int storageBuffer16BitAccess() {
         return segment.get(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess);
     }
 
-    public void storageBuffer16BitAccess(@unsigned int value) {
+    public void storageBuffer16BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess, value);
     }
 
-    public @unsigned int uniformAndStorageBuffer16BitAccess() {
+    public @Unsigned int uniformAndStorageBuffer16BitAccess() {
         return segment.get(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess);
     }
 
-    public void uniformAndStorageBuffer16BitAccess(@unsigned int value) {
+    public void uniformAndStorageBuffer16BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess, value);
     }
 
-    public @unsigned int storagePushConstant16() {
+    public @Unsigned int storagePushConstant16() {
         return segment.get(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16);
     }
 
-    public void storagePushConstant16(@unsigned int value) {
+    public void storagePushConstant16(@Unsigned int value) {
         segment.set(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16, value);
     }
 
-    public @unsigned int storageInputOutput16() {
+    public @Unsigned int storageInputOutput16() {
         return segment.get(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16);
     }
 
-    public void storageInputOutput16(@unsigned int value) {
+    public void storageInputOutput16(@Unsigned int value) {
         segment.set(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16, value);
     }
 
-    public @unsigned int multiview() {
+    public @Unsigned int multiview() {
         return segment.get(LAYOUT$multiview, OFFSET$multiview);
     }
 
-    public void multiview(@unsigned int value) {
+    public void multiview(@Unsigned int value) {
         segment.set(LAYOUT$multiview, OFFSET$multiview, value);
     }
 
-    public @unsigned int multiviewGeometryShader() {
+    public @Unsigned int multiviewGeometryShader() {
         return segment.get(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader);
     }
 
-    public void multiviewGeometryShader(@unsigned int value) {
+    public void multiviewGeometryShader(@Unsigned int value) {
         segment.set(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader, value);
     }
 
-    public @unsigned int multiviewTessellationShader() {
+    public @Unsigned int multiviewTessellationShader() {
         return segment.get(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader);
     }
 
-    public void multiviewTessellationShader(@unsigned int value) {
+    public void multiviewTessellationShader(@Unsigned int value) {
         segment.set(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader, value);
     }
 
-    public @unsigned int variablePointersStorageBuffer() {
+    public @Unsigned int variablePointersStorageBuffer() {
         return segment.get(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer);
     }
 
-    public void variablePointersStorageBuffer(@unsigned int value) {
+    public void variablePointersStorageBuffer(@Unsigned int value) {
         segment.set(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer, value);
     }
 
-    public @unsigned int variablePointers() {
+    public @Unsigned int variablePointers() {
         return segment.get(LAYOUT$variablePointers, OFFSET$variablePointers);
     }
 
-    public void variablePointers(@unsigned int value) {
+    public void variablePointers(@Unsigned int value) {
         segment.set(LAYOUT$variablePointers, OFFSET$variablePointers, value);
     }
 
-    public @unsigned int protectedMemory() {
+    public @Unsigned int protectedMemory() {
         return segment.get(LAYOUT$protectedMemory, OFFSET$protectedMemory);
     }
 
-    public void protectedMemory(@unsigned int value) {
+    public void protectedMemory(@Unsigned int value) {
         segment.set(LAYOUT$protectedMemory, OFFSET$protectedMemory, value);
     }
 
-    public @unsigned int samplerYcbcrConversion() {
+    public @Unsigned int samplerYcbcrConversion() {
         return segment.get(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion);
     }
 
-    public void samplerYcbcrConversion(@unsigned int value) {
+    public void samplerYcbcrConversion(@Unsigned int value) {
         segment.set(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion, value);
     }
 
-    public @unsigned int shaderDrawParameters() {
+    public @Unsigned int shaderDrawParameters() {
         return segment.get(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters);
     }
 
-    public void shaderDrawParameters(@unsigned int value) {
+    public void shaderDrawParameters(@Unsigned int value) {
         segment.set(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters, value);
     }
 

@@ -101,7 +101,7 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -109,7 +109,7 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkFrameBoundaryEXT.BYTES, VkFrameBoundaryEXT.BYTES));
         }
@@ -166,19 +166,19 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         sType(VkStructureType.FRAME_BOUNDARY_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -186,27 +186,27 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkFrameBoundaryFlagsEXT.class) int flags() {
+    public @EnumType(VkFrameBoundaryFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkFrameBoundaryFlagsEXT.class) int value) {
+    public void flags(@EnumType(VkFrameBoundaryFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned long frameID() {
+    public @Unsigned long frameID() {
         return segment.get(LAYOUT$frameID, OFFSET$frameID);
     }
 
-    public void frameID(@unsigned long value) {
+    public void frameID(@Unsigned long value) {
         segment.set(LAYOUT$frameID, OFFSET$frameID, value);
     }
 
-    public @unsigned int imageCount() {
+    public @Unsigned int imageCount() {
         return segment.get(LAYOUT$imageCount, OFFSET$imageCount);
     }
 
-    public void imageCount(@unsigned int value) {
+    public void imageCount(@Unsigned int value) {
         segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
     }
 
@@ -227,19 +227,19 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         pImagesRaw(s);
     }
 
-    public @pointer(target=VkImage.class) MemorySegment pImagesRaw() {
+    public @Pointer(target=VkImage.class) MemorySegment pImagesRaw() {
         return segment.get(LAYOUT$pImages, OFFSET$pImages);
     }
 
-    public void pImagesRaw(@pointer(target=VkImage.class) MemorySegment value) {
+    public void pImagesRaw(@Pointer(target=VkImage.class) MemorySegment value) {
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
 
-    public @unsigned int bufferCount() {
+    public @Unsigned int bufferCount() {
         return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
     }
 
-    public void bufferCount(@unsigned int value) {
+    public void bufferCount(@Unsigned int value) {
         segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
     }
 
@@ -260,35 +260,35 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         pBuffersRaw(s);
     }
 
-    public @pointer(target=VkBuffer.class) MemorySegment pBuffersRaw() {
+    public @Pointer(target=VkBuffer.class) MemorySegment pBuffersRaw() {
         return segment.get(LAYOUT$pBuffers, OFFSET$pBuffers);
     }
 
-    public void pBuffersRaw(@pointer(target=VkBuffer.class) MemorySegment value) {
+    public void pBuffersRaw(@Pointer(target=VkBuffer.class) MemorySegment value) {
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
 
-    public @unsigned long tagName() {
+    public @Unsigned long tagName() {
         return segment.get(LAYOUT$tagName, OFFSET$tagName);
     }
 
-    public void tagName(@unsigned long value) {
+    public void tagName(@Unsigned long value) {
         segment.set(LAYOUT$tagName, OFFSET$tagName, value);
     }
 
-    public @unsigned long tagSize() {
+    public @Unsigned long tagSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
     }
 
-    public void tagSize(@unsigned long value) {
+    public void tagSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pTag() {
+    public @Pointer(comment="void*") MemorySegment pTag() {
         return segment.get(LAYOUT$pTag, OFFSET$pTag);
     }
 
-    public void pTag(@pointer(comment="void*") MemorySegment value) {
+    public void pTag(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 

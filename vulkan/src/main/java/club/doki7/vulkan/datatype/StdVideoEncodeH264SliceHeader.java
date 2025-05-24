@@ -90,7 +90,7 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -98,7 +98,7 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeH264SliceHeader.BYTES, StdVideoEncodeH264SliceHeader.BYTES));
         }
@@ -153,19 +153,19 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned int first_mb_in_slice() {
+    public @Unsigned int first_mb_in_slice() {
         return segment.get(LAYOUT$first_mb_in_slice, OFFSET$first_mb_in_slice);
     }
 
-    public void first_mb_in_slice(@unsigned int value) {
+    public void first_mb_in_slice(@Unsigned int value) {
         segment.set(LAYOUT$first_mb_in_slice, OFFSET$first_mb_in_slice, value);
     }
 
-    public @enumtype(StdVideoH264SliceType.class) int slice_type() {
+    public @EnumType(StdVideoH264SliceType.class) int slice_type() {
         return segment.get(LAYOUT$slice_type, OFFSET$slice_type);
     }
 
-    public void slice_type(@enumtype(StdVideoH264SliceType.class) int value) {
+    public void slice_type(@EnumType(StdVideoH264SliceType.class) int value) {
         segment.set(LAYOUT$slice_type, OFFSET$slice_type, value);
     }
 
@@ -194,19 +194,19 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
     }
 
 
-    public @enumtype(StdVideoH264CabacInitIdc.class) int cabac_init_idc() {
+    public @EnumType(StdVideoH264CabacInitIdc.class) int cabac_init_idc() {
         return segment.get(LAYOUT$cabac_init_idc, OFFSET$cabac_init_idc);
     }
 
-    public void cabac_init_idc(@enumtype(StdVideoH264CabacInitIdc.class) int value) {
+    public void cabac_init_idc(@EnumType(StdVideoH264CabacInitIdc.class) int value) {
         segment.set(LAYOUT$cabac_init_idc, OFFSET$cabac_init_idc, value);
     }
 
-    public @enumtype(StdVideoH264DisableDeblockingFilterIdc.class) int disable_deblocking_filter_idc() {
+    public @EnumType(StdVideoH264DisableDeblockingFilterIdc.class) int disable_deblocking_filter_idc() {
         return segment.get(LAYOUT$disable_deblocking_filter_idc, OFFSET$disable_deblocking_filter_idc);
     }
 
-    public void disable_deblocking_filter_idc(@enumtype(StdVideoH264DisableDeblockingFilterIdc.class) int value) {
+    public void disable_deblocking_filter_idc(@EnumType(StdVideoH264DisableDeblockingFilterIdc.class) int value) {
         segment.set(LAYOUT$disable_deblocking_filter_idc, OFFSET$disable_deblocking_filter_idc, value);
     }
 
@@ -215,7 +215,7 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         pWeightTableRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoEncodeH264WeightTable.Ptr pWeightTable(int assumedCount) {
+    @Unsafe public @Nullable StdVideoEncodeH264WeightTable.Ptr pWeightTable(int assumedCount) {
         MemorySegment s = pWeightTableRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -233,11 +233,11 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH264WeightTable(s);
     }
 
-    public @pointer(target=StdVideoEncodeH264WeightTable.class) MemorySegment pWeightTableRaw() {
+    public @Pointer(target=StdVideoEncodeH264WeightTable.class) MemorySegment pWeightTableRaw() {
         return segment.get(LAYOUT$pWeightTable, OFFSET$pWeightTable);
     }
 
-    public void pWeightTableRaw(@pointer(target=StdVideoEncodeH264WeightTable.class) MemorySegment value) {
+    public void pWeightTableRaw(@Pointer(target=StdVideoEncodeH264WeightTable.class) MemorySegment value) {
         segment.set(LAYOUT$pWeightTable, OFFSET$pWeightTable, value);
     }
 

@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 public final class VkPipelineCacheHeaderVersion {
     public static final int ONE = 0x1;
 
-    public static String explain(@enumtype(VkPipelineCacheHeaderVersion.class) int value) {
+    public static String explain(@EnumType(VkPipelineCacheHeaderVersion.class) int value) {
         return switch (value) {
             case VkPipelineCacheHeaderVersion.ONE -> "VK_PIPELINE_CACHE_HEADER_VERSION_ONE";
             default -> "UNKNOWN(" + value + ")";

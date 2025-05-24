@@ -84,7 +84,7 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDrawMeshTasksIndirectCommandNV.BYTES, VkDrawMeshTasksIndirectCommandNV.BYTES));
         }
@@ -139,19 +139,19 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public @unsigned int taskCount() {
+    public @Unsigned int taskCount() {
         return segment.get(LAYOUT$taskCount, OFFSET$taskCount);
     }
 
-    public void taskCount(@unsigned int value) {
+    public void taskCount(@Unsigned int value) {
         segment.set(LAYOUT$taskCount, OFFSET$taskCount, value);
     }
 
-    public @unsigned int firstTask() {
+    public @Unsigned int firstTask() {
         return segment.get(LAYOUT$firstTask, OFFSET$firstTask);
     }
 
-    public void firstTask(@unsigned int value) {
+    public void firstTask(@Unsigned int value) {
         segment.set(LAYOUT$firstTask, OFFSET$firstTask, value);
     }
 

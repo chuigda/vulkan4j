@@ -85,7 +85,7 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineBinaryKeysAndDataKHR.BYTES, VkPipelineBinaryKeysAndDataKHR.BYTES));
         }
@@ -140,11 +140,11 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @unsigned int binaryCount() {
+    public @Unsigned int binaryCount() {
         return segment.get(LAYOUT$binaryCount, OFFSET$binaryCount);
     }
 
-    public void binaryCount(@unsigned int value) {
+    public void binaryCount(@Unsigned int value) {
         segment.set(LAYOUT$binaryCount, OFFSET$binaryCount, value);
     }
 
@@ -153,7 +153,7 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         pPipelineBinaryKeysRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineBinaryKeyKHR.Ptr pPipelineBinaryKeys(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineBinaryKeyKHR.Ptr pPipelineBinaryKeys(int assumedCount) {
         MemorySegment s = pPipelineBinaryKeysRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -171,11 +171,11 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return new VkPipelineBinaryKeyKHR(s);
     }
 
-    public @pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
+    public @Pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment pPipelineBinaryKeysRaw() {
         return segment.get(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys);
     }
 
-    public void pPipelineBinaryKeysRaw(@pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment value) {
+    public void pPipelineBinaryKeysRaw(@Pointer(target=VkPipelineBinaryKeyKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
     }
 
@@ -184,7 +184,7 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         pPipelineBinaryDataRaw(s);
     }
 
-    @unsafe public @Nullable VkPipelineBinaryDataKHR.Ptr pPipelineBinaryData(int assumedCount) {
+    @Unsafe public @Nullable VkPipelineBinaryDataKHR.Ptr pPipelineBinaryData(int assumedCount) {
         MemorySegment s = pPipelineBinaryDataRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -202,11 +202,11 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return new VkPipelineBinaryDataKHR(s);
     }
 
-    public @pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {
+    public @Pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment pPipelineBinaryDataRaw() {
         return segment.get(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData);
     }
 
-    public void pPipelineBinaryDataRaw(@pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment value) {
+    public void pPipelineBinaryDataRaw(@Pointer(target=VkPipelineBinaryDataKHR.class) MemorySegment value) {
         segment.set(LAYOUT$pPipelineBinaryData, OFFSET$pPipelineBinaryData, value);
     }
 

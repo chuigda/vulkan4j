@@ -29,7 +29,7 @@ public final class VkVideoEncodeH265StdFlagsKHR {
     public static final int VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET = 0x80;
     public static final int VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET = 0x40;
 
-    public static String explain(@enumtype(VkVideoEncodeH265StdFlagsKHR.class) int flags) {
+    public static String explain(@EnumType(VkVideoEncodeH265StdFlagsKHR.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET) != 0) {
             detectedFlagBits.add("VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_KHR");

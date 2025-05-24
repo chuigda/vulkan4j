@@ -84,7 +84,7 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAttachmentReference.BYTES, VkAttachmentReference.BYTES));
         }
@@ -139,19 +139,19 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public @unsigned int attachment() {
+    public @Unsigned int attachment() {
         return segment.get(LAYOUT$attachment, OFFSET$attachment);
     }
 
-    public void attachment(@unsigned int value) {
+    public void attachment(@Unsigned int value) {
         segment.set(LAYOUT$attachment, OFFSET$attachment, value);
     }
 
-    public @enumtype(VkImageLayout.class) int layout() {
+    public @EnumType(VkImageLayout.class) int layout() {
         return segment.get(LAYOUT$layout, OFFSET$layout);
     }
 
-    public void layout(@enumtype(VkImageLayout.class) int value) {
+    public void layout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value);
     }
 

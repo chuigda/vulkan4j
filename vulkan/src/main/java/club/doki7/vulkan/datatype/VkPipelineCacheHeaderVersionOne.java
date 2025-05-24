@@ -87,7 +87,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineCacheHeaderVersionOne.BYTES, VkPipelineCacheHeaderVersionOne.BYTES));
         }
@@ -142,43 +142,43 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public @unsigned int headerSize() {
+    public @Unsigned int headerSize() {
         return segment.get(LAYOUT$headerSize, OFFSET$headerSize);
     }
 
-    public void headerSize(@unsigned int value) {
+    public void headerSize(@Unsigned int value) {
         segment.set(LAYOUT$headerSize, OFFSET$headerSize, value);
     }
 
-    public @enumtype(VkPipelineCacheHeaderVersion.class) int headerVersion() {
+    public @EnumType(VkPipelineCacheHeaderVersion.class) int headerVersion() {
         return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
     }
 
-    public void headerVersion(@enumtype(VkPipelineCacheHeaderVersion.class) int value) {
+    public void headerVersion(@EnumType(VkPipelineCacheHeaderVersion.class) int value) {
         segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
     }
 
-    public @unsigned int vendorID() {
+    public @Unsigned int vendorID() {
         return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
     }
 
-    public void vendorID(@unsigned int value) {
+    public void vendorID(@Unsigned int value) {
         segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
     }
 
-    public @unsigned int deviceID() {
+    public @Unsigned int deviceID() {
         return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
     }
 
-    public void deviceID(@unsigned int value) {
+    public void deviceID(@Unsigned int value) {
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
     }
 
-    public @unsigned byte pipelineCacheUUID() {
+    public @Unsigned byte pipelineCacheUUID() {
         return segment.get(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID);
     }
 
-    public void pipelineCacheUUID(@unsigned byte value) {
+    public void pipelineCacheUUID(@Unsigned byte value) {
         segment.set(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID, value);
     }
 

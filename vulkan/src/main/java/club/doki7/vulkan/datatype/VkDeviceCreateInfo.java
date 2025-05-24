@@ -100,7 +100,7 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -108,7 +108,7 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceCreateInfo.BYTES, VkDeviceCreateInfo.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         sType(VkStructureType.DEVICE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,19 +185,19 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDeviceCreateFlags.class) int flags() {
+    public @EnumType(VkDeviceCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkDeviceCreateFlags.class) int value) {
+    public void flags(@EnumType(VkDeviceCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int queueCreateInfoCount() {
+    public @Unsigned int queueCreateInfoCount() {
         return segment.get(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount);
     }
 
-    public void queueCreateInfoCount(@unsigned int value) {
+    public void queueCreateInfoCount(@Unsigned int value) {
         segment.set(LAYOUT$queueCreateInfoCount, OFFSET$queueCreateInfoCount, value);
     }
 
@@ -206,7 +206,7 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         pQueueCreateInfosRaw(s);
     }
 
-    @unsafe public @Nullable VkDeviceQueueCreateInfo.Ptr pQueueCreateInfos(int assumedCount) {
+    @Unsafe public @Nullable VkDeviceQueueCreateInfo.Ptr pQueueCreateInfos(int assumedCount) {
         MemorySegment s = pQueueCreateInfosRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -224,19 +224,19 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return new VkDeviceQueueCreateInfo(s);
     }
 
-    public @pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
+    public @Pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment pQueueCreateInfosRaw() {
         return segment.get(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos);
     }
 
-    public void pQueueCreateInfosRaw(@pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment value) {
+    public void pQueueCreateInfosRaw(@Pointer(target=VkDeviceQueueCreateInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pQueueCreateInfos, OFFSET$pQueueCreateInfos, value);
     }
 
-    public @unsigned int enabledLayerCount() {
+    public @Unsigned int enabledLayerCount() {
         return segment.get(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount);
     }
 
-    public void enabledLayerCount(@unsigned int value) {
+    public void enabledLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$enabledLayerCount, OFFSET$enabledLayerCount, value);
     }
 
@@ -256,19 +256,19 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         ppEnabledLayerNamesRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
+    public @Pointer(comment="void**") MemorySegment ppEnabledLayerNamesRaw() {
         return segment.get(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames);
     }
 
-    public void ppEnabledLayerNamesRaw(@pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledLayerNamesRaw(@Pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppEnabledLayerNames, OFFSET$ppEnabledLayerNames, value);
     }
 
-    public @unsigned int enabledExtensionCount() {
+    public @Unsigned int enabledExtensionCount() {
         return segment.get(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount);
     }
 
-    public void enabledExtensionCount(@unsigned int value) {
+    public void enabledExtensionCount(@Unsigned int value) {
         segment.set(LAYOUT$enabledExtensionCount, OFFSET$enabledExtensionCount, value);
     }
 
@@ -288,11 +288,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         ppEnabledExtensionNamesRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
+    public @Pointer(comment="void**") MemorySegment ppEnabledExtensionNamesRaw() {
         return segment.get(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames);
     }
 
-    public void ppEnabledExtensionNamesRaw(@pointer(comment="void**") MemorySegment value) {
+    public void ppEnabledExtensionNamesRaw(@Pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppEnabledExtensionNames, OFFSET$ppEnabledExtensionNames, value);
     }
 
@@ -301,7 +301,7 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         pEnabledFeaturesRaw(s);
     }
 
-    @unsafe public @Nullable VkPhysicalDeviceFeatures.Ptr pEnabledFeatures(int assumedCount) {
+    @Unsafe public @Nullable VkPhysicalDeviceFeatures.Ptr pEnabledFeatures(int assumedCount) {
         MemorySegment s = pEnabledFeaturesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -319,11 +319,11 @@ public record VkDeviceCreateInfo(@NotNull MemorySegment segment) implements IVkD
         return new VkPhysicalDeviceFeatures(s);
     }
 
-    public @pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {
+    public @Pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment pEnabledFeaturesRaw() {
         return segment.get(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures);
     }
 
-    public void pEnabledFeaturesRaw(@pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment value) {
+    public void pEnabledFeaturesRaw(@Pointer(target=VkPhysicalDeviceFeatures.class) MemorySegment value) {
         segment.set(LAYOUT$pEnabledFeatures, OFFSET$pEnabledFeatures, value);
     }
 

@@ -82,7 +82,7 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -90,7 +90,7 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH265LongTermRefPicsSps.BYTES, StdVideoH265LongTermRefPicsSps.BYTES));
         }
@@ -137,19 +137,19 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @unsigned int used_by_curr_pic_lt_sps_flag() {
+    public @Unsigned int used_by_curr_pic_lt_sps_flag() {
         return segment.get(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag);
     }
 
-    public void used_by_curr_pic_lt_sps_flag(@unsigned int value) {
+    public void used_by_curr_pic_lt_sps_flag(@Unsigned int value) {
         segment.set(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag, value);
     }
 
-    public @unsigned int lt_ref_pic_poc_lsb_sps() {
+    public @Unsigned int lt_ref_pic_poc_lsb_sps() {
         return segment.get(LAYOUT$lt_ref_pic_poc_lsb_sps, OFFSET$lt_ref_pic_poc_lsb_sps);
     }
 
-    public void lt_ref_pic_poc_lsb_sps(@unsigned int value) {
+    public void lt_ref_pic_poc_lsb_sps(@Unsigned int value) {
         segment.set(LAYOUT$lt_ref_pic_poc_lsb_sps, OFFSET$lt_ref_pic_poc_lsb_sps, value);
     }
 

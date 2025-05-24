@@ -95,7 +95,7 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -103,7 +103,7 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceGroupPresentInfoKHR.BYTES, VkDeviceGroupPresentInfoKHR.BYTES));
         }
@@ -160,19 +160,19 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         sType(VkStructureType.DEVICE_GROUP_PRESENT_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -180,11 +180,11 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int swapchainCount() {
+    public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@unsigned int value) {
+    public void swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
@@ -192,7 +192,7 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pDeviceMasks() {
+    public @Nullable @Unsigned IntPtr pDeviceMasks() {
         MemorySegment s = pDeviceMasksRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -200,24 +200,24 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         return new IntPtr(s);
     }
 
-    public void pDeviceMasks(@Nullable @unsigned IntPtr value) {
+    public void pDeviceMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceMasksRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pDeviceMasksRaw() {
+    public @Pointer(comment="int*") MemorySegment pDeviceMasksRaw() {
         return segment.get(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks);
     }
 
-    public void pDeviceMasksRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pDeviceMasksRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pDeviceMasks, OFFSET$pDeviceMasks, value);
     }
 
-    public @enumtype(VkDeviceGroupPresentModeFlagsKHR.class) int mode() {
+    public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@enumtype(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public void mode(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
     }
 

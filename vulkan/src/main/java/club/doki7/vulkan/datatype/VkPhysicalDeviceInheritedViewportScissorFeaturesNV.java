@@ -93,7 +93,7 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -101,7 +101,7 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES, VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES));
         }
@@ -158,19 +158,19 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         sType(VkStructureType.PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -178,11 +178,11 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int inheritedViewportScissor2D() {
+    public @Unsigned int inheritedViewportScissor2D() {
         return segment.get(LAYOUT$inheritedViewportScissor2D, OFFSET$inheritedViewportScissor2D);
     }
 
-    public void inheritedViewportScissor2D(@unsigned int value) {
+    public void inheritedViewportScissor2D(@Unsigned int value) {
         segment.set(LAYOUT$inheritedViewportScissor2D, OFFSET$inheritedViewportScissor2D, value);
     }
 

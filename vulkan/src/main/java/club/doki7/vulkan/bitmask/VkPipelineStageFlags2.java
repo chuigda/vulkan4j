@@ -51,7 +51,7 @@ public final class VkPipelineStageFlags2 {
     public static final long VIDEO_DECODE_KHR = 0x4000000L;
     public static final long VIDEO_ENCODE_KHR = 0x8000000L;
 
-    public static String explain(@enumtype(VkPipelineStageFlags2.class) long flags) {
+    public static String explain(@EnumType(VkPipelineStageFlags2.class) long flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_BUILD_KHR) != 0) {
             detectedFlagBits.add("VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_BUILD_BIT_KHR");

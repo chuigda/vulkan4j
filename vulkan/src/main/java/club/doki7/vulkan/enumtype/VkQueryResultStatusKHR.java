@@ -9,7 +9,7 @@ public final class VkQueryResultStatusKHR {
     public static final int COMPLETE = 0x1;
     public static final int INSUFFICIENT_BITSTREAM_BUFFER_RANGE = 0xc460a608;
 
-    public static String explain(@enumtype(VkQueryResultStatusKHR.class) int value) {
+    public static String explain(@EnumType(VkQueryResultStatusKHR.class) int value) {
         return switch (value) {
             case VkQueryResultStatusKHR.COMPLETE -> "VK_QUERY_RESULT_STATUS_COMPLETE_KHR";
             case VkQueryResultStatusKHR.ERROR -> "VK_QUERY_RESULT_STATUS_ERROR_KHR";

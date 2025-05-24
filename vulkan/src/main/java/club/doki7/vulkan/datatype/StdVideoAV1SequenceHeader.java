@@ -94,7 +94,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoAV1SequenceHeader.BYTES, StdVideoAV1SequenceHeader.BYTES));
         }
@@ -157,83 +157,83 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @enumtype(StdVideoAV1Profile.class) int seq_profile() {
+    public @EnumType(StdVideoAV1Profile.class) int seq_profile() {
         return segment.get(LAYOUT$seq_profile, OFFSET$seq_profile);
     }
 
-    public void seq_profile(@enumtype(StdVideoAV1Profile.class) int value) {
+    public void seq_profile(@EnumType(StdVideoAV1Profile.class) int value) {
         segment.set(LAYOUT$seq_profile, OFFSET$seq_profile, value);
     }
 
-    public @unsigned byte frame_width_bits_minus_1() {
+    public @Unsigned byte frame_width_bits_minus_1() {
         return segment.get(LAYOUT$frame_width_bits_minus_1, OFFSET$frame_width_bits_minus_1);
     }
 
-    public void frame_width_bits_minus_1(@unsigned byte value) {
+    public void frame_width_bits_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$frame_width_bits_minus_1, OFFSET$frame_width_bits_minus_1, value);
     }
 
-    public @unsigned byte frame_height_bits_minus_1() {
+    public @Unsigned byte frame_height_bits_minus_1() {
         return segment.get(LAYOUT$frame_height_bits_minus_1, OFFSET$frame_height_bits_minus_1);
     }
 
-    public void frame_height_bits_minus_1(@unsigned byte value) {
+    public void frame_height_bits_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$frame_height_bits_minus_1, OFFSET$frame_height_bits_minus_1, value);
     }
 
-    public @unsigned short max_frame_width_minus_1() {
+    public @Unsigned short max_frame_width_minus_1() {
         return segment.get(LAYOUT$max_frame_width_minus_1, OFFSET$max_frame_width_minus_1);
     }
 
-    public void max_frame_width_minus_1(@unsigned short value) {
+    public void max_frame_width_minus_1(@Unsigned short value) {
         segment.set(LAYOUT$max_frame_width_minus_1, OFFSET$max_frame_width_minus_1, value);
     }
 
-    public @unsigned short max_frame_height_minus_1() {
+    public @Unsigned short max_frame_height_minus_1() {
         return segment.get(LAYOUT$max_frame_height_minus_1, OFFSET$max_frame_height_minus_1);
     }
 
-    public void max_frame_height_minus_1(@unsigned short value) {
+    public void max_frame_height_minus_1(@Unsigned short value) {
         segment.set(LAYOUT$max_frame_height_minus_1, OFFSET$max_frame_height_minus_1, value);
     }
 
-    public @unsigned byte delta_frame_id_length_minus_2() {
+    public @Unsigned byte delta_frame_id_length_minus_2() {
         return segment.get(LAYOUT$delta_frame_id_length_minus_2, OFFSET$delta_frame_id_length_minus_2);
     }
 
-    public void delta_frame_id_length_minus_2(@unsigned byte value) {
+    public void delta_frame_id_length_minus_2(@Unsigned byte value) {
         segment.set(LAYOUT$delta_frame_id_length_minus_2, OFFSET$delta_frame_id_length_minus_2, value);
     }
 
-    public @unsigned byte additional_frame_id_length_minus_1() {
+    public @Unsigned byte additional_frame_id_length_minus_1() {
         return segment.get(LAYOUT$additional_frame_id_length_minus_1, OFFSET$additional_frame_id_length_minus_1);
     }
 
-    public void additional_frame_id_length_minus_1(@unsigned byte value) {
+    public void additional_frame_id_length_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$additional_frame_id_length_minus_1, OFFSET$additional_frame_id_length_minus_1, value);
     }
 
-    public @unsigned byte order_hint_bits_minus_1() {
+    public @Unsigned byte order_hint_bits_minus_1() {
         return segment.get(LAYOUT$order_hint_bits_minus_1, OFFSET$order_hint_bits_minus_1);
     }
 
-    public void order_hint_bits_minus_1(@unsigned byte value) {
+    public void order_hint_bits_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$order_hint_bits_minus_1, OFFSET$order_hint_bits_minus_1, value);
     }
 
-    public @unsigned byte seq_force_integer_mv() {
+    public @Unsigned byte seq_force_integer_mv() {
         return segment.get(LAYOUT$seq_force_integer_mv, OFFSET$seq_force_integer_mv);
     }
 
-    public void seq_force_integer_mv(@unsigned byte value) {
+    public void seq_force_integer_mv(@Unsigned byte value) {
         segment.set(LAYOUT$seq_force_integer_mv, OFFSET$seq_force_integer_mv, value);
     }
 
-    public @unsigned byte seq_force_screen_content_tools() {
+    public @Unsigned byte seq_force_screen_content_tools() {
         return segment.get(LAYOUT$seq_force_screen_content_tools, OFFSET$seq_force_screen_content_tools);
     }
 
-    public void seq_force_screen_content_tools(@unsigned byte value) {
+    public void seq_force_screen_content_tools(@Unsigned byte value) {
         segment.set(LAYOUT$seq_force_screen_content_tools, OFFSET$seq_force_screen_content_tools, value);
     }
 
@@ -243,7 +243,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         pColorConfigRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1ColorConfig.Ptr pColorConfig(int assumedCount) {
+    @Unsafe public @Nullable StdVideoAV1ColorConfig.Ptr pColorConfig(int assumedCount) {
         MemorySegment s = pColorConfigRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -261,11 +261,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return new StdVideoAV1ColorConfig(s);
     }
 
-    public @pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
+    public @Pointer(target=StdVideoAV1ColorConfig.class) MemorySegment pColorConfigRaw() {
         return segment.get(LAYOUT$pColorConfig, OFFSET$pColorConfig);
     }
 
-    public void pColorConfigRaw(@pointer(target=StdVideoAV1ColorConfig.class) MemorySegment value) {
+    public void pColorConfigRaw(@Pointer(target=StdVideoAV1ColorConfig.class) MemorySegment value) {
         segment.set(LAYOUT$pColorConfig, OFFSET$pColorConfig, value);
     }
 
@@ -274,7 +274,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         pTimingInfoRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoAV1TimingInfo.Ptr pTimingInfo(int assumedCount) {
+    @Unsafe public @Nullable StdVideoAV1TimingInfo.Ptr pTimingInfo(int assumedCount) {
         MemorySegment s = pTimingInfoRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -292,11 +292,11 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return new StdVideoAV1TimingInfo(s);
     }
 
-    public @pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {
+    public @Pointer(target=StdVideoAV1TimingInfo.class) MemorySegment pTimingInfoRaw() {
         return segment.get(LAYOUT$pTimingInfo, OFFSET$pTimingInfo);
     }
 
-    public void pTimingInfoRaw(@pointer(target=StdVideoAV1TimingInfo.class) MemorySegment value) {
+    public void pTimingInfoRaw(@Pointer(target=StdVideoAV1TimingInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pTimingInfo, OFFSET$pTimingInfo, value);
     }
 

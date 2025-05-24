@@ -9,7 +9,7 @@ public final class VkCoarseSampleOrderTypeNV {
     public static final int PIXEL_MAJOR = 0x2;
     public static final int SAMPLE_MAJOR = 0x3;
 
-    public static String explain(@enumtype(VkCoarseSampleOrderTypeNV.class) int value) {
+    public static String explain(@EnumType(VkCoarseSampleOrderTypeNV.class) int value) {
         return switch (value) {
             case VkCoarseSampleOrderTypeNV.CUSTOM -> "VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV";
             case VkCoarseSampleOrderTypeNV.DEFAULT -> "VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV";

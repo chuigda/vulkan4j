@@ -131,7 +131,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: Member): St
             return new ${pointee.name}(s);
         }
         
-        /// Note: this function is {@link unsafe} because it's up to caller to provide the correct count of elements.
+        /// Note: this function is {@link Unsafe} because it's up to caller to provide the correct count of elements.
         @unsafe
         public @Nullable ${pointee.name}[] ${member.name}(int assumedCount) {
             MemorySegment s = ${member.name}Raw();

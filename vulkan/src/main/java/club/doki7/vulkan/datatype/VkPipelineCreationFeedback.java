@@ -84,7 +84,7 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineCreationFeedback.BYTES, VkPipelineCreationFeedback.BYTES));
         }
@@ -139,19 +139,19 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @enumtype(VkPipelineCreationFeedbackFlags.class) int flags() {
+    public @EnumType(VkPipelineCreationFeedbackFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineCreationFeedbackFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineCreationFeedbackFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned long duration() {
+    public @Unsigned long duration() {
         return segment.get(LAYOUT$duration, OFFSET$duration);
     }
 
-    public void duration(@unsigned long value) {
+    public void duration(@Unsigned long value) {
         segment.set(LAYOUT$duration, OFFSET$duration, value);
     }
 

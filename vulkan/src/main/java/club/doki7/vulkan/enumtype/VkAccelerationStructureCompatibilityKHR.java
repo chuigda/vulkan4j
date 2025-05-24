@@ -7,7 +7,7 @@ public final class VkAccelerationStructureCompatibilityKHR {
     public static final int COMPATIBLE = 0x0;
     public static final int INCOMPATIBLE = 0x1;
 
-    public static String explain(@enumtype(VkAccelerationStructureCompatibilityKHR.class) int value) {
+    public static String explain(@EnumType(VkAccelerationStructureCompatibilityKHR.class) int value) {
         return switch (value) {
             case VkAccelerationStructureCompatibilityKHR.COMPATIBLE -> "VK_ACCELERATION_STRUCTURE_COMPATIBILITY_COMPATIBLE_KHR";
             case VkAccelerationStructureCompatibilityKHR.INCOMPATIBLE -> "VK_ACCELERATION_STRUCTURE_COMPATIBILITY_INCOMPATIBLE_KHR";

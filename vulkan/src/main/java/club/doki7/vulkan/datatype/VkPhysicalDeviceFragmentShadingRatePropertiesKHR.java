@@ -109,7 +109,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -117,7 +117,7 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES, VkPhysicalDeviceFragmentShadingRatePropertiesKHR.BYTES));
         }
@@ -174,19 +174,19 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         sType(VkStructureType.PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -210,35 +210,35 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentShadingRateAttachmentTexelSize, SIZE$maxFragmentShadingRateAttachmentTexelSize);
     }
 
-    public @unsigned int maxFragmentShadingRateAttachmentTexelSizeAspectRatio() {
+    public @Unsigned int maxFragmentShadingRateAttachmentTexelSizeAspectRatio() {
         return segment.get(LAYOUT$maxFragmentShadingRateAttachmentTexelSizeAspectRatio, OFFSET$maxFragmentShadingRateAttachmentTexelSizeAspectRatio);
     }
 
-    public void maxFragmentShadingRateAttachmentTexelSizeAspectRatio(@unsigned int value) {
+    public void maxFragmentShadingRateAttachmentTexelSizeAspectRatio(@Unsigned int value) {
         segment.set(LAYOUT$maxFragmentShadingRateAttachmentTexelSizeAspectRatio, OFFSET$maxFragmentShadingRateAttachmentTexelSizeAspectRatio, value);
     }
 
-    public @unsigned int primitiveFragmentShadingRateWithMultipleViewports() {
+    public @Unsigned int primitiveFragmentShadingRateWithMultipleViewports() {
         return segment.get(LAYOUT$primitiveFragmentShadingRateWithMultipleViewports, OFFSET$primitiveFragmentShadingRateWithMultipleViewports);
     }
 
-    public void primitiveFragmentShadingRateWithMultipleViewports(@unsigned int value) {
+    public void primitiveFragmentShadingRateWithMultipleViewports(@Unsigned int value) {
         segment.set(LAYOUT$primitiveFragmentShadingRateWithMultipleViewports, OFFSET$primitiveFragmentShadingRateWithMultipleViewports, value);
     }
 
-    public @unsigned int layeredShadingRateAttachments() {
+    public @Unsigned int layeredShadingRateAttachments() {
         return segment.get(LAYOUT$layeredShadingRateAttachments, OFFSET$layeredShadingRateAttachments);
     }
 
-    public void layeredShadingRateAttachments(@unsigned int value) {
+    public void layeredShadingRateAttachments(@Unsigned int value) {
         segment.set(LAYOUT$layeredShadingRateAttachments, OFFSET$layeredShadingRateAttachments, value);
     }
 
-    public @unsigned int fragmentShadingRateNonTrivialCombinerOps() {
+    public @Unsigned int fragmentShadingRateNonTrivialCombinerOps() {
         return segment.get(LAYOUT$fragmentShadingRateNonTrivialCombinerOps, OFFSET$fragmentShadingRateNonTrivialCombinerOps);
     }
 
-    public void fragmentShadingRateNonTrivialCombinerOps(@unsigned int value) {
+    public void fragmentShadingRateNonTrivialCombinerOps(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateNonTrivialCombinerOps, OFFSET$fragmentShadingRateNonTrivialCombinerOps, value);
     }
 
@@ -250,83 +250,83 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentSize, SIZE$maxFragmentSize);
     }
 
-    public @unsigned int maxFragmentSizeAspectRatio() {
+    public @Unsigned int maxFragmentSizeAspectRatio() {
         return segment.get(LAYOUT$maxFragmentSizeAspectRatio, OFFSET$maxFragmentSizeAspectRatio);
     }
 
-    public void maxFragmentSizeAspectRatio(@unsigned int value) {
+    public void maxFragmentSizeAspectRatio(@Unsigned int value) {
         segment.set(LAYOUT$maxFragmentSizeAspectRatio, OFFSET$maxFragmentSizeAspectRatio, value);
     }
 
-    public @unsigned int maxFragmentShadingRateCoverageSamples() {
+    public @Unsigned int maxFragmentShadingRateCoverageSamples() {
         return segment.get(LAYOUT$maxFragmentShadingRateCoverageSamples, OFFSET$maxFragmentShadingRateCoverageSamples);
     }
 
-    public void maxFragmentShadingRateCoverageSamples(@unsigned int value) {
+    public void maxFragmentShadingRateCoverageSamples(@Unsigned int value) {
         segment.set(LAYOUT$maxFragmentShadingRateCoverageSamples, OFFSET$maxFragmentShadingRateCoverageSamples, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int maxFragmentShadingRateRasterizationSamples() {
+    public @EnumType(VkSampleCountFlags.class) int maxFragmentShadingRateRasterizationSamples() {
         return segment.get(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples);
     }
 
-    public void maxFragmentShadingRateRasterizationSamples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void maxFragmentShadingRateRasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$maxFragmentShadingRateRasterizationSamples, OFFSET$maxFragmentShadingRateRasterizationSamples, value);
     }
 
-    public @unsigned int fragmentShadingRateWithShaderDepthStencilWrites() {
+    public @Unsigned int fragmentShadingRateWithShaderDepthStencilWrites() {
         return segment.get(LAYOUT$fragmentShadingRateWithShaderDepthStencilWrites, OFFSET$fragmentShadingRateWithShaderDepthStencilWrites);
     }
 
-    public void fragmentShadingRateWithShaderDepthStencilWrites(@unsigned int value) {
+    public void fragmentShadingRateWithShaderDepthStencilWrites(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithShaderDepthStencilWrites, OFFSET$fragmentShadingRateWithShaderDepthStencilWrites, value);
     }
 
-    public @unsigned int fragmentShadingRateWithSampleMask() {
+    public @Unsigned int fragmentShadingRateWithSampleMask() {
         return segment.get(LAYOUT$fragmentShadingRateWithSampleMask, OFFSET$fragmentShadingRateWithSampleMask);
     }
 
-    public void fragmentShadingRateWithSampleMask(@unsigned int value) {
+    public void fragmentShadingRateWithSampleMask(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithSampleMask, OFFSET$fragmentShadingRateWithSampleMask, value);
     }
 
-    public @unsigned int fragmentShadingRateWithShaderSampleMask() {
+    public @Unsigned int fragmentShadingRateWithShaderSampleMask() {
         return segment.get(LAYOUT$fragmentShadingRateWithShaderSampleMask, OFFSET$fragmentShadingRateWithShaderSampleMask);
     }
 
-    public void fragmentShadingRateWithShaderSampleMask(@unsigned int value) {
+    public void fragmentShadingRateWithShaderSampleMask(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithShaderSampleMask, OFFSET$fragmentShadingRateWithShaderSampleMask, value);
     }
 
-    public @unsigned int fragmentShadingRateWithConservativeRasterization() {
+    public @Unsigned int fragmentShadingRateWithConservativeRasterization() {
         return segment.get(LAYOUT$fragmentShadingRateWithConservativeRasterization, OFFSET$fragmentShadingRateWithConservativeRasterization);
     }
 
-    public void fragmentShadingRateWithConservativeRasterization(@unsigned int value) {
+    public void fragmentShadingRateWithConservativeRasterization(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithConservativeRasterization, OFFSET$fragmentShadingRateWithConservativeRasterization, value);
     }
 
-    public @unsigned int fragmentShadingRateWithFragmentShaderInterlock() {
+    public @Unsigned int fragmentShadingRateWithFragmentShaderInterlock() {
         return segment.get(LAYOUT$fragmentShadingRateWithFragmentShaderInterlock, OFFSET$fragmentShadingRateWithFragmentShaderInterlock);
     }
 
-    public void fragmentShadingRateWithFragmentShaderInterlock(@unsigned int value) {
+    public void fragmentShadingRateWithFragmentShaderInterlock(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithFragmentShaderInterlock, OFFSET$fragmentShadingRateWithFragmentShaderInterlock, value);
     }
 
-    public @unsigned int fragmentShadingRateWithCustomSampleLocations() {
+    public @Unsigned int fragmentShadingRateWithCustomSampleLocations() {
         return segment.get(LAYOUT$fragmentShadingRateWithCustomSampleLocations, OFFSET$fragmentShadingRateWithCustomSampleLocations);
     }
 
-    public void fragmentShadingRateWithCustomSampleLocations(@unsigned int value) {
+    public void fragmentShadingRateWithCustomSampleLocations(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateWithCustomSampleLocations, OFFSET$fragmentShadingRateWithCustomSampleLocations, value);
     }
 
-    public @unsigned int fragmentShadingRateStrictMultiplyCombiner() {
+    public @Unsigned int fragmentShadingRateStrictMultiplyCombiner() {
         return segment.get(LAYOUT$fragmentShadingRateStrictMultiplyCombiner, OFFSET$fragmentShadingRateStrictMultiplyCombiner);
     }
 
-    public void fragmentShadingRateStrictMultiplyCombiner(@unsigned int value) {
+    public void fragmentShadingRateStrictMultiplyCombiner(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateStrictMultiplyCombiner, OFFSET$fragmentShadingRateStrictMultiplyCombiner, value);
     }
 

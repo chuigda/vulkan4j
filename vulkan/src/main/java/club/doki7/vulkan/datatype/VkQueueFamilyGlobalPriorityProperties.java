@@ -94,7 +94,7 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkQueueFamilyGlobalPriorityProperties.BYTES, VkQueueFamilyGlobalPriorityProperties.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         sType(VkStructureType.QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,19 +179,19 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int priorityCount() {
+    public @Unsigned int priorityCount() {
         return segment.get(LAYOUT$priorityCount, OFFSET$priorityCount);
     }
 
-    public void priorityCount(@unsigned int value) {
+    public void priorityCount(@Unsigned int value) {
         segment.set(LAYOUT$priorityCount, OFFSET$priorityCount, value);
     }
 
-    public @enumtype(VkQueueGlobalPriority.class) int priorities() {
+    public @EnumType(VkQueueGlobalPriority.class) int priorities() {
         return segment.get(LAYOUT$priorities, OFFSET$priorities);
     }
 
-    public void priorities(@enumtype(VkQueueGlobalPriority.class) int value) {
+    public void priorities(@EnumType(VkQueueGlobalPriority.class) int value) {
         segment.set(LAYOUT$priorities, OFFSET$priorities, value);
     }
 

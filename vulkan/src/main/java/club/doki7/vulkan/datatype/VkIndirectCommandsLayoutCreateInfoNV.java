@@ -98,7 +98,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -106,7 +106,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkIndirectCommandsLayoutCreateInfoNV.BYTES, VkIndirectCommandsLayoutCreateInfoNV.BYTES));
         }
@@ -163,19 +163,19 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         sType(VkStructureType.INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -183,27 +183,27 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
+    public @EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
+    public void flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkPipelineBindPoint.class) int pipelineBindPoint() {
+    public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@enumtype(VkPipelineBindPoint.class) int value) {
+    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public @unsigned int tokenCount() {
+    public @Unsigned int tokenCount() {
         return segment.get(LAYOUT$tokenCount, OFFSET$tokenCount);
     }
 
-    public void tokenCount(@unsigned int value) {
+    public void tokenCount(@Unsigned int value) {
         segment.set(LAYOUT$tokenCount, OFFSET$tokenCount, value);
     }
 
@@ -212,7 +212,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         pTokensRaw(s);
     }
 
-    @unsafe public @Nullable VkIndirectCommandsLayoutTokenNV.Ptr pTokens(int assumedCount) {
+    @Unsafe public @Nullable VkIndirectCommandsLayoutTokenNV.Ptr pTokens(int assumedCount) {
         MemorySegment s = pTokensRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -230,19 +230,19 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return new VkIndirectCommandsLayoutTokenNV(s);
     }
 
-    public @pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment pTokensRaw() {
+    public @Pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment pTokensRaw() {
         return segment.get(LAYOUT$pTokens, OFFSET$pTokens);
     }
 
-    public void pTokensRaw(@pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment value) {
+    public void pTokensRaw(@Pointer(target=VkIndirectCommandsLayoutTokenNV.class) MemorySegment value) {
         segment.set(LAYOUT$pTokens, OFFSET$pTokens, value);
     }
 
-    public @unsigned int streamCount() {
+    public @Unsigned int streamCount() {
         return segment.get(LAYOUT$streamCount, OFFSET$streamCount);
     }
 
-    public void streamCount(@unsigned int value) {
+    public void streamCount(@Unsigned int value) {
         segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
     }
 
@@ -250,7 +250,7 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pStreamStrides() {
+    public @Nullable @Unsigned IntPtr pStreamStrides() {
         MemorySegment s = pStreamStridesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -258,16 +258,16 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return new IntPtr(s);
     }
 
-    public void pStreamStrides(@Nullable @unsigned IntPtr value) {
+    public void pStreamStrides(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamStridesRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pStreamStridesRaw() {
+    public @Pointer(comment="int*") MemorySegment pStreamStridesRaw() {
         return segment.get(LAYOUT$pStreamStrides, OFFSET$pStreamStrides);
     }
 
-    public void pStreamStridesRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pStreamStridesRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pStreamStrides, OFFSET$pStreamStrides, value);
     }
 

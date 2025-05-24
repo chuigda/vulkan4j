@@ -101,7 +101,7 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -109,7 +109,7 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAttachmentDescription2.BYTES, VkAttachmentDescription2.BYTES));
         }
@@ -166,19 +166,19 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         sType(VkStructureType.ATTACHMENT_DESCRIPTION_2);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -186,75 +186,75 @@ public record VkAttachmentDescription2(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkAttachmentDescriptionFlags.class) int flags() {
+    public @EnumType(VkAttachmentDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkAttachmentDescriptionFlags.class) int value) {
+    public void flags(@EnumType(VkAttachmentDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkFormat.class) int format() {
+    public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@enumtype(VkFormat.class) int value) {
+    public void format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int samples() {
+    public @EnumType(VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public void samples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void samples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
     }
 
-    public @enumtype(VkAttachmentLoadOp.class) int loadOp() {
+    public @EnumType(VkAttachmentLoadOp.class) int loadOp() {
         return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
     }
 
-    public void loadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
+    public void loadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
     }
 
-    public @enumtype(VkAttachmentStoreOp.class) int storeOp() {
+    public @EnumType(VkAttachmentStoreOp.class) int storeOp() {
         return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
     }
 
-    public void storeOp(@enumtype(VkAttachmentStoreOp.class) int value) {
+    public void storeOp(@EnumType(VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
     }
 
-    public @enumtype(VkAttachmentLoadOp.class) int stencilLoadOp() {
+    public @EnumType(VkAttachmentLoadOp.class) int stencilLoadOp() {
         return segment.get(LAYOUT$stencilLoadOp, OFFSET$stencilLoadOp);
     }
 
-    public void stencilLoadOp(@enumtype(VkAttachmentLoadOp.class) int value) {
+    public void stencilLoadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$stencilLoadOp, OFFSET$stencilLoadOp, value);
     }
 
-    public @enumtype(VkAttachmentStoreOp.class) int stencilStoreOp() {
+    public @EnumType(VkAttachmentStoreOp.class) int stencilStoreOp() {
         return segment.get(LAYOUT$stencilStoreOp, OFFSET$stencilStoreOp);
     }
 
-    public void stencilStoreOp(@enumtype(VkAttachmentStoreOp.class) int value) {
+    public void stencilStoreOp(@EnumType(VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$stencilStoreOp, OFFSET$stencilStoreOp, value);
     }
 
-    public @enumtype(VkImageLayout.class) int initialLayout() {
+    public @EnumType(VkImageLayout.class) int initialLayout() {
         return segment.get(LAYOUT$initialLayout, OFFSET$initialLayout);
     }
 
-    public void initialLayout(@enumtype(VkImageLayout.class) int value) {
+    public void initialLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$initialLayout, OFFSET$initialLayout, value);
     }
 
-    public @enumtype(VkImageLayout.class) int finalLayout() {
+    public @EnumType(VkImageLayout.class) int finalLayout() {
         return segment.get(LAYOUT$finalLayout, OFFSET$finalLayout);
     }
 
-    public void finalLayout(@enumtype(VkImageLayout.class) int value) {
+    public void finalLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$finalLayout, OFFSET$finalLayout, value);
     }
 

@@ -94,7 +94,7 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPresentIdKHR.BYTES, VkPresentIdKHR.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         sType(VkStructureType.PRESENT_ID_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,11 +179,11 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int swapchainCount() {
+    public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@unsigned int value) {
+    public void swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
@@ -191,7 +191,7 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pPresentIds() {
+    public @Nullable @Unsigned LongPtr pPresentIds() {
         MemorySegment s = pPresentIdsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -199,16 +199,16 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         return new LongPtr(s);
     }
 
-    public void pPresentIds(@Nullable @unsigned LongPtr value) {
+    public void pPresentIds(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentIdsRaw(s);
     }
 
-    public @pointer(comment="long*") MemorySegment pPresentIdsRaw() {
+    public @Pointer(comment="long*") MemorySegment pPresentIdsRaw() {
         return segment.get(LAYOUT$pPresentIds, OFFSET$pPresentIds);
     }
 
-    public void pPresentIdsRaw(@pointer(comment="long*") MemorySegment value) {
+    public void pPresentIdsRaw(@Pointer(comment="long*") MemorySegment value) {
         segment.set(LAYOUT$pPresentIds, OFFSET$pPresentIds, value);
     }
 

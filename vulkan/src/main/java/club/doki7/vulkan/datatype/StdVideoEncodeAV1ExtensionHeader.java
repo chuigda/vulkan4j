@@ -82,7 +82,7 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -90,7 +90,7 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeAV1ExtensionHeader.BYTES, StdVideoEncodeAV1ExtensionHeader.BYTES));
         }
@@ -137,19 +137,19 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public @unsigned byte temporal_id() {
+    public @Unsigned byte temporal_id() {
         return segment.get(LAYOUT$temporal_id, OFFSET$temporal_id);
     }
 
-    public void temporal_id(@unsigned byte value) {
+    public void temporal_id(@Unsigned byte value) {
         segment.set(LAYOUT$temporal_id, OFFSET$temporal_id, value);
     }
 
-    public @unsigned byte spatial_id() {
+    public @Unsigned byte spatial_id() {
         return segment.get(LAYOUT$spatial_id, OFFSET$spatial_id);
     }
 
-    public void spatial_id(@unsigned byte value) {
+    public void spatial_id(@Unsigned byte value) {
         segment.set(LAYOUT$spatial_id, OFFSET$spatial_id, value);
     }
 

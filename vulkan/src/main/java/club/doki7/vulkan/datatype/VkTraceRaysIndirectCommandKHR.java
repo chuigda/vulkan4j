@@ -85,7 +85,7 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkTraceRaysIndirectCommandKHR.BYTES, VkTraceRaysIndirectCommandKHR.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @unsigned int width() {
+    public @Unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@unsigned int value) {
+    public void width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
     }
 
-    public @unsigned int height() {
+    public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@unsigned int value) {
+    public void height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
     }
 
-    public @unsigned int depth() {
+    public @Unsigned int depth() {
         return segment.get(LAYOUT$depth, OFFSET$depth);
     }
 
-    public void depth(@unsigned int value) {
+    public void depth(@Unsigned int value) {
         segment.set(LAYOUT$depth, OFFSET$depth, value);
     }
 

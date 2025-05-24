@@ -6,7 +6,7 @@ import club.doki7.ffm.annotation.*;
 public final class VkQueryPoolSamplingModeINTEL {
     public static final int MANUAL = 0x0;
 
-    public static String explain(@enumtype(VkQueryPoolSamplingModeINTEL.class) int value) {
+    public static String explain(@EnumType(VkQueryPoolSamplingModeINTEL.class) int value) {
         return switch (value) {
             case VkQueryPoolSamplingModeINTEL.MANUAL -> "VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL";
             default -> "UNKNOWN(" + value + ")";

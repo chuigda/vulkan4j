@@ -103,7 +103,7 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -111,7 +111,7 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkMicromapBuildInfoEXT.BYTES, VkMicromapBuildInfoEXT.BYTES));
         }
@@ -168,19 +168,19 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         sType(VkStructureType.MICROMAP_BUILD_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -188,27 +188,27 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkMicromapTypeEXT.class) int type() {
+    public @EnumType(VkMicromapTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkMicromapTypeEXT.class) int value) {
+    public void type(@EnumType(VkMicromapTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @enumtype(VkBuildMicromapFlagsEXT.class) int flags() {
+    public @EnumType(VkBuildMicromapFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkBuildMicromapFlagsEXT.class) int value) {
+    public void flags(@EnumType(VkBuildMicromapFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkBuildMicromapModeEXT.class) int mode() {
+    public @EnumType(VkBuildMicromapModeEXT.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@enumtype(VkBuildMicromapModeEXT.class) int value) {
+    public void mode(@EnumType(VkBuildMicromapModeEXT.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
     }
 
@@ -224,11 +224,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$dstMicromap, OFFSET$dstMicromap, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int usageCountsCount() {
+    public @Unsigned int usageCountsCount() {
         return segment.get(LAYOUT$usageCountsCount, OFFSET$usageCountsCount);
     }
 
-    public void usageCountsCount(@unsigned int value) {
+    public void usageCountsCount(@Unsigned int value) {
         segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
     }
 
@@ -237,7 +237,7 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         pUsageCountsRaw(s);
     }
 
-    @unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
+    @Unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
         MemorySegment s = pUsageCountsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -255,11 +255,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return new VkMicromapUsageEXT(s);
     }
 
-    public @pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
+    public @Pointer(target=VkMicromapUsageEXT.class) MemorySegment pUsageCountsRaw() {
         return segment.get(LAYOUT$pUsageCounts, OFFSET$pUsageCounts);
     }
 
-    public void pUsageCountsRaw(@pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
+    public void pUsageCountsRaw(@Pointer(target=VkMicromapUsageEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pUsageCounts, OFFSET$pUsageCounts, value);
     }
 
@@ -279,11 +279,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         ppUsageCountsRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
+    public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
         return segment.get(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts);
     }
 
-    public void ppUsageCountsRaw(@pointer(comment="void**") MemorySegment value) {
+    public void ppUsageCountsRaw(@Pointer(comment="void**") MemorySegment value) {
         segment.set(LAYOUT$ppUsageCounts, OFFSET$ppUsageCounts, value);
     }
 
@@ -311,11 +311,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangleArray, SIZE$triangleArray);
     }
 
-    public @unsigned long triangleArrayStride() {
+    public @Unsigned long triangleArrayStride() {
         return segment.get(LAYOUT$triangleArrayStride, OFFSET$triangleArrayStride);
     }
 
-    public void triangleArrayStride(@unsigned long value) {
+    public void triangleArrayStride(@Unsigned long value) {
         segment.set(LAYOUT$triangleArrayStride, OFFSET$triangleArrayStride, value);
     }
 

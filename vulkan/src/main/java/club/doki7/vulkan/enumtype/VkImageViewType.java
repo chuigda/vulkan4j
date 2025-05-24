@@ -12,7 +12,7 @@ public final class VkImageViewType {
     public static final int _2D_ARRAY = 0x5;
     public static final int CUBE_ARRAY = 0x6;
 
-    public static String explain(@enumtype(VkImageViewType.class) int value) {
+    public static String explain(@EnumType(VkImageViewType.class) int value) {
         return switch (value) {
             case VkImageViewType._1D -> "VK_IMAGE_VIEW_TYPE_1D";
             case VkImageViewType._1D_ARRAY -> "VK_IMAGE_VIEW_TYPE_1D_ARRAY";

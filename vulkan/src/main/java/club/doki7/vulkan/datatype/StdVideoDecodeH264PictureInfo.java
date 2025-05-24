@@ -88,7 +88,7 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -96,7 +96,7 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoDecodeH264PictureInfo.BYTES, StdVideoDecodeH264PictureInfo.BYTES));
         }
@@ -151,37 +151,37 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte seq_parameter_set_id() {
+    public @Unsigned byte seq_parameter_set_id() {
         return segment.get(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id);
     }
 
-    public void seq_parameter_set_id(@unsigned byte value) {
+    public void seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id, value);
     }
 
-    public @unsigned byte pic_parameter_set_id() {
+    public @Unsigned byte pic_parameter_set_id() {
         return segment.get(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id);
     }
 
-    public void pic_parameter_set_id(@unsigned byte value) {
+    public void pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id, value);
     }
 
 
 
-    public @unsigned short frame_num() {
+    public @Unsigned short frame_num() {
         return segment.get(LAYOUT$frame_num, OFFSET$frame_num);
     }
 
-    public void frame_num(@unsigned short value) {
+    public void frame_num(@Unsigned short value) {
         segment.set(LAYOUT$frame_num, OFFSET$frame_num, value);
     }
 
-    public @unsigned short idr_pic_id() {
+    public @Unsigned short idr_pic_id() {
         return segment.get(LAYOUT$idr_pic_id, OFFSET$idr_pic_id);
     }
 
-    public void idr_pic_id(@unsigned short value) {
+    public void idr_pic_id(@Unsigned short value) {
         segment.set(LAYOUT$idr_pic_id, OFFSET$idr_pic_id, value);
     }
 

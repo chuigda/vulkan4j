@@ -8,7 +8,7 @@ public final class VkAccelerationStructureBuildTypeKHR {
     public static final int DEVICE = 0x1;
     public static final int HOST_OR_DEVICE = 0x2;
 
-    public static String explain(@enumtype(VkAccelerationStructureBuildTypeKHR.class) int value) {
+    public static String explain(@EnumType(VkAccelerationStructureBuildTypeKHR.class) int value) {
         return switch (value) {
             case VkAccelerationStructureBuildTypeKHR.DEVICE -> "VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR";
             case VkAccelerationStructureBuildTypeKHR.HOST -> "VK_ACCELERATION_STRUCTURE_BUILD_TYPE_HOST_KHR";

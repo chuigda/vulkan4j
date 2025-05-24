@@ -61,7 +61,7 @@ public final class VkObjectType {
     public static final int INDIRECT_COMMANDS_LAYOUT_EXT = 0x3ba38460;
     public static final int INDIRECT_EXECUTION_SET_EXT = 0x3ba38461;
 
-    public static String explain(@enumtype(VkObjectType.class) int value) {
+    public static String explain(@EnumType(VkObjectType.class) int value) {
         return switch (value) {
             case VkObjectType.ACCELERATION_STRUCTURE_KHR -> "VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR";
             case VkObjectType.ACCELERATION_STRUCTURE_NV -> "VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV";

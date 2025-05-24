@@ -34,7 +34,7 @@ public final class VkPipelineStageFlags {
     public static final int VERTEX_INPUT = 0x4;
     public static final int VERTEX_SHADER = 0x8;
 
-    public static String explain(@enumtype(VkPipelineStageFlags.class) int flags) {
+    public static String explain(@EnumType(VkPipelineStageFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & ACCELERATION_STRUCTURE_BUILD_KHR) != 0) {
             detectedFlagBits.add("VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR");

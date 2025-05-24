@@ -87,7 +87,7 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDescriptorSetLayoutBinding.BYTES, VkDescriptorSetLayoutBinding.BYTES));
         }
@@ -142,35 +142,35 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return ret;
     }
 
-    public @unsigned int binding() {
+    public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@unsigned int value) {
+    public void binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
     }
 
-    public @enumtype(VkDescriptorType.class) int descriptorType() {
+    public @EnumType(VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public void descriptorType(@enumtype(VkDescriptorType.class) int value) {
+    public void descriptorType(@EnumType(VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
     }
 
-    public @unsigned int descriptorCount() {
+    public @Unsigned int descriptorCount() {
         return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
     }
 
-    public void descriptorCount(@unsigned int value) {
+    public void descriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
     }
 
-    public @enumtype(VkShaderStageFlags.class) int stageFlags() {
+    public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@enumtype(VkShaderStageFlags.class) int value) {
+    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
     }
 
@@ -191,11 +191,11 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         pImmutableSamplersRaw(s);
     }
 
-    public @pointer(target=VkSampler.class) MemorySegment pImmutableSamplersRaw() {
+    public @Pointer(target=VkSampler.class) MemorySegment pImmutableSamplersRaw() {
         return segment.get(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers);
     }
 
-    public void pImmutableSamplersRaw(@pointer(target=VkSampler.class) MemorySegment value) {
+    public void pImmutableSamplersRaw(@Pointer(target=VkSampler.class) MemorySegment value) {
         segment.set(LAYOUT$pImmutableSamplers, OFFSET$pImmutableSamplers, value);
     }
 

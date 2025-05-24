@@ -87,7 +87,7 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkImageFormatProperties.BYTES, VkImageFormatProperties.BYTES));
         }
@@ -150,35 +150,35 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxExtent, SIZE$maxExtent);
     }
 
-    public @unsigned int maxMipLevels() {
+    public @Unsigned int maxMipLevels() {
         return segment.get(LAYOUT$maxMipLevels, OFFSET$maxMipLevels);
     }
 
-    public void maxMipLevels(@unsigned int value) {
+    public void maxMipLevels(@Unsigned int value) {
         segment.set(LAYOUT$maxMipLevels, OFFSET$maxMipLevels, value);
     }
 
-    public @unsigned int maxArrayLayers() {
+    public @Unsigned int maxArrayLayers() {
         return segment.get(LAYOUT$maxArrayLayers, OFFSET$maxArrayLayers);
     }
 
-    public void maxArrayLayers(@unsigned int value) {
+    public void maxArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxArrayLayers, OFFSET$maxArrayLayers, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int sampleCounts() {
+    public @EnumType(VkSampleCountFlags.class) int sampleCounts() {
         return segment.get(LAYOUT$sampleCounts, OFFSET$sampleCounts);
     }
 
-    public void sampleCounts(@enumtype(VkSampleCountFlags.class) int value) {
+    public void sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
     }
 
-    public @unsigned long maxResourceSize() {
+    public @Unsigned long maxResourceSize() {
         return segment.get(LAYOUT$maxResourceSize, OFFSET$maxResourceSize);
     }
 
-    public void maxResourceSize(@unsigned long value) {
+    public void maxResourceSize(@Unsigned long value) {
         segment.set(LAYOUT$maxResourceSize, OFFSET$maxResourceSize, value);
     }
 

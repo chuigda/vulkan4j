@@ -84,7 +84,7 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDeviceOrHostAddressConstAMDX.BYTES, VkDeviceOrHostAddressConstAMDX.BYTES));
         }
@@ -139,19 +139,19 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @unsigned long deviceAddress() {
+    public @Unsigned long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@unsigned long value) {
+    public void deviceAddress(@Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
     }
 
-    public @pointer(comment="void*") MemorySegment hostAddress() {
+    public @Pointer(comment="void*") MemorySegment hostAddress() {
         return segment.get(LAYOUT$hostAddress, OFFSET$hostAddress);
     }
 
-    public void hostAddress(@pointer(comment="void*") MemorySegment value) {
+    public void hostAddress(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
     }
 

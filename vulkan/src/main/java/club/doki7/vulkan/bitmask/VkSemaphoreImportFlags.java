@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkSemaphoreImportFlags {
     public static final int TEMPORARY = 0x1;
 
-    public static String explain(@enumtype(VkSemaphoreImportFlags.class) int flags) {
+    public static String explain(@EnumType(VkSemaphoreImportFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & TEMPORARY) != 0) {
             detectedFlagBits.add("VK_SEMAPHORE_IMPORT_TEMPORARY_BIT");

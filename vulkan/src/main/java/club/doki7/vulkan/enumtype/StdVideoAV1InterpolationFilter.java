@@ -10,7 +10,7 @@ public final class StdVideoAV1InterpolationFilter {
     public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE = 0x4;
     public static final int STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoAV1InterpolationFilter.class) int value) {
+    public static String explain(@EnumType(StdVideoAV1InterpolationFilter.class) int value) {
         return switch (value) {
             case StdVideoAV1InterpolationFilter.STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR -> "STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR";
             case StdVideoAV1InterpolationFilter.STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP -> "STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP";

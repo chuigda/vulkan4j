@@ -9,7 +9,7 @@ public final class VkIndexType {
     public static final int UINT8 = 0x3b9ed528;
     public static final int NONE_KHR = 0x3b9d4e88;
 
-    public static String explain(@enumtype(VkIndexType.class) int value) {
+    public static String explain(@EnumType(VkIndexType.class) int value) {
         return switch (value) {
             case VkIndexType.NONE_KHR -> "VK_INDEX_TYPE_NONE_KHR";
             case VkIndexType.UINT16 -> "VK_INDEX_TYPE_UINT16";

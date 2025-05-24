@@ -87,7 +87,7 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -95,7 +95,7 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoEncodeAV1OperatingPointInfo.BYTES, StdVideoEncodeAV1OperatingPointInfo.BYTES));
         }
@@ -150,51 +150,51 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned short operating_point_idc() {
+    public @Unsigned short operating_point_idc() {
         return segment.get(LAYOUT$operating_point_idc, OFFSET$operating_point_idc);
     }
 
-    public void operating_point_idc(@unsigned short value) {
+    public void operating_point_idc(@Unsigned short value) {
         segment.set(LAYOUT$operating_point_idc, OFFSET$operating_point_idc, value);
     }
 
-    public @unsigned byte seq_level_idx() {
+    public @Unsigned byte seq_level_idx() {
         return segment.get(LAYOUT$seq_level_idx, OFFSET$seq_level_idx);
     }
 
-    public void seq_level_idx(@unsigned byte value) {
+    public void seq_level_idx(@Unsigned byte value) {
         segment.set(LAYOUT$seq_level_idx, OFFSET$seq_level_idx, value);
     }
 
-    public @unsigned byte seq_tier() {
+    public @Unsigned byte seq_tier() {
         return segment.get(LAYOUT$seq_tier, OFFSET$seq_tier);
     }
 
-    public void seq_tier(@unsigned byte value) {
+    public void seq_tier(@Unsigned byte value) {
         segment.set(LAYOUT$seq_tier, OFFSET$seq_tier, value);
     }
 
-    public @unsigned int decoder_buffer_delay() {
+    public @Unsigned int decoder_buffer_delay() {
         return segment.get(LAYOUT$decoder_buffer_delay, OFFSET$decoder_buffer_delay);
     }
 
-    public void decoder_buffer_delay(@unsigned int value) {
+    public void decoder_buffer_delay(@Unsigned int value) {
         segment.set(LAYOUT$decoder_buffer_delay, OFFSET$decoder_buffer_delay, value);
     }
 
-    public @unsigned int encoder_buffer_delay() {
+    public @Unsigned int encoder_buffer_delay() {
         return segment.get(LAYOUT$encoder_buffer_delay, OFFSET$encoder_buffer_delay);
     }
 
-    public void encoder_buffer_delay(@unsigned int value) {
+    public void encoder_buffer_delay(@Unsigned int value) {
         segment.set(LAYOUT$encoder_buffer_delay, OFFSET$encoder_buffer_delay, value);
     }
 
-    public @unsigned byte initial_display_delay_minus_1() {
+    public @Unsigned byte initial_display_delay_minus_1() {
         return segment.get(LAYOUT$initial_display_delay_minus_1, OFFSET$initial_display_delay_minus_1);
     }
 
-    public void initial_display_delay_minus_1(@unsigned byte value) {
+    public void initial_display_delay_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$initial_display_delay_minus_1, OFFSET$initial_display_delay_minus_1, value);
     }
 

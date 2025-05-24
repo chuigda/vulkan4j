@@ -85,7 +85,7 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeH264FrameSizeKHR.BYTES, VkVideoEncodeH264FrameSizeKHR.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @unsigned int frameISize() {
+    public @Unsigned int frameISize() {
         return segment.get(LAYOUT$frameISize, OFFSET$frameISize);
     }
 
-    public void frameISize(@unsigned int value) {
+    public void frameISize(@Unsigned int value) {
         segment.set(LAYOUT$frameISize, OFFSET$frameISize, value);
     }
 
-    public @unsigned int framePSize() {
+    public @Unsigned int framePSize() {
         return segment.get(LAYOUT$framePSize, OFFSET$framePSize);
     }
 
-    public void framePSize(@unsigned int value) {
+    public void framePSize(@Unsigned int value) {
         segment.set(LAYOUT$framePSize, OFFSET$framePSize, value);
     }
 
-    public @unsigned int frameBSize() {
+    public @Unsigned int frameBSize() {
         return segment.get(LAYOUT$frameBSize, OFFSET$frameBSize);
     }
 
-    public void frameBSize(@unsigned int value) {
+    public void frameBSize(@Unsigned int value) {
         segment.set(LAYOUT$frameBSize, OFFSET$frameBSize, value);
     }
 

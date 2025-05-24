@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkFramebufferCreateFlags {
     public static final int IMAGELESS = 0x1;
 
-    public static String explain(@enumtype(VkFramebufferCreateFlags.class) int flags) {
+    public static String explain(@EnumType(VkFramebufferCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & IMAGELESS) != 0) {
             detectedFlagBits.add("VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT");

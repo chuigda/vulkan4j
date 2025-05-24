@@ -97,7 +97,7 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -105,7 +105,7 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkVideoEncodeAV1RateControlInfoKHR.BYTES, VkVideoEncodeAV1RateControlInfoKHR.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         sType(VkStructureType.VIDEO_ENCODE_AV1_RATE_CONTROL_INFO_KHR);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,43 +182,43 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
+    public @EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int gopFrameCount() {
+    public @Unsigned int gopFrameCount() {
         return segment.get(LAYOUT$gopFrameCount, OFFSET$gopFrameCount);
     }
 
-    public void gopFrameCount(@unsigned int value) {
+    public void gopFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$gopFrameCount, OFFSET$gopFrameCount, value);
     }
 
-    public @unsigned int keyFramePeriod() {
+    public @Unsigned int keyFramePeriod() {
         return segment.get(LAYOUT$keyFramePeriod, OFFSET$keyFramePeriod);
     }
 
-    public void keyFramePeriod(@unsigned int value) {
+    public void keyFramePeriod(@Unsigned int value) {
         segment.set(LAYOUT$keyFramePeriod, OFFSET$keyFramePeriod, value);
     }
 
-    public @unsigned int consecutiveBipredictiveFrameCount() {
+    public @Unsigned int consecutiveBipredictiveFrameCount() {
         return segment.get(LAYOUT$consecutiveBipredictiveFrameCount, OFFSET$consecutiveBipredictiveFrameCount);
     }
 
-    public void consecutiveBipredictiveFrameCount(@unsigned int value) {
+    public void consecutiveBipredictiveFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$consecutiveBipredictiveFrameCount, OFFSET$consecutiveBipredictiveFrameCount, value);
     }
 
-    public @unsigned int temporalLayerCount() {
+    public @Unsigned int temporalLayerCount() {
         return segment.get(LAYOUT$temporalLayerCount, OFFSET$temporalLayerCount);
     }
 
-    public void temporalLayerCount(@unsigned int value) {
+    public void temporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$temporalLayerCount, OFFSET$temporalLayerCount, value);
     }
 

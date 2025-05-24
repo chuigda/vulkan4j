@@ -97,7 +97,7 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -105,7 +105,7 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkAccelerationStructureInfoNV.BYTES, VkAccelerationStructureInfoNV.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         sType(VkStructureType.ACCELERATION_STRUCTURE_INFO_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,35 +182,35 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkAccelerationStructureTypeKHR.class) int type() {
+    public @EnumType(VkAccelerationStructureTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@enumtype(VkAccelerationStructureTypeKHR.class) int value) {
+    public void type(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @enumtype(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
+    public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public void flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int instanceCount() {
+    public @Unsigned int instanceCount() {
         return segment.get(LAYOUT$instanceCount, OFFSET$instanceCount);
     }
 
-    public void instanceCount(@unsigned int value) {
+    public void instanceCount(@Unsigned int value) {
         segment.set(LAYOUT$instanceCount, OFFSET$instanceCount, value);
     }
 
-    public @unsigned int geometryCount() {
+    public @Unsigned int geometryCount() {
         return segment.get(LAYOUT$geometryCount, OFFSET$geometryCount);
     }
 
-    public void geometryCount(@unsigned int value) {
+    public void geometryCount(@Unsigned int value) {
         segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
     }
 
@@ -219,7 +219,7 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         pGeometriesRaw(s);
     }
 
-    @unsafe public @Nullable VkGeometryNV.Ptr pGeometries(int assumedCount) {
+    @Unsafe public @Nullable VkGeometryNV.Ptr pGeometries(int assumedCount) {
         MemorySegment s = pGeometriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -237,11 +237,11 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         return new VkGeometryNV(s);
     }
 
-    public @pointer(target=VkGeometryNV.class) MemorySegment pGeometriesRaw() {
+    public @Pointer(target=VkGeometryNV.class) MemorySegment pGeometriesRaw() {
         return segment.get(LAYOUT$pGeometries, OFFSET$pGeometries);
     }
 
-    public void pGeometriesRaw(@pointer(target=VkGeometryNV.class) MemorySegment value) {
+    public void pGeometriesRaw(@Pointer(target=VkGeometryNV.class) MemorySegment value) {
         segment.set(LAYOUT$pGeometries, OFFSET$pGeometries, value);
     }
 

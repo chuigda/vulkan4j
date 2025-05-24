@@ -101,7 +101,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -109,7 +109,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.BYTES, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV.BYTES));
         }
@@ -166,19 +166,19 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
         sType(VkStructureType.PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -186,75 +186,75 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxGraphicsShaderGroupCount() {
+    public @Unsigned int maxGraphicsShaderGroupCount() {
         return segment.get(LAYOUT$maxGraphicsShaderGroupCount, OFFSET$maxGraphicsShaderGroupCount);
     }
 
-    public void maxGraphicsShaderGroupCount(@unsigned int value) {
+    public void maxGraphicsShaderGroupCount(@Unsigned int value) {
         segment.set(LAYOUT$maxGraphicsShaderGroupCount, OFFSET$maxGraphicsShaderGroupCount, value);
     }
 
-    public @unsigned int maxIndirectSequenceCount() {
+    public @Unsigned int maxIndirectSequenceCount() {
         return segment.get(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount);
     }
 
-    public void maxIndirectSequenceCount(@unsigned int value) {
+    public void maxIndirectSequenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount, value);
     }
 
-    public @unsigned int maxIndirectCommandsTokenCount() {
+    public @Unsigned int maxIndirectCommandsTokenCount() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount);
     }
 
-    public void maxIndirectCommandsTokenCount(@unsigned int value) {
+    public void maxIndirectCommandsTokenCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount, value);
     }
 
-    public @unsigned int maxIndirectCommandsStreamCount() {
+    public @Unsigned int maxIndirectCommandsStreamCount() {
         return segment.get(LAYOUT$maxIndirectCommandsStreamCount, OFFSET$maxIndirectCommandsStreamCount);
     }
 
-    public void maxIndirectCommandsStreamCount(@unsigned int value) {
+    public void maxIndirectCommandsStreamCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsStreamCount, OFFSET$maxIndirectCommandsStreamCount, value);
     }
 
-    public @unsigned int maxIndirectCommandsTokenOffset() {
+    public @Unsigned int maxIndirectCommandsTokenOffset() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset);
     }
 
-    public void maxIndirectCommandsTokenOffset(@unsigned int value) {
+    public void maxIndirectCommandsTokenOffset(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset, value);
     }
 
-    public @unsigned int maxIndirectCommandsStreamStride() {
+    public @Unsigned int maxIndirectCommandsStreamStride() {
         return segment.get(LAYOUT$maxIndirectCommandsStreamStride, OFFSET$maxIndirectCommandsStreamStride);
     }
 
-    public void maxIndirectCommandsStreamStride(@unsigned int value) {
+    public void maxIndirectCommandsStreamStride(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsStreamStride, OFFSET$maxIndirectCommandsStreamStride, value);
     }
 
-    public @unsigned int minSequencesCountBufferOffsetAlignment() {
+    public @Unsigned int minSequencesCountBufferOffsetAlignment() {
         return segment.get(LAYOUT$minSequencesCountBufferOffsetAlignment, OFFSET$minSequencesCountBufferOffsetAlignment);
     }
 
-    public void minSequencesCountBufferOffsetAlignment(@unsigned int value) {
+    public void minSequencesCountBufferOffsetAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minSequencesCountBufferOffsetAlignment, OFFSET$minSequencesCountBufferOffsetAlignment, value);
     }
 
-    public @unsigned int minSequencesIndexBufferOffsetAlignment() {
+    public @Unsigned int minSequencesIndexBufferOffsetAlignment() {
         return segment.get(LAYOUT$minSequencesIndexBufferOffsetAlignment, OFFSET$minSequencesIndexBufferOffsetAlignment);
     }
 
-    public void minSequencesIndexBufferOffsetAlignment(@unsigned int value) {
+    public void minSequencesIndexBufferOffsetAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minSequencesIndexBufferOffsetAlignment, OFFSET$minSequencesIndexBufferOffsetAlignment, value);
     }
 
-    public @unsigned int minIndirectCommandsBufferOffsetAlignment() {
+    public @Unsigned int minIndirectCommandsBufferOffsetAlignment() {
         return segment.get(LAYOUT$minIndirectCommandsBufferOffsetAlignment, OFFSET$minIndirectCommandsBufferOffsetAlignment);
     }
 
-    public void minIndirectCommandsBufferOffsetAlignment(@unsigned int value) {
+    public void minIndirectCommandsBufferOffsetAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minIndirectCommandsBufferOffsetAlignment, OFFSET$minIndirectCommandsBufferOffsetAlignment, value);
     }
 

@@ -94,7 +94,7 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDepthBiasRepresentationInfoEXT.BYTES, VkDepthBiasRepresentationInfoEXT.BYTES));
         }
@@ -159,19 +159,19 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         sType(VkStructureType.DEPTH_BIAS_REPRESENTATION_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -179,19 +179,19 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDepthBiasRepresentationEXT.class) int depthBiasRepresentation() {
+    public @EnumType(VkDepthBiasRepresentationEXT.class) int depthBiasRepresentation() {
         return segment.get(LAYOUT$depthBiasRepresentation, OFFSET$depthBiasRepresentation);
     }
 
-    public void depthBiasRepresentation(@enumtype(VkDepthBiasRepresentationEXT.class) int value) {
+    public void depthBiasRepresentation(@EnumType(VkDepthBiasRepresentationEXT.class) int value) {
         segment.set(LAYOUT$depthBiasRepresentation, OFFSET$depthBiasRepresentation, value);
     }
 
-    public @unsigned int depthBiasExact() {
+    public @Unsigned int depthBiasExact() {
         return segment.get(LAYOUT$depthBiasExact, OFFSET$depthBiasExact);
     }
 
-    public void depthBiasExact(@unsigned int value) {
+    public void depthBiasExact(@Unsigned int value) {
         segment.set(LAYOUT$depthBiasExact, OFFSET$depthBiasExact, value);
     }
 

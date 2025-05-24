@@ -85,7 +85,7 @@ public record VkDrmFormatModifierProperties2EXT(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -93,7 +93,7 @@ public record VkDrmFormatModifierProperties2EXT(@NotNull MemorySegment segment) 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDrmFormatModifierProperties2EXT.BYTES, VkDrmFormatModifierProperties2EXT.BYTES));
         }
@@ -140,27 +140,27 @@ public record VkDrmFormatModifierProperties2EXT(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @unsigned long drmFormatModifier() {
+    public @Unsigned long drmFormatModifier() {
         return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
     }
 
-    public void drmFormatModifier(@unsigned long value) {
+    public void drmFormatModifier(@Unsigned long value) {
         segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
     }
 
-    public @unsigned int drmFormatModifierPlaneCount() {
+    public @Unsigned int drmFormatModifierPlaneCount() {
         return segment.get(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount);
     }
 
-    public void drmFormatModifierPlaneCount(@unsigned int value) {
+    public void drmFormatModifierPlaneCount(@Unsigned int value) {
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
     }
 
-    public @enumtype(VkFormatFeatureFlags2.class) long drmFormatModifierTilingFeatures() {
+    public @EnumType(VkFormatFeatureFlags2.class) long drmFormatModifierTilingFeatures() {
         return segment.get(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures);
     }
 
-    public void drmFormatModifierTilingFeatures(@enumtype(VkFormatFeatureFlags2.class) long value) {
+    public void drmFormatModifierTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures, value);
     }
 

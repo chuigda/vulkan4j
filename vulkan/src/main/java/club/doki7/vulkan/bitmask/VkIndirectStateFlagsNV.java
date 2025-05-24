@@ -9,7 +9,7 @@ import java.util.List;
 public final class VkIndirectStateFlagsNV {
     public static final int FLAG_FRONTFACE = 0x1;
 
-    public static String explain(@enumtype(VkIndirectStateFlagsNV.class) int flags) {
+    public static String explain(@EnumType(VkIndirectStateFlagsNV.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
         if ((flags & FLAG_FRONTFACE) != 0) {
             detectedFlagBits.add("VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV");

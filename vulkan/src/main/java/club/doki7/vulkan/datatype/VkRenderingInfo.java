@@ -100,7 +100,7 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -108,7 +108,7 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkRenderingInfo.BYTES, VkRenderingInfo.BYTES));
         }
@@ -165,19 +165,19 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         sType(VkStructureType.RENDERING_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -185,11 +185,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkRenderingFlags.class) int flags() {
+    public @EnumType(VkRenderingFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkRenderingFlags.class) int value) {
+    public void flags(@EnumType(VkRenderingFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
@@ -201,27 +201,27 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
     }
 
-    public @unsigned int layerCount() {
+    public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@unsigned int value) {
+    public void layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
     }
 
-    public @unsigned int viewMask() {
+    public @Unsigned int viewMask() {
         return segment.get(LAYOUT$viewMask, OFFSET$viewMask);
     }
 
-    public void viewMask(@unsigned int value) {
+    public void viewMask(@Unsigned int value) {
         segment.set(LAYOUT$viewMask, OFFSET$viewMask, value);
     }
 
-    public @unsigned int colorAttachmentCount() {
+    public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@unsigned int value) {
+    public void colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
@@ -230,7 +230,7 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         pColorAttachmentsRaw(s);
     }
 
-    @unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pColorAttachments(int assumedCount) {
+    @Unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pColorAttachments(int assumedCount) {
         MemorySegment s = pColorAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -248,11 +248,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pColorAttachmentsRaw() {
+    public @Pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pColorAttachmentsRaw() {
         return segment.get(LAYOUT$pColorAttachments, OFFSET$pColorAttachments);
     }
 
-    public void pColorAttachmentsRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
+    public void pColorAttachmentsRaw(@Pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
@@ -261,7 +261,7 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         pDepthAttachmentRaw(s);
     }
 
-    @unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pDepthAttachment(int assumedCount) {
+    @Unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pDepthAttachment(int assumedCount) {
         MemorySegment s = pDepthAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -279,11 +279,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pDepthAttachmentRaw() {
+    public @Pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pDepthAttachmentRaw() {
         return segment.get(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment);
     }
 
-    public void pDepthAttachmentRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
+    public void pDepthAttachmentRaw(@Pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pDepthAttachment, OFFSET$pDepthAttachment, value);
     }
 
@@ -292,7 +292,7 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         pStencilAttachmentRaw(s);
     }
 
-    @unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pStencilAttachment(int assumedCount) {
+    @Unsafe public @Nullable VkRenderingAttachmentInfo.Ptr pStencilAttachment(int assumedCount) {
         MemorySegment s = pStencilAttachmentRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -310,11 +310,11 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         return new VkRenderingAttachmentInfo(s);
     }
 
-    public @pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pStencilAttachmentRaw() {
+    public @Pointer(target=VkRenderingAttachmentInfo.class) MemorySegment pStencilAttachmentRaw() {
         return segment.get(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment);
     }
 
-    public void pStencilAttachmentRaw(@pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
+    public void pStencilAttachmentRaw(@Pointer(target=VkRenderingAttachmentInfo.class) MemorySegment value) {
         segment.set(LAYOUT$pStencilAttachment, OFFSET$pStencilAttachment, value);
     }
 

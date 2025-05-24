@@ -97,7 +97,7 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -105,7 +105,7 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkDebugUtilsMessengerCreateInfoEXT.BYTES, VkDebugUtilsMessengerCreateInfoEXT.BYTES));
         }
@@ -162,19 +162,19 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         sType(VkStructureType.DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -182,35 +182,35 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkDebugUtilsMessengerCreateFlagsEXT.class) int flags() {
+    public @EnumType(VkDebugUtilsMessengerCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkDebugUtilsMessengerCreateFlagsEXT.class) int value) {
+    public void flags(@EnumType(VkDebugUtilsMessengerCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity() {
+    public @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity() {
         return segment.get(LAYOUT$messageSeverity, OFFSET$messageSeverity);
     }
 
-    public void messageSeverity(@enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int value) {
+    public void messageSeverity(@EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int value) {
         segment.set(LAYOUT$messageSeverity, OFFSET$messageSeverity, value);
     }
 
-    public @enumtype(VkDebugUtilsMessageTypeFlagsEXT.class) int messageType() {
+    public @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int messageType() {
         return segment.get(LAYOUT$messageType, OFFSET$messageType);
     }
 
-    public void messageType(@enumtype(VkDebugUtilsMessageTypeFlagsEXT.class) int value) {
+    public void messageType(@EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int value) {
         segment.set(LAYOUT$messageType, OFFSET$messageType, value);
     }
 
-    public @pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment pfnUserCallback() {
+    public @Pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment pfnUserCallback() {
         return segment.get(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback);
     }
 
-    public void pfnUserCallback(@pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment value) {
+    public void pfnUserCallback(@Pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment value) {
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
     }
 
@@ -218,11 +218,11 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         pfnUserCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment pUserData() {
+    public @Pointer(comment="void*") MemorySegment pUserData() {
         return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
     }
 
-    public void pUserData(@pointer(comment="void*") MemorySegment value) {
+    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 

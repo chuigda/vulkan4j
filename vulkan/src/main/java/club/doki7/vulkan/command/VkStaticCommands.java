@@ -24,7 +24,7 @@ public final class VkStaticCommands {
 
     // region command wrappers
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceProcAddr.html"><code>vkGetDeviceProcAddr</code></a>
-    public @pointer(comment="PFN_vkVoidFunction") MemorySegment getDeviceProcAddr(
+    public @Pointer(comment="PFN_vkVoidFunction") MemorySegment getDeviceProcAddr(
         VkDevice device,
         BytePtr pName
     ) {
@@ -40,7 +40,7 @@ public final class VkStaticCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetInstanceProcAddr.html"><code>vkGetInstanceProcAddr</code></a>
-    public @pointer(comment="PFN_vkVoidFunction") MemorySegment getInstanceProcAddr(
+    public @Pointer(comment="PFN_vkVoidFunction") MemorySegment getInstanceProcAddr(
         @Nullable VkInstance instance,
         BytePtr pName
     ) {

@@ -99,7 +99,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -107,7 +107,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkPipelineMultisampleStateCreateInfo.BYTES, VkPipelineMultisampleStateCreateInfo.BYTES));
         }
@@ -164,19 +164,19 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         sType(VkStructureType.PIPELINE_MULTISAMPLE_STATE_CREATE_INFO);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -184,27 +184,27 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @enumtype(VkPipelineMultisampleStateCreateFlags.class) int flags() {
+    public @EnumType(VkPipelineMultisampleStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@enumtype(VkPipelineMultisampleStateCreateFlags.class) int value) {
+    public void flags(@EnumType(VkPipelineMultisampleStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @enumtype(VkSampleCountFlags.class) int rasterizationSamples() {
+    public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public void rasterizationSamples(@enumtype(VkSampleCountFlags.class) int value) {
+    public void rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
     }
 
-    public @unsigned int sampleShadingEnable() {
+    public @Unsigned int sampleShadingEnable() {
         return segment.get(LAYOUT$sampleShadingEnable, OFFSET$sampleShadingEnable);
     }
 
-    public void sampleShadingEnable(@unsigned int value) {
+    public void sampleShadingEnable(@Unsigned int value) {
         segment.set(LAYOUT$sampleShadingEnable, OFFSET$sampleShadingEnable, value);
     }
 
@@ -220,7 +220,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pSampleMask() {
+    public @Nullable @Unsigned IntPtr pSampleMask() {
         MemorySegment s = pSampleMaskRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -228,32 +228,32 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return new IntPtr(s);
     }
 
-    public void pSampleMask(@Nullable @unsigned IntPtr value) {
+    public void pSampleMask(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleMaskRaw(s);
     }
 
-    public @pointer(comment="int*") MemorySegment pSampleMaskRaw() {
+    public @Pointer(comment="int*") MemorySegment pSampleMaskRaw() {
         return segment.get(LAYOUT$pSampleMask, OFFSET$pSampleMask);
     }
 
-    public void pSampleMaskRaw(@pointer(comment="int*") MemorySegment value) {
+    public void pSampleMaskRaw(@Pointer(comment="int*") MemorySegment value) {
         segment.set(LAYOUT$pSampleMask, OFFSET$pSampleMask, value);
     }
 
-    public @unsigned int alphaToCoverageEnable() {
+    public @Unsigned int alphaToCoverageEnable() {
         return segment.get(LAYOUT$alphaToCoverageEnable, OFFSET$alphaToCoverageEnable);
     }
 
-    public void alphaToCoverageEnable(@unsigned int value) {
+    public void alphaToCoverageEnable(@Unsigned int value) {
         segment.set(LAYOUT$alphaToCoverageEnable, OFFSET$alphaToCoverageEnable, value);
     }
 
-    public @unsigned int alphaToOneEnable() {
+    public @Unsigned int alphaToOneEnable() {
         return segment.get(LAYOUT$alphaToOneEnable, OFFSET$alphaToOneEnable);
     }
 
-    public void alphaToOneEnable(@unsigned int value) {
+    public void alphaToOneEnable(@Unsigned int value) {
         segment.set(LAYOUT$alphaToOneEnable, OFFSET$alphaToOneEnable, value);
     }
 

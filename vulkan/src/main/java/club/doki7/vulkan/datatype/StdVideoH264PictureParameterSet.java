@@ -91,7 +91,7 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -99,7 +99,7 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH264PictureParameterSet.BYTES, StdVideoH264PictureParameterSet.BYTES));
         }
@@ -154,43 +154,43 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte seq_parameter_set_id() {
+    public @Unsigned byte seq_parameter_set_id() {
         return segment.get(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id);
     }
 
-    public void seq_parameter_set_id(@unsigned byte value) {
+    public void seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id, value);
     }
 
-    public @unsigned byte pic_parameter_set_id() {
+    public @Unsigned byte pic_parameter_set_id() {
         return segment.get(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id);
     }
 
-    public void pic_parameter_set_id(@unsigned byte value) {
+    public void pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id, value);
     }
 
-    public @unsigned byte num_ref_idx_l0_default_active_minus1() {
+    public @Unsigned byte num_ref_idx_l0_default_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l0_default_active_minus1, OFFSET$num_ref_idx_l0_default_active_minus1);
     }
 
-    public void num_ref_idx_l0_default_active_minus1(@unsigned byte value) {
+    public void num_ref_idx_l0_default_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l0_default_active_minus1, OFFSET$num_ref_idx_l0_default_active_minus1, value);
     }
 
-    public @unsigned byte num_ref_idx_l1_default_active_minus1() {
+    public @Unsigned byte num_ref_idx_l1_default_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l1_default_active_minus1, OFFSET$num_ref_idx_l1_default_active_minus1);
     }
 
-    public void num_ref_idx_l1_default_active_minus1(@unsigned byte value) {
+    public void num_ref_idx_l1_default_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l1_default_active_minus1, OFFSET$num_ref_idx_l1_default_active_minus1, value);
     }
 
-    public @enumtype(StdVideoH264WeightedBipredIdc.class) int weighted_bipred_idc() {
+    public @EnumType(StdVideoH264WeightedBipredIdc.class) int weighted_bipred_idc() {
         return segment.get(LAYOUT$weighted_bipred_idc, OFFSET$weighted_bipred_idc);
     }
 
-    public void weighted_bipred_idc(@enumtype(StdVideoH264WeightedBipredIdc.class) int value) {
+    public void weighted_bipred_idc(@EnumType(StdVideoH264WeightedBipredIdc.class) int value) {
         segment.set(LAYOUT$weighted_bipred_idc, OFFSET$weighted_bipred_idc, value);
     }
 
@@ -231,7 +231,7 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         pScalingListsRaw(s);
     }
 
-    @unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {
+    @Unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {
         MemorySegment s = pScalingListsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -249,11 +249,11 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         return new StdVideoH264ScalingLists(s);
     }
 
-    public @pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
+    public @Pointer(target=StdVideoH264ScalingLists.class) MemorySegment pScalingListsRaw() {
         return segment.get(LAYOUT$pScalingLists, OFFSET$pScalingLists);
     }
 
-    public void pScalingListsRaw(@pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
+    public void pScalingListsRaw(@Pointer(target=StdVideoH264ScalingLists.class) MemorySegment value) {
         segment.set(LAYOUT$pScalingLists, OFFSET$pScalingLists, value);
     }
 

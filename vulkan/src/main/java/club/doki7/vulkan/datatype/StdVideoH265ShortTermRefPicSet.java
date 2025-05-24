@@ -94,7 +94,7 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -102,7 +102,7 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * StdVideoH265ShortTermRefPicSet.BYTES, StdVideoH265ShortTermRefPicSet.BYTES));
         }
@@ -157,86 +157,86 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned int delta_idx_minus1() {
+    public @Unsigned int delta_idx_minus1() {
         return segment.get(LAYOUT$delta_idx_minus1, OFFSET$delta_idx_minus1);
     }
 
-    public void delta_idx_minus1(@unsigned int value) {
+    public void delta_idx_minus1(@Unsigned int value) {
         segment.set(LAYOUT$delta_idx_minus1, OFFSET$delta_idx_minus1, value);
     }
 
-    public @unsigned short use_delta_flag() {
+    public @Unsigned short use_delta_flag() {
         return segment.get(LAYOUT$use_delta_flag, OFFSET$use_delta_flag);
     }
 
-    public void use_delta_flag(@unsigned short value) {
+    public void use_delta_flag(@Unsigned short value) {
         segment.set(LAYOUT$use_delta_flag, OFFSET$use_delta_flag, value);
     }
 
-    public @unsigned short abs_delta_rps_minus1() {
+    public @Unsigned short abs_delta_rps_minus1() {
         return segment.get(LAYOUT$abs_delta_rps_minus1, OFFSET$abs_delta_rps_minus1);
     }
 
-    public void abs_delta_rps_minus1(@unsigned short value) {
+    public void abs_delta_rps_minus1(@Unsigned short value) {
         segment.set(LAYOUT$abs_delta_rps_minus1, OFFSET$abs_delta_rps_minus1, value);
     }
 
-    public @unsigned short used_by_curr_pic_flag() {
+    public @Unsigned short used_by_curr_pic_flag() {
         return segment.get(LAYOUT$used_by_curr_pic_flag, OFFSET$used_by_curr_pic_flag);
     }
 
-    public void used_by_curr_pic_flag(@unsigned short value) {
+    public void used_by_curr_pic_flag(@Unsigned short value) {
         segment.set(LAYOUT$used_by_curr_pic_flag, OFFSET$used_by_curr_pic_flag, value);
     }
 
-    public @unsigned short used_by_curr_pic_s0_flag() {
+    public @Unsigned short used_by_curr_pic_s0_flag() {
         return segment.get(LAYOUT$used_by_curr_pic_s0_flag, OFFSET$used_by_curr_pic_s0_flag);
     }
 
-    public void used_by_curr_pic_s0_flag(@unsigned short value) {
+    public void used_by_curr_pic_s0_flag(@Unsigned short value) {
         segment.set(LAYOUT$used_by_curr_pic_s0_flag, OFFSET$used_by_curr_pic_s0_flag, value);
     }
 
-    public @unsigned short used_by_curr_pic_s1_flag() {
+    public @Unsigned short used_by_curr_pic_s1_flag() {
         return segment.get(LAYOUT$used_by_curr_pic_s1_flag, OFFSET$used_by_curr_pic_s1_flag);
     }
 
-    public void used_by_curr_pic_s1_flag(@unsigned short value) {
+    public void used_by_curr_pic_s1_flag(@Unsigned short value) {
         segment.set(LAYOUT$used_by_curr_pic_s1_flag, OFFSET$used_by_curr_pic_s1_flag, value);
     }
 
 
 
 
-    public @unsigned byte num_negative_pics() {
+    public @Unsigned byte num_negative_pics() {
         return segment.get(LAYOUT$num_negative_pics, OFFSET$num_negative_pics);
     }
 
-    public void num_negative_pics(@unsigned byte value) {
+    public void num_negative_pics(@Unsigned byte value) {
         segment.set(LAYOUT$num_negative_pics, OFFSET$num_negative_pics, value);
     }
 
-    public @unsigned byte num_positive_pics() {
+    public @Unsigned byte num_positive_pics() {
         return segment.get(LAYOUT$num_positive_pics, OFFSET$num_positive_pics);
     }
 
-    public void num_positive_pics(@unsigned byte value) {
+    public void num_positive_pics(@Unsigned byte value) {
         segment.set(LAYOUT$num_positive_pics, OFFSET$num_positive_pics, value);
     }
 
-    public @unsigned short delta_poc_s0_minus1() {
+    public @Unsigned short delta_poc_s0_minus1() {
         return segment.get(LAYOUT$delta_poc_s0_minus1, OFFSET$delta_poc_s0_minus1);
     }
 
-    public void delta_poc_s0_minus1(@unsigned short value) {
+    public void delta_poc_s0_minus1(@Unsigned short value) {
         segment.set(LAYOUT$delta_poc_s0_minus1, OFFSET$delta_poc_s0_minus1, value);
     }
 
-    public @unsigned short delta_poc_s1_minus1() {
+    public @Unsigned short delta_poc_s1_minus1() {
         return segment.get(LAYOUT$delta_poc_s1_minus1, OFFSET$delta_poc_s1_minus1);
     }
 
-    public void delta_poc_s1_minus1(@unsigned short value) {
+    public void delta_poc_s1_minus1(@Unsigned short value) {
         segment.set(LAYOUT$delta_poc_s1_minus1, OFFSET$delta_poc_s1_minus1, value);
     }
 

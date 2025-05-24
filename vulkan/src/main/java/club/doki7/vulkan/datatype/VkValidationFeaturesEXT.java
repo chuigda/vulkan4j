@@ -96,7 +96,7 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -104,7 +104,7 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkValidationFeaturesEXT.BYTES, VkValidationFeaturesEXT.BYTES));
         }
@@ -161,19 +161,19 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         sType(VkStructureType.VALIDATION_FEATURES_EXT);
     }
 
-    public @enumtype(VkStructureType.class) int sType() {
+    public @EnumType(VkStructureType.class) int sType() {
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@enumtype(VkStructureType.class) int value) {
+    public void sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
     }
 
-    public @pointer(comment="void*") MemorySegment pNext() {
+    public @Pointer(comment="void*") MemorySegment pNext() {
         return segment.get(LAYOUT$pNext, OFFSET$pNext);
     }
 
-    public void pNext(@pointer(comment="void*") MemorySegment value) {
+    public void pNext(@Pointer(comment="void*") MemorySegment value) {
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
@@ -181,11 +181,11 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int enabledValidationFeatureCount() {
+    public @Unsigned int enabledValidationFeatureCount() {
         return segment.get(LAYOUT$enabledValidationFeatureCount, OFFSET$enabledValidationFeatureCount);
     }
 
-    public void enabledValidationFeatureCount(@unsigned int value) {
+    public void enabledValidationFeatureCount(@Unsigned int value) {
         segment.set(LAYOUT$enabledValidationFeatureCount, OFFSET$enabledValidationFeatureCount, value);
     }
 
@@ -194,7 +194,7 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkValidationFeatureEnableEXT.class) IntPtr pEnabledValidationFeatures() {
+    public @Nullable @EnumType(VkValidationFeatureEnableEXT.class) IntPtr pEnabledValidationFeatures() {
         MemorySegment s = pEnabledValidationFeaturesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -202,24 +202,24 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pEnabledValidationFeatures(@Nullable @enumtype(VkValidationFeatureEnableEXT.class) IntPtr value) {
+    public void pEnabledValidationFeatures(@Nullable @EnumType(VkValidationFeatureEnableEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEnabledValidationFeaturesRaw(s);
     }
 
-    public @pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment pEnabledValidationFeaturesRaw() {
+    public @Pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment pEnabledValidationFeaturesRaw() {
         return segment.get(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures);
     }
 
-    public void pEnabledValidationFeaturesRaw(@pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment value) {
+    public void pEnabledValidationFeaturesRaw(@Pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures, value);
     }
 
-    public @unsigned int disabledValidationFeatureCount() {
+    public @Unsigned int disabledValidationFeatureCount() {
         return segment.get(LAYOUT$disabledValidationFeatureCount, OFFSET$disabledValidationFeatureCount);
     }
 
-    public void disabledValidationFeatureCount(@unsigned int value) {
+    public void disabledValidationFeatureCount(@Unsigned int value) {
         segment.set(LAYOUT$disabledValidationFeatureCount, OFFSET$disabledValidationFeatureCount, value);
     }
 
@@ -228,7 +228,7 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkValidationFeatureDisableEXT.class) IntPtr pDisabledValidationFeatures() {
+    public @Nullable @EnumType(VkValidationFeatureDisableEXT.class) IntPtr pDisabledValidationFeatures() {
         MemorySegment s = pDisabledValidationFeaturesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -236,16 +236,16 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pDisabledValidationFeatures(@Nullable @enumtype(VkValidationFeatureDisableEXT.class) IntPtr value) {
+    public void pDisabledValidationFeatures(@Nullable @EnumType(VkValidationFeatureDisableEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDisabledValidationFeaturesRaw(s);
     }
 
-    public @pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment pDisabledValidationFeaturesRaw() {
+    public @Pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment pDisabledValidationFeaturesRaw() {
         return segment.get(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures);
     }
 
-    public void pDisabledValidationFeaturesRaw(@pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment value) {
+    public void pDisabledValidationFeaturesRaw(@Pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment value) {
         segment.set(LAYOUT$pDisabledValidationFeatures, OFFSET$pDisabledValidationFeatures, value);
     }
 

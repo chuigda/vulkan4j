@@ -23,7 +23,7 @@ public final class StdVideoH265AspectRatioIdc {
     public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR = 0xff;
     public static final int STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID = 0x7fffffff;
 
-    public static String explain(@enumtype(StdVideoH265AspectRatioIdc.class) int value) {
+    public static String explain(@EnumType(StdVideoH265AspectRatioIdc.class) int value) {
         return switch (value) {
             case StdVideoH265AspectRatioIdc.STD_VIDEO_H265_ASPECT_RATIO_IDC_10_11 -> "STD_VIDEO_H265_ASPECT_RATIO_IDC_10_11";
             case StdVideoH265AspectRatioIdc.STD_VIDEO_H265_ASPECT_RATIO_IDC_12_11 -> "STD_VIDEO_H265_ASPECT_RATIO_IDC_12_11";

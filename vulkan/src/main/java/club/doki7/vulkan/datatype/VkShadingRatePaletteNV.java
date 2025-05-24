@@ -84,7 +84,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -92,7 +92,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         /// If the size of the underlying segment is actually known in advance and correctly set, and
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
-        @unsafe
+        @Unsafe
         public @NotNull Ptr reinterpret(long index) {
             return new Ptr(segment.asSlice(index * VkShadingRatePaletteNV.BYTES, VkShadingRatePaletteNV.BYTES));
         }
@@ -139,11 +139,11 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public @unsigned int shadingRatePaletteEntryCount() {
+    public @Unsigned int shadingRatePaletteEntryCount() {
         return segment.get(LAYOUT$shadingRatePaletteEntryCount, OFFSET$shadingRatePaletteEntryCount);
     }
 
-    public void shadingRatePaletteEntryCount(@unsigned int value) {
+    public void shadingRatePaletteEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$shadingRatePaletteEntryCount, OFFSET$shadingRatePaletteEntryCount, value);
     }
 
@@ -152,7 +152,7 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
     /// or writing to the buffer.
-    public @Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntPtr pShadingRatePaletteEntries() {
+    public @Nullable @EnumType(VkShadingRatePaletteEntryNV.class) IntPtr pShadingRatePaletteEntries() {
         MemorySegment s = pShadingRatePaletteEntriesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -160,16 +160,16 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         return new IntPtr(s);
     }
 
-    public void pShadingRatePaletteEntries(@Nullable @enumtype(VkShadingRatePaletteEntryNV.class) IntPtr value) {
+    public void pShadingRatePaletteEntries(@Nullable @EnumType(VkShadingRatePaletteEntryNV.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePaletteEntriesRaw(s);
     }
 
-    public @pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
+    public @Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
         return segment.get(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries);
     }
 
-    public void pShadingRatePaletteEntriesRaw(@pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
+    public void pShadingRatePaletteEntriesRaw(@Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment value) {
         segment.set(LAYOUT$pShadingRatePaletteEntries, OFFSET$pShadingRatePaletteEntries, value);
     }
 

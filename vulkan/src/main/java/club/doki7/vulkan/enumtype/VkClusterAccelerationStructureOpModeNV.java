@@ -8,7 +8,7 @@ public final class VkClusterAccelerationStructureOpModeNV {
     public static final int EXPLICIT_DESTINATIONS = 0x1;
     public static final int COMPUTE_SIZES = 0x2;
 
-    public static String explain(@enumtype(VkClusterAccelerationStructureOpModeNV.class) int value) {
+    public static String explain(@EnumType(VkClusterAccelerationStructureOpModeNV.class) int value) {
         return switch (value) {
             case VkClusterAccelerationStructureOpModeNV.COMPUTE_SIZES -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV";
             case VkClusterAccelerationStructureOpModeNV.EXPLICIT_DESTINATIONS -> "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV";

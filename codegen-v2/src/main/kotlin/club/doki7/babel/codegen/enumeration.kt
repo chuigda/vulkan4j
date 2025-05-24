@@ -52,7 +52,7 @@ fun generateEnumeration(
 
         if (variants.isNotEmpty()) {
             +""
-            +"public static String explain(@enumtype(${enumeration.name}.class) int value) {"
+            +"public static String explain(@EnumType(${enumeration.name}.class) int value) {"
             indent {
                 +"return switch (value) {"
                 indent {

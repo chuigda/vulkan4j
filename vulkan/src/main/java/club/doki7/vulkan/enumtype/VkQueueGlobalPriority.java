@@ -9,7 +9,7 @@ public final class VkQueueGlobalPriority {
     public static final int HIGH = 0x200;
     public static final int REALTIME = 0x400;
 
-    public static String explain(@enumtype(VkQueueGlobalPriority.class) int value) {
+    public static String explain(@EnumType(VkQueueGlobalPriority.class) int value) {
         return switch (value) {
             case VkQueueGlobalPriority.HIGH -> "VK_QUEUE_GLOBAL_PRIORITY_HIGH";
             case VkQueueGlobalPriority.LOW -> "VK_QUEUE_GLOBAL_PRIORITY_LOW";
