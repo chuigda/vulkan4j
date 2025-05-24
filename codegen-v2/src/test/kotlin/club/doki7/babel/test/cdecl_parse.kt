@@ -1,6 +1,7 @@
 package club.doki7.babel.test
 
 import club.doki7.babel.cdecl.RawArrayType
+import club.doki7.babel.cdecl.RawFunctionType
 import club.doki7.babel.cdecl.RawIdentifierType
 import club.doki7.babel.cdecl.RawPointerType
 import club.doki7.babel.cdecl.TokenKind
@@ -9,6 +10,7 @@ import club.doki7.babel.cdecl.parseEnumeratorDecl
 import club.doki7.babel.cdecl.parseFunctionDecl
 import club.doki7.babel.cdecl.parseStructFieldDecl
 import club.doki7.babel.cdecl.parseType
+import club.doki7.babel.cdecl.parseTypedefDecl
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -304,5 +306,89 @@ class TestParseFunctionDecl {
         assertEquals("uint32_t", (fourthParamType.pointee as RawIdentifierType).ident)
         assertEquals(1, fourthParamType.trivia.size)
         assertEquals("VMA_NOT_NULL", fourthParamType.trivia[0])
+    }
+}
+
+class TestParseTypedef {
+    @Test
+    fun test1() {
+        val tokenizer = Tokenizer(listOf("typedef VkFlags VmaVirtualBlockCreateFlags;"), 0)
+        val typedefDecl = parseTypedefDecl(tokenizer)
+
+        assertEquals("VmaVirtualBlockCreateFlags", typedefDecl.name)
+        assertTrue(typedefDecl.aliasedType is RawIdentifierType)
+        assertEquals("VkFlags", typedefDecl.aliasedType.ident)
+        assertTrue(typedefDecl.trivia.isEmpty())
+
+        val nextToken = tokenizer.next()
+        assertEquals(TokenKind.EOI, nextToken.kind)
+    }
+
+    @Test
+    fun test2() {
+        val tokenizer = Tokenizer("""
+            typedef void (VKAPI_PTR* PFN_vmaFreeDeviceMemoryFunction)(
+                VmaAllocator VMA_NOT_NULL                    allocator,
+                uint32_t                                     memoryType,
+                VkDeviceMemory VMA_NOT_NULL_NON_DISPATCHABLE memory,
+                VkDeviceSize                                 size,
+                void* VMA_NULLABLE                           pUserData);
+        """.trimIndent().split("\n"), 0)
+        val typedefDecl = parseTypedefDecl(tokenizer)
+
+        assertEquals("PFN_vmaFreeDeviceMemoryFunction", typedefDecl.name)
+        assertTrue(typedefDecl.aliasedType is RawFunctionType)
+        val functionType = typedefDecl.aliasedType
+
+        assertTrue(functionType.returnType is RawIdentifierType)
+        val returnType = functionType.returnType as RawIdentifierType
+        assertEquals("void", returnType.ident)
+        assertEquals(1, typedefDecl.trivia.size)
+        assertTrue("VKAPI_PTR" in typedefDecl.trivia)
+
+        assertEquals(5, functionType.params.size)
+
+        val param1 = functionType.params[0]
+        assertEquals("allocator", param1.first)
+        assertTrue(param1.second is RawIdentifierType)
+        val param1Type = param1.second as RawIdentifierType
+        assertEquals("VmaAllocator", param1Type.ident)
+        assertEquals(1, param1Type.trivia.size)
+        assertEquals("VMA_NOT_NULL", param1Type.trivia[0])
+
+        val param2 = functionType.params[1]
+        assertEquals("memoryType", param2.first)
+        assertTrue(param2.second is RawIdentifierType)
+        val param2Type = param2.second as RawIdentifierType
+        assertEquals("uint32_t", param2Type.ident)
+        assertTrue(param2Type.trivia.isEmpty())
+
+        val param3 = functionType.params[2]
+        assertEquals("memory", param3.first)
+        assertTrue(param3.second is RawIdentifierType)
+        val param3Type = param3.second as RawIdentifierType
+        assertEquals("VkDeviceMemory", param3Type.ident)
+        assertEquals(1, param3Type.trivia.size)
+        assertEquals("VMA_NOT_NULL_NON_DISPATCHABLE", param3Type.trivia[0])
+
+        val param4 = functionType.params[3]
+        assertEquals("size", param4.first)
+        assertTrue(param4.second is RawIdentifierType)
+        val param4Type = param4.second as RawIdentifierType
+        assertEquals("VkDeviceSize", param4Type.ident)
+        assertTrue(param4Type.trivia.isEmpty())
+
+        val param5 = functionType.params[4]
+        assertEquals("pUserData", param5.first)
+        assertTrue(param5.second is RawPointerType)
+        val param5Type = param5.second as RawPointerType
+        assertFalse(param5Type.const)
+        assertEquals(1, param5Type.trivia.size)
+        assertEquals("VMA_NULLABLE", param5Type.trivia[0])
+
+        assertTrue(param5Type.pointee is RawIdentifierType)
+        val param5PointeeType = param5Type.pointee as RawIdentifierType
+        assertEquals("void", param5PointeeType.ident)
+        assertTrue(param5PointeeType.trivia.isEmpty())
     }
 }

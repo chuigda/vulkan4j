@@ -48,7 +48,6 @@ data class RawArrayType(
 ) : RawType
 
 data class RawFunctionType(
-    val functionName: String,
     var returnType: RawType,
     val params: List<Pair<String, RawType>>,
     override val trivia: MutableList<String>

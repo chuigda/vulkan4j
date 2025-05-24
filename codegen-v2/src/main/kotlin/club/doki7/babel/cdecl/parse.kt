@@ -90,19 +90,8 @@ internal fun parseEnumeratorDecl(tokenizer: Tokenizer): EnumeratorDecl {
     val token = tokenizer.peek()
     val ret = if (token.kind == TokenKind.SYMBOL && token.value == "=") {
         tokenizer.next()
-        val valueTokens = mutableListOf<Token>()
-        while (true) {
-            skipTrivia(tokenizer, triviaList)
-            val valueToken = expectAndConsume(setOf(TokenKind.INTEGER, TokenKind.IDENT), tokenizer)
-            valueTokens.add(valueToken)
-            val peekToken = tokenizer.peek()
-            if (peekToken.kind == TokenKind.SYMBOL && peekToken.value == "|") {
-                tokenizer.next()
-            } else {
-                break
-            }
-        }
-        EnumeratorDecl(nameToken.value, valueTokens.joinToString(" | ") { it.value }, triviaList)
+        val value = parseSimpleExpr(tokenizer, triviaList)
+        EnumeratorDecl(nameToken.value, value, triviaList)
     } else {
         EnumeratorDecl(nameToken.value, "", triviaList)
     }
@@ -123,8 +112,53 @@ internal fun parseFunctionDecl(tokenizer: Tokenizer): FunctionDecl {
 
     val functionName = expectAndConsume(TokenKind.IDENT, tokenizer)
     skipTrivia(tokenizer, triviaList)
-    expectAndConsume(TokenKind.SYMBOL, tokenizer, "(")
 
+    val params = parseFunctionParamList(tokenizer)
+
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, ";")
+    return FunctionDecl(functionName.value, returnType, params, triviaList)
+}
+
+internal fun parseTypedefDecl(tokenizer: Tokenizer): TypedefDecl {
+    val triviaList = mutableListOf<String>()
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.IDENT, tokenizer, "typedef")
+
+    val type = parseType(tokenizer)
+    skipTrivia(tokenizer, triviaList)
+
+    if (tokenizer.peek().kind == TokenKind.SYMBOL && tokenizer.peek().value == "(") {
+        tokenizer.next()
+        skipTrivia(tokenizer, triviaList)
+        expectAndConsume(TokenKind.SYMBOL, tokenizer, "*")
+        skipTrivia(tokenizer, triviaList)
+
+        val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
+        skipTrivia(tokenizer, triviaList)
+        expectAndConsume(TokenKind.SYMBOL, tokenizer, ")")
+
+        // 解析函数参数
+        val params = parseFunctionParamList(tokenizer)
+        val paramsList = params.map { Pair(it.name, it.type) }
+
+        skipTrivia(tokenizer, triviaList)
+        expectAndConsume(TokenKind.SYMBOL, tokenizer, ";") // 消费 ";"
+
+        val functionType = RawFunctionType(type, paramsList, mutableListOf())
+        return TypedefDecl(nameToken.value, functionType, triviaList)
+    } else {
+        // 处理普通 typedef
+        val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
+        skipTrivia(tokenizer, triviaList)
+        expectAndConsume(TokenKind.SYMBOL, tokenizer, ";") // 消费 ";"
+
+        return TypedefDecl(nameToken.value, type, triviaList)
+    }
+}
+
+private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, "(")
     val params = mutableListOf<VarDecl>()
     while (true) {
         val paramTriviaList = mutableListOf<String>()
@@ -159,12 +193,8 @@ internal fun parseFunctionDecl(tokenizer: Tokenizer): FunctionDecl {
         }
     }
 
-    skipTrivia(tokenizer, triviaList)
     expectAndConsume(TokenKind.SYMBOL, tokenizer, ")")
-    skipTrivia(tokenizer, triviaList)
-    expectAndConsume(TokenKind.SYMBOL, tokenizer, ";")
-
-    return FunctionDecl(functionName.value, returnType, params, triviaList)
+    return params
 }
 
 internal fun parseType(tokenizer: Tokenizer): RawType {
@@ -240,12 +270,8 @@ internal fun parseSimpleExpr(tokenizer: Tokenizer, trivia: MutableList<String>):
 
             skipTrivia(tokenizer, trivia)
 
-            val nextTermToken = tokenizer.next()
-            when (nextTermToken.kind) {
-                TokenKind.INTEGER,
-                TokenKind.IDENT -> result += nextTermToken.value
-                else -> syntaxError("Expected integer or identifier after '|' in expression, got ${nextTermToken.kind}", nextTermToken)
-            }
+            val token = expectAndConsume(setOf(TokenKind.INTEGER, TokenKind.IDENT), tokenizer)
+            result += token.value
         } else {
             break
         }
