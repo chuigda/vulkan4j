@@ -1,18 +1,29 @@
 package club.doki7.babel.cdecl
 
-internal fun expectAndConsume(kind: TokenKind, tokenizer: Tokenizer): Token {
+internal fun expectAndConsume(kind: TokenKind, tokenizer: Tokenizer, tokenValue: String? = null): Token {
     val token = tokenizer.next()
     if (token.kind != kind) {
-        throw IllegalStateException("Expected $kind but got ${token.kind} at line ${token.line}, col ${token.col}")
+        syntaxError("Expected $kind but got ${token.kind}", token)
+    }
+    if (tokenValue != null && token.value != tokenValue) {
+        syntaxError("Expected token value '$tokenValue' but got '${token.value}'", token)
     }
     return token
 }
 
-internal fun skipSyntaxTrivia(tokenizer: Tokenizer, syntaxTriviaList: MutableList<String>) {
+internal fun expectAndConsume(kinds: Set<TokenKind>, tokenizer: Tokenizer): Token {
+    val token = tokenizer.next()
+    if (token.kind !in kinds) {
+        syntaxError("Expected one of $kinds but got ${token.kind}", token)
+    }
+    return token
+}
+
+internal fun skipTrivia(tokenizer: Tokenizer, triviaList: MutableList<String>) {
     while (true) {
         val token = tokenizer.peek()
         if (token.kind == TokenKind.TRIVIA) {
-            syntaxTriviaList.add(token.value)
+            triviaList.add(token.value)
             tokenizer.next()
         } else {
             break
@@ -20,68 +31,14 @@ internal fun skipSyntaxTrivia(tokenizer: Tokenizer, syntaxTriviaList: MutableLis
     }
 }
 
-internal fun parseType(tokenizer: Tokenizer): RawType {
-    var isUnsigned = false
-    var isConst = false
-    var syntaxTriviaList = mutableListOf<String>()
-    skipSyntaxTrivia(tokenizer, syntaxTriviaList)
-
-    var token = tokenizer.next()
-    if (token.kind == TokenKind.IDENT && token.value == "const") {
-        isConst = true
-        skipSyntaxTrivia(tokenizer, syntaxTriviaList)
-        token = tokenizer.next()
-    } else if (token.kind == TokenKind.IDENT && token.value == "volatile") {
-        syntaxError("Our backend don't know how to deal with volatile yet", token)
-    }
-
-    if (token.kind == TokenKind.IDENT && token.value == "unsigned") {
-        isUnsigned = true
-        skipSyntaxTrivia(tokenizer, syntaxTriviaList)
-        token = tokenizer.next()
-    }
-
-    if (token.kind != TokenKind.IDENT) {
-        syntaxError("Expected identifier but got ${token.kind}", token)
-    }
-
-    var ty: RawType = RawIdentifierType(token.value, isUnsigned, syntaxTriviaList)
-    syntaxTriviaList = mutableListOf()
-
-    skipSyntaxTrivia(tokenizer, syntaxTriviaList)
-    token = tokenizer.peek()
-    while (true) {
-        if (token.kind == TokenKind.IDENT && token.value == "const") {
-            isConst = true
-        } else if (token.kind == TokenKind.IDENT && token.value == "volatile") {
-            syntaxError("Our backend don't know how to deal with volatile yet", token)
-        } else if (token.kind == TokenKind.SYMBOL && token.value == "*") {
-            ty.syntaxTrivia.addAll(syntaxTriviaList)
-            ty = RawPointerType(ty, isConst, mutableListOf())
-
-            isConst = false
-            syntaxTriviaList = mutableListOf()
-        } else {
-            break
-        }
-
-        tokenizer.next()
-        skipSyntaxTrivia(tokenizer, syntaxTriviaList)
-        token = tokenizer.peek()
-    }
-
-    ty.syntaxTrivia.addAll(syntaxTriviaList)
-    return ty
-}
-
 internal fun parseStructFieldDecl(tokenizer: Tokenizer): VarDecl {
     var effectiveType = parseType(tokenizer)
     val varDeclSpecificTrivia = mutableListOf<String>()
-    skipSyntaxTrivia(tokenizer, varDeclSpecificTrivia)
+    skipTrivia(tokenizer, varDeclSpecificTrivia)
     val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
     while (true) {
         val triviaBeforeBracket = mutableListOf<String>()
-        skipSyntaxTrivia(tokenizer, triviaBeforeBracket)
+        skipTrivia(tokenizer, triviaBeforeBracket)
 
         val peekToken = tokenizer.peek()
         if (peekToken.kind == TokenKind.SYMBOL && peekToken.value == "[") {
@@ -89,7 +46,7 @@ internal fun parseStructFieldDecl(tokenizer: Tokenizer): VarDecl {
             tokenizer.next()
 
             val arrayInternalTrivia = mutableListOf<String>()
-            skipSyntaxTrivia(tokenizer, arrayInternalTrivia)
+            skipTrivia(tokenizer, arrayInternalTrivia)
 
             val sizePeekTokenForArray = tokenizer.peek()
             val actualArraySize: String
@@ -102,7 +59,7 @@ internal fun parseStructFieldDecl(tokenizer: Tokenizer): VarDecl {
                 syntaxError("Expected array size (integer or identifier) or ']' but got ${sizePeekTokenForArray.kind}", sizePeekTokenForArray)
             }
 
-            skipSyntaxTrivia(tokenizer, arrayInternalTrivia)
+            skipTrivia(tokenizer, arrayInternalTrivia)
             val closeBracketToken = expectAndConsume(TokenKind.SYMBOL, tokenizer)
             if (closeBracketToken.value != "]") {
                 syntaxError("Expected ']' to close array declaration", closeBracketToken)
@@ -115,11 +72,183 @@ internal fun parseStructFieldDecl(tokenizer: Tokenizer): VarDecl {
         }
     }
 
-    skipSyntaxTrivia(tokenizer, varDeclSpecificTrivia)
+    skipTrivia(tokenizer, varDeclSpecificTrivia)
     val semicolonToken = expectAndConsume(TokenKind.SYMBOL, tokenizer)
     if (semicolonToken.value != ";") {
         syntaxError("Expected ';' after variable declaration", semicolonToken)
     }
 
     return VarDecl(nameToken.value, effectiveType, varDeclSpecificTrivia)
+}
+
+internal fun parseEnumeratorDecl(tokenizer: Tokenizer): EnumeratorDecl {
+    val triviaList = mutableListOf<String>()
+    skipTrivia(tokenizer, triviaList)
+    val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
+    skipTrivia(tokenizer, triviaList)
+
+    val token = tokenizer.peek()
+    val ret = if (token.kind == TokenKind.SYMBOL && token.value == "=") {
+        tokenizer.next()
+        val valueTokens = mutableListOf<Token>()
+        while (true) {
+            skipTrivia(tokenizer, triviaList)
+            val valueToken = expectAndConsume(setOf(TokenKind.INTEGER, TokenKind.IDENT), tokenizer)
+            valueTokens.add(valueToken)
+            val peekToken = tokenizer.peek()
+            if (peekToken.kind == TokenKind.SYMBOL && peekToken.value == "|") {
+                tokenizer.next()
+            } else {
+                break
+            }
+        }
+        EnumeratorDecl(nameToken.value, valueTokens.joinToString(" | ") { it.value }, triviaList)
+    } else {
+        EnumeratorDecl(nameToken.value, "", triviaList)
+    }
+
+    skipTrivia(tokenizer, triviaList)
+    if (tokenizer.peek().kind == TokenKind.SYMBOL && tokenizer.peek().value == ",") {
+        tokenizer.next()
+    }
+
+    return ret
+}
+
+internal fun parseFunctionDecl(tokenizer: Tokenizer): FunctionDecl {
+    val triviaList = mutableListOf<String>()
+
+    val returnType = parseType(tokenizer)
+    skipTrivia(tokenizer, triviaList)
+
+    val functionName = expectAndConsume(TokenKind.IDENT, tokenizer)
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, "(")
+
+    val params = mutableListOf<VarDecl>()
+    while (true) {
+        val paramTriviaList = mutableListOf<String>()
+
+        val paramType = parseType(tokenizer)
+        skipTrivia(tokenizer, paramTriviaList)
+
+        val peekedToken = tokenizer.peek()
+        if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == ")") {
+            if (paramType is RawIdentifierType && paramType.ident == "void") {
+                if (params.isNotEmpty()) {
+                    syntaxError("void cannot be used as a parameter type if there are other parameters", peekedToken)
+                }
+            } else {
+                params.add(VarDecl("", paramType, paramTriviaList))
+            }
+            break
+        }
+
+        val paramName = expectAndConsume(TokenKind.IDENT, tokenizer)
+        skipTrivia(tokenizer, paramTriviaList)
+
+        val peekedToken2 = tokenizer.peek()
+        if (peekedToken2.kind == TokenKind.SYMBOL && peekedToken2.value == ",") {
+            tokenizer.next()
+            params.add(VarDecl(paramName.value, paramType, paramTriviaList))
+        } else if (peekedToken2.kind == TokenKind.SYMBOL && peekedToken2.value == ")") {
+            params.add(VarDecl(paramName.value, paramType, paramTriviaList))
+            break
+        } else {
+            syntaxError("Expected ',' or ')' after parameter declaration", peekedToken2)
+        }
+    }
+
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, ")")
+    skipTrivia(tokenizer, triviaList)
+    expectAndConsume(TokenKind.SYMBOL, tokenizer, ";")
+
+    return FunctionDecl(functionName.value, returnType, params, triviaList)
+}
+
+internal fun parseType(tokenizer: Tokenizer): RawType {
+    var isUnsigned = false
+    var isConst = false
+    var triviaList = mutableListOf<String>()
+    skipTrivia(tokenizer, triviaList)
+
+    var token = tokenizer.next()
+    if (token.kind == TokenKind.IDENT && token.value == "const") {
+        isConst = true
+        skipTrivia(tokenizer, triviaList)
+        token = tokenizer.next()
+    } else if (token.kind == TokenKind.IDENT && token.value == "volatile") {
+        syntaxError("Our backend don't know how to deal with volatile yet", token)
+    }
+
+    if (token.kind == TokenKind.IDENT && token.value == "unsigned") {
+        isUnsigned = true
+        skipTrivia(tokenizer, triviaList)
+        token = tokenizer.next()
+    }
+
+    if (token.kind != TokenKind.IDENT) {
+        syntaxError("Expected identifier but got ${token.kind}", token)
+    }
+
+    var ty: RawType = RawIdentifierType(token.value, isUnsigned, triviaList)
+    triviaList = mutableListOf()
+
+    skipTrivia(tokenizer, triviaList)
+    token = tokenizer.peek()
+    while (true) {
+        if (token.kind == TokenKind.IDENT && token.value == "const") {
+            isConst = true
+        } else if (token.kind == TokenKind.IDENT && token.value == "volatile") {
+            syntaxError("Our backend don't know how to deal with volatile yet", token)
+        } else if (token.kind == TokenKind.SYMBOL && token.value == "*") {
+            ty.trivia.addAll(triviaList)
+            ty = RawPointerType(ty, isConst, mutableListOf())
+
+            isConst = false
+            triviaList = mutableListOf()
+        } else {
+            break
+        }
+
+        tokenizer.next()
+        skipTrivia(tokenizer, triviaList)
+        token = tokenizer.peek()
+    }
+
+    ty.trivia.addAll(triviaList)
+    return ty
+}
+
+internal fun parseSimpleExpr(tokenizer: Tokenizer, trivia: MutableList<String>): String {
+    skipTrivia(tokenizer, trivia)
+    val firstToken = tokenizer.next()
+    var result: String
+    when (firstToken.kind) {
+        TokenKind.INTEGER, TokenKind.IDENT -> result = firstToken.value
+        else -> syntaxError("Expected integer or identifier for the first term in expression, got ${firstToken.kind}", firstToken)
+    }
+
+    while (true) {
+        skipTrivia(tokenizer, trivia)
+
+        val peekToken = tokenizer.peek()
+        if (peekToken.kind == TokenKind.SYMBOL && peekToken.value == "|") {
+            tokenizer.next()
+            result += " | "
+
+            skipTrivia(tokenizer, trivia)
+
+            val nextTermToken = tokenizer.next()
+            when (nextTermToken.kind) {
+                TokenKind.INTEGER,
+                TokenKind.IDENT -> result += nextTermToken.value
+                else -> syntaxError("Expected integer or identifier after '|' in expression, got ${nextTermToken.kind}", nextTermToken)
+            }
+        } else {
+            break
+        }
+    }
+    return result
 }

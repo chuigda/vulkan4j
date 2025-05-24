@@ -107,11 +107,8 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
 
     private fun readInteger(): Token {
         val start = curCol
-        while (curCol < source[curLine].length && (curChar.isDigit() || curChar == '_' || curChar == 'x')) {
+        while (curCol < source[curLine].length && (curChar.isHexDigit() || curChar == '_' || curChar == 'x')) {
             curCol++
-        }
-        if (!source[curLine][curCol].isSymbolChar()) {
-            syntaxError("Unexpected character: $curChar", curLine, curCol)
         }
         return Token(TokenKind.INTEGER, source[curLine].substring(start, curCol), curLine, start)
     }
@@ -130,7 +127,7 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
         while (curCol < source[curLine].length && source[curLine][curCol] != '"') {
             curCol++
         }
-        if (source[curLine][curCol] != '"') {
+        if (curCol >= source[curLine].length && source[curLine][curCol] != '"') {
             syntaxError("Unterminated string literal", curLine, start)
         }
         curCol++
