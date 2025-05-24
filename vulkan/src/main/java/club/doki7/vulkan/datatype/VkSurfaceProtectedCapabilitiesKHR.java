@@ -178,11 +178,11 @@ public record VkSurfaceProtectedCapabilitiesKHR(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int supportsProtected() {
+    public @NativeType("VkBool32") @Unsigned int supportsProtected() {
         return segment.get(LAYOUT$supportsProtected, OFFSET$supportsProtected);
     }
 
-    public void supportsProtected(@Unsigned int value) {
+    public void supportsProtected(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$supportsProtected, OFFSET$supportsProtected, value);
     }
 

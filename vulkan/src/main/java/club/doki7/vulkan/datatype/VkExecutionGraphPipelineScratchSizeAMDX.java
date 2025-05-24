@@ -180,27 +180,27 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long minSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long minSize() {
         return segment.get(LAYOUT$minSize, OFFSET$minSize);
     }
 
-    public void minSize(@Unsigned long value) {
+    public void minSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minSize, OFFSET$minSize, value);
     }
 
-    public @Unsigned long maxSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxSize() {
         return segment.get(LAYOUT$maxSize, OFFSET$maxSize);
     }
 
-    public void maxSize(@Unsigned long value) {
+    public void maxSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxSize, OFFSET$maxSize, value);
     }
 
-    public @Unsigned long sizeGranularity() {
+    public @NativeType("VkDeviceSize") @Unsigned long sizeGranularity() {
         return segment.get(LAYOUT$sizeGranularity, OFFSET$sizeGranularity);
     }
 
-    public void sizeGranularity(@Unsigned long value) {
+    public void sizeGranularity(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$sizeGranularity, OFFSET$sizeGranularity, value);
     }
 

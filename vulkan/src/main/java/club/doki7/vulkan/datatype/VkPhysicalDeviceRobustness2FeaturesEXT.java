@@ -180,27 +180,27 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int robustBufferAccess2() {
+    public @NativeType("VkBool32") @Unsigned int robustBufferAccess2() {
         return segment.get(LAYOUT$robustBufferAccess2, OFFSET$robustBufferAccess2);
     }
 
-    public void robustBufferAccess2(@Unsigned int value) {
+    public void robustBufferAccess2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$robustBufferAccess2, OFFSET$robustBufferAccess2, value);
     }
 
-    public @Unsigned int robustImageAccess2() {
+    public @NativeType("VkBool32") @Unsigned int robustImageAccess2() {
         return segment.get(LAYOUT$robustImageAccess2, OFFSET$robustImageAccess2);
     }
 
-    public void robustImageAccess2(@Unsigned int value) {
+    public void robustImageAccess2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$robustImageAccess2, OFFSET$robustImageAccess2, value);
     }
 
-    public @Unsigned int nullDescriptor() {
+    public @NativeType("VkBool32") @Unsigned int nullDescriptor() {
         return segment.get(LAYOUT$nullDescriptor, OFFSET$nullDescriptor);
     }
 
-    public void nullDescriptor(@Unsigned int value) {
+    public void nullDescriptor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nullDescriptor, OFFSET$nullDescriptor, value);
     }
 

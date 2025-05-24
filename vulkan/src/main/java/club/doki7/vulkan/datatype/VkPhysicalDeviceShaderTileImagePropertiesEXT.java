@@ -180,27 +180,27 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderTileImageCoherentReadAccelerated() {
+    public @NativeType("VkBool32") @Unsigned int shaderTileImageCoherentReadAccelerated() {
         return segment.get(LAYOUT$shaderTileImageCoherentReadAccelerated, OFFSET$shaderTileImageCoherentReadAccelerated);
     }
 
-    public void shaderTileImageCoherentReadAccelerated(@Unsigned int value) {
+    public void shaderTileImageCoherentReadAccelerated(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageCoherentReadAccelerated, OFFSET$shaderTileImageCoherentReadAccelerated, value);
     }
 
-    public @Unsigned int shaderTileImageReadSampleFromPixelRateInvocation() {
+    public @NativeType("VkBool32") @Unsigned int shaderTileImageReadSampleFromPixelRateInvocation() {
         return segment.get(LAYOUT$shaderTileImageReadSampleFromPixelRateInvocation, OFFSET$shaderTileImageReadSampleFromPixelRateInvocation);
     }
 
-    public void shaderTileImageReadSampleFromPixelRateInvocation(@Unsigned int value) {
+    public void shaderTileImageReadSampleFromPixelRateInvocation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageReadSampleFromPixelRateInvocation, OFFSET$shaderTileImageReadSampleFromPixelRateInvocation, value);
     }
 
-    public @Unsigned int shaderTileImageReadFromHelperInvocation() {
+    public @NativeType("VkBool32") @Unsigned int shaderTileImageReadFromHelperInvocation() {
         return segment.get(LAYOUT$shaderTileImageReadFromHelperInvocation, OFFSET$shaderTileImageReadFromHelperInvocation);
     }
 
-    public void shaderTileImageReadFromHelperInvocation(@Unsigned int value) {
+    public void shaderTileImageReadFromHelperInvocation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageReadFromHelperInvocation, OFFSET$shaderTileImageReadFromHelperInvocation, value);
     }
 

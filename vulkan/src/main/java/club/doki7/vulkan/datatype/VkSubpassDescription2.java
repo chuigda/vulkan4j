@@ -377,11 +377,11 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         pPreserveAttachmentsRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pPreserveAttachmentsRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pPreserveAttachmentsRaw() {
         return segment.get(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments);
     }
 
-    public void pPreserveAttachmentsRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pPreserveAttachmentsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pPreserveAttachments, OFFSET$pPreserveAttachments, value);
     }
 

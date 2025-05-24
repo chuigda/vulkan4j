@@ -178,11 +178,11 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int opticalFlow() {
+    public @NativeType("VkBool32") @Unsigned int opticalFlow() {
         return segment.get(LAYOUT$opticalFlow, OFFSET$opticalFlow);
     }
 
-    public void opticalFlow(@Unsigned int value) {
+    public void opticalFlow(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$opticalFlow, OFFSET$opticalFlow, value);
     }
 

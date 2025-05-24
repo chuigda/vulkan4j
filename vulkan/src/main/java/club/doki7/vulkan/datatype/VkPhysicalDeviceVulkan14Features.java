@@ -198,171 +198,171 @@ public record VkPhysicalDeviceVulkan14Features(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int globalPriorityQuery() {
+    public @NativeType("VkBool32") @Unsigned int globalPriorityQuery() {
         return segment.get(LAYOUT$globalPriorityQuery, OFFSET$globalPriorityQuery);
     }
 
-    public void globalPriorityQuery(@Unsigned int value) {
+    public void globalPriorityQuery(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$globalPriorityQuery, OFFSET$globalPriorityQuery, value);
     }
 
-    public @Unsigned int shaderSubgroupRotate() {
+    public @NativeType("VkBool32") @Unsigned int shaderSubgroupRotate() {
         return segment.get(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate);
     }
 
-    public void shaderSubgroupRotate(@Unsigned int value) {
+    public void shaderSubgroupRotate(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate, value);
     }
 
-    public @Unsigned int shaderSubgroupRotateClustered() {
+    public @NativeType("VkBool32") @Unsigned int shaderSubgroupRotateClustered() {
         return segment.get(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered);
     }
 
-    public void shaderSubgroupRotateClustered(@Unsigned int value) {
+    public void shaderSubgroupRotateClustered(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered, value);
     }
 
-    public @Unsigned int shaderFloatControls2() {
+    public @NativeType("VkBool32") @Unsigned int shaderFloatControls2() {
         return segment.get(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2);
     }
 
-    public void shaderFloatControls2(@Unsigned int value) {
+    public void shaderFloatControls2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2, value);
     }
 
-    public @Unsigned int shaderExpectAssume() {
+    public @NativeType("VkBool32") @Unsigned int shaderExpectAssume() {
         return segment.get(LAYOUT$shaderExpectAssume, OFFSET$shaderExpectAssume);
     }
 
-    public void shaderExpectAssume(@Unsigned int value) {
+    public void shaderExpectAssume(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderExpectAssume, OFFSET$shaderExpectAssume, value);
     }
 
-    public @Unsigned int rectangularLines() {
+    public @NativeType("VkBool32") @Unsigned int rectangularLines() {
         return segment.get(LAYOUT$rectangularLines, OFFSET$rectangularLines);
     }
 
-    public void rectangularLines(@Unsigned int value) {
+    public void rectangularLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rectangularLines, OFFSET$rectangularLines, value);
     }
 
-    public @Unsigned int bresenhamLines() {
+    public @NativeType("VkBool32") @Unsigned int bresenhamLines() {
         return segment.get(LAYOUT$bresenhamLines, OFFSET$bresenhamLines);
     }
 
-    public void bresenhamLines(@Unsigned int value) {
+    public void bresenhamLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bresenhamLines, OFFSET$bresenhamLines, value);
     }
 
-    public @Unsigned int smoothLines() {
+    public @NativeType("VkBool32") @Unsigned int smoothLines() {
         return segment.get(LAYOUT$smoothLines, OFFSET$smoothLines);
     }
 
-    public void smoothLines(@Unsigned int value) {
+    public void smoothLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$smoothLines, OFFSET$smoothLines, value);
     }
 
-    public @Unsigned int stippledRectangularLines() {
+    public @NativeType("VkBool32") @Unsigned int stippledRectangularLines() {
         return segment.get(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines);
     }
 
-    public void stippledRectangularLines(@Unsigned int value) {
+    public void stippledRectangularLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines, value);
     }
 
-    public @Unsigned int stippledBresenhamLines() {
+    public @NativeType("VkBool32") @Unsigned int stippledBresenhamLines() {
         return segment.get(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines);
     }
 
-    public void stippledBresenhamLines(@Unsigned int value) {
+    public void stippledBresenhamLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines, value);
     }
 
-    public @Unsigned int stippledSmoothLines() {
+    public @NativeType("VkBool32") @Unsigned int stippledSmoothLines() {
         return segment.get(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines);
     }
 
-    public void stippledSmoothLines(@Unsigned int value) {
+    public void stippledSmoothLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines, value);
     }
 
-    public @Unsigned int vertexAttributeInstanceRateDivisor() {
+    public @NativeType("VkBool32") @Unsigned int vertexAttributeInstanceRateDivisor() {
         return segment.get(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor);
     }
 
-    public void vertexAttributeInstanceRateDivisor(@Unsigned int value) {
+    public void vertexAttributeInstanceRateDivisor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor, value);
     }
 
-    public @Unsigned int vertexAttributeInstanceRateZeroDivisor() {
+    public @NativeType("VkBool32") @Unsigned int vertexAttributeInstanceRateZeroDivisor() {
         return segment.get(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor);
     }
 
-    public void vertexAttributeInstanceRateZeroDivisor(@Unsigned int value) {
+    public void vertexAttributeInstanceRateZeroDivisor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor, value);
     }
 
-    public @Unsigned int indexTypeUint8() {
+    public @NativeType("VkBool32") @Unsigned int indexTypeUint8() {
         return segment.get(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8);
     }
 
-    public void indexTypeUint8(@Unsigned int value) {
+    public void indexTypeUint8(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8, value);
     }
 
-    public @Unsigned int dynamicRenderingLocalRead() {
+    public @NativeType("VkBool32") @Unsigned int dynamicRenderingLocalRead() {
         return segment.get(LAYOUT$dynamicRenderingLocalRead, OFFSET$dynamicRenderingLocalRead);
     }
 
-    public void dynamicRenderingLocalRead(@Unsigned int value) {
+    public void dynamicRenderingLocalRead(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicRenderingLocalRead, OFFSET$dynamicRenderingLocalRead, value);
     }
 
-    public @Unsigned int maintenance5() {
+    public @NativeType("VkBool32") @Unsigned int maintenance5() {
         return segment.get(LAYOUT$maintenance5, OFFSET$maintenance5);
     }
 
-    public void maintenance5(@Unsigned int value) {
+    public void maintenance5(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$maintenance5, OFFSET$maintenance5, value);
     }
 
-    public @Unsigned int maintenance6() {
+    public @NativeType("VkBool32") @Unsigned int maintenance6() {
         return segment.get(LAYOUT$maintenance6, OFFSET$maintenance6);
     }
 
-    public void maintenance6(@Unsigned int value) {
+    public void maintenance6(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$maintenance6, OFFSET$maintenance6, value);
     }
 
-    public @Unsigned int pipelineProtectedAccess() {
+    public @NativeType("VkBool32") @Unsigned int pipelineProtectedAccess() {
         return segment.get(LAYOUT$pipelineProtectedAccess, OFFSET$pipelineProtectedAccess);
     }
 
-    public void pipelineProtectedAccess(@Unsigned int value) {
+    public void pipelineProtectedAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineProtectedAccess, OFFSET$pipelineProtectedAccess, value);
     }
 
-    public @Unsigned int pipelineRobustness() {
+    public @NativeType("VkBool32") @Unsigned int pipelineRobustness() {
         return segment.get(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness);
     }
 
-    public void pipelineRobustness(@Unsigned int value) {
+    public void pipelineRobustness(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness, value);
     }
 
-    public @Unsigned int hostImageCopy() {
+    public @NativeType("VkBool32") @Unsigned int hostImageCopy() {
         return segment.get(LAYOUT$hostImageCopy, OFFSET$hostImageCopy);
     }
 
-    public void hostImageCopy(@Unsigned int value) {
+    public void hostImageCopy(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hostImageCopy, OFFSET$hostImageCopy, value);
     }
 
-    public @Unsigned int pushDescriptor() {
+    public @NativeType("VkBool32") @Unsigned int pushDescriptor() {
         return segment.get(LAYOUT$pushDescriptor, OFFSET$pushDescriptor);
     }
 
-    public void pushDescriptor(@Unsigned int value) {
+    public void pushDescriptor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pushDescriptor, OFFSET$pushDescriptor, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceHostQueryResetFeatures(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int hostQueryReset() {
+    public @NativeType("VkBool32") @Unsigned int hostQueryReset() {
         return segment.get(LAYOUT$hostQueryReset, OFFSET$hostQueryReset);
     }
 
-    public void hostQueryReset(@Unsigned int value) {
+    public void hostQueryReset(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hostQueryReset, OFFSET$hostQueryReset, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int ycbcr2plane444Formats() {
+    public @NativeType("VkBool32") @Unsigned int ycbcr2plane444Formats() {
         return segment.get(LAYOUT$ycbcr2plane444Formats, OFFSET$ycbcr2plane444Formats);
     }
 
-    public void ycbcr2plane444Formats(@Unsigned int value) {
+    public void ycbcr2plane444Formats(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$ycbcr2plane444Formats, OFFSET$ycbcr2plane444Formats, value);
     }
 

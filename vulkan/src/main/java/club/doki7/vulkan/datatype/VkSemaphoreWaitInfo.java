@@ -239,11 +239,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         pValuesRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pValuesRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pValuesRaw() {
         return segment.get(LAYOUT$pValues, OFFSET$pValues);
     }
 
-    public void pValuesRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pValuesRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 

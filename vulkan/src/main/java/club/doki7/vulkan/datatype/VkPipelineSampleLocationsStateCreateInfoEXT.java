@@ -179,11 +179,11 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int sampleLocationsEnable() {
+    public @NativeType("VkBool32") @Unsigned int sampleLocationsEnable() {
         return segment.get(LAYOUT$sampleLocationsEnable, OFFSET$sampleLocationsEnable);
     }
 
-    public void sampleLocationsEnable(@Unsigned int value) {
+    public void sampleLocationsEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sampleLocationsEnable, OFFSET$sampleLocationsEnable, value);
     }
 

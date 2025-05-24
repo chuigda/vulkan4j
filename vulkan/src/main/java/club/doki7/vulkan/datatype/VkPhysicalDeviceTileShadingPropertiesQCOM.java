@@ -189,11 +189,11 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
         segment.set(LAYOUT$maxApronSize, OFFSET$maxApronSize, value);
     }
 
-    public @Unsigned int preferNonCoherent() {
+    public @NativeType("VkBool32") @Unsigned int preferNonCoherent() {
         return segment.get(LAYOUT$preferNonCoherent, OFFSET$preferNonCoherent);
     }
 
-    public void preferNonCoherent(@Unsigned int value) {
+    public void preferNonCoherent(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$preferNonCoherent, OFFSET$preferNonCoherent, value);
     }
 

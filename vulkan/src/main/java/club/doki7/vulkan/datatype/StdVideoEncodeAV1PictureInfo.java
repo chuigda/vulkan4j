@@ -564,11 +564,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         pBufferRemovalTimesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pBufferRemovalTimesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pBufferRemovalTimesRaw() {
         return segment.get(LAYOUT$pBufferRemovalTimes, OFFSET$pBufferRemovalTimes);
     }
 
-    public void pBufferRemovalTimesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pBufferRemovalTimesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pBufferRemovalTimes, OFFSET$pBufferRemovalTimes, value);
     }
 

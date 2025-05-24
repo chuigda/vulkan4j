@@ -166,11 +166,11 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$valueFloat, OFFSET$valueFloat, value);
     }
 
-    public @Unsigned int valueBool() {
+    public @NativeType("VkBool32") @Unsigned int valueBool() {
         return segment.get(LAYOUT$valueBool, OFFSET$valueBool);
     }
 
-    public void valueBool(@Unsigned int value) {
+    public void valueBool(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$valueBool, OFFSET$valueBool, value);
     }
 
@@ -191,11 +191,11 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         valueStringRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment valueStringRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment valueStringRaw() {
         return segment.get(LAYOUT$valueString, OFFSET$valueString);
     }
 
-    public void valueStringRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void valueStringRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$valueString, OFFSET$valueString, value);
     }
 

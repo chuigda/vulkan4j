@@ -179,11 +179,11 @@ public record VkVideoEncodeAV1SessionCreateInfoKHR(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int useMaxLevel() {
+    public @NativeType("VkBool32") @Unsigned int useMaxLevel() {
         return segment.get(LAYOUT$useMaxLevel, OFFSET$useMaxLevel);
     }
 
-    public void useMaxLevel(@Unsigned int value) {
+    public void useMaxLevel(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMaxLevel, OFFSET$useMaxLevel, value);
     }
 

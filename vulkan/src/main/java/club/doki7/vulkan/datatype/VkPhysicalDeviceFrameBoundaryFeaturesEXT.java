@@ -178,11 +178,11 @@ public record VkPhysicalDeviceFrameBoundaryFeaturesEXT(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int frameBoundary() {
+    public @NativeType("VkBool32") @Unsigned int frameBoundary() {
         return segment.get(LAYOUT$frameBoundary, OFFSET$frameBoundary);
     }
 
-    public void frameBoundary(@Unsigned int value) {
+    public void frameBoundary(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$frameBoundary, OFFSET$frameBoundary, value);
     }
 

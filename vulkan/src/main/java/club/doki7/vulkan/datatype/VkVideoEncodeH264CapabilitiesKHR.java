@@ -246,11 +246,11 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount, value);
     }
 
-    public @Unsigned int expectDyadicTemporalLayerPattern() {
+    public @NativeType("VkBool32") @Unsigned int expectDyadicTemporalLayerPattern() {
         return segment.get(LAYOUT$expectDyadicTemporalLayerPattern, OFFSET$expectDyadicTemporalLayerPattern);
     }
 
-    public void expectDyadicTemporalLayerPattern(@Unsigned int value) {
+    public void expectDyadicTemporalLayerPattern(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$expectDyadicTemporalLayerPattern, OFFSET$expectDyadicTemporalLayerPattern, value);
     }
 
@@ -270,19 +270,19 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$maxQp, OFFSET$maxQp, value);
     }
 
-    public @Unsigned int prefersGopRemainingFrames() {
+    public @NativeType("VkBool32") @Unsigned int prefersGopRemainingFrames() {
         return segment.get(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames);
     }
 
-    public void prefersGopRemainingFrames(@Unsigned int value) {
+    public void prefersGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames, value);
     }
 
-    public @Unsigned int requiresGopRemainingFrames() {
+    public @NativeType("VkBool32") @Unsigned int requiresGopRemainingFrames() {
         return segment.get(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames);
     }
 
-    public void requiresGopRemainingFrames(@Unsigned int value) {
+    public void requiresGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
     }
 

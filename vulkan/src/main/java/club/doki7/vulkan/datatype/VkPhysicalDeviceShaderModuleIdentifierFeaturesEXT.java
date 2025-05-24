@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderModuleIdentifier() {
+    public @NativeType("VkBool32") @Unsigned int shaderModuleIdentifier() {
         return segment.get(LAYOUT$shaderModuleIdentifier, OFFSET$shaderModuleIdentifier);
     }
 
-    public void shaderModuleIdentifier(@Unsigned int value) {
+    public void shaderModuleIdentifier(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderModuleIdentifier, OFFSET$shaderModuleIdentifier, value);
     }
 

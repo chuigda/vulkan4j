@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int multiviewPerViewViewports() {
+    public @NativeType("VkBool32") @Unsigned int multiviewPerViewViewports() {
         return segment.get(LAYOUT$multiviewPerViewViewports, OFFSET$multiviewPerViewViewports);
     }
 
-    public void multiviewPerViewViewports(@Unsigned int value) {
+    public void multiviewPerViewViewports(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewPerViewViewports, OFFSET$multiviewPerViewViewports, value);
     }
 

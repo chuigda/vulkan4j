@@ -203,19 +203,19 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long offset() {
+    public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned long value) {
+    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public @Unsigned long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
@@ -227,11 +227,11 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @Unsigned long deviceAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@Unsigned long value) {
+    public void deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
     }
 

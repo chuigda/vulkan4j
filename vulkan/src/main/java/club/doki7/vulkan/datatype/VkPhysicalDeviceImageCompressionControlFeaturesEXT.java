@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int imageCompressionControl() {
+    public @NativeType("VkBool32") @Unsigned int imageCompressionControl() {
         return segment.get(LAYOUT$imageCompressionControl, OFFSET$imageCompressionControl);
     }
 
-    public void imageCompressionControl(@Unsigned int value) {
+    public void imageCompressionControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageCompressionControl, OFFSET$imageCompressionControl, value);
     }
 

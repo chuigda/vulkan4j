@@ -145,11 +145,11 @@ public record VkPipelineColorBlendAttachmentState(@NotNull MemorySegment segment
         return ret;
     }
 
-    public @Unsigned int blendEnable() {
+    public @NativeType("VkBool32") @Unsigned int blendEnable() {
         return segment.get(LAYOUT$blendEnable, OFFSET$blendEnable);
     }
 
-    public void blendEnable(@Unsigned int value) {
+    public void blendEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$blendEnable, OFFSET$blendEnable, value);
     }
 

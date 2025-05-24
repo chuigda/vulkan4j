@@ -178,11 +178,11 @@ public record VkCuModuleTexturingModeCreateInfoNVX(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int use64bitTexturing() {
+    public @NativeType("VkBool32") @Unsigned int use64bitTexturing() {
         return segment.get(LAYOUT$use64bitTexturing, OFFSET$use64bitTexturing);
     }
 
-    public void use64bitTexturing(@Unsigned int value) {
+    public void use64bitTexturing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$use64bitTexturing, OFFSET$use64bitTexturing, value);
     }
 

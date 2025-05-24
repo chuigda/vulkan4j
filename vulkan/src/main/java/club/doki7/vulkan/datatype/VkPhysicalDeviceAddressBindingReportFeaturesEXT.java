@@ -178,11 +178,11 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int reportAddressBinding() {
+    public @NativeType("VkBool32") @Unsigned int reportAddressBinding() {
         return segment.get(LAYOUT$reportAddressBinding, OFFSET$reportAddressBinding);
     }
 
-    public void reportAddressBinding(@Unsigned int value) {
+    public void reportAddressBinding(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$reportAddressBinding, OFFSET$reportAddressBinding, value);
     }
 

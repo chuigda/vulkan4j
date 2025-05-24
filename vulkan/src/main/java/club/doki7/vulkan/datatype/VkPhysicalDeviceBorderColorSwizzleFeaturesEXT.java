@@ -179,19 +179,19 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int borderColorSwizzle() {
+    public @NativeType("VkBool32") @Unsigned int borderColorSwizzle() {
         return segment.get(LAYOUT$borderColorSwizzle, OFFSET$borderColorSwizzle);
     }
 
-    public void borderColorSwizzle(@Unsigned int value) {
+    public void borderColorSwizzle(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$borderColorSwizzle, OFFSET$borderColorSwizzle, value);
     }
 
-    public @Unsigned int borderColorSwizzleFromImage() {
+    public @NativeType("VkBool32") @Unsigned int borderColorSwizzleFromImage() {
         return segment.get(LAYOUT$borderColorSwizzleFromImage, OFFSET$borderColorSwizzleFromImage);
     }
 
-    public void borderColorSwizzleFromImage(@Unsigned int value) {
+    public void borderColorSwizzleFromImage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$borderColorSwizzleFromImage, OFFSET$borderColorSwizzleFromImage, value);
     }
 

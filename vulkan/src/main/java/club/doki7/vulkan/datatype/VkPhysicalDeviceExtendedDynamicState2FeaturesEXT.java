@@ -180,27 +180,27 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int extendedDynamicState2() {
+    public @NativeType("VkBool32") @Unsigned int extendedDynamicState2() {
         return segment.get(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2);
     }
 
-    public void extendedDynamicState2(@Unsigned int value) {
+    public void extendedDynamicState2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2, value);
     }
 
-    public @Unsigned int extendedDynamicState2LogicOp() {
+    public @NativeType("VkBool32") @Unsigned int extendedDynamicState2LogicOp() {
         return segment.get(LAYOUT$extendedDynamicState2LogicOp, OFFSET$extendedDynamicState2LogicOp);
     }
 
-    public void extendedDynamicState2LogicOp(@Unsigned int value) {
+    public void extendedDynamicState2LogicOp(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2LogicOp, OFFSET$extendedDynamicState2LogicOp, value);
     }
 
-    public @Unsigned int extendedDynamicState2PatchControlPoints() {
+    public @NativeType("VkBool32") @Unsigned int extendedDynamicState2PatchControlPoints() {
         return segment.get(LAYOUT$extendedDynamicState2PatchControlPoints, OFFSET$extendedDynamicState2PatchControlPoints);
     }
 
-    public void extendedDynamicState2PatchControlPoints(@Unsigned int value) {
+    public void extendedDynamicState2PatchControlPoints(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2PatchControlPoints, OFFSET$extendedDynamicState2PatchControlPoints, value);
     }
 

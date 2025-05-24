@@ -180,11 +180,11 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shadingRateImageEnable() {
+    public @NativeType("VkBool32") @Unsigned int shadingRateImageEnable() {
         return segment.get(LAYOUT$shadingRateImageEnable, OFFSET$shadingRateImageEnable);
     }
 
-    public void shadingRateImageEnable(@Unsigned int value) {
+    public void shadingRateImageEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shadingRateImageEnable, OFFSET$shadingRateImageEnable, value);
     }
 

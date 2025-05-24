@@ -203,11 +203,11 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         segment.set(LAYOUT$maxTransformFeedbackBuffers, OFFSET$maxTransformFeedbackBuffers, value);
     }
 
-    public @Unsigned long maxTransformFeedbackBufferSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxTransformFeedbackBufferSize() {
         return segment.get(LAYOUT$maxTransformFeedbackBufferSize, OFFSET$maxTransformFeedbackBufferSize);
     }
 
-    public void maxTransformFeedbackBufferSize(@Unsigned long value) {
+    public void maxTransformFeedbackBufferSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxTransformFeedbackBufferSize, OFFSET$maxTransformFeedbackBufferSize, value);
     }
 
@@ -235,35 +235,35 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         segment.set(LAYOUT$maxTransformFeedbackBufferDataStride, OFFSET$maxTransformFeedbackBufferDataStride, value);
     }
 
-    public @Unsigned int transformFeedbackQueries() {
+    public @NativeType("VkBool32") @Unsigned int transformFeedbackQueries() {
         return segment.get(LAYOUT$transformFeedbackQueries, OFFSET$transformFeedbackQueries);
     }
 
-    public void transformFeedbackQueries(@Unsigned int value) {
+    public void transformFeedbackQueries(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackQueries, OFFSET$transformFeedbackQueries, value);
     }
 
-    public @Unsigned int transformFeedbackStreamsLinesTriangles() {
+    public @NativeType("VkBool32") @Unsigned int transformFeedbackStreamsLinesTriangles() {
         return segment.get(LAYOUT$transformFeedbackStreamsLinesTriangles, OFFSET$transformFeedbackStreamsLinesTriangles);
     }
 
-    public void transformFeedbackStreamsLinesTriangles(@Unsigned int value) {
+    public void transformFeedbackStreamsLinesTriangles(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackStreamsLinesTriangles, OFFSET$transformFeedbackStreamsLinesTriangles, value);
     }
 
-    public @Unsigned int transformFeedbackRasterizationStreamSelect() {
+    public @NativeType("VkBool32") @Unsigned int transformFeedbackRasterizationStreamSelect() {
         return segment.get(LAYOUT$transformFeedbackRasterizationStreamSelect, OFFSET$transformFeedbackRasterizationStreamSelect);
     }
 
-    public void transformFeedbackRasterizationStreamSelect(@Unsigned int value) {
+    public void transformFeedbackRasterizationStreamSelect(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackRasterizationStreamSelect, OFFSET$transformFeedbackRasterizationStreamSelect, value);
     }
 
-    public @Unsigned int transformFeedbackDraw() {
+    public @NativeType("VkBool32") @Unsigned int transformFeedbackDraw() {
         return segment.get(LAYOUT$transformFeedbackDraw, OFFSET$transformFeedbackDraw);
     }
 
-    public void transformFeedbackDraw(@Unsigned int value) {
+    public void transformFeedbackDraw(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackDraw, OFFSET$transformFeedbackDraw, value);
     }
 

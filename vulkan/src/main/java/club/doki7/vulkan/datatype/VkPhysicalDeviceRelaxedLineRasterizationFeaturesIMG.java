@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int relaxedLineRasterization() {
+    public @NativeType("VkBool32") @Unsigned int relaxedLineRasterization() {
         return segment.get(LAYOUT$relaxedLineRasterization, OFFSET$relaxedLineRasterization);
     }
 
-    public void relaxedLineRasterization(@Unsigned int value) {
+    public void relaxedLineRasterization(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$relaxedLineRasterization, OFFSET$relaxedLineRasterization, value);
     }
 

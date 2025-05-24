@@ -179,19 +179,19 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(@NotNull M
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int primitiveTopologyListRestart() {
+    public @NativeType("VkBool32") @Unsigned int primitiveTopologyListRestart() {
         return segment.get(LAYOUT$primitiveTopologyListRestart, OFFSET$primitiveTopologyListRestart);
     }
 
-    public void primitiveTopologyListRestart(@Unsigned int value) {
+    public void primitiveTopologyListRestart(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveTopologyListRestart, OFFSET$primitiveTopologyListRestart, value);
     }
 
-    public @Unsigned int primitiveTopologyPatchListRestart() {
+    public @NativeType("VkBool32") @Unsigned int primitiveTopologyPatchListRestart() {
         return segment.get(LAYOUT$primitiveTopologyPatchListRestart, OFFSET$primitiveTopologyPatchListRestart);
     }
 
-    public void primitiveTopologyPatchListRestart(@Unsigned int value) {
+    public void primitiveTopologyPatchListRestart(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveTopologyPatchListRestart, OFFSET$primitiveTopologyPatchListRestart, value);
     }
 

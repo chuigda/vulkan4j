@@ -199,11 +199,11 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         pApplicationNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pApplicationNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pApplicationNameRaw() {
         return segment.get(LAYOUT$pApplicationName, OFFSET$pApplicationName);
     }
 
-    public void pApplicationNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pApplicationNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
     }
 
@@ -232,11 +232,11 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         pEngineNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pEngineNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pEngineNameRaw() {
         return segment.get(LAYOUT$pEngineName, OFFSET$pEngineName);
     }
 
-    public void pEngineNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pEngineNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
     }
 

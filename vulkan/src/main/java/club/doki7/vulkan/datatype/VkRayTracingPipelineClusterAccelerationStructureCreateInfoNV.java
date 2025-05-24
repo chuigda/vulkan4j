@@ -178,11 +178,11 @@ public record VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(@NotN
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int allowClusterAccelerationStructure() {
+    public @NativeType("VkBool32") @Unsigned int allowClusterAccelerationStructure() {
         return segment.get(LAYOUT$allowClusterAccelerationStructure, OFFSET$allowClusterAccelerationStructure);
     }
 
-    public void allowClusterAccelerationStructure(@Unsigned int value) {
+    public void allowClusterAccelerationStructure(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$allowClusterAccelerationStructure, OFFSET$allowClusterAccelerationStructure, value);
     }
 

@@ -178,11 +178,11 @@ public record VkProtectedSubmitInfo(@NotNull MemorySegment segment) implements I
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int protectedSubmit() {
+    public @NativeType("VkBool32") @Unsigned int protectedSubmit() {
         return segment.get(LAYOUT$protectedSubmit, OFFSET$protectedSubmit);
     }
 
-    public void protectedSubmit(@Unsigned int value) {
+    public void protectedSubmit(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$protectedSubmit, OFFSET$protectedSubmit, value);
     }
 

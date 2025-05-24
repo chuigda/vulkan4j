@@ -178,11 +178,11 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int commandBufferInheritance() {
+    public @NativeType("VkBool32") @Unsigned int commandBufferInheritance() {
         return segment.get(LAYOUT$commandBufferInheritance, OFFSET$commandBufferInheritance);
     }
 
-    public void commandBufferInheritance(@Unsigned int value) {
+    public void commandBufferInheritance(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$commandBufferInheritance, OFFSET$commandBufferInheritance, value);
     }
 

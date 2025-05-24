@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int representativeFragmentTest() {
+    public @NativeType("VkBool32") @Unsigned int representativeFragmentTest() {
         return segment.get(LAYOUT$representativeFragmentTest, OFFSET$representativeFragmentTest);
     }
 
-    public void representativeFragmentTest(@Unsigned int value) {
+    public void representativeFragmentTest(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$representativeFragmentTest, OFFSET$representativeFragmentTest, value);
     }
 

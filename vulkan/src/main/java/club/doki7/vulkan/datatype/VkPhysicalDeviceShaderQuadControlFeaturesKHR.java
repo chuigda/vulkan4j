@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderQuadControlFeaturesKHR(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderQuadControl() {
+    public @NativeType("VkBool32") @Unsigned int shaderQuadControl() {
         return segment.get(LAYOUT$shaderQuadControl, OFFSET$shaderQuadControl);
     }
 
-    public void shaderQuadControl(@Unsigned int value) {
+    public void shaderQuadControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderQuadControl, OFFSET$shaderQuadControl, value);
     }
 

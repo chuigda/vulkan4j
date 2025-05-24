@@ -178,11 +178,11 @@ public record VkPhysicalDevicePipelineProtectedAccessFeatures(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int pipelineProtectedAccess() {
+    public @NativeType("VkBool32") @Unsigned int pipelineProtectedAccess() {
         return segment.get(LAYOUT$pipelineProtectedAccess, OFFSET$pipelineProtectedAccess);
     }
 
-    public void pipelineProtectedAccess(@Unsigned int value) {
+    public void pipelineProtectedAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineProtectedAccess, OFFSET$pipelineProtectedAccess, value);
     }
 

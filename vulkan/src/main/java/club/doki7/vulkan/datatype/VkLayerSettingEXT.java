@@ -159,11 +159,11 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         pLayerNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pLayerNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pLayerNameRaw() {
         return segment.get(LAYOUT$pLayerName, OFFSET$pLayerName);
     }
 
-    public void pLayerNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pLayerNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pLayerName, OFFSET$pLayerName, value);
     }
 
@@ -184,11 +184,11 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         pSettingNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pSettingNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pSettingNameRaw() {
         return segment.get(LAYOUT$pSettingName, OFFSET$pSettingName);
     }
 
-    public void pSettingNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pSettingNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pSettingName, OFFSET$pSettingName, value);
     }
 

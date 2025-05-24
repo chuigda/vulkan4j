@@ -234,11 +234,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         pAcquireKeysRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pAcquireKeysRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pAcquireKeysRaw() {
         return segment.get(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys);
     }
 
-    public void pAcquireKeysRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pAcquireKeysRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pAcquireKeys, OFFSET$pAcquireKeys, value);
     }
 
@@ -259,11 +259,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         pAcquireTimeoutMillisecondsRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pAcquireTimeoutMillisecondsRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pAcquireTimeoutMillisecondsRaw() {
         return segment.get(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds);
     }
 
-    public void pAcquireTimeoutMillisecondsRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pAcquireTimeoutMillisecondsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds, value);
     }
 
@@ -317,11 +317,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         pReleaseKeysRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pReleaseKeysRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pReleaseKeysRaw() {
         return segment.get(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys);
     }
 
-    public void pReleaseKeysRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pReleaseKeysRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pReleaseKeys, OFFSET$pReleaseKeys, value);
     }
 

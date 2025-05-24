@@ -180,27 +180,27 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int rasterizationOrderColorAttachmentAccess() {
+    public @NativeType("VkBool32") @Unsigned int rasterizationOrderColorAttachmentAccess() {
         return segment.get(LAYOUT$rasterizationOrderColorAttachmentAccess, OFFSET$rasterizationOrderColorAttachmentAccess);
     }
 
-    public void rasterizationOrderColorAttachmentAccess(@Unsigned int value) {
+    public void rasterizationOrderColorAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rasterizationOrderColorAttachmentAccess, OFFSET$rasterizationOrderColorAttachmentAccess, value);
     }
 
-    public @Unsigned int rasterizationOrderDepthAttachmentAccess() {
+    public @NativeType("VkBool32") @Unsigned int rasterizationOrderDepthAttachmentAccess() {
         return segment.get(LAYOUT$rasterizationOrderDepthAttachmentAccess, OFFSET$rasterizationOrderDepthAttachmentAccess);
     }
 
-    public void rasterizationOrderDepthAttachmentAccess(@Unsigned int value) {
+    public void rasterizationOrderDepthAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rasterizationOrderDepthAttachmentAccess, OFFSET$rasterizationOrderDepthAttachmentAccess, value);
     }
 
-    public @Unsigned int rasterizationOrderStencilAttachmentAccess() {
+    public @NativeType("VkBool32") @Unsigned int rasterizationOrderStencilAttachmentAccess() {
         return segment.get(LAYOUT$rasterizationOrderStencilAttachmentAccess, OFFSET$rasterizationOrderStencilAttachmentAccess);
     }
 
-    public void rasterizationOrderStencilAttachmentAccess(@Unsigned int value) {
+    public void rasterizationOrderStencilAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rasterizationOrderStencilAttachmentAccess, OFFSET$rasterizationOrderStencilAttachmentAccess, value);
     }
 

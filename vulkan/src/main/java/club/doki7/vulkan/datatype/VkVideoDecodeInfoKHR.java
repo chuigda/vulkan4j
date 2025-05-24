@@ -205,19 +205,19 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long srcBufferOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long srcBufferOffset() {
         return segment.get(LAYOUT$srcBufferOffset, OFFSET$srcBufferOffset);
     }
 
-    public void srcBufferOffset(@Unsigned long value) {
+    public void srcBufferOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$srcBufferOffset, OFFSET$srcBufferOffset, value);
     }
 
-    public @Unsigned long srcBufferRange() {
+    public @NativeType("VkDeviceSize") @Unsigned long srcBufferRange() {
         return segment.get(LAYOUT$srcBufferRange, OFFSET$srcBufferRange);
     }
 
-    public void srcBufferRange(@Unsigned long value) {
+    public void srcBufferRange(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$srcBufferRange, OFFSET$srcBufferRange, value);
     }
 

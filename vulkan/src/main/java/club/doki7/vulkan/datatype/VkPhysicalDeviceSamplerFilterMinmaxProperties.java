@@ -179,19 +179,19 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int filterMinmaxSingleComponentFormats() {
+    public @NativeType("VkBool32") @Unsigned int filterMinmaxSingleComponentFormats() {
         return segment.get(LAYOUT$filterMinmaxSingleComponentFormats, OFFSET$filterMinmaxSingleComponentFormats);
     }
 
-    public void filterMinmaxSingleComponentFormats(@Unsigned int value) {
+    public void filterMinmaxSingleComponentFormats(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$filterMinmaxSingleComponentFormats, OFFSET$filterMinmaxSingleComponentFormats, value);
     }
 
-    public @Unsigned int filterMinmaxImageComponentMapping() {
+    public @NativeType("VkBool32") @Unsigned int filterMinmaxImageComponentMapping() {
         return segment.get(LAYOUT$filterMinmaxImageComponentMapping, OFFSET$filterMinmaxImageComponentMapping);
     }
 
-    public void filterMinmaxImageComponentMapping(@Unsigned int value) {
+    public void filterMinmaxImageComponentMapping(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$filterMinmaxImageComponentMapping, OFFSET$filterMinmaxImageComponentMapping, value);
     }
 

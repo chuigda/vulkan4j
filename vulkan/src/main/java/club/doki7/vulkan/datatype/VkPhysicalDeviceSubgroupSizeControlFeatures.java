@@ -179,19 +179,19 @@ public record VkPhysicalDeviceSubgroupSizeControlFeatures(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int subgroupSizeControl() {
+    public @NativeType("VkBool32") @Unsigned int subgroupSizeControl() {
         return segment.get(LAYOUT$subgroupSizeControl, OFFSET$subgroupSizeControl);
     }
 
-    public void subgroupSizeControl(@Unsigned int value) {
+    public void subgroupSizeControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subgroupSizeControl, OFFSET$subgroupSizeControl, value);
     }
 
-    public @Unsigned int computeFullSubgroups() {
+    public @NativeType("VkBool32") @Unsigned int computeFullSubgroups() {
         return segment.get(LAYOUT$computeFullSubgroups, OFFSET$computeFullSubgroups);
     }
 
-    public void computeFullSubgroups(@Unsigned int value) {
+    public void computeFullSubgroups(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$computeFullSubgroups, OFFSET$computeFullSubgroups, value);
     }
 

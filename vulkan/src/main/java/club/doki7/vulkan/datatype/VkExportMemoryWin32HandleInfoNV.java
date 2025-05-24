@@ -191,11 +191,11 @@ public record VkExportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         pAttributes(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int dwAccess() {
+    public @NativeType("DWORD") @Unsigned int dwAccess() {
         return segment.get(LAYOUT$dwAccess, OFFSET$dwAccess);
     }
 
-    public void dwAccess(@Unsigned int value) {
+    public void dwAccess(@NativeType("DWORD") @Unsigned int value) {
         segment.set(LAYOUT$dwAccess, OFFSET$dwAccess, value);
     }
 

@@ -201,19 +201,19 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long memoryOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@Unsigned long value) {
+    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
     }
 
-    public @Unsigned long memorySize() {
+    public @NativeType("VkDeviceSize") @Unsigned long memorySize() {
         return segment.get(LAYOUT$memorySize, OFFSET$memorySize);
     }
 
-    public void memorySize(@Unsigned long value) {
+    public void memorySize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memorySize, OFFSET$memorySize, value);
     }
 

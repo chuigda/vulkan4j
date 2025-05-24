@@ -178,11 +178,11 @@ public record VkPhysicalDeviceCudaKernelLaunchFeaturesNV(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int cudaKernelLaunchFeatures() {
+    public @NativeType("VkBool32") @Unsigned int cudaKernelLaunchFeatures() {
         return segment.get(LAYOUT$cudaKernelLaunchFeatures, OFFSET$cudaKernelLaunchFeatures);
     }
 
-    public void cudaKernelLaunchFeatures(@Unsigned int value) {
+    public void cudaKernelLaunchFeatures(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cudaKernelLaunchFeatures, OFFSET$cudaKernelLaunchFeatures, value);
     }
 

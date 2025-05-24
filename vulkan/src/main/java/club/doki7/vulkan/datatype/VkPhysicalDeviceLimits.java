@@ -331,19 +331,19 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$maxSamplerAllocationCount, OFFSET$maxSamplerAllocationCount, value);
     }
 
-    public @Unsigned long bufferImageGranularity() {
+    public @NativeType("VkDeviceSize") @Unsigned long bufferImageGranularity() {
         return segment.get(LAYOUT$bufferImageGranularity, OFFSET$bufferImageGranularity);
     }
 
-    public void bufferImageGranularity(@Unsigned long value) {
+    public void bufferImageGranularity(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$bufferImageGranularity, OFFSET$bufferImageGranularity, value);
     }
 
-    public @Unsigned long sparseAddressSpaceSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long sparseAddressSpaceSize() {
         return segment.get(LAYOUT$sparseAddressSpaceSize, OFFSET$sparseAddressSpaceSize);
     }
 
-    public void sparseAddressSpaceSize(@Unsigned long value) {
+    public void sparseAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$sparseAddressSpaceSize, OFFSET$sparseAddressSpaceSize, value);
     }
 
@@ -779,27 +779,27 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         NativeLayout.writeCSizeT(segment, OFFSET$minMemoryMapAlignment, value);
     }
 
-    public @Unsigned long minTexelBufferOffsetAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long minTexelBufferOffsetAlignment() {
         return segment.get(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment);
     }
 
-    public void minTexelBufferOffsetAlignment(@Unsigned long value) {
+    public void minTexelBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment, value);
     }
 
-    public @Unsigned long minUniformBufferOffsetAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long minUniformBufferOffsetAlignment() {
         return segment.get(LAYOUT$minUniformBufferOffsetAlignment, OFFSET$minUniformBufferOffsetAlignment);
     }
 
-    public void minUniformBufferOffsetAlignment(@Unsigned long value) {
+    public void minUniformBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minUniformBufferOffsetAlignment, OFFSET$minUniformBufferOffsetAlignment, value);
     }
 
-    public @Unsigned long minStorageBufferOffsetAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long minStorageBufferOffsetAlignment() {
         return segment.get(LAYOUT$minStorageBufferOffsetAlignment, OFFSET$minStorageBufferOffsetAlignment);
     }
 
-    public void minStorageBufferOffsetAlignment(@Unsigned long value) {
+    public void minStorageBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minStorageBufferOffsetAlignment, OFFSET$minStorageBufferOffsetAlignment, value);
     }
 
@@ -971,11 +971,11 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$maxSampleMaskWords, OFFSET$maxSampleMaskWords, value);
     }
 
-    public @Unsigned int timestampComputeAndGraphics() {
+    public @NativeType("VkBool32") @Unsigned int timestampComputeAndGraphics() {
         return segment.get(LAYOUT$timestampComputeAndGraphics, OFFSET$timestampComputeAndGraphics);
     }
 
-    public void timestampComputeAndGraphics(@Unsigned int value) {
+    public void timestampComputeAndGraphics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$timestampComputeAndGraphics, OFFSET$timestampComputeAndGraphics, value);
     }
 
@@ -1051,43 +1051,43 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$lineWidthGranularity, OFFSET$lineWidthGranularity, value);
     }
 
-    public @Unsigned int strictLines() {
+    public @NativeType("VkBool32") @Unsigned int strictLines() {
         return segment.get(LAYOUT$strictLines, OFFSET$strictLines);
     }
 
-    public void strictLines(@Unsigned int value) {
+    public void strictLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$strictLines, OFFSET$strictLines, value);
     }
 
-    public @Unsigned int standardSampleLocations() {
+    public @NativeType("VkBool32") @Unsigned int standardSampleLocations() {
         return segment.get(LAYOUT$standardSampleLocations, OFFSET$standardSampleLocations);
     }
 
-    public void standardSampleLocations(@Unsigned int value) {
+    public void standardSampleLocations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$standardSampleLocations, OFFSET$standardSampleLocations, value);
     }
 
-    public @Unsigned long optimalBufferCopyOffsetAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long optimalBufferCopyOffsetAlignment() {
         return segment.get(LAYOUT$optimalBufferCopyOffsetAlignment, OFFSET$optimalBufferCopyOffsetAlignment);
     }
 
-    public void optimalBufferCopyOffsetAlignment(@Unsigned long value) {
+    public void optimalBufferCopyOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$optimalBufferCopyOffsetAlignment, OFFSET$optimalBufferCopyOffsetAlignment, value);
     }
 
-    public @Unsigned long optimalBufferCopyRowPitchAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long optimalBufferCopyRowPitchAlignment() {
         return segment.get(LAYOUT$optimalBufferCopyRowPitchAlignment, OFFSET$optimalBufferCopyRowPitchAlignment);
     }
 
-    public void optimalBufferCopyRowPitchAlignment(@Unsigned long value) {
+    public void optimalBufferCopyRowPitchAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$optimalBufferCopyRowPitchAlignment, OFFSET$optimalBufferCopyRowPitchAlignment, value);
     }
 
-    public @Unsigned long nonCoherentAtomSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long nonCoherentAtomSize() {
         return segment.get(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize);
     }
 
-    public void nonCoherentAtomSize(@Unsigned long value) {
+    public void nonCoherentAtomSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize, value);
     }
 

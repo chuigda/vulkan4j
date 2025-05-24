@@ -178,11 +178,11 @@ public record VkSwapchainLatencyCreateInfoNV(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int latencyModeEnable() {
+    public @NativeType("VkBool32") @Unsigned int latencyModeEnable() {
         return segment.get(LAYOUT$latencyModeEnable, OFFSET$latencyModeEnable);
     }
 
-    public void latencyModeEnable(@Unsigned int value) {
+    public void latencyModeEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$latencyModeEnable, OFFSET$latencyModeEnable, value);
     }
 

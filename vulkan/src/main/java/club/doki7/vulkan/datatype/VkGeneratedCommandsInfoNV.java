@@ -281,19 +281,19 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long preprocessOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long preprocessOffset() {
         return segment.get(LAYOUT$preprocessOffset, OFFSET$preprocessOffset);
     }
 
-    public void preprocessOffset(@Unsigned long value) {
+    public void preprocessOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$preprocessOffset, OFFSET$preprocessOffset, value);
     }
 
-    public @Unsigned long preprocessSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long preprocessSize() {
         return segment.get(LAYOUT$preprocessSize, OFFSET$preprocessSize);
     }
 
-    public void preprocessSize(@Unsigned long value) {
+    public void preprocessSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
     }
 
@@ -309,11 +309,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long sequencesCountOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long sequencesCountOffset() {
         return segment.get(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset);
     }
 
-    public void sequencesCountOffset(@Unsigned long value) {
+    public void sequencesCountOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset, value);
     }
 
@@ -329,11 +329,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long sequencesIndexOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long sequencesIndexOffset() {
         return segment.get(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset);
     }
 
-    public void sequencesIndexOffset(@Unsigned long value) {
+    public void sequencesIndexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset, value);
     }
 

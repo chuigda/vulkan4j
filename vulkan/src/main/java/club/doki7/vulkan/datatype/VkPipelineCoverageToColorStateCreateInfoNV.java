@@ -188,11 +188,11 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned int coverageToColorEnable() {
+    public @NativeType("VkBool32") @Unsigned int coverageToColorEnable() {
         return segment.get(LAYOUT$coverageToColorEnable, OFFSET$coverageToColorEnable);
     }
 
-    public void coverageToColorEnable(@Unsigned int value) {
+    public void coverageToColorEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$coverageToColorEnable, OFFSET$coverageToColorEnable, value);
     }
 

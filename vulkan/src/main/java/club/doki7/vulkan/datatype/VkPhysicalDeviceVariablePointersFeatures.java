@@ -179,19 +179,19 @@ public record VkPhysicalDeviceVariablePointersFeatures(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int variablePointersStorageBuffer() {
+    public @NativeType("VkBool32") @Unsigned int variablePointersStorageBuffer() {
         return segment.get(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer);
     }
 
-    public void variablePointersStorageBuffer(@Unsigned int value) {
+    public void variablePointersStorageBuffer(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer, value);
     }
 
-    public @Unsigned int variablePointers() {
+    public @NativeType("VkBool32") @Unsigned int variablePointers() {
         return segment.get(LAYOUT$variablePointers, OFFSET$variablePointers);
     }
 
-    public void variablePointers(@Unsigned int value) {
+    public void variablePointers(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$variablePointers, OFFSET$variablePointers, value);
     }
 

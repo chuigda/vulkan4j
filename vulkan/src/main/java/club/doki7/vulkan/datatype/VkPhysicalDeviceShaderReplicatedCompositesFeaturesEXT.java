@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderReplicatedComposites() {
+    public @NativeType("VkBool32") @Unsigned int shaderReplicatedComposites() {
         return segment.get(LAYOUT$shaderReplicatedComposites, OFFSET$shaderReplicatedComposites);
     }
 
-    public void shaderReplicatedComposites(@Unsigned int value) {
+    public void shaderReplicatedComposites(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderReplicatedComposites, OFFSET$shaderReplicatedComposites, value);
     }
 

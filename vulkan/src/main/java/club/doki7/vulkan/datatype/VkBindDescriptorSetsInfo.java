@@ -270,11 +270,11 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         pDynamicOffsetsRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pDynamicOffsetsRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pDynamicOffsetsRaw() {
         return segment.get(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets);
     }
 
-    public void pDynamicOffsetsRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pDynamicOffsetsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDynamicOffsets, OFFSET$pDynamicOffsets, value);
     }
 

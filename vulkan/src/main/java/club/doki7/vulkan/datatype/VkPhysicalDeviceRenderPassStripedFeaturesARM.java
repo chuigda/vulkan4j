@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRenderPassStripedFeaturesARM(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int renderPassStriped() {
+    public @NativeType("VkBool32") @Unsigned int renderPassStriped() {
         return segment.get(LAYOUT$renderPassStriped, OFFSET$renderPassStriped);
     }
 
-    public void renderPassStriped(@Unsigned int value) {
+    public void renderPassStriped(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$renderPassStriped, OFFSET$renderPassStriped, value);
     }
 

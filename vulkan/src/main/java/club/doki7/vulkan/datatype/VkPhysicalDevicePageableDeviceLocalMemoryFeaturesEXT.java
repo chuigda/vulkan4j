@@ -178,11 +178,11 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int pageableDeviceLocalMemory() {
+    public @NativeType("VkBool32") @Unsigned int pageableDeviceLocalMemory() {
         return segment.get(LAYOUT$pageableDeviceLocalMemory, OFFSET$pageableDeviceLocalMemory);
     }
 
-    public void pageableDeviceLocalMemory(@Unsigned int value) {
+    public void pageableDeviceLocalMemory(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pageableDeviceLocalMemory, OFFSET$pageableDeviceLocalMemory, value);
     }
 

@@ -311,11 +311,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangleArray, SIZE$triangleArray);
     }
 
-    public @Unsigned long triangleArrayStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long triangleArrayStride() {
         return segment.get(LAYOUT$triangleArrayStride, OFFSET$triangleArrayStride);
     }
 
-    public void triangleArrayStride(@Unsigned long value) {
+    public void triangleArrayStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$triangleArrayStride, OFFSET$triangleArrayStride, value);
     }
 

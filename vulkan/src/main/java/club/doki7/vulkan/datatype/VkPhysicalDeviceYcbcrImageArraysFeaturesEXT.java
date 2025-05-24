@@ -178,11 +178,11 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int ycbcrImageArrays() {
+    public @NativeType("VkBool32") @Unsigned int ycbcrImageArrays() {
         return segment.get(LAYOUT$ycbcrImageArrays, OFFSET$ycbcrImageArrays);
     }
 
-    public void ycbcrImageArrays(@Unsigned int value) {
+    public void ycbcrImageArrays(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$ycbcrImageArrays, OFFSET$ycbcrImageArrays, value);
     }
 

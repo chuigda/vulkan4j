@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDiagnosticsConfigFeaturesNV(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int diagnosticsConfig() {
+    public @NativeType("VkBool32") @Unsigned int diagnosticsConfig() {
         return segment.get(LAYOUT$diagnosticsConfig, OFFSET$diagnosticsConfig);
     }
 
-    public void diagnosticsConfig(@Unsigned int value) {
+    public void diagnosticsConfig(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$diagnosticsConfig, OFFSET$diagnosticsConfig, value);
     }
 

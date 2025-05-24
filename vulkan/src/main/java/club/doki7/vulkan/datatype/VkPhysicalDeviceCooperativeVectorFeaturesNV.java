@@ -179,19 +179,19 @@ public record VkPhysicalDeviceCooperativeVectorFeaturesNV(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int cooperativeVector() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeVector() {
         return segment.get(LAYOUT$cooperativeVector, OFFSET$cooperativeVector);
     }
 
-    public void cooperativeVector(@Unsigned int value) {
+    public void cooperativeVector(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeVector, OFFSET$cooperativeVector, value);
     }
 
-    public @Unsigned int cooperativeVectorTraining() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeVectorTraining() {
         return segment.get(LAYOUT$cooperativeVectorTraining, OFFSET$cooperativeVectorTraining);
     }
 
-    public void cooperativeVectorTraining(@Unsigned int value) {
+    public void cooperativeVectorTraining(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTraining, OFFSET$cooperativeVectorTraining, value);
     }
 

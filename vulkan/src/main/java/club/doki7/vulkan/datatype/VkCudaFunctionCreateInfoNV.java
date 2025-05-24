@@ -208,11 +208,11 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
         pNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment pNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
         return segment.get(LAYOUT$pName, OFFSET$pName);
     }
 
-    public void pNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void pNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 

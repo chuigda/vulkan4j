@@ -178,11 +178,11 @@ public record VkSurfaceCapabilitiesFullScreenExclusiveEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int fullScreenExclusiveSupported() {
+    public @NativeType("VkBool32") @Unsigned int fullScreenExclusiveSupported() {
         return segment.get(LAYOUT$fullScreenExclusiveSupported, OFFSET$fullScreenExclusiveSupported);
     }
 
-    public void fullScreenExclusiveSupported(@Unsigned int value) {
+    public void fullScreenExclusiveSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fullScreenExclusiveSupported, OFFSET$fullScreenExclusiveSupported, value);
     }
 

@@ -187,11 +187,11 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
     }
 
-    public @Unsigned int handle() {
+    public @NativeType("zx_handle_t") @Unsigned int handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@Unsigned int value) {
+    public void handle(@NativeType("zx_handle_t") @Unsigned int value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 

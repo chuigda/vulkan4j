@@ -179,19 +179,19 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int enableYDegamma() {
+    public @NativeType("VkBool32") @Unsigned int enableYDegamma() {
         return segment.get(LAYOUT$enableYDegamma, OFFSET$enableYDegamma);
     }
 
-    public void enableYDegamma(@Unsigned int value) {
+    public void enableYDegamma(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$enableYDegamma, OFFSET$enableYDegamma, value);
     }
 
-    public @Unsigned int enableCbCrDegamma() {
+    public @NativeType("VkBool32") @Unsigned int enableCbCrDegamma() {
         return segment.get(LAYOUT$enableCbCrDegamma, OFFSET$enableCbCrDegamma);
     }
 
-    public void enableCbCrDegamma(@Unsigned int value) {
+    public void enableCbCrDegamma(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$enableCbCrDegamma, OFFSET$enableCbCrDegamma, value);
     }
 

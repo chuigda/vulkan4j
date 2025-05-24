@@ -236,11 +236,11 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         pSliceSegmentOffsetsRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pSliceSegmentOffsetsRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pSliceSegmentOffsetsRaw() {
         return segment.get(LAYOUT$pSliceSegmentOffsets, OFFSET$pSliceSegmentOffsets);
     }
 
-    public void pSliceSegmentOffsetsRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pSliceSegmentOffsetsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pSliceSegmentOffsets, OFFSET$pSliceSegmentOffsets, value);
     }
 

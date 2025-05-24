@@ -196,11 +196,11 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstRect, SIZE$dstRect);
     }
 
-    public @Unsigned int persistent() {
+    public @NativeType("VkBool32") @Unsigned int persistent() {
         return segment.get(LAYOUT$persistent, OFFSET$persistent);
     }
 
-    public void persistent(@Unsigned int value) {
+    public void persistent(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$persistent, OFFSET$persistent, value);
     }
 

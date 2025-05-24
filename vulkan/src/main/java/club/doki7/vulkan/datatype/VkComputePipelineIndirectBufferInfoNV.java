@@ -180,27 +180,27 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long deviceAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@Unsigned long value) {
+    public void deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
     }
 
-    public @Unsigned long size() {
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned long value) {
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @Unsigned long pipelineDeviceAddressCaptureReplay() {
+    public @NativeType("VkDeviceAddress") @Unsigned long pipelineDeviceAddressCaptureReplay() {
         return segment.get(LAYOUT$pipelineDeviceAddressCaptureReplay, OFFSET$pipelineDeviceAddressCaptureReplay);
     }
 
-    public void pipelineDeviceAddressCaptureReplay(@Unsigned long value) {
+    public void pipelineDeviceAddressCaptureReplay(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$pipelineDeviceAddressCaptureReplay, OFFSET$pipelineDeviceAddressCaptureReplay, value);
     }
 

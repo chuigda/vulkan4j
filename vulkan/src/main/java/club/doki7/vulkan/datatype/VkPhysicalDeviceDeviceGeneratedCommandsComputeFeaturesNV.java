@@ -180,27 +180,27 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int deviceGeneratedCompute() {
+    public @NativeType("VkBool32") @Unsigned int deviceGeneratedCompute() {
         return segment.get(LAYOUT$deviceGeneratedCompute, OFFSET$deviceGeneratedCompute);
     }
 
-    public void deviceGeneratedCompute(@Unsigned int value) {
+    public void deviceGeneratedCompute(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCompute, OFFSET$deviceGeneratedCompute, value);
     }
 
-    public @Unsigned int deviceGeneratedComputePipelines() {
+    public @NativeType("VkBool32") @Unsigned int deviceGeneratedComputePipelines() {
         return segment.get(LAYOUT$deviceGeneratedComputePipelines, OFFSET$deviceGeneratedComputePipelines);
     }
 
-    public void deviceGeneratedComputePipelines(@Unsigned int value) {
+    public void deviceGeneratedComputePipelines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedComputePipelines, OFFSET$deviceGeneratedComputePipelines, value);
     }
 
-    public @Unsigned int deviceGeneratedComputeCaptureReplay() {
+    public @NativeType("VkBool32") @Unsigned int deviceGeneratedComputeCaptureReplay() {
         return segment.get(LAYOUT$deviceGeneratedComputeCaptureReplay, OFFSET$deviceGeneratedComputeCaptureReplay);
     }
 
-    public void deviceGeneratedComputeCaptureReplay(@Unsigned int value) {
+    public void deviceGeneratedComputeCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedComputeCaptureReplay, OFFSET$deviceGeneratedComputeCaptureReplay, value);
     }
 

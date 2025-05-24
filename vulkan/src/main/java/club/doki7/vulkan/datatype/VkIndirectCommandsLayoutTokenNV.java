@@ -222,11 +222,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
     }
 
-    public @Unsigned int vertexDynamicStride() {
+    public @NativeType("VkBool32") @Unsigned int vertexDynamicStride() {
         return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
     }
 
-    public void vertexDynamicStride(@Unsigned int value) {
+    public void vertexDynamicStride(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
     }
 
@@ -325,11 +325,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         pIndexTypeValuesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pIndexTypeValuesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pIndexTypeValuesRaw() {
         return segment.get(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues);
     }
 
-    public void pIndexTypeValuesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pIndexTypeValuesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pIndexTypeValues, OFFSET$pIndexTypeValues, value);
     }
 

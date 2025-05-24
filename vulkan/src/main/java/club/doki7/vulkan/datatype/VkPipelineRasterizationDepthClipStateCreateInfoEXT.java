@@ -187,11 +187,11 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned int depthClipEnable() {
+    public @NativeType("VkBool32") @Unsigned int depthClipEnable() {
         return segment.get(LAYOUT$depthClipEnable, OFFSET$depthClipEnable);
     }
 
-    public void depthClipEnable(@Unsigned int value) {
+    public void depthClipEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthClipEnable, OFFSET$depthClipEnable, value);
     }
 

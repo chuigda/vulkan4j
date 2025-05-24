@@ -178,11 +178,11 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int pipelineCreationCacheControl() {
+    public @NativeType("VkBool32") @Unsigned int pipelineCreationCacheControl() {
         return segment.get(LAYOUT$pipelineCreationCacheControl, OFFSET$pipelineCreationCacheControl);
     }
 
-    public void pipelineCreationCacheControl(@Unsigned int value) {
+    public void pipelineCreationCacheControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineCreationCacheControl, OFFSET$pipelineCreationCacheControl, value);
     }
 

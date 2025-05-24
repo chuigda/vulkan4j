@@ -178,11 +178,11 @@ public record VkPhysicalDeviceHdrVividFeaturesHUAWEI(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int hdrVivid() {
+    public @NativeType("VkBool32") @Unsigned int hdrVivid() {
         return segment.get(LAYOUT$hdrVivid, OFFSET$hdrVivid);
     }
 
-    public void hdrVivid(@Unsigned int value) {
+    public void hdrVivid(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hdrVivid, OFFSET$hdrVivid, value);
     }
 

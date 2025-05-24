@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderIntegerFunctions2() {
+    public @NativeType("VkBool32") @Unsigned int shaderIntegerFunctions2() {
         return segment.get(LAYOUT$shaderIntegerFunctions2, OFFSET$shaderIntegerFunctions2);
     }
 
-    public void shaderIntegerFunctions2(@Unsigned int value) {
+    public void shaderIntegerFunctions2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderIntegerFunctions2, OFFSET$shaderIntegerFunctions2, value);
     }
 

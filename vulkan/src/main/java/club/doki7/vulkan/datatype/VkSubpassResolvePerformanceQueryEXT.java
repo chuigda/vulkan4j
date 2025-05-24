@@ -178,11 +178,11 @@ public record VkSubpassResolvePerformanceQueryEXT(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int optimal() {
+    public @NativeType("VkBool32") @Unsigned int optimal() {
         return segment.get(LAYOUT$optimal, OFFSET$optimal);
     }
 
-    public void optimal(@Unsigned int value) {
+    public void optimal(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$optimal, OFFSET$optimal, value);
     }
 

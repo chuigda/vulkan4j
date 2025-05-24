@@ -204,11 +204,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
     }
 
-    public @Unsigned long vertexStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
 
-    public void vertexStride(@Unsigned long value) {
+    public void vertexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
     }
 
@@ -228,11 +228,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$radiusData, SIZE$radiusData);
     }
 
-    public @Unsigned long radiusStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long radiusStride() {
         return segment.get(LAYOUT$radiusStride, OFFSET$radiusStride);
     }
 
-    public void radiusStride(@Unsigned long value) {
+    public void radiusStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$radiusStride, OFFSET$radiusStride, value);
     }
 
@@ -252,11 +252,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexData, SIZE$indexData);
     }
 
-    public @Unsigned long indexStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long indexStride() {
         return segment.get(LAYOUT$indexStride, OFFSET$indexStride);
     }
 
-    public void indexStride(@Unsigned long value) {
+    public void indexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$indexStride, OFFSET$indexStride, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int depthClampZeroOne() {
+    public @NativeType("VkBool32") @Unsigned int depthClampZeroOne() {
         return segment.get(LAYOUT$depthClampZeroOne, OFFSET$depthClampZeroOne);
     }
 
-    public void depthClampZeroOne(@Unsigned int value) {
+    public void depthClampZeroOne(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthClampZeroOne, OFFSET$depthClampZeroOne, value);
     }
 

@@ -151,91 +151,91 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @Unsigned long raygenShaderRecordAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long raygenShaderRecordAddress() {
         return segment.get(LAYOUT$raygenShaderRecordAddress, OFFSET$raygenShaderRecordAddress);
     }
 
-    public void raygenShaderRecordAddress(@Unsigned long value) {
+    public void raygenShaderRecordAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$raygenShaderRecordAddress, OFFSET$raygenShaderRecordAddress, value);
     }
 
-    public @Unsigned long raygenShaderRecordSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long raygenShaderRecordSize() {
         return segment.get(LAYOUT$raygenShaderRecordSize, OFFSET$raygenShaderRecordSize);
     }
 
-    public void raygenShaderRecordSize(@Unsigned long value) {
+    public void raygenShaderRecordSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$raygenShaderRecordSize, OFFSET$raygenShaderRecordSize, value);
     }
 
-    public @Unsigned long missShaderBindingTableAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long missShaderBindingTableAddress() {
         return segment.get(LAYOUT$missShaderBindingTableAddress, OFFSET$missShaderBindingTableAddress);
     }
 
-    public void missShaderBindingTableAddress(@Unsigned long value) {
+    public void missShaderBindingTableAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$missShaderBindingTableAddress, OFFSET$missShaderBindingTableAddress, value);
     }
 
-    public @Unsigned long missShaderBindingTableSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long missShaderBindingTableSize() {
         return segment.get(LAYOUT$missShaderBindingTableSize, OFFSET$missShaderBindingTableSize);
     }
 
-    public void missShaderBindingTableSize(@Unsigned long value) {
+    public void missShaderBindingTableSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$missShaderBindingTableSize, OFFSET$missShaderBindingTableSize, value);
     }
 
-    public @Unsigned long missShaderBindingTableStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long missShaderBindingTableStride() {
         return segment.get(LAYOUT$missShaderBindingTableStride, OFFSET$missShaderBindingTableStride);
     }
 
-    public void missShaderBindingTableStride(@Unsigned long value) {
+    public void missShaderBindingTableStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$missShaderBindingTableStride, OFFSET$missShaderBindingTableStride, value);
     }
 
-    public @Unsigned long hitShaderBindingTableAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long hitShaderBindingTableAddress() {
         return segment.get(LAYOUT$hitShaderBindingTableAddress, OFFSET$hitShaderBindingTableAddress);
     }
 
-    public void hitShaderBindingTableAddress(@Unsigned long value) {
+    public void hitShaderBindingTableAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$hitShaderBindingTableAddress, OFFSET$hitShaderBindingTableAddress, value);
     }
 
-    public @Unsigned long hitShaderBindingTableSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long hitShaderBindingTableSize() {
         return segment.get(LAYOUT$hitShaderBindingTableSize, OFFSET$hitShaderBindingTableSize);
     }
 
-    public void hitShaderBindingTableSize(@Unsigned long value) {
+    public void hitShaderBindingTableSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$hitShaderBindingTableSize, OFFSET$hitShaderBindingTableSize, value);
     }
 
-    public @Unsigned long hitShaderBindingTableStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long hitShaderBindingTableStride() {
         return segment.get(LAYOUT$hitShaderBindingTableStride, OFFSET$hitShaderBindingTableStride);
     }
 
-    public void hitShaderBindingTableStride(@Unsigned long value) {
+    public void hitShaderBindingTableStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$hitShaderBindingTableStride, OFFSET$hitShaderBindingTableStride, value);
     }
 
-    public @Unsigned long callableShaderBindingTableAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long callableShaderBindingTableAddress() {
         return segment.get(LAYOUT$callableShaderBindingTableAddress, OFFSET$callableShaderBindingTableAddress);
     }
 
-    public void callableShaderBindingTableAddress(@Unsigned long value) {
+    public void callableShaderBindingTableAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$callableShaderBindingTableAddress, OFFSET$callableShaderBindingTableAddress, value);
     }
 
-    public @Unsigned long callableShaderBindingTableSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long callableShaderBindingTableSize() {
         return segment.get(LAYOUT$callableShaderBindingTableSize, OFFSET$callableShaderBindingTableSize);
     }
 
-    public void callableShaderBindingTableSize(@Unsigned long value) {
+    public void callableShaderBindingTableSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$callableShaderBindingTableSize, OFFSET$callableShaderBindingTableSize, value);
     }
 
-    public @Unsigned long callableShaderBindingTableStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long callableShaderBindingTableStride() {
         return segment.get(LAYOUT$callableShaderBindingTableStride, OFFSET$callableShaderBindingTableStride);
     }
 
-    public void callableShaderBindingTableStride(@Unsigned long value) {
+    public void callableShaderBindingTableStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$callableShaderBindingTableStride, OFFSET$callableShaderBindingTableStride, value);
     }
 

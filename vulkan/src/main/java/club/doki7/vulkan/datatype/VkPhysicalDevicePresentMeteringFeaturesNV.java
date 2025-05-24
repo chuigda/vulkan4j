@@ -178,11 +178,11 @@ public record VkPhysicalDevicePresentMeteringFeaturesNV(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int presentMetering() {
+    public @NativeType("VkBool32") @Unsigned int presentMetering() {
         return segment.get(LAYOUT$presentMetering, OFFSET$presentMetering);
     }
 
-    public void presentMetering(@Unsigned int value) {
+    public void presentMetering(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$presentMetering, OFFSET$presentMetering, value);
     }
 

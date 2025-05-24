@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int imageSlicedViewOf3D() {
+    public @NativeType("VkBool32") @Unsigned int imageSlicedViewOf3D() {
         return segment.get(LAYOUT$imageSlicedViewOf3D, OFFSET$imageSlicedViewOf3D);
     }
 
-    public void imageSlicedViewOf3D(@Unsigned int value) {
+    public void imageSlicedViewOf3D(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageSlicedViewOf3D, OFFSET$imageSlicedViewOf3D, value);
     }
 

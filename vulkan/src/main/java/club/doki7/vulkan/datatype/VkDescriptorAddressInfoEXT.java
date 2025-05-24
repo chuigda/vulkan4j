@@ -180,19 +180,19 @@ public record VkDescriptorAddressInfoEXT(@NotNull MemorySegment segment) impleme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long address() {
+    public @NativeType("VkDeviceAddress") @Unsigned long address() {
         return segment.get(LAYOUT$address, OFFSET$address);
     }
 
-    public void address(@Unsigned long value) {
+    public void address(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$address, OFFSET$address, value);
     }
 
-    public @Unsigned long range() {
+    public @NativeType("VkDeviceSize") @Unsigned long range() {
         return segment.get(LAYOUT$range, OFFSET$range);
     }
 
-    public void range(@Unsigned long value) {
+    public void range(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$range, OFFSET$range, value);
     }
 

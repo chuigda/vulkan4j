@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderEnqueue() {
+    public @NativeType("VkBool32") @Unsigned int shaderEnqueue() {
         return segment.get(LAYOUT$shaderEnqueue, OFFSET$shaderEnqueue);
     }
 
-    public void shaderEnqueue(@Unsigned int value) {
+    public void shaderEnqueue(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderEnqueue, OFFSET$shaderEnqueue, value);
     }
 
-    public @Unsigned int shaderMeshEnqueue() {
+    public @NativeType("VkBool32") @Unsigned int shaderMeshEnqueue() {
         return segment.get(LAYOUT$shaderMeshEnqueue, OFFSET$shaderMeshEnqueue);
     }
 
-    public void shaderMeshEnqueue(@Unsigned int value) {
+    public void shaderMeshEnqueue(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderMeshEnqueue, OFFSET$shaderMeshEnqueue, value);
     }
 

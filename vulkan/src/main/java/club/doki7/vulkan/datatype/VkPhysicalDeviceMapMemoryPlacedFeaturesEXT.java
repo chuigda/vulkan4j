@@ -180,27 +180,27 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int memoryMapPlaced() {
+    public @NativeType("VkBool32") @Unsigned int memoryMapPlaced() {
         return segment.get(LAYOUT$memoryMapPlaced, OFFSET$memoryMapPlaced);
     }
 
-    public void memoryMapPlaced(@Unsigned int value) {
+    public void memoryMapPlaced(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$memoryMapPlaced, OFFSET$memoryMapPlaced, value);
     }
 
-    public @Unsigned int memoryMapRangePlaced() {
+    public @NativeType("VkBool32") @Unsigned int memoryMapRangePlaced() {
         return segment.get(LAYOUT$memoryMapRangePlaced, OFFSET$memoryMapRangePlaced);
     }
 
-    public void memoryMapRangePlaced(@Unsigned int value) {
+    public void memoryMapRangePlaced(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$memoryMapRangePlaced, OFFSET$memoryMapRangePlaced, value);
     }
 
-    public @Unsigned int memoryUnmapReserve() {
+    public @NativeType("VkBool32") @Unsigned int memoryUnmapReserve() {
         return segment.get(LAYOUT$memoryUnmapReserve, OFFSET$memoryUnmapReserve);
     }
 
-    public void memoryUnmapReserve(@Unsigned int value) {
+    public void memoryUnmapReserve(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$memoryUnmapReserve, OFFSET$memoryUnmapReserve, value);
     }
 

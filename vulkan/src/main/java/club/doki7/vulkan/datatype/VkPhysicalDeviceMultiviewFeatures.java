@@ -180,27 +180,27 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int multiview() {
+    public @NativeType("VkBool32") @Unsigned int multiview() {
         return segment.get(LAYOUT$multiview, OFFSET$multiview);
     }
 
-    public void multiview(@Unsigned int value) {
+    public void multiview(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiview, OFFSET$multiview, value);
     }
 
-    public @Unsigned int multiviewGeometryShader() {
+    public @NativeType("VkBool32") @Unsigned int multiviewGeometryShader() {
         return segment.get(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader);
     }
 
-    public void multiviewGeometryShader(@Unsigned int value) {
+    public void multiviewGeometryShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader, value);
     }
 
-    public @Unsigned int multiviewTessellationShader() {
+    public @NativeType("VkBool32") @Unsigned int multiviewTessellationShader() {
         return segment.get(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader);
     }
 
-    public void multiviewTessellationShader(@Unsigned int value) {
+    public void multiviewTessellationShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader, value);
     }
 

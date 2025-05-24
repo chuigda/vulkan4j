@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderExpectAssumeFeatures(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderExpectAssume() {
+    public @NativeType("VkBool32") @Unsigned int shaderExpectAssume() {
         return segment.get(LAYOUT$shaderExpectAssume, OFFSET$shaderExpectAssume);
     }
 
-    public void shaderExpectAssume(@Unsigned int value) {
+    public void shaderExpectAssume(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderExpectAssume, OFFSET$shaderExpectAssume, value);
     }
 

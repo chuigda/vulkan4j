@@ -179,19 +179,19 @@ public record VkPhysicalDevicePerformanceQueryFeaturesKHR(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int performanceCounterQueryPools() {
+    public @NativeType("VkBool32") @Unsigned int performanceCounterQueryPools() {
         return segment.get(LAYOUT$performanceCounterQueryPools, OFFSET$performanceCounterQueryPools);
     }
 
-    public void performanceCounterQueryPools(@Unsigned int value) {
+    public void performanceCounterQueryPools(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$performanceCounterQueryPools, OFFSET$performanceCounterQueryPools, value);
     }
 
-    public @Unsigned int performanceCounterMultipleQueryPools() {
+    public @NativeType("VkBool32") @Unsigned int performanceCounterMultipleQueryPools() {
         return segment.get(LAYOUT$performanceCounterMultipleQueryPools, OFFSET$performanceCounterMultipleQueryPools);
     }
 
-    public void performanceCounterMultipleQueryPools(@Unsigned int value) {
+    public void performanceCounterMultipleQueryPools(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$performanceCounterMultipleQueryPools, OFFSET$performanceCounterMultipleQueryPools, value);
     }
 

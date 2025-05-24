@@ -200,11 +200,11 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         connection(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int window() {
+    public @NativeType("xcb_window_t") @Unsigned int window() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
-    public void window(@Unsigned int value) {
+    public void window(@NativeType("xcb_window_t") @Unsigned int value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 

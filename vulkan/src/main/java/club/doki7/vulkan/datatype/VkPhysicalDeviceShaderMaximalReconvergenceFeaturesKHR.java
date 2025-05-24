@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderMaximalReconvergence() {
+    public @NativeType("VkBool32") @Unsigned int shaderMaximalReconvergence() {
         return segment.get(LAYOUT$shaderMaximalReconvergence, OFFSET$shaderMaximalReconvergence);
     }
 
-    public void shaderMaximalReconvergence(@Unsigned int value) {
+    public void shaderMaximalReconvergence(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderMaximalReconvergence, OFFSET$shaderMaximalReconvergence, value);
     }
 

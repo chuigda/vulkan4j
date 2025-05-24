@@ -259,11 +259,11 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
     }
 
-    public @Unsigned int identicalMemoryTypeRequirements() {
+    public @NativeType("VkBool32") @Unsigned int identicalMemoryTypeRequirements() {
         return segment.get(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements);
     }
 
-    public void identicalMemoryTypeRequirements(@Unsigned int value) {
+    public void identicalMemoryTypeRequirements(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
     }
 

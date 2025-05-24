@@ -294,11 +294,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         pQueueFamilyIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pQueueFamilyIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
         return segment.get(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices);
     }
 
-    public void pQueueFamilyIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pQueueFamilyIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pQueueFamilyIndices, OFFSET$pQueueFamilyIndices, value);
     }
 
@@ -326,11 +326,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
     }
 
-    public @Unsigned int clipped() {
+    public @NativeType("VkBool32") @Unsigned int clipped() {
         return segment.get(LAYOUT$clipped, OFFSET$clipped);
     }
 
-    public void clipped(@Unsigned int value) {
+    public void clipped(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clipped, OFFSET$clipped, value);
     }
 

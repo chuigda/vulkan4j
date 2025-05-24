@@ -209,11 +209,11 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IVkGeo
         segment.set(LAYOUT$stride, OFFSET$stride, value);
     }
 
-    public @Unsigned long offset() {
+    public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned long value) {
+    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 

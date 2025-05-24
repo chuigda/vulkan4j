@@ -187,11 +187,11 @@ public record VkStreamDescriptorSurfaceCreateInfoGGP(@NotNull MemorySegment segm
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned int streamDescriptor() {
+    public @NativeType("GgpStreamDescriptor") @Unsigned int streamDescriptor() {
         return segment.get(LAYOUT$streamDescriptor, OFFSET$streamDescriptor);
     }
 
-    public void streamDescriptor(@Unsigned int value) {
+    public void streamDescriptor(@NativeType("GgpStreamDescriptor") @Unsigned int value) {
         segment.set(LAYOUT$streamDescriptor, OFFSET$streamDescriptor, value);
     }
 

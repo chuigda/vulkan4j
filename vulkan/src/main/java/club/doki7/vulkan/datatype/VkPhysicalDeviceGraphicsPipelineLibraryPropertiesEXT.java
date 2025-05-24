@@ -179,19 +179,19 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int graphicsPipelineLibraryFastLinking() {
+    public @NativeType("VkBool32") @Unsigned int graphicsPipelineLibraryFastLinking() {
         return segment.get(LAYOUT$graphicsPipelineLibraryFastLinking, OFFSET$graphicsPipelineLibraryFastLinking);
     }
 
-    public void graphicsPipelineLibraryFastLinking(@Unsigned int value) {
+    public void graphicsPipelineLibraryFastLinking(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$graphicsPipelineLibraryFastLinking, OFFSET$graphicsPipelineLibraryFastLinking, value);
     }
 
-    public @Unsigned int graphicsPipelineLibraryIndependentInterpolationDecoration() {
+    public @NativeType("VkBool32") @Unsigned int graphicsPipelineLibraryIndependentInterpolationDecoration() {
         return segment.get(LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration, OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration);
     }
 
-    public void graphicsPipelineLibraryIndependentInterpolationDecoration(@Unsigned int value) {
+    public void graphicsPipelineLibraryIndependentInterpolationDecoration(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration, OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration, value);
     }
 

@@ -236,11 +236,11 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         pBufferIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pBufferIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pBufferIndicesRaw() {
         return segment.get(LAYOUT$pBufferIndices, OFFSET$pBufferIndices);
     }
 
-    public void pBufferIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pBufferIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pBufferIndices, OFFSET$pBufferIndices, value);
     }
 
@@ -248,7 +248,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @Unsigned LongPtr pOffsets() {
+    public @Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr pOffsets() {
         MemorySegment s = pOffsetsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -256,16 +256,16 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new LongPtr(s);
     }
 
-    public void pOffsets(@Nullable @Unsigned LongPtr value) {
+    public void pOffsets(@Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pOffsetsRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pOffsetsRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pOffsetsRaw() {
         return segment.get(LAYOUT$pOffsets, OFFSET$pOffsets);
     }
 
-    public void pOffsetsRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pOffsetsRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pOffsets, OFFSET$pOffsets, value);
     }
 

@@ -187,11 +187,11 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned int imagePipeHandle() {
+    public @NativeType("zx_handle_t") @Unsigned int imagePipeHandle() {
         return segment.get(LAYOUT$imagePipeHandle, OFFSET$imagePipeHandle);
     }
 
-    public void imagePipeHandle(@Unsigned int value) {
+    public void imagePipeHandle(@NativeType("zx_handle_t") @Unsigned int value) {
         segment.set(LAYOUT$imagePipeHandle, OFFSET$imagePipeHandle, value);
     }
 

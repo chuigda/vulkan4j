@@ -224,11 +224,11 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask, value);
     }
 
-    public @Unsigned int deviceLUIDValid() {
+    public @NativeType("VkBool32") @Unsigned int deviceLUIDValid() {
         return segment.get(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid);
     }
 
-    public void deviceLUIDValid(@Unsigned int value) {
+    public void deviceLUIDValid(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid, value);
     }
 
@@ -256,11 +256,11 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations, value);
     }
 
-    public @Unsigned int subgroupQuadOperationsInAllStages() {
+    public @NativeType("VkBool32") @Unsigned int subgroupQuadOperationsInAllStages() {
         return segment.get(LAYOUT$subgroupQuadOperationsInAllStages, OFFSET$subgroupQuadOperationsInAllStages);
     }
 
-    public void subgroupQuadOperationsInAllStages(@Unsigned int value) {
+    public void subgroupQuadOperationsInAllStages(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subgroupQuadOperationsInAllStages, OFFSET$subgroupQuadOperationsInAllStages, value);
     }
 
@@ -288,11 +288,11 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex, value);
     }
 
-    public @Unsigned int protectedNoFault() {
+    public @NativeType("VkBool32") @Unsigned int protectedNoFault() {
         return segment.get(LAYOUT$protectedNoFault, OFFSET$protectedNoFault);
     }
 
-    public void protectedNoFault(@Unsigned int value) {
+    public void protectedNoFault(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$protectedNoFault, OFFSET$protectedNoFault, value);
     }
 
@@ -304,11 +304,11 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors, value);
     }
 
-    public @Unsigned long maxMemoryAllocationSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long maxMemoryAllocationSize() {
         return segment.get(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize);
     }
 
-    public void maxMemoryAllocationSize(@Unsigned long value) {
+    public void maxMemoryAllocationSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize, value);
     }
 

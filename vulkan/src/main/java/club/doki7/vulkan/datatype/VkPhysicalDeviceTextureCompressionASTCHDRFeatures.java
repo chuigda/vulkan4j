@@ -178,11 +178,11 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int textureCompressionASTC_HDR() {
+    public @NativeType("VkBool32") @Unsigned int textureCompressionASTC_HDR() {
         return segment.get(LAYOUT$textureCompressionASTC_HDR, OFFSET$textureCompressionASTC_HDR);
     }
 
-    public void textureCompressionASTC_HDR(@Unsigned int value) {
+    public void textureCompressionASTC_HDR(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$textureCompressionASTC_HDR, OFFSET$textureCompressionASTC_HDR, value);
     }
 

@@ -179,19 +179,19 @@ public record VkMultiviewPerViewAttributesInfoNVX(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int perViewAttributes() {
+    public @NativeType("VkBool32") @Unsigned int perViewAttributes() {
         return segment.get(LAYOUT$perViewAttributes, OFFSET$perViewAttributes);
     }
 
-    public void perViewAttributes(@Unsigned int value) {
+    public void perViewAttributes(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$perViewAttributes, OFFSET$perViewAttributes, value);
     }
 
-    public @Unsigned int perViewAttributesPositionXOnly() {
+    public @NativeType("VkBool32") @Unsigned int perViewAttributesPositionXOnly() {
         return segment.get(LAYOUT$perViewAttributesPositionXOnly, OFFSET$perViewAttributesPositionXOnly);
     }
 
-    public void perViewAttributesPositionXOnly(@Unsigned int value) {
+    public void perViewAttributesPositionXOnly(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$perViewAttributesPositionXOnly, OFFSET$perViewAttributesPositionXOnly, value);
     }
 

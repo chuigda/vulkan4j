@@ -192,11 +192,11 @@ public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         pAttributes(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int dwAccess() {
+    public @NativeType("DWORD") @Unsigned int dwAccess() {
         return segment.get(LAYOUT$dwAccess, OFFSET$dwAccess);
     }
 
-    public void dwAccess(@Unsigned int value) {
+    public void dwAccess(@NativeType("DWORD") @Unsigned int value) {
         segment.set(LAYOUT$dwAccess, OFFSET$dwAccess, value);
     }
 
@@ -217,11 +217,11 @@ public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         nameRaw(s);
     }
 
-    public @Pointer(comment="short*") MemorySegment nameRaw() {
+    public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {
         return segment.get(LAYOUT$name, OFFSET$name);
     }
 
-    public void nameRaw(@Pointer(comment="short*") MemorySegment value) {
+    public void nameRaw(@Pointer(comment="uint16_t*") MemorySegment value) {
         segment.set(LAYOUT$name, OFFSET$name, value);
     }
 

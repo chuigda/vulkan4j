@@ -204,35 +204,35 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes, value);
     }
 
-    public @Unsigned int hintSupported() {
+    public @NativeType("VkBool32") @Unsigned int hintSupported() {
         return segment.get(LAYOUT$hintSupported, OFFSET$hintSupported);
     }
 
-    public void hintSupported(@Unsigned int value) {
+    public void hintSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hintSupported, OFFSET$hintSupported, value);
     }
 
-    public @Unsigned int costSupported() {
+    public @NativeType("VkBool32") @Unsigned int costSupported() {
         return segment.get(LAYOUT$costSupported, OFFSET$costSupported);
     }
 
-    public void costSupported(@Unsigned int value) {
+    public void costSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$costSupported, OFFSET$costSupported, value);
     }
 
-    public @Unsigned int bidirectionalFlowSupported() {
+    public @NativeType("VkBool32") @Unsigned int bidirectionalFlowSupported() {
         return segment.get(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported);
     }
 
-    public void bidirectionalFlowSupported(@Unsigned int value) {
+    public void bidirectionalFlowSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported, value);
     }
 
-    public @Unsigned int globalFlowSupported() {
+    public @NativeType("VkBool32") @Unsigned int globalFlowSupported() {
         return segment.get(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported);
     }
 
-    public void globalFlowSupported(@Unsigned int value) {
+    public void globalFlowSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported, value);
     }
 

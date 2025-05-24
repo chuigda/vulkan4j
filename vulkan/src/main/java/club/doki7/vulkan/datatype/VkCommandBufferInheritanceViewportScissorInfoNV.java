@@ -180,11 +180,11 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int viewportScissor2D() {
+    public @NativeType("VkBool32") @Unsigned int viewportScissor2D() {
         return segment.get(LAYOUT$viewportScissor2D, OFFSET$viewportScissor2D);
     }
 
-    public void viewportScissor2D(@Unsigned int value) {
+    public void viewportScissor2D(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$viewportScissor2D, OFFSET$viewportScissor2D, value);
     }
 

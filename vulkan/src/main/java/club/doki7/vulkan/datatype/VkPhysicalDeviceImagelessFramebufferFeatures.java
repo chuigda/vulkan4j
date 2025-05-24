@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int imagelessFramebuffer() {
+    public @NativeType("VkBool32") @Unsigned int imagelessFramebuffer() {
         return segment.get(LAYOUT$imagelessFramebuffer, OFFSET$imagelessFramebuffer);
     }
 
-    public void imagelessFramebuffer(@Unsigned int value) {
+    public void imagelessFramebuffer(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imagelessFramebuffer, OFFSET$imagelessFramebuffer, value);
     }
 

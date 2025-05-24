@@ -178,11 +178,11 @@ public record VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int invocationMask() {
+    public @NativeType("VkBool32") @Unsigned int invocationMask() {
         return segment.get(LAYOUT$invocationMask, OFFSET$invocationMask);
     }
 
-    public void invocationMask(@Unsigned int value) {
+    public void invocationMask(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$invocationMask, OFFSET$invocationMask, value);
     }
 

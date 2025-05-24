@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMemoryPriorityFeaturesEXT(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int memoryPriority() {
+    public @NativeType("VkBool32") @Unsigned int memoryPriority() {
         return segment.get(LAYOUT$memoryPriority, OFFSET$memoryPriority);
     }
 
-    public void memoryPriority(@Unsigned int value) {
+    public void memoryPriority(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$memoryPriority, OFFSET$memoryPriority, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int mutableDescriptorType() {
+    public @NativeType("VkBool32") @Unsigned int mutableDescriptorType() {
         return segment.get(LAYOUT$mutableDescriptorType, OFFSET$mutableDescriptorType);
     }
 
-    public void mutableDescriptorType(@Unsigned int value) {
+    public void mutableDescriptorType(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$mutableDescriptorType, OFFSET$mutableDescriptorType, value);
     }
 

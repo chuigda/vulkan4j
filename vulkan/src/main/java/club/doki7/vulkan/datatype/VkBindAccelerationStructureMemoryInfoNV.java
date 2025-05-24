@@ -206,11 +206,11 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long memoryOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@Unsigned long value) {
+    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
     }
 
@@ -239,11 +239,11 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         pDeviceIndicesRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pDeviceIndicesRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {
         return segment.get(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices);
     }
 
-    public void pDeviceIndicesRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pDeviceIndicesRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pDeviceIndices, OFFSET$pDeviceIndices, value);
     }
 

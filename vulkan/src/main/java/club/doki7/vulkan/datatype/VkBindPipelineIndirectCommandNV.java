@@ -138,11 +138,11 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public @Unsigned long pipelineAddress() {
+    public @NativeType("VkDeviceAddress") @Unsigned long pipelineAddress() {
         return segment.get(LAYOUT$pipelineAddress, OFFSET$pipelineAddress);
     }
 
-    public void pipelineAddress(@Unsigned long value) {
+    public void pipelineAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$pipelineAddress, OFFSET$pipelineAddress, value);
     }
 

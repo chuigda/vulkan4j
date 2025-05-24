@@ -180,11 +180,11 @@ public record VkPipelineViewportWScalingStateCreateInfoNV(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int viewportWScalingEnable() {
+    public @NativeType("VkBool32") @Unsigned int viewportWScalingEnable() {
         return segment.get(LAYOUT$viewportWScalingEnable, OFFSET$viewportWScalingEnable);
     }
 
-    public void viewportWScalingEnable(@Unsigned int value) {
+    public void viewportWScalingEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$viewportWScalingEnable, OFFSET$viewportWScalingEnable, value);
     }
 

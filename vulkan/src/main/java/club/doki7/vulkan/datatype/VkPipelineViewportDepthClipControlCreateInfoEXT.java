@@ -178,11 +178,11 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int negativeOneToOne() {
+    public @NativeType("VkBool32") @Unsigned int negativeOneToOne() {
         return segment.get(LAYOUT$negativeOneToOne, OFFSET$negativeOneToOne);
     }
 
-    public void negativeOneToOne(@Unsigned int value) {
+    public void negativeOneToOne(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$negativeOneToOne, OFFSET$negativeOneToOne, value);
     }
 

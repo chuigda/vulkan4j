@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDepthClipControlFeaturesEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int depthClipControl() {
+    public @NativeType("VkBool32") @Unsigned int depthClipControl() {
         return segment.get(LAYOUT$depthClipControl, OFFSET$depthClipControl);
     }
 
-    public void depthClipControl(@Unsigned int value) {
+    public void depthClipControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthClipControl, OFFSET$depthClipControl, value);
     }
 

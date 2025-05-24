@@ -191,7 +191,7 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @Unsigned LongPtr pAccelerationStructures() {
+    public @Nullable @Pointer(comment="VkDeviceAddress") @Unsigned LongPtr pAccelerationStructures() {
         MemorySegment s = pAccelerationStructuresRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -199,16 +199,16 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         return new LongPtr(s);
     }
 
-    public void pAccelerationStructures(@Nullable @Unsigned LongPtr value) {
+    public void pAccelerationStructures(@Nullable @Pointer(comment="VkDeviceAddress") @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAccelerationStructuresRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pAccelerationStructuresRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pAccelerationStructuresRaw() {
         return segment.get(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures);
     }
 
-    public void pAccelerationStructuresRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pAccelerationStructuresRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pAccelerationStructures, OFFSET$pAccelerationStructures, value);
     }
 

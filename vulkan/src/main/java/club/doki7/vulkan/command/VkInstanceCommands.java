@@ -980,7 +980,7 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceDirectFBPresentationSupportEXT.html"><code>vkGetPhysicalDeviceDirectFBPresentationSupportEXT</code></a>
-    public @Unsigned int getPhysicalDeviceDirectFBPresentationSupportEXT(
+    public @NativeType("VkBool32") @Unsigned int getPhysicalDeviceDirectFBPresentationSupportEXT(
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex,
         PointerPtr dfb
@@ -1520,7 +1520,7 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceScreenPresentationSupportQNX.html"><code>vkGetPhysicalDeviceScreenPresentationSupportQNX</code></a>
-    public @Unsigned int getPhysicalDeviceScreenPresentationSupportQNX(
+    public @NativeType("VkBool32") @Unsigned int getPhysicalDeviceScreenPresentationSupportQNX(
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex,
         PointerPtr window
@@ -1724,7 +1724,7 @@ public final class VkInstanceCommands {
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex,
         VkSurfaceKHR surface,
-        @Unsigned IntPtr pSupported
+        @Pointer(comment="VkBool32") @Unsigned IntPtr pSupported
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR);
         try {
@@ -1758,7 +1758,7 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceWaylandPresentationSupportKHR.html"><code>vkGetPhysicalDeviceWaylandPresentationSupportKHR</code></a>
-    public @Unsigned int getPhysicalDeviceWaylandPresentationSupportKHR(
+    public @NativeType("VkBool32") @Unsigned int getPhysicalDeviceWaylandPresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex,
         PointerPtr display
@@ -1776,7 +1776,7 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceWin32PresentationSupportKHR.html"><code>vkGetPhysicalDeviceWin32PresentationSupportKHR</code></a>
-    public @Unsigned int getPhysicalDeviceWin32PresentationSupportKHR(
+    public @NativeType("VkBool32") @Unsigned int getPhysicalDeviceWin32PresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex
     ) {
@@ -1792,11 +1792,11 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceXcbPresentationSupportKHR.html"><code>vkGetPhysicalDeviceXcbPresentationSupportKHR</code></a>
-    public @Unsigned int getPhysicalDeviceXcbPresentationSupportKHR(
+    public @NativeType("VkBool32") @Unsigned int getPhysicalDeviceXcbPresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex,
         @Pointer(comment="void*") MemorySegment connection,
-        @Unsigned int visual_id
+        @NativeType("xcb_visualid_t") @Unsigned int visual_id
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR);
         try {
@@ -1812,11 +1812,11 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceXlibPresentationSupportKHR.html"><code>vkGetPhysicalDeviceXlibPresentationSupportKHR</code></a>
-    public @Unsigned int getPhysicalDeviceXlibPresentationSupportKHR(
+    public @NativeType("VkBool32") @Unsigned int getPhysicalDeviceXlibPresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
         @Unsigned int queueFamilyIndex,
         PointerPtr dpy,
-        long visualID
+        @NativeType("VisualID") long visualID
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceXlibPresentationSupportKHR);
         try {
@@ -1835,7 +1835,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getRandROutputDisplayEXT(
         VkPhysicalDevice physicalDevice,
         PointerPtr dpy,
-        long rrOutput,
+        @NativeType("RROutput") long rrOutput,
         @Pointer VkDisplayKHR.Ptr pDisplay
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRandROutputDisplayEXT);

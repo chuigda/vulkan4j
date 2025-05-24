@@ -178,11 +178,11 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int subpassMergeFeedback() {
+    public @NativeType("VkBool32") @Unsigned int subpassMergeFeedback() {
         return segment.get(LAYOUT$subpassMergeFeedback, OFFSET$subpassMergeFeedback);
     }
 
-    public void subpassMergeFeedback(@Unsigned int value) {
+    public void subpassMergeFeedback(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subpassMergeFeedback, OFFSET$subpassMergeFeedback, value);
     }
 

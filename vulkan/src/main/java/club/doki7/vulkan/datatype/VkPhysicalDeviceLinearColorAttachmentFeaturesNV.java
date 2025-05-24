@@ -178,11 +178,11 @@ public record VkPhysicalDeviceLinearColorAttachmentFeaturesNV(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int linearColorAttachment() {
+    public @NativeType("VkBool32") @Unsigned int linearColorAttachment() {
         return segment.get(LAYOUT$linearColorAttachment, OFFSET$linearColorAttachment);
     }
 
-    public void linearColorAttachment(@Unsigned int value) {
+    public void linearColorAttachment(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$linearColorAttachment, OFFSET$linearColorAttachment, value);
     }
 

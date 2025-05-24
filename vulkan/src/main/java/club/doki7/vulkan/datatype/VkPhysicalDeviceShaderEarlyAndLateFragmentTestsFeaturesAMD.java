@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(@NotNul
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderEarlyAndLateFragmentTests() {
+    public @NativeType("VkBool32") @Unsigned int shaderEarlyAndLateFragmentTests() {
         return segment.get(LAYOUT$shaderEarlyAndLateFragmentTests, OFFSET$shaderEarlyAndLateFragmentTests);
     }
 
-    public void shaderEarlyAndLateFragmentTests(@Unsigned int value) {
+    public void shaderEarlyAndLateFragmentTests(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderEarlyAndLateFragmentTests, OFFSET$shaderEarlyAndLateFragmentTests, value);
     }
 

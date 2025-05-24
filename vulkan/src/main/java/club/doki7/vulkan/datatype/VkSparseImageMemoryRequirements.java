@@ -158,27 +158,27 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$imageMipTailFirstLod, OFFSET$imageMipTailFirstLod, value);
     }
 
-    public @Unsigned long imageMipTailSize() {
+    public @NativeType("VkDeviceSize") @Unsigned long imageMipTailSize() {
         return segment.get(LAYOUT$imageMipTailSize, OFFSET$imageMipTailSize);
     }
 
-    public void imageMipTailSize(@Unsigned long value) {
+    public void imageMipTailSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$imageMipTailSize, OFFSET$imageMipTailSize, value);
     }
 
-    public @Unsigned long imageMipTailOffset() {
+    public @NativeType("VkDeviceSize") @Unsigned long imageMipTailOffset() {
         return segment.get(LAYOUT$imageMipTailOffset, OFFSET$imageMipTailOffset);
     }
 
-    public void imageMipTailOffset(@Unsigned long value) {
+    public void imageMipTailOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$imageMipTailOffset, OFFSET$imageMipTailOffset, value);
     }
 
-    public @Unsigned long imageMipTailStride() {
+    public @NativeType("VkDeviceSize") @Unsigned long imageMipTailStride() {
         return segment.get(LAYOUT$imageMipTailStride, OFFSET$imageMipTailStride);
     }
 
-    public void imageMipTailStride(@Unsigned long value) {
+    public void imageMipTailStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$imageMipTailStride, OFFSET$imageMipTailStride, value);
     }
 

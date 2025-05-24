@@ -179,19 +179,19 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int rayTracingMaintenance1() {
+    public @NativeType("VkBool32") @Unsigned int rayTracingMaintenance1() {
         return segment.get(LAYOUT$rayTracingMaintenance1, OFFSET$rayTracingMaintenance1);
     }
 
-    public void rayTracingMaintenance1(@Unsigned int value) {
+    public void rayTracingMaintenance1(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingMaintenance1, OFFSET$rayTracingMaintenance1, value);
     }
 
-    public @Unsigned int rayTracingPipelineTraceRaysIndirect2() {
+    public @NativeType("VkBool32") @Unsigned int rayTracingPipelineTraceRaysIndirect2() {
         return segment.get(LAYOUT$rayTracingPipelineTraceRaysIndirect2, OFFSET$rayTracingPipelineTraceRaysIndirect2);
     }
 
-    public void rayTracingPipelineTraceRaysIndirect2(@Unsigned int value) {
+    public void rayTracingPipelineTraceRaysIndirect2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingPipelineTraceRaysIndirect2, OFFSET$rayTracingPipelineTraceRaysIndirect2, value);
     }
 

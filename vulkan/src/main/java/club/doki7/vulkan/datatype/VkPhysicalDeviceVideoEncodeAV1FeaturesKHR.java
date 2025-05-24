@@ -178,11 +178,11 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int videoEncodeAV1() {
+    public @NativeType("VkBool32") @Unsigned int videoEncodeAV1() {
         return segment.get(LAYOUT$videoEncodeAV1, OFFSET$videoEncodeAV1);
     }
 
-    public void videoEncodeAV1(@Unsigned int value) {
+    public void videoEncodeAV1(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$videoEncodeAV1, OFFSET$videoEncodeAV1, value);
     }
 

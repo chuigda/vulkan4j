@@ -178,11 +178,11 @@ public record VkPhysicalDeviceTimelineSemaphoreFeatures(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int timelineSemaphore() {
+    public @NativeType("VkBool32") @Unsigned int timelineSemaphore() {
         return segment.get(LAYOUT$timelineSemaphore, OFFSET$timelineSemaphore);
     }
 
-    public void timelineSemaphore(@Unsigned int value) {
+    public void timelineSemaphore(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$timelineSemaphore, OFFSET$timelineSemaphore, value);
     }
 

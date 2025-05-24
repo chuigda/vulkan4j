@@ -204,11 +204,11 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         pColorAttachmentLocationsRaw(s);
     }
 
-    public @Pointer(comment="int*") MemorySegment pColorAttachmentLocationsRaw() {
+    public @Pointer(comment="uint32_t*") MemorySegment pColorAttachmentLocationsRaw() {
         return segment.get(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations);
     }
 
-    public void pColorAttachmentLocationsRaw(@Pointer(comment="int*") MemorySegment value) {
+    public void pColorAttachmentLocationsRaw(@Pointer(comment="uint32_t*") MemorySegment value) {
         segment.set(LAYOUT$pColorAttachmentLocations, OFFSET$pColorAttachmentLocations, value);
     }
 

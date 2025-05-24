@@ -180,27 +180,27 @@ public record VkPhysicalDeviceNestedCommandBufferFeaturesEXT(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int nestedCommandBuffer() {
+    public @NativeType("VkBool32") @Unsigned int nestedCommandBuffer() {
         return segment.get(LAYOUT$nestedCommandBuffer, OFFSET$nestedCommandBuffer);
     }
 
-    public void nestedCommandBuffer(@Unsigned int value) {
+    public void nestedCommandBuffer(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nestedCommandBuffer, OFFSET$nestedCommandBuffer, value);
     }
 
-    public @Unsigned int nestedCommandBufferRendering() {
+    public @NativeType("VkBool32") @Unsigned int nestedCommandBufferRendering() {
         return segment.get(LAYOUT$nestedCommandBufferRendering, OFFSET$nestedCommandBufferRendering);
     }
 
-    public void nestedCommandBufferRendering(@Unsigned int value) {
+    public void nestedCommandBufferRendering(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nestedCommandBufferRendering, OFFSET$nestedCommandBufferRendering, value);
     }
 
-    public @Unsigned int nestedCommandBufferSimultaneousUse() {
+    public @NativeType("VkBool32") @Unsigned int nestedCommandBufferSimultaneousUse() {
         return segment.get(LAYOUT$nestedCommandBufferSimultaneousUse, OFFSET$nestedCommandBufferSimultaneousUse);
     }
 
-    public void nestedCommandBufferSimultaneousUse(@Unsigned int value) {
+    public void nestedCommandBufferSimultaneousUse(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nestedCommandBufferSimultaneousUse, OFFSET$nestedCommandBufferSimultaneousUse, value);
     }
 

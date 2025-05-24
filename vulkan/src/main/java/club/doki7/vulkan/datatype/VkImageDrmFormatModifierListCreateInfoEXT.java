@@ -204,11 +204,11 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         pDrmFormatModifiersRaw(s);
     }
 
-    public @Pointer(comment="long*") MemorySegment pDrmFormatModifiersRaw() {
+    public @Pointer(comment="uint64_t*") MemorySegment pDrmFormatModifiersRaw() {
         return segment.get(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers);
     }
 
-    public void pDrmFormatModifiersRaw(@Pointer(comment="long*") MemorySegment value) {
+    public void pDrmFormatModifiersRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
         segment.set(LAYOUT$pDrmFormatModifiers, OFFSET$pDrmFormatModifiers, value);
     }
 

@@ -247,19 +247,19 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices, value);
     }
 
-    public @Unsigned int primaryReferenceCdfOnly() {
+    public @NativeType("VkBool32") @Unsigned int primaryReferenceCdfOnly() {
         return segment.get(LAYOUT$primaryReferenceCdfOnly, OFFSET$primaryReferenceCdfOnly);
     }
 
-    public void primaryReferenceCdfOnly(@Unsigned int value) {
+    public void primaryReferenceCdfOnly(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primaryReferenceCdfOnly, OFFSET$primaryReferenceCdfOnly, value);
     }
 
-    public @Unsigned int generateObuExtensionHeader() {
+    public @NativeType("VkBool32") @Unsigned int generateObuExtensionHeader() {
         return segment.get(LAYOUT$generateObuExtensionHeader, OFFSET$generateObuExtensionHeader);
     }
 
-    public void generateObuExtensionHeader(@Unsigned int value) {
+    public void generateObuExtensionHeader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$generateObuExtensionHeader, OFFSET$generateObuExtensionHeader, value);
     }
 

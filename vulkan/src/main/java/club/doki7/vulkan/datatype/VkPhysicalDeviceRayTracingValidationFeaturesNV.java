@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRayTracingValidationFeaturesNV(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int rayTracingValidation() {
+    public @NativeType("VkBool32") @Unsigned int rayTracingValidation() {
         return segment.get(LAYOUT$rayTracingValidation, OFFSET$rayTracingValidation);
     }
 
-    public void rayTracingValidation(@Unsigned int value) {
+    public void rayTracingValidation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingValidation, OFFSET$rayTracingValidation, value);
     }
 

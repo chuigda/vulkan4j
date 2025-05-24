@@ -210,51 +210,51 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         segment.set(LAYOUT$extraPrimitiveOverestimationSizeGranularity, OFFSET$extraPrimitiveOverestimationSizeGranularity, value);
     }
 
-    public @Unsigned int primitiveUnderestimation() {
+    public @NativeType("VkBool32") @Unsigned int primitiveUnderestimation() {
         return segment.get(LAYOUT$primitiveUnderestimation, OFFSET$primitiveUnderestimation);
     }
 
-    public void primitiveUnderestimation(@Unsigned int value) {
+    public void primitiveUnderestimation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveUnderestimation, OFFSET$primitiveUnderestimation, value);
     }
 
-    public @Unsigned int conservativePointAndLineRasterization() {
+    public @NativeType("VkBool32") @Unsigned int conservativePointAndLineRasterization() {
         return segment.get(LAYOUT$conservativePointAndLineRasterization, OFFSET$conservativePointAndLineRasterization);
     }
 
-    public void conservativePointAndLineRasterization(@Unsigned int value) {
+    public void conservativePointAndLineRasterization(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$conservativePointAndLineRasterization, OFFSET$conservativePointAndLineRasterization, value);
     }
 
-    public @Unsigned int degenerateTrianglesRasterized() {
+    public @NativeType("VkBool32") @Unsigned int degenerateTrianglesRasterized() {
         return segment.get(LAYOUT$degenerateTrianglesRasterized, OFFSET$degenerateTrianglesRasterized);
     }
 
-    public void degenerateTrianglesRasterized(@Unsigned int value) {
+    public void degenerateTrianglesRasterized(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$degenerateTrianglesRasterized, OFFSET$degenerateTrianglesRasterized, value);
     }
 
-    public @Unsigned int degenerateLinesRasterized() {
+    public @NativeType("VkBool32") @Unsigned int degenerateLinesRasterized() {
         return segment.get(LAYOUT$degenerateLinesRasterized, OFFSET$degenerateLinesRasterized);
     }
 
-    public void degenerateLinesRasterized(@Unsigned int value) {
+    public void degenerateLinesRasterized(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$degenerateLinesRasterized, OFFSET$degenerateLinesRasterized, value);
     }
 
-    public @Unsigned int fullyCoveredFragmentShaderInputVariable() {
+    public @NativeType("VkBool32") @Unsigned int fullyCoveredFragmentShaderInputVariable() {
         return segment.get(LAYOUT$fullyCoveredFragmentShaderInputVariable, OFFSET$fullyCoveredFragmentShaderInputVariable);
     }
 
-    public void fullyCoveredFragmentShaderInputVariable(@Unsigned int value) {
+    public void fullyCoveredFragmentShaderInputVariable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fullyCoveredFragmentShaderInputVariable, OFFSET$fullyCoveredFragmentShaderInputVariable, value);
     }
 
-    public @Unsigned int conservativeRasterizationPostDepthCoverage() {
+    public @NativeType("VkBool32") @Unsigned int conservativeRasterizationPostDepthCoverage() {
         return segment.get(LAYOUT$conservativeRasterizationPostDepthCoverage, OFFSET$conservativeRasterizationPostDepthCoverage);
     }
 
-    public void conservativeRasterizationPostDepthCoverage(@Unsigned int value) {
+    public void conservativeRasterizationPostDepthCoverage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$conservativeRasterizationPostDepthCoverage, OFFSET$conservativeRasterizationPostDepthCoverage, value);
     }
 

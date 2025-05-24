@@ -178,11 +178,11 @@ public record VkPhysicalDeviceHostImageCopyFeatures(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int hostImageCopy() {
+    public @NativeType("VkBool32") @Unsigned int hostImageCopy() {
         return segment.get(LAYOUT$hostImageCopy, OFFSET$hostImageCopy);
     }
 
-    public void hostImageCopy(@Unsigned int value) {
+    public void hostImageCopy(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hostImageCopy, OFFSET$hostImageCopy, value);
     }
 

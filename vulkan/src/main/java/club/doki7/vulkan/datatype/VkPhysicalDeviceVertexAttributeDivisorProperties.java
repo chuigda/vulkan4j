@@ -187,11 +187,11 @@ public record VkPhysicalDeviceVertexAttributeDivisorProperties(@NotNull MemorySe
         segment.set(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor, value);
     }
 
-    public @Unsigned int supportsNonZeroFirstInstance() {
+    public @NativeType("VkBool32") @Unsigned int supportsNonZeroFirstInstance() {
         return segment.get(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance);
     }
 
-    public void supportsNonZeroFirstInstance(@Unsigned int value) {
+    public void supportsNonZeroFirstInstance(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance, value);
     }
 

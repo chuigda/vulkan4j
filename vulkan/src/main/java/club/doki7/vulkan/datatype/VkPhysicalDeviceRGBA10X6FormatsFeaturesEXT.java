@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int formatRgba10x6WithoutYCbCrSampler() {
+    public @NativeType("VkBool32") @Unsigned int formatRgba10x6WithoutYCbCrSampler() {
         return segment.get(LAYOUT$formatRgba10x6WithoutYCbCrSampler, OFFSET$formatRgba10x6WithoutYCbCrSampler);
     }
 
-    public void formatRgba10x6WithoutYCbCrSampler(@Unsigned int value) {
+    public void formatRgba10x6WithoutYCbCrSampler(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$formatRgba10x6WithoutYCbCrSampler, OFFSET$formatRgba10x6WithoutYCbCrSampler, value);
     }
 

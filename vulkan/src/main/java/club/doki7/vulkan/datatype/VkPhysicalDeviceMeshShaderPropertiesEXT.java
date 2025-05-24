@@ -397,35 +397,35 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
         segment.set(LAYOUT$maxPreferredMeshWorkGroupInvocations, OFFSET$maxPreferredMeshWorkGroupInvocations, value);
     }
 
-    public @Unsigned int prefersLocalInvocationVertexOutput() {
+    public @NativeType("VkBool32") @Unsigned int prefersLocalInvocationVertexOutput() {
         return segment.get(LAYOUT$prefersLocalInvocationVertexOutput, OFFSET$prefersLocalInvocationVertexOutput);
     }
 
-    public void prefersLocalInvocationVertexOutput(@Unsigned int value) {
+    public void prefersLocalInvocationVertexOutput(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersLocalInvocationVertexOutput, OFFSET$prefersLocalInvocationVertexOutput, value);
     }
 
-    public @Unsigned int prefersLocalInvocationPrimitiveOutput() {
+    public @NativeType("VkBool32") @Unsigned int prefersLocalInvocationPrimitiveOutput() {
         return segment.get(LAYOUT$prefersLocalInvocationPrimitiveOutput, OFFSET$prefersLocalInvocationPrimitiveOutput);
     }
 
-    public void prefersLocalInvocationPrimitiveOutput(@Unsigned int value) {
+    public void prefersLocalInvocationPrimitiveOutput(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersLocalInvocationPrimitiveOutput, OFFSET$prefersLocalInvocationPrimitiveOutput, value);
     }
 
-    public @Unsigned int prefersCompactVertexOutput() {
+    public @NativeType("VkBool32") @Unsigned int prefersCompactVertexOutput() {
         return segment.get(LAYOUT$prefersCompactVertexOutput, OFFSET$prefersCompactVertexOutput);
     }
 
-    public void prefersCompactVertexOutput(@Unsigned int value) {
+    public void prefersCompactVertexOutput(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersCompactVertexOutput, OFFSET$prefersCompactVertexOutput, value);
     }
 
-    public @Unsigned int prefersCompactPrimitiveOutput() {
+    public @NativeType("VkBool32") @Unsigned int prefersCompactPrimitiveOutput() {
         return segment.get(LAYOUT$prefersCompactPrimitiveOutput, OFFSET$prefersCompactPrimitiveOutput);
     }
 
-    public void prefersCompactPrimitiveOutput(@Unsigned int value) {
+    public void prefersCompactPrimitiveOutput(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersCompactPrimitiveOutput, OFFSET$prefersCompactPrimitiveOutput, value);
     }
 

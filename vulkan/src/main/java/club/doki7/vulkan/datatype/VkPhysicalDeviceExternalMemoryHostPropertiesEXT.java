@@ -178,11 +178,11 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long minImportedHostPointerAlignment() {
+    public @NativeType("VkDeviceSize") @Unsigned long minImportedHostPointerAlignment() {
         return segment.get(LAYOUT$minImportedHostPointerAlignment, OFFSET$minImportedHostPointerAlignment);
     }
 
-    public void minImportedHostPointerAlignment(@Unsigned long value) {
+    public void minImportedHostPointerAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minImportedHostPointerAlignment, OFFSET$minImportedHostPointerAlignment, value);
     }
 

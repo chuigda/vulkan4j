@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderBufferInt64Atomics() {
+    public @NativeType("VkBool32") @Unsigned int shaderBufferInt64Atomics() {
         return segment.get(LAYOUT$shaderBufferInt64Atomics, OFFSET$shaderBufferInt64Atomics);
     }
 
-    public void shaderBufferInt64Atomics(@Unsigned int value) {
+    public void shaderBufferInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBufferInt64Atomics, OFFSET$shaderBufferInt64Atomics, value);
     }
 
-    public @Unsigned int shaderSharedInt64Atomics() {
+    public @NativeType("VkBool32") @Unsigned int shaderSharedInt64Atomics() {
         return segment.get(LAYOUT$shaderSharedInt64Atomics, OFFSET$shaderSharedInt64Atomics);
     }
 
-    public void shaderSharedInt64Atomics(@Unsigned int value) {
+    public void shaderSharedInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSharedInt64Atomics, OFFSET$shaderSharedInt64Atomics, value);
     }
 

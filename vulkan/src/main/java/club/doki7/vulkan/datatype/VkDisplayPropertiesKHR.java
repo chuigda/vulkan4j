@@ -173,11 +173,11 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         displayNameRaw(s);
     }
 
-    public @Pointer(comment="byte*") MemorySegment displayNameRaw() {
+    public @Pointer(comment="int8_t*") MemorySegment displayNameRaw() {
         return segment.get(LAYOUT$displayName, OFFSET$displayName);
     }
 
-    public void displayNameRaw(@Pointer(comment="byte*") MemorySegment value) {
+    public void displayNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
         segment.set(LAYOUT$displayName, OFFSET$displayName, value);
     }
 
@@ -205,19 +205,19 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
     }
 
-    public @Unsigned int planeReorderPossible() {
+    public @NativeType("VkBool32") @Unsigned int planeReorderPossible() {
         return segment.get(LAYOUT$planeReorderPossible, OFFSET$planeReorderPossible);
     }
 
-    public void planeReorderPossible(@Unsigned int value) {
+    public void planeReorderPossible(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$planeReorderPossible, OFFSET$planeReorderPossible, value);
     }
 
-    public @Unsigned int persistentContent() {
+    public @NativeType("VkBool32") @Unsigned int persistentContent() {
         return segment.get(LAYOUT$persistentContent, OFFSET$persistentContent);
     }
 
-    public void persistentContent(@Unsigned int value) {
+    public void persistentContent(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$persistentContent, OFFSET$persistentContent, value);
     }
 

@@ -184,59 +184,59 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int cooperativeMatrixWorkgroupScope() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrixWorkgroupScope() {
         return segment.get(LAYOUT$cooperativeMatrixWorkgroupScope, OFFSET$cooperativeMatrixWorkgroupScope);
     }
 
-    public void cooperativeMatrixWorkgroupScope(@Unsigned int value) {
+    public void cooperativeMatrixWorkgroupScope(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixWorkgroupScope, OFFSET$cooperativeMatrixWorkgroupScope, value);
     }
 
-    public @Unsigned int cooperativeMatrixFlexibleDimensions() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrixFlexibleDimensions() {
         return segment.get(LAYOUT$cooperativeMatrixFlexibleDimensions, OFFSET$cooperativeMatrixFlexibleDimensions);
     }
 
-    public void cooperativeMatrixFlexibleDimensions(@Unsigned int value) {
+    public void cooperativeMatrixFlexibleDimensions(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixFlexibleDimensions, OFFSET$cooperativeMatrixFlexibleDimensions, value);
     }
 
-    public @Unsigned int cooperativeMatrixReductions() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrixReductions() {
         return segment.get(LAYOUT$cooperativeMatrixReductions, OFFSET$cooperativeMatrixReductions);
     }
 
-    public void cooperativeMatrixReductions(@Unsigned int value) {
+    public void cooperativeMatrixReductions(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixReductions, OFFSET$cooperativeMatrixReductions, value);
     }
 
-    public @Unsigned int cooperativeMatrixConversions() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrixConversions() {
         return segment.get(LAYOUT$cooperativeMatrixConversions, OFFSET$cooperativeMatrixConversions);
     }
 
-    public void cooperativeMatrixConversions(@Unsigned int value) {
+    public void cooperativeMatrixConversions(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixConversions, OFFSET$cooperativeMatrixConversions, value);
     }
 
-    public @Unsigned int cooperativeMatrixPerElementOperations() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrixPerElementOperations() {
         return segment.get(LAYOUT$cooperativeMatrixPerElementOperations, OFFSET$cooperativeMatrixPerElementOperations);
     }
 
-    public void cooperativeMatrixPerElementOperations(@Unsigned int value) {
+    public void cooperativeMatrixPerElementOperations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixPerElementOperations, OFFSET$cooperativeMatrixPerElementOperations, value);
     }
 
-    public @Unsigned int cooperativeMatrixTensorAddressing() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrixTensorAddressing() {
         return segment.get(LAYOUT$cooperativeMatrixTensorAddressing, OFFSET$cooperativeMatrixTensorAddressing);
     }
 
-    public void cooperativeMatrixTensorAddressing(@Unsigned int value) {
+    public void cooperativeMatrixTensorAddressing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixTensorAddressing, OFFSET$cooperativeMatrixTensorAddressing, value);
     }
 
-    public @Unsigned int cooperativeMatrixBlockLoads() {
+    public @NativeType("VkBool32") @Unsigned int cooperativeMatrixBlockLoads() {
         return segment.get(LAYOUT$cooperativeMatrixBlockLoads, OFFSET$cooperativeMatrixBlockLoads);
     }
 
-    public void cooperativeMatrixBlockLoads(@Unsigned int value) {
+    public void cooperativeMatrixBlockLoads(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixBlockLoads, OFFSET$cooperativeMatrixBlockLoads, value);
     }
 
