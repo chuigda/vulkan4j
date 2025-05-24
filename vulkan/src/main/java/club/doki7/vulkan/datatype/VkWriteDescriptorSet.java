@@ -100,7 +100,7 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -197,27 +197,27 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$dstSet, OFFSET$dstSet, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int dstBinding() {
+    public @Unsigned int dstBinding() {
         return segment.get(LAYOUT$dstBinding, OFFSET$dstBinding);
     }
 
-    public void dstBinding(@unsigned int value) {
+    public void dstBinding(@Unsigned int value) {
         segment.set(LAYOUT$dstBinding, OFFSET$dstBinding, value);
     }
 
-    public @unsigned int dstArrayElement() {
+    public @Unsigned int dstArrayElement() {
         return segment.get(LAYOUT$dstArrayElement, OFFSET$dstArrayElement);
     }
 
-    public void dstArrayElement(@unsigned int value) {
+    public void dstArrayElement(@Unsigned int value) {
         segment.set(LAYOUT$dstArrayElement, OFFSET$dstArrayElement, value);
     }
 
-    public @unsigned int descriptorCount() {
+    public @Unsigned int descriptorCount() {
         return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
     }
 
-    public void descriptorCount(@unsigned int value) {
+    public void descriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
     }
 

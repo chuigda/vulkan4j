@@ -96,7 +96,7 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -189,27 +189,27 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         segment.set(LAYOUT$lineRasterizationMode, OFFSET$lineRasterizationMode, value);
     }
 
-    public @unsigned int stippledLineEnable() {
+    public @Unsigned int stippledLineEnable() {
         return segment.get(LAYOUT$stippledLineEnable, OFFSET$stippledLineEnable);
     }
 
-    public void stippledLineEnable(@unsigned int value) {
+    public void stippledLineEnable(@Unsigned int value) {
         segment.set(LAYOUT$stippledLineEnable, OFFSET$stippledLineEnable, value);
     }
 
-    public @unsigned int lineStippleFactor() {
+    public @Unsigned int lineStippleFactor() {
         return segment.get(LAYOUT$lineStippleFactor, OFFSET$lineStippleFactor);
     }
 
-    public void lineStippleFactor(@unsigned int value) {
+    public void lineStippleFactor(@Unsigned int value) {
         segment.set(LAYOUT$lineStippleFactor, OFFSET$lineStippleFactor, value);
     }
 
-    public @unsigned short lineStipplePattern() {
+    public @Unsigned short lineStipplePattern() {
         return segment.get(LAYOUT$lineStipplePattern, OFFSET$lineStipplePattern);
     }
 
-    public void lineStipplePattern(@unsigned short value) {
+    public void lineStipplePattern(@Unsigned short value) {
         segment.set(LAYOUT$lineStipplePattern, OFFSET$lineStipplePattern, value);
     }
 

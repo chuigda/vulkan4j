@@ -95,7 +95,7 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(@NotNull MemorySegment seg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int pixelRate() {
+    public @Unsigned int pixelRate() {
         return segment.get(LAYOUT$pixelRate, OFFSET$pixelRate);
     }
 
-    public void pixelRate(@unsigned int value) {
+    public void pixelRate(@Unsigned int value) {
         segment.set(LAYOUT$pixelRate, OFFSET$pixelRate, value);
     }
 
-    public @unsigned int texelRate() {
+    public @Unsigned int texelRate() {
         return segment.get(LAYOUT$texelRate, OFFSET$texelRate);
     }
 
-    public void texelRate(@unsigned int value) {
+    public void texelRate(@Unsigned int value) {
         segment.set(LAYOUT$texelRate, OFFSET$texelRate, value);
     }
 
-    public @unsigned int fmaRate() {
+    public @Unsigned int fmaRate() {
         return segment.get(LAYOUT$fmaRate, OFFSET$fmaRate);
     }
 
-    public void fmaRate(@unsigned int value) {
+    public void fmaRate(@Unsigned int value) {
         segment.set(LAYOUT$fmaRate, OFFSET$fmaRate, value);
     }
 

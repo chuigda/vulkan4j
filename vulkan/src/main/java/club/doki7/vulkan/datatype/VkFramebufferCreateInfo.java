@@ -99,7 +99,7 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -204,11 +204,11 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int attachmentCount() {
+    public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@unsigned int value) {
+    public void attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
@@ -237,27 +237,27 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
-    public @unsigned int width() {
+    public @Unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@unsigned int value) {
+    public void width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
     }
 
-    public @unsigned int height() {
+    public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@unsigned int value) {
+    public void height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
     }
 
-    public @unsigned int layers() {
+    public @Unsigned int layers() {
         return segment.get(LAYOUT$layers, OFFSET$layers);
     }
 
-    public void layers(@unsigned int value) {
+    public void layers(@Unsigned int value) {
         segment.set(LAYOUT$layers, OFFSET$layers, value);
     }
 

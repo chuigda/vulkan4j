@@ -99,7 +99,7 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -184,59 +184,59 @@ public record VkPhysicalDeviceCooperativeMatrix2FeaturesNV(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int cooperativeMatrixWorkgroupScope() {
+    public @Unsigned int cooperativeMatrixWorkgroupScope() {
         return segment.get(LAYOUT$cooperativeMatrixWorkgroupScope, OFFSET$cooperativeMatrixWorkgroupScope);
     }
 
-    public void cooperativeMatrixWorkgroupScope(@unsigned int value) {
+    public void cooperativeMatrixWorkgroupScope(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixWorkgroupScope, OFFSET$cooperativeMatrixWorkgroupScope, value);
     }
 
-    public @unsigned int cooperativeMatrixFlexibleDimensions() {
+    public @Unsigned int cooperativeMatrixFlexibleDimensions() {
         return segment.get(LAYOUT$cooperativeMatrixFlexibleDimensions, OFFSET$cooperativeMatrixFlexibleDimensions);
     }
 
-    public void cooperativeMatrixFlexibleDimensions(@unsigned int value) {
+    public void cooperativeMatrixFlexibleDimensions(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixFlexibleDimensions, OFFSET$cooperativeMatrixFlexibleDimensions, value);
     }
 
-    public @unsigned int cooperativeMatrixReductions() {
+    public @Unsigned int cooperativeMatrixReductions() {
         return segment.get(LAYOUT$cooperativeMatrixReductions, OFFSET$cooperativeMatrixReductions);
     }
 
-    public void cooperativeMatrixReductions(@unsigned int value) {
+    public void cooperativeMatrixReductions(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixReductions, OFFSET$cooperativeMatrixReductions, value);
     }
 
-    public @unsigned int cooperativeMatrixConversions() {
+    public @Unsigned int cooperativeMatrixConversions() {
         return segment.get(LAYOUT$cooperativeMatrixConversions, OFFSET$cooperativeMatrixConversions);
     }
 
-    public void cooperativeMatrixConversions(@unsigned int value) {
+    public void cooperativeMatrixConversions(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixConversions, OFFSET$cooperativeMatrixConversions, value);
     }
 
-    public @unsigned int cooperativeMatrixPerElementOperations() {
+    public @Unsigned int cooperativeMatrixPerElementOperations() {
         return segment.get(LAYOUT$cooperativeMatrixPerElementOperations, OFFSET$cooperativeMatrixPerElementOperations);
     }
 
-    public void cooperativeMatrixPerElementOperations(@unsigned int value) {
+    public void cooperativeMatrixPerElementOperations(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixPerElementOperations, OFFSET$cooperativeMatrixPerElementOperations, value);
     }
 
-    public @unsigned int cooperativeMatrixTensorAddressing() {
+    public @Unsigned int cooperativeMatrixTensorAddressing() {
         return segment.get(LAYOUT$cooperativeMatrixTensorAddressing, OFFSET$cooperativeMatrixTensorAddressing);
     }
 
-    public void cooperativeMatrixTensorAddressing(@unsigned int value) {
+    public void cooperativeMatrixTensorAddressing(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixTensorAddressing, OFFSET$cooperativeMatrixTensorAddressing, value);
     }
 
-    public @unsigned int cooperativeMatrixBlockLoads() {
+    public @Unsigned int cooperativeMatrixBlockLoads() {
         return segment.get(LAYOUT$cooperativeMatrixBlockLoads, OFFSET$cooperativeMatrixBlockLoads);
     }
 
-    public void cooperativeMatrixBlockLoads(@unsigned int value) {
+    public void cooperativeMatrixBlockLoads(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixBlockLoads, OFFSET$cooperativeMatrixBlockLoads, value);
     }
 

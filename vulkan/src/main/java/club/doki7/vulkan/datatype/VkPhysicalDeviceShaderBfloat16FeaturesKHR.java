@@ -95,7 +95,7 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderBFloat16Type() {
+    public @Unsigned int shaderBFloat16Type() {
         return segment.get(LAYOUT$shaderBFloat16Type, OFFSET$shaderBFloat16Type);
     }
 
-    public void shaderBFloat16Type(@unsigned int value) {
+    public void shaderBFloat16Type(@Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16Type, OFFSET$shaderBFloat16Type, value);
     }
 
-    public @unsigned int shaderBFloat16DotProduct() {
+    public @Unsigned int shaderBFloat16DotProduct() {
         return segment.get(LAYOUT$shaderBFloat16DotProduct, OFFSET$shaderBFloat16DotProduct);
     }
 
-    public void shaderBFloat16DotProduct(@unsigned int value) {
+    public void shaderBFloat16DotProduct(@Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16DotProduct, OFFSET$shaderBFloat16DotProduct, value);
     }
 
-    public @unsigned int shaderBFloat16CooperativeMatrix() {
+    public @Unsigned int shaderBFloat16CooperativeMatrix() {
         return segment.get(LAYOUT$shaderBFloat16CooperativeMatrix, OFFSET$shaderBFloat16CooperativeMatrix);
     }
 
-    public void shaderBFloat16CooperativeMatrix(@unsigned int value) {
+    public void shaderBFloat16CooperativeMatrix(@Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16CooperativeMatrix, OFFSET$shaderBFloat16CooperativeMatrix, value);
     }
 

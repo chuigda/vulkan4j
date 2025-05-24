@@ -97,7 +97,7 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -182,19 +182,19 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int viewMask() {
+    public @Unsigned int viewMask() {
         return segment.get(LAYOUT$viewMask, OFFSET$viewMask);
     }
 
-    public void viewMask(@unsigned int value) {
+    public void viewMask(@Unsigned int value) {
         segment.set(LAYOUT$viewMask, OFFSET$viewMask, value);
     }
 
-    public @unsigned int colorAttachmentCount() {
+    public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@unsigned int value) {
+    public void colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 

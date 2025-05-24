@@ -99,7 +99,7 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -200,19 +200,19 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
     }
 
-    public @unsigned long vertexStride() {
+    public @Unsigned long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
 
-    public void vertexStride(@unsigned long value) {
+    public void vertexStride(@Unsigned long value) {
         segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
     }
 
-    public @unsigned int maxVertex() {
+    public @Unsigned int maxVertex() {
         return segment.get(LAYOUT$maxVertex, OFFSET$maxVertex);
     }
 
-    public void maxVertex(@unsigned int value) {
+    public void maxVertex(@Unsigned int value) {
         segment.set(LAYOUT$maxVertex, OFFSET$maxVertex, value);
     }
 

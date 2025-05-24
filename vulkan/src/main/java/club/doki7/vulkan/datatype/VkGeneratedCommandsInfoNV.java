@@ -105,7 +105,7 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -222,11 +222,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int streamCount() {
+    public @Unsigned int streamCount() {
         return segment.get(LAYOUT$streamCount, OFFSET$streamCount);
     }
 
-    public void streamCount(@unsigned int value) {
+    public void streamCount(@Unsigned int value) {
         segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
     }
 
@@ -261,11 +261,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pStreams, OFFSET$pStreams, value);
     }
 
-    public @unsigned int sequencesCount() {
+    public @Unsigned int sequencesCount() {
         return segment.get(LAYOUT$sequencesCount, OFFSET$sequencesCount);
     }
 
-    public void sequencesCount(@unsigned int value) {
+    public void sequencesCount(@Unsigned int value) {
         segment.set(LAYOUT$sequencesCount, OFFSET$sequencesCount, value);
     }
 
@@ -281,19 +281,19 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long preprocessOffset() {
+    public @Unsigned long preprocessOffset() {
         return segment.get(LAYOUT$preprocessOffset, OFFSET$preprocessOffset);
     }
 
-    public void preprocessOffset(@unsigned long value) {
+    public void preprocessOffset(@Unsigned long value) {
         segment.set(LAYOUT$preprocessOffset, OFFSET$preprocessOffset, value);
     }
 
-    public @unsigned long preprocessSize() {
+    public @Unsigned long preprocessSize() {
         return segment.get(LAYOUT$preprocessSize, OFFSET$preprocessSize);
     }
 
-    public void preprocessSize(@unsigned long value) {
+    public void preprocessSize(@Unsigned long value) {
         segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
     }
 
@@ -309,11 +309,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long sequencesCountOffset() {
+    public @Unsigned long sequencesCountOffset() {
         return segment.get(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset);
     }
 
-    public void sequencesCountOffset(@unsigned long value) {
+    public void sequencesCountOffset(@Unsigned long value) {
         segment.set(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset, value);
     }
 
@@ -329,11 +329,11 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long sequencesIndexOffset() {
+    public @Unsigned long sequencesIndexOffset() {
         return segment.get(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset);
     }
 
-    public void sequencesIndexOffset(@unsigned long value) {
+    public void sequencesIndexOffset(@Unsigned long value) {
         segment.set(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset, value);
     }
 

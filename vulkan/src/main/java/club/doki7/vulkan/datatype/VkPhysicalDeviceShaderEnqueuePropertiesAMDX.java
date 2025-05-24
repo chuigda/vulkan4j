@@ -99,7 +99,7 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -184,59 +184,59 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxExecutionGraphDepth() {
+    public @Unsigned int maxExecutionGraphDepth() {
         return segment.get(LAYOUT$maxExecutionGraphDepth, OFFSET$maxExecutionGraphDepth);
     }
 
-    public void maxExecutionGraphDepth(@unsigned int value) {
+    public void maxExecutionGraphDepth(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphDepth, OFFSET$maxExecutionGraphDepth, value);
     }
 
-    public @unsigned int maxExecutionGraphShaderOutputNodes() {
+    public @Unsigned int maxExecutionGraphShaderOutputNodes() {
         return segment.get(LAYOUT$maxExecutionGraphShaderOutputNodes, OFFSET$maxExecutionGraphShaderOutputNodes);
     }
 
-    public void maxExecutionGraphShaderOutputNodes(@unsigned int value) {
+    public void maxExecutionGraphShaderOutputNodes(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphShaderOutputNodes, OFFSET$maxExecutionGraphShaderOutputNodes, value);
     }
 
-    public @unsigned int maxExecutionGraphShaderPayloadSize() {
+    public @Unsigned int maxExecutionGraphShaderPayloadSize() {
         return segment.get(LAYOUT$maxExecutionGraphShaderPayloadSize, OFFSET$maxExecutionGraphShaderPayloadSize);
     }
 
-    public void maxExecutionGraphShaderPayloadSize(@unsigned int value) {
+    public void maxExecutionGraphShaderPayloadSize(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphShaderPayloadSize, OFFSET$maxExecutionGraphShaderPayloadSize, value);
     }
 
-    public @unsigned int maxExecutionGraphShaderPayloadCount() {
+    public @Unsigned int maxExecutionGraphShaderPayloadCount() {
         return segment.get(LAYOUT$maxExecutionGraphShaderPayloadCount, OFFSET$maxExecutionGraphShaderPayloadCount);
     }
 
-    public void maxExecutionGraphShaderPayloadCount(@unsigned int value) {
+    public void maxExecutionGraphShaderPayloadCount(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphShaderPayloadCount, OFFSET$maxExecutionGraphShaderPayloadCount, value);
     }
 
-    public @unsigned int executionGraphDispatchAddressAlignment() {
+    public @Unsigned int executionGraphDispatchAddressAlignment() {
         return segment.get(LAYOUT$executionGraphDispatchAddressAlignment, OFFSET$executionGraphDispatchAddressAlignment);
     }
 
-    public void executionGraphDispatchAddressAlignment(@unsigned int value) {
+    public void executionGraphDispatchAddressAlignment(@Unsigned int value) {
         segment.set(LAYOUT$executionGraphDispatchAddressAlignment, OFFSET$executionGraphDispatchAddressAlignment, value);
     }
 
-    public @unsigned int maxExecutionGraphWorkgroupCount() {
+    public @Unsigned int maxExecutionGraphWorkgroupCount() {
         return segment.get(LAYOUT$maxExecutionGraphWorkgroupCount, OFFSET$maxExecutionGraphWorkgroupCount);
     }
 
-    public void maxExecutionGraphWorkgroupCount(@unsigned int value) {
+    public void maxExecutionGraphWorkgroupCount(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphWorkgroupCount, OFFSET$maxExecutionGraphWorkgroupCount, value);
     }
 
-    public @unsigned int maxExecutionGraphWorkgroups() {
+    public @Unsigned int maxExecutionGraphWorkgroups() {
         return segment.get(LAYOUT$maxExecutionGraphWorkgroups, OFFSET$maxExecutionGraphWorkgroups);
     }
 
-    public void maxExecutionGraphWorkgroups(@unsigned int value) {
+    public void maxExecutionGraphWorkgroups(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphWorkgroups, OFFSET$maxExecutionGraphWorkgroups, value);
     }
 

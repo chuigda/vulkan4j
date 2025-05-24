@@ -94,7 +94,7 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(@NotNull MemorySegment s
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long descriptorOffset() {
+    public @Unsigned long descriptorOffset() {
         return NativeLayout.readCSizeT(segment, OFFSET$descriptorOffset);
     }
 
-    public void descriptorOffset(@unsigned long value) {
+    public void descriptorOffset(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$descriptorOffset, value);
     }
 
-    public @unsigned int descriptorSize() {
+    public @Unsigned int descriptorSize() {
         return segment.get(LAYOUT$descriptorSize, OFFSET$descriptorSize);
     }
 
-    public void descriptorSize(@unsigned int value) {
+    public void descriptorSize(@Unsigned int value) {
         segment.set(LAYOUT$descriptorSize, OFFSET$descriptorSize, value);
     }
 

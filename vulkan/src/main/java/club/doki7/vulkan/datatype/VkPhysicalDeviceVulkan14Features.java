@@ -113,7 +113,7 @@ public record VkPhysicalDeviceVulkan14Features(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -198,171 +198,171 @@ public record VkPhysicalDeviceVulkan14Features(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int globalPriorityQuery() {
+    public @Unsigned int globalPriorityQuery() {
         return segment.get(LAYOUT$globalPriorityQuery, OFFSET$globalPriorityQuery);
     }
 
-    public void globalPriorityQuery(@unsigned int value) {
+    public void globalPriorityQuery(@Unsigned int value) {
         segment.set(LAYOUT$globalPriorityQuery, OFFSET$globalPriorityQuery, value);
     }
 
-    public @unsigned int shaderSubgroupRotate() {
+    public @Unsigned int shaderSubgroupRotate() {
         return segment.get(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate);
     }
 
-    public void shaderSubgroupRotate(@unsigned int value) {
+    public void shaderSubgroupRotate(@Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupRotate, OFFSET$shaderSubgroupRotate, value);
     }
 
-    public @unsigned int shaderSubgroupRotateClustered() {
+    public @Unsigned int shaderSubgroupRotateClustered() {
         return segment.get(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered);
     }
 
-    public void shaderSubgroupRotateClustered(@unsigned int value) {
+    public void shaderSubgroupRotateClustered(@Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupRotateClustered, OFFSET$shaderSubgroupRotateClustered, value);
     }
 
-    public @unsigned int shaderFloatControls2() {
+    public @Unsigned int shaderFloatControls2() {
         return segment.get(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2);
     }
 
-    public void shaderFloatControls2(@unsigned int value) {
+    public void shaderFloatControls2(@Unsigned int value) {
         segment.set(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2, value);
     }
 
-    public @unsigned int shaderExpectAssume() {
+    public @Unsigned int shaderExpectAssume() {
         return segment.get(LAYOUT$shaderExpectAssume, OFFSET$shaderExpectAssume);
     }
 
-    public void shaderExpectAssume(@unsigned int value) {
+    public void shaderExpectAssume(@Unsigned int value) {
         segment.set(LAYOUT$shaderExpectAssume, OFFSET$shaderExpectAssume, value);
     }
 
-    public @unsigned int rectangularLines() {
+    public @Unsigned int rectangularLines() {
         return segment.get(LAYOUT$rectangularLines, OFFSET$rectangularLines);
     }
 
-    public void rectangularLines(@unsigned int value) {
+    public void rectangularLines(@Unsigned int value) {
         segment.set(LAYOUT$rectangularLines, OFFSET$rectangularLines, value);
     }
 
-    public @unsigned int bresenhamLines() {
+    public @Unsigned int bresenhamLines() {
         return segment.get(LAYOUT$bresenhamLines, OFFSET$bresenhamLines);
     }
 
-    public void bresenhamLines(@unsigned int value) {
+    public void bresenhamLines(@Unsigned int value) {
         segment.set(LAYOUT$bresenhamLines, OFFSET$bresenhamLines, value);
     }
 
-    public @unsigned int smoothLines() {
+    public @Unsigned int smoothLines() {
         return segment.get(LAYOUT$smoothLines, OFFSET$smoothLines);
     }
 
-    public void smoothLines(@unsigned int value) {
+    public void smoothLines(@Unsigned int value) {
         segment.set(LAYOUT$smoothLines, OFFSET$smoothLines, value);
     }
 
-    public @unsigned int stippledRectangularLines() {
+    public @Unsigned int stippledRectangularLines() {
         return segment.get(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines);
     }
 
-    public void stippledRectangularLines(@unsigned int value) {
+    public void stippledRectangularLines(@Unsigned int value) {
         segment.set(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines, value);
     }
 
-    public @unsigned int stippledBresenhamLines() {
+    public @Unsigned int stippledBresenhamLines() {
         return segment.get(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines);
     }
 
-    public void stippledBresenhamLines(@unsigned int value) {
+    public void stippledBresenhamLines(@Unsigned int value) {
         segment.set(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines, value);
     }
 
-    public @unsigned int stippledSmoothLines() {
+    public @Unsigned int stippledSmoothLines() {
         return segment.get(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines);
     }
 
-    public void stippledSmoothLines(@unsigned int value) {
+    public void stippledSmoothLines(@Unsigned int value) {
         segment.set(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines, value);
     }
 
-    public @unsigned int vertexAttributeInstanceRateDivisor() {
+    public @Unsigned int vertexAttributeInstanceRateDivisor() {
         return segment.get(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor);
     }
 
-    public void vertexAttributeInstanceRateDivisor(@unsigned int value) {
+    public void vertexAttributeInstanceRateDivisor(@Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor, value);
     }
 
-    public @unsigned int vertexAttributeInstanceRateZeroDivisor() {
+    public @Unsigned int vertexAttributeInstanceRateZeroDivisor() {
         return segment.get(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor);
     }
 
-    public void vertexAttributeInstanceRateZeroDivisor(@unsigned int value) {
+    public void vertexAttributeInstanceRateZeroDivisor(@Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor, value);
     }
 
-    public @unsigned int indexTypeUint8() {
+    public @Unsigned int indexTypeUint8() {
         return segment.get(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8);
     }
 
-    public void indexTypeUint8(@unsigned int value) {
+    public void indexTypeUint8(@Unsigned int value) {
         segment.set(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8, value);
     }
 
-    public @unsigned int dynamicRenderingLocalRead() {
+    public @Unsigned int dynamicRenderingLocalRead() {
         return segment.get(LAYOUT$dynamicRenderingLocalRead, OFFSET$dynamicRenderingLocalRead);
     }
 
-    public void dynamicRenderingLocalRead(@unsigned int value) {
+    public void dynamicRenderingLocalRead(@Unsigned int value) {
         segment.set(LAYOUT$dynamicRenderingLocalRead, OFFSET$dynamicRenderingLocalRead, value);
     }
 
-    public @unsigned int maintenance5() {
+    public @Unsigned int maintenance5() {
         return segment.get(LAYOUT$maintenance5, OFFSET$maintenance5);
     }
 
-    public void maintenance5(@unsigned int value) {
+    public void maintenance5(@Unsigned int value) {
         segment.set(LAYOUT$maintenance5, OFFSET$maintenance5, value);
     }
 
-    public @unsigned int maintenance6() {
+    public @Unsigned int maintenance6() {
         return segment.get(LAYOUT$maintenance6, OFFSET$maintenance6);
     }
 
-    public void maintenance6(@unsigned int value) {
+    public void maintenance6(@Unsigned int value) {
         segment.set(LAYOUT$maintenance6, OFFSET$maintenance6, value);
     }
 
-    public @unsigned int pipelineProtectedAccess() {
+    public @Unsigned int pipelineProtectedAccess() {
         return segment.get(LAYOUT$pipelineProtectedAccess, OFFSET$pipelineProtectedAccess);
     }
 
-    public void pipelineProtectedAccess(@unsigned int value) {
+    public void pipelineProtectedAccess(@Unsigned int value) {
         segment.set(LAYOUT$pipelineProtectedAccess, OFFSET$pipelineProtectedAccess, value);
     }
 
-    public @unsigned int pipelineRobustness() {
+    public @Unsigned int pipelineRobustness() {
         return segment.get(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness);
     }
 
-    public void pipelineRobustness(@unsigned int value) {
+    public void pipelineRobustness(@Unsigned int value) {
         segment.set(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness, value);
     }
 
-    public @unsigned int hostImageCopy() {
+    public @Unsigned int hostImageCopy() {
         return segment.get(LAYOUT$hostImageCopy, OFFSET$hostImageCopy);
     }
 
-    public void hostImageCopy(@unsigned int value) {
+    public void hostImageCopy(@Unsigned int value) {
         segment.set(LAYOUT$hostImageCopy, OFFSET$hostImageCopy, value);
     }
 
-    public @unsigned int pushDescriptor() {
+    public @Unsigned int pushDescriptor() {
         return segment.get(LAYOUT$pushDescriptor, OFFSET$pushDescriptor);
     }
 
-    public void pushDescriptor(@unsigned int value) {
+    public void pushDescriptor(@Unsigned int value) {
         segment.set(LAYOUT$pushDescriptor, OFFSET$pushDescriptor, value);
     }
 

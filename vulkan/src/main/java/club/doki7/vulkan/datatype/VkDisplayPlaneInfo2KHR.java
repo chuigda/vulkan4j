@@ -94,7 +94,7 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -191,11 +191,11 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$mode, OFFSET$mode, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int planeIndex() {
+    public @Unsigned int planeIndex() {
         return segment.get(LAYOUT$planeIndex, OFFSET$planeIndex);
     }
 
-    public void planeIndex(@unsigned int value) {
+    public void planeIndex(@Unsigned int value) {
         segment.set(LAYOUT$planeIndex, OFFSET$planeIndex, value);
     }
 

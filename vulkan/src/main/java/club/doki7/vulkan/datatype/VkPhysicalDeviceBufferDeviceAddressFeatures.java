@@ -95,7 +95,7 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int bufferDeviceAddress() {
+    public @Unsigned int bufferDeviceAddress() {
         return segment.get(LAYOUT$bufferDeviceAddress, OFFSET$bufferDeviceAddress);
     }
 
-    public void bufferDeviceAddress(@unsigned int value) {
+    public void bufferDeviceAddress(@Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddress, OFFSET$bufferDeviceAddress, value);
     }
 
-    public @unsigned int bufferDeviceAddressCaptureReplay() {
+    public @Unsigned int bufferDeviceAddressCaptureReplay() {
         return segment.get(LAYOUT$bufferDeviceAddressCaptureReplay, OFFSET$bufferDeviceAddressCaptureReplay);
     }
 
-    public void bufferDeviceAddressCaptureReplay(@unsigned int value) {
+    public void bufferDeviceAddressCaptureReplay(@Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddressCaptureReplay, OFFSET$bufferDeviceAddressCaptureReplay, value);
     }
 
-    public @unsigned int bufferDeviceAddressMultiDevice() {
+    public @Unsigned int bufferDeviceAddressMultiDevice() {
         return segment.get(LAYOUT$bufferDeviceAddressMultiDevice, OFFSET$bufferDeviceAddressMultiDevice);
     }
 
-    public void bufferDeviceAddressMultiDevice(@unsigned int value) {
+    public void bufferDeviceAddressMultiDevice(@Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddressMultiDevice, OFFSET$bufferDeviceAddressMultiDevice, value);
     }
 

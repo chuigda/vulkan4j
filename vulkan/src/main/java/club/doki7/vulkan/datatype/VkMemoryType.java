@@ -84,7 +84,7 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -147,11 +147,11 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         segment.set(LAYOUT$propertyFlags, OFFSET$propertyFlags, value);
     }
 
-    public @unsigned int heapIndex() {
+    public @Unsigned int heapIndex() {
         return segment.get(LAYOUT$heapIndex, OFFSET$heapIndex);
     }
 
-    public void heapIndex(@unsigned int value) {
+    public void heapIndex(@Unsigned int value) {
         segment.set(LAYOUT$heapIndex, OFFSET$heapIndex, value);
     }
 

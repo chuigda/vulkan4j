@@ -95,7 +95,7 @@ public record VkPerformanceOverrideInfoINTEL(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -188,19 +188,19 @@ public record VkPerformanceOverrideInfoINTEL(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @unsigned int enable() {
+    public @Unsigned int enable() {
         return segment.get(LAYOUT$enable, OFFSET$enable);
     }
 
-    public void enable(@unsigned int value) {
+    public void enable(@Unsigned int value) {
         segment.set(LAYOUT$enable, OFFSET$enable, value);
     }
 
-    public @unsigned long parameter() {
+    public @Unsigned long parameter() {
         return segment.get(LAYOUT$parameter, OFFSET$parameter);
     }
 
-    public void parameter(@unsigned long value) {
+    public void parameter(@Unsigned long value) {
         segment.set(LAYOUT$parameter, OFFSET$parameter, value);
     }
 

@@ -85,7 +85,7 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -140,27 +140,27 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
         return ret;
     }
 
-    public @unsigned int instanceIndex() {
+    public @Unsigned int instanceIndex() {
         return segment.get(LAYOUT$instanceIndex, OFFSET$instanceIndex);
     }
 
-    public void instanceIndex(@unsigned int value) {
+    public void instanceIndex(@Unsigned int value) {
         segment.set(LAYOUT$instanceIndex, OFFSET$instanceIndex, value);
     }
 
-    public @unsigned int instanceContributionToHitGroupIndex() {
+    public @Unsigned int instanceContributionToHitGroupIndex() {
         return segment.get(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex);
     }
 
-    public void instanceContributionToHitGroupIndex(@unsigned int value) {
+    public void instanceContributionToHitGroupIndex(@Unsigned int value) {
         segment.set(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex, value);
     }
 
-    public @unsigned long accelerationStructure() {
+    public @Unsigned long accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@unsigned long value) {
+    public void accelerationStructure(@Unsigned long value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 

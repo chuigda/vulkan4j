@@ -94,7 +94,7 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxTotalClusterCount() {
+    public @Unsigned int maxTotalClusterCount() {
         return segment.get(LAYOUT$maxTotalClusterCount, OFFSET$maxTotalClusterCount);
     }
 
-    public void maxTotalClusterCount(@unsigned int value) {
+    public void maxTotalClusterCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTotalClusterCount, OFFSET$maxTotalClusterCount, value);
     }
 
-    public @unsigned int maxClusterCountPerAccelerationStructure() {
+    public @Unsigned int maxClusterCountPerAccelerationStructure() {
         return segment.get(LAYOUT$maxClusterCountPerAccelerationStructure, OFFSET$maxClusterCountPerAccelerationStructure);
     }
 
-    public void maxClusterCountPerAccelerationStructure(@unsigned int value) {
+    public void maxClusterCountPerAccelerationStructure(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterCountPerAccelerationStructure, OFFSET$maxClusterCountPerAccelerationStructure, value);
     }
 

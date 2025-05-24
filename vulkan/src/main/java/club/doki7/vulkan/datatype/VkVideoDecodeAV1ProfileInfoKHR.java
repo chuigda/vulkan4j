@@ -94,7 +94,7 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -187,11 +187,11 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$stdProfile, OFFSET$stdProfile, value);
     }
 
-    public @unsigned int filmGrainSupport() {
+    public @Unsigned int filmGrainSupport() {
         return segment.get(LAYOUT$filmGrainSupport, OFFSET$filmGrainSupport);
     }
 
-    public void filmGrainSupport(@unsigned int value) {
+    public void filmGrainSupport(@Unsigned int value) {
         segment.set(LAYOUT$filmGrainSupport, OFFSET$filmGrainSupport, value);
     }
 

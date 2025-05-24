@@ -95,7 +95,7 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int fragmentShadingRateEnums() {
+    public @Unsigned int fragmentShadingRateEnums() {
         return segment.get(LAYOUT$fragmentShadingRateEnums, OFFSET$fragmentShadingRateEnums);
     }
 
-    public void fragmentShadingRateEnums(@unsigned int value) {
+    public void fragmentShadingRateEnums(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateEnums, OFFSET$fragmentShadingRateEnums, value);
     }
 
-    public @unsigned int supersampleFragmentShadingRates() {
+    public @Unsigned int supersampleFragmentShadingRates() {
         return segment.get(LAYOUT$supersampleFragmentShadingRates, OFFSET$supersampleFragmentShadingRates);
     }
 
-    public void supersampleFragmentShadingRates(@unsigned int value) {
+    public void supersampleFragmentShadingRates(@Unsigned int value) {
         segment.set(LAYOUT$supersampleFragmentShadingRates, OFFSET$supersampleFragmentShadingRates, value);
     }
 
-    public @unsigned int noInvocationFragmentShadingRates() {
+    public @Unsigned int noInvocationFragmentShadingRates() {
         return segment.get(LAYOUT$noInvocationFragmentShadingRates, OFFSET$noInvocationFragmentShadingRates);
     }
 
-    public void noInvocationFragmentShadingRates(@unsigned int value) {
+    public void noInvocationFragmentShadingRates(@Unsigned int value) {
         segment.set(LAYOUT$noInvocationFragmentShadingRates, OFFSET$noInvocationFragmentShadingRates, value);
     }
 

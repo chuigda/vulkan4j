@@ -85,7 +85,7 @@ public record VkCoarseSampleLocationNV(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -140,27 +140,27 @@ public record VkCoarseSampleLocationNV(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @unsigned int pixelX() {
+    public @Unsigned int pixelX() {
         return segment.get(LAYOUT$pixelX, OFFSET$pixelX);
     }
 
-    public void pixelX(@unsigned int value) {
+    public void pixelX(@Unsigned int value) {
         segment.set(LAYOUT$pixelX, OFFSET$pixelX, value);
     }
 
-    public @unsigned int pixelY() {
+    public @Unsigned int pixelY() {
         return segment.get(LAYOUT$pixelY, OFFSET$pixelY);
     }
 
-    public void pixelY(@unsigned int value) {
+    public void pixelY(@Unsigned int value) {
         segment.set(LAYOUT$pixelY, OFFSET$pixelY, value);
     }
 
-    public @unsigned int sample() {
+    public @Unsigned int sample() {
         return segment.get(LAYOUT$sample, OFFSET$sample);
     }
 
-    public void sample(@unsigned int value) {
+    public void sample(@Unsigned int value) {
         segment.set(LAYOUT$sample, OFFSET$sample, value);
     }
 

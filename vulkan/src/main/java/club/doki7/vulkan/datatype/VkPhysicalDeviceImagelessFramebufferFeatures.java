@@ -93,7 +93,7 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int imagelessFramebuffer() {
+    public @Unsigned int imagelessFramebuffer() {
         return segment.get(LAYOUT$imagelessFramebuffer, OFFSET$imagelessFramebuffer);
     }
 
-    public void imagelessFramebuffer(@unsigned int value) {
+    public void imagelessFramebuffer(@Unsigned int value) {
         segment.set(LAYOUT$imagelessFramebuffer, OFFSET$imagelessFramebuffer, value);
     }
 

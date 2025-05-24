@@ -84,7 +84,7 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -139,19 +139,19 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
         return ret;
     }
 
-    public @unsigned int binding() {
+    public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@unsigned int value) {
+    public void binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
     }
 
-    public @unsigned int divisor() {
+    public @Unsigned int divisor() {
         return segment.get(LAYOUT$divisor, OFFSET$divisor);
     }
 
-    public void divisor(@unsigned int value) {
+    public void divisor(@Unsigned int value) {
         segment.set(LAYOUT$divisor, OFFSET$divisor, value);
     }
 

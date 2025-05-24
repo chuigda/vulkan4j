@@ -105,7 +105,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -198,35 +198,35 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$tokenType, OFFSET$tokenType, value);
     }
 
-    public @unsigned int stream() {
+    public @Unsigned int stream() {
         return segment.get(LAYOUT$stream, OFFSET$stream);
     }
 
-    public void stream(@unsigned int value) {
+    public void stream(@Unsigned int value) {
         segment.set(LAYOUT$stream, OFFSET$stream, value);
     }
 
-    public @unsigned int offset() {
+    public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@unsigned int value) {
+    public void offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public @unsigned int vertexBindingUnit() {
+    public @Unsigned int vertexBindingUnit() {
         return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
     }
 
-    public void vertexBindingUnit(@unsigned int value) {
+    public void vertexBindingUnit(@Unsigned int value) {
         segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
     }
 
-    public @unsigned int vertexDynamicStride() {
+    public @Unsigned int vertexDynamicStride() {
         return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
     }
 
-    public void vertexDynamicStride(@unsigned int value) {
+    public void vertexDynamicStride(@Unsigned int value) {
         segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
     }
 
@@ -250,19 +250,19 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
     }
 
-    public @unsigned int pushconstantOffset() {
+    public @Unsigned int pushconstantOffset() {
         return segment.get(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset);
     }
 
-    public void pushconstantOffset(@unsigned int value) {
+    public void pushconstantOffset(@Unsigned int value) {
         segment.set(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset, value);
     }
 
-    public @unsigned int pushconstantSize() {
+    public @Unsigned int pushconstantSize() {
         return segment.get(LAYOUT$pushconstantSize, OFFSET$pushconstantSize);
     }
 
-    public void pushconstantSize(@unsigned int value) {
+    public void pushconstantSize(@Unsigned int value) {
         segment.set(LAYOUT$pushconstantSize, OFFSET$pushconstantSize, value);
     }
 
@@ -274,11 +274,11 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
     }
 
-    public @unsigned int indexTypeCount() {
+    public @Unsigned int indexTypeCount() {
         return segment.get(LAYOUT$indexTypeCount, OFFSET$indexTypeCount);
     }
 
-    public void indexTypeCount(@unsigned int value) {
+    public void indexTypeCount(@Unsigned int value) {
         segment.set(LAYOUT$indexTypeCount, OFFSET$indexTypeCount, value);
     }
 
@@ -312,7 +312,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pIndexTypeValues() {
+    public @Nullable @Unsigned IntPtr pIndexTypeValues() {
         MemorySegment s = pIndexTypeValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -320,7 +320,7 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pIndexTypeValues(@Nullable @unsigned IntPtr value) {
+    public void pIndexTypeValues(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypeValuesRaw(s);
     }

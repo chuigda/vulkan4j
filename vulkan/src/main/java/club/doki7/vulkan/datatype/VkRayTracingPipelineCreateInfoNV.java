@@ -101,7 +101,7 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -194,11 +194,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int stageCount() {
+    public @Unsigned int stageCount() {
         return segment.get(LAYOUT$stageCount, OFFSET$stageCount);
     }
 
-    public void stageCount(@unsigned int value) {
+    public void stageCount(@Unsigned int value) {
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
@@ -233,11 +233,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
-    public @unsigned int groupCount() {
+    public @Unsigned int groupCount() {
         return segment.get(LAYOUT$groupCount, OFFSET$groupCount);
     }
 
-    public void groupCount(@unsigned int value) {
+    public void groupCount(@Unsigned int value) {
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
     }
 
@@ -272,11 +272,11 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
-    public @unsigned int maxRecursionDepth() {
+    public @Unsigned int maxRecursionDepth() {
         return segment.get(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth);
     }
 
-    public void maxRecursionDepth(@unsigned int value) {
+    public void maxRecursionDepth(@Unsigned int value) {
         segment.set(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth, value);
     }
 

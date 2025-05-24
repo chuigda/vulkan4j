@@ -95,7 +95,7 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int robustBufferAccess2() {
+    public @Unsigned int robustBufferAccess2() {
         return segment.get(LAYOUT$robustBufferAccess2, OFFSET$robustBufferAccess2);
     }
 
-    public void robustBufferAccess2(@unsigned int value) {
+    public void robustBufferAccess2(@Unsigned int value) {
         segment.set(LAYOUT$robustBufferAccess2, OFFSET$robustBufferAccess2, value);
     }
 
-    public @unsigned int robustImageAccess2() {
+    public @Unsigned int robustImageAccess2() {
         return segment.get(LAYOUT$robustImageAccess2, OFFSET$robustImageAccess2);
     }
 
-    public void robustImageAccess2(@unsigned int value) {
+    public void robustImageAccess2(@Unsigned int value) {
         segment.set(LAYOUT$robustImageAccess2, OFFSET$robustImageAccess2, value);
     }
 
-    public @unsigned int nullDescriptor() {
+    public @Unsigned int nullDescriptor() {
         return segment.get(LAYOUT$nullDescriptor, OFFSET$nullDescriptor);
     }
 
-    public void nullDescriptor(@unsigned int value) {
+    public void nullDescriptor(@Unsigned int value) {
         segment.set(LAYOUT$nullDescriptor, OFFSET$nullDescriptor, value);
     }
 

@@ -109,7 +109,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -202,11 +202,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int stageCount() {
+    public @Unsigned int stageCount() {
         return segment.get(LAYOUT$stageCount, OFFSET$stageCount);
     }
 
-    public void stageCount(@unsigned int value) {
+    public void stageCount(@Unsigned int value) {
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
     }
 
@@ -544,11 +544,11 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int subpass() {
+    public @Unsigned int subpass() {
         return segment.get(LAYOUT$subpass, OFFSET$subpass);
     }
 
-    public void subpass(@unsigned int value) {
+    public void subpass(@Unsigned int value) {
         segment.set(LAYOUT$subpass, OFFSET$subpass, value);
     }
 

@@ -94,7 +94,7 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int optimalDeviceAccess() {
+    public @Unsigned int optimalDeviceAccess() {
         return segment.get(LAYOUT$optimalDeviceAccess, OFFSET$optimalDeviceAccess);
     }
 
-    public void optimalDeviceAccess(@unsigned int value) {
+    public void optimalDeviceAccess(@Unsigned int value) {
         segment.set(LAYOUT$optimalDeviceAccess, OFFSET$optimalDeviceAccess, value);
     }
 
-    public @unsigned int identicalMemoryLayout() {
+    public @Unsigned int identicalMemoryLayout() {
         return segment.get(LAYOUT$identicalMemoryLayout, OFFSET$identicalMemoryLayout);
     }
 
-    public void identicalMemoryLayout(@unsigned int value) {
+    public void identicalMemoryLayout(@Unsigned int value) {
         segment.set(LAYOUT$identicalMemoryLayout, OFFSET$identicalMemoryLayout, value);
     }
 

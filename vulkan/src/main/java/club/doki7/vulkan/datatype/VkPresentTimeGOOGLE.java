@@ -84,7 +84,7 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -139,19 +139,19 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IVk
         return ret;
     }
 
-    public @unsigned int presentID() {
+    public @Unsigned int presentID() {
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }
 
-    public void presentID(@unsigned int value) {
+    public void presentID(@Unsigned int value) {
         segment.set(LAYOUT$presentID, OFFSET$presentID, value);
     }
 
-    public @unsigned long desiredPresentTime() {
+    public @Unsigned long desiredPresentTime() {
         return segment.get(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime);
     }
 
-    public void desiredPresentTime(@unsigned long value) {
+    public void desiredPresentTime(@Unsigned long value) {
         segment.set(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime, value);
     }
 

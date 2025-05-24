@@ -95,7 +95,7 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int fragmentDensityMap() {
+    public @Unsigned int fragmentDensityMap() {
         return segment.get(LAYOUT$fragmentDensityMap, OFFSET$fragmentDensityMap);
     }
 
-    public void fragmentDensityMap(@unsigned int value) {
+    public void fragmentDensityMap(@Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityMap, OFFSET$fragmentDensityMap, value);
     }
 
-    public @unsigned int fragmentDensityMapDynamic() {
+    public @Unsigned int fragmentDensityMapDynamic() {
         return segment.get(LAYOUT$fragmentDensityMapDynamic, OFFSET$fragmentDensityMapDynamic);
     }
 
-    public void fragmentDensityMapDynamic(@unsigned int value) {
+    public void fragmentDensityMapDynamic(@Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityMapDynamic, OFFSET$fragmentDensityMapDynamic, value);
     }
 
-    public @unsigned int fragmentDensityMapNonSubsampledImages() {
+    public @Unsigned int fragmentDensityMapNonSubsampledImages() {
         return segment.get(LAYOUT$fragmentDensityMapNonSubsampledImages, OFFSET$fragmentDensityMapNonSubsampledImages);
     }
 
-    public void fragmentDensityMapNonSubsampledImages(@unsigned int value) {
+    public void fragmentDensityMapNonSubsampledImages(@Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityMapNonSubsampledImages, OFFSET$fragmentDensityMapNonSubsampledImages, value);
     }
 

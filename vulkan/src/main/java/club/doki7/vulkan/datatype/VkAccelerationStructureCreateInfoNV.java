@@ -94,7 +94,7 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,11 +179,11 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long compactedSize() {
+    public @Unsigned long compactedSize() {
         return segment.get(LAYOUT$compactedSize, OFFSET$compactedSize);
     }
 
-    public void compactedSize(@unsigned long value) {
+    public void compactedSize(@Unsigned long value) {
         segment.set(LAYOUT$compactedSize, OFFSET$compactedSize, value);
     }
 

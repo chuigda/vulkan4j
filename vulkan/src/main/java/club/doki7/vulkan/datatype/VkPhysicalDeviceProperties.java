@@ -91,7 +91,7 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -146,35 +146,35 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @unsigned int apiVersion() {
+    public @Unsigned int apiVersion() {
         return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
     }
 
-    public void apiVersion(@unsigned int value) {
+    public void apiVersion(@Unsigned int value) {
         segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
     }
 
-    public @unsigned int driverVersion() {
+    public @Unsigned int driverVersion() {
         return segment.get(LAYOUT$driverVersion, OFFSET$driverVersion);
     }
 
-    public void driverVersion(@unsigned int value) {
+    public void driverVersion(@Unsigned int value) {
         segment.set(LAYOUT$driverVersion, OFFSET$driverVersion, value);
     }
 
-    public @unsigned int vendorID() {
+    public @Unsigned int vendorID() {
         return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
     }
 
-    public void vendorID(@unsigned int value) {
+    public void vendorID(@Unsigned int value) {
         segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
     }
 
-    public @unsigned int deviceID() {
+    public @Unsigned int deviceID() {
         return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
     }
 
-    public void deviceID(@unsigned int value) {
+    public void deviceID(@Unsigned int value) {
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
     }
 
@@ -194,11 +194,11 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$deviceName, OFFSET$deviceName, value);
     }
 
-    public @unsigned byte pipelineCacheUUID() {
+    public @Unsigned byte pipelineCacheUUID() {
         return segment.get(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID);
     }
 
-    public void pipelineCacheUUID(@unsigned byte value) {
+    public void pipelineCacheUUID(@Unsigned byte value) {
         segment.set(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID, value);
     }
 

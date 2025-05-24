@@ -87,7 +87,7 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -158,11 +158,11 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$primary_pic_type, OFFSET$primary_pic_type, value);
     }
 
-    public @unsigned int FrameNum() {
+    public @Unsigned int FrameNum() {
         return segment.get(LAYOUT$FrameNum, OFFSET$FrameNum);
     }
 
-    public void FrameNum(@unsigned int value) {
+    public void FrameNum(@Unsigned int value) {
         segment.set(LAYOUT$FrameNum, OFFSET$FrameNum, value);
     }
 
@@ -174,27 +174,27 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt, value);
     }
 
-    public @unsigned short long_term_pic_num() {
+    public @Unsigned short long_term_pic_num() {
         return segment.get(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num);
     }
 
-    public void long_term_pic_num(@unsigned short value) {
+    public void long_term_pic_num(@Unsigned short value) {
         segment.set(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num, value);
     }
 
-    public @unsigned short long_term_frame_idx() {
+    public @Unsigned short long_term_frame_idx() {
         return segment.get(LAYOUT$long_term_frame_idx, OFFSET$long_term_frame_idx);
     }
 
-    public void long_term_frame_idx(@unsigned short value) {
+    public void long_term_frame_idx(@Unsigned short value) {
         segment.set(LAYOUT$long_term_frame_idx, OFFSET$long_term_frame_idx, value);
     }
 
-    public @unsigned byte temporal_id() {
+    public @Unsigned byte temporal_id() {
         return segment.get(LAYOUT$temporal_id, OFFSET$temporal_id);
     }
 
-    public void temporal_id(@unsigned byte value) {
+    public void temporal_id(@Unsigned byte value) {
         segment.set(LAYOUT$temporal_id, OFFSET$temporal_id, value);
     }
 

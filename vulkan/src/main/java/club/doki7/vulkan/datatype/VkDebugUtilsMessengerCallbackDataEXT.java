@@ -102,7 +102,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -253,11 +253,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pMessage, OFFSET$pMessage, value);
     }
 
-    public @unsigned int queueLabelCount() {
+    public @Unsigned int queueLabelCount() {
         return segment.get(LAYOUT$queueLabelCount, OFFSET$queueLabelCount);
     }
 
-    public void queueLabelCount(@unsigned int value) {
+    public void queueLabelCount(@Unsigned int value) {
         segment.set(LAYOUT$queueLabelCount, OFFSET$queueLabelCount, value);
     }
 
@@ -292,11 +292,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pQueueLabels, OFFSET$pQueueLabels, value);
     }
 
-    public @unsigned int cmdBufLabelCount() {
+    public @Unsigned int cmdBufLabelCount() {
         return segment.get(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount);
     }
 
-    public void cmdBufLabelCount(@unsigned int value) {
+    public void cmdBufLabelCount(@Unsigned int value) {
         segment.set(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount, value);
     }
 
@@ -331,11 +331,11 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pCmdBufLabels, OFFSET$pCmdBufLabels, value);
     }
 
-    public @unsigned int objectCount() {
+    public @Unsigned int objectCount() {
         return segment.get(LAYOUT$objectCount, OFFSET$objectCount);
     }
 
-    public void objectCount(@unsigned int value) {
+    public void objectCount(@Unsigned int value) {
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
     }
 

@@ -95,7 +95,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -196,11 +196,11 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterSize, SIZE$filterSize);
     }
 
-    public @unsigned int numPhases() {
+    public @Unsigned int numPhases() {
         return segment.get(LAYOUT$numPhases, OFFSET$numPhases);
     }
 
-    public void numPhases(@unsigned int value) {
+    public void numPhases(@Unsigned int value) {
         segment.set(LAYOUT$numPhases, OFFSET$numPhases, value);
     }
 

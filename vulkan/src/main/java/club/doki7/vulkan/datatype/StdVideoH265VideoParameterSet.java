@@ -92,7 +92,7 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -155,45 +155,45 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte vps_video_parameter_set_id() {
+    public @Unsigned byte vps_video_parameter_set_id() {
         return segment.get(LAYOUT$vps_video_parameter_set_id, OFFSET$vps_video_parameter_set_id);
     }
 
-    public void vps_video_parameter_set_id(@unsigned byte value) {
+    public void vps_video_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$vps_video_parameter_set_id, OFFSET$vps_video_parameter_set_id, value);
     }
 
-    public @unsigned byte vps_max_sub_layers_minus1() {
+    public @Unsigned byte vps_max_sub_layers_minus1() {
         return segment.get(LAYOUT$vps_max_sub_layers_minus1, OFFSET$vps_max_sub_layers_minus1);
     }
 
-    public void vps_max_sub_layers_minus1(@unsigned byte value) {
+    public void vps_max_sub_layers_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$vps_max_sub_layers_minus1, OFFSET$vps_max_sub_layers_minus1, value);
     }
 
 
 
-    public @unsigned int vps_num_units_in_tick() {
+    public @Unsigned int vps_num_units_in_tick() {
         return segment.get(LAYOUT$vps_num_units_in_tick, OFFSET$vps_num_units_in_tick);
     }
 
-    public void vps_num_units_in_tick(@unsigned int value) {
+    public void vps_num_units_in_tick(@Unsigned int value) {
         segment.set(LAYOUT$vps_num_units_in_tick, OFFSET$vps_num_units_in_tick, value);
     }
 
-    public @unsigned int vps_time_scale() {
+    public @Unsigned int vps_time_scale() {
         return segment.get(LAYOUT$vps_time_scale, OFFSET$vps_time_scale);
     }
 
-    public void vps_time_scale(@unsigned int value) {
+    public void vps_time_scale(@Unsigned int value) {
         segment.set(LAYOUT$vps_time_scale, OFFSET$vps_time_scale, value);
     }
 
-    public @unsigned int vps_num_ticks_poc_diff_one_minus1() {
+    public @Unsigned int vps_num_ticks_poc_diff_one_minus1() {
         return segment.get(LAYOUT$vps_num_ticks_poc_diff_one_minus1, OFFSET$vps_num_ticks_poc_diff_one_minus1);
     }
 
-    public void vps_num_ticks_poc_diff_one_minus1(@unsigned int value) {
+    public void vps_num_ticks_poc_diff_one_minus1(@Unsigned int value) {
         segment.set(LAYOUT$vps_num_ticks_poc_diff_one_minus1, OFFSET$vps_num_ticks_poc_diff_one_minus1, value);
     }
 

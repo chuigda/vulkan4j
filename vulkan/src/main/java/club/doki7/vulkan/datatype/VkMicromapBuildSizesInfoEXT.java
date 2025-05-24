@@ -95,7 +95,7 @@ public record VkMicromapBuildSizesInfoEXT(@NotNull MemorySegment segment) implem
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkMicromapBuildSizesInfoEXT(@NotNull MemorySegment segment) implem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long micromapSize() {
+    public @Unsigned long micromapSize() {
         return segment.get(LAYOUT$micromapSize, OFFSET$micromapSize);
     }
 
-    public void micromapSize(@unsigned long value) {
+    public void micromapSize(@Unsigned long value) {
         segment.set(LAYOUT$micromapSize, OFFSET$micromapSize, value);
     }
 
-    public @unsigned long buildScratchSize() {
+    public @Unsigned long buildScratchSize() {
         return segment.get(LAYOUT$buildScratchSize, OFFSET$buildScratchSize);
     }
 
-    public void buildScratchSize(@unsigned long value) {
+    public void buildScratchSize(@Unsigned long value) {
         segment.set(LAYOUT$buildScratchSize, OFFSET$buildScratchSize, value);
     }
 
-    public @unsigned int discardable() {
+    public @Unsigned int discardable() {
         return segment.get(LAYOUT$discardable, OFFSET$discardable);
     }
 
-    public void discardable(@unsigned int value) {
+    public void discardable(@Unsigned int value) {
         segment.set(LAYOUT$discardable, OFFSET$discardable, value);
     }
 

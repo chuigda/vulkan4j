@@ -96,7 +96,7 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,11 +181,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int groupCount() {
+    public @Unsigned int groupCount() {
         return segment.get(LAYOUT$groupCount, OFFSET$groupCount);
     }
 
-    public void groupCount(@unsigned int value) {
+    public void groupCount(@Unsigned int value) {
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
     }
 
@@ -220,11 +220,11 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$pGroups, OFFSET$pGroups, value);
     }
 
-    public @unsigned int pipelineCount() {
+    public @Unsigned int pipelineCount() {
         return segment.get(LAYOUT$pipelineCount, OFFSET$pipelineCount);
     }
 
-    public void pipelineCount(@unsigned int value) {
+    public void pipelineCount(@Unsigned int value) {
         segment.set(LAYOUT$pipelineCount, OFFSET$pipelineCount, value);
     }
 

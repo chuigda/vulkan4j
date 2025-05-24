@@ -98,7 +98,7 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -183,11 +183,11 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int useMinQp() {
+    public @Unsigned int useMinQp() {
         return segment.get(LAYOUT$useMinQp, OFFSET$useMinQp);
     }
 
-    public void useMinQp(@unsigned int value) {
+    public void useMinQp(@Unsigned int value) {
         segment.set(LAYOUT$useMinQp, OFFSET$useMinQp, value);
     }
 
@@ -199,11 +199,11 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minQp, SIZE$minQp);
     }
 
-    public @unsigned int useMaxQp() {
+    public @Unsigned int useMaxQp() {
         return segment.get(LAYOUT$useMaxQp, OFFSET$useMaxQp);
     }
 
-    public void useMaxQp(@unsigned int value) {
+    public void useMaxQp(@Unsigned int value) {
         segment.set(LAYOUT$useMaxQp, OFFSET$useMaxQp, value);
     }
 
@@ -215,11 +215,11 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxQp, SIZE$maxQp);
     }
 
-    public @unsigned int useMaxFrameSize() {
+    public @Unsigned int useMaxFrameSize() {
         return segment.get(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize);
     }
 
-    public void useMaxFrameSize(@unsigned int value) {
+    public void useMaxFrameSize(@Unsigned int value) {
         segment.set(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize, value);
     }
 

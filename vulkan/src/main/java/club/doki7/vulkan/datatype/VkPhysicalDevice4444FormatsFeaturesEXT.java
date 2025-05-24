@@ -94,7 +94,7 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int formatA4R4G4B4() {
+    public @Unsigned int formatA4R4G4B4() {
         return segment.get(LAYOUT$formatA4R4G4B4, OFFSET$formatA4R4G4B4);
     }
 
-    public void formatA4R4G4B4(@unsigned int value) {
+    public void formatA4R4G4B4(@Unsigned int value) {
         segment.set(LAYOUT$formatA4R4G4B4, OFFSET$formatA4R4G4B4, value);
     }
 
-    public @unsigned int formatA4B4G4R4() {
+    public @Unsigned int formatA4B4G4R4() {
         return segment.get(LAYOUT$formatA4B4G4R4, OFFSET$formatA4B4G4R4);
     }
 
-    public void formatA4B4G4R4(@unsigned int value) {
+    public void formatA4B4G4R4(@Unsigned int value) {
         segment.set(LAYOUT$formatA4B4G4R4, OFFSET$formatA4B4G4R4, value);
     }
 

@@ -95,7 +95,7 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(@NotNull Memory
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int fragmentShaderSampleInterlock() {
+    public @Unsigned int fragmentShaderSampleInterlock() {
         return segment.get(LAYOUT$fragmentShaderSampleInterlock, OFFSET$fragmentShaderSampleInterlock);
     }
 
-    public void fragmentShaderSampleInterlock(@unsigned int value) {
+    public void fragmentShaderSampleInterlock(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShaderSampleInterlock, OFFSET$fragmentShaderSampleInterlock, value);
     }
 
-    public @unsigned int fragmentShaderPixelInterlock() {
+    public @Unsigned int fragmentShaderPixelInterlock() {
         return segment.get(LAYOUT$fragmentShaderPixelInterlock, OFFSET$fragmentShaderPixelInterlock);
     }
 
-    public void fragmentShaderPixelInterlock(@unsigned int value) {
+    public void fragmentShaderPixelInterlock(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShaderPixelInterlock, OFFSET$fragmentShaderPixelInterlock, value);
     }
 
-    public @unsigned int fragmentShaderShadingRateInterlock() {
+    public @Unsigned int fragmentShaderShadingRateInterlock() {
         return segment.get(LAYOUT$fragmentShaderShadingRateInterlock, OFFSET$fragmentShaderShadingRateInterlock);
     }
 
-    public void fragmentShaderShadingRateInterlock(@unsigned int value) {
+    public void fragmentShaderShadingRateInterlock(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShaderShadingRateInterlock, OFFSET$fragmentShaderShadingRateInterlock, value);
     }
 

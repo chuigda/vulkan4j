@@ -95,7 +95,7 @@ public record VkVideoEncodeH265SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkVideoEncodeH265SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int hasStdVPSOverrides() {
+    public @Unsigned int hasStdVPSOverrides() {
         return segment.get(LAYOUT$hasStdVPSOverrides, OFFSET$hasStdVPSOverrides);
     }
 
-    public void hasStdVPSOverrides(@unsigned int value) {
+    public void hasStdVPSOverrides(@Unsigned int value) {
         segment.set(LAYOUT$hasStdVPSOverrides, OFFSET$hasStdVPSOverrides, value);
     }
 
-    public @unsigned int hasStdSPSOverrides() {
+    public @Unsigned int hasStdSPSOverrides() {
         return segment.get(LAYOUT$hasStdSPSOverrides, OFFSET$hasStdSPSOverrides);
     }
 
-    public void hasStdSPSOverrides(@unsigned int value) {
+    public void hasStdSPSOverrides(@Unsigned int value) {
         segment.set(LAYOUT$hasStdSPSOverrides, OFFSET$hasStdSPSOverrides, value);
     }
 
-    public @unsigned int hasStdPPSOverrides() {
+    public @Unsigned int hasStdPPSOverrides() {
         return segment.get(LAYOUT$hasStdPPSOverrides, OFFSET$hasStdPPSOverrides);
     }
 
-    public void hasStdPPSOverrides(@unsigned int value) {
+    public void hasStdPPSOverrides(@Unsigned int value) {
         segment.set(LAYOUT$hasStdPPSOverrides, OFFSET$hasStdPPSOverrides, value);
     }
 

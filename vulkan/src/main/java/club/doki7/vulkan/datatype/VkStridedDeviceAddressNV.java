@@ -84,7 +84,7 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -139,19 +139,19 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @unsigned long startAddress() {
+    public @Unsigned long startAddress() {
         return segment.get(LAYOUT$startAddress, OFFSET$startAddress);
     }
 
-    public void startAddress(@unsigned long value) {
+    public void startAddress(@Unsigned long value) {
         segment.set(LAYOUT$startAddress, OFFSET$startAddress, value);
     }
 
-    public @unsigned long strideInBytes() {
+    public @Unsigned long strideInBytes() {
         return segment.get(LAYOUT$strideInBytes, OFFSET$strideInBytes);
     }
 
-    public void strideInBytes(@unsigned long value) {
+    public void strideInBytes(@Unsigned long value) {
         segment.set(LAYOUT$strideInBytes, OFFSET$strideInBytes, value);
     }
 

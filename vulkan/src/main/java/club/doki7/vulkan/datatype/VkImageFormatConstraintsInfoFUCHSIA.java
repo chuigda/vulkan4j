@@ -98,7 +98,7 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -207,19 +207,19 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned long sysmemPixelFormat() {
+    public @Unsigned long sysmemPixelFormat() {
         return segment.get(LAYOUT$sysmemPixelFormat, OFFSET$sysmemPixelFormat);
     }
 
-    public void sysmemPixelFormat(@unsigned long value) {
+    public void sysmemPixelFormat(@Unsigned long value) {
         segment.set(LAYOUT$sysmemPixelFormat, OFFSET$sysmemPixelFormat, value);
     }
 
-    public @unsigned int colorSpaceCount() {
+    public @Unsigned int colorSpaceCount() {
         return segment.get(LAYOUT$colorSpaceCount, OFFSET$colorSpaceCount);
     }
 
-    public void colorSpaceCount(@unsigned int value) {
+    public void colorSpaceCount(@Unsigned int value) {
         segment.set(LAYOUT$colorSpaceCount, OFFSET$colorSpaceCount, value);
     }
 

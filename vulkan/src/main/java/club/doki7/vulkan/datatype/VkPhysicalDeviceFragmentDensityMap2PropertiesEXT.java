@@ -96,7 +96,7 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,35 +181,35 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int subsampledLoads() {
+    public @Unsigned int subsampledLoads() {
         return segment.get(LAYOUT$subsampledLoads, OFFSET$subsampledLoads);
     }
 
-    public void subsampledLoads(@unsigned int value) {
+    public void subsampledLoads(@Unsigned int value) {
         segment.set(LAYOUT$subsampledLoads, OFFSET$subsampledLoads, value);
     }
 
-    public @unsigned int subsampledCoarseReconstructionEarlyAccess() {
+    public @Unsigned int subsampledCoarseReconstructionEarlyAccess() {
         return segment.get(LAYOUT$subsampledCoarseReconstructionEarlyAccess, OFFSET$subsampledCoarseReconstructionEarlyAccess);
     }
 
-    public void subsampledCoarseReconstructionEarlyAccess(@unsigned int value) {
+    public void subsampledCoarseReconstructionEarlyAccess(@Unsigned int value) {
         segment.set(LAYOUT$subsampledCoarseReconstructionEarlyAccess, OFFSET$subsampledCoarseReconstructionEarlyAccess, value);
     }
 
-    public @unsigned int maxSubsampledArrayLayers() {
+    public @Unsigned int maxSubsampledArrayLayers() {
         return segment.get(LAYOUT$maxSubsampledArrayLayers, OFFSET$maxSubsampledArrayLayers);
     }
 
-    public void maxSubsampledArrayLayers(@unsigned int value) {
+    public void maxSubsampledArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxSubsampledArrayLayers, OFFSET$maxSubsampledArrayLayers, value);
     }
 
-    public @unsigned int maxDescriptorSetSubsampledSamplers() {
+    public @Unsigned int maxDescriptorSetSubsampledSamplers() {
         return segment.get(LAYOUT$maxDescriptorSetSubsampledSamplers, OFFSET$maxDescriptorSetSubsampledSamplers);
     }
 
-    public void maxDescriptorSetSubsampledSamplers(@unsigned int value) {
+    public void maxDescriptorSetSubsampledSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetSubsampledSamplers, OFFSET$maxDescriptorSetSubsampledSamplers, value);
     }
 

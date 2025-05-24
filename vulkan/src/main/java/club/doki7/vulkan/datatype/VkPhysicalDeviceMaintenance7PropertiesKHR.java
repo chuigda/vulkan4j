@@ -100,7 +100,7 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(@NotNull MemorySegment s
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -185,67 +185,67 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int robustFragmentShadingRateAttachmentAccess() {
+    public @Unsigned int robustFragmentShadingRateAttachmentAccess() {
         return segment.get(LAYOUT$robustFragmentShadingRateAttachmentAccess, OFFSET$robustFragmentShadingRateAttachmentAccess);
     }
 
-    public void robustFragmentShadingRateAttachmentAccess(@unsigned int value) {
+    public void robustFragmentShadingRateAttachmentAccess(@Unsigned int value) {
         segment.set(LAYOUT$robustFragmentShadingRateAttachmentAccess, OFFSET$robustFragmentShadingRateAttachmentAccess, value);
     }
 
-    public @unsigned int separateDepthStencilAttachmentAccess() {
+    public @Unsigned int separateDepthStencilAttachmentAccess() {
         return segment.get(LAYOUT$separateDepthStencilAttachmentAccess, OFFSET$separateDepthStencilAttachmentAccess);
     }
 
-    public void separateDepthStencilAttachmentAccess(@unsigned int value) {
+    public void separateDepthStencilAttachmentAccess(@Unsigned int value) {
         segment.set(LAYOUT$separateDepthStencilAttachmentAccess, OFFSET$separateDepthStencilAttachmentAccess, value);
     }
 
-    public @unsigned int maxDescriptorSetTotalUniformBuffersDynamic() {
+    public @Unsigned int maxDescriptorSetTotalUniformBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetTotalUniformBuffersDynamic, OFFSET$maxDescriptorSetTotalUniformBuffersDynamic);
     }
 
-    public void maxDescriptorSetTotalUniformBuffersDynamic(@unsigned int value) {
+    public void maxDescriptorSetTotalUniformBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetTotalUniformBuffersDynamic, OFFSET$maxDescriptorSetTotalUniformBuffersDynamic, value);
     }
 
-    public @unsigned int maxDescriptorSetTotalStorageBuffersDynamic() {
+    public @Unsigned int maxDescriptorSetTotalStorageBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetTotalStorageBuffersDynamic, OFFSET$maxDescriptorSetTotalStorageBuffersDynamic);
     }
 
-    public void maxDescriptorSetTotalStorageBuffersDynamic(@unsigned int value) {
+    public void maxDescriptorSetTotalStorageBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetTotalStorageBuffersDynamic, OFFSET$maxDescriptorSetTotalStorageBuffersDynamic, value);
     }
 
-    public @unsigned int maxDescriptorSetTotalBuffersDynamic() {
+    public @Unsigned int maxDescriptorSetTotalBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetTotalBuffersDynamic, OFFSET$maxDescriptorSetTotalBuffersDynamic);
     }
 
-    public void maxDescriptorSetTotalBuffersDynamic(@unsigned int value) {
+    public void maxDescriptorSetTotalBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetTotalBuffersDynamic, OFFSET$maxDescriptorSetTotalBuffersDynamic, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindTotalBuffersDynamic() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindTotalBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic, value);
     }
 

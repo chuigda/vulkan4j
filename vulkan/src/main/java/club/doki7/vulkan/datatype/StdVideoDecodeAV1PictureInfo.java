@@ -104,7 +104,7 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -175,35 +175,35 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
     }
 
-    public @unsigned int current_frame_id() {
+    public @Unsigned int current_frame_id() {
         return segment.get(LAYOUT$current_frame_id, OFFSET$current_frame_id);
     }
 
-    public void current_frame_id(@unsigned int value) {
+    public void current_frame_id(@Unsigned int value) {
         segment.set(LAYOUT$current_frame_id, OFFSET$current_frame_id, value);
     }
 
-    public @unsigned byte OrderHint() {
+    public @Unsigned byte OrderHint() {
         return segment.get(LAYOUT$OrderHint, OFFSET$OrderHint);
     }
 
-    public void OrderHint(@unsigned byte value) {
+    public void OrderHint(@Unsigned byte value) {
         segment.set(LAYOUT$OrderHint, OFFSET$OrderHint, value);
     }
 
-    public @unsigned byte primary_ref_frame() {
+    public @Unsigned byte primary_ref_frame() {
         return segment.get(LAYOUT$primary_ref_frame, OFFSET$primary_ref_frame);
     }
 
-    public void primary_ref_frame(@unsigned byte value) {
+    public void primary_ref_frame(@Unsigned byte value) {
         segment.set(LAYOUT$primary_ref_frame, OFFSET$primary_ref_frame, value);
     }
 
-    public @unsigned byte refresh_frame_flags() {
+    public @Unsigned byte refresh_frame_flags() {
         return segment.get(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags);
     }
 
-    public void refresh_frame_flags(@unsigned byte value) {
+    public void refresh_frame_flags(@Unsigned byte value) {
         segment.set(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags, value);
     }
 
@@ -224,52 +224,52 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$TxMode, OFFSET$TxMode, value);
     }
 
-    public @unsigned byte delta_q_res() {
+    public @Unsigned byte delta_q_res() {
         return segment.get(LAYOUT$delta_q_res, OFFSET$delta_q_res);
     }
 
-    public void delta_q_res(@unsigned byte value) {
+    public void delta_q_res(@Unsigned byte value) {
         segment.set(LAYOUT$delta_q_res, OFFSET$delta_q_res, value);
     }
 
-    public @unsigned byte delta_lf_res() {
+    public @Unsigned byte delta_lf_res() {
         return segment.get(LAYOUT$delta_lf_res, OFFSET$delta_lf_res);
     }
 
-    public void delta_lf_res(@unsigned byte value) {
+    public void delta_lf_res(@Unsigned byte value) {
         segment.set(LAYOUT$delta_lf_res, OFFSET$delta_lf_res, value);
     }
 
-    public @unsigned byte SkipModeFrame() {
+    public @Unsigned byte SkipModeFrame() {
         return segment.get(LAYOUT$SkipModeFrame, OFFSET$SkipModeFrame);
     }
 
-    public void SkipModeFrame(@unsigned byte value) {
+    public void SkipModeFrame(@Unsigned byte value) {
         segment.set(LAYOUT$SkipModeFrame, OFFSET$SkipModeFrame, value);
     }
 
-    public @unsigned byte coded_denom() {
+    public @Unsigned byte coded_denom() {
         return segment.get(LAYOUT$coded_denom, OFFSET$coded_denom);
     }
 
-    public void coded_denom(@unsigned byte value) {
+    public void coded_denom(@Unsigned byte value) {
         segment.set(LAYOUT$coded_denom, OFFSET$coded_denom, value);
     }
 
 
-    public @unsigned byte OrderHints() {
+    public @Unsigned byte OrderHints() {
         return segment.get(LAYOUT$OrderHints, OFFSET$OrderHints);
     }
 
-    public void OrderHints(@unsigned byte value) {
+    public void OrderHints(@Unsigned byte value) {
         segment.set(LAYOUT$OrderHints, OFFSET$OrderHints, value);
     }
 
-    public @unsigned int expectedFrameId() {
+    public @Unsigned int expectedFrameId() {
         return segment.get(LAYOUT$expectedFrameId, OFFSET$expectedFrameId);
     }
 
-    public void expectedFrameId(@unsigned int value) {
+    public void expectedFrameId(@Unsigned int value) {
         segment.set(LAYOUT$expectedFrameId, OFFSET$expectedFrameId, value);
     }
 

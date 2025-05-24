@@ -83,7 +83,7 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -146,19 +146,19 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$modification_of_pic_nums_idc, OFFSET$modification_of_pic_nums_idc, value);
     }
 
-    public @unsigned short abs_diff_pic_num_minus1() {
+    public @Unsigned short abs_diff_pic_num_minus1() {
         return segment.get(LAYOUT$abs_diff_pic_num_minus1, OFFSET$abs_diff_pic_num_minus1);
     }
 
-    public void abs_diff_pic_num_minus1(@unsigned short value) {
+    public void abs_diff_pic_num_minus1(@Unsigned short value) {
         segment.set(LAYOUT$abs_diff_pic_num_minus1, OFFSET$abs_diff_pic_num_minus1, value);
     }
 
-    public @unsigned short long_term_pic_num() {
+    public @Unsigned short long_term_pic_num() {
         return segment.get(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num);
     }
 
-    public void long_term_pic_num(@unsigned short value) {
+    public void long_term_pic_num(@Unsigned short value) {
         segment.set(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num, value);
     }
 

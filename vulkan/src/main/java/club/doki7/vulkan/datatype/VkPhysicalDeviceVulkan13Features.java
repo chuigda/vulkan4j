@@ -107,7 +107,7 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -192,123 +192,123 @@ public record VkPhysicalDeviceVulkan13Features(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int robustImageAccess() {
+    public @Unsigned int robustImageAccess() {
         return segment.get(LAYOUT$robustImageAccess, OFFSET$robustImageAccess);
     }
 
-    public void robustImageAccess(@unsigned int value) {
+    public void robustImageAccess(@Unsigned int value) {
         segment.set(LAYOUT$robustImageAccess, OFFSET$robustImageAccess, value);
     }
 
-    public @unsigned int inlineUniformBlock() {
+    public @Unsigned int inlineUniformBlock() {
         return segment.get(LAYOUT$inlineUniformBlock, OFFSET$inlineUniformBlock);
     }
 
-    public void inlineUniformBlock(@unsigned int value) {
+    public void inlineUniformBlock(@Unsigned int value) {
         segment.set(LAYOUT$inlineUniformBlock, OFFSET$inlineUniformBlock, value);
     }
 
-    public @unsigned int descriptorBindingInlineUniformBlockUpdateAfterBind() {
+    public @Unsigned int descriptorBindingInlineUniformBlockUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind, OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind);
     }
 
-    public void descriptorBindingInlineUniformBlockUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingInlineUniformBlockUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind, OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind, value);
     }
 
-    public @unsigned int pipelineCreationCacheControl() {
+    public @Unsigned int pipelineCreationCacheControl() {
         return segment.get(LAYOUT$pipelineCreationCacheControl, OFFSET$pipelineCreationCacheControl);
     }
 
-    public void pipelineCreationCacheControl(@unsigned int value) {
+    public void pipelineCreationCacheControl(@Unsigned int value) {
         segment.set(LAYOUT$pipelineCreationCacheControl, OFFSET$pipelineCreationCacheControl, value);
     }
 
-    public @unsigned int privateData() {
+    public @Unsigned int privateData() {
         return segment.get(LAYOUT$privateData, OFFSET$privateData);
     }
 
-    public void privateData(@unsigned int value) {
+    public void privateData(@Unsigned int value) {
         segment.set(LAYOUT$privateData, OFFSET$privateData, value);
     }
 
-    public @unsigned int shaderDemoteToHelperInvocation() {
+    public @Unsigned int shaderDemoteToHelperInvocation() {
         return segment.get(LAYOUT$shaderDemoteToHelperInvocation, OFFSET$shaderDemoteToHelperInvocation);
     }
 
-    public void shaderDemoteToHelperInvocation(@unsigned int value) {
+    public void shaderDemoteToHelperInvocation(@Unsigned int value) {
         segment.set(LAYOUT$shaderDemoteToHelperInvocation, OFFSET$shaderDemoteToHelperInvocation, value);
     }
 
-    public @unsigned int shaderTerminateInvocation() {
+    public @Unsigned int shaderTerminateInvocation() {
         return segment.get(LAYOUT$shaderTerminateInvocation, OFFSET$shaderTerminateInvocation);
     }
 
-    public void shaderTerminateInvocation(@unsigned int value) {
+    public void shaderTerminateInvocation(@Unsigned int value) {
         segment.set(LAYOUT$shaderTerminateInvocation, OFFSET$shaderTerminateInvocation, value);
     }
 
-    public @unsigned int subgroupSizeControl() {
+    public @Unsigned int subgroupSizeControl() {
         return segment.get(LAYOUT$subgroupSizeControl, OFFSET$subgroupSizeControl);
     }
 
-    public void subgroupSizeControl(@unsigned int value) {
+    public void subgroupSizeControl(@Unsigned int value) {
         segment.set(LAYOUT$subgroupSizeControl, OFFSET$subgroupSizeControl, value);
     }
 
-    public @unsigned int computeFullSubgroups() {
+    public @Unsigned int computeFullSubgroups() {
         return segment.get(LAYOUT$computeFullSubgroups, OFFSET$computeFullSubgroups);
     }
 
-    public void computeFullSubgroups(@unsigned int value) {
+    public void computeFullSubgroups(@Unsigned int value) {
         segment.set(LAYOUT$computeFullSubgroups, OFFSET$computeFullSubgroups, value);
     }
 
-    public @unsigned int synchronization2() {
+    public @Unsigned int synchronization2() {
         return segment.get(LAYOUT$synchronization2, OFFSET$synchronization2);
     }
 
-    public void synchronization2(@unsigned int value) {
+    public void synchronization2(@Unsigned int value) {
         segment.set(LAYOUT$synchronization2, OFFSET$synchronization2, value);
     }
 
-    public @unsigned int textureCompressionASTC_HDR() {
+    public @Unsigned int textureCompressionASTC_HDR() {
         return segment.get(LAYOUT$textureCompressionASTC_HDR, OFFSET$textureCompressionASTC_HDR);
     }
 
-    public void textureCompressionASTC_HDR(@unsigned int value) {
+    public void textureCompressionASTC_HDR(@Unsigned int value) {
         segment.set(LAYOUT$textureCompressionASTC_HDR, OFFSET$textureCompressionASTC_HDR, value);
     }
 
-    public @unsigned int shaderZeroInitializeWorkgroupMemory() {
+    public @Unsigned int shaderZeroInitializeWorkgroupMemory() {
         return segment.get(LAYOUT$shaderZeroInitializeWorkgroupMemory, OFFSET$shaderZeroInitializeWorkgroupMemory);
     }
 
-    public void shaderZeroInitializeWorkgroupMemory(@unsigned int value) {
+    public void shaderZeroInitializeWorkgroupMemory(@Unsigned int value) {
         segment.set(LAYOUT$shaderZeroInitializeWorkgroupMemory, OFFSET$shaderZeroInitializeWorkgroupMemory, value);
     }
 
-    public @unsigned int dynamicRendering() {
+    public @Unsigned int dynamicRendering() {
         return segment.get(LAYOUT$dynamicRendering, OFFSET$dynamicRendering);
     }
 
-    public void dynamicRendering(@unsigned int value) {
+    public void dynamicRendering(@Unsigned int value) {
         segment.set(LAYOUT$dynamicRendering, OFFSET$dynamicRendering, value);
     }
 
-    public @unsigned int shaderIntegerDotProduct() {
+    public @Unsigned int shaderIntegerDotProduct() {
         return segment.get(LAYOUT$shaderIntegerDotProduct, OFFSET$shaderIntegerDotProduct);
     }
 
-    public void shaderIntegerDotProduct(@unsigned int value) {
+    public void shaderIntegerDotProduct(@Unsigned int value) {
         segment.set(LAYOUT$shaderIntegerDotProduct, OFFSET$shaderIntegerDotProduct, value);
     }
 
-    public @unsigned int maintenance4() {
+    public @Unsigned int maintenance4() {
         return segment.get(LAYOUT$maintenance4, OFFSET$maintenance4);
     }
 
-    public void maintenance4(@unsigned int value) {
+    public void maintenance4(@Unsigned int value) {
         segment.set(LAYOUT$maintenance4, OFFSET$maintenance4, value);
     }
 

@@ -96,7 +96,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,11 +181,11 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int waitSemaphoreValueCount() {
+    public @Unsigned int waitSemaphoreValueCount() {
         return segment.get(LAYOUT$waitSemaphoreValueCount, OFFSET$waitSemaphoreValueCount);
     }
 
-    public void waitSemaphoreValueCount(@unsigned int value) {
+    public void waitSemaphoreValueCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreValueCount, OFFSET$waitSemaphoreValueCount, value);
     }
 
@@ -193,7 +193,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pWaitSemaphoreValues() {
+    public @Nullable @Unsigned LongPtr pWaitSemaphoreValues() {
         MemorySegment s = pWaitSemaphoreValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -201,7 +201,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return new LongPtr(s);
     }
 
-    public void pWaitSemaphoreValues(@Nullable @unsigned LongPtr value) {
+    public void pWaitSemaphoreValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreValuesRaw(s);
     }
@@ -214,11 +214,11 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pWaitSemaphoreValues, OFFSET$pWaitSemaphoreValues, value);
     }
 
-    public @unsigned int signalSemaphoreValueCount() {
+    public @Unsigned int signalSemaphoreValueCount() {
         return segment.get(LAYOUT$signalSemaphoreValueCount, OFFSET$signalSemaphoreValueCount);
     }
 
-    public void signalSemaphoreValueCount(@unsigned int value) {
+    public void signalSemaphoreValueCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreValueCount, OFFSET$signalSemaphoreValueCount, value);
     }
 
@@ -226,7 +226,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pSignalSemaphoreValues() {
+    public @Nullable @Unsigned LongPtr pSignalSemaphoreValues() {
         MemorySegment s = pSignalSemaphoreValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -234,7 +234,7 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return new LongPtr(s);
     }
 
-    public void pSignalSemaphoreValues(@Nullable @unsigned LongPtr value) {
+    public void pSignalSemaphoreValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreValuesRaw(s);
     }

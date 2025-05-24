@@ -87,7 +87,7 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -150,35 +150,35 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
     }
 
-    public @unsigned int baseMipLevel() {
+    public @Unsigned int baseMipLevel() {
         return segment.get(LAYOUT$baseMipLevel, OFFSET$baseMipLevel);
     }
 
-    public void baseMipLevel(@unsigned int value) {
+    public void baseMipLevel(@Unsigned int value) {
         segment.set(LAYOUT$baseMipLevel, OFFSET$baseMipLevel, value);
     }
 
-    public @unsigned int levelCount() {
+    public @Unsigned int levelCount() {
         return segment.get(LAYOUT$levelCount, OFFSET$levelCount);
     }
 
-    public void levelCount(@unsigned int value) {
+    public void levelCount(@Unsigned int value) {
         segment.set(LAYOUT$levelCount, OFFSET$levelCount, value);
     }
 
-    public @unsigned int baseArrayLayer() {
+    public @Unsigned int baseArrayLayer() {
         return segment.get(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer);
     }
 
-    public void baseArrayLayer(@unsigned int value) {
+    public void baseArrayLayer(@Unsigned int value) {
         segment.set(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer, value);
     }
 
-    public @unsigned int layerCount() {
+    public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@unsigned int value) {
+    public void layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
     }
 

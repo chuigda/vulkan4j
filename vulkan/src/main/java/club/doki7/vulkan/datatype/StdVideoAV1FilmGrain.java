@@ -105,7 +105,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -168,123 +168,123 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte grain_scaling_minus_8() {
+    public @Unsigned byte grain_scaling_minus_8() {
         return segment.get(LAYOUT$grain_scaling_minus_8, OFFSET$grain_scaling_minus_8);
     }
 
-    public void grain_scaling_minus_8(@unsigned byte value) {
+    public void grain_scaling_minus_8(@Unsigned byte value) {
         segment.set(LAYOUT$grain_scaling_minus_8, OFFSET$grain_scaling_minus_8, value);
     }
 
-    public @unsigned byte ar_coeff_lag() {
+    public @Unsigned byte ar_coeff_lag() {
         return segment.get(LAYOUT$ar_coeff_lag, OFFSET$ar_coeff_lag);
     }
 
-    public void ar_coeff_lag(@unsigned byte value) {
+    public void ar_coeff_lag(@Unsigned byte value) {
         segment.set(LAYOUT$ar_coeff_lag, OFFSET$ar_coeff_lag, value);
     }
 
-    public @unsigned byte ar_coeff_shift_minus_6() {
+    public @Unsigned byte ar_coeff_shift_minus_6() {
         return segment.get(LAYOUT$ar_coeff_shift_minus_6, OFFSET$ar_coeff_shift_minus_6);
     }
 
-    public void ar_coeff_shift_minus_6(@unsigned byte value) {
+    public void ar_coeff_shift_minus_6(@Unsigned byte value) {
         segment.set(LAYOUT$ar_coeff_shift_minus_6, OFFSET$ar_coeff_shift_minus_6, value);
     }
 
-    public @unsigned byte grain_scale_shift() {
+    public @Unsigned byte grain_scale_shift() {
         return segment.get(LAYOUT$grain_scale_shift, OFFSET$grain_scale_shift);
     }
 
-    public void grain_scale_shift(@unsigned byte value) {
+    public void grain_scale_shift(@Unsigned byte value) {
         segment.set(LAYOUT$grain_scale_shift, OFFSET$grain_scale_shift, value);
     }
 
-    public @unsigned short grain_seed() {
+    public @Unsigned short grain_seed() {
         return segment.get(LAYOUT$grain_seed, OFFSET$grain_seed);
     }
 
-    public void grain_seed(@unsigned short value) {
+    public void grain_seed(@Unsigned short value) {
         segment.set(LAYOUT$grain_seed, OFFSET$grain_seed, value);
     }
 
-    public @unsigned byte film_grain_params_ref_idx() {
+    public @Unsigned byte film_grain_params_ref_idx() {
         return segment.get(LAYOUT$film_grain_params_ref_idx, OFFSET$film_grain_params_ref_idx);
     }
 
-    public void film_grain_params_ref_idx(@unsigned byte value) {
+    public void film_grain_params_ref_idx(@Unsigned byte value) {
         segment.set(LAYOUT$film_grain_params_ref_idx, OFFSET$film_grain_params_ref_idx, value);
     }
 
-    public @unsigned byte num_y_points() {
+    public @Unsigned byte num_y_points() {
         return segment.get(LAYOUT$num_y_points, OFFSET$num_y_points);
     }
 
-    public void num_y_points(@unsigned byte value) {
+    public void num_y_points(@Unsigned byte value) {
         segment.set(LAYOUT$num_y_points, OFFSET$num_y_points, value);
     }
 
-    public @unsigned byte point_y_value() {
+    public @Unsigned byte point_y_value() {
         return segment.get(LAYOUT$point_y_value, OFFSET$point_y_value);
     }
 
-    public void point_y_value(@unsigned byte value) {
+    public void point_y_value(@Unsigned byte value) {
         segment.set(LAYOUT$point_y_value, OFFSET$point_y_value, value);
     }
 
-    public @unsigned byte point_y_scaling() {
+    public @Unsigned byte point_y_scaling() {
         return segment.get(LAYOUT$point_y_scaling, OFFSET$point_y_scaling);
     }
 
-    public void point_y_scaling(@unsigned byte value) {
+    public void point_y_scaling(@Unsigned byte value) {
         segment.set(LAYOUT$point_y_scaling, OFFSET$point_y_scaling, value);
     }
 
-    public @unsigned byte num_cb_points() {
+    public @Unsigned byte num_cb_points() {
         return segment.get(LAYOUT$num_cb_points, OFFSET$num_cb_points);
     }
 
-    public void num_cb_points(@unsigned byte value) {
+    public void num_cb_points(@Unsigned byte value) {
         segment.set(LAYOUT$num_cb_points, OFFSET$num_cb_points, value);
     }
 
-    public @unsigned byte point_cb_value() {
+    public @Unsigned byte point_cb_value() {
         return segment.get(LAYOUT$point_cb_value, OFFSET$point_cb_value);
     }
 
-    public void point_cb_value(@unsigned byte value) {
+    public void point_cb_value(@Unsigned byte value) {
         segment.set(LAYOUT$point_cb_value, OFFSET$point_cb_value, value);
     }
 
-    public @unsigned byte point_cb_scaling() {
+    public @Unsigned byte point_cb_scaling() {
         return segment.get(LAYOUT$point_cb_scaling, OFFSET$point_cb_scaling);
     }
 
-    public void point_cb_scaling(@unsigned byte value) {
+    public void point_cb_scaling(@Unsigned byte value) {
         segment.set(LAYOUT$point_cb_scaling, OFFSET$point_cb_scaling, value);
     }
 
-    public @unsigned byte num_cr_points() {
+    public @Unsigned byte num_cr_points() {
         return segment.get(LAYOUT$num_cr_points, OFFSET$num_cr_points);
     }
 
-    public void num_cr_points(@unsigned byte value) {
+    public void num_cr_points(@Unsigned byte value) {
         segment.set(LAYOUT$num_cr_points, OFFSET$num_cr_points, value);
     }
 
-    public @unsigned byte point_cr_value() {
+    public @Unsigned byte point_cr_value() {
         return segment.get(LAYOUT$point_cr_value, OFFSET$point_cr_value);
     }
 
-    public void point_cr_value(@unsigned byte value) {
+    public void point_cr_value(@Unsigned byte value) {
         segment.set(LAYOUT$point_cr_value, OFFSET$point_cr_value, value);
     }
 
-    public @unsigned byte point_cr_scaling() {
+    public @Unsigned byte point_cr_scaling() {
         return segment.get(LAYOUT$point_cr_scaling, OFFSET$point_cr_scaling);
     }
 
-    public void point_cr_scaling(@unsigned byte value) {
+    public void point_cr_scaling(@Unsigned byte value) {
         segment.set(LAYOUT$point_cr_scaling, OFFSET$point_cr_scaling, value);
     }
 
@@ -312,51 +312,51 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         segment.set(LAYOUT$ar_coeffs_cr_plus_128, OFFSET$ar_coeffs_cr_plus_128, value);
     }
 
-    public @unsigned byte cb_mult() {
+    public @Unsigned byte cb_mult() {
         return segment.get(LAYOUT$cb_mult, OFFSET$cb_mult);
     }
 
-    public void cb_mult(@unsigned byte value) {
+    public void cb_mult(@Unsigned byte value) {
         segment.set(LAYOUT$cb_mult, OFFSET$cb_mult, value);
     }
 
-    public @unsigned byte cb_luma_mult() {
+    public @Unsigned byte cb_luma_mult() {
         return segment.get(LAYOUT$cb_luma_mult, OFFSET$cb_luma_mult);
     }
 
-    public void cb_luma_mult(@unsigned byte value) {
+    public void cb_luma_mult(@Unsigned byte value) {
         segment.set(LAYOUT$cb_luma_mult, OFFSET$cb_luma_mult, value);
     }
 
-    public @unsigned short cb_offset() {
+    public @Unsigned short cb_offset() {
         return segment.get(LAYOUT$cb_offset, OFFSET$cb_offset);
     }
 
-    public void cb_offset(@unsigned short value) {
+    public void cb_offset(@Unsigned short value) {
         segment.set(LAYOUT$cb_offset, OFFSET$cb_offset, value);
     }
 
-    public @unsigned byte cr_mult() {
+    public @Unsigned byte cr_mult() {
         return segment.get(LAYOUT$cr_mult, OFFSET$cr_mult);
     }
 
-    public void cr_mult(@unsigned byte value) {
+    public void cr_mult(@Unsigned byte value) {
         segment.set(LAYOUT$cr_mult, OFFSET$cr_mult, value);
     }
 
-    public @unsigned byte cr_luma_mult() {
+    public @Unsigned byte cr_luma_mult() {
         return segment.get(LAYOUT$cr_luma_mult, OFFSET$cr_luma_mult);
     }
 
-    public void cr_luma_mult(@unsigned byte value) {
+    public void cr_luma_mult(@Unsigned byte value) {
         segment.set(LAYOUT$cr_luma_mult, OFFSET$cr_luma_mult, value);
     }
 
-    public @unsigned short cr_offset() {
+    public @Unsigned short cr_offset() {
         return segment.get(LAYOUT$cr_offset, OFFSET$cr_offset);
     }
 
-    public void cr_offset(@unsigned short value) {
+    public void cr_offset(@Unsigned short value) {
         segment.set(LAYOUT$cr_offset, OFFSET$cr_offset, value);
     }
 

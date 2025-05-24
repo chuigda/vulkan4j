@@ -96,7 +96,7 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -167,99 +167,99 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         segment.set(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc, value);
     }
 
-    public @unsigned short sar_width() {
+    public @Unsigned short sar_width() {
         return segment.get(LAYOUT$sar_width, OFFSET$sar_width);
     }
 
-    public void sar_width(@unsigned short value) {
+    public void sar_width(@Unsigned short value) {
         segment.set(LAYOUT$sar_width, OFFSET$sar_width, value);
     }
 
-    public @unsigned short sar_height() {
+    public @Unsigned short sar_height() {
         return segment.get(LAYOUT$sar_height, OFFSET$sar_height);
     }
 
-    public void sar_height(@unsigned short value) {
+    public void sar_height(@Unsigned short value) {
         segment.set(LAYOUT$sar_height, OFFSET$sar_height, value);
     }
 
-    public @unsigned byte video_format() {
+    public @Unsigned byte video_format() {
         return segment.get(LAYOUT$video_format, OFFSET$video_format);
     }
 
-    public void video_format(@unsigned byte value) {
+    public void video_format(@Unsigned byte value) {
         segment.set(LAYOUT$video_format, OFFSET$video_format, value);
     }
 
-    public @unsigned byte colour_primaries() {
+    public @Unsigned byte colour_primaries() {
         return segment.get(LAYOUT$colour_primaries, OFFSET$colour_primaries);
     }
 
-    public void colour_primaries(@unsigned byte value) {
+    public void colour_primaries(@Unsigned byte value) {
         segment.set(LAYOUT$colour_primaries, OFFSET$colour_primaries, value);
     }
 
-    public @unsigned byte transfer_characteristics() {
+    public @Unsigned byte transfer_characteristics() {
         return segment.get(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics);
     }
 
-    public void transfer_characteristics(@unsigned byte value) {
+    public void transfer_characteristics(@Unsigned byte value) {
         segment.set(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics, value);
     }
 
-    public @unsigned byte matrix_coefficients() {
+    public @Unsigned byte matrix_coefficients() {
         return segment.get(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients);
     }
 
-    public void matrix_coefficients(@unsigned byte value) {
+    public void matrix_coefficients(@Unsigned byte value) {
         segment.set(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients, value);
     }
 
-    public @unsigned int num_units_in_tick() {
+    public @Unsigned int num_units_in_tick() {
         return segment.get(LAYOUT$num_units_in_tick, OFFSET$num_units_in_tick);
     }
 
-    public void num_units_in_tick(@unsigned int value) {
+    public void num_units_in_tick(@Unsigned int value) {
         segment.set(LAYOUT$num_units_in_tick, OFFSET$num_units_in_tick, value);
     }
 
-    public @unsigned int time_scale() {
+    public @Unsigned int time_scale() {
         return segment.get(LAYOUT$time_scale, OFFSET$time_scale);
     }
 
-    public void time_scale(@unsigned int value) {
+    public void time_scale(@Unsigned int value) {
         segment.set(LAYOUT$time_scale, OFFSET$time_scale, value);
     }
 
-    public @unsigned byte max_num_reorder_frames() {
+    public @Unsigned byte max_num_reorder_frames() {
         return segment.get(LAYOUT$max_num_reorder_frames, OFFSET$max_num_reorder_frames);
     }
 
-    public void max_num_reorder_frames(@unsigned byte value) {
+    public void max_num_reorder_frames(@Unsigned byte value) {
         segment.set(LAYOUT$max_num_reorder_frames, OFFSET$max_num_reorder_frames, value);
     }
 
-    public @unsigned byte max_dec_frame_buffering() {
+    public @Unsigned byte max_dec_frame_buffering() {
         return segment.get(LAYOUT$max_dec_frame_buffering, OFFSET$max_dec_frame_buffering);
     }
 
-    public void max_dec_frame_buffering(@unsigned byte value) {
+    public void max_dec_frame_buffering(@Unsigned byte value) {
         segment.set(LAYOUT$max_dec_frame_buffering, OFFSET$max_dec_frame_buffering, value);
     }
 
-    public @unsigned byte chroma_sample_loc_type_top_field() {
+    public @Unsigned byte chroma_sample_loc_type_top_field() {
         return segment.get(LAYOUT$chroma_sample_loc_type_top_field, OFFSET$chroma_sample_loc_type_top_field);
     }
 
-    public void chroma_sample_loc_type_top_field(@unsigned byte value) {
+    public void chroma_sample_loc_type_top_field(@Unsigned byte value) {
         segment.set(LAYOUT$chroma_sample_loc_type_top_field, OFFSET$chroma_sample_loc_type_top_field, value);
     }
 
-    public @unsigned byte chroma_sample_loc_type_bottom_field() {
+    public @Unsigned byte chroma_sample_loc_type_bottom_field() {
         return segment.get(LAYOUT$chroma_sample_loc_type_bottom_field, OFFSET$chroma_sample_loc_type_bottom_field);
     }
 
-    public void chroma_sample_loc_type_bottom_field(@unsigned byte value) {
+    public void chroma_sample_loc_type_bottom_field(@Unsigned byte value) {
         segment.set(LAYOUT$chroma_sample_loc_type_bottom_field, OFFSET$chroma_sample_loc_type_bottom_field, value);
     }
 

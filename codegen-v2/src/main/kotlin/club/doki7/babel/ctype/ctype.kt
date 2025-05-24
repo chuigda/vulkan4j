@@ -91,7 +91,7 @@ data class CFixedIntType(
     override val byteSize: Int,
     val unsigned: Boolean
 ) : CFixedSizeType {
-    override val jType: String get() = """${if (unsigned) "@unsigned " else ""}$jTypeNoSign"""
+    override val jType: String get() = """${if (unsigned) "@Unsigned " else ""}$jTypeNoSign"""
     override val jLayout: String get() = when (byteSize) {
         1 -> "ValueLayout.JAVA_BYTE"
         2 -> "ValueLayout.JAVA_SHORT"
@@ -114,7 +114,7 @@ data class CFixedIntType(
         8 -> "long"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val jPtrType: String get() = """${if (unsigned) "@unsigned " else ""}$jPtrTypeNoAnnotation"""
+    override val jPtrType: String get() = """${if (unsigned) "@Unsigned " else ""}$jPtrTypeNoAnnotation"""
     override val jPtrTypeNoAnnotation: String get() = when (byteSize) {
         1 -> "BytePtr"
         2 -> "ShortPtr"

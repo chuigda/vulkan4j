@@ -96,7 +96,7 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,11 +181,11 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int subgroupSize() {
+    public @Unsigned int subgroupSize() {
         return segment.get(LAYOUT$subgroupSize, OFFSET$subgroupSize);
     }
 
-    public void subgroupSize(@unsigned int value) {
+    public void subgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$subgroupSize, OFFSET$subgroupSize, value);
     }
 
@@ -205,11 +205,11 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$supportedOperations, OFFSET$supportedOperations, value);
     }
 
-    public @unsigned int quadOperationsInAllStages() {
+    public @Unsigned int quadOperationsInAllStages() {
         return segment.get(LAYOUT$quadOperationsInAllStages, OFFSET$quadOperationsInAllStages);
     }
 
-    public void quadOperationsInAllStages(@unsigned int value) {
+    public void quadOperationsInAllStages(@Unsigned int value) {
         segment.set(LAYOUT$quadOperationsInAllStages, OFFSET$quadOperationsInAllStages, value);
     }
 

@@ -94,7 +94,7 @@ public record VkMemoryAllocateInfo(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkMemoryAllocateInfo(@NotNull MemorySegment segment) implements IV
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long allocationSize() {
+    public @Unsigned long allocationSize() {
         return segment.get(LAYOUT$allocationSize, OFFSET$allocationSize);
     }
 
-    public void allocationSize(@unsigned long value) {
+    public void allocationSize(@Unsigned long value) {
         segment.set(LAYOUT$allocationSize, OFFSET$allocationSize, value);
     }
 
-    public @unsigned int memoryTypeIndex() {
+    public @Unsigned int memoryTypeIndex() {
         return segment.get(LAYOUT$memoryTypeIndex, OFFSET$memoryTypeIndex);
     }
 
-    public void memoryTypeIndex(@unsigned int value) {
+    public void memoryTypeIndex(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeIndex, OFFSET$memoryTypeIndex, value);
     }
 

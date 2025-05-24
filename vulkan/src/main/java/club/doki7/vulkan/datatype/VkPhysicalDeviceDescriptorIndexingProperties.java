@@ -115,7 +115,7 @@ public record VkPhysicalDeviceDescriptorIndexingProperties(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -200,187 +200,187 @@ public record VkPhysicalDeviceDescriptorIndexingProperties(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxUpdateAfterBindDescriptorsInAllPools() {
+    public @Unsigned int maxUpdateAfterBindDescriptorsInAllPools() {
         return segment.get(LAYOUT$maxUpdateAfterBindDescriptorsInAllPools, OFFSET$maxUpdateAfterBindDescriptorsInAllPools);
     }
 
-    public void maxUpdateAfterBindDescriptorsInAllPools(@unsigned int value) {
+    public void maxUpdateAfterBindDescriptorsInAllPools(@Unsigned int value) {
         segment.set(LAYOUT$maxUpdateAfterBindDescriptorsInAllPools, OFFSET$maxUpdateAfterBindDescriptorsInAllPools, value);
     }
 
-    public @unsigned int shaderUniformBufferArrayNonUniformIndexingNative() {
+    public @Unsigned int shaderUniformBufferArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative, OFFSET$shaderUniformBufferArrayNonUniformIndexingNative);
     }
 
-    public void shaderUniformBufferArrayNonUniformIndexingNative(@unsigned int value) {
+    public void shaderUniformBufferArrayNonUniformIndexingNative(@Unsigned int value) {
         segment.set(LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative, OFFSET$shaderUniformBufferArrayNonUniformIndexingNative, value);
     }
 
-    public @unsigned int shaderSampledImageArrayNonUniformIndexingNative() {
+    public @Unsigned int shaderSampledImageArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderSampledImageArrayNonUniformIndexingNative, OFFSET$shaderSampledImageArrayNonUniformIndexingNative);
     }
 
-    public void shaderSampledImageArrayNonUniformIndexingNative(@unsigned int value) {
+    public void shaderSampledImageArrayNonUniformIndexingNative(@Unsigned int value) {
         segment.set(LAYOUT$shaderSampledImageArrayNonUniformIndexingNative, OFFSET$shaderSampledImageArrayNonUniformIndexingNative, value);
     }
 
-    public @unsigned int shaderStorageBufferArrayNonUniformIndexingNative() {
+    public @Unsigned int shaderStorageBufferArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative, OFFSET$shaderStorageBufferArrayNonUniformIndexingNative);
     }
 
-    public void shaderStorageBufferArrayNonUniformIndexingNative(@unsigned int value) {
+    public void shaderStorageBufferArrayNonUniformIndexingNative(@Unsigned int value) {
         segment.set(LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative, OFFSET$shaderStorageBufferArrayNonUniformIndexingNative, value);
     }
 
-    public @unsigned int shaderStorageImageArrayNonUniformIndexingNative() {
+    public @Unsigned int shaderStorageImageArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderStorageImageArrayNonUniformIndexingNative, OFFSET$shaderStorageImageArrayNonUniformIndexingNative);
     }
 
-    public void shaderStorageImageArrayNonUniformIndexingNative(@unsigned int value) {
+    public void shaderStorageImageArrayNonUniformIndexingNative(@Unsigned int value) {
         segment.set(LAYOUT$shaderStorageImageArrayNonUniformIndexingNative, OFFSET$shaderStorageImageArrayNonUniformIndexingNative, value);
     }
 
-    public @unsigned int shaderInputAttachmentArrayNonUniformIndexingNative() {
+    public @Unsigned int shaderInputAttachmentArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative, OFFSET$shaderInputAttachmentArrayNonUniformIndexingNative);
     }
 
-    public void shaderInputAttachmentArrayNonUniformIndexingNative(@unsigned int value) {
+    public void shaderInputAttachmentArrayNonUniformIndexingNative(@Unsigned int value) {
         segment.set(LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative, OFFSET$shaderInputAttachmentArrayNonUniformIndexingNative, value);
     }
 
-    public @unsigned int robustBufferAccessUpdateAfterBind() {
+    public @Unsigned int robustBufferAccessUpdateAfterBind() {
         return segment.get(LAYOUT$robustBufferAccessUpdateAfterBind, OFFSET$robustBufferAccessUpdateAfterBind);
     }
 
-    public void robustBufferAccessUpdateAfterBind(@unsigned int value) {
+    public void robustBufferAccessUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$robustBufferAccessUpdateAfterBind, OFFSET$robustBufferAccessUpdateAfterBind, value);
     }
 
-    public @unsigned int quadDivergentImplicitLod() {
+    public @Unsigned int quadDivergentImplicitLod() {
         return segment.get(LAYOUT$quadDivergentImplicitLod, OFFSET$quadDivergentImplicitLod);
     }
 
-    public void quadDivergentImplicitLod(@unsigned int value) {
+    public void quadDivergentImplicitLod(@Unsigned int value) {
         segment.set(LAYOUT$quadDivergentImplicitLod, OFFSET$quadDivergentImplicitLod, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindSamplers() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindSamplers() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindSamplers, OFFSET$maxPerStageDescriptorUpdateAfterBindSamplers);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindSamplers(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindSamplers, OFFSET$maxPerStageDescriptorUpdateAfterBindSamplers, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindUniformBuffers() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindUniformBuffers() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindUniformBuffers, OFFSET$maxPerStageDescriptorUpdateAfterBindUniformBuffers);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindUniformBuffers(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindUniformBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindUniformBuffers, OFFSET$maxPerStageDescriptorUpdateAfterBindUniformBuffers, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindStorageBuffers() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindStorageBuffers() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageBuffers, OFFSET$maxPerStageDescriptorUpdateAfterBindStorageBuffers);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindStorageBuffers(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindStorageBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageBuffers, OFFSET$maxPerStageDescriptorUpdateAfterBindStorageBuffers, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindSampledImages() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindSampledImages() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindSampledImages, OFFSET$maxPerStageDescriptorUpdateAfterBindSampledImages);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindSampledImages(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindSampledImages(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindSampledImages, OFFSET$maxPerStageDescriptorUpdateAfterBindSampledImages, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindStorageImages() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindStorageImages() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageImages, OFFSET$maxPerStageDescriptorUpdateAfterBindStorageImages);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindStorageImages(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindStorageImages(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageImages, OFFSET$maxPerStageDescriptorUpdateAfterBindStorageImages, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindInputAttachments() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindInputAttachments() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindInputAttachments, OFFSET$maxPerStageDescriptorUpdateAfterBindInputAttachments);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindInputAttachments(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindInputAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindInputAttachments, OFFSET$maxPerStageDescriptorUpdateAfterBindInputAttachments, value);
     }
 
-    public @unsigned int maxPerStageUpdateAfterBindResources() {
+    public @Unsigned int maxPerStageUpdateAfterBindResources() {
         return segment.get(LAYOUT$maxPerStageUpdateAfterBindResources, OFFSET$maxPerStageUpdateAfterBindResources);
     }
 
-    public void maxPerStageUpdateAfterBindResources(@unsigned int value) {
+    public void maxPerStageUpdateAfterBindResources(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageUpdateAfterBindResources, OFFSET$maxPerStageUpdateAfterBindResources, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindSamplers() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindSamplers() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindSamplers, OFFSET$maxDescriptorSetUpdateAfterBindSamplers);
     }
 
-    public void maxDescriptorSetUpdateAfterBindSamplers(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindSamplers, OFFSET$maxDescriptorSetUpdateAfterBindSamplers, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindUniformBuffers() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindUniformBuffers() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffers, OFFSET$maxDescriptorSetUpdateAfterBindUniformBuffers);
     }
 
-    public void maxDescriptorSetUpdateAfterBindUniformBuffers(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindUniformBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffers, OFFSET$maxDescriptorSetUpdateAfterBindUniformBuffers, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindUniformBuffersDynamic() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindUniformBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindStorageBuffers() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindStorageBuffers() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffers, OFFSET$maxDescriptorSetUpdateAfterBindStorageBuffers);
     }
 
-    public void maxDescriptorSetUpdateAfterBindStorageBuffers(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindStorageBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffers, OFFSET$maxDescriptorSetUpdateAfterBindStorageBuffers, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindStorageBuffersDynamic() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindStorageBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindSampledImages() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindSampledImages() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindSampledImages, OFFSET$maxDescriptorSetUpdateAfterBindSampledImages);
     }
 
-    public void maxDescriptorSetUpdateAfterBindSampledImages(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindSampledImages(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindSampledImages, OFFSET$maxDescriptorSetUpdateAfterBindSampledImages, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindStorageImages() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindStorageImages() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindStorageImages, OFFSET$maxDescriptorSetUpdateAfterBindStorageImages);
     }
 
-    public void maxDescriptorSetUpdateAfterBindStorageImages(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindStorageImages(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindStorageImages, OFFSET$maxDescriptorSetUpdateAfterBindStorageImages, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindInputAttachments() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindInputAttachments() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments, OFFSET$maxDescriptorSetUpdateAfterBindInputAttachments);
     }
 
-    public void maxDescriptorSetUpdateAfterBindInputAttachments(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindInputAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments, OFFSET$maxDescriptorSetUpdateAfterBindInputAttachments, value);
     }
 

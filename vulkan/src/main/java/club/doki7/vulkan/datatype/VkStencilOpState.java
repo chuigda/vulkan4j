@@ -89,7 +89,7 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -176,27 +176,27 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
         segment.set(LAYOUT$compareOp, OFFSET$compareOp, value);
     }
 
-    public @unsigned int compareMask() {
+    public @Unsigned int compareMask() {
         return segment.get(LAYOUT$compareMask, OFFSET$compareMask);
     }
 
-    public void compareMask(@unsigned int value) {
+    public void compareMask(@Unsigned int value) {
         segment.set(LAYOUT$compareMask, OFFSET$compareMask, value);
     }
 
-    public @unsigned int writeMask() {
+    public @Unsigned int writeMask() {
         return segment.get(LAYOUT$writeMask, OFFSET$writeMask);
     }
 
-    public void writeMask(@unsigned int value) {
+    public void writeMask(@Unsigned int value) {
         segment.set(LAYOUT$writeMask, OFFSET$writeMask, value);
     }
 
-    public @unsigned int reference() {
+    public @Unsigned int reference() {
         return segment.get(LAYOUT$reference, OFFSET$reference);
     }
 
-    public void reference(@unsigned int value) {
+    public void reference(@Unsigned int value) {
         segment.set(LAYOUT$reference, OFFSET$reference, value);
     }
 

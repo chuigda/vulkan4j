@@ -101,7 +101,7 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -210,51 +210,51 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         segment.set(LAYOUT$extraPrimitiveOverestimationSizeGranularity, OFFSET$extraPrimitiveOverestimationSizeGranularity, value);
     }
 
-    public @unsigned int primitiveUnderestimation() {
+    public @Unsigned int primitiveUnderestimation() {
         return segment.get(LAYOUT$primitiveUnderestimation, OFFSET$primitiveUnderestimation);
     }
 
-    public void primitiveUnderestimation(@unsigned int value) {
+    public void primitiveUnderestimation(@Unsigned int value) {
         segment.set(LAYOUT$primitiveUnderestimation, OFFSET$primitiveUnderestimation, value);
     }
 
-    public @unsigned int conservativePointAndLineRasterization() {
+    public @Unsigned int conservativePointAndLineRasterization() {
         return segment.get(LAYOUT$conservativePointAndLineRasterization, OFFSET$conservativePointAndLineRasterization);
     }
 
-    public void conservativePointAndLineRasterization(@unsigned int value) {
+    public void conservativePointAndLineRasterization(@Unsigned int value) {
         segment.set(LAYOUT$conservativePointAndLineRasterization, OFFSET$conservativePointAndLineRasterization, value);
     }
 
-    public @unsigned int degenerateTrianglesRasterized() {
+    public @Unsigned int degenerateTrianglesRasterized() {
         return segment.get(LAYOUT$degenerateTrianglesRasterized, OFFSET$degenerateTrianglesRasterized);
     }
 
-    public void degenerateTrianglesRasterized(@unsigned int value) {
+    public void degenerateTrianglesRasterized(@Unsigned int value) {
         segment.set(LAYOUT$degenerateTrianglesRasterized, OFFSET$degenerateTrianglesRasterized, value);
     }
 
-    public @unsigned int degenerateLinesRasterized() {
+    public @Unsigned int degenerateLinesRasterized() {
         return segment.get(LAYOUT$degenerateLinesRasterized, OFFSET$degenerateLinesRasterized);
     }
 
-    public void degenerateLinesRasterized(@unsigned int value) {
+    public void degenerateLinesRasterized(@Unsigned int value) {
         segment.set(LAYOUT$degenerateLinesRasterized, OFFSET$degenerateLinesRasterized, value);
     }
 
-    public @unsigned int fullyCoveredFragmentShaderInputVariable() {
+    public @Unsigned int fullyCoveredFragmentShaderInputVariable() {
         return segment.get(LAYOUT$fullyCoveredFragmentShaderInputVariable, OFFSET$fullyCoveredFragmentShaderInputVariable);
     }
 
-    public void fullyCoveredFragmentShaderInputVariable(@unsigned int value) {
+    public void fullyCoveredFragmentShaderInputVariable(@Unsigned int value) {
         segment.set(LAYOUT$fullyCoveredFragmentShaderInputVariable, OFFSET$fullyCoveredFragmentShaderInputVariable, value);
     }
 
-    public @unsigned int conservativeRasterizationPostDepthCoverage() {
+    public @Unsigned int conservativeRasterizationPostDepthCoverage() {
         return segment.get(LAYOUT$conservativeRasterizationPostDepthCoverage, OFFSET$conservativeRasterizationPostDepthCoverage);
     }
 
-    public void conservativeRasterizationPostDepthCoverage(@unsigned int value) {
+    public void conservativeRasterizationPostDepthCoverage(@Unsigned int value) {
         segment.set(LAYOUT$conservativeRasterizationPostDepthCoverage, OFFSET$conservativeRasterizationPostDepthCoverage, value);
     }
 

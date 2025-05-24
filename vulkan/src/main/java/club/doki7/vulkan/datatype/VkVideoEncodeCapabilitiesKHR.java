@@ -99,7 +99,7 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -200,27 +200,27 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$rateControlModes, OFFSET$rateControlModes, value);
     }
 
-    public @unsigned int maxRateControlLayers() {
+    public @Unsigned int maxRateControlLayers() {
         return segment.get(LAYOUT$maxRateControlLayers, OFFSET$maxRateControlLayers);
     }
 
-    public void maxRateControlLayers(@unsigned int value) {
+    public void maxRateControlLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxRateControlLayers, OFFSET$maxRateControlLayers, value);
     }
 
-    public @unsigned long maxBitrate() {
+    public @Unsigned long maxBitrate() {
         return segment.get(LAYOUT$maxBitrate, OFFSET$maxBitrate);
     }
 
-    public void maxBitrate(@unsigned long value) {
+    public void maxBitrate(@Unsigned long value) {
         segment.set(LAYOUT$maxBitrate, OFFSET$maxBitrate, value);
     }
 
-    public @unsigned int maxQualityLevels() {
+    public @Unsigned int maxQualityLevels() {
         return segment.get(LAYOUT$maxQualityLevels, OFFSET$maxQualityLevels);
     }
 
-    public void maxQualityLevels(@unsigned int value) {
+    public void maxQualityLevels(@Unsigned int value) {
         segment.set(LAYOUT$maxQualityLevels, OFFSET$maxQualityLevels, value);
     }
 

@@ -104,7 +104,7 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -201,67 +201,67 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         segment.set(LAYOUT$function, OFFSET$function, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int gridDimX() {
+    public @Unsigned int gridDimX() {
         return segment.get(LAYOUT$gridDimX, OFFSET$gridDimX);
     }
 
-    public void gridDimX(@unsigned int value) {
+    public void gridDimX(@Unsigned int value) {
         segment.set(LAYOUT$gridDimX, OFFSET$gridDimX, value);
     }
 
-    public @unsigned int gridDimY() {
+    public @Unsigned int gridDimY() {
         return segment.get(LAYOUT$gridDimY, OFFSET$gridDimY);
     }
 
-    public void gridDimY(@unsigned int value) {
+    public void gridDimY(@Unsigned int value) {
         segment.set(LAYOUT$gridDimY, OFFSET$gridDimY, value);
     }
 
-    public @unsigned int gridDimZ() {
+    public @Unsigned int gridDimZ() {
         return segment.get(LAYOUT$gridDimZ, OFFSET$gridDimZ);
     }
 
-    public void gridDimZ(@unsigned int value) {
+    public void gridDimZ(@Unsigned int value) {
         segment.set(LAYOUT$gridDimZ, OFFSET$gridDimZ, value);
     }
 
-    public @unsigned int blockDimX() {
+    public @Unsigned int blockDimX() {
         return segment.get(LAYOUT$blockDimX, OFFSET$blockDimX);
     }
 
-    public void blockDimX(@unsigned int value) {
+    public void blockDimX(@Unsigned int value) {
         segment.set(LAYOUT$blockDimX, OFFSET$blockDimX, value);
     }
 
-    public @unsigned int blockDimY() {
+    public @Unsigned int blockDimY() {
         return segment.get(LAYOUT$blockDimY, OFFSET$blockDimY);
     }
 
-    public void blockDimY(@unsigned int value) {
+    public void blockDimY(@Unsigned int value) {
         segment.set(LAYOUT$blockDimY, OFFSET$blockDimY, value);
     }
 
-    public @unsigned int blockDimZ() {
+    public @Unsigned int blockDimZ() {
         return segment.get(LAYOUT$blockDimZ, OFFSET$blockDimZ);
     }
 
-    public void blockDimZ(@unsigned int value) {
+    public void blockDimZ(@Unsigned int value) {
         segment.set(LAYOUT$blockDimZ, OFFSET$blockDimZ, value);
     }
 
-    public @unsigned int sharedMemBytes() {
+    public @Unsigned int sharedMemBytes() {
         return segment.get(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes);
     }
 
-    public void sharedMemBytes(@unsigned int value) {
+    public void sharedMemBytes(@Unsigned int value) {
         segment.set(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes, value);
     }
 
-    public @unsigned long paramCount() {
+    public @Unsigned long paramCount() {
         return NativeLayout.readCSizeT(segment, OFFSET$paramCount);
     }
 
-    public void paramCount(@unsigned long value) {
+    public void paramCount(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$paramCount, value);
     }
 
@@ -277,11 +277,11 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         pParams(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long extraCount() {
+    public @Unsigned long extraCount() {
         return NativeLayout.readCSizeT(segment, OFFSET$extraCount);
     }
 
-    public void extraCount(@unsigned long value) {
+    public void extraCount(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$extraCount, value);
     }
 

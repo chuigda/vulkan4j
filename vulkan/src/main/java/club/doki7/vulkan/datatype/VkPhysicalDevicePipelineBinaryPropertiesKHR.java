@@ -97,7 +97,7 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(@NotNull MemorySegment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -182,43 +182,43 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int pipelineBinaryInternalCache() {
+    public @Unsigned int pipelineBinaryInternalCache() {
         return segment.get(LAYOUT$pipelineBinaryInternalCache, OFFSET$pipelineBinaryInternalCache);
     }
 
-    public void pipelineBinaryInternalCache(@unsigned int value) {
+    public void pipelineBinaryInternalCache(@Unsigned int value) {
         segment.set(LAYOUT$pipelineBinaryInternalCache, OFFSET$pipelineBinaryInternalCache, value);
     }
 
-    public @unsigned int pipelineBinaryInternalCacheControl() {
+    public @Unsigned int pipelineBinaryInternalCacheControl() {
         return segment.get(LAYOUT$pipelineBinaryInternalCacheControl, OFFSET$pipelineBinaryInternalCacheControl);
     }
 
-    public void pipelineBinaryInternalCacheControl(@unsigned int value) {
+    public void pipelineBinaryInternalCacheControl(@Unsigned int value) {
         segment.set(LAYOUT$pipelineBinaryInternalCacheControl, OFFSET$pipelineBinaryInternalCacheControl, value);
     }
 
-    public @unsigned int pipelineBinaryPrefersInternalCache() {
+    public @Unsigned int pipelineBinaryPrefersInternalCache() {
         return segment.get(LAYOUT$pipelineBinaryPrefersInternalCache, OFFSET$pipelineBinaryPrefersInternalCache);
     }
 
-    public void pipelineBinaryPrefersInternalCache(@unsigned int value) {
+    public void pipelineBinaryPrefersInternalCache(@Unsigned int value) {
         segment.set(LAYOUT$pipelineBinaryPrefersInternalCache, OFFSET$pipelineBinaryPrefersInternalCache, value);
     }
 
-    public @unsigned int pipelineBinaryPrecompiledInternalCache() {
+    public @Unsigned int pipelineBinaryPrecompiledInternalCache() {
         return segment.get(LAYOUT$pipelineBinaryPrecompiledInternalCache, OFFSET$pipelineBinaryPrecompiledInternalCache);
     }
 
-    public void pipelineBinaryPrecompiledInternalCache(@unsigned int value) {
+    public void pipelineBinaryPrecompiledInternalCache(@Unsigned int value) {
         segment.set(LAYOUT$pipelineBinaryPrecompiledInternalCache, OFFSET$pipelineBinaryPrecompiledInternalCache, value);
     }
 
-    public @unsigned int pipelineBinaryCompressedData() {
+    public @Unsigned int pipelineBinaryCompressedData() {
         return segment.get(LAYOUT$pipelineBinaryCompressedData, OFFSET$pipelineBinaryCompressedData);
     }
 
-    public void pipelineBinaryCompressedData(@unsigned int value) {
+    public void pipelineBinaryCompressedData(@Unsigned int value) {
         segment.set(LAYOUT$pipelineBinaryCompressedData, OFFSET$pipelineBinaryCompressedData, value);
     }
 

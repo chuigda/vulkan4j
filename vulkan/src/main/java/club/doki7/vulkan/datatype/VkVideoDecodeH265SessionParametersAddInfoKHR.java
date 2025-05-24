@@ -98,7 +98,7 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -183,11 +183,11 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int stdVPSCount() {
+    public @Unsigned int stdVPSCount() {
         return segment.get(LAYOUT$stdVPSCount, OFFSET$stdVPSCount);
     }
 
-    public void stdVPSCount(@unsigned int value) {
+    public void stdVPSCount(@Unsigned int value) {
         segment.set(LAYOUT$stdVPSCount, OFFSET$stdVPSCount, value);
     }
 
@@ -222,11 +222,11 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$pStdVPSs, OFFSET$pStdVPSs, value);
     }
 
-    public @unsigned int stdSPSCount() {
+    public @Unsigned int stdSPSCount() {
         return segment.get(LAYOUT$stdSPSCount, OFFSET$stdSPSCount);
     }
 
-    public void stdSPSCount(@unsigned int value) {
+    public void stdSPSCount(@Unsigned int value) {
         segment.set(LAYOUT$stdSPSCount, OFFSET$stdSPSCount, value);
     }
 
@@ -261,11 +261,11 @@ public record VkVideoDecodeH265SessionParametersAddInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$pStdSPSs, OFFSET$pStdSPSs, value);
     }
 
-    public @unsigned int stdPPSCount() {
+    public @Unsigned int stdPPSCount() {
         return segment.get(LAYOUT$stdPPSCount, OFFSET$stdPPSCount);
     }
 
-    public void stdPPSCount(@unsigned int value) {
+    public void stdPPSCount(@Unsigned int value) {
         segment.set(LAYOUT$stdPPSCount, OFFSET$stdPPSCount, value);
     }
 

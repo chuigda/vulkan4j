@@ -93,7 +93,7 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,11 +178,11 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int videoEncodeAV1() {
+    public @Unsigned int videoEncodeAV1() {
         return segment.get(LAYOUT$videoEncodeAV1, OFFSET$videoEncodeAV1);
     }
 
-    public void videoEncodeAV1(@unsigned int value) {
+    public void videoEncodeAV1(@Unsigned int value) {
         segment.set(LAYOUT$videoEncodeAV1, OFFSET$videoEncodeAV1, value);
     }
 

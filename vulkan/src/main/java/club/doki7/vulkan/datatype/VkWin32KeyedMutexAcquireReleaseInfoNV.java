@@ -99,7 +99,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -184,11 +184,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int acquireCount() {
+    public @Unsigned int acquireCount() {
         return segment.get(LAYOUT$acquireCount, OFFSET$acquireCount);
     }
 
-    public void acquireCount(@unsigned int value) {
+    public void acquireCount(@Unsigned int value) {
         segment.set(LAYOUT$acquireCount, OFFSET$acquireCount, value);
     }
 
@@ -221,7 +221,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pAcquireKeys() {
+    public @Nullable @Unsigned LongPtr pAcquireKeys() {
         MemorySegment s = pAcquireKeysRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -229,7 +229,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return new LongPtr(s);
     }
 
-    public void pAcquireKeys(@Nullable @unsigned LongPtr value) {
+    public void pAcquireKeys(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireKeysRaw(s);
     }
@@ -246,7 +246,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pAcquireTimeoutMilliseconds() {
+    public @Nullable @Unsigned IntPtr pAcquireTimeoutMilliseconds() {
         MemorySegment s = pAcquireTimeoutMillisecondsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -254,7 +254,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return new IntPtr(s);
     }
 
-    public void pAcquireTimeoutMilliseconds(@Nullable @unsigned IntPtr value) {
+    public void pAcquireTimeoutMilliseconds(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireTimeoutMillisecondsRaw(s);
     }
@@ -267,11 +267,11 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         segment.set(LAYOUT$pAcquireTimeoutMilliseconds, OFFSET$pAcquireTimeoutMilliseconds, value);
     }
 
-    public @unsigned int releaseCount() {
+    public @Unsigned int releaseCount() {
         return segment.get(LAYOUT$releaseCount, OFFSET$releaseCount);
     }
 
-    public void releaseCount(@unsigned int value) {
+    public void releaseCount(@Unsigned int value) {
         segment.set(LAYOUT$releaseCount, OFFSET$releaseCount, value);
     }
 
@@ -304,7 +304,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pReleaseKeys() {
+    public @Nullable @Unsigned LongPtr pReleaseKeys() {
         MemorySegment s = pReleaseKeysRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -312,7 +312,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
         return new LongPtr(s);
     }
 
-    public void pReleaseKeys(@Nullable @unsigned LongPtr value) {
+    public void pReleaseKeys(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReleaseKeysRaw(s);
     }

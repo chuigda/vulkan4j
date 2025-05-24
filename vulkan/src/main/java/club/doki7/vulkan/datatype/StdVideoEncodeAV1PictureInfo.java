@@ -107,7 +107,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,67 +178,67 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
     }
 
-    public @unsigned int frame_presentation_time() {
+    public @Unsigned int frame_presentation_time() {
         return segment.get(LAYOUT$frame_presentation_time, OFFSET$frame_presentation_time);
     }
 
-    public void frame_presentation_time(@unsigned int value) {
+    public void frame_presentation_time(@Unsigned int value) {
         segment.set(LAYOUT$frame_presentation_time, OFFSET$frame_presentation_time, value);
     }
 
-    public @unsigned int current_frame_id() {
+    public @Unsigned int current_frame_id() {
         return segment.get(LAYOUT$current_frame_id, OFFSET$current_frame_id);
     }
 
-    public void current_frame_id(@unsigned int value) {
+    public void current_frame_id(@Unsigned int value) {
         segment.set(LAYOUT$current_frame_id, OFFSET$current_frame_id, value);
     }
 
-    public @unsigned byte order_hint() {
+    public @Unsigned byte order_hint() {
         return segment.get(LAYOUT$order_hint, OFFSET$order_hint);
     }
 
-    public void order_hint(@unsigned byte value) {
+    public void order_hint(@Unsigned byte value) {
         segment.set(LAYOUT$order_hint, OFFSET$order_hint, value);
     }
 
-    public @unsigned byte primary_ref_frame() {
+    public @Unsigned byte primary_ref_frame() {
         return segment.get(LAYOUT$primary_ref_frame, OFFSET$primary_ref_frame);
     }
 
-    public void primary_ref_frame(@unsigned byte value) {
+    public void primary_ref_frame(@Unsigned byte value) {
         segment.set(LAYOUT$primary_ref_frame, OFFSET$primary_ref_frame, value);
     }
 
-    public @unsigned byte refresh_frame_flags() {
+    public @Unsigned byte refresh_frame_flags() {
         return segment.get(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags);
     }
 
-    public void refresh_frame_flags(@unsigned byte value) {
+    public void refresh_frame_flags(@Unsigned byte value) {
         segment.set(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags, value);
     }
 
-    public @unsigned byte coded_denom() {
+    public @Unsigned byte coded_denom() {
         return segment.get(LAYOUT$coded_denom, OFFSET$coded_denom);
     }
 
-    public void coded_denom(@unsigned byte value) {
+    public void coded_denom(@Unsigned byte value) {
         segment.set(LAYOUT$coded_denom, OFFSET$coded_denom, value);
     }
 
-    public @unsigned short render_width_minus_1() {
+    public @Unsigned short render_width_minus_1() {
         return segment.get(LAYOUT$render_width_minus_1, OFFSET$render_width_minus_1);
     }
 
-    public void render_width_minus_1(@unsigned short value) {
+    public void render_width_minus_1(@Unsigned short value) {
         segment.set(LAYOUT$render_width_minus_1, OFFSET$render_width_minus_1, value);
     }
 
-    public @unsigned short render_height_minus_1() {
+    public @Unsigned short render_height_minus_1() {
         return segment.get(LAYOUT$render_height_minus_1, OFFSET$render_height_minus_1);
     }
 
-    public void render_height_minus_1(@unsigned short value) {
+    public void render_height_minus_1(@Unsigned short value) {
         segment.set(LAYOUT$render_height_minus_1, OFFSET$render_height_minus_1, value);
     }
 
@@ -258,27 +258,27 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$TxMode, OFFSET$TxMode, value);
     }
 
-    public @unsigned byte delta_q_res() {
+    public @Unsigned byte delta_q_res() {
         return segment.get(LAYOUT$delta_q_res, OFFSET$delta_q_res);
     }
 
-    public void delta_q_res(@unsigned byte value) {
+    public void delta_q_res(@Unsigned byte value) {
         segment.set(LAYOUT$delta_q_res, OFFSET$delta_q_res, value);
     }
 
-    public @unsigned byte delta_lf_res() {
+    public @Unsigned byte delta_lf_res() {
         return segment.get(LAYOUT$delta_lf_res, OFFSET$delta_lf_res);
     }
 
-    public void delta_lf_res(@unsigned byte value) {
+    public void delta_lf_res(@Unsigned byte value) {
         segment.set(LAYOUT$delta_lf_res, OFFSET$delta_lf_res, value);
     }
 
-    public @unsigned byte ref_order_hint() {
+    public @Unsigned byte ref_order_hint() {
         return segment.get(LAYOUT$ref_order_hint, OFFSET$ref_order_hint);
     }
 
-    public void ref_order_hint(@unsigned byte value) {
+    public void ref_order_hint(@Unsigned byte value) {
         segment.set(LAYOUT$ref_order_hint, OFFSET$ref_order_hint, value);
     }
 
@@ -291,11 +291,11 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
 
-    public @unsigned int delta_frame_id_minus_1() {
+    public @Unsigned int delta_frame_id_minus_1() {
         return segment.get(LAYOUT$delta_frame_id_minus_1, OFFSET$delta_frame_id_minus_1);
     }
 
-    public void delta_frame_id_minus_1(@unsigned int value) {
+    public void delta_frame_id_minus_1(@Unsigned int value) {
         segment.set(LAYOUT$delta_frame_id_minus_1, OFFSET$delta_frame_id_minus_1, value);
     }
 
@@ -551,7 +551,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pBufferRemovalTimes() {
+    public @Nullable @Unsigned IntPtr pBufferRemovalTimes() {
         MemorySegment s = pBufferRemovalTimesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -559,7 +559,7 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new IntPtr(s);
     }
 
-    public void pBufferRemovalTimes(@Nullable @unsigned IntPtr value) {
+    public void pBufferRemovalTimes(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferRemovalTimesRaw(s);
     }

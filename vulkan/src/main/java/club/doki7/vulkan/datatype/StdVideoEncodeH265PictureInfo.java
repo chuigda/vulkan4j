@@ -92,7 +92,7 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -163,35 +163,35 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pic_type, OFFSET$pic_type, value);
     }
 
-    public @unsigned byte sps_video_parameter_set_id() {
+    public @Unsigned byte sps_video_parameter_set_id() {
         return segment.get(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id);
     }
 
-    public void sps_video_parameter_set_id(@unsigned byte value) {
+    public void sps_video_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id, value);
     }
 
-    public @unsigned byte pps_seq_parameter_set_id() {
+    public @Unsigned byte pps_seq_parameter_set_id() {
         return segment.get(LAYOUT$pps_seq_parameter_set_id, OFFSET$pps_seq_parameter_set_id);
     }
 
-    public void pps_seq_parameter_set_id(@unsigned byte value) {
+    public void pps_seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pps_seq_parameter_set_id, OFFSET$pps_seq_parameter_set_id, value);
     }
 
-    public @unsigned byte pps_pic_parameter_set_id() {
+    public @Unsigned byte pps_pic_parameter_set_id() {
         return segment.get(LAYOUT$pps_pic_parameter_set_id, OFFSET$pps_pic_parameter_set_id);
     }
 
-    public void pps_pic_parameter_set_id(@unsigned byte value) {
+    public void pps_pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pps_pic_parameter_set_id, OFFSET$pps_pic_parameter_set_id, value);
     }
 
-    public @unsigned byte short_term_ref_pic_set_idx() {
+    public @Unsigned byte short_term_ref_pic_set_idx() {
         return segment.get(LAYOUT$short_term_ref_pic_set_idx, OFFSET$short_term_ref_pic_set_idx);
     }
 
-    public void short_term_ref_pic_set_idx(@unsigned byte value) {
+    public void short_term_ref_pic_set_idx(@Unsigned byte value) {
         segment.set(LAYOUT$short_term_ref_pic_set_idx, OFFSET$short_term_ref_pic_set_idx, value);
     }
 
@@ -203,11 +203,11 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
     }
 
-    public @unsigned byte TemporalId() {
+    public @Unsigned byte TemporalId() {
         return segment.get(LAYOUT$TemporalId, OFFSET$TemporalId);
     }
 
-    public void TemporalId(@unsigned byte value) {
+    public void TemporalId(@Unsigned byte value) {
         segment.set(LAYOUT$TemporalId, OFFSET$TemporalId, value);
     }
 

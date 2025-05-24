@@ -98,7 +98,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -191,11 +191,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned long size() {
+    public @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@unsigned long value) {
+    public void size(@Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
@@ -215,11 +215,11 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
     }
 
-    public @unsigned int queueFamilyIndexCount() {
+    public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@unsigned int value) {
+    public void queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
@@ -227,7 +227,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pQueueFamilyIndices() {
+    public @Nullable @Unsigned IntPtr pQueueFamilyIndices() {
         MemorySegment s = pQueueFamilyIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -235,7 +235,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
+    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
     }

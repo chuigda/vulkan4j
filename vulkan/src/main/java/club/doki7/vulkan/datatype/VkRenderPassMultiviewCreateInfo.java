@@ -98,7 +98,7 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -183,11 +183,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int subpassCount() {
+    public @Unsigned int subpassCount() {
         return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
     }
 
-    public void subpassCount(@unsigned int value) {
+    public void subpassCount(@Unsigned int value) {
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
     }
 
@@ -195,7 +195,7 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pViewMasks() {
+    public @Nullable @Unsigned IntPtr pViewMasks() {
         MemorySegment s = pViewMasksRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -203,7 +203,7 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pViewMasks(@Nullable @unsigned IntPtr value) {
+    public void pViewMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewMasksRaw(s);
     }
@@ -216,11 +216,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pViewMasks, OFFSET$pViewMasks, value);
     }
 
-    public @unsigned int dependencyCount() {
+    public @Unsigned int dependencyCount() {
         return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
     }
 
-    public void dependencyCount(@unsigned int value) {
+    public void dependencyCount(@Unsigned int value) {
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
     }
 
@@ -249,11 +249,11 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pViewOffsets, OFFSET$pViewOffsets, value);
     }
 
-    public @unsigned int correlationMaskCount() {
+    public @Unsigned int correlationMaskCount() {
         return segment.get(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount);
     }
 
-    public void correlationMaskCount(@unsigned int value) {
+    public void correlationMaskCount(@Unsigned int value) {
         segment.set(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount, value);
     }
 
@@ -261,7 +261,7 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pCorrelationMasks() {
+    public @Nullable @Unsigned IntPtr pCorrelationMasks() {
         MemorySegment s = pCorrelationMasksRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -269,7 +269,7 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pCorrelationMasks(@Nullable @unsigned IntPtr value) {
+    public void pCorrelationMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCorrelationMasksRaw(s);
     }

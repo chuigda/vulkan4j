@@ -117,7 +117,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -202,123 +202,123 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int lineSubPixelPrecisionBits() {
+    public @Unsigned int lineSubPixelPrecisionBits() {
         return segment.get(LAYOUT$lineSubPixelPrecisionBits, OFFSET$lineSubPixelPrecisionBits);
     }
 
-    public void lineSubPixelPrecisionBits(@unsigned int value) {
+    public void lineSubPixelPrecisionBits(@Unsigned int value) {
         segment.set(LAYOUT$lineSubPixelPrecisionBits, OFFSET$lineSubPixelPrecisionBits, value);
     }
 
-    public @unsigned int maxVertexAttribDivisor() {
+    public @Unsigned int maxVertexAttribDivisor() {
         return segment.get(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor);
     }
 
-    public void maxVertexAttribDivisor(@unsigned int value) {
+    public void maxVertexAttribDivisor(@Unsigned int value) {
         segment.set(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor, value);
     }
 
-    public @unsigned int supportsNonZeroFirstInstance() {
+    public @Unsigned int supportsNonZeroFirstInstance() {
         return segment.get(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance);
     }
 
-    public void supportsNonZeroFirstInstance(@unsigned int value) {
+    public void supportsNonZeroFirstInstance(@Unsigned int value) {
         segment.set(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance, value);
     }
 
-    public @unsigned int maxPushDescriptors() {
+    public @Unsigned int maxPushDescriptors() {
         return segment.get(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors);
     }
 
-    public void maxPushDescriptors(@unsigned int value) {
+    public void maxPushDescriptors(@Unsigned int value) {
         segment.set(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors, value);
     }
 
-    public @unsigned int dynamicRenderingLocalReadDepthStencilAttachments() {
+    public @Unsigned int dynamicRenderingLocalReadDepthStencilAttachments() {
         return segment.get(LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments, OFFSET$dynamicRenderingLocalReadDepthStencilAttachments);
     }
 
-    public void dynamicRenderingLocalReadDepthStencilAttachments(@unsigned int value) {
+    public void dynamicRenderingLocalReadDepthStencilAttachments(@Unsigned int value) {
         segment.set(LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments, OFFSET$dynamicRenderingLocalReadDepthStencilAttachments, value);
     }
 
-    public @unsigned int dynamicRenderingLocalReadMultisampledAttachments() {
+    public @Unsigned int dynamicRenderingLocalReadMultisampledAttachments() {
         return segment.get(LAYOUT$dynamicRenderingLocalReadMultisampledAttachments, OFFSET$dynamicRenderingLocalReadMultisampledAttachments);
     }
 
-    public void dynamicRenderingLocalReadMultisampledAttachments(@unsigned int value) {
+    public void dynamicRenderingLocalReadMultisampledAttachments(@Unsigned int value) {
         segment.set(LAYOUT$dynamicRenderingLocalReadMultisampledAttachments, OFFSET$dynamicRenderingLocalReadMultisampledAttachments, value);
     }
 
-    public @unsigned int earlyFragmentMultisampleCoverageAfterSampleCounting() {
+    public @Unsigned int earlyFragmentMultisampleCoverageAfterSampleCounting() {
         return segment.get(LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting);
     }
 
-    public void earlyFragmentMultisampleCoverageAfterSampleCounting(@unsigned int value) {
+    public void earlyFragmentMultisampleCoverageAfterSampleCounting(@Unsigned int value) {
         segment.set(LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting, value);
     }
 
-    public @unsigned int earlyFragmentSampleMaskTestBeforeSampleCounting() {
+    public @Unsigned int earlyFragmentSampleMaskTestBeforeSampleCounting() {
         return segment.get(LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting);
     }
 
-    public void earlyFragmentSampleMaskTestBeforeSampleCounting(@unsigned int value) {
+    public void earlyFragmentSampleMaskTestBeforeSampleCounting(@Unsigned int value) {
         segment.set(LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting, value);
     }
 
-    public @unsigned int depthStencilSwizzleOneSupport() {
+    public @Unsigned int depthStencilSwizzleOneSupport() {
         return segment.get(LAYOUT$depthStencilSwizzleOneSupport, OFFSET$depthStencilSwizzleOneSupport);
     }
 
-    public void depthStencilSwizzleOneSupport(@unsigned int value) {
+    public void depthStencilSwizzleOneSupport(@Unsigned int value) {
         segment.set(LAYOUT$depthStencilSwizzleOneSupport, OFFSET$depthStencilSwizzleOneSupport, value);
     }
 
-    public @unsigned int polygonModePointSize() {
+    public @Unsigned int polygonModePointSize() {
         return segment.get(LAYOUT$polygonModePointSize, OFFSET$polygonModePointSize);
     }
 
-    public void polygonModePointSize(@unsigned int value) {
+    public void polygonModePointSize(@Unsigned int value) {
         segment.set(LAYOUT$polygonModePointSize, OFFSET$polygonModePointSize, value);
     }
 
-    public @unsigned int nonStrictSinglePixelWideLinesUseParallelogram() {
+    public @Unsigned int nonStrictSinglePixelWideLinesUseParallelogram() {
         return segment.get(LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, OFFSET$nonStrictSinglePixelWideLinesUseParallelogram);
     }
 
-    public void nonStrictSinglePixelWideLinesUseParallelogram(@unsigned int value) {
+    public void nonStrictSinglePixelWideLinesUseParallelogram(@Unsigned int value) {
         segment.set(LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, OFFSET$nonStrictSinglePixelWideLinesUseParallelogram, value);
     }
 
-    public @unsigned int nonStrictWideLinesUseParallelogram() {
+    public @Unsigned int nonStrictWideLinesUseParallelogram() {
         return segment.get(LAYOUT$nonStrictWideLinesUseParallelogram, OFFSET$nonStrictWideLinesUseParallelogram);
     }
 
-    public void nonStrictWideLinesUseParallelogram(@unsigned int value) {
+    public void nonStrictWideLinesUseParallelogram(@Unsigned int value) {
         segment.set(LAYOUT$nonStrictWideLinesUseParallelogram, OFFSET$nonStrictWideLinesUseParallelogram, value);
     }
 
-    public @unsigned int blockTexelViewCompatibleMultipleLayers() {
+    public @Unsigned int blockTexelViewCompatibleMultipleLayers() {
         return segment.get(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers);
     }
 
-    public void blockTexelViewCompatibleMultipleLayers(@unsigned int value) {
+    public void blockTexelViewCompatibleMultipleLayers(@Unsigned int value) {
         segment.set(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers, value);
     }
 
-    public @unsigned int maxCombinedImageSamplerDescriptorCount() {
+    public @Unsigned int maxCombinedImageSamplerDescriptorCount() {
         return segment.get(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount);
     }
 
-    public void maxCombinedImageSamplerDescriptorCount(@unsigned int value) {
+    public void maxCombinedImageSamplerDescriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount, value);
     }
 
-    public @unsigned int fragmentShadingRateClampCombinerInputs() {
+    public @Unsigned int fragmentShadingRateClampCombinerInputs() {
         return segment.get(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs);
     }
 
-    public void fragmentShadingRateClampCombinerInputs(@unsigned int value) {
+    public void fragmentShadingRateClampCombinerInputs(@Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs, value);
     }
 
@@ -354,11 +354,11 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$defaultRobustnessImages, OFFSET$defaultRobustnessImages, value);
     }
 
-    public @unsigned int copySrcLayoutCount() {
+    public @Unsigned int copySrcLayoutCount() {
         return segment.get(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount);
     }
 
-    public void copySrcLayoutCount(@unsigned int value) {
+    public void copySrcLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount, value);
     }
 
@@ -388,11 +388,11 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
 
-    public @unsigned int copyDstLayoutCount() {
+    public @Unsigned int copyDstLayoutCount() {
         return segment.get(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount);
     }
 
-    public void copyDstLayoutCount(@unsigned int value) {
+    public void copyDstLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount, value);
     }
 
@@ -422,19 +422,19 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
 
-    public @unsigned byte optimalTilingLayoutUUID() {
+    public @Unsigned byte optimalTilingLayoutUUID() {
         return segment.get(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID);
     }
 
-    public void optimalTilingLayoutUUID(@unsigned byte value) {
+    public void optimalTilingLayoutUUID(@Unsigned byte value) {
         segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
     }
 
-    public @unsigned int identicalMemoryTypeRequirements() {
+    public @Unsigned int identicalMemoryTypeRequirements() {
         return segment.get(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements);
     }
 
-    public void identicalMemoryTypeRequirements(@unsigned int value) {
+    public void identicalMemoryTypeRequirements(@Unsigned int value) {
         segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
     }
 

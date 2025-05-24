@@ -94,7 +94,7 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int rayTracingMaintenance1() {
+    public @Unsigned int rayTracingMaintenance1() {
         return segment.get(LAYOUT$rayTracingMaintenance1, OFFSET$rayTracingMaintenance1);
     }
 
-    public void rayTracingMaintenance1(@unsigned int value) {
+    public void rayTracingMaintenance1(@Unsigned int value) {
         segment.set(LAYOUT$rayTracingMaintenance1, OFFSET$rayTracingMaintenance1, value);
     }
 
-    public @unsigned int rayTracingPipelineTraceRaysIndirect2() {
+    public @Unsigned int rayTracingPipelineTraceRaysIndirect2() {
         return segment.get(LAYOUT$rayTracingPipelineTraceRaysIndirect2, OFFSET$rayTracingPipelineTraceRaysIndirect2);
     }
 
-    public void rayTracingPipelineTraceRaysIndirect2(@unsigned int value) {
+    public void rayTracingPipelineTraceRaysIndirect2(@Unsigned int value) {
         segment.set(LAYOUT$rayTracingPipelineTraceRaysIndirect2, OFFSET$rayTracingPipelineTraceRaysIndirect2, value);
     }
 

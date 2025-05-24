@@ -95,7 +95,7 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceShaderTileImagePropertiesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderTileImageCoherentReadAccelerated() {
+    public @Unsigned int shaderTileImageCoherentReadAccelerated() {
         return segment.get(LAYOUT$shaderTileImageCoherentReadAccelerated, OFFSET$shaderTileImageCoherentReadAccelerated);
     }
 
-    public void shaderTileImageCoherentReadAccelerated(@unsigned int value) {
+    public void shaderTileImageCoherentReadAccelerated(@Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageCoherentReadAccelerated, OFFSET$shaderTileImageCoherentReadAccelerated, value);
     }
 
-    public @unsigned int shaderTileImageReadSampleFromPixelRateInvocation() {
+    public @Unsigned int shaderTileImageReadSampleFromPixelRateInvocation() {
         return segment.get(LAYOUT$shaderTileImageReadSampleFromPixelRateInvocation, OFFSET$shaderTileImageReadSampleFromPixelRateInvocation);
     }
 
-    public void shaderTileImageReadSampleFromPixelRateInvocation(@unsigned int value) {
+    public void shaderTileImageReadSampleFromPixelRateInvocation(@Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageReadSampleFromPixelRateInvocation, OFFSET$shaderTileImageReadSampleFromPixelRateInvocation, value);
     }
 
-    public @unsigned int shaderTileImageReadFromHelperInvocation() {
+    public @Unsigned int shaderTileImageReadFromHelperInvocation() {
         return segment.get(LAYOUT$shaderTileImageReadFromHelperInvocation, OFFSET$shaderTileImageReadFromHelperInvocation);
     }
 
-    public void shaderTileImageReadFromHelperInvocation(@unsigned int value) {
+    public void shaderTileImageReadFromHelperInvocation(@Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageReadFromHelperInvocation, OFFSET$shaderTileImageReadFromHelperInvocation, value);
     }
 

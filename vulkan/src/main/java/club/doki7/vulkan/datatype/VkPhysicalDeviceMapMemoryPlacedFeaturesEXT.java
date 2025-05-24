@@ -95,7 +95,7 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int memoryMapPlaced() {
+    public @Unsigned int memoryMapPlaced() {
         return segment.get(LAYOUT$memoryMapPlaced, OFFSET$memoryMapPlaced);
     }
 
-    public void memoryMapPlaced(@unsigned int value) {
+    public void memoryMapPlaced(@Unsigned int value) {
         segment.set(LAYOUT$memoryMapPlaced, OFFSET$memoryMapPlaced, value);
     }
 
-    public @unsigned int memoryMapRangePlaced() {
+    public @Unsigned int memoryMapRangePlaced() {
         return segment.get(LAYOUT$memoryMapRangePlaced, OFFSET$memoryMapRangePlaced);
     }
 
-    public void memoryMapRangePlaced(@unsigned int value) {
+    public void memoryMapRangePlaced(@Unsigned int value) {
         segment.set(LAYOUT$memoryMapRangePlaced, OFFSET$memoryMapRangePlaced, value);
     }
 
-    public @unsigned int memoryUnmapReserve() {
+    public @Unsigned int memoryUnmapReserve() {
         return segment.get(LAYOUT$memoryUnmapReserve, OFFSET$memoryUnmapReserve);
     }
 
-    public void memoryUnmapReserve(@unsigned int value) {
+    public void memoryUnmapReserve(@Unsigned int value) {
         segment.set(LAYOUT$memoryUnmapReserve, OFFSET$memoryUnmapReserve, value);
     }
 

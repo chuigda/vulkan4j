@@ -90,7 +90,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -161,51 +161,51 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT1, SIZE$transformT1);
     }
 
-    public @unsigned int instanceCustomIndex() {
+    public @Unsigned int instanceCustomIndex() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void instanceCustomIndex(@unsigned int value) {
+    public void instanceCustomIndex(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
-    public @unsigned int mask() {
+    public @Unsigned int mask() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
-    public void mask(@unsigned int value) {
+    public void mask(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         BitfieldUtil.writeBits(s, 24, 32, value);
     }
 
-    public @unsigned int instanceShaderBindingTableRecordOffset() {
+    public @Unsigned int instanceShaderBindingTableRecordOffset() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void instanceShaderBindingTableRecordOffset(@unsigned int value) {
+    public void instanceShaderBindingTableRecordOffset(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
-    public @unsigned int flags() {
+    public @Unsigned int flags() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
-    public void flags(@unsigned int value) {
+    public void flags(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         BitfieldUtil.writeBits(s, 24, 32, value);
     }
 
-    public @unsigned long accelerationStructureReference() {
+    public @Unsigned long accelerationStructureReference() {
         return segment.get(LAYOUT$accelerationStructureReference, OFFSET$accelerationStructureReference);
     }
 
-    public void accelerationStructureReference(@unsigned long value) {
+    public void accelerationStructureReference(@Unsigned long value) {
         segment.set(LAYOUT$accelerationStructureReference, OFFSET$accelerationStructureReference, value);
     }
 

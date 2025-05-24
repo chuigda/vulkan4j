@@ -96,7 +96,7 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,35 +181,35 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int depthBiasControl() {
+    public @Unsigned int depthBiasControl() {
         return segment.get(LAYOUT$depthBiasControl, OFFSET$depthBiasControl);
     }
 
-    public void depthBiasControl(@unsigned int value) {
+    public void depthBiasControl(@Unsigned int value) {
         segment.set(LAYOUT$depthBiasControl, OFFSET$depthBiasControl, value);
     }
 
-    public @unsigned int leastRepresentableValueForceUnormRepresentation() {
+    public @Unsigned int leastRepresentableValueForceUnormRepresentation() {
         return segment.get(LAYOUT$leastRepresentableValueForceUnormRepresentation, OFFSET$leastRepresentableValueForceUnormRepresentation);
     }
 
-    public void leastRepresentableValueForceUnormRepresentation(@unsigned int value) {
+    public void leastRepresentableValueForceUnormRepresentation(@Unsigned int value) {
         segment.set(LAYOUT$leastRepresentableValueForceUnormRepresentation, OFFSET$leastRepresentableValueForceUnormRepresentation, value);
     }
 
-    public @unsigned int floatRepresentation() {
+    public @Unsigned int floatRepresentation() {
         return segment.get(LAYOUT$floatRepresentation, OFFSET$floatRepresentation);
     }
 
-    public void floatRepresentation(@unsigned int value) {
+    public void floatRepresentation(@Unsigned int value) {
         segment.set(LAYOUT$floatRepresentation, OFFSET$floatRepresentation, value);
     }
 
-    public @unsigned int depthBiasExact() {
+    public @Unsigned int depthBiasExact() {
         return segment.get(LAYOUT$depthBiasExact, OFFSET$depthBiasExact);
     }
 
-    public void depthBiasExact(@unsigned int value) {
+    public void depthBiasExact(@Unsigned int value) {
         segment.set(LAYOUT$depthBiasExact, OFFSET$depthBiasExact, value);
     }
 

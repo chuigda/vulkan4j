@@ -94,7 +94,7 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,11 +179,11 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int physicalDeviceCount() {
+    public @Unsigned int physicalDeviceCount() {
         return segment.get(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount);
     }
 
-    public void physicalDeviceCount(@unsigned int value) {
+    public void physicalDeviceCount(@Unsigned int value) {
         segment.set(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount, value);
     }
 

@@ -103,7 +103,7 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -200,27 +200,27 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$vertexData, OFFSET$vertexData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long vertexOffset() {
+    public @Unsigned long vertexOffset() {
         return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
     }
 
-    public void vertexOffset(@unsigned long value) {
+    public void vertexOffset(@Unsigned long value) {
         segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
     }
 
-    public @unsigned int vertexCount() {
+    public @Unsigned int vertexCount() {
         return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
     }
 
-    public void vertexCount(@unsigned int value) {
+    public void vertexCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
     }
 
-    public @unsigned long vertexStride() {
+    public @Unsigned long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
 
-    public void vertexStride(@unsigned long value) {
+    public void vertexStride(@Unsigned long value) {
         segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
     }
 
@@ -244,19 +244,19 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$indexData, OFFSET$indexData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long indexOffset() {
+    public @Unsigned long indexOffset() {
         return segment.get(LAYOUT$indexOffset, OFFSET$indexOffset);
     }
 
-    public void indexOffset(@unsigned long value) {
+    public void indexOffset(@Unsigned long value) {
         segment.set(LAYOUT$indexOffset, OFFSET$indexOffset, value);
     }
 
-    public @unsigned int indexCount() {
+    public @Unsigned int indexCount() {
         return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
     }
 
-    public void indexCount(@unsigned int value) {
+    public void indexCount(@Unsigned int value) {
         segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
     }
 
@@ -280,11 +280,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$transformData, OFFSET$transformData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long transformOffset() {
+    public @Unsigned long transformOffset() {
         return segment.get(LAYOUT$transformOffset, OFFSET$transformOffset);
     }
 
-    public void transformOffset(@unsigned long value) {
+    public void transformOffset(@Unsigned long value) {
         segment.set(LAYOUT$transformOffset, OFFSET$transformOffset, value);
     }
 

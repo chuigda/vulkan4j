@@ -95,7 +95,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int deviceGeneratedCompute() {
+    public @Unsigned int deviceGeneratedCompute() {
         return segment.get(LAYOUT$deviceGeneratedCompute, OFFSET$deviceGeneratedCompute);
     }
 
-    public void deviceGeneratedCompute(@unsigned int value) {
+    public void deviceGeneratedCompute(@Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCompute, OFFSET$deviceGeneratedCompute, value);
     }
 
-    public @unsigned int deviceGeneratedComputePipelines() {
+    public @Unsigned int deviceGeneratedComputePipelines() {
         return segment.get(LAYOUT$deviceGeneratedComputePipelines, OFFSET$deviceGeneratedComputePipelines);
     }
 
-    public void deviceGeneratedComputePipelines(@unsigned int value) {
+    public void deviceGeneratedComputePipelines(@Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedComputePipelines, OFFSET$deviceGeneratedComputePipelines, value);
     }
 
-    public @unsigned int deviceGeneratedComputeCaptureReplay() {
+    public @Unsigned int deviceGeneratedComputeCaptureReplay() {
         return segment.get(LAYOUT$deviceGeneratedComputeCaptureReplay, OFFSET$deviceGeneratedComputeCaptureReplay);
     }
 
-    public void deviceGeneratedComputeCaptureReplay(@unsigned int value) {
+    public void deviceGeneratedComputeCaptureReplay(@Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedComputeCaptureReplay, OFFSET$deviceGeneratedComputeCaptureReplay, value);
     }
 

@@ -95,7 +95,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -158,91 +158,91 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte tick_divisor_minus2() {
+    public @Unsigned byte tick_divisor_minus2() {
         return segment.get(LAYOUT$tick_divisor_minus2, OFFSET$tick_divisor_minus2);
     }
 
-    public void tick_divisor_minus2(@unsigned byte value) {
+    public void tick_divisor_minus2(@Unsigned byte value) {
         segment.set(LAYOUT$tick_divisor_minus2, OFFSET$tick_divisor_minus2, value);
     }
 
-    public @unsigned byte du_cpb_removal_delay_increment_length_minus1() {
+    public @Unsigned byte du_cpb_removal_delay_increment_length_minus1() {
         return segment.get(LAYOUT$du_cpb_removal_delay_increment_length_minus1, OFFSET$du_cpb_removal_delay_increment_length_minus1);
     }
 
-    public void du_cpb_removal_delay_increment_length_minus1(@unsigned byte value) {
+    public void du_cpb_removal_delay_increment_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$du_cpb_removal_delay_increment_length_minus1, OFFSET$du_cpb_removal_delay_increment_length_minus1, value);
     }
 
-    public @unsigned byte dpb_output_delay_du_length_minus1() {
+    public @Unsigned byte dpb_output_delay_du_length_minus1() {
         return segment.get(LAYOUT$dpb_output_delay_du_length_minus1, OFFSET$dpb_output_delay_du_length_minus1);
     }
 
-    public void dpb_output_delay_du_length_minus1(@unsigned byte value) {
+    public void dpb_output_delay_du_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$dpb_output_delay_du_length_minus1, OFFSET$dpb_output_delay_du_length_minus1, value);
     }
 
-    public @unsigned byte bit_rate_scale() {
+    public @Unsigned byte bit_rate_scale() {
         return segment.get(LAYOUT$bit_rate_scale, OFFSET$bit_rate_scale);
     }
 
-    public void bit_rate_scale(@unsigned byte value) {
+    public void bit_rate_scale(@Unsigned byte value) {
         segment.set(LAYOUT$bit_rate_scale, OFFSET$bit_rate_scale, value);
     }
 
-    public @unsigned byte cpb_size_scale() {
+    public @Unsigned byte cpb_size_scale() {
         return segment.get(LAYOUT$cpb_size_scale, OFFSET$cpb_size_scale);
     }
 
-    public void cpb_size_scale(@unsigned byte value) {
+    public void cpb_size_scale(@Unsigned byte value) {
         segment.set(LAYOUT$cpb_size_scale, OFFSET$cpb_size_scale, value);
     }
 
-    public @unsigned byte cpb_size_du_scale() {
+    public @Unsigned byte cpb_size_du_scale() {
         return segment.get(LAYOUT$cpb_size_du_scale, OFFSET$cpb_size_du_scale);
     }
 
-    public void cpb_size_du_scale(@unsigned byte value) {
+    public void cpb_size_du_scale(@Unsigned byte value) {
         segment.set(LAYOUT$cpb_size_du_scale, OFFSET$cpb_size_du_scale, value);
     }
 
-    public @unsigned byte initial_cpb_removal_delay_length_minus1() {
+    public @Unsigned byte initial_cpb_removal_delay_length_minus1() {
         return segment.get(LAYOUT$initial_cpb_removal_delay_length_minus1, OFFSET$initial_cpb_removal_delay_length_minus1);
     }
 
-    public void initial_cpb_removal_delay_length_minus1(@unsigned byte value) {
+    public void initial_cpb_removal_delay_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$initial_cpb_removal_delay_length_minus1, OFFSET$initial_cpb_removal_delay_length_minus1, value);
     }
 
-    public @unsigned byte au_cpb_removal_delay_length_minus1() {
+    public @Unsigned byte au_cpb_removal_delay_length_minus1() {
         return segment.get(LAYOUT$au_cpb_removal_delay_length_minus1, OFFSET$au_cpb_removal_delay_length_minus1);
     }
 
-    public void au_cpb_removal_delay_length_minus1(@unsigned byte value) {
+    public void au_cpb_removal_delay_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$au_cpb_removal_delay_length_minus1, OFFSET$au_cpb_removal_delay_length_minus1, value);
     }
 
-    public @unsigned byte dpb_output_delay_length_minus1() {
+    public @Unsigned byte dpb_output_delay_length_minus1() {
         return segment.get(LAYOUT$dpb_output_delay_length_minus1, OFFSET$dpb_output_delay_length_minus1);
     }
 
-    public void dpb_output_delay_length_minus1(@unsigned byte value) {
+    public void dpb_output_delay_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$dpb_output_delay_length_minus1, OFFSET$dpb_output_delay_length_minus1, value);
     }
 
-    public @unsigned byte cpb_cnt_minus1() {
+    public @Unsigned byte cpb_cnt_minus1() {
         return segment.get(LAYOUT$cpb_cnt_minus1, OFFSET$cpb_cnt_minus1);
     }
 
-    public void cpb_cnt_minus1(@unsigned byte value) {
+    public void cpb_cnt_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$cpb_cnt_minus1, OFFSET$cpb_cnt_minus1, value);
     }
 
-    public @unsigned short elemental_duration_in_tc_minus1() {
+    public @Unsigned short elemental_duration_in_tc_minus1() {
         return segment.get(LAYOUT$elemental_duration_in_tc_minus1, OFFSET$elemental_duration_in_tc_minus1);
     }
 
-    public void elemental_duration_in_tc_minus1(@unsigned short value) {
+    public void elemental_duration_in_tc_minus1(@Unsigned short value) {
         segment.set(LAYOUT$elemental_duration_in_tc_minus1, OFFSET$elemental_duration_in_tc_minus1, value);
     }
 

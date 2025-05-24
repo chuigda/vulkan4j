@@ -102,7 +102,7 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -195,19 +195,19 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int depthTestEnable() {
+    public @Unsigned int depthTestEnable() {
         return segment.get(LAYOUT$depthTestEnable, OFFSET$depthTestEnable);
     }
 
-    public void depthTestEnable(@unsigned int value) {
+    public void depthTestEnable(@Unsigned int value) {
         segment.set(LAYOUT$depthTestEnable, OFFSET$depthTestEnable, value);
     }
 
-    public @unsigned int depthWriteEnable() {
+    public @Unsigned int depthWriteEnable() {
         return segment.get(LAYOUT$depthWriteEnable, OFFSET$depthWriteEnable);
     }
 
-    public void depthWriteEnable(@unsigned int value) {
+    public void depthWriteEnable(@Unsigned int value) {
         segment.set(LAYOUT$depthWriteEnable, OFFSET$depthWriteEnable, value);
     }
 
@@ -219,19 +219,19 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$depthCompareOp, OFFSET$depthCompareOp, value);
     }
 
-    public @unsigned int depthBoundsTestEnable() {
+    public @Unsigned int depthBoundsTestEnable() {
         return segment.get(LAYOUT$depthBoundsTestEnable, OFFSET$depthBoundsTestEnable);
     }
 
-    public void depthBoundsTestEnable(@unsigned int value) {
+    public void depthBoundsTestEnable(@Unsigned int value) {
         segment.set(LAYOUT$depthBoundsTestEnable, OFFSET$depthBoundsTestEnable, value);
     }
 
-    public @unsigned int stencilTestEnable() {
+    public @Unsigned int stencilTestEnable() {
         return segment.get(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable);
     }
 
-    public void stencilTestEnable(@unsigned int value) {
+    public void stencilTestEnable(@Unsigned int value) {
         segment.set(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable, value);
     }
 

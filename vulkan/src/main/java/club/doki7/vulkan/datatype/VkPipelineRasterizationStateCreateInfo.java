@@ -103,7 +103,7 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -196,19 +196,19 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int depthClampEnable() {
+    public @Unsigned int depthClampEnable() {
         return segment.get(LAYOUT$depthClampEnable, OFFSET$depthClampEnable);
     }
 
-    public void depthClampEnable(@unsigned int value) {
+    public void depthClampEnable(@Unsigned int value) {
         segment.set(LAYOUT$depthClampEnable, OFFSET$depthClampEnable, value);
     }
 
-    public @unsigned int rasterizerDiscardEnable() {
+    public @Unsigned int rasterizerDiscardEnable() {
         return segment.get(LAYOUT$rasterizerDiscardEnable, OFFSET$rasterizerDiscardEnable);
     }
 
-    public void rasterizerDiscardEnable(@unsigned int value) {
+    public void rasterizerDiscardEnable(@Unsigned int value) {
         segment.set(LAYOUT$rasterizerDiscardEnable, OFFSET$rasterizerDiscardEnable, value);
     }
 
@@ -236,11 +236,11 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$frontFace, OFFSET$frontFace, value);
     }
 
-    public @unsigned int depthBiasEnable() {
+    public @Unsigned int depthBiasEnable() {
         return segment.get(LAYOUT$depthBiasEnable, OFFSET$depthBiasEnable);
     }
 
-    public void depthBiasEnable(@unsigned int value) {
+    public void depthBiasEnable(@Unsigned int value) {
         segment.set(LAYOUT$depthBiasEnable, OFFSET$depthBiasEnable, value);
     }
 

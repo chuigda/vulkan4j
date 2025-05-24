@@ -109,7 +109,7 @@ public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment seg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -210,123 +210,123 @@ public record VkPhysicalDeviceFloatControlsProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence, value);
     }
 
-    public @unsigned int shaderSignedZeroInfNanPreserveFloat16() {
+    public @Unsigned int shaderSignedZeroInfNanPreserveFloat16() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat16, OFFSET$shaderSignedZeroInfNanPreserveFloat16);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat16(@unsigned int value) {
+    public void shaderSignedZeroInfNanPreserveFloat16(@Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat16, OFFSET$shaderSignedZeroInfNanPreserveFloat16, value);
     }
 
-    public @unsigned int shaderSignedZeroInfNanPreserveFloat32() {
+    public @Unsigned int shaderSignedZeroInfNanPreserveFloat32() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat32, OFFSET$shaderSignedZeroInfNanPreserveFloat32);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat32(@unsigned int value) {
+    public void shaderSignedZeroInfNanPreserveFloat32(@Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat32, OFFSET$shaderSignedZeroInfNanPreserveFloat32, value);
     }
 
-    public @unsigned int shaderSignedZeroInfNanPreserveFloat64() {
+    public @Unsigned int shaderSignedZeroInfNanPreserveFloat64() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat64, OFFSET$shaderSignedZeroInfNanPreserveFloat64);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat64(@unsigned int value) {
+    public void shaderSignedZeroInfNanPreserveFloat64(@Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat64, OFFSET$shaderSignedZeroInfNanPreserveFloat64, value);
     }
 
-    public @unsigned int shaderDenormPreserveFloat16() {
+    public @Unsigned int shaderDenormPreserveFloat16() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat16, OFFSET$shaderDenormPreserveFloat16);
     }
 
-    public void shaderDenormPreserveFloat16(@unsigned int value) {
+    public void shaderDenormPreserveFloat16(@Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat16, OFFSET$shaderDenormPreserveFloat16, value);
     }
 
-    public @unsigned int shaderDenormPreserveFloat32() {
+    public @Unsigned int shaderDenormPreserveFloat32() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat32, OFFSET$shaderDenormPreserveFloat32);
     }
 
-    public void shaderDenormPreserveFloat32(@unsigned int value) {
+    public void shaderDenormPreserveFloat32(@Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat32, OFFSET$shaderDenormPreserveFloat32, value);
     }
 
-    public @unsigned int shaderDenormPreserveFloat64() {
+    public @Unsigned int shaderDenormPreserveFloat64() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat64, OFFSET$shaderDenormPreserveFloat64);
     }
 
-    public void shaderDenormPreserveFloat64(@unsigned int value) {
+    public void shaderDenormPreserveFloat64(@Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat64, OFFSET$shaderDenormPreserveFloat64, value);
     }
 
-    public @unsigned int shaderDenormFlushToZeroFloat16() {
+    public @Unsigned int shaderDenormFlushToZeroFloat16() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat16, OFFSET$shaderDenormFlushToZeroFloat16);
     }
 
-    public void shaderDenormFlushToZeroFloat16(@unsigned int value) {
+    public void shaderDenormFlushToZeroFloat16(@Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat16, OFFSET$shaderDenormFlushToZeroFloat16, value);
     }
 
-    public @unsigned int shaderDenormFlushToZeroFloat32() {
+    public @Unsigned int shaderDenormFlushToZeroFloat32() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat32, OFFSET$shaderDenormFlushToZeroFloat32);
     }
 
-    public void shaderDenormFlushToZeroFloat32(@unsigned int value) {
+    public void shaderDenormFlushToZeroFloat32(@Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat32, OFFSET$shaderDenormFlushToZeroFloat32, value);
     }
 
-    public @unsigned int shaderDenormFlushToZeroFloat64() {
+    public @Unsigned int shaderDenormFlushToZeroFloat64() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat64, OFFSET$shaderDenormFlushToZeroFloat64);
     }
 
-    public void shaderDenormFlushToZeroFloat64(@unsigned int value) {
+    public void shaderDenormFlushToZeroFloat64(@Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat64, OFFSET$shaderDenormFlushToZeroFloat64, value);
     }
 
-    public @unsigned int shaderRoundingModeRTEFloat16() {
+    public @Unsigned int shaderRoundingModeRTEFloat16() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat16, OFFSET$shaderRoundingModeRTEFloat16);
     }
 
-    public void shaderRoundingModeRTEFloat16(@unsigned int value) {
+    public void shaderRoundingModeRTEFloat16(@Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat16, OFFSET$shaderRoundingModeRTEFloat16, value);
     }
 
-    public @unsigned int shaderRoundingModeRTEFloat32() {
+    public @Unsigned int shaderRoundingModeRTEFloat32() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat32, OFFSET$shaderRoundingModeRTEFloat32);
     }
 
-    public void shaderRoundingModeRTEFloat32(@unsigned int value) {
+    public void shaderRoundingModeRTEFloat32(@Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat32, OFFSET$shaderRoundingModeRTEFloat32, value);
     }
 
-    public @unsigned int shaderRoundingModeRTEFloat64() {
+    public @Unsigned int shaderRoundingModeRTEFloat64() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat64, OFFSET$shaderRoundingModeRTEFloat64);
     }
 
-    public void shaderRoundingModeRTEFloat64(@unsigned int value) {
+    public void shaderRoundingModeRTEFloat64(@Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat64, OFFSET$shaderRoundingModeRTEFloat64, value);
     }
 
-    public @unsigned int shaderRoundingModeRTZFloat16() {
+    public @Unsigned int shaderRoundingModeRTZFloat16() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat16, OFFSET$shaderRoundingModeRTZFloat16);
     }
 
-    public void shaderRoundingModeRTZFloat16(@unsigned int value) {
+    public void shaderRoundingModeRTZFloat16(@Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat16, OFFSET$shaderRoundingModeRTZFloat16, value);
     }
 
-    public @unsigned int shaderRoundingModeRTZFloat32() {
+    public @Unsigned int shaderRoundingModeRTZFloat32() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat32, OFFSET$shaderRoundingModeRTZFloat32);
     }
 
-    public void shaderRoundingModeRTZFloat32(@unsigned int value) {
+    public void shaderRoundingModeRTZFloat32(@Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat32, OFFSET$shaderRoundingModeRTZFloat32, value);
     }
 
-    public @unsigned int shaderRoundingModeRTZFloat64() {
+    public @Unsigned int shaderRoundingModeRTZFloat64() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat64, OFFSET$shaderRoundingModeRTZFloat64);
     }
 
-    public void shaderRoundingModeRTZFloat64(@unsigned int value) {
+    public void shaderRoundingModeRTZFloat64(@Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat64, OFFSET$shaderRoundingModeRTZFloat64, value);
     }
 

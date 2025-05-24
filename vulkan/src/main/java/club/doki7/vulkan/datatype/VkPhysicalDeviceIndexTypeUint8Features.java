@@ -93,7 +93,7 @@ public record VkPhysicalDeviceIndexTypeUint8Features(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,11 +178,11 @@ public record VkPhysicalDeviceIndexTypeUint8Features(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int indexTypeUint8() {
+    public @Unsigned int indexTypeUint8() {
         return segment.get(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8);
     }
 
-    public void indexTypeUint8(@unsigned int value) {
+    public void indexTypeUint8(@Unsigned int value) {
         segment.set(LAYOUT$indexTypeUint8, OFFSET$indexTypeUint8, value);
     }
 

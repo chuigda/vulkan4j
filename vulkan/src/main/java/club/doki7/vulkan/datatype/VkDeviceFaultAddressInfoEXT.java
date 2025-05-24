@@ -85,7 +85,7 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -148,19 +148,19 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$addressType, OFFSET$addressType, value);
     }
 
-    public @unsigned long reportedAddress() {
+    public @Unsigned long reportedAddress() {
         return segment.get(LAYOUT$reportedAddress, OFFSET$reportedAddress);
     }
 
-    public void reportedAddress(@unsigned long value) {
+    public void reportedAddress(@Unsigned long value) {
         segment.set(LAYOUT$reportedAddress, OFFSET$reportedAddress, value);
     }
 
-    public @unsigned long addressPrecision() {
+    public @Unsigned long addressPrecision() {
         return segment.get(LAYOUT$addressPrecision, OFFSET$addressPrecision);
     }
 
-    public void addressPrecision(@unsigned long value) {
+    public void addressPrecision(@Unsigned long value) {
         segment.set(LAYOUT$addressPrecision, OFFSET$addressPrecision, value);
     }
 

@@ -93,7 +93,7 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(@NotNull MemorySe
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,11 +178,11 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int swapchainMaintenance1() {
+    public @Unsigned int swapchainMaintenance1() {
         return segment.get(LAYOUT$swapchainMaintenance1, OFFSET$swapchainMaintenance1);
     }
 
-    public void swapchainMaintenance1(@unsigned int value) {
+    public void swapchainMaintenance1(@Unsigned int value) {
         segment.set(LAYOUT$swapchainMaintenance1, OFFSET$swapchainMaintenance1, value);
     }
 

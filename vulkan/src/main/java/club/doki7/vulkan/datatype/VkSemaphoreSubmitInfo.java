@@ -96,7 +96,7 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -193,11 +193,11 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long value() {
+    public @Unsigned long value() {
         return segment.get(LAYOUT$value, OFFSET$value);
     }
 
-    public void value(@unsigned long value) {
+    public void value(@Unsigned long value) {
         segment.set(LAYOUT$value, OFFSET$value, value);
     }
 
@@ -209,11 +209,11 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$stageMask, OFFSET$stageMask, value);
     }
 
-    public @unsigned int deviceIndex() {
+    public @Unsigned int deviceIndex() {
         return segment.get(LAYOUT$deviceIndex, OFFSET$deviceIndex);
     }
 
-    public void deviceIndex(@unsigned int value) {
+    public void deviceIndex(@Unsigned int value) {
         segment.set(LAYOUT$deviceIndex, OFFSET$deviceIndex, value);
     }
 

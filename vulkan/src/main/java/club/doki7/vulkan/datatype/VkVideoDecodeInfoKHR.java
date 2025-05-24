@@ -100,7 +100,7 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -205,19 +205,19 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long srcBufferOffset() {
+    public @Unsigned long srcBufferOffset() {
         return segment.get(LAYOUT$srcBufferOffset, OFFSET$srcBufferOffset);
     }
 
-    public void srcBufferOffset(@unsigned long value) {
+    public void srcBufferOffset(@Unsigned long value) {
         segment.set(LAYOUT$srcBufferOffset, OFFSET$srcBufferOffset, value);
     }
 
-    public @unsigned long srcBufferRange() {
+    public @Unsigned long srcBufferRange() {
         return segment.get(LAYOUT$srcBufferRange, OFFSET$srcBufferRange);
     }
 
-    public void srcBufferRange(@unsigned long value) {
+    public void srcBufferRange(@Unsigned long value) {
         segment.set(LAYOUT$srcBufferRange, OFFSET$srcBufferRange, value);
     }
 
@@ -260,11 +260,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot, value);
     }
 
-    public @unsigned int referenceSlotCount() {
+    public @Unsigned int referenceSlotCount() {
         return segment.get(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount);
     }
 
-    public void referenceSlotCount(@unsigned int value) {
+    public void referenceSlotCount(@Unsigned int value) {
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
     }
 

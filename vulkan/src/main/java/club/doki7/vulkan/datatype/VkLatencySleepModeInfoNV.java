@@ -95,7 +95,7 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int lowLatencyMode() {
+    public @Unsigned int lowLatencyMode() {
         return segment.get(LAYOUT$lowLatencyMode, OFFSET$lowLatencyMode);
     }
 
-    public void lowLatencyMode(@unsigned int value) {
+    public void lowLatencyMode(@Unsigned int value) {
         segment.set(LAYOUT$lowLatencyMode, OFFSET$lowLatencyMode, value);
     }
 
-    public @unsigned int lowLatencyBoost() {
+    public @Unsigned int lowLatencyBoost() {
         return segment.get(LAYOUT$lowLatencyBoost, OFFSET$lowLatencyBoost);
     }
 
-    public void lowLatencyBoost(@unsigned int value) {
+    public void lowLatencyBoost(@Unsigned int value) {
         segment.set(LAYOUT$lowLatencyBoost, OFFSET$lowLatencyBoost, value);
     }
 
-    public @unsigned int minimumIntervalUs() {
+    public @Unsigned int minimumIntervalUs() {
         return segment.get(LAYOUT$minimumIntervalUs, OFFSET$minimumIntervalUs);
     }
 
-    public void minimumIntervalUs(@unsigned int value) {
+    public void minimumIntervalUs(@Unsigned int value) {
         segment.set(LAYOUT$minimumIntervalUs, OFFSET$minimumIntervalUs, value);
     }
 

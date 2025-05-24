@@ -103,7 +103,7 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -204,75 +204,75 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes, value);
     }
 
-    public @unsigned int hintSupported() {
+    public @Unsigned int hintSupported() {
         return segment.get(LAYOUT$hintSupported, OFFSET$hintSupported);
     }
 
-    public void hintSupported(@unsigned int value) {
+    public void hintSupported(@Unsigned int value) {
         segment.set(LAYOUT$hintSupported, OFFSET$hintSupported, value);
     }
 
-    public @unsigned int costSupported() {
+    public @Unsigned int costSupported() {
         return segment.get(LAYOUT$costSupported, OFFSET$costSupported);
     }
 
-    public void costSupported(@unsigned int value) {
+    public void costSupported(@Unsigned int value) {
         segment.set(LAYOUT$costSupported, OFFSET$costSupported, value);
     }
 
-    public @unsigned int bidirectionalFlowSupported() {
+    public @Unsigned int bidirectionalFlowSupported() {
         return segment.get(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported);
     }
 
-    public void bidirectionalFlowSupported(@unsigned int value) {
+    public void bidirectionalFlowSupported(@Unsigned int value) {
         segment.set(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported, value);
     }
 
-    public @unsigned int globalFlowSupported() {
+    public @Unsigned int globalFlowSupported() {
         return segment.get(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported);
     }
 
-    public void globalFlowSupported(@unsigned int value) {
+    public void globalFlowSupported(@Unsigned int value) {
         segment.set(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported, value);
     }
 
-    public @unsigned int minWidth() {
+    public @Unsigned int minWidth() {
         return segment.get(LAYOUT$minWidth, OFFSET$minWidth);
     }
 
-    public void minWidth(@unsigned int value) {
+    public void minWidth(@Unsigned int value) {
         segment.set(LAYOUT$minWidth, OFFSET$minWidth, value);
     }
 
-    public @unsigned int minHeight() {
+    public @Unsigned int minHeight() {
         return segment.get(LAYOUT$minHeight, OFFSET$minHeight);
     }
 
-    public void minHeight(@unsigned int value) {
+    public void minHeight(@Unsigned int value) {
         segment.set(LAYOUT$minHeight, OFFSET$minHeight, value);
     }
 
-    public @unsigned int maxWidth() {
+    public @Unsigned int maxWidth() {
         return segment.get(LAYOUT$maxWidth, OFFSET$maxWidth);
     }
 
-    public void maxWidth(@unsigned int value) {
+    public void maxWidth(@Unsigned int value) {
         segment.set(LAYOUT$maxWidth, OFFSET$maxWidth, value);
     }
 
-    public @unsigned int maxHeight() {
+    public @Unsigned int maxHeight() {
         return segment.get(LAYOUT$maxHeight, OFFSET$maxHeight);
     }
 
-    public void maxHeight(@unsigned int value) {
+    public void maxHeight(@Unsigned int value) {
         segment.set(LAYOUT$maxHeight, OFFSET$maxHeight, value);
     }
 
-    public @unsigned int maxNumRegionsOfInterest() {
+    public @Unsigned int maxNumRegionsOfInterest() {
         return segment.get(LAYOUT$maxNumRegionsOfInterest, OFFSET$maxNumRegionsOfInterest);
     }
 
-    public void maxNumRegionsOfInterest(@unsigned int value) {
+    public void maxNumRegionsOfInterest(@Unsigned int value) {
         segment.set(LAYOUT$maxNumRegionsOfInterest, OFFSET$maxNumRegionsOfInterest, value);
     }
 

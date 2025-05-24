@@ -85,7 +85,7 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -140,27 +140,27 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
         return ret;
     }
 
-    public @unsigned int count() {
+    public @Unsigned int count() {
         return segment.get(LAYOUT$count, OFFSET$count);
     }
 
-    public void count(@unsigned int value) {
+    public void count(@Unsigned int value) {
         segment.set(LAYOUT$count, OFFSET$count, value);
     }
 
-    public @unsigned int subdivisionLevel() {
+    public @Unsigned int subdivisionLevel() {
         return segment.get(LAYOUT$subdivisionLevel, OFFSET$subdivisionLevel);
     }
 
-    public void subdivisionLevel(@unsigned int value) {
+    public void subdivisionLevel(@Unsigned int value) {
         segment.set(LAYOUT$subdivisionLevel, OFFSET$subdivisionLevel, value);
     }
 
-    public @unsigned int format() {
+    public @Unsigned int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@unsigned int value) {
+    public void format(@Unsigned int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 

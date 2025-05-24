@@ -86,7 +86,7 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -141,11 +141,11 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public @unsigned int memoryTypeCount() {
+    public @Unsigned int memoryTypeCount() {
         return segment.get(LAYOUT$memoryTypeCount, OFFSET$memoryTypeCount);
     }
 
-    public void memoryTypeCount(@unsigned int value) {
+    public void memoryTypeCount(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeCount, OFFSET$memoryTypeCount, value);
     }
 
@@ -157,11 +157,11 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryTypes, SIZE$memoryTypes);
     }
 
-    public @unsigned int memoryHeapCount() {
+    public @Unsigned int memoryHeapCount() {
         return segment.get(LAYOUT$memoryHeapCount, OFFSET$memoryHeapCount);
     }
 
-    public void memoryHeapCount(@unsigned int value) {
+    public void memoryHeapCount(@Unsigned int value) {
         segment.set(LAYOUT$memoryHeapCount, OFFSET$memoryHeapCount, value);
     }
 

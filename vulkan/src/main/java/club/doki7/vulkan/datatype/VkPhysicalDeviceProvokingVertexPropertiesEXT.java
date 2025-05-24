@@ -94,7 +94,7 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int provokingVertexModePerPipeline() {
+    public @Unsigned int provokingVertexModePerPipeline() {
         return segment.get(LAYOUT$provokingVertexModePerPipeline, OFFSET$provokingVertexModePerPipeline);
     }
 
-    public void provokingVertexModePerPipeline(@unsigned int value) {
+    public void provokingVertexModePerPipeline(@Unsigned int value) {
         segment.set(LAYOUT$provokingVertexModePerPipeline, OFFSET$provokingVertexModePerPipeline, value);
     }
 
-    public @unsigned int transformFeedbackPreservesTriangleFanProvokingVertex() {
+    public @Unsigned int transformFeedbackPreservesTriangleFanProvokingVertex() {
         return segment.get(LAYOUT$transformFeedbackPreservesTriangleFanProvokingVertex, OFFSET$transformFeedbackPreservesTriangleFanProvokingVertex);
     }
 
-    public void transformFeedbackPreservesTriangleFanProvokingVertex(@unsigned int value) {
+    public void transformFeedbackPreservesTriangleFanProvokingVertex(@Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackPreservesTriangleFanProvokingVertex, OFFSET$transformFeedbackPreservesTriangleFanProvokingVertex, value);
     }
 

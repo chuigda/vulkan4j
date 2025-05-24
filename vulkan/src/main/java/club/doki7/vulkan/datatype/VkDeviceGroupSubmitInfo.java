@@ -98,7 +98,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -183,11 +183,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int waitSemaphoreCount() {
+    public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@unsigned int value) {
+    public void waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
@@ -195,7 +195,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pWaitSemaphoreDeviceIndices() {
+    public @Nullable @Unsigned IntPtr pWaitSemaphoreDeviceIndices() {
         MemorySegment s = pWaitSemaphoreDeviceIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -203,7 +203,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pWaitSemaphoreDeviceIndices(@Nullable @unsigned IntPtr value) {
+    public void pWaitSemaphoreDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreDeviceIndicesRaw(s);
     }
@@ -216,11 +216,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pWaitSemaphoreDeviceIndices, OFFSET$pWaitSemaphoreDeviceIndices, value);
     }
 
-    public @unsigned int commandBufferCount() {
+    public @Unsigned int commandBufferCount() {
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
-    public void commandBufferCount(@unsigned int value) {
+    public void commandBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
     }
 
@@ -228,7 +228,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pCommandBufferDeviceMasks() {
+    public @Nullable @Unsigned IntPtr pCommandBufferDeviceMasks() {
         MemorySegment s = pCommandBufferDeviceMasksRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -236,7 +236,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pCommandBufferDeviceMasks(@Nullable @unsigned IntPtr value) {
+    public void pCommandBufferDeviceMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBufferDeviceMasksRaw(s);
     }
@@ -249,11 +249,11 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pCommandBufferDeviceMasks, OFFSET$pCommandBufferDeviceMasks, value);
     }
 
-    public @unsigned int signalSemaphoreCount() {
+    public @Unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
-    public void signalSemaphoreCount(@unsigned int value) {
+    public void signalSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
     }
 
@@ -261,7 +261,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pSignalSemaphoreDeviceIndices() {
+    public @Nullable @Unsigned IntPtr pSignalSemaphoreDeviceIndices() {
         MemorySegment s = pSignalSemaphoreDeviceIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -269,7 +269,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pSignalSemaphoreDeviceIndices(@Nullable @unsigned IntPtr value) {
+    public void pSignalSemaphoreDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreDeviceIndicesRaw(s);
     }

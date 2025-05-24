@@ -94,7 +94,7 @@ public record VkVideoEncodeH264SessionCreateInfoKHR(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,11 +179,11 @@ public record VkVideoEncodeH264SessionCreateInfoKHR(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int useMaxLevelIdc() {
+    public @Unsigned int useMaxLevelIdc() {
         return segment.get(LAYOUT$useMaxLevelIdc, OFFSET$useMaxLevelIdc);
     }
 
-    public void useMaxLevelIdc(@unsigned int value) {
+    public void useMaxLevelIdc(@Unsigned int value) {
         segment.set(LAYOUT$useMaxLevelIdc, OFFSET$useMaxLevelIdc, value);
     }
 

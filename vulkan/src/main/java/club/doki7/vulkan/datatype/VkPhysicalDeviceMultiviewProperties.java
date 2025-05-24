@@ -94,7 +94,7 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxMultiviewViewCount() {
+    public @Unsigned int maxMultiviewViewCount() {
         return segment.get(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount);
     }
 
-    public void maxMultiviewViewCount(@unsigned int value) {
+    public void maxMultiviewViewCount(@Unsigned int value) {
         segment.set(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount, value);
     }
 
-    public @unsigned int maxMultiviewInstanceIndex() {
+    public @Unsigned int maxMultiviewInstanceIndex() {
         return segment.get(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex);
     }
 
-    public void maxMultiviewInstanceIndex(@unsigned int value) {
+    public void maxMultiviewInstanceIndex(@Unsigned int value) {
         segment.set(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex, value);
     }
 

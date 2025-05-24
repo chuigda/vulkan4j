@@ -98,7 +98,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -183,11 +183,11 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderCount() {
+    public @Unsigned int shaderCount() {
         return segment.get(LAYOUT$shaderCount, OFFSET$shaderCount);
     }
 
-    public void shaderCount(@unsigned int value) {
+    public void shaderCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderCount, OFFSET$shaderCount, value);
     }
 
@@ -247,19 +247,19 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pSetLayoutInfos, OFFSET$pSetLayoutInfos, value);
     }
 
-    public @unsigned int maxShaderCount() {
+    public @Unsigned int maxShaderCount() {
         return segment.get(LAYOUT$maxShaderCount, OFFSET$maxShaderCount);
     }
 
-    public void maxShaderCount(@unsigned int value) {
+    public void maxShaderCount(@Unsigned int value) {
         segment.set(LAYOUT$maxShaderCount, OFFSET$maxShaderCount, value);
     }
 
-    public @unsigned int pushConstantRangeCount() {
+    public @Unsigned int pushConstantRangeCount() {
         return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
     }
 
-    public void pushConstantRangeCount(@unsigned int value) {
+    public void pushConstantRangeCount(@Unsigned int value) {
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
     }
 

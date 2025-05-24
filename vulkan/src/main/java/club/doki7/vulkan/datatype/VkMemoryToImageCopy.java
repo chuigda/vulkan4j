@@ -98,7 +98,7 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -195,19 +195,19 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         pHostPointer(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int memoryRowLength() {
+    public @Unsigned int memoryRowLength() {
         return segment.get(LAYOUT$memoryRowLength, OFFSET$memoryRowLength);
     }
 
-    public void memoryRowLength(@unsigned int value) {
+    public void memoryRowLength(@Unsigned int value) {
         segment.set(LAYOUT$memoryRowLength, OFFSET$memoryRowLength, value);
     }
 
-    public @unsigned int memoryImageHeight() {
+    public @Unsigned int memoryImageHeight() {
         return segment.get(LAYOUT$memoryImageHeight, OFFSET$memoryImageHeight);
     }
 
-    public void memoryImageHeight(@unsigned int value) {
+    public void memoryImageHeight(@Unsigned int value) {
         segment.set(LAYOUT$memoryImageHeight, OFFSET$memoryImageHeight, value);
     }
 

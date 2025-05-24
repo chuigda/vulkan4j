@@ -85,7 +85,7 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -148,19 +148,19 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
     }
 
-    public @unsigned int mipLevel() {
+    public @Unsigned int mipLevel() {
         return segment.get(LAYOUT$mipLevel, OFFSET$mipLevel);
     }
 
-    public void mipLevel(@unsigned int value) {
+    public void mipLevel(@Unsigned int value) {
         segment.set(LAYOUT$mipLevel, OFFSET$mipLevel, value);
     }
 
-    public @unsigned int arrayLayer() {
+    public @Unsigned int arrayLayer() {
         return segment.get(LAYOUT$arrayLayer, OFFSET$arrayLayer);
     }
 
-    public void arrayLayer(@unsigned int value) {
+    public void arrayLayer(@Unsigned int value) {
         segment.set(LAYOUT$arrayLayer, OFFSET$arrayLayer, value);
     }
 

@@ -94,7 +94,7 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderEnqueue() {
+    public @Unsigned int shaderEnqueue() {
         return segment.get(LAYOUT$shaderEnqueue, OFFSET$shaderEnqueue);
     }
 
-    public void shaderEnqueue(@unsigned int value) {
+    public void shaderEnqueue(@Unsigned int value) {
         segment.set(LAYOUT$shaderEnqueue, OFFSET$shaderEnqueue, value);
     }
 
-    public @unsigned int shaderMeshEnqueue() {
+    public @Unsigned int shaderMeshEnqueue() {
         return segment.get(LAYOUT$shaderMeshEnqueue, OFFSET$shaderMeshEnqueue);
     }
 
-    public void shaderMeshEnqueue(@unsigned int value) {
+    public void shaderMeshEnqueue(@Unsigned int value) {
         segment.set(LAYOUT$shaderMeshEnqueue, OFFSET$shaderMeshEnqueue, value);
     }
 

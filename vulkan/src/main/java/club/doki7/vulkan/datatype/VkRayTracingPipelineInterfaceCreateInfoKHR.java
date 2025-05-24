@@ -94,7 +94,7 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxPipelineRayPayloadSize() {
+    public @Unsigned int maxPipelineRayPayloadSize() {
         return segment.get(LAYOUT$maxPipelineRayPayloadSize, OFFSET$maxPipelineRayPayloadSize);
     }
 
-    public void maxPipelineRayPayloadSize(@unsigned int value) {
+    public void maxPipelineRayPayloadSize(@Unsigned int value) {
         segment.set(LAYOUT$maxPipelineRayPayloadSize, OFFSET$maxPipelineRayPayloadSize, value);
     }
 
-    public @unsigned int maxPipelineRayHitAttributeSize() {
+    public @Unsigned int maxPipelineRayHitAttributeSize() {
         return segment.get(LAYOUT$maxPipelineRayHitAttributeSize, OFFSET$maxPipelineRayHitAttributeSize);
     }
 
-    public void maxPipelineRayHitAttributeSize(@unsigned int value) {
+    public void maxPipelineRayHitAttributeSize(@Unsigned int value) {
         segment.set(LAYOUT$maxPipelineRayHitAttributeSize, OFFSET$maxPipelineRayHitAttributeSize, value);
     }
 

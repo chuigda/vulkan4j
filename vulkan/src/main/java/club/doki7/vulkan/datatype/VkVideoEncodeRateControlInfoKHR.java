@@ -98,7 +98,7 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -199,11 +199,11 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$rateControlMode, OFFSET$rateControlMode, value);
     }
 
-    public @unsigned int layerCount() {
+    public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@unsigned int value) {
+    public void layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
     }
 
@@ -238,19 +238,19 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pLayers, OFFSET$pLayers, value);
     }
 
-    public @unsigned int virtualBufferSizeInMs() {
+    public @Unsigned int virtualBufferSizeInMs() {
         return segment.get(LAYOUT$virtualBufferSizeInMs, OFFSET$virtualBufferSizeInMs);
     }
 
-    public void virtualBufferSizeInMs(@unsigned int value) {
+    public void virtualBufferSizeInMs(@Unsigned int value) {
         segment.set(LAYOUT$virtualBufferSizeInMs, OFFSET$virtualBufferSizeInMs, value);
     }
 
-    public @unsigned int initialVirtualBufferSizeInMs() {
+    public @Unsigned int initialVirtualBufferSizeInMs() {
         return segment.get(LAYOUT$initialVirtualBufferSizeInMs, OFFSET$initialVirtualBufferSizeInMs);
     }
 
-    public void initialVirtualBufferSizeInMs(@unsigned int value) {
+    public void initialVirtualBufferSizeInMs(@Unsigned int value) {
         segment.set(LAYOUT$initialVirtualBufferSizeInMs, OFFSET$initialVirtualBufferSizeInMs, value);
     }
 

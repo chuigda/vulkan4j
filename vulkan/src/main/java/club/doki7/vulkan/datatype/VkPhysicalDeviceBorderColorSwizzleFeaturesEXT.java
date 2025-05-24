@@ -94,7 +94,7 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int borderColorSwizzle() {
+    public @Unsigned int borderColorSwizzle() {
         return segment.get(LAYOUT$borderColorSwizzle, OFFSET$borderColorSwizzle);
     }
 
-    public void borderColorSwizzle(@unsigned int value) {
+    public void borderColorSwizzle(@Unsigned int value) {
         segment.set(LAYOUT$borderColorSwizzle, OFFSET$borderColorSwizzle, value);
     }
 
-    public @unsigned int borderColorSwizzleFromImage() {
+    public @Unsigned int borderColorSwizzleFromImage() {
         return segment.get(LAYOUT$borderColorSwizzleFromImage, OFFSET$borderColorSwizzleFromImage);
     }
 
-    public void borderColorSwizzleFromImage(@unsigned int value) {
+    public void borderColorSwizzleFromImage(@Unsigned int value) {
         segment.set(LAYOUT$borderColorSwizzleFromImage, OFFSET$borderColorSwizzleFromImage, value);
     }
 

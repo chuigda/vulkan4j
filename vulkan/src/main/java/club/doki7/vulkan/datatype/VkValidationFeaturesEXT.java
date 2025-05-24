@@ -96,7 +96,7 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,11 +181,11 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int enabledValidationFeatureCount() {
+    public @Unsigned int enabledValidationFeatureCount() {
         return segment.get(LAYOUT$enabledValidationFeatureCount, OFFSET$enabledValidationFeatureCount);
     }
 
-    public void enabledValidationFeatureCount(@unsigned int value) {
+    public void enabledValidationFeatureCount(@Unsigned int value) {
         segment.set(LAYOUT$enabledValidationFeatureCount, OFFSET$enabledValidationFeatureCount, value);
     }
 
@@ -215,11 +215,11 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pEnabledValidationFeatures, OFFSET$pEnabledValidationFeatures, value);
     }
 
-    public @unsigned int disabledValidationFeatureCount() {
+    public @Unsigned int disabledValidationFeatureCount() {
         return segment.get(LAYOUT$disabledValidationFeatureCount, OFFSET$disabledValidationFeatureCount);
     }
 
-    public void disabledValidationFeatureCount(@unsigned int value) {
+    public void disabledValidationFeatureCount(@Unsigned int value) {
         segment.set(LAYOUT$disabledValidationFeatureCount, OFFSET$disabledValidationFeatureCount, value);
     }
 

@@ -94,7 +94,7 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int customBorderColors() {
+    public @Unsigned int customBorderColors() {
         return segment.get(LAYOUT$customBorderColors, OFFSET$customBorderColors);
     }
 
-    public void customBorderColors(@unsigned int value) {
+    public void customBorderColors(@Unsigned int value) {
         segment.set(LAYOUT$customBorderColors, OFFSET$customBorderColors, value);
     }
 
-    public @unsigned int customBorderColorWithoutFormat() {
+    public @Unsigned int customBorderColorWithoutFormat() {
         return segment.get(LAYOUT$customBorderColorWithoutFormat, OFFSET$customBorderColorWithoutFormat);
     }
 
-    public void customBorderColorWithoutFormat(@unsigned int value) {
+    public void customBorderColorWithoutFormat(@Unsigned int value) {
         segment.set(LAYOUT$customBorderColorWithoutFormat, OFFSET$customBorderColorWithoutFormat, value);
     }
 

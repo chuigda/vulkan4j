@@ -102,7 +102,7 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -187,27 +187,27 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int MGranularity() {
+    public @Unsigned int MGranularity() {
         return segment.get(LAYOUT$MGranularity, OFFSET$MGranularity);
     }
 
-    public void MGranularity(@unsigned int value) {
+    public void MGranularity(@Unsigned int value) {
         segment.set(LAYOUT$MGranularity, OFFSET$MGranularity, value);
     }
 
-    public @unsigned int NGranularity() {
+    public @Unsigned int NGranularity() {
         return segment.get(LAYOUT$NGranularity, OFFSET$NGranularity);
     }
 
-    public void NGranularity(@unsigned int value) {
+    public void NGranularity(@Unsigned int value) {
         segment.set(LAYOUT$NGranularity, OFFSET$NGranularity, value);
     }
 
-    public @unsigned int KGranularity() {
+    public @Unsigned int KGranularity() {
         return segment.get(LAYOUT$KGranularity, OFFSET$KGranularity);
     }
 
-    public void KGranularity(@unsigned int value) {
+    public void KGranularity(@Unsigned int value) {
         segment.set(LAYOUT$KGranularity, OFFSET$KGranularity, value);
     }
 
@@ -243,11 +243,11 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         segment.set(LAYOUT$ResultType, OFFSET$ResultType, value);
     }
 
-    public @unsigned int saturatingAccumulation() {
+    public @Unsigned int saturatingAccumulation() {
         return segment.get(LAYOUT$saturatingAccumulation, OFFSET$saturatingAccumulation);
     }
 
-    public void saturatingAccumulation(@unsigned int value) {
+    public void saturatingAccumulation(@Unsigned int value) {
         segment.set(LAYOUT$saturatingAccumulation, OFFSET$saturatingAccumulation, value);
     }
 
@@ -259,11 +259,11 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         segment.set(LAYOUT$scope, OFFSET$scope, value);
     }
 
-    public @unsigned int workgroupInvocations() {
+    public @Unsigned int workgroupInvocations() {
         return segment.get(LAYOUT$workgroupInvocations, OFFSET$workgroupInvocations);
     }
 
-    public void workgroupInvocations(@unsigned int value) {
+    public void workgroupInvocations(@Unsigned int value) {
         segment.set(LAYOUT$workgroupInvocations, OFFSET$workgroupInvocations, value);
     }
 

@@ -96,7 +96,7 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,35 +181,35 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int storageBuffer16BitAccess() {
+    public @Unsigned int storageBuffer16BitAccess() {
         return segment.get(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess);
     }
 
-    public void storageBuffer16BitAccess(@unsigned int value) {
+    public void storageBuffer16BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess, value);
     }
 
-    public @unsigned int uniformAndStorageBuffer16BitAccess() {
+    public @Unsigned int uniformAndStorageBuffer16BitAccess() {
         return segment.get(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess);
     }
 
-    public void uniformAndStorageBuffer16BitAccess(@unsigned int value) {
+    public void uniformAndStorageBuffer16BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess, value);
     }
 
-    public @unsigned int storagePushConstant16() {
+    public @Unsigned int storagePushConstant16() {
         return segment.get(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16);
     }
 
-    public void storagePushConstant16(@unsigned int value) {
+    public void storagePushConstant16(@Unsigned int value) {
         segment.set(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16, value);
     }
 
-    public @unsigned int storageInputOutput16() {
+    public @Unsigned int storageInputOutput16() {
         return segment.get(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16);
     }
 
-    public void storageInputOutput16(@unsigned int value) {
+    public void storageInputOutput16(@Unsigned int value) {
         segment.set(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16, value);
     }
 

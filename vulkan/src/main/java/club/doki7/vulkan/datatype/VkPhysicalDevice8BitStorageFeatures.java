@@ -95,7 +95,7 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int storageBuffer8BitAccess() {
+    public @Unsigned int storageBuffer8BitAccess() {
         return segment.get(LAYOUT$storageBuffer8BitAccess, OFFSET$storageBuffer8BitAccess);
     }
 
-    public void storageBuffer8BitAccess(@unsigned int value) {
+    public void storageBuffer8BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$storageBuffer8BitAccess, OFFSET$storageBuffer8BitAccess, value);
     }
 
-    public @unsigned int uniformAndStorageBuffer8BitAccess() {
+    public @Unsigned int uniformAndStorageBuffer8BitAccess() {
         return segment.get(LAYOUT$uniformAndStorageBuffer8BitAccess, OFFSET$uniformAndStorageBuffer8BitAccess);
     }
 
-    public void uniformAndStorageBuffer8BitAccess(@unsigned int value) {
+    public void uniformAndStorageBuffer8BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$uniformAndStorageBuffer8BitAccess, OFFSET$uniformAndStorageBuffer8BitAccess, value);
     }
 
-    public @unsigned int storagePushConstant8() {
+    public @Unsigned int storagePushConstant8() {
         return segment.get(LAYOUT$storagePushConstant8, OFFSET$storagePushConstant8);
     }
 
-    public void storagePushConstant8(@unsigned int value) {
+    public void storagePushConstant8(@Unsigned int value) {
         segment.set(LAYOUT$storagePushConstant8, OFFSET$storagePushConstant8, value);
     }
 

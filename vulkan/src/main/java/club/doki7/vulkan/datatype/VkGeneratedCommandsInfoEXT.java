@@ -102,7 +102,7 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -219,59 +219,59 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long indirectAddress() {
+    public @Unsigned long indirectAddress() {
         return segment.get(LAYOUT$indirectAddress, OFFSET$indirectAddress);
     }
 
-    public void indirectAddress(@unsigned long value) {
+    public void indirectAddress(@Unsigned long value) {
         segment.set(LAYOUT$indirectAddress, OFFSET$indirectAddress, value);
     }
 
-    public @unsigned long indirectAddressSize() {
+    public @Unsigned long indirectAddressSize() {
         return segment.get(LAYOUT$indirectAddressSize, OFFSET$indirectAddressSize);
     }
 
-    public void indirectAddressSize(@unsigned long value) {
+    public void indirectAddressSize(@Unsigned long value) {
         segment.set(LAYOUT$indirectAddressSize, OFFSET$indirectAddressSize, value);
     }
 
-    public @unsigned long preprocessAddress() {
+    public @Unsigned long preprocessAddress() {
         return segment.get(LAYOUT$preprocessAddress, OFFSET$preprocessAddress);
     }
 
-    public void preprocessAddress(@unsigned long value) {
+    public void preprocessAddress(@Unsigned long value) {
         segment.set(LAYOUT$preprocessAddress, OFFSET$preprocessAddress, value);
     }
 
-    public @unsigned long preprocessSize() {
+    public @Unsigned long preprocessSize() {
         return segment.get(LAYOUT$preprocessSize, OFFSET$preprocessSize);
     }
 
-    public void preprocessSize(@unsigned long value) {
+    public void preprocessSize(@Unsigned long value) {
         segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
     }
 
-    public @unsigned int maxSequenceCount() {
+    public @Unsigned int maxSequenceCount() {
         return segment.get(LAYOUT$maxSequenceCount, OFFSET$maxSequenceCount);
     }
 
-    public void maxSequenceCount(@unsigned int value) {
+    public void maxSequenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSequenceCount, OFFSET$maxSequenceCount, value);
     }
 
-    public @unsigned long sequenceCountAddress() {
+    public @Unsigned long sequenceCountAddress() {
         return segment.get(LAYOUT$sequenceCountAddress, OFFSET$sequenceCountAddress);
     }
 
-    public void sequenceCountAddress(@unsigned long value) {
+    public void sequenceCountAddress(@Unsigned long value) {
         segment.set(LAYOUT$sequenceCountAddress, OFFSET$sequenceCountAddress, value);
     }
 
-    public @unsigned int maxDrawCount() {
+    public @Unsigned int maxDrawCount() {
         return segment.get(LAYOUT$maxDrawCount, OFFSET$maxDrawCount);
     }
 
-    public void maxDrawCount(@unsigned int value) {
+    public void maxDrawCount(@Unsigned int value) {
         segment.set(LAYOUT$maxDrawCount, OFFSET$maxDrawCount, value);
     }
 

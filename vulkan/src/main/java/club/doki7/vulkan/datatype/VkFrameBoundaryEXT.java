@@ -101,7 +101,7 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -194,19 +194,19 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned long frameID() {
+    public @Unsigned long frameID() {
         return segment.get(LAYOUT$frameID, OFFSET$frameID);
     }
 
-    public void frameID(@unsigned long value) {
+    public void frameID(@Unsigned long value) {
         segment.set(LAYOUT$frameID, OFFSET$frameID, value);
     }
 
-    public @unsigned int imageCount() {
+    public @Unsigned int imageCount() {
         return segment.get(LAYOUT$imageCount, OFFSET$imageCount);
     }
 
-    public void imageCount(@unsigned int value) {
+    public void imageCount(@Unsigned int value) {
         segment.set(LAYOUT$imageCount, OFFSET$imageCount, value);
     }
 
@@ -235,11 +235,11 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         segment.set(LAYOUT$pImages, OFFSET$pImages, value);
     }
 
-    public @unsigned int bufferCount() {
+    public @Unsigned int bufferCount() {
         return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
     }
 
-    public void bufferCount(@unsigned int value) {
+    public void bufferCount(@Unsigned int value) {
         segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
     }
 
@@ -268,19 +268,19 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         segment.set(LAYOUT$pBuffers, OFFSET$pBuffers, value);
     }
 
-    public @unsigned long tagName() {
+    public @Unsigned long tagName() {
         return segment.get(LAYOUT$tagName, OFFSET$tagName);
     }
 
-    public void tagName(@unsigned long value) {
+    public void tagName(@Unsigned long value) {
         segment.set(LAYOUT$tagName, OFFSET$tagName, value);
     }
 
-    public @unsigned long tagSize() {
+    public @Unsigned long tagSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
     }
 
-    public void tagSize(@unsigned long value) {
+    public void tagSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
     }
 

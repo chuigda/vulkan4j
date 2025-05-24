@@ -95,7 +95,7 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -211,11 +211,11 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
-    public @unsigned int sliceSegmentCount() {
+    public @Unsigned int sliceSegmentCount() {
         return segment.get(LAYOUT$sliceSegmentCount, OFFSET$sliceSegmentCount);
     }
 
-    public void sliceSegmentCount(@unsigned int value) {
+    public void sliceSegmentCount(@Unsigned int value) {
         segment.set(LAYOUT$sliceSegmentCount, OFFSET$sliceSegmentCount, value);
     }
 
@@ -223,7 +223,7 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pSliceSegmentOffsets() {
+    public @Nullable @Unsigned IntPtr pSliceSegmentOffsets() {
         MemorySegment s = pSliceSegmentOffsetsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -231,7 +231,7 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pSliceSegmentOffsets(@Nullable @unsigned IntPtr value) {
+    public void pSliceSegmentOffsets(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSliceSegmentOffsetsRaw(s);
     }

@@ -96,7 +96,7 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -151,115 +151,115 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public @unsigned long raygenShaderRecordAddress() {
+    public @Unsigned long raygenShaderRecordAddress() {
         return segment.get(LAYOUT$raygenShaderRecordAddress, OFFSET$raygenShaderRecordAddress);
     }
 
-    public void raygenShaderRecordAddress(@unsigned long value) {
+    public void raygenShaderRecordAddress(@Unsigned long value) {
         segment.set(LAYOUT$raygenShaderRecordAddress, OFFSET$raygenShaderRecordAddress, value);
     }
 
-    public @unsigned long raygenShaderRecordSize() {
+    public @Unsigned long raygenShaderRecordSize() {
         return segment.get(LAYOUT$raygenShaderRecordSize, OFFSET$raygenShaderRecordSize);
     }
 
-    public void raygenShaderRecordSize(@unsigned long value) {
+    public void raygenShaderRecordSize(@Unsigned long value) {
         segment.set(LAYOUT$raygenShaderRecordSize, OFFSET$raygenShaderRecordSize, value);
     }
 
-    public @unsigned long missShaderBindingTableAddress() {
+    public @Unsigned long missShaderBindingTableAddress() {
         return segment.get(LAYOUT$missShaderBindingTableAddress, OFFSET$missShaderBindingTableAddress);
     }
 
-    public void missShaderBindingTableAddress(@unsigned long value) {
+    public void missShaderBindingTableAddress(@Unsigned long value) {
         segment.set(LAYOUT$missShaderBindingTableAddress, OFFSET$missShaderBindingTableAddress, value);
     }
 
-    public @unsigned long missShaderBindingTableSize() {
+    public @Unsigned long missShaderBindingTableSize() {
         return segment.get(LAYOUT$missShaderBindingTableSize, OFFSET$missShaderBindingTableSize);
     }
 
-    public void missShaderBindingTableSize(@unsigned long value) {
+    public void missShaderBindingTableSize(@Unsigned long value) {
         segment.set(LAYOUT$missShaderBindingTableSize, OFFSET$missShaderBindingTableSize, value);
     }
 
-    public @unsigned long missShaderBindingTableStride() {
+    public @Unsigned long missShaderBindingTableStride() {
         return segment.get(LAYOUT$missShaderBindingTableStride, OFFSET$missShaderBindingTableStride);
     }
 
-    public void missShaderBindingTableStride(@unsigned long value) {
+    public void missShaderBindingTableStride(@Unsigned long value) {
         segment.set(LAYOUT$missShaderBindingTableStride, OFFSET$missShaderBindingTableStride, value);
     }
 
-    public @unsigned long hitShaderBindingTableAddress() {
+    public @Unsigned long hitShaderBindingTableAddress() {
         return segment.get(LAYOUT$hitShaderBindingTableAddress, OFFSET$hitShaderBindingTableAddress);
     }
 
-    public void hitShaderBindingTableAddress(@unsigned long value) {
+    public void hitShaderBindingTableAddress(@Unsigned long value) {
         segment.set(LAYOUT$hitShaderBindingTableAddress, OFFSET$hitShaderBindingTableAddress, value);
     }
 
-    public @unsigned long hitShaderBindingTableSize() {
+    public @Unsigned long hitShaderBindingTableSize() {
         return segment.get(LAYOUT$hitShaderBindingTableSize, OFFSET$hitShaderBindingTableSize);
     }
 
-    public void hitShaderBindingTableSize(@unsigned long value) {
+    public void hitShaderBindingTableSize(@Unsigned long value) {
         segment.set(LAYOUT$hitShaderBindingTableSize, OFFSET$hitShaderBindingTableSize, value);
     }
 
-    public @unsigned long hitShaderBindingTableStride() {
+    public @Unsigned long hitShaderBindingTableStride() {
         return segment.get(LAYOUT$hitShaderBindingTableStride, OFFSET$hitShaderBindingTableStride);
     }
 
-    public void hitShaderBindingTableStride(@unsigned long value) {
+    public void hitShaderBindingTableStride(@Unsigned long value) {
         segment.set(LAYOUT$hitShaderBindingTableStride, OFFSET$hitShaderBindingTableStride, value);
     }
 
-    public @unsigned long callableShaderBindingTableAddress() {
+    public @Unsigned long callableShaderBindingTableAddress() {
         return segment.get(LAYOUT$callableShaderBindingTableAddress, OFFSET$callableShaderBindingTableAddress);
     }
 
-    public void callableShaderBindingTableAddress(@unsigned long value) {
+    public void callableShaderBindingTableAddress(@Unsigned long value) {
         segment.set(LAYOUT$callableShaderBindingTableAddress, OFFSET$callableShaderBindingTableAddress, value);
     }
 
-    public @unsigned long callableShaderBindingTableSize() {
+    public @Unsigned long callableShaderBindingTableSize() {
         return segment.get(LAYOUT$callableShaderBindingTableSize, OFFSET$callableShaderBindingTableSize);
     }
 
-    public void callableShaderBindingTableSize(@unsigned long value) {
+    public void callableShaderBindingTableSize(@Unsigned long value) {
         segment.set(LAYOUT$callableShaderBindingTableSize, OFFSET$callableShaderBindingTableSize, value);
     }
 
-    public @unsigned long callableShaderBindingTableStride() {
+    public @Unsigned long callableShaderBindingTableStride() {
         return segment.get(LAYOUT$callableShaderBindingTableStride, OFFSET$callableShaderBindingTableStride);
     }
 
-    public void callableShaderBindingTableStride(@unsigned long value) {
+    public void callableShaderBindingTableStride(@Unsigned long value) {
         segment.set(LAYOUT$callableShaderBindingTableStride, OFFSET$callableShaderBindingTableStride, value);
     }
 
-    public @unsigned int width() {
+    public @Unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@unsigned int value) {
+    public void width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
     }
 
-    public @unsigned int height() {
+    public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@unsigned int value) {
+    public void height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
     }
 
-    public @unsigned int depth() {
+    public @Unsigned int depth() {
         return segment.get(LAYOUT$depth, OFFSET$depth);
     }
 
-    public void depth(@unsigned int value) {
+    public void depth(@Unsigned int value) {
         segment.set(LAYOUT$depth, OFFSET$depth, value);
     }
 

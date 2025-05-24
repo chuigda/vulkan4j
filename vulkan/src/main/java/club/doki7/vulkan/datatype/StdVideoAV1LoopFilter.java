@@ -87,7 +87,7 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -150,27 +150,27 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte loop_filter_level() {
+    public @Unsigned byte loop_filter_level() {
         return segment.get(LAYOUT$loop_filter_level, OFFSET$loop_filter_level);
     }
 
-    public void loop_filter_level(@unsigned byte value) {
+    public void loop_filter_level(@Unsigned byte value) {
         segment.set(LAYOUT$loop_filter_level, OFFSET$loop_filter_level, value);
     }
 
-    public @unsigned byte loop_filter_sharpness() {
+    public @Unsigned byte loop_filter_sharpness() {
         return segment.get(LAYOUT$loop_filter_sharpness, OFFSET$loop_filter_sharpness);
     }
 
-    public void loop_filter_sharpness(@unsigned byte value) {
+    public void loop_filter_sharpness(@Unsigned byte value) {
         segment.set(LAYOUT$loop_filter_sharpness, OFFSET$loop_filter_sharpness, value);
     }
 
-    public @unsigned byte update_ref_delta() {
+    public @Unsigned byte update_ref_delta() {
         return segment.get(LAYOUT$update_ref_delta, OFFSET$update_ref_delta);
     }
 
-    public void update_ref_delta(@unsigned byte value) {
+    public void update_ref_delta(@Unsigned byte value) {
         segment.set(LAYOUT$update_ref_delta, OFFSET$update_ref_delta, value);
     }
 
@@ -182,11 +182,11 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$loop_filter_ref_deltas, OFFSET$loop_filter_ref_deltas, value);
     }
 
-    public @unsigned byte update_mode_delta() {
+    public @Unsigned byte update_mode_delta() {
         return segment.get(LAYOUT$update_mode_delta, OFFSET$update_mode_delta);
     }
 
-    public void update_mode_delta(@unsigned byte value) {
+    public void update_mode_delta(@Unsigned byte value) {
         segment.set(LAYOUT$update_mode_delta, OFFSET$update_mode_delta, value);
     }
 

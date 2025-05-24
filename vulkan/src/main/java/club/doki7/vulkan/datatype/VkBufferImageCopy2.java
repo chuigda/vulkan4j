@@ -98,7 +98,7 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IVkB
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -183,27 +183,27 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IVkB
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long bufferOffset() {
+    public @Unsigned long bufferOffset() {
         return segment.get(LAYOUT$bufferOffset, OFFSET$bufferOffset);
     }
 
-    public void bufferOffset(@unsigned long value) {
+    public void bufferOffset(@Unsigned long value) {
         segment.set(LAYOUT$bufferOffset, OFFSET$bufferOffset, value);
     }
 
-    public @unsigned int bufferRowLength() {
+    public @Unsigned int bufferRowLength() {
         return segment.get(LAYOUT$bufferRowLength, OFFSET$bufferRowLength);
     }
 
-    public void bufferRowLength(@unsigned int value) {
+    public void bufferRowLength(@Unsigned int value) {
         segment.set(LAYOUT$bufferRowLength, OFFSET$bufferRowLength, value);
     }
 
-    public @unsigned int bufferImageHeight() {
+    public @Unsigned int bufferImageHeight() {
         return segment.get(LAYOUT$bufferImageHeight, OFFSET$bufferImageHeight);
     }
 
-    public void bufferImageHeight(@unsigned int value) {
+    public void bufferImageHeight(@Unsigned int value) {
         segment.set(LAYOUT$bufferImageHeight, OFFSET$bufferImageHeight, value);
     }
 

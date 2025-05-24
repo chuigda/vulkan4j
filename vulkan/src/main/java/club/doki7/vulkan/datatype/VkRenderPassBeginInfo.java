@@ -97,7 +97,7 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -214,11 +214,11 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
     }
 
-    public @unsigned int clearValueCount() {
+    public @Unsigned int clearValueCount() {
         return segment.get(LAYOUT$clearValueCount, OFFSET$clearValueCount);
     }
 
-    public void clearValueCount(@unsigned int value) {
+    public void clearValueCount(@Unsigned int value) {
         segment.set(LAYOUT$clearValueCount, OFFSET$clearValueCount, value);
     }
 

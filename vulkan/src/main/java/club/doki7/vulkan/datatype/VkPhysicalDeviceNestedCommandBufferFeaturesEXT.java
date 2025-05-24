@@ -95,7 +95,7 @@ public record VkPhysicalDeviceNestedCommandBufferFeaturesEXT(@NotNull MemorySegm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceNestedCommandBufferFeaturesEXT(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int nestedCommandBuffer() {
+    public @Unsigned int nestedCommandBuffer() {
         return segment.get(LAYOUT$nestedCommandBuffer, OFFSET$nestedCommandBuffer);
     }
 
-    public void nestedCommandBuffer(@unsigned int value) {
+    public void nestedCommandBuffer(@Unsigned int value) {
         segment.set(LAYOUT$nestedCommandBuffer, OFFSET$nestedCommandBuffer, value);
     }
 
-    public @unsigned int nestedCommandBufferRendering() {
+    public @Unsigned int nestedCommandBufferRendering() {
         return segment.get(LAYOUT$nestedCommandBufferRendering, OFFSET$nestedCommandBufferRendering);
     }
 
-    public void nestedCommandBufferRendering(@unsigned int value) {
+    public void nestedCommandBufferRendering(@Unsigned int value) {
         segment.set(LAYOUT$nestedCommandBufferRendering, OFFSET$nestedCommandBufferRendering, value);
     }
 
-    public @unsigned int nestedCommandBufferSimultaneousUse() {
+    public @Unsigned int nestedCommandBufferSimultaneousUse() {
         return segment.get(LAYOUT$nestedCommandBufferSimultaneousUse, OFFSET$nestedCommandBufferSimultaneousUse);
     }
 
-    public void nestedCommandBufferSimultaneousUse(@unsigned int value) {
+    public void nestedCommandBufferSimultaneousUse(@Unsigned int value) {
         segment.set(LAYOUT$nestedCommandBufferSimultaneousUse, OFFSET$nestedCommandBufferSimultaneousUse, value);
     }
 

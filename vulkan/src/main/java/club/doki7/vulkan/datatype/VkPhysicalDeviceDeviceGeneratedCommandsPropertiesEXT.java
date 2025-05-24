@@ -104,7 +104,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -189,51 +189,51 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxIndirectPipelineCount() {
+    public @Unsigned int maxIndirectPipelineCount() {
         return segment.get(LAYOUT$maxIndirectPipelineCount, OFFSET$maxIndirectPipelineCount);
     }
 
-    public void maxIndirectPipelineCount(@unsigned int value) {
+    public void maxIndirectPipelineCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectPipelineCount, OFFSET$maxIndirectPipelineCount, value);
     }
 
-    public @unsigned int maxIndirectShaderObjectCount() {
+    public @Unsigned int maxIndirectShaderObjectCount() {
         return segment.get(LAYOUT$maxIndirectShaderObjectCount, OFFSET$maxIndirectShaderObjectCount);
     }
 
-    public void maxIndirectShaderObjectCount(@unsigned int value) {
+    public void maxIndirectShaderObjectCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectShaderObjectCount, OFFSET$maxIndirectShaderObjectCount, value);
     }
 
-    public @unsigned int maxIndirectSequenceCount() {
+    public @Unsigned int maxIndirectSequenceCount() {
         return segment.get(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount);
     }
 
-    public void maxIndirectSequenceCount(@unsigned int value) {
+    public void maxIndirectSequenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount, value);
     }
 
-    public @unsigned int maxIndirectCommandsTokenCount() {
+    public @Unsigned int maxIndirectCommandsTokenCount() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount);
     }
 
-    public void maxIndirectCommandsTokenCount(@unsigned int value) {
+    public void maxIndirectCommandsTokenCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount, value);
     }
 
-    public @unsigned int maxIndirectCommandsTokenOffset() {
+    public @Unsigned int maxIndirectCommandsTokenOffset() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset);
     }
 
-    public void maxIndirectCommandsTokenOffset(@unsigned int value) {
+    public void maxIndirectCommandsTokenOffset(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset, value);
     }
 
-    public @unsigned int maxIndirectCommandsIndirectStride() {
+    public @Unsigned int maxIndirectCommandsIndirectStride() {
         return segment.get(LAYOUT$maxIndirectCommandsIndirectStride, OFFSET$maxIndirectCommandsIndirectStride);
     }
 
-    public void maxIndirectCommandsIndirectStride(@unsigned int value) {
+    public void maxIndirectCommandsIndirectStride(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsIndirectStride, OFFSET$maxIndirectCommandsIndirectStride, value);
     }
 
@@ -269,19 +269,19 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding, value);
     }
 
-    public @unsigned int deviceGeneratedCommandsTransformFeedback() {
+    public @Unsigned int deviceGeneratedCommandsTransformFeedback() {
         return segment.get(LAYOUT$deviceGeneratedCommandsTransformFeedback, OFFSET$deviceGeneratedCommandsTransformFeedback);
     }
 
-    public void deviceGeneratedCommandsTransformFeedback(@unsigned int value) {
+    public void deviceGeneratedCommandsTransformFeedback(@Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCommandsTransformFeedback, OFFSET$deviceGeneratedCommandsTransformFeedback, value);
     }
 
-    public @unsigned int deviceGeneratedCommandsMultiDrawIndirectCount() {
+    public @Unsigned int deviceGeneratedCommandsMultiDrawIndirectCount() {
         return segment.get(LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount, OFFSET$deviceGeneratedCommandsMultiDrawIndirectCount);
     }
 
-    public void deviceGeneratedCommandsMultiDrawIndirectCount(@unsigned int value) {
+    public void deviceGeneratedCommandsMultiDrawIndirectCount(@Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount, OFFSET$deviceGeneratedCommandsMultiDrawIndirectCount, value);
     }
 

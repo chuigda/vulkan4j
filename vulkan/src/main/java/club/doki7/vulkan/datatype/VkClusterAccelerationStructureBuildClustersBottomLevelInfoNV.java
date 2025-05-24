@@ -85,7 +85,7 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -140,27 +140,27 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
         return ret;
     }
 
-    public @unsigned int clusterReferencesCount() {
+    public @Unsigned int clusterReferencesCount() {
         return segment.get(LAYOUT$clusterReferencesCount, OFFSET$clusterReferencesCount);
     }
 
-    public void clusterReferencesCount(@unsigned int value) {
+    public void clusterReferencesCount(@Unsigned int value) {
         segment.set(LAYOUT$clusterReferencesCount, OFFSET$clusterReferencesCount, value);
     }
 
-    public @unsigned int clusterReferencesStride() {
+    public @Unsigned int clusterReferencesStride() {
         return segment.get(LAYOUT$clusterReferencesStride, OFFSET$clusterReferencesStride);
     }
 
-    public void clusterReferencesStride(@unsigned int value) {
+    public void clusterReferencesStride(@Unsigned int value) {
         segment.set(LAYOUT$clusterReferencesStride, OFFSET$clusterReferencesStride, value);
     }
 
-    public @unsigned long clusterReferences() {
+    public @Unsigned long clusterReferences() {
         return segment.get(LAYOUT$clusterReferences, OFFSET$clusterReferences);
     }
 
-    public void clusterReferences(@unsigned long value) {
+    public void clusterReferences(@Unsigned long value) {
         segment.set(LAYOUT$clusterReferences, OFFSET$clusterReferences, value);
     }
 

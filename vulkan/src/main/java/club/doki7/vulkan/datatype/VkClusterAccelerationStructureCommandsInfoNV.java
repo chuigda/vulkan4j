@@ -100,7 +100,7 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -193,19 +193,19 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$input, SIZE$input);
     }
 
-    public @unsigned long dstImplicitData() {
+    public @Unsigned long dstImplicitData() {
         return segment.get(LAYOUT$dstImplicitData, OFFSET$dstImplicitData);
     }
 
-    public void dstImplicitData(@unsigned long value) {
+    public void dstImplicitData(@Unsigned long value) {
         segment.set(LAYOUT$dstImplicitData, OFFSET$dstImplicitData, value);
     }
 
-    public @unsigned long scratchData() {
+    public @Unsigned long scratchData() {
         return segment.get(LAYOUT$scratchData, OFFSET$scratchData);
     }
 
-    public void scratchData(@unsigned long value) {
+    public void scratchData(@Unsigned long value) {
         segment.set(LAYOUT$scratchData, OFFSET$scratchData, value);
     }
 
@@ -233,11 +233,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcInfosArray, SIZE$srcInfosArray);
     }
 
-    public @unsigned long srcInfosCount() {
+    public @Unsigned long srcInfosCount() {
         return segment.get(LAYOUT$srcInfosCount, OFFSET$srcInfosCount);
     }
 
-    public void srcInfosCount(@unsigned long value) {
+    public void srcInfosCount(@Unsigned long value) {
         segment.set(LAYOUT$srcInfosCount, OFFSET$srcInfosCount, value);
     }
 

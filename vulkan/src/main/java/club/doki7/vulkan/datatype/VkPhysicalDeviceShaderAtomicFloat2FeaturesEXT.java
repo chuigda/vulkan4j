@@ -104,7 +104,7 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -189,99 +189,99 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderBufferFloat16Atomics() {
+    public @Unsigned int shaderBufferFloat16Atomics() {
         return segment.get(LAYOUT$shaderBufferFloat16Atomics, OFFSET$shaderBufferFloat16Atomics);
     }
 
-    public void shaderBufferFloat16Atomics(@unsigned int value) {
+    public void shaderBufferFloat16Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat16Atomics, OFFSET$shaderBufferFloat16Atomics, value);
     }
 
-    public @unsigned int shaderBufferFloat16AtomicAdd() {
+    public @Unsigned int shaderBufferFloat16AtomicAdd() {
         return segment.get(LAYOUT$shaderBufferFloat16AtomicAdd, OFFSET$shaderBufferFloat16AtomicAdd);
     }
 
-    public void shaderBufferFloat16AtomicAdd(@unsigned int value) {
+    public void shaderBufferFloat16AtomicAdd(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat16AtomicAdd, OFFSET$shaderBufferFloat16AtomicAdd, value);
     }
 
-    public @unsigned int shaderBufferFloat16AtomicMinMax() {
+    public @Unsigned int shaderBufferFloat16AtomicMinMax() {
         return segment.get(LAYOUT$shaderBufferFloat16AtomicMinMax, OFFSET$shaderBufferFloat16AtomicMinMax);
     }
 
-    public void shaderBufferFloat16AtomicMinMax(@unsigned int value) {
+    public void shaderBufferFloat16AtomicMinMax(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat16AtomicMinMax, OFFSET$shaderBufferFloat16AtomicMinMax, value);
     }
 
-    public @unsigned int shaderBufferFloat32AtomicMinMax() {
+    public @Unsigned int shaderBufferFloat32AtomicMinMax() {
         return segment.get(LAYOUT$shaderBufferFloat32AtomicMinMax, OFFSET$shaderBufferFloat32AtomicMinMax);
     }
 
-    public void shaderBufferFloat32AtomicMinMax(@unsigned int value) {
+    public void shaderBufferFloat32AtomicMinMax(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat32AtomicMinMax, OFFSET$shaderBufferFloat32AtomicMinMax, value);
     }
 
-    public @unsigned int shaderBufferFloat64AtomicMinMax() {
+    public @Unsigned int shaderBufferFloat64AtomicMinMax() {
         return segment.get(LAYOUT$shaderBufferFloat64AtomicMinMax, OFFSET$shaderBufferFloat64AtomicMinMax);
     }
 
-    public void shaderBufferFloat64AtomicMinMax(@unsigned int value) {
+    public void shaderBufferFloat64AtomicMinMax(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat64AtomicMinMax, OFFSET$shaderBufferFloat64AtomicMinMax, value);
     }
 
-    public @unsigned int shaderSharedFloat16Atomics() {
+    public @Unsigned int shaderSharedFloat16Atomics() {
         return segment.get(LAYOUT$shaderSharedFloat16Atomics, OFFSET$shaderSharedFloat16Atomics);
     }
 
-    public void shaderSharedFloat16Atomics(@unsigned int value) {
+    public void shaderSharedFloat16Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat16Atomics, OFFSET$shaderSharedFloat16Atomics, value);
     }
 
-    public @unsigned int shaderSharedFloat16AtomicAdd() {
+    public @Unsigned int shaderSharedFloat16AtomicAdd() {
         return segment.get(LAYOUT$shaderSharedFloat16AtomicAdd, OFFSET$shaderSharedFloat16AtomicAdd);
     }
 
-    public void shaderSharedFloat16AtomicAdd(@unsigned int value) {
+    public void shaderSharedFloat16AtomicAdd(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat16AtomicAdd, OFFSET$shaderSharedFloat16AtomicAdd, value);
     }
 
-    public @unsigned int shaderSharedFloat16AtomicMinMax() {
+    public @Unsigned int shaderSharedFloat16AtomicMinMax() {
         return segment.get(LAYOUT$shaderSharedFloat16AtomicMinMax, OFFSET$shaderSharedFloat16AtomicMinMax);
     }
 
-    public void shaderSharedFloat16AtomicMinMax(@unsigned int value) {
+    public void shaderSharedFloat16AtomicMinMax(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat16AtomicMinMax, OFFSET$shaderSharedFloat16AtomicMinMax, value);
     }
 
-    public @unsigned int shaderSharedFloat32AtomicMinMax() {
+    public @Unsigned int shaderSharedFloat32AtomicMinMax() {
         return segment.get(LAYOUT$shaderSharedFloat32AtomicMinMax, OFFSET$shaderSharedFloat32AtomicMinMax);
     }
 
-    public void shaderSharedFloat32AtomicMinMax(@unsigned int value) {
+    public void shaderSharedFloat32AtomicMinMax(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat32AtomicMinMax, OFFSET$shaderSharedFloat32AtomicMinMax, value);
     }
 
-    public @unsigned int shaderSharedFloat64AtomicMinMax() {
+    public @Unsigned int shaderSharedFloat64AtomicMinMax() {
         return segment.get(LAYOUT$shaderSharedFloat64AtomicMinMax, OFFSET$shaderSharedFloat64AtomicMinMax);
     }
 
-    public void shaderSharedFloat64AtomicMinMax(@unsigned int value) {
+    public void shaderSharedFloat64AtomicMinMax(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat64AtomicMinMax, OFFSET$shaderSharedFloat64AtomicMinMax, value);
     }
 
-    public @unsigned int shaderImageFloat32AtomicMinMax() {
+    public @Unsigned int shaderImageFloat32AtomicMinMax() {
         return segment.get(LAYOUT$shaderImageFloat32AtomicMinMax, OFFSET$shaderImageFloat32AtomicMinMax);
     }
 
-    public void shaderImageFloat32AtomicMinMax(@unsigned int value) {
+    public void shaderImageFloat32AtomicMinMax(@Unsigned int value) {
         segment.set(LAYOUT$shaderImageFloat32AtomicMinMax, OFFSET$shaderImageFloat32AtomicMinMax, value);
     }
 
-    public @unsigned int sparseImageFloat32AtomicMinMax() {
+    public @Unsigned int sparseImageFloat32AtomicMinMax() {
         return segment.get(LAYOUT$sparseImageFloat32AtomicMinMax, OFFSET$sparseImageFloat32AtomicMinMax);
     }
 
-    public void sparseImageFloat32AtomicMinMax(@unsigned int value) {
+    public void sparseImageFloat32AtomicMinMax(@Unsigned int value) {
         segment.set(LAYOUT$sparseImageFloat32AtomicMinMax, OFFSET$sparseImageFloat32AtomicMinMax, value);
     }
 

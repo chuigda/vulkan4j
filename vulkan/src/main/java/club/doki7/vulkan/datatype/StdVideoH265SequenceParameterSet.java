@@ -119,7 +119,7 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -190,229 +190,229 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$chroma_format_idc, OFFSET$chroma_format_idc, value);
     }
 
-    public @unsigned int pic_width_in_luma_samples() {
+    public @Unsigned int pic_width_in_luma_samples() {
         return segment.get(LAYOUT$pic_width_in_luma_samples, OFFSET$pic_width_in_luma_samples);
     }
 
-    public void pic_width_in_luma_samples(@unsigned int value) {
+    public void pic_width_in_luma_samples(@Unsigned int value) {
         segment.set(LAYOUT$pic_width_in_luma_samples, OFFSET$pic_width_in_luma_samples, value);
     }
 
-    public @unsigned int pic_height_in_luma_samples() {
+    public @Unsigned int pic_height_in_luma_samples() {
         return segment.get(LAYOUT$pic_height_in_luma_samples, OFFSET$pic_height_in_luma_samples);
     }
 
-    public void pic_height_in_luma_samples(@unsigned int value) {
+    public void pic_height_in_luma_samples(@Unsigned int value) {
         segment.set(LAYOUT$pic_height_in_luma_samples, OFFSET$pic_height_in_luma_samples, value);
     }
 
-    public @unsigned byte sps_video_parameter_set_id() {
+    public @Unsigned byte sps_video_parameter_set_id() {
         return segment.get(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id);
     }
 
-    public void sps_video_parameter_set_id(@unsigned byte value) {
+    public void sps_video_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id, value);
     }
 
-    public @unsigned byte sps_max_sub_layers_minus1() {
+    public @Unsigned byte sps_max_sub_layers_minus1() {
         return segment.get(LAYOUT$sps_max_sub_layers_minus1, OFFSET$sps_max_sub_layers_minus1);
     }
 
-    public void sps_max_sub_layers_minus1(@unsigned byte value) {
+    public void sps_max_sub_layers_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$sps_max_sub_layers_minus1, OFFSET$sps_max_sub_layers_minus1, value);
     }
 
-    public @unsigned byte sps_seq_parameter_set_id() {
+    public @Unsigned byte sps_seq_parameter_set_id() {
         return segment.get(LAYOUT$sps_seq_parameter_set_id, OFFSET$sps_seq_parameter_set_id);
     }
 
-    public void sps_seq_parameter_set_id(@unsigned byte value) {
+    public void sps_seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$sps_seq_parameter_set_id, OFFSET$sps_seq_parameter_set_id, value);
     }
 
-    public @unsigned byte bit_depth_luma_minus8() {
+    public @Unsigned byte bit_depth_luma_minus8() {
         return segment.get(LAYOUT$bit_depth_luma_minus8, OFFSET$bit_depth_luma_minus8);
     }
 
-    public void bit_depth_luma_minus8(@unsigned byte value) {
+    public void bit_depth_luma_minus8(@Unsigned byte value) {
         segment.set(LAYOUT$bit_depth_luma_minus8, OFFSET$bit_depth_luma_minus8, value);
     }
 
-    public @unsigned byte bit_depth_chroma_minus8() {
+    public @Unsigned byte bit_depth_chroma_minus8() {
         return segment.get(LAYOUT$bit_depth_chroma_minus8, OFFSET$bit_depth_chroma_minus8);
     }
 
-    public void bit_depth_chroma_minus8(@unsigned byte value) {
+    public void bit_depth_chroma_minus8(@Unsigned byte value) {
         segment.set(LAYOUT$bit_depth_chroma_minus8, OFFSET$bit_depth_chroma_minus8, value);
     }
 
-    public @unsigned byte log2_max_pic_order_cnt_lsb_minus4() {
+    public @Unsigned byte log2_max_pic_order_cnt_lsb_minus4() {
         return segment.get(LAYOUT$log2_max_pic_order_cnt_lsb_minus4, OFFSET$log2_max_pic_order_cnt_lsb_minus4);
     }
 
-    public void log2_max_pic_order_cnt_lsb_minus4(@unsigned byte value) {
+    public void log2_max_pic_order_cnt_lsb_minus4(@Unsigned byte value) {
         segment.set(LAYOUT$log2_max_pic_order_cnt_lsb_minus4, OFFSET$log2_max_pic_order_cnt_lsb_minus4, value);
     }
 
-    public @unsigned byte log2_min_luma_coding_block_size_minus3() {
+    public @Unsigned byte log2_min_luma_coding_block_size_minus3() {
         return segment.get(LAYOUT$log2_min_luma_coding_block_size_minus3, OFFSET$log2_min_luma_coding_block_size_minus3);
     }
 
-    public void log2_min_luma_coding_block_size_minus3(@unsigned byte value) {
+    public void log2_min_luma_coding_block_size_minus3(@Unsigned byte value) {
         segment.set(LAYOUT$log2_min_luma_coding_block_size_minus3, OFFSET$log2_min_luma_coding_block_size_minus3, value);
     }
 
-    public @unsigned byte log2_diff_max_min_luma_coding_block_size() {
+    public @Unsigned byte log2_diff_max_min_luma_coding_block_size() {
         return segment.get(LAYOUT$log2_diff_max_min_luma_coding_block_size, OFFSET$log2_diff_max_min_luma_coding_block_size);
     }
 
-    public void log2_diff_max_min_luma_coding_block_size(@unsigned byte value) {
+    public void log2_diff_max_min_luma_coding_block_size(@Unsigned byte value) {
         segment.set(LAYOUT$log2_diff_max_min_luma_coding_block_size, OFFSET$log2_diff_max_min_luma_coding_block_size, value);
     }
 
-    public @unsigned byte log2_min_luma_transform_block_size_minus2() {
+    public @Unsigned byte log2_min_luma_transform_block_size_minus2() {
         return segment.get(LAYOUT$log2_min_luma_transform_block_size_minus2, OFFSET$log2_min_luma_transform_block_size_minus2);
     }
 
-    public void log2_min_luma_transform_block_size_minus2(@unsigned byte value) {
+    public void log2_min_luma_transform_block_size_minus2(@Unsigned byte value) {
         segment.set(LAYOUT$log2_min_luma_transform_block_size_minus2, OFFSET$log2_min_luma_transform_block_size_minus2, value);
     }
 
-    public @unsigned byte log2_diff_max_min_luma_transform_block_size() {
+    public @Unsigned byte log2_diff_max_min_luma_transform_block_size() {
         return segment.get(LAYOUT$log2_diff_max_min_luma_transform_block_size, OFFSET$log2_diff_max_min_luma_transform_block_size);
     }
 
-    public void log2_diff_max_min_luma_transform_block_size(@unsigned byte value) {
+    public void log2_diff_max_min_luma_transform_block_size(@Unsigned byte value) {
         segment.set(LAYOUT$log2_diff_max_min_luma_transform_block_size, OFFSET$log2_diff_max_min_luma_transform_block_size, value);
     }
 
-    public @unsigned byte max_transform_hierarchy_depth_inter() {
+    public @Unsigned byte max_transform_hierarchy_depth_inter() {
         return segment.get(LAYOUT$max_transform_hierarchy_depth_inter, OFFSET$max_transform_hierarchy_depth_inter);
     }
 
-    public void max_transform_hierarchy_depth_inter(@unsigned byte value) {
+    public void max_transform_hierarchy_depth_inter(@Unsigned byte value) {
         segment.set(LAYOUT$max_transform_hierarchy_depth_inter, OFFSET$max_transform_hierarchy_depth_inter, value);
     }
 
-    public @unsigned byte max_transform_hierarchy_depth_intra() {
+    public @Unsigned byte max_transform_hierarchy_depth_intra() {
         return segment.get(LAYOUT$max_transform_hierarchy_depth_intra, OFFSET$max_transform_hierarchy_depth_intra);
     }
 
-    public void max_transform_hierarchy_depth_intra(@unsigned byte value) {
+    public void max_transform_hierarchy_depth_intra(@Unsigned byte value) {
         segment.set(LAYOUT$max_transform_hierarchy_depth_intra, OFFSET$max_transform_hierarchy_depth_intra, value);
     }
 
-    public @unsigned byte num_short_term_ref_pic_sets() {
+    public @Unsigned byte num_short_term_ref_pic_sets() {
         return segment.get(LAYOUT$num_short_term_ref_pic_sets, OFFSET$num_short_term_ref_pic_sets);
     }
 
-    public void num_short_term_ref_pic_sets(@unsigned byte value) {
+    public void num_short_term_ref_pic_sets(@Unsigned byte value) {
         segment.set(LAYOUT$num_short_term_ref_pic_sets, OFFSET$num_short_term_ref_pic_sets, value);
     }
 
-    public @unsigned byte num_long_term_ref_pics_sps() {
+    public @Unsigned byte num_long_term_ref_pics_sps() {
         return segment.get(LAYOUT$num_long_term_ref_pics_sps, OFFSET$num_long_term_ref_pics_sps);
     }
 
-    public void num_long_term_ref_pics_sps(@unsigned byte value) {
+    public void num_long_term_ref_pics_sps(@Unsigned byte value) {
         segment.set(LAYOUT$num_long_term_ref_pics_sps, OFFSET$num_long_term_ref_pics_sps, value);
     }
 
-    public @unsigned byte pcm_sample_bit_depth_luma_minus1() {
+    public @Unsigned byte pcm_sample_bit_depth_luma_minus1() {
         return segment.get(LAYOUT$pcm_sample_bit_depth_luma_minus1, OFFSET$pcm_sample_bit_depth_luma_minus1);
     }
 
-    public void pcm_sample_bit_depth_luma_minus1(@unsigned byte value) {
+    public void pcm_sample_bit_depth_luma_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$pcm_sample_bit_depth_luma_minus1, OFFSET$pcm_sample_bit_depth_luma_minus1, value);
     }
 
-    public @unsigned byte pcm_sample_bit_depth_chroma_minus1() {
+    public @Unsigned byte pcm_sample_bit_depth_chroma_minus1() {
         return segment.get(LAYOUT$pcm_sample_bit_depth_chroma_minus1, OFFSET$pcm_sample_bit_depth_chroma_minus1);
     }
 
-    public void pcm_sample_bit_depth_chroma_minus1(@unsigned byte value) {
+    public void pcm_sample_bit_depth_chroma_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$pcm_sample_bit_depth_chroma_minus1, OFFSET$pcm_sample_bit_depth_chroma_minus1, value);
     }
 
-    public @unsigned byte log2_min_pcm_luma_coding_block_size_minus3() {
+    public @Unsigned byte log2_min_pcm_luma_coding_block_size_minus3() {
         return segment.get(LAYOUT$log2_min_pcm_luma_coding_block_size_minus3, OFFSET$log2_min_pcm_luma_coding_block_size_minus3);
     }
 
-    public void log2_min_pcm_luma_coding_block_size_minus3(@unsigned byte value) {
+    public void log2_min_pcm_luma_coding_block_size_minus3(@Unsigned byte value) {
         segment.set(LAYOUT$log2_min_pcm_luma_coding_block_size_minus3, OFFSET$log2_min_pcm_luma_coding_block_size_minus3, value);
     }
 
-    public @unsigned byte log2_diff_max_min_pcm_luma_coding_block_size() {
+    public @Unsigned byte log2_diff_max_min_pcm_luma_coding_block_size() {
         return segment.get(LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size, OFFSET$log2_diff_max_min_pcm_luma_coding_block_size);
     }
 
-    public void log2_diff_max_min_pcm_luma_coding_block_size(@unsigned byte value) {
+    public void log2_diff_max_min_pcm_luma_coding_block_size(@Unsigned byte value) {
         segment.set(LAYOUT$log2_diff_max_min_pcm_luma_coding_block_size, OFFSET$log2_diff_max_min_pcm_luma_coding_block_size, value);
     }
 
 
 
-    public @unsigned byte palette_max_size() {
+    public @Unsigned byte palette_max_size() {
         return segment.get(LAYOUT$palette_max_size, OFFSET$palette_max_size);
     }
 
-    public void palette_max_size(@unsigned byte value) {
+    public void palette_max_size(@Unsigned byte value) {
         segment.set(LAYOUT$palette_max_size, OFFSET$palette_max_size, value);
     }
 
-    public @unsigned byte delta_palette_max_predictor_size() {
+    public @Unsigned byte delta_palette_max_predictor_size() {
         return segment.get(LAYOUT$delta_palette_max_predictor_size, OFFSET$delta_palette_max_predictor_size);
     }
 
-    public void delta_palette_max_predictor_size(@unsigned byte value) {
+    public void delta_palette_max_predictor_size(@Unsigned byte value) {
         segment.set(LAYOUT$delta_palette_max_predictor_size, OFFSET$delta_palette_max_predictor_size, value);
     }
 
-    public @unsigned byte motion_vector_resolution_control_idc() {
+    public @Unsigned byte motion_vector_resolution_control_idc() {
         return segment.get(LAYOUT$motion_vector_resolution_control_idc, OFFSET$motion_vector_resolution_control_idc);
     }
 
-    public void motion_vector_resolution_control_idc(@unsigned byte value) {
+    public void motion_vector_resolution_control_idc(@Unsigned byte value) {
         segment.set(LAYOUT$motion_vector_resolution_control_idc, OFFSET$motion_vector_resolution_control_idc, value);
     }
 
-    public @unsigned byte sps_num_palette_predictor_initializers_minus1() {
+    public @Unsigned byte sps_num_palette_predictor_initializers_minus1() {
         return segment.get(LAYOUT$sps_num_palette_predictor_initializers_minus1, OFFSET$sps_num_palette_predictor_initializers_minus1);
     }
 
-    public void sps_num_palette_predictor_initializers_minus1(@unsigned byte value) {
+    public void sps_num_palette_predictor_initializers_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$sps_num_palette_predictor_initializers_minus1, OFFSET$sps_num_palette_predictor_initializers_minus1, value);
     }
 
-    public @unsigned int conf_win_left_offset() {
+    public @Unsigned int conf_win_left_offset() {
         return segment.get(LAYOUT$conf_win_left_offset, OFFSET$conf_win_left_offset);
     }
 
-    public void conf_win_left_offset(@unsigned int value) {
+    public void conf_win_left_offset(@Unsigned int value) {
         segment.set(LAYOUT$conf_win_left_offset, OFFSET$conf_win_left_offset, value);
     }
 
-    public @unsigned int conf_win_right_offset() {
+    public @Unsigned int conf_win_right_offset() {
         return segment.get(LAYOUT$conf_win_right_offset, OFFSET$conf_win_right_offset);
     }
 
-    public void conf_win_right_offset(@unsigned int value) {
+    public void conf_win_right_offset(@Unsigned int value) {
         segment.set(LAYOUT$conf_win_right_offset, OFFSET$conf_win_right_offset, value);
     }
 
-    public @unsigned int conf_win_top_offset() {
+    public @Unsigned int conf_win_top_offset() {
         return segment.get(LAYOUT$conf_win_top_offset, OFFSET$conf_win_top_offset);
     }
 
-    public void conf_win_top_offset(@unsigned int value) {
+    public void conf_win_top_offset(@Unsigned int value) {
         segment.set(LAYOUT$conf_win_top_offset, OFFSET$conf_win_top_offset, value);
     }
 
-    public @unsigned int conf_win_bottom_offset() {
+    public @Unsigned int conf_win_bottom_offset() {
         return segment.get(LAYOUT$conf_win_bottom_offset, OFFSET$conf_win_bottom_offset);
     }
 
-    public void conf_win_bottom_offset(@unsigned int value) {
+    public void conf_win_bottom_offset(@Unsigned int value) {
         segment.set(LAYOUT$conf_win_bottom_offset, OFFSET$conf_win_bottom_offset, value);
     }
 

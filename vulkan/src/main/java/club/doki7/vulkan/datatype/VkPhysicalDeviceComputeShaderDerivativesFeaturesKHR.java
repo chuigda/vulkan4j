@@ -94,7 +94,7 @@ public record VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(@NotNull Memor
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int computeDerivativeGroupQuads() {
+    public @Unsigned int computeDerivativeGroupQuads() {
         return segment.get(LAYOUT$computeDerivativeGroupQuads, OFFSET$computeDerivativeGroupQuads);
     }
 
-    public void computeDerivativeGroupQuads(@unsigned int value) {
+    public void computeDerivativeGroupQuads(@Unsigned int value) {
         segment.set(LAYOUT$computeDerivativeGroupQuads, OFFSET$computeDerivativeGroupQuads, value);
     }
 
-    public @unsigned int computeDerivativeGroupLinear() {
+    public @Unsigned int computeDerivativeGroupLinear() {
         return segment.get(LAYOUT$computeDerivativeGroupLinear, OFFSET$computeDerivativeGroupLinear);
     }
 
-    public void computeDerivativeGroupLinear(@unsigned int value) {
+    public void computeDerivativeGroupLinear(@Unsigned int value) {
         segment.set(LAYOUT$computeDerivativeGroupLinear, OFFSET$computeDerivativeGroupLinear, value);
     }
 

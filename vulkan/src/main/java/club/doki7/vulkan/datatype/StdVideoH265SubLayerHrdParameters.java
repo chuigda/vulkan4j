@@ -85,7 +85,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -140,43 +140,43 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @unsigned int bit_rate_value_minus1() {
+    public @Unsigned int bit_rate_value_minus1() {
         return segment.get(LAYOUT$bit_rate_value_minus1, OFFSET$bit_rate_value_minus1);
     }
 
-    public void bit_rate_value_minus1(@unsigned int value) {
+    public void bit_rate_value_minus1(@Unsigned int value) {
         segment.set(LAYOUT$bit_rate_value_minus1, OFFSET$bit_rate_value_minus1, value);
     }
 
-    public @unsigned int cpb_size_value_minus1() {
+    public @Unsigned int cpb_size_value_minus1() {
         return segment.get(LAYOUT$cpb_size_value_minus1, OFFSET$cpb_size_value_minus1);
     }
 
-    public void cpb_size_value_minus1(@unsigned int value) {
+    public void cpb_size_value_minus1(@Unsigned int value) {
         segment.set(LAYOUT$cpb_size_value_minus1, OFFSET$cpb_size_value_minus1, value);
     }
 
-    public @unsigned int cpb_size_du_value_minus1() {
+    public @Unsigned int cpb_size_du_value_minus1() {
         return segment.get(LAYOUT$cpb_size_du_value_minus1, OFFSET$cpb_size_du_value_minus1);
     }
 
-    public void cpb_size_du_value_minus1(@unsigned int value) {
+    public void cpb_size_du_value_minus1(@Unsigned int value) {
         segment.set(LAYOUT$cpb_size_du_value_minus1, OFFSET$cpb_size_du_value_minus1, value);
     }
 
-    public @unsigned int bit_rate_du_value_minus1() {
+    public @Unsigned int bit_rate_du_value_minus1() {
         return segment.get(LAYOUT$bit_rate_du_value_minus1, OFFSET$bit_rate_du_value_minus1);
     }
 
-    public void bit_rate_du_value_minus1(@unsigned int value) {
+    public void bit_rate_du_value_minus1(@Unsigned int value) {
         segment.set(LAYOUT$bit_rate_du_value_minus1, OFFSET$bit_rate_du_value_minus1, value);
     }
 
-    public @unsigned int cbr_flag() {
+    public @Unsigned int cbr_flag() {
         return segment.get(LAYOUT$cbr_flag, OFFSET$cbr_flag);
     }
 
-    public void cbr_flag(@unsigned int value) {
+    public void cbr_flag(@Unsigned int value) {
         segment.set(LAYOUT$cbr_flag, OFFSET$cbr_flag, value);
     }
 

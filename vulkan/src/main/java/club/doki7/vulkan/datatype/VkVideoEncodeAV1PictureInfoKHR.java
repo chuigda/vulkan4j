@@ -99,7 +99,7 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -200,11 +200,11 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$rateControlGroup, OFFSET$rateControlGroup, value);
     }
 
-    public @unsigned int constantQIndex() {
+    public @Unsigned int constantQIndex() {
         return segment.get(LAYOUT$constantQIndex, OFFSET$constantQIndex);
     }
 
-    public void constantQIndex(@unsigned int value) {
+    public void constantQIndex(@Unsigned int value) {
         segment.set(LAYOUT$constantQIndex, OFFSET$constantQIndex, value);
     }
 
@@ -247,19 +247,19 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices, value);
     }
 
-    public @unsigned int primaryReferenceCdfOnly() {
+    public @Unsigned int primaryReferenceCdfOnly() {
         return segment.get(LAYOUT$primaryReferenceCdfOnly, OFFSET$primaryReferenceCdfOnly);
     }
 
-    public void primaryReferenceCdfOnly(@unsigned int value) {
+    public void primaryReferenceCdfOnly(@Unsigned int value) {
         segment.set(LAYOUT$primaryReferenceCdfOnly, OFFSET$primaryReferenceCdfOnly, value);
     }
 
-    public @unsigned int generateObuExtensionHeader() {
+    public @Unsigned int generateObuExtensionHeader() {
         return segment.get(LAYOUT$generateObuExtensionHeader, OFFSET$generateObuExtensionHeader);
     }
 
-    public void generateObuExtensionHeader(@unsigned int value) {
+    public void generateObuExtensionHeader(@Unsigned int value) {
         segment.set(LAYOUT$generateObuExtensionHeader, OFFSET$generateObuExtensionHeader, value);
     }
 

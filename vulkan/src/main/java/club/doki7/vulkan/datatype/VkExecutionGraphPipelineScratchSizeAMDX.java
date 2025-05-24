@@ -95,7 +95,7 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long minSize() {
+    public @Unsigned long minSize() {
         return segment.get(LAYOUT$minSize, OFFSET$minSize);
     }
 
-    public void minSize(@unsigned long value) {
+    public void minSize(@Unsigned long value) {
         segment.set(LAYOUT$minSize, OFFSET$minSize, value);
     }
 
-    public @unsigned long maxSize() {
+    public @Unsigned long maxSize() {
         return segment.get(LAYOUT$maxSize, OFFSET$maxSize);
     }
 
-    public void maxSize(@unsigned long value) {
+    public void maxSize(@Unsigned long value) {
         segment.set(LAYOUT$maxSize, OFFSET$maxSize, value);
     }
 
-    public @unsigned long sizeGranularity() {
+    public @Unsigned long sizeGranularity() {
         return segment.get(LAYOUT$sizeGranularity, OFFSET$sizeGranularity);
     }
 
-    public void sizeGranularity(@unsigned long value) {
+    public void sizeGranularity(@Unsigned long value) {
         segment.set(LAYOUT$sizeGranularity, OFFSET$sizeGranularity, value);
     }
 

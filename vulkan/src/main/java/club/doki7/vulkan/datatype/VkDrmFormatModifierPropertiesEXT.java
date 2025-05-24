@@ -85,7 +85,7 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -140,19 +140,19 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         return ret;
     }
 
-    public @unsigned long drmFormatModifier() {
+    public @Unsigned long drmFormatModifier() {
         return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
     }
 
-    public void drmFormatModifier(@unsigned long value) {
+    public void drmFormatModifier(@Unsigned long value) {
         segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
     }
 
-    public @unsigned int drmFormatModifierPlaneCount() {
+    public @Unsigned int drmFormatModifierPlaneCount() {
         return segment.get(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount);
     }
 
-    public void drmFormatModifierPlaneCount(@unsigned int value) {
+    public void drmFormatModifierPlaneCount(@Unsigned int value) {
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
     }
 

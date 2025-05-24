@@ -89,7 +89,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -160,43 +160,43 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$resourceUsage, SIZE$resourceUsage);
     }
 
-    public @unsigned int numPhysicalVgprs() {
+    public @Unsigned int numPhysicalVgprs() {
         return segment.get(LAYOUT$numPhysicalVgprs, OFFSET$numPhysicalVgprs);
     }
 
-    public void numPhysicalVgprs(@unsigned int value) {
+    public void numPhysicalVgprs(@Unsigned int value) {
         segment.set(LAYOUT$numPhysicalVgprs, OFFSET$numPhysicalVgprs, value);
     }
 
-    public @unsigned int numPhysicalSgprs() {
+    public @Unsigned int numPhysicalSgprs() {
         return segment.get(LAYOUT$numPhysicalSgprs, OFFSET$numPhysicalSgprs);
     }
 
-    public void numPhysicalSgprs(@unsigned int value) {
+    public void numPhysicalSgprs(@Unsigned int value) {
         segment.set(LAYOUT$numPhysicalSgprs, OFFSET$numPhysicalSgprs, value);
     }
 
-    public @unsigned int numAvailableVgprs() {
+    public @Unsigned int numAvailableVgprs() {
         return segment.get(LAYOUT$numAvailableVgprs, OFFSET$numAvailableVgprs);
     }
 
-    public void numAvailableVgprs(@unsigned int value) {
+    public void numAvailableVgprs(@Unsigned int value) {
         segment.set(LAYOUT$numAvailableVgprs, OFFSET$numAvailableVgprs, value);
     }
 
-    public @unsigned int numAvailableSgprs() {
+    public @Unsigned int numAvailableSgprs() {
         return segment.get(LAYOUT$numAvailableSgprs, OFFSET$numAvailableSgprs);
     }
 
-    public void numAvailableSgprs(@unsigned int value) {
+    public void numAvailableSgprs(@Unsigned int value) {
         segment.set(LAYOUT$numAvailableSgprs, OFFSET$numAvailableSgprs, value);
     }
 
-    public @unsigned int computeWorkGroupSize() {
+    public @Unsigned int computeWorkGroupSize() {
         return segment.get(LAYOUT$computeWorkGroupSize, OFFSET$computeWorkGroupSize);
     }
 
-    public void computeWorkGroupSize(@unsigned int value) {
+    public void computeWorkGroupSize(@Unsigned int value) {
         segment.set(LAYOUT$computeWorkGroupSize, OFFSET$computeWorkGroupSize, value);
     }
 

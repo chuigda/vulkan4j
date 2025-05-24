@@ -84,7 +84,7 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -139,11 +139,11 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         return ret;
     }
 
-    public @unsigned int rectangleCount() {
+    public @Unsigned int rectangleCount() {
         return segment.get(LAYOUT$rectangleCount, OFFSET$rectangleCount);
     }
 
-    public void rectangleCount(@unsigned int value) {
+    public void rectangleCount(@Unsigned int value) {
         segment.set(LAYOUT$rectangleCount, OFFSET$rectangleCount, value);
     }
 

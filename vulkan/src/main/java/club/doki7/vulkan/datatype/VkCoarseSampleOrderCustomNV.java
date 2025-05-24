@@ -86,7 +86,7 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -149,19 +149,19 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$shadingRate, OFFSET$shadingRate, value);
     }
 
-    public @unsigned int sampleCount() {
+    public @Unsigned int sampleCount() {
         return segment.get(LAYOUT$sampleCount, OFFSET$sampleCount);
     }
 
-    public void sampleCount(@unsigned int value) {
+    public void sampleCount(@Unsigned int value) {
         segment.set(LAYOUT$sampleCount, OFFSET$sampleCount, value);
     }
 
-    public @unsigned int sampleLocationCount() {
+    public @Unsigned int sampleLocationCount() {
         return segment.get(LAYOUT$sampleLocationCount, OFFSET$sampleLocationCount);
     }
 
-    public void sampleLocationCount(@unsigned int value) {
+    public void sampleLocationCount(@Unsigned int value) {
         segment.set(LAYOUT$sampleLocationCount, OFFSET$sampleLocationCount, value);
     }
 

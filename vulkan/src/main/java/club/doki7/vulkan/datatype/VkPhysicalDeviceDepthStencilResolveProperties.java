@@ -96,7 +96,7 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -197,19 +197,19 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
     }
 
-    public @unsigned int independentResolveNone() {
+    public @Unsigned int independentResolveNone() {
         return segment.get(LAYOUT$independentResolveNone, OFFSET$independentResolveNone);
     }
 
-    public void independentResolveNone(@unsigned int value) {
+    public void independentResolveNone(@Unsigned int value) {
         segment.set(LAYOUT$independentResolveNone, OFFSET$independentResolveNone, value);
     }
 
-    public @unsigned int independentResolve() {
+    public @Unsigned int independentResolve() {
         return segment.get(LAYOUT$independentResolve, OFFSET$independentResolve);
     }
 
-    public void independentResolve(@unsigned int value) {
+    public void independentResolve(@Unsigned int value) {
         segment.set(LAYOUT$independentResolve, OFFSET$independentResolve, value);
     }
 

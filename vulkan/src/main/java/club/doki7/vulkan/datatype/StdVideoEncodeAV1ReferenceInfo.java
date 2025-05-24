@@ -86,7 +86,7 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -149,11 +149,11 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned int RefFrameId() {
+    public @Unsigned int RefFrameId() {
         return segment.get(LAYOUT$RefFrameId, OFFSET$RefFrameId);
     }
 
-    public void RefFrameId(@unsigned int value) {
+    public void RefFrameId(@Unsigned int value) {
         segment.set(LAYOUT$RefFrameId, OFFSET$RefFrameId, value);
     }
 
@@ -165,11 +165,11 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
     }
 
-    public @unsigned byte OrderHint() {
+    public @Unsigned byte OrderHint() {
         return segment.get(LAYOUT$OrderHint, OFFSET$OrderHint);
     }
 
-    public void OrderHint(@unsigned byte value) {
+    public void OrderHint(@Unsigned byte value) {
         segment.set(LAYOUT$OrderHint, OFFSET$OrderHint, value);
     }
 

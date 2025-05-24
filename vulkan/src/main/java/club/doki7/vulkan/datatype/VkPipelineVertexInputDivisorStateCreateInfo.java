@@ -94,7 +94,7 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,11 +179,11 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int vertexBindingDivisorCount() {
+    public @Unsigned int vertexBindingDivisorCount() {
         return segment.get(LAYOUT$vertexBindingDivisorCount, OFFSET$vertexBindingDivisorCount);
     }
 
-    public void vertexBindingDivisorCount(@unsigned int value) {
+    public void vertexBindingDivisorCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexBindingDivisorCount, OFFSET$vertexBindingDivisorCount, value);
     }
 

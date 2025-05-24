@@ -93,7 +93,7 @@ public record VkPhysicalDeviceHdrVividFeaturesHUAWEI(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,11 +178,11 @@ public record VkPhysicalDeviceHdrVividFeaturesHUAWEI(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int hdrVivid() {
+    public @Unsigned int hdrVivid() {
         return segment.get(LAYOUT$hdrVivid, OFFSET$hdrVivid);
     }
 
-    public void hdrVivid(@unsigned int value) {
+    public void hdrVivid(@Unsigned int value) {
         segment.set(LAYOUT$hdrVivid, OFFSET$hdrVivid, value);
     }
 

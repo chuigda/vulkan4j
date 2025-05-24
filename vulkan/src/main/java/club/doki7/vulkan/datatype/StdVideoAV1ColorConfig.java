@@ -89,7 +89,7 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -152,27 +152,27 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte BitDepth() {
+    public @Unsigned byte BitDepth() {
         return segment.get(LAYOUT$BitDepth, OFFSET$BitDepth);
     }
 
-    public void BitDepth(@unsigned byte value) {
+    public void BitDepth(@Unsigned byte value) {
         segment.set(LAYOUT$BitDepth, OFFSET$BitDepth, value);
     }
 
-    public @unsigned byte subsampling_x() {
+    public @Unsigned byte subsampling_x() {
         return segment.get(LAYOUT$subsampling_x, OFFSET$subsampling_x);
     }
 
-    public void subsampling_x(@unsigned byte value) {
+    public void subsampling_x(@Unsigned byte value) {
         segment.set(LAYOUT$subsampling_x, OFFSET$subsampling_x, value);
     }
 
-    public @unsigned byte subsampling_y() {
+    public @Unsigned byte subsampling_y() {
         return segment.get(LAYOUT$subsampling_y, OFFSET$subsampling_y);
     }
 
-    public void subsampling_y(@unsigned byte value) {
+    public void subsampling_y(@Unsigned byte value) {
         segment.set(LAYOUT$subsampling_y, OFFSET$subsampling_y, value);
     }
 

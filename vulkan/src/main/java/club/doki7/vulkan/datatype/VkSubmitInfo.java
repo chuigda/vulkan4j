@@ -99,7 +99,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -184,11 +184,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int waitSemaphoreCount() {
+    public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@unsigned int value) {
+    public void waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
@@ -243,11 +243,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         segment.set(LAYOUT$pWaitDstStageMask, OFFSET$pWaitDstStageMask, value);
     }
 
-    public @unsigned int commandBufferCount() {
+    public @Unsigned int commandBufferCount() {
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
-    public void commandBufferCount(@unsigned int value) {
+    public void commandBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
     }
 
@@ -276,11 +276,11 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         segment.set(LAYOUT$pCommandBuffers, OFFSET$pCommandBuffers, value);
     }
 
-    public @unsigned int signalSemaphoreCount() {
+    public @Unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
-    public void signalSemaphoreCount(@unsigned int value) {
+    public void signalSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
     }
 

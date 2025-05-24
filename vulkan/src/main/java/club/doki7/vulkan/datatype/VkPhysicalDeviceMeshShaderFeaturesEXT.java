@@ -97,7 +97,7 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -182,43 +182,43 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int taskShader() {
+    public @Unsigned int taskShader() {
         return segment.get(LAYOUT$taskShader, OFFSET$taskShader);
     }
 
-    public void taskShader(@unsigned int value) {
+    public void taskShader(@Unsigned int value) {
         segment.set(LAYOUT$taskShader, OFFSET$taskShader, value);
     }
 
-    public @unsigned int meshShader() {
+    public @Unsigned int meshShader() {
         return segment.get(LAYOUT$meshShader, OFFSET$meshShader);
     }
 
-    public void meshShader(@unsigned int value) {
+    public void meshShader(@Unsigned int value) {
         segment.set(LAYOUT$meshShader, OFFSET$meshShader, value);
     }
 
-    public @unsigned int multiviewMeshShader() {
+    public @Unsigned int multiviewMeshShader() {
         return segment.get(LAYOUT$multiviewMeshShader, OFFSET$multiviewMeshShader);
     }
 
-    public void multiviewMeshShader(@unsigned int value) {
+    public void multiviewMeshShader(@Unsigned int value) {
         segment.set(LAYOUT$multiviewMeshShader, OFFSET$multiviewMeshShader, value);
     }
 
-    public @unsigned int primitiveFragmentShadingRateMeshShader() {
+    public @Unsigned int primitiveFragmentShadingRateMeshShader() {
         return segment.get(LAYOUT$primitiveFragmentShadingRateMeshShader, OFFSET$primitiveFragmentShadingRateMeshShader);
     }
 
-    public void primitiveFragmentShadingRateMeshShader(@unsigned int value) {
+    public void primitiveFragmentShadingRateMeshShader(@Unsigned int value) {
         segment.set(LAYOUT$primitiveFragmentShadingRateMeshShader, OFFSET$primitiveFragmentShadingRateMeshShader, value);
     }
 
-    public @unsigned int meshShaderQueries() {
+    public @Unsigned int meshShaderQueries() {
         return segment.get(LAYOUT$meshShaderQueries, OFFSET$meshShaderQueries);
     }
 
-    public void meshShaderQueries(@unsigned int value) {
+    public void meshShaderQueries(@Unsigned int value) {
         segment.set(LAYOUT$meshShaderQueries, OFFSET$meshShaderQueries, value);
     }
 

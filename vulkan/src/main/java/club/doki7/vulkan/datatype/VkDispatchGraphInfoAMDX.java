@@ -86,7 +86,7 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -141,19 +141,19 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @unsigned int nodeIndex() {
+    public @Unsigned int nodeIndex() {
         return segment.get(LAYOUT$nodeIndex, OFFSET$nodeIndex);
     }
 
-    public void nodeIndex(@unsigned int value) {
+    public void nodeIndex(@Unsigned int value) {
         segment.set(LAYOUT$nodeIndex, OFFSET$nodeIndex, value);
     }
 
-    public @unsigned int payloadCount() {
+    public @Unsigned int payloadCount() {
         return segment.get(LAYOUT$payloadCount, OFFSET$payloadCount);
     }
 
-    public void payloadCount(@unsigned int value) {
+    public void payloadCount(@Unsigned int value) {
         segment.set(LAYOUT$payloadCount, OFFSET$payloadCount, value);
     }
 
@@ -165,11 +165,11 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$payloads, SIZE$payloads);
     }
 
-    public @unsigned long payloadStride() {
+    public @Unsigned long payloadStride() {
         return segment.get(LAYOUT$payloadStride, OFFSET$payloadStride);
     }
 
-    public void payloadStride(@unsigned long value) {
+    public void payloadStride(@Unsigned long value) {
         segment.set(LAYOUT$payloadStride, OFFSET$payloadStride, value);
     }
 

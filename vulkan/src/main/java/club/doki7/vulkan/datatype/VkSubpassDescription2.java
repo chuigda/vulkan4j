@@ -103,7 +103,7 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -204,19 +204,19 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
     }
 
-    public @unsigned int viewMask() {
+    public @Unsigned int viewMask() {
         return segment.get(LAYOUT$viewMask, OFFSET$viewMask);
     }
 
-    public void viewMask(@unsigned int value) {
+    public void viewMask(@Unsigned int value) {
         segment.set(LAYOUT$viewMask, OFFSET$viewMask, value);
     }
 
-    public @unsigned int inputAttachmentCount() {
+    public @Unsigned int inputAttachmentCount() {
         return segment.get(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount);
     }
 
-    public void inputAttachmentCount(@unsigned int value) {
+    public void inputAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount, value);
     }
 
@@ -251,11 +251,11 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pInputAttachments, OFFSET$pInputAttachments, value);
     }
 
-    public @unsigned int colorAttachmentCount() {
+    public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@unsigned int value) {
+    public void colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
     }
 
@@ -352,11 +352,11 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pDepthStencilAttachment, OFFSET$pDepthStencilAttachment, value);
     }
 
-    public @unsigned int preserveAttachmentCount() {
+    public @Unsigned int preserveAttachmentCount() {
         return segment.get(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount);
     }
 
-    public void preserveAttachmentCount(@unsigned int value) {
+    public void preserveAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount, value);
     }
 
@@ -364,7 +364,7 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pPreserveAttachments() {
+    public @Nullable @Unsigned IntPtr pPreserveAttachments() {
         MemorySegment s = pPreserveAttachmentsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -372,7 +372,7 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return new IntPtr(s);
     }
 
-    public void pPreserveAttachments(@Nullable @unsigned IntPtr value) {
+    public void pPreserveAttachments(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPreserveAttachmentsRaw(s);
     }

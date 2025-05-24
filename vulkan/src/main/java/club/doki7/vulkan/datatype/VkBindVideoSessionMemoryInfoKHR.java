@@ -96,7 +96,7 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,11 +181,11 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int memoryBindIndex() {
+    public @Unsigned int memoryBindIndex() {
         return segment.get(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex);
     }
 
-    public void memoryBindIndex(@unsigned int value) {
+    public void memoryBindIndex(@Unsigned int value) {
         segment.set(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex, value);
     }
 
@@ -201,19 +201,19 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long memoryOffset() {
+    public @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@unsigned long value) {
+    public void memoryOffset(@Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
     }
 
-    public @unsigned long memorySize() {
+    public @Unsigned long memorySize() {
         return segment.get(LAYOUT$memorySize, OFFSET$memorySize);
     }
 
-    public void memorySize(@unsigned long value) {
+    public void memorySize(@Unsigned long value) {
         segment.set(LAYOUT$memorySize, OFFSET$memorySize, value);
     }
 

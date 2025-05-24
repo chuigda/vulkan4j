@@ -95,7 +95,7 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -188,11 +188,11 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned long codeSize() {
+    public @Unsigned long codeSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$codeSize);
     }
 
-    public void codeSize(@unsigned long value) {
+    public void codeSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$codeSize, value);
     }
 
@@ -200,7 +200,7 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pCode() {
+    public @Nullable @Unsigned IntPtr pCode() {
         MemorySegment s = pCodeRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -208,7 +208,7 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return new IntPtr(s);
     }
 
-    public void pCode(@Nullable @unsigned IntPtr value) {
+    public void pCode(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCodeRaw(s);
     }

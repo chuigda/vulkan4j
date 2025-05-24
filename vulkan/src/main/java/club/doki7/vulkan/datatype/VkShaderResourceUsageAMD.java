@@ -87,7 +87,7 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -142,43 +142,43 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @unsigned int numUsedVgprs() {
+    public @Unsigned int numUsedVgprs() {
         return segment.get(LAYOUT$numUsedVgprs, OFFSET$numUsedVgprs);
     }
 
-    public void numUsedVgprs(@unsigned int value) {
+    public void numUsedVgprs(@Unsigned int value) {
         segment.set(LAYOUT$numUsedVgprs, OFFSET$numUsedVgprs, value);
     }
 
-    public @unsigned int numUsedSgprs() {
+    public @Unsigned int numUsedSgprs() {
         return segment.get(LAYOUT$numUsedSgprs, OFFSET$numUsedSgprs);
     }
 
-    public void numUsedSgprs(@unsigned int value) {
+    public void numUsedSgprs(@Unsigned int value) {
         segment.set(LAYOUT$numUsedSgprs, OFFSET$numUsedSgprs, value);
     }
 
-    public @unsigned int ldsSizePerLocalWorkGroup() {
+    public @Unsigned int ldsSizePerLocalWorkGroup() {
         return segment.get(LAYOUT$ldsSizePerLocalWorkGroup, OFFSET$ldsSizePerLocalWorkGroup);
     }
 
-    public void ldsSizePerLocalWorkGroup(@unsigned int value) {
+    public void ldsSizePerLocalWorkGroup(@Unsigned int value) {
         segment.set(LAYOUT$ldsSizePerLocalWorkGroup, OFFSET$ldsSizePerLocalWorkGroup, value);
     }
 
-    public @unsigned long ldsUsageSizeInBytes() {
+    public @Unsigned long ldsUsageSizeInBytes() {
         return NativeLayout.readCSizeT(segment, OFFSET$ldsUsageSizeInBytes);
     }
 
-    public void ldsUsageSizeInBytes(@unsigned long value) {
+    public void ldsUsageSizeInBytes(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$ldsUsageSizeInBytes, value);
     }
 
-    public @unsigned long scratchMemUsageInBytes() {
+    public @Unsigned long scratchMemUsageInBytes() {
         return NativeLayout.readCSizeT(segment, OFFSET$scratchMemUsageInBytes);
     }
 
-    public void scratchMemUsageInBytes(@unsigned long value) {
+    public void scratchMemUsageInBytes(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$scratchMemUsageInBytes, value);
     }
 

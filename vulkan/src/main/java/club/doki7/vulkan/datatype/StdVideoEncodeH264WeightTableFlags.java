@@ -84,7 +84,7 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -139,35 +139,35 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
         return ret;
     }
 
-    public @unsigned int luma_weight_l0_flag() {
+    public @Unsigned int luma_weight_l0_flag() {
         return segment.get(LAYOUT$luma_weight_l0_flag, OFFSET$luma_weight_l0_flag);
     }
 
-    public void luma_weight_l0_flag(@unsigned int value) {
+    public void luma_weight_l0_flag(@Unsigned int value) {
         segment.set(LAYOUT$luma_weight_l0_flag, OFFSET$luma_weight_l0_flag, value);
     }
 
-    public @unsigned int chroma_weight_l0_flag() {
+    public @Unsigned int chroma_weight_l0_flag() {
         return segment.get(LAYOUT$chroma_weight_l0_flag, OFFSET$chroma_weight_l0_flag);
     }
 
-    public void chroma_weight_l0_flag(@unsigned int value) {
+    public void chroma_weight_l0_flag(@Unsigned int value) {
         segment.set(LAYOUT$chroma_weight_l0_flag, OFFSET$chroma_weight_l0_flag, value);
     }
 
-    public @unsigned int luma_weight_l1_flag() {
+    public @Unsigned int luma_weight_l1_flag() {
         return segment.get(LAYOUT$luma_weight_l1_flag, OFFSET$luma_weight_l1_flag);
     }
 
-    public void luma_weight_l1_flag(@unsigned int value) {
+    public void luma_weight_l1_flag(@Unsigned int value) {
         segment.set(LAYOUT$luma_weight_l1_flag, OFFSET$luma_weight_l1_flag, value);
     }
 
-    public @unsigned int chroma_weight_l1_flag() {
+    public @Unsigned int chroma_weight_l1_flag() {
         return segment.get(LAYOUT$chroma_weight_l1_flag, OFFSET$chroma_weight_l1_flag);
     }
 
-    public void chroma_weight_l1_flag(@unsigned int value) {
+    public void chroma_weight_l1_flag(@Unsigned int value) {
         segment.set(LAYOUT$chroma_weight_l1_flag, OFFSET$chroma_weight_l1_flag, value);
     }
 

@@ -94,7 +94,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int graphicsPipelineLibraryFastLinking() {
+    public @Unsigned int graphicsPipelineLibraryFastLinking() {
         return segment.get(LAYOUT$graphicsPipelineLibraryFastLinking, OFFSET$graphicsPipelineLibraryFastLinking);
     }
 
-    public void graphicsPipelineLibraryFastLinking(@unsigned int value) {
+    public void graphicsPipelineLibraryFastLinking(@Unsigned int value) {
         segment.set(LAYOUT$graphicsPipelineLibraryFastLinking, OFFSET$graphicsPipelineLibraryFastLinking, value);
     }
 
-    public @unsigned int graphicsPipelineLibraryIndependentInterpolationDecoration() {
+    public @Unsigned int graphicsPipelineLibraryIndependentInterpolationDecoration() {
         return segment.get(LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration, OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration);
     }
 
-    public void graphicsPipelineLibraryIndependentInterpolationDecoration(@unsigned int value) {
+    public void graphicsPipelineLibraryIndependentInterpolationDecoration(@Unsigned int value) {
         segment.set(LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration, OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration, value);
     }
 

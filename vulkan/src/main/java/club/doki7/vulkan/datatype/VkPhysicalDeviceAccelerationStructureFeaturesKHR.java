@@ -97,7 +97,7 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -182,43 +182,43 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int accelerationStructure() {
+    public @Unsigned int accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@unsigned int value) {
+    public void accelerationStructure(@Unsigned int value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 
-    public @unsigned int accelerationStructureCaptureReplay() {
+    public @Unsigned int accelerationStructureCaptureReplay() {
         return segment.get(LAYOUT$accelerationStructureCaptureReplay, OFFSET$accelerationStructureCaptureReplay);
     }
 
-    public void accelerationStructureCaptureReplay(@unsigned int value) {
+    public void accelerationStructureCaptureReplay(@Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureCaptureReplay, OFFSET$accelerationStructureCaptureReplay, value);
     }
 
-    public @unsigned int accelerationStructureIndirectBuild() {
+    public @Unsigned int accelerationStructureIndirectBuild() {
         return segment.get(LAYOUT$accelerationStructureIndirectBuild, OFFSET$accelerationStructureIndirectBuild);
     }
 
-    public void accelerationStructureIndirectBuild(@unsigned int value) {
+    public void accelerationStructureIndirectBuild(@Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureIndirectBuild, OFFSET$accelerationStructureIndirectBuild, value);
     }
 
-    public @unsigned int accelerationStructureHostCommands() {
+    public @Unsigned int accelerationStructureHostCommands() {
         return segment.get(LAYOUT$accelerationStructureHostCommands, OFFSET$accelerationStructureHostCommands);
     }
 
-    public void accelerationStructureHostCommands(@unsigned int value) {
+    public void accelerationStructureHostCommands(@Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureHostCommands, OFFSET$accelerationStructureHostCommands, value);
     }
 
-    public @unsigned int descriptorBindingAccelerationStructureUpdateAfterBind() {
+    public @Unsigned int descriptorBindingAccelerationStructureUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind, OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind);
     }
 
-    public void descriptorBindingAccelerationStructureUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingAccelerationStructureUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind, OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind, value);
     }
 

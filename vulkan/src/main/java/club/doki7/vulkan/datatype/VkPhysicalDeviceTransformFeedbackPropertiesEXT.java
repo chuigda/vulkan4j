@@ -102,7 +102,7 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -187,83 +187,83 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxTransformFeedbackStreams() {
+    public @Unsigned int maxTransformFeedbackStreams() {
         return segment.get(LAYOUT$maxTransformFeedbackStreams, OFFSET$maxTransformFeedbackStreams);
     }
 
-    public void maxTransformFeedbackStreams(@unsigned int value) {
+    public void maxTransformFeedbackStreams(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackStreams, OFFSET$maxTransformFeedbackStreams, value);
     }
 
-    public @unsigned int maxTransformFeedbackBuffers() {
+    public @Unsigned int maxTransformFeedbackBuffers() {
         return segment.get(LAYOUT$maxTransformFeedbackBuffers, OFFSET$maxTransformFeedbackBuffers);
     }
 
-    public void maxTransformFeedbackBuffers(@unsigned int value) {
+    public void maxTransformFeedbackBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackBuffers, OFFSET$maxTransformFeedbackBuffers, value);
     }
 
-    public @unsigned long maxTransformFeedbackBufferSize() {
+    public @Unsigned long maxTransformFeedbackBufferSize() {
         return segment.get(LAYOUT$maxTransformFeedbackBufferSize, OFFSET$maxTransformFeedbackBufferSize);
     }
 
-    public void maxTransformFeedbackBufferSize(@unsigned long value) {
+    public void maxTransformFeedbackBufferSize(@Unsigned long value) {
         segment.set(LAYOUT$maxTransformFeedbackBufferSize, OFFSET$maxTransformFeedbackBufferSize, value);
     }
 
-    public @unsigned int maxTransformFeedbackStreamDataSize() {
+    public @Unsigned int maxTransformFeedbackStreamDataSize() {
         return segment.get(LAYOUT$maxTransformFeedbackStreamDataSize, OFFSET$maxTransformFeedbackStreamDataSize);
     }
 
-    public void maxTransformFeedbackStreamDataSize(@unsigned int value) {
+    public void maxTransformFeedbackStreamDataSize(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackStreamDataSize, OFFSET$maxTransformFeedbackStreamDataSize, value);
     }
 
-    public @unsigned int maxTransformFeedbackBufferDataSize() {
+    public @Unsigned int maxTransformFeedbackBufferDataSize() {
         return segment.get(LAYOUT$maxTransformFeedbackBufferDataSize, OFFSET$maxTransformFeedbackBufferDataSize);
     }
 
-    public void maxTransformFeedbackBufferDataSize(@unsigned int value) {
+    public void maxTransformFeedbackBufferDataSize(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackBufferDataSize, OFFSET$maxTransformFeedbackBufferDataSize, value);
     }
 
-    public @unsigned int maxTransformFeedbackBufferDataStride() {
+    public @Unsigned int maxTransformFeedbackBufferDataStride() {
         return segment.get(LAYOUT$maxTransformFeedbackBufferDataStride, OFFSET$maxTransformFeedbackBufferDataStride);
     }
 
-    public void maxTransformFeedbackBufferDataStride(@unsigned int value) {
+    public void maxTransformFeedbackBufferDataStride(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackBufferDataStride, OFFSET$maxTransformFeedbackBufferDataStride, value);
     }
 
-    public @unsigned int transformFeedbackQueries() {
+    public @Unsigned int transformFeedbackQueries() {
         return segment.get(LAYOUT$transformFeedbackQueries, OFFSET$transformFeedbackQueries);
     }
 
-    public void transformFeedbackQueries(@unsigned int value) {
+    public void transformFeedbackQueries(@Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackQueries, OFFSET$transformFeedbackQueries, value);
     }
 
-    public @unsigned int transformFeedbackStreamsLinesTriangles() {
+    public @Unsigned int transformFeedbackStreamsLinesTriangles() {
         return segment.get(LAYOUT$transformFeedbackStreamsLinesTriangles, OFFSET$transformFeedbackStreamsLinesTriangles);
     }
 
-    public void transformFeedbackStreamsLinesTriangles(@unsigned int value) {
+    public void transformFeedbackStreamsLinesTriangles(@Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackStreamsLinesTriangles, OFFSET$transformFeedbackStreamsLinesTriangles, value);
     }
 
-    public @unsigned int transformFeedbackRasterizationStreamSelect() {
+    public @Unsigned int transformFeedbackRasterizationStreamSelect() {
         return segment.get(LAYOUT$transformFeedbackRasterizationStreamSelect, OFFSET$transformFeedbackRasterizationStreamSelect);
     }
 
-    public void transformFeedbackRasterizationStreamSelect(@unsigned int value) {
+    public void transformFeedbackRasterizationStreamSelect(@Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackRasterizationStreamSelect, OFFSET$transformFeedbackRasterizationStreamSelect, value);
     }
 
-    public @unsigned int transformFeedbackDraw() {
+    public @Unsigned int transformFeedbackDraw() {
         return segment.get(LAYOUT$transformFeedbackDraw, OFFSET$transformFeedbackDraw);
     }
 
-    public void transformFeedbackDraw(@unsigned int value) {
+    public void transformFeedbackDraw(@Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackDraw, OFFSET$transformFeedbackDraw, value);
     }
 

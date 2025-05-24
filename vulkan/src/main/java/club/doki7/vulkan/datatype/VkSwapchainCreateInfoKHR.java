@@ -108,7 +108,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -213,11 +213,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$surface, OFFSET$surface, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int minImageCount() {
+    public @Unsigned int minImageCount() {
         return segment.get(LAYOUT$minImageCount, OFFSET$minImageCount);
     }
 
-    public void minImageCount(@unsigned int value) {
+    public void minImageCount(@Unsigned int value) {
         segment.set(LAYOUT$minImageCount, OFFSET$minImageCount, value);
     }
 
@@ -245,11 +245,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
     }
 
-    public @unsigned int imageArrayLayers() {
+    public @Unsigned int imageArrayLayers() {
         return segment.get(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers);
     }
 
-    public void imageArrayLayers(@unsigned int value) {
+    public void imageArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers, value);
     }
 
@@ -269,11 +269,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$imageSharingMode, OFFSET$imageSharingMode, value);
     }
 
-    public @unsigned int queueFamilyIndexCount() {
+    public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@unsigned int value) {
+    public void queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
@@ -281,7 +281,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pQueueFamilyIndices() {
+    public @Nullable @Unsigned IntPtr pQueueFamilyIndices() {
         MemorySegment s = pQueueFamilyIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -289,7 +289,7 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
+    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
     }
@@ -326,11 +326,11 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
     }
 
-    public @unsigned int clipped() {
+    public @Unsigned int clipped() {
         return segment.get(LAYOUT$clipped, OFFSET$clipped);
     }
 
-    public void clipped(@unsigned int value) {
+    public void clipped(@Unsigned int value) {
         segment.set(LAYOUT$clipped, OFFSET$clipped, value);
     }
 

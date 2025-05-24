@@ -85,7 +85,7 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -148,35 +148,35 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         segment.set(LAYOUT$memory_management_control_operation, OFFSET$memory_management_control_operation, value);
     }
 
-    public @unsigned short difference_of_pic_nums_minus1() {
+    public @Unsigned short difference_of_pic_nums_minus1() {
         return segment.get(LAYOUT$difference_of_pic_nums_minus1, OFFSET$difference_of_pic_nums_minus1);
     }
 
-    public void difference_of_pic_nums_minus1(@unsigned short value) {
+    public void difference_of_pic_nums_minus1(@Unsigned short value) {
         segment.set(LAYOUT$difference_of_pic_nums_minus1, OFFSET$difference_of_pic_nums_minus1, value);
     }
 
-    public @unsigned short long_term_pic_num() {
+    public @Unsigned short long_term_pic_num() {
         return segment.get(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num);
     }
 
-    public void long_term_pic_num(@unsigned short value) {
+    public void long_term_pic_num(@Unsigned short value) {
         segment.set(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num, value);
     }
 
-    public @unsigned short long_term_frame_idx() {
+    public @Unsigned short long_term_frame_idx() {
         return segment.get(LAYOUT$long_term_frame_idx, OFFSET$long_term_frame_idx);
     }
 
-    public void long_term_frame_idx(@unsigned short value) {
+    public void long_term_frame_idx(@Unsigned short value) {
         segment.set(LAYOUT$long_term_frame_idx, OFFSET$long_term_frame_idx, value);
     }
 
-    public @unsigned short max_long_term_frame_idx_plus1() {
+    public @Unsigned short max_long_term_frame_idx_plus1() {
         return segment.get(LAYOUT$max_long_term_frame_idx_plus1, OFFSET$max_long_term_frame_idx_plus1);
     }
 
-    public void max_long_term_frame_idx_plus1(@unsigned short value) {
+    public void max_long_term_frame_idx_plus1(@Unsigned short value) {
         segment.set(LAYOUT$max_long_term_frame_idx_plus1, OFFSET$max_long_term_frame_idx_plus1, value);
     }
 

@@ -83,7 +83,7 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -138,11 +138,11 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
         return ret;
     }
 
-    public @unsigned long pipelineAddress() {
+    public @Unsigned long pipelineAddress() {
         return segment.get(LAYOUT$pipelineAddress, OFFSET$pipelineAddress);
     }
 
-    public void pipelineAddress(@unsigned long value) {
+    public void pipelineAddress(@Unsigned long value) {
         segment.set(LAYOUT$pipelineAddress, OFFSET$pipelineAddress, value);
     }
 

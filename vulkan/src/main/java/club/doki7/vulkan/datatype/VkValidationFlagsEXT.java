@@ -94,7 +94,7 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,11 +179,11 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int disabledValidationCheckCount() {
+    public @Unsigned int disabledValidationCheckCount() {
         return segment.get(LAYOUT$disabledValidationCheckCount, OFFSET$disabledValidationCheckCount);
     }
 
-    public void disabledValidationCheckCount(@unsigned int value) {
+    public void disabledValidationCheckCount(@Unsigned int value) {
         segment.set(LAYOUT$disabledValidationCheckCount, OFFSET$disabledValidationCheckCount, value);
     }
 

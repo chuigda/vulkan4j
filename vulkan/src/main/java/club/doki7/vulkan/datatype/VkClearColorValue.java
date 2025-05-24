@@ -85,7 +85,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -156,11 +156,11 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         segment.set(LAYOUT$int32, OFFSET$int32, value);
     }
 
-    public @unsigned int uint32() {
+    public @Unsigned int uint32() {
         return segment.get(LAYOUT$uint32, OFFSET$uint32);
     }
 
-    public void uint32(@unsigned int value) {
+    public void uint32(@Unsigned int value) {
         segment.set(LAYOUT$uint32, OFFSET$uint32, value);
     }
 

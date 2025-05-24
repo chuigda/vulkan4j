@@ -86,7 +86,7 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -141,35 +141,35 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
         return ret;
     }
 
-    public @unsigned int primitiveCount() {
+    public @Unsigned int primitiveCount() {
         return segment.get(LAYOUT$primitiveCount, OFFSET$primitiveCount);
     }
 
-    public void primitiveCount(@unsigned int value) {
+    public void primitiveCount(@Unsigned int value) {
         segment.set(LAYOUT$primitiveCount, OFFSET$primitiveCount, value);
     }
 
-    public @unsigned int primitiveOffset() {
+    public @Unsigned int primitiveOffset() {
         return segment.get(LAYOUT$primitiveOffset, OFFSET$primitiveOffset);
     }
 
-    public void primitiveOffset(@unsigned int value) {
+    public void primitiveOffset(@Unsigned int value) {
         segment.set(LAYOUT$primitiveOffset, OFFSET$primitiveOffset, value);
     }
 
-    public @unsigned int firstVertex() {
+    public @Unsigned int firstVertex() {
         return segment.get(LAYOUT$firstVertex, OFFSET$firstVertex);
     }
 
-    public void firstVertex(@unsigned int value) {
+    public void firstVertex(@Unsigned int value) {
         segment.set(LAYOUT$firstVertex, OFFSET$firstVertex, value);
     }
 
-    public @unsigned int transformOffset() {
+    public @Unsigned int transformOffset() {
         return segment.get(LAYOUT$transformOffset, OFFSET$transformOffset);
     }
 
-    public void transformOffset(@unsigned int value) {
+    public void transformOffset(@Unsigned int value) {
         segment.set(LAYOUT$transformOffset, OFFSET$transformOffset, value);
     }
 

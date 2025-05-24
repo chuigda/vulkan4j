@@ -35,14 +35,14 @@ fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields) = buildDoc {
                 +"BitfieldUtil.writeBit($s, $from, value);"
             }
         } else {
-            defun("public", "@unsigned int", memberName) {
+            defun("public", "@Unsigned int", memberName) {
                 +sliceSegment
                 +"return BitfieldUtil.readBits($s, $from, $until);"
             }
 
             +""
 
-            defun("public", "void", memberName, "@unsigned int value") {
+            defun("public", "void", memberName, "@Unsigned int value") {
                 +sliceSegment
                 +"BitfieldUtil.writeBits($s, $from, $until, value);"
             }

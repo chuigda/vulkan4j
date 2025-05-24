@@ -94,7 +94,7 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int keySize() {
+    public @Unsigned int keySize() {
         return segment.get(LAYOUT$keySize, OFFSET$keySize);
     }
 
-    public void keySize(@unsigned int value) {
+    public void keySize(@Unsigned int value) {
         segment.set(LAYOUT$keySize, OFFSET$keySize, value);
     }
 
-    public @unsigned byte key() {
+    public @Unsigned byte key() {
         return segment.get(LAYOUT$key, OFFSET$key);
     }
 
-    public void key(@unsigned byte value) {
+    public void key(@Unsigned byte value) {
         segment.set(LAYOUT$key, OFFSET$key, value);
     }
 

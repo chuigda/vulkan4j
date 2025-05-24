@@ -95,7 +95,7 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(@NotNull MemorySeg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long shaderCoreMask() {
+    public @Unsigned long shaderCoreMask() {
         return segment.get(LAYOUT$shaderCoreMask, OFFSET$shaderCoreMask);
     }
 
-    public void shaderCoreMask(@unsigned long value) {
+    public void shaderCoreMask(@Unsigned long value) {
         segment.set(LAYOUT$shaderCoreMask, OFFSET$shaderCoreMask, value);
     }
 
-    public @unsigned int shaderCoreCount() {
+    public @Unsigned int shaderCoreCount() {
         return segment.get(LAYOUT$shaderCoreCount, OFFSET$shaderCoreCount);
     }
 
-    public void shaderCoreCount(@unsigned int value) {
+    public void shaderCoreCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderCoreCount, OFFSET$shaderCoreCount, value);
     }
 
-    public @unsigned int shaderWarpsPerCore() {
+    public @Unsigned int shaderWarpsPerCore() {
         return segment.get(LAYOUT$shaderWarpsPerCore, OFFSET$shaderWarpsPerCore);
     }
 
-    public void shaderWarpsPerCore(@unsigned int value) {
+    public void shaderWarpsPerCore(@Unsigned int value) {
         segment.set(LAYOUT$shaderWarpsPerCore, OFFSET$shaderWarpsPerCore, value);
     }
 

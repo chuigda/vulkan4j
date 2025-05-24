@@ -93,7 +93,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV(@NotNull MemoryS
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int deviceGeneratedCommands() {
+    public @Unsigned int deviceGeneratedCommands() {
         return segment.get(LAYOUT$deviceGeneratedCommands, OFFSET$deviceGeneratedCommands);
     }
 
-    public void deviceGeneratedCommands(@unsigned int value) {
+    public void deviceGeneratedCommands(@Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCommands, OFFSET$deviceGeneratedCommands, value);
     }
 

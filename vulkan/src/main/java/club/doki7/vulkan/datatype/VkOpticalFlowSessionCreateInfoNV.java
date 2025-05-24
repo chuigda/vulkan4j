@@ -101,7 +101,7 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -186,19 +186,19 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int width() {
+    public @Unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@unsigned int value) {
+    public void width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
     }
 
-    public @unsigned int height() {
+    public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@unsigned int value) {
+    public void height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
     }
 

@@ -95,7 +95,7 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -188,19 +188,19 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @unsigned int noMoveOverlap() {
+    public @Unsigned int noMoveOverlap() {
         return segment.get(LAYOUT$noMoveOverlap, OFFSET$noMoveOverlap);
     }
 
-    public void noMoveOverlap(@unsigned int value) {
+    public void noMoveOverlap(@Unsigned int value) {
         segment.set(LAYOUT$noMoveOverlap, OFFSET$noMoveOverlap, value);
     }
 
-    public @unsigned long maxMovedBytes() {
+    public @Unsigned long maxMovedBytes() {
         return segment.get(LAYOUT$maxMovedBytes, OFFSET$maxMovedBytes);
     }
 
-    public void maxMovedBytes(@unsigned long value) {
+    public void maxMovedBytes(@Unsigned long value) {
         segment.set(LAYOUT$maxMovedBytes, OFFSET$maxMovedBytes, value);
     }
 

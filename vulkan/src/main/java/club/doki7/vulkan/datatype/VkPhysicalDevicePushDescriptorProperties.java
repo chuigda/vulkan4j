@@ -93,7 +93,7 @@ public record VkPhysicalDevicePushDescriptorProperties(@NotNull MemorySegment se
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,11 +178,11 @@ public record VkPhysicalDevicePushDescriptorProperties(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxPushDescriptors() {
+    public @Unsigned int maxPushDescriptors() {
         return segment.get(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors);
     }
 
-    public void maxPushDescriptors(@unsigned int value) {
+    public void maxPushDescriptors(@Unsigned int value) {
         segment.set(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors, value);
     }
 

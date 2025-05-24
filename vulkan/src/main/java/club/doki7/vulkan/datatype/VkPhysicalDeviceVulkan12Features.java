@@ -139,7 +139,7 @@ public record VkPhysicalDeviceVulkan12Features(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -224,379 +224,379 @@ public record VkPhysicalDeviceVulkan12Features(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int samplerMirrorClampToEdge() {
+    public @Unsigned int samplerMirrorClampToEdge() {
         return segment.get(LAYOUT$samplerMirrorClampToEdge, OFFSET$samplerMirrorClampToEdge);
     }
 
-    public void samplerMirrorClampToEdge(@unsigned int value) {
+    public void samplerMirrorClampToEdge(@Unsigned int value) {
         segment.set(LAYOUT$samplerMirrorClampToEdge, OFFSET$samplerMirrorClampToEdge, value);
     }
 
-    public @unsigned int drawIndirectCount() {
+    public @Unsigned int drawIndirectCount() {
         return segment.get(LAYOUT$drawIndirectCount, OFFSET$drawIndirectCount);
     }
 
-    public void drawIndirectCount(@unsigned int value) {
+    public void drawIndirectCount(@Unsigned int value) {
         segment.set(LAYOUT$drawIndirectCount, OFFSET$drawIndirectCount, value);
     }
 
-    public @unsigned int storageBuffer8BitAccess() {
+    public @Unsigned int storageBuffer8BitAccess() {
         return segment.get(LAYOUT$storageBuffer8BitAccess, OFFSET$storageBuffer8BitAccess);
     }
 
-    public void storageBuffer8BitAccess(@unsigned int value) {
+    public void storageBuffer8BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$storageBuffer8BitAccess, OFFSET$storageBuffer8BitAccess, value);
     }
 
-    public @unsigned int uniformAndStorageBuffer8BitAccess() {
+    public @Unsigned int uniformAndStorageBuffer8BitAccess() {
         return segment.get(LAYOUT$uniformAndStorageBuffer8BitAccess, OFFSET$uniformAndStorageBuffer8BitAccess);
     }
 
-    public void uniformAndStorageBuffer8BitAccess(@unsigned int value) {
+    public void uniformAndStorageBuffer8BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$uniformAndStorageBuffer8BitAccess, OFFSET$uniformAndStorageBuffer8BitAccess, value);
     }
 
-    public @unsigned int storagePushConstant8() {
+    public @Unsigned int storagePushConstant8() {
         return segment.get(LAYOUT$storagePushConstant8, OFFSET$storagePushConstant8);
     }
 
-    public void storagePushConstant8(@unsigned int value) {
+    public void storagePushConstant8(@Unsigned int value) {
         segment.set(LAYOUT$storagePushConstant8, OFFSET$storagePushConstant8, value);
     }
 
-    public @unsigned int shaderBufferInt64Atomics() {
+    public @Unsigned int shaderBufferInt64Atomics() {
         return segment.get(LAYOUT$shaderBufferInt64Atomics, OFFSET$shaderBufferInt64Atomics);
     }
 
-    public void shaderBufferInt64Atomics(@unsigned int value) {
+    public void shaderBufferInt64Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferInt64Atomics, OFFSET$shaderBufferInt64Atomics, value);
     }
 
-    public @unsigned int shaderSharedInt64Atomics() {
+    public @Unsigned int shaderSharedInt64Atomics() {
         return segment.get(LAYOUT$shaderSharedInt64Atomics, OFFSET$shaderSharedInt64Atomics);
     }
 
-    public void shaderSharedInt64Atomics(@unsigned int value) {
+    public void shaderSharedInt64Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedInt64Atomics, OFFSET$shaderSharedInt64Atomics, value);
     }
 
-    public @unsigned int shaderFloat16() {
+    public @Unsigned int shaderFloat16() {
         return segment.get(LAYOUT$shaderFloat16, OFFSET$shaderFloat16);
     }
 
-    public void shaderFloat16(@unsigned int value) {
+    public void shaderFloat16(@Unsigned int value) {
         segment.set(LAYOUT$shaderFloat16, OFFSET$shaderFloat16, value);
     }
 
-    public @unsigned int shaderInt8() {
+    public @Unsigned int shaderInt8() {
         return segment.get(LAYOUT$shaderInt8, OFFSET$shaderInt8);
     }
 
-    public void shaderInt8(@unsigned int value) {
+    public void shaderInt8(@Unsigned int value) {
         segment.set(LAYOUT$shaderInt8, OFFSET$shaderInt8, value);
     }
 
-    public @unsigned int descriptorIndexing() {
+    public @Unsigned int descriptorIndexing() {
         return segment.get(LAYOUT$descriptorIndexing, OFFSET$descriptorIndexing);
     }
 
-    public void descriptorIndexing(@unsigned int value) {
+    public void descriptorIndexing(@Unsigned int value) {
         segment.set(LAYOUT$descriptorIndexing, OFFSET$descriptorIndexing, value);
     }
 
-    public @unsigned int shaderInputAttachmentArrayDynamicIndexing() {
+    public @Unsigned int shaderInputAttachmentArrayDynamicIndexing() {
         return segment.get(LAYOUT$shaderInputAttachmentArrayDynamicIndexing, OFFSET$shaderInputAttachmentArrayDynamicIndexing);
     }
 
-    public void shaderInputAttachmentArrayDynamicIndexing(@unsigned int value) {
+    public void shaderInputAttachmentArrayDynamicIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderInputAttachmentArrayDynamicIndexing, OFFSET$shaderInputAttachmentArrayDynamicIndexing, value);
     }
 
-    public @unsigned int shaderUniformTexelBufferArrayDynamicIndexing() {
+    public @Unsigned int shaderUniformTexelBufferArrayDynamicIndexing() {
         return segment.get(LAYOUT$shaderUniformTexelBufferArrayDynamicIndexing, OFFSET$shaderUniformTexelBufferArrayDynamicIndexing);
     }
 
-    public void shaderUniformTexelBufferArrayDynamicIndexing(@unsigned int value) {
+    public void shaderUniformTexelBufferArrayDynamicIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderUniformTexelBufferArrayDynamicIndexing, OFFSET$shaderUniformTexelBufferArrayDynamicIndexing, value);
     }
 
-    public @unsigned int shaderStorageTexelBufferArrayDynamicIndexing() {
+    public @Unsigned int shaderStorageTexelBufferArrayDynamicIndexing() {
         return segment.get(LAYOUT$shaderStorageTexelBufferArrayDynamicIndexing, OFFSET$shaderStorageTexelBufferArrayDynamicIndexing);
     }
 
-    public void shaderStorageTexelBufferArrayDynamicIndexing(@unsigned int value) {
+    public void shaderStorageTexelBufferArrayDynamicIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderStorageTexelBufferArrayDynamicIndexing, OFFSET$shaderStorageTexelBufferArrayDynamicIndexing, value);
     }
 
-    public @unsigned int shaderUniformBufferArrayNonUniformIndexing() {
+    public @Unsigned int shaderUniformBufferArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderUniformBufferArrayNonUniformIndexing, OFFSET$shaderUniformBufferArrayNonUniformIndexing);
     }
 
-    public void shaderUniformBufferArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderUniformBufferArrayNonUniformIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderUniformBufferArrayNonUniformIndexing, OFFSET$shaderUniformBufferArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderSampledImageArrayNonUniformIndexing() {
+    public @Unsigned int shaderSampledImageArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderSampledImageArrayNonUniformIndexing, OFFSET$shaderSampledImageArrayNonUniformIndexing);
     }
 
-    public void shaderSampledImageArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderSampledImageArrayNonUniformIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderSampledImageArrayNonUniformIndexing, OFFSET$shaderSampledImageArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderStorageBufferArrayNonUniformIndexing() {
+    public @Unsigned int shaderStorageBufferArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderStorageBufferArrayNonUniformIndexing, OFFSET$shaderStorageBufferArrayNonUniformIndexing);
     }
 
-    public void shaderStorageBufferArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderStorageBufferArrayNonUniformIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderStorageBufferArrayNonUniformIndexing, OFFSET$shaderStorageBufferArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderStorageImageArrayNonUniformIndexing() {
+    public @Unsigned int shaderStorageImageArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderStorageImageArrayNonUniformIndexing, OFFSET$shaderStorageImageArrayNonUniformIndexing);
     }
 
-    public void shaderStorageImageArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderStorageImageArrayNonUniformIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderStorageImageArrayNonUniformIndexing, OFFSET$shaderStorageImageArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderInputAttachmentArrayNonUniformIndexing() {
+    public @Unsigned int shaderInputAttachmentArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderInputAttachmentArrayNonUniformIndexing, OFFSET$shaderInputAttachmentArrayNonUniformIndexing);
     }
 
-    public void shaderInputAttachmentArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderInputAttachmentArrayNonUniformIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderInputAttachmentArrayNonUniformIndexing, OFFSET$shaderInputAttachmentArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderUniformTexelBufferArrayNonUniformIndexing() {
+    public @Unsigned int shaderUniformTexelBufferArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderUniformTexelBufferArrayNonUniformIndexing, OFFSET$shaderUniformTexelBufferArrayNonUniformIndexing);
     }
 
-    public void shaderUniformTexelBufferArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderUniformTexelBufferArrayNonUniformIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderUniformTexelBufferArrayNonUniformIndexing, OFFSET$shaderUniformTexelBufferArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int shaderStorageTexelBufferArrayNonUniformIndexing() {
+    public @Unsigned int shaderStorageTexelBufferArrayNonUniformIndexing() {
         return segment.get(LAYOUT$shaderStorageTexelBufferArrayNonUniformIndexing, OFFSET$shaderStorageTexelBufferArrayNonUniformIndexing);
     }
 
-    public void shaderStorageTexelBufferArrayNonUniformIndexing(@unsigned int value) {
+    public void shaderStorageTexelBufferArrayNonUniformIndexing(@Unsigned int value) {
         segment.set(LAYOUT$shaderStorageTexelBufferArrayNonUniformIndexing, OFFSET$shaderStorageTexelBufferArrayNonUniformIndexing, value);
     }
 
-    public @unsigned int descriptorBindingUniformBufferUpdateAfterBind() {
+    public @Unsigned int descriptorBindingUniformBufferUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingUniformBufferUpdateAfterBind, OFFSET$descriptorBindingUniformBufferUpdateAfterBind);
     }
 
-    public void descriptorBindingUniformBufferUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingUniformBufferUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingUniformBufferUpdateAfterBind, OFFSET$descriptorBindingUniformBufferUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingSampledImageUpdateAfterBind() {
+    public @Unsigned int descriptorBindingSampledImageUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingSampledImageUpdateAfterBind, OFFSET$descriptorBindingSampledImageUpdateAfterBind);
     }
 
-    public void descriptorBindingSampledImageUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingSampledImageUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingSampledImageUpdateAfterBind, OFFSET$descriptorBindingSampledImageUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingStorageImageUpdateAfterBind() {
+    public @Unsigned int descriptorBindingStorageImageUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingStorageImageUpdateAfterBind, OFFSET$descriptorBindingStorageImageUpdateAfterBind);
     }
 
-    public void descriptorBindingStorageImageUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingStorageImageUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingStorageImageUpdateAfterBind, OFFSET$descriptorBindingStorageImageUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingStorageBufferUpdateAfterBind() {
+    public @Unsigned int descriptorBindingStorageBufferUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingStorageBufferUpdateAfterBind, OFFSET$descriptorBindingStorageBufferUpdateAfterBind);
     }
 
-    public void descriptorBindingStorageBufferUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingStorageBufferUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingStorageBufferUpdateAfterBind, OFFSET$descriptorBindingStorageBufferUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingUniformTexelBufferUpdateAfterBind() {
+    public @Unsigned int descriptorBindingUniformTexelBufferUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingUniformTexelBufferUpdateAfterBind, OFFSET$descriptorBindingUniformTexelBufferUpdateAfterBind);
     }
 
-    public void descriptorBindingUniformTexelBufferUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingUniformTexelBufferUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingUniformTexelBufferUpdateAfterBind, OFFSET$descriptorBindingUniformTexelBufferUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingStorageTexelBufferUpdateAfterBind() {
+    public @Unsigned int descriptorBindingStorageTexelBufferUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingStorageTexelBufferUpdateAfterBind, OFFSET$descriptorBindingStorageTexelBufferUpdateAfterBind);
     }
 
-    public void descriptorBindingStorageTexelBufferUpdateAfterBind(@unsigned int value) {
+    public void descriptorBindingStorageTexelBufferUpdateAfterBind(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingStorageTexelBufferUpdateAfterBind, OFFSET$descriptorBindingStorageTexelBufferUpdateAfterBind, value);
     }
 
-    public @unsigned int descriptorBindingUpdateUnusedWhilePending() {
+    public @Unsigned int descriptorBindingUpdateUnusedWhilePending() {
         return segment.get(LAYOUT$descriptorBindingUpdateUnusedWhilePending, OFFSET$descriptorBindingUpdateUnusedWhilePending);
     }
 
-    public void descriptorBindingUpdateUnusedWhilePending(@unsigned int value) {
+    public void descriptorBindingUpdateUnusedWhilePending(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingUpdateUnusedWhilePending, OFFSET$descriptorBindingUpdateUnusedWhilePending, value);
     }
 
-    public @unsigned int descriptorBindingPartiallyBound() {
+    public @Unsigned int descriptorBindingPartiallyBound() {
         return segment.get(LAYOUT$descriptorBindingPartiallyBound, OFFSET$descriptorBindingPartiallyBound);
     }
 
-    public void descriptorBindingPartiallyBound(@unsigned int value) {
+    public void descriptorBindingPartiallyBound(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingPartiallyBound, OFFSET$descriptorBindingPartiallyBound, value);
     }
 
-    public @unsigned int descriptorBindingVariableDescriptorCount() {
+    public @Unsigned int descriptorBindingVariableDescriptorCount() {
         return segment.get(LAYOUT$descriptorBindingVariableDescriptorCount, OFFSET$descriptorBindingVariableDescriptorCount);
     }
 
-    public void descriptorBindingVariableDescriptorCount(@unsigned int value) {
+    public void descriptorBindingVariableDescriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingVariableDescriptorCount, OFFSET$descriptorBindingVariableDescriptorCount, value);
     }
 
-    public @unsigned int runtimeDescriptorArray() {
+    public @Unsigned int runtimeDescriptorArray() {
         return segment.get(LAYOUT$runtimeDescriptorArray, OFFSET$runtimeDescriptorArray);
     }
 
-    public void runtimeDescriptorArray(@unsigned int value) {
+    public void runtimeDescriptorArray(@Unsigned int value) {
         segment.set(LAYOUT$runtimeDescriptorArray, OFFSET$runtimeDescriptorArray, value);
     }
 
-    public @unsigned int samplerFilterMinmax() {
+    public @Unsigned int samplerFilterMinmax() {
         return segment.get(LAYOUT$samplerFilterMinmax, OFFSET$samplerFilterMinmax);
     }
 
-    public void samplerFilterMinmax(@unsigned int value) {
+    public void samplerFilterMinmax(@Unsigned int value) {
         segment.set(LAYOUT$samplerFilterMinmax, OFFSET$samplerFilterMinmax, value);
     }
 
-    public @unsigned int scalarBlockLayout() {
+    public @Unsigned int scalarBlockLayout() {
         return segment.get(LAYOUT$scalarBlockLayout, OFFSET$scalarBlockLayout);
     }
 
-    public void scalarBlockLayout(@unsigned int value) {
+    public void scalarBlockLayout(@Unsigned int value) {
         segment.set(LAYOUT$scalarBlockLayout, OFFSET$scalarBlockLayout, value);
     }
 
-    public @unsigned int imagelessFramebuffer() {
+    public @Unsigned int imagelessFramebuffer() {
         return segment.get(LAYOUT$imagelessFramebuffer, OFFSET$imagelessFramebuffer);
     }
 
-    public void imagelessFramebuffer(@unsigned int value) {
+    public void imagelessFramebuffer(@Unsigned int value) {
         segment.set(LAYOUT$imagelessFramebuffer, OFFSET$imagelessFramebuffer, value);
     }
 
-    public @unsigned int uniformBufferStandardLayout() {
+    public @Unsigned int uniformBufferStandardLayout() {
         return segment.get(LAYOUT$uniformBufferStandardLayout, OFFSET$uniformBufferStandardLayout);
     }
 
-    public void uniformBufferStandardLayout(@unsigned int value) {
+    public void uniformBufferStandardLayout(@Unsigned int value) {
         segment.set(LAYOUT$uniformBufferStandardLayout, OFFSET$uniformBufferStandardLayout, value);
     }
 
-    public @unsigned int shaderSubgroupExtendedTypes() {
+    public @Unsigned int shaderSubgroupExtendedTypes() {
         return segment.get(LAYOUT$shaderSubgroupExtendedTypes, OFFSET$shaderSubgroupExtendedTypes);
     }
 
-    public void shaderSubgroupExtendedTypes(@unsigned int value) {
+    public void shaderSubgroupExtendedTypes(@Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupExtendedTypes, OFFSET$shaderSubgroupExtendedTypes, value);
     }
 
-    public @unsigned int separateDepthStencilLayouts() {
+    public @Unsigned int separateDepthStencilLayouts() {
         return segment.get(LAYOUT$separateDepthStencilLayouts, OFFSET$separateDepthStencilLayouts);
     }
 
-    public void separateDepthStencilLayouts(@unsigned int value) {
+    public void separateDepthStencilLayouts(@Unsigned int value) {
         segment.set(LAYOUT$separateDepthStencilLayouts, OFFSET$separateDepthStencilLayouts, value);
     }
 
-    public @unsigned int hostQueryReset() {
+    public @Unsigned int hostQueryReset() {
         return segment.get(LAYOUT$hostQueryReset, OFFSET$hostQueryReset);
     }
 
-    public void hostQueryReset(@unsigned int value) {
+    public void hostQueryReset(@Unsigned int value) {
         segment.set(LAYOUT$hostQueryReset, OFFSET$hostQueryReset, value);
     }
 
-    public @unsigned int timelineSemaphore() {
+    public @Unsigned int timelineSemaphore() {
         return segment.get(LAYOUT$timelineSemaphore, OFFSET$timelineSemaphore);
     }
 
-    public void timelineSemaphore(@unsigned int value) {
+    public void timelineSemaphore(@Unsigned int value) {
         segment.set(LAYOUT$timelineSemaphore, OFFSET$timelineSemaphore, value);
     }
 
-    public @unsigned int bufferDeviceAddress() {
+    public @Unsigned int bufferDeviceAddress() {
         return segment.get(LAYOUT$bufferDeviceAddress, OFFSET$bufferDeviceAddress);
     }
 
-    public void bufferDeviceAddress(@unsigned int value) {
+    public void bufferDeviceAddress(@Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddress, OFFSET$bufferDeviceAddress, value);
     }
 
-    public @unsigned int bufferDeviceAddressCaptureReplay() {
+    public @Unsigned int bufferDeviceAddressCaptureReplay() {
         return segment.get(LAYOUT$bufferDeviceAddressCaptureReplay, OFFSET$bufferDeviceAddressCaptureReplay);
     }
 
-    public void bufferDeviceAddressCaptureReplay(@unsigned int value) {
+    public void bufferDeviceAddressCaptureReplay(@Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddressCaptureReplay, OFFSET$bufferDeviceAddressCaptureReplay, value);
     }
 
-    public @unsigned int bufferDeviceAddressMultiDevice() {
+    public @Unsigned int bufferDeviceAddressMultiDevice() {
         return segment.get(LAYOUT$bufferDeviceAddressMultiDevice, OFFSET$bufferDeviceAddressMultiDevice);
     }
 
-    public void bufferDeviceAddressMultiDevice(@unsigned int value) {
+    public void bufferDeviceAddressMultiDevice(@Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddressMultiDevice, OFFSET$bufferDeviceAddressMultiDevice, value);
     }
 
-    public @unsigned int vulkanMemoryModel() {
+    public @Unsigned int vulkanMemoryModel() {
         return segment.get(LAYOUT$vulkanMemoryModel, OFFSET$vulkanMemoryModel);
     }
 
-    public void vulkanMemoryModel(@unsigned int value) {
+    public void vulkanMemoryModel(@Unsigned int value) {
         segment.set(LAYOUT$vulkanMemoryModel, OFFSET$vulkanMemoryModel, value);
     }
 
-    public @unsigned int vulkanMemoryModelDeviceScope() {
+    public @Unsigned int vulkanMemoryModelDeviceScope() {
         return segment.get(LAYOUT$vulkanMemoryModelDeviceScope, OFFSET$vulkanMemoryModelDeviceScope);
     }
 
-    public void vulkanMemoryModelDeviceScope(@unsigned int value) {
+    public void vulkanMemoryModelDeviceScope(@Unsigned int value) {
         segment.set(LAYOUT$vulkanMemoryModelDeviceScope, OFFSET$vulkanMemoryModelDeviceScope, value);
     }
 
-    public @unsigned int vulkanMemoryModelAvailabilityVisibilityChains() {
+    public @Unsigned int vulkanMemoryModelAvailabilityVisibilityChains() {
         return segment.get(LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains, OFFSET$vulkanMemoryModelAvailabilityVisibilityChains);
     }
 
-    public void vulkanMemoryModelAvailabilityVisibilityChains(@unsigned int value) {
+    public void vulkanMemoryModelAvailabilityVisibilityChains(@Unsigned int value) {
         segment.set(LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains, OFFSET$vulkanMemoryModelAvailabilityVisibilityChains, value);
     }
 
-    public @unsigned int shaderOutputViewportIndex() {
+    public @Unsigned int shaderOutputViewportIndex() {
         return segment.get(LAYOUT$shaderOutputViewportIndex, OFFSET$shaderOutputViewportIndex);
     }
 
-    public void shaderOutputViewportIndex(@unsigned int value) {
+    public void shaderOutputViewportIndex(@Unsigned int value) {
         segment.set(LAYOUT$shaderOutputViewportIndex, OFFSET$shaderOutputViewportIndex, value);
     }
 
-    public @unsigned int shaderOutputLayer() {
+    public @Unsigned int shaderOutputLayer() {
         return segment.get(LAYOUT$shaderOutputLayer, OFFSET$shaderOutputLayer);
     }
 
-    public void shaderOutputLayer(@unsigned int value) {
+    public void shaderOutputLayer(@Unsigned int value) {
         segment.set(LAYOUT$shaderOutputLayer, OFFSET$shaderOutputLayer, value);
     }
 
-    public @unsigned int subgroupBroadcastDynamicId() {
+    public @Unsigned int subgroupBroadcastDynamicId() {
         return segment.get(LAYOUT$subgroupBroadcastDynamicId, OFFSET$subgroupBroadcastDynamicId);
     }
 
-    public void subgroupBroadcastDynamicId(@unsigned int value) {
+    public void subgroupBroadcastDynamicId(@Unsigned int value) {
         segment.set(LAYOUT$subgroupBroadcastDynamicId, OFFSET$subgroupBroadcastDynamicId, value);
     }
 

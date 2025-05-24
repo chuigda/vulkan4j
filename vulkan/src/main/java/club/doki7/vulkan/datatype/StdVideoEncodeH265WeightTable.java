@@ -91,7 +91,7 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -154,11 +154,11 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte luma_log2_weight_denom() {
+    public @Unsigned byte luma_log2_weight_denom() {
         return segment.get(LAYOUT$luma_log2_weight_denom, OFFSET$luma_log2_weight_denom);
     }
 
-    public void luma_log2_weight_denom(@unsigned byte value) {
+    public void luma_log2_weight_denom(@Unsigned byte value) {
         segment.set(LAYOUT$luma_log2_weight_denom, OFFSET$luma_log2_weight_denom, value);
     }
 

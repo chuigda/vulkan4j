@@ -91,7 +91,7 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -154,35 +154,35 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte seq_parameter_set_id() {
+    public @Unsigned byte seq_parameter_set_id() {
         return segment.get(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id);
     }
 
-    public void seq_parameter_set_id(@unsigned byte value) {
+    public void seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id, value);
     }
 
-    public @unsigned byte pic_parameter_set_id() {
+    public @Unsigned byte pic_parameter_set_id() {
         return segment.get(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id);
     }
 
-    public void pic_parameter_set_id(@unsigned byte value) {
+    public void pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id, value);
     }
 
-    public @unsigned byte num_ref_idx_l0_default_active_minus1() {
+    public @Unsigned byte num_ref_idx_l0_default_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l0_default_active_minus1, OFFSET$num_ref_idx_l0_default_active_minus1);
     }
 
-    public void num_ref_idx_l0_default_active_minus1(@unsigned byte value) {
+    public void num_ref_idx_l0_default_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l0_default_active_minus1, OFFSET$num_ref_idx_l0_default_active_minus1, value);
     }
 
-    public @unsigned byte num_ref_idx_l1_default_active_minus1() {
+    public @Unsigned byte num_ref_idx_l1_default_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l1_default_active_minus1, OFFSET$num_ref_idx_l1_default_active_minus1);
     }
 
-    public void num_ref_idx_l1_default_active_minus1(@unsigned byte value) {
+    public void num_ref_idx_l1_default_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l1_default_active_minus1, OFFSET$num_ref_idx_l1_default_active_minus1, value);
     }
 

@@ -96,7 +96,7 @@ public record VkVideoEncodeH265GopRemainingFrameInfoKHR(@NotNull MemorySegment s
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,35 +181,35 @@ public record VkVideoEncodeH265GopRemainingFrameInfoKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int useGopRemainingFrames() {
+    public @Unsigned int useGopRemainingFrames() {
         return segment.get(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames);
     }
 
-    public void useGopRemainingFrames(@unsigned int value) {
+    public void useGopRemainingFrames(@Unsigned int value) {
         segment.set(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames, value);
     }
 
-    public @unsigned int gopRemainingI() {
+    public @Unsigned int gopRemainingI() {
         return segment.get(LAYOUT$gopRemainingI, OFFSET$gopRemainingI);
     }
 
-    public void gopRemainingI(@unsigned int value) {
+    public void gopRemainingI(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingI, OFFSET$gopRemainingI, value);
     }
 
-    public @unsigned int gopRemainingP() {
+    public @Unsigned int gopRemainingP() {
         return segment.get(LAYOUT$gopRemainingP, OFFSET$gopRemainingP);
     }
 
-    public void gopRemainingP(@unsigned int value) {
+    public void gopRemainingP(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingP, OFFSET$gopRemainingP, value);
     }
 
-    public @unsigned int gopRemainingB() {
+    public @Unsigned int gopRemainingB() {
         return segment.get(LAYOUT$gopRemainingB, OFFSET$gopRemainingB);
     }
 
-    public void gopRemainingB(@unsigned int value) {
+    public void gopRemainingB(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingB, OFFSET$gopRemainingB, value);
     }
 

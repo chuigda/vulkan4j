@@ -1335,7 +1335,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int acquireNextImage2KHR(
         VkDevice device,
         @Pointer VkAcquireNextImageInfoKHR pAcquireInfo,
-        @unsigned IntPtr pImageIndex
+        @Unsigned IntPtr pImageIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkAcquireNextImage2KHR);
         try {
@@ -1353,10 +1353,10 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int acquireNextImageKHR(
         VkDevice device,
         VkSwapchainKHR swapchain,
-        @unsigned long timeout,
+        @Unsigned long timeout,
         @Nullable VkSemaphore semaphore,
         @Nullable VkFence fence,
-        @unsigned IntPtr pImageIndex
+        @Unsigned IntPtr pImageIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkAcquireNextImageKHR);
         try {
@@ -1514,7 +1514,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindAccelerationStructureMemoryNV.html"><code>vkBindAccelerationStructureMemoryNV</code></a>
     public @EnumType(VkResult.class) int bindAccelerationStructureMemoryNV(
         VkDevice device,
-        @unsigned int bindInfoCount,
+        @Unsigned int bindInfoCount,
         @Pointer IVkBindAccelerationStructureMemoryInfoNV pBindInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindAccelerationStructureMemoryNV);
@@ -1534,7 +1534,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkBuffer buffer,
         VkDeviceMemory memory,
-        @unsigned long memoryOffset
+        @Unsigned long memoryOffset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindBufferMemory);
         try {
@@ -1552,7 +1552,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindBufferMemory2.html"><code>vkBindBufferMemory2</code></a>
     public @EnumType(VkResult.class) int bindBufferMemory2(
         VkDevice device,
-        @unsigned int bindInfoCount,
+        @Unsigned int bindInfoCount,
         @Pointer IVkBindBufferMemoryInfo pBindInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindBufferMemory2);
@@ -1570,7 +1570,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindBufferMemory2KHR.html"><code>vkBindBufferMemory2KHR</code></a>
     public @EnumType(VkResult.class) int bindBufferMemory2KHR(
         VkDevice device,
-        @unsigned int bindInfoCount,
+        @Unsigned int bindInfoCount,
         @Pointer IVkBindBufferMemoryInfo pBindInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindBufferMemory2KHR);
@@ -1590,7 +1590,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkImage image,
         VkDeviceMemory memory,
-        @unsigned long memoryOffset
+        @Unsigned long memoryOffset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindImageMemory);
         try {
@@ -1608,7 +1608,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindImageMemory2.html"><code>vkBindImageMemory2</code></a>
     public @EnumType(VkResult.class) int bindImageMemory2(
         VkDevice device,
-        @unsigned int bindInfoCount,
+        @Unsigned int bindInfoCount,
         @Pointer IVkBindImageMemoryInfo pBindInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindImageMemory2);
@@ -1626,7 +1626,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkBindImageMemory2KHR.html"><code>vkBindImageMemory2KHR</code></a>
     public @EnumType(VkResult.class) int bindImageMemory2KHR(
         VkDevice device,
-        @unsigned int bindInfoCount,
+        @Unsigned int bindInfoCount,
         @Pointer IVkBindImageMemoryInfo pBindInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindImageMemory2KHR);
@@ -1667,7 +1667,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int bindVideoSessionMemoryKHR(
         VkDevice device,
         VkVideoSessionKHR videoSession,
-        @unsigned int bindSessionMemoryInfoCount,
+        @Unsigned int bindSessionMemoryInfoCount,
         @Pointer IVkBindVideoSessionMemoryInfoKHR pBindSessionMemoryInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBindVideoSessionMemoryKHR);
@@ -1687,7 +1687,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int buildAccelerationStructuresKHR(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
-        @unsigned int infoCount,
+        @Unsigned int infoCount,
         @Pointer IVkAccelerationStructureBuildGeometryInfoKHR pInfos,
         PointerPtr ppBuildRangeInfos
     ) {
@@ -1709,7 +1709,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int buildMicromapsEXT(
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
-        @unsigned int infoCount,
+        @Unsigned int infoCount,
         @Pointer IVkMicromapBuildInfoEXT pInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkBuildMicromapsEXT);
@@ -1761,7 +1761,7 @@ public final class VkDeviceCommands {
     public void cmdBeginQuery(
         VkCommandBuffer commandBuffer,
         VkQueryPool queryPool,
-        @unsigned int query,
+        @Unsigned int query,
         @EnumType(VkQueryControlFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBeginQuery);
@@ -1781,9 +1781,9 @@ public final class VkDeviceCommands {
     public void cmdBeginQueryIndexedEXT(
         VkCommandBuffer commandBuffer,
         VkQueryPool queryPool,
-        @unsigned int query,
+        @Unsigned int query,
         @EnumType(VkQueryControlFlags.class) int flags,
-        @unsigned int index
+        @Unsigned int index
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBeginQueryIndexedEXT);
         try {
@@ -1888,10 +1888,10 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBeginTransformFeedbackEXT.html"><code>vkCmdBeginTransformFeedbackEXT</code></a>
     public void cmdBeginTransformFeedbackEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstCounterBuffer,
-        @unsigned int counterBufferCount,
+        @Unsigned int firstCounterBuffer,
+        @Unsigned int counterBufferCount,
         @Pointer VkBuffer.Ptr pCounterBuffers,
-        @Nullable @unsigned LongPtr pCounterBufferOffsets
+        @Nullable @Unsigned LongPtr pCounterBufferOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBeginTransformFeedbackEXT);
         try {
@@ -1944,7 +1944,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
-        @unsigned int set
+        @Unsigned int set
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindDescriptorBufferEmbeddedSamplersEXT);
         try {
@@ -1962,7 +1962,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindDescriptorBuffersEXT.html"><code>vkCmdBindDescriptorBuffersEXT</code></a>
     public void cmdBindDescriptorBuffersEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int bufferCount,
+        @Unsigned int bufferCount,
         @Pointer IVkDescriptorBufferBindingInfoEXT pBindingInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindDescriptorBuffersEXT);
@@ -1982,11 +1982,11 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
-        @unsigned int firstSet,
-        @unsigned int descriptorSetCount,
+        @Unsigned int firstSet,
+        @Unsigned int descriptorSetCount,
         @Pointer VkDescriptorSet.Ptr pDescriptorSets,
-        @unsigned int dynamicOffsetCount,
-        @unsigned IntPtr pDynamicOffsets
+        @Unsigned int dynamicOffsetCount,
+        @Unsigned IntPtr pDynamicOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindDescriptorSets);
         try {
@@ -2041,7 +2041,7 @@ public final class VkDeviceCommands {
     public void cmdBindIndexBuffer(
         VkCommandBuffer commandBuffer,
         @Nullable VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         @EnumType(VkIndexType.class) int indexType
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindIndexBuffer);
@@ -2061,8 +2061,8 @@ public final class VkDeviceCommands {
     public void cmdBindIndexBuffer2(
         VkCommandBuffer commandBuffer,
         @Nullable VkBuffer buffer,
-        @unsigned long offset,
-        @unsigned long size,
+        @Unsigned long offset,
+        @Unsigned long size,
         @EnumType(VkIndexType.class) int indexType
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindIndexBuffer2);
@@ -2083,8 +2083,8 @@ public final class VkDeviceCommands {
     public void cmdBindIndexBuffer2KHR(
         VkCommandBuffer commandBuffer,
         @Nullable VkBuffer buffer,
-        @unsigned long offset,
-        @unsigned long size,
+        @Unsigned long offset,
+        @Unsigned long size,
         @EnumType(VkIndexType.class) int indexType
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindIndexBuffer2KHR);
@@ -2142,7 +2142,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipeline pipeline,
-        @unsigned int groupIndex
+        @Unsigned int groupIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindPipelineShaderGroupNV);
         try {
@@ -2160,7 +2160,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindShadersEXT.html"><code>vkCmdBindShadersEXT</code></a>
     public void cmdBindShadersEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int stageCount,
+        @Unsigned int stageCount,
         @EnumType(VkShaderStageFlags.class) IntPtr pStages,
         @Nullable @Pointer VkShaderEXT.Ptr pShaders
     ) {
@@ -2214,11 +2214,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindTransformFeedbackBuffersEXT.html"><code>vkCmdBindTransformFeedbackBuffersEXT</code></a>
     public void cmdBindTransformFeedbackBuffersEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstBinding,
-        @unsigned int bindingCount,
+        @Unsigned int firstBinding,
+        @Unsigned int bindingCount,
         @Pointer VkBuffer.Ptr pBuffers,
-        @unsigned LongPtr pOffsets,
-        @Nullable @unsigned LongPtr pSizes
+        @Unsigned LongPtr pOffsets,
+        @Nullable @Unsigned LongPtr pSizes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindTransformFeedbackBuffersEXT);
         try {
@@ -2238,10 +2238,10 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindVertexBuffers.html"><code>vkCmdBindVertexBuffers</code></a>
     public void cmdBindVertexBuffers(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstBinding,
-        @unsigned int bindingCount,
+        @Unsigned int firstBinding,
+        @Unsigned int bindingCount,
         @Pointer VkBuffer.Ptr pBuffers,
-        @unsigned LongPtr pOffsets
+        @Unsigned LongPtr pOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindVertexBuffers);
         try {
@@ -2260,12 +2260,12 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindVertexBuffers2.html"><code>vkCmdBindVertexBuffers2</code></a>
     public void cmdBindVertexBuffers2(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstBinding,
-        @unsigned int bindingCount,
+        @Unsigned int firstBinding,
+        @Unsigned int bindingCount,
         @Pointer VkBuffer.Ptr pBuffers,
-        @unsigned LongPtr pOffsets,
-        @Nullable @unsigned LongPtr pSizes,
-        @Nullable @unsigned LongPtr pStrides
+        @Unsigned LongPtr pOffsets,
+        @Nullable @Unsigned LongPtr pSizes,
+        @Nullable @Unsigned LongPtr pStrides
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindVertexBuffers2);
         try {
@@ -2286,12 +2286,12 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindVertexBuffers2EXT.html"><code>vkCmdBindVertexBuffers2EXT</code></a>
     public void cmdBindVertexBuffers2EXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstBinding,
-        @unsigned int bindingCount,
+        @Unsigned int firstBinding,
+        @Unsigned int bindingCount,
         @Pointer VkBuffer.Ptr pBuffers,
-        @unsigned LongPtr pOffsets,
-        @Nullable @unsigned LongPtr pSizes,
-        @Nullable @unsigned LongPtr pStrides
+        @Unsigned LongPtr pOffsets,
+        @Nullable @Unsigned LongPtr pSizes,
+        @Nullable @Unsigned LongPtr pStrides
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBindVertexBuffers2EXT);
         try {
@@ -2316,7 +2316,7 @@ public final class VkDeviceCommands {
         @EnumType(VkImageLayout.class) int srcImageLayout,
         VkImage dstImage,
         @EnumType(VkImageLayout.class) int dstImageLayout,
-        @unsigned int regionCount,
+        @Unsigned int regionCount,
         @Pointer IVkImageBlit pRegions,
         @EnumType(VkFilter.class) int filter
     ) {
@@ -2374,12 +2374,12 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @Pointer VkAccelerationStructureInfoNV pInfo,
         @Nullable VkBuffer instanceData,
-        @unsigned long instanceOffset,
-        @unsigned int update,
+        @Unsigned long instanceOffset,
+        @Unsigned int update,
         VkAccelerationStructureNV dst,
         @Nullable VkAccelerationStructureNV src,
         VkBuffer scratch,
-        @unsigned long scratchOffset
+        @Unsigned long scratchOffset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBuildAccelerationStructureNV);
         try {
@@ -2402,10 +2402,10 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBuildAccelerationStructuresIndirectKHR.html"><code>vkCmdBuildAccelerationStructuresIndirectKHR</code></a>
     public void cmdBuildAccelerationStructuresIndirectKHR(
         VkCommandBuffer commandBuffer,
-        @unsigned int infoCount,
+        @Unsigned int infoCount,
         @Pointer IVkAccelerationStructureBuildGeometryInfoKHR pInfos,
-        @unsigned LongPtr pIndirectDeviceAddresses,
-        @unsigned IntPtr pIndirectStrides,
+        @Unsigned LongPtr pIndirectDeviceAddresses,
+        @Unsigned IntPtr pIndirectStrides,
         PointerPtr ppMaxPrimitiveCounts
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBuildAccelerationStructuresIndirectKHR);
@@ -2426,7 +2426,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBuildAccelerationStructuresKHR.html"><code>vkCmdBuildAccelerationStructuresKHR</code></a>
     public void cmdBuildAccelerationStructuresKHR(
         VkCommandBuffer commandBuffer,
-        @unsigned int infoCount,
+        @Unsigned int infoCount,
         @Pointer IVkAccelerationStructureBuildGeometryInfoKHR pInfos,
         PointerPtr ppBuildRangeInfos
     ) {
@@ -2462,7 +2462,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBuildMicromapsEXT.html"><code>vkCmdBuildMicromapsEXT</code></a>
     public void cmdBuildMicromapsEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int infoCount,
+        @Unsigned int infoCount,
         @Pointer IVkMicromapBuildInfoEXT pInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdBuildMicromapsEXT);
@@ -2496,9 +2496,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdClearAttachments.html"><code>vkCmdClearAttachments</code></a>
     public void cmdClearAttachments(
         VkCommandBuffer commandBuffer,
-        @unsigned int attachmentCount,
+        @Unsigned int attachmentCount,
         @Pointer IVkClearAttachment pAttachments,
-        @unsigned int rectCount,
+        @Unsigned int rectCount,
         @Pointer IVkClearRect pRects
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdClearAttachments);
@@ -2521,7 +2521,7 @@ public final class VkDeviceCommands {
         VkImage image,
         @EnumType(VkImageLayout.class) int imageLayout,
         @Pointer VkClearColorValue pColor,
-        @unsigned int rangeCount,
+        @Unsigned int rangeCount,
         @Pointer IVkImageSubresourceRange pRanges
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdClearColorImage);
@@ -2545,7 +2545,7 @@ public final class VkDeviceCommands {
         VkImage image,
         @EnumType(VkImageLayout.class) int imageLayout,
         @Pointer VkClearDepthStencilValue pDepthStencil,
-        @unsigned int rangeCount,
+        @Unsigned int rangeCount,
         @Pointer IVkImageSubresourceRange pRanges
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdClearDepthStencilImage);
@@ -2582,7 +2582,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdConvertCooperativeVectorMatrixNV.html"><code>vkCmdConvertCooperativeVectorMatrixNV</code></a>
     public void cmdConvertCooperativeVectorMatrixNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int infoCount,
+        @Unsigned int infoCount,
         @Pointer IVkConvertCooperativeVectorMatrixInfoNV pInfos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdConvertCooperativeVectorMatrixNV);
@@ -2654,7 +2654,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         VkBuffer srcBuffer,
         VkBuffer dstBuffer,
-        @unsigned int regionCount,
+        @Unsigned int regionCount,
         @Pointer IVkBufferCopy pRegions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyBuffer);
@@ -2709,7 +2709,7 @@ public final class VkDeviceCommands {
         VkBuffer srcBuffer,
         VkImage dstImage,
         @EnumType(VkImageLayout.class) int dstImageLayout,
-        @unsigned int regionCount,
+        @Unsigned int regionCount,
         @Pointer IVkBufferImageCopy pRegions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyBufferToImage);
@@ -2766,7 +2766,7 @@ public final class VkDeviceCommands {
         @EnumType(VkImageLayout.class) int srcImageLayout,
         VkImage dstImage,
         @EnumType(VkImageLayout.class) int dstImageLayout,
-        @unsigned int regionCount,
+        @Unsigned int regionCount,
         @Pointer IVkImageCopy pRegions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyImage);
@@ -2823,7 +2823,7 @@ public final class VkDeviceCommands {
         VkImage srcImage,
         @EnumType(VkImageLayout.class) int srcImageLayout,
         VkBuffer dstBuffer,
-        @unsigned int regionCount,
+        @Unsigned int regionCount,
         @Pointer IVkBufferImageCopy pRegions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyImageToBuffer);
@@ -2876,9 +2876,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdCopyMemoryIndirectNV.html"><code>vkCmdCopyMemoryIndirectNV</code></a>
     public void cmdCopyMemoryIndirectNV(
         VkCommandBuffer commandBuffer,
-        @unsigned long copyBufferAddress,
-        @unsigned int copyCount,
-        @unsigned int stride
+        @Unsigned long copyBufferAddress,
+        @Unsigned int copyCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyMemoryIndirectNV);
         try {
@@ -2912,9 +2912,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdCopyMemoryToImageIndirectNV.html"><code>vkCmdCopyMemoryToImageIndirectNV</code></a>
     public void cmdCopyMemoryToImageIndirectNV(
         VkCommandBuffer commandBuffer,
-        @unsigned long copyBufferAddress,
-        @unsigned int copyCount,
-        @unsigned int stride,
+        @Unsigned long copyBufferAddress,
+        @Unsigned int copyCount,
+        @Unsigned int stride,
         VkImage dstImage,
         @EnumType(VkImageLayout.class) int dstImageLayout,
         @Pointer IVkImageSubresourceLayers pImageSubresources
@@ -2987,11 +2987,11 @@ public final class VkDeviceCommands {
     public void cmdCopyQueryPoolResults(
         VkCommandBuffer commandBuffer,
         VkQueryPool queryPool,
-        @unsigned int firstQuery,
-        @unsigned int queryCount,
+        @Unsigned int firstQuery,
+        @Unsigned int queryCount,
         VkBuffer dstBuffer,
-        @unsigned long dstOffset,
-        @unsigned long stride,
+        @Unsigned long dstOffset,
+        @Unsigned long stride,
         @EnumType(VkQueryResultFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdCopyQueryPoolResults);
@@ -3108,9 +3108,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDecompressMemoryIndirectCountNV.html"><code>vkCmdDecompressMemoryIndirectCountNV</code></a>
     public void cmdDecompressMemoryIndirectCountNV(
         VkCommandBuffer commandBuffer,
-        @unsigned long indirectCommandsAddress,
-        @unsigned long indirectCommandsCountAddress,
-        @unsigned int stride
+        @Unsigned long indirectCommandsAddress,
+        @Unsigned long indirectCommandsCountAddress,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDecompressMemoryIndirectCountNV);
         try {
@@ -3128,7 +3128,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDecompressMemoryNV.html"><code>vkCmdDecompressMemoryNV</code></a>
     public void cmdDecompressMemoryNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int decompressRegionCount,
+        @Unsigned int decompressRegionCount,
         @Pointer IVkDecompressMemoryRegionNV pDecompressMemoryRegions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDecompressMemoryNV);
@@ -3146,9 +3146,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDispatch.html"><code>vkCmdDispatch</code></a>
     public void cmdDispatch(
         VkCommandBuffer commandBuffer,
-        @unsigned int groupCountX,
-        @unsigned int groupCountY,
-        @unsigned int groupCountZ
+        @Unsigned int groupCountX,
+        @Unsigned int groupCountY,
+        @Unsigned int groupCountZ
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDispatch);
         try {
@@ -3166,12 +3166,12 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDispatchBase.html"><code>vkCmdDispatchBase</code></a>
     public void cmdDispatchBase(
         VkCommandBuffer commandBuffer,
-        @unsigned int baseGroupX,
-        @unsigned int baseGroupY,
-        @unsigned int baseGroupZ,
-        @unsigned int groupCountX,
-        @unsigned int groupCountY,
-        @unsigned int groupCountZ
+        @Unsigned int baseGroupX,
+        @Unsigned int baseGroupY,
+        @Unsigned int baseGroupZ,
+        @Unsigned int groupCountX,
+        @Unsigned int groupCountY,
+        @Unsigned int groupCountZ
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDispatchBase);
         try {
@@ -3192,12 +3192,12 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDispatchBaseKHR.html"><code>vkCmdDispatchBaseKHR</code></a>
     public void cmdDispatchBaseKHR(
         VkCommandBuffer commandBuffer,
-        @unsigned int baseGroupX,
-        @unsigned int baseGroupY,
-        @unsigned int baseGroupZ,
-        @unsigned int groupCountX,
-        @unsigned int groupCountY,
-        @unsigned int groupCountZ
+        @Unsigned int baseGroupX,
+        @Unsigned int baseGroupY,
+        @Unsigned int baseGroupZ,
+        @Unsigned int groupCountX,
+        @Unsigned int groupCountY,
+        @Unsigned int groupCountZ
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDispatchBaseKHR);
         try {
@@ -3218,8 +3218,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDispatchGraphAMDX.html"><code>vkCmdDispatchGraphAMDX</code></a>
     public void cmdDispatchGraphAMDX(
         VkCommandBuffer commandBuffer,
-        @unsigned long scratch,
-        @unsigned long scratchSize,
+        @Unsigned long scratch,
+        @Unsigned long scratchSize,
         @Pointer VkDispatchGraphCountInfoAMDX pCountInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDispatchGraphAMDX);
@@ -3238,8 +3238,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDispatchGraphIndirectAMDX.html"><code>vkCmdDispatchGraphIndirectAMDX</code></a>
     public void cmdDispatchGraphIndirectAMDX(
         VkCommandBuffer commandBuffer,
-        @unsigned long scratch,
-        @unsigned long scratchSize,
+        @Unsigned long scratch,
+        @Unsigned long scratchSize,
         @Pointer VkDispatchGraphCountInfoAMDX pCountInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDispatchGraphIndirectAMDX);
@@ -3258,9 +3258,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDispatchGraphIndirectCountAMDX.html"><code>vkCmdDispatchGraphIndirectCountAMDX</code></a>
     public void cmdDispatchGraphIndirectCountAMDX(
         VkCommandBuffer commandBuffer,
-        @unsigned long scratch,
-        @unsigned long scratchSize,
-        @unsigned long countInfo
+        @Unsigned long scratch,
+        @Unsigned long scratchSize,
+        @Unsigned long countInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDispatchGraphIndirectCountAMDX);
         try {
@@ -3279,7 +3279,7 @@ public final class VkDeviceCommands {
     public void cmdDispatchIndirect(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset
+        @Unsigned long offset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDispatchIndirect);
         try {
@@ -3310,10 +3310,10 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDraw.html"><code>vkCmdDraw</code></a>
     public void cmdDraw(
         VkCommandBuffer commandBuffer,
-        @unsigned int vertexCount,
-        @unsigned int instanceCount,
-        @unsigned int firstVertex,
-        @unsigned int firstInstance
+        @Unsigned int vertexCount,
+        @Unsigned int instanceCount,
+        @Unsigned int firstVertex,
+        @Unsigned int firstInstance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDraw);
         try {
@@ -3332,9 +3332,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDrawClusterHUAWEI.html"><code>vkCmdDrawClusterHUAWEI</code></a>
     public void cmdDrawClusterHUAWEI(
         VkCommandBuffer commandBuffer,
-        @unsigned int groupCountX,
-        @unsigned int groupCountY,
-        @unsigned int groupCountZ
+        @Unsigned int groupCountX,
+        @Unsigned int groupCountY,
+        @Unsigned int groupCountZ
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawClusterHUAWEI);
         try {
@@ -3353,7 +3353,7 @@ public final class VkDeviceCommands {
     public void cmdDrawClusterIndirectHUAWEI(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset
+        @Unsigned long offset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawClusterIndirectHUAWEI);
         try {
@@ -3370,11 +3370,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDrawIndexed.html"><code>vkCmdDrawIndexed</code></a>
     public void cmdDrawIndexed(
         VkCommandBuffer commandBuffer,
-        @unsigned int indexCount,
-        @unsigned int instanceCount,
-        @unsigned int firstIndex,
+        @Unsigned int indexCount,
+        @Unsigned int instanceCount,
+        @Unsigned int firstIndex,
         int vertexOffset,
-        @unsigned int firstInstance
+        @Unsigned int firstInstance
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndexed);
         try {
@@ -3395,9 +3395,9 @@ public final class VkDeviceCommands {
     public void cmdDrawIndexedIndirect(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
-        @unsigned int drawCount,
-        @unsigned int stride
+        @Unsigned long offset,
+        @Unsigned int drawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndexedIndirect);
         try {
@@ -3417,11 +3417,11 @@ public final class VkDeviceCommands {
     public void cmdDrawIndexedIndirectCount(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         VkBuffer countBuffer,
-        @unsigned long countBufferOffset,
-        @unsigned int maxDrawCount,
-        @unsigned int stride
+        @Unsigned long countBufferOffset,
+        @Unsigned int maxDrawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndexedIndirectCount);
         try {
@@ -3443,11 +3443,11 @@ public final class VkDeviceCommands {
     public void cmdDrawIndexedIndirectCountAMD(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         VkBuffer countBuffer,
-        @unsigned long countBufferOffset,
-        @unsigned int maxDrawCount,
-        @unsigned int stride
+        @Unsigned long countBufferOffset,
+        @Unsigned int maxDrawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndexedIndirectCountAMD);
         try {
@@ -3469,11 +3469,11 @@ public final class VkDeviceCommands {
     public void cmdDrawIndexedIndirectCountKHR(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         VkBuffer countBuffer,
-        @unsigned long countBufferOffset,
-        @unsigned int maxDrawCount,
-        @unsigned int stride
+        @Unsigned long countBufferOffset,
+        @Unsigned int maxDrawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndexedIndirectCountKHR);
         try {
@@ -3495,9 +3495,9 @@ public final class VkDeviceCommands {
     public void cmdDrawIndirect(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
-        @unsigned int drawCount,
-        @unsigned int stride
+        @Unsigned long offset,
+        @Unsigned int drawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndirect);
         try {
@@ -3516,12 +3516,12 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDrawIndirectByteCountEXT.html"><code>vkCmdDrawIndirectByteCountEXT</code></a>
     public void cmdDrawIndirectByteCountEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int instanceCount,
-        @unsigned int firstInstance,
+        @Unsigned int instanceCount,
+        @Unsigned int firstInstance,
         VkBuffer counterBuffer,
-        @unsigned long counterBufferOffset,
-        @unsigned int counterOffset,
-        @unsigned int vertexStride
+        @Unsigned long counterBufferOffset,
+        @Unsigned int counterOffset,
+        @Unsigned int vertexStride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndirectByteCountEXT);
         try {
@@ -3543,11 +3543,11 @@ public final class VkDeviceCommands {
     public void cmdDrawIndirectCount(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         VkBuffer countBuffer,
-        @unsigned long countBufferOffset,
-        @unsigned int maxDrawCount,
-        @unsigned int stride
+        @Unsigned long countBufferOffset,
+        @Unsigned int maxDrawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndirectCount);
         try {
@@ -3569,11 +3569,11 @@ public final class VkDeviceCommands {
     public void cmdDrawIndirectCountAMD(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         VkBuffer countBuffer,
-        @unsigned long countBufferOffset,
-        @unsigned int maxDrawCount,
-        @unsigned int stride
+        @Unsigned long countBufferOffset,
+        @Unsigned int maxDrawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndirectCountAMD);
         try {
@@ -3595,11 +3595,11 @@ public final class VkDeviceCommands {
     public void cmdDrawIndirectCountKHR(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         VkBuffer countBuffer,
-        @unsigned long countBufferOffset,
-        @unsigned int maxDrawCount,
-        @unsigned int stride
+        @Unsigned long countBufferOffset,
+        @Unsigned int maxDrawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawIndirectCountKHR);
         try {
@@ -3620,9 +3620,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDrawMeshTasksEXT.html"><code>vkCmdDrawMeshTasksEXT</code></a>
     public void cmdDrawMeshTasksEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int groupCountX,
-        @unsigned int groupCountY,
-        @unsigned int groupCountZ
+        @Unsigned int groupCountX,
+        @Unsigned int groupCountY,
+        @Unsigned int groupCountZ
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawMeshTasksEXT);
         try {
@@ -3641,11 +3641,11 @@ public final class VkDeviceCommands {
     public void cmdDrawMeshTasksIndirectCountEXT(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         VkBuffer countBuffer,
-        @unsigned long countBufferOffset,
-        @unsigned int maxDrawCount,
-        @unsigned int stride
+        @Unsigned long countBufferOffset,
+        @Unsigned int maxDrawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawMeshTasksIndirectCountEXT);
         try {
@@ -3667,11 +3667,11 @@ public final class VkDeviceCommands {
     public void cmdDrawMeshTasksIndirectCountNV(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
+        @Unsigned long offset,
         VkBuffer countBuffer,
-        @unsigned long countBufferOffset,
-        @unsigned int maxDrawCount,
-        @unsigned int stride
+        @Unsigned long countBufferOffset,
+        @Unsigned int maxDrawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawMeshTasksIndirectCountNV);
         try {
@@ -3693,9 +3693,9 @@ public final class VkDeviceCommands {
     public void cmdDrawMeshTasksIndirectEXT(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
-        @unsigned int drawCount,
-        @unsigned int stride
+        @Unsigned long offset,
+        @Unsigned int drawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawMeshTasksIndirectEXT);
         try {
@@ -3715,9 +3715,9 @@ public final class VkDeviceCommands {
     public void cmdDrawMeshTasksIndirectNV(
         VkCommandBuffer commandBuffer,
         VkBuffer buffer,
-        @unsigned long offset,
-        @unsigned int drawCount,
-        @unsigned int stride
+        @Unsigned long offset,
+        @Unsigned int drawCount,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawMeshTasksIndirectNV);
         try {
@@ -3736,8 +3736,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDrawMeshTasksNV.html"><code>vkCmdDrawMeshTasksNV</code></a>
     public void cmdDrawMeshTasksNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int taskCount,
-        @unsigned int firstTask
+        @Unsigned int taskCount,
+        @Unsigned int firstTask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawMeshTasksNV);
         try {
@@ -3754,11 +3754,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDrawMultiEXT.html"><code>vkCmdDrawMultiEXT</code></a>
     public void cmdDrawMultiEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int drawCount,
+        @Unsigned int drawCount,
         @Pointer IVkMultiDrawInfoEXT pVertexInfo,
-        @unsigned int instanceCount,
-        @unsigned int firstInstance,
-        @unsigned int stride
+        @Unsigned int instanceCount,
+        @Unsigned int firstInstance,
+        @Unsigned int stride
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawMultiEXT);
         try {
@@ -3778,11 +3778,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDrawMultiIndexedEXT.html"><code>vkCmdDrawMultiIndexedEXT</code></a>
     public void cmdDrawMultiIndexedEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int drawCount,
+        @Unsigned int drawCount,
         @Pointer IVkMultiDrawIndexedInfoEXT pIndexInfo,
-        @unsigned int instanceCount,
-        @unsigned int firstInstance,
-        @unsigned int stride,
+        @Unsigned int instanceCount,
+        @Unsigned int firstInstance,
+        @Unsigned int stride,
         @Nullable IntPtr pVertexOffset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdDrawMultiIndexedEXT);
@@ -3851,7 +3851,7 @@ public final class VkDeviceCommands {
     public void cmdEndQuery(
         VkCommandBuffer commandBuffer,
         VkQueryPool queryPool,
-        @unsigned int query
+        @Unsigned int query
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdEndQuery);
         try {
@@ -3869,8 +3869,8 @@ public final class VkDeviceCommands {
     public void cmdEndQueryIndexedEXT(
         VkCommandBuffer commandBuffer,
         VkQueryPool queryPool,
-        @unsigned int query,
-        @unsigned int index
+        @Unsigned int query,
+        @Unsigned int index
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdEndQueryIndexedEXT);
         try {
@@ -3978,10 +3978,10 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdEndTransformFeedbackEXT.html"><code>vkCmdEndTransformFeedbackEXT</code></a>
     public void cmdEndTransformFeedbackEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstCounterBuffer,
-        @unsigned int counterBufferCount,
+        @Unsigned int firstCounterBuffer,
+        @Unsigned int counterBufferCount,
         @Pointer VkBuffer.Ptr pCounterBuffers,
-        @Nullable @unsigned LongPtr pCounterBufferOffsets
+        @Nullable @Unsigned LongPtr pCounterBufferOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdEndTransformFeedbackEXT);
         try {
@@ -4016,7 +4016,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdExecuteCommands.html"><code>vkCmdExecuteCommands</code></a>
     public void cmdExecuteCommands(
         VkCommandBuffer commandBuffer,
-        @unsigned int commandBufferCount,
+        @Unsigned int commandBufferCount,
         @Pointer VkCommandBuffer.Ptr pCommandBuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdExecuteCommands);
@@ -4034,7 +4034,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdExecuteGeneratedCommandsEXT.html"><code>vkCmdExecuteGeneratedCommandsEXT</code></a>
     public void cmdExecuteGeneratedCommandsEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int isPreprocessed,
+        @Unsigned int isPreprocessed,
         @Pointer VkGeneratedCommandsInfoEXT pGeneratedCommandsInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdExecuteGeneratedCommandsEXT);
@@ -4052,7 +4052,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdExecuteGeneratedCommandsNV.html"><code>vkCmdExecuteGeneratedCommandsNV</code></a>
     public void cmdExecuteGeneratedCommandsNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int isPreprocessed,
+        @Unsigned int isPreprocessed,
         @Pointer VkGeneratedCommandsInfoNV pGeneratedCommandsInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdExecuteGeneratedCommandsNV);
@@ -4071,9 +4071,9 @@ public final class VkDeviceCommands {
     public void cmdFillBuffer(
         VkCommandBuffer commandBuffer,
         VkBuffer dstBuffer,
-        @unsigned long dstOffset,
-        @unsigned long size,
-        @unsigned int data
+        @Unsigned long dstOffset,
+        @Unsigned long size,
+        @Unsigned int data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdFillBuffer);
         try {
@@ -4093,8 +4093,8 @@ public final class VkDeviceCommands {
     public void cmdInitializeGraphScratchMemoryAMDX(
         VkCommandBuffer commandBuffer,
         VkPipeline executionGraph,
-        @unsigned long scratch,
-        @unsigned long scratchSize
+        @Unsigned long scratch,
+        @Unsigned long scratchSize
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdInitializeGraphScratchMemoryAMDX);
         try {
@@ -4185,11 +4185,11 @@ public final class VkDeviceCommands {
         @EnumType(VkPipelineStageFlags.class) int srcStageMask,
         @EnumType(VkPipelineStageFlags.class) int dstStageMask,
         @EnumType(VkDependencyFlags.class) int dependencyFlags,
-        @unsigned int memoryBarrierCount,
+        @Unsigned int memoryBarrierCount,
         @Pointer IVkMemoryBarrier pMemoryBarriers,
-        @unsigned int bufferMemoryBarrierCount,
+        @Unsigned int bufferMemoryBarrierCount,
         @Pointer IVkBufferMemoryBarrier pBufferMemoryBarriers,
-        @unsigned int imageMemoryBarrierCount,
+        @Unsigned int imageMemoryBarrierCount,
         @Pointer IVkImageMemoryBarrier pImageMemoryBarriers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPipelineBarrier);
@@ -4282,8 +4282,8 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         VkPipelineLayout layout,
         @EnumType(VkShaderStageFlags.class) int stageFlags,
-        @unsigned int offset,
-        @unsigned int size,
+        @Unsigned int offset,
+        @Unsigned int size,
         @Pointer(comment="void*") MemorySegment pValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPushConstants);
@@ -4338,8 +4338,8 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
-        @unsigned int set,
-        @unsigned int descriptorWriteCount,
+        @Unsigned int set,
+        @Unsigned int descriptorWriteCount,
         @Pointer IVkWriteDescriptorSet pDescriptorWrites
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPushDescriptorSet);
@@ -4394,8 +4394,8 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
-        @unsigned int set,
-        @unsigned int descriptorWriteCount,
+        @Unsigned int set,
+        @Unsigned int descriptorWriteCount,
         @Pointer IVkWriteDescriptorSet pDescriptorWrites
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPushDescriptorSetKHR);
@@ -4418,7 +4418,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         VkDescriptorUpdateTemplate descriptorUpdateTemplate,
         VkPipelineLayout layout,
-        @unsigned int set,
+        @Unsigned int set,
         @Pointer(comment="void*") MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPushDescriptorSetWithTemplate);
@@ -4472,7 +4472,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         VkDescriptorUpdateTemplate descriptorUpdateTemplate,
         VkPipelineLayout layout,
-        @unsigned int set,
+        @Unsigned int set,
         @Pointer(comment="void*") MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdPushDescriptorSetWithTemplateKHR);
@@ -4563,8 +4563,8 @@ public final class VkDeviceCommands {
     public void cmdResetQueryPool(
         VkCommandBuffer commandBuffer,
         VkQueryPool queryPool,
-        @unsigned int firstQuery,
-        @unsigned int queryCount
+        @Unsigned int firstQuery,
+        @Unsigned int queryCount
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdResetQueryPool);
         try {
@@ -4586,7 +4586,7 @@ public final class VkDeviceCommands {
         @EnumType(VkImageLayout.class) int srcImageLayout,
         VkImage dstImage,
         @EnumType(VkImageLayout.class) int dstImageLayout,
-        @unsigned int regionCount,
+        @Unsigned int regionCount,
         @Pointer IVkImageResolve pRegions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdResolveImage);
@@ -4640,7 +4640,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetAlphaToCoverageEnableEXT.html"><code>vkCmdSetAlphaToCoverageEnableEXT</code></a>
     public void cmdSetAlphaToCoverageEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int alphaToCoverageEnable
+        @Unsigned int alphaToCoverageEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetAlphaToCoverageEnableEXT);
         try {
@@ -4656,7 +4656,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetAlphaToOneEnableEXT.html"><code>vkCmdSetAlphaToOneEnableEXT</code></a>
     public void cmdSetAlphaToOneEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int alphaToOneEnable
+        @Unsigned int alphaToOneEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetAlphaToOneEnableEXT);
         try {
@@ -4721,7 +4721,7 @@ public final class VkDeviceCommands {
     public void cmdSetCoarseSampleOrderNV(
         VkCommandBuffer commandBuffer,
         @EnumType(VkCoarseSampleOrderTypeNV.class) int sampleOrderType,
-        @unsigned int customSampleOrderCount,
+        @Unsigned int customSampleOrderCount,
         @Pointer IVkCoarseSampleOrderCustomNV pCustomSampleOrders
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCoarseSampleOrderNV);
@@ -4740,8 +4740,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetColorBlendAdvancedEXT.html"><code>vkCmdSetColorBlendAdvancedEXT</code></a>
     public void cmdSetColorBlendAdvancedEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstAttachment,
-        @unsigned int attachmentCount,
+        @Unsigned int firstAttachment,
+        @Unsigned int attachmentCount,
         @Pointer IVkColorBlendAdvancedEXT pColorBlendAdvanced
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetColorBlendAdvancedEXT);
@@ -4760,9 +4760,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetColorBlendEnableEXT.html"><code>vkCmdSetColorBlendEnableEXT</code></a>
     public void cmdSetColorBlendEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstAttachment,
-        @unsigned int attachmentCount,
-        @unsigned IntPtr pColorBlendEnables
+        @Unsigned int firstAttachment,
+        @Unsigned int attachmentCount,
+        @Unsigned IntPtr pColorBlendEnables
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetColorBlendEnableEXT);
         try {
@@ -4780,8 +4780,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetColorBlendEquationEXT.html"><code>vkCmdSetColorBlendEquationEXT</code></a>
     public void cmdSetColorBlendEquationEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstAttachment,
-        @unsigned int attachmentCount,
+        @Unsigned int firstAttachment,
+        @Unsigned int attachmentCount,
         @Pointer IVkColorBlendEquationEXT pColorBlendEquations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetColorBlendEquationEXT);
@@ -4800,8 +4800,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetColorWriteEnableEXT.html"><code>vkCmdSetColorWriteEnableEXT</code></a>
     public void cmdSetColorWriteEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int attachmentCount,
-        @unsigned IntPtr pColorWriteEnables
+        @Unsigned int attachmentCount,
+        @Unsigned IntPtr pColorWriteEnables
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetColorWriteEnableEXT);
         try {
@@ -4818,8 +4818,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetColorWriteMaskEXT.html"><code>vkCmdSetColorWriteMaskEXT</code></a>
     public void cmdSetColorWriteMaskEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstAttachment,
-        @unsigned int attachmentCount,
+        @Unsigned int firstAttachment,
+        @Unsigned int attachmentCount,
         @EnumType(VkColorComponentFlags.class) IntPtr pColorWriteMasks
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetColorWriteMaskEXT);
@@ -4870,7 +4870,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCoverageModulationTableEnableNV.html"><code>vkCmdSetCoverageModulationTableEnableNV</code></a>
     public void cmdSetCoverageModulationTableEnableNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int coverageModulationTableEnable
+        @Unsigned int coverageModulationTableEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCoverageModulationTableEnableNV);
         try {
@@ -4886,7 +4886,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCoverageModulationTableNV.html"><code>vkCmdSetCoverageModulationTableNV</code></a>
     public void cmdSetCoverageModulationTableNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int coverageModulationTableCount,
+        @Unsigned int coverageModulationTableCount,
         FloatPtr pCoverageModulationTable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCoverageModulationTableNV);
@@ -4920,7 +4920,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCoverageToColorEnableNV.html"><code>vkCmdSetCoverageToColorEnableNV</code></a>
     public void cmdSetCoverageToColorEnableNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int coverageToColorEnable
+        @Unsigned int coverageToColorEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCoverageToColorEnableNV);
         try {
@@ -4936,7 +4936,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetCoverageToColorLocationNV.html"><code>vkCmdSetCoverageToColorLocationNV</code></a>
     public void cmdSetCoverageToColorLocationNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int coverageToColorLocation
+        @Unsigned int coverageToColorLocation
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetCoverageToColorLocationNV);
         try {
@@ -5020,7 +5020,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthBiasEnable.html"><code>vkCmdSetDepthBiasEnable</code></a>
     public void cmdSetDepthBiasEnable(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthBiasEnable
+        @Unsigned int depthBiasEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthBiasEnable);
         try {
@@ -5036,7 +5036,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthBiasEnableEXT.html"><code>vkCmdSetDepthBiasEnableEXT</code></a>
     public void cmdSetDepthBiasEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthBiasEnable
+        @Unsigned int depthBiasEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthBiasEnableEXT);
         try {
@@ -5070,7 +5070,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthBoundsTestEnable.html"><code>vkCmdSetDepthBoundsTestEnable</code></a>
     public void cmdSetDepthBoundsTestEnable(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthBoundsTestEnable
+        @Unsigned int depthBoundsTestEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthBoundsTestEnable);
         try {
@@ -5086,7 +5086,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthBoundsTestEnableEXT.html"><code>vkCmdSetDepthBoundsTestEnableEXT</code></a>
     public void cmdSetDepthBoundsTestEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthBoundsTestEnable
+        @Unsigned int depthBoundsTestEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthBoundsTestEnableEXT);
         try {
@@ -5102,7 +5102,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthClampEnableEXT.html"><code>vkCmdSetDepthClampEnableEXT</code></a>
     public void cmdSetDepthClampEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthClampEnable
+        @Unsigned int depthClampEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthClampEnableEXT);
         try {
@@ -5136,7 +5136,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthClipEnableEXT.html"><code>vkCmdSetDepthClipEnableEXT</code></a>
     public void cmdSetDepthClipEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthClipEnable
+        @Unsigned int depthClipEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthClipEnableEXT);
         try {
@@ -5152,7 +5152,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthClipNegativeOneToOneEXT.html"><code>vkCmdSetDepthClipNegativeOneToOneEXT</code></a>
     public void cmdSetDepthClipNegativeOneToOneEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int negativeOneToOne
+        @Unsigned int negativeOneToOne
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthClipNegativeOneToOneEXT);
         try {
@@ -5200,7 +5200,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthTestEnable.html"><code>vkCmdSetDepthTestEnable</code></a>
     public void cmdSetDepthTestEnable(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthTestEnable
+        @Unsigned int depthTestEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthTestEnable);
         try {
@@ -5216,7 +5216,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthTestEnableEXT.html"><code>vkCmdSetDepthTestEnableEXT</code></a>
     public void cmdSetDepthTestEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthTestEnable
+        @Unsigned int depthTestEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthTestEnableEXT);
         try {
@@ -5232,7 +5232,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthWriteEnable.html"><code>vkCmdSetDepthWriteEnable</code></a>
     public void cmdSetDepthWriteEnable(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthWriteEnable
+        @Unsigned int depthWriteEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthWriteEnable);
         try {
@@ -5248,7 +5248,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDepthWriteEnableEXT.html"><code>vkCmdSetDepthWriteEnableEXT</code></a>
     public void cmdSetDepthWriteEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int depthWriteEnable
+        @Unsigned int depthWriteEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDepthWriteEnableEXT);
         try {
@@ -5282,10 +5282,10 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint,
         VkPipelineLayout layout,
-        @unsigned int firstSet,
-        @unsigned int setCount,
-        @unsigned IntPtr pBufferIndices,
-        @unsigned LongPtr pOffsets
+        @Unsigned int firstSet,
+        @Unsigned int setCount,
+        @Unsigned IntPtr pBufferIndices,
+        @Unsigned LongPtr pOffsets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDescriptorBufferOffsetsEXT);
         try {
@@ -5306,7 +5306,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDeviceMask.html"><code>vkCmdSetDeviceMask</code></a>
     public void cmdSetDeviceMask(
         VkCommandBuffer commandBuffer,
-        @unsigned int deviceMask
+        @Unsigned int deviceMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDeviceMask);
         try {
@@ -5322,7 +5322,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDeviceMaskKHR.html"><code>vkCmdSetDeviceMaskKHR</code></a>
     public void cmdSetDeviceMaskKHR(
         VkCommandBuffer commandBuffer,
-        @unsigned int deviceMask
+        @Unsigned int deviceMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDeviceMaskKHR);
         try {
@@ -5338,8 +5338,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDiscardRectangleEXT.html"><code>vkCmdSetDiscardRectangleEXT</code></a>
     public void cmdSetDiscardRectangleEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstDiscardRectangle,
-        @unsigned int discardRectangleCount,
+        @Unsigned int firstDiscardRectangle,
+        @Unsigned int discardRectangleCount,
         @Pointer IVkRect2D pDiscardRectangles
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDiscardRectangleEXT);
@@ -5358,7 +5358,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetDiscardRectangleEnableEXT.html"><code>vkCmdSetDiscardRectangleEnableEXT</code></a>
     public void cmdSetDiscardRectangleEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int discardRectangleEnable
+        @Unsigned int discardRectangleEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetDiscardRectangleEnableEXT);
         try {
@@ -5444,9 +5444,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetExclusiveScissorEnableNV.html"><code>vkCmdSetExclusiveScissorEnableNV</code></a>
     public void cmdSetExclusiveScissorEnableNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstExclusiveScissor,
-        @unsigned int exclusiveScissorCount,
-        @unsigned IntPtr pExclusiveScissorEnables
+        @Unsigned int firstExclusiveScissor,
+        @Unsigned int exclusiveScissorCount,
+        @Unsigned IntPtr pExclusiveScissorEnables
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetExclusiveScissorEnableNV);
         try {
@@ -5464,8 +5464,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetExclusiveScissorNV.html"><code>vkCmdSetExclusiveScissorNV</code></a>
     public void cmdSetExclusiveScissorNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstExclusiveScissor,
-        @unsigned int exclusiveScissorCount,
+        @Unsigned int firstExclusiveScissor,
+        @Unsigned int exclusiveScissorCount,
         @Pointer IVkRect2D pExclusiveScissors
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetExclusiveScissorNV);
@@ -5584,8 +5584,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetLineStipple.html"><code>vkCmdSetLineStipple</code></a>
     public void cmdSetLineStipple(
         VkCommandBuffer commandBuffer,
-        @unsigned int lineStippleFactor,
-        @unsigned short lineStipplePattern
+        @Unsigned int lineStippleFactor,
+        @Unsigned short lineStipplePattern
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetLineStipple);
         try {
@@ -5602,8 +5602,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetLineStippleEXT.html"><code>vkCmdSetLineStippleEXT</code></a>
     public void cmdSetLineStippleEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int lineStippleFactor,
-        @unsigned short lineStipplePattern
+        @Unsigned int lineStippleFactor,
+        @Unsigned short lineStipplePattern
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetLineStippleEXT);
         try {
@@ -5620,7 +5620,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetLineStippleEnableEXT.html"><code>vkCmdSetLineStippleEnableEXT</code></a>
     public void cmdSetLineStippleEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int stippledLineEnable
+        @Unsigned int stippledLineEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetLineStippleEnableEXT);
         try {
@@ -5636,8 +5636,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetLineStippleKHR.html"><code>vkCmdSetLineStippleKHR</code></a>
     public void cmdSetLineStippleKHR(
         VkCommandBuffer commandBuffer,
-        @unsigned int lineStippleFactor,
-        @unsigned short lineStipplePattern
+        @Unsigned int lineStippleFactor,
+        @Unsigned short lineStipplePattern
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetLineStippleKHR);
         try {
@@ -5686,7 +5686,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetLogicOpEnableEXT.html"><code>vkCmdSetLogicOpEnableEXT</code></a>
     public void cmdSetLogicOpEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int logicOpEnable
+        @Unsigned int logicOpEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetLogicOpEnableEXT);
         try {
@@ -5702,7 +5702,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPatchControlPointsEXT.html"><code>vkCmdSetPatchControlPointsEXT</code></a>
     public void cmdSetPatchControlPointsEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int patchControlPoints
+        @Unsigned int patchControlPoints
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetPatchControlPointsEXT);
         try {
@@ -5782,7 +5782,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPrimitiveRestartEnable.html"><code>vkCmdSetPrimitiveRestartEnable</code></a>
     public void cmdSetPrimitiveRestartEnable(
         VkCommandBuffer commandBuffer,
-        @unsigned int primitiveRestartEnable
+        @Unsigned int primitiveRestartEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetPrimitiveRestartEnable);
         try {
@@ -5798,7 +5798,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetPrimitiveRestartEnableEXT.html"><code>vkCmdSetPrimitiveRestartEnableEXT</code></a>
     public void cmdSetPrimitiveRestartEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int primitiveRestartEnable
+        @Unsigned int primitiveRestartEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetPrimitiveRestartEnableEXT);
         try {
@@ -5878,7 +5878,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetRasterizationStreamEXT.html"><code>vkCmdSetRasterizationStreamEXT</code></a>
     public void cmdSetRasterizationStreamEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int rasterizationStream
+        @Unsigned int rasterizationStream
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetRasterizationStreamEXT);
         try {
@@ -5894,7 +5894,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetRasterizerDiscardEnable.html"><code>vkCmdSetRasterizerDiscardEnable</code></a>
     public void cmdSetRasterizerDiscardEnable(
         VkCommandBuffer commandBuffer,
-        @unsigned int rasterizerDiscardEnable
+        @Unsigned int rasterizerDiscardEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetRasterizerDiscardEnable);
         try {
@@ -5910,7 +5910,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetRasterizerDiscardEnableEXT.html"><code>vkCmdSetRasterizerDiscardEnableEXT</code></a>
     public void cmdSetRasterizerDiscardEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int rasterizerDiscardEnable
+        @Unsigned int rasterizerDiscardEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetRasterizerDiscardEnableEXT);
         try {
@@ -5926,7 +5926,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetRayTracingPipelineStackSizeKHR.html"><code>vkCmdSetRayTracingPipelineStackSizeKHR</code></a>
     public void cmdSetRayTracingPipelineStackSizeKHR(
         VkCommandBuffer commandBuffer,
-        @unsigned int pipelineStackSize
+        @Unsigned int pipelineStackSize
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetRayTracingPipelineStackSizeKHR);
         try {
@@ -6006,7 +6006,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetRepresentativeFragmentTestEnableNV.html"><code>vkCmdSetRepresentativeFragmentTestEnableNV</code></a>
     public void cmdSetRepresentativeFragmentTestEnableNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int representativeFragmentTestEnable
+        @Unsigned int representativeFragmentTestEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetRepresentativeFragmentTestEnableNV);
         try {
@@ -6038,7 +6038,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetSampleLocationsEnableEXT.html"><code>vkCmdSetSampleLocationsEnableEXT</code></a>
     public void cmdSetSampleLocationsEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int sampleLocationsEnable
+        @Unsigned int sampleLocationsEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetSampleLocationsEnableEXT);
         try {
@@ -6055,7 +6055,7 @@ public final class VkDeviceCommands {
     public void cmdSetSampleMaskEXT(
         VkCommandBuffer commandBuffer,
         @EnumType(VkSampleCountFlags.class) int samples,
-        @unsigned IntPtr pSampleMask
+        @Unsigned IntPtr pSampleMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetSampleMaskEXT);
         try {
@@ -6072,8 +6072,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetScissor.html"><code>vkCmdSetScissor</code></a>
     public void cmdSetScissor(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstScissor,
-        @unsigned int scissorCount,
+        @Unsigned int firstScissor,
+        @Unsigned int scissorCount,
         @Pointer IVkRect2D pScissors
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetScissor);
@@ -6092,7 +6092,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetScissorWithCount.html"><code>vkCmdSetScissorWithCount</code></a>
     public void cmdSetScissorWithCount(
         VkCommandBuffer commandBuffer,
-        @unsigned int scissorCount,
+        @Unsigned int scissorCount,
         @Pointer IVkRect2D pScissors
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetScissorWithCount);
@@ -6110,7 +6110,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetScissorWithCountEXT.html"><code>vkCmdSetScissorWithCountEXT</code></a>
     public void cmdSetScissorWithCountEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int scissorCount,
+        @Unsigned int scissorCount,
         @Pointer IVkRect2D pScissors
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetScissorWithCountEXT);
@@ -6128,7 +6128,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetShadingRateImageEnableNV.html"><code>vkCmdSetShadingRateImageEnableNV</code></a>
     public void cmdSetShadingRateImageEnableNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int shadingRateImageEnable
+        @Unsigned int shadingRateImageEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetShadingRateImageEnableNV);
         try {
@@ -6145,7 +6145,7 @@ public final class VkDeviceCommands {
     public void cmdSetStencilCompareMask(
         VkCommandBuffer commandBuffer,
         @EnumType(VkStencilFaceFlags.class) int faceMask,
-        @unsigned int compareMask
+        @Unsigned int compareMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilCompareMask);
         try {
@@ -6211,7 +6211,7 @@ public final class VkDeviceCommands {
     public void cmdSetStencilReference(
         VkCommandBuffer commandBuffer,
         @EnumType(VkStencilFaceFlags.class) int faceMask,
-        @unsigned int reference
+        @Unsigned int reference
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilReference);
         try {
@@ -6228,7 +6228,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetStencilTestEnable.html"><code>vkCmdSetStencilTestEnable</code></a>
     public void cmdSetStencilTestEnable(
         VkCommandBuffer commandBuffer,
-        @unsigned int stencilTestEnable
+        @Unsigned int stencilTestEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilTestEnable);
         try {
@@ -6244,7 +6244,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetStencilTestEnableEXT.html"><code>vkCmdSetStencilTestEnableEXT</code></a>
     public void cmdSetStencilTestEnableEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int stencilTestEnable
+        @Unsigned int stencilTestEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilTestEnableEXT);
         try {
@@ -6261,7 +6261,7 @@ public final class VkDeviceCommands {
     public void cmdSetStencilWriteMask(
         VkCommandBuffer commandBuffer,
         @EnumType(VkStencilFaceFlags.class) int faceMask,
-        @unsigned int writeMask
+        @Unsigned int writeMask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetStencilWriteMask);
         try {
@@ -6294,9 +6294,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetVertexInputEXT.html"><code>vkCmdSetVertexInputEXT</code></a>
     public void cmdSetVertexInputEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int vertexBindingDescriptionCount,
+        @Unsigned int vertexBindingDescriptionCount,
         @Pointer IVkVertexInputBindingDescription2EXT pVertexBindingDescriptions,
-        @unsigned int vertexAttributeDescriptionCount,
+        @Unsigned int vertexAttributeDescriptionCount,
         @Pointer IVkVertexInputAttributeDescription2EXT pVertexAttributeDescriptions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetVertexInputEXT);
@@ -6316,8 +6316,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetViewport.html"><code>vkCmdSetViewport</code></a>
     public void cmdSetViewport(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstViewport,
-        @unsigned int viewportCount,
+        @Unsigned int firstViewport,
+        @Unsigned int viewportCount,
         @Pointer IVkViewport pViewports
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetViewport);
@@ -6336,8 +6336,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetViewportShadingRatePaletteNV.html"><code>vkCmdSetViewportShadingRatePaletteNV</code></a>
     public void cmdSetViewportShadingRatePaletteNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstViewport,
-        @unsigned int viewportCount,
+        @Unsigned int firstViewport,
+        @Unsigned int viewportCount,
         @Pointer IVkShadingRatePaletteNV pShadingRatePalettes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetViewportShadingRatePaletteNV);
@@ -6356,8 +6356,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetViewportSwizzleNV.html"><code>vkCmdSetViewportSwizzleNV</code></a>
     public void cmdSetViewportSwizzleNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstViewport,
-        @unsigned int viewportCount,
+        @Unsigned int firstViewport,
+        @Unsigned int viewportCount,
         @Pointer IVkViewportSwizzleNV pViewportSwizzles
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetViewportSwizzleNV);
@@ -6376,7 +6376,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetViewportWScalingEnableNV.html"><code>vkCmdSetViewportWScalingEnableNV</code></a>
     public void cmdSetViewportWScalingEnableNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int viewportWScalingEnable
+        @Unsigned int viewportWScalingEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetViewportWScalingEnableNV);
         try {
@@ -6392,8 +6392,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetViewportWScalingNV.html"><code>vkCmdSetViewportWScalingNV</code></a>
     public void cmdSetViewportWScalingNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int firstViewport,
-        @unsigned int viewportCount,
+        @Unsigned int firstViewport,
+        @Unsigned int viewportCount,
         @Pointer IVkViewportWScalingNV pViewportWScalings
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetViewportWScalingNV);
@@ -6412,7 +6412,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetViewportWithCount.html"><code>vkCmdSetViewportWithCount</code></a>
     public void cmdSetViewportWithCount(
         VkCommandBuffer commandBuffer,
-        @unsigned int viewportCount,
+        @Unsigned int viewportCount,
         @Pointer IVkViewport pViewports
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetViewportWithCount);
@@ -6430,7 +6430,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetViewportWithCountEXT.html"><code>vkCmdSetViewportWithCountEXT</code></a>
     public void cmdSetViewportWithCountEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int viewportCount,
+        @Unsigned int viewportCount,
         @Pointer IVkViewport pViewports
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdSetViewportWithCountEXT);
@@ -6462,7 +6462,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdTraceRaysIndirect2KHR.html"><code>vkCmdTraceRaysIndirect2KHR</code></a>
     public void cmdTraceRaysIndirect2KHR(
         VkCommandBuffer commandBuffer,
-        @unsigned long indirectDeviceAddress
+        @Unsigned long indirectDeviceAddress
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdTraceRaysIndirect2KHR);
         try {
@@ -6482,7 +6482,7 @@ public final class VkDeviceCommands {
         @Pointer VkStridedDeviceAddressRegionKHR pMissShaderBindingTable,
         @Pointer VkStridedDeviceAddressRegionKHR pHitShaderBindingTable,
         @Pointer VkStridedDeviceAddressRegionKHR pCallableShaderBindingTable,
-        @unsigned long indirectDeviceAddress
+        @Unsigned long indirectDeviceAddress
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdTraceRaysIndirectKHR);
         try {
@@ -6506,9 +6506,9 @@ public final class VkDeviceCommands {
         @Pointer VkStridedDeviceAddressRegionKHR pMissShaderBindingTable,
         @Pointer VkStridedDeviceAddressRegionKHR pHitShaderBindingTable,
         @Pointer VkStridedDeviceAddressRegionKHR pCallableShaderBindingTable,
-        @unsigned int width,
-        @unsigned int height,
-        @unsigned int depth
+        @Unsigned int width,
+        @Unsigned int height,
+        @Unsigned int depth
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdTraceRaysKHR);
         try {
@@ -6531,19 +6531,19 @@ public final class VkDeviceCommands {
     public void cmdTraceRaysNV(
         VkCommandBuffer commandBuffer,
         VkBuffer raygenShaderBindingTableBuffer,
-        @unsigned long raygenShaderBindingOffset,
+        @Unsigned long raygenShaderBindingOffset,
         @Nullable VkBuffer missShaderBindingTableBuffer,
-        @unsigned long missShaderBindingOffset,
-        @unsigned long missShaderBindingStride,
+        @Unsigned long missShaderBindingOffset,
+        @Unsigned long missShaderBindingStride,
         @Nullable VkBuffer hitShaderBindingTableBuffer,
-        @unsigned long hitShaderBindingOffset,
-        @unsigned long hitShaderBindingStride,
+        @Unsigned long hitShaderBindingOffset,
+        @Unsigned long hitShaderBindingStride,
         @Nullable VkBuffer callableShaderBindingTableBuffer,
-        @unsigned long callableShaderBindingOffset,
-        @unsigned long callableShaderBindingStride,
-        @unsigned int width,
-        @unsigned int height,
-        @unsigned int depth
+        @Unsigned long callableShaderBindingOffset,
+        @Unsigned long callableShaderBindingStride,
+        @Unsigned int width,
+        @Unsigned int height,
+        @Unsigned int depth
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdTraceRaysNV);
         try {
@@ -6573,8 +6573,8 @@ public final class VkDeviceCommands {
     public void cmdUpdateBuffer(
         VkCommandBuffer commandBuffer,
         VkBuffer dstBuffer,
-        @unsigned long dstOffset,
-        @unsigned long dataSize,
+        @Unsigned long dstOffset,
+        @Unsigned long dataSize,
         @Pointer(comment="void*") MemorySegment pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdUpdateBuffer);
@@ -6612,15 +6612,15 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWaitEvents.html"><code>vkCmdWaitEvents</code></a>
     public void cmdWaitEvents(
         VkCommandBuffer commandBuffer,
-        @unsigned int eventCount,
+        @Unsigned int eventCount,
         @Pointer VkEvent.Ptr pEvents,
         @EnumType(VkPipelineStageFlags.class) int srcStageMask,
         @EnumType(VkPipelineStageFlags.class) int dstStageMask,
-        @unsigned int memoryBarrierCount,
+        @Unsigned int memoryBarrierCount,
         @Pointer IVkMemoryBarrier pMemoryBarriers,
-        @unsigned int bufferMemoryBarrierCount,
+        @Unsigned int bufferMemoryBarrierCount,
         @Pointer IVkBufferMemoryBarrier pBufferMemoryBarriers,
-        @unsigned int imageMemoryBarrierCount,
+        @Unsigned int imageMemoryBarrierCount,
         @Pointer IVkImageMemoryBarrier pImageMemoryBarriers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWaitEvents);
@@ -6646,7 +6646,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWaitEvents2.html"><code>vkCmdWaitEvents2</code></a>
     public void cmdWaitEvents2(
         VkCommandBuffer commandBuffer,
-        @unsigned int eventCount,
+        @Unsigned int eventCount,
         @Pointer VkEvent.Ptr pEvents,
         @Pointer IVkDependencyInfo pDependencyInfos
     ) {
@@ -6666,7 +6666,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWaitEvents2KHR.html"><code>vkCmdWaitEvents2KHR</code></a>
     public void cmdWaitEvents2KHR(
         VkCommandBuffer commandBuffer,
-        @unsigned int eventCount,
+        @Unsigned int eventCount,
         @Pointer VkEvent.Ptr pEvents,
         @Pointer IVkDependencyInfo pDependencyInfos
     ) {
@@ -6686,11 +6686,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWriteAccelerationStructuresPropertiesKHR.html"><code>vkCmdWriteAccelerationStructuresPropertiesKHR</code></a>
     public void cmdWriteAccelerationStructuresPropertiesKHR(
         VkCommandBuffer commandBuffer,
-        @unsigned int accelerationStructureCount,
+        @Unsigned int accelerationStructureCount,
         @Pointer VkAccelerationStructureKHR.Ptr pAccelerationStructures,
         @EnumType(VkQueryType.class) int queryType,
         VkQueryPool queryPool,
-        @unsigned int firstQuery
+        @Unsigned int firstQuery
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWriteAccelerationStructuresPropertiesKHR);
         try {
@@ -6710,11 +6710,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWriteAccelerationStructuresPropertiesNV.html"><code>vkCmdWriteAccelerationStructuresPropertiesNV</code></a>
     public void cmdWriteAccelerationStructuresPropertiesNV(
         VkCommandBuffer commandBuffer,
-        @unsigned int accelerationStructureCount,
+        @Unsigned int accelerationStructureCount,
         @Pointer VkAccelerationStructureNV.Ptr pAccelerationStructures,
         @EnumType(VkQueryType.class) int queryType,
         VkQueryPool queryPool,
-        @unsigned int firstQuery
+        @Unsigned int firstQuery
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWriteAccelerationStructuresPropertiesNV);
         try {
@@ -6736,8 +6736,8 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineStageFlags2.class) long stage,
         VkBuffer dstBuffer,
-        @unsigned long dstOffset,
-        @unsigned int marker
+        @Unsigned long dstOffset,
+        @Unsigned int marker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWriteBufferMarker2AMD);
         try {
@@ -6758,8 +6758,8 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineStageFlags.class) int pipelineStage,
         VkBuffer dstBuffer,
-        @unsigned long dstOffset,
-        @unsigned int marker
+        @Unsigned long dstOffset,
+        @Unsigned int marker
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWriteBufferMarkerAMD);
         try {
@@ -6778,11 +6778,11 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdWriteMicromapsPropertiesEXT.html"><code>vkCmdWriteMicromapsPropertiesEXT</code></a>
     public void cmdWriteMicromapsPropertiesEXT(
         VkCommandBuffer commandBuffer,
-        @unsigned int micromapCount,
+        @Unsigned int micromapCount,
         @Pointer VkMicromapEXT.Ptr pMicromaps,
         @EnumType(VkQueryType.class) int queryType,
         VkQueryPool queryPool,
-        @unsigned int firstQuery
+        @Unsigned int firstQuery
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWriteMicromapsPropertiesEXT);
         try {
@@ -6804,7 +6804,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineStageFlags.class) int pipelineStage,
         VkQueryPool queryPool,
-        @unsigned int query
+        @Unsigned int query
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWriteTimestamp);
         try {
@@ -6824,7 +6824,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineStageFlags2.class) long stage,
         VkQueryPool queryPool,
-        @unsigned int query
+        @Unsigned int query
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWriteTimestamp2);
         try {
@@ -6844,7 +6844,7 @@ public final class VkDeviceCommands {
         VkCommandBuffer commandBuffer,
         @EnumType(VkPipelineStageFlags2.class) long stage,
         VkQueryPool queryPool,
-        @unsigned int query
+        @Unsigned int query
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCmdWriteTimestamp2KHR);
         try {
@@ -6863,7 +6863,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int compileDeferredNV(
         VkDevice device,
         VkPipeline pipeline,
-        @unsigned int shader
+        @Unsigned int shader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkCompileDeferredNV);
         try {
@@ -7221,7 +7221,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int createComputePipelines(
         VkDevice device,
         @Nullable VkPipelineCache pipelineCache,
-        @unsigned int createInfoCount,
+        @Unsigned int createInfoCount,
         @Pointer IVkComputePipelineCreateInfo pCreateInfos,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkPipeline.Ptr pPipelines
@@ -7443,7 +7443,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int createExecutionGraphPipelinesAMDX(
         VkDevice device,
         @Nullable VkPipelineCache pipelineCache,
-        @unsigned int createInfoCount,
+        @Unsigned int createInfoCount,
         @Pointer IVkExecutionGraphPipelineCreateInfoAMDX pCreateInfos,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkPipeline.Ptr pPipelines
@@ -7527,7 +7527,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int createGraphicsPipelines(
         VkDevice device,
         @Nullable VkPipelineCache pipelineCache,
-        @unsigned int createInfoCount,
+        @Unsigned int createInfoCount,
         @Pointer IVkGraphicsPipelineCreateInfo pCreateInfos,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkPipeline.Ptr pPipelines
@@ -7812,7 +7812,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @Nullable VkDeferredOperationKHR deferredOperation,
         @Nullable VkPipelineCache pipelineCache,
-        @unsigned int createInfoCount,
+        @Unsigned int createInfoCount,
         @Pointer IVkRayTracingPipelineCreateInfoKHR pCreateInfos,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkPipeline.Ptr pPipelines
@@ -7837,7 +7837,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int createRayTracingPipelinesNV(
         VkDevice device,
         @Nullable VkPipelineCache pipelineCache,
-        @unsigned int createInfoCount,
+        @Unsigned int createInfoCount,
         @Pointer IVkRayTracingPipelineCreateInfoNV pCreateInfos,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkPipeline.Ptr pPipelines
@@ -8040,7 +8040,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateShadersEXT.html"><code>vkCreateShadersEXT</code></a>
     public @EnumType(VkResult.class) int createShadersEXT(
         VkDevice device,
-        @unsigned int createInfoCount,
+        @Unsigned int createInfoCount,
         @Pointer IVkShaderCreateInfoEXT pCreateInfos,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkShaderEXT.Ptr pShaders
@@ -8062,7 +8062,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateSharedSwapchainsKHR.html"><code>vkCreateSharedSwapchainsKHR</code></a>
     public @EnumType(VkResult.class) int createSharedSwapchainsKHR(
         VkDevice device,
-        @unsigned int swapchainCount,
+        @Unsigned int swapchainCount,
         @Pointer IVkSwapchainCreateInfoKHR pCreateInfos,
         @Nullable @Pointer VkAllocationCallbacks pAllocator,
         @Pointer VkSwapchainKHR.Ptr pSwapchains
@@ -9084,8 +9084,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.html"><code>vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR</code></a>
     public @EnumType(VkResult.class) int enumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned int queueFamilyIndex,
-        @unsigned IntPtr pCounterCount,
+        @Unsigned int queueFamilyIndex,
+        @Unsigned IntPtr pCounterCount,
         @Nullable @Pointer IVkPerformanceCounterKHR pCounters,
         @Nullable @Pointer IVkPerformanceCounterDescriptionKHR pCounterDescriptions
     ) {
@@ -9122,7 +9122,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkFlushMappedMemoryRanges.html"><code>vkFlushMappedMemoryRanges</code></a>
     public @EnumType(VkResult.class) int flushMappedMemoryRanges(
         VkDevice device,
-        @unsigned int memoryRangeCount,
+        @Unsigned int memoryRangeCount,
         @Pointer IVkMappedMemoryRange pMemoryRanges
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkFlushMappedMemoryRanges);
@@ -9141,7 +9141,7 @@ public final class VkDeviceCommands {
     public void freeCommandBuffers(
         VkDevice device,
         VkCommandPool commandPool,
-        @unsigned int commandBufferCount,
+        @Unsigned int commandBufferCount,
         @Pointer VkCommandBuffer.Ptr pCommandBuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkFreeCommandBuffers);
@@ -9161,7 +9161,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int freeDescriptorSets(
         VkDevice device,
         VkDescriptorPool descriptorPool,
-        @unsigned int descriptorSetCount,
+        @Unsigned int descriptorSetCount,
         @Pointer VkDescriptorSet.Ptr pDescriptorSets
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkFreeDescriptorSets);
@@ -9200,7 +9200,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         @EnumType(VkAccelerationStructureBuildTypeKHR.class) int buildType,
         @Pointer VkAccelerationStructureBuildGeometryInfoKHR pBuildInfo,
-        @Nullable @unsigned IntPtr pMaxPrimitiveCounts,
+        @Nullable @Unsigned IntPtr pMaxPrimitiveCounts,
         @Pointer VkAccelerationStructureBuildSizesInfoKHR pSizeInfo
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetAccelerationStructureBuildSizesKHR);
@@ -9218,7 +9218,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetAccelerationStructureDeviceAddressKHR.html"><code>vkGetAccelerationStructureDeviceAddressKHR</code></a>
-    public @unsigned long getAccelerationStructureDeviceAddressKHR(
+    public @Unsigned long getAccelerationStructureDeviceAddressKHR(
         VkDevice device,
         @Pointer VkAccelerationStructureDeviceAddressInfoKHR pInfo
     ) {
@@ -9326,7 +9326,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetBufferDeviceAddress.html"><code>vkGetBufferDeviceAddress</code></a>
-    public @unsigned long getBufferDeviceAddress(
+    public @Unsigned long getBufferDeviceAddress(
         VkDevice device,
         @Pointer VkBufferDeviceAddressInfo pInfo
     ) {
@@ -9342,7 +9342,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetBufferDeviceAddressEXT.html"><code>vkGetBufferDeviceAddressEXT</code></a>
-    public @unsigned long getBufferDeviceAddressEXT(
+    public @Unsigned long getBufferDeviceAddressEXT(
         VkDevice device,
         @Pointer VkBufferDeviceAddressInfo pInfo
     ) {
@@ -9358,7 +9358,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetBufferDeviceAddressKHR.html"><code>vkGetBufferDeviceAddressKHR</code></a>
-    public @unsigned long getBufferDeviceAddressKHR(
+    public @Unsigned long getBufferDeviceAddressKHR(
         VkDevice device,
         @Pointer VkBufferDeviceAddressInfo pInfo
     ) {
@@ -9428,7 +9428,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetBufferOpaqueCaptureAddress.html"><code>vkGetBufferOpaqueCaptureAddress</code></a>
-    public @unsigned long getBufferOpaqueCaptureAddress(
+    public @Unsigned long getBufferOpaqueCaptureAddress(
         VkDevice device,
         @Pointer VkBufferDeviceAddressInfo pInfo
     ) {
@@ -9444,7 +9444,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetBufferOpaqueCaptureAddressKHR.html"><code>vkGetBufferOpaqueCaptureAddressKHR</code></a>
-    public @unsigned long getBufferOpaqueCaptureAddressKHR(
+    public @Unsigned long getBufferOpaqueCaptureAddressKHR(
         VkDevice device,
         @Pointer VkBufferDeviceAddressInfo pInfo
     ) {
@@ -9480,10 +9480,10 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetCalibratedTimestampsEXT.html"><code>vkGetCalibratedTimestampsEXT</code></a>
     public @EnumType(VkResult.class) int getCalibratedTimestampsEXT(
         VkDevice device,
-        @unsigned int timestampCount,
+        @Unsigned int timestampCount,
         @Pointer IVkCalibratedTimestampInfoKHR pTimestampInfos,
-        @unsigned LongPtr pTimestamps,
-        @unsigned LongPtr pMaxDeviation
+        @Unsigned LongPtr pTimestamps,
+        @Unsigned LongPtr pMaxDeviation
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetCalibratedTimestampsEXT);
         try {
@@ -9502,10 +9502,10 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetCalibratedTimestampsKHR.html"><code>vkGetCalibratedTimestampsKHR</code></a>
     public @EnumType(VkResult.class) int getCalibratedTimestampsKHR(
         VkDevice device,
-        @unsigned int timestampCount,
+        @Unsigned int timestampCount,
         @Pointer IVkCalibratedTimestampInfoKHR pTimestampInfos,
-        @unsigned LongPtr pTimestamps,
-        @unsigned LongPtr pMaxDeviation
+        @Unsigned LongPtr pTimestamps,
+        @Unsigned LongPtr pMaxDeviation
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetCalibratedTimestampsKHR);
         try {
@@ -9560,7 +9560,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeferredOperationMaxConcurrencyKHR.html"><code>vkGetDeferredOperationMaxConcurrencyKHR</code></a>
-    public @unsigned int getDeferredOperationMaxConcurrencyKHR(
+    public @Unsigned int getDeferredOperationMaxConcurrencyKHR(
         VkDevice device,
         VkDeferredOperationKHR operation
     ) {
@@ -9633,8 +9633,8 @@ public final class VkDeviceCommands {
     public void getDescriptorSetLayoutBindingOffsetEXT(
         VkDevice device,
         VkDescriptorSetLayout layout,
-        @unsigned int binding,
-        @unsigned LongPtr pOffset
+        @Unsigned int binding,
+        @Unsigned LongPtr pOffset
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDescriptorSetLayoutBindingOffsetEXT);
         try {
@@ -9671,7 +9671,7 @@ public final class VkDeviceCommands {
     public void getDescriptorSetLayoutSizeEXT(
         VkDevice device,
         VkDescriptorSetLayout layout,
-        @unsigned LongPtr pLayoutSizeInBytes
+        @Unsigned LongPtr pLayoutSizeInBytes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDescriptorSetLayoutSizeEXT);
         try {
@@ -9796,9 +9796,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceGroupPeerMemoryFeatures.html"><code>vkGetDeviceGroupPeerMemoryFeatures</code></a>
     public void getDeviceGroupPeerMemoryFeatures(
         VkDevice device,
-        @unsigned int heapIndex,
-        @unsigned int localDeviceIndex,
-        @unsigned int remoteDeviceIndex,
+        @Unsigned int heapIndex,
+        @Unsigned int localDeviceIndex,
+        @Unsigned int remoteDeviceIndex,
         @EnumType(VkPeerMemoryFeatureFlags.class) IntPtr pPeerMemoryFeatures
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDeviceGroupPeerMemoryFeatures);
@@ -9818,9 +9818,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceGroupPeerMemoryFeaturesKHR.html"><code>vkGetDeviceGroupPeerMemoryFeaturesKHR</code></a>
     public void getDeviceGroupPeerMemoryFeaturesKHR(
         VkDevice device,
-        @unsigned int heapIndex,
-        @unsigned int localDeviceIndex,
-        @unsigned int remoteDeviceIndex,
+        @Unsigned int heapIndex,
+        @Unsigned int localDeviceIndex,
+        @Unsigned int remoteDeviceIndex,
         @EnumType(VkPeerMemoryFeatureFlags.class) IntPtr pPeerMemoryFeatures
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDeviceGroupPeerMemoryFeaturesKHR);
@@ -9929,7 +9929,7 @@ public final class VkDeviceCommands {
     public void getDeviceImageSparseMemoryRequirements(
         VkDevice device,
         @Pointer VkDeviceImageMemoryRequirements pInfo,
-        @unsigned IntPtr pSparseMemoryRequirementCount,
+        @Unsigned IntPtr pSparseMemoryRequirementCount,
         @Nullable @Pointer IVkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDeviceImageSparseMemoryRequirements);
@@ -9949,7 +9949,7 @@ public final class VkDeviceCommands {
     public void getDeviceImageSparseMemoryRequirementsKHR(
         VkDevice device,
         @Pointer VkDeviceImageMemoryRequirements pInfo,
-        @unsigned IntPtr pSparseMemoryRequirementCount,
+        @Unsigned IntPtr pSparseMemoryRequirementCount,
         @Nullable @Pointer IVkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDeviceImageSparseMemoryRequirementsKHR);
@@ -10005,7 +10005,7 @@ public final class VkDeviceCommands {
     public void getDeviceMemoryCommitment(
         VkDevice device,
         VkDeviceMemory memory,
-        @unsigned LongPtr pCommittedMemoryInBytes
+        @Unsigned LongPtr pCommittedMemoryInBytes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDeviceMemoryCommitment);
         try {
@@ -10020,7 +10020,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceMemoryOpaqueCaptureAddress.html"><code>vkGetDeviceMemoryOpaqueCaptureAddress</code></a>
-    public @unsigned long getDeviceMemoryOpaqueCaptureAddress(
+    public @Unsigned long getDeviceMemoryOpaqueCaptureAddress(
         VkDevice device,
         @Pointer VkDeviceMemoryOpaqueCaptureAddressInfo pInfo
     ) {
@@ -10036,7 +10036,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceMemoryOpaqueCaptureAddressKHR.html"><code>vkGetDeviceMemoryOpaqueCaptureAddressKHR</code></a>
-    public @unsigned long getDeviceMemoryOpaqueCaptureAddressKHR(
+    public @Unsigned long getDeviceMemoryOpaqueCaptureAddressKHR(
         VkDevice device,
         @Pointer VkDeviceMemoryOpaqueCaptureAddressInfo pInfo
     ) {
@@ -10072,8 +10072,8 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceQueue.html"><code>vkGetDeviceQueue</code></a>
     public void getDeviceQueue(
         VkDevice device,
-        @unsigned int queueFamilyIndex,
-        @unsigned int queueIndex,
+        @Unsigned int queueFamilyIndex,
+        @Unsigned int queueIndex,
         @Pointer VkQueue.Ptr pQueue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDeviceQueue);
@@ -10186,7 +10186,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkPipeline executionGraph,
         @Pointer VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo,
-        @unsigned IntPtr pNodeIndex
+        @Unsigned IntPtr pNodeIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetExecutionGraphPipelineNodeIndexAMDX);
         try {
@@ -10329,7 +10329,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getFramebufferTilePropertiesQCOM(
         VkDevice device,
         VkFramebuffer framebuffer,
-        @unsigned IntPtr pPropertiesCount,
+        @Unsigned IntPtr pPropertiesCount,
         @Nullable @Pointer IVkTilePropertiesQCOM pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetFramebufferTilePropertiesQCOM);
@@ -10475,7 +10475,7 @@ public final class VkDeviceCommands {
     public void getImageSparseMemoryRequirements(
         VkDevice device,
         VkImage image,
-        @unsigned IntPtr pSparseMemoryRequirementCount,
+        @Unsigned IntPtr pSparseMemoryRequirementCount,
         @Nullable @Pointer IVkSparseImageMemoryRequirements pSparseMemoryRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetImageSparseMemoryRequirements);
@@ -10495,7 +10495,7 @@ public final class VkDeviceCommands {
     public void getImageSparseMemoryRequirements2(
         VkDevice device,
         @Pointer VkImageSparseMemoryRequirementsInfo2 pInfo,
-        @unsigned IntPtr pSparseMemoryRequirementCount,
+        @Unsigned IntPtr pSparseMemoryRequirementCount,
         @Nullable @Pointer IVkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetImageSparseMemoryRequirements2);
@@ -10515,7 +10515,7 @@ public final class VkDeviceCommands {
     public void getImageSparseMemoryRequirements2KHR(
         VkDevice device,
         @Pointer VkImageSparseMemoryRequirementsInfo2 pInfo,
-        @unsigned IntPtr pSparseMemoryRequirementCount,
+        @Unsigned IntPtr pSparseMemoryRequirementCount,
         @Nullable @Pointer IVkSparseImageMemoryRequirements2 pSparseMemoryRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetImageSparseMemoryRequirements2KHR);
@@ -10630,7 +10630,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetImageViewHandle64NVX.html"><code>vkGetImageViewHandle64NVX</code></a>
-    public @unsigned long getImageViewHandle64NVX(
+    public @Unsigned long getImageViewHandle64NVX(
         VkDevice device,
         @Pointer VkImageViewHandleInfoNVX pInfo
     ) {
@@ -10646,7 +10646,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetImageViewHandleNVX.html"><code>vkGetImageViewHandleNVX</code></a>
-    public @unsigned int getImageViewHandleNVX(
+    public @Unsigned int getImageViewHandleNVX(
         VkDevice device,
         @Pointer VkImageViewHandleInfoNVX pInfo
     ) {
@@ -10909,7 +10909,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getMemoryZirconHandleFUCHSIA(
         VkDevice device,
         @Pointer VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo,
-        @unsigned IntPtr pZirconHandle
+        @Unsigned IntPtr pZirconHandle
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetMemoryZirconHandleFUCHSIA);
         try {
@@ -10927,7 +10927,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getMemoryZirconHandlePropertiesFUCHSIA(
         VkDevice device,
         @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
-        @unsigned int zirconHandle,
+        @Unsigned int zirconHandle,
         @Pointer VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetMemoryZirconHandlePropertiesFUCHSIA);
@@ -10985,7 +10985,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getPastPresentationTimingGOOGLE(
         VkDevice device,
         VkSwapchainKHR swapchain,
-        @unsigned IntPtr pPresentationTimingCount,
+        @Unsigned IntPtr pPresentationTimingCount,
         @Nullable @Pointer IVkPastPresentationTimingGOOGLE pPresentationTimings
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPastPresentationTimingGOOGLE);
@@ -11022,7 +11022,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCalibrateableTimeDomainsEXT.html"><code>vkGetPhysicalDeviceCalibrateableTimeDomainsEXT</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceCalibrateableTimeDomainsEXT(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pTimeDomainCount,
+        @Unsigned IntPtr pTimeDomainCount,
         @Nullable @EnumType(VkTimeDomainKHR.class) IntPtr pTimeDomains
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsEXT);
@@ -11040,7 +11040,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.html"><code>vkGetPhysicalDeviceCalibrateableTimeDomainsKHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceCalibrateableTimeDomainsKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pTimeDomainCount,
+        @Unsigned IntPtr pTimeDomainCount,
         @Nullable @EnumType(VkTimeDomainKHR.class) IntPtr pTimeDomains
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR);
@@ -11058,7 +11058,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV.html"><code>vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkCooperativeMatrixFlexibleDimensionsPropertiesNV pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV);
@@ -11076,7 +11076,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR.html"><code>vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceCooperativeMatrixPropertiesKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkCooperativeMatrixPropertiesKHR pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR);
@@ -11094,7 +11094,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.html"><code>vkGetPhysicalDeviceCooperativeMatrixPropertiesNV</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceCooperativeMatrixPropertiesNV(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkCooperativeMatrixPropertiesNV pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
@@ -11112,7 +11112,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeVectorPropertiesNV.html"><code>vkGetPhysicalDeviceCooperativeVectorPropertiesNV</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceCooperativeVectorPropertiesNV(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkCooperativeVectorPropertiesNV pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCooperativeVectorPropertiesNV);
@@ -11150,7 +11150,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceFragmentShadingRatesKHR.html"><code>vkGetPhysicalDeviceFragmentShadingRatesKHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceFragmentShadingRatesKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pFragmentShadingRateCount,
+        @Unsigned IntPtr pFragmentShadingRateCount,
         @Nullable @Pointer IVkPhysicalDeviceFragmentShadingRateKHR pFragmentShadingRates
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceFragmentShadingRatesKHR);
@@ -11187,7 +11187,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getPhysicalDeviceOpticalFlowImageFormatsNV(
         VkPhysicalDevice physicalDevice,
         @Pointer VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo,
-        @unsigned IntPtr pFormatCount,
+        @Unsigned IntPtr pFormatCount,
         @Nullable @Pointer IVkOpticalFlowImageFormatPropertiesNV pImageFormatProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceOpticalFlowImageFormatsNV);
@@ -11207,7 +11207,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getPhysicalDevicePresentRectanglesKHR(
         VkPhysicalDevice physicalDevice,
         VkSurfaceKHR surface,
-        @unsigned IntPtr pRectCount,
+        @Unsigned IntPtr pRectCount,
         @Nullable @Pointer IVkRect2D pRects
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDevicePresentRectanglesKHR);
@@ -11227,7 +11227,7 @@ public final class VkDeviceCommands {
     public void getPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
         VkPhysicalDevice physicalDevice,
         @Pointer VkQueryPoolPerformanceCreateInfoKHR pPerformanceQueryCreateInfo,
-        @unsigned IntPtr pNumPasses
+        @Unsigned IntPtr pNumPasses
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR);
         try {
@@ -11244,7 +11244,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceRefreshableObjectTypesKHR.html"><code>vkGetPhysicalDeviceRefreshableObjectTypesKHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceRefreshableObjectTypesKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pRefreshableObjectTypeCount,
+        @Unsigned IntPtr pRefreshableObjectTypeCount,
         @Nullable @EnumType(VkObjectType.class) IntPtr pRefreshableObjectTypes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR);
@@ -11296,7 +11296,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV.html"><code>vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pCombinationCount,
+        @Unsigned IntPtr pCombinationCount,
         @Nullable @Pointer IVkFramebufferMixedSamplesCombinationNV pCombinations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV);
@@ -11315,7 +11315,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getPhysicalDeviceSurfacePresentModes2EXT(
         VkPhysicalDevice physicalDevice,
         @Pointer VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
-        @unsigned IntPtr pPresentModeCount,
+        @Unsigned IntPtr pPresentModeCount,
         @Nullable @EnumType(VkPresentModeKHR.class) IntPtr pPresentModes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT);
@@ -11334,7 +11334,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceToolPropertiesEXT.html"><code>vkGetPhysicalDeviceToolPropertiesEXT</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceToolPropertiesEXT(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pToolCount,
+        @Unsigned IntPtr pToolCount,
         @Nullable @Pointer IVkPhysicalDeviceToolProperties pToolProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceToolPropertiesEXT);
@@ -11389,7 +11389,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getPhysicalDeviceVideoFormatPropertiesKHR(
         VkPhysicalDevice physicalDevice,
         @Pointer VkPhysicalDeviceVideoFormatInfoKHR pVideoFormatInfo,
-        @unsigned IntPtr pVideoFormatPropertyCount,
+        @Unsigned IntPtr pVideoFormatPropertyCount,
         @Nullable @Pointer IVkVideoFormatPropertiesKHR pVideoFormatProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceVideoFormatPropertiesKHR);
@@ -11451,7 +11451,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getPipelineExecutableInternalRepresentationsKHR(
         VkDevice device,
         @Pointer VkPipelineExecutableInfoKHR pExecutableInfo,
-        @unsigned IntPtr pInternalRepresentationCount,
+        @Unsigned IntPtr pInternalRepresentationCount,
         @Nullable @Pointer IVkPipelineExecutableInternalRepresentationKHR pInternalRepresentations
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPipelineExecutableInternalRepresentationsKHR);
@@ -11471,7 +11471,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getPipelineExecutablePropertiesKHR(
         VkDevice device,
         @Pointer VkPipelineInfoKHR pPipelineInfo,
-        @unsigned IntPtr pExecutableCount,
+        @Unsigned IntPtr pExecutableCount,
         @Nullable @Pointer IVkPipelineExecutablePropertiesKHR pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPipelineExecutablePropertiesKHR);
@@ -11491,7 +11491,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getPipelineExecutableStatisticsKHR(
         VkDevice device,
         @Pointer VkPipelineExecutableInfoKHR pExecutableInfo,
-        @unsigned IntPtr pStatisticCount,
+        @Unsigned IntPtr pStatisticCount,
         @Nullable @Pointer IVkPipelineExecutableStatisticKHR pStatistics
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPipelineExecutableStatisticsKHR);
@@ -11508,7 +11508,7 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelineIndirectDeviceAddressNV.html"><code>vkGetPipelineIndirectDeviceAddressNV</code></a>
-    public @unsigned long getPipelineIndirectDeviceAddressNV(
+    public @Unsigned long getPipelineIndirectDeviceAddressNV(
         VkDevice device,
         @Pointer VkPipelineIndirectDeviceAddressInfoNV pInfo
     ) {
@@ -11581,9 +11581,9 @@ public final class VkDeviceCommands {
     public void getPrivateData(
         VkDevice device,
         @EnumType(VkObjectType.class) int objectType,
-        @unsigned long objectHandle,
+        @Unsigned long objectHandle,
         VkPrivateDataSlot privateDataSlot,
-        @unsigned LongPtr pData
+        @Unsigned LongPtr pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPrivateData);
         try {
@@ -11603,9 +11603,9 @@ public final class VkDeviceCommands {
     public void getPrivateDataEXT(
         VkDevice device,
         @EnumType(VkObjectType.class) int objectType,
-        @unsigned long objectHandle,
+        @Unsigned long objectHandle,
         VkPrivateDataSlot privateDataSlot,
-        @unsigned LongPtr pData
+        @Unsigned LongPtr pData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPrivateDataEXT);
         try {
@@ -11625,11 +11625,11 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getQueryPoolResults(
         VkDevice device,
         VkQueryPool queryPool,
-        @unsigned int firstQuery,
-        @unsigned int queryCount,
+        @Unsigned int firstQuery,
+        @Unsigned int queryCount,
         long dataSize,
         @Pointer(comment="void*") MemorySegment pData,
-        @unsigned long stride,
+        @Unsigned long stride,
         @EnumType(VkQueryResultFlags.class) int flags
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetQueryPoolResults);
@@ -11652,7 +11652,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetQueueCheckpointData2NV.html"><code>vkGetQueueCheckpointData2NV</code></a>
     public void getQueueCheckpointData2NV(
         VkQueue queue,
-        @unsigned IntPtr pCheckpointDataCount,
+        @Unsigned IntPtr pCheckpointDataCount,
         @Nullable @Pointer IVkCheckpointData2NV pCheckpointData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetQueueCheckpointData2NV);
@@ -11670,7 +11670,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetQueueCheckpointDataNV.html"><code>vkGetQueueCheckpointDataNV</code></a>
     public void getQueueCheckpointDataNV(
         VkQueue queue,
-        @unsigned IntPtr pCheckpointDataCount,
+        @Unsigned IntPtr pCheckpointDataCount,
         @Nullable @Pointer IVkCheckpointDataNV pCheckpointData
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetQueueCheckpointDataNV);
@@ -11689,8 +11689,8 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getRayTracingCaptureReplayShaderGroupHandlesKHR(
         VkDevice device,
         VkPipeline pipeline,
-        @unsigned int firstGroup,
-        @unsigned int groupCount,
+        @Unsigned int firstGroup,
+        @Unsigned int groupCount,
         long dataSize,
         @Pointer(comment="void*") MemorySegment pData
     ) {
@@ -11713,8 +11713,8 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getRayTracingShaderGroupHandlesKHR(
         VkDevice device,
         VkPipeline pipeline,
-        @unsigned int firstGroup,
-        @unsigned int groupCount,
+        @Unsigned int firstGroup,
+        @Unsigned int groupCount,
         long dataSize,
         @Pointer(comment="void*") MemorySegment pData
     ) {
@@ -11737,8 +11737,8 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getRayTracingShaderGroupHandlesNV(
         VkDevice device,
         VkPipeline pipeline,
-        @unsigned int firstGroup,
-        @unsigned int groupCount,
+        @Unsigned int firstGroup,
+        @Unsigned int groupCount,
         long dataSize,
         @Pointer(comment="void*") MemorySegment pData
     ) {
@@ -11758,10 +11758,10 @@ public final class VkDeviceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetRayTracingShaderGroupStackSizeKHR.html"><code>vkGetRayTracingShaderGroupStackSizeKHR</code></a>
-    public @unsigned long getRayTracingShaderGroupStackSizeKHR(
+    public @Unsigned long getRayTracingShaderGroupStackSizeKHR(
         VkDevice device,
         VkPipeline pipeline,
-        @unsigned int group,
+        @Unsigned int group,
         @EnumType(VkShaderGroupShaderKHR.class) int groupShader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetRayTracingShaderGroupStackSizeKHR);
@@ -11889,7 +11889,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getSemaphoreCounterValue(
         VkDevice device,
         VkSemaphore semaphore,
-        @unsigned LongPtr pValue
+        @Unsigned LongPtr pValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSemaphoreCounterValue);
         try {
@@ -11907,7 +11907,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getSemaphoreCounterValueKHR(
         VkDevice device,
         VkSemaphore semaphore,
-        @unsigned LongPtr pValue
+        @Unsigned LongPtr pValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSemaphoreCounterValueKHR);
         try {
@@ -11979,7 +11979,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getSemaphoreZirconHandleFUCHSIA(
         VkDevice device,
         @Pointer VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo,
-        @unsigned IntPtr pZirconHandle
+        @Unsigned IntPtr pZirconHandle
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSemaphoreZirconHandleFUCHSIA);
         try {
@@ -12078,7 +12078,7 @@ public final class VkDeviceCommands {
         VkDevice device,
         VkSwapchainKHR swapchain,
         @EnumType(VkSurfaceCounterFlagsEXT.class) int counter,
-        @unsigned LongPtr pCounterValue
+        @Unsigned LongPtr pCounterValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSwapchainCounterEXT);
         try {
@@ -12097,7 +12097,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getSwapchainImagesKHR(
         VkDevice device,
         VkSwapchainKHR swapchain,
-        @unsigned IntPtr pSwapchainImageCount,
+        @Unsigned IntPtr pSwapchainImageCount,
         @Nullable @Pointer VkImage.Ptr pSwapchainImages
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetSwapchainImagesKHR);
@@ -12153,7 +12153,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int getVideoSessionMemoryRequirementsKHR(
         VkDevice device,
         VkVideoSessionKHR videoSession,
-        @unsigned IntPtr pMemoryRequirementsCount,
+        @Unsigned IntPtr pMemoryRequirementsCount,
         @Nullable @Pointer IVkVideoSessionMemoryRequirementsKHR pMemoryRequirements
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetVideoSessionMemoryRequirementsKHR);
@@ -12172,7 +12172,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetWinrtDisplayNV.html"><code>vkGetWinrtDisplayNV</code></a>
     public @EnumType(VkResult.class) int getWinrtDisplayNV(
         VkPhysicalDevice physicalDevice,
-        @unsigned int deviceRelativeId,
+        @Unsigned int deviceRelativeId,
         @Pointer VkDisplayKHR.Ptr pDisplay
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetWinrtDisplayNV);
@@ -12334,7 +12334,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkInvalidateMappedMemoryRanges.html"><code>vkInvalidateMappedMemoryRanges</code></a>
     public @EnumType(VkResult.class) int invalidateMappedMemoryRanges(
         VkDevice device,
-        @unsigned int memoryRangeCount,
+        @Unsigned int memoryRangeCount,
         @Pointer IVkMappedMemoryRange pMemoryRanges
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkInvalidateMappedMemoryRanges);
@@ -12371,8 +12371,8 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int mapMemory(
         VkDevice device,
         VkDeviceMemory memory,
-        @unsigned long offset,
-        @unsigned long size,
+        @Unsigned long offset,
+        @Unsigned long size,
         @EnumType(VkMemoryMapFlags.class) int flags,
         PointerPtr ppData
     ) {
@@ -12431,7 +12431,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int mergePipelineCaches(
         VkDevice device,
         VkPipelineCache dstCache,
-        @unsigned int srcCacheCount,
+        @Unsigned int srcCacheCount,
         @Pointer VkPipelineCache.Ptr pSrcCaches
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkMergePipelineCaches);
@@ -12451,7 +12451,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int mergeValidationCachesEXT(
         VkDevice device,
         VkValidationCacheEXT dstCache,
-        @unsigned int srcCacheCount,
+        @Unsigned int srcCacheCount,
         @Pointer VkValidationCacheEXT.Ptr pSrcCaches
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkMergeValidationCachesEXT);
@@ -12470,7 +12470,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueBindSparse.html"><code>vkQueueBindSparse</code></a>
     public @EnumType(VkResult.class) int queueBindSparse(
         VkQueue queue,
-        @unsigned int bindInfoCount,
+        @Unsigned int bindInfoCount,
         @Pointer IVkBindSparseInfo pBindInfo,
         @Nullable VkFence fence
     ) {
@@ -12538,7 +12538,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueSubmit.html"><code>vkQueueSubmit</code></a>
     public @EnumType(VkResult.class) int queueSubmit(
         VkQueue queue,
-        @unsigned int submitCount,
+        @Unsigned int submitCount,
         @Pointer IVkSubmitInfo pSubmits,
         @Nullable VkFence fence
     ) {
@@ -12558,7 +12558,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueSubmit2.html"><code>vkQueueSubmit2</code></a>
     public @EnumType(VkResult.class) int queueSubmit2(
         VkQueue queue,
-        @unsigned int submitCount,
+        @Unsigned int submitCount,
         @Pointer IVkSubmitInfo2 pSubmits,
         @Nullable VkFence fence
     ) {
@@ -12578,7 +12578,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkQueueSubmit2KHR.html"><code>vkQueueSubmit2KHR</code></a>
     public @EnumType(VkResult.class) int queueSubmit2KHR(
         VkQueue queue,
-        @unsigned int submitCount,
+        @Unsigned int submitCount,
         @Pointer IVkSubmitInfo2 pSubmits,
         @Nullable VkFence fence
     ) {
@@ -12802,7 +12802,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkResetFences.html"><code>vkResetFences</code></a>
     public @EnumType(VkResult.class) int resetFences(
         VkDevice device,
-        @unsigned int fenceCount,
+        @Unsigned int fenceCount,
         @Pointer VkFence.Ptr pFences
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkResetFences);
@@ -12821,8 +12821,8 @@ public final class VkDeviceCommands {
     public void resetQueryPool(
         VkDevice device,
         VkQueryPool queryPool,
-        @unsigned int firstQuery,
-        @unsigned int queryCount
+        @Unsigned int firstQuery,
+        @Unsigned int queryCount
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkResetQueryPool);
         try {
@@ -12841,8 +12841,8 @@ public final class VkDeviceCommands {
     public void resetQueryPoolEXT(
         VkDevice device,
         VkQueryPool queryPool,
-        @unsigned int firstQuery,
-        @unsigned int queryCount
+        @Unsigned int firstQuery,
+        @Unsigned int queryCount
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkResetQueryPoolEXT);
         try {
@@ -12930,7 +12930,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkSetHdrMetadataEXT.html"><code>vkSetHdrMetadataEXT</code></a>
     public void setHdrMetadataEXT(
         VkDevice device,
-        @unsigned int swapchainCount,
+        @Unsigned int swapchainCount,
         @Pointer VkSwapchainKHR.Ptr pSwapchains,
         @Pointer IVkHdrMetadataEXT pMetadata
     ) {
@@ -12987,7 +12987,7 @@ public final class VkDeviceCommands {
     public void setLocalDimmingAMD(
         VkDevice device,
         VkSwapchainKHR swapChain,
-        @unsigned int localDimmingEnable
+        @Unsigned int localDimmingEnable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkSetLocalDimmingAMD);
         try {
@@ -13005,9 +13005,9 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int setPrivateData(
         VkDevice device,
         @EnumType(VkObjectType.class) int objectType,
-        @unsigned long objectHandle,
+        @Unsigned long objectHandle,
         VkPrivateDataSlot privateDataSlot,
-        @unsigned long data
+        @Unsigned long data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkSetPrivateData);
         try {
@@ -13027,9 +13027,9 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int setPrivateDataEXT(
         VkDevice device,
         @EnumType(VkObjectType.class) int objectType,
-        @unsigned long objectHandle,
+        @Unsigned long objectHandle,
         VkPrivateDataSlot privateDataSlot,
-        @unsigned long data
+        @Unsigned long data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkSetPrivateDataEXT);
         try {
@@ -13080,7 +13080,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkTransitionImageLayout.html"><code>vkTransitionImageLayout</code></a>
     public @EnumType(VkResult.class) int transitionImageLayout(
         VkDevice device,
-        @unsigned int transitionCount,
+        @Unsigned int transitionCount,
         @Pointer IVkHostImageLayoutTransitionInfo pTransitions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkTransitionImageLayout);
@@ -13098,7 +13098,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkTransitionImageLayoutEXT.html"><code>vkTransitionImageLayoutEXT</code></a>
     public @EnumType(VkResult.class) int transitionImageLayoutEXT(
         VkDevice device,
-        @unsigned int transitionCount,
+        @Unsigned int transitionCount,
         @Pointer IVkHostImageLayoutTransitionInfo pTransitions
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkTransitionImageLayoutEXT);
@@ -13254,9 +13254,9 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkUpdateDescriptorSets.html"><code>vkUpdateDescriptorSets</code></a>
     public void updateDescriptorSets(
         VkDevice device,
-        @unsigned int descriptorWriteCount,
+        @Unsigned int descriptorWriteCount,
         @Pointer IVkWriteDescriptorSet pDescriptorWrites,
-        @unsigned int descriptorCopyCount,
+        @Unsigned int descriptorCopyCount,
         @Pointer IVkCopyDescriptorSet pDescriptorCopies
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkUpdateDescriptorSets);
@@ -13277,7 +13277,7 @@ public final class VkDeviceCommands {
     public void updateIndirectExecutionSetPipelineEXT(
         VkDevice device,
         VkIndirectExecutionSetEXT indirectExecutionSet,
-        @unsigned int executionSetWriteCount,
+        @Unsigned int executionSetWriteCount,
         @Pointer IVkWriteIndirectExecutionSetPipelineEXT pExecutionSetWrites
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkUpdateIndirectExecutionSetPipelineEXT);
@@ -13297,7 +13297,7 @@ public final class VkDeviceCommands {
     public void updateIndirectExecutionSetShaderEXT(
         VkDevice device,
         VkIndirectExecutionSetEXT indirectExecutionSet,
-        @unsigned int executionSetWriteCount,
+        @Unsigned int executionSetWriteCount,
         @Pointer IVkWriteIndirectExecutionSetShaderEXT pExecutionSetWrites
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkUpdateIndirectExecutionSetShaderEXT);
@@ -13334,10 +13334,10 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWaitForFences.html"><code>vkWaitForFences</code></a>
     public @EnumType(VkResult.class) int waitForFences(
         VkDevice device,
-        @unsigned int fenceCount,
+        @Unsigned int fenceCount,
         @Pointer VkFence.Ptr pFences,
-        @unsigned int waitAll,
-        @unsigned long timeout
+        @Unsigned int waitAll,
+        @Unsigned long timeout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkWaitForFences);
         try {
@@ -13357,8 +13357,8 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int waitForPresentKHR(
         VkDevice device,
         VkSwapchainKHR swapchain,
-        @unsigned long presentId,
-        @unsigned long timeout
+        @Unsigned long presentId,
+        @Unsigned long timeout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkWaitForPresentKHR);
         try {
@@ -13377,7 +13377,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int waitSemaphores(
         VkDevice device,
         @Pointer VkSemaphoreWaitInfo pWaitInfo,
-        @unsigned long timeout
+        @Unsigned long timeout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkWaitSemaphores);
         try {
@@ -13395,7 +13395,7 @@ public final class VkDeviceCommands {
     public @EnumType(VkResult.class) int waitSemaphoresKHR(
         VkDevice device,
         @Pointer VkSemaphoreWaitInfo pWaitInfo,
-        @unsigned long timeout
+        @Unsigned long timeout
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkWaitSemaphoresKHR);
         try {
@@ -13412,7 +13412,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWriteAccelerationStructuresPropertiesKHR.html"><code>vkWriteAccelerationStructuresPropertiesKHR</code></a>
     public @EnumType(VkResult.class) int writeAccelerationStructuresPropertiesKHR(
         VkDevice device,
-        @unsigned int accelerationStructureCount,
+        @Unsigned int accelerationStructureCount,
         @Pointer VkAccelerationStructureKHR.Ptr pAccelerationStructures,
         @EnumType(VkQueryType.class) int queryType,
         long dataSize,
@@ -13438,7 +13438,7 @@ public final class VkDeviceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkWriteMicromapsPropertiesEXT.html"><code>vkWriteMicromapsPropertiesEXT</code></a>
     public @EnumType(VkResult.class) int writeMicromapsPropertiesEXT(
         VkDevice device,
-        @unsigned int micromapCount,
+        @Unsigned int micromapCount,
         @Pointer VkMicromapEXT.Ptr pMicromaps,
         @EnumType(VkQueryType.class) int queryType,
         long dataSize,

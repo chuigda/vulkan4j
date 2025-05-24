@@ -97,7 +97,7 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -190,35 +190,35 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int instanceCount() {
+    public @Unsigned int instanceCount() {
         return segment.get(LAYOUT$instanceCount, OFFSET$instanceCount);
     }
 
-    public void instanceCount(@unsigned int value) {
+    public void instanceCount(@Unsigned int value) {
         segment.set(LAYOUT$instanceCount, OFFSET$instanceCount, value);
     }
 
-    public @unsigned int maxInstancePerPartitionCount() {
+    public @Unsigned int maxInstancePerPartitionCount() {
         return segment.get(LAYOUT$maxInstancePerPartitionCount, OFFSET$maxInstancePerPartitionCount);
     }
 
-    public void maxInstancePerPartitionCount(@unsigned int value) {
+    public void maxInstancePerPartitionCount(@Unsigned int value) {
         segment.set(LAYOUT$maxInstancePerPartitionCount, OFFSET$maxInstancePerPartitionCount, value);
     }
 
-    public @unsigned int partitionCount() {
+    public @Unsigned int partitionCount() {
         return segment.get(LAYOUT$partitionCount, OFFSET$partitionCount);
     }
 
-    public void partitionCount(@unsigned int value) {
+    public void partitionCount(@Unsigned int value) {
         segment.set(LAYOUT$partitionCount, OFFSET$partitionCount, value);
     }
 
-    public @unsigned int maxInstanceInGlobalPartitionCount() {
+    public @Unsigned int maxInstanceInGlobalPartitionCount() {
         return segment.get(LAYOUT$maxInstanceInGlobalPartitionCount, OFFSET$maxInstanceInGlobalPartitionCount);
     }
 
-    public void maxInstanceInGlobalPartitionCount(@unsigned int value) {
+    public void maxInstanceInGlobalPartitionCount(@Unsigned int value) {
         segment.set(LAYOUT$maxInstanceInGlobalPartitionCount, OFFSET$maxInstanceInGlobalPartitionCount, value);
     }
 

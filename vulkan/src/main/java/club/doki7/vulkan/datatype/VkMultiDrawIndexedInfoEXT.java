@@ -85,7 +85,7 @@ public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implemen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -140,19 +140,19 @@ public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public @unsigned int firstIndex() {
+    public @Unsigned int firstIndex() {
         return segment.get(LAYOUT$firstIndex, OFFSET$firstIndex);
     }
 
-    public void firstIndex(@unsigned int value) {
+    public void firstIndex(@Unsigned int value) {
         segment.set(LAYOUT$firstIndex, OFFSET$firstIndex, value);
     }
 
-    public @unsigned int indexCount() {
+    public @Unsigned int indexCount() {
         return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
     }
 
-    public void indexCount(@unsigned int value) {
+    public void indexCount(@Unsigned int value) {
         segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
     }
 

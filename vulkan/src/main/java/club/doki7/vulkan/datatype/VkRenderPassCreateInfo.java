@@ -99,7 +99,7 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -192,11 +192,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int attachmentCount() {
+    public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@unsigned int value) {
+    public void attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
     }
 
@@ -231,11 +231,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
-    public @unsigned int subpassCount() {
+    public @Unsigned int subpassCount() {
         return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
     }
 
-    public void subpassCount(@unsigned int value) {
+    public void subpassCount(@Unsigned int value) {
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
     }
 
@@ -270,11 +270,11 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pSubpasses, OFFSET$pSubpasses, value);
     }
 
-    public @unsigned int dependencyCount() {
+    public @Unsigned int dependencyCount() {
         return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
     }
 
-    public void dependencyCount(@unsigned int value) {
+    public void dependencyCount(@Unsigned int value) {
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
     }
 

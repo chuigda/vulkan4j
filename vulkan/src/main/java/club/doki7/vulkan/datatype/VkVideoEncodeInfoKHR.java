@@ -101,7 +101,7 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -206,19 +206,19 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long dstBufferOffset() {
+    public @Unsigned long dstBufferOffset() {
         return segment.get(LAYOUT$dstBufferOffset, OFFSET$dstBufferOffset);
     }
 
-    public void dstBufferOffset(@unsigned long value) {
+    public void dstBufferOffset(@Unsigned long value) {
         segment.set(LAYOUT$dstBufferOffset, OFFSET$dstBufferOffset, value);
     }
 
-    public @unsigned long dstBufferRange() {
+    public @Unsigned long dstBufferRange() {
         return segment.get(LAYOUT$dstBufferRange, OFFSET$dstBufferRange);
     }
 
-    public void dstBufferRange(@unsigned long value) {
+    public void dstBufferRange(@Unsigned long value) {
         segment.set(LAYOUT$dstBufferRange, OFFSET$dstBufferRange, value);
     }
 
@@ -261,11 +261,11 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pSetupReferenceSlot, OFFSET$pSetupReferenceSlot, value);
     }
 
-    public @unsigned int referenceSlotCount() {
+    public @Unsigned int referenceSlotCount() {
         return segment.get(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount);
     }
 
-    public void referenceSlotCount(@unsigned int value) {
+    public void referenceSlotCount(@Unsigned int value) {
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
     }
 
@@ -300,11 +300,11 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pReferenceSlots, OFFSET$pReferenceSlots, value);
     }
 
-    public @unsigned int precedingExternallyEncodedBytes() {
+    public @Unsigned int precedingExternallyEncodedBytes() {
         return segment.get(LAYOUT$precedingExternallyEncodedBytes, OFFSET$precedingExternallyEncodedBytes);
     }
 
-    public void precedingExternallyEncodedBytes(@unsigned int value) {
+    public void precedingExternallyEncodedBytes(@Unsigned int value) {
         segment.set(LAYOUT$precedingExternallyEncodedBytes, OFFSET$precedingExternallyEncodedBytes, value);
     }
 

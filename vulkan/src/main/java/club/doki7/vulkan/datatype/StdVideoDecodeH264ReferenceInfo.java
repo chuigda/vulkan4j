@@ -84,7 +84,7 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -147,11 +147,11 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned short FrameNum() {
+    public @Unsigned short FrameNum() {
         return segment.get(LAYOUT$FrameNum, OFFSET$FrameNum);
     }
 
-    public void FrameNum(@unsigned short value) {
+    public void FrameNum(@Unsigned short value) {
         segment.set(LAYOUT$FrameNum, OFFSET$FrameNum, value);
     }
 

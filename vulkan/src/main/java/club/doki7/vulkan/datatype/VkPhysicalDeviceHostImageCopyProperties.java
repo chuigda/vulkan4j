@@ -98,7 +98,7 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -183,11 +183,11 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int copySrcLayoutCount() {
+    public @Unsigned int copySrcLayoutCount() {
         return segment.get(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount);
     }
 
-    public void copySrcLayoutCount(@unsigned int value) {
+    public void copySrcLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount, value);
     }
 
@@ -217,11 +217,11 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$pCopySrcLayouts, OFFSET$pCopySrcLayouts, value);
     }
 
-    public @unsigned int copyDstLayoutCount() {
+    public @Unsigned int copyDstLayoutCount() {
         return segment.get(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount);
     }
 
-    public void copyDstLayoutCount(@unsigned int value) {
+    public void copyDstLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount, value);
     }
 
@@ -251,19 +251,19 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
 
-    public @unsigned byte optimalTilingLayoutUUID() {
+    public @Unsigned byte optimalTilingLayoutUUID() {
         return segment.get(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID);
     }
 
-    public void optimalTilingLayoutUUID(@unsigned byte value) {
+    public void optimalTilingLayoutUUID(@Unsigned byte value) {
         segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
     }
 
-    public @unsigned int identicalMemoryTypeRequirements() {
+    public @Unsigned int identicalMemoryTypeRequirements() {
         return segment.get(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements);
     }
 
-    public void identicalMemoryTypeRequirements(@unsigned int value) {
+    public void identicalMemoryTypeRequirements(@Unsigned int value) {
         segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
     }
 

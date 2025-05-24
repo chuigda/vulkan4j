@@ -94,7 +94,7 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(@NotNull MemoryS
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderImageInt64Atomics() {
+    public @Unsigned int shaderImageInt64Atomics() {
         return segment.get(LAYOUT$shaderImageInt64Atomics, OFFSET$shaderImageInt64Atomics);
     }
 
-    public void shaderImageInt64Atomics(@unsigned int value) {
+    public void shaderImageInt64Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderImageInt64Atomics, OFFSET$shaderImageInt64Atomics, value);
     }
 
-    public @unsigned int sparseImageInt64Atomics() {
+    public @Unsigned int sparseImageInt64Atomics() {
         return segment.get(LAYOUT$sparseImageInt64Atomics, OFFSET$sparseImageInt64Atomics);
     }
 
-    public void sparseImageInt64Atomics(@unsigned int value) {
+    public void sparseImageInt64Atomics(@Unsigned int value) {
         segment.set(LAYOUT$sparseImageInt64Atomics, OFFSET$sparseImageInt64Atomics, value);
     }
 

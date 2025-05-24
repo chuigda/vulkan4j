@@ -101,7 +101,7 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -194,19 +194,19 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public @unsigned long externalFormat() {
+    public @Unsigned long externalFormat() {
         return segment.get(LAYOUT$externalFormat, OFFSET$externalFormat);
     }
 
-    public void externalFormat(@unsigned long value) {
+    public void externalFormat(@Unsigned long value) {
         segment.set(LAYOUT$externalFormat, OFFSET$externalFormat, value);
     }
 
-    public @unsigned long screenUsage() {
+    public @Unsigned long screenUsage() {
         return segment.get(LAYOUT$screenUsage, OFFSET$screenUsage);
     }
 
-    public void screenUsage(@unsigned long value) {
+    public void screenUsage(@Unsigned long value) {
         segment.set(LAYOUT$screenUsage, OFFSET$screenUsage, value);
     }
 

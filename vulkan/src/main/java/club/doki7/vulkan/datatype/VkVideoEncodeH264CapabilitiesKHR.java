@@ -105,7 +105,7 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -206,51 +206,51 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
     }
 
-    public @unsigned int maxSliceCount() {
+    public @Unsigned int maxSliceCount() {
         return segment.get(LAYOUT$maxSliceCount, OFFSET$maxSliceCount);
     }
 
-    public void maxSliceCount(@unsigned int value) {
+    public void maxSliceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSliceCount, OFFSET$maxSliceCount, value);
     }
 
-    public @unsigned int maxPPictureL0ReferenceCount() {
+    public @Unsigned int maxPPictureL0ReferenceCount() {
         return segment.get(LAYOUT$maxPPictureL0ReferenceCount, OFFSET$maxPPictureL0ReferenceCount);
     }
 
-    public void maxPPictureL0ReferenceCount(@unsigned int value) {
+    public void maxPPictureL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxPPictureL0ReferenceCount, OFFSET$maxPPictureL0ReferenceCount, value);
     }
 
-    public @unsigned int maxBPictureL0ReferenceCount() {
+    public @Unsigned int maxBPictureL0ReferenceCount() {
         return segment.get(LAYOUT$maxBPictureL0ReferenceCount, OFFSET$maxBPictureL0ReferenceCount);
     }
 
-    public void maxBPictureL0ReferenceCount(@unsigned int value) {
+    public void maxBPictureL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBPictureL0ReferenceCount, OFFSET$maxBPictureL0ReferenceCount, value);
     }
 
-    public @unsigned int maxL1ReferenceCount() {
+    public @Unsigned int maxL1ReferenceCount() {
         return segment.get(LAYOUT$maxL1ReferenceCount, OFFSET$maxL1ReferenceCount);
     }
 
-    public void maxL1ReferenceCount(@unsigned int value) {
+    public void maxL1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxL1ReferenceCount, OFFSET$maxL1ReferenceCount, value);
     }
 
-    public @unsigned int maxTemporalLayerCount() {
+    public @Unsigned int maxTemporalLayerCount() {
         return segment.get(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount);
     }
 
-    public void maxTemporalLayerCount(@unsigned int value) {
+    public void maxTemporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount, value);
     }
 
-    public @unsigned int expectDyadicTemporalLayerPattern() {
+    public @Unsigned int expectDyadicTemporalLayerPattern() {
         return segment.get(LAYOUT$expectDyadicTemporalLayerPattern, OFFSET$expectDyadicTemporalLayerPattern);
     }
 
-    public void expectDyadicTemporalLayerPattern(@unsigned int value) {
+    public void expectDyadicTemporalLayerPattern(@Unsigned int value) {
         segment.set(LAYOUT$expectDyadicTemporalLayerPattern, OFFSET$expectDyadicTemporalLayerPattern, value);
     }
 
@@ -270,19 +270,19 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$maxQp, OFFSET$maxQp, value);
     }
 
-    public @unsigned int prefersGopRemainingFrames() {
+    public @Unsigned int prefersGopRemainingFrames() {
         return segment.get(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames);
     }
 
-    public void prefersGopRemainingFrames(@unsigned int value) {
+    public void prefersGopRemainingFrames(@Unsigned int value) {
         segment.set(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames, value);
     }
 
-    public @unsigned int requiresGopRemainingFrames() {
+    public @Unsigned int requiresGopRemainingFrames() {
         return segment.get(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames);
     }
 
-    public void requiresGopRemainingFrames(@unsigned int value) {
+    public void requiresGopRemainingFrames(@Unsigned int value) {
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
     }
 

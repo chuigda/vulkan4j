@@ -97,7 +97,7 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -190,11 +190,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int viewportCount() {
+    public @Unsigned int viewportCount() {
         return segment.get(LAYOUT$viewportCount, OFFSET$viewportCount);
     }
 
-    public void viewportCount(@unsigned int value) {
+    public void viewportCount(@Unsigned int value) {
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
     }
 
@@ -229,11 +229,11 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pViewports, OFFSET$pViewports, value);
     }
 
-    public @unsigned int scissorCount() {
+    public @Unsigned int scissorCount() {
         return segment.get(LAYOUT$scissorCount, OFFSET$scissorCount);
     }
 
-    public void scissorCount(@unsigned int value) {
+    public void scissorCount(@Unsigned int value) {
         segment.set(LAYOUT$scissorCount, OFFSET$scissorCount, value);
     }
 

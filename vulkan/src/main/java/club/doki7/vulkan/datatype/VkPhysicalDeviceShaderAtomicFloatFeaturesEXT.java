@@ -104,7 +104,7 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -189,99 +189,99 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderBufferFloat32Atomics() {
+    public @Unsigned int shaderBufferFloat32Atomics() {
         return segment.get(LAYOUT$shaderBufferFloat32Atomics, OFFSET$shaderBufferFloat32Atomics);
     }
 
-    public void shaderBufferFloat32Atomics(@unsigned int value) {
+    public void shaderBufferFloat32Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat32Atomics, OFFSET$shaderBufferFloat32Atomics, value);
     }
 
-    public @unsigned int shaderBufferFloat32AtomicAdd() {
+    public @Unsigned int shaderBufferFloat32AtomicAdd() {
         return segment.get(LAYOUT$shaderBufferFloat32AtomicAdd, OFFSET$shaderBufferFloat32AtomicAdd);
     }
 
-    public void shaderBufferFloat32AtomicAdd(@unsigned int value) {
+    public void shaderBufferFloat32AtomicAdd(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat32AtomicAdd, OFFSET$shaderBufferFloat32AtomicAdd, value);
     }
 
-    public @unsigned int shaderBufferFloat64Atomics() {
+    public @Unsigned int shaderBufferFloat64Atomics() {
         return segment.get(LAYOUT$shaderBufferFloat64Atomics, OFFSET$shaderBufferFloat64Atomics);
     }
 
-    public void shaderBufferFloat64Atomics(@unsigned int value) {
+    public void shaderBufferFloat64Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat64Atomics, OFFSET$shaderBufferFloat64Atomics, value);
     }
 
-    public @unsigned int shaderBufferFloat64AtomicAdd() {
+    public @Unsigned int shaderBufferFloat64AtomicAdd() {
         return segment.get(LAYOUT$shaderBufferFloat64AtomicAdd, OFFSET$shaderBufferFloat64AtomicAdd);
     }
 
-    public void shaderBufferFloat64AtomicAdd(@unsigned int value) {
+    public void shaderBufferFloat64AtomicAdd(@Unsigned int value) {
         segment.set(LAYOUT$shaderBufferFloat64AtomicAdd, OFFSET$shaderBufferFloat64AtomicAdd, value);
     }
 
-    public @unsigned int shaderSharedFloat32Atomics() {
+    public @Unsigned int shaderSharedFloat32Atomics() {
         return segment.get(LAYOUT$shaderSharedFloat32Atomics, OFFSET$shaderSharedFloat32Atomics);
     }
 
-    public void shaderSharedFloat32Atomics(@unsigned int value) {
+    public void shaderSharedFloat32Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat32Atomics, OFFSET$shaderSharedFloat32Atomics, value);
     }
 
-    public @unsigned int shaderSharedFloat32AtomicAdd() {
+    public @Unsigned int shaderSharedFloat32AtomicAdd() {
         return segment.get(LAYOUT$shaderSharedFloat32AtomicAdd, OFFSET$shaderSharedFloat32AtomicAdd);
     }
 
-    public void shaderSharedFloat32AtomicAdd(@unsigned int value) {
+    public void shaderSharedFloat32AtomicAdd(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat32AtomicAdd, OFFSET$shaderSharedFloat32AtomicAdd, value);
     }
 
-    public @unsigned int shaderSharedFloat64Atomics() {
+    public @Unsigned int shaderSharedFloat64Atomics() {
         return segment.get(LAYOUT$shaderSharedFloat64Atomics, OFFSET$shaderSharedFloat64Atomics);
     }
 
-    public void shaderSharedFloat64Atomics(@unsigned int value) {
+    public void shaderSharedFloat64Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat64Atomics, OFFSET$shaderSharedFloat64Atomics, value);
     }
 
-    public @unsigned int shaderSharedFloat64AtomicAdd() {
+    public @Unsigned int shaderSharedFloat64AtomicAdd() {
         return segment.get(LAYOUT$shaderSharedFloat64AtomicAdd, OFFSET$shaderSharedFloat64AtomicAdd);
     }
 
-    public void shaderSharedFloat64AtomicAdd(@unsigned int value) {
+    public void shaderSharedFloat64AtomicAdd(@Unsigned int value) {
         segment.set(LAYOUT$shaderSharedFloat64AtomicAdd, OFFSET$shaderSharedFloat64AtomicAdd, value);
     }
 
-    public @unsigned int shaderImageFloat32Atomics() {
+    public @Unsigned int shaderImageFloat32Atomics() {
         return segment.get(LAYOUT$shaderImageFloat32Atomics, OFFSET$shaderImageFloat32Atomics);
     }
 
-    public void shaderImageFloat32Atomics(@unsigned int value) {
+    public void shaderImageFloat32Atomics(@Unsigned int value) {
         segment.set(LAYOUT$shaderImageFloat32Atomics, OFFSET$shaderImageFloat32Atomics, value);
     }
 
-    public @unsigned int shaderImageFloat32AtomicAdd() {
+    public @Unsigned int shaderImageFloat32AtomicAdd() {
         return segment.get(LAYOUT$shaderImageFloat32AtomicAdd, OFFSET$shaderImageFloat32AtomicAdd);
     }
 
-    public void shaderImageFloat32AtomicAdd(@unsigned int value) {
+    public void shaderImageFloat32AtomicAdd(@Unsigned int value) {
         segment.set(LAYOUT$shaderImageFloat32AtomicAdd, OFFSET$shaderImageFloat32AtomicAdd, value);
     }
 
-    public @unsigned int sparseImageFloat32Atomics() {
+    public @Unsigned int sparseImageFloat32Atomics() {
         return segment.get(LAYOUT$sparseImageFloat32Atomics, OFFSET$sparseImageFloat32Atomics);
     }
 
-    public void sparseImageFloat32Atomics(@unsigned int value) {
+    public void sparseImageFloat32Atomics(@Unsigned int value) {
         segment.set(LAYOUT$sparseImageFloat32Atomics, OFFSET$sparseImageFloat32Atomics, value);
     }
 
-    public @unsigned int sparseImageFloat32AtomicAdd() {
+    public @Unsigned int sparseImageFloat32AtomicAdd() {
         return segment.get(LAYOUT$sparseImageFloat32AtomicAdd, OFFSET$sparseImageFloat32AtomicAdd);
     }
 
-    public void sparseImageFloat32AtomicAdd(@unsigned int value) {
+    public void sparseImageFloat32AtomicAdd(@Unsigned int value) {
         segment.set(LAYOUT$sparseImageFloat32AtomicAdd, OFFSET$sparseImageFloat32AtomicAdd, value);
     }
 

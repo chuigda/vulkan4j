@@ -90,7 +90,7 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -153,11 +153,11 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned int first_mb_in_slice() {
+    public @Unsigned int first_mb_in_slice() {
         return segment.get(LAYOUT$first_mb_in_slice, OFFSET$first_mb_in_slice);
     }
 
-    public void first_mb_in_slice(@unsigned int value) {
+    public void first_mb_in_slice(@Unsigned int value) {
         segment.set(LAYOUT$first_mb_in_slice, OFFSET$first_mb_in_slice, value);
     }
 

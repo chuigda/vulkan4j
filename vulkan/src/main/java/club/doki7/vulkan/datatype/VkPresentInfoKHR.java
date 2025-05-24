@@ -98,7 +98,7 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -183,11 +183,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int waitSemaphoreCount() {
+    public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@unsigned int value) {
+    public void waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
@@ -216,11 +216,11 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
-    public @unsigned int swapchainCount() {
+    public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@unsigned int value) {
+    public void swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
     }
 
@@ -253,7 +253,7 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pImageIndices() {
+    public @Nullable @Unsigned IntPtr pImageIndices() {
         MemorySegment s = pImageIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -261,7 +261,7 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return new IntPtr(s);
     }
 
-    public void pImageIndices(@Nullable @unsigned IntPtr value) {
+    public void pImageIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageIndicesRaw(s);
     }

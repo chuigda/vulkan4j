@@ -100,7 +100,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -193,11 +193,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int descriptorUpdateEntryCount() {
+    public @Unsigned int descriptorUpdateEntryCount() {
         return segment.get(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount);
     }
 
-    public void descriptorUpdateEntryCount(@unsigned int value) {
+    public void descriptorUpdateEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount, value);
     }
 
@@ -272,11 +272,11 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int set() {
+    public @Unsigned int set() {
         return segment.get(LAYOUT$set, OFFSET$set);
     }
 
-    public void set(@unsigned int value) {
+    public void set(@Unsigned int value) {
         segment.set(LAYOUT$set, OFFSET$set, value);
     }
 

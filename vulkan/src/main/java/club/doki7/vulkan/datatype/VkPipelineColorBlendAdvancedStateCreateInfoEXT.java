@@ -95,7 +95,7 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,19 +180,19 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int srcPremultiplied() {
+    public @Unsigned int srcPremultiplied() {
         return segment.get(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied);
     }
 
-    public void srcPremultiplied(@unsigned int value) {
+    public void srcPremultiplied(@Unsigned int value) {
         segment.set(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied, value);
     }
 
-    public @unsigned int dstPremultiplied() {
+    public @Unsigned int dstPremultiplied() {
         return segment.get(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied);
     }
 
-    public void dstPremultiplied(@unsigned int value) {
+    public void dstPremultiplied(@Unsigned int value) {
         segment.set(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied, value);
     }
 

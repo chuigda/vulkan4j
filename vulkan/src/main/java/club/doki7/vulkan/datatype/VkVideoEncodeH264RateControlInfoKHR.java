@@ -97,7 +97,7 @@ public record VkVideoEncodeH264RateControlInfoKHR(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -190,35 +190,35 @@ public record VkVideoEncodeH264RateControlInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int gopFrameCount() {
+    public @Unsigned int gopFrameCount() {
         return segment.get(LAYOUT$gopFrameCount, OFFSET$gopFrameCount);
     }
 
-    public void gopFrameCount(@unsigned int value) {
+    public void gopFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$gopFrameCount, OFFSET$gopFrameCount, value);
     }
 
-    public @unsigned int idrPeriod() {
+    public @Unsigned int idrPeriod() {
         return segment.get(LAYOUT$idrPeriod, OFFSET$idrPeriod);
     }
 
-    public void idrPeriod(@unsigned int value) {
+    public void idrPeriod(@Unsigned int value) {
         segment.set(LAYOUT$idrPeriod, OFFSET$idrPeriod, value);
     }
 
-    public @unsigned int consecutiveBFrameCount() {
+    public @Unsigned int consecutiveBFrameCount() {
         return segment.get(LAYOUT$consecutiveBFrameCount, OFFSET$consecutiveBFrameCount);
     }
 
-    public void consecutiveBFrameCount(@unsigned int value) {
+    public void consecutiveBFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$consecutiveBFrameCount, OFFSET$consecutiveBFrameCount, value);
     }
 
-    public @unsigned int temporalLayerCount() {
+    public @Unsigned int temporalLayerCount() {
         return segment.get(LAYOUT$temporalLayerCount, OFFSET$temporalLayerCount);
     }
 
-    public void temporalLayerCount(@unsigned int value) {
+    public void temporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$temporalLayerCount, OFFSET$temporalLayerCount, value);
     }
 

@@ -93,7 +93,7 @@ public record VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(@NotNul
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -178,11 +178,11 @@ public record VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(@NotNul
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int partitionedAccelerationStructure() {
+    public @Unsigned int partitionedAccelerationStructure() {
         return segment.get(LAYOUT$partitionedAccelerationStructure, OFFSET$partitionedAccelerationStructure);
     }
 
-    public void partitionedAccelerationStructure(@unsigned int value) {
+    public void partitionedAccelerationStructure(@Unsigned int value) {
         segment.set(LAYOUT$partitionedAccelerationStructure, OFFSET$partitionedAccelerationStructure, value);
     }
 

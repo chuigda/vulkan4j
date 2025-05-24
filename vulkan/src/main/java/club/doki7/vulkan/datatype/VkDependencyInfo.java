@@ -99,7 +99,7 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -192,11 +192,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
     }
 
-    public @unsigned int memoryBarrierCount() {
+    public @Unsigned int memoryBarrierCount() {
         return segment.get(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount);
     }
 
-    public void memoryBarrierCount(@unsigned int value) {
+    public void memoryBarrierCount(@Unsigned int value) {
         segment.set(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount, value);
     }
 
@@ -231,11 +231,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         segment.set(LAYOUT$pMemoryBarriers, OFFSET$pMemoryBarriers, value);
     }
 
-    public @unsigned int bufferMemoryBarrierCount() {
+    public @Unsigned int bufferMemoryBarrierCount() {
         return segment.get(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount);
     }
 
-    public void bufferMemoryBarrierCount(@unsigned int value) {
+    public void bufferMemoryBarrierCount(@Unsigned int value) {
         segment.set(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount, value);
     }
 
@@ -270,11 +270,11 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         segment.set(LAYOUT$pBufferMemoryBarriers, OFFSET$pBufferMemoryBarriers, value);
     }
 
-    public @unsigned int imageMemoryBarrierCount() {
+    public @Unsigned int imageMemoryBarrierCount() {
         return segment.get(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount);
     }
 
-    public void imageMemoryBarrierCount(@unsigned int value) {
+    public void imageMemoryBarrierCount(@Unsigned int value) {
         segment.set(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount, value);
     }
 

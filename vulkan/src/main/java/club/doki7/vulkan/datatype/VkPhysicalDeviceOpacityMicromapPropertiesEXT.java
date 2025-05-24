@@ -94,7 +94,7 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(@NotNull MemorySegmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int maxOpacity2StateSubdivisionLevel() {
+    public @Unsigned int maxOpacity2StateSubdivisionLevel() {
         return segment.get(LAYOUT$maxOpacity2StateSubdivisionLevel, OFFSET$maxOpacity2StateSubdivisionLevel);
     }
 
-    public void maxOpacity2StateSubdivisionLevel(@unsigned int value) {
+    public void maxOpacity2StateSubdivisionLevel(@Unsigned int value) {
         segment.set(LAYOUT$maxOpacity2StateSubdivisionLevel, OFFSET$maxOpacity2StateSubdivisionLevel, value);
     }
 
-    public @unsigned int maxOpacity4StateSubdivisionLevel() {
+    public @Unsigned int maxOpacity4StateSubdivisionLevel() {
         return segment.get(LAYOUT$maxOpacity4StateSubdivisionLevel, OFFSET$maxOpacity4StateSubdivisionLevel);
     }
 
-    public void maxOpacity4StateSubdivisionLevel(@unsigned int value) {
+    public void maxOpacity4StateSubdivisionLevel(@Unsigned int value) {
         segment.set(LAYOUT$maxOpacity4StateSubdivisionLevel, OFFSET$maxOpacity4StateSubdivisionLevel, value);
     }
 

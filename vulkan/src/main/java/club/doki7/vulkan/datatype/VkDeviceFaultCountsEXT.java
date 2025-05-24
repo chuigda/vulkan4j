@@ -95,7 +95,7 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int addressInfoCount() {
+    public @Unsigned int addressInfoCount() {
         return segment.get(LAYOUT$addressInfoCount, OFFSET$addressInfoCount);
     }
 
-    public void addressInfoCount(@unsigned int value) {
+    public void addressInfoCount(@Unsigned int value) {
         segment.set(LAYOUT$addressInfoCount, OFFSET$addressInfoCount, value);
     }
 
-    public @unsigned int vendorInfoCount() {
+    public @Unsigned int vendorInfoCount() {
         return segment.get(LAYOUT$vendorInfoCount, OFFSET$vendorInfoCount);
     }
 
-    public void vendorInfoCount(@unsigned int value) {
+    public void vendorInfoCount(@Unsigned int value) {
         segment.set(LAYOUT$vendorInfoCount, OFFSET$vendorInfoCount, value);
     }
 
-    public @unsigned long vendorBinarySize() {
+    public @Unsigned long vendorBinarySize() {
         return segment.get(LAYOUT$vendorBinarySize, OFFSET$vendorBinarySize);
     }
 
-    public void vendorBinarySize(@unsigned long value) {
+    public void vendorBinarySize(@Unsigned long value) {
         segment.set(LAYOUT$vendorBinarySize, OFFSET$vendorBinarySize, value);
     }
 

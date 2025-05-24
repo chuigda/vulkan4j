@@ -85,7 +85,7 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -140,27 +140,27 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
         return ret;
     }
 
-    public @unsigned long bufferAddress() {
+    public @Unsigned long bufferAddress() {
         return segment.get(LAYOUT$bufferAddress, OFFSET$bufferAddress);
     }
 
-    public void bufferAddress(@unsigned long value) {
+    public void bufferAddress(@Unsigned long value) {
         segment.set(LAYOUT$bufferAddress, OFFSET$bufferAddress, value);
     }
 
-    public @unsigned int stride() {
+    public @Unsigned int stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@unsigned int value) {
+    public void stride(@Unsigned int value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
     }
 
-    public @unsigned int commandCount() {
+    public @Unsigned int commandCount() {
         return segment.get(LAYOUT$commandCount, OFFSET$commandCount);
     }
 
-    public void commandCount(@unsigned int value) {
+    public void commandCount(@Unsigned int value) {
         segment.set(LAYOUT$commandCount, OFFSET$commandCount, value);
     }
 

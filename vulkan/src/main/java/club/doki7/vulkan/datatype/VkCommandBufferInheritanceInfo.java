@@ -98,7 +98,7 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -195,11 +195,11 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int subpass() {
+    public @Unsigned int subpass() {
         return segment.get(LAYOUT$subpass, OFFSET$subpass);
     }
 
-    public void subpass(@unsigned int value) {
+    public void subpass(@Unsigned int value) {
         segment.set(LAYOUT$subpass, OFFSET$subpass, value);
     }
 
@@ -215,11 +215,11 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int occlusionQueryEnable() {
+    public @Unsigned int occlusionQueryEnable() {
         return segment.get(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable);
     }
 
-    public void occlusionQueryEnable(@unsigned int value) {
+    public void occlusionQueryEnable(@Unsigned int value) {
         segment.set(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable, value);
     }
 

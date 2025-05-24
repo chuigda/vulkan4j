@@ -95,7 +95,7 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(@NotNull MemorySegment 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderTileImageColorReadAccess() {
+    public @Unsigned int shaderTileImageColorReadAccess() {
         return segment.get(LAYOUT$shaderTileImageColorReadAccess, OFFSET$shaderTileImageColorReadAccess);
     }
 
-    public void shaderTileImageColorReadAccess(@unsigned int value) {
+    public void shaderTileImageColorReadAccess(@Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageColorReadAccess, OFFSET$shaderTileImageColorReadAccess, value);
     }
 
-    public @unsigned int shaderTileImageDepthReadAccess() {
+    public @Unsigned int shaderTileImageDepthReadAccess() {
         return segment.get(LAYOUT$shaderTileImageDepthReadAccess, OFFSET$shaderTileImageDepthReadAccess);
     }
 
-    public void shaderTileImageDepthReadAccess(@unsigned int value) {
+    public void shaderTileImageDepthReadAccess(@Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageDepthReadAccess, OFFSET$shaderTileImageDepthReadAccess, value);
     }
 
-    public @unsigned int shaderTileImageStencilReadAccess() {
+    public @Unsigned int shaderTileImageStencilReadAccess() {
         return segment.get(LAYOUT$shaderTileImageStencilReadAccess, OFFSET$shaderTileImageStencilReadAccess);
     }
 
-    public void shaderTileImageStencilReadAccess(@unsigned int value) {
+    public void shaderTileImageStencilReadAccess(@Unsigned int value) {
         segment.set(LAYOUT$shaderTileImageStencilReadAccess, OFFSET$shaderTileImageStencilReadAccess, value);
     }
 

@@ -104,7 +104,7 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -189,11 +189,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long srcSize() {
+    public @Unsigned long srcSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$srcSize);
     }
 
-    public void srcSize(@unsigned long value) {
+    public void srcSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$srcSize, value);
     }
 
@@ -254,19 +254,19 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$dstComponentType, OFFSET$dstComponentType, value);
     }
 
-    public @unsigned int numRows() {
+    public @Unsigned int numRows() {
         return segment.get(LAYOUT$numRows, OFFSET$numRows);
     }
 
-    public void numRows(@unsigned int value) {
+    public void numRows(@Unsigned int value) {
         segment.set(LAYOUT$numRows, OFFSET$numRows, value);
     }
 
-    public @unsigned int numColumns() {
+    public @Unsigned int numColumns() {
         return segment.get(LAYOUT$numColumns, OFFSET$numColumns);
     }
 
-    public void numColumns(@unsigned int value) {
+    public void numColumns(@Unsigned int value) {
         segment.set(LAYOUT$numColumns, OFFSET$numColumns, value);
     }
 
@@ -278,11 +278,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$srcLayout, OFFSET$srcLayout, value);
     }
 
-    public @unsigned long srcStride() {
+    public @Unsigned long srcStride() {
         return NativeLayout.readCSizeT(segment, OFFSET$srcStride);
     }
 
-    public void srcStride(@unsigned long value) {
+    public void srcStride(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$srcStride, value);
     }
 
@@ -294,11 +294,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$dstLayout, OFFSET$dstLayout, value);
     }
 
-    public @unsigned long dstStride() {
+    public @Unsigned long dstStride() {
         return NativeLayout.readCSizeT(segment, OFFSET$dstStride);
     }
 
-    public void dstStride(@unsigned long value) {
+    public void dstStride(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dstStride, value);
     }
 

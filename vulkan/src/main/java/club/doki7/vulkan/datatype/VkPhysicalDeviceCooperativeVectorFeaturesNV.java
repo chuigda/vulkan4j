@@ -94,7 +94,7 @@ public record VkPhysicalDeviceCooperativeVectorFeaturesNV(@NotNull MemorySegment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceCooperativeVectorFeaturesNV(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int cooperativeVector() {
+    public @Unsigned int cooperativeVector() {
         return segment.get(LAYOUT$cooperativeVector, OFFSET$cooperativeVector);
     }
 
-    public void cooperativeVector(@unsigned int value) {
+    public void cooperativeVector(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeVector, OFFSET$cooperativeVector, value);
     }
 
-    public @unsigned int cooperativeVectorTraining() {
+    public @Unsigned int cooperativeVectorTraining() {
         return segment.get(LAYOUT$cooperativeVectorTraining, OFFSET$cooperativeVectorTraining);
     }
 
-    public void cooperativeVectorTraining(@unsigned int value) {
+    public void cooperativeVectorTraining(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTraining, OFFSET$cooperativeVectorTraining, value);
     }
 

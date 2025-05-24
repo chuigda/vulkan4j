@@ -106,7 +106,7 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment seg
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -191,115 +191,115 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderEngineCount() {
+    public @Unsigned int shaderEngineCount() {
         return segment.get(LAYOUT$shaderEngineCount, OFFSET$shaderEngineCount);
     }
 
-    public void shaderEngineCount(@unsigned int value) {
+    public void shaderEngineCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderEngineCount, OFFSET$shaderEngineCount, value);
     }
 
-    public @unsigned int shaderArraysPerEngineCount() {
+    public @Unsigned int shaderArraysPerEngineCount() {
         return segment.get(LAYOUT$shaderArraysPerEngineCount, OFFSET$shaderArraysPerEngineCount);
     }
 
-    public void shaderArraysPerEngineCount(@unsigned int value) {
+    public void shaderArraysPerEngineCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderArraysPerEngineCount, OFFSET$shaderArraysPerEngineCount, value);
     }
 
-    public @unsigned int computeUnitsPerShaderArray() {
+    public @Unsigned int computeUnitsPerShaderArray() {
         return segment.get(LAYOUT$computeUnitsPerShaderArray, OFFSET$computeUnitsPerShaderArray);
     }
 
-    public void computeUnitsPerShaderArray(@unsigned int value) {
+    public void computeUnitsPerShaderArray(@Unsigned int value) {
         segment.set(LAYOUT$computeUnitsPerShaderArray, OFFSET$computeUnitsPerShaderArray, value);
     }
 
-    public @unsigned int simdPerComputeUnit() {
+    public @Unsigned int simdPerComputeUnit() {
         return segment.get(LAYOUT$simdPerComputeUnit, OFFSET$simdPerComputeUnit);
     }
 
-    public void simdPerComputeUnit(@unsigned int value) {
+    public void simdPerComputeUnit(@Unsigned int value) {
         segment.set(LAYOUT$simdPerComputeUnit, OFFSET$simdPerComputeUnit, value);
     }
 
-    public @unsigned int wavefrontsPerSimd() {
+    public @Unsigned int wavefrontsPerSimd() {
         return segment.get(LAYOUT$wavefrontsPerSimd, OFFSET$wavefrontsPerSimd);
     }
 
-    public void wavefrontsPerSimd(@unsigned int value) {
+    public void wavefrontsPerSimd(@Unsigned int value) {
         segment.set(LAYOUT$wavefrontsPerSimd, OFFSET$wavefrontsPerSimd, value);
     }
 
-    public @unsigned int wavefrontSize() {
+    public @Unsigned int wavefrontSize() {
         return segment.get(LAYOUT$wavefrontSize, OFFSET$wavefrontSize);
     }
 
-    public void wavefrontSize(@unsigned int value) {
+    public void wavefrontSize(@Unsigned int value) {
         segment.set(LAYOUT$wavefrontSize, OFFSET$wavefrontSize, value);
     }
 
-    public @unsigned int sgprsPerSimd() {
+    public @Unsigned int sgprsPerSimd() {
         return segment.get(LAYOUT$sgprsPerSimd, OFFSET$sgprsPerSimd);
     }
 
-    public void sgprsPerSimd(@unsigned int value) {
+    public void sgprsPerSimd(@Unsigned int value) {
         segment.set(LAYOUT$sgprsPerSimd, OFFSET$sgprsPerSimd, value);
     }
 
-    public @unsigned int minSgprAllocation() {
+    public @Unsigned int minSgprAllocation() {
         return segment.get(LAYOUT$minSgprAllocation, OFFSET$minSgprAllocation);
     }
 
-    public void minSgprAllocation(@unsigned int value) {
+    public void minSgprAllocation(@Unsigned int value) {
         segment.set(LAYOUT$minSgprAllocation, OFFSET$minSgprAllocation, value);
     }
 
-    public @unsigned int maxSgprAllocation() {
+    public @Unsigned int maxSgprAllocation() {
         return segment.get(LAYOUT$maxSgprAllocation, OFFSET$maxSgprAllocation);
     }
 
-    public void maxSgprAllocation(@unsigned int value) {
+    public void maxSgprAllocation(@Unsigned int value) {
         segment.set(LAYOUT$maxSgprAllocation, OFFSET$maxSgprAllocation, value);
     }
 
-    public @unsigned int sgprAllocationGranularity() {
+    public @Unsigned int sgprAllocationGranularity() {
         return segment.get(LAYOUT$sgprAllocationGranularity, OFFSET$sgprAllocationGranularity);
     }
 
-    public void sgprAllocationGranularity(@unsigned int value) {
+    public void sgprAllocationGranularity(@Unsigned int value) {
         segment.set(LAYOUT$sgprAllocationGranularity, OFFSET$sgprAllocationGranularity, value);
     }
 
-    public @unsigned int vgprsPerSimd() {
+    public @Unsigned int vgprsPerSimd() {
         return segment.get(LAYOUT$vgprsPerSimd, OFFSET$vgprsPerSimd);
     }
 
-    public void vgprsPerSimd(@unsigned int value) {
+    public void vgprsPerSimd(@Unsigned int value) {
         segment.set(LAYOUT$vgprsPerSimd, OFFSET$vgprsPerSimd, value);
     }
 
-    public @unsigned int minVgprAllocation() {
+    public @Unsigned int minVgprAllocation() {
         return segment.get(LAYOUT$minVgprAllocation, OFFSET$minVgprAllocation);
     }
 
-    public void minVgprAllocation(@unsigned int value) {
+    public void minVgprAllocation(@Unsigned int value) {
         segment.set(LAYOUT$minVgprAllocation, OFFSET$minVgprAllocation, value);
     }
 
-    public @unsigned int maxVgprAllocation() {
+    public @Unsigned int maxVgprAllocation() {
         return segment.get(LAYOUT$maxVgprAllocation, OFFSET$maxVgprAllocation);
     }
 
-    public void maxVgprAllocation(@unsigned int value) {
+    public void maxVgprAllocation(@Unsigned int value) {
         segment.set(LAYOUT$maxVgprAllocation, OFFSET$maxVgprAllocation, value);
     }
 
-    public @unsigned int vgprAllocationGranularity() {
+    public @Unsigned int vgprAllocationGranularity() {
         return segment.get(LAYOUT$vgprAllocationGranularity, OFFSET$vgprAllocationGranularity);
     }
 
-    public void vgprAllocationGranularity(@unsigned int value) {
+    public void vgprAllocationGranularity(@Unsigned int value) {
         segment.set(LAYOUT$vgprAllocationGranularity, OFFSET$vgprAllocationGranularity, value);
     }
 

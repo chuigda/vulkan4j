@@ -95,7 +95,7 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -180,27 +180,27 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int textureSampleWeighted() {
+    public @Unsigned int textureSampleWeighted() {
         return segment.get(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted);
     }
 
-    public void textureSampleWeighted(@unsigned int value) {
+    public void textureSampleWeighted(@Unsigned int value) {
         segment.set(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted, value);
     }
 
-    public @unsigned int textureBoxFilter() {
+    public @Unsigned int textureBoxFilter() {
         return segment.get(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter);
     }
 
-    public void textureBoxFilter(@unsigned int value) {
+    public void textureBoxFilter(@Unsigned int value) {
         segment.set(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter, value);
     }
 
-    public @unsigned int textureBlockMatch() {
+    public @Unsigned int textureBlockMatch() {
         return segment.get(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch);
     }
 
-    public void textureBlockMatch(@unsigned int value) {
+    public void textureBlockMatch(@Unsigned int value) {
         segment.set(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch, value);
     }
 

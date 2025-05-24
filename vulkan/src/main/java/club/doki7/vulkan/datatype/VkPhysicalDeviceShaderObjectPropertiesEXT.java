@@ -94,7 +94,7 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned byte shaderBinaryUUID() {
+    public @Unsigned byte shaderBinaryUUID() {
         return segment.get(LAYOUT$shaderBinaryUUID, OFFSET$shaderBinaryUUID);
     }
 
-    public void shaderBinaryUUID(@unsigned byte value) {
+    public void shaderBinaryUUID(@Unsigned byte value) {
         segment.set(LAYOUT$shaderBinaryUUID, OFFSET$shaderBinaryUUID, value);
     }
 
-    public @unsigned int shaderBinaryVersion() {
+    public @Unsigned int shaderBinaryVersion() {
         return segment.get(LAYOUT$shaderBinaryVersion, OFFSET$shaderBinaryVersion);
     }
 
-    public void shaderBinaryVersion(@unsigned int value) {
+    public void shaderBinaryVersion(@Unsigned int value) {
         segment.set(LAYOUT$shaderBinaryVersion, OFFSET$shaderBinaryVersion, value);
     }
 

@@ -94,7 +94,7 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(@NotNull MemorySegm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int sciBufImport() {
+    public @Unsigned int sciBufImport() {
         return segment.get(LAYOUT$sciBufImport, OFFSET$sciBufImport);
     }
 
-    public void sciBufImport(@unsigned int value) {
+    public void sciBufImport(@Unsigned int value) {
         segment.set(LAYOUT$sciBufImport, OFFSET$sciBufImport, value);
     }
 
-    public @unsigned int sciBufExport() {
+    public @Unsigned int sciBufExport() {
         return segment.get(LAYOUT$sciBufExport, OFFSET$sciBufExport);
     }
 
-    public void sciBufExport(@unsigned int value) {
+    public void sciBufExport(@Unsigned int value) {
         segment.set(LAYOUT$sciBufExport, OFFSET$sciBufExport, value);
     }
 

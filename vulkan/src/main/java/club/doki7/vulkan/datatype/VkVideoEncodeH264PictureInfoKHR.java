@@ -96,7 +96,7 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,11 +181,11 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int naluSliceEntryCount() {
+    public @Unsigned int naluSliceEntryCount() {
         return segment.get(LAYOUT$naluSliceEntryCount, OFFSET$naluSliceEntryCount);
     }
 
-    public void naluSliceEntryCount(@unsigned int value) {
+    public void naluSliceEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$naluSliceEntryCount, OFFSET$naluSliceEntryCount, value);
     }
 
@@ -251,11 +251,11 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
-    public @unsigned int generatePrefixNalu() {
+    public @Unsigned int generatePrefixNalu() {
         return segment.get(LAYOUT$generatePrefixNalu, OFFSET$generatePrefixNalu);
     }
 
-    public void generatePrefixNalu(@unsigned int value) {
+    public void generatePrefixNalu(@Unsigned int value) {
         segment.set(LAYOUT$generatePrefixNalu, OFFSET$generatePrefixNalu, value);
     }
 

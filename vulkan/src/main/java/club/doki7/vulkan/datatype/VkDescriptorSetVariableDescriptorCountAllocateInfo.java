@@ -94,7 +94,7 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,11 +179,11 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int descriptorSetCount() {
+    public @Unsigned int descriptorSetCount() {
         return segment.get(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount);
     }
 
-    public void descriptorSetCount(@unsigned int value) {
+    public void descriptorSetCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
     }
 
@@ -191,7 +191,7 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pDescriptorCounts() {
+    public @Nullable @Unsigned IntPtr pDescriptorCounts() {
         MemorySegment s = pDescriptorCountsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -199,7 +199,7 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         return new IntPtr(s);
     }
 
-    public void pDescriptorCounts(@Nullable @unsigned IntPtr value) {
+    public void pDescriptorCounts(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorCountsRaw(s);
     }

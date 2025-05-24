@@ -87,7 +87,7 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -150,51 +150,51 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte num_ref_idx_l0_active_minus1() {
+    public @Unsigned byte num_ref_idx_l0_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l0_active_minus1, OFFSET$num_ref_idx_l0_active_minus1);
     }
 
-    public void num_ref_idx_l0_active_minus1(@unsigned byte value) {
+    public void num_ref_idx_l0_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l0_active_minus1, OFFSET$num_ref_idx_l0_active_minus1, value);
     }
 
-    public @unsigned byte num_ref_idx_l1_active_minus1() {
+    public @Unsigned byte num_ref_idx_l1_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l1_active_minus1, OFFSET$num_ref_idx_l1_active_minus1);
     }
 
-    public void num_ref_idx_l1_active_minus1(@unsigned byte value) {
+    public void num_ref_idx_l1_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l1_active_minus1, OFFSET$num_ref_idx_l1_active_minus1, value);
     }
 
-    public @unsigned byte RefPicList0() {
+    public @Unsigned byte RefPicList0() {
         return segment.get(LAYOUT$RefPicList0, OFFSET$RefPicList0);
     }
 
-    public void RefPicList0(@unsigned byte value) {
+    public void RefPicList0(@Unsigned byte value) {
         segment.set(LAYOUT$RefPicList0, OFFSET$RefPicList0, value);
     }
 
-    public @unsigned byte RefPicList1() {
+    public @Unsigned byte RefPicList1() {
         return segment.get(LAYOUT$RefPicList1, OFFSET$RefPicList1);
     }
 
-    public void RefPicList1(@unsigned byte value) {
+    public void RefPicList1(@Unsigned byte value) {
         segment.set(LAYOUT$RefPicList1, OFFSET$RefPicList1, value);
     }
 
-    public @unsigned byte list_entry_l0() {
+    public @Unsigned byte list_entry_l0() {
         return segment.get(LAYOUT$list_entry_l0, OFFSET$list_entry_l0);
     }
 
-    public void list_entry_l0(@unsigned byte value) {
+    public void list_entry_l0(@Unsigned byte value) {
         segment.set(LAYOUT$list_entry_l0, OFFSET$list_entry_l0, value);
     }
 
-    public @unsigned byte list_entry_l1() {
+    public @Unsigned byte list_entry_l1() {
         return segment.get(LAYOUT$list_entry_l1, OFFSET$list_entry_l1);
     }
 
-    public void list_entry_l1(@unsigned byte value) {
+    public void list_entry_l1(@Unsigned byte value) {
         segment.set(LAYOUT$list_entry_l1, OFFSET$list_entry_l1, value);
     }
 

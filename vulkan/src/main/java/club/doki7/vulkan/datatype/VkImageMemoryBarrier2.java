@@ -102,7 +102,7 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -235,19 +235,19 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$newLayout, OFFSET$newLayout, value);
     }
 
-    public @unsigned int srcQueueFamilyIndex() {
+    public @Unsigned int srcQueueFamilyIndex() {
         return segment.get(LAYOUT$srcQueueFamilyIndex, OFFSET$srcQueueFamilyIndex);
     }
 
-    public void srcQueueFamilyIndex(@unsigned int value) {
+    public void srcQueueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$srcQueueFamilyIndex, OFFSET$srcQueueFamilyIndex, value);
     }
 
-    public @unsigned int dstQueueFamilyIndex() {
+    public @Unsigned int dstQueueFamilyIndex() {
         return segment.get(LAYOUT$dstQueueFamilyIndex, OFFSET$dstQueueFamilyIndex);
     }
 
-    public void dstQueueFamilyIndex(@unsigned int value) {
+    public void dstQueueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$dstQueueFamilyIndex, OFFSET$dstQueueFamilyIndex, value);
     }
 

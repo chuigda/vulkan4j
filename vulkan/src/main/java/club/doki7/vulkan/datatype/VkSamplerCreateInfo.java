@@ -108,7 +108,7 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -257,11 +257,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$mipLodBias, OFFSET$mipLodBias, value);
     }
 
-    public @unsigned int anisotropyEnable() {
+    public @Unsigned int anisotropyEnable() {
         return segment.get(LAYOUT$anisotropyEnable, OFFSET$anisotropyEnable);
     }
 
-    public void anisotropyEnable(@unsigned int value) {
+    public void anisotropyEnable(@Unsigned int value) {
         segment.set(LAYOUT$anisotropyEnable, OFFSET$anisotropyEnable, value);
     }
 
@@ -273,11 +273,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$maxAnisotropy, OFFSET$maxAnisotropy, value);
     }
 
-    public @unsigned int compareEnable() {
+    public @Unsigned int compareEnable() {
         return segment.get(LAYOUT$compareEnable, OFFSET$compareEnable);
     }
 
-    public void compareEnable(@unsigned int value) {
+    public void compareEnable(@Unsigned int value) {
         segment.set(LAYOUT$compareEnable, OFFSET$compareEnable, value);
     }
 
@@ -313,11 +313,11 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$borderColor, OFFSET$borderColor, value);
     }
 
-    public @unsigned int unnormalizedCoordinates() {
+    public @Unsigned int unnormalizedCoordinates() {
         return segment.get(LAYOUT$unnormalizedCoordinates, OFFSET$unnormalizedCoordinates);
     }
 
-    public void unnormalizedCoordinates(@unsigned int value) {
+    public void unnormalizedCoordinates(@Unsigned int value) {
         segment.set(LAYOUT$unnormalizedCoordinates, OFFSET$unnormalizedCoordinates, value);
     }
 

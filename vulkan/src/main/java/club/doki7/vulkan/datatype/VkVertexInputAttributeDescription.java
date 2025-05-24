@@ -86,7 +86,7 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -141,19 +141,19 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @unsigned int location() {
+    public @Unsigned int location() {
         return segment.get(LAYOUT$location, OFFSET$location);
     }
 
-    public void location(@unsigned int value) {
+    public void location(@Unsigned int value) {
         segment.set(LAYOUT$location, OFFSET$location, value);
     }
 
-    public @unsigned int binding() {
+    public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@unsigned int value) {
+    public void binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
     }
 
@@ -165,11 +165,11 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$format, OFFSET$format, value);
     }
 
-    public @unsigned int offset() {
+    public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@unsigned int value) {
+    public void offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 

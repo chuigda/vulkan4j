@@ -97,7 +97,7 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -182,43 +182,43 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int minBufferCount() {
+    public @Unsigned int minBufferCount() {
         return segment.get(LAYOUT$minBufferCount, OFFSET$minBufferCount);
     }
 
-    public void minBufferCount(@unsigned int value) {
+    public void minBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$minBufferCount, OFFSET$minBufferCount, value);
     }
 
-    public @unsigned int maxBufferCount() {
+    public @Unsigned int maxBufferCount() {
         return segment.get(LAYOUT$maxBufferCount, OFFSET$maxBufferCount);
     }
 
-    public void maxBufferCount(@unsigned int value) {
+    public void maxBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBufferCount, OFFSET$maxBufferCount, value);
     }
 
-    public @unsigned int minBufferCountForCamping() {
+    public @Unsigned int minBufferCountForCamping() {
         return segment.get(LAYOUT$minBufferCountForCamping, OFFSET$minBufferCountForCamping);
     }
 
-    public void minBufferCountForCamping(@unsigned int value) {
+    public void minBufferCountForCamping(@Unsigned int value) {
         segment.set(LAYOUT$minBufferCountForCamping, OFFSET$minBufferCountForCamping, value);
     }
 
-    public @unsigned int minBufferCountForDedicatedSlack() {
+    public @Unsigned int minBufferCountForDedicatedSlack() {
         return segment.get(LAYOUT$minBufferCountForDedicatedSlack, OFFSET$minBufferCountForDedicatedSlack);
     }
 
-    public void minBufferCountForDedicatedSlack(@unsigned int value) {
+    public void minBufferCountForDedicatedSlack(@Unsigned int value) {
         segment.set(LAYOUT$minBufferCountForDedicatedSlack, OFFSET$minBufferCountForDedicatedSlack, value);
     }
 
-    public @unsigned int minBufferCountForSharedSlack() {
+    public @Unsigned int minBufferCountForSharedSlack() {
         return segment.get(LAYOUT$minBufferCountForSharedSlack, OFFSET$minBufferCountForSharedSlack);
     }
 
-    public void minBufferCountForSharedSlack(@unsigned int value) {
+    public void minBufferCountForSharedSlack(@Unsigned int value) {
         segment.set(LAYOUT$minBufferCountForSharedSlack, OFFSET$minBufferCountForSharedSlack, value);
     }
 

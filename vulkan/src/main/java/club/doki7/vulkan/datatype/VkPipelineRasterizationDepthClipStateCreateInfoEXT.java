@@ -94,7 +94,7 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -187,11 +187,11 @@ public record VkPipelineRasterizationDepthClipStateCreateInfoEXT(@NotNull Memory
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int depthClipEnable() {
+    public @Unsigned int depthClipEnable() {
         return segment.get(LAYOUT$depthClipEnable, OFFSET$depthClipEnable);
     }
 
-    public void depthClipEnable(@unsigned int value) {
+    public void depthClipEnable(@Unsigned int value) {
         segment.set(LAYOUT$depthClipEnable, OFFSET$depthClipEnable, value);
     }
 

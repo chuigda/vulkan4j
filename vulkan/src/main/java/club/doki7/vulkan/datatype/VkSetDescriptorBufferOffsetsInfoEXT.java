@@ -98,7 +98,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -203,19 +203,19 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int firstSet() {
+    public @Unsigned int firstSet() {
         return segment.get(LAYOUT$firstSet, OFFSET$firstSet);
     }
 
-    public void firstSet(@unsigned int value) {
+    public void firstSet(@Unsigned int value) {
         segment.set(LAYOUT$firstSet, OFFSET$firstSet, value);
     }
 
-    public @unsigned int setCount() {
+    public @Unsigned int setCount() {
         return segment.get(LAYOUT$setCount, OFFSET$setCount);
     }
 
-    public void setCount(@unsigned int value) {
+    public void setCount(@Unsigned int value) {
         segment.set(LAYOUT$setCount, OFFSET$setCount, value);
     }
 
@@ -223,7 +223,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pBufferIndices() {
+    public @Nullable @Unsigned IntPtr pBufferIndices() {
         MemorySegment s = pBufferIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -231,7 +231,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new IntPtr(s);
     }
 
-    public void pBufferIndices(@Nullable @unsigned IntPtr value) {
+    public void pBufferIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferIndicesRaw(s);
     }
@@ -248,7 +248,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pOffsets() {
+    public @Nullable @Unsigned LongPtr pOffsets() {
         MemorySegment s = pOffsetsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -256,7 +256,7 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new LongPtr(s);
     }
 
-    public void pOffsets(@Nullable @unsigned LongPtr value) {
+    public void pOffsets(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pOffsetsRaw(s);
     }

@@ -97,7 +97,7 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -190,11 +190,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int setLayoutCount() {
+    public @Unsigned int setLayoutCount() {
         return segment.get(LAYOUT$setLayoutCount, OFFSET$setLayoutCount);
     }
 
-    public void setLayoutCount(@unsigned int value) {
+    public void setLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$setLayoutCount, OFFSET$setLayoutCount, value);
     }
 
@@ -223,11 +223,11 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pSetLayouts, OFFSET$pSetLayouts, value);
     }
 
-    public @unsigned int pushConstantRangeCount() {
+    public @Unsigned int pushConstantRangeCount() {
         return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
     }
 
-    public void pushConstantRangeCount(@unsigned int value) {
+    public void pushConstantRangeCount(@Unsigned int value) {
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
     }
 

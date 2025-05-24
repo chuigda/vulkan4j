@@ -94,7 +94,7 @@ public record VkImageViewSlicedCreateInfoEXT(@NotNull MemorySegment segment) imp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkImageViewSlicedCreateInfoEXT(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int sliceOffset() {
+    public @Unsigned int sliceOffset() {
         return segment.get(LAYOUT$sliceOffset, OFFSET$sliceOffset);
     }
 
-    public void sliceOffset(@unsigned int value) {
+    public void sliceOffset(@Unsigned int value) {
         segment.set(LAYOUT$sliceOffset, OFFSET$sliceOffset, value);
     }
 
-    public @unsigned int sliceCount() {
+    public @Unsigned int sliceCount() {
         return segment.get(LAYOUT$sliceCount, OFFSET$sliceCount);
     }
 
-    public void sliceCount(@unsigned int value) {
+    public void sliceCount(@Unsigned int value) {
         segment.set(LAYOUT$sliceCount, OFFSET$sliceCount, value);
     }
 

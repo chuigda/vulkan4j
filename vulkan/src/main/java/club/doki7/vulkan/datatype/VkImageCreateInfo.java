@@ -105,7 +105,7 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -222,19 +222,19 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
     }
 
-    public @unsigned int mipLevels() {
+    public @Unsigned int mipLevels() {
         return segment.get(LAYOUT$mipLevels, OFFSET$mipLevels);
     }
 
-    public void mipLevels(@unsigned int value) {
+    public void mipLevels(@Unsigned int value) {
         segment.set(LAYOUT$mipLevels, OFFSET$mipLevels, value);
     }
 
-    public @unsigned int arrayLayers() {
+    public @Unsigned int arrayLayers() {
         return segment.get(LAYOUT$arrayLayers, OFFSET$arrayLayers);
     }
 
-    public void arrayLayers(@unsigned int value) {
+    public void arrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$arrayLayers, OFFSET$arrayLayers, value);
     }
 
@@ -270,11 +270,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
     }
 
-    public @unsigned int queueFamilyIndexCount() {
+    public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@unsigned int value) {
+    public void queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
     }
 
@@ -282,7 +282,7 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned IntPtr pQueueFamilyIndices() {
+    public @Nullable @Unsigned IntPtr pQueueFamilyIndices() {
         MemorySegment s = pQueueFamilyIndicesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -290,7 +290,7 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @unsigned IntPtr value) {
+    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
     }

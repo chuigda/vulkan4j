@@ -86,7 +86,7 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -141,11 +141,11 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @unsigned int mapEntryCount() {
+    public @Unsigned int mapEntryCount() {
         return segment.get(LAYOUT$mapEntryCount, OFFSET$mapEntryCount);
     }
 
-    public void mapEntryCount(@unsigned int value) {
+    public void mapEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$mapEntryCount, OFFSET$mapEntryCount, value);
     }
 
@@ -180,11 +180,11 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pMapEntries, OFFSET$pMapEntries, value);
     }
 
-    public @unsigned long dataSize() {
+    public @Unsigned long dataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
     }
 
-    public void dataSize(@unsigned long value) {
+    public void dataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
     }
 

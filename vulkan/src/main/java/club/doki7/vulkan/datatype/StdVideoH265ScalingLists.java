@@ -86,7 +86,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -141,51 +141,51 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @unsigned byte ScalingList4x4() {
+    public @Unsigned byte ScalingList4x4() {
         return segment.get(LAYOUT$ScalingList4x4, OFFSET$ScalingList4x4);
     }
 
-    public void ScalingList4x4(@unsigned byte value) {
+    public void ScalingList4x4(@Unsigned byte value) {
         segment.set(LAYOUT$ScalingList4x4, OFFSET$ScalingList4x4, value);
     }
 
-    public @unsigned byte ScalingList8x8() {
+    public @Unsigned byte ScalingList8x8() {
         return segment.get(LAYOUT$ScalingList8x8, OFFSET$ScalingList8x8);
     }
 
-    public void ScalingList8x8(@unsigned byte value) {
+    public void ScalingList8x8(@Unsigned byte value) {
         segment.set(LAYOUT$ScalingList8x8, OFFSET$ScalingList8x8, value);
     }
 
-    public @unsigned byte ScalingList16x16() {
+    public @Unsigned byte ScalingList16x16() {
         return segment.get(LAYOUT$ScalingList16x16, OFFSET$ScalingList16x16);
     }
 
-    public void ScalingList16x16(@unsigned byte value) {
+    public void ScalingList16x16(@Unsigned byte value) {
         segment.set(LAYOUT$ScalingList16x16, OFFSET$ScalingList16x16, value);
     }
 
-    public @unsigned byte ScalingList32x32() {
+    public @Unsigned byte ScalingList32x32() {
         return segment.get(LAYOUT$ScalingList32x32, OFFSET$ScalingList32x32);
     }
 
-    public void ScalingList32x32(@unsigned byte value) {
+    public void ScalingList32x32(@Unsigned byte value) {
         segment.set(LAYOUT$ScalingList32x32, OFFSET$ScalingList32x32, value);
     }
 
-    public @unsigned byte ScalingListDCCoef16x16() {
+    public @Unsigned byte ScalingListDCCoef16x16() {
         return segment.get(LAYOUT$ScalingListDCCoef16x16, OFFSET$ScalingListDCCoef16x16);
     }
 
-    public void ScalingListDCCoef16x16(@unsigned byte value) {
+    public void ScalingListDCCoef16x16(@Unsigned byte value) {
         segment.set(LAYOUT$ScalingListDCCoef16x16, OFFSET$ScalingListDCCoef16x16, value);
     }
 
-    public @unsigned byte ScalingListDCCoef32x32() {
+    public @Unsigned byte ScalingListDCCoef32x32() {
         return segment.get(LAYOUT$ScalingListDCCoef32x32, OFFSET$ScalingListDCCoef32x32);
     }
 
-    public void ScalingListDCCoef32x32(@unsigned byte value) {
+    public void ScalingListDCCoef32x32(@Unsigned byte value) {
         segment.set(LAYOUT$ScalingListDCCoef32x32, OFFSET$ScalingListDCCoef32x32, value);
     }
 

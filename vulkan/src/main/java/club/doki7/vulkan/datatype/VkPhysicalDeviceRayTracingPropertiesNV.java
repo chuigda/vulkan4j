@@ -100,7 +100,7 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -185,67 +185,67 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int shaderGroupHandleSize() {
+    public @Unsigned int shaderGroupHandleSize() {
         return segment.get(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize);
     }
 
-    public void shaderGroupHandleSize(@unsigned int value) {
+    public void shaderGroupHandleSize(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize, value);
     }
 
-    public @unsigned int maxRecursionDepth() {
+    public @Unsigned int maxRecursionDepth() {
         return segment.get(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth);
     }
 
-    public void maxRecursionDepth(@unsigned int value) {
+    public void maxRecursionDepth(@Unsigned int value) {
         segment.set(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth, value);
     }
 
-    public @unsigned int maxShaderGroupStride() {
+    public @Unsigned int maxShaderGroupStride() {
         return segment.get(LAYOUT$maxShaderGroupStride, OFFSET$maxShaderGroupStride);
     }
 
-    public void maxShaderGroupStride(@unsigned int value) {
+    public void maxShaderGroupStride(@Unsigned int value) {
         segment.set(LAYOUT$maxShaderGroupStride, OFFSET$maxShaderGroupStride, value);
     }
 
-    public @unsigned int shaderGroupBaseAlignment() {
+    public @Unsigned int shaderGroupBaseAlignment() {
         return segment.get(LAYOUT$shaderGroupBaseAlignment, OFFSET$shaderGroupBaseAlignment);
     }
 
-    public void shaderGroupBaseAlignment(@unsigned int value) {
+    public void shaderGroupBaseAlignment(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupBaseAlignment, OFFSET$shaderGroupBaseAlignment, value);
     }
 
-    public @unsigned long maxGeometryCount() {
+    public @Unsigned long maxGeometryCount() {
         return segment.get(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount);
     }
 
-    public void maxGeometryCount(@unsigned long value) {
+    public void maxGeometryCount(@Unsigned long value) {
         segment.set(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount, value);
     }
 
-    public @unsigned long maxInstanceCount() {
+    public @Unsigned long maxInstanceCount() {
         return segment.get(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount);
     }
 
-    public void maxInstanceCount(@unsigned long value) {
+    public void maxInstanceCount(@Unsigned long value) {
         segment.set(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount, value);
     }
 
-    public @unsigned long maxTriangleCount() {
+    public @Unsigned long maxTriangleCount() {
         return segment.get(LAYOUT$maxTriangleCount, OFFSET$maxTriangleCount);
     }
 
-    public void maxTriangleCount(@unsigned long value) {
+    public void maxTriangleCount(@Unsigned long value) {
         segment.set(LAYOUT$maxTriangleCount, OFFSET$maxTriangleCount, value);
     }
 
-    public @unsigned int maxDescriptorSetAccelerationStructures() {
+    public @Unsigned int maxDescriptorSetAccelerationStructures() {
         return segment.get(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures);
     }
 
-    public void maxDescriptorSetAccelerationStructures(@unsigned int value) {
+    public void maxDescriptorSetAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures, value);
     }
 

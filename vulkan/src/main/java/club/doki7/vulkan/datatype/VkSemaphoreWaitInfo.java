@@ -96,7 +96,7 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -189,11 +189,11 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int semaphoreCount() {
+    public @Unsigned int semaphoreCount() {
         return segment.get(LAYOUT$semaphoreCount, OFFSET$semaphoreCount);
     }
 
-    public void semaphoreCount(@unsigned int value) {
+    public void semaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$semaphoreCount, OFFSET$semaphoreCount, value);
     }
 
@@ -226,7 +226,7 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
     /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned LongPtr pValues() {
+    public @Nullable @Unsigned LongPtr pValues() {
         MemorySegment s = pValuesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -234,7 +234,7 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return new LongPtr(s);
     }
 
-    public void pValues(@Nullable @unsigned LongPtr value) {
+    public void pValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pValuesRaw(s);
     }

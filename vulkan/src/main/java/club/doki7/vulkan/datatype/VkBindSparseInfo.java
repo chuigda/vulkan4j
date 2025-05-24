@@ -102,7 +102,7 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -187,11 +187,11 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int waitSemaphoreCount() {
+    public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@unsigned int value) {
+    public void waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
     }
 
@@ -220,11 +220,11 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         segment.set(LAYOUT$pWaitSemaphores, OFFSET$pWaitSemaphores, value);
     }
 
-    public @unsigned int bufferBindCount() {
+    public @Unsigned int bufferBindCount() {
         return segment.get(LAYOUT$bufferBindCount, OFFSET$bufferBindCount);
     }
 
-    public void bufferBindCount(@unsigned int value) {
+    public void bufferBindCount(@Unsigned int value) {
         segment.set(LAYOUT$bufferBindCount, OFFSET$bufferBindCount, value);
     }
 
@@ -259,11 +259,11 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         segment.set(LAYOUT$pBufferBinds, OFFSET$pBufferBinds, value);
     }
 
-    public @unsigned int imageOpaqueBindCount() {
+    public @Unsigned int imageOpaqueBindCount() {
         return segment.get(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount);
     }
 
-    public void imageOpaqueBindCount(@unsigned int value) {
+    public void imageOpaqueBindCount(@Unsigned int value) {
         segment.set(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount, value);
     }
 
@@ -298,11 +298,11 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         segment.set(LAYOUT$pImageOpaqueBinds, OFFSET$pImageOpaqueBinds, value);
     }
 
-    public @unsigned int imageBindCount() {
+    public @Unsigned int imageBindCount() {
         return segment.get(LAYOUT$imageBindCount, OFFSET$imageBindCount);
     }
 
-    public void imageBindCount(@unsigned int value) {
+    public void imageBindCount(@Unsigned int value) {
         segment.set(LAYOUT$imageBindCount, OFFSET$imageBindCount, value);
     }
 
@@ -337,11 +337,11 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         segment.set(LAYOUT$pImageBinds, OFFSET$pImageBinds, value);
     }
 
-    public @unsigned int signalSemaphoreCount() {
+    public @Unsigned int signalSemaphoreCount() {
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
-    public void signalSemaphoreCount(@unsigned int value) {
+    public void signalSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
     }
 

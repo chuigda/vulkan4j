@@ -96,7 +96,7 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,27 +181,27 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int minSubgroupSize() {
+    public @Unsigned int minSubgroupSize() {
         return segment.get(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize);
     }
 
-    public void minSubgroupSize(@unsigned int value) {
+    public void minSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize, value);
     }
 
-    public @unsigned int maxSubgroupSize() {
+    public @Unsigned int maxSubgroupSize() {
         return segment.get(LAYOUT$maxSubgroupSize, OFFSET$maxSubgroupSize);
     }
 
-    public void maxSubgroupSize(@unsigned int value) {
+    public void maxSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$maxSubgroupSize, OFFSET$maxSubgroupSize, value);
     }
 
-    public @unsigned int maxComputeWorkgroupSubgroups() {
+    public @Unsigned int maxComputeWorkgroupSubgroups() {
         return segment.get(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups);
     }
 
-    public void maxComputeWorkgroupSubgroups(@unsigned int value) {
+    public void maxComputeWorkgroupSubgroups(@Unsigned int value) {
         segment.set(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups, value);
     }
 

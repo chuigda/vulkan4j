@@ -99,7 +99,7 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -200,19 +200,19 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @unsigned long memoryObjectId() {
+    public @Unsigned long memoryObjectId() {
         return segment.get(LAYOUT$memoryObjectId, OFFSET$memoryObjectId);
     }
 
-    public void memoryObjectId(@unsigned long value) {
+    public void memoryObjectId(@Unsigned long value) {
         segment.set(LAYOUT$memoryObjectId, OFFSET$memoryObjectId, value);
     }
 
-    public @unsigned long size() {
+    public @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@unsigned long value) {
+    public void size(@Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
@@ -224,19 +224,19 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
     }
 
-    public @unsigned long objectHandle() {
+    public @Unsigned long objectHandle() {
         return segment.get(LAYOUT$objectHandle, OFFSET$objectHandle);
     }
 
-    public void objectHandle(@unsigned long value) {
+    public void objectHandle(@Unsigned long value) {
         segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
     }
 
-    public @unsigned int heapIndex() {
+    public @Unsigned int heapIndex() {
         return segment.get(LAYOUT$heapIndex, OFFSET$heapIndex);
     }
 
-    public void heapIndex(@unsigned int value) {
+    public void heapIndex(@Unsigned int value) {
         segment.set(LAYOUT$heapIndex, OFFSET$heapIndex, value);
     }
 

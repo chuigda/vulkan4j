@@ -84,7 +84,7 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -139,11 +139,11 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         return ret;
     }
 
-    public @unsigned int partitionIndex() {
+    public @Unsigned int partitionIndex() {
         return segment.get(LAYOUT$partitionIndex, OFFSET$partitionIndex);
     }
 
-    public void partitionIndex(@unsigned int value) {
+    public void partitionIndex(@Unsigned int value) {
         segment.set(LAYOUT$partitionIndex, OFFSET$partitionIndex, value);
     }
 

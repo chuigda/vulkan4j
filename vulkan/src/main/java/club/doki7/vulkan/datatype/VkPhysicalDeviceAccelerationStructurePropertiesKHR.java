@@ -100,7 +100,7 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -185,67 +185,67 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long maxGeometryCount() {
+    public @Unsigned long maxGeometryCount() {
         return segment.get(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount);
     }
 
-    public void maxGeometryCount(@unsigned long value) {
+    public void maxGeometryCount(@Unsigned long value) {
         segment.set(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount, value);
     }
 
-    public @unsigned long maxInstanceCount() {
+    public @Unsigned long maxInstanceCount() {
         return segment.get(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount);
     }
 
-    public void maxInstanceCount(@unsigned long value) {
+    public void maxInstanceCount(@Unsigned long value) {
         segment.set(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount, value);
     }
 
-    public @unsigned long maxPrimitiveCount() {
+    public @Unsigned long maxPrimitiveCount() {
         return segment.get(LAYOUT$maxPrimitiveCount, OFFSET$maxPrimitiveCount);
     }
 
-    public void maxPrimitiveCount(@unsigned long value) {
+    public void maxPrimitiveCount(@Unsigned long value) {
         segment.set(LAYOUT$maxPrimitiveCount, OFFSET$maxPrimitiveCount, value);
     }
 
-    public @unsigned int maxPerStageDescriptorAccelerationStructures() {
+    public @Unsigned int maxPerStageDescriptorAccelerationStructures() {
         return segment.get(LAYOUT$maxPerStageDescriptorAccelerationStructures, OFFSET$maxPerStageDescriptorAccelerationStructures);
     }
 
-    public void maxPerStageDescriptorAccelerationStructures(@unsigned int value) {
+    public void maxPerStageDescriptorAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorAccelerationStructures, OFFSET$maxPerStageDescriptorAccelerationStructures, value);
     }
 
-    public @unsigned int maxPerStageDescriptorUpdateAfterBindAccelerationStructures() {
+    public @Unsigned int maxPerStageDescriptorUpdateAfterBindAccelerationStructures() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindAccelerationStructures(@unsigned int value) {
+    public void maxPerStageDescriptorUpdateAfterBindAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, value);
     }
 
-    public @unsigned int maxDescriptorSetAccelerationStructures() {
+    public @Unsigned int maxDescriptorSetAccelerationStructures() {
         return segment.get(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures);
     }
 
-    public void maxDescriptorSetAccelerationStructures(@unsigned int value) {
+    public void maxDescriptorSetAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures, value);
     }
 
-    public @unsigned int maxDescriptorSetUpdateAfterBindAccelerationStructures() {
+    public @Unsigned int maxDescriptorSetUpdateAfterBindAccelerationStructures() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures, OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures);
     }
 
-    public void maxDescriptorSetUpdateAfterBindAccelerationStructures(@unsigned int value) {
+    public void maxDescriptorSetUpdateAfterBindAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures, OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures, value);
     }
 
-    public @unsigned int minAccelerationStructureScratchOffsetAlignment() {
+    public @Unsigned int minAccelerationStructureScratchOffsetAlignment() {
         return segment.get(LAYOUT$minAccelerationStructureScratchOffsetAlignment, OFFSET$minAccelerationStructureScratchOffsetAlignment);
     }
 
-    public void minAccelerationStructureScratchOffsetAlignment(@unsigned int value) {
+    public void minAccelerationStructureScratchOffsetAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minAccelerationStructureScratchOffsetAlignment, OFFSET$minAccelerationStructureScratchOffsetAlignment, value);
     }
 

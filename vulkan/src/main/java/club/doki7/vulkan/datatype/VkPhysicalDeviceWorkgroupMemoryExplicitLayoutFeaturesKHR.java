@@ -96,7 +96,7 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -181,35 +181,35 @@ public record VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(@NotNull 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned int workgroupMemoryExplicitLayout() {
+    public @Unsigned int workgroupMemoryExplicitLayout() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout, OFFSET$workgroupMemoryExplicitLayout);
     }
 
-    public void workgroupMemoryExplicitLayout(@unsigned int value) {
+    public void workgroupMemoryExplicitLayout(@Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout, OFFSET$workgroupMemoryExplicitLayout, value);
     }
 
-    public @unsigned int workgroupMemoryExplicitLayoutScalarBlockLayout() {
+    public @Unsigned int workgroupMemoryExplicitLayoutScalarBlockLayout() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout, OFFSET$workgroupMemoryExplicitLayoutScalarBlockLayout);
     }
 
-    public void workgroupMemoryExplicitLayoutScalarBlockLayout(@unsigned int value) {
+    public void workgroupMemoryExplicitLayoutScalarBlockLayout(@Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayoutScalarBlockLayout, OFFSET$workgroupMemoryExplicitLayoutScalarBlockLayout, value);
     }
 
-    public @unsigned int workgroupMemoryExplicitLayout8BitAccess() {
+    public @Unsigned int workgroupMemoryExplicitLayout8BitAccess() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout8BitAccess, OFFSET$workgroupMemoryExplicitLayout8BitAccess);
     }
 
-    public void workgroupMemoryExplicitLayout8BitAccess(@unsigned int value) {
+    public void workgroupMemoryExplicitLayout8BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout8BitAccess, OFFSET$workgroupMemoryExplicitLayout8BitAccess, value);
     }
 
-    public @unsigned int workgroupMemoryExplicitLayout16BitAccess() {
+    public @Unsigned int workgroupMemoryExplicitLayout16BitAccess() {
         return segment.get(LAYOUT$workgroupMemoryExplicitLayout16BitAccess, OFFSET$workgroupMemoryExplicitLayout16BitAccess);
     }
 
-    public void workgroupMemoryExplicitLayout16BitAccess(@unsigned int value) {
+    public void workgroupMemoryExplicitLayout16BitAccess(@Unsigned int value) {
         segment.set(LAYOUT$workgroupMemoryExplicitLayout16BitAccess, OFFSET$workgroupMemoryExplicitLayout16BitAccess, value);
     }
 

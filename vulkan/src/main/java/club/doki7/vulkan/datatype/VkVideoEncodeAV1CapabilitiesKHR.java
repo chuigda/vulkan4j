@@ -116,7 +116,7 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -257,131 +257,131 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$superblockSizes, OFFSET$superblockSizes, value);
     }
 
-    public @unsigned int maxSingleReferenceCount() {
+    public @Unsigned int maxSingleReferenceCount() {
         return segment.get(LAYOUT$maxSingleReferenceCount, OFFSET$maxSingleReferenceCount);
     }
 
-    public void maxSingleReferenceCount(@unsigned int value) {
+    public void maxSingleReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSingleReferenceCount, OFFSET$maxSingleReferenceCount, value);
     }
 
-    public @unsigned int singleReferenceNameMask() {
+    public @Unsigned int singleReferenceNameMask() {
         return segment.get(LAYOUT$singleReferenceNameMask, OFFSET$singleReferenceNameMask);
     }
 
-    public void singleReferenceNameMask(@unsigned int value) {
+    public void singleReferenceNameMask(@Unsigned int value) {
         segment.set(LAYOUT$singleReferenceNameMask, OFFSET$singleReferenceNameMask, value);
     }
 
-    public @unsigned int maxUnidirectionalCompoundReferenceCount() {
+    public @Unsigned int maxUnidirectionalCompoundReferenceCount() {
         return segment.get(LAYOUT$maxUnidirectionalCompoundReferenceCount, OFFSET$maxUnidirectionalCompoundReferenceCount);
     }
 
-    public void maxUnidirectionalCompoundReferenceCount(@unsigned int value) {
+    public void maxUnidirectionalCompoundReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxUnidirectionalCompoundReferenceCount, OFFSET$maxUnidirectionalCompoundReferenceCount, value);
     }
 
-    public @unsigned int maxUnidirectionalCompoundGroup1ReferenceCount() {
+    public @Unsigned int maxUnidirectionalCompoundGroup1ReferenceCount() {
         return segment.get(LAYOUT$maxUnidirectionalCompoundGroup1ReferenceCount, OFFSET$maxUnidirectionalCompoundGroup1ReferenceCount);
     }
 
-    public void maxUnidirectionalCompoundGroup1ReferenceCount(@unsigned int value) {
+    public void maxUnidirectionalCompoundGroup1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxUnidirectionalCompoundGroup1ReferenceCount, OFFSET$maxUnidirectionalCompoundGroup1ReferenceCount, value);
     }
 
-    public @unsigned int unidirectionalCompoundReferenceNameMask() {
+    public @Unsigned int unidirectionalCompoundReferenceNameMask() {
         return segment.get(LAYOUT$unidirectionalCompoundReferenceNameMask, OFFSET$unidirectionalCompoundReferenceNameMask);
     }
 
-    public void unidirectionalCompoundReferenceNameMask(@unsigned int value) {
+    public void unidirectionalCompoundReferenceNameMask(@Unsigned int value) {
         segment.set(LAYOUT$unidirectionalCompoundReferenceNameMask, OFFSET$unidirectionalCompoundReferenceNameMask, value);
     }
 
-    public @unsigned int maxBidirectionalCompoundReferenceCount() {
+    public @Unsigned int maxBidirectionalCompoundReferenceCount() {
         return segment.get(LAYOUT$maxBidirectionalCompoundReferenceCount, OFFSET$maxBidirectionalCompoundReferenceCount);
     }
 
-    public void maxBidirectionalCompoundReferenceCount(@unsigned int value) {
+    public void maxBidirectionalCompoundReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBidirectionalCompoundReferenceCount, OFFSET$maxBidirectionalCompoundReferenceCount, value);
     }
 
-    public @unsigned int maxBidirectionalCompoundGroup1ReferenceCount() {
+    public @Unsigned int maxBidirectionalCompoundGroup1ReferenceCount() {
         return segment.get(LAYOUT$maxBidirectionalCompoundGroup1ReferenceCount, OFFSET$maxBidirectionalCompoundGroup1ReferenceCount);
     }
 
-    public void maxBidirectionalCompoundGroup1ReferenceCount(@unsigned int value) {
+    public void maxBidirectionalCompoundGroup1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBidirectionalCompoundGroup1ReferenceCount, OFFSET$maxBidirectionalCompoundGroup1ReferenceCount, value);
     }
 
-    public @unsigned int maxBidirectionalCompoundGroup2ReferenceCount() {
+    public @Unsigned int maxBidirectionalCompoundGroup2ReferenceCount() {
         return segment.get(LAYOUT$maxBidirectionalCompoundGroup2ReferenceCount, OFFSET$maxBidirectionalCompoundGroup2ReferenceCount);
     }
 
-    public void maxBidirectionalCompoundGroup2ReferenceCount(@unsigned int value) {
+    public void maxBidirectionalCompoundGroup2ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBidirectionalCompoundGroup2ReferenceCount, OFFSET$maxBidirectionalCompoundGroup2ReferenceCount, value);
     }
 
-    public @unsigned int bidirectionalCompoundReferenceNameMask() {
+    public @Unsigned int bidirectionalCompoundReferenceNameMask() {
         return segment.get(LAYOUT$bidirectionalCompoundReferenceNameMask, OFFSET$bidirectionalCompoundReferenceNameMask);
     }
 
-    public void bidirectionalCompoundReferenceNameMask(@unsigned int value) {
+    public void bidirectionalCompoundReferenceNameMask(@Unsigned int value) {
         segment.set(LAYOUT$bidirectionalCompoundReferenceNameMask, OFFSET$bidirectionalCompoundReferenceNameMask, value);
     }
 
-    public @unsigned int maxTemporalLayerCount() {
+    public @Unsigned int maxTemporalLayerCount() {
         return segment.get(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount);
     }
 
-    public void maxTemporalLayerCount(@unsigned int value) {
+    public void maxTemporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount, value);
     }
 
-    public @unsigned int maxSpatialLayerCount() {
+    public @Unsigned int maxSpatialLayerCount() {
         return segment.get(LAYOUT$maxSpatialLayerCount, OFFSET$maxSpatialLayerCount);
     }
 
-    public void maxSpatialLayerCount(@unsigned int value) {
+    public void maxSpatialLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSpatialLayerCount, OFFSET$maxSpatialLayerCount, value);
     }
 
-    public @unsigned int maxOperatingPoints() {
+    public @Unsigned int maxOperatingPoints() {
         return segment.get(LAYOUT$maxOperatingPoints, OFFSET$maxOperatingPoints);
     }
 
-    public void maxOperatingPoints(@unsigned int value) {
+    public void maxOperatingPoints(@Unsigned int value) {
         segment.set(LAYOUT$maxOperatingPoints, OFFSET$maxOperatingPoints, value);
     }
 
-    public @unsigned int minQIndex() {
+    public @Unsigned int minQIndex() {
         return segment.get(LAYOUT$minQIndex, OFFSET$minQIndex);
     }
 
-    public void minQIndex(@unsigned int value) {
+    public void minQIndex(@Unsigned int value) {
         segment.set(LAYOUT$minQIndex, OFFSET$minQIndex, value);
     }
 
-    public @unsigned int maxQIndex() {
+    public @Unsigned int maxQIndex() {
         return segment.get(LAYOUT$maxQIndex, OFFSET$maxQIndex);
     }
 
-    public void maxQIndex(@unsigned int value) {
+    public void maxQIndex(@Unsigned int value) {
         segment.set(LAYOUT$maxQIndex, OFFSET$maxQIndex, value);
     }
 
-    public @unsigned int prefersGopRemainingFrames() {
+    public @Unsigned int prefersGopRemainingFrames() {
         return segment.get(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames);
     }
 
-    public void prefersGopRemainingFrames(@unsigned int value) {
+    public void prefersGopRemainingFrames(@Unsigned int value) {
         segment.set(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames, value);
     }
 
-    public @unsigned int requiresGopRemainingFrames() {
+    public @Unsigned int requiresGopRemainingFrames() {
         return segment.get(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames);
     }
 
-    public void requiresGopRemainingFrames(@unsigned int value) {
+    public void requiresGopRemainingFrames(@Unsigned int value) {
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
     }
 

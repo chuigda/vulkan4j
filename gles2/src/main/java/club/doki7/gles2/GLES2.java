@@ -315,8 +315,8 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glAttachShader"><code>glAttachShader</code></a>
     public void attachShader(
-        @unsigned int program,
-        @unsigned int shader
+        @Unsigned int program,
+        @Unsigned int shader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glAttachShader);
         try {
@@ -331,8 +331,8 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glBindAttribLocation"><code>glBindAttribLocation</code></a>
     public void bindAttribLocation(
-        @unsigned int program,
-        @unsigned int index,
+        @Unsigned int program,
+        @Unsigned int index,
         @Nullable BytePtr name
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBindAttribLocation);
@@ -350,7 +350,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glBindBuffer"><code>glBindBuffer</code></a>
     public void bindBuffer(
         int target,
-        @unsigned int buffer
+        @Unsigned int buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBindBuffer);
         try {
@@ -366,7 +366,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glBindFramebuffer"><code>glBindFramebuffer</code></a>
     public void bindFramebuffer(
         int target,
-        @unsigned int framebuffer
+        @Unsigned int framebuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBindFramebuffer);
         try {
@@ -382,7 +382,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glBindRenderbuffer"><code>glBindRenderbuffer</code></a>
     public void bindRenderbuffer(
         int target,
-        @unsigned int renderbuffer
+        @Unsigned int renderbuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBindRenderbuffer);
         try {
@@ -398,7 +398,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glBindTexture"><code>glBindTexture</code></a>
     public void bindTexture(
         int target,
-        @unsigned int texture
+        @Unsigned int texture
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBindTexture);
         try {
@@ -553,7 +553,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glClear"><code>glClear</code></a>
     public void clear(
-        @unsigned int mask
+        @Unsigned int mask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClear);
         try {
@@ -615,10 +615,10 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glColorMask"><code>glColorMask</code></a>
     public void colorMask(
-        @unsigned byte red,
-        @unsigned byte green,
-        @unsigned byte blue,
-        @unsigned byte alpha
+        @Unsigned byte red,
+        @Unsigned byte green,
+        @Unsigned byte blue,
+        @Unsigned byte alpha
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glColorMask);
         try {
@@ -635,7 +635,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glCompileShader"><code>glCompileShader</code></a>
     public void compileShader(
-        @unsigned int shader
+        @Unsigned int shader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCompileShader);
         try {
@@ -762,7 +762,7 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glCreateProgram"><code>glCreateProgram</code></a>
-    public @unsigned int createProgram() {
+    public @Unsigned int createProgram() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCreateProgram);
         try {
             return (int) hFunction.invokeExact(
@@ -773,7 +773,7 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glCreateShader"><code>glCreateShader</code></a>
-    public @unsigned int createShader(
+    public @Unsigned int createShader(
         int type
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glCreateShader);
@@ -803,7 +803,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glDeleteBuffers"><code>glDeleteBuffers</code></a>
     public void deleteBuffers(
         int n,
-        @Nullable @unsigned IntPtr buffers
+        @Nullable @Unsigned IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDeleteBuffers);
         try {
@@ -819,7 +819,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glDeleteFramebuffers"><code>glDeleteFramebuffers</code></a>
     public void deleteFramebuffers(
         int n,
-        @Nullable @unsigned IntPtr framebuffers
+        @Nullable @Unsigned IntPtr framebuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDeleteFramebuffers);
         try {
@@ -834,7 +834,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glDeleteProgram"><code>glDeleteProgram</code></a>
     public void deleteProgram(
-        @unsigned int program
+        @Unsigned int program
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDeleteProgram);
         try {
@@ -849,7 +849,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glDeleteRenderbuffers"><code>glDeleteRenderbuffers</code></a>
     public void deleteRenderbuffers(
         int n,
-        @Nullable @unsigned IntPtr renderbuffers
+        @Nullable @Unsigned IntPtr renderbuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDeleteRenderbuffers);
         try {
@@ -864,7 +864,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glDeleteShader"><code>glDeleteShader</code></a>
     public void deleteShader(
-        @unsigned int shader
+        @Unsigned int shader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDeleteShader);
         try {
@@ -879,7 +879,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glDeleteTextures"><code>glDeleteTextures</code></a>
     public void deleteTextures(
         int n,
-        @Nullable @unsigned IntPtr textures
+        @Nullable @Unsigned IntPtr textures
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDeleteTextures);
         try {
@@ -908,7 +908,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glDepthMask"><code>glDepthMask</code></a>
     public void depthMask(
-        @unsigned byte flag
+        @Unsigned byte flag
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDepthMask);
         try {
@@ -938,8 +938,8 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glDetachShader"><code>glDetachShader</code></a>
     public void detachShader(
-        @unsigned int program,
-        @unsigned int shader
+        @Unsigned int program,
+        @Unsigned int shader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDetachShader);
         try {
@@ -968,7 +968,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glDisableVertexAttribArray"><code>glDisableVertexAttribArray</code></a>
     public void disableVertexAttribArray(
-        @unsigned int index
+        @Unsigned int index
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDisableVertexAttribArray);
         try {
@@ -1034,7 +1034,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glEnableVertexAttribArray"><code>glEnableVertexAttribArray</code></a>
     public void enableVertexAttribArray(
-        @unsigned int index
+        @Unsigned int index
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glEnableVertexAttribArray);
         try {
@@ -1073,7 +1073,7 @@ public final class GLES2 {
         int target,
         int attachment,
         int renderbuffertarget,
-        @unsigned int renderbuffer
+        @Unsigned int renderbuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glFramebufferRenderbuffer);
         try {
@@ -1093,7 +1093,7 @@ public final class GLES2 {
         int target,
         int attachment,
         int textarget,
-        @unsigned int texture,
+        @Unsigned int texture,
         int level
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glFramebufferTexture2D);
@@ -1127,7 +1127,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glGenBuffers"><code>glGenBuffers</code></a>
     public void genBuffers(
         int n,
-        @Nullable @unsigned IntPtr buffers
+        @Nullable @Unsigned IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGenBuffers);
         try {
@@ -1143,7 +1143,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glGenFramebuffers"><code>glGenFramebuffers</code></a>
     public void genFramebuffers(
         int n,
-        @Nullable @unsigned IntPtr framebuffers
+        @Nullable @Unsigned IntPtr framebuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGenFramebuffers);
         try {
@@ -1159,7 +1159,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glGenRenderbuffers"><code>glGenRenderbuffers</code></a>
     public void genRenderbuffers(
         int n,
-        @Nullable @unsigned IntPtr renderbuffers
+        @Nullable @Unsigned IntPtr renderbuffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGenRenderbuffers);
         try {
@@ -1175,7 +1175,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glGenTextures"><code>glGenTextures</code></a>
     public void genTextures(
         int n,
-        @Nullable @unsigned IntPtr textures
+        @Nullable @Unsigned IntPtr textures
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGenTextures);
         try {
@@ -1204,8 +1204,8 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetActiveAttrib"><code>glGetActiveAttrib</code></a>
     public void getActiveAttrib(
-        @unsigned int program,
-        @unsigned int index,
+        @Unsigned int program,
+        @Unsigned int index,
         int bufSize,
         @Nullable IntPtr length,
         @Nullable IntPtr size,
@@ -1230,8 +1230,8 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetActiveUniform"><code>glGetActiveUniform</code></a>
     public void getActiveUniform(
-        @unsigned int program,
-        @unsigned int index,
+        @Unsigned int program,
+        @Unsigned int index,
         int bufSize,
         @Nullable IntPtr length,
         @Nullable IntPtr size,
@@ -1256,10 +1256,10 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetAttachedShaders"><code>glGetAttachedShaders</code></a>
     public void getAttachedShaders(
-        @unsigned int program,
+        @Unsigned int program,
         int maxCount,
         @Nullable IntPtr count,
-        @Nullable @unsigned IntPtr shaders
+        @Nullable @Unsigned IntPtr shaders
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetAttachedShaders);
         try {
@@ -1276,7 +1276,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetAttribLocation"><code>glGetAttribLocation</code></a>
     public int getAttribLocation(
-        @unsigned int program,
+        @Unsigned int program,
         @Nullable BytePtr name
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetAttribLocation);
@@ -1293,7 +1293,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glGetBooleanv"><code>glGetBooleanv</code></a>
     public void getBooleanv(
         int pname,
-        @Nullable @unsigned BytePtr data
+        @Nullable @Unsigned BytePtr data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetBooleanv);
         try {
@@ -1389,7 +1389,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetProgramInfoLog"><code>glGetProgramInfoLog</code></a>
     public void getProgramInfoLog(
-        @unsigned int program,
+        @Unsigned int program,
         int bufSize,
         @Nullable IntPtr length,
         @Nullable BytePtr infoLog
@@ -1409,7 +1409,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetProgramiv"><code>glGetProgramiv</code></a>
     public void getProgramiv(
-        @unsigned int program,
+        @Unsigned int program,
         int pname,
         @Nullable IntPtr params
     ) {
@@ -1445,7 +1445,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetShaderInfoLog"><code>glGetShaderInfoLog</code></a>
     public void getShaderInfoLog(
-        @unsigned int shader,
+        @Unsigned int shader,
         int bufSize,
         @Nullable IntPtr length,
         @Nullable BytePtr infoLog
@@ -1485,7 +1485,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetShaderSource"><code>glGetShaderSource</code></a>
     public void getShaderSource(
-        @unsigned int shader,
+        @Unsigned int shader,
         int bufSize,
         @Nullable IntPtr length,
         @Nullable BytePtr source
@@ -1505,7 +1505,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetShaderiv"><code>glGetShaderiv</code></a>
     public void getShaderiv(
-        @unsigned int shader,
+        @Unsigned int shader,
         int pname,
         @Nullable IntPtr params
     ) {
@@ -1522,7 +1522,7 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glGetString"><code>glGetString</code></a>
-    public @unsigned BytePtr getString(
+    public @Unsigned BytePtr getString(
         int name
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetString);
@@ -1574,7 +1574,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetUniformLocation"><code>glGetUniformLocation</code></a>
     public int getUniformLocation(
-        @unsigned int program,
+        @Unsigned int program,
         @Nullable BytePtr name
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetUniformLocation);
@@ -1590,7 +1590,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetUniformfv"><code>glGetUniformfv</code></a>
     public void getUniformfv(
-        @unsigned int program,
+        @Unsigned int program,
         int location,
         @Nullable FloatPtr params
     ) {
@@ -1608,7 +1608,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetUniformiv"><code>glGetUniformiv</code></a>
     public void getUniformiv(
-        @unsigned int program,
+        @Unsigned int program,
         int location,
         @Nullable IntPtr params
     ) {
@@ -1626,7 +1626,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetVertexAttribPointerv"><code>glGetVertexAttribPointerv</code></a>
     public void getVertexAttribPointerv(
-        @unsigned int index,
+        @Unsigned int index,
         int pname,
         @Nullable PointerPtr pointer
     ) {
@@ -1644,7 +1644,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetVertexAttribfv"><code>glGetVertexAttribfv</code></a>
     public void getVertexAttribfv(
-        @unsigned int index,
+        @Unsigned int index,
         int pname,
         @Nullable FloatPtr params
     ) {
@@ -1662,7 +1662,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glGetVertexAttribiv"><code>glGetVertexAttribiv</code></a>
     public void getVertexAttribiv(
-        @unsigned int index,
+        @Unsigned int index,
         int pname,
         @Nullable IntPtr params
     ) {
@@ -1695,8 +1695,8 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glIsBuffer"><code>glIsBuffer</code></a>
-    public @unsigned byte isBuffer(
-        @unsigned int buffer
+    public @Unsigned byte isBuffer(
+        @Unsigned int buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glIsBuffer);
         try {
@@ -1709,7 +1709,7 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glIsEnabled"><code>glIsEnabled</code></a>
-    public @unsigned byte isEnabled(
+    public @Unsigned byte isEnabled(
         int cap
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glIsEnabled);
@@ -1723,8 +1723,8 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glIsFramebuffer"><code>glIsFramebuffer</code></a>
-    public @unsigned byte isFramebuffer(
-        @unsigned int framebuffer
+    public @Unsigned byte isFramebuffer(
+        @Unsigned int framebuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glIsFramebuffer);
         try {
@@ -1737,8 +1737,8 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glIsProgram"><code>glIsProgram</code></a>
-    public @unsigned byte isProgram(
-        @unsigned int program
+    public @Unsigned byte isProgram(
+        @Unsigned int program
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glIsProgram);
         try {
@@ -1751,8 +1751,8 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glIsRenderbuffer"><code>glIsRenderbuffer</code></a>
-    public @unsigned byte isRenderbuffer(
-        @unsigned int renderbuffer
+    public @Unsigned byte isRenderbuffer(
+        @Unsigned int renderbuffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glIsRenderbuffer);
         try {
@@ -1765,8 +1765,8 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glIsShader"><code>glIsShader</code></a>
-    public @unsigned byte isShader(
-        @unsigned int shader
+    public @Unsigned byte isShader(
+        @Unsigned int shader
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glIsShader);
         try {
@@ -1779,8 +1779,8 @@ public final class GLES2 {
     }
 
     /// @see <a href="https://docs.gl/es2/glIsTexture"><code>glIsTexture</code></a>
-    public @unsigned byte isTexture(
-        @unsigned int texture
+    public @Unsigned byte isTexture(
+        @Unsigned int texture
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glIsTexture);
         try {
@@ -1808,7 +1808,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glLinkProgram"><code>glLinkProgram</code></a>
     public void linkProgram(
-        @unsigned int program
+        @Unsigned int program
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glLinkProgram);
         try {
@@ -1912,7 +1912,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glSampleCoverage"><code>glSampleCoverage</code></a>
     public void sampleCoverage(
         float value,
-        @unsigned byte invert
+        @Unsigned byte invert
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glSampleCoverage);
         try {
@@ -1948,7 +1948,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glShaderBinary"><code>glShaderBinary</code></a>
     public void shaderBinary(
         int count,
-        @Nullable @unsigned IntPtr shaders,
+        @Nullable @Unsigned IntPtr shaders,
         int binaryFormat,
         @Pointer(comment="void*") MemorySegment binary,
         int length
@@ -1969,7 +1969,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glShaderSource"><code>glShaderSource</code></a>
     public void shaderSource(
-        @unsigned int shader,
+        @Unsigned int shader,
         int count,
         @Nullable PointerPtr string,
         @Nullable IntPtr length
@@ -1991,7 +1991,7 @@ public final class GLES2 {
     public void stencilFunc(
         int func,
         int ref,
-        @unsigned int mask
+        @Unsigned int mask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glStencilFunc);
         try {
@@ -2010,7 +2010,7 @@ public final class GLES2 {
         int face,
         int func,
         int ref,
-        @unsigned int mask
+        @Unsigned int mask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glStencilFuncSeparate);
         try {
@@ -2027,7 +2027,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glStencilMask"><code>glStencilMask</code></a>
     public void stencilMask(
-        @unsigned int mask
+        @Unsigned int mask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glStencilMask);
         try {
@@ -2042,7 +2042,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glStencilMaskSeparate"><code>glStencilMaskSeparate</code></a>
     public void stencilMaskSeparate(
         int face,
-        @unsigned int mask
+        @Unsigned int mask
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glStencilMaskSeparate);
         try {
@@ -2525,7 +2525,7 @@ public final class GLES2 {
     public void uniformMatrix2fv(
         int location,
         int count,
-        @unsigned byte transpose,
+        @Unsigned byte transpose,
         @Nullable FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniformMatrix2fv);
@@ -2545,7 +2545,7 @@ public final class GLES2 {
     public void uniformMatrix3fv(
         int location,
         int count,
-        @unsigned byte transpose,
+        @Unsigned byte transpose,
         @Nullable FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniformMatrix3fv);
@@ -2565,7 +2565,7 @@ public final class GLES2 {
     public void uniformMatrix4fv(
         int location,
         int count,
-        @unsigned byte transpose,
+        @Unsigned byte transpose,
         @Nullable FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniformMatrix4fv);
@@ -2583,7 +2583,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glUseProgram"><code>glUseProgram</code></a>
     public void useProgram(
-        @unsigned int program
+        @Unsigned int program
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUseProgram);
         try {
@@ -2597,7 +2597,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glValidateProgram"><code>glValidateProgram</code></a>
     public void validateProgram(
-        @unsigned int program
+        @Unsigned int program
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glValidateProgram);
         try {
@@ -2611,7 +2611,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttrib1f"><code>glVertexAttrib1f</code></a>
     public void vertexAttrib1f(
-        @unsigned int index,
+        @Unsigned int index,
         float x
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib1f);
@@ -2627,7 +2627,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttrib1fv"><code>glVertexAttrib1fv</code></a>
     public void vertexAttrib1fv(
-        @unsigned int index,
+        @Unsigned int index,
         @Nullable FloatPtr v
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib1fv);
@@ -2643,7 +2643,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttrib2f"><code>glVertexAttrib2f</code></a>
     public void vertexAttrib2f(
-        @unsigned int index,
+        @Unsigned int index,
         float x,
         float y
     ) {
@@ -2661,7 +2661,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttrib2fv"><code>glVertexAttrib2fv</code></a>
     public void vertexAttrib2fv(
-        @unsigned int index,
+        @Unsigned int index,
         @Nullable FloatPtr v
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib2fv);
@@ -2677,7 +2677,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttrib3f"><code>glVertexAttrib3f</code></a>
     public void vertexAttrib3f(
-        @unsigned int index,
+        @Unsigned int index,
         float x,
         float y,
         float z
@@ -2697,7 +2697,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttrib3fv"><code>glVertexAttrib3fv</code></a>
     public void vertexAttrib3fv(
-        @unsigned int index,
+        @Unsigned int index,
         @Nullable FloatPtr v
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib3fv);
@@ -2713,7 +2713,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttrib4f"><code>glVertexAttrib4f</code></a>
     public void vertexAttrib4f(
-        @unsigned int index,
+        @Unsigned int index,
         float x,
         float y,
         float z,
@@ -2735,7 +2735,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttrib4fv"><code>glVertexAttrib4fv</code></a>
     public void vertexAttrib4fv(
-        @unsigned int index,
+        @Unsigned int index,
         @Nullable FloatPtr v
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib4fv);
@@ -2751,10 +2751,10 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glVertexAttribPointer"><code>glVertexAttribPointer</code></a>
     public void vertexAttribPointer(
-        @unsigned int index,
+        @Unsigned int index,
         int size,
         int type,
-        @unsigned byte normalized,
+        @Unsigned byte normalized,
         int stride,
         @Pointer(comment="void*") MemorySegment pointer
     ) {

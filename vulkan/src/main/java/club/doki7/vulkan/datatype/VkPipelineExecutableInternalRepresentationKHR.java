@@ -97,7 +97,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -198,19 +198,19 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         segment.set(LAYOUT$description, OFFSET$description, value);
     }
 
-    public @unsigned int isText() {
+    public @Unsigned int isText() {
         return segment.get(LAYOUT$isText, OFFSET$isText);
     }
 
-    public void isText(@unsigned int value) {
+    public void isText(@Unsigned int value) {
         segment.set(LAYOUT$isText, OFFSET$isText, value);
     }
 
-    public @unsigned long dataSize() {
+    public @Unsigned long dataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
     }
 
-    public void dataSize(@unsigned long value) {
+    public void dataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
     }
 

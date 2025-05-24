@@ -93,7 +93,7 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -182,7 +182,7 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
     /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned BytePtr pVersionData() {
+    public @Nullable @Unsigned BytePtr pVersionData() {
         MemorySegment s = pVersionDataRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -190,7 +190,7 @@ public record VkAccelerationStructureVersionInfoKHR(@NotNull MemorySegment segme
         return new BytePtr(s);
     }
 
-    public void pVersionData(@Nullable @unsigned BytePtr value) {
+    public void pVersionData(@Nullable @Unsigned BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVersionDataRaw(s);
     }

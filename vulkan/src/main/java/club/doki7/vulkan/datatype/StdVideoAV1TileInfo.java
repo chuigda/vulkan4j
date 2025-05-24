@@ -90,7 +90,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -153,35 +153,35 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @unsigned byte TileCols() {
+    public @Unsigned byte TileCols() {
         return segment.get(LAYOUT$TileCols, OFFSET$TileCols);
     }
 
-    public void TileCols(@unsigned byte value) {
+    public void TileCols(@Unsigned byte value) {
         segment.set(LAYOUT$TileCols, OFFSET$TileCols, value);
     }
 
-    public @unsigned byte TileRows() {
+    public @Unsigned byte TileRows() {
         return segment.get(LAYOUT$TileRows, OFFSET$TileRows);
     }
 
-    public void TileRows(@unsigned byte value) {
+    public void TileRows(@Unsigned byte value) {
         segment.set(LAYOUT$TileRows, OFFSET$TileRows, value);
     }
 
-    public @unsigned short context_update_tile_id() {
+    public @Unsigned short context_update_tile_id() {
         return segment.get(LAYOUT$context_update_tile_id, OFFSET$context_update_tile_id);
     }
 
-    public void context_update_tile_id(@unsigned short value) {
+    public void context_update_tile_id(@Unsigned short value) {
         segment.set(LAYOUT$context_update_tile_id, OFFSET$context_update_tile_id, value);
     }
 
-    public @unsigned byte tile_size_bytes_minus_1() {
+    public @Unsigned byte tile_size_bytes_minus_1() {
         return segment.get(LAYOUT$tile_size_bytes_minus_1, OFFSET$tile_size_bytes_minus_1);
     }
 
-    public void tile_size_bytes_minus_1(@unsigned byte value) {
+    public void tile_size_bytes_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$tile_size_bytes_minus_1, OFFSET$tile_size_bytes_minus_1, value);
     }
 
@@ -190,7 +190,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned ShortPtr pMiColStarts() {
+    public @Nullable @Unsigned ShortPtr pMiColStarts() {
         MemorySegment s = pMiColStartsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -198,7 +198,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new ShortPtr(s);
     }
 
-    public void pMiColStarts(@Nullable @unsigned ShortPtr value) {
+    public void pMiColStarts(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMiColStartsRaw(s);
     }
@@ -215,7 +215,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned ShortPtr pMiRowStarts() {
+    public @Nullable @Unsigned ShortPtr pMiRowStarts() {
         MemorySegment s = pMiRowStartsRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -223,7 +223,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new ShortPtr(s);
     }
 
-    public void pMiRowStarts(@Nullable @unsigned ShortPtr value) {
+    public void pMiRowStarts(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMiRowStartsRaw(s);
     }
@@ -240,7 +240,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned ShortPtr pWidthInSbsMinus1() {
+    public @Nullable @Unsigned ShortPtr pWidthInSbsMinus1() {
         MemorySegment s = pWidthInSbsMinus1Raw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -248,7 +248,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new ShortPtr(s);
     }
 
-    public void pWidthInSbsMinus1(@Nullable @unsigned ShortPtr value) {
+    public void pWidthInSbsMinus1(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWidthInSbsMinus1Raw(s);
     }
@@ -265,7 +265,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
     /// {@link ShortPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link ShortPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @unsigned ShortPtr pHeightInSbsMinus1() {
+    public @Nullable @Unsigned ShortPtr pHeightInSbsMinus1() {
         MemorySegment s = pHeightInSbsMinus1Raw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -273,7 +273,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new ShortPtr(s);
     }
 
-    public void pHeightInSbsMinus1(@Nullable @unsigned ShortPtr value) {
+    public void pHeightInSbsMinus1(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHeightInSbsMinus1Raw(s);
     }

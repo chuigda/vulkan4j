@@ -94,7 +94,7 @@ public record VkPhysicalDeviceRobustness2PropertiesEXT(@NotNull MemorySegment se
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -179,19 +179,19 @@ public record VkPhysicalDeviceRobustness2PropertiesEXT(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @unsigned long robustStorageBufferAccessSizeAlignment() {
+    public @Unsigned long robustStorageBufferAccessSizeAlignment() {
         return segment.get(LAYOUT$robustStorageBufferAccessSizeAlignment, OFFSET$robustStorageBufferAccessSizeAlignment);
     }
 
-    public void robustStorageBufferAccessSizeAlignment(@unsigned long value) {
+    public void robustStorageBufferAccessSizeAlignment(@Unsigned long value) {
         segment.set(LAYOUT$robustStorageBufferAccessSizeAlignment, OFFSET$robustStorageBufferAccessSizeAlignment, value);
     }
 
-    public @unsigned long robustUniformBufferAccessSizeAlignment() {
+    public @Unsigned long robustUniformBufferAccessSizeAlignment() {
         return segment.get(LAYOUT$robustUniformBufferAccessSizeAlignment, OFFSET$robustUniformBufferAccessSizeAlignment);
     }
 
-    public void robustUniformBufferAccessSizeAlignment(@unsigned long value) {
+    public void robustUniformBufferAccessSizeAlignment(@Unsigned long value) {
         segment.set(LAYOUT$robustUniformBufferAccessSizeAlignment, OFFSET$robustUniformBufferAccessSizeAlignment, value);
     }
 

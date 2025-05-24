@@ -676,7 +676,7 @@ public final class VkInstanceCommands {
         VkInstance instance,
         @EnumType(VkDebugReportFlagsEXT.class) int flags,
         @EnumType(VkDebugReportObjectTypeEXT.class) int objectType,
-        @unsigned long object,
+        @Unsigned long object,
         long location,
         int messageCode,
         BytePtr pLayerPrefix,
@@ -773,7 +773,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int enumerateDeviceExtensionProperties(
         VkPhysicalDevice physicalDevice,
         @Nullable BytePtr pLayerName,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkExtensionProperties pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateDeviceExtensionProperties);
@@ -792,7 +792,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumerateDeviceLayerProperties.html"><code>vkEnumerateDeviceLayerProperties</code></a>
     public @EnumType(VkResult.class) int enumerateDeviceLayerProperties(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkLayerProperties pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumerateDeviceLayerProperties);
@@ -810,7 +810,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumeratePhysicalDeviceGroups.html"><code>vkEnumeratePhysicalDeviceGroups</code></a>
     public @EnumType(VkResult.class) int enumeratePhysicalDeviceGroups(
         VkInstance instance,
-        @unsigned IntPtr pPhysicalDeviceGroupCount,
+        @Unsigned IntPtr pPhysicalDeviceGroupCount,
         @Nullable @Pointer IVkPhysicalDeviceGroupProperties pPhysicalDeviceGroupProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumeratePhysicalDeviceGroups);
@@ -828,7 +828,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumeratePhysicalDeviceGroupsKHR.html"><code>vkEnumeratePhysicalDeviceGroupsKHR</code></a>
     public @EnumType(VkResult.class) int enumeratePhysicalDeviceGroupsKHR(
         VkInstance instance,
-        @unsigned IntPtr pPhysicalDeviceGroupCount,
+        @Unsigned IntPtr pPhysicalDeviceGroupCount,
         @Nullable @Pointer IVkPhysicalDeviceGroupProperties pPhysicalDeviceGroupProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumeratePhysicalDeviceGroupsKHR);
@@ -846,7 +846,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumeratePhysicalDevices.html"><code>vkEnumeratePhysicalDevices</code></a>
     public @EnumType(VkResult.class) int enumeratePhysicalDevices(
         VkInstance instance,
-        @unsigned IntPtr pPhysicalDeviceCount,
+        @Unsigned IntPtr pPhysicalDeviceCount,
         @Nullable @Pointer VkPhysicalDevice.Ptr pPhysicalDevices
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumeratePhysicalDevices);
@@ -865,7 +865,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getDisplayModeProperties2KHR(
         VkPhysicalDevice physicalDevice,
         VkDisplayKHR display,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkDisplayModeProperties2KHR pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDisplayModeProperties2KHR);
@@ -885,7 +885,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getDisplayModePropertiesKHR(
         VkPhysicalDevice physicalDevice,
         VkDisplayKHR display,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkDisplayModePropertiesKHR pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDisplayModePropertiesKHR);
@@ -923,7 +923,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getDisplayPlaneCapabilitiesKHR(
         VkPhysicalDevice physicalDevice,
         VkDisplayModeKHR mode,
-        @unsigned int planeIndex,
+        @Unsigned int planeIndex,
         @Pointer VkDisplayPlaneCapabilitiesKHR pCapabilities
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDisplayPlaneCapabilitiesKHR);
@@ -942,8 +942,8 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDisplayPlaneSupportedDisplaysKHR.html"><code>vkGetDisplayPlaneSupportedDisplaysKHR</code></a>
     public @EnumType(VkResult.class) int getDisplayPlaneSupportedDisplaysKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned int planeIndex,
-        @unsigned IntPtr pDisplayCount,
+        @Unsigned int planeIndex,
+        @Unsigned IntPtr pDisplayCount,
         @Nullable @Pointer VkDisplayKHR.Ptr pDisplays
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDisplayPlaneSupportedDisplaysKHR);
@@ -963,7 +963,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getDrmDisplayEXT(
         VkPhysicalDevice physicalDevice,
         int drmFd,
-        @unsigned int connectorId,
+        @Unsigned int connectorId,
         @Pointer VkDisplayKHR.Ptr display
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetDrmDisplayEXT);
@@ -980,9 +980,9 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceDirectFBPresentationSupportEXT.html"><code>vkGetPhysicalDeviceDirectFBPresentationSupportEXT</code></a>
-    public @unsigned int getPhysicalDeviceDirectFBPresentationSupportEXT(
+    public @Unsigned int getPhysicalDeviceDirectFBPresentationSupportEXT(
         VkPhysicalDevice physicalDevice,
-        @unsigned int queueFamilyIndex,
+        @Unsigned int queueFamilyIndex,
         PointerPtr dfb
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceDirectFBPresentationSupportEXT);
@@ -1000,7 +1000,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceDisplayPlaneProperties2KHR.html"><code>vkGetPhysicalDeviceDisplayPlaneProperties2KHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceDisplayPlaneProperties2KHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkDisplayPlaneProperties2KHR pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceDisplayPlaneProperties2KHR);
@@ -1018,7 +1018,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceDisplayPlanePropertiesKHR.html"><code>vkGetPhysicalDeviceDisplayPlanePropertiesKHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceDisplayPlanePropertiesKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkDisplayPlanePropertiesKHR pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceDisplayPlanePropertiesKHR);
@@ -1036,7 +1036,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceDisplayProperties2KHR.html"><code>vkGetPhysicalDeviceDisplayProperties2KHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceDisplayProperties2KHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkDisplayProperties2KHR pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceDisplayProperties2KHR);
@@ -1054,7 +1054,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceDisplayPropertiesKHR.html"><code>vkGetPhysicalDeviceDisplayPropertiesKHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceDisplayPropertiesKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkDisplayPropertiesKHR pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceDisplayPropertiesKHR);
@@ -1468,7 +1468,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceQueueFamilyProperties.html"><code>vkGetPhysicalDeviceQueueFamilyProperties</code></a>
     public void getPhysicalDeviceQueueFamilyProperties(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pQueueFamilyPropertyCount,
+        @Unsigned IntPtr pQueueFamilyPropertyCount,
         @Nullable @Pointer IVkQueueFamilyProperties pQueueFamilyProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceQueueFamilyProperties);
@@ -1486,7 +1486,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceQueueFamilyProperties2.html"><code>vkGetPhysicalDeviceQueueFamilyProperties2</code></a>
     public void getPhysicalDeviceQueueFamilyProperties2(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pQueueFamilyPropertyCount,
+        @Unsigned IntPtr pQueueFamilyPropertyCount,
         @Nullable @Pointer IVkQueueFamilyProperties2 pQueueFamilyProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2);
@@ -1504,7 +1504,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceQueueFamilyProperties2KHR.html"><code>vkGetPhysicalDeviceQueueFamilyProperties2KHR</code></a>
     public void getPhysicalDeviceQueueFamilyProperties2KHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pQueueFamilyPropertyCount,
+        @Unsigned IntPtr pQueueFamilyPropertyCount,
         @Nullable @Pointer IVkQueueFamilyProperties2 pQueueFamilyProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceQueueFamilyProperties2KHR);
@@ -1520,9 +1520,9 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceScreenPresentationSupportQNX.html"><code>vkGetPhysicalDeviceScreenPresentationSupportQNX</code></a>
-    public @unsigned int getPhysicalDeviceScreenPresentationSupportQNX(
+    public @Unsigned int getPhysicalDeviceScreenPresentationSupportQNX(
         VkPhysicalDevice physicalDevice,
-        @unsigned int queueFamilyIndex,
+        @Unsigned int queueFamilyIndex,
         PointerPtr window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceScreenPresentationSupportQNX);
@@ -1545,7 +1545,7 @@ public final class VkInstanceCommands {
         @EnumType(VkSampleCountFlags.class) int samples,
         @EnumType(VkImageUsageFlags.class) int usage,
         @EnumType(VkImageTiling.class) int tiling,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkSparseImageFormatProperties pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties);
@@ -1569,7 +1569,7 @@ public final class VkInstanceCommands {
     public void getPhysicalDeviceSparseImageFormatProperties2(
         VkPhysicalDevice physicalDevice,
         @Pointer VkPhysicalDeviceSparseImageFormatInfo2 pFormatInfo,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkSparseImageFormatProperties2 pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2);
@@ -1589,7 +1589,7 @@ public final class VkInstanceCommands {
     public void getPhysicalDeviceSparseImageFormatProperties2KHR(
         VkPhysicalDevice physicalDevice,
         @Pointer VkPhysicalDeviceSparseImageFormatInfo2 pFormatInfo,
-        @unsigned IntPtr pPropertyCount,
+        @Unsigned IntPtr pPropertyCount,
         @Nullable @Pointer IVkSparseImageFormatProperties2 pProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSparseImageFormatProperties2KHR);
@@ -1663,7 +1663,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getPhysicalDeviceSurfaceFormats2KHR(
         VkPhysicalDevice physicalDevice,
         @Pointer VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
-        @unsigned IntPtr pSurfaceFormatCount,
+        @Unsigned IntPtr pSurfaceFormatCount,
         @Nullable @Pointer IVkSurfaceFormat2KHR pSurfaceFormats
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSurfaceFormats2KHR);
@@ -1683,7 +1683,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getPhysicalDeviceSurfaceFormatsKHR(
         VkPhysicalDevice physicalDevice,
         @Nullable VkSurfaceKHR surface,
-        @unsigned IntPtr pSurfaceFormatCount,
+        @Unsigned IntPtr pSurfaceFormatCount,
         @Nullable @Pointer IVkSurfaceFormatKHR pSurfaceFormats
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSurfaceFormatsKHR);
@@ -1703,7 +1703,7 @@ public final class VkInstanceCommands {
     public @EnumType(VkResult.class) int getPhysicalDeviceSurfacePresentModesKHR(
         VkPhysicalDevice physicalDevice,
         @Nullable VkSurfaceKHR surface,
-        @unsigned IntPtr pPresentModeCount,
+        @Unsigned IntPtr pPresentModeCount,
         @Nullable @EnumType(VkPresentModeKHR.class) IntPtr pPresentModes
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSurfacePresentModesKHR);
@@ -1722,9 +1722,9 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceSurfaceSupportKHR.html"><code>vkGetPhysicalDeviceSurfaceSupportKHR</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceSurfaceSupportKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned int queueFamilyIndex,
+        @Unsigned int queueFamilyIndex,
         VkSurfaceKHR surface,
-        @unsigned IntPtr pSupported
+        @Unsigned IntPtr pSupported
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSurfaceSupportKHR);
         try {
@@ -1742,7 +1742,7 @@ public final class VkInstanceCommands {
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceToolProperties.html"><code>vkGetPhysicalDeviceToolProperties</code></a>
     public @EnumType(VkResult.class) int getPhysicalDeviceToolProperties(
         VkPhysicalDevice physicalDevice,
-        @unsigned IntPtr pToolCount,
+        @Unsigned IntPtr pToolCount,
         @Nullable @Pointer IVkPhysicalDeviceToolProperties pToolProperties
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceToolProperties);
@@ -1758,9 +1758,9 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceWaylandPresentationSupportKHR.html"><code>vkGetPhysicalDeviceWaylandPresentationSupportKHR</code></a>
-    public @unsigned int getPhysicalDeviceWaylandPresentationSupportKHR(
+    public @Unsigned int getPhysicalDeviceWaylandPresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned int queueFamilyIndex,
+        @Unsigned int queueFamilyIndex,
         PointerPtr display
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceWaylandPresentationSupportKHR);
@@ -1776,9 +1776,9 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceWin32PresentationSupportKHR.html"><code>vkGetPhysicalDeviceWin32PresentationSupportKHR</code></a>
-    public @unsigned int getPhysicalDeviceWin32PresentationSupportKHR(
+    public @Unsigned int getPhysicalDeviceWin32PresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned int queueFamilyIndex
+        @Unsigned int queueFamilyIndex
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceWin32PresentationSupportKHR);
         try {
@@ -1792,11 +1792,11 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceXcbPresentationSupportKHR.html"><code>vkGetPhysicalDeviceXcbPresentationSupportKHR</code></a>
-    public @unsigned int getPhysicalDeviceXcbPresentationSupportKHR(
+    public @Unsigned int getPhysicalDeviceXcbPresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned int queueFamilyIndex,
+        @Unsigned int queueFamilyIndex,
         @Pointer(comment="void*") MemorySegment connection,
-        @unsigned int visual_id
+        @Unsigned int visual_id
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceXcbPresentationSupportKHR);
         try {
@@ -1812,9 +1812,9 @@ public final class VkInstanceCommands {
     }
 
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceXlibPresentationSupportKHR.html"><code>vkGetPhysicalDeviceXlibPresentationSupportKHR</code></a>
-    public @unsigned int getPhysicalDeviceXlibPresentationSupportKHR(
+    public @Unsigned int getPhysicalDeviceXlibPresentationSupportKHR(
         VkPhysicalDevice physicalDevice,
-        @unsigned int queueFamilyIndex,
+        @Unsigned int queueFamilyIndex,
         PointerPtr dpy,
         long visualID
     ) {

@@ -94,7 +94,7 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -187,11 +187,11 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 
-    public @unsigned int srgb() {
+    public @Unsigned int srgb() {
         return segment.get(LAYOUT$srgb, OFFSET$srgb);
     }
 
-    public void srgb(@unsigned int value) {
+    public void srgb(@Unsigned int value) {
         segment.set(LAYOUT$srgb, OFFSET$srgb, value);
     }
 

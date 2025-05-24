@@ -97,7 +97,7 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -190,11 +190,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @unsigned int vertexBindingDescriptionCount() {
+    public @Unsigned int vertexBindingDescriptionCount() {
         return segment.get(LAYOUT$vertexBindingDescriptionCount, OFFSET$vertexBindingDescriptionCount);
     }
 
-    public void vertexBindingDescriptionCount(@unsigned int value) {
+    public void vertexBindingDescriptionCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexBindingDescriptionCount, OFFSET$vertexBindingDescriptionCount, value);
     }
 
@@ -229,11 +229,11 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pVertexBindingDescriptions, OFFSET$pVertexBindingDescriptions, value);
     }
 
-    public @unsigned int vertexAttributeDescriptionCount() {
+    public @Unsigned int vertexAttributeDescriptionCount() {
         return segment.get(LAYOUT$vertexAttributeDescriptionCount, OFFSET$vertexAttributeDescriptionCount);
     }
 
-    public void vertexAttributeDescriptionCount(@unsigned int value) {
+    public void vertexAttributeDescriptionCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeDescriptionCount, OFFSET$vertexAttributeDescriptionCount, value);
     }
 

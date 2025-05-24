@@ -97,7 +97,7 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         /// create a new view {@link Ptr} that uses the same backing storage as this
         /// {@link Ptr}, but with the new size. Since there is actually no way to really check
         /// whether the new size is valid, while buffer overflow is undefined behavior, this method is
-        /// marked as {@link unsafe}.
+        /// marked as {@link Unsafe}.
         ///
         /// This method could be useful when handling data returned from some C API, where the size of
         /// the data is not known in advance.
@@ -207,11 +207,11 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         segment.set(LAYOUT$pApplicationName, OFFSET$pApplicationName, value);
     }
 
-    public @unsigned int applicationVersion() {
+    public @Unsigned int applicationVersion() {
         return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
     }
 
-    public void applicationVersion(@unsigned int value) {
+    public void applicationVersion(@Unsigned int value) {
         segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
     }
 
@@ -240,19 +240,19 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         segment.set(LAYOUT$pEngineName, OFFSET$pEngineName, value);
     }
 
-    public @unsigned int engineVersion() {
+    public @Unsigned int engineVersion() {
         return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
     }
 
-    public void engineVersion(@unsigned int value) {
+    public void engineVersion(@Unsigned int value) {
         segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
     }
 
-    public @unsigned int apiVersion() {
+    public @Unsigned int apiVersion() {
         return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
     }
 
-    public void apiVersion(@unsigned int value) {
+    public void apiVersion(@Unsigned int value) {
         segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
     }
 
