@@ -1,15 +1,15 @@
-package club.doki7.babel.extract.vulkan
+package club.doki7.babel.extract.vma
 
 import club.doki7.babel.extract.ensureLowerCamelCase
 import club.doki7.babel.extract.renameVariantOrBitflag
-import club.doki7.babel.extract.toSnakeCase
+import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Registry
 import java.io.File
 
-private const val renamedEntitiesFile = "codegen-v2/output/vulkan-renamed-entities.csv"
+private const val renamedEntitiesFile = "codegen-v2/output/vma-renamed-entities.csv"
 
-internal fun Registry<VulkanRegistryExt>.renameEntities() {
+internal fun Registry<EmptyMergeable>.renameEntities() {
     val renamed = mutableMapOf<String, String>()
 
     fun putEntityIfNameReplaced(entity: Entity) {
@@ -18,8 +18,8 @@ internal fun Registry<VulkanRegistryExt>.renameEntities() {
         }
     }
 
-    commands.forEach { it.value.rename(::renameCommand); putEntityIfNameReplaced(it.value) }
     constants.forEach { it.value.rename(::renameConstant); putEntityIfNameReplaced(it.value) }
+    commands.forEach { it.value.rename(::renameCommand); putEntityIfNameReplaced(it.value) }
 
     for (enum in enumerations.values) {
         putEntityIfNameReplaced(enum)
@@ -46,12 +46,6 @@ internal fun Registry<VulkanRegistryExt>.renameEntities() {
     })
 }
 
-private fun renameCommand(name: String) = name.removePrefix("vk").ensureLowerCamelCase()
+private fun renameConstant(name: String) = name.removePrefix("VMA_")
 
-private fun renameConstant(name: String) = if (name.startsWith("VK_")) {
-    name.removePrefix("VK_")
-} else if (name.startsWith("STD_VIDEO_")) {
-    name.removePrefix("STD_VIDEO_")
-} else {
-    name
-}
+private fun renameCommand(name: String) = name.removePrefix("vma").ensureLowerCamelCase()

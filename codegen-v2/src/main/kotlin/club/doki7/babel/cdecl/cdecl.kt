@@ -33,6 +33,34 @@ data class EnumeratorDecl(
     override val trivia: List<String>
 ) : Decl
 
+fun parseStructFieldDecl(lines: List<String>, startLine: Int): Pair<VarDecl, Int> {
+    val tokenizer = Tokenizer(lines, startLine)
+    val decl = parseStructFieldDecl(tokenizer)
+    tokenizer.maybeSkipToLineEnd()
+    return Pair(decl, tokenizer.curLine)
+}
+
+fun parseFunctionDecl(lines: List<String>, startLine: Int): Pair<FunctionDecl, Int> {
+    val tokenizer = Tokenizer(lines, startLine)
+    val decl = parseFunctionDecl(tokenizer)
+    tokenizer.maybeSkipToLineEnd()
+    return Pair(decl, tokenizer.curLine)
+}
+
+fun parseEnumeratorDecl(lines: List<String>, startLine: Int): Pair<EnumeratorDecl, Int> {
+    val tokenizer = Tokenizer(lines, startLine)
+    val decl = parseEnumeratorDecl(tokenizer)
+    tokenizer.maybeSkipToLineEnd()
+    return Pair(decl, tokenizer.curLine)
+}
+
+fun parseTypedefDecl(lines: List<String>, startLine: Int): Pair<TypedefDecl, Int> {
+    val tokenizer = Tokenizer(lines, startLine)
+    val decl = parseTypedefDecl(tokenizer)
+    tokenizer.maybeSkipToLineEnd()
+    return Pair(decl, tokenizer.curLine)
+}
+
 sealed interface RawType { val trivia: MutableList<String> }
 
 data class RawIdentifierType(
