@@ -34,13 +34,14 @@ fun parseBlockDoxygen(lines: List<String>, startLine: Int): Pair<List<String>, I
 fun parseTriSlashDoxygen(lines: List<String>, startLine: Int): Pair<List<String>, Int> {
     val doxygen = mutableListOf<String>()
 
-    val line = startLine
+    var line = startLine
     while (line < lines.size) {
         val curLine = lines[line]
         if (!curLine.startsWith("///")) {
             break
         }
         doxygen.add(doxygen2javadoc(curLine.substring(3)).trim())
+        line += 1
     }
 
     return Pair(doxygen, line)

@@ -35,6 +35,7 @@ internal val log = Logger.getLogger("c.d.b.drv")
 fun main() {
     setupLog()
 
-    vulkanMain()
-    gles2Main()
+//    vulkanMain()
+//    gles2Main()
+    vmaMain()
 }

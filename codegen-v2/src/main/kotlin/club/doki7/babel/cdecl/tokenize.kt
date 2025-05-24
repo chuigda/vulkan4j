@@ -206,6 +206,7 @@ internal val knownMacros = setOf(
     "VMA_NULLABLE",
     "VMA_NOT_NULL",
     "VMA_NOT_NULL_NON_DISPATCHABLE",
+    "VMA_NULLABLE_NON_DISPATCHABLE",
     "VKAPI_PTR"
 )
 
