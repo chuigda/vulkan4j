@@ -29,4 +29,20 @@ class TestParseType {
         assertEquals(TokenKind.IDENT, nextToken.kind)
         assertEquals("pCreateInfo", nextToken.value)
     }
+
+    @Test
+    fun test2() {
+        val tokenizer = Tokenizer(listOf("VMA_CALL_PRE void VMA_CALL_POST vmaGetMemoryProperties("), 0)
+        val type = parseType(tokenizer)
+
+        assertTrue(type is RawIdentifierType)
+        assertEquals("void", type.ident)
+        assertEquals(2, type.syntaxTrivia.size)
+        assertEquals("VMA_CALL_PRE", type.syntaxTrivia[0])
+        assertEquals("VMA_CALL_POST", type.syntaxTrivia[1])
+
+        val nextToken = tokenizer.next()
+        assertEquals(TokenKind.IDENT, nextToken.kind)
+        assertEquals("vmaGetMemoryProperties", nextToken.value)
+    }
 }

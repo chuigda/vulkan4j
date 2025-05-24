@@ -39,6 +39,7 @@ internal fun parseType(tokenizer: Tokenizer): RawType {
     }
 
     var ty: RawType = RawIdentifierType(token.value, syntaxTriviaList)
+    syntaxTriviaList = mutableListOf()
 
     skipSyntaxTrivia(tokenizer, syntaxTriviaList)
     token = tokenizer.peek()
