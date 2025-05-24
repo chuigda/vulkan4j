@@ -1,5 +1,7 @@
 # vulkan4j
 
+[![CI status](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml)
+
 > ⚠️ NOTE: UNDERGOING CHANGES
 > 
 > We're about to release the 0.3.0 version of this ecosystem, fixing most issues and make it more human-friendly, and this would cause a **massive changes** on APIs, however. If you're interested you may read some docs and star this, but maybe don't put this into your project at once.
