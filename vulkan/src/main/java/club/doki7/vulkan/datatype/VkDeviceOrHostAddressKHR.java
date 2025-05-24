@@ -139,11 +139,11 @@ public record VkDeviceOrHostAddressKHR(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @Unsigned long deviceAddress() {
+    public @Unsigned @NativeType("VkDeviceAddress") long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@Unsigned long value) {
+    public void deviceAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
     }
 

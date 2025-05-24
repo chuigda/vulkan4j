@@ -181,35 +181,35 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int depthBiasControl() {
+    public @Unsigned @NativeType("VkBool32") int depthBiasControl() {
         return segment.get(LAYOUT$depthBiasControl, OFFSET$depthBiasControl);
     }
 
-    public void depthBiasControl(@Unsigned int value) {
+    public void depthBiasControl(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthBiasControl, OFFSET$depthBiasControl, value);
     }
 
-    public @Unsigned int leastRepresentableValueForceUnormRepresentation() {
+    public @Unsigned @NativeType("VkBool32") int leastRepresentableValueForceUnormRepresentation() {
         return segment.get(LAYOUT$leastRepresentableValueForceUnormRepresentation, OFFSET$leastRepresentableValueForceUnormRepresentation);
     }
 
-    public void leastRepresentableValueForceUnormRepresentation(@Unsigned int value) {
+    public void leastRepresentableValueForceUnormRepresentation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$leastRepresentableValueForceUnormRepresentation, OFFSET$leastRepresentableValueForceUnormRepresentation, value);
     }
 
-    public @Unsigned int floatRepresentation() {
+    public @Unsigned @NativeType("VkBool32") int floatRepresentation() {
         return segment.get(LAYOUT$floatRepresentation, OFFSET$floatRepresentation);
     }
 
-    public void floatRepresentation(@Unsigned int value) {
+    public void floatRepresentation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$floatRepresentation, OFFSET$floatRepresentation, value);
     }
 
-    public @Unsigned int depthBiasExact() {
+    public @Unsigned @NativeType("VkBool32") int depthBiasExact() {
         return segment.get(LAYOUT$depthBiasExact, OFFSET$depthBiasExact);
     }
 
-    public void depthBiasExact(@Unsigned int value) {
+    public void depthBiasExact(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthBiasExact, OFFSET$depthBiasExact, value);
     }
 

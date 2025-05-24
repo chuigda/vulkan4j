@@ -178,11 +178,11 @@ public record VkSubresourceHostMemcpySize(@NotNull MemorySegment segment) implem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long size() {
+    public @Unsigned @NativeType("VkDeviceSize") long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned long value) {
+    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 

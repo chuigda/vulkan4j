@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderObjectFeaturesEXT(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderObject() {
+    public @Unsigned @NativeType("VkBool32") int shaderObject() {
         return segment.get(LAYOUT$shaderObject, OFFSET$shaderObject);
     }
 
-    public void shaderObject(@Unsigned int value) {
+    public void shaderObject(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderObject, OFFSET$shaderObject, value);
     }
 

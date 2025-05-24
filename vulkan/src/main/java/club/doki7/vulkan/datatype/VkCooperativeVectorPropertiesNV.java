@@ -223,11 +223,11 @@ public record VkCooperativeVectorPropertiesNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$resultType, OFFSET$resultType, value);
     }
 
-    public @Unsigned int transpose() {
+    public @Unsigned @NativeType("VkBool32") int transpose() {
         return segment.get(LAYOUT$transpose, OFFSET$transpose);
     }
 
-    public void transpose(@Unsigned int value) {
+    public void transpose(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$transpose, OFFSET$transpose, value);
     }
 

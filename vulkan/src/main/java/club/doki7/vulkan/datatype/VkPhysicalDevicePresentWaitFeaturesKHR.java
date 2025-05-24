@@ -178,11 +178,11 @@ public record VkPhysicalDevicePresentWaitFeaturesKHR(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int presentWait() {
+    public @Unsigned @NativeType("VkBool32") int presentWait() {
         return segment.get(LAYOUT$presentWait, OFFSET$presentWait);
     }
 
-    public void presentWait(@Unsigned int value) {
+    public void presentWait(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$presentWait, OFFSET$presentWait, value);
     }
 

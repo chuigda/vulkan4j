@@ -182,43 +182,43 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int taskShader() {
+    public @Unsigned @NativeType("VkBool32") int taskShader() {
         return segment.get(LAYOUT$taskShader, OFFSET$taskShader);
     }
 
-    public void taskShader(@Unsigned int value) {
+    public void taskShader(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$taskShader, OFFSET$taskShader, value);
     }
 
-    public @Unsigned int meshShader() {
+    public @Unsigned @NativeType("VkBool32") int meshShader() {
         return segment.get(LAYOUT$meshShader, OFFSET$meshShader);
     }
 
-    public void meshShader(@Unsigned int value) {
+    public void meshShader(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$meshShader, OFFSET$meshShader, value);
     }
 
-    public @Unsigned int multiviewMeshShader() {
+    public @Unsigned @NativeType("VkBool32") int multiviewMeshShader() {
         return segment.get(LAYOUT$multiviewMeshShader, OFFSET$multiviewMeshShader);
     }
 
-    public void multiviewMeshShader(@Unsigned int value) {
+    public void multiviewMeshShader(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$multiviewMeshShader, OFFSET$multiviewMeshShader, value);
     }
 
-    public @Unsigned int primitiveFragmentShadingRateMeshShader() {
+    public @Unsigned @NativeType("VkBool32") int primitiveFragmentShadingRateMeshShader() {
         return segment.get(LAYOUT$primitiveFragmentShadingRateMeshShader, OFFSET$primitiveFragmentShadingRateMeshShader);
     }
 
-    public void primitiveFragmentShadingRateMeshShader(@Unsigned int value) {
+    public void primitiveFragmentShadingRateMeshShader(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$primitiveFragmentShadingRateMeshShader, OFFSET$primitiveFragmentShadingRateMeshShader, value);
     }
 
-    public @Unsigned int meshShaderQueries() {
+    public @Unsigned @NativeType("VkBool32") int meshShaderQueries() {
         return segment.get(LAYOUT$meshShaderQueries, OFFSET$meshShaderQueries);
     }
 
-    public void meshShaderQueries(@Unsigned int value) {
+    public void meshShaderQueries(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$meshShaderQueries, OFFSET$meshShaderQueries, value);
     }
 

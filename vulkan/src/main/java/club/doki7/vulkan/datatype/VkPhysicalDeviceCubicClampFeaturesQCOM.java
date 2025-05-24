@@ -178,11 +178,11 @@ public record VkPhysicalDeviceCubicClampFeaturesQCOM(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int cubicRangeClamp() {
+    public @Unsigned @NativeType("VkBool32") int cubicRangeClamp() {
         return segment.get(LAYOUT$cubicRangeClamp, OFFSET$cubicRangeClamp);
     }
 
-    public void cubicRangeClamp(@Unsigned int value) {
+    public void cubicRangeClamp(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$cubicRangeClamp, OFFSET$cubicRangeClamp, value);
     }
 

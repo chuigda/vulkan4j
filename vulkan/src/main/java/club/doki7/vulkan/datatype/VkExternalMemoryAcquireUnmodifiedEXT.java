@@ -178,11 +178,11 @@ public record VkExternalMemoryAcquireUnmodifiedEXT(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int acquireUnmodifiedMemory() {
+    public @Unsigned @NativeType("VkBool32") int acquireUnmodifiedMemory() {
         return segment.get(LAYOUT$acquireUnmodifiedMemory, OFFSET$acquireUnmodifiedMemory);
     }
 
-    public void acquireUnmodifiedMemory(@Unsigned int value) {
+    public void acquireUnmodifiedMemory(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$acquireUnmodifiedMemory, OFFSET$acquireUnmodifiedMemory, value);
     }
 

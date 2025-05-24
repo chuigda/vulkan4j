@@ -198,11 +198,11 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         segment.set(LAYOUT$coverageModulationMode, OFFSET$coverageModulationMode, value);
     }
 
-    public @Unsigned int coverageModulationTableEnable() {
+    public @Unsigned @NativeType("VkBool32") int coverageModulationTableEnable() {
         return segment.get(LAYOUT$coverageModulationTableEnable, OFFSET$coverageModulationTableEnable);
     }
 
-    public void coverageModulationTableEnable(@Unsigned int value) {
+    public void coverageModulationTableEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$coverageModulationTableEnable, OFFSET$coverageModulationTableEnable, value);
     }
 

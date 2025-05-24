@@ -156,11 +156,11 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
         segment.set(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex, value);
     }
 
-    public @Unsigned long accelerationStructure() {
+    public @Unsigned @NativeType("VkDeviceAddress") long accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@Unsigned long value) {
+    public void accelerationStructure(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
     }
 

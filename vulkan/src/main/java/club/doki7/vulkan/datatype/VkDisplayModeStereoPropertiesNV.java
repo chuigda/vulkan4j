@@ -178,11 +178,11 @@ public record VkDisplayModeStereoPropertiesNV(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int hdmi3DSupported() {
+    public @Unsigned @NativeType("VkBool32") int hdmi3DSupported() {
         return segment.get(LAYOUT$hdmi3DSupported, OFFSET$hdmi3DSupported);
     }
 
-    public void hdmi3DSupported(@Unsigned int value) {
+    public void hdmi3DSupported(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$hdmi3DSupported, OFFSET$hdmi3DSupported, value);
     }
 

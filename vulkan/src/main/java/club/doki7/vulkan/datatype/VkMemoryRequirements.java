@@ -140,19 +140,19 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public @Unsigned long size() {
+    public @Unsigned @NativeType("VkDeviceSize") long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned long value) {
+    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 
-    public @Unsigned long alignment() {
+    public @Unsigned @NativeType("VkDeviceSize") long alignment() {
         return segment.get(LAYOUT$alignment, OFFSET$alignment);
     }
 
-    public void alignment(@Unsigned long value) {
+    public void alignment(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$alignment, OFFSET$alignment, value);
     }
 

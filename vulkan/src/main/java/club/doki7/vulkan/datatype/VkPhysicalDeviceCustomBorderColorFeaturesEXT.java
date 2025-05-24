@@ -179,19 +179,19 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int customBorderColors() {
+    public @Unsigned @NativeType("VkBool32") int customBorderColors() {
         return segment.get(LAYOUT$customBorderColors, OFFSET$customBorderColors);
     }
 
-    public void customBorderColors(@Unsigned int value) {
+    public void customBorderColors(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$customBorderColors, OFFSET$customBorderColors, value);
     }
 
-    public @Unsigned int customBorderColorWithoutFormat() {
+    public @Unsigned @NativeType("VkBool32") int customBorderColorWithoutFormat() {
         return segment.get(LAYOUT$customBorderColorWithoutFormat, OFFSET$customBorderColorWithoutFormat);
     }
 
-    public void customBorderColorWithoutFormat(@Unsigned int value) {
+    public void customBorderColorWithoutFormat(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$customBorderColorWithoutFormat, OFFSET$customBorderColorWithoutFormat, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceTilePropertiesFeaturesQCOM(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int tileProperties() {
+    public @Unsigned @NativeType("VkBool32") int tileProperties() {
         return segment.get(LAYOUT$tileProperties, OFFSET$tileProperties);
     }
 
-    public void tileProperties(@Unsigned int value) {
+    public void tileProperties(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileProperties, OFFSET$tileProperties, value);
     }
 

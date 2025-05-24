@@ -201,11 +201,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
     }
 
-    public @Unsigned long indexStride() {
+    public @Unsigned @NativeType("VkDeviceSize") long indexStride() {
         return segment.get(LAYOUT$indexStride, OFFSET$indexStride);
     }
 
-    public void indexStride(@Unsigned long value) {
+    public void indexStride(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$indexStride, OFFSET$indexStride, value);
     }
 

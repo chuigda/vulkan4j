@@ -178,11 +178,11 @@ public record VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int vertexAttributeRobustness() {
+    public @Unsigned @NativeType("VkBool32") int vertexAttributeRobustness() {
         return segment.get(LAYOUT$vertexAttributeRobustness, OFFSET$vertexAttributeRobustness);
     }
 
-    public void vertexAttributeRobustness(@Unsigned int value) {
+    public void vertexAttributeRobustness(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$vertexAttributeRobustness, OFFSET$vertexAttributeRobustness, value);
     }
 

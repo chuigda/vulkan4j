@@ -178,11 +178,11 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(@NotNull M
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int pipelineExecutableInfo() {
+    public @Unsigned @NativeType("VkBool32") int pipelineExecutableInfo() {
         return segment.get(LAYOUT$pipelineExecutableInfo, OFFSET$pipelineExecutableInfo);
     }
 
-    public void pipelineExecutableInfo(@Unsigned int value) {
+    public void pipelineExecutableInfo(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$pipelineExecutableInfo, OFFSET$pipelineExecutableInfo, value);
     }
 

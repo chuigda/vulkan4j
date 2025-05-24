@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderSubgroupUniformControlFlow() {
+    public @Unsigned @NativeType("VkBool32") int shaderSubgroupUniformControlFlow() {
         return segment.get(LAYOUT$shaderSubgroupUniformControlFlow, OFFSET$shaderSubgroupUniformControlFlow);
     }
 
-    public void shaderSubgroupUniformControlFlow(@Unsigned int value) {
+    public void shaderSubgroupUniformControlFlow(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderSubgroupUniformControlFlow, OFFSET$shaderSubgroupUniformControlFlow, value);
     }
 

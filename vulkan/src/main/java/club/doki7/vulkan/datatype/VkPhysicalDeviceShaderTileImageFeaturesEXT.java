@@ -180,27 +180,27 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderTileImageColorReadAccess() {
+    public @Unsigned @NativeType("VkBool32") int shaderTileImageColorReadAccess() {
         return segment.get(LAYOUT$shaderTileImageColorReadAccess, OFFSET$shaderTileImageColorReadAccess);
     }
 
-    public void shaderTileImageColorReadAccess(@Unsigned int value) {
+    public void shaderTileImageColorReadAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderTileImageColorReadAccess, OFFSET$shaderTileImageColorReadAccess, value);
     }
 
-    public @Unsigned int shaderTileImageDepthReadAccess() {
+    public @Unsigned @NativeType("VkBool32") int shaderTileImageDepthReadAccess() {
         return segment.get(LAYOUT$shaderTileImageDepthReadAccess, OFFSET$shaderTileImageDepthReadAccess);
     }
 
-    public void shaderTileImageDepthReadAccess(@Unsigned int value) {
+    public void shaderTileImageDepthReadAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderTileImageDepthReadAccess, OFFSET$shaderTileImageDepthReadAccess, value);
     }
 
-    public @Unsigned int shaderTileImageStencilReadAccess() {
+    public @Unsigned @NativeType("VkBool32") int shaderTileImageStencilReadAccess() {
         return segment.get(LAYOUT$shaderTileImageStencilReadAccess, OFFSET$shaderTileImageStencilReadAccess);
     }
 
-    public void shaderTileImageStencilReadAccess(@Unsigned int value) {
+    public void shaderTileImageStencilReadAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderTileImageStencilReadAccess, OFFSET$shaderTileImageStencilReadAccess, value);
     }
 

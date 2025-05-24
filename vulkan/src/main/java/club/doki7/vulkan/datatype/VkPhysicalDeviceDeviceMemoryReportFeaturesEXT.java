@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int deviceMemoryReport() {
+    public @Unsigned @NativeType("VkBool32") int deviceMemoryReport() {
         return segment.get(LAYOUT$deviceMemoryReport, OFFSET$deviceMemoryReport);
     }
 
-    public void deviceMemoryReport(@Unsigned int value) {
+    public void deviceMemoryReport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$deviceMemoryReport, OFFSET$deviceMemoryReport, value);
     }
 

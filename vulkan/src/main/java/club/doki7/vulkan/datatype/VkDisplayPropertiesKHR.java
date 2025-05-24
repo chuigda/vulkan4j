@@ -205,19 +205,19 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
     }
 
-    public @Unsigned int planeReorderPossible() {
+    public @Unsigned @NativeType("VkBool32") int planeReorderPossible() {
         return segment.get(LAYOUT$planeReorderPossible, OFFSET$planeReorderPossible);
     }
 
-    public void planeReorderPossible(@Unsigned int value) {
+    public void planeReorderPossible(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$planeReorderPossible, OFFSET$planeReorderPossible, value);
     }
 
-    public @Unsigned int persistentContent() {
+    public @Unsigned @NativeType("VkBool32") int persistentContent() {
         return segment.get(LAYOUT$persistentContent, OFFSET$persistentContent);
     }
 
-    public void persistentContent(@Unsigned int value) {
+    public void persistentContent(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$persistentContent, OFFSET$persistentContent, value);
     }
 

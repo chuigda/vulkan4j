@@ -181,11 +181,11 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int useGopRemainingFrames() {
+    public @Unsigned @NativeType("VkBool32") int useGopRemainingFrames() {
         return segment.get(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames);
     }
 
-    public void useGopRemainingFrames(@Unsigned int value) {
+    public void useGopRemainingFrames(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames, value);
     }
 

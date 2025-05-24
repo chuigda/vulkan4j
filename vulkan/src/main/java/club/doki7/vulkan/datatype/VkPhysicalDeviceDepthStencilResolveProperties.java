@@ -197,19 +197,19 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
     }
 
-    public @Unsigned int independentResolveNone() {
+    public @Unsigned @NativeType("VkBool32") int independentResolveNone() {
         return segment.get(LAYOUT$independentResolveNone, OFFSET$independentResolveNone);
     }
 
-    public void independentResolveNone(@Unsigned int value) {
+    public void independentResolveNone(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$independentResolveNone, OFFSET$independentResolveNone, value);
     }
 
-    public @Unsigned int independentResolve() {
+    public @Unsigned @NativeType("VkBool32") int independentResolve() {
         return segment.get(LAYOUT$independentResolve, OFFSET$independentResolve);
     }
 
-    public void independentResolve(@Unsigned int value) {
+    public void independentResolve(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$independentResolve, OFFSET$independentResolve, value);
     }
 

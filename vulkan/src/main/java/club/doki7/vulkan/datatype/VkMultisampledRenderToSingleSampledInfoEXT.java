@@ -179,11 +179,11 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int multisampledRenderToSingleSampledEnable() {
+    public @Unsigned @NativeType("VkBool32") int multisampledRenderToSingleSampledEnable() {
         return segment.get(LAYOUT$multisampledRenderToSingleSampledEnable, OFFSET$multisampledRenderToSingleSampledEnable);
     }
 
-    public void multisampledRenderToSingleSampledEnable(@Unsigned int value) {
+    public void multisampledRenderToSingleSampledEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$multisampledRenderToSingleSampledEnable, OFFSET$multisampledRenderToSingleSampledEnable, value);
     }
 

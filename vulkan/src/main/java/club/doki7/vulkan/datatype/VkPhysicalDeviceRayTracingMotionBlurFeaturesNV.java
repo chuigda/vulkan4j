@@ -179,19 +179,19 @@ public record VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int rayTracingMotionBlur() {
+    public @Unsigned @NativeType("VkBool32") int rayTracingMotionBlur() {
         return segment.get(LAYOUT$rayTracingMotionBlur, OFFSET$rayTracingMotionBlur);
     }
 
-    public void rayTracingMotionBlur(@Unsigned int value) {
+    public void rayTracingMotionBlur(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$rayTracingMotionBlur, OFFSET$rayTracingMotionBlur, value);
     }
 
-    public @Unsigned int rayTracingMotionBlurPipelineTraceRaysIndirect() {
+    public @Unsigned @NativeType("VkBool32") int rayTracingMotionBlurPipelineTraceRaysIndirect() {
         return segment.get(LAYOUT$rayTracingMotionBlurPipelineTraceRaysIndirect, OFFSET$rayTracingMotionBlurPipelineTraceRaysIndirect);
     }
 
-    public void rayTracingMotionBlurPipelineTraceRaysIndirect(@Unsigned int value) {
+    public void rayTracingMotionBlurPipelineTraceRaysIndirect(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$rayTracingMotionBlurPipelineTraceRaysIndirect, OFFSET$rayTracingMotionBlurPipelineTraceRaysIndirect, value);
     }
 

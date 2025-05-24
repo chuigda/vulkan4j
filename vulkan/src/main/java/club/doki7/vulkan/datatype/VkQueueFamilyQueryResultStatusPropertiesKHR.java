@@ -178,11 +178,11 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int queryResultStatusSupport() {
+    public @Unsigned @NativeType("VkBool32") int queryResultStatusSupport() {
         return segment.get(LAYOUT$queryResultStatusSupport, OFFSET$queryResultStatusSupport);
     }
 
-    public void queryResultStatusSupport(@Unsigned int value) {
+    public void queryResultStatusSupport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$queryResultStatusSupport, OFFSET$queryResultStatusSupport, value);
     }
 

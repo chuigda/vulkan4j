@@ -179,11 +179,11 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int arrayOfPointers() {
+    public @Unsigned @NativeType("VkBool32") int arrayOfPointers() {
         return segment.get(LAYOUT$arrayOfPointers, OFFSET$arrayOfPointers);
     }
 
-    public void arrayOfPointers(@Unsigned int value) {
+    public void arrayOfPointers(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$arrayOfPointers, OFFSET$arrayOfPointers, value);
     }
 

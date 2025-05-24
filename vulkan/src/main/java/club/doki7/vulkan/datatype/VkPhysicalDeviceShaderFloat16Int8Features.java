@@ -179,19 +179,19 @@ public record VkPhysicalDeviceShaderFloat16Int8Features(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderFloat16() {
+    public @Unsigned @NativeType("VkBool32") int shaderFloat16() {
         return segment.get(LAYOUT$shaderFloat16, OFFSET$shaderFloat16);
     }
 
-    public void shaderFloat16(@Unsigned int value) {
+    public void shaderFloat16(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderFloat16, OFFSET$shaderFloat16, value);
     }
 
-    public @Unsigned int shaderInt8() {
+    public @Unsigned @NativeType("VkBool32") int shaderInt8() {
         return segment.get(LAYOUT$shaderInt8, OFFSET$shaderInt8);
     }
 
-    public void shaderInt8(@Unsigned int value) {
+    public void shaderInt8(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderInt8, OFFSET$shaderInt8, value);
     }
 

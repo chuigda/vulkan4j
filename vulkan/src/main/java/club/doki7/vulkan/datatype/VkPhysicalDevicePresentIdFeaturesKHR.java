@@ -178,11 +178,11 @@ public record VkPhysicalDevicePresentIdFeaturesKHR(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int presentId() {
+    public @Unsigned @NativeType("VkBool32") int presentId() {
         return segment.get(LAYOUT$presentId, OFFSET$presentId);
     }
 
-    public void presentId(@Unsigned int value) {
+    public void presentId(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$presentId, OFFSET$presentId, value);
     }
 

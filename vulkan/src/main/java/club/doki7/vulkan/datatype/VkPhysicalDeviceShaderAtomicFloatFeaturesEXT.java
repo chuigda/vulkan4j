@@ -189,99 +189,99 @@ public record VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderBufferFloat32Atomics() {
+    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat32Atomics() {
         return segment.get(LAYOUT$shaderBufferFloat32Atomics, OFFSET$shaderBufferFloat32Atomics);
     }
 
-    public void shaderBufferFloat32Atomics(@Unsigned int value) {
+    public void shaderBufferFloat32Atomics(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderBufferFloat32Atomics, OFFSET$shaderBufferFloat32Atomics, value);
     }
 
-    public @Unsigned int shaderBufferFloat32AtomicAdd() {
+    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat32AtomicAdd() {
         return segment.get(LAYOUT$shaderBufferFloat32AtomicAdd, OFFSET$shaderBufferFloat32AtomicAdd);
     }
 
-    public void shaderBufferFloat32AtomicAdd(@Unsigned int value) {
+    public void shaderBufferFloat32AtomicAdd(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderBufferFloat32AtomicAdd, OFFSET$shaderBufferFloat32AtomicAdd, value);
     }
 
-    public @Unsigned int shaderBufferFloat64Atomics() {
+    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat64Atomics() {
         return segment.get(LAYOUT$shaderBufferFloat64Atomics, OFFSET$shaderBufferFloat64Atomics);
     }
 
-    public void shaderBufferFloat64Atomics(@Unsigned int value) {
+    public void shaderBufferFloat64Atomics(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderBufferFloat64Atomics, OFFSET$shaderBufferFloat64Atomics, value);
     }
 
-    public @Unsigned int shaderBufferFloat64AtomicAdd() {
+    public @Unsigned @NativeType("VkBool32") int shaderBufferFloat64AtomicAdd() {
         return segment.get(LAYOUT$shaderBufferFloat64AtomicAdd, OFFSET$shaderBufferFloat64AtomicAdd);
     }
 
-    public void shaderBufferFloat64AtomicAdd(@Unsigned int value) {
+    public void shaderBufferFloat64AtomicAdd(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderBufferFloat64AtomicAdd, OFFSET$shaderBufferFloat64AtomicAdd, value);
     }
 
-    public @Unsigned int shaderSharedFloat32Atomics() {
+    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat32Atomics() {
         return segment.get(LAYOUT$shaderSharedFloat32Atomics, OFFSET$shaderSharedFloat32Atomics);
     }
 
-    public void shaderSharedFloat32Atomics(@Unsigned int value) {
+    public void shaderSharedFloat32Atomics(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderSharedFloat32Atomics, OFFSET$shaderSharedFloat32Atomics, value);
     }
 
-    public @Unsigned int shaderSharedFloat32AtomicAdd() {
+    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat32AtomicAdd() {
         return segment.get(LAYOUT$shaderSharedFloat32AtomicAdd, OFFSET$shaderSharedFloat32AtomicAdd);
     }
 
-    public void shaderSharedFloat32AtomicAdd(@Unsigned int value) {
+    public void shaderSharedFloat32AtomicAdd(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderSharedFloat32AtomicAdd, OFFSET$shaderSharedFloat32AtomicAdd, value);
     }
 
-    public @Unsigned int shaderSharedFloat64Atomics() {
+    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat64Atomics() {
         return segment.get(LAYOUT$shaderSharedFloat64Atomics, OFFSET$shaderSharedFloat64Atomics);
     }
 
-    public void shaderSharedFloat64Atomics(@Unsigned int value) {
+    public void shaderSharedFloat64Atomics(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderSharedFloat64Atomics, OFFSET$shaderSharedFloat64Atomics, value);
     }
 
-    public @Unsigned int shaderSharedFloat64AtomicAdd() {
+    public @Unsigned @NativeType("VkBool32") int shaderSharedFloat64AtomicAdd() {
         return segment.get(LAYOUT$shaderSharedFloat64AtomicAdd, OFFSET$shaderSharedFloat64AtomicAdd);
     }
 
-    public void shaderSharedFloat64AtomicAdd(@Unsigned int value) {
+    public void shaderSharedFloat64AtomicAdd(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderSharedFloat64AtomicAdd, OFFSET$shaderSharedFloat64AtomicAdd, value);
     }
 
-    public @Unsigned int shaderImageFloat32Atomics() {
+    public @Unsigned @NativeType("VkBool32") int shaderImageFloat32Atomics() {
         return segment.get(LAYOUT$shaderImageFloat32Atomics, OFFSET$shaderImageFloat32Atomics);
     }
 
-    public void shaderImageFloat32Atomics(@Unsigned int value) {
+    public void shaderImageFloat32Atomics(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderImageFloat32Atomics, OFFSET$shaderImageFloat32Atomics, value);
     }
 
-    public @Unsigned int shaderImageFloat32AtomicAdd() {
+    public @Unsigned @NativeType("VkBool32") int shaderImageFloat32AtomicAdd() {
         return segment.get(LAYOUT$shaderImageFloat32AtomicAdd, OFFSET$shaderImageFloat32AtomicAdd);
     }
 
-    public void shaderImageFloat32AtomicAdd(@Unsigned int value) {
+    public void shaderImageFloat32AtomicAdd(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderImageFloat32AtomicAdd, OFFSET$shaderImageFloat32AtomicAdd, value);
     }
 
-    public @Unsigned int sparseImageFloat32Atomics() {
+    public @Unsigned @NativeType("VkBool32") int sparseImageFloat32Atomics() {
         return segment.get(LAYOUT$sparseImageFloat32Atomics, OFFSET$sparseImageFloat32Atomics);
     }
 
-    public void sparseImageFloat32Atomics(@Unsigned int value) {
+    public void sparseImageFloat32Atomics(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sparseImageFloat32Atomics, OFFSET$sparseImageFloat32Atomics, value);
     }
 
-    public @Unsigned int sparseImageFloat32AtomicAdd() {
+    public @Unsigned @NativeType("VkBool32") int sparseImageFloat32AtomicAdd() {
         return segment.get(LAYOUT$sparseImageFloat32AtomicAdd, OFFSET$sparseImageFloat32AtomicAdd);
     }
 
-    public void sparseImageFloat32AtomicAdd(@Unsigned int value) {
+    public void sparseImageFloat32AtomicAdd(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sparseImageFloat32AtomicAdd, OFFSET$sparseImageFloat32AtomicAdd, value);
     }
 

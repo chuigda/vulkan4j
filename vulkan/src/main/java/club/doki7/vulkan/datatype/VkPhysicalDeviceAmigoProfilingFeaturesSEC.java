@@ -178,11 +178,11 @@ public record VkPhysicalDeviceAmigoProfilingFeaturesSEC(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int amigoProfiling() {
+    public @Unsigned @NativeType("VkBool32") int amigoProfiling() {
         return segment.get(LAYOUT$amigoProfiling, OFFSET$amigoProfiling);
     }
 
-    public void amigoProfiling(@Unsigned int value) {
+    public void amigoProfiling(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$amigoProfiling, OFFSET$amigoProfiling, value);
     }
 

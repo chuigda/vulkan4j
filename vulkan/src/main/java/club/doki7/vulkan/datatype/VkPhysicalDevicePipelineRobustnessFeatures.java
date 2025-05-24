@@ -178,11 +178,11 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int pipelineRobustness() {
+    public @Unsigned @NativeType("VkBool32") int pipelineRobustness() {
         return segment.get(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness);
     }
 
-    public void pipelineRobustness(@Unsigned int value) {
+    public void pipelineRobustness(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int colorWriteEnable() {
+    public @Unsigned @NativeType("VkBool32") int colorWriteEnable() {
         return segment.get(LAYOUT$colorWriteEnable, OFFSET$colorWriteEnable);
     }
 
-    public void colorWriteEnable(@Unsigned int value) {
+    public void colorWriteEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$colorWriteEnable, OFFSET$colorWriteEnable, value);
     }
 

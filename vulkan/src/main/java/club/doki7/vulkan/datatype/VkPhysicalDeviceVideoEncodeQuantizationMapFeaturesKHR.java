@@ -178,11 +178,11 @@ public record VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int videoEncodeQuantizationMap() {
+    public @Unsigned @NativeType("VkBool32") int videoEncodeQuantizationMap() {
         return segment.get(LAYOUT$videoEncodeQuantizationMap, OFFSET$videoEncodeQuantizationMap);
     }
 
-    public void videoEncodeQuantizationMap(@Unsigned int value) {
+    public void videoEncodeQuantizationMap(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$videoEncodeQuantizationMap, OFFSET$videoEncodeQuantizationMap, value);
     }
 

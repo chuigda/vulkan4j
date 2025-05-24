@@ -179,11 +179,11 @@ public record VkMemoryAllocateInfo(@NotNull MemorySegment segment) implements IV
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long allocationSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long allocationSize() {
         return segment.get(LAYOUT$allocationSize, OFFSET$allocationSize);
     }
 
-    public void allocationSize(@Unsigned long value) {
+    public void allocationSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$allocationSize, OFFSET$allocationSize, value);
     }
 

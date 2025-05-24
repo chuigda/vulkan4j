@@ -178,11 +178,11 @@ public record VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int legacyVertexAttributes() {
+    public @Unsigned @NativeType("VkBool32") int legacyVertexAttributes() {
         return segment.get(LAYOUT$legacyVertexAttributes, OFFSET$legacyVertexAttributes);
     }
 
-    public void legacyVertexAttributes(@Unsigned int value) {
+    public void legacyVertexAttributes(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$legacyVertexAttributes, OFFSET$legacyVertexAttributes, value);
     }
 

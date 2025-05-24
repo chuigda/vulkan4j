@@ -178,11 +178,11 @@ public record VkPhysicalDeviceClusterAccelerationStructureFeaturesNV(@NotNull Me
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int clusterAccelerationStructure() {
+    public @Unsigned @NativeType("VkBool32") int clusterAccelerationStructure() {
         return segment.get(LAYOUT$clusterAccelerationStructure, OFFSET$clusterAccelerationStructure);
     }
 
-    public void clusterAccelerationStructure(@Unsigned int value) {
+    public void clusterAccelerationStructure(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$clusterAccelerationStructure, OFFSET$clusterAccelerationStructure, value);
     }
 

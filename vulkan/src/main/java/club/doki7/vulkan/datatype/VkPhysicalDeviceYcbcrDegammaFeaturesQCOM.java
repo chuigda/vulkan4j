@@ -178,11 +178,11 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int ycbcrDegamma() {
+    public @Unsigned @NativeType("VkBool32") int ycbcrDegamma() {
         return segment.get(LAYOUT$ycbcrDegamma, OFFSET$ycbcrDegamma);
     }
 
-    public void ycbcrDegamma(@Unsigned int value) {
+    public void ycbcrDegamma(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$ycbcrDegamma, OFFSET$ycbcrDegamma, value);
     }
 

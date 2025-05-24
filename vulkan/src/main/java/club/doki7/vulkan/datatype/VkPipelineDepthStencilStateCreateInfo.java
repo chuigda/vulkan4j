@@ -195,19 +195,19 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned int depthTestEnable() {
+    public @Unsigned @NativeType("VkBool32") int depthTestEnable() {
         return segment.get(LAYOUT$depthTestEnable, OFFSET$depthTestEnable);
     }
 
-    public void depthTestEnable(@Unsigned int value) {
+    public void depthTestEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthTestEnable, OFFSET$depthTestEnable, value);
     }
 
-    public @Unsigned int depthWriteEnable() {
+    public @Unsigned @NativeType("VkBool32") int depthWriteEnable() {
         return segment.get(LAYOUT$depthWriteEnable, OFFSET$depthWriteEnable);
     }
 
-    public void depthWriteEnable(@Unsigned int value) {
+    public void depthWriteEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthWriteEnable, OFFSET$depthWriteEnable, value);
     }
 
@@ -219,19 +219,19 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$depthCompareOp, OFFSET$depthCompareOp, value);
     }
 
-    public @Unsigned int depthBoundsTestEnable() {
+    public @Unsigned @NativeType("VkBool32") int depthBoundsTestEnable() {
         return segment.get(LAYOUT$depthBoundsTestEnable, OFFSET$depthBoundsTestEnable);
     }
 
-    public void depthBoundsTestEnable(@Unsigned int value) {
+    public void depthBoundsTestEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthBoundsTestEnable, OFFSET$depthBoundsTestEnable, value);
     }
 
-    public @Unsigned int stencilTestEnable() {
+    public @Unsigned @NativeType("VkBool32") int stencilTestEnable() {
         return segment.get(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable);
     }
 
-    public void stencilTestEnable(@Unsigned int value) {
+    public void stencilTestEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable, value);
     }
 

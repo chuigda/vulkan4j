@@ -185,19 +185,19 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int robustFragmentShadingRateAttachmentAccess() {
+    public @Unsigned @NativeType("VkBool32") int robustFragmentShadingRateAttachmentAccess() {
         return segment.get(LAYOUT$robustFragmentShadingRateAttachmentAccess, OFFSET$robustFragmentShadingRateAttachmentAccess);
     }
 
-    public void robustFragmentShadingRateAttachmentAccess(@Unsigned int value) {
+    public void robustFragmentShadingRateAttachmentAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$robustFragmentShadingRateAttachmentAccess, OFFSET$robustFragmentShadingRateAttachmentAccess, value);
     }
 
-    public @Unsigned int separateDepthStencilAttachmentAccess() {
+    public @Unsigned @NativeType("VkBool32") int separateDepthStencilAttachmentAccess() {
         return segment.get(LAYOUT$separateDepthStencilAttachmentAccess, OFFSET$separateDepthStencilAttachmentAccess);
     }
 
-    public void separateDepthStencilAttachmentAccess(@Unsigned int value) {
+    public void separateDepthStencilAttachmentAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$separateDepthStencilAttachmentAccess, OFFSET$separateDepthStencilAttachmentAccess, value);
     }
 

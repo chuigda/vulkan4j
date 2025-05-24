@@ -193,19 +193,19 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$input, SIZE$input);
     }
 
-    public @Unsigned long dstImplicitData() {
+    public @Unsigned @NativeType("VkDeviceAddress") long dstImplicitData() {
         return segment.get(LAYOUT$dstImplicitData, OFFSET$dstImplicitData);
     }
 
-    public void dstImplicitData(@Unsigned long value) {
+    public void dstImplicitData(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$dstImplicitData, OFFSET$dstImplicitData, value);
     }
 
-    public @Unsigned long scratchData() {
+    public @Unsigned @NativeType("VkDeviceAddress") long scratchData() {
         return segment.get(LAYOUT$scratchData, OFFSET$scratchData);
     }
 
-    public void scratchData(@Unsigned long value) {
+    public void scratchData(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$scratchData, OFFSET$scratchData, value);
     }
 
@@ -233,11 +233,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcInfosArray, SIZE$srcInfosArray);
     }
 
-    public @Unsigned long srcInfosCount() {
+    public @Unsigned @NativeType("VkDeviceAddress") long srcInfosCount() {
         return segment.get(LAYOUT$srcInfosCount, OFFSET$srcInfosCount);
     }
 
-    public void srcInfosCount(@Unsigned long value) {
+    public void srcInfosCount(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$srcInfosCount, OFFSET$srcInfosCount, value);
     }
 

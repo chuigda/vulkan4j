@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMaintenance4Properties(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long maxBufferSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long maxBufferSize() {
         return segment.get(LAYOUT$maxBufferSize, OFFSET$maxBufferSize);
     }
 
-    public void maxBufferSize(@Unsigned long value) {
+    public void maxBufferSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$maxBufferSize, OFFSET$maxBufferSize, value);
     }
 

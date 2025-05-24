@@ -208,251 +208,251 @@ public record VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int extendedDynamicState3TessellationDomainOrigin() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3TessellationDomainOrigin() {
         return segment.get(LAYOUT$extendedDynamicState3TessellationDomainOrigin, OFFSET$extendedDynamicState3TessellationDomainOrigin);
     }
 
-    public void extendedDynamicState3TessellationDomainOrigin(@Unsigned int value) {
+    public void extendedDynamicState3TessellationDomainOrigin(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3TessellationDomainOrigin, OFFSET$extendedDynamicState3TessellationDomainOrigin, value);
     }
 
-    public @Unsigned int extendedDynamicState3DepthClampEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3DepthClampEnable() {
         return segment.get(LAYOUT$extendedDynamicState3DepthClampEnable, OFFSET$extendedDynamicState3DepthClampEnable);
     }
 
-    public void extendedDynamicState3DepthClampEnable(@Unsigned int value) {
+    public void extendedDynamicState3DepthClampEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3DepthClampEnable, OFFSET$extendedDynamicState3DepthClampEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3PolygonMode() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3PolygonMode() {
         return segment.get(LAYOUT$extendedDynamicState3PolygonMode, OFFSET$extendedDynamicState3PolygonMode);
     }
 
-    public void extendedDynamicState3PolygonMode(@Unsigned int value) {
+    public void extendedDynamicState3PolygonMode(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3PolygonMode, OFFSET$extendedDynamicState3PolygonMode, value);
     }
 
-    public @Unsigned int extendedDynamicState3RasterizationSamples() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3RasterizationSamples() {
         return segment.get(LAYOUT$extendedDynamicState3RasterizationSamples, OFFSET$extendedDynamicState3RasterizationSamples);
     }
 
-    public void extendedDynamicState3RasterizationSamples(@Unsigned int value) {
+    public void extendedDynamicState3RasterizationSamples(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3RasterizationSamples, OFFSET$extendedDynamicState3RasterizationSamples, value);
     }
 
-    public @Unsigned int extendedDynamicState3SampleMask() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3SampleMask() {
         return segment.get(LAYOUT$extendedDynamicState3SampleMask, OFFSET$extendedDynamicState3SampleMask);
     }
 
-    public void extendedDynamicState3SampleMask(@Unsigned int value) {
+    public void extendedDynamicState3SampleMask(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3SampleMask, OFFSET$extendedDynamicState3SampleMask, value);
     }
 
-    public @Unsigned int extendedDynamicState3AlphaToCoverageEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3AlphaToCoverageEnable() {
         return segment.get(LAYOUT$extendedDynamicState3AlphaToCoverageEnable, OFFSET$extendedDynamicState3AlphaToCoverageEnable);
     }
 
-    public void extendedDynamicState3AlphaToCoverageEnable(@Unsigned int value) {
+    public void extendedDynamicState3AlphaToCoverageEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3AlphaToCoverageEnable, OFFSET$extendedDynamicState3AlphaToCoverageEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3AlphaToOneEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3AlphaToOneEnable() {
         return segment.get(LAYOUT$extendedDynamicState3AlphaToOneEnable, OFFSET$extendedDynamicState3AlphaToOneEnable);
     }
 
-    public void extendedDynamicState3AlphaToOneEnable(@Unsigned int value) {
+    public void extendedDynamicState3AlphaToOneEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3AlphaToOneEnable, OFFSET$extendedDynamicState3AlphaToOneEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3LogicOpEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3LogicOpEnable() {
         return segment.get(LAYOUT$extendedDynamicState3LogicOpEnable, OFFSET$extendedDynamicState3LogicOpEnable);
     }
 
-    public void extendedDynamicState3LogicOpEnable(@Unsigned int value) {
+    public void extendedDynamicState3LogicOpEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3LogicOpEnable, OFFSET$extendedDynamicState3LogicOpEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3ColorBlendEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ColorBlendEnable() {
         return segment.get(LAYOUT$extendedDynamicState3ColorBlendEnable, OFFSET$extendedDynamicState3ColorBlendEnable);
     }
 
-    public void extendedDynamicState3ColorBlendEnable(@Unsigned int value) {
+    public void extendedDynamicState3ColorBlendEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ColorBlendEnable, OFFSET$extendedDynamicState3ColorBlendEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3ColorBlendEquation() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ColorBlendEquation() {
         return segment.get(LAYOUT$extendedDynamicState3ColorBlendEquation, OFFSET$extendedDynamicState3ColorBlendEquation);
     }
 
-    public void extendedDynamicState3ColorBlendEquation(@Unsigned int value) {
+    public void extendedDynamicState3ColorBlendEquation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ColorBlendEquation, OFFSET$extendedDynamicState3ColorBlendEquation, value);
     }
 
-    public @Unsigned int extendedDynamicState3ColorWriteMask() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ColorWriteMask() {
         return segment.get(LAYOUT$extendedDynamicState3ColorWriteMask, OFFSET$extendedDynamicState3ColorWriteMask);
     }
 
-    public void extendedDynamicState3ColorWriteMask(@Unsigned int value) {
+    public void extendedDynamicState3ColorWriteMask(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ColorWriteMask, OFFSET$extendedDynamicState3ColorWriteMask, value);
     }
 
-    public @Unsigned int extendedDynamicState3RasterizationStream() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3RasterizationStream() {
         return segment.get(LAYOUT$extendedDynamicState3RasterizationStream, OFFSET$extendedDynamicState3RasterizationStream);
     }
 
-    public void extendedDynamicState3RasterizationStream(@Unsigned int value) {
+    public void extendedDynamicState3RasterizationStream(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3RasterizationStream, OFFSET$extendedDynamicState3RasterizationStream, value);
     }
 
-    public @Unsigned int extendedDynamicState3ConservativeRasterizationMode() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ConservativeRasterizationMode() {
         return segment.get(LAYOUT$extendedDynamicState3ConservativeRasterizationMode, OFFSET$extendedDynamicState3ConservativeRasterizationMode);
     }
 
-    public void extendedDynamicState3ConservativeRasterizationMode(@Unsigned int value) {
+    public void extendedDynamicState3ConservativeRasterizationMode(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ConservativeRasterizationMode, OFFSET$extendedDynamicState3ConservativeRasterizationMode, value);
     }
 
-    public @Unsigned int extendedDynamicState3ExtraPrimitiveOverestimationSize() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ExtraPrimitiveOverestimationSize() {
         return segment.get(LAYOUT$extendedDynamicState3ExtraPrimitiveOverestimationSize, OFFSET$extendedDynamicState3ExtraPrimitiveOverestimationSize);
     }
 
-    public void extendedDynamicState3ExtraPrimitiveOverestimationSize(@Unsigned int value) {
+    public void extendedDynamicState3ExtraPrimitiveOverestimationSize(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ExtraPrimitiveOverestimationSize, OFFSET$extendedDynamicState3ExtraPrimitiveOverestimationSize, value);
     }
 
-    public @Unsigned int extendedDynamicState3DepthClipEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3DepthClipEnable() {
         return segment.get(LAYOUT$extendedDynamicState3DepthClipEnable, OFFSET$extendedDynamicState3DepthClipEnable);
     }
 
-    public void extendedDynamicState3DepthClipEnable(@Unsigned int value) {
+    public void extendedDynamicState3DepthClipEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3DepthClipEnable, OFFSET$extendedDynamicState3DepthClipEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3SampleLocationsEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3SampleLocationsEnable() {
         return segment.get(LAYOUT$extendedDynamicState3SampleLocationsEnable, OFFSET$extendedDynamicState3SampleLocationsEnable);
     }
 
-    public void extendedDynamicState3SampleLocationsEnable(@Unsigned int value) {
+    public void extendedDynamicState3SampleLocationsEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3SampleLocationsEnable, OFFSET$extendedDynamicState3SampleLocationsEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3ColorBlendAdvanced() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ColorBlendAdvanced() {
         return segment.get(LAYOUT$extendedDynamicState3ColorBlendAdvanced, OFFSET$extendedDynamicState3ColorBlendAdvanced);
     }
 
-    public void extendedDynamicState3ColorBlendAdvanced(@Unsigned int value) {
+    public void extendedDynamicState3ColorBlendAdvanced(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ColorBlendAdvanced, OFFSET$extendedDynamicState3ColorBlendAdvanced, value);
     }
 
-    public @Unsigned int extendedDynamicState3ProvokingVertexMode() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ProvokingVertexMode() {
         return segment.get(LAYOUT$extendedDynamicState3ProvokingVertexMode, OFFSET$extendedDynamicState3ProvokingVertexMode);
     }
 
-    public void extendedDynamicState3ProvokingVertexMode(@Unsigned int value) {
+    public void extendedDynamicState3ProvokingVertexMode(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ProvokingVertexMode, OFFSET$extendedDynamicState3ProvokingVertexMode, value);
     }
 
-    public @Unsigned int extendedDynamicState3LineRasterizationMode() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3LineRasterizationMode() {
         return segment.get(LAYOUT$extendedDynamicState3LineRasterizationMode, OFFSET$extendedDynamicState3LineRasterizationMode);
     }
 
-    public void extendedDynamicState3LineRasterizationMode(@Unsigned int value) {
+    public void extendedDynamicState3LineRasterizationMode(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3LineRasterizationMode, OFFSET$extendedDynamicState3LineRasterizationMode, value);
     }
 
-    public @Unsigned int extendedDynamicState3LineStippleEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3LineStippleEnable() {
         return segment.get(LAYOUT$extendedDynamicState3LineStippleEnable, OFFSET$extendedDynamicState3LineStippleEnable);
     }
 
-    public void extendedDynamicState3LineStippleEnable(@Unsigned int value) {
+    public void extendedDynamicState3LineStippleEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3LineStippleEnable, OFFSET$extendedDynamicState3LineStippleEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3DepthClipNegativeOneToOne() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3DepthClipNegativeOneToOne() {
         return segment.get(LAYOUT$extendedDynamicState3DepthClipNegativeOneToOne, OFFSET$extendedDynamicState3DepthClipNegativeOneToOne);
     }
 
-    public void extendedDynamicState3DepthClipNegativeOneToOne(@Unsigned int value) {
+    public void extendedDynamicState3DepthClipNegativeOneToOne(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3DepthClipNegativeOneToOne, OFFSET$extendedDynamicState3DepthClipNegativeOneToOne, value);
     }
 
-    public @Unsigned int extendedDynamicState3ViewportWScalingEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ViewportWScalingEnable() {
         return segment.get(LAYOUT$extendedDynamicState3ViewportWScalingEnable, OFFSET$extendedDynamicState3ViewportWScalingEnable);
     }
 
-    public void extendedDynamicState3ViewportWScalingEnable(@Unsigned int value) {
+    public void extendedDynamicState3ViewportWScalingEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ViewportWScalingEnable, OFFSET$extendedDynamicState3ViewportWScalingEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3ViewportSwizzle() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ViewportSwizzle() {
         return segment.get(LAYOUT$extendedDynamicState3ViewportSwizzle, OFFSET$extendedDynamicState3ViewportSwizzle);
     }
 
-    public void extendedDynamicState3ViewportSwizzle(@Unsigned int value) {
+    public void extendedDynamicState3ViewportSwizzle(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ViewportSwizzle, OFFSET$extendedDynamicState3ViewportSwizzle, value);
     }
 
-    public @Unsigned int extendedDynamicState3CoverageToColorEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3CoverageToColorEnable() {
         return segment.get(LAYOUT$extendedDynamicState3CoverageToColorEnable, OFFSET$extendedDynamicState3CoverageToColorEnable);
     }
 
-    public void extendedDynamicState3CoverageToColorEnable(@Unsigned int value) {
+    public void extendedDynamicState3CoverageToColorEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3CoverageToColorEnable, OFFSET$extendedDynamicState3CoverageToColorEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3CoverageToColorLocation() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3CoverageToColorLocation() {
         return segment.get(LAYOUT$extendedDynamicState3CoverageToColorLocation, OFFSET$extendedDynamicState3CoverageToColorLocation);
     }
 
-    public void extendedDynamicState3CoverageToColorLocation(@Unsigned int value) {
+    public void extendedDynamicState3CoverageToColorLocation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3CoverageToColorLocation, OFFSET$extendedDynamicState3CoverageToColorLocation, value);
     }
 
-    public @Unsigned int extendedDynamicState3CoverageModulationMode() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3CoverageModulationMode() {
         return segment.get(LAYOUT$extendedDynamicState3CoverageModulationMode, OFFSET$extendedDynamicState3CoverageModulationMode);
     }
 
-    public void extendedDynamicState3CoverageModulationMode(@Unsigned int value) {
+    public void extendedDynamicState3CoverageModulationMode(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3CoverageModulationMode, OFFSET$extendedDynamicState3CoverageModulationMode, value);
     }
 
-    public @Unsigned int extendedDynamicState3CoverageModulationTableEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3CoverageModulationTableEnable() {
         return segment.get(LAYOUT$extendedDynamicState3CoverageModulationTableEnable, OFFSET$extendedDynamicState3CoverageModulationTableEnable);
     }
 
-    public void extendedDynamicState3CoverageModulationTableEnable(@Unsigned int value) {
+    public void extendedDynamicState3CoverageModulationTableEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3CoverageModulationTableEnable, OFFSET$extendedDynamicState3CoverageModulationTableEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3CoverageModulationTable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3CoverageModulationTable() {
         return segment.get(LAYOUT$extendedDynamicState3CoverageModulationTable, OFFSET$extendedDynamicState3CoverageModulationTable);
     }
 
-    public void extendedDynamicState3CoverageModulationTable(@Unsigned int value) {
+    public void extendedDynamicState3CoverageModulationTable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3CoverageModulationTable, OFFSET$extendedDynamicState3CoverageModulationTable, value);
     }
 
-    public @Unsigned int extendedDynamicState3CoverageReductionMode() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3CoverageReductionMode() {
         return segment.get(LAYOUT$extendedDynamicState3CoverageReductionMode, OFFSET$extendedDynamicState3CoverageReductionMode);
     }
 
-    public void extendedDynamicState3CoverageReductionMode(@Unsigned int value) {
+    public void extendedDynamicState3CoverageReductionMode(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3CoverageReductionMode, OFFSET$extendedDynamicState3CoverageReductionMode, value);
     }
 
-    public @Unsigned int extendedDynamicState3RepresentativeFragmentTestEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3RepresentativeFragmentTestEnable() {
         return segment.get(LAYOUT$extendedDynamicState3RepresentativeFragmentTestEnable, OFFSET$extendedDynamicState3RepresentativeFragmentTestEnable);
     }
 
-    public void extendedDynamicState3RepresentativeFragmentTestEnable(@Unsigned int value) {
+    public void extendedDynamicState3RepresentativeFragmentTestEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3RepresentativeFragmentTestEnable, OFFSET$extendedDynamicState3RepresentativeFragmentTestEnable, value);
     }
 
-    public @Unsigned int extendedDynamicState3ShadingRateImageEnable() {
+    public @Unsigned @NativeType("VkBool32") int extendedDynamicState3ShadingRateImageEnable() {
         return segment.get(LAYOUT$extendedDynamicState3ShadingRateImageEnable, OFFSET$extendedDynamicState3ShadingRateImageEnable);
     }
 
-    public void extendedDynamicState3ShadingRateImageEnable(@Unsigned int value) {
+    public void extendedDynamicState3ShadingRateImageEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedDynamicState3ShadingRateImageEnable, OFFSET$extendedDynamicState3ShadingRateImageEnable, value);
     }
 

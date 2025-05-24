@@ -191,115 +191,115 @@ public record VkPhysicalDeviceTileShadingFeaturesQCOM(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int tileShading() {
+    public @Unsigned @NativeType("VkBool32") int tileShading() {
         return segment.get(LAYOUT$tileShading, OFFSET$tileShading);
     }
 
-    public void tileShading(@Unsigned int value) {
+    public void tileShading(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShading, OFFSET$tileShading, value);
     }
 
-    public @Unsigned int tileShadingFragmentStage() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingFragmentStage() {
         return segment.get(LAYOUT$tileShadingFragmentStage, OFFSET$tileShadingFragmentStage);
     }
 
-    public void tileShadingFragmentStage(@Unsigned int value) {
+    public void tileShadingFragmentStage(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingFragmentStage, OFFSET$tileShadingFragmentStage, value);
     }
 
-    public @Unsigned int tileShadingColorAttachments() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingColorAttachments() {
         return segment.get(LAYOUT$tileShadingColorAttachments, OFFSET$tileShadingColorAttachments);
     }
 
-    public void tileShadingColorAttachments(@Unsigned int value) {
+    public void tileShadingColorAttachments(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingColorAttachments, OFFSET$tileShadingColorAttachments, value);
     }
 
-    public @Unsigned int tileShadingDepthAttachments() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingDepthAttachments() {
         return segment.get(LAYOUT$tileShadingDepthAttachments, OFFSET$tileShadingDepthAttachments);
     }
 
-    public void tileShadingDepthAttachments(@Unsigned int value) {
+    public void tileShadingDepthAttachments(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingDepthAttachments, OFFSET$tileShadingDepthAttachments, value);
     }
 
-    public @Unsigned int tileShadingStencilAttachments() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingStencilAttachments() {
         return segment.get(LAYOUT$tileShadingStencilAttachments, OFFSET$tileShadingStencilAttachments);
     }
 
-    public void tileShadingStencilAttachments(@Unsigned int value) {
+    public void tileShadingStencilAttachments(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingStencilAttachments, OFFSET$tileShadingStencilAttachments, value);
     }
 
-    public @Unsigned int tileShadingInputAttachments() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingInputAttachments() {
         return segment.get(LAYOUT$tileShadingInputAttachments, OFFSET$tileShadingInputAttachments);
     }
 
-    public void tileShadingInputAttachments(@Unsigned int value) {
+    public void tileShadingInputAttachments(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingInputAttachments, OFFSET$tileShadingInputAttachments, value);
     }
 
-    public @Unsigned int tileShadingSampledAttachments() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingSampledAttachments() {
         return segment.get(LAYOUT$tileShadingSampledAttachments, OFFSET$tileShadingSampledAttachments);
     }
 
-    public void tileShadingSampledAttachments(@Unsigned int value) {
+    public void tileShadingSampledAttachments(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingSampledAttachments, OFFSET$tileShadingSampledAttachments, value);
     }
 
-    public @Unsigned int tileShadingPerTileDraw() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingPerTileDraw() {
         return segment.get(LAYOUT$tileShadingPerTileDraw, OFFSET$tileShadingPerTileDraw);
     }
 
-    public void tileShadingPerTileDraw(@Unsigned int value) {
+    public void tileShadingPerTileDraw(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingPerTileDraw, OFFSET$tileShadingPerTileDraw, value);
     }
 
-    public @Unsigned int tileShadingPerTileDispatch() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingPerTileDispatch() {
         return segment.get(LAYOUT$tileShadingPerTileDispatch, OFFSET$tileShadingPerTileDispatch);
     }
 
-    public void tileShadingPerTileDispatch(@Unsigned int value) {
+    public void tileShadingPerTileDispatch(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingPerTileDispatch, OFFSET$tileShadingPerTileDispatch, value);
     }
 
-    public @Unsigned int tileShadingDispatchTile() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingDispatchTile() {
         return segment.get(LAYOUT$tileShadingDispatchTile, OFFSET$tileShadingDispatchTile);
     }
 
-    public void tileShadingDispatchTile(@Unsigned int value) {
+    public void tileShadingDispatchTile(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingDispatchTile, OFFSET$tileShadingDispatchTile, value);
     }
 
-    public @Unsigned int tileShadingApron() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingApron() {
         return segment.get(LAYOUT$tileShadingApron, OFFSET$tileShadingApron);
     }
 
-    public void tileShadingApron(@Unsigned int value) {
+    public void tileShadingApron(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingApron, OFFSET$tileShadingApron, value);
     }
 
-    public @Unsigned int tileShadingAnisotropicApron() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingAnisotropicApron() {
         return segment.get(LAYOUT$tileShadingAnisotropicApron, OFFSET$tileShadingAnisotropicApron);
     }
 
-    public void tileShadingAnisotropicApron(@Unsigned int value) {
+    public void tileShadingAnisotropicApron(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingAnisotropicApron, OFFSET$tileShadingAnisotropicApron, value);
     }
 
-    public @Unsigned int tileShadingAtomicOps() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingAtomicOps() {
         return segment.get(LAYOUT$tileShadingAtomicOps, OFFSET$tileShadingAtomicOps);
     }
 
-    public void tileShadingAtomicOps(@Unsigned int value) {
+    public void tileShadingAtomicOps(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingAtomicOps, OFFSET$tileShadingAtomicOps, value);
     }
 
-    public @Unsigned int tileShadingImageProcessing() {
+    public @Unsigned @NativeType("VkBool32") int tileShadingImageProcessing() {
         return segment.get(LAYOUT$tileShadingImageProcessing, OFFSET$tileShadingImageProcessing);
     }
 
-    public void tileShadingImageProcessing(@Unsigned int value) {
+    public void tileShadingImageProcessing(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileShadingImageProcessing, OFFSET$tileShadingImageProcessing, value);
     }
 

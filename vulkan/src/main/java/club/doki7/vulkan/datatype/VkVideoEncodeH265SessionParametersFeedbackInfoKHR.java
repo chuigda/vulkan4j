@@ -180,27 +180,27 @@ public record VkVideoEncodeH265SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int hasStdVPSOverrides() {
+    public @Unsigned @NativeType("VkBool32") int hasStdVPSOverrides() {
         return segment.get(LAYOUT$hasStdVPSOverrides, OFFSET$hasStdVPSOverrides);
     }
 
-    public void hasStdVPSOverrides(@Unsigned int value) {
+    public void hasStdVPSOverrides(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$hasStdVPSOverrides, OFFSET$hasStdVPSOverrides, value);
     }
 
-    public @Unsigned int hasStdSPSOverrides() {
+    public @Unsigned @NativeType("VkBool32") int hasStdSPSOverrides() {
         return segment.get(LAYOUT$hasStdSPSOverrides, OFFSET$hasStdSPSOverrides);
     }
 
-    public void hasStdSPSOverrides(@Unsigned int value) {
+    public void hasStdSPSOverrides(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$hasStdSPSOverrides, OFFSET$hasStdSPSOverrides, value);
     }
 
-    public @Unsigned int hasStdPPSOverrides() {
+    public @Unsigned @NativeType("VkBool32") int hasStdPPSOverrides() {
         return segment.get(LAYOUT$hasStdPPSOverrides, OFFSET$hasStdPPSOverrides);
     }
 
-    public void hasStdPPSOverrides(@Unsigned int value) {
+    public void hasStdPPSOverrides(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$hasStdPPSOverrides, OFFSET$hasStdPPSOverrides, value);
     }
 

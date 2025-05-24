@@ -208,59 +208,59 @@ public record VkPhysicalDeviceDescriptorIndexingProperties(@NotNull MemorySegmen
         segment.set(LAYOUT$maxUpdateAfterBindDescriptorsInAllPools, OFFSET$maxUpdateAfterBindDescriptorsInAllPools, value);
     }
 
-    public @Unsigned int shaderUniformBufferArrayNonUniformIndexingNative() {
+    public @Unsigned @NativeType("VkBool32") int shaderUniformBufferArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative, OFFSET$shaderUniformBufferArrayNonUniformIndexingNative);
     }
 
-    public void shaderUniformBufferArrayNonUniformIndexingNative(@Unsigned int value) {
+    public void shaderUniformBufferArrayNonUniformIndexingNative(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative, OFFSET$shaderUniformBufferArrayNonUniformIndexingNative, value);
     }
 
-    public @Unsigned int shaderSampledImageArrayNonUniformIndexingNative() {
+    public @Unsigned @NativeType("VkBool32") int shaderSampledImageArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderSampledImageArrayNonUniformIndexingNative, OFFSET$shaderSampledImageArrayNonUniformIndexingNative);
     }
 
-    public void shaderSampledImageArrayNonUniformIndexingNative(@Unsigned int value) {
+    public void shaderSampledImageArrayNonUniformIndexingNative(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderSampledImageArrayNonUniformIndexingNative, OFFSET$shaderSampledImageArrayNonUniformIndexingNative, value);
     }
 
-    public @Unsigned int shaderStorageBufferArrayNonUniformIndexingNative() {
+    public @Unsigned @NativeType("VkBool32") int shaderStorageBufferArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative, OFFSET$shaderStorageBufferArrayNonUniformIndexingNative);
     }
 
-    public void shaderStorageBufferArrayNonUniformIndexingNative(@Unsigned int value) {
+    public void shaderStorageBufferArrayNonUniformIndexingNative(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative, OFFSET$shaderStorageBufferArrayNonUniformIndexingNative, value);
     }
 
-    public @Unsigned int shaderStorageImageArrayNonUniformIndexingNative() {
+    public @Unsigned @NativeType("VkBool32") int shaderStorageImageArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderStorageImageArrayNonUniformIndexingNative, OFFSET$shaderStorageImageArrayNonUniformIndexingNative);
     }
 
-    public void shaderStorageImageArrayNonUniformIndexingNative(@Unsigned int value) {
+    public void shaderStorageImageArrayNonUniformIndexingNative(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderStorageImageArrayNonUniformIndexingNative, OFFSET$shaderStorageImageArrayNonUniformIndexingNative, value);
     }
 
-    public @Unsigned int shaderInputAttachmentArrayNonUniformIndexingNative() {
+    public @Unsigned @NativeType("VkBool32") int shaderInputAttachmentArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative, OFFSET$shaderInputAttachmentArrayNonUniformIndexingNative);
     }
 
-    public void shaderInputAttachmentArrayNonUniformIndexingNative(@Unsigned int value) {
+    public void shaderInputAttachmentArrayNonUniformIndexingNative(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative, OFFSET$shaderInputAttachmentArrayNonUniformIndexingNative, value);
     }
 
-    public @Unsigned int robustBufferAccessUpdateAfterBind() {
+    public @Unsigned @NativeType("VkBool32") int robustBufferAccessUpdateAfterBind() {
         return segment.get(LAYOUT$robustBufferAccessUpdateAfterBind, OFFSET$robustBufferAccessUpdateAfterBind);
     }
 
-    public void robustBufferAccessUpdateAfterBind(@Unsigned int value) {
+    public void robustBufferAccessUpdateAfterBind(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$robustBufferAccessUpdateAfterBind, OFFSET$robustBufferAccessUpdateAfterBind, value);
     }
 
-    public @Unsigned int quadDivergentImplicitLod() {
+    public @Unsigned @NativeType("VkBool32") int quadDivergentImplicitLod() {
         return segment.get(LAYOUT$quadDivergentImplicitLod, OFFSET$quadDivergentImplicitLod);
     }
 
-    public void quadDivergentImplicitLod(@Unsigned int value) {
+    public void quadDivergentImplicitLod(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$quadDivergentImplicitLod, OFFSET$quadDivergentImplicitLod, value);
     }
 

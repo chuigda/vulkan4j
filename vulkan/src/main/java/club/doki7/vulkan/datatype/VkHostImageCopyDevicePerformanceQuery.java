@@ -179,19 +179,19 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int optimalDeviceAccess() {
+    public @Unsigned @NativeType("VkBool32") int optimalDeviceAccess() {
         return segment.get(LAYOUT$optimalDeviceAccess, OFFSET$optimalDeviceAccess);
     }
 
-    public void optimalDeviceAccess(@Unsigned int value) {
+    public void optimalDeviceAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$optimalDeviceAccess, OFFSET$optimalDeviceAccess, value);
     }
 
-    public @Unsigned int identicalMemoryLayout() {
+    public @Unsigned @NativeType("VkBool32") int identicalMemoryLayout() {
         return segment.get(LAYOUT$identicalMemoryLayout, OFFSET$identicalMemoryLayout);
     }
 
-    public void identicalMemoryLayout(@Unsigned int value) {
+    public void identicalMemoryLayout(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$identicalMemoryLayout, OFFSET$identicalMemoryLayout, value);
     }
 

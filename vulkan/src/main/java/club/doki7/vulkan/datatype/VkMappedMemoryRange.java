@@ -192,19 +192,19 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long offset() {
+    public @Unsigned @NativeType("VkDeviceSize") long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned long value) {
+    public void offset(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public @Unsigned long size() {
+    public @Unsigned @NativeType("VkDeviceSize") long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned long value) {
+    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 

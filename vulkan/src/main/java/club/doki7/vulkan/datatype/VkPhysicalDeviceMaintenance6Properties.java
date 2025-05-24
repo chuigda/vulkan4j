@@ -180,11 +180,11 @@ public record VkPhysicalDeviceMaintenance6Properties(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int blockTexelViewCompatibleMultipleLayers() {
+    public @Unsigned @NativeType("VkBool32") int blockTexelViewCompatibleMultipleLayers() {
         return segment.get(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers);
     }
 
-    public void blockTexelViewCompatibleMultipleLayers(@Unsigned int value) {
+    public void blockTexelViewCompatibleMultipleLayers(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers, value);
     }
 
@@ -196,11 +196,11 @@ public record VkPhysicalDeviceMaintenance6Properties(@NotNull MemorySegment segm
         segment.set(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount, value);
     }
 
-    public @Unsigned int fragmentShadingRateClampCombinerInputs() {
+    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateClampCombinerInputs() {
         return segment.get(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs);
     }
 
-    public void fragmentShadingRateClampCombinerInputs(@Unsigned int value) {
+    public void fragmentShadingRateClampCombinerInputs(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs, value);
     }
 

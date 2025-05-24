@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int rayTracingInvocationReorder() {
+    public @Unsigned @NativeType("VkBool32") int rayTracingInvocationReorder() {
         return segment.get(LAYOUT$rayTracingInvocationReorder, OFFSET$rayTracingInvocationReorder);
     }
 
-    public void rayTracingInvocationReorder(@Unsigned int value) {
+    public void rayTracingInvocationReorder(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$rayTracingInvocationReorder, OFFSET$rayTracingInvocationReorder, value);
     }
 

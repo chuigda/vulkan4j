@@ -179,19 +179,19 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int deviceGeneratedCommands() {
+    public @Unsigned @NativeType("VkBool32") int deviceGeneratedCommands() {
         return segment.get(LAYOUT$deviceGeneratedCommands, OFFSET$deviceGeneratedCommands);
     }
 
-    public void deviceGeneratedCommands(@Unsigned int value) {
+    public void deviceGeneratedCommands(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$deviceGeneratedCommands, OFFSET$deviceGeneratedCommands, value);
     }
 
-    public @Unsigned int dynamicGeneratedPipelineLayout() {
+    public @Unsigned @NativeType("VkBool32") int dynamicGeneratedPipelineLayout() {
         return segment.get(LAYOUT$dynamicGeneratedPipelineLayout, OFFSET$dynamicGeneratedPipelineLayout);
     }
 
-    public void dynamicGeneratedPipelineLayout(@Unsigned int value) {
+    public void dynamicGeneratedPipelineLayout(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$dynamicGeneratedPipelineLayout, OFFSET$dynamicGeneratedPipelineLayout, value);
     }
 

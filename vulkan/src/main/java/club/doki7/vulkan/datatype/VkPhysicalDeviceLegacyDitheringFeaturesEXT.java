@@ -178,11 +178,11 @@ public record VkPhysicalDeviceLegacyDitheringFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int legacyDithering() {
+    public @Unsigned @NativeType("VkBool32") int legacyDithering() {
         return segment.get(LAYOUT$legacyDithering, OFFSET$legacyDithering);
     }
 
-    public void legacyDithering(@Unsigned int value) {
+    public void legacyDithering(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$legacyDithering, OFFSET$legacyDithering, value);
     }
 

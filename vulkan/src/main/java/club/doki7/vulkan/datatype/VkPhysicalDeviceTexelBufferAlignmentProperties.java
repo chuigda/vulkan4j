@@ -181,35 +181,35 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long storageTexelBufferOffsetAlignmentBytes() {
+    public @Unsigned @NativeType("VkDeviceSize") long storageTexelBufferOffsetAlignmentBytes() {
         return segment.get(LAYOUT$storageTexelBufferOffsetAlignmentBytes, OFFSET$storageTexelBufferOffsetAlignmentBytes);
     }
 
-    public void storageTexelBufferOffsetAlignmentBytes(@Unsigned long value) {
+    public void storageTexelBufferOffsetAlignmentBytes(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$storageTexelBufferOffsetAlignmentBytes, OFFSET$storageTexelBufferOffsetAlignmentBytes, value);
     }
 
-    public @Unsigned int storageTexelBufferOffsetSingleTexelAlignment() {
+    public @Unsigned @NativeType("VkBool32") int storageTexelBufferOffsetSingleTexelAlignment() {
         return segment.get(LAYOUT$storageTexelBufferOffsetSingleTexelAlignment, OFFSET$storageTexelBufferOffsetSingleTexelAlignment);
     }
 
-    public void storageTexelBufferOffsetSingleTexelAlignment(@Unsigned int value) {
+    public void storageTexelBufferOffsetSingleTexelAlignment(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$storageTexelBufferOffsetSingleTexelAlignment, OFFSET$storageTexelBufferOffsetSingleTexelAlignment, value);
     }
 
-    public @Unsigned long uniformTexelBufferOffsetAlignmentBytes() {
+    public @Unsigned @NativeType("VkDeviceSize") long uniformTexelBufferOffsetAlignmentBytes() {
         return segment.get(LAYOUT$uniformTexelBufferOffsetAlignmentBytes, OFFSET$uniformTexelBufferOffsetAlignmentBytes);
     }
 
-    public void uniformTexelBufferOffsetAlignmentBytes(@Unsigned long value) {
+    public void uniformTexelBufferOffsetAlignmentBytes(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$uniformTexelBufferOffsetAlignmentBytes, OFFSET$uniformTexelBufferOffsetAlignmentBytes, value);
     }
 
-    public @Unsigned int uniformTexelBufferOffsetSingleTexelAlignment() {
+    public @Unsigned @NativeType("VkBool32") int uniformTexelBufferOffsetSingleTexelAlignment() {
         return segment.get(LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment, OFFSET$uniformTexelBufferOffsetSingleTexelAlignment);
     }
 
-    public void uniformTexelBufferOffsetSingleTexelAlignment(@Unsigned int value) {
+    public void uniformTexelBufferOffsetSingleTexelAlignment(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$uniformTexelBufferOffsetSingleTexelAlignment, OFFSET$uniformTexelBufferOffsetSingleTexelAlignment, value);
     }
 

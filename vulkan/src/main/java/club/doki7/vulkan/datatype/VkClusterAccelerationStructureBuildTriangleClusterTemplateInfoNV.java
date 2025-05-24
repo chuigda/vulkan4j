@@ -262,51 +262,51 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
         segment.set(LAYOUT$opacityMicromapIndexBufferStride, OFFSET$opacityMicromapIndexBufferStride, value);
     }
 
-    public @Unsigned long indexBuffer() {
+    public @Unsigned @NativeType("VkDeviceAddress") long indexBuffer() {
         return segment.get(LAYOUT$indexBuffer, OFFSET$indexBuffer);
     }
 
-    public void indexBuffer(@Unsigned long value) {
+    public void indexBuffer(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$indexBuffer, OFFSET$indexBuffer, value);
     }
 
-    public @Unsigned long vertexBuffer() {
+    public @Unsigned @NativeType("VkDeviceAddress") long vertexBuffer() {
         return segment.get(LAYOUT$vertexBuffer, OFFSET$vertexBuffer);
     }
 
-    public void vertexBuffer(@Unsigned long value) {
+    public void vertexBuffer(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$vertexBuffer, OFFSET$vertexBuffer, value);
     }
 
-    public @Unsigned long geometryIndexAndFlagsBuffer() {
+    public @Unsigned @NativeType("VkDeviceAddress") long geometryIndexAndFlagsBuffer() {
         return segment.get(LAYOUT$geometryIndexAndFlagsBuffer, OFFSET$geometryIndexAndFlagsBuffer);
     }
 
-    public void geometryIndexAndFlagsBuffer(@Unsigned long value) {
+    public void geometryIndexAndFlagsBuffer(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$geometryIndexAndFlagsBuffer, OFFSET$geometryIndexAndFlagsBuffer, value);
     }
 
-    public @Unsigned long opacityMicromapArray() {
+    public @Unsigned @NativeType("VkDeviceAddress") long opacityMicromapArray() {
         return segment.get(LAYOUT$opacityMicromapArray, OFFSET$opacityMicromapArray);
     }
 
-    public void opacityMicromapArray(@Unsigned long value) {
+    public void opacityMicromapArray(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$opacityMicromapArray, OFFSET$opacityMicromapArray, value);
     }
 
-    public @Unsigned long opacityMicromapIndexBuffer() {
+    public @Unsigned @NativeType("VkDeviceAddress") long opacityMicromapIndexBuffer() {
         return segment.get(LAYOUT$opacityMicromapIndexBuffer, OFFSET$opacityMicromapIndexBuffer);
     }
 
-    public void opacityMicromapIndexBuffer(@Unsigned long value) {
+    public void opacityMicromapIndexBuffer(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$opacityMicromapIndexBuffer, OFFSET$opacityMicromapIndexBuffer, value);
     }
 
-    public @Unsigned long instantiationBoundingBoxLimit() {
+    public @Unsigned @NativeType("VkDeviceAddress") long instantiationBoundingBoxLimit() {
         return segment.get(LAYOUT$instantiationBoundingBoxLimit, OFFSET$instantiationBoundingBoxLimit);
     }
 
-    public void instantiationBoundingBoxLimit(@Unsigned long value) {
+    public void instantiationBoundingBoxLimit(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$instantiationBoundingBoxLimit, OFFSET$instantiationBoundingBoxLimit, value);
     }
 

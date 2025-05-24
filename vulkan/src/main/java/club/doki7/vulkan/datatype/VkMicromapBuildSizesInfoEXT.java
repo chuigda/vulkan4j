@@ -180,27 +180,27 @@ public record VkMicromapBuildSizesInfoEXT(@NotNull MemorySegment segment) implem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long micromapSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long micromapSize() {
         return segment.get(LAYOUT$micromapSize, OFFSET$micromapSize);
     }
 
-    public void micromapSize(@Unsigned long value) {
+    public void micromapSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$micromapSize, OFFSET$micromapSize, value);
     }
 
-    public @Unsigned long buildScratchSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long buildScratchSize() {
         return segment.get(LAYOUT$buildScratchSize, OFFSET$buildScratchSize);
     }
 
-    public void buildScratchSize(@Unsigned long value) {
+    public void buildScratchSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$buildScratchSize, OFFSET$buildScratchSize, value);
     }
 
-    public @Unsigned int discardable() {
+    public @Unsigned @NativeType("VkBool32") int discardable() {
         return segment.get(LAYOUT$discardable, OFFSET$discardable);
     }
 
-    public void discardable(@Unsigned int value) {
+    public void discardable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$discardable, OFFSET$discardable, value);
     }
 

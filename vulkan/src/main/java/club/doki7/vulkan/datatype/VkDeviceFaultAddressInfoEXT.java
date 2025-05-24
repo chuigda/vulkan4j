@@ -148,19 +148,19 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$addressType, OFFSET$addressType, value);
     }
 
-    public @Unsigned long reportedAddress() {
+    public @Unsigned @NativeType("VkDeviceAddress") long reportedAddress() {
         return segment.get(LAYOUT$reportedAddress, OFFSET$reportedAddress);
     }
 
-    public void reportedAddress(@Unsigned long value) {
+    public void reportedAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$reportedAddress, OFFSET$reportedAddress, value);
     }
 
-    public @Unsigned long addressPrecision() {
+    public @Unsigned @NativeType("VkDeviceSize") long addressPrecision() {
         return segment.get(LAYOUT$addressPrecision, OFFSET$addressPrecision);
     }
 
-    public void addressPrecision(@Unsigned long value) {
+    public void addressPrecision(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$addressPrecision, OFFSET$addressPrecision, value);
     }
 

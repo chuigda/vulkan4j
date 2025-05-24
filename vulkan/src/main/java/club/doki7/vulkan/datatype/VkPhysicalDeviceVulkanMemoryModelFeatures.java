@@ -180,27 +180,27 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int vulkanMemoryModel() {
+    public @Unsigned @NativeType("VkBool32") int vulkanMemoryModel() {
         return segment.get(LAYOUT$vulkanMemoryModel, OFFSET$vulkanMemoryModel);
     }
 
-    public void vulkanMemoryModel(@Unsigned int value) {
+    public void vulkanMemoryModel(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$vulkanMemoryModel, OFFSET$vulkanMemoryModel, value);
     }
 
-    public @Unsigned int vulkanMemoryModelDeviceScope() {
+    public @Unsigned @NativeType("VkBool32") int vulkanMemoryModelDeviceScope() {
         return segment.get(LAYOUT$vulkanMemoryModelDeviceScope, OFFSET$vulkanMemoryModelDeviceScope);
     }
 
-    public void vulkanMemoryModelDeviceScope(@Unsigned int value) {
+    public void vulkanMemoryModelDeviceScope(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$vulkanMemoryModelDeviceScope, OFFSET$vulkanMemoryModelDeviceScope, value);
     }
 
-    public @Unsigned int vulkanMemoryModelAvailabilityVisibilityChains() {
+    public @Unsigned @NativeType("VkBool32") int vulkanMemoryModelAvailabilityVisibilityChains() {
         return segment.get(LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains, OFFSET$vulkanMemoryModelAvailabilityVisibilityChains);
     }
 
-    public void vulkanMemoryModelAvailabilityVisibilityChains(@Unsigned int value) {
+    public void vulkanMemoryModelAvailabilityVisibilityChains(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains, OFFSET$vulkanMemoryModelAvailabilityVisibilityChains, value);
     }
 

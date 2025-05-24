@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(@NotNu
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderRelaxedExtendedInstruction() {
+    public @Unsigned @NativeType("VkBool32") int shaderRelaxedExtendedInstruction() {
         return segment.get(LAYOUT$shaderRelaxedExtendedInstruction, OFFSET$shaderRelaxedExtendedInstruction);
     }
 
-    public void shaderRelaxedExtendedInstruction(@Unsigned int value) {
+    public void shaderRelaxedExtendedInstruction(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderRelaxedExtendedInstruction, OFFSET$shaderRelaxedExtendedInstruction, value);
     }
 

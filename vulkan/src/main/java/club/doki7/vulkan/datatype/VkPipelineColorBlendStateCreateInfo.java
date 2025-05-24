@@ -191,11 +191,11 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned int logicOpEnable() {
+    public @Unsigned @NativeType("VkBool32") int logicOpEnable() {
         return segment.get(LAYOUT$logicOpEnable, OFFSET$logicOpEnable);
     }
 
-    public void logicOpEnable(@Unsigned int value) {
+    public void logicOpEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$logicOpEnable, OFFSET$logicOpEnable, value);
     }
 

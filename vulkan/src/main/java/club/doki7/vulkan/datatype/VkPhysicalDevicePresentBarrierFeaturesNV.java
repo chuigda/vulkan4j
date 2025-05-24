@@ -178,11 +178,11 @@ public record VkPhysicalDevicePresentBarrierFeaturesNV(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int presentBarrier() {
+    public @Unsigned @NativeType("VkBool32") int presentBarrier() {
         return segment.get(LAYOUT$presentBarrier, OFFSET$presentBarrier);
     }
 
-    public void presentBarrier(@Unsigned int value) {
+    public void presentBarrier(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$presentBarrier, OFFSET$presentBarrier, value);
     }
 

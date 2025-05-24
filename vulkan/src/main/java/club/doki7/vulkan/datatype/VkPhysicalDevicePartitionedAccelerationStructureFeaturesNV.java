@@ -178,11 +178,11 @@ public record VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(@NotNul
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int partitionedAccelerationStructure() {
+    public @Unsigned @NativeType("VkBool32") int partitionedAccelerationStructure() {
         return segment.get(LAYOUT$partitionedAccelerationStructure, OFFSET$partitionedAccelerationStructure);
     }
 
-    public void partitionedAccelerationStructure(@Unsigned int value) {
+    public void partitionedAccelerationStructure(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$partitionedAccelerationStructure, OFFSET$partitionedAccelerationStructure, value);
     }
 

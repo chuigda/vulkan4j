@@ -180,19 +180,19 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int lowLatencyMode() {
+    public @Unsigned @NativeType("VkBool32") int lowLatencyMode() {
         return segment.get(LAYOUT$lowLatencyMode, OFFSET$lowLatencyMode);
     }
 
-    public void lowLatencyMode(@Unsigned int value) {
+    public void lowLatencyMode(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$lowLatencyMode, OFFSET$lowLatencyMode, value);
     }
 
-    public @Unsigned int lowLatencyBoost() {
+    public @Unsigned @NativeType("VkBool32") int lowLatencyBoost() {
         return segment.get(LAYOUT$lowLatencyBoost, OFFSET$lowLatencyBoost);
     }
 
-    public void lowLatencyBoost(@Unsigned int value) {
+    public void lowLatencyBoost(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$lowLatencyBoost, OFFSET$lowLatencyBoost, value);
     }
 

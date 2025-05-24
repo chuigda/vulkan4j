@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderTerminateInvocationFeatures(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderTerminateInvocation() {
+    public @Unsigned @NativeType("VkBool32") int shaderTerminateInvocation() {
         return segment.get(LAYOUT$shaderTerminateInvocation, OFFSET$shaderTerminateInvocation);
     }
 
-    public void shaderTerminateInvocation(@Unsigned int value) {
+    public void shaderTerminateInvocation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderTerminateInvocation, OFFSET$shaderTerminateInvocation, value);
     }
 

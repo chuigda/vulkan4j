@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImageViewMinLodFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int minLod() {
+    public @Unsigned @NativeType("VkBool32") int minLod() {
         return segment.get(LAYOUT$minLod, OFFSET$minLod);
     }
 
-    public void minLod(@Unsigned int value) {
+    public void minLod(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$minLod, OFFSET$minLod, value);
     }
 

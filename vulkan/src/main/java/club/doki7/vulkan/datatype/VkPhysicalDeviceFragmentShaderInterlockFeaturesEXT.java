@@ -180,27 +180,27 @@ public record VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int fragmentShaderSampleInterlock() {
+    public @Unsigned @NativeType("VkBool32") int fragmentShaderSampleInterlock() {
         return segment.get(LAYOUT$fragmentShaderSampleInterlock, OFFSET$fragmentShaderSampleInterlock);
     }
 
-    public void fragmentShaderSampleInterlock(@Unsigned int value) {
+    public void fragmentShaderSampleInterlock(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$fragmentShaderSampleInterlock, OFFSET$fragmentShaderSampleInterlock, value);
     }
 
-    public @Unsigned int fragmentShaderPixelInterlock() {
+    public @Unsigned @NativeType("VkBool32") int fragmentShaderPixelInterlock() {
         return segment.get(LAYOUT$fragmentShaderPixelInterlock, OFFSET$fragmentShaderPixelInterlock);
     }
 
-    public void fragmentShaderPixelInterlock(@Unsigned int value) {
+    public void fragmentShaderPixelInterlock(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$fragmentShaderPixelInterlock, OFFSET$fragmentShaderPixelInterlock, value);
     }
 
-    public @Unsigned int fragmentShaderShadingRateInterlock() {
+    public @Unsigned @NativeType("VkBool32") int fragmentShaderShadingRateInterlock() {
         return segment.get(LAYOUT$fragmentShaderShadingRateInterlock, OFFSET$fragmentShaderShadingRateInterlock);
     }
 
-    public void fragmentShaderShadingRateInterlock(@Unsigned int value) {
+    public void fragmentShaderShadingRateInterlock(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$fragmentShaderShadingRateInterlock, OFFSET$fragmentShaderShadingRateInterlock, value);
     }
 

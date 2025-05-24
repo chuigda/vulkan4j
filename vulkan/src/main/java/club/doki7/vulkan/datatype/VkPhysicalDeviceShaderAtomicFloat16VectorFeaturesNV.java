@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderFloat16VectorAtomics() {
+    public @Unsigned @NativeType("VkBool32") int shaderFloat16VectorAtomics() {
         return segment.get(LAYOUT$shaderFloat16VectorAtomics, OFFSET$shaderFloat16VectorAtomics);
     }
 
-    public void shaderFloat16VectorAtomics(@Unsigned int value) {
+    public void shaderFloat16VectorAtomics(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderFloat16VectorAtomics, OFFSET$shaderFloat16VectorAtomics, value);
     }
 

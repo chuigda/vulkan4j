@@ -180,11 +180,11 @@ public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(@NotNull Me
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long extendedSparseAddressSpaceSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long extendedSparseAddressSpaceSize() {
         return segment.get(LAYOUT$extendedSparseAddressSpaceSize, OFFSET$extendedSparseAddressSpaceSize);
     }
 
-    public void extendedSparseAddressSpaceSize(@Unsigned long value) {
+    public void extendedSparseAddressSpaceSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$extendedSparseAddressSpaceSize, OFFSET$extendedSparseAddressSpaceSize, value);
     }
 

@@ -183,11 +183,11 @@ public record VkBufferImageCopy2(@NotNull MemorySegment segment) implements IVkB
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long bufferOffset() {
+    public @Unsigned @NativeType("VkDeviceSize") long bufferOffset() {
         return segment.get(LAYOUT$bufferOffset, OFFSET$bufferOffset);
     }
 
-    public void bufferOffset(@Unsigned long value) {
+    public void bufferOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$bufferOffset, OFFSET$bufferOffset, value);
     }
 

@@ -140,11 +140,11 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
         return ret;
     }
 
-    public @Unsigned long bufferAddress() {
+    public @Unsigned @NativeType("VkDeviceAddress") long bufferAddress() {
         return segment.get(LAYOUT$bufferAddress, OFFSET$bufferAddress);
     }
 
-    public void bufferAddress(@Unsigned long value) {
+    public void bufferAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$bufferAddress, OFFSET$bufferAddress, value);
     }
 

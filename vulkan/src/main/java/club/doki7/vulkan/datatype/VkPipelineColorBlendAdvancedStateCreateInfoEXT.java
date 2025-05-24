@@ -180,19 +180,19 @@ public record VkPipelineColorBlendAdvancedStateCreateInfoEXT(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int srcPremultiplied() {
+    public @Unsigned @NativeType("VkBool32") int srcPremultiplied() {
         return segment.get(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied);
     }
 
-    public void srcPremultiplied(@Unsigned int value) {
+    public void srcPremultiplied(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied, value);
     }
 
-    public @Unsigned int dstPremultiplied() {
+    public @Unsigned @NativeType("VkBool32") int dstPremultiplied() {
         return segment.get(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied);
     }
 
-    public void dstPremultiplied(@Unsigned int value) {
+    public void dstPremultiplied(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied, value);
     }
 

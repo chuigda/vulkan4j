@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderFloatControls2Features(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderFloatControls2() {
+    public @Unsigned @NativeType("VkBool32") int shaderFloatControls2() {
         return segment.get(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2);
     }
 
-    public void shaderFloatControls2(@Unsigned int value) {
+    public void shaderFloatControls2(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2, value);
     }
 

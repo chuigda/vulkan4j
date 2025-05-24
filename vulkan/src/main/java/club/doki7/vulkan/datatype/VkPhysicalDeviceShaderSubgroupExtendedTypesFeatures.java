@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderSubgroupExtendedTypes() {
+    public @Unsigned @NativeType("VkBool32") int shaderSubgroupExtendedTypes() {
         return segment.get(LAYOUT$shaderSubgroupExtendedTypes, OFFSET$shaderSubgroupExtendedTypes);
     }
 
-    public void shaderSubgroupExtendedTypes(@Unsigned int value) {
+    public void shaderSubgroupExtendedTypes(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderSubgroupExtendedTypes, OFFSET$shaderSubgroupExtendedTypes, value);
     }
 

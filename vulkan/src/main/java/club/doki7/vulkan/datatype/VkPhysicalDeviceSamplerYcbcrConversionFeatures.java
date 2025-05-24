@@ -178,11 +178,11 @@ public record VkPhysicalDeviceSamplerYcbcrConversionFeatures(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int samplerYcbcrConversion() {
+    public @Unsigned @NativeType("VkBool32") int samplerYcbcrConversion() {
         return segment.get(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion);
     }
 
-    public void samplerYcbcrConversion(@Unsigned int value) {
+    public void samplerYcbcrConversion(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion, value);
     }
 

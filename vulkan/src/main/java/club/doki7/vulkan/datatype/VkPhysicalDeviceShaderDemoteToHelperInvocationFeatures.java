@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderDemoteToHelperInvocation() {
+    public @Unsigned @NativeType("VkBool32") int shaderDemoteToHelperInvocation() {
         return segment.get(LAYOUT$shaderDemoteToHelperInvocation, OFFSET$shaderDemoteToHelperInvocation);
     }
 
-    public void shaderDemoteToHelperInvocation(@Unsigned int value) {
+    public void shaderDemoteToHelperInvocation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderDemoteToHelperInvocation, OFFSET$shaderDemoteToHelperInvocation, value);
     }
 

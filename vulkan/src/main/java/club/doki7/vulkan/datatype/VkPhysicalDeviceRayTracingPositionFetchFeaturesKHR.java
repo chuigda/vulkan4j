@@ -178,11 +178,11 @@ public record VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int rayTracingPositionFetch() {
+    public @Unsigned @NativeType("VkBool32") int rayTracingPositionFetch() {
         return segment.get(LAYOUT$rayTracingPositionFetch, OFFSET$rayTracingPositionFetch);
     }
 
-    public void rayTracingPositionFetch(@Unsigned int value) {
+    public void rayTracingPositionFetch(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$rayTracingPositionFetch, OFFSET$rayTracingPositionFetch, value);
     }
 

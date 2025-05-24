@@ -178,11 +178,11 @@ public record VkPhysicalDeviceSynchronization2Features(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int synchronization2() {
+    public @Unsigned @NativeType("VkBool32") int synchronization2() {
         return segment.get(LAYOUT$synchronization2, OFFSET$synchronization2);
     }
 
-    public void synchronization2(@Unsigned int value) {
+    public void synchronization2(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$synchronization2, OFFSET$synchronization2, value);
     }
 

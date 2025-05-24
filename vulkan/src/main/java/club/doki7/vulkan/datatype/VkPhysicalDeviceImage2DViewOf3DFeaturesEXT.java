@@ -179,19 +179,19 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int image2DViewOf3D() {
+    public @Unsigned @NativeType("VkBool32") int image2DViewOf3D() {
         return segment.get(LAYOUT$image2DViewOf3D, OFFSET$image2DViewOf3D);
     }
 
-    public void image2DViewOf3D(@Unsigned int value) {
+    public void image2DViewOf3D(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$image2DViewOf3D, OFFSET$image2DViewOf3D, value);
     }
 
-    public @Unsigned int sampler2DViewOf3D() {
+    public @Unsigned @NativeType("VkBool32") int sampler2DViewOf3D() {
         return segment.get(LAYOUT$sampler2DViewOf3D, OFFSET$sampler2DViewOf3D);
     }
 
-    public void sampler2DViewOf3D(@Unsigned int value) {
+    public void sampler2DViewOf3D(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sampler2DViewOf3D, OFFSET$sampler2DViewOf3D, value);
     }
 

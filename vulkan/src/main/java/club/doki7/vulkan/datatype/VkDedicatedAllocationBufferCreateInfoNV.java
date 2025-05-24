@@ -178,11 +178,11 @@ public record VkDedicatedAllocationBufferCreateInfoNV(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int dedicatedAllocation() {
+    public @Unsigned @NativeType("VkBool32") int dedicatedAllocation() {
         return segment.get(LAYOUT$dedicatedAllocation, OFFSET$dedicatedAllocation);
     }
 
-    public void dedicatedAllocation(@Unsigned int value) {
+    public void dedicatedAllocation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$dedicatedAllocation, OFFSET$dedicatedAllocation, value);
     }
 

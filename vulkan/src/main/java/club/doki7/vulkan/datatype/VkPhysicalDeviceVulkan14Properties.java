@@ -218,11 +218,11 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor, value);
     }
 
-    public @Unsigned int supportsNonZeroFirstInstance() {
+    public @Unsigned @NativeType("VkBool32") int supportsNonZeroFirstInstance() {
         return segment.get(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance);
     }
 
-    public void supportsNonZeroFirstInstance(@Unsigned int value) {
+    public void supportsNonZeroFirstInstance(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance, value);
     }
 
@@ -234,75 +234,75 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors, value);
     }
 
-    public @Unsigned int dynamicRenderingLocalReadDepthStencilAttachments() {
+    public @Unsigned @NativeType("VkBool32") int dynamicRenderingLocalReadDepthStencilAttachments() {
         return segment.get(LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments, OFFSET$dynamicRenderingLocalReadDepthStencilAttachments);
     }
 
-    public void dynamicRenderingLocalReadDepthStencilAttachments(@Unsigned int value) {
+    public void dynamicRenderingLocalReadDepthStencilAttachments(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$dynamicRenderingLocalReadDepthStencilAttachments, OFFSET$dynamicRenderingLocalReadDepthStencilAttachments, value);
     }
 
-    public @Unsigned int dynamicRenderingLocalReadMultisampledAttachments() {
+    public @Unsigned @NativeType("VkBool32") int dynamicRenderingLocalReadMultisampledAttachments() {
         return segment.get(LAYOUT$dynamicRenderingLocalReadMultisampledAttachments, OFFSET$dynamicRenderingLocalReadMultisampledAttachments);
     }
 
-    public void dynamicRenderingLocalReadMultisampledAttachments(@Unsigned int value) {
+    public void dynamicRenderingLocalReadMultisampledAttachments(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$dynamicRenderingLocalReadMultisampledAttachments, OFFSET$dynamicRenderingLocalReadMultisampledAttachments, value);
     }
 
-    public @Unsigned int earlyFragmentMultisampleCoverageAfterSampleCounting() {
+    public @Unsigned @NativeType("VkBool32") int earlyFragmentMultisampleCoverageAfterSampleCounting() {
         return segment.get(LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting);
     }
 
-    public void earlyFragmentMultisampleCoverageAfterSampleCounting(@Unsigned int value) {
+    public void earlyFragmentMultisampleCoverageAfterSampleCounting(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting, value);
     }
 
-    public @Unsigned int earlyFragmentSampleMaskTestBeforeSampleCounting() {
+    public @Unsigned @NativeType("VkBool32") int earlyFragmentSampleMaskTestBeforeSampleCounting() {
         return segment.get(LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting);
     }
 
-    public void earlyFragmentSampleMaskTestBeforeSampleCounting(@Unsigned int value) {
+    public void earlyFragmentSampleMaskTestBeforeSampleCounting(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting, value);
     }
 
-    public @Unsigned int depthStencilSwizzleOneSupport() {
+    public @Unsigned @NativeType("VkBool32") int depthStencilSwizzleOneSupport() {
         return segment.get(LAYOUT$depthStencilSwizzleOneSupport, OFFSET$depthStencilSwizzleOneSupport);
     }
 
-    public void depthStencilSwizzleOneSupport(@Unsigned int value) {
+    public void depthStencilSwizzleOneSupport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthStencilSwizzleOneSupport, OFFSET$depthStencilSwizzleOneSupport, value);
     }
 
-    public @Unsigned int polygonModePointSize() {
+    public @Unsigned @NativeType("VkBool32") int polygonModePointSize() {
         return segment.get(LAYOUT$polygonModePointSize, OFFSET$polygonModePointSize);
     }
 
-    public void polygonModePointSize(@Unsigned int value) {
+    public void polygonModePointSize(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$polygonModePointSize, OFFSET$polygonModePointSize, value);
     }
 
-    public @Unsigned int nonStrictSinglePixelWideLinesUseParallelogram() {
+    public @Unsigned @NativeType("VkBool32") int nonStrictSinglePixelWideLinesUseParallelogram() {
         return segment.get(LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, OFFSET$nonStrictSinglePixelWideLinesUseParallelogram);
     }
 
-    public void nonStrictSinglePixelWideLinesUseParallelogram(@Unsigned int value) {
+    public void nonStrictSinglePixelWideLinesUseParallelogram(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, OFFSET$nonStrictSinglePixelWideLinesUseParallelogram, value);
     }
 
-    public @Unsigned int nonStrictWideLinesUseParallelogram() {
+    public @Unsigned @NativeType("VkBool32") int nonStrictWideLinesUseParallelogram() {
         return segment.get(LAYOUT$nonStrictWideLinesUseParallelogram, OFFSET$nonStrictWideLinesUseParallelogram);
     }
 
-    public void nonStrictWideLinesUseParallelogram(@Unsigned int value) {
+    public void nonStrictWideLinesUseParallelogram(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$nonStrictWideLinesUseParallelogram, OFFSET$nonStrictWideLinesUseParallelogram, value);
     }
 
-    public @Unsigned int blockTexelViewCompatibleMultipleLayers() {
+    public @Unsigned @NativeType("VkBool32") int blockTexelViewCompatibleMultipleLayers() {
         return segment.get(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers);
     }
 
-    public void blockTexelViewCompatibleMultipleLayers(@Unsigned int value) {
+    public void blockTexelViewCompatibleMultipleLayers(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers, value);
     }
 
@@ -314,11 +314,11 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount, value);
     }
 
-    public @Unsigned int fragmentShadingRateClampCombinerInputs() {
+    public @Unsigned @NativeType("VkBool32") int fragmentShadingRateClampCombinerInputs() {
         return segment.get(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs);
     }
 
-    public void fragmentShadingRateClampCombinerInputs(@Unsigned int value) {
+    public void fragmentShadingRateClampCombinerInputs(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs, value);
     }
 
@@ -430,11 +430,11 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
     }
 
-    public @Unsigned int identicalMemoryTypeRequirements() {
+    public @Unsigned @NativeType("VkBool32") int identicalMemoryTypeRequirements() {
         return segment.get(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements);
     }
 
-    public void identicalMemoryTypeRequirements(@Unsigned int value) {
+    public void identicalMemoryTypeRequirements(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
     }
 

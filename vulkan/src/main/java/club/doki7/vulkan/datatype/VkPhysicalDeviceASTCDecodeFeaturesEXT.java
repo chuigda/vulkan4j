@@ -178,11 +178,11 @@ public record VkPhysicalDeviceASTCDecodeFeaturesEXT(@NotNull MemorySegment segme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int decodeModeSharedExponent() {
+    public @Unsigned @NativeType("VkBool32") int decodeModeSharedExponent() {
         return segment.get(LAYOUT$decodeModeSharedExponent, OFFSET$decodeModeSharedExponent);
     }
 
-    public void decodeModeSharedExponent(@Unsigned int value) {
+    public void decodeModeSharedExponent(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$decodeModeSharedExponent, OFFSET$decodeModeSharedExponent, value);
     }
 

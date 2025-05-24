@@ -179,19 +179,19 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int filterCubic() {
+    public @Unsigned @NativeType("VkBool32") int filterCubic() {
         return segment.get(LAYOUT$filterCubic, OFFSET$filterCubic);
     }
 
-    public void filterCubic(@Unsigned int value) {
+    public void filterCubic(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$filterCubic, OFFSET$filterCubic, value);
     }
 
-    public @Unsigned int filterCubicMinmax() {
+    public @Unsigned @NativeType("VkBool32") int filterCubicMinmax() {
         return segment.get(LAYOUT$filterCubicMinmax, OFFSET$filterCubicMinmax);
     }
 
-    public void filterCubicMinmax(@Unsigned int value) {
+    public void filterCubicMinmax(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$filterCubicMinmax, OFFSET$filterCubicMinmax, value);
     }
 

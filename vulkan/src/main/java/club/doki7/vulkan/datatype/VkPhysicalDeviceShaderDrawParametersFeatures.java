@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderDrawParametersFeatures(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderDrawParameters() {
+    public @Unsigned @NativeType("VkBool32") int shaderDrawParameters() {
         return segment.get(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters);
     }
 
-    public void shaderDrawParameters(@Unsigned int value) {
+    public void shaderDrawParameters(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters, value);
     }
 

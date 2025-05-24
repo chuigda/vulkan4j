@@ -178,11 +178,11 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(@NotNull Memory
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int dynamicPrimitiveTopologyUnrestricted() {
+    public @Unsigned @NativeType("VkBool32") int dynamicPrimitiveTopologyUnrestricted() {
         return segment.get(LAYOUT$dynamicPrimitiveTopologyUnrestricted, OFFSET$dynamicPrimitiveTopologyUnrestricted);
     }
 
-    public void dynamicPrimitiveTopologyUnrestricted(@Unsigned int value) {
+    public void dynamicPrimitiveTopologyUnrestricted(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$dynamicPrimitiveTopologyUnrestricted, OFFSET$dynamicPrimitiveTopologyUnrestricted, value);
     }
 

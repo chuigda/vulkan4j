@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderIntegerDotProductFeatures(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderIntegerDotProduct() {
+    public @Unsigned @NativeType("VkBool32") int shaderIntegerDotProduct() {
         return segment.get(LAYOUT$shaderIntegerDotProduct, OFFSET$shaderIntegerDotProduct);
     }
 
-    public void shaderIntegerDotProduct(@Unsigned int value) {
+    public void shaderIntegerDotProduct(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderIntegerDotProduct, OFFSET$shaderIntegerDotProduct, value);
     }
 

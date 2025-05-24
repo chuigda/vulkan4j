@@ -243,11 +243,11 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         segment.set(LAYOUT$ResultType, OFFSET$ResultType, value);
     }
 
-    public @Unsigned int saturatingAccumulation() {
+    public @Unsigned @NativeType("VkBool32") int saturatingAccumulation() {
         return segment.get(LAYOUT$saturatingAccumulation, OFFSET$saturatingAccumulation);
     }
 
-    public void saturatingAccumulation(@Unsigned int value) {
+    public void saturatingAccumulation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$saturatingAccumulation, OFFSET$saturatingAccumulation, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNul
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int dedicatedAllocationImageAliasing() {
+    public @Unsigned @NativeType("VkBool32") int dedicatedAllocationImageAliasing() {
         return segment.get(LAYOUT$dedicatedAllocationImageAliasing, OFFSET$dedicatedAllocationImageAliasing);
     }
 
-    public void dedicatedAllocationImageAliasing(@Unsigned int value) {
+    public void dedicatedAllocationImageAliasing(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$dedicatedAllocationImageAliasing, OFFSET$dedicatedAllocationImageAliasing, value);
     }
 

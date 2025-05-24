@@ -180,27 +180,27 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int micromap() {
+    public @Unsigned @NativeType("VkBool32") int micromap() {
         return segment.get(LAYOUT$micromap, OFFSET$micromap);
     }
 
-    public void micromap(@Unsigned int value) {
+    public void micromap(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$micromap, OFFSET$micromap, value);
     }
 
-    public @Unsigned int micromapCaptureReplay() {
+    public @Unsigned @NativeType("VkBool32") int micromapCaptureReplay() {
         return segment.get(LAYOUT$micromapCaptureReplay, OFFSET$micromapCaptureReplay);
     }
 
-    public void micromapCaptureReplay(@Unsigned int value) {
+    public void micromapCaptureReplay(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$micromapCaptureReplay, OFFSET$micromapCaptureReplay, value);
     }
 
-    public @Unsigned int micromapHostCommands() {
+    public @Unsigned @NativeType("VkBool32") int micromapHostCommands() {
         return segment.get(LAYOUT$micromapHostCommands, OFFSET$micromapHostCommands);
     }
 
-    public void micromapHostCommands(@Unsigned int value) {
+    public void micromapHostCommands(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$micromapHostCommands, OFFSET$micromapHostCommands, value);
     }
 

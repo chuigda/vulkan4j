@@ -178,11 +178,11 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int localDimmingEnable() {
+    public @Unsigned @NativeType("VkBool32") int localDimmingEnable() {
         return segment.get(LAYOUT$localDimmingEnable, OFFSET$localDimmingEnable);
     }
 
-    public void localDimmingEnable(@Unsigned int value) {
+    public void localDimmingEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$localDimmingEnable, OFFSET$localDimmingEnable, value);
     }
 

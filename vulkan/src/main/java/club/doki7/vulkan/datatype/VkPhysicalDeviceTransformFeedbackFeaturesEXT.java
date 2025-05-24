@@ -179,19 +179,19 @@ public record VkPhysicalDeviceTransformFeedbackFeaturesEXT(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int transformFeedback() {
+    public @Unsigned @NativeType("VkBool32") int transformFeedback() {
         return segment.get(LAYOUT$transformFeedback, OFFSET$transformFeedback);
     }
 
-    public void transformFeedback(@Unsigned int value) {
+    public void transformFeedback(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$transformFeedback, OFFSET$transformFeedback, value);
     }
 
-    public @Unsigned int geometryStreams() {
+    public @Unsigned @NativeType("VkBool32") int geometryStreams() {
         return segment.get(LAYOUT$geometryStreams, OFFSET$geometryStreams);
     }
 
-    public void geometryStreams(@Unsigned int value) {
+    public void geometryStreams(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$geometryStreams, OFFSET$geometryStreams, value);
     }
 

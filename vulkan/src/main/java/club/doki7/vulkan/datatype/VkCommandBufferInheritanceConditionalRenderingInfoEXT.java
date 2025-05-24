@@ -178,11 +178,11 @@ public record VkCommandBufferInheritanceConditionalRenderingInfoEXT(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int conditionalRenderingEnable() {
+    public @Unsigned @NativeType("VkBool32") int conditionalRenderingEnable() {
         return segment.get(LAYOUT$conditionalRenderingEnable, OFFSET$conditionalRenderingEnable);
     }
 
-    public void conditionalRenderingEnable(@Unsigned int value) {
+    public void conditionalRenderingEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$conditionalRenderingEnable, OFFSET$conditionalRenderingEnable, value);
     }
 

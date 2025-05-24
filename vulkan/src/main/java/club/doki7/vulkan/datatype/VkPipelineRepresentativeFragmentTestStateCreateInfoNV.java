@@ -178,11 +178,11 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int representativeFragmentTestEnable() {
+    public @Unsigned @NativeType("VkBool32") int representativeFragmentTestEnable() {
         return segment.get(LAYOUT$representativeFragmentTestEnable, OFFSET$representativeFragmentTestEnable);
     }
 
-    public void representativeFragmentTestEnable(@Unsigned int value) {
+    public void representativeFragmentTestEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$representativeFragmentTestEnable, OFFSET$representativeFragmentTestEnable, value);
     }
 

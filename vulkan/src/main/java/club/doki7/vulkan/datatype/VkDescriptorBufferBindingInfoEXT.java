@@ -179,11 +179,11 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long address() {
+    public @Unsigned @NativeType("VkDeviceAddress") long address() {
         return segment.get(LAYOUT$address, OFFSET$address);
     }
 
-    public void address(@Unsigned long value) {
+    public void address(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$address, OFFSET$address, value);
     }
 

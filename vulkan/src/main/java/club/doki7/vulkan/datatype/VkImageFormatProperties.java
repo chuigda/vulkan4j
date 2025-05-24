@@ -174,11 +174,11 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
     }
 
-    public @Unsigned long maxResourceSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long maxResourceSize() {
         return segment.get(LAYOUT$maxResourceSize, OFFSET$maxResourceSize);
     }
 
-    public void maxResourceSize(@Unsigned long value) {
+    public void maxResourceSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$maxResourceSize, OFFSET$maxResourceSize, value);
     }
 

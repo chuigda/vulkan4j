@@ -178,11 +178,11 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull Me
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int triStripVertexOrderIndependentOfProvokingVertex() {
+    public @Unsigned @NativeType("VkBool32") int triStripVertexOrderIndependentOfProvokingVertex() {
         return segment.get(LAYOUT$triStripVertexOrderIndependentOfProvokingVertex, OFFSET$triStripVertexOrderIndependentOfProvokingVertex);
     }
 
-    public void triStripVertexOrderIndependentOfProvokingVertex(@Unsigned int value) {
+    public void triStripVertexOrderIndependentOfProvokingVertex(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$triStripVertexOrderIndependentOfProvokingVertex, OFFSET$triStripVertexOrderIndependentOfProvokingVertex, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMultiDrawFeaturesEXT(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int multiDraw() {
+    public @Unsigned @NativeType("VkBool32") int multiDraw() {
         return segment.get(LAYOUT$multiDraw, OFFSET$multiDraw);
     }
 
-    public void multiDraw(@Unsigned int value) {
+    public void multiDraw(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$multiDraw, OFFSET$multiDraw, value);
     }
 

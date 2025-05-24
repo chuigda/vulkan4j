@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImageAlignmentControlFeaturesMESA(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int imageAlignmentControl() {
+    public @Unsigned @NativeType("VkBool32") int imageAlignmentControl() {
         return segment.get(LAYOUT$imageAlignmentControl, OFFSET$imageAlignmentControl);
     }
 
-    public void imageAlignmentControl(@Unsigned int value) {
+    public void imageAlignmentControl(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$imageAlignmentControl, OFFSET$imageAlignmentControl, value);
     }
 

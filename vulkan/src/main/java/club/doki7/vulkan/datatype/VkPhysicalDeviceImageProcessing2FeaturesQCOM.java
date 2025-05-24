@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImageProcessing2FeaturesQCOM(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int textureBlockMatch2() {
+    public @Unsigned @NativeType("VkBool32") int textureBlockMatch2() {
         return segment.get(LAYOUT$textureBlockMatch2, OFFSET$textureBlockMatch2);
     }
 
-    public void textureBlockMatch2(@Unsigned int value) {
+    public void textureBlockMatch2(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$textureBlockMatch2, OFFSET$textureBlockMatch2, value);
     }
 

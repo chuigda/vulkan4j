@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int deviceGeneratedCommands() {
+    public @Unsigned @NativeType("VkBool32") int deviceGeneratedCommands() {
         return segment.get(LAYOUT$deviceGeneratedCommands, OFFSET$deviceGeneratedCommands);
     }
 
-    public void deviceGeneratedCommands(@Unsigned int value) {
+    public void deviceGeneratedCommands(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$deviceGeneratedCommands, OFFSET$deviceGeneratedCommands, value);
     }
 

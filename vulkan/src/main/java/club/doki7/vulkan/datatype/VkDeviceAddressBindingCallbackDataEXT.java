@@ -189,19 +189,19 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned long baseAddress() {
+    public @Unsigned @NativeType("VkDeviceAddress") long baseAddress() {
         return segment.get(LAYOUT$baseAddress, OFFSET$baseAddress);
     }
 
-    public void baseAddress(@Unsigned long value) {
+    public void baseAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$baseAddress, OFFSET$baseAddress, value);
     }
 
-    public @Unsigned long size() {
+    public @Unsigned @NativeType("VkDeviceSize") long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned long value) {
+    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 

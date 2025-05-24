@@ -156,11 +156,11 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
         segment.set(LAYOUT$clusterReferencesStride, OFFSET$clusterReferencesStride, value);
     }
 
-    public @Unsigned long clusterReferences() {
+    public @Unsigned @NativeType("VkDeviceAddress") long clusterReferences() {
         return segment.get(LAYOUT$clusterReferences, OFFSET$clusterReferences);
     }
 
-    public void clusterReferences(@Unsigned long value) {
+    public void clusterReferences(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$clusterReferences, OFFSET$clusterReferences, value);
     }
 

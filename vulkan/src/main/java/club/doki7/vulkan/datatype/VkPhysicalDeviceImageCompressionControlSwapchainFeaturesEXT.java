@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(@NotNu
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int imageCompressionControlSwapchain() {
+    public @Unsigned @NativeType("VkBool32") int imageCompressionControlSwapchain() {
         return segment.get(LAYOUT$imageCompressionControlSwapchain, OFFSET$imageCompressionControlSwapchain);
     }
 
-    public void imageCompressionControlSwapchain(@Unsigned int value) {
+    public void imageCompressionControlSwapchain(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$imageCompressionControlSwapchain, OFFSET$imageCompressionControlSwapchain, value);
     }
 

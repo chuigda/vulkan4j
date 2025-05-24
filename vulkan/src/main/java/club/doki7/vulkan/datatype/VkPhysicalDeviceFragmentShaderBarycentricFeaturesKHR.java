@@ -178,11 +178,11 @@ public record VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int fragmentShaderBarycentric() {
+    public @Unsigned @NativeType("VkBool32") int fragmentShaderBarycentric() {
         return segment.get(LAYOUT$fragmentShaderBarycentric, OFFSET$fragmentShaderBarycentric);
     }
 
-    public void fragmentShaderBarycentric(@Unsigned int value) {
+    public void fragmentShaderBarycentric(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$fragmentShaderBarycentric, OFFSET$fragmentShaderBarycentric, value);
     }
 

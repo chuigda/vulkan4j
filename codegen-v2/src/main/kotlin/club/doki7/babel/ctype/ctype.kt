@@ -16,11 +16,10 @@ sealed interface CType {
     val jDescriptorParamLayout: String get() = jLayout
 }
 
-class CVoidType : CType {
+data class CVoidType(override val cType: String = "void") : CType {
     override val jType: String = "void"
     override val jLayout: String get() = error("should not call `jLayout` on `void`")
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `void`")
-    override val cType: String = "void"
 }
 
 val voidType = CVoidType()
@@ -38,7 +37,7 @@ data class CPointerType(
         """@Pointer(comment="void*") MemorySegment"""
     }
 
-    override val jLayout: String = if (pointee == voidType) {
+    override val jLayout: String = if (pointee is CVoidType) {
         "ValueLayout.ADDRESS"
     }
     else {
@@ -93,7 +92,16 @@ data class CFixedIntType(
     val unsigned: Boolean,
     override val comment: String? = null
 ) : CFixedSizeType {
-    override val jType: String get() = """${if (unsigned) "@Unsigned " else ""}$jTypeNoSign"""
+    override val jType: String get() = buildString {
+        if (comment != null) {
+            append("@NativeType(\"$comment\") ")
+        }
+        if (unsigned) {
+            append("@Unsigned ")
+        }
+        append(jTypeNoSign)
+    }
+
     override val jLayout: String get() = when (byteSize) {
         1 -> "ValueLayout.JAVA_BYTE"
         2 -> "ValueLayout.JAVA_SHORT"
@@ -115,7 +123,16 @@ data class CFixedIntType(
         8 -> "long"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val jPtrType: String get() = """${if (unsigned) "@Unsigned " else ""}$jPtrTypeNoAnnotation"""
+    override val jPtrType: String get() = buildString {
+        if (comment != null) {
+            append("@Pointer(comment=\"$comment\") ")
+        }
+        if (unsigned) {
+            append("@Unsigned ")
+        }
+        append(jPtrTypeNoAnnotation)
+    }
+
     override val jPtrTypeNoAnnotation: String get() = when (byteSize) {
         1 -> "BytePtr"
         2 -> "ShortPtr"
@@ -290,32 +307,32 @@ private val knownTypes = mapOf(
     "unsigned short" to uint16Type,
 
     // GLES2 base types
-    "GLbyte" to int8Type,
-    "GLubyte" to uint8Type,
-    "GLchar" to int8Type,
-    "GLuchar" to uint8Type,
-    "GLclampf" to floatType,
-    "GLfixed" to int32Type,
-    "GLint" to int32Type,
-    "GLuint" to uint32Type,
-    "GLshort" to int16Type,
-    "Glushort" to uint16Type,
-    "GLfloat" to floatType,
+    "GLbyte" to int8Type.copy(comment = "GLbyte"),
+    "GLubyte" to uint8Type.copy(comment = "GLubyte"),
+    "GLchar" to int8Type.copy(comment = "GLchar"),
+    "GLuchar" to uint8Type.copy(comment = "GLuchar"),
+    "GLclampf" to floatType.copy(comment = "GLclampf"),
+    "GLfixed" to int32Type.copy(comment = "GLfixed"),
+    "GLint" to int32Type.copy(comment = "GLint"),
+    "GLuint" to uint32Type.copy(comment = "GLuint"),
+    "GLshort" to int16Type.copy(comment = "GLshort"),
+    "Glushort" to uint16Type.copy(comment = "GLushort"),
+    "GLfloat" to floatType.copy(comment = "GLfloat"),
     "GLvoid" to voidType,
-    "GLenum" to int32Type,
-    "GLsizei" to int32Type,
-    "GLsizeiptr" to cSizeType,
-    "GLintptr" to cSizeType,
-    "GLbitfield" to uint32Type,
-    "GLboolean" to uint8Type,
+    "GLenum" to int32Type.copy(comment = "GLenum"),
+    "GLsizei" to int32Type.copy(comment = "GLsizei"),
+    "GLsizeiptr" to cSizeType.copy(comment = "GLsizeiptr"),
+    "GLintptr" to cSizeType.copy(comment = "GLintptr"),
+    "GLbitfield" to uint32Type.copy(comment = "GLbitfield"),
+    "GLboolean" to uint8Type.copy(comment = "GLboolean"),
 
     // Vulkan base types
-    "VkSampleMask" to uint32Type,
-    "VkBool32" to uint32Type,
-    "VkFlags" to uint32Type,
-    "VkFlags64" to uint64Type,
-    "VkDeviceSize" to uint64Type,
-    "VkDeviceAddress" to uint64Type,
+    "VkSampleMask" to uint32Type.copy(comment = "VkSampleMask"),
+    "VkBool32" to uint32Type.copy(comment = "VkBool32"),
+    "VkFlags" to uint32Type.copy(comment = "VkFlags"),
+    "VkFlags64" to uint64Type.copy(comment = "VkFlags64"),
+    "VkDeviceSize" to uint64Type.copy(comment = "VkDeviceSize"),
+    "VkDeviceAddress" to uint64Type.copy(comment = "VkDeviceAddress"),
     "VkRemoteAddressNV" to pvoidType("VkRemoteAddressNV"),
 
     // Android
@@ -329,15 +346,15 @@ private val knownTypes = mapOf(
     // iOS or macOS
     "id" to pvoidType("id"),
     "CAMetalLayer" to pvoidType("CAMetalLayer"),
-    "GgpFrameToken" to uint32Type,
-    "GgpStreamDescriptor" to uint32Type,
+    "GgpFrameToken" to uint32Type.copy(comment = "GgpFrameToken"),
+    "GgpStreamDescriptor" to uint32Type.copy(comment = "GgpStreamDescriptor"),
     "IOSurfaceRef" to pvoidType("IOSurfaceRef"),
     "MTLBuffer_id" to pvoidType("MTLBuffer_id"),
     "MTLCommandQueue_id" to pvoidType("MTLCommandQueue_id"),
     "MTLDevice_id" to pvoidType("MTLDevice_id"),
     "MTLSharedEvent_id" to pvoidType("MTLSharedEvent_id"),
     "MTLTexture_id" to pvoidType("MTLTexture_id"),
-    "CGDirectDisplayID" to uint32Type,
+    "CGDirectDisplayID" to uint32Type.copy(comment = "CGDirectDisplayID"),
 
     // QNX
     "_screen_buffer" to pvoidType("_screen_buffer"),
@@ -347,10 +364,10 @@ private val knownTypes = mapOf(
     // Wayland
     "wl_display" to pvoidType("wl_display"),
     "wl_surface" to pvoidType("wl_surface"),
-    "wl_output" to voidType,
+    "wl_output" to voidType.copy(cType = "wl_output"),
 
     // Windows
-    "DWORD" to uint32Type,
+    "DWORD" to uint32Type.copy(comment = "DWORD"),
     "HANDLE" to pvoidType("HANDLE"),
     "HINSTANCE" to pvoidType("HINSTANCE"),
     "HMONITOR" to pvoidType("HMONITOR"),
@@ -361,16 +378,16 @@ private val knownTypes = mapOf(
 
     // X11
     "Display" to pvoidType("Display"),
-    "RROutput" to cLongType,
-    "RRCrtc" to cLongType,
-    "VisualID" to cLongType,
-    "Window" to cLongType,
+    "RROutput" to cLongType.copy(comment = "RROutput"),
+    "RRCrtc" to cLongType.copy(comment = "RRCrtc"),
+    "VisualID" to cLongType.copy(comment = "VisualID"),
+    "Window" to cLongType.copy(comment = "Window"),
     "GLXContext" to pvoidType("GLXContext"),
-    "GLXWindow" to cLongType,
-    "xcb_connection_t" to voidType,
-    "xcb_visualid_t" to uint32Type,
-    "xcb_window_t" to uint32Type,
-    "xcb_handle_t" to uint32Type,
+    "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
+    "xcb_connection_t" to voidType.copy(cType = "xcb_connection_t"),
+    "xcb_visualid_t" to uint32Type.copy(comment = "xcb_visualid_t"),
+    "xcb_window_t" to uint32Type.copy(comment = "xcb_window_t"),
+    "xcb_handle_t" to uint32Type.copy(comment = "xcb_handle_t"),
 
     // EGL
     "EGLDisplay" to pvoidType("EGLDisplay"),
@@ -385,10 +402,9 @@ private val knownTypes = mapOf(
     "NvSciBufObj" to pvoidType("NvSciBufObj"),
     "NvSciSyncAttrList" to pvoidType("NvSciSyncAttrList"),
     "NvSciSyncObj" to pvoidType("NvSciSyncObj"),
-    "NvSciSyncFence" to CArrayType(uint64Type, "6"),
 
     // FUCHSIA
-    "zx_handle_t" to uint32Type,
+    "zx_handle_t" to uint32Type.copy(comment = "zx_handle_t"),
 )
 
 fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {

@@ -182,43 +182,43 @@ public record VkPhysicalDevicePipelineBinaryPropertiesKHR(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int pipelineBinaryInternalCache() {
+    public @Unsigned @NativeType("VkBool32") int pipelineBinaryInternalCache() {
         return segment.get(LAYOUT$pipelineBinaryInternalCache, OFFSET$pipelineBinaryInternalCache);
     }
 
-    public void pipelineBinaryInternalCache(@Unsigned int value) {
+    public void pipelineBinaryInternalCache(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$pipelineBinaryInternalCache, OFFSET$pipelineBinaryInternalCache, value);
     }
 
-    public @Unsigned int pipelineBinaryInternalCacheControl() {
+    public @Unsigned @NativeType("VkBool32") int pipelineBinaryInternalCacheControl() {
         return segment.get(LAYOUT$pipelineBinaryInternalCacheControl, OFFSET$pipelineBinaryInternalCacheControl);
     }
 
-    public void pipelineBinaryInternalCacheControl(@Unsigned int value) {
+    public void pipelineBinaryInternalCacheControl(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$pipelineBinaryInternalCacheControl, OFFSET$pipelineBinaryInternalCacheControl, value);
     }
 
-    public @Unsigned int pipelineBinaryPrefersInternalCache() {
+    public @Unsigned @NativeType("VkBool32") int pipelineBinaryPrefersInternalCache() {
         return segment.get(LAYOUT$pipelineBinaryPrefersInternalCache, OFFSET$pipelineBinaryPrefersInternalCache);
     }
 
-    public void pipelineBinaryPrefersInternalCache(@Unsigned int value) {
+    public void pipelineBinaryPrefersInternalCache(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$pipelineBinaryPrefersInternalCache, OFFSET$pipelineBinaryPrefersInternalCache, value);
     }
 
-    public @Unsigned int pipelineBinaryPrecompiledInternalCache() {
+    public @Unsigned @NativeType("VkBool32") int pipelineBinaryPrecompiledInternalCache() {
         return segment.get(LAYOUT$pipelineBinaryPrecompiledInternalCache, OFFSET$pipelineBinaryPrecompiledInternalCache);
     }
 
-    public void pipelineBinaryPrecompiledInternalCache(@Unsigned int value) {
+    public void pipelineBinaryPrecompiledInternalCache(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$pipelineBinaryPrecompiledInternalCache, OFFSET$pipelineBinaryPrecompiledInternalCache, value);
     }
 
-    public @Unsigned int pipelineBinaryCompressedData() {
+    public @Unsigned @NativeType("VkBool32") int pipelineBinaryCompressedData() {
         return segment.get(LAYOUT$pipelineBinaryCompressedData, OFFSET$pipelineBinaryCompressedData);
     }
 
-    public void pipelineBinaryCompressedData(@Unsigned int value) {
+    public void pipelineBinaryCompressedData(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$pipelineBinaryCompressedData, OFFSET$pipelineBinaryCompressedData, value);
     }
 

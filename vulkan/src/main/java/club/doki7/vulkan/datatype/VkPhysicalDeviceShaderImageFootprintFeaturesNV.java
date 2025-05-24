@@ -178,11 +178,11 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int imageFootprint() {
+    public @Unsigned @NativeType("VkBool32") int imageFootprint() {
         return segment.get(LAYOUT$imageFootprint, OFFSET$imageFootprint);
     }
 
-    public void imageFootprint(@Unsigned int value) {
+    public void imageFootprint(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$imageFootprint, OFFSET$imageFootprint, value);
     }
 

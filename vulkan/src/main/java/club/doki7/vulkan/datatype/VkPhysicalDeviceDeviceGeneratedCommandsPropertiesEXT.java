@@ -269,19 +269,19 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding, value);
     }
 
-    public @Unsigned int deviceGeneratedCommandsTransformFeedback() {
+    public @Unsigned @NativeType("VkBool32") int deviceGeneratedCommandsTransformFeedback() {
         return segment.get(LAYOUT$deviceGeneratedCommandsTransformFeedback, OFFSET$deviceGeneratedCommandsTransformFeedback);
     }
 
-    public void deviceGeneratedCommandsTransformFeedback(@Unsigned int value) {
+    public void deviceGeneratedCommandsTransformFeedback(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$deviceGeneratedCommandsTransformFeedback, OFFSET$deviceGeneratedCommandsTransformFeedback, value);
     }
 
-    public @Unsigned int deviceGeneratedCommandsMultiDrawIndirectCount() {
+    public @Unsigned @NativeType("VkBool32") int deviceGeneratedCommandsMultiDrawIndirectCount() {
         return segment.get(LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount, OFFSET$deviceGeneratedCommandsMultiDrawIndirectCount);
     }
 
-    public void deviceGeneratedCommandsMultiDrawIndirectCount(@Unsigned int value) {
+    public void deviceGeneratedCommandsMultiDrawIndirectCount(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount, OFFSET$deviceGeneratedCommandsMultiDrawIndirectCount, value);
     }
 

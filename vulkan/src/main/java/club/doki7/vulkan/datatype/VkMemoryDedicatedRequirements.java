@@ -179,19 +179,19 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int prefersDedicatedAllocation() {
+    public @Unsigned @NativeType("VkBool32") int prefersDedicatedAllocation() {
         return segment.get(LAYOUT$prefersDedicatedAllocation, OFFSET$prefersDedicatedAllocation);
     }
 
-    public void prefersDedicatedAllocation(@Unsigned int value) {
+    public void prefersDedicatedAllocation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$prefersDedicatedAllocation, OFFSET$prefersDedicatedAllocation, value);
     }
 
-    public @Unsigned int requiresDedicatedAllocation() {
+    public @Unsigned @NativeType("VkBool32") int requiresDedicatedAllocation() {
         return segment.get(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation);
     }
 
-    public void requiresDedicatedAllocation(@Unsigned int value) {
+    public void requiresDedicatedAllocation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation, value);
     }
 

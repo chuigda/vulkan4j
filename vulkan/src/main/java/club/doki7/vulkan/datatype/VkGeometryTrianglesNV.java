@@ -200,11 +200,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$vertexData, OFFSET$vertexData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long vertexOffset() {
+    public @Unsigned @NativeType("VkDeviceSize") long vertexOffset() {
         return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
     }
 
-    public void vertexOffset(@Unsigned long value) {
+    public void vertexOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
     }
 
@@ -216,11 +216,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
     }
 
-    public @Unsigned long vertexStride() {
+    public @Unsigned @NativeType("VkDeviceSize") long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
 
-    public void vertexStride(@Unsigned long value) {
+    public void vertexStride(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
     }
 
@@ -244,11 +244,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$indexData, OFFSET$indexData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long indexOffset() {
+    public @Unsigned @NativeType("VkDeviceSize") long indexOffset() {
         return segment.get(LAYOUT$indexOffset, OFFSET$indexOffset);
     }
 
-    public void indexOffset(@Unsigned long value) {
+    public void indexOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$indexOffset, OFFSET$indexOffset, value);
     }
 
@@ -280,11 +280,11 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$transformData, OFFSET$transformData, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long transformOffset() {
+    public @Unsigned @NativeType("VkDeviceSize") long transformOffset() {
         return segment.get(LAYOUT$transformOffset, OFFSET$transformOffset);
     }
 
-    public void transformOffset(@Unsigned long value) {
+    public void transformOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$transformOffset, OFFSET$transformOffset, value);
     }
 

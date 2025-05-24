@@ -181,35 +181,35 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int storageBuffer16BitAccess() {
+    public @Unsigned @NativeType("VkBool32") int storageBuffer16BitAccess() {
         return segment.get(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess);
     }
 
-    public void storageBuffer16BitAccess(@Unsigned int value) {
+    public void storageBuffer16BitAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess, value);
     }
 
-    public @Unsigned int uniformAndStorageBuffer16BitAccess() {
+    public @Unsigned @NativeType("VkBool32") int uniformAndStorageBuffer16BitAccess() {
         return segment.get(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess);
     }
 
-    public void uniformAndStorageBuffer16BitAccess(@Unsigned int value) {
+    public void uniformAndStorageBuffer16BitAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess, value);
     }
 
-    public @Unsigned int storagePushConstant16() {
+    public @Unsigned @NativeType("VkBool32") int storagePushConstant16() {
         return segment.get(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16);
     }
 
-    public void storagePushConstant16(@Unsigned int value) {
+    public void storagePushConstant16(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16, value);
     }
 
-    public @Unsigned int storageInputOutput16() {
+    public @Unsigned @NativeType("VkBool32") int storageInputOutput16() {
         return segment.get(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16);
     }
 
-    public void storageInputOutput16(@Unsigned int value) {
+    public void storageInputOutput16(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int schedulingControls() {
+    public @Unsigned @NativeType("VkBool32") int schedulingControls() {
         return segment.get(LAYOUT$schedulingControls, OFFSET$schedulingControls);
     }
 
-    public void schedulingControls(@Unsigned int value) {
+    public void schedulingControls(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$schedulingControls, OFFSET$schedulingControls, value);
     }
 

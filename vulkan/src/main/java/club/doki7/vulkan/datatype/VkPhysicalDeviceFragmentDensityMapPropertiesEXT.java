@@ -196,11 +196,11 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentDensityTexelSize, SIZE$maxFragmentDensityTexelSize);
     }
 
-    public @Unsigned int fragmentDensityInvocations() {
+    public @Unsigned @NativeType("VkBool32") int fragmentDensityInvocations() {
         return segment.get(LAYOUT$fragmentDensityInvocations, OFFSET$fragmentDensityInvocations);
     }
 
-    public void fragmentDensityInvocations(@Unsigned int value) {
+    public void fragmentDensityInvocations(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$fragmentDensityInvocations, OFFSET$fragmentDensityInvocations, value);
     }
 

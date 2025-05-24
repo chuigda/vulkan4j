@@ -141,11 +141,11 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         return ret;
     }
 
-    public @Unsigned int b32() {
+    public @Unsigned @NativeType("VkBool32") int b32() {
         return segment.get(LAYOUT$b32, OFFSET$b32);
     }
 
-    public void b32(@Unsigned int value) {
+    public void b32(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$b32, OFFSET$b32, value);
     }
 

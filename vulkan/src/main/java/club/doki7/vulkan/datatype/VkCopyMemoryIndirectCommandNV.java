@@ -140,27 +140,27 @@ public record VkCopyMemoryIndirectCommandNV(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public @Unsigned long srcAddress() {
+    public @Unsigned @NativeType("VkDeviceAddress") long srcAddress() {
         return segment.get(LAYOUT$srcAddress, OFFSET$srcAddress);
     }
 
-    public void srcAddress(@Unsigned long value) {
+    public void srcAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$srcAddress, OFFSET$srcAddress, value);
     }
 
-    public @Unsigned long dstAddress() {
+    public @Unsigned @NativeType("VkDeviceAddress") long dstAddress() {
         return segment.get(LAYOUT$dstAddress, OFFSET$dstAddress);
     }
 
-    public void dstAddress(@Unsigned long value) {
+    public void dstAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$dstAddress, OFFSET$dstAddress, value);
     }
 
-    public @Unsigned long size() {
+    public @Unsigned @NativeType("VkDeviceSize") long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned long value) {
+    public void size(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
     }
 

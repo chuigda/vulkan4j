@@ -178,11 +178,11 @@ public record VkPhysicalDeviceCornerSampledImageFeaturesNV(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int cornerSampledImage() {
+    public @Unsigned @NativeType("VkBool32") int cornerSampledImage() {
         return segment.get(LAYOUT$cornerSampledImage, OFFSET$cornerSampledImage);
     }
 
-    public void cornerSampledImage(@Unsigned int value) {
+    public void cornerSampledImage(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$cornerSampledImage, OFFSET$cornerSampledImage, value);
     }
 

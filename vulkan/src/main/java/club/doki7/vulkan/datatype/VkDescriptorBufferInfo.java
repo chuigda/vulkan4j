@@ -152,19 +152,19 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long offset() {
+    public @Unsigned @NativeType("VkDeviceSize") long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned long value) {
+    public void offset(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
     }
 
-    public @Unsigned long range() {
+    public @Unsigned @NativeType("VkDeviceSize") long range() {
         return segment.get(LAYOUT$range, OFFSET$range);
     }
 
-    public void range(@Unsigned long value) {
+    public void range(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$range, OFFSET$range, value);
     }
 

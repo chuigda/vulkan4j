@@ -161,11 +161,11 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         BitfieldUtil.writeBits(s, 0, 24, value);
     }
 
-    public @Unsigned long clusterTemplateAddress() {
+    public @Unsigned @NativeType("VkDeviceAddress") long clusterTemplateAddress() {
         return segment.get(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress);
     }
 
-    public void clusterTemplateAddress(@Unsigned long value) {
+    public void clusterTemplateAddress(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress, value);
     }
 

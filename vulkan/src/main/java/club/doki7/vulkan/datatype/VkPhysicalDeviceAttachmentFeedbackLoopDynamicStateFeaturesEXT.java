@@ -178,11 +178,11 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(@Not
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int attachmentFeedbackLoopDynamicState() {
+    public @Unsigned @NativeType("VkBool32") int attachmentFeedbackLoopDynamicState() {
         return segment.get(LAYOUT$attachmentFeedbackLoopDynamicState, OFFSET$attachmentFeedbackLoopDynamicState);
     }
 
-    public void attachmentFeedbackLoopDynamicState(@Unsigned int value) {
+    public void attachmentFeedbackLoopDynamicState(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$attachmentFeedbackLoopDynamicState, OFFSET$attachmentFeedbackLoopDynamicState, value);
     }
 

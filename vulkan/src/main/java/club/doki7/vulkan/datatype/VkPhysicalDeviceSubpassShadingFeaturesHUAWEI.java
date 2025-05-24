@@ -178,11 +178,11 @@ public record VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int subpassShading() {
+    public @Unsigned @NativeType("VkBool32") int subpassShading() {
         return segment.get(LAYOUT$subpassShading, OFFSET$subpassShading);
     }
 
-    public void subpassShading(@Unsigned int value) {
+    public void subpassShading(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$subpassShading, OFFSET$subpassShading, value);
     }
 

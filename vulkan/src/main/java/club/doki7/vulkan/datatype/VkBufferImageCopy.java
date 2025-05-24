@@ -143,11 +143,11 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
         return ret;
     }
 
-    public @Unsigned long bufferOffset() {
+    public @Unsigned @NativeType("VkDeviceSize") long bufferOffset() {
         return segment.get(LAYOUT$bufferOffset, OFFSET$bufferOffset);
     }
 
-    public void bufferOffset(@Unsigned long value) {
+    public void bufferOffset(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$bufferOffset, OFFSET$bufferOffset, value);
     }
 

@@ -179,19 +179,19 @@ public record VkPhysicalDeviceRobustness2PropertiesEXT(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long robustStorageBufferAccessSizeAlignment() {
+    public @Unsigned @NativeType("VkDeviceSize") long robustStorageBufferAccessSizeAlignment() {
         return segment.get(LAYOUT$robustStorageBufferAccessSizeAlignment, OFFSET$robustStorageBufferAccessSizeAlignment);
     }
 
-    public void robustStorageBufferAccessSizeAlignment(@Unsigned long value) {
+    public void robustStorageBufferAccessSizeAlignment(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$robustStorageBufferAccessSizeAlignment, OFFSET$robustStorageBufferAccessSizeAlignment, value);
     }
 
-    public @Unsigned long robustUniformBufferAccessSizeAlignment() {
+    public @Unsigned @NativeType("VkDeviceSize") long robustUniformBufferAccessSizeAlignment() {
         return segment.get(LAYOUT$robustUniformBufferAccessSizeAlignment, OFFSET$robustUniformBufferAccessSizeAlignment);
     }
 
-    public void robustUniformBufferAccessSizeAlignment(@Unsigned long value) {
+    public void robustUniformBufferAccessSizeAlignment(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$robustUniformBufferAccessSizeAlignment, OFFSET$robustUniformBufferAccessSizeAlignment, value);
     }
 

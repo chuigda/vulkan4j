@@ -200,11 +200,11 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$physicalDevices, OFFSET$physicalDevices, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int subsetAllocation() {
+    public @Unsigned @NativeType("VkBool32") int subsetAllocation() {
         return segment.get(LAYOUT$subsetAllocation, OFFSET$subsetAllocation);
     }
 
-    public void subsetAllocation(@Unsigned int value) {
+    public void subsetAllocation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$subsetAllocation, OFFSET$subsetAllocation, value);
     }
 

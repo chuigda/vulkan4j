@@ -178,11 +178,11 @@ public record VkPhysicalDeviceProtectedMemoryFeatures(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int protectedMemory() {
+    public @Unsigned @NativeType("VkBool32") int protectedMemory() {
         return segment.get(LAYOUT$protectedMemory, OFFSET$protectedMemory);
     }
 
-    public void protectedMemory(@Unsigned int value) {
+    public void protectedMemory(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$protectedMemory, OFFSET$protectedMemory, value);
     }
 

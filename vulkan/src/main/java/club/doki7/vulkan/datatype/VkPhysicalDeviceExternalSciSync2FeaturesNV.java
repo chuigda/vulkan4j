@@ -181,35 +181,35 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int sciSyncFence() {
+    public @Unsigned @NativeType("VkBool32") int sciSyncFence() {
         return segment.get(LAYOUT$sciSyncFence, OFFSET$sciSyncFence);
     }
 
-    public void sciSyncFence(@Unsigned int value) {
+    public void sciSyncFence(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sciSyncFence, OFFSET$sciSyncFence, value);
     }
 
-    public @Unsigned int sciSyncSemaphore2() {
+    public @Unsigned @NativeType("VkBool32") int sciSyncSemaphore2() {
         return segment.get(LAYOUT$sciSyncSemaphore2, OFFSET$sciSyncSemaphore2);
     }
 
-    public void sciSyncSemaphore2(@Unsigned int value) {
+    public void sciSyncSemaphore2(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sciSyncSemaphore2, OFFSET$sciSyncSemaphore2, value);
     }
 
-    public @Unsigned int sciSyncImport() {
+    public @Unsigned @NativeType("VkBool32") int sciSyncImport() {
         return segment.get(LAYOUT$sciSyncImport, OFFSET$sciSyncImport);
     }
 
-    public void sciSyncImport(@Unsigned int value) {
+    public void sciSyncImport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sciSyncImport, OFFSET$sciSyncImport, value);
     }
 
-    public @Unsigned int sciSyncExport() {
+    public @Unsigned @NativeType("VkBool32") int sciSyncExport() {
         return segment.get(LAYOUT$sciSyncExport, OFFSET$sciSyncExport);
     }
 
-    public void sciSyncExport(@Unsigned int value) {
+    public void sciSyncExport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sciSyncExport, OFFSET$sciSyncExport, value);
     }
 

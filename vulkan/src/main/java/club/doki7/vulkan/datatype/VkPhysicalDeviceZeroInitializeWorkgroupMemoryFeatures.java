@@ -178,11 +178,11 @@ public record VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int shaderZeroInitializeWorkgroupMemory() {
+    public @Unsigned @NativeType("VkBool32") int shaderZeroInitializeWorkgroupMemory() {
         return segment.get(LAYOUT$shaderZeroInitializeWorkgroupMemory, OFFSET$shaderZeroInitializeWorkgroupMemory);
     }
 
-    public void shaderZeroInitializeWorkgroupMemory(@Unsigned int value) {
+    public void shaderZeroInitializeWorkgroupMemory(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$shaderZeroInitializeWorkgroupMemory, OFFSET$shaderZeroInitializeWorkgroupMemory, value);
     }
 

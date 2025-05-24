@@ -191,43 +191,43 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
         segment.set(LAYOUT$advancedBlendMaxColorAttachments, OFFSET$advancedBlendMaxColorAttachments, value);
     }
 
-    public @Unsigned int advancedBlendIndependentBlend() {
+    public @Unsigned @NativeType("VkBool32") int advancedBlendIndependentBlend() {
         return segment.get(LAYOUT$advancedBlendIndependentBlend, OFFSET$advancedBlendIndependentBlend);
     }
 
-    public void advancedBlendIndependentBlend(@Unsigned int value) {
+    public void advancedBlendIndependentBlend(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$advancedBlendIndependentBlend, OFFSET$advancedBlendIndependentBlend, value);
     }
 
-    public @Unsigned int advancedBlendNonPremultipliedSrcColor() {
+    public @Unsigned @NativeType("VkBool32") int advancedBlendNonPremultipliedSrcColor() {
         return segment.get(LAYOUT$advancedBlendNonPremultipliedSrcColor, OFFSET$advancedBlendNonPremultipliedSrcColor);
     }
 
-    public void advancedBlendNonPremultipliedSrcColor(@Unsigned int value) {
+    public void advancedBlendNonPremultipliedSrcColor(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$advancedBlendNonPremultipliedSrcColor, OFFSET$advancedBlendNonPremultipliedSrcColor, value);
     }
 
-    public @Unsigned int advancedBlendNonPremultipliedDstColor() {
+    public @Unsigned @NativeType("VkBool32") int advancedBlendNonPremultipliedDstColor() {
         return segment.get(LAYOUT$advancedBlendNonPremultipliedDstColor, OFFSET$advancedBlendNonPremultipliedDstColor);
     }
 
-    public void advancedBlendNonPremultipliedDstColor(@Unsigned int value) {
+    public void advancedBlendNonPremultipliedDstColor(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$advancedBlendNonPremultipliedDstColor, OFFSET$advancedBlendNonPremultipliedDstColor, value);
     }
 
-    public @Unsigned int advancedBlendCorrelatedOverlap() {
+    public @Unsigned @NativeType("VkBool32") int advancedBlendCorrelatedOverlap() {
         return segment.get(LAYOUT$advancedBlendCorrelatedOverlap, OFFSET$advancedBlendCorrelatedOverlap);
     }
 
-    public void advancedBlendCorrelatedOverlap(@Unsigned int value) {
+    public void advancedBlendCorrelatedOverlap(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$advancedBlendCorrelatedOverlap, OFFSET$advancedBlendCorrelatedOverlap, value);
     }
 
-    public @Unsigned int advancedBlendAllOperations() {
+    public @Unsigned @NativeType("VkBool32") int advancedBlendAllOperations() {
         return segment.get(LAYOUT$advancedBlendAllOperations, OFFSET$advancedBlendAllOperations);
     }
 
-    public void advancedBlendAllOperations(@Unsigned int value) {
+    public void advancedBlendAllOperations(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$advancedBlendAllOperations, OFFSET$advancedBlendAllOperations, value);
     }
 

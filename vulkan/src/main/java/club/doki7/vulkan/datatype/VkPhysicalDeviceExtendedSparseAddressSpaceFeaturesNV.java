@@ -178,11 +178,11 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int extendedSparseAddressSpace() {
+    public @Unsigned @NativeType("VkBool32") int extendedSparseAddressSpace() {
         return segment.get(LAYOUT$extendedSparseAddressSpace, OFFSET$extendedSparseAddressSpace);
     }
 
-    public void extendedSparseAddressSpace(@Unsigned int value) {
+    public void extendedSparseAddressSpace(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$extendedSparseAddressSpace, OFFSET$extendedSparseAddressSpace, value);
     }
 

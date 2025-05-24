@@ -178,11 +178,11 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(@NotNull Mem
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int screenBufferImport() {
+    public @Unsigned @NativeType("VkBool32") int screenBufferImport() {
         return segment.get(LAYOUT$screenBufferImport, OFFSET$screenBufferImport);
     }
 
-    public void screenBufferImport(@Unsigned int value) {
+    public void screenBufferImport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$screenBufferImport, OFFSET$screenBufferImport, value);
     }
 

@@ -187,11 +187,11 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$depthBiasRepresentation, OFFSET$depthBiasRepresentation, value);
     }
 
-    public @Unsigned int depthBiasExact() {
+    public @Unsigned @NativeType("VkBool32") int depthBiasExact() {
         return segment.get(LAYOUT$depthBiasExact, OFFSET$depthBiasExact);
     }
 
-    public void depthBiasExact(@Unsigned int value) {
+    public void depthBiasExact(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthBiasExact, OFFSET$depthBiasExact, value);
     }
 

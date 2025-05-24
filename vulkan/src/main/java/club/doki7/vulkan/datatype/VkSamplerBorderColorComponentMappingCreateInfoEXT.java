@@ -187,11 +187,11 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
     }
 
-    public @Unsigned int srgb() {
+    public @Unsigned @NativeType("VkBool32") int srgb() {
         return segment.get(LAYOUT$srgb, OFFSET$srgb);
     }
 
-    public void srgb(@Unsigned int value) {
+    public void srgb(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$srgb, OFFSET$srgb, value);
     }
 

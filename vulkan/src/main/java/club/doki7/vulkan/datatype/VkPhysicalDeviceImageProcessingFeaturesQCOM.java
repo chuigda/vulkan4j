@@ -180,27 +180,27 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int textureSampleWeighted() {
+    public @Unsigned @NativeType("VkBool32") int textureSampleWeighted() {
         return segment.get(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted);
     }
 
-    public void textureSampleWeighted(@Unsigned int value) {
+    public void textureSampleWeighted(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted, value);
     }
 
-    public @Unsigned int textureBoxFilter() {
+    public @Unsigned @NativeType("VkBool32") int textureBoxFilter() {
         return segment.get(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter);
     }
 
-    public void textureBoxFilter(@Unsigned int value) {
+    public void textureBoxFilter(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter, value);
     }
 
-    public @Unsigned int textureBlockMatch() {
+    public @Unsigned @NativeType("VkBool32") int textureBlockMatch() {
         return segment.get(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch);
     }
 
-    public void textureBlockMatch(@Unsigned int value) {
+    public void textureBlockMatch(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch, value);
     }
 

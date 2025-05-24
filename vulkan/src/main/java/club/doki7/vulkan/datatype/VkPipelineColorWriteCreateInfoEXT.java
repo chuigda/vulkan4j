@@ -191,7 +191,7 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
     /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link IntPtr#reinterpret} to set the size before actually reading from or
     /// writing to the buffer.
-    public @Nullable @Unsigned IntPtr pColorWriteEnables() {
+    public @Nullable @Unsigned @Pointer(comment="VkBool32") IntPtr pColorWriteEnables() {
         MemorySegment s = pColorWriteEnablesRaw();
         if (s.equals(MemorySegment.NULL)) {
             return null;
@@ -199,7 +199,7 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         return new IntPtr(s);
     }
 
-    public void pColorWriteEnables(@Nullable @Unsigned IntPtr value) {
+    public void pColorWriteEnables(@Nullable @Unsigned @Pointer(comment="VkBool32") IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorWriteEnablesRaw(s);
     }

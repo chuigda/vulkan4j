@@ -178,11 +178,11 @@ public record VkPhysicalDevicePipelineBinaryFeaturesKHR(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int pipelineBinaries() {
+    public @Unsigned @NativeType("VkBool32") int pipelineBinaries() {
         return segment.get(LAYOUT$pipelineBinaries, OFFSET$pipelineBinaries);
     }
 
-    public void pipelineBinaries(@Unsigned int value) {
+    public void pipelineBinaries(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$pipelineBinaries, OFFSET$pipelineBinaries, value);
     }
 

@@ -179,19 +179,19 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long heapBudget() {
+    public @Unsigned @NativeType("VkDeviceSize") long heapBudget() {
         return segment.get(LAYOUT$heapBudget, OFFSET$heapBudget);
     }
 
-    public void heapBudget(@Unsigned long value) {
+    public void heapBudget(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$heapBudget, OFFSET$heapBudget, value);
     }
 
-    public @Unsigned long heapUsage() {
+    public @Unsigned @NativeType("VkDeviceSize") long heapUsage() {
         return segment.get(LAYOUT$heapUsage, OFFSET$heapUsage);
     }
 
-    public void heapUsage(@Unsigned long value) {
+    public void heapUsage(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$heapUsage, OFFSET$heapUsage, value);
     }
 

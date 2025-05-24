@@ -178,11 +178,11 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int antiLag() {
+    public @Unsigned @NativeType("VkBool32") int antiLag() {
         return segment.get(LAYOUT$antiLag, OFFSET$antiLag);
     }
 
-    public void antiLag(@Unsigned int value) {
+    public void antiLag(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$antiLag, OFFSET$antiLag, value);
     }
 

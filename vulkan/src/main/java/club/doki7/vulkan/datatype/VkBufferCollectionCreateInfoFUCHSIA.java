@@ -178,11 +178,11 @@ public record VkBufferCollectionCreateInfoFUCHSIA(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int collectionToken() {
+    public @Unsigned @NativeType("zx_handle_t") int collectionToken() {
         return segment.get(LAYOUT$collectionToken, OFFSET$collectionToken);
     }
 
-    public void collectionToken(@Unsigned int value) {
+    public void collectionToken(@Unsigned @NativeType("zx_handle_t") int value) {
         segment.set(LAYOUT$collectionToken, OFFSET$collectionToken, value);
     }
 

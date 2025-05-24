@@ -178,11 +178,11 @@ public record VkPhysicalDeviceImageRobustnessFeatures(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int robustImageAccess() {
+    public @Unsigned @NativeType("VkBool32") int robustImageAccess() {
         return segment.get(LAYOUT$robustImageAccess, OFFSET$robustImageAccess);
     }
 
-    public void robustImageAccess(@Unsigned int value) {
+    public void robustImageAccess(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$robustImageAccess, OFFSET$robustImageAccess, value);
     }
 

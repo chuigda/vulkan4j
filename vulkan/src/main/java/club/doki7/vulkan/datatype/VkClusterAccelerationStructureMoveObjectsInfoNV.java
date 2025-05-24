@@ -138,11 +138,11 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
         return ret;
     }
 
-    public @Unsigned long srcAccelerationStructure() {
+    public @Unsigned @NativeType("VkDeviceAddress") long srcAccelerationStructure() {
         return segment.get(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure);
     }
 
-    public void srcAccelerationStructure(@Unsigned long value) {
+    public void srcAccelerationStructure(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure, value);
     }
 

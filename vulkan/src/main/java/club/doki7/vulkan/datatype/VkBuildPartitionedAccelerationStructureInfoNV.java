@@ -191,43 +191,43 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$input, SIZE$input);
     }
 
-    public @Unsigned long srcAccelerationStructureData() {
+    public @Unsigned @NativeType("VkDeviceAddress") long srcAccelerationStructureData() {
         return segment.get(LAYOUT$srcAccelerationStructureData, OFFSET$srcAccelerationStructureData);
     }
 
-    public void srcAccelerationStructureData(@Unsigned long value) {
+    public void srcAccelerationStructureData(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$srcAccelerationStructureData, OFFSET$srcAccelerationStructureData, value);
     }
 
-    public @Unsigned long dstAccelerationStructureData() {
+    public @Unsigned @NativeType("VkDeviceAddress") long dstAccelerationStructureData() {
         return segment.get(LAYOUT$dstAccelerationStructureData, OFFSET$dstAccelerationStructureData);
     }
 
-    public void dstAccelerationStructureData(@Unsigned long value) {
+    public void dstAccelerationStructureData(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$dstAccelerationStructureData, OFFSET$dstAccelerationStructureData, value);
     }
 
-    public @Unsigned long scratchData() {
+    public @Unsigned @NativeType("VkDeviceAddress") long scratchData() {
         return segment.get(LAYOUT$scratchData, OFFSET$scratchData);
     }
 
-    public void scratchData(@Unsigned long value) {
+    public void scratchData(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$scratchData, OFFSET$scratchData, value);
     }
 
-    public @Unsigned long srcInfos() {
+    public @Unsigned @NativeType("VkDeviceAddress") long srcInfos() {
         return segment.get(LAYOUT$srcInfos, OFFSET$srcInfos);
     }
 
-    public void srcInfos(@Unsigned long value) {
+    public void srcInfos(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$srcInfos, OFFSET$srcInfos, value);
     }
 
-    public @Unsigned long srcInfosCount() {
+    public @Unsigned @NativeType("VkDeviceAddress") long srcInfosCount() {
         return segment.get(LAYOUT$srcInfosCount, OFFSET$srcInfosCount);
     }
 
-    public void srcInfosCount(@Unsigned long value) {
+    public void srcInfosCount(@Unsigned @NativeType("VkDeviceAddress") long value) {
         segment.set(LAYOUT$srcInfosCount, OFFSET$srcInfosCount, value);
     }
 

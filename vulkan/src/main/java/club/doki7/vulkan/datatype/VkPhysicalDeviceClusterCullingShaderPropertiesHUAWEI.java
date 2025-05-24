@@ -205,11 +205,11 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
         segment.set(LAYOUT$maxOutputClusterCount, OFFSET$maxOutputClusterCount, value);
     }
 
-    public @Unsigned long indirectBufferOffsetAlignment() {
+    public @Unsigned @NativeType("VkDeviceSize") long indirectBufferOffsetAlignment() {
         return segment.get(LAYOUT$indirectBufferOffsetAlignment, OFFSET$indirectBufferOffsetAlignment);
     }
 
-    public void indirectBufferOffsetAlignment(@Unsigned long value) {
+    public void indirectBufferOffsetAlignment(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$indirectBufferOffsetAlignment, OFFSET$indirectBufferOffsetAlignment, value);
     }
 

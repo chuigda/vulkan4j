@@ -179,19 +179,19 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int taskShader() {
+    public @Unsigned @NativeType("VkBool32") int taskShader() {
         return segment.get(LAYOUT$taskShader, OFFSET$taskShader);
     }
 
-    public void taskShader(@Unsigned int value) {
+    public void taskShader(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$taskShader, OFFSET$taskShader, value);
     }
 
-    public @Unsigned int meshShader() {
+    public @Unsigned @NativeType("VkBool32") int meshShader() {
         return segment.get(LAYOUT$meshShader, OFFSET$meshShader);
     }
 
-    public void meshShader(@Unsigned int value) {
+    public void meshShader(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$meshShader, OFFSET$meshShader, value);
     }
 

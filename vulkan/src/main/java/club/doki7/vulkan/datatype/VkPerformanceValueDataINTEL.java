@@ -166,11 +166,11 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$valueFloat, OFFSET$valueFloat, value);
     }
 
-    public @Unsigned int valueBool() {
+    public @Unsigned @NativeType("VkBool32") int valueBool() {
         return segment.get(LAYOUT$valueBool, OFFSET$valueBool);
     }
 
-    public void valueBool(@Unsigned int value) {
+    public void valueBool(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$valueBool, OFFSET$valueBool, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(@NotNull Me
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int descriptorPoolOverallocation() {
+    public @Unsigned @NativeType("VkBool32") int descriptorPoolOverallocation() {
         return segment.get(LAYOUT$descriptorPoolOverallocation, OFFSET$descriptorPoolOverallocation);
     }
 
-    public void descriptorPoolOverallocation(@Unsigned int value) {
+    public void descriptorPoolOverallocation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$descriptorPoolOverallocation, OFFSET$descriptorPoolOverallocation, value);
     }
 

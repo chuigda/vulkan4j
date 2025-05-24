@@ -180,27 +180,27 @@ public record VkAccelerationStructureBuildSizesInfoKHR(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned long accelerationStructureSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long accelerationStructureSize() {
         return segment.get(LAYOUT$accelerationStructureSize, OFFSET$accelerationStructureSize);
     }
 
-    public void accelerationStructureSize(@Unsigned long value) {
+    public void accelerationStructureSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$accelerationStructureSize, OFFSET$accelerationStructureSize, value);
     }
 
-    public @Unsigned long updateScratchSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long updateScratchSize() {
         return segment.get(LAYOUT$updateScratchSize, OFFSET$updateScratchSize);
     }
 
-    public void updateScratchSize(@Unsigned long value) {
+    public void updateScratchSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$updateScratchSize, OFFSET$updateScratchSize, value);
     }
 
-    public @Unsigned long buildScratchSize() {
+    public @Unsigned @NativeType("VkDeviceSize") long buildScratchSize() {
         return segment.get(LAYOUT$buildScratchSize, OFFSET$buildScratchSize);
     }
 
-    public void buildScratchSize(@Unsigned long value) {
+    public void buildScratchSize(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$buildScratchSize, OFFSET$buildScratchSize, value);
     }
 

@@ -183,19 +183,19 @@ public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int hasPrimary() {
+    public @Unsigned @NativeType("VkBool32") int hasPrimary() {
         return segment.get(LAYOUT$hasPrimary, OFFSET$hasPrimary);
     }
 
-    public void hasPrimary(@Unsigned int value) {
+    public void hasPrimary(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$hasPrimary, OFFSET$hasPrimary, value);
     }
 
-    public @Unsigned int hasRender() {
+    public @Unsigned @NativeType("VkBool32") int hasRender() {
         return segment.get(LAYOUT$hasRender, OFFSET$hasRender);
     }
 
-    public void hasRender(@Unsigned int value) {
+    public void hasRender(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$hasRender, OFFSET$hasRender, value);
     }
 

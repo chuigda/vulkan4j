@@ -178,11 +178,11 @@ public record VkDisplayNativeHdrSurfaceCapabilitiesAMD(@NotNull MemorySegment se
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int localDimmingSupport() {
+    public @Unsigned @NativeType("VkBool32") int localDimmingSupport() {
         return segment.get(LAYOUT$localDimmingSupport, OFFSET$localDimmingSupport);
     }
 
-    public void localDimmingSupport(@Unsigned int value) {
+    public void localDimmingSupport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$localDimmingSupport, OFFSET$localDimmingSupport, value);
     }
 

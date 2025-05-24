@@ -194,19 +194,19 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned long minBitstreamBufferOffsetAlignment() {
+    public @Unsigned @NativeType("VkDeviceSize") long minBitstreamBufferOffsetAlignment() {
         return segment.get(LAYOUT$minBitstreamBufferOffsetAlignment, OFFSET$minBitstreamBufferOffsetAlignment);
     }
 
-    public void minBitstreamBufferOffsetAlignment(@Unsigned long value) {
+    public void minBitstreamBufferOffsetAlignment(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$minBitstreamBufferOffsetAlignment, OFFSET$minBitstreamBufferOffsetAlignment, value);
     }
 
-    public @Unsigned long minBitstreamBufferSizeAlignment() {
+    public @Unsigned @NativeType("VkDeviceSize") long minBitstreamBufferSizeAlignment() {
         return segment.get(LAYOUT$minBitstreamBufferSizeAlignment, OFFSET$minBitstreamBufferSizeAlignment);
     }
 
-    public void minBitstreamBufferSizeAlignment(@Unsigned long value) {
+    public void minBitstreamBufferSizeAlignment(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$minBitstreamBufferSizeAlignment, OFFSET$minBitstreamBufferSizeAlignment, value);
     }
 

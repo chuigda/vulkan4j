@@ -178,11 +178,11 @@ public record VkPhysicalDeviceDynamicRenderingLocalReadFeatures(@NotNull MemoryS
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int dynamicRenderingLocalRead() {
+    public @Unsigned @NativeType("VkBool32") int dynamicRenderingLocalRead() {
         return segment.get(LAYOUT$dynamicRenderingLocalRead, OFFSET$dynamicRenderingLocalRead);
     }
 
-    public void dynamicRenderingLocalRead(@Unsigned int value) {
+    public void dynamicRenderingLocalRead(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$dynamicRenderingLocalRead, OFFSET$dynamicRenderingLocalRead, value);
     }
 

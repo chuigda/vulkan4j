@@ -178,11 +178,11 @@ public record VkPhysicalDeviceCoverageReductionModeFeaturesNV(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int coverageReductionMode() {
+    public @Unsigned @NativeType("VkBool32") int coverageReductionMode() {
         return segment.get(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode);
     }
 
-    public void coverageReductionMode(@Unsigned int value) {
+    public void coverageReductionMode(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode, value);
     }
 

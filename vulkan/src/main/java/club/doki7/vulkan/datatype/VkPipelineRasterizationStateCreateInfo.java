@@ -196,19 +196,19 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public @Unsigned int depthClampEnable() {
+    public @Unsigned @NativeType("VkBool32") int depthClampEnable() {
         return segment.get(LAYOUT$depthClampEnable, OFFSET$depthClampEnable);
     }
 
-    public void depthClampEnable(@Unsigned int value) {
+    public void depthClampEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthClampEnable, OFFSET$depthClampEnable, value);
     }
 
-    public @Unsigned int rasterizerDiscardEnable() {
+    public @Unsigned @NativeType("VkBool32") int rasterizerDiscardEnable() {
         return segment.get(LAYOUT$rasterizerDiscardEnable, OFFSET$rasterizerDiscardEnable);
     }
 
-    public void rasterizerDiscardEnable(@Unsigned int value) {
+    public void rasterizerDiscardEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$rasterizerDiscardEnable, OFFSET$rasterizerDiscardEnable, value);
     }
 
@@ -236,11 +236,11 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$frontFace, OFFSET$frontFace, value);
     }
 
-    public @Unsigned int depthBiasEnable() {
+    public @Unsigned @NativeType("VkBool32") int depthBiasEnable() {
         return segment.get(LAYOUT$depthBiasEnable, OFFSET$depthBiasEnable);
     }
 
-    public void depthBiasEnable(@Unsigned int value) {
+    public void depthBiasEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$depthBiasEnable, OFFSET$depthBiasEnable, value);
     }
 

@@ -178,11 +178,11 @@ public record VkPartitionedAccelerationStructureFlagsNV(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int enablePartitionTranslation() {
+    public @Unsigned @NativeType("VkBool32") int enablePartitionTranslation() {
         return segment.get(LAYOUT$enablePartitionTranslation, OFFSET$enablePartitionTranslation);
     }
 
-    public void enablePartitionTranslation(@Unsigned int value) {
+    public void enablePartitionTranslation(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$enablePartitionTranslation, OFFSET$enablePartitionTranslation, value);
     }
 

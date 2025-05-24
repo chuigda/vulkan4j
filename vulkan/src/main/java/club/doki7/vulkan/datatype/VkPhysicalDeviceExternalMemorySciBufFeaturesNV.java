@@ -179,19 +179,19 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(@NotNull MemorySegm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int sciBufImport() {
+    public @Unsigned @NativeType("VkBool32") int sciBufImport() {
         return segment.get(LAYOUT$sciBufImport, OFFSET$sciBufImport);
     }
 
-    public void sciBufImport(@Unsigned int value) {
+    public void sciBufImport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sciBufImport, OFFSET$sciBufImport, value);
     }
 
-    public @Unsigned int sciBufExport() {
+    public @Unsigned @NativeType("VkBool32") int sciBufExport() {
         return segment.get(LAYOUT$sciBufExport, OFFSET$sciBufExport);
     }
 
-    public void sciBufExport(@Unsigned int value) {
+    public void sciBufExport(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$sciBufExport, OFFSET$sciBufExport, value);
     }
 

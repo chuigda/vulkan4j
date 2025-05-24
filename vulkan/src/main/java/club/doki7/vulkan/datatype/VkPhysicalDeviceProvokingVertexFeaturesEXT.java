@@ -179,19 +179,19 @@ public record VkPhysicalDeviceProvokingVertexFeaturesEXT(@NotNull MemorySegment 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int provokingVertexLast() {
+    public @Unsigned @NativeType("VkBool32") int provokingVertexLast() {
         return segment.get(LAYOUT$provokingVertexLast, OFFSET$provokingVertexLast);
     }
 
-    public void provokingVertexLast(@Unsigned int value) {
+    public void provokingVertexLast(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$provokingVertexLast, OFFSET$provokingVertexLast, value);
     }
 
-    public @Unsigned int transformFeedbackPreservesProvokingVertex() {
+    public @Unsigned @NativeType("VkBool32") int transformFeedbackPreservesProvokingVertex() {
         return segment.get(LAYOUT$transformFeedbackPreservesProvokingVertex, OFFSET$transformFeedbackPreservesProvokingVertex);
     }
 
-    public void transformFeedbackPreservesProvokingVertex(@Unsigned int value) {
+    public void transformFeedbackPreservesProvokingVertex(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$transformFeedbackPreservesProvokingVertex, OFFSET$transformFeedbackPreservesProvokingVertex, value);
     }
 

@@ -196,11 +196,11 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$topology, OFFSET$topology, value);
     }
 
-    public @Unsigned int primitiveRestartEnable() {
+    public @Unsigned @NativeType("VkBool32") int primitiveRestartEnable() {
         return segment.get(LAYOUT$primitiveRestartEnable, OFFSET$primitiveRestartEnable);
     }
 
-    public void primitiveRestartEnable(@Unsigned int value) {
+    public void primitiveRestartEnable(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$primitiveRestartEnable, OFFSET$primitiveRestartEnable, value);
     }
 

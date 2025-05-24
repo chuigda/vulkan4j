@@ -188,19 +188,19 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         segment.set(LAYOUT$type, OFFSET$type, value);
     }
 
-    public @Unsigned int noMoveOverlap() {
+    public @Unsigned @NativeType("VkBool32") int noMoveOverlap() {
         return segment.get(LAYOUT$noMoveOverlap, OFFSET$noMoveOverlap);
     }
 
-    public void noMoveOverlap(@Unsigned int value) {
+    public void noMoveOverlap(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$noMoveOverlap, OFFSET$noMoveOverlap, value);
     }
 
-    public @Unsigned long maxMovedBytes() {
+    public @Unsigned @NativeType("VkDeviceSize") long maxMovedBytes() {
         return segment.get(LAYOUT$maxMovedBytes, OFFSET$maxMovedBytes);
     }
 
-    public void maxMovedBytes(@Unsigned long value) {
+    public void maxMovedBytes(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$maxMovedBytes, OFFSET$maxMovedBytes, value);
     }
 

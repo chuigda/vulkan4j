@@ -179,19 +179,19 @@ public record VkPhysicalDeviceFaultFeaturesEXT(@NotNull MemorySegment segment) i
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int deviceFault() {
+    public @Unsigned @NativeType("VkBool32") int deviceFault() {
         return segment.get(LAYOUT$deviceFault, OFFSET$deviceFault);
     }
 
-    public void deviceFault(@Unsigned int value) {
+    public void deviceFault(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$deviceFault, OFFSET$deviceFault, value);
     }
 
-    public @Unsigned int deviceFaultVendorBinary() {
+    public @Unsigned @NativeType("VkBool32") int deviceFaultVendorBinary() {
         return segment.get(LAYOUT$deviceFaultVendorBinary, OFFSET$deviceFaultVendorBinary);
     }
 
-    public void deviceFaultVendorBinary(@Unsigned int value) {
+    public void deviceFaultVendorBinary(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$deviceFaultVendorBinary, OFFSET$deviceFaultVendorBinary, value);
     }
 

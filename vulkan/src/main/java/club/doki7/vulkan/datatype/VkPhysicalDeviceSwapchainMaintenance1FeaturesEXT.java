@@ -178,11 +178,11 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(@NotNull MemorySe
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int swapchainMaintenance1() {
+    public @Unsigned @NativeType("VkBool32") int swapchainMaintenance1() {
         return segment.get(LAYOUT$swapchainMaintenance1, OFFSET$swapchainMaintenance1);
     }
 
-    public void swapchainMaintenance1(@Unsigned int value) {
+    public void swapchainMaintenance1(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$swapchainMaintenance1, OFFSET$swapchainMaintenance1, value);
     }
 

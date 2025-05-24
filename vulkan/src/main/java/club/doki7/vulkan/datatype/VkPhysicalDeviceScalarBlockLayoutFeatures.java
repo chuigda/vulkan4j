@@ -178,11 +178,11 @@ public record VkPhysicalDeviceScalarBlockLayoutFeatures(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int scalarBlockLayout() {
+    public @Unsigned @NativeType("VkBool32") int scalarBlockLayout() {
         return segment.get(LAYOUT$scalarBlockLayout, OFFSET$scalarBlockLayout);
     }
 
-    public void scalarBlockLayout(@Unsigned int value) {
+    public void scalarBlockLayout(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$scalarBlockLayout, OFFSET$scalarBlockLayout, value);
     }
 

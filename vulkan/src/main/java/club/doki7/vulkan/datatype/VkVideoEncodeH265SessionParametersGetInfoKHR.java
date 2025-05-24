@@ -183,27 +183,27 @@ public record VkVideoEncodeH265SessionParametersGetInfoKHR(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int writeStdVPS() {
+    public @Unsigned @NativeType("VkBool32") int writeStdVPS() {
         return segment.get(LAYOUT$writeStdVPS, OFFSET$writeStdVPS);
     }
 
-    public void writeStdVPS(@Unsigned int value) {
+    public void writeStdVPS(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$writeStdVPS, OFFSET$writeStdVPS, value);
     }
 
-    public @Unsigned int writeStdSPS() {
+    public @Unsigned @NativeType("VkBool32") int writeStdSPS() {
         return segment.get(LAYOUT$writeStdSPS, OFFSET$writeStdSPS);
     }
 
-    public void writeStdSPS(@Unsigned int value) {
+    public void writeStdSPS(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$writeStdSPS, OFFSET$writeStdSPS, value);
     }
 
-    public @Unsigned int writeStdPPS() {
+    public @Unsigned @NativeType("VkBool32") int writeStdPPS() {
         return segment.get(LAYOUT$writeStdPPS, OFFSET$writeStdPPS);
     }
 
-    public void writeStdPPS(@Unsigned int value) {
+    public void writeStdPPS(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$writeStdPPS, OFFSET$writeStdPPS, value);
     }
 

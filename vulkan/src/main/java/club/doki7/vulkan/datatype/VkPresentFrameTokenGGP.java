@@ -178,11 +178,11 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int frameToken() {
+    public @Unsigned @NativeType("GgpFrameToken") int frameToken() {
         return segment.get(LAYOUT$frameToken, OFFSET$frameToken);
     }
 
-    public void frameToken(@Unsigned int value) {
+    public void frameToken(@Unsigned @NativeType("GgpFrameToken") int value) {
         segment.set(LAYOUT$frameToken, OFFSET$frameToken, value);
     }
 

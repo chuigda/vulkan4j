@@ -200,11 +200,11 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
     }
 
-    public @Unsigned long vertexStride() {
+    public @Unsigned @NativeType("VkDeviceSize") long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
 
-    public void vertexStride(@Unsigned long value) {
+    public void vertexStride(@Unsigned @NativeType("VkDeviceSize") long value) {
         segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
     }
 

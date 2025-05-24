@@ -178,11 +178,11 @@ public record VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int texelBufferAlignment() {
+    public @Unsigned @NativeType("VkBool32") int texelBufferAlignment() {
         return segment.get(LAYOUT$texelBufferAlignment, OFFSET$texelBufferAlignment);
     }
 
-    public void texelBufferAlignment(@Unsigned int value) {
+    public void texelBufferAlignment(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$texelBufferAlignment, OFFSET$texelBufferAlignment, value);
     }
 

@@ -179,19 +179,19 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int formatA4R4G4B4() {
+    public @Unsigned @NativeType("VkBool32") int formatA4R4G4B4() {
         return segment.get(LAYOUT$formatA4R4G4B4, OFFSET$formatA4R4G4B4);
     }
 
-    public void formatA4R4G4B4(@Unsigned int value) {
+    public void formatA4R4G4B4(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$formatA4R4G4B4, OFFSET$formatA4R4G4B4, value);
     }
 
-    public @Unsigned int formatA4B4G4R4() {
+    public @Unsigned @NativeType("VkBool32") int formatA4B4G4R4() {
         return segment.get(LAYOUT$formatA4B4G4R4, OFFSET$formatA4B4G4R4);
     }
 
-    public void formatA4B4G4R4(@Unsigned int value) {
+    public void formatA4B4G4R4(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$formatA4B4G4R4, OFFSET$formatA4B4G4R4, value);
     }
 

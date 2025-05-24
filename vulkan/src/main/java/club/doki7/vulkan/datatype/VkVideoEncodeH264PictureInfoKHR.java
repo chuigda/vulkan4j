@@ -251,11 +251,11 @@ public record VkVideoEncodeH264PictureInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
-    public @Unsigned int generatePrefixNalu() {
+    public @Unsigned @NativeType("VkBool32") int generatePrefixNalu() {
         return segment.get(LAYOUT$generatePrefixNalu, OFFSET$generatePrefixNalu);
     }
 
-    public void generatePrefixNalu(@Unsigned int value) {
+    public void generatePrefixNalu(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$generatePrefixNalu, OFFSET$generatePrefixNalu, value);
     }
 

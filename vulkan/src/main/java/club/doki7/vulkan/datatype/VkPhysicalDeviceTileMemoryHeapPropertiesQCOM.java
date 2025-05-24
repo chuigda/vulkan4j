@@ -179,19 +179,19 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int queueSubmitBoundary() {
+    public @Unsigned @NativeType("VkBool32") int queueSubmitBoundary() {
         return segment.get(LAYOUT$queueSubmitBoundary, OFFSET$queueSubmitBoundary);
     }
 
-    public void queueSubmitBoundary(@Unsigned int value) {
+    public void queueSubmitBoundary(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$queueSubmitBoundary, OFFSET$queueSubmitBoundary, value);
     }
 
-    public @Unsigned int tileBufferTransfers() {
+    public @Unsigned @NativeType("VkBool32") int tileBufferTransfers() {
         return segment.get(LAYOUT$tileBufferTransfers, OFFSET$tileBufferTransfers);
     }
 
-    public void tileBufferTransfers(@Unsigned int value) {
+    public void tileBufferTransfers(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$tileBufferTransfers, OFFSET$tileBufferTransfers, value);
     }
 

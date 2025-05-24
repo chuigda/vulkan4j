@@ -178,11 +178,11 @@ public record VkPhysicalDeviceMaintenance7FeaturesKHR(@NotNull MemorySegment seg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int maintenance7() {
+    public @Unsigned @NativeType("VkBool32") int maintenance7() {
         return segment.get(LAYOUT$maintenance7, OFFSET$maintenance7);
     }
 
-    public void maintenance7(@Unsigned int value) {
+    public void maintenance7(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$maintenance7, OFFSET$maintenance7, value);
     }
 

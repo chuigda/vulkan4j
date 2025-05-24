@@ -178,11 +178,11 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int deviceCoherentMemory() {
+    public @Unsigned @NativeType("VkBool32") int deviceCoherentMemory() {
         return segment.get(LAYOUT$deviceCoherentMemory, OFFSET$deviceCoherentMemory);
     }
 
-    public void deviceCoherentMemory(@Unsigned int value) {
+    public void deviceCoherentMemory(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$deviceCoherentMemory, OFFSET$deviceCoherentMemory, value);
     }
 

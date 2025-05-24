@@ -179,19 +179,19 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(@NotNull MemorySeg
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int conditionalRendering() {
+    public @Unsigned @NativeType("VkBool32") int conditionalRendering() {
         return segment.get(LAYOUT$conditionalRendering, OFFSET$conditionalRendering);
     }
 
-    public void conditionalRendering(@Unsigned int value) {
+    public void conditionalRendering(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$conditionalRendering, OFFSET$conditionalRendering, value);
     }
 
-    public @Unsigned int inheritedConditionalRendering() {
+    public @Unsigned @NativeType("VkBool32") int inheritedConditionalRendering() {
         return segment.get(LAYOUT$inheritedConditionalRendering, OFFSET$inheritedConditionalRendering);
     }
 
-    public void inheritedConditionalRendering(@Unsigned int value) {
+    public void inheritedConditionalRendering(@Unsigned @NativeType("VkBool32") int value) {
         segment.set(LAYOUT$inheritedConditionalRendering, OFFSET$inheritedConditionalRendering, value);
     }
 
