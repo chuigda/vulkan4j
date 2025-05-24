@@ -1,36 +1,45 @@
 package club.doki7.ffm.bits;
 
-import club.doki7.ffm.annotation.unsigned;
+import club.doki7.ffm.annotation.Unsigned;
 
 sealed interface IBitfieldUtilImpl permits BitfieldUtilImplL2R, BitfieldUtilImplR2L {
-    boolean readBitUnchecked(@unsigned byte value, @unsigned int bit);
-    boolean readBitUnchecked(@unsigned short value, @unsigned int bit);
-    boolean readBitUnchecked(@unsigned int value, @unsigned int bit);
+    boolean readBitUnchecked(@Unsigned byte value, @Unsigned int bit);
+    boolean readBitUnchecked(@Unsigned short value, @Unsigned int bit);
+    boolean readBitUnchecked(@Unsigned int value, @Unsigned int bit);
 
-    @unsigned byte readBitsUnchecked(@unsigned byte value, @unsigned int startBit, @unsigned int endBit);
-    @unsigned short readBitsUnchecked(@unsigned short value, @unsigned int startBit, @unsigned int endBit);
-    @unsigned int readBitsUnchecked(@unsigned int value, @unsigned int startBit, @unsigned int endBit);
+    @Unsigned
+    byte readBitsUnchecked(@Unsigned byte value, @Unsigned int startBit, @Unsigned int endBit);
+    @Unsigned
+    short readBitsUnchecked(@Unsigned short value, @Unsigned int startBit, @Unsigned int endBit);
+    @Unsigned
+    int readBitsUnchecked(@Unsigned int value, @Unsigned int startBit, @Unsigned int endBit);
 
-    @unsigned byte writeBitUnchecked(@unsigned byte value, @unsigned int bit, boolean bitValue);
-    @unsigned short writeBitUnchecked(@unsigned short value, @unsigned int bit, boolean bitValue);
-    @unsigned int writeBitUnchecked(@unsigned int value, @unsigned int bit, boolean bitValue);
+    @Unsigned
+    byte writeBitUnchecked(@Unsigned byte value, @Unsigned int bit, boolean bitValue);
+    @Unsigned
+    short writeBitUnchecked(@Unsigned short value, @Unsigned int bit, boolean bitValue);
+    @Unsigned
+    int writeBitUnchecked(@Unsigned int value, @Unsigned int bit, boolean bitValue);
 
-    @unsigned byte writeBitsUnchecked(
-            @unsigned byte value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned byte bits
+    @Unsigned
+    byte writeBitsUnchecked(
+            @Unsigned byte value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned byte bits
     );
-    @unsigned short writeBitsUnchecked(
-            @unsigned short value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned short bits
+    @Unsigned
+    short writeBitsUnchecked(
+            @Unsigned short value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned short bits
     );
-    @unsigned int writeBitsUnchecked(
-            @unsigned int value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned int bits
+    @Unsigned
+    int writeBitsUnchecked(
+            @Unsigned int value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned int bits
     );
 }

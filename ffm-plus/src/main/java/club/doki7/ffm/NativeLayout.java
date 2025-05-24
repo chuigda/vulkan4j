@@ -1,6 +1,6 @@
 package club.doki7.ffm;
 
-import club.doki7.ffm.annotation.unsigned;
+import club.doki7.ffm.annotation.Unsigned;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.foreign.*;
@@ -26,8 +26,8 @@ public final class NativeLayout {
     public static final @NotNull ValueLayout C_LONG;
     public static final int C_LONG_SIZE;
 
-    public static final @unsigned int UINT32_MAX = (~0);
-    public static final @unsigned long UINT64_MAX = (~0L);
+    public static final @Unsigned int UINT32_MAX = (~0);
+    public static final @Unsigned long UINT64_MAX = (~0L);
 
     static {
         if (POINTER_SIZE == 4) {
@@ -66,7 +66,7 @@ public final class NativeLayout {
         }
     }
 
-    public static @unsigned long readCSizeT(@NotNull MemorySegment segment, long offset) {
+    public static @Unsigned long readCSizeT(@NotNull MemorySegment segment, long offset) {
         if (C_SIZE_T == ValueLayout.JAVA_INT) {
             return segment.get(ValueLayout.JAVA_INT, offset);
         } else {
@@ -74,7 +74,7 @@ public final class NativeLayout {
         }
     }
 
-    public static void writeCSizeT(@NotNull MemorySegment segment, long offset, @unsigned long value) {
+    public static void writeCSizeT(@NotNull MemorySegment segment, long offset, @Unsigned long value) {
         if (C_SIZE_T == ValueLayout.JAVA_INT) {
             segment.set(ValueLayout.JAVA_INT, offset, (int) value);
         } else {

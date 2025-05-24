@@ -32,10 +32,10 @@ data class CPointerType(
     val comment: String?,
 ) : CType {
     override val jType: String = if (comment != null) {
-        """@pointer(comment="$comment") MemorySegment"""
+        """@Pointer(comment="$comment") MemorySegment"""
     }
     else {
-        """@pointer(comment="void*") MemorySegment"""
+        """@Pointer(comment="void*") MemorySegment"""
     }
 
     override val jLayout: String = if (pointee == voidType) {
@@ -175,10 +175,10 @@ data class CStructType(val name: String): CType {
 data class CEnumType(val name: String, val bitwidth: Int? = null): CFixedSizeType {
     override val jType: String get() = when (bitwidth) {
         null, 32 -> {
-            "@enumtype($name.class) int"
+            "@EnumType($name.class) int"
         }
         64 -> {
-            "@enumtype($name.class) long"
+            "@EnumType($name.class) long"
         }
         else -> {
             error("unsupported bitwidth: $bitwidth")
@@ -212,8 +212,8 @@ data class CEnumType(val name: String, val bitwidth: Int? = null): CFixedSizeTyp
     }
 
     override val jPtrType: String = when (bitwidth) {
-        null, 32 -> "@enumtype($name.class) IntPtr"
-        64 -> "@enumtype($name.class) LongPtr"
+        null, 32 -> "@EnumType($name.class) IntPtr"
+        64 -> "@EnumType($name.class) LongPtr"
         else -> error("unsupported bitwidth: $bitwidth")
     }
 

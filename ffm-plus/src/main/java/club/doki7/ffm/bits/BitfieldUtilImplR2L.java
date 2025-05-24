@@ -1,6 +1,6 @@
 package club.doki7.ffm.bits;
 
-import club.doki7.ffm.annotation.unsigned;
+import club.doki7.ffm.annotation.Unsigned;
 
 /// On certain platforms, bitfields are packed from right to left.
 ///
@@ -26,54 +26,54 @@ import club.doki7.ffm.annotation.unsigned;
 /// and mask it with 0x07 ({@code = (1 << (endBit - startBit)) - 1}).
 final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     @Override
-    public @unsigned boolean readBitUnchecked(@unsigned byte value, @unsigned int bit) {
+    public @Unsigned boolean readBitUnchecked(@Unsigned byte value, @Unsigned int bit) {
         return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
-    public @unsigned boolean readBitUnchecked(@unsigned short value, @unsigned int bit) {
+    public @Unsigned boolean readBitUnchecked(@Unsigned short value, @Unsigned int bit) {
         return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
-    public @unsigned boolean readBitUnchecked(@unsigned int value, @unsigned int bit) {
+    public @Unsigned boolean readBitUnchecked(@Unsigned int value, @Unsigned int bit) {
         return ((value >>> bit) & 0x01) != 0;
     }
 
     @Override
-    public @unsigned byte readBitsUnchecked(
-            @unsigned byte value,
-            @unsigned int startBit,
-            @unsigned int endBit
+    public @Unsigned byte readBitsUnchecked(
+            @Unsigned byte value,
+            @Unsigned int startBit,
+            @Unsigned int endBit
     ) {
         int mask = (1 << (endBit - startBit)) - 1;
         return (byte) ((value >>> startBit) & mask);
     }
 
     @Override
-    public @unsigned short readBitsUnchecked(
-            @unsigned short value,
-            @unsigned int startBit,
-            @unsigned int endBit
+    public @Unsigned short readBitsUnchecked(
+            @Unsigned short value,
+            @Unsigned int startBit,
+            @Unsigned int endBit
     ) {
         int mask = (1 << (endBit - startBit)) - 1;
         return (short) ((value >>> startBit) & mask);
     }
 
     @Override
-    public @unsigned int readBitsUnchecked(
-            @unsigned int value,
-            @unsigned int startBit,
-            @unsigned int endBit
+    public @Unsigned int readBitsUnchecked(
+            @Unsigned int value,
+            @Unsigned int startBit,
+            @Unsigned int endBit
     ) {
         long mask = (1L << (endBit - startBit)) - 1;
         return (int) ((value >>> startBit) & mask);
     }
 
     @Override
-    public @unsigned byte writeBitUnchecked(
-            @unsigned byte value,
-            @unsigned int bit,
+    public @Unsigned byte writeBitUnchecked(
+            @Unsigned byte value,
+            @Unsigned int bit,
             boolean bitValue
     ) {
         if (bitValue) {
@@ -84,9 +84,9 @@ final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     }
 
     @Override
-    public @unsigned short writeBitUnchecked(
-            @unsigned short value,
-            @unsigned int bit,
+    public @Unsigned short writeBitUnchecked(
+            @Unsigned short value,
+            @Unsigned int bit,
             boolean bitValue
     ) {
         if (bitValue) {
@@ -97,9 +97,9 @@ final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     }
 
     @Override
-    public @unsigned int writeBitUnchecked(
-            @unsigned int value,
-            @unsigned int bit,
+    public @Unsigned int writeBitUnchecked(
+            @Unsigned int value,
+            @Unsigned int bit,
             boolean bitValue
     ) {
         if (bitValue) {
@@ -110,11 +110,11 @@ final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     }
 
     @Override
-    public @unsigned byte writeBitsUnchecked(
-            @unsigned byte value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned byte bits
+    public @Unsigned byte writeBitsUnchecked(
+            @Unsigned byte value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned byte bits
     ) {
         int mask = (1 << (endBit - startBit)) - 1;
         int maskShifted = mask << startBit;
@@ -123,11 +123,11 @@ final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     }
 
     @Override
-    public @unsigned short writeBitsUnchecked(
-            @unsigned short value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned short bits
+    public @Unsigned short writeBitsUnchecked(
+            @Unsigned short value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned short bits
     ) {
         int mask = (1 << (endBit - startBit)) - 1;
         int maskShifted = mask << startBit;
@@ -136,11 +136,11 @@ final class BitfieldUtilImplR2L implements IBitfieldUtilImpl {
     }
 
     @Override
-    public @unsigned int writeBitsUnchecked(
-            @unsigned int value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned int bits
+    public @Unsigned int writeBitsUnchecked(
+            @Unsigned int value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned int bits
     ) {
         long mask = (1L << (endBit - startBit)) - 1;
         long maskShifted = mask << startBit;

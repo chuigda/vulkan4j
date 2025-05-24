@@ -1,6 +1,6 @@
 package club.doki7.ffm.bits;
 
-import club.doki7.ffm.annotation.unsigned;
+import club.doki7.ffm.annotation.Unsigned;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.foreign.AddressLayout;
@@ -8,9 +8,9 @@ import java.lang.foreign.MemorySegment;
 import java.nio.ByteOrder;
 
 public final class BitfieldUtil {
-    public static @unsigned boolean readBit(
+    public static @Unsigned boolean readBit(
             @NotNull MemorySegment segment,
-            @unsigned int bit
+            @Unsigned int bit
     ) {
         return switch ((int) segment.byteSize()) {
             case 1 -> readBit(segment.get(AddressLayout.JAVA_BYTE, 0), bit);
@@ -20,10 +20,10 @@ public final class BitfieldUtil {
         };
     }
 
-    public static @unsigned int readBits(
+    public static @Unsigned int readBits(
             @NotNull MemorySegment segment,
-            @unsigned int startBit,
-            @unsigned int endBit
+            @Unsigned int startBit,
+            @Unsigned int endBit
     ) {
         return switch ((int) segment.byteSize()) {
             case 1 -> readBits(segment.get(AddressLayout.JAVA_BYTE, 0), startBit, endBit);
@@ -35,7 +35,7 @@ public final class BitfieldUtil {
 
     public static void writeBit(
             @NotNull MemorySegment segment,
-            @unsigned int bit,
+            @Unsigned int bit,
             boolean bitValue
     ) {
         switch ((int) segment.byteSize()) {
@@ -48,9 +48,9 @@ public final class BitfieldUtil {
 
     public static void writeBits(
             @NotNull MemorySegment segment,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned int bits
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned int bits
     ) {
         switch ((int) segment.byteSize()) {
             case 1 -> segment.set(AddressLayout.JAVA_BYTE, 0, writeBits(segment.get(AddressLayout.JAVA_BYTE, 0), startBit, endBit, (byte) bits));
@@ -61,108 +61,108 @@ public final class BitfieldUtil {
     }
 
     public static boolean readBit(
-            @unsigned byte value,
-            @unsigned int bit
+            @Unsigned byte value,
+            @Unsigned int bit
     ) {
         checkBitRange(bit, Byte.SIZE);
         return impl.readBitUnchecked(value, bit);
     }
 
     public static boolean readBit(
-            @unsigned short value,
-            @unsigned int bit
+            @Unsigned short value,
+            @Unsigned int bit
     ) {
         checkBitRange(bit, Short.SIZE);
         return impl.readBitUnchecked(value, bit);
     }
 
     public static boolean readBit(
-            @unsigned int value,
-            @unsigned int bit
+            @Unsigned int value,
+            @Unsigned int bit
     ) {
         checkBitRange(bit, Integer.SIZE);
         return impl.readBitUnchecked(value, bit);
     }
 
-    public static @unsigned byte readBits(
-            @unsigned byte value,
-            @unsigned int startBit,
-            @unsigned int endBit
+    public static @Unsigned byte readBits(
+            @Unsigned byte value,
+            @Unsigned int startBit,
+            @Unsigned int endBit
     ) {
         checkBitRange(startBit, endBit, Byte.SIZE);
         return impl.readBitsUnchecked(value, startBit, endBit);
     }
 
-    public static @unsigned short readBits(
-            @unsigned short value,
-            @unsigned int startBit,
-            @unsigned int endBit
+    public static @Unsigned short readBits(
+            @Unsigned short value,
+            @Unsigned int startBit,
+            @Unsigned int endBit
     ) {
         checkBitRange(startBit, endBit, Short.SIZE);
         return impl.readBitsUnchecked(value, startBit, endBit);
     }
 
-    public static @unsigned int readBits(
-            @unsigned int value,
-            @unsigned int startBit,
-            @unsigned int endBit
+    public static @Unsigned int readBits(
+            @Unsigned int value,
+            @Unsigned int startBit,
+            @Unsigned int endBit
     ) {
         checkBitRange(startBit, endBit, Integer.SIZE);
         return impl.readBitsUnchecked(value, startBit, endBit);
     }
 
-    public static @unsigned byte writeBit(
-            @unsigned byte value,
-            @unsigned int bit,
+    public static @Unsigned byte writeBit(
+            @Unsigned byte value,
+            @Unsigned int bit,
             boolean bitValue
     ) {
         checkBitRange(bit, Byte.SIZE);
         return impl.writeBitUnchecked(value, bit, bitValue);
     }
 
-    public static @unsigned short writeBit(
-            @unsigned short value,
-            @unsigned int bit,
+    public static @Unsigned short writeBit(
+            @Unsigned short value,
+            @Unsigned int bit,
             boolean bitValue
     ) {
         checkBitRange(bit, Short.SIZE);
         return impl.writeBitUnchecked(value, bit, bitValue);
     }
 
-    public static @unsigned int writeBit(
-            @unsigned int value,
-            @unsigned int bit,
+    public static @Unsigned int writeBit(
+            @Unsigned int value,
+            @Unsigned int bit,
             boolean bitValue
     ) {
         checkBitRange(bit, Integer.SIZE);
         return impl.writeBitUnchecked(value, bit, bitValue);
     }
 
-    public static @unsigned byte writeBits(
-            @unsigned byte value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned byte bits
+    public static @Unsigned byte writeBits(
+            @Unsigned byte value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned byte bits
     ) {
         checkBitRange(startBit, endBit, Byte.SIZE);
         return impl.writeBitsUnchecked(value, startBit, endBit, bits);
     }
 
-    public static @unsigned short writeBits(
-            @unsigned short value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned short bits
+    public static @Unsigned short writeBits(
+            @Unsigned short value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned short bits
     ) {
         checkBitRange(startBit, endBit, Short.SIZE);
         return impl.writeBitsUnchecked(value, startBit, endBit, bits);
     }
 
-    public static @unsigned int writeBits(
-            @unsigned int value,
-            @unsigned int startBit,
-            @unsigned int endBit,
-            @unsigned int bits
+    public static @Unsigned int writeBits(
+            @Unsigned int value,
+            @Unsigned int startBit,
+            @Unsigned int endBit,
+            @Unsigned int bits
     ) {
         checkBitRange(startBit, endBit, Integer.SIZE);
         return impl.writeBitsUnchecked(value, startBit, endBit, bits);
