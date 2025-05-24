@@ -21,6 +21,7 @@ internal fun skipSyntaxTrivia(tokenizer: Tokenizer, syntaxTriviaList: MutableLis
 }
 
 internal fun parseType(tokenizer: Tokenizer): RawType {
+    var isUnsigned = false
     var isConst = false
     var syntaxTriviaList = mutableListOf<String>()
     skipSyntaxTrivia(tokenizer, syntaxTriviaList)
@@ -34,11 +35,17 @@ internal fun parseType(tokenizer: Tokenizer): RawType {
         syntaxError("Our backend don't know how to deal with volatile yet", token)
     }
 
+    if (token.kind == TokenKind.IDENT && token.value == "unsigned") {
+        isUnsigned = true
+        skipSyntaxTrivia(tokenizer, syntaxTriviaList)
+        token = tokenizer.next()
+    }
+
     if (token.kind != TokenKind.IDENT) {
         syntaxError("Expected identifier but got ${token.kind}", token)
     }
 
-    var ty: RawType = RawIdentifierType(token.value, syntaxTriviaList)
+    var ty: RawType = RawIdentifierType(token.value, isUnsigned, syntaxTriviaList)
     syntaxTriviaList = mutableListOf()
 
     skipSyntaxTrivia(tokenizer, syntaxTriviaList)
@@ -65,4 +72,54 @@ internal fun parseType(tokenizer: Tokenizer): RawType {
 
     ty.syntaxTrivia.addAll(syntaxTriviaList)
     return ty
+}
+
+internal fun parseStructFieldDecl(tokenizer: Tokenizer): VarDecl {
+    var effectiveType = parseType(tokenizer)
+    val varDeclSpecificTrivia = mutableListOf<String>()
+    skipSyntaxTrivia(tokenizer, varDeclSpecificTrivia)
+    val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
+    while (true) {
+        val triviaBeforeBracket = mutableListOf<String>()
+        skipSyntaxTrivia(tokenizer, triviaBeforeBracket)
+
+        val peekToken = tokenizer.peek()
+        if (peekToken.kind == TokenKind.SYMBOL && peekToken.value == "[") {
+            varDeclSpecificTrivia.addAll(triviaBeforeBracket)
+            tokenizer.next()
+
+            val arrayInternalTrivia = mutableListOf<String>()
+            skipSyntaxTrivia(tokenizer, arrayInternalTrivia)
+
+            val sizePeekTokenForArray = tokenizer.peek()
+            val actualArraySize: String
+            if (sizePeekTokenForArray.kind == TokenKind.SYMBOL && sizePeekTokenForArray.value == "]") {
+                actualArraySize = ""
+            } else if (sizePeekTokenForArray.kind == TokenKind.INTEGER || sizePeekTokenForArray.kind == TokenKind.IDENT) {
+                val sizeToken = tokenizer.next()
+                actualArraySize = sizeToken.value
+            } else {
+                syntaxError("Expected array size (integer or identifier) or ']' but got ${sizePeekTokenForArray.kind}", sizePeekTokenForArray)
+            }
+
+            skipSyntaxTrivia(tokenizer, arrayInternalTrivia)
+            val closeBracketToken = expectAndConsume(TokenKind.SYMBOL, tokenizer)
+            if (closeBracketToken.value != "]") {
+                syntaxError("Expected ']' to close array declaration", closeBracketToken)
+            }
+
+            effectiveType = RawArrayType(effectiveType, actualArraySize, arrayInternalTrivia)
+        } else {
+            varDeclSpecificTrivia.addAll(triviaBeforeBracket)
+            break
+        }
+    }
+
+    skipSyntaxTrivia(tokenizer, varDeclSpecificTrivia)
+    val semicolonToken = expectAndConsume(TokenKind.SYMBOL, tokenizer)
+    if (semicolonToken.value != ";") {
+        syntaxError("Expected ';' after variable declaration", semicolonToken)
+    }
+
+    return VarDecl(nameToken.value, effectiveType, varDeclSpecificTrivia)
 }

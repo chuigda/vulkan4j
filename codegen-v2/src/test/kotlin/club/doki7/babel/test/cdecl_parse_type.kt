@@ -7,6 +7,7 @@ import club.doki7.babel.cdecl.Tokenizer
 import club.doki7.babel.cdecl.parseType
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class TestParseType {
@@ -44,5 +45,24 @@ class TestParseType {
         val nextToken = tokenizer.next()
         assertEquals(TokenKind.IDENT, nextToken.kind)
         assertEquals("vmaGetMemoryProperties", nextToken.value)
+    }
+
+    @Test
+    fun test3() {
+        val tokenizer = Tokenizer(listOf("unsigned short* red;"), 0)
+        val type = parseType(tokenizer)
+
+        assertTrue(type is RawPointerType)
+        assertFalse(type.const)
+        assertEquals(0, type.syntaxTrivia.size)
+
+        val pointee = type.pointee as RawIdentifierType
+        assertEquals("short", pointee.ident)
+        assertTrue(pointee.unsigned)
+        assertEquals(0, type.pointee.syntaxTrivia.size)
+
+        val nextToken = tokenizer.next()
+        assertEquals(TokenKind.IDENT, nextToken.kind)
+        assertEquals("red", nextToken.value)
     }
 }

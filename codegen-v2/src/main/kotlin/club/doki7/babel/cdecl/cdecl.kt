@@ -31,6 +31,7 @@ sealed interface RawType { val syntaxTrivia: MutableList<String> }
 
 data class RawIdentifierType(
     val ident: String,
+    val unsigned: Boolean,
     override val syntaxTrivia: MutableList<String>
 ) : RawType
 
