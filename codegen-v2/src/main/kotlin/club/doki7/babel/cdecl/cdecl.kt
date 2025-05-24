@@ -1,5 +1,11 @@
 package club.doki7.babel.cdecl
 
+import club.doki7.babel.registry.ArrayType
+import club.doki7.babel.registry.IdentifierType
+import club.doki7.babel.registry.PointerType
+import club.doki7.babel.registry.Type
+import club.doki7.babel.registry.intern
+
 sealed interface Decl { val trivia: List<String> }
 
 data class VarDecl(
@@ -52,3 +58,22 @@ data class RawFunctionType(
     val params: List<Pair<String, RawType>>,
     override val trivia: MutableList<String>
 ) : RawType
+
+fun parseType(s: String): RawType {
+    val tokenizer = Tokenizer(s.split("\n"), 0)
+    return parseType(tokenizer)
+}
+
+/// Only call this function when you're sure that you DO NOT need to retain trivia
+fun RawType.toType(): Type = when (this) {
+    is RawIdentifierType -> IdentifierType(ident)
+    is RawArrayType -> ArrayType(
+        element = element.toType(),
+        length = size.intern()
+    )
+    is RawPointerType -> PointerType(
+        pointee = pointee.toType(),
+        const = const
+    )
+    is RawFunctionType -> error("function type cannot be converted to Type")
+}

@@ -1,7 +1,7 @@
 package club.doki7.babel.extract.gles2
 
-import club.doki7.babel.extract.parseType
-import club.doki7.babel.extract.tokenize
+import club.doki7.babel.cdecl.parseType
+import club.doki7.babel.cdecl.toType
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.asSequence
 import club.doki7.babel.util.getAttributeText
@@ -108,7 +108,7 @@ private fun getElementTextWithoutName(e: Element): String {
 private fun extractTypeJudgement(e: Element): Pair<String, Type> {
     val name = e.getElementsByTagName(TAG_NAME).item(0).textContent.trim()
     val rawType = getElementTextWithoutName(e)
-    val type = parseType(tokenize(rawType), 0).first
+    val type = parseType(rawType).toType()
     return name to type
 }
 
