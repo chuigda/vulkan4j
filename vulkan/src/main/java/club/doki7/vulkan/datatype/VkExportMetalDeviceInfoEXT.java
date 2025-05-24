@@ -178,11 +178,11 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment mtlDevice() {
+    public @pointer(comment="MTLDevice_id") MemorySegment mtlDevice() {
         return segment.get(LAYOUT$mtlDevice, OFFSET$mtlDevice);
     }
 
-    public void mtlDevice(@pointer(comment="void*") MemorySegment value) {
+    public void mtlDevice(@pointer(comment="MTLDevice_id") MemorySegment value) {
         segment.set(LAYOUT$mtlDevice, OFFSET$mtlDevice, value);
     }
 

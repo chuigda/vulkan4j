@@ -204,11 +204,11 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         dpyRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment dpyRaw() {
+    public @pointer(comment="Display*") MemorySegment dpyRaw() {
         return segment.get(LAYOUT$dpy, OFFSET$dpy);
     }
 
-    public void dpyRaw(@pointer(comment="void**") MemorySegment value) {
+    public void dpyRaw(@pointer(comment="Display*") MemorySegment value) {
         segment.set(LAYOUT$dpy, OFFSET$dpy, value);
     }
 

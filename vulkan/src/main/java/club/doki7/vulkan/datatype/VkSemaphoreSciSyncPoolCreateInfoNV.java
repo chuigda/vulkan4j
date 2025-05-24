@@ -178,11 +178,11 @@ public record VkSemaphoreSciSyncPoolCreateInfoNV(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment handle() {
+    public @pointer(comment="NvSciSyncObj") MemorySegment handle() {
         return segment.get(LAYOUT$handle, OFFSET$handle);
     }
 
-    public void handle(@pointer(comment="void*") MemorySegment value) {
+    public void handle(@pointer(comment="NvSciSyncObj") MemorySegment value) {
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 

@@ -178,11 +178,11 @@ public record VkImportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment mtlBuffer() {
+    public @pointer(comment="MTLBuffer_id") MemorySegment mtlBuffer() {
         return segment.get(LAYOUT$mtlBuffer, OFFSET$mtlBuffer);
     }
 
-    public void mtlBuffer(@pointer(comment="void*") MemorySegment value) {
+    public void mtlBuffer(@pointer(comment="MTLBuffer_id") MemorySegment value) {
         segment.set(LAYOUT$mtlBuffer, OFFSET$mtlBuffer, value);
     }
 

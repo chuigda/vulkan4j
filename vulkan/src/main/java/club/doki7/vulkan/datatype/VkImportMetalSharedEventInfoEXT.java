@@ -178,11 +178,11 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment mtlSharedEvent() {
+    public @pointer(comment="MTLSharedEvent_id") MemorySegment mtlSharedEvent() {
         return segment.get(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent);
     }
 
-    public void mtlSharedEvent(@pointer(comment="void*") MemorySegment value) {
+    public void mtlSharedEvent(@pointer(comment="MTLSharedEvent_id") MemorySegment value) {
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
     }
 

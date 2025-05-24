@@ -204,11 +204,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         dfbRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment dfbRaw() {
+    public @pointer(comment="IDirectFB*") MemorySegment dfbRaw() {
         return segment.get(LAYOUT$dfb, OFFSET$dfb);
     }
 
-    public void dfbRaw(@pointer(comment="void**") MemorySegment value) {
+    public void dfbRaw(@pointer(comment="IDirectFB*") MemorySegment value) {
         segment.set(LAYOUT$dfb, OFFSET$dfb, value);
     }
 
@@ -228,11 +228,11 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         surfaceRaw(s);
     }
 
-    public @pointer(comment="void**") MemorySegment surfaceRaw() {
+    public @pointer(comment="IDirectFBSurface*") MemorySegment surfaceRaw() {
         return segment.get(LAYOUT$surface, OFFSET$surface);
     }
 
-    public void surfaceRaw(@pointer(comment="void**") MemorySegment value) {
+    public void surfaceRaw(@pointer(comment="IDirectFBSurface*") MemorySegment value) {
         segment.set(LAYOUT$surface, OFFSET$surface, value);
     }
 

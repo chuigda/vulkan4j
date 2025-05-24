@@ -178,11 +178,11 @@ public record VkExportSemaphoreSciSyncInfoNV(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment pAttributes() {
+    public @pointer(comment="NvSciSyncAttrList") MemorySegment pAttributes() {
         return segment.get(LAYOUT$pAttributes, OFFSET$pAttributes);
     }
 
-    public void pAttributes(@pointer(comment="void*") MemorySegment value) {
+    public void pAttributes(@pointer(comment="NvSciSyncAttrList") MemorySegment value) {
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
     }
 

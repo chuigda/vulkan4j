@@ -191,11 +191,11 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$queue, OFFSET$queue, value != null ? value.segment() : MemorySegment.NULL);
     }
 
-    public @pointer(comment="void*") MemorySegment mtlCommandQueue() {
+    public @pointer(comment="MTLCommandQueue_id") MemorySegment mtlCommandQueue() {
         return segment.get(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue);
     }
 
-    public void mtlCommandQueue(@pointer(comment="void*") MemorySegment value) {
+    public void mtlCommandQueue(@pointer(comment="MTLCommandQueue_id") MemorySegment value) {
         segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
     }
 
