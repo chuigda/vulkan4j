@@ -23,7 +23,7 @@ jobs:
       uses: egor-tensin/setup-gcc@v1
     - name: Give build.sh priviledge to run
       working-directory: ./misc/test_binary/
-      run: chmod +x .build.sh
+      run: chmod +x ./build.sh
     - name: Build testing-use native binaries
       working-directory: ./misc/test_binary/
       run: ./build.sh
