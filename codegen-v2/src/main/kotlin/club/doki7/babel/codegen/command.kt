@@ -90,6 +90,7 @@ fun generateCommandFile(
         +""
 
         +"// region command wrappers"
+        +""
         loweredCommand.forEachIndexed { idx, it ->
             +generateCommandWrapper(it, codegenOptions)
             if (idx != loweredCommand.size - 1) {
@@ -160,6 +161,13 @@ private fun generateCommandWrapper(
 
     val callArgsDoc = buildDoc {
         callArgs.forEachIndexed { idx, it -> +if (idx != callArgs.size - 1) "$it, " else it }
+    }
+
+    if (loweredCommand.command.doc != null) {
+        for (line in loweredCommand.command.doc) {
+            +"/// $line"
+        }
+        +"///"
     }
 
     val seeLink = codegenOptions.seeLinkProvider(loweredCommand.command)

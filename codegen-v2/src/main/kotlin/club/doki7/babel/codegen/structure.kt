@@ -143,7 +143,11 @@ fun generateStructure(
 
     val seeLink = codegenOptions.seeLinkProvider(structure)
 
-    if (seeLink != null) {
+    if (structure.doc != null) {
+        for (line in structure.doc!!) {
+            +"/// $line"
+        }
+    } else if (seeLink != null) {
         +"/// Represents a pointer to a $seeLink structure in native memory."
     } else {
         +"/// Represents a pointer to a {@code $originalTypeName} structure in native memory."
@@ -201,8 +205,8 @@ fun generateStructure(
         +"/// The {@code allocate} ({@link $className#allocate(Arena)}, {@link $className#allocate(Arena, long)})"
         +"/// functions will automatically initialize these fields. Also, you may call {@link $className#autoInit}"
         +"/// to initialize these fields manually for non-allocated instances."
+        +"///"
     }
-    +"///"
 
     +"/// ## Contracts"
     +"///"
@@ -213,6 +217,29 @@ fun generateStructure(
     +"///"
     +"/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not"
     +"/// perform any runtime check. The constructor can be useful for automatic code generators."
+
+    val hasMemberDoc = structure.members.any { it.doc != null }
+    if (hasMemberDoc) {
+        +"///"
+        +"/// ## Member documentation"
+        +"///"
+        +"/// <ul>"
+        structure.members.forEach {
+            if (it.doc != null) {
+                val first = it.doc!!.first()
+                val following = it.doc!!.subList(1, it.doc!!.size)
+
+                +"/// <li>{@link #${it.name}} $first${if (following.isEmpty()) "</li>" else ""}"
+                if (following.isNotEmpty()) {
+                    following.forEach { line ->
+                        +"/// $line"
+                    }
+                    +"/// </li>"
+                }
+            }
+        }
+        +"/// </ul>"
+    }
 
     if (seeLink != null) {
         +"///"

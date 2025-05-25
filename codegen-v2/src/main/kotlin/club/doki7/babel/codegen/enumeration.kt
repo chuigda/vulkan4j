@@ -21,12 +21,26 @@ fun generateEnumeration(
         +""
     }
 
+    if (enumeration.doc != null) {
+        for (line in enumeration.doc) {
+            +"/// $line"
+        }
+        +"///"
+    }
+
     if (docLink != null) {
         +"/// @see $docLink"
     }
     +"public final class ${enumeration.name} {"
     indent {
-        for (variant in enumeration.variants) {
+        for ((idx, variant) in enumeration.variants.withIndex()) {
+            if (variant.doc != null) {
+                if (idx != 0) {
+                    +""
+                }
+                variant.doc!!.forEach { +"/// $it" }
+            }
+
             val docLink = codegenOptions.seeLinkProvider(variant)
             if (docLink != null) {
                 +"/// @see $docLink"

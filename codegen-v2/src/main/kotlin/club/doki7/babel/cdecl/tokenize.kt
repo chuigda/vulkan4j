@@ -1,5 +1,7 @@
 package club.doki7.babel.cdecl
 
+import club.doki7.babel.util.isHexDigit
+
 internal enum class TokenKind {
     IDENT,
     SYMBOL,
@@ -17,7 +19,7 @@ internal data class Token(val kind: TokenKind, val value: String, val line: Int,
     }
 }
 
-internal class Tokenizer(private val source: List<String>, private var curLine: Int) {
+internal class Tokenizer(private val source: List<String>, var curLine: Int) {
     private var curCol = 0
 
     private val curChar: Char inline get() = source[curLine][curCol]
@@ -43,7 +45,27 @@ internal class Tokenizer(private val source: List<String>, private var curLine: 
         return savedToken!!
     }
 
-    fun nextTokenImpl(): Token {
+    fun maybeSkipToLineEnd() {
+        if (savedToken != null) {
+            this.curCol = savedToken!!.col
+            this.savedToken = null
+        }
+
+        while (curCol < source[curLine].length && source[curLine][curCol].isWhitespace()) {
+            curCol++
+        }
+
+        if (curCol + 1 < source[curLine].length && source[curLine][curCol] == '/' && source[curLine][curCol + 1] == '/') {
+            curCol = source[curLine].length
+        }
+
+        if (curCol == source[curLine].length) {
+            curLine++
+            curCol = 0
+        }
+    }
+
+    private fun nextTokenImpl(): Token {
         skipWhitespace()
         if (curLine >= source.size) {
             return Token(TokenKind.EOI, "", curLine, curCol)
@@ -186,6 +208,7 @@ internal val knownMacros = setOf(
     "VMA_NULLABLE",
     "VMA_NOT_NULL",
     "VMA_NOT_NULL_NON_DISPATCHABLE",
+    "VMA_NULLABLE_NON_DISPATCHABLE",
     "VKAPI_PTR"
 )
 

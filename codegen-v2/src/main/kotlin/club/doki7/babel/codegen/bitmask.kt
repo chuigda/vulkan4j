@@ -1,12 +1,10 @@
 package club.doki7.babel.codegen
 
 import club.doki7.babel.registry.Bitmask
-import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.util.Either
 import club.doki7.babel.util.buildDoc
 
 fun generateBitmask(
-    registryBase: RegistryBase,
     bitmask: Bitmask,
     codegenOptions: CodegenOptions
 ) = buildDoc {
@@ -23,6 +21,13 @@ fun generateBitmask(
     +"package ${codegenOptions.packageName}.bitmask;"
     +""
 
+    if (codegenOptions.extraImport.isNotEmpty()) {
+        for (import in codegenOptions.extraImport) {
+            +"import $import;"
+        }
+        +""
+    }
+
     if (bitflags.isNotEmpty()) {
         +"import club.doki7.ffm.annotation.*;"
         +""
@@ -31,13 +36,27 @@ fun generateBitmask(
         +""
     }
 
+    if (bitmask.doc != null) {
+        for (line in bitmask.doc) {
+            +"/// $line"
+        }
+        +"///"
+    }
+
     if (docLink != null) {
         +"/// @see $docLink"
     }
 
     +"public final class ${bitmask.name} {"
     indent {
-        for (flag in bitflags) {
+        for ((idx, flag) in bitflags.sortedBy { if (it.value is Either.Right) it.value.value.size else 0 }.withIndex()) {
+            if (flag.doc != null) {
+                if (idx != 0) {
+                    +""
+                }
+                flag.doc!!.forEach { +"/// $it" }
+            }
+
             val docLink = codegenOptions.seeLinkProvider(flag)
             if (docLink != null) {
                 +"/// @see $docLink"
