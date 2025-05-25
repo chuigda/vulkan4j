@@ -164,10 +164,43 @@ private fun generateCommandWrapper(
     }
 
     if (loweredCommand.command.doc != null) {
+        val nonAtLines = mutableListOf<String>()
+        val atLines = mutableListOf<String>()
+
+        var lastLineWasEmpty = false
         for (line in loweredCommand.command.doc) {
-            +"/// $line"
+            if (line.startsWith("@")) {
+                atLines.add(line)
+            } else if (line.isBlank()) {
+                if (!lastLineWasEmpty) {
+                    nonAtLines.add("")
+                    lastLineWasEmpty = true
+                }
+            } else {
+                nonAtLines.add(line)
+                lastLineWasEmpty = false
+            }
         }
-        +"///"
+
+        while (nonAtLines.isNotEmpty() && nonAtLines.first().isBlank()) {
+            nonAtLines.removeFirst()
+        }
+
+        while (nonAtLines.isNotEmpty() && nonAtLines.last().isBlank()) {
+            nonAtLines.removeLast()
+        }
+
+        if (nonAtLines.isNotEmpty()) {
+            for (line in nonAtLines) {
+                +"/// $line"
+            }
+            +"///"
+        }
+        if (atLines.isNotEmpty()) {
+            for (line in atLines) {
+                +"/// $line"
+            }
+        }
     }
 
     val seeLink = codegenOptions.seeLinkProvider(loweredCommand.command)
