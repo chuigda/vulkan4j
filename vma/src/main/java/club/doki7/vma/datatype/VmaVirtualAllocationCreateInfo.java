@@ -32,7 +32,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaVirtualAllocationCreateInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -42,6 +41,32 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Parameters of created virtual allocation to be passed to vmaVirtualAllocate().
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #size} Size of the allocation.
+///
+/// Cannot be zero.
+/// </li>
+/// <li>{@link #alignment} Required alignment of the allocation. Optional.
+///
+/// Must be power of two. Special value 0 has the same meaning as 1 - means no special alignment is required, so allocation can start at any offset.
+/// </li>
+/// <li>{@link #flags} Use combination of {@code VmaVirtualAllocationCreateFlagBits}.</li>
+/// <li>{@link #pUserData} Custom pointer to be associated with the allocation. Optional.
+///
+/// It can be any value and can be used for user-defined purposes. It can be fetched or changed later.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) implements IVmaVirtualAllocationCreateInfo {

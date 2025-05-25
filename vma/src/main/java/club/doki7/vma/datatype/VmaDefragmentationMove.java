@@ -31,7 +31,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaDefragmentationMove;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -41,6 +40,27 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Single move of an allocation to be done for defragmentation.
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #operation} Operation to be performed on the allocation by vmaEndDefragmentationPass(). Default value is {@code VMA_DEFRAGMENTATION_MOVE_OPERATION_COPY}. You can modify it.</li>
+/// <li>{@link #srcAllocation} Allocation that should be moved.</li>
+/// <li>{@link #dstTmpAllocation} Temporary allocation pointing to destination memory that will replace `srcAllocation`.
+///
+/// <b>Warning: </b> Do not store this allocation in your data structures! It exists only temporarily, for the duration of the defragmentation pass,
+/// to be used for binding new buffer/image to the destination memory using e.g. vmaBindBufferMemory().
+/// vmaEndDefragmentationPass() will destroy it and make `srcAllocation` point to this memory.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements IVmaDefragmentationMove {

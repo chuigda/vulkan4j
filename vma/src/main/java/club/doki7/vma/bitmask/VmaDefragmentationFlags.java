@@ -5,12 +5,23 @@ import club.doki7.ffm.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/// Flags to be passed as VmaDefragmentationInfo::flags.
+///
 public final class VmaDefragmentationFlags {
     public static final int FLAG_ALGORITHM_BALANCED = 0x2;
+
+    /// Use the most roboust algorithm at the cost of time to compute and number of copies to make.
+    /// Only available when bufferImageGranularity is greater than 1, since it aims to reduce
+    /// alignment issues between different types of resources.
+    /// Otherwise falls back to same behavior as {@code VMA_DEFRAGMENTATION_FLAG_ALGORITHM_FULL_BIT}.
     public static final int FLAG_ALGORITHM_EXTENSIVE = 0x8;
     public static final int FLAG_ALGORITHM_FAST = 0x1;
     public static final int FLAG_ALGORITHM_FULL = 0x4;
+
+    /// A bit mask to extract only `ALGORITHM` bits from entire set of flags.
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
+
+    /// A bit mask to extract only `ALGORITHM` bits from entire set of flags.
     public static final int FLAG_ALGORITHM_MASK = FLAG_ALGORITHM_FAST | FLAG_ALGORITHM_BALANCED | FLAG_ALGORITHM_FULL | FLAG_ALGORITHM_EXTENSIVE;
 
     public static String explain(@EnumType(VmaDefragmentationFlags.class) int flags) {

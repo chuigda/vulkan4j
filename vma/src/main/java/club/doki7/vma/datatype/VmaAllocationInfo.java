@@ -35,7 +35,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaAllocationInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -45,6 +44,70 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Parameters of {@code VmaAllocation} objects, that can be retrieved using function vmaGetAllocationInfo().
+///
+/// There is also an extended version of this structure that carries additional parameters: {@code VmaAllocationInfo2}.
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #memoryType} Memory type index that this allocation was allocated from.
+///
+/// It never changes.
+/// </li>
+/// <li>{@link #deviceMemory} Handle to Vulkan memory object.
+///
+/// Same memory object can be shared by multiple allocations.
+///
+/// It can change after the allocation is moved during  defragmentation.
+/// </li>
+/// <li>{@link #offset} Offset in `VkDeviceMemory` object to the beginning of this allocation, in bytes. `(deviceMemory, offset)` pair is unique to this allocation.
+///
+/// You usually don't need to use this offset. If you create a buffer or an image together with the allocation using e.g. function
+/// vmaCreateBuffer(), vmaCreateImage(), functions that operate on these resources refer to the beginning of the buffer or image,
+/// not entire device memory block. Functions like vmaMapMemory(), vmaBindBufferMemory() also refer to the beginning of the allocation
+/// and apply this offset automatically.
+///
+/// It can change after the allocation is moved during  defragmentation.
+/// </li>
+/// <li>{@link #size} Size of this allocation, in bytes.
+///
+/// It never changes.
+///
+///
+/// ote Allocation size returned in this variable may be greater than the size
+/// requested for the resource e.g. as `VkBufferCreateInfo::size`. Whole size of the
+/// allocation is accessible for operations on memory e.g. using a pointer after
+/// mapping with vmaMapMemory(), but operations on the resource e.g. using
+/// `vkCmdCopyBuffer` must be limited to the size of the resource.
+/// </li>
+/// <li>{@link #pMappedData} Pointer to the beginning of this allocation as mapped data.
+///
+/// If the allocation hasn't been mapped using vmaMapMemory() and hasn't been
+/// created with {@code VMA_ALLOCATION_CREATE_MAPPED_BIT} flag, this value is null.
+///
+/// It can change after call to vmaMapMemory(), vmaUnmapMemory().
+/// It can also change after the allocation is moved during  defragmentation.
+/// </li>
+/// <li>{@link #pUserData} Custom general-purpose pointer that was passed as VmaAllocationCreateInfo::pUserData or set using vmaSetAllocationUserData().
+///
+/// It can change after call to vmaSetAllocationUserData() for this allocation.
+/// </li>
+/// <li>{@link #pName} Custom allocation name that was set with vmaSetAllocationName().
+///
+/// It can change after call to vmaSetAllocationName() for this allocation.
+///
+/// Another way to set custom name is to pass it in VmaAllocationCreateInfo::pUserData with
+/// additional flag {@code VMA_ALLOCATION_CREATE_USER_DATA_COPY_STRING_BIT} set [DEPRECATED].
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaAllocationInfo {

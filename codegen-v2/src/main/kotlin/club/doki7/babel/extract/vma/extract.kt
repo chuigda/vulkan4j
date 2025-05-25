@@ -15,7 +15,6 @@ import club.doki7.babel.cdecl.toType
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.isDecOrHexNumber
 import club.doki7.babel.util.parseDecOrHex
-import java.math.BigInteger
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
@@ -59,12 +58,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
             break
         }
 
-        if (curLine.isBlank() || curLine.startsWith("#") || curLine.startsWith("//")) {
-            index++
-            continue
-        }
-
-        if (curLine.startsWith("/**")) {
+        if (curLine.startsWith("/**") || curLine.startsWith("/*!")) {
             val result = parseBlockDoxygen(lines, index)
             savedDoc = result.first
             index = result.second
@@ -75,6 +69,11 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
             val result = parseTriSlashDoxygen(lines, index)
             savedDoc = result.first
             index = result.second
+            continue
+        }
+
+        if (curLine.isBlank() || curLine.startsWith("#") || curLine.startsWith("//")) {
+            index++
             continue
         }
 

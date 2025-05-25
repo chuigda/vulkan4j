@@ -36,13 +36,27 @@ fun generateBitmask(
         +""
     }
 
+    if (bitmask.originalDoc != null) {
+        for (line in bitmask.originalDoc) {
+            +"/// $line"
+        }
+        +"///"
+    }
+
     if (docLink != null) {
         +"/// @see $docLink"
     }
 
     +"public final class ${bitmask.name} {"
     indent {
-        for (flag in bitflags.sortedBy { if (it.value is Either.Right) it.value.value.size else 0 }) {
+        for ((idx, flag) in bitflags.sortedBy { if (it.value is Either.Right) it.value.value.size else 0 }.withIndex()) {
+            if (flag.originalDoc != null) {
+                if (idx != 0) {
+                    +""
+                }
+                flag.originalDoc!!.forEach { +"/// $it" }
+            }
+
             val docLink = codegenOptions.seeLinkProvider(flag)
             if (docLink != null) {
                 +"/// @see $docLink"

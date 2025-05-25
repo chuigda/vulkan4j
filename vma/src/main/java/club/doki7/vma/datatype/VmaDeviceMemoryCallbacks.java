@@ -31,7 +31,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaDeviceMemoryCallbacks;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -41,6 +40,27 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Set of callbacks that the library will call for `vkAllocateMemory` and `vkFreeMemory`.
+///
+/// Provided for informative purpose, e.g. to gather statistics about number of
+/// allocations or total amount of memory allocated in Vulkan.
+///
+/// Used in VmaAllocatorCreateInfo::pDeviceMemoryCallbacks.
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #pfnAllocate} Optional, can be null.</li>
+/// <li>{@link #pfnFree} Optional, can be null.</li>
+/// <li>{@link #pUserData} Optional, can be null.</li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implements IVmaDeviceMemoryCallbacks {

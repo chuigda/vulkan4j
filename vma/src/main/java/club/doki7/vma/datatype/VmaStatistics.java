@@ -32,7 +32,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaStatistics;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -42,6 +41,40 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Calculated statistics of memory usage e.g. in a specific memory type, heap, custom pool, or total.
+///
+/// These are fast to calculate.
+/// See functions: vmaGetHeapBudgets(), vmaGetPoolStatistics().
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #blockCount} Number of `VkDeviceMemory` objects - Vulkan memory blocks allocated.</li>
+/// <li>{@link #allocationCount} Number of {@code VmaAllocation} objects allocated.
+///
+/// Dedicated allocations have their own blocks, so each one adds 1 to `allocationCount` as well as `blockCount`.
+/// </li>
+/// <li>{@link #blockBytes} Number of bytes allocated in `VkDeviceMemory` blocks.
+///
+///
+/// ote To avoid confusion, please be aware that what Vulkan calls an "allocation" - a whole `VkDeviceMemory` object
+/// (e.g. as in `VkPhysicalDeviceLimits::maxMemoryAllocationCount`) is called a "block" in VMA, while VMA calls
+/// "allocation" a {@code VmaAllocation} object that represents a memory region sub-allocated from such block, usually for a single buffer or image.
+/// </li>
+/// <li>{@link #allocationBytes} Total number of bytes occupied by all {@code VmaAllocation} objects.
+///
+/// Always less or equal than `blockBytes`.
+/// Difference `(blockBytes - allocationBytes)` is the amount of memory allocated from Vulkan
+/// but unused by any {@code VmaAllocation}.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaStatistics(@NotNull MemorySegment segment) implements IVmaStatistics {

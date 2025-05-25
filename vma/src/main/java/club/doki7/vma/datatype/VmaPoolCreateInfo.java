@@ -36,7 +36,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaPoolCreateInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -46,6 +45,61 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Describes parameter of created {@code VmaPool}.
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #memoryTypeIndex} Vulkan memory type index to allocate this pool from.</li>
+/// <li>{@link #flags} Use combination of {@code VmaPoolCreateFlagBits}.</li>
+/// <li>{@link #blockSize} Size of a single `VkDeviceMemory` block to be allocated as part of this pool, in bytes. Optional.
+///
+/// Specify nonzero to set explicit, constant size of memory blocks used by this
+/// pool.
+///
+/// Leave 0 to use default and let the library manage block sizes automatically.
+/// Sizes of particular blocks may vary.
+/// In this case, the pool will also support dedicated allocations.
+/// </li>
+/// <li>{@link #minBlockCount} Minimum number of blocks to be always allocated in this pool, even if they stay empty.
+///
+/// Set to 0 to have no preallocated blocks and allow the pool be completely empty.
+/// </li>
+/// <li>{@link #maxBlockCount} Maximum number of blocks that can be allocated in this pool. Optional.
+///
+/// Set to 0 to use default, which is `SIZE_MAX`, which means no limit.
+///
+/// Set to same value as VmaPoolCreateInfo::minBlockCount to have fixed amount of memory allocated
+/// throughout whole lifetime of this pool.
+/// </li>
+/// <li>{@link #priority} A floating-point value between 0 and 1, indicating the priority of the allocations in this pool relative to other memory allocations.
+///
+/// It is used only when {@code VMA_ALLOCATOR_CREATE_EXT_MEMORY_PRIORITY_BIT} flag was used during creation of the {@code VmaAllocator} object.
+/// Otherwise, this variable is ignored.
+/// </li>
+/// <li>{@link #minAllocationAlignment} Additional minimum alignment to be used for all allocations created from this pool. Can be 0.
+///
+/// Leave 0 (default) not to impose any additional alignment. If not 0, it must be a power of two.
+/// It can be useful in cases where alignment returned by Vulkan by functions like `vkGetBufferMemoryRequirements` is not enough,
+/// e.g. when doing interop with OpenGL.
+/// </li>
+/// <li>{@link #pMemoryAllocateNext} Additional `pNext` chain to be attached to `VkMemoryAllocateInfo` used for every allocation made by this pool. Optional.
+///
+/// Optional, can be null. If not null, it must point to a `pNext` chain of structures that can be attached to `VkMemoryAllocateInfo`.
+/// It can be useful for special needs such as adding `VkExportMemoryAllocateInfoKHR`.
+/// Structures pointed by this member must remain alive and unchanged for the whole lifetime of the custom pool.
+///
+/// Please note that some structures, e.g. `VkMemoryPriorityAllocateInfoEXT`, `VkMemoryDedicatedAllocateInfoKHR`,
+/// can be attached automatically by this library when using other, more convenient of its features.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaPoolCreateInfo {

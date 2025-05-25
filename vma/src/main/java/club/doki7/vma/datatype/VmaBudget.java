@@ -31,7 +31,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaBudget;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -41,6 +40,40 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Statistics of current memory usage and available budget for a specific memory heap.
+///
+/// These are fast to calculate.
+/// See function vmaGetHeapBudgets().
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #statistics} Statistics fetched from the library.</li>
+/// <li>{@link #usage} Estimated current memory usage of the program, in bytes.
+///
+/// Fetched from system using VK_EXT_memory_budget extension if enabled.
+///
+/// It might be different than `statistics.blockBytes` (usually higher) due to additional implicit objects
+/// also occupying the memory, like swapchain, pipelines, descriptor heaps, command buffers, or
+/// `VkDeviceMemory` blocks allocated outside of this library, if any.
+/// </li>
+/// <li>{@link #budget} Estimated amount of memory available to the program, in bytes.
+///
+/// Fetched from system using VK_EXT_memory_budget extension if enabled.
+///
+/// It might be different (most probably smaller) than `VkMemoryHeap::size[heapIndex]` due to factors
+/// external to the program, decided by the operating system.
+/// Difference `budget - usage` is the amount of additional memory that can probably
+/// be allocated without problems. Exceeding the budget may result in various problems.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaBudget(@NotNull MemorySegment segment) implements IVmaBudget {

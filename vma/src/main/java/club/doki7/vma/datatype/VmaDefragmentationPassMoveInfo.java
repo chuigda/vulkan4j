@@ -30,7 +30,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaDefragmentationPassMoveInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -40,6 +39,45 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Parameters for incremental defragmentation steps.
+///
+/// To be used with function vmaBeginDefragmentationPass().
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #moveCount} Number of elements in the `pMoves` array.</li>
+/// <li>{@link #pMoves} Array of moves to be performed by the user in the current defragmentation pass.
+///
+/// Pointer to an array of `moveCount` elements, owned by VMA, created in vmaBeginDefragmentationPass(), destroyed in vmaEndDefragmentationPass().
+///
+/// For each element, you should:
+///
+/// 1. Create a new buffer/image in the place pointed by VmaDefragmentationMove::dstMemory + VmaDefragmentationMove::dstOffset.
+/// 2. Copy data from the VmaDefragmentationMove::srcAllocation e.g. using `vkCmdCopyBuffer`, `vkCmdCopyImage`.
+/// 3. Make sure these commands finished executing on the GPU.
+/// 4. Destroy the old buffer/image.
+///
+/// Only then you can finish defragmentation pass by calling vmaEndDefragmentationPass().
+/// After this call, the allocation will point to the new place in memory.
+///
+/// Alternatively, if you cannot move specific allocation, you can set VmaDefragmentationMove::operation to {@code VMA_DEFRAGMENTATION_MOVE_OPERATION_IGNORE}.
+///
+/// Alternatively, if you decide you want to completely remove the allocation:
+///
+/// 1. Destroy its buffer/image.
+/// 2. Set VmaDefragmentationMove::operation to {@code VMA_DEFRAGMENTATION_MOVE_OPERATION_DESTROY}.
+///
+/// Then, after vmaEndDefragmentationPass() the allocation will be freed.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaDefragmentationPassMoveInfo(@NotNull MemorySegment segment) implements IVmaDefragmentationPassMoveInfo {

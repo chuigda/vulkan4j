@@ -34,7 +34,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaDefragmentationInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -44,6 +43,39 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Parameters for defragmentation.
+///
+/// To be used with function vmaBeginDefragmentation().
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #flags} Use combination of {@code VmaDefragmentationFlagBits}.</li>
+/// <li>{@link #pool} Custom pool to be defragmented.
+///
+/// If null then default pools will undergo defragmentation process.
+/// </li>
+/// <li>{@link #maxBytesPerPass} Maximum numbers of bytes that can be copied during single pass, while moving allocations to different places.
+///
+/// `0` means no limit.
+/// </li>
+/// <li>{@link #maxAllocationsPerPass} Maximum number of allocations that can be moved during single pass to a different place.
+///
+/// `0` means no limit.
+/// </li>
+/// <li>{@link #pfnBreakCallback} Optional custom callback for stopping vmaBeginDefragmentation().
+///
+/// Have to return true for breaking current defragmentation pass.
+/// </li>
+/// <li>{@link #pBreakCallbackUserData} Optional data to pass to custom callback for stopping pass of defragmentation.</li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements IVmaDefragmentationInfo {

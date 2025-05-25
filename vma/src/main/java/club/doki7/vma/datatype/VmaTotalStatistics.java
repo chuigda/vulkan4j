@@ -31,7 +31,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaTotalStatistics;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -41,6 +40,18 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// General statistics from current state of the Allocator -
+/// total memory usage across all memory heaps and types.
+///
+/// These are slower to calculate. Use for debugging purposes.
+/// See function vmaCalculateStatistics().
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVmaTotalStatistics {

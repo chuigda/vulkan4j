@@ -31,7 +31,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaVirtualAllocationInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -41,6 +40,31 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Parameters of an existing virtual allocation, returned by vmaGetVirtualAllocationInfo().
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #offset} Offset of the allocation.
+///
+/// Offset at which the allocation was made.
+/// </li>
+/// <li>{@link #size} Size of the allocation.
+///
+/// Same value as passed in VmaVirtualAllocationCreateInfo::size.
+/// </li>
+/// <li>{@link #pUserData} Custom pointer associated with the allocation.
+///
+/// Same value as passed in VmaVirtualAllocationCreateInfo::pUserData or to vmaSetVirtualAllocationUserData().
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaVirtualAllocationInfo(@NotNull MemorySegment segment) implements IVmaVirtualAllocationInfo {

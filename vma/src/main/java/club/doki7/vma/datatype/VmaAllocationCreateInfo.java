@@ -36,7 +36,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaAllocationCreateInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -46,6 +45,65 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Parameters of new {@code VmaAllocation}.
+///
+/// To be used with functions like vmaCreateBuffer(), vmaCreateImage(), and many others.
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #flags} Use {@code VmaAllocationCreateFlagBits} enum.</li>
+/// <li>{@link #usage} Intended usage of memory.
+///
+/// You can leave {@code VMA_MEMORY_USAGE_UNKNOWN} if you specify memory requirements in other way.
+///
+/// If `pool` is not null, this member is ignored.
+/// </li>
+/// <li>{@link #requiredFlags} Flags that must be set in a Memory Type chosen for an allocation.
+///
+/// Leave 0 if you specify memory requirements in other way.
+///
+/// If `pool` is not null, this member is ignored.
+/// </li>
+/// <li>{@link #preferredFlags} Flags that preferably should be set in a memory type chosen for an allocation.
+///
+/// Set to 0 if no additional flags are preferred.
+///
+/// If `pool` is not null, this member is ignored.
+/// </li>
+/// <li>{@link #memoryTypeBits} Bitmask containing one bit set for every memory type acceptable for this allocation.
+///
+/// Value 0 is equivalent to `UINT32_MAX` - it means any memory type is accepted if
+/// it meets other requirements specified by this structure, with no further
+/// restrictions on memory type index.
+///
+/// If `pool` is not null, this member is ignored.
+/// </li>
+/// <li>{@link #pool} Pool that this allocation should be created in.
+///
+/// Leave `VK_NULL_HANDLE` to allocate from default pool. If not null, members:
+/// `usage`, `requiredFlags`, `preferredFlags`, `memoryTypeBits` are ignored.
+/// </li>
+/// <li>{@link #pUserData} Custom general-purpose pointer that will be stored in {@code VmaAllocation}, can be read as VmaAllocationInfo::pUserData and changed using vmaSetAllocationUserData().
+///
+/// If {@code VMA_ALLOCATION_CREATE_USER_DATA_COPY_STRING_BIT} is used, it must be either
+/// null or pointer to a null-terminated string. The string will be then copied to
+/// internal buffer, so it doesn't need to be valid after allocation call.
+/// </li>
+/// <li>{@link #priority} A floating-point value between 0 and 1, indicating the priority of the allocation relative to other memory allocations.
+///
+/// It is used only when {@code VMA_ALLOCATOR_CREATE_EXT_MEMORY_PRIORITY_BIT} flag was used during creation of the {@code VmaAllocator} object
+/// and this allocation ends up as dedicated or is explicitly forced as dedicated using {@code VMA_ALLOCATION_CREATE_DEDICATED_MEMORY_BIT}.
+/// Otherwise, it has the priority of a memory block where it is placed and this variable is ignored.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements IVmaAllocationCreateInfo {

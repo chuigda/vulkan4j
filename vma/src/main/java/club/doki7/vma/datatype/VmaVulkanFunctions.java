@@ -55,7 +55,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaVulkanFunctions;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -65,6 +64,30 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Pointers to some Vulkan functions - a subset used by the library.
+///
+/// Used in VmaAllocatorCreateInfo::pVulkanFunctions.
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #getInstanceProcAddr} Required when using VMA_DYNAMIC_VULKAN_FUNCTIONS.</li>
+/// <li>{@link #getDeviceProcAddr} Required when using VMA_DYNAMIC_VULKAN_FUNCTIONS.</li>
+/// <li>{@link #getBufferMemoryRequirements2KHR} Fetch "vkGetBufferMemoryRequirements2" on Vulkan >= 1.1, fetch "vkGetBufferMemoryRequirements2KHR" when using VK_KHR_dedicated_allocation extension.</li>
+/// <li>{@link #getImageMemoryRequirements2KHR} Fetch "vkGetImageMemoryRequirements2" on Vulkan >= 1.1, fetch "vkGetImageMemoryRequirements2KHR" when using VK_KHR_dedicated_allocation extension.</li>
+/// <li>{@link #bindBufferMemory2KHR} Fetch "vkBindBufferMemory2" on Vulkan >= 1.1, fetch "vkBindBufferMemory2KHR" when using VK_KHR_bind_memory2 extension.</li>
+/// <li>{@link #bindImageMemory2KHR} Fetch "vkBindImageMemory2" on Vulkan >= 1.1, fetch "vkBindImageMemory2KHR" when using VK_KHR_bind_memory2 extension.</li>
+/// <li>{@link #getPhysicalDeviceMemoryProperties2KHR} Fetch from "vkGetPhysicalDeviceMemoryProperties2" on Vulkan >= 1.1, but you can also fetch it from "vkGetPhysicalDeviceMemoryProperties2KHR" if you enabled extension VK_KHR_get_physical_device_properties2.</li>
+/// <li>{@link #getDeviceBufferMemoryRequirements} Fetch from "vkGetDeviceBufferMemoryRequirements" on Vulkan >= 1.3, but you can also fetch it from "vkGetDeviceBufferMemoryRequirementsKHR" if you enabled extension VK_KHR_maintenance4.</li>
+/// <li>{@link #getDeviceImageMemoryRequirements} Fetch from "vkGetDeviceImageMemoryRequirements" on Vulkan >= 1.3, but you can also fetch it from "vkGetDeviceImageMemoryRequirementsKHR" if you enabled extension VK_KHR_maintenance4.</li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVmaVulkanFunctions {

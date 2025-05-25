@@ -31,7 +31,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaAllocationInfo2;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -41,6 +40,32 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Extended parameters of a {@code VmaAllocation} object that can be retrieved using function vmaGetAllocationInfo2().
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #allocationInfo} Basic parameters of the allocation.
+///
+/// If you need only these, you can use function vmaGetAllocationInfo() and structure {@code VmaAllocationInfo} instead.
+/// </li>
+/// <li>{@link #blockSize} Size of the `VkDeviceMemory` block that the allocation belongs to.
+///
+/// In case of an allocation with dedicated memory, it will be equal to `allocationInfo.size`.
+/// </li>
+/// <li>{@link #dedicatedMemory} `VK_TRUE` if the allocation has dedicated memory, `VK_FALSE` if it was placed as part of a larger memory block.
+///
+/// When `VK_TRUE`, it also means `VkMemoryDedicatedAllocateInfo` was used when creating the allocation
+/// (if VK_KHR_dedicated_allocation extension or Vulkan version >= 1.1 is enabled).
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVmaAllocationInfo2 {

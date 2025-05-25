@@ -31,7 +31,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaAllocatorInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -41,6 +40,31 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Information about existing {@code VmaAllocator} object.
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #instance} Handle to Vulkan instance object.
+///
+/// This is the same value as has been passed through VmaAllocatorCreateInfo::instance.
+/// </li>
+/// <li>{@link #physicalDevice} Handle to Vulkan physical device object.
+///
+/// This is the same value as has been passed through VmaAllocatorCreateInfo::physicalDevice.
+/// </li>
+/// <li>{@link #device} Handle to Vulkan device object.
+///
+/// This is the same value as has been passed through VmaAllocatorCreateInfo::device.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaAllocatorInfo(@NotNull MemorySegment segment) implements IVmaAllocatorInfo {

@@ -31,7 +31,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VmaVirtualBlockCreateInfo;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
@@ -41,6 +40,29 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
+///
+/// <div class="doxygen">
+///
+/// ## Original doxygen documentation
+///
+/// Parameters of created {@code VmaVirtualBlock} object to be passed to vmaCreateVirtualBlock().
+///
+/// ### Member documentation
+///
+/// <ul>
+/// <li>{@link #size} Total size of the virtual block.
+///
+/// Sizes can be expressed in bytes or any units you want as long as you are consistent in using them.
+/// For example, if you allocate from some array of structures, 1 can mean single instance of entire structure.
+/// </li>
+/// <li>{@link #flags} Use combination of {@code VmaVirtualBlockCreateFlagBits}.</li>
+/// <li>{@link #pAllocationCallbacks} Custom CPU memory allocation callbacks. Optional.
+///
+/// Optional, can be null. When specified, they will be used for all CPU-side memory allocations.
+/// </li>
+/// </ul>
+///
+/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implements IVmaVirtualBlockCreateInfo {

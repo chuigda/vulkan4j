@@ -201,8 +201,8 @@ fun generateStructure(
         +"/// The {@code allocate} ({@link $className#allocate(Arena)}, {@link $className#allocate(Arena, long)})"
         +"/// functions will automatically initialize these fields. Also, you may call {@link $className#autoInit}"
         +"/// to initialize these fields manually for non-allocated instances."
+        +"///"
     }
-    +"///"
 
     +"/// ## Contracts"
     +"///"
@@ -213,6 +213,44 @@ fun generateStructure(
     +"///"
     +"/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not"
     +"/// perform any runtime check. The constructor can be useful for automatic code generators."
+
+    val hasMemberDoc = structure.members.any { it.originalDoc != null }
+    if (structure.originalDoc != null || hasMemberDoc) {
+        +"///"
+        +"/// <div class=\"doxygen\">"
+        +"///"
+        +"/// ## Original doxygen documentation"
+        if (structure.originalDoc != null) {
+            +"///"
+            for (line in structure.originalDoc!!) {
+                +"/// $line"
+            }
+        }
+
+        if (hasMemberDoc) {
+            +"///"
+            +"/// ### Member documentation"
+            +"///"
+            +"/// <ul>"
+            structure.members.forEach {
+                if (it.originalDoc != null) {
+                    val first = it.originalDoc!!.first()
+                    val following = it.originalDoc!!.subList(1, it.originalDoc!!.size)
+
+                    +"/// <li>{@link #${it.name}} $first${if (following.isEmpty()) "</li>" else ""}"
+                    if (following.isNotEmpty()) {
+                        following.forEach { line ->
+                            +"/// $line"
+                        }
+                        +"/// </li>"
+                    }
+                }
+            }
+            +"/// </ul>"
+        }
+        +"///"
+        +"/// </div>"
+    }
 
     if (seeLink != null) {
         +"///"
