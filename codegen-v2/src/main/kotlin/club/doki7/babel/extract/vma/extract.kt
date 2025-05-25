@@ -143,7 +143,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
                         } else {
                             Bitflag(
                                 name = enumDecl.name,
-                                value = enumDecl.value.split("|").map(String::trim)
+                                value = enumDecl.value.split("|").map(String::trim).toMutableList()
                             )
                         }
                         bitflag.originalDoc = doc
@@ -217,6 +217,14 @@ private fun parseStructFields(lines: List<String>, i: Int): Pair<List<Member>, I
 
         if (lines[index].startsWith("#if") || lines[index].startsWith("#endif")) {
             index++
+            continue
+        }
+
+        else if (lines[index].startsWith("#elif") || lines[index].startsWith("#else")) {
+            index++
+            while (index < lines.size && !lines[index].startsWith("#endif")) {
+                index++
+            }
             continue
         }
 

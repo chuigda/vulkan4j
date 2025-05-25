@@ -35,25 +35,51 @@ public final class VMAUtil {
         functions.cmdCopyBuffer(u(deviceCommands.SEGMENT$vkCmdCopyBuffer));
 
         // Vulkan 1.1 or VK_KHR_dedicated_allocation
-        functions.getBufferMemoryRequirements2KHR(u(deviceCommands.SEGMENT$vkGetBufferMemoryRequirements2));
-        functions.getImageMemoryRequirements2KHR(u(deviceCommands.SEGMENT$vkGetImageMemoryRequirements2));
+        functions.getBufferMemoryRequirements2KHR(u(
+                deviceCommands.SEGMENT$vkGetBufferMemoryRequirements2,
+                deviceCommands.SEGMENT$vkGetBufferMemoryRequirements2KHR
+        ));
+        functions.getImageMemoryRequirements2KHR(u(
+                deviceCommands.SEGMENT$vkGetImageMemoryRequirements2,
+                deviceCommands.SEGMENT$vkGetImageMemoryRequirements2KHR
+        ));
 
         // Vulkan 1.1 or VK_KHR_bind_memory2
-        functions.bindBufferMemory2KHR(u(deviceCommands.SEGMENT$vkBindBufferMemory2));
-        functions.bindImageMemory2KHR(u(deviceCommands.SEGMENT$vkBindImageMemory2));
+        functions.bindBufferMemory2KHR(u(
+                deviceCommands.SEGMENT$vkBindBufferMemory2,
+                deviceCommands.SEGMENT$vkBindBufferMemory2KHR
+        ));
+        functions.bindImageMemory2KHR(u(
+                deviceCommands.SEGMENT$vkBindImageMemory2,
+                deviceCommands.SEGMENT$vkBindImageMemory2KHR
+        ));
 
         // Vulkan 1.1 or VK_EXT_memory_budget
-        functions.getPhysicalDeviceMemoryProperties2KHR(u(instanceCommands.SEGMENT$vkGetPhysicalDeviceMemoryProperties2));
+        functions.getPhysicalDeviceMemoryProperties2KHR(u(
+                instanceCommands.SEGMENT$vkGetPhysicalDeviceMemoryProperties2,
+                instanceCommands.SEGMENT$vkGetPhysicalDeviceMemoryProperties2KHR
+        ));
 
         // Vulkan 1.3 or VK_KHR_maintenance4
-        functions.getBufferMemoryRequirements2KHR(u(deviceCommands.SEGMENT$vkGetBufferMemoryRequirements2));
-        functions.getImageMemoryRequirements2KHR(u(deviceCommands.SEGMENT$vkGetImageMemoryRequirements2));
+        functions.getBufferMemoryRequirements2KHR(u(
+                deviceCommands.SEGMENT$vkGetBufferMemoryRequirements2,
+                deviceCommands.SEGMENT$vkGetBufferMemoryRequirements2KHR
+        ));
+        functions.getImageMemoryRequirements2KHR(u(
+                deviceCommands.SEGMENT$vkGetImageMemoryRequirements2,
+                deviceCommands.SEGMENT$vkGetImageMemoryRequirements2KHR
+        ));
+
+        // VK_KHR_external_memory_win32
+        functions.getMemoryWin32HandleKHR(u(deviceCommands.SEGMENT$vkGetMemoryWin32HandleKHR));
     }
 
-    private static MemorySegment u(@Nullable MemorySegment segment) {
-        if (segment == null) {
-            return MemorySegment.NULL;
+    private static MemorySegment u(@Nullable MemorySegment ...segments) {
+        for (MemorySegment segment : segments) {
+            if (segment != null && !segment.equals(MemorySegment.NULL)) {
+                return segment;
+            }
         }
-        return segment;
+        return MemorySegment.NULL;
     }
 }

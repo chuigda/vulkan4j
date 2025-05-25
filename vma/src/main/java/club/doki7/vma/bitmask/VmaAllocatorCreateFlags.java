@@ -14,6 +14,7 @@ public final class VmaAllocatorCreateFlags {
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
     public static final int KHR_BIND_MEMORY2 = 0x4;
     public static final int KHR_DEDICATED_ALLOCATION = 0x2;
+    public static final int KHR_EXTERNAL_MEMORY_WIN32 = 0x200;
     public static final int KHR_MAINTENANCE4 = 0x80;
     public static final int KHR_MAINTENANCE5 = 0x100;
 
@@ -42,6 +43,9 @@ public final class VmaAllocatorCreateFlags {
         }
         if ((flags & KHR_DEDICATED_ALLOCATION) != 0) {
             detectedFlagBits.add("VMA_ALLOCATOR_CREATE_KHR_DEDICATED_ALLOCATION_BIT");
+        }
+        if ((flags & KHR_EXTERNAL_MEMORY_WIN32) != 0) {
+            detectedFlagBits.add("VMA_ALLOCATOR_CREATE_KHR_EXTERNAL_MEMORY_WIN32_BIT");
         }
         if ((flags & KHR_MAINTENANCE4) != 0) {
             detectedFlagBits.add("VMA_ALLOCATOR_CREATE_KHR_MAINTENANCE4_BIT");

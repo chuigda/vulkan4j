@@ -55,6 +55,7 @@ fun vmaMain(vulkanRegistry: RegistryBase) {
     pfn("PFN_vkGetPhysicalDeviceMemoryProperties2KHR")
     pfn("PFN_vkGetDeviceBufferMemoryRequirementsKHR")
     pfn("PFN_vkGetDeviceImageMemoryRequirementsKHR")
+    pfn("PFN_vkGetMemoryWin32HandleKHR")
 
     val vulkanPFNRegistry = Registry(
         aliases = mutableMapOf(),

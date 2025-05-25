@@ -51,6 +51,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     PFN_vkGetPhysicalDeviceMemoryProperties2KHR getPhysicalDeviceMemoryProperties2KHR; // optional // @link substring="getPhysicalDeviceMemoryProperties2KHR" target="#getPhysicalDeviceMemoryProperties2KHR"
 ///     PFN_vkGetDeviceBufferMemoryRequirementsKHR getDeviceBufferMemoryRequirements; // optional // @link substring="getDeviceBufferMemoryRequirements" target="#getDeviceBufferMemoryRequirements"
 ///     PFN_vkGetDeviceImageMemoryRequirementsKHR getDeviceImageMemoryRequirements; // optional // @link substring="getDeviceImageMemoryRequirements" target="#getDeviceImageMemoryRequirements"
+///     PFN_vkGetMemoryWin32HandleKHR getMemoryWin32HandleKHR; // optional // @link substring="getMemoryWin32HandleKHR" target="#getMemoryWin32HandleKHR"
 /// } VmaVulkanFunctions;
 /// }
 ///
@@ -477,6 +478,18 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         getDeviceImageMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
+    public @Pointer(comment="PFN_vkGetMemoryWin32HandleKHR") MemorySegment getMemoryWin32HandleKHR() {
+        return segment.get(LAYOUT$getMemoryWin32HandleKHR, OFFSET$getMemoryWin32HandleKHR);
+    }
+
+    public void getMemoryWin32HandleKHR(@Pointer(comment="PFN_vkGetMemoryWin32HandleKHR") MemorySegment value) {
+        segment.set(LAYOUT$getMemoryWin32HandleKHR, OFFSET$getMemoryWin32HandleKHR, value);
+    }
+
+    public void getMemoryWin32HandleKHR(@Nullable IPointer pointer) {
+        getMemoryWin32HandleKHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("getInstanceProcAddr"),
         ValueLayout.ADDRESS.withName("getDeviceProcAddr"),
@@ -503,7 +516,8 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         ValueLayout.ADDRESS.withName("bindImageMemory2KHR"),
         ValueLayout.ADDRESS.withName("getPhysicalDeviceMemoryProperties2KHR"),
         ValueLayout.ADDRESS.withName("getDeviceBufferMemoryRequirements"),
-        ValueLayout.ADDRESS.withName("getDeviceImageMemoryRequirements")
+        ValueLayout.ADDRESS.withName("getDeviceImageMemoryRequirements"),
+        ValueLayout.ADDRESS.withName("getMemoryWin32HandleKHR")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -533,6 +547,7 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
     public static final PathElement PATH$getPhysicalDeviceMemoryProperties2KHR = PathElement.groupElement("getPhysicalDeviceMemoryProperties2KHR");
     public static final PathElement PATH$getDeviceBufferMemoryRequirements = PathElement.groupElement("getDeviceBufferMemoryRequirements");
     public static final PathElement PATH$getDeviceImageMemoryRequirements = PathElement.groupElement("getDeviceImageMemoryRequirements");
+    public static final PathElement PATH$getMemoryWin32HandleKHR = PathElement.groupElement("getMemoryWin32HandleKHR");
 
     public static final AddressLayout LAYOUT$getInstanceProcAddr = (AddressLayout) LAYOUT.select(PATH$getInstanceProcAddr);
     public static final AddressLayout LAYOUT$getDeviceProcAddr = (AddressLayout) LAYOUT.select(PATH$getDeviceProcAddr);
@@ -560,6 +575,7 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
     public static final AddressLayout LAYOUT$getPhysicalDeviceMemoryProperties2KHR = (AddressLayout) LAYOUT.select(PATH$getPhysicalDeviceMemoryProperties2KHR);
     public static final AddressLayout LAYOUT$getDeviceBufferMemoryRequirements = (AddressLayout) LAYOUT.select(PATH$getDeviceBufferMemoryRequirements);
     public static final AddressLayout LAYOUT$getDeviceImageMemoryRequirements = (AddressLayout) LAYOUT.select(PATH$getDeviceImageMemoryRequirements);
+    public static final AddressLayout LAYOUT$getMemoryWin32HandleKHR = (AddressLayout) LAYOUT.select(PATH$getMemoryWin32HandleKHR);
 
     public static final long SIZE$getInstanceProcAddr = LAYOUT$getInstanceProcAddr.byteSize();
     public static final long SIZE$getDeviceProcAddr = LAYOUT$getDeviceProcAddr.byteSize();
@@ -587,6 +603,7 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
     public static final long SIZE$getPhysicalDeviceMemoryProperties2KHR = LAYOUT$getPhysicalDeviceMemoryProperties2KHR.byteSize();
     public static final long SIZE$getDeviceBufferMemoryRequirements = LAYOUT$getDeviceBufferMemoryRequirements.byteSize();
     public static final long SIZE$getDeviceImageMemoryRequirements = LAYOUT$getDeviceImageMemoryRequirements.byteSize();
+    public static final long SIZE$getMemoryWin32HandleKHR = LAYOUT$getMemoryWin32HandleKHR.byteSize();
 
     public static final long OFFSET$getInstanceProcAddr = LAYOUT.byteOffset(PATH$getInstanceProcAddr);
     public static final long OFFSET$getDeviceProcAddr = LAYOUT.byteOffset(PATH$getDeviceProcAddr);
@@ -614,4 +631,5 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
     public static final long OFFSET$getPhysicalDeviceMemoryProperties2KHR = LAYOUT.byteOffset(PATH$getPhysicalDeviceMemoryProperties2KHR);
     public static final long OFFSET$getDeviceBufferMemoryRequirements = LAYOUT.byteOffset(PATH$getDeviceBufferMemoryRequirements);
     public static final long OFFSET$getDeviceImageMemoryRequirements = LAYOUT.byteOffset(PATH$getDeviceImageMemoryRequirements);
+    public static final long OFFSET$getMemoryWin32HandleKHR = LAYOUT.byteOffset(PATH$getMemoryWin32HandleKHR);
 }

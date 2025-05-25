@@ -80,6 +80,8 @@ public final class VMA {
         HANDLE$vmaSetAllocationName = RawFunctionLoader.link(SEGMENT$vmaSetAllocationName, Descriptors.DESCRIPTOR$vmaSetAllocationName);
         SEGMENT$vmaGetAllocationMemoryProperties = loader.apply("vmaGetAllocationMemoryProperties");
         HANDLE$vmaGetAllocationMemoryProperties = RawFunctionLoader.link(SEGMENT$vmaGetAllocationMemoryProperties, Descriptors.DESCRIPTOR$vmaGetAllocationMemoryProperties);
+        SEGMENT$vmaGetMemoryWin32Handle = loader.apply("vmaGetMemoryWin32Handle");
+        HANDLE$vmaGetMemoryWin32Handle = RawFunctionLoader.link(SEGMENT$vmaGetMemoryWin32Handle, Descriptors.DESCRIPTOR$vmaGetMemoryWin32Handle);
         SEGMENT$vmaMapMemory = loader.apply("vmaMapMemory");
         HANDLE$vmaMapMemory = RawFunctionLoader.link(SEGMENT$vmaMapMemory, Descriptors.DESCRIPTOR$vmaMapMemory);
         SEGMENT$vmaUnmapMemory = loader.apply("vmaUnmapMemory");
@@ -667,6 +669,25 @@ public final class VMA {
                 allocator.segment(),
                 allocation.segment(),
                 pFlags.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public @EnumType(VkResult.class) int getMemoryWin32Handle(
+        VmaAllocator allocator,
+        VmaAllocation allocation,
+        @Pointer(comment="HANDLE") MemorySegment hTargetProcess,
+        PointerPtr pHandle
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vmaGetMemoryWin32Handle);
+        try {
+            return (int) hFunction.invokeExact(
+                allocator.segment(),
+                allocation.segment(),
+                hTargetProcess,
+                pHandle.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1419,6 +1440,7 @@ public final class VMA {
     public final @Nullable MemorySegment SEGMENT$vmaSetAllocationUserData;
     public final @Nullable MemorySegment SEGMENT$vmaSetAllocationName;
     public final @Nullable MemorySegment SEGMENT$vmaGetAllocationMemoryProperties;
+    public final @Nullable MemorySegment SEGMENT$vmaGetMemoryWin32Handle;
     public final @Nullable MemorySegment SEGMENT$vmaMapMemory;
     public final @Nullable MemorySegment SEGMENT$vmaUnmapMemory;
     public final @Nullable MemorySegment SEGMENT$vmaFlushAllocation;
@@ -1489,6 +1511,7 @@ public final class VMA {
     public final @Nullable MethodHandle HANDLE$vmaSetAllocationUserData;
     public final @Nullable MethodHandle HANDLE$vmaSetAllocationName;
     public final @Nullable MethodHandle HANDLE$vmaGetAllocationMemoryProperties;
+    public final @Nullable MethodHandle HANDLE$vmaGetMemoryWin32Handle;
     public final @Nullable MethodHandle HANDLE$vmaMapMemory;
     public final @Nullable MethodHandle HANDLE$vmaUnmapMemory;
     public final @Nullable MethodHandle HANDLE$vmaFlushAllocation;
@@ -1720,6 +1743,14 @@ public final class VMA {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$vmaGetMemoryWin32Handle = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vmaMapMemory = FunctionDescriptor.of(
