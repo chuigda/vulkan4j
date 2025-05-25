@@ -80,7 +80,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
         if (curLine.startsWith("VK_DEFINE_HANDLE(") && curLine.endsWith(")")) {
             val handleName = curLine.removePrefix("VK_DEFINE_HANDLE(").removeSuffix(")").trim()
             val handle = OpaqueHandleTypedef(name = handleName)
-            handle.originalDoc = savedDoc
+            handle.doc = savedDoc
             opaqueHandleTypedefs[handle.name] = handle
             savedDoc = null
             index++
@@ -88,7 +88,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
         else if (curLine.startsWith("VK_DEFINE_NON_DISPATCHABLE_HANDLE(") && curLine.endsWith(")")) {
             val handleName = curLine.removePrefix("VK_DEFINE_NON_DISPATCHABLE_HANDLE(").removeSuffix(")").trim()
             val handle = OpaqueHandleTypedef(name = handleName)
-            handle.originalDoc = savedDoc
+            handle.doc = savedDoc
             opaqueHandleTypedefs[handle.name] = handle
             savedDoc = null
             index++
@@ -99,7 +99,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
             index = parseResult.second
 
             val functionTypedef = morphFunctionTypedef(typedef)
-            functionTypedef.originalDoc = savedDoc
+            functionTypedef.doc = savedDoc
             savedDoc = null
             functionTypedefs[functionTypedef.name] = functionTypedef
         }
@@ -114,7 +114,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
             index += 1
 
             val struct = Structure(name = structName, members = structMembers)
-            struct.originalDoc = savedDoc
+            struct.doc = savedDoc
             savedDoc = null
             structures[struct.name] = struct
         }
@@ -145,7 +145,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
                                 value = enumDecl.value.split("|").map(String::trim).toMutableList()
                             )
                         }
-                        bitflag.originalDoc = doc
+                        bitflag.doc = doc
                         bitflag
                     }.toMutableList()
                 )
@@ -159,7 +159,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
                             name = enumDecl.name,
                             value = enumDecl.value.split("|").map(String::trim)
                         )
-                        variant.originalDoc = doc
+                        variant.doc = doc
                         variant
                     }.toMutableList()
                 )
@@ -167,7 +167,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
                 enum
             }
 
-            entity.originalDoc = savedDoc
+            entity.doc = savedDoc
             savedDoc = null
         }
         else if (curLine.startsWith("VMA_CALL_PRE") && curLine.contains("VMA_CALL_POST")) {
@@ -176,7 +176,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
             index = parseResult.second
 
             val command = morphFunctionDecl(functionDecl)
-            command.originalDoc = savedDoc
+            command.doc = savedDoc
             savedDoc = null
             commands[command.name] = command
         }
@@ -254,7 +254,7 @@ private fun parseStructFields(lines: List<String>, i: Int): Pair<List<Member>, I
             optional = fieldDecl.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
             bits = null
         )
-        member.originalDoc = savedDoc
+        member.doc = savedDoc
         members.add(member)
         savedDoc = null
     }

@@ -19,7 +19,10 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaStatistics} structure in native memory.
+/// Calculated statistics of memory usage e.g. in a specific memory type, heap, custom pool, or total.
+///
+/// These are fast to calculate.
+/// See functions: vmaGetHeapBudgets(), vmaGetPoolStatistics().
 ///
 /// ## Structure
 ///
@@ -42,16 +45,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Calculated statistics of memory usage e.g. in a specific memory type, heap, custom pool, or total.
-///
-/// These are fast to calculate.
-/// See functions: vmaGetHeapBudgets(), vmaGetPoolStatistics().
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #blockCount} Number of `VkDeviceMemory` objects - Vulkan memory blocks allocated.</li>
@@ -73,8 +67,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// but unused by any {@code VmaAllocation}.
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaStatistics(@NotNull MemorySegment segment) implements IVmaStatistics {

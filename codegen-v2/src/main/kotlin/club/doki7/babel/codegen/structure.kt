@@ -143,7 +143,11 @@ fun generateStructure(
 
     val seeLink = codegenOptions.seeLinkProvider(structure)
 
-    if (seeLink != null) {
+    if (structure.doc != null) {
+        for (line in structure.doc!!) {
+            +"/// $line"
+        }
+    } else if (seeLink != null) {
         +"/// Represents a pointer to a $seeLink structure in native memory."
     } else {
         +"/// Represents a pointer to a {@code $originalTypeName} structure in native memory."
@@ -214,42 +218,27 @@ fun generateStructure(
     +"/// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not"
     +"/// perform any runtime check. The constructor can be useful for automatic code generators."
 
-    val hasMemberDoc = structure.members.any { it.originalDoc != null }
-    if (structure.originalDoc != null || hasMemberDoc) {
+    val hasMemberDoc = structure.members.any { it.doc != null }
+    if (hasMemberDoc) {
         +"///"
-        +"/// <div class=\"doxygen\">"
+        +"/// ## Member documentation"
         +"///"
-        +"/// ## Original doxygen documentation"
-        if (structure.originalDoc != null) {
-            +"///"
-            for (line in structure.originalDoc!!) {
-                +"/// $line"
-            }
-        }
+        +"/// <ul>"
+        structure.members.forEach {
+            if (it.doc != null) {
+                val first = it.doc!!.first()
+                val following = it.doc!!.subList(1, it.doc!!.size)
 
-        if (hasMemberDoc) {
-            +"///"
-            +"/// ### Member documentation"
-            +"///"
-            +"/// <ul>"
-            structure.members.forEach {
-                if (it.originalDoc != null) {
-                    val first = it.originalDoc!!.first()
-                    val following = it.originalDoc!!.subList(1, it.originalDoc!!.size)
-
-                    +"/// <li>{@link #${it.name}} $first${if (following.isEmpty()) "</li>" else ""}"
-                    if (following.isNotEmpty()) {
-                        following.forEach { line ->
-                            +"/// $line"
-                        }
-                        +"/// </li>"
+                +"/// <li>{@link #${it.name}} $first${if (following.isEmpty()) "</li>" else ""}"
+                if (following.isNotEmpty()) {
+                    following.forEach { line ->
+                        +"/// $line"
                     }
+                    +"/// </li>"
                 }
             }
-            +"/// </ul>"
         }
-        +"///"
-        +"/// </div>"
+        +"/// </ul>"
     }
 
     if (seeLink != null) {

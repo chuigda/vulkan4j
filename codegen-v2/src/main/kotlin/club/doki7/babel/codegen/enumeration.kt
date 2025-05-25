@@ -21,8 +21,8 @@ fun generateEnumeration(
         +""
     }
 
-    if (enumeration.originalDoc != null) {
-        for (line in enumeration.originalDoc) {
+    if (enumeration.doc != null) {
+        for (line in enumeration.doc) {
             +"/// $line"
         }
         +"///"
@@ -34,11 +34,11 @@ fun generateEnumeration(
     +"public final class ${enumeration.name} {"
     indent {
         for ((idx, variant) in enumeration.variants.withIndex()) {
-            if (variant.originalDoc != null) {
+            if (variant.doc != null) {
                 if (idx != 0) {
                     +""
                 }
-                variant.originalDoc!!.forEach { +"/// $it" }
+                variant.doc!!.forEach { +"/// $it" }
             }
 
             val docLink = codegenOptions.seeLinkProvider(variant)

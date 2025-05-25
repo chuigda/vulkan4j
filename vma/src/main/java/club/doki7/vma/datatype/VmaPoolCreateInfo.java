@@ -19,7 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaPoolCreateInfo} structure in native memory.
+/// Describes parameter of created {@code VmaPool}.
 ///
 /// ## Structure
 ///
@@ -46,13 +46,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Describes parameter of created {@code VmaPool}.
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #memoryTypeIndex} Vulkan memory type index to allocate this pool from.</li>
@@ -98,8 +92,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// can be attached automatically by this library when using other, more convenient of its features.
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaPoolCreateInfo {

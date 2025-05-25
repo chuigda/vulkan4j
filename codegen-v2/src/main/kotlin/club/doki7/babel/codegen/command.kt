@@ -163,8 +163,8 @@ private fun generateCommandWrapper(
         callArgs.forEachIndexed { idx, it -> +if (idx != callArgs.size - 1) "$it, " else it }
     }
 
-    if (loweredCommand.command.originalDoc != null) {
-        for (line in loweredCommand.command.originalDoc) {
+    if (loweredCommand.command.doc != null) {
+        for (line in loweredCommand.command.doc) {
             +"/// $line"
         }
         +"///"

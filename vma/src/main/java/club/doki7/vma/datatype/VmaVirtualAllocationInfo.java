@@ -19,7 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaVirtualAllocationInfo} structure in native memory.
+/// Parameters of an existing virtual allocation, returned by vmaGetVirtualAllocationInfo().
 ///
 /// ## Structure
 ///
@@ -41,13 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Parameters of an existing virtual allocation, returned by vmaGetVirtualAllocationInfo().
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #offset} Offset of the allocation.
@@ -63,8 +57,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// Same value as passed in VmaVirtualAllocationCreateInfo::pUserData or to vmaSetVirtualAllocationUserData().
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaVirtualAllocationInfo(@NotNull MemorySegment segment) implements IVmaVirtualAllocationInfo {

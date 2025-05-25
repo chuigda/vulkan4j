@@ -36,8 +36,8 @@ fun generateBitmask(
         +""
     }
 
-    if (bitmask.originalDoc != null) {
-        for (line in bitmask.originalDoc) {
+    if (bitmask.doc != null) {
+        for (line in bitmask.doc) {
             +"/// $line"
         }
         +"///"
@@ -50,11 +50,11 @@ fun generateBitmask(
     +"public final class ${bitmask.name} {"
     indent {
         for ((idx, flag) in bitflags.sortedBy { if (it.value is Either.Right) it.value.value.size else 0 }.withIndex()) {
-            if (flag.originalDoc != null) {
+            if (flag.doc != null) {
                 if (idx != 0) {
                     +""
                 }
-                flag.originalDoc!!.forEach { +"/// $it" }
+                flag.doc!!.forEach { +"/// $it" }
             }
 
             val docLink = codegenOptions.seeLinkProvider(flag)

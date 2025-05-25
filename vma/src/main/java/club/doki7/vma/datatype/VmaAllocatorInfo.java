@@ -19,7 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaAllocatorInfo} structure in native memory.
+/// Information about existing {@code VmaAllocator} object.
 ///
 /// ## Structure
 ///
@@ -41,13 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Information about existing {@code VmaAllocator} object.
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #instance} Handle to Vulkan instance object.
@@ -63,8 +57,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This is the same value as has been passed through VmaAllocatorCreateInfo::device.
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaAllocatorInfo(@NotNull MemorySegment segment) implements IVmaAllocatorInfo {

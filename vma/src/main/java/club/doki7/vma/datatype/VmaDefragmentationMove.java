@@ -19,7 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaDefragmentationMove} structure in native memory.
+/// Single move of an allocation to be done for defragmentation.
 ///
 /// ## Structure
 ///
@@ -41,13 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Single move of an allocation to be done for defragmentation.
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #operation} Operation to be performed on the allocation by vmaEndDefragmentationPass(). Default value is {@code VMA_DEFRAGMENTATION_MOVE_OPERATION_COPY}. You can modify it.</li>
@@ -59,8 +53,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// vmaEndDefragmentationPass() will destroy it and make `srcAllocation` point to this memory.
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements IVmaDefragmentationMove {

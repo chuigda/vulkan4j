@@ -19,7 +19,19 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaDetailedStatistics} structure in native memory.
+/// More detailed statistics than {@code VmaStatistics}.
+///
+/// These are slower to calculate. Use for debugging purposes.
+/// See functions: vmaCalculateStatistics(), vmaCalculatePoolStatistics().
+///
+/// Previous version of the statistics API provided averages, but they have been removed
+/// because they can be easily calculated as:
+///
+/// {@snippet lang=c:
+/// VkDeviceSize allocationSizeAvg = detailedStats.statistics.allocationBytes / detailedStats.statistics.allocationCount;
+/// VkDeviceSize unusedBytes = detailedStats.statistics.blockBytes - detailedStats.statistics.allocationBytes;
+/// VkDeviceSize unusedRangeSizeAvg = unusedBytes / detailedStats.unusedRangeCount;
+/// }
 ///
 /// ## Structure
 ///
@@ -44,25 +56,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// More detailed statistics than {@code VmaStatistics}.
-///
-/// These are slower to calculate. Use for debugging purposes.
-/// See functions: vmaCalculateStatistics(), vmaCalculatePoolStatistics().
-///
-/// Previous version of the statistics API provided averages, but they have been removed
-/// because they can be easily calculated as:
-///
-/// {@snippet lang=c:
-/// VkDeviceSize allocationSizeAvg = detailedStats.statistics.allocationBytes / detailedStats.statistics.allocationCount;
-/// VkDeviceSize unusedBytes = detailedStats.statistics.blockBytes - detailedStats.statistics.allocationBytes;
-/// VkDeviceSize unusedRangeSizeAvg = unusedBytes / detailedStats.unusedRangeCount;
-/// }
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #statistics} Basic statistics.</li>
@@ -72,8 +66,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// <li>{@link #unusedRangeSizeMin} Smallest empty range size. `VK_WHOLE_SIZE` if there are 0 empty ranges.</li>
 /// <li>{@link #unusedRangeSizeMax} Largest empty range size. 0 if there are 0 empty ranges.</li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaDetailedStatistics(@NotNull MemorySegment segment) implements IVmaDetailedStatistics {

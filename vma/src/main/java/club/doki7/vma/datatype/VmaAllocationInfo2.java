@@ -19,7 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaAllocationInfo2} structure in native memory.
+/// Extended parameters of a {@code VmaAllocation} object that can be retrieved using function vmaGetAllocationInfo2().
 ///
 /// ## Structure
 ///
@@ -41,13 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Extended parameters of a {@code VmaAllocation} object that can be retrieved using function vmaGetAllocationInfo2().
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #allocationInfo} Basic parameters of the allocation.
@@ -64,8 +58,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// (if VK_KHR_dedicated_allocation extension or Vulkan version &amp;gt;= 1.1 is enabled).
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVmaAllocationInfo2 {

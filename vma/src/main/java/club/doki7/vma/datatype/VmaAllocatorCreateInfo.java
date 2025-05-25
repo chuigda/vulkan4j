@@ -19,7 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaAllocatorCreateInfo} structure in native memory.
+/// Description of a Allocator to be created.
 ///
 /// ## Structure
 ///
@@ -49,13 +49,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Description of a Allocator to be created.
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #flags} Flags for created allocator. Use {@code VmaAllocatorCreateFlagBits} enum.</li>
@@ -116,8 +110,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// This is also the default in case of `pTypeExternalMemoryHandleTypes` = NULL.
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements IVmaAllocatorCreateInfo {

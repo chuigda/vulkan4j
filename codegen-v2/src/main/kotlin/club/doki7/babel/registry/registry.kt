@@ -53,7 +53,7 @@ data class Registry<E: IMergeable<E>>(
     )
 }
 
-abstract class Entity(val name: Identifier, var originalDoc: List<String>? = null) {
+abstract class Entity(val name: Identifier, var doc: List<String>? = null) {
     private var _ext: Any? = null
 
     constructor(name: String) : this(name.intern())

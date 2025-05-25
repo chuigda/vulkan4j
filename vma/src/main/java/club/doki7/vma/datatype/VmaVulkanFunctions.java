@@ -19,7 +19,9 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaVulkanFunctions} structure in native memory.
+/// Pointers to some Vulkan functions - a subset used by the library.
+///
+/// Used in VmaAllocatorCreateInfo::pVulkanFunctions.
 ///
 /// ## Structure
 ///
@@ -65,15 +67,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Pointers to some Vulkan functions - a subset used by the library.
-///
-/// Used in VmaAllocatorCreateInfo::pVulkanFunctions.
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #getInstanceProcAddr} Required when using VMA_DYNAMIC_VULKAN_FUNCTIONS.</li>
@@ -86,8 +80,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// <li>{@link #getDeviceBufferMemoryRequirements} Fetch from "vkGetDeviceBufferMemoryRequirements" on Vulkan &amp;gt;= 1.3, but you can also fetch it from "vkGetDeviceBufferMemoryRequirementsKHR" if you enabled extension VK_KHR_maintenance4.</li>
 /// <li>{@link #getDeviceImageMemoryRequirements} Fetch from "vkGetDeviceImageMemoryRequirements" on Vulkan &amp;gt;= 1.3, but you can also fetch it from "vkGetDeviceImageMemoryRequirementsKHR" if you enabled extension VK_KHR_maintenance4.</li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVmaVulkanFunctions {

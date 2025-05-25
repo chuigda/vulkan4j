@@ -19,7 +19,9 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaDefragmentationPassMoveInfo} structure in native memory.
+/// Parameters for incremental defragmentation steps.
+///
+/// To be used with function vmaBeginDefragmentationPass().
 ///
 /// ## Structure
 ///
@@ -40,15 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Parameters for incremental defragmentation steps.
-///
-/// To be used with function vmaBeginDefragmentationPass().
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #moveCount} Number of elements in the `pMoves` array.</li>
@@ -76,8 +70,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// Then, after vmaEndDefragmentationPass() the allocation will be freed.
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaDefragmentationPassMoveInfo(@NotNull MemorySegment segment) implements IVmaDefragmentationPassMoveInfo {

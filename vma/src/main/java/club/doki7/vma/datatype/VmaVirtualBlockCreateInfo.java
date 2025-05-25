@@ -19,7 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaVirtualBlockCreateInfo} structure in native memory.
+/// Parameters of created {@code VmaVirtualBlock} object to be passed to vmaCreateVirtualBlock().
 ///
 /// ## Structure
 ///
@@ -41,13 +41,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Parameters of created {@code VmaVirtualBlock} object to be passed to vmaCreateVirtualBlock().
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #size} Total size of the virtual block.
@@ -61,8 +55,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// Optional, can be null. When specified, they will be used for all CPU-side memory allocations.
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implements IVmaVirtualBlockCreateInfo {

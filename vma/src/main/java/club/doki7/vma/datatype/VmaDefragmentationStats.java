@@ -19,7 +19,7 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaDefragmentationStats} structure in native memory.
+/// Statistics returned for defragmentation process in function vmaEndDefragmentation().
 ///
 /// ## Structure
 ///
@@ -42,13 +42,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Statistics returned for defragmentation process in function vmaEndDefragmentation().
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #bytesMoved} Total number of bytes that have been copied while moving allocations to different places.</li>
@@ -56,8 +50,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// <li>{@link #allocationsMoved} Number of allocations that have been moved to different places.</li>
 /// <li>{@link #deviceMemoryBlocksFreed} Number of empty `VkDeviceMemory` objects that have been released to the system.</li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaDefragmentationStats(@NotNull MemorySegment segment) implements IVmaDefragmentationStats {

@@ -19,7 +19,10 @@ import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 import static club.doki7.vulkan.VkConstants.*;
 
-/// Represents a pointer to a {@code VmaBudget} structure in native memory.
+/// Statistics of current memory usage and available budget for a specific memory heap.
+///
+/// These are fast to calculate.
+/// See function vmaGetHeapBudgets().
 ///
 /// ## Structure
 ///
@@ -41,16 +44,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// The constructor of this class is marked as {@link UnsafeConstructor}, because it does not
 /// perform any runtime check. The constructor can be useful for automatic code generators.
 ///
-/// <div class="doxygen">
-///
-/// ## Original doxygen documentation
-///
-/// Statistics of current memory usage and available budget for a specific memory heap.
-///
-/// These are fast to calculate.
-/// See function vmaGetHeapBudgets().
-///
-/// ### Member documentation
+/// ## Member documentation
 ///
 /// <ul>
 /// <li>{@link #statistics} Statistics fetched from the library.</li>
@@ -72,8 +66,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// be allocated without problems. Exceeding the budget may result in various problems.
 /// </li>
 /// </ul>
-///
-/// </div>
 @ValueBasedCandidate
 @UnsafeConstructor
 public record VmaBudget(@NotNull MemorySegment segment) implements IVmaBudget {
