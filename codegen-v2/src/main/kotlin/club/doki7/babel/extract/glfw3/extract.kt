@@ -1,33 +1,31 @@
 package club.doki7.babel.extract.glfw3
 
-import club.doki7.babel.cdecl.parseBlockDoxygen
-import club.doki7.babel.cdecl.parseStructFieldDecl
-import club.doki7.babel.cdecl.parseTriSlashDoxygen
-import club.doki7.babel.cdecl.toType
-import club.doki7.babel.extract.TypedefKind
-import club.doki7.babel.extract.isBlockCommentIndicator
-import club.doki7.babel.extract.isLineCommentIndicator
-import club.doki7.babel.extract.isTriSlashIndicator
-import club.doki7.babel.extract.isTypedef
+import club.doki7.babel.cdecl.*
+import club.doki7.babel.extract.*
 import club.doki7.babel.extract.vma.log
-import club.doki7.babel.registry.EmptyMergeable
-import club.doki7.babel.registry.Identifier
-import club.doki7.babel.registry.Member
-import club.doki7.babel.registry.OpaqueTypedef
-import club.doki7.babel.registry.Registry
-import club.doki7.babel.registry.Structure
+import club.doki7.babel.registry.*
+import kotlin.io.path.Path
 
+fun main() {
+    val content = Path("codegen-v2/input/glfw3.h").toFile().readText()
+    val registry = extractGLFWHeader(content)
+    return
+}
+
+fun extractGLFWHeader(fileContent: String): Registry<EmptyMergeable> {
+    val lines = fileContent.splitToSequence('\n').map(String::trim)
+        .toList()
+    return Glfw3HeaderParser(lines).parse().collect()
+}
+
+/**
+ * one use parser
+ */
 abstract class HeaderParser<T>(val lines: List<String>) {
-    var previousIndex = -1
-
     /**
      * Line iterator, the value indicates the next line index, or how many lines are consumed.
      */
     var lineIndex = 0
-        set(value) {
-            previousIndex = field
-            field = value
-        }
 
     protected fun nextLine(): String? {
         val line = lines.getOrNull(lineIndex)
@@ -44,17 +42,24 @@ abstract class HeaderParser<T>(val lines: List<String>) {
     }
 
     open fun parse(): HeaderParser<T> {
-        // the order is important
-        lineIndex = 0
-        previousIndex = -1
+        var lastIndex = -1
 
         while (true) {
-            if (previousIndex == lineIndex) {
-                log.warning("vma.h: infinite loop detected at line $lineIndex: ${lines[lineIndex]}, forcing process")
+            if (lastIndex == lineIndex) {
+                log.warning("glfw3.h: infinite loop detected at line $lineIndex: ${lines[lineIndex]}, forcing process")
                 lineIndex += 1
             }
 
-            if (! parseOne()) break
+            val currentLine = peekLine() ?: break
+            if (currentLine.isBlank()) {
+                nextLine()
+                continue
+            }
+
+            lastIndex = lineIndex
+
+            if (! parseOne())
+                break
         }
 
         return this
@@ -63,6 +68,7 @@ abstract class HeaderParser<T>(val lines: List<String>) {
     abstract fun collect(): T
 
     /**
+     * Assumption: [peekLine] is never null and blank
      * @return if continue
      */
     protected abstract fun parseOne(): Boolean
@@ -71,8 +77,8 @@ abstract class HeaderParser<T>(val lines: List<String>) {
 /**
  * After [parse]: [lineIndex] is the line below the last comment, or `lineIndex == 0` if no comment is met.
  */
-class Glfw3CommentParser<T, P: HeaderParser<T>>(delegate: P)
-    : HeaderParser<List<String>?>(delegate.lines.subList(delegate.lineIndex, delegate.lines.size)) {
+class Glfw3CommentParser<T, P : HeaderParser<T>>(delegate: P) :
+    HeaderParser<List<String>?>(delegate.lines.subList(delegate.lineIndex, delegate.lines.size)) {
     private var savedDoc: List<String>? = null
 
     override fun collect(): List<String>? {
@@ -80,7 +86,7 @@ class Glfw3CommentParser<T, P: HeaderParser<T>>(delegate: P)
     }
 
     override fun parseOne(): Boolean {
-        val line = peekLine() ?: return false
+        val line = peekLine()!!
 
         when {
             isBlockCommentIndicator(line) -> {
@@ -112,8 +118,8 @@ class Glfw3CommentParser<T, P: HeaderParser<T>>(delegate: P)
  * Assumption: `delegate.lineIndex` is the line below `{`
  * After [parse]: [lineIndex] is the line below `} STRUCT_NAME;`
  */
-class Glfw3StructParser<P : HeaderParser<*>>(delegate: P)
-    : HeaderParser<Glfw3StructParser.ParsedStruct>(delegate.lines.subList(delegate.lineIndex, delegate.lines.size)) {
+class Glfw3StructParser<P : HeaderParser<*>>(delegate: P) :
+    HeaderParser<Glfw3StructParser.ParsedStruct>(delegate.lines.subList(delegate.lineIndex, delegate.lines.size)) {
     private var name: String? = null
     private val members: MutableList<Member> = mutableListOf()
     private var savedDoc: List<String>? = null
@@ -134,7 +140,7 @@ class Glfw3StructParser<P : HeaderParser<*>>(delegate: P)
     override fun parseOne(): Boolean {
         val commentParser = Glfw3CommentParser(this)
             .parse()
-        val savedDoc  = commentParser.collect()
+        val savedDoc = commentParser.collect()
         if (savedDoc != null) this.savedDoc = savedDoc
         lineIndex = lineIndex + commentParser.lineIndex
 
@@ -150,12 +156,13 @@ class Glfw3StructParser<P : HeaderParser<*>>(delegate: P)
             }
 
             currentLine.endsWith(';') -> {
-                val (decl, newIdx) = parseStructFieldDecl(lines, previousIndex)
+                val (decl, newIdx) = parseStructFieldDecl(lines, lineIndex)
                 lineIndex = newIdx
 
                 val member = Member(
                     decl.name, decl.type.toType(),
-                    null, null, null, false, null)
+                    null, null, null, false, null
+                )
                 member.doc = getDocument()
                 members.add(member)
             }
@@ -170,15 +177,16 @@ class Glfw3StructParser<P : HeaderParser<*>>(delegate: P)
     }
 }
 
-class Glfw3HeaderParser(lines: List<String>)
-    : HeaderParser<Registry<EmptyMergeable>>(lines) {
+class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergeable>>(lines) {
     companion object {
         // `typedef struct `
         const val OFFSET_TYPEDEF_STRUCT = 8 + 7
     }
 
+    private val functionTypedefs: MutableMap<Identifier, FunctionTypedef> = mutableMapOf()
     private val structures: MutableMap<Identifier, Structure> = mutableMapOf()
     private val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef> = mutableMapOf()
+    private val constants: MutableMap<Identifier, Constant> = mutableMapOf()
     private var savedDoc: List<String>? = null
 
     fun getDocument(): List<String>? {
@@ -188,30 +196,94 @@ class Glfw3HeaderParser(lines: List<String>)
     }
 
     override fun collect(): Registry<EmptyMergeable> {
-        TODO("Not yet implemented")
+        TODO()
     }
 
     override fun parseOne(): Boolean {
-        var currentLine = peekLine() ?: return false            // fuck intellij idea
-
         val commentParser = Glfw3CommentParser(this)
             .parse()
-        val doc = commentParser
-            .collect()
+        val doc = commentParser.collect()
         if (doc != null) savedDoc = doc
         lineIndex = lineIndex + commentParser.lineIndex
 
-        currentLine = nextLine() ?: return false
+        val currentLine = nextLine() ?: return false
 
-        val typedefKind = isTypedef(currentLine)
-        when (typedefKind) {
-            TypedefKind.Normal -> TODO()
-            TypedefKind.Enum -> TODO()
-            TypedefKind.Struct -> parseStruct(currentLine)
-            null -> TODO()
+        when {
+            currentLine.startsWith("#define ") -> {
+                val parts = currentLine.split(' ', limit = 3)
+                if (parts.size < 3) return true
+
+                val name = parts[1].trim()
+                val value = parts[2].trim()
+                val constant = Constant(name, IdentifierType("int"), value)        // FIXME: type
+                constants[constant.name] = constant
+            }
+
+            currentLine.startsWith("GLFWAPI ") -> {
+                // TODO
+            }
+
+            else -> {
+                val typedefKind = isTypedef(currentLine)
+                when (typedefKind) {
+                    TypedefKind.Normal -> {
+                        if (currentLine.contains("proc") || currentLine.contains("fun")) {
+                            parseNormalTypedef()
+                        }
+                    }
+                    // we don't have `typedef enum`
+                    TypedefKind.Enum -> assert(false) { "unreachable" }
+                    TypedefKind.Struct -> {
+                        parseStruct(currentLine)
+                    }
+
+                    null -> {
+                        // ignored
+                    }
+                }
+            }
         }
 
         return true
+    }
+
+    private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
+        name = functionDecl.name,
+        params = functionDecl.params.map {
+            Param(
+                name = it.name,
+                type = it.type.toType(),
+                len = null,
+                argLen = null,
+                optional = false,
+            )
+        },
+        result = functionDecl.returnType.toType(),
+        successCodes = null,
+        errorCodes = null
+    )
+
+    private fun morphFunctionTypedef(typedef: TypedefDecl) = FunctionTypedef(
+        name = typedef.name,
+        params = (typedef.aliasedType as RawFunctionType).params.map { it.second.toType() },
+        result =
+            if (typedef.aliasedType.returnType is RawIdentifierType &&
+                (typedef.aliasedType.returnType as RawIdentifierType).ident == "void"
+            ) {
+                null
+            } else {
+                typedef.aliasedType.returnType.toType()
+            },
+    )
+
+    /**
+     * Assumption: [lineIndex - 1] is the `typedef` line
+     */
+    fun parseNormalTypedef() {
+        val (typedef, newIdx) = parseTypedefDecl(lines, lineIndex - 1)
+        this.lineIndex = newIdx
+        val functionTypedef = morphFunctionTypedef(typedef)
+        functionTypedefs[functionTypedef.name] = functionTypedef
     }
 
     /**
@@ -261,8 +333,4 @@ class Glfw3HeaderParser(lines: List<String>)
     fun parseTypedef(kind: TypedefKind) {
 
     }
-}
-
-private fun parseGlfw3Header(fileContent: String): Registry<EmptyMergeable> {
-    TODO()
 }

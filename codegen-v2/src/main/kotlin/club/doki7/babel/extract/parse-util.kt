@@ -12,7 +12,7 @@ fun isTriSlashIndicator(line: String): Boolean {
  * Call [isTriSlashIndicator] first
  */
 fun isLineCommentIndicator(line: String): Boolean {
-    return line.startsWith("#") || line.startsWith("//")
+    return line.startsWith("//")
 }
 
 enum class TypedefKind {
