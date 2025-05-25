@@ -5,6 +5,7 @@ import club.doki7.babel.extract.renameVariantOrBitflag
 import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Registry
+import club.doki7.babel.util.Either
 import java.io.File
 
 private const val renamedEntitiesFile = "codegen-v2/output/vma-renamed-entities.csv"
@@ -34,6 +35,12 @@ internal fun Registry<EmptyMergeable>.renameEntities() {
         for (bitflag in bitmask.bitflags) {
             bitflag.rename { renameVariantOrBitflag(this, bitmask.name.value, true) }
             putEntityIfNameReplaced(bitflag)
+
+            if (bitflag.value is Either.Right) {
+                for ((idx, value) in bitflag.value.value.withIndex()) {
+                    bitflag.value.value[idx] = renameVariantOrBitflag(value, bitmask.name.value, true)
+                }
+            }
         }
     }
 

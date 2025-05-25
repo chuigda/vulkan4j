@@ -1,5 +1,7 @@
 package club.doki7.babel.cdecl
 
+import club.doki7.babel.util.isHexDigit
+
 internal enum class TokenKind {
     IDENT,
     SYMBOL,

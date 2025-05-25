@@ -60,6 +60,13 @@ fun renderImpl(sb: StringBuilder, doc: Doc, indent: Int) {
     }
 }
 
+fun Char.isHexDigit(): Boolean = isDigit() || this in 'a'..'f' || this in 'A'..'F'
+
+fun String.isDecOrHexNumber() = when {
+    startsWith("0x") -> substring(2).all { it.isHexDigit() }
+    else -> all { it.isDigit() }
+}
+
 fun String.parseDecOrHex() = when {
     startsWith("0x") -> substring(2).toLong(16)
     else -> toLong()

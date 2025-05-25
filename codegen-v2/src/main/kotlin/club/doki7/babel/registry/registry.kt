@@ -118,15 +118,15 @@ class Bitmask(
 
 class Bitflag(
     name: Identifier,
-    val value: Either<BigInteger, List<String>>
+    val value: Either<BigInteger, MutableList<String>>
 ) : Entity(name) {
     constructor(name: Identifier, value: BigInteger) : this(name, Either.Left(value))
 
-    constructor(name: Identifier, value: List<String>) : this(name, Either.Right(value))
+    constructor(name: Identifier, value: MutableList<String>) : this(name, Either.Right(value))
 
     constructor(name: String, value: BigInteger) : this(name.intern(), value)
 
-    constructor(name: String, value: List<String>) : this(name.intern(), value)
+    constructor(name: String, value: MutableList<String>) : this(name.intern(), value)
 
     override fun toStringImpl() = buildString {
         append("Bitflag(name=$name")

@@ -13,6 +13,9 @@ import club.doki7.babel.cdecl.parseTriSlashDoxygen
 import club.doki7.babel.cdecl.parseTypedefDecl
 import club.doki7.babel.cdecl.toType
 import club.doki7.babel.registry.*
+import club.doki7.babel.util.isDecOrHexNumber
+import club.doki7.babel.util.parseDecOrHex
+import java.math.BigInteger
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
@@ -132,10 +135,17 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
                     name = actualName,
                     bitwidth = 32,
                     bitflags = enumerators.map { (enumDecl, doc) ->
-                        val bitflag = Bitflag(
-                            name = enumDecl.name,
-                            value = enumDecl.value.split("|").map(String::trim)
-                        )
+                        val bitflag = if (enumDecl.value.isDecOrHexNumber()) {
+                            Bitflag(
+                                name = enumDecl.name,
+                                value = enumDecl.value.parseDecOrHex().toBigInteger()
+                            )
+                        } else {
+                            Bitflag(
+                                name = enumDecl.name,
+                                value = enumDecl.value.split("|").map(String::trim)
+                            )
+                        }
                         bitflag.originalDoc = doc
                         bitflag
                     }.toMutableList()

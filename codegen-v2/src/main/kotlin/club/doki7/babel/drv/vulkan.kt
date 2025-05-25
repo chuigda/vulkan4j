@@ -47,7 +47,7 @@ internal fun vulkanMain(): Registry<VulkanRegistryExt> {
         .writeText(render(functionTypeDoc))
 
     for (bitmask in vulkanRegistry.bitmasks.values) {
-        val bitmaskDoc = generateBitmask(vulkanRegistry, bitmask, codegenOptions)
+        val bitmaskDoc = generateBitmask(bitmask, codegenOptions)
         File("$packageDir/bitmask/${bitmask.name}.java")
             .writeText(render(bitmaskDoc))
     }

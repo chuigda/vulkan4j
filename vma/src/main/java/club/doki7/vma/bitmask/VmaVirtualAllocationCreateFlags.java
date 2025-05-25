@@ -6,15 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class VmaVirtualAllocationCreateFlags {
-    public static final int FLAG_BITS_MAX_ENUM = 0x7FFFFFFF;
-    public static final int STRATEGY_MASK = VMA_ALLOCATION_CREATE_STRATEGY_MASK;
-    public static final int STRATEGY_MIN_MEMORY = VMA_ALLOCATION_CREATE_STRATEGY_MIN_MEMORY_BIT;
-    public static final int STRATEGY_MIN_OFFSET = VMA_ALLOCATION_CREATE_STRATEGY_MIN_OFFSET_BIT;
-    public static final int STRATEGY_MIN_TIME = VMA_ALLOCATION_CREATE_STRATEGY_MIN_TIME_BIT;
-    public static final int UPPER_ADDRESS = VMA_ALLOCATION_CREATE_UPPER_ADDRESS_BIT;
+    public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
+    public static final int STRATEGY_MASK = STRATEGY_MASK;
+    public static final int STRATEGY_MIN_MEMORY = VMA_ALLOCATION_CREATE_STRATEGY_MIN_MEMORY;
+    public static final int STRATEGY_MIN_OFFSET = VMA_ALLOCATION_CREATE_STRATEGY_MIN_OFFSET;
+    public static final int STRATEGY_MIN_TIME = VMA_ALLOCATION_CREATE_STRATEGY_MIN_TIME;
+    public static final int UPPER_ADDRESS = VMA_ALLOCATION_CREATE_UPPER_ADDRESS;
 
     public static String explain(@EnumType(VmaVirtualAllocationCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
+        if ((flags & FLAG_BITS_MAX_ENUM) != 0) {
+            detectedFlagBits.add("VMA_VIRTUAL_ALLOCATION_CREATE_FLAG_BITS_MAX_ENUM");
+        }
 
         if (detectedFlagBits.isEmpty()) {
             return "NONE(" + Integer.toBinaryString(flags) + ")";

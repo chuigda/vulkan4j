@@ -88,7 +88,7 @@ fun vmaMain(vulkanRegistry: RegistryBase) {
 
     val bitmaskAndEnumCodegenOptiosn = codegenOptions.copy(extraImport = emptyList())
     for (bitmask in registry.bitmasks.values) {
-        val bitmaskDoc = generateBitmask(registry, bitmask, bitmaskAndEnumCodegenOptiosn)
+        val bitmaskDoc = generateBitmask(bitmask, bitmaskAndEnumCodegenOptiosn)
         File("$packageDir/bitmask/${bitmask.name}.java")
             .writeText(render(bitmaskDoc))
     }
