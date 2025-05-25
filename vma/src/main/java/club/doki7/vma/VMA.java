@@ -320,15 +320,14 @@ public final class VMA {
 
     /// Retrieves information about current memory usage and budget for all memory heaps.
     ///
-    /// @param allocator
-    /// @param[out] pBudgets Must point to array with number of elements at least equal to number of memory heaps in physical device used.
-    ///
     /// This function is called "get" not "calculate" because it is very fast, suitable to be called
     /// every frame or every allocation. For more detailed statistics use vmaCalculateStatistics().
     ///
     /// Note that when using allocator from multiple threads, returned information may immediately
     /// become outdated.
     ///
+    /// @param allocator
+    /// @param pBudgets Must point to array with number of elements at least equal to number of memory heaps in physical device used.
     public void getHeapBudgets(
         VmaAllocator allocator,
         @Pointer IVmaBudget pBudgets
@@ -353,12 +352,12 @@ public final class VMA {
     /// - Matches intended usage.
     /// - Has as many flags from pAllocationCreateInfo-&amp;gt;preferredFlags as possible.
     ///
-    /// @return Returns VK_ERROR_FEATURE_NOT_PRESENT if not found. Receiving such result
     /// from this function or any other allocating function probably means that your
     /// device doesn't support any memory type with requested features for the specific
     /// type of resource you want to use it for. Please check parameters of your
     /// resource, like image layout (OPTIMAL versus LINEAR) or mip level count.
     ///
+    /// @return Returns VK_ERROR_FEATURE_NOT_PRESENT if not found. Receiving such result
     public @EnumType(VkResult.class) int findMemoryTypeIndex(
         VmaAllocator allocator,
         @Unsigned int memoryTypeBits,
@@ -430,8 +429,7 @@ public final class VMA {
     ///
     /// @param allocator Allocator object.
     /// @param pCreateInfo Parameters of pool to create.
-    /// @param[out] pPool Handle to created pool.
-    ///
+    /// @param pPool Handle to created pool.
     public @EnumType(VkResult.class) int createPool(
         VmaAllocator allocator,
         @Pointer IVmaPoolCreateInfo pCreateInfo,
@@ -468,13 +466,12 @@ public final class VMA {
 
     /// Retrieves statistics of existing {@code VmaPool} object.
     ///
-    /// @param allocator Allocator object.
-    /// @param pool Pool object.
-    /// @param[out] pPoolStats Statistics of specified pool.
-    ///
     /// Note that when using the pool from multiple threads, returned information may immediately
     /// become outdated.
     ///
+    /// @param allocator Allocator object.
+    /// @param pool Pool object.
+    /// @param pPoolStats Statistics of specified pool.
     public void getPoolStatistics(
         VmaAllocator allocator,
         VmaPool pool,
@@ -496,8 +493,7 @@ public final class VMA {
     ///
     /// @param allocator Allocator object.
     /// @param pool Pool object.
-    /// @param[out] pPoolStats Statistics of specified pool.
-    ///
+    /// @param pPoolStats Statistics of specified pool.
     public void calculatePoolStatistics(
         VmaAllocator allocator,
         VmaPool pool,
@@ -591,17 +587,16 @@ public final class VMA {
 
     /// General purpose memory allocation.
     ///
-    /// @param allocator
-    /// @param pVkMemoryRequirements
-    /// @param pCreateInfo
-    /// @param[out] pAllocation Handle to allocated memory.
-    /// @param[out] pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
-    ///
     /// You should free the memory using vmaFreeMemory() or vmaFreeMemoryPages().
     ///
     /// It is recommended to use vmaAllocateMemoryForBuffer(), vmaAllocateMemoryForImage(),
     /// vmaCreateBuffer(), vmaCreateImage() instead whenever possible.
     ///
+    /// @param allocator
+    /// @param pVkMemoryRequirements
+    /// @param pCreateInfo
+    /// @param pAllocation Handle to allocated memory.
+    /// @param pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
     public @EnumType(VkResult.class) int allocateMemory(
         VmaAllocator allocator,
         @Pointer IVkMemoryRequirements pVkMemoryRequirements,
@@ -625,13 +620,6 @@ public final class VMA {
 
     /// General purpose memory allocation for multiple allocation objects at once.
     ///
-    /// @param allocator Allocator object.
-    /// @param pVkMemoryRequirements Memory requirements for each allocation.
-    /// @param pCreateInfo Creation parameters for each allocation.
-    /// @param allocationCount Number of allocations to make.
-    /// @param[out] pAllocations Pointer to array that will be filled with handles to created allocations.
-    /// @param[out] pAllocationInfo Optional. Pointer to array that will be filled with parameters of created allocations.
-    ///
     /// You should free the memory using vmaFreeMemory() or vmaFreeMemoryPages().
     ///
     /// Word "pages" is just a suggestion to use this function to allocate pieces of memory needed for sparse binding.
@@ -642,6 +630,12 @@ public final class VMA {
     /// If any allocation fails, all allocations already made within this function call are also freed, so that when
     /// returned result is not `VK_SUCCESS`, `pAllocation` array is always entirely filled with `VK_NULL_HANDLE`.
     ///
+    /// @param allocator Allocator object.
+    /// @param pVkMemoryRequirements Memory requirements for each allocation.
+    /// @param pCreateInfo Creation parameters for each allocation.
+    /// @param allocationCount Number of allocations to make.
+    /// @param pAllocations Pointer to array that will be filled with handles to created allocations.
+    /// @param pAllocationInfo Optional. Pointer to array that will be filled with parameters of created allocations.
     public @EnumType(VkResult.class) int allocateMemoryPages(
         VmaAllocator allocator,
         @Pointer IVkMemoryRequirements pVkMemoryRequirements,
@@ -667,18 +661,17 @@ public final class VMA {
 
     /// Allocates memory suitable for given `VkBuffer`.
     ///
-    /// @param allocator
-    /// @param buffer
-    /// @param pCreateInfo
-    /// @param[out] pAllocation Handle to allocated memory.
-    /// @param[out] pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
-    ///
     /// It only creates {@code VmaAllocation}. To bind the memory to the buffer, use vmaBindBufferMemory().
     ///
     /// This is a special-purpose function. In most cases you should use vmaCreateBuffer().
     ///
     /// You must free the allocation using vmaFreeMemory() when no longer needed.
     ///
+    /// @param allocator
+    /// @param buffer
+    /// @param pCreateInfo
+    /// @param pAllocation Handle to allocated memory.
+    /// @param pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
     public @EnumType(VkResult.class) int allocateMemoryForBuffer(
         VmaAllocator allocator,
         VkBuffer buffer,
@@ -702,18 +695,17 @@ public final class VMA {
 
     /// Allocates memory suitable for given `VkImage`.
     ///
-    /// @param allocator
-    /// @param image
-    /// @param pCreateInfo
-    /// @param[out] pAllocation Handle to allocated memory.
-    /// @param[out] pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
-    ///
     /// It only creates {@code VmaAllocation}. To bind the memory to the buffer, use vmaBindImageMemory().
     ///
     /// This is a special-purpose function. In most cases you should use vmaCreateImage().
     ///
     /// You must free the allocation using vmaFreeMemory() when no longer needed.
     ///
+    /// @param allocator
+    /// @param image
+    /// @param pCreateInfo
+    /// @param pAllocation Handle to allocated memory.
+    /// @param pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
     public @EnumType(VkResult.class) int allocateMemoryForImage(
         VmaAllocator allocator,
         VkImage image,
@@ -907,9 +899,7 @@ public final class VMA {
 
     /// Given an allocation, returns Win32 handle that may be imported by other processes or APIs.
     ///
-    /// @param hTargetProcess Must be a valid handle to target process or null. If it's null, the function returns
     /// handle for the current process.
-    /// @param[out] pHandle Output parameter that returns the handle.
     ///
     /// The function fills `pHandle` with handle that can be used in target process.
     /// The handle is fetched using function `vkGetMemoryWin32HandleKHR`.
@@ -932,6 +922,8 @@ public final class VMA {
     ///
     /// For more information, see chapter  vk_khr_external_memory_win32.
     ///
+    /// @param hTargetProcess Must be a valid handle to target process or null. If it's null, the function returns
+    /// @param pHandle Output parameter that returns the handle.
     public @EnumType(VkResult.class) int getMemoryWin32Handle(
         VmaAllocator allocator,
         VmaAllocation allocation,
@@ -1113,15 +1105,14 @@ public final class VMA {
     /// Calls `vkFlushMappedMemoryRanges()` for memory associated with given ranges of given allocations.
     /// For more information, see documentation of vmaFlushAllocation().
     ///
+    /// This function returns the `VkResult` from `vkFlushMappedMemoryRanges` if it is
+    /// called, otherwise `VK_SUCCESS`.
+    ///
     /// @param allocator
     /// @param allocationCount
     /// @param allocations
     /// @param offsets If not null, it must point to an array of offsets of regions to flush, relative to the beginning of respective allocations. Null means all offsets are zero.
     /// @param sizes If not null, it must point to an array of sizes of regions to flush in respective allocations. Null means `VK_WHOLE_SIZE` for all allocations.
-    ///
-    /// This function returns the `VkResult` from `vkFlushMappedMemoryRanges` if it is
-    /// called, otherwise `VK_SUCCESS`.
-    ///
     public @EnumType(VkResult.class) int flushAllocations(
         VmaAllocator allocator,
         @Unsigned int allocationCount,
@@ -1148,15 +1139,14 @@ public final class VMA {
     /// Calls `vkInvalidateMappedMemoryRanges()` for memory associated with given ranges of given allocations.
     /// For more information, see documentation of vmaInvalidateAllocation().
     ///
+    /// This function returns the `VkResult` from `vkInvalidateMappedMemoryRanges` if it is
+    /// called, otherwise `VK_SUCCESS`.
+    ///
     /// @param allocator
     /// @param allocationCount
     /// @param allocations
     /// @param offsets If not null, it must point to an array of offsets of regions to flush, relative to the beginning of respective allocations. Null means all offsets are zero.
     /// @param sizes If not null, it must point to an array of sizes of regions to flush in respective allocations. Null means `VK_WHOLE_SIZE` for all allocations.
-    ///
-    /// This function returns the `VkResult` from `vkInvalidateMappedMemoryRanges` if it is
-    /// called, otherwise `VK_SUCCESS`.
-    ///
     public @EnumType(VkResult.class) int invalidateAllocations(
         VmaAllocator allocator,
         @Unsigned int allocationCount,
@@ -1180,12 +1170,6 @@ public final class VMA {
 
     /// Maps the allocation temporarily if needed, copies data from specified host pointer to it, and flushes the memory from the host caches if needed.
     ///
-    /// @param allocator
-    /// @param pSrcHostPointer Pointer to the host data that become source of the copy.
-    /// @param dstAllocation   Handle to the allocation that becomes destination of the copy.
-    /// @param dstAllocationLocalOffset  Offset within `dstAllocation` where to write copied data, in bytes.
-    /// @param size            Number of bytes to copy.
-    ///
     /// This is a convenience function that allows to copy data from a host pointer to an allocation easily.
     /// Same behavior can be achieved by calling vmaMapMemory(), `memcpy()`, vmaUnmapMemory(), vmaFlushAllocation().
     ///
@@ -1198,6 +1182,11 @@ public final class VMA {
     /// If you mean whole allocation, you should pass 0.
     /// Do not pass allocation's offset within device memory block this parameter!
     ///
+    /// @param allocator
+    /// @param pSrcHostPointer Pointer to the host data that become source of the copy.
+    /// @param dstAllocation   Handle to the allocation that becomes destination of the copy.
+    /// @param dstAllocationLocalOffset  Offset within `dstAllocation` where to write copied data, in bytes.
+    /// @param size            Number of bytes to copy.
     public @EnumType(VkResult.class) int copyMemoryToAllocation(
         VmaAllocator allocator,
         @Pointer(comment="void*") MemorySegment pSrcHostPointer,
@@ -1221,12 +1210,6 @@ public final class VMA {
 
     /// Invalidates memory in the host caches if needed, maps the allocation temporarily if needed, and copies data from it to a specified host pointer.
     ///
-    /// @param allocator
-    /// @param srcAllocation   Handle to the allocation that becomes source of the copy.
-    /// @param srcAllocationLocalOffset  Offset within `srcAllocation` where to read copied data, in bytes.
-    /// @param pDstHostPointer Pointer to the host memory that become destination of the copy.
-    /// @param size            Number of bytes to copy.
-    ///
     /// This is a convenience function that allows to copy data from an allocation to a host pointer easily.
     /// Same behavior can be achieved by calling vmaInvalidateAllocation(), vmaMapMemory(), `memcpy()`, vmaUnmapMemory().
     ///
@@ -1240,6 +1223,11 @@ public final class VMA {
     /// If you mean whole allocation, you should pass 0.
     /// Do not pass allocation's offset within device memory block as this parameter!
     ///
+    /// @param allocator
+    /// @param srcAllocation   Handle to the allocation that becomes source of the copy.
+    /// @param srcAllocationLocalOffset  Offset within `srcAllocation` where to read copied data, in bytes.
+    /// @param pDstHostPointer Pointer to the host memory that become destination of the copy.
+    /// @param size            Number of bytes to copy.
     public @EnumType(VkResult.class) int copyAllocationToMemory(
         VmaAllocator allocator,
         VmaAllocation srcAllocation,
@@ -1263,9 +1251,6 @@ public final class VMA {
 
     /// Checks magic number in margins around all allocations in given memory types (in both default and custom pools) in search for corruptions.
     ///
-    /// @param allocator
-    /// @param memoryTypeBits Bit mask, where each bit set means that a memory type with that index should be checked.
-    ///
     /// Corruption detection is enabled only when `VMA_DEBUG_DETECT_CORRUPTION` macro is defined to nonzero,
     /// `VMA_DEBUG_MARGIN` is defined to nonzero and only for memory types that are
     /// `HOST_VISIBLE` and `HOST_COHERENT`. For more information, see [Corruption detection](@ref debugging_memory_usage_corruption_detection).
@@ -1278,6 +1263,8 @@ public final class VMA {
     /// `VMA_ASSERT` is also fired in that case.
     /// - Other value: Error returned by Vulkan, e.g. memory mapping failure.
     ///
+    /// @param allocator
+    /// @param memoryTypeBits Bit mask, where each bit set means that a memory type with that index should be checked.
     public @EnumType(VkResult.class) int checkCorruption(
         VmaAllocator allocator,
         @Unsigned int memoryTypeBits
@@ -1295,16 +1282,15 @@ public final class VMA {
 
     /// Begins defragmentation process.
     ///
-    /// @param allocator Allocator object.
-    /// @param pInfo Structure filled with parameters of defragmentation.
-    /// @param[out] pContext Context object that must be passed to vmaEndDefragmentation() to finish defragmentation.
-    /// @returns
-    /// - `VK_SUCCESS` if defragmentation can begin.
-    /// - `VK_ERROR_FEATURE_NOT_PRESENT` if defragmentation is not supported.
-    ///
     /// For more information about defragmentation, see documentation chapter:
     /// [Defragmentation](@ref defragmentation).
     ///
+    /// @param allocator Allocator object.
+    /// @param pInfo Structure filled with parameters of defragmentation.
+    /// @param pContext Context object that must be passed to vmaEndDefragmentation() to finish defragmentation.
+    /// @return
+    /// <li>`VK_SUCCESS` if defragmentation can begin.</li>
+    /// <li>`VK_ERROR_FEATURE_NOT_PRESENT` if defragmentation is not supported.</li>
     public @EnumType(VkResult.class) int beginDefragmentation(
         VmaAllocator allocator,
         @Pointer IVmaDefragmentationInfo pInfo,
@@ -1324,12 +1310,11 @@ public final class VMA {
 
     /// Ends defragmentation process.
     ///
-    /// @param allocator Allocator object.
-    /// @param context Context object that has been created by vmaBeginDefragmentation().
-    /// @param[out] pStats Optional stats for the defragmentation. Can be null.
-    ///
     /// Use this function to finish defragmentation started by vmaBeginDefragmentation().
     ///
+    /// @param allocator Allocator object.
+    /// @param context Context object that has been created by vmaBeginDefragmentation().
+    /// @param pStats Optional stats for the defragmentation. Can be null.
     public void endDefragmentation(
         VmaAllocator allocator,
         VmaDefragmentationContext context,
@@ -1351,12 +1336,10 @@ public final class VMA {
     ///
     /// @param allocator Allocator object.
     /// @param context Context object that has been created by vmaBeginDefragmentation().
-    /// @param[out] pPassInfo Computed information for current pass.
-    /// @returns
-    /// - `VK_SUCCESS` if no more moves are possible. Then you can omit call to vmaEndDefragmentationPass() and simply end whole defragmentation.
-    /// - `VK_INCOMPLETE` if there are pending moves returned in `pPassInfo`. You need to perform them, call vmaEndDefragmentationPass(),
-    /// and then preferably try another pass with vmaBeginDefragmentationPass().
-    ///
+    /// @param pPassInfo Computed information for current pass.
+    /// @return
+    /// <li>`VK_SUCCESS` if no more moves are possible. Then you can omit call to vmaEndDefragmentationPass() and simply end whole defragmentation.</li>
+    /// <li>`VK_INCOMPLETE` if there are pending moves returned in `pPassInfo`. You need to perform them, call vmaEndDefragmentationPass(),</li>
     public @EnumType(VkResult.class) int beginDefragmentationPass(
         VmaAllocator allocator,
         VmaDefragmentationContext context,
@@ -1376,10 +1359,6 @@ public final class VMA {
 
     /// Ends single defragmentation pass.
     ///
-    /// @param allocator Allocator object.
-    /// @param context Context object that has been created by vmaBeginDefragmentation().
-    /// @param pPassInfo Computed information for current pass filled by vmaBeginDefragmentationPass() and possibly modified by you.
-    ///
     /// Returns `VK_SUCCESS` if no more moves are possible or `VK_INCOMPLETE` if more defragmentations are possible.
     ///
     /// Ends incremental defragmentation pass and commits all defragmentation moves from `pPassInfo`.
@@ -1392,6 +1371,9 @@ public final class VMA {
     ///
     /// If no more moves are possible you can end whole defragmentation.
     ///
+    /// @param allocator Allocator object.
+    /// @param context Context object that has been created by vmaBeginDefragmentation().
+    /// @param pPassInfo Computed information for current pass filled by vmaBeginDefragmentationPass() and possibly modified by you.
     public @EnumType(VkResult.class) int endDefragmentationPass(
         VmaAllocator allocator,
         VmaDefragmentationContext context,
@@ -1440,17 +1422,16 @@ public final class VMA {
 
     /// Binds buffer to allocation with additional parameters.
     ///
-    /// @param allocator
-    /// @param allocation
-    /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the `allocation`. Normally it should be 0.
-    /// @param buffer
-    /// @param pNext A chain of structures to be attached to `VkBindBufferMemoryInfoKHR` structure used internally. Normally it should be null.
-    ///
     /// This function is similar to vmaBindBufferMemory(), but it provides additional parameters.
     ///
     /// If `pNext` is not null, {@code VmaAllocator} object must have been created with {@code VMA_ALLOCATOR_CREATE_KHR_BIND_MEMORY2_BIT} flag
     /// or with VmaAllocatorCreateInfo::vulkanApiVersion `&amp;gt;= VK_API_VERSION_1_1`. Otherwise the call fails.
     ///
+    /// @param allocator
+    /// @param allocation
+    /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the `allocation`. Normally it should be 0.
+    /// @param buffer
+    /// @param pNext A chain of structures to be attached to `VkBindBufferMemoryInfoKHR` structure used internally. Normally it should be null.
     public @EnumType(VkResult.class) int bindBufferMemory2(
         VmaAllocator allocator,
         VmaAllocation allocation,
@@ -1503,17 +1484,16 @@ public final class VMA {
 
     /// Binds image to allocation with additional parameters.
     ///
-    /// @param allocator
-    /// @param allocation
-    /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the `allocation`. Normally it should be 0.
-    /// @param image
-    /// @param pNext A chain of structures to be attached to `VkBindImageMemoryInfoKHR` structure used internally. Normally it should be null.
-    ///
     /// This function is similar to vmaBindImageMemory(), but it provides additional parameters.
     ///
     /// If `pNext` is not null, {@code VmaAllocator} object must have been created with {@code VMA_ALLOCATOR_CREATE_KHR_BIND_MEMORY2_BIT} flag
     /// or with VmaAllocatorCreateInfo::vulkanApiVersion `&amp;gt;= VK_API_VERSION_1_1`. Otherwise the call fails.
     ///
+    /// @param allocator
+    /// @param allocation
+    /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the `allocation`. Normally it should be 0.
+    /// @param image
+    /// @param pNext A chain of structures to be attached to `VkBindImageMemoryInfoKHR` structure used internally. Normally it should be null.
     public @EnumType(VkResult.class) int bindImageMemory2(
         VmaAllocator allocator,
         VmaAllocation allocation,
@@ -1537,13 +1517,6 @@ public final class VMA {
 
     /// Creates a new `VkBuffer`, allocates and binds memory for it.
     ///
-    /// @param allocator
-    /// @param pBufferCreateInfo
-    /// @param pAllocationCreateInfo
-    /// @param[out] pBuffer Buffer that was created.
-    /// @param[out] pAllocation Allocation that was created.
-    /// @param[out] pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
-    ///
     /// This function automatically:
     ///
     /// -# Creates buffer.
@@ -1565,11 +1538,16 @@ public final class VMA {
     /// allocation for this buffer, just like when using
     /// {@code VMA_ALLOCATION_CREATE_DEDICATED_MEMORY_BIT}.
     ///
-    ///
     /// ote This function creates a new `VkBuffer`. Sub-allocation of parts of one large buffer,
     /// although recommended as a good practice, is out of scope of this library and could be implemented
     /// by the user as a higher-level logic on top of VMA.
     ///
+    /// @param allocator
+    /// @param pBufferCreateInfo
+    /// @param pAllocationCreateInfo
+    /// @param pBuffer Buffer that was created.
+    /// @param pAllocation Allocation that was created.
+    /// @param pAllocationInfo Optional. Information about allocated memory. It can be later fetched using function vmaGetAllocationInfo().
     public @EnumType(VkResult.class) int createBuffer(
         VmaAllocator allocator,
         @Pointer IVkBufferCreateInfo pBufferCreateInfo,
@@ -1626,11 +1604,6 @@ public final class VMA {
 
     /// Creates a new `VkBuffer`, binds already created memory for it.
     ///
-    /// @param allocator
-    /// @param allocation Allocation that provides memory to be used for binding new buffer to it.
-    /// @param pBufferCreateInfo
-    /// @param[out] pBuffer Buffer that was created.
-    ///
     /// This function automatically:
     ///
     /// -# Creates buffer.
@@ -1643,9 +1616,12 @@ public final class VMA {
     /// no longer need it using `vkDestroyBuffer()`. If you want to also destroy the corresponding
     /// allocation you can use convenience function vmaDestroyBuffer().
     ///
-    ///
     /// ote There is a new version of this function augmented with parameter `allocationLocalOffset` - see vmaCreateAliasingBuffer2().
     ///
+    /// @param allocator
+    /// @param allocation Allocation that provides memory to be used for binding new buffer to it.
+    /// @param pBufferCreateInfo
+    /// @param pBuffer Buffer that was created.
     public @EnumType(VkResult.class) int createAliasingBuffer(
         VmaAllocator allocator,
         VmaAllocation allocation,
@@ -1667,12 +1643,6 @@ public final class VMA {
 
     /// Creates a new `VkBuffer`, binds already created memory for it.
     ///
-    /// @param allocator
-    /// @param allocation Allocation that provides memory to be used for binding new buffer to it.
-    /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the allocation. Normally it should be 0.
-    /// @param pBufferCreateInfo
-    /// @param[out] pBuffer Buffer that was created.
-    ///
     /// This function automatically:
     ///
     /// -# Creates buffer.
@@ -1685,9 +1655,13 @@ public final class VMA {
     /// no longer need it using `vkDestroyBuffer()`. If you want to also destroy the corresponding
     /// allocation you can use convenience function vmaDestroyBuffer().
     ///
-    ///
     /// ote This is a new version of the function augmented with parameter `allocationLocalOffset`.
     ///
+    /// @param allocator
+    /// @param allocation Allocation that provides memory to be used for binding new buffer to it.
+    /// @param allocationLocalOffset Additional offset to be added while binding, relative to the beginning of the allocation. Normally it should be 0.
+    /// @param pBufferCreateInfo
+    /// @param pBuffer Buffer that was created.
     public @EnumType(VkResult.class) int createAliasingBuffer2(
         VmaAllocator allocator,
         VmaAllocation allocation,
@@ -1837,8 +1811,7 @@ public final class VMA {
     /// Creates new {@code VmaVirtualBlock} object.
     ///
     /// @param pCreateInfo Parameters for creation.
-    /// @param[out] pVirtualBlock Returned virtual block object or `VMA_NULL` if creation failed.
-    ///
+    /// @param pVirtualBlock Returned virtual block object or `VMA_NULL` if creation failed.
     public @EnumType(VkResult.class) int createVirtualBlock(
         @Pointer IVmaVirtualBlockCreateInfo pCreateInfo,
         @Pointer VmaVirtualBlock.Ptr pVirtualBlock
@@ -1918,9 +1891,8 @@ public final class VMA {
     ///
     /// @param virtualBlock Virtual block
     /// @param pCreateInfo Parameters for the allocation
-    /// @param[out] pAllocation Returned handle of the new allocation
-    /// @param[out] pOffset Returned offset of the new allocation. Optional, can be null.
-    ///
+    /// @param pAllocation Returned handle of the new allocation
+    /// @param pOffset Returned offset of the new allocation. Optional, can be null.
     public @EnumType(VkResult.class) int virtualAllocate(
         VmaVirtualBlock virtualBlock,
         @Pointer IVmaVirtualAllocationCreateInfo pCreateInfo,
@@ -2039,12 +2011,12 @@ public final class VMA {
     }
 
     /// Builds and returns a null-terminated string in JSON format with information about given {@code VmaVirtualBlock}.
-    /// @param virtualBlock Virtual block.
-    /// @param[out] ppStatsString Returned string.
-    /// @param detailedMap Pass `VK_FALSE` to only obtain statistics as returned by vmaCalculateVirtualBlockStatistics(). Pass `VK_TRUE` to also obtain full list of allocations and free spaces.
     ///
     /// Returned string must be freed using vmaFreeVirtualBlockStatsString().
     ///
+    /// @param virtualBlock Virtual block.
+    /// @param ppStatsString Returned string.
+    /// @param detailedMap Pass `VK_FALSE` to only obtain statistics as returned by vmaCalculateVirtualBlockStatistics(). Pass `VK_TRUE` to also obtain full list of allocations and free spaces.
     public void buildVirtualBlockStatsString(
         VmaVirtualBlock virtualBlock,
         PointerPtr ppStatsString,
@@ -2080,10 +2052,10 @@ public final class VMA {
     }
 
     /// Builds and returns statistics as a null-terminated string in JSON format.
-    /// @param allocator
-    /// @param[out] ppStatsString Must be freed using vmaFreeStatsString() function.
-    /// @param detailedMap
     ///
+    /// @param allocator
+    /// @param ppStatsString Must be freed using vmaFreeStatsString() function.
+    /// @param detailedMap
     public void buildStatsString(
         VmaAllocator allocator,
         PointerPtr ppStatsString,
