@@ -109,4 +109,5 @@ fun doxygen2javadoc(doxygen: String): String {
         .replace("\\warning", "<b>Warning: </b>")
         .replace("\\code", "{@snippet lang=c:")
         .replace("\\endcode", "}")
+        .replace("[DEPRECATED]", "(deprecated)")
 }

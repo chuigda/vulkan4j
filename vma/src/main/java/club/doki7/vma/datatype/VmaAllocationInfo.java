@@ -103,7 +103,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// It can change after call to vmaSetAllocationName() for this allocation.
 ///
 /// Another way to set custom name is to pass it in VmaAllocationCreateInfo::pUserData with
-/// additional flag {@code VMA_ALLOCATION_CREATE_USER_DATA_COPY_STRING_BIT} set [DEPRECATED].
+/// additional flag {@code VMA_ALLOCATION_CREATE_USER_DATA_COPY_STRING_BIT} set (deprecated).
 /// </li>
 /// </ul>
 ///
