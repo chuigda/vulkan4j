@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaDeviceMemoryCallbacks} structure in native memory.
 ///
@@ -24,6 +25,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaDeviceMemoryCallbacks {
+///     PFN_vmaAllocateDeviceMemoryFunction pfnAllocate; // optional // @link substring="pfnAllocate" target="#pfnAllocate"
+///     PFN_vmaFreeDeviceMemoryFunction pfnFree; // optional // @link substring="pfnFree" target="#pfnFree"
+///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
 /// } VmaDeviceMemoryCallbacks;
 /// }
 ///
@@ -138,10 +142,62 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @Pointer(comment="PFN_vmaAllocateDeviceMemoryFunction") MemorySegment pfnAllocate() {
+        return segment.get(LAYOUT$pfnAllocate, OFFSET$pfnAllocate);
+    }
+
+    public void pfnAllocate(@Pointer(comment="PFN_vmaAllocateDeviceMemoryFunction") MemorySegment value) {
+        segment.set(LAYOUT$pfnAllocate, OFFSET$pfnAllocate, value);
+    }
+
+    public void pfnAllocate(@Nullable IPointer pointer) {
+        pfnAllocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vmaFreeDeviceMemoryFunction") MemorySegment pfnFree() {
+        return segment.get(LAYOUT$pfnFree, OFFSET$pfnFree);
+    }
+
+    public void pfnFree(@Pointer(comment="PFN_vmaFreeDeviceMemoryFunction") MemorySegment value) {
+        segment.set(LAYOUT$pfnFree, OFFSET$pfnFree, value);
+    }
+
+    public void pfnFree(@Nullable IPointer pointer) {
+        pfnFree(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="void*") MemorySegment pUserData() {
+        return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
+    }
+
+    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+    }
+
+    public void pUserData(@Nullable IPointer pointer) {
+        pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("pfnAllocate"),
+        ValueLayout.ADDRESS.withName("pfnFree"),
+        ValueLayout.ADDRESS.withName("pUserData")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$pfnAllocate = PathElement.groupElement("pfnAllocate");
+    public static final PathElement PATH$pfnFree = PathElement.groupElement("pfnFree");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
 
+    public static final AddressLayout LAYOUT$pfnAllocate = (AddressLayout) LAYOUT.select(PATH$pfnAllocate);
+    public static final AddressLayout LAYOUT$pfnFree = (AddressLayout) LAYOUT.select(PATH$pfnFree);
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
 
+    public static final long SIZE$pfnAllocate = LAYOUT$pfnAllocate.byteSize();
+    public static final long SIZE$pfnFree = LAYOUT$pfnFree.byteSize();
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
 
+    public static final long OFFSET$pfnAllocate = LAYOUT.byteOffset(PATH$pfnAllocate);
+    public static final long OFFSET$pfnFree = LAYOUT.byteOffset(PATH$pfnFree);
+    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
 }

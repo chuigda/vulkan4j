@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaAllocatorInfo} structure in native memory.
 ///
@@ -24,6 +25,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaAllocatorInfo {
+///     VkInstance instance; // @link substring="VkInstance" target="VkInstance" @link substring="instance" target="#instance"
+///     VkPhysicalDevice physicalDevice; // @link substring="VkPhysicalDevice" target="VkPhysicalDevice" @link substring="physicalDevice" target="#physicalDevice"
+///     VkDevice device; // @link substring="VkDevice" target="VkDevice" @link substring="device" target="#device"
 /// } VmaAllocatorInfo;
 /// }
 ///
@@ -138,10 +142,62 @@ public record VmaAllocatorInfo(@NotNull MemorySegment segment) implements IVmaAl
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @Nullable VkInstance instance() {
+        MemorySegment s = segment.asSlice(OFFSET$instance, SIZE$instance);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkInstance(s);
+    }
+
+    public void instance(@Nullable VkInstance value) {
+        segment.set(LAYOUT$instance, OFFSET$instance, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkPhysicalDevice physicalDevice() {
+        MemorySegment s = segment.asSlice(OFFSET$physicalDevice, SIZE$physicalDevice);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPhysicalDevice(s);
+    }
+
+    public void physicalDevice(@Nullable VkPhysicalDevice value) {
+        segment.set(LAYOUT$physicalDevice, OFFSET$physicalDevice, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkDevice device() {
+        MemorySegment s = segment.asSlice(OFFSET$device, SIZE$device);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDevice(s);
+    }
+
+    public void device(@Nullable VkDevice value) {
+        segment.set(LAYOUT$device, OFFSET$device, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("instance"),
+        ValueLayout.ADDRESS.withName("physicalDevice"),
+        ValueLayout.ADDRESS.withName("device")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$instance = PathElement.groupElement("instance");
+    public static final PathElement PATH$physicalDevice = PathElement.groupElement("physicalDevice");
+    public static final PathElement PATH$device = PathElement.groupElement("device");
 
+    public static final AddressLayout LAYOUT$instance = (AddressLayout) LAYOUT.select(PATH$instance);
+    public static final AddressLayout LAYOUT$physicalDevice = (AddressLayout) LAYOUT.select(PATH$physicalDevice);
+    public static final AddressLayout LAYOUT$device = (AddressLayout) LAYOUT.select(PATH$device);
 
+    public static final long SIZE$instance = LAYOUT$instance.byteSize();
+    public static final long SIZE$physicalDevice = LAYOUT$physicalDevice.byteSize();
+    public static final long SIZE$device = LAYOUT$device.byteSize();
 
+    public static final long OFFSET$instance = LAYOUT.byteOffset(PATH$instance);
+    public static final long OFFSET$physicalDevice = LAYOUT.byteOffset(PATH$physicalDevice);
+    public static final long OFFSET$device = LAYOUT.byteOffset(PATH$device);
 }

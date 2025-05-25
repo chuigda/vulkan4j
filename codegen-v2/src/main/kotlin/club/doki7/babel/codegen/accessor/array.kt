@@ -48,7 +48,7 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Lay
     +""
 
     defun("public", "void", member.name, "${elementType.name}.Ptr value") {
-        +"MemorySegment s = $rawName;"
+        +"MemorySegment s = $rawName();"
         +"s.copyFrom(value.segment());"
     }
     +""

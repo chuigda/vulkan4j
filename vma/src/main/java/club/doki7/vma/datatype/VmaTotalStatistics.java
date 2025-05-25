@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaTotalStatistics} structure in native memory.
 ///
@@ -24,6 +25,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaTotalStatistics {
+///     VmaDetailedStatistics[VK_MAX_MEMORY_TYPES] memoryType; // @link substring="VmaDetailedStatistics" target="VmaDetailedStatistics" @link substring="memoryType" target="#memoryType"
+///     VmaDetailedStatistics[VK_MAX_MEMORY_HEAPS] memoryHeap; // @link substring="VmaDetailedStatistics" target="VmaDetailedStatistics" @link substring="memoryHeap" target="#memoryHeap"
+///     VmaDetailedStatistics total; // @link substring="VmaDetailedStatistics" target="VmaDetailedStatistics" @link substring="total" target="#total"
 /// } VmaTotalStatistics;
 /// }
 ///
@@ -138,10 +142,80 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public VmaDetailedStatistics.Ptr memoryType() {
+        return new VmaDetailedStatistics.Ptr(memoryTypeRaw());
+    }
+
+    public void memoryType(VmaDetailedStatistics.Ptr value) {
+        MemorySegment s = memoryTypeRaw();
+        s.copyFrom(value.segment());
+    }
+
+    public VmaDetailedStatistics memoryTypeAt(int index) {
+        MemorySegment s = memoryTypeRaw();
+        return new VmaDetailedStatistics(s.asSlice(index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES));
+    }
+
+    public void memoryTypeAt(int index, VmaDetailedStatistics value) {
+        MemorySegment s = memoryTypeRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES);
+    }
+
+    public MemorySegment memoryTypeRaw() {
+        return segment.asSlice(OFFSET$memoryType, SIZE$memoryType);
+    }
+
+    public VmaDetailedStatistics.Ptr memoryHeap() {
+        return new VmaDetailedStatistics.Ptr(memoryHeapRaw());
+    }
+
+    public void memoryHeap(VmaDetailedStatistics.Ptr value) {
+        MemorySegment s = memoryHeapRaw();
+        s.copyFrom(value.segment());
+    }
+
+    public VmaDetailedStatistics memoryHeapAt(int index) {
+        MemorySegment s = memoryHeapRaw();
+        return new VmaDetailedStatistics(s.asSlice(index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES));
+    }
+
+    public void memoryHeapAt(int index, VmaDetailedStatistics value) {
+        MemorySegment s = memoryHeapRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VmaDetailedStatistics.BYTES, VmaDetailedStatistics.BYTES);
+    }
+
+    public MemorySegment memoryHeapRaw() {
+        return segment.asSlice(OFFSET$memoryHeap, SIZE$memoryHeap);
+    }
+
+    public @NotNull VmaDetailedStatistics total() {
+        return new VmaDetailedStatistics(segment.asSlice(OFFSET$total, LAYOUT$total));
+    }
+
+    public void total(@NotNull VmaDetailedStatistics value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$total, SIZE$total);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        MemoryLayout.sequenceLayout(MAX_MEMORY_TYPES, VmaDetailedStatistics.LAYOUT).withName("memoryType"),
+        MemoryLayout.sequenceLayout(MAX_MEMORY_HEAPS, VmaDetailedStatistics.LAYOUT).withName("memoryHeap"),
+        VmaDetailedStatistics.LAYOUT.withName("total")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$memoryType = PathElement.groupElement("memoryType");
+    public static final PathElement PATH$memoryHeap = PathElement.groupElement("memoryHeap");
+    public static final PathElement PATH$total = PathElement.groupElement("total");
 
+    public static final SequenceLayout LAYOUT$memoryType = (SequenceLayout) LAYOUT.select(PATH$memoryType);
+    public static final SequenceLayout LAYOUT$memoryHeap = (SequenceLayout) LAYOUT.select(PATH$memoryHeap);
+    public static final StructLayout LAYOUT$total = (StructLayout) LAYOUT.select(PATH$total);
 
+    public static final long SIZE$memoryType = LAYOUT$memoryType.byteSize();
+    public static final long SIZE$memoryHeap = LAYOUT$memoryHeap.byteSize();
+    public static final long SIZE$total = LAYOUT$total.byteSize();
 
+    public static final long OFFSET$memoryType = LAYOUT.byteOffset(PATH$memoryType);
+    public static final long OFFSET$memoryHeap = LAYOUT.byteOffset(PATH$memoryHeap);
+    public static final long OFFSET$total = LAYOUT.byteOffset(PATH$total);
 }

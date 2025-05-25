@@ -9,7 +9,12 @@ import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.codegen.generateStructure
 import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.vma.extractVMAHeader
+import club.doki7.babel.registry.EmptyMergeable
+import club.doki7.babel.registry.FunctionTypedef
+import club.doki7.babel.registry.Identifier
+import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.RegistryBase
+import club.doki7.babel.registry.intern
 import club.doki7.babel.util.render
 import java.io.File
 
@@ -17,6 +22,52 @@ private const val packageDir = "vma/src/main/java/club/doki7/vma"
 
 fun vmaMain(vulkanRegistry: RegistryBase) {
     val registry = extractVMAHeader()
+
+    val additionalFunctionTypedefs = mutableMapOf<Identifier, FunctionTypedef>()
+    fun pfn(s: String) {
+        val name = s.intern()
+        additionalFunctionTypedefs[name] = FunctionTypedef(name, emptyList(), null)
+    }
+    pfn("PFN_vkGetInstanceProcAddr")
+    pfn("PFN_vkGetDeviceProcAddr")
+    pfn("PFN_vkGetPhysicalDeviceProperties")
+    pfn("PFN_vkGetPhysicalDeviceMemoryProperties")
+    pfn("PFN_vkAllocateMemory")
+    pfn("PFN_vkFreeMemory")
+    pfn("PFN_vkMapMemory")
+    pfn("PFN_vkUnmapMemory")
+    pfn("PFN_vkFlushMappedMemoryRanges")
+    pfn("PFN_vkInvalidateMappedMemoryRanges")
+    pfn("PFN_vkBindBufferMemory")
+    pfn("PFN_vkBindImageMemory")
+    pfn("PFN_vkGetBufferMemoryRequirements")
+    pfn("PFN_vkGetImageMemoryRequirements")
+    pfn("PFN_vkCreateBuffer")
+    pfn("PFN_vkDestroyBuffer")
+    pfn("PFN_vkCreateImage")
+    pfn("PFN_vkDestroyImage")
+    pfn("PFN_vkCmdCopyBuffer")
+    pfn("PFN_vkGetBufferMemoryRequirements2KHR")
+    pfn("PFN_vkGetImageMemoryRequirements2KHR")
+    pfn("PFN_vkBindBufferMemory2KHR")
+    pfn("PFN_vkBindImageMemory2KHR")
+    pfn("PFN_vkGetPhysicalDeviceMemoryProperties2KHR")
+    pfn("PFN_vkGetDeviceBufferMemoryRequirementsKHR")
+    pfn("PFN_vkGetDeviceImageMemoryRequirementsKHR")
+
+    val vulkanPFNRegistry = Registry(
+        aliases = mutableMapOf(),
+        bitmasks = mutableMapOf(),
+        constants = mutableMapOf(),
+        commands = mutableMapOf(),
+        enumerations = mutableMapOf(),
+        functionTypedefs = additionalFunctionTypedefs,
+        opaqueHandleTypedefs = mutableMapOf(),
+        opaqueTypedefs = mutableMapOf(),
+        structures = mutableMapOf(),
+        unions = mutableMapOf(),
+        ext = EmptyMergeable()
+    )
 
     val codegenOptions = CodegenOptions(
         packageName = "club.doki7.vma",
@@ -28,7 +79,7 @@ fun vmaMain(vulkanRegistry: RegistryBase) {
         ),
         constantClassName = "VMAConstants",
         functionTypeClassName = "VMAFunctionTypes",
-        refRegistries = listOf(vulkanRegistry),
+        refRegistries = listOf(vulkanRegistry, vulkanPFNRegistry),
     )
 
     val functionTypeDoc = generateFunctionTypedefs(registry, codegenOptions)
@@ -58,11 +109,11 @@ fun vmaMain(vulkanRegistry: RegistryBase) {
         )
     )
     for (structure in registry.structures.values) {
-        val structureInterfaceDoc = generateStructureInterface(structure, structureCodegenOptions)
+        val structureInterfaceDoc = generateStructureInterface(structure, codegenOptions)
         File("$packageDir/datatype/I${structure.name}.java")
             .writeText(render(structureInterfaceDoc))
 
-        val structureDoc = generateStructure(registry, structure, false, codegenOptions)
+        val structureDoc = generateStructure(registry, structure, false, structureCodegenOptions)
         File("$packageDir/datatype/${structure.name}.java")
             .writeText(render(structureDoc))
     }

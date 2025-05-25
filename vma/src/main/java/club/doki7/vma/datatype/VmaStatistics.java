@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaStatistics} structure in native memory.
 ///
@@ -24,6 +25,10 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaStatistics {
+///     uint32_t blockCount; // @link substring="blockCount" target="#blockCount"
+///     uint32_t allocationCount; // @link substring="allocationCount" target="#allocationCount"
+///     VkDeviceSize blockBytes; // @link substring="blockBytes" target="#blockBytes"
+///     VkDeviceSize allocationBytes; // @link substring="allocationBytes" target="#allocationBytes"
 /// } VmaStatistics;
 /// }
 ///
@@ -138,10 +143,63 @@ public record VmaStatistics(@NotNull MemorySegment segment) implements IVmaStati
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @Unsigned int blockCount() {
+        return segment.get(LAYOUT$blockCount, OFFSET$blockCount);
+    }
+
+    public void blockCount(@Unsigned int value) {
+        segment.set(LAYOUT$blockCount, OFFSET$blockCount, value);
+    }
+
+    public @Unsigned int allocationCount() {
+        return segment.get(LAYOUT$allocationCount, OFFSET$allocationCount);
+    }
+
+    public void allocationCount(@Unsigned int value) {
+        segment.set(LAYOUT$allocationCount, OFFSET$allocationCount, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long blockBytes() {
+        return segment.get(LAYOUT$blockBytes, OFFSET$blockBytes);
+    }
+
+    public void blockBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$blockBytes, OFFSET$blockBytes, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long allocationBytes() {
+        return segment.get(LAYOUT$allocationBytes, OFFSET$allocationBytes);
+    }
+
+    public void allocationBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$allocationBytes, OFFSET$allocationBytes, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("blockCount"),
+        ValueLayout.JAVA_INT.withName("allocationCount"),
+        ValueLayout.JAVA_LONG.withName("blockBytes"),
+        ValueLayout.JAVA_LONG.withName("allocationBytes")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$blockCount = PathElement.groupElement("blockCount");
+    public static final PathElement PATH$allocationCount = PathElement.groupElement("allocationCount");
+    public static final PathElement PATH$blockBytes = PathElement.groupElement("blockBytes");
+    public static final PathElement PATH$allocationBytes = PathElement.groupElement("allocationBytes");
 
+    public static final OfInt LAYOUT$blockCount = (OfInt) LAYOUT.select(PATH$blockCount);
+    public static final OfInt LAYOUT$allocationCount = (OfInt) LAYOUT.select(PATH$allocationCount);
+    public static final OfLong LAYOUT$blockBytes = (OfLong) LAYOUT.select(PATH$blockBytes);
+    public static final OfLong LAYOUT$allocationBytes = (OfLong) LAYOUT.select(PATH$allocationBytes);
 
+    public static final long SIZE$blockCount = LAYOUT$blockCount.byteSize();
+    public static final long SIZE$allocationCount = LAYOUT$allocationCount.byteSize();
+    public static final long SIZE$blockBytes = LAYOUT$blockBytes.byteSize();
+    public static final long SIZE$allocationBytes = LAYOUT$allocationBytes.byteSize();
 
+    public static final long OFFSET$blockCount = LAYOUT.byteOffset(PATH$blockCount);
+    public static final long OFFSET$allocationCount = LAYOUT.byteOffset(PATH$allocationCount);
+    public static final long OFFSET$blockBytes = LAYOUT.byteOffset(PATH$blockBytes);
+    public static final long OFFSET$allocationBytes = LAYOUT.byteOffset(PATH$allocationBytes);
 }

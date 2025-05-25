@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaAllocatorCreateInfo} structure in native memory.
 ///
@@ -24,6 +25,17 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaAllocatorCreateInfo {
+///     VmaAllocatorCreateFlags flags; // @link substring="VmaAllocatorCreateFlags" target="VmaAllocatorCreateFlags" @link substring="flags" target="#flags"
+///     VkPhysicalDevice physicalDevice; // @link substring="VkPhysicalDevice" target="VkPhysicalDevice" @link substring="physicalDevice" target="#physicalDevice"
+///     VkDevice device; // @link substring="VkDevice" target="VkDevice" @link substring="device" target="#device"
+///     VkDeviceSize preferredLargeHeapBlockSize; // @link substring="preferredLargeHeapBlockSize" target="#preferredLargeHeapBlockSize"
+///     VkAllocationCallbacks const* pAllocationCallbacks; // optional // @link substring="VkAllocationCallbacks" target="VkAllocationCallbacks" @link substring="pAllocationCallbacks" target="#pAllocationCallbacks"
+///     VmaDeviceMemoryCallbacks const* pDeviceMemoryCallbacks; // optional // @link substring="VmaDeviceMemoryCallbacks" target="VmaDeviceMemoryCallbacks" @link substring="pDeviceMemoryCallbacks" target="#pDeviceMemoryCallbacks"
+///     VkDeviceSize const* pHeapSizeLimit; // optional // @link substring="pHeapSizeLimit" target="#pHeapSizeLimit"
+///     VmaVulkanFunctions const* pVulkanFunctions; // optional // @link substring="VmaVulkanFunctions" target="VmaVulkanFunctions" @link substring="pVulkanFunctions" target="#pVulkanFunctions"
+///     VkInstance instance; // @link substring="VkInstance" target="VkInstance" @link substring="instance" target="#instance"
+///     uint32_t vulkanApiVersion; // @link substring="vulkanApiVersion" target="#vulkanApiVersion"
+///     VkExternalMemoryHandleTypeFlagsKHR const* pTypeExternalMemoryHandleTypes; // optional // @link substring="VkExternalMemoryHandleTypeFlags" target="VkExternalMemoryHandleTypeFlagsKHR" @link substring="pTypeExternalMemoryHandleTypes" target="#pTypeExternalMemoryHandleTypes"
 /// } VmaAllocatorCreateInfo;
 /// }
 ///
@@ -138,10 +150,270 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @EnumType(VmaAllocatorCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@EnumType(VmaAllocatorCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @Nullable VkPhysicalDevice physicalDevice() {
+        MemorySegment s = segment.asSlice(OFFSET$physicalDevice, SIZE$physicalDevice);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkPhysicalDevice(s);
+    }
+
+    public void physicalDevice(@Nullable VkPhysicalDevice value) {
+        segment.set(LAYOUT$physicalDevice, OFFSET$physicalDevice, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VkDevice device() {
+        MemorySegment s = segment.asSlice(OFFSET$device, SIZE$device);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDevice(s);
+    }
+
+    public void device(@Nullable VkDevice value) {
+        segment.set(LAYOUT$device, OFFSET$device, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long preferredLargeHeapBlockSize() {
+        return segment.get(LAYOUT$preferredLargeHeapBlockSize, OFFSET$preferredLargeHeapBlockSize);
+    }
+
+    public void preferredLargeHeapBlockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$preferredLargeHeapBlockSize, OFFSET$preferredLargeHeapBlockSize, value);
+    }
+
+    public void pAllocationCallbacks(@Nullable IVkAllocationCallbacks value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAllocationCallbacksRaw(s);
+    }
+
+    @Unsafe public @Nullable VkAllocationCallbacks.Ptr pAllocationCallbacks(int assumedCount) {
+        MemorySegment s = pAllocationCallbacksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAllocationCallbacks.BYTES);
+        return new VkAllocationCallbacks.Ptr(s);
+    }
+
+    public @Nullable VkAllocationCallbacks pAllocationCallbacks() {
+        MemorySegment s = pAllocationCallbacksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAllocationCallbacks(s);
+    }
+
+    public @Pointer(target=VkAllocationCallbacks.class) MemorySegment pAllocationCallbacksRaw() {
+        return segment.get(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks);
+    }
+
+    public void pAllocationCallbacksRaw(@Pointer(target=VkAllocationCallbacks.class) MemorySegment value) {
+        segment.set(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks, value);
+    }
+
+    public void pDeviceMemoryCallbacks(@Nullable IVmaDeviceMemoryCallbacks value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pDeviceMemoryCallbacksRaw(s);
+    }
+
+    @Unsafe public @Nullable VmaDeviceMemoryCallbacks.Ptr pDeviceMemoryCallbacks(int assumedCount) {
+        MemorySegment s = pDeviceMemoryCallbacksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VmaDeviceMemoryCallbacks.BYTES);
+        return new VmaDeviceMemoryCallbacks.Ptr(s);
+    }
+
+    public @Nullable VmaDeviceMemoryCallbacks pDeviceMemoryCallbacks() {
+        MemorySegment s = pDeviceMemoryCallbacksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VmaDeviceMemoryCallbacks(s);
+    }
+
+    public @Pointer(target=VmaDeviceMemoryCallbacks.class) MemorySegment pDeviceMemoryCallbacksRaw() {
+        return segment.get(LAYOUT$pDeviceMemoryCallbacks, OFFSET$pDeviceMemoryCallbacks);
+    }
+
+    public void pDeviceMemoryCallbacksRaw(@Pointer(target=VmaDeviceMemoryCallbacks.class) MemorySegment value) {
+        segment.set(LAYOUT$pDeviceMemoryCallbacks, OFFSET$pDeviceMemoryCallbacks, value);
+    }
+
+    /// Note: the returned {@link LongPtr} does not have correct
+    /// {@link LongPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link LongPtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr pHeapSizeLimit() {
+        MemorySegment s = pHeapSizeLimitRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new LongPtr(s);
+    }
+
+    public void pHeapSizeLimit(@Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pHeapSizeLimitRaw(s);
+    }
+
+    public @Pointer(comment="uint64_t*") MemorySegment pHeapSizeLimitRaw() {
+        return segment.get(LAYOUT$pHeapSizeLimit, OFFSET$pHeapSizeLimit);
+    }
+
+    public void pHeapSizeLimitRaw(@Pointer(comment="uint64_t*") MemorySegment value) {
+        segment.set(LAYOUT$pHeapSizeLimit, OFFSET$pHeapSizeLimit, value);
+    }
+
+    public void pVulkanFunctions(@Nullable IVmaVulkanFunctions value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pVulkanFunctionsRaw(s);
+    }
+
+    @Unsafe public @Nullable VmaVulkanFunctions.Ptr pVulkanFunctions(int assumedCount) {
+        MemorySegment s = pVulkanFunctionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VmaVulkanFunctions.BYTES);
+        return new VmaVulkanFunctions.Ptr(s);
+    }
+
+    public @Nullable VmaVulkanFunctions pVulkanFunctions() {
+        MemorySegment s = pVulkanFunctionsRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VmaVulkanFunctions(s);
+    }
+
+    public @Pointer(target=VmaVulkanFunctions.class) MemorySegment pVulkanFunctionsRaw() {
+        return segment.get(LAYOUT$pVulkanFunctions, OFFSET$pVulkanFunctions);
+    }
+
+    public void pVulkanFunctionsRaw(@Pointer(target=VmaVulkanFunctions.class) MemorySegment value) {
+        segment.set(LAYOUT$pVulkanFunctions, OFFSET$pVulkanFunctions, value);
+    }
+
+    public @Nullable VkInstance instance() {
+        MemorySegment s = segment.asSlice(OFFSET$instance, SIZE$instance);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkInstance(s);
+    }
+
+    public void instance(@Nullable VkInstance value) {
+        segment.set(LAYOUT$instance, OFFSET$instance, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Unsigned int vulkanApiVersion() {
+        return segment.get(LAYOUT$vulkanApiVersion, OFFSET$vulkanApiVersion);
+    }
+
+    public void vulkanApiVersion(@Unsigned int value) {
+        segment.set(LAYOUT$vulkanApiVersion, OFFSET$vulkanApiVersion, value);
+    }
+
+
+    /// Note: the returned {@link IntPtr} does not have correct
+    /// {@link IntPtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link IntPtr#reinterpret} to set the size before actually reading fro
+    /// or writing to the buffer.
+    public @Nullable @EnumType(VkExternalMemoryHandleTypeFlags.class) IntPtr pTypeExternalMemoryHandleTypes() {
+        MemorySegment s = pTypeExternalMemoryHandleTypesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new IntPtr(s);
+    }
+
+    public void pTypeExternalMemoryHandleTypes(@Nullable @EnumType(VkExternalMemoryHandleTypeFlags.class) IntPtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pTypeExternalMemoryHandleTypesRaw(s);
+    }
+
+    public @Pointer(target=VkExternalMemoryHandleTypeFlags.class) MemorySegment pTypeExternalMemoryHandleTypesRaw() {
+        return segment.get(LAYOUT$pTypeExternalMemoryHandleTypes, OFFSET$pTypeExternalMemoryHandleTypes);
+    }
+
+    public void pTypeExternalMemoryHandleTypesRaw(@Pointer(target=VkExternalMemoryHandleTypeFlags.class) MemorySegment value) {
+        segment.set(LAYOUT$pTypeExternalMemoryHandleTypes, OFFSET$pTypeExternalMemoryHandleTypes, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("physicalDevice"),
+        ValueLayout.ADDRESS.withName("device"),
+        ValueLayout.JAVA_LONG.withName("preferredLargeHeapBlockSize"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT).withName("pAllocationCallbacks"),
+        ValueLayout.ADDRESS.withTargetLayout(VmaDeviceMemoryCallbacks.LAYOUT).withName("pDeviceMemoryCallbacks"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG).withName("pHeapSizeLimit"),
+        ValueLayout.ADDRESS.withTargetLayout(VmaVulkanFunctions.LAYOUT).withName("pVulkanFunctions"),
+        ValueLayout.ADDRESS.withName("instance"),
+        ValueLayout.JAVA_INT.withName("vulkanApiVersion"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTypeExternalMemoryHandleTypes")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$physicalDevice = PathElement.groupElement("physicalDevice");
+    public static final PathElement PATH$device = PathElement.groupElement("device");
+    public static final PathElement PATH$preferredLargeHeapBlockSize = PathElement.groupElement("preferredLargeHeapBlockSize");
+    public static final PathElement PATH$pAllocationCallbacks = PathElement.groupElement("pAllocationCallbacks");
+    public static final PathElement PATH$pDeviceMemoryCallbacks = PathElement.groupElement("pDeviceMemoryCallbacks");
+    public static final PathElement PATH$pHeapSizeLimit = PathElement.groupElement("pHeapSizeLimit");
+    public static final PathElement PATH$pVulkanFunctions = PathElement.groupElement("pVulkanFunctions");
+    public static final PathElement PATH$instance = PathElement.groupElement("instance");
+    public static final PathElement PATH$vulkanApiVersion = PathElement.groupElement("vulkanApiVersion");
+    public static final PathElement PATH$pTypeExternalMemoryHandleTypes = PathElement.groupElement("pTypeExternalMemoryHandleTypes");
 
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$physicalDevice = (AddressLayout) LAYOUT.select(PATH$physicalDevice);
+    public static final AddressLayout LAYOUT$device = (AddressLayout) LAYOUT.select(PATH$device);
+    public static final OfLong LAYOUT$preferredLargeHeapBlockSize = (OfLong) LAYOUT.select(PATH$preferredLargeHeapBlockSize);
+    public static final AddressLayout LAYOUT$pAllocationCallbacks = (AddressLayout) LAYOUT.select(PATH$pAllocationCallbacks);
+    public static final AddressLayout LAYOUT$pDeviceMemoryCallbacks = (AddressLayout) LAYOUT.select(PATH$pDeviceMemoryCallbacks);
+    public static final AddressLayout LAYOUT$pHeapSizeLimit = (AddressLayout) LAYOUT.select(PATH$pHeapSizeLimit);
+    public static final AddressLayout LAYOUT$pVulkanFunctions = (AddressLayout) LAYOUT.select(PATH$pVulkanFunctions);
+    public static final AddressLayout LAYOUT$instance = (AddressLayout) LAYOUT.select(PATH$instance);
+    public static final OfInt LAYOUT$vulkanApiVersion = (OfInt) LAYOUT.select(PATH$vulkanApiVersion);
+    public static final AddressLayout LAYOUT$pTypeExternalMemoryHandleTypes = (AddressLayout) LAYOUT.select(PATH$pTypeExternalMemoryHandleTypes);
 
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$physicalDevice = LAYOUT$physicalDevice.byteSize();
+    public static final long SIZE$device = LAYOUT$device.byteSize();
+    public static final long SIZE$preferredLargeHeapBlockSize = LAYOUT$preferredLargeHeapBlockSize.byteSize();
+    public static final long SIZE$pAllocationCallbacks = LAYOUT$pAllocationCallbacks.byteSize();
+    public static final long SIZE$pDeviceMemoryCallbacks = LAYOUT$pDeviceMemoryCallbacks.byteSize();
+    public static final long SIZE$pHeapSizeLimit = LAYOUT$pHeapSizeLimit.byteSize();
+    public static final long SIZE$pVulkanFunctions = LAYOUT$pVulkanFunctions.byteSize();
+    public static final long SIZE$instance = LAYOUT$instance.byteSize();
+    public static final long SIZE$vulkanApiVersion = LAYOUT$vulkanApiVersion.byteSize();
+    public static final long SIZE$pTypeExternalMemoryHandleTypes = LAYOUT$pTypeExternalMemoryHandleTypes.byteSize();
 
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$physicalDevice = LAYOUT.byteOffset(PATH$physicalDevice);
+    public static final long OFFSET$device = LAYOUT.byteOffset(PATH$device);
+    public static final long OFFSET$preferredLargeHeapBlockSize = LAYOUT.byteOffset(PATH$preferredLargeHeapBlockSize);
+    public static final long OFFSET$pAllocationCallbacks = LAYOUT.byteOffset(PATH$pAllocationCallbacks);
+    public static final long OFFSET$pDeviceMemoryCallbacks = LAYOUT.byteOffset(PATH$pDeviceMemoryCallbacks);
+    public static final long OFFSET$pHeapSizeLimit = LAYOUT.byteOffset(PATH$pHeapSizeLimit);
+    public static final long OFFSET$pVulkanFunctions = LAYOUT.byteOffset(PATH$pVulkanFunctions);
+    public static final long OFFSET$instance = LAYOUT.byteOffset(PATH$instance);
+    public static final long OFFSET$vulkanApiVersion = LAYOUT.byteOffset(PATH$vulkanApiVersion);
+    public static final long OFFSET$pTypeExternalMemoryHandleTypes = LAYOUT.byteOffset(PATH$pTypeExternalMemoryHandleTypes);
 }

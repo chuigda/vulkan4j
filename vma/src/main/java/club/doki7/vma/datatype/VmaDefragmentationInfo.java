@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaDefragmentationInfo} structure in native memory.
 ///
@@ -24,6 +25,12 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaDefragmentationInfo {
+///     VmaDefragmentationFlags flags; // @link substring="VmaDefragmentationFlags" target="VmaDefragmentationFlags" @link substring="flags" target="#flags"
+///     VmaPool pool; // optional // @link substring="VmaPool" target="VmaPool" @link substring="pool" target="#pool"
+///     VkDeviceSize maxBytesPerPass; // @link substring="maxBytesPerPass" target="#maxBytesPerPass"
+///     uint32_t maxAllocationsPerPass; // @link substring="maxAllocationsPerPass" target="#maxAllocationsPerPass"
+///     PFN_vmaCheckDefragmentationBreakFunction pfnBreakCallback; // optional // @link substring="pfnBreakCallback" target="#pfnBreakCallback"
+///     void* pBreakCallbackUserData; // optional // @link substring="pBreakCallbackUserData" target="#pBreakCallbackUserData"
 /// } VmaDefragmentationInfo;
 /// }
 ///
@@ -138,10 +145,101 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @EnumType(VmaDefragmentationFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@EnumType(VmaDefragmentationFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @Nullable VmaPool pool() {
+        MemorySegment s = segment.asSlice(OFFSET$pool, SIZE$pool);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VmaPool(s);
+    }
+
+    public void pool(@Nullable VmaPool value) {
+        segment.set(LAYOUT$pool, OFFSET$pool, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long maxBytesPerPass() {
+        return segment.get(LAYOUT$maxBytesPerPass, OFFSET$maxBytesPerPass);
+    }
+
+    public void maxBytesPerPass(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$maxBytesPerPass, OFFSET$maxBytesPerPass, value);
+    }
+
+    public @Unsigned int maxAllocationsPerPass() {
+        return segment.get(LAYOUT$maxAllocationsPerPass, OFFSET$maxAllocationsPerPass);
+    }
+
+    public void maxAllocationsPerPass(@Unsigned int value) {
+        segment.set(LAYOUT$maxAllocationsPerPass, OFFSET$maxAllocationsPerPass, value);
+    }
+
+    public @Pointer(comment="PFN_vmaCheckDefragmentationBreakFunction") MemorySegment pfnBreakCallback() {
+        return segment.get(LAYOUT$pfnBreakCallback, OFFSET$pfnBreakCallback);
+    }
+
+    public void pfnBreakCallback(@Pointer(comment="PFN_vmaCheckDefragmentationBreakFunction") MemorySegment value) {
+        segment.set(LAYOUT$pfnBreakCallback, OFFSET$pfnBreakCallback, value);
+    }
+
+    public void pfnBreakCallback(@Nullable IPointer pointer) {
+        pfnBreakCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="void*") MemorySegment pBreakCallbackUserData() {
+        return segment.get(LAYOUT$pBreakCallbackUserData, OFFSET$pBreakCallbackUserData);
+    }
+
+    public void pBreakCallbackUserData(@Pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pBreakCallbackUserData, OFFSET$pBreakCallbackUserData, value);
+    }
+
+    public void pBreakCallbackUserData(@Nullable IPointer pointer) {
+        pBreakCallbackUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("pool"),
+        ValueLayout.JAVA_LONG.withName("maxBytesPerPass"),
+        ValueLayout.JAVA_INT.withName("maxAllocationsPerPass"),
+        ValueLayout.ADDRESS.withName("pfnBreakCallback"),
+        ValueLayout.ADDRESS.withName("pBreakCallbackUserData")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pool = PathElement.groupElement("pool");
+    public static final PathElement PATH$maxBytesPerPass = PathElement.groupElement("maxBytesPerPass");
+    public static final PathElement PATH$maxAllocationsPerPass = PathElement.groupElement("maxAllocationsPerPass");
+    public static final PathElement PATH$pfnBreakCallback = PathElement.groupElement("pfnBreakCallback");
+    public static final PathElement PATH$pBreakCallbackUserData = PathElement.groupElement("pBreakCallbackUserData");
 
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pool = (AddressLayout) LAYOUT.select(PATH$pool);
+    public static final OfLong LAYOUT$maxBytesPerPass = (OfLong) LAYOUT.select(PATH$maxBytesPerPass);
+    public static final OfInt LAYOUT$maxAllocationsPerPass = (OfInt) LAYOUT.select(PATH$maxAllocationsPerPass);
+    public static final AddressLayout LAYOUT$pfnBreakCallback = (AddressLayout) LAYOUT.select(PATH$pfnBreakCallback);
+    public static final AddressLayout LAYOUT$pBreakCallbackUserData = (AddressLayout) LAYOUT.select(PATH$pBreakCallbackUserData);
 
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pool = LAYOUT$pool.byteSize();
+    public static final long SIZE$maxBytesPerPass = LAYOUT$maxBytesPerPass.byteSize();
+    public static final long SIZE$maxAllocationsPerPass = LAYOUT$maxAllocationsPerPass.byteSize();
+    public static final long SIZE$pfnBreakCallback = LAYOUT$pfnBreakCallback.byteSize();
+    public static final long SIZE$pBreakCallbackUserData = LAYOUT$pBreakCallbackUserData.byteSize();
 
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$pool = LAYOUT.byteOffset(PATH$pool);
+    public static final long OFFSET$maxBytesPerPass = LAYOUT.byteOffset(PATH$maxBytesPerPass);
+    public static final long OFFSET$maxAllocationsPerPass = LAYOUT.byteOffset(PATH$maxAllocationsPerPass);
+    public static final long OFFSET$pfnBreakCallback = LAYOUT.byteOffset(PATH$pfnBreakCallback);
+    public static final long OFFSET$pBreakCallbackUserData = LAYOUT.byteOffset(PATH$pBreakCallbackUserData);
 }

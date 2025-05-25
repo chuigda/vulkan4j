@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaVirtualAllocationCreateInfo} structure in native memory.
 ///
@@ -24,6 +25,10 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaVirtualAllocationCreateInfo {
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VkDeviceSize alignment; // @link substring="alignment" target="#alignment"
+///     VmaVirtualAllocationCreateFlags flags; // @link substring="VmaVirtualAllocationCreateFlags" target="VmaVirtualAllocationCreateFlags" @link substring="flags" target="#flags"
+///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
 /// } VmaVirtualAllocationCreateInfo;
 /// }
 ///
@@ -138,10 +143,67 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
+        return segment.get(LAYOUT$size, OFFSET$size);
+    }
+
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$size, OFFSET$size, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long alignment() {
+        return segment.get(LAYOUT$alignment, OFFSET$alignment);
+    }
+
+    public void alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$alignment, OFFSET$alignment, value);
+    }
+
+    public @EnumType(VmaVirtualAllocationCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@EnumType(VmaVirtualAllocationCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @Pointer(comment="void*") MemorySegment pUserData() {
+        return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
+    }
+
+    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+    }
+
+    public void pUserData(@Nullable IPointer pointer) {
+        pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_LONG.withName("alignment"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withName("pUserData")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$alignment = PathElement.groupElement("alignment");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
 
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfLong LAYOUT$alignment = (OfLong) LAYOUT.select(PATH$alignment);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
 
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$alignment = LAYOUT$alignment.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
 
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$alignment = LAYOUT.byteOffset(PATH$alignment);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
 }

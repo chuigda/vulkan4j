@@ -238,6 +238,7 @@ private fun parseStructFields(lines: List<String>, i: Int): Pair<List<Member>, I
             bits = null
         )
         member.originalDoc = savedDoc
+        members.add(member)
         savedDoc = null
     }
 

@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaVulkanFunctions} structure in native memory.
 ///
@@ -24,6 +25,32 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaVulkanFunctions {
+///     PFN_vkGetInstanceProcAddr getInstanceProcAddr; // optional // @link substring="getInstanceProcAddr" target="#getInstanceProcAddr"
+///     PFN_vkGetDeviceProcAddr getDeviceProcAddr; // optional // @link substring="getDeviceProcAddr" target="#getDeviceProcAddr"
+///     PFN_vkGetPhysicalDeviceProperties getPhysicalDeviceProperties; // optional // @link substring="getPhysicalDeviceProperties" target="#getPhysicalDeviceProperties"
+///     PFN_vkGetPhysicalDeviceMemoryProperties getPhysicalDeviceMemoryProperties; // optional // @link substring="getPhysicalDeviceMemoryProperties" target="#getPhysicalDeviceMemoryProperties"
+///     PFN_vkAllocateMemory allocateMemory; // optional // @link substring="allocateMemory" target="#allocateMemory"
+///     PFN_vkFreeMemory freeMemory; // optional // @link substring="freeMemory" target="#freeMemory"
+///     PFN_vkMapMemory mapMemory; // optional // @link substring="mapMemory" target="#mapMemory"
+///     PFN_vkUnmapMemory unmapMemory; // optional // @link substring="unmapMemory" target="#unmapMemory"
+///     PFN_vkFlushMappedMemoryRanges flushMappedMemoryRanges; // optional // @link substring="flushMappedMemoryRanges" target="#flushMappedMemoryRanges"
+///     PFN_vkInvalidateMappedMemoryRanges invalidateMappedMemoryRanges; // optional // @link substring="invalidateMappedMemoryRanges" target="#invalidateMappedMemoryRanges"
+///     PFN_vkBindBufferMemory bindBufferMemory; // optional // @link substring="bindBufferMemory" target="#bindBufferMemory"
+///     PFN_vkBindImageMemory bindImageMemory; // optional // @link substring="bindImageMemory" target="#bindImageMemory"
+///     PFN_vkGetBufferMemoryRequirements getBufferMemoryRequirements; // optional // @link substring="getBufferMemoryRequirements" target="#getBufferMemoryRequirements"
+///     PFN_vkGetImageMemoryRequirements getImageMemoryRequirements; // optional // @link substring="getImageMemoryRequirements" target="#getImageMemoryRequirements"
+///     PFN_vkCreateBuffer createBuffer; // optional // @link substring="createBuffer" target="#createBuffer"
+///     PFN_vkDestroyBuffer destroyBuffer; // optional // @link substring="destroyBuffer" target="#destroyBuffer"
+///     PFN_vkCreateImage createImage; // optional // @link substring="createImage" target="#createImage"
+///     PFN_vkDestroyImage destroyImage; // optional // @link substring="destroyImage" target="#destroyImage"
+///     PFN_vkCmdCopyBuffer cmdCopyBuffer; // optional // @link substring="cmdCopyBuffer" target="#cmdCopyBuffer"
+///     PFN_vkGetBufferMemoryRequirements2KHR getBufferMemoryRequirements2KHR; // optional // @link substring="getBufferMemoryRequirements2KHR" target="#getBufferMemoryRequirements2KHR"
+///     PFN_vkGetImageMemoryRequirements2KHR getImageMemoryRequirements2KHR; // optional // @link substring="getImageMemoryRequirements2KHR" target="#getImageMemoryRequirements2KHR"
+///     PFN_vkBindBufferMemory2KHR bindBufferMemory2KHR; // optional // @link substring="bindBufferMemory2KHR" target="#bindBufferMemory2KHR"
+///     PFN_vkBindImageMemory2KHR bindImageMemory2KHR; // optional // @link substring="bindImageMemory2KHR" target="#bindImageMemory2KHR"
+///     PFN_vkGetPhysicalDeviceMemoryProperties2KHR getPhysicalDeviceMemoryProperties2KHR; // optional // @link substring="getPhysicalDeviceMemoryProperties2KHR" target="#getPhysicalDeviceMemoryProperties2KHR"
+///     PFN_vkGetDeviceBufferMemoryRequirementsKHR getDeviceBufferMemoryRequirements; // optional // @link substring="getDeviceBufferMemoryRequirements" target="#getDeviceBufferMemoryRequirements"
+///     PFN_vkGetDeviceImageMemoryRequirementsKHR getDeviceImageMemoryRequirements; // optional // @link substring="getDeviceImageMemoryRequirements" target="#getDeviceImageMemoryRequirements"
 /// } VmaVulkanFunctions;
 /// }
 ///
@@ -138,10 +165,453 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @Pointer(comment="PFN_vkGetInstanceProcAddr") MemorySegment getInstanceProcAddr() {
+        return segment.get(LAYOUT$getInstanceProcAddr, OFFSET$getInstanceProcAddr);
+    }
+
+    public void getInstanceProcAddr(@Pointer(comment="PFN_vkGetInstanceProcAddr") MemorySegment value) {
+        segment.set(LAYOUT$getInstanceProcAddr, OFFSET$getInstanceProcAddr, value);
+    }
+
+    public void getInstanceProcAddr(@Nullable IPointer pointer) {
+        getInstanceProcAddr(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetDeviceProcAddr") MemorySegment getDeviceProcAddr() {
+        return segment.get(LAYOUT$getDeviceProcAddr, OFFSET$getDeviceProcAddr);
+    }
+
+    public void getDeviceProcAddr(@Pointer(comment="PFN_vkGetDeviceProcAddr") MemorySegment value) {
+        segment.set(LAYOUT$getDeviceProcAddr, OFFSET$getDeviceProcAddr, value);
+    }
+
+    public void getDeviceProcAddr(@Nullable IPointer pointer) {
+        getDeviceProcAddr(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetPhysicalDeviceProperties") MemorySegment getPhysicalDeviceProperties() {
+        return segment.get(LAYOUT$getPhysicalDeviceProperties, OFFSET$getPhysicalDeviceProperties);
+    }
+
+    public void getPhysicalDeviceProperties(@Pointer(comment="PFN_vkGetPhysicalDeviceProperties") MemorySegment value) {
+        segment.set(LAYOUT$getPhysicalDeviceProperties, OFFSET$getPhysicalDeviceProperties, value);
+    }
+
+    public void getPhysicalDeviceProperties(@Nullable IPointer pointer) {
+        getPhysicalDeviceProperties(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties") MemorySegment getPhysicalDeviceMemoryProperties() {
+        return segment.get(LAYOUT$getPhysicalDeviceMemoryProperties, OFFSET$getPhysicalDeviceMemoryProperties);
+    }
+
+    public void getPhysicalDeviceMemoryProperties(@Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties") MemorySegment value) {
+        segment.set(LAYOUT$getPhysicalDeviceMemoryProperties, OFFSET$getPhysicalDeviceMemoryProperties, value);
+    }
+
+    public void getPhysicalDeviceMemoryProperties(@Nullable IPointer pointer) {
+        getPhysicalDeviceMemoryProperties(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkAllocateMemory") MemorySegment allocateMemory() {
+        return segment.get(LAYOUT$allocateMemory, OFFSET$allocateMemory);
+    }
+
+    public void allocateMemory(@Pointer(comment="PFN_vkAllocateMemory") MemorySegment value) {
+        segment.set(LAYOUT$allocateMemory, OFFSET$allocateMemory, value);
+    }
+
+    public void allocateMemory(@Nullable IPointer pointer) {
+        allocateMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkFreeMemory") MemorySegment freeMemory() {
+        return segment.get(LAYOUT$freeMemory, OFFSET$freeMemory);
+    }
+
+    public void freeMemory(@Pointer(comment="PFN_vkFreeMemory") MemorySegment value) {
+        segment.set(LAYOUT$freeMemory, OFFSET$freeMemory, value);
+    }
+
+    public void freeMemory(@Nullable IPointer pointer) {
+        freeMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkMapMemory") MemorySegment mapMemory() {
+        return segment.get(LAYOUT$mapMemory, OFFSET$mapMemory);
+    }
+
+    public void mapMemory(@Pointer(comment="PFN_vkMapMemory") MemorySegment value) {
+        segment.set(LAYOUT$mapMemory, OFFSET$mapMemory, value);
+    }
+
+    public void mapMemory(@Nullable IPointer pointer) {
+        mapMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkUnmapMemory") MemorySegment unmapMemory() {
+        return segment.get(LAYOUT$unmapMemory, OFFSET$unmapMemory);
+    }
+
+    public void unmapMemory(@Pointer(comment="PFN_vkUnmapMemory") MemorySegment value) {
+        segment.set(LAYOUT$unmapMemory, OFFSET$unmapMemory, value);
+    }
+
+    public void unmapMemory(@Nullable IPointer pointer) {
+        unmapMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkFlushMappedMemoryRanges") MemorySegment flushMappedMemoryRanges() {
+        return segment.get(LAYOUT$flushMappedMemoryRanges, OFFSET$flushMappedMemoryRanges);
+    }
+
+    public void flushMappedMemoryRanges(@Pointer(comment="PFN_vkFlushMappedMemoryRanges") MemorySegment value) {
+        segment.set(LAYOUT$flushMappedMemoryRanges, OFFSET$flushMappedMemoryRanges, value);
+    }
+
+    public void flushMappedMemoryRanges(@Nullable IPointer pointer) {
+        flushMappedMemoryRanges(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkInvalidateMappedMemoryRanges") MemorySegment invalidateMappedMemoryRanges() {
+        return segment.get(LAYOUT$invalidateMappedMemoryRanges, OFFSET$invalidateMappedMemoryRanges);
+    }
+
+    public void invalidateMappedMemoryRanges(@Pointer(comment="PFN_vkInvalidateMappedMemoryRanges") MemorySegment value) {
+        segment.set(LAYOUT$invalidateMappedMemoryRanges, OFFSET$invalidateMappedMemoryRanges, value);
+    }
+
+    public void invalidateMappedMemoryRanges(@Nullable IPointer pointer) {
+        invalidateMappedMemoryRanges(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkBindBufferMemory") MemorySegment bindBufferMemory() {
+        return segment.get(LAYOUT$bindBufferMemory, OFFSET$bindBufferMemory);
+    }
+
+    public void bindBufferMemory(@Pointer(comment="PFN_vkBindBufferMemory") MemorySegment value) {
+        segment.set(LAYOUT$bindBufferMemory, OFFSET$bindBufferMemory, value);
+    }
+
+    public void bindBufferMemory(@Nullable IPointer pointer) {
+        bindBufferMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkBindImageMemory") MemorySegment bindImageMemory() {
+        return segment.get(LAYOUT$bindImageMemory, OFFSET$bindImageMemory);
+    }
+
+    public void bindImageMemory(@Pointer(comment="PFN_vkBindImageMemory") MemorySegment value) {
+        segment.set(LAYOUT$bindImageMemory, OFFSET$bindImageMemory, value);
+    }
+
+    public void bindImageMemory(@Nullable IPointer pointer) {
+        bindImageMemory(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetBufferMemoryRequirements") MemorySegment getBufferMemoryRequirements() {
+        return segment.get(LAYOUT$getBufferMemoryRequirements, OFFSET$getBufferMemoryRequirements);
+    }
+
+    public void getBufferMemoryRequirements(@Pointer(comment="PFN_vkGetBufferMemoryRequirements") MemorySegment value) {
+        segment.set(LAYOUT$getBufferMemoryRequirements, OFFSET$getBufferMemoryRequirements, value);
+    }
+
+    public void getBufferMemoryRequirements(@Nullable IPointer pointer) {
+        getBufferMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetImageMemoryRequirements") MemorySegment getImageMemoryRequirements() {
+        return segment.get(LAYOUT$getImageMemoryRequirements, OFFSET$getImageMemoryRequirements);
+    }
+
+    public void getImageMemoryRequirements(@Pointer(comment="PFN_vkGetImageMemoryRequirements") MemorySegment value) {
+        segment.set(LAYOUT$getImageMemoryRequirements, OFFSET$getImageMemoryRequirements, value);
+    }
+
+    public void getImageMemoryRequirements(@Nullable IPointer pointer) {
+        getImageMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkCreateBuffer") MemorySegment createBuffer() {
+        return segment.get(LAYOUT$createBuffer, OFFSET$createBuffer);
+    }
+
+    public void createBuffer(@Pointer(comment="PFN_vkCreateBuffer") MemorySegment value) {
+        segment.set(LAYOUT$createBuffer, OFFSET$createBuffer, value);
+    }
+
+    public void createBuffer(@Nullable IPointer pointer) {
+        createBuffer(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkDestroyBuffer") MemorySegment destroyBuffer() {
+        return segment.get(LAYOUT$destroyBuffer, OFFSET$destroyBuffer);
+    }
+
+    public void destroyBuffer(@Pointer(comment="PFN_vkDestroyBuffer") MemorySegment value) {
+        segment.set(LAYOUT$destroyBuffer, OFFSET$destroyBuffer, value);
+    }
+
+    public void destroyBuffer(@Nullable IPointer pointer) {
+        destroyBuffer(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkCreateImage") MemorySegment createImage() {
+        return segment.get(LAYOUT$createImage, OFFSET$createImage);
+    }
+
+    public void createImage(@Pointer(comment="PFN_vkCreateImage") MemorySegment value) {
+        segment.set(LAYOUT$createImage, OFFSET$createImage, value);
+    }
+
+    public void createImage(@Nullable IPointer pointer) {
+        createImage(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkDestroyImage") MemorySegment destroyImage() {
+        return segment.get(LAYOUT$destroyImage, OFFSET$destroyImage);
+    }
+
+    public void destroyImage(@Pointer(comment="PFN_vkDestroyImage") MemorySegment value) {
+        segment.set(LAYOUT$destroyImage, OFFSET$destroyImage, value);
+    }
+
+    public void destroyImage(@Nullable IPointer pointer) {
+        destroyImage(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkCmdCopyBuffer") MemorySegment cmdCopyBuffer() {
+        return segment.get(LAYOUT$cmdCopyBuffer, OFFSET$cmdCopyBuffer);
+    }
+
+    public void cmdCopyBuffer(@Pointer(comment="PFN_vkCmdCopyBuffer") MemorySegment value) {
+        segment.set(LAYOUT$cmdCopyBuffer, OFFSET$cmdCopyBuffer, value);
+    }
+
+    public void cmdCopyBuffer(@Nullable IPointer pointer) {
+        cmdCopyBuffer(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetBufferMemoryRequirements2KHR") MemorySegment getBufferMemoryRequirements2KHR() {
+        return segment.get(LAYOUT$getBufferMemoryRequirements2KHR, OFFSET$getBufferMemoryRequirements2KHR);
+    }
+
+    public void getBufferMemoryRequirements2KHR(@Pointer(comment="PFN_vkGetBufferMemoryRequirements2KHR") MemorySegment value) {
+        segment.set(LAYOUT$getBufferMemoryRequirements2KHR, OFFSET$getBufferMemoryRequirements2KHR, value);
+    }
+
+    public void getBufferMemoryRequirements2KHR(@Nullable IPointer pointer) {
+        getBufferMemoryRequirements2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetImageMemoryRequirements2KHR") MemorySegment getImageMemoryRequirements2KHR() {
+        return segment.get(LAYOUT$getImageMemoryRequirements2KHR, OFFSET$getImageMemoryRequirements2KHR);
+    }
+
+    public void getImageMemoryRequirements2KHR(@Pointer(comment="PFN_vkGetImageMemoryRequirements2KHR") MemorySegment value) {
+        segment.set(LAYOUT$getImageMemoryRequirements2KHR, OFFSET$getImageMemoryRequirements2KHR, value);
+    }
+
+    public void getImageMemoryRequirements2KHR(@Nullable IPointer pointer) {
+        getImageMemoryRequirements2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkBindBufferMemory2KHR") MemorySegment bindBufferMemory2KHR() {
+        return segment.get(LAYOUT$bindBufferMemory2KHR, OFFSET$bindBufferMemory2KHR);
+    }
+
+    public void bindBufferMemory2KHR(@Pointer(comment="PFN_vkBindBufferMemory2KHR") MemorySegment value) {
+        segment.set(LAYOUT$bindBufferMemory2KHR, OFFSET$bindBufferMemory2KHR, value);
+    }
+
+    public void bindBufferMemory2KHR(@Nullable IPointer pointer) {
+        bindBufferMemory2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkBindImageMemory2KHR") MemorySegment bindImageMemory2KHR() {
+        return segment.get(LAYOUT$bindImageMemory2KHR, OFFSET$bindImageMemory2KHR);
+    }
+
+    public void bindImageMemory2KHR(@Pointer(comment="PFN_vkBindImageMemory2KHR") MemorySegment value) {
+        segment.set(LAYOUT$bindImageMemory2KHR, OFFSET$bindImageMemory2KHR, value);
+    }
+
+    public void bindImageMemory2KHR(@Nullable IPointer pointer) {
+        bindImageMemory2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties2KHR") MemorySegment getPhysicalDeviceMemoryProperties2KHR() {
+        return segment.get(LAYOUT$getPhysicalDeviceMemoryProperties2KHR, OFFSET$getPhysicalDeviceMemoryProperties2KHR);
+    }
+
+    public void getPhysicalDeviceMemoryProperties2KHR(@Pointer(comment="PFN_vkGetPhysicalDeviceMemoryProperties2KHR") MemorySegment value) {
+        segment.set(LAYOUT$getPhysicalDeviceMemoryProperties2KHR, OFFSET$getPhysicalDeviceMemoryProperties2KHR, value);
+    }
+
+    public void getPhysicalDeviceMemoryProperties2KHR(@Nullable IPointer pointer) {
+        getPhysicalDeviceMemoryProperties2KHR(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetDeviceBufferMemoryRequirementsKHR") MemorySegment getDeviceBufferMemoryRequirements() {
+        return segment.get(LAYOUT$getDeviceBufferMemoryRequirements, OFFSET$getDeviceBufferMemoryRequirements);
+    }
+
+    public void getDeviceBufferMemoryRequirements(@Pointer(comment="PFN_vkGetDeviceBufferMemoryRequirementsKHR") MemorySegment value) {
+        segment.set(LAYOUT$getDeviceBufferMemoryRequirements, OFFSET$getDeviceBufferMemoryRequirements, value);
+    }
+
+    public void getDeviceBufferMemoryRequirements(@Nullable IPointer pointer) {
+        getDeviceBufferMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="PFN_vkGetDeviceImageMemoryRequirementsKHR") MemorySegment getDeviceImageMemoryRequirements() {
+        return segment.get(LAYOUT$getDeviceImageMemoryRequirements, OFFSET$getDeviceImageMemoryRequirements);
+    }
+
+    public void getDeviceImageMemoryRequirements(@Pointer(comment="PFN_vkGetDeviceImageMemoryRequirementsKHR") MemorySegment value) {
+        segment.set(LAYOUT$getDeviceImageMemoryRequirements, OFFSET$getDeviceImageMemoryRequirements, value);
+    }
+
+    public void getDeviceImageMemoryRequirements(@Nullable IPointer pointer) {
+        getDeviceImageMemoryRequirements(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.ADDRESS.withName("getInstanceProcAddr"),
+        ValueLayout.ADDRESS.withName("getDeviceProcAddr"),
+        ValueLayout.ADDRESS.withName("getPhysicalDeviceProperties"),
+        ValueLayout.ADDRESS.withName("getPhysicalDeviceMemoryProperties"),
+        ValueLayout.ADDRESS.withName("allocateMemory"),
+        ValueLayout.ADDRESS.withName("freeMemory"),
+        ValueLayout.ADDRESS.withName("mapMemory"),
+        ValueLayout.ADDRESS.withName("unmapMemory"),
+        ValueLayout.ADDRESS.withName("flushMappedMemoryRanges"),
+        ValueLayout.ADDRESS.withName("invalidateMappedMemoryRanges"),
+        ValueLayout.ADDRESS.withName("bindBufferMemory"),
+        ValueLayout.ADDRESS.withName("bindImageMemory"),
+        ValueLayout.ADDRESS.withName("getBufferMemoryRequirements"),
+        ValueLayout.ADDRESS.withName("getImageMemoryRequirements"),
+        ValueLayout.ADDRESS.withName("createBuffer"),
+        ValueLayout.ADDRESS.withName("destroyBuffer"),
+        ValueLayout.ADDRESS.withName("createImage"),
+        ValueLayout.ADDRESS.withName("destroyImage"),
+        ValueLayout.ADDRESS.withName("cmdCopyBuffer"),
+        ValueLayout.ADDRESS.withName("getBufferMemoryRequirements2KHR"),
+        ValueLayout.ADDRESS.withName("getImageMemoryRequirements2KHR"),
+        ValueLayout.ADDRESS.withName("bindBufferMemory2KHR"),
+        ValueLayout.ADDRESS.withName("bindImageMemory2KHR"),
+        ValueLayout.ADDRESS.withName("getPhysicalDeviceMemoryProperties2KHR"),
+        ValueLayout.ADDRESS.withName("getDeviceBufferMemoryRequirements"),
+        ValueLayout.ADDRESS.withName("getDeviceImageMemoryRequirements")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$getInstanceProcAddr = PathElement.groupElement("getInstanceProcAddr");
+    public static final PathElement PATH$getDeviceProcAddr = PathElement.groupElement("getDeviceProcAddr");
+    public static final PathElement PATH$getPhysicalDeviceProperties = PathElement.groupElement("getPhysicalDeviceProperties");
+    public static final PathElement PATH$getPhysicalDeviceMemoryProperties = PathElement.groupElement("getPhysicalDeviceMemoryProperties");
+    public static final PathElement PATH$allocateMemory = PathElement.groupElement("allocateMemory");
+    public static final PathElement PATH$freeMemory = PathElement.groupElement("freeMemory");
+    public static final PathElement PATH$mapMemory = PathElement.groupElement("mapMemory");
+    public static final PathElement PATH$unmapMemory = PathElement.groupElement("unmapMemory");
+    public static final PathElement PATH$flushMappedMemoryRanges = PathElement.groupElement("flushMappedMemoryRanges");
+    public static final PathElement PATH$invalidateMappedMemoryRanges = PathElement.groupElement("invalidateMappedMemoryRanges");
+    public static final PathElement PATH$bindBufferMemory = PathElement.groupElement("bindBufferMemory");
+    public static final PathElement PATH$bindImageMemory = PathElement.groupElement("bindImageMemory");
+    public static final PathElement PATH$getBufferMemoryRequirements = PathElement.groupElement("getBufferMemoryRequirements");
+    public static final PathElement PATH$getImageMemoryRequirements = PathElement.groupElement("getImageMemoryRequirements");
+    public static final PathElement PATH$createBuffer = PathElement.groupElement("createBuffer");
+    public static final PathElement PATH$destroyBuffer = PathElement.groupElement("destroyBuffer");
+    public static final PathElement PATH$createImage = PathElement.groupElement("createImage");
+    public static final PathElement PATH$destroyImage = PathElement.groupElement("destroyImage");
+    public static final PathElement PATH$cmdCopyBuffer = PathElement.groupElement("cmdCopyBuffer");
+    public static final PathElement PATH$getBufferMemoryRequirements2KHR = PathElement.groupElement("getBufferMemoryRequirements2KHR");
+    public static final PathElement PATH$getImageMemoryRequirements2KHR = PathElement.groupElement("getImageMemoryRequirements2KHR");
+    public static final PathElement PATH$bindBufferMemory2KHR = PathElement.groupElement("bindBufferMemory2KHR");
+    public static final PathElement PATH$bindImageMemory2KHR = PathElement.groupElement("bindImageMemory2KHR");
+    public static final PathElement PATH$getPhysicalDeviceMemoryProperties2KHR = PathElement.groupElement("getPhysicalDeviceMemoryProperties2KHR");
+    public static final PathElement PATH$getDeviceBufferMemoryRequirements = PathElement.groupElement("getDeviceBufferMemoryRequirements");
+    public static final PathElement PATH$getDeviceImageMemoryRequirements = PathElement.groupElement("getDeviceImageMemoryRequirements");
 
+    public static final AddressLayout LAYOUT$getInstanceProcAddr = (AddressLayout) LAYOUT.select(PATH$getInstanceProcAddr);
+    public static final AddressLayout LAYOUT$getDeviceProcAddr = (AddressLayout) LAYOUT.select(PATH$getDeviceProcAddr);
+    public static final AddressLayout LAYOUT$getPhysicalDeviceProperties = (AddressLayout) LAYOUT.select(PATH$getPhysicalDeviceProperties);
+    public static final AddressLayout LAYOUT$getPhysicalDeviceMemoryProperties = (AddressLayout) LAYOUT.select(PATH$getPhysicalDeviceMemoryProperties);
+    public static final AddressLayout LAYOUT$allocateMemory = (AddressLayout) LAYOUT.select(PATH$allocateMemory);
+    public static final AddressLayout LAYOUT$freeMemory = (AddressLayout) LAYOUT.select(PATH$freeMemory);
+    public static final AddressLayout LAYOUT$mapMemory = (AddressLayout) LAYOUT.select(PATH$mapMemory);
+    public static final AddressLayout LAYOUT$unmapMemory = (AddressLayout) LAYOUT.select(PATH$unmapMemory);
+    public static final AddressLayout LAYOUT$flushMappedMemoryRanges = (AddressLayout) LAYOUT.select(PATH$flushMappedMemoryRanges);
+    public static final AddressLayout LAYOUT$invalidateMappedMemoryRanges = (AddressLayout) LAYOUT.select(PATH$invalidateMappedMemoryRanges);
+    public static final AddressLayout LAYOUT$bindBufferMemory = (AddressLayout) LAYOUT.select(PATH$bindBufferMemory);
+    public static final AddressLayout LAYOUT$bindImageMemory = (AddressLayout) LAYOUT.select(PATH$bindImageMemory);
+    public static final AddressLayout LAYOUT$getBufferMemoryRequirements = (AddressLayout) LAYOUT.select(PATH$getBufferMemoryRequirements);
+    public static final AddressLayout LAYOUT$getImageMemoryRequirements = (AddressLayout) LAYOUT.select(PATH$getImageMemoryRequirements);
+    public static final AddressLayout LAYOUT$createBuffer = (AddressLayout) LAYOUT.select(PATH$createBuffer);
+    public static final AddressLayout LAYOUT$destroyBuffer = (AddressLayout) LAYOUT.select(PATH$destroyBuffer);
+    public static final AddressLayout LAYOUT$createImage = (AddressLayout) LAYOUT.select(PATH$createImage);
+    public static final AddressLayout LAYOUT$destroyImage = (AddressLayout) LAYOUT.select(PATH$destroyImage);
+    public static final AddressLayout LAYOUT$cmdCopyBuffer = (AddressLayout) LAYOUT.select(PATH$cmdCopyBuffer);
+    public static final AddressLayout LAYOUT$getBufferMemoryRequirements2KHR = (AddressLayout) LAYOUT.select(PATH$getBufferMemoryRequirements2KHR);
+    public static final AddressLayout LAYOUT$getImageMemoryRequirements2KHR = (AddressLayout) LAYOUT.select(PATH$getImageMemoryRequirements2KHR);
+    public static final AddressLayout LAYOUT$bindBufferMemory2KHR = (AddressLayout) LAYOUT.select(PATH$bindBufferMemory2KHR);
+    public static final AddressLayout LAYOUT$bindImageMemory2KHR = (AddressLayout) LAYOUT.select(PATH$bindImageMemory2KHR);
+    public static final AddressLayout LAYOUT$getPhysicalDeviceMemoryProperties2KHR = (AddressLayout) LAYOUT.select(PATH$getPhysicalDeviceMemoryProperties2KHR);
+    public static final AddressLayout LAYOUT$getDeviceBufferMemoryRequirements = (AddressLayout) LAYOUT.select(PATH$getDeviceBufferMemoryRequirements);
+    public static final AddressLayout LAYOUT$getDeviceImageMemoryRequirements = (AddressLayout) LAYOUT.select(PATH$getDeviceImageMemoryRequirements);
 
+    public static final long SIZE$getInstanceProcAddr = LAYOUT$getInstanceProcAddr.byteSize();
+    public static final long SIZE$getDeviceProcAddr = LAYOUT$getDeviceProcAddr.byteSize();
+    public static final long SIZE$getPhysicalDeviceProperties = LAYOUT$getPhysicalDeviceProperties.byteSize();
+    public static final long SIZE$getPhysicalDeviceMemoryProperties = LAYOUT$getPhysicalDeviceMemoryProperties.byteSize();
+    public static final long SIZE$allocateMemory = LAYOUT$allocateMemory.byteSize();
+    public static final long SIZE$freeMemory = LAYOUT$freeMemory.byteSize();
+    public static final long SIZE$mapMemory = LAYOUT$mapMemory.byteSize();
+    public static final long SIZE$unmapMemory = LAYOUT$unmapMemory.byteSize();
+    public static final long SIZE$flushMappedMemoryRanges = LAYOUT$flushMappedMemoryRanges.byteSize();
+    public static final long SIZE$invalidateMappedMemoryRanges = LAYOUT$invalidateMappedMemoryRanges.byteSize();
+    public static final long SIZE$bindBufferMemory = LAYOUT$bindBufferMemory.byteSize();
+    public static final long SIZE$bindImageMemory = LAYOUT$bindImageMemory.byteSize();
+    public static final long SIZE$getBufferMemoryRequirements = LAYOUT$getBufferMemoryRequirements.byteSize();
+    public static final long SIZE$getImageMemoryRequirements = LAYOUT$getImageMemoryRequirements.byteSize();
+    public static final long SIZE$createBuffer = LAYOUT$createBuffer.byteSize();
+    public static final long SIZE$destroyBuffer = LAYOUT$destroyBuffer.byteSize();
+    public static final long SIZE$createImage = LAYOUT$createImage.byteSize();
+    public static final long SIZE$destroyImage = LAYOUT$destroyImage.byteSize();
+    public static final long SIZE$cmdCopyBuffer = LAYOUT$cmdCopyBuffer.byteSize();
+    public static final long SIZE$getBufferMemoryRequirements2KHR = LAYOUT$getBufferMemoryRequirements2KHR.byteSize();
+    public static final long SIZE$getImageMemoryRequirements2KHR = LAYOUT$getImageMemoryRequirements2KHR.byteSize();
+    public static final long SIZE$bindBufferMemory2KHR = LAYOUT$bindBufferMemory2KHR.byteSize();
+    public static final long SIZE$bindImageMemory2KHR = LAYOUT$bindImageMemory2KHR.byteSize();
+    public static final long SIZE$getPhysicalDeviceMemoryProperties2KHR = LAYOUT$getPhysicalDeviceMemoryProperties2KHR.byteSize();
+    public static final long SIZE$getDeviceBufferMemoryRequirements = LAYOUT$getDeviceBufferMemoryRequirements.byteSize();
+    public static final long SIZE$getDeviceImageMemoryRequirements = LAYOUT$getDeviceImageMemoryRequirements.byteSize();
 
+    public static final long OFFSET$getInstanceProcAddr = LAYOUT.byteOffset(PATH$getInstanceProcAddr);
+    public static final long OFFSET$getDeviceProcAddr = LAYOUT.byteOffset(PATH$getDeviceProcAddr);
+    public static final long OFFSET$getPhysicalDeviceProperties = LAYOUT.byteOffset(PATH$getPhysicalDeviceProperties);
+    public static final long OFFSET$getPhysicalDeviceMemoryProperties = LAYOUT.byteOffset(PATH$getPhysicalDeviceMemoryProperties);
+    public static final long OFFSET$allocateMemory = LAYOUT.byteOffset(PATH$allocateMemory);
+    public static final long OFFSET$freeMemory = LAYOUT.byteOffset(PATH$freeMemory);
+    public static final long OFFSET$mapMemory = LAYOUT.byteOffset(PATH$mapMemory);
+    public static final long OFFSET$unmapMemory = LAYOUT.byteOffset(PATH$unmapMemory);
+    public static final long OFFSET$flushMappedMemoryRanges = LAYOUT.byteOffset(PATH$flushMappedMemoryRanges);
+    public static final long OFFSET$invalidateMappedMemoryRanges = LAYOUT.byteOffset(PATH$invalidateMappedMemoryRanges);
+    public static final long OFFSET$bindBufferMemory = LAYOUT.byteOffset(PATH$bindBufferMemory);
+    public static final long OFFSET$bindImageMemory = LAYOUT.byteOffset(PATH$bindImageMemory);
+    public static final long OFFSET$getBufferMemoryRequirements = LAYOUT.byteOffset(PATH$getBufferMemoryRequirements);
+    public static final long OFFSET$getImageMemoryRequirements = LAYOUT.byteOffset(PATH$getImageMemoryRequirements);
+    public static final long OFFSET$createBuffer = LAYOUT.byteOffset(PATH$createBuffer);
+    public static final long OFFSET$destroyBuffer = LAYOUT.byteOffset(PATH$destroyBuffer);
+    public static final long OFFSET$createImage = LAYOUT.byteOffset(PATH$createImage);
+    public static final long OFFSET$destroyImage = LAYOUT.byteOffset(PATH$destroyImage);
+    public static final long OFFSET$cmdCopyBuffer = LAYOUT.byteOffset(PATH$cmdCopyBuffer);
+    public static final long OFFSET$getBufferMemoryRequirements2KHR = LAYOUT.byteOffset(PATH$getBufferMemoryRequirements2KHR);
+    public static final long OFFSET$getImageMemoryRequirements2KHR = LAYOUT.byteOffset(PATH$getImageMemoryRequirements2KHR);
+    public static final long OFFSET$bindBufferMemory2KHR = LAYOUT.byteOffset(PATH$bindBufferMemory2KHR);
+    public static final long OFFSET$bindImageMemory2KHR = LAYOUT.byteOffset(PATH$bindImageMemory2KHR);
+    public static final long OFFSET$getPhysicalDeviceMemoryProperties2KHR = LAYOUT.byteOffset(PATH$getPhysicalDeviceMemoryProperties2KHR);
+    public static final long OFFSET$getDeviceBufferMemoryRequirements = LAYOUT.byteOffset(PATH$getDeviceBufferMemoryRequirements);
+    public static final long OFFSET$getDeviceImageMemoryRequirements = LAYOUT.byteOffset(PATH$getDeviceImageMemoryRequirements);
 }

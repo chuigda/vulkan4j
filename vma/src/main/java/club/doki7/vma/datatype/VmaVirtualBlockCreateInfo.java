@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaVirtualBlockCreateInfo} structure in native memory.
 ///
@@ -24,6 +25,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaVirtualBlockCreateInfo {
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     VmaVirtualBlockCreateFlags flags; // @link substring="VmaVirtualBlockCreateFlags" target="VmaVirtualBlockCreateFlags" @link substring="flags" target="#flags"
+///     VkAllocationCallbacks const* pAllocationCallbacks; // optional // @link substring="VkAllocationCallbacks" target="VkAllocationCallbacks" @link substring="pAllocationCallbacks" target="#pAllocationCallbacks"
 /// } VmaVirtualBlockCreateInfo;
 /// }
 ///
@@ -138,10 +142,73 @@ public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implemen
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
+        return segment.get(LAYOUT$size, OFFSET$size);
+    }
+
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$size, OFFSET$size, value);
+    }
+
+    public @EnumType(VmaVirtualBlockCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@EnumType(VmaVirtualBlockCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public void pAllocationCallbacks(@Nullable IVkAllocationCallbacks value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pAllocationCallbacksRaw(s);
+    }
+
+    @Unsafe public @Nullable VkAllocationCallbacks.Ptr pAllocationCallbacks(int assumedCount) {
+        MemorySegment s = pAllocationCallbacksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VkAllocationCallbacks.BYTES);
+        return new VkAllocationCallbacks.Ptr(s);
+    }
+
+    public @Nullable VkAllocationCallbacks pAllocationCallbacks() {
+        MemorySegment s = pAllocationCallbacksRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkAllocationCallbacks(s);
+    }
+
+    public @Pointer(target=VkAllocationCallbacks.class) MemorySegment pAllocationCallbacksRaw() {
+        return segment.get(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks);
+    }
+
+    public void pAllocationCallbacksRaw(@Pointer(target=VkAllocationCallbacks.class) MemorySegment value) {
+        segment.set(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT).withName("pAllocationCallbacks")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$pAllocationCallbacks = PathElement.groupElement("pAllocationCallbacks");
 
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final AddressLayout LAYOUT$pAllocationCallbacks = (AddressLayout) LAYOUT.select(PATH$pAllocationCallbacks);
 
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$pAllocationCallbacks = LAYOUT$pAllocationCallbacks.byteSize();
 
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$pAllocationCallbacks = LAYOUT.byteOffset(PATH$pAllocationCallbacks);
 }

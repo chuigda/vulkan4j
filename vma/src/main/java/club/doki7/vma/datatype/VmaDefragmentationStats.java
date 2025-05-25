@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaDefragmentationStats} structure in native memory.
 ///
@@ -24,6 +25,10 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaDefragmentationStats {
+///     VkDeviceSize bytesMoved; // @link substring="bytesMoved" target="#bytesMoved"
+///     VkDeviceSize bytesFreed; // @link substring="bytesFreed" target="#bytesFreed"
+///     uint32_t allocationsMoved; // @link substring="allocationsMoved" target="#allocationsMoved"
+///     uint32_t deviceMemoryBlocksFreed; // @link substring="deviceMemoryBlocksFreed" target="#deviceMemoryBlocksFreed"
 /// } VmaDefragmentationStats;
 /// }
 ///
@@ -138,10 +143,63 @@ public record VmaDefragmentationStats(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @NativeType("VkDeviceSize") @Unsigned long bytesMoved() {
+        return segment.get(LAYOUT$bytesMoved, OFFSET$bytesMoved);
+    }
+
+    public void bytesMoved(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$bytesMoved, OFFSET$bytesMoved, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long bytesFreed() {
+        return segment.get(LAYOUT$bytesFreed, OFFSET$bytesFreed);
+    }
+
+    public void bytesFreed(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$bytesFreed, OFFSET$bytesFreed, value);
+    }
+
+    public @Unsigned int allocationsMoved() {
+        return segment.get(LAYOUT$allocationsMoved, OFFSET$allocationsMoved);
+    }
+
+    public void allocationsMoved(@Unsigned int value) {
+        segment.set(LAYOUT$allocationsMoved, OFFSET$allocationsMoved, value);
+    }
+
+    public @Unsigned int deviceMemoryBlocksFreed() {
+        return segment.get(LAYOUT$deviceMemoryBlocksFreed, OFFSET$deviceMemoryBlocksFreed);
+    }
+
+    public void deviceMemoryBlocksFreed(@Unsigned int value) {
+        segment.set(LAYOUT$deviceMemoryBlocksFreed, OFFSET$deviceMemoryBlocksFreed, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("bytesMoved"),
+        ValueLayout.JAVA_LONG.withName("bytesFreed"),
+        ValueLayout.JAVA_INT.withName("allocationsMoved"),
+        ValueLayout.JAVA_INT.withName("deviceMemoryBlocksFreed")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$bytesMoved = PathElement.groupElement("bytesMoved");
+    public static final PathElement PATH$bytesFreed = PathElement.groupElement("bytesFreed");
+    public static final PathElement PATH$allocationsMoved = PathElement.groupElement("allocationsMoved");
+    public static final PathElement PATH$deviceMemoryBlocksFreed = PathElement.groupElement("deviceMemoryBlocksFreed");
 
+    public static final OfLong LAYOUT$bytesMoved = (OfLong) LAYOUT.select(PATH$bytesMoved);
+    public static final OfLong LAYOUT$bytesFreed = (OfLong) LAYOUT.select(PATH$bytesFreed);
+    public static final OfInt LAYOUT$allocationsMoved = (OfInt) LAYOUT.select(PATH$allocationsMoved);
+    public static final OfInt LAYOUT$deviceMemoryBlocksFreed = (OfInt) LAYOUT.select(PATH$deviceMemoryBlocksFreed);
 
+    public static final long SIZE$bytesMoved = LAYOUT$bytesMoved.byteSize();
+    public static final long SIZE$bytesFreed = LAYOUT$bytesFreed.byteSize();
+    public static final long SIZE$allocationsMoved = LAYOUT$allocationsMoved.byteSize();
+    public static final long SIZE$deviceMemoryBlocksFreed = LAYOUT$deviceMemoryBlocksFreed.byteSize();
 
+    public static final long OFFSET$bytesMoved = LAYOUT.byteOffset(PATH$bytesMoved);
+    public static final long OFFSET$bytesFreed = LAYOUT.byteOffset(PATH$bytesFreed);
+    public static final long OFFSET$allocationsMoved = LAYOUT.byteOffset(PATH$allocationsMoved);
+    public static final long OFFSET$deviceMemoryBlocksFreed = LAYOUT.byteOffset(PATH$deviceMemoryBlocksFreed);
 }

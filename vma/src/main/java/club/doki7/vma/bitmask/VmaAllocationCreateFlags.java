@@ -15,7 +15,7 @@ public final class VmaAllocationCreateFlags {
     public static final int HOST_ACCESS_SEQUENTIAL_WRITE = 0x00000400;
     public static final int MAPPED = 0x00000004;
     public static final int NEVER_ALLOCATE = 0x00000002;
-    public static final int STRATEGY_BEST_FIT = STRATEGY_MIN_MEMORY;
+    public static final int STRATEGY_BEST_FIT = VMA_ALLOCATION_CREATE_STRATEGY_MIN_MEMORY_BIT;
     public static final int STRATEGY_FIRST_FIT = VMA_ALLOCATION_CREATE_STRATEGY_MIN_TIME_BIT;
     public static final int STRATEGY_MASK = VMA_ALLOCATION_CREATE_STRATEGY_MIN_MEMORY_BIT | VMA_ALLOCATION_CREATE_STRATEGY_MIN_TIME_BIT | VMA_ALLOCATION_CREATE_STRATEGY_MIN_OFFSET_BIT;
     public static final int STRATEGY_MIN_MEMORY = 0x00010000;

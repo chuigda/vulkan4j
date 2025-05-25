@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaVirtualAllocationInfo} structure in native memory.
 ///
@@ -24,6 +25,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaVirtualAllocationInfo {
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
 /// } VmaVirtualAllocationInfo;
 /// }
 ///
@@ -138,10 +142,54 @@ public record VmaVirtualAllocationInfo(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @NativeType("VkDeviceSize") @Unsigned long offset() {
+        return segment.get(LAYOUT$offset, OFFSET$offset);
+    }
+
+    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$offset, OFFSET$offset, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
+        return segment.get(LAYOUT$size, OFFSET$size);
+    }
+
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$size, OFFSET$size, value);
+    }
+
+    public @Pointer(comment="void*") MemorySegment pUserData() {
+        return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
+    }
+
+    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+    }
+
+    public void pUserData(@Nullable IPointer pointer) {
+        pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_LONG.withName("offset"),
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.ADDRESS.withName("pUserData")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
 
+    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
 
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
 
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
 }

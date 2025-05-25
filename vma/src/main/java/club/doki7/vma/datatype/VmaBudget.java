@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaBudget} structure in native memory.
 ///
@@ -24,6 +25,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaBudget {
+///     VmaStatistics statistics; // @link substring="VmaStatistics" target="VmaStatistics" @link substring="statistics" target="#statistics"
+///     VkDeviceSize usage; // @link substring="usage" target="#usage"
+///     VkDeviceSize budget; // @link substring="budget" target="#budget"
 /// } VmaBudget;
 /// }
 ///
@@ -138,10 +142,50 @@ public record VmaBudget(@NotNull MemorySegment segment) implements IVmaBudget {
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @NotNull VmaStatistics statistics() {
+        return new VmaStatistics(segment.asSlice(OFFSET$statistics, LAYOUT$statistics));
+    }
+
+    public void statistics(@NotNull VmaStatistics value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$statistics, SIZE$statistics);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long usage() {
+        return segment.get(LAYOUT$usage, OFFSET$usage);
+    }
+
+    public void usage(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$usage, OFFSET$usage, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long budget() {
+        return segment.get(LAYOUT$budget, OFFSET$budget);
+    }
+
+    public void budget(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$budget, OFFSET$budget, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VmaStatistics.LAYOUT.withName("statistics"),
+        ValueLayout.JAVA_LONG.withName("usage"),
+        ValueLayout.JAVA_LONG.withName("budget")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$statistics = PathElement.groupElement("statistics");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+    public static final PathElement PATH$budget = PathElement.groupElement("budget");
 
+    public static final StructLayout LAYOUT$statistics = (StructLayout) LAYOUT.select(PATH$statistics);
+    public static final OfLong LAYOUT$usage = (OfLong) LAYOUT.select(PATH$usage);
+    public static final OfLong LAYOUT$budget = (OfLong) LAYOUT.select(PATH$budget);
 
+    public static final long SIZE$statistics = LAYOUT$statistics.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+    public static final long SIZE$budget = LAYOUT$budget.byteSize();
 
+    public static final long OFFSET$statistics = LAYOUT.byteOffset(PATH$statistics);
+    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+    public static final long OFFSET$budget = LAYOUT.byteOffset(PATH$budget);
 }

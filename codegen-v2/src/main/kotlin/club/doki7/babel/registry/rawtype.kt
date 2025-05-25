@@ -11,7 +11,7 @@ data class IdentifierType(val ident: Identifier) : Type {
 }
 
 data class ArrayType(val element: Type, val length: Identifier) : Type {
-    override val cDisplay = "${element.cDisplay}[$length]"
+    override val cDisplay = "${element.cDisplay}[${length.original}]"
 }
 
 data class PointerType(

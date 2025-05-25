@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaAllocationInfo} structure in native memory.
 ///
@@ -24,6 +25,13 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaAllocationInfo {
+///     uint32_t memoryType; // @link substring="memoryType" target="#memoryType"
+///     VkDeviceMemory deviceMemory; // optional // @link substring="VkDeviceMemory" target="VkDeviceMemory" @link substring="deviceMemory" target="#deviceMemory"
+///     VkDeviceSize offset; // @link substring="offset" target="#offset"
+///     VkDeviceSize size; // @link substring="size" target="#size"
+///     void* pMappedData; // optional // @link substring="pMappedData" target="#pMappedData"
+///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
+///     char const* pName; // optional // @link substring="pName" target="#pName"
 /// } VmaAllocationInfo;
 /// }
 ///
@@ -138,10 +146,131 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @Unsigned int memoryType() {
+        return segment.get(LAYOUT$memoryType, OFFSET$memoryType);
+    }
+
+    public void memoryType(@Unsigned int value) {
+        segment.set(LAYOUT$memoryType, OFFSET$memoryType, value);
+    }
+
+    public @Nullable VkDeviceMemory deviceMemory() {
+        MemorySegment s = segment.asSlice(OFFSET$deviceMemory, SIZE$deviceMemory);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VkDeviceMemory(s);
+    }
+
+    public void deviceMemory(@Nullable VkDeviceMemory value) {
+        segment.set(LAYOUT$deviceMemory, OFFSET$deviceMemory, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long offset() {
+        return segment.get(LAYOUT$offset, OFFSET$offset);
+    }
+
+    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$offset, OFFSET$offset, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long size() {
+        return segment.get(LAYOUT$size, OFFSET$size);
+    }
+
+    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$size, OFFSET$size, value);
+    }
+
+    public @Pointer(comment="void*") MemorySegment pMappedData() {
+        return segment.get(LAYOUT$pMappedData, OFFSET$pMappedData);
+    }
+
+    public void pMappedData(@Pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pMappedData, OFFSET$pMappedData, value);
+    }
+
+    public void pMappedData(@Nullable IPointer pointer) {
+        pMappedData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="void*") MemorySegment pUserData() {
+        return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
+    }
+
+    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+    }
+
+    public void pUserData(@Nullable IPointer pointer) {
+        pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    /// Note: the returned {@link BytePtr} does not have correct
+    /// {@link BytePtr#size} property. It's up to user to track the size of the buffer,
+    /// and use {@link BytePtr#reinterpret} to set the size before actually reading from or
+    /// writing to the buffer.
+    public @Nullable BytePtr pName() {
+        MemorySegment s = pNameRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new BytePtr(s);
+    }
+
+    public void pName(@Nullable BytePtr value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pNameRaw(s);
+    }
+
+    public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
+        return segment.get(LAYOUT$pName, OFFSET$pName);
+    }
+
+    public void pNameRaw(@Pointer(comment="int8_t*") MemorySegment value) {
+        segment.set(LAYOUT$pName, OFFSET$pName, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("memoryType"),
+        ValueLayout.ADDRESS.withName("deviceMemory"),
+        ValueLayout.JAVA_LONG.withName("offset"),
+        ValueLayout.JAVA_LONG.withName("size"),
+        ValueLayout.ADDRESS.withName("pMappedData"),
+        ValueLayout.ADDRESS.withName("pUserData"),
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pName")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$memoryType = PathElement.groupElement("memoryType");
+    public static final PathElement PATH$deviceMemory = PathElement.groupElement("deviceMemory");
+    public static final PathElement PATH$offset = PathElement.groupElement("offset");
+    public static final PathElement PATH$size = PathElement.groupElement("size");
+    public static final PathElement PATH$pMappedData = PathElement.groupElement("pMappedData");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
+    public static final PathElement PATH$pName = PathElement.groupElement("pName");
 
+    public static final OfInt LAYOUT$memoryType = (OfInt) LAYOUT.select(PATH$memoryType);
+    public static final AddressLayout LAYOUT$deviceMemory = (AddressLayout) LAYOUT.select(PATH$deviceMemory);
+    public static final OfLong LAYOUT$offset = (OfLong) LAYOUT.select(PATH$offset);
+    public static final OfLong LAYOUT$size = (OfLong) LAYOUT.select(PATH$size);
+    public static final AddressLayout LAYOUT$pMappedData = (AddressLayout) LAYOUT.select(PATH$pMappedData);
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
+    public static final AddressLayout LAYOUT$pName = (AddressLayout) LAYOUT.select(PATH$pName);
 
+    public static final long SIZE$memoryType = LAYOUT$memoryType.byteSize();
+    public static final long SIZE$deviceMemory = LAYOUT$deviceMemory.byteSize();
+    public static final long SIZE$offset = LAYOUT$offset.byteSize();
+    public static final long SIZE$size = LAYOUT$size.byteSize();
+    public static final long SIZE$pMappedData = LAYOUT$pMappedData.byteSize();
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
+    public static final long SIZE$pName = LAYOUT$pName.byteSize();
 
+    public static final long OFFSET$memoryType = LAYOUT.byteOffset(PATH$memoryType);
+    public static final long OFFSET$deviceMemory = LAYOUT.byteOffset(PATH$deviceMemory);
+    public static final long OFFSET$offset = LAYOUT.byteOffset(PATH$offset);
+    public static final long OFFSET$size = LAYOUT.byteOffset(PATH$size);
+    public static final long OFFSET$pMappedData = LAYOUT.byteOffset(PATH$pMappedData);
+    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
+    public static final long OFFSET$pName = LAYOUT.byteOffset(PATH$pName);
 }

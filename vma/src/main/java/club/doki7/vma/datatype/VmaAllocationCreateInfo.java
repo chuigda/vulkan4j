@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaAllocationCreateInfo} structure in native memory.
 ///
@@ -24,6 +25,14 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaAllocationCreateInfo {
+///     VmaAllocationCreateFlags flags; // @link substring="VmaAllocationCreateFlags" target="VmaAllocationCreateFlags" @link substring="flags" target="#flags"
+///     VmaMemoryUsage usage; // @link substring="VmaMemoryUsage" target="VmaMemoryUsage" @link substring="usage" target="#usage"
+///     VkMemoryPropertyFlags requiredFlags; // @link substring="VkMemoryPropertyFlags" target="VkMemoryPropertyFlags" @link substring="requiredFlags" target="#requiredFlags"
+///     VkMemoryPropertyFlags preferredFlags; // @link substring="VkMemoryPropertyFlags" target="VkMemoryPropertyFlags" @link substring="preferredFlags" target="#preferredFlags"
+///     uint32_t memoryTypeBits; // @link substring="memoryTypeBits" target="#memoryTypeBits"
+///     VmaPool pool; // optional // @link substring="VmaPool" target="VmaPool" @link substring="pool" target="#pool"
+///     void* pUserData; // optional // @link substring="pUserData" target="#pUserData"
+///     float priority; // @link substring="priority" target="#priority"
 /// } VmaAllocationCreateInfo;
 /// }
 ///
@@ -138,10 +147,123 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @EnumType(VmaAllocationCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@EnumType(VmaAllocationCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @EnumType(VmaMemoryUsage.class) int usage() {
+        return segment.get(LAYOUT$usage, OFFSET$usage);
+    }
+
+    public void usage(@EnumType(VmaMemoryUsage.class) int value) {
+        segment.set(LAYOUT$usage, OFFSET$usage, value);
+    }
+
+    public @EnumType(VkMemoryPropertyFlags.class) int requiredFlags() {
+        return segment.get(LAYOUT$requiredFlags, OFFSET$requiredFlags);
+    }
+
+    public void requiredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+        segment.set(LAYOUT$requiredFlags, OFFSET$requiredFlags, value);
+    }
+
+    public @EnumType(VkMemoryPropertyFlags.class) int preferredFlags() {
+        return segment.get(LAYOUT$preferredFlags, OFFSET$preferredFlags);
+    }
+
+    public void preferredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+        segment.set(LAYOUT$preferredFlags, OFFSET$preferredFlags, value);
+    }
+
+    public @Unsigned int memoryTypeBits() {
+        return segment.get(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits);
+    }
+
+    public void memoryTypeBits(@Unsigned int value) {
+        segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
+    }
+
+    public @Nullable VmaPool pool() {
+        MemorySegment s = segment.asSlice(OFFSET$pool, SIZE$pool);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VmaPool(s);
+    }
+
+    public void pool(@Nullable VmaPool value) {
+        segment.set(LAYOUT$pool, OFFSET$pool, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Pointer(comment="void*") MemorySegment pUserData() {
+        return segment.get(LAYOUT$pUserData, OFFSET$pUserData);
+    }
+
+    public void pUserData(@Pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
+    }
+
+    public void pUserData(@Nullable IPointer pointer) {
+        pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public float priority() {
+        return segment.get(LAYOUT$priority, OFFSET$priority);
+    }
+
+    public void priority(float value) {
+        segment.set(LAYOUT$priority, OFFSET$priority, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("usage"),
+        ValueLayout.JAVA_INT.withName("requiredFlags"),
+        ValueLayout.JAVA_INT.withName("preferredFlags"),
+        ValueLayout.JAVA_INT.withName("memoryTypeBits"),
+        ValueLayout.ADDRESS.withName("pool"),
+        ValueLayout.ADDRESS.withName("pUserData"),
+        ValueLayout.JAVA_FLOAT.withName("priority")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$usage = PathElement.groupElement("usage");
+    public static final PathElement PATH$requiredFlags = PathElement.groupElement("requiredFlags");
+    public static final PathElement PATH$preferredFlags = PathElement.groupElement("preferredFlags");
+    public static final PathElement PATH$memoryTypeBits = PathElement.groupElement("memoryTypeBits");
+    public static final PathElement PATH$pool = PathElement.groupElement("pool");
+    public static final PathElement PATH$pUserData = PathElement.groupElement("pUserData");
+    public static final PathElement PATH$priority = PathElement.groupElement("priority");
 
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfInt LAYOUT$usage = (OfInt) LAYOUT.select(PATH$usage);
+    public static final OfInt LAYOUT$requiredFlags = (OfInt) LAYOUT.select(PATH$requiredFlags);
+    public static final OfInt LAYOUT$preferredFlags = (OfInt) LAYOUT.select(PATH$preferredFlags);
+    public static final OfInt LAYOUT$memoryTypeBits = (OfInt) LAYOUT.select(PATH$memoryTypeBits);
+    public static final AddressLayout LAYOUT$pool = (AddressLayout) LAYOUT.select(PATH$pool);
+    public static final AddressLayout LAYOUT$pUserData = (AddressLayout) LAYOUT.select(PATH$pUserData);
+    public static final OfFloat LAYOUT$priority = (OfFloat) LAYOUT.select(PATH$priority);
 
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$usage = LAYOUT$usage.byteSize();
+    public static final long SIZE$requiredFlags = LAYOUT$requiredFlags.byteSize();
+    public static final long SIZE$preferredFlags = LAYOUT$preferredFlags.byteSize();
+    public static final long SIZE$memoryTypeBits = LAYOUT$memoryTypeBits.byteSize();
+    public static final long SIZE$pool = LAYOUT$pool.byteSize();
+    public static final long SIZE$pUserData = LAYOUT$pUserData.byteSize();
+    public static final long SIZE$priority = LAYOUT$priority.byteSize();
 
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$usage = LAYOUT.byteOffset(PATH$usage);
+    public static final long OFFSET$requiredFlags = LAYOUT.byteOffset(PATH$requiredFlags);
+    public static final long OFFSET$preferredFlags = LAYOUT.byteOffset(PATH$preferredFlags);
+    public static final long OFFSET$memoryTypeBits = LAYOUT.byteOffset(PATH$memoryTypeBits);
+    public static final long OFFSET$pool = LAYOUT.byteOffset(PATH$pool);
+    public static final long OFFSET$pUserData = LAYOUT.byteOffset(PATH$pUserData);
+    public static final long OFFSET$priority = LAYOUT.byteOffset(PATH$priority);
 }

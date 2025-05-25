@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaDefragmentationMove} structure in native memory.
 ///
@@ -24,6 +25,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaDefragmentationMove {
+///     VmaDefragmentationMoveOperation operation; // @link substring="VmaDefragmentationMoveOperation" target="VmaDefragmentationMoveOperation" @link substring="operation" target="#operation"
+///     VmaAllocation srcAllocation; // @link substring="VmaAllocation" target="VmaAllocation" @link substring="srcAllocation" target="#srcAllocation"
+///     VmaAllocation dstTmpAllocation; // @link substring="VmaAllocation" target="VmaAllocation" @link substring="dstTmpAllocation" target="#dstTmpAllocation"
 /// } VmaDefragmentationMove;
 /// }
 ///
@@ -138,10 +142,58 @@ public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements 
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @EnumType(VmaDefragmentationMoveOperation.class) int operation() {
+        return segment.get(LAYOUT$operation, OFFSET$operation);
+    }
+
+    public void operation(@EnumType(VmaDefragmentationMoveOperation.class) int value) {
+        segment.set(LAYOUT$operation, OFFSET$operation, value);
+    }
+
+    public @Nullable VmaAllocation srcAllocation() {
+        MemorySegment s = segment.asSlice(OFFSET$srcAllocation, SIZE$srcAllocation);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VmaAllocation(s);
+    }
+
+    public void srcAllocation(@Nullable VmaAllocation value) {
+        segment.set(LAYOUT$srcAllocation, OFFSET$srcAllocation, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public @Nullable VmaAllocation dstTmpAllocation() {
+        MemorySegment s = segment.asSlice(OFFSET$dstTmpAllocation, SIZE$dstTmpAllocation);
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VmaAllocation(s);
+    }
+
+    public void dstTmpAllocation(@Nullable VmaAllocation value) {
+        segment.set(LAYOUT$dstTmpAllocation, OFFSET$dstTmpAllocation, value != null ? value.segment() : MemorySegment.NULL);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("operation"),
+        ValueLayout.ADDRESS.withName("srcAllocation"),
+        ValueLayout.ADDRESS.withName("dstTmpAllocation")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$operation = PathElement.groupElement("operation");
+    public static final PathElement PATH$srcAllocation = PathElement.groupElement("srcAllocation");
+    public static final PathElement PATH$dstTmpAllocation = PathElement.groupElement("dstTmpAllocation");
 
+    public static final OfInt LAYOUT$operation = (OfInt) LAYOUT.select(PATH$operation);
+    public static final AddressLayout LAYOUT$srcAllocation = (AddressLayout) LAYOUT.select(PATH$srcAllocation);
+    public static final AddressLayout LAYOUT$dstTmpAllocation = (AddressLayout) LAYOUT.select(PATH$dstTmpAllocation);
 
+    public static final long SIZE$operation = LAYOUT$operation.byteSize();
+    public static final long SIZE$srcAllocation = LAYOUT$srcAllocation.byteSize();
+    public static final long SIZE$dstTmpAllocation = LAYOUT$dstTmpAllocation.byteSize();
 
+    public static final long OFFSET$operation = LAYOUT.byteOffset(PATH$operation);
+    public static final long OFFSET$srcAllocation = LAYOUT.byteOffset(PATH$srcAllocation);
+    public static final long OFFSET$dstTmpAllocation = LAYOUT.byteOffset(PATH$dstTmpAllocation);
 }

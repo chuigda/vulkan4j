@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaPoolCreateInfo} structure in native memory.
 ///
@@ -24,6 +25,14 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaPoolCreateInfo {
+///     uint32_t memoryTypeIndex; // @link substring="memoryTypeIndex" target="#memoryTypeIndex"
+///     VmaPoolCreateFlags flags; // @link substring="VmaPoolCreateFlags" target="VmaPoolCreateFlags" @link substring="flags" target="#flags"
+///     VkDeviceSize blockSize; // @link substring="blockSize" target="#blockSize"
+///     size_t minBlockCount; // @link substring="minBlockCount" target="#minBlockCount"
+///     size_t maxBlockCount; // @link substring="maxBlockCount" target="#maxBlockCount"
+///     float priority; // @link substring="priority" target="#priority"
+///     VkDeviceSize minAllocationAlignment; // @link substring="minAllocationAlignment" target="#minAllocationAlignment"
+///     void* pMemoryAllocateNext; // optional // @link substring="pMemoryAllocateNext" target="#pMemoryAllocateNext"
 /// } VmaPoolCreateInfo;
 /// }
 ///
@@ -138,10 +147,117 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @Unsigned int memoryTypeIndex() {
+        return segment.get(LAYOUT$memoryTypeIndex, OFFSET$memoryTypeIndex);
+    }
+
+    public void memoryTypeIndex(@Unsigned int value) {
+        segment.set(LAYOUT$memoryTypeIndex, OFFSET$memoryTypeIndex, value);
+    }
+
+    public @EnumType(VmaPoolCreateFlags.class) int flags() {
+        return segment.get(LAYOUT$flags, OFFSET$flags);
+    }
+
+    public void flags(@EnumType(VmaPoolCreateFlags.class) int value) {
+        segment.set(LAYOUT$flags, OFFSET$flags, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long blockSize() {
+        return segment.get(LAYOUT$blockSize, OFFSET$blockSize);
+    }
+
+    public void blockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$blockSize, OFFSET$blockSize, value);
+    }
+
+    public @Unsigned long minBlockCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$minBlockCount);
+    }
+
+    public void minBlockCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$minBlockCount, value);
+    }
+
+    public @Unsigned long maxBlockCount() {
+        return NativeLayout.readCSizeT(segment, OFFSET$maxBlockCount);
+    }
+
+    public void maxBlockCount(@Unsigned long value) {
+        NativeLayout.writeCSizeT(segment, OFFSET$maxBlockCount, value);
+    }
+
+    public float priority() {
+        return segment.get(LAYOUT$priority, OFFSET$priority);
+    }
+
+    public void priority(float value) {
+        segment.set(LAYOUT$priority, OFFSET$priority, value);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long minAllocationAlignment() {
+        return segment.get(LAYOUT$minAllocationAlignment, OFFSET$minAllocationAlignment);
+    }
+
+    public void minAllocationAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$minAllocationAlignment, OFFSET$minAllocationAlignment, value);
+    }
+
+    public @Pointer(comment="void*") MemorySegment pMemoryAllocateNext() {
+        return segment.get(LAYOUT$pMemoryAllocateNext, OFFSET$pMemoryAllocateNext);
+    }
+
+    public void pMemoryAllocateNext(@Pointer(comment="void*") MemorySegment value) {
+        segment.set(LAYOUT$pMemoryAllocateNext, OFFSET$pMemoryAllocateNext, value);
+    }
+
+    public void pMemoryAllocateNext(@Nullable IPointer pointer) {
+        pMemoryAllocateNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("memoryTypeIndex"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_LONG.withName("blockSize"),
+        NativeLayout.C_SIZE_T.withName("minBlockCount"),
+        NativeLayout.C_SIZE_T.withName("maxBlockCount"),
+        ValueLayout.JAVA_FLOAT.withName("priority"),
+        ValueLayout.JAVA_LONG.withName("minAllocationAlignment"),
+        ValueLayout.ADDRESS.withName("pMemoryAllocateNext")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$memoryTypeIndex = PathElement.groupElement("memoryTypeIndex");
+    public static final PathElement PATH$flags = PathElement.groupElement("flags");
+    public static final PathElement PATH$blockSize = PathElement.groupElement("blockSize");
+    public static final PathElement PATH$minBlockCount = PathElement.groupElement("minBlockCount");
+    public static final PathElement PATH$maxBlockCount = PathElement.groupElement("maxBlockCount");
+    public static final PathElement PATH$priority = PathElement.groupElement("priority");
+    public static final PathElement PATH$minAllocationAlignment = PathElement.groupElement("minAllocationAlignment");
+    public static final PathElement PATH$pMemoryAllocateNext = PathElement.groupElement("pMemoryAllocateNext");
 
+    public static final OfInt LAYOUT$memoryTypeIndex = (OfInt) LAYOUT.select(PATH$memoryTypeIndex);
+    public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
+    public static final OfLong LAYOUT$blockSize = (OfLong) LAYOUT.select(PATH$blockSize);
+    public static final OfFloat LAYOUT$priority = (OfFloat) LAYOUT.select(PATH$priority);
+    public static final OfLong LAYOUT$minAllocationAlignment = (OfLong) LAYOUT.select(PATH$minAllocationAlignment);
+    public static final AddressLayout LAYOUT$pMemoryAllocateNext = (AddressLayout) LAYOUT.select(PATH$pMemoryAllocateNext);
 
+    public static final long SIZE$memoryTypeIndex = LAYOUT$memoryTypeIndex.byteSize();
+    public static final long SIZE$flags = LAYOUT$flags.byteSize();
+    public static final long SIZE$blockSize = LAYOUT$blockSize.byteSize();
+    public static final long SIZE$minBlockCount = NativeLayout.C_SIZE_T.byteSize();
+    public static final long SIZE$maxBlockCount = NativeLayout.C_SIZE_T.byteSize();
+    public static final long SIZE$priority = LAYOUT$priority.byteSize();
+    public static final long SIZE$minAllocationAlignment = LAYOUT$minAllocationAlignment.byteSize();
+    public static final long SIZE$pMemoryAllocateNext = LAYOUT$pMemoryAllocateNext.byteSize();
 
+    public static final long OFFSET$memoryTypeIndex = LAYOUT.byteOffset(PATH$memoryTypeIndex);
+    public static final long OFFSET$flags = LAYOUT.byteOffset(PATH$flags);
+    public static final long OFFSET$blockSize = LAYOUT.byteOffset(PATH$blockSize);
+    public static final long OFFSET$minBlockCount = LAYOUT.byteOffset(PATH$minBlockCount);
+    public static final long OFFSET$maxBlockCount = LAYOUT.byteOffset(PATH$maxBlockCount);
+    public static final long OFFSET$priority = LAYOUT.byteOffset(PATH$priority);
+    public static final long OFFSET$minAllocationAlignment = LAYOUT.byteOffset(PATH$minAllocationAlignment);
+    public static final long OFFSET$pMemoryAllocateNext = LAYOUT.byteOffset(PATH$pMemoryAllocateNext);
 }

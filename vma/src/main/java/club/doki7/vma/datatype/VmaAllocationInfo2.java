@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaAllocationInfo2} structure in native memory.
 ///
@@ -24,6 +25,9 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaAllocationInfo2 {
+///     VmaAllocationInfo allocationInfo; // @link substring="VmaAllocationInfo" target="VmaAllocationInfo" @link substring="allocationInfo" target="#allocationInfo"
+///     VkDeviceSize blockSize; // @link substring="blockSize" target="#blockSize"
+///     VkBool32 dedicatedMemory; // @link substring="dedicatedMemory" target="#dedicatedMemory"
 /// } VmaAllocationInfo2;
 /// }
 ///
@@ -138,10 +142,50 @@ public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVma
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @NotNull VmaAllocationInfo allocationInfo() {
+        return new VmaAllocationInfo(segment.asSlice(OFFSET$allocationInfo, LAYOUT$allocationInfo));
+    }
+
+    public void allocationInfo(@NotNull VmaAllocationInfo value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$allocationInfo, SIZE$allocationInfo);
+    }
+
+    public @NativeType("VkDeviceSize") @Unsigned long blockSize() {
+        return segment.get(LAYOUT$blockSize, OFFSET$blockSize);
+    }
+
+    public void blockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+        segment.set(LAYOUT$blockSize, OFFSET$blockSize, value);
+    }
+
+    public @NativeType("VkBool32") @Unsigned int dedicatedMemory() {
+        return segment.get(LAYOUT$dedicatedMemory, OFFSET$dedicatedMemory);
+    }
+
+    public void dedicatedMemory(@NativeType("VkBool32") @Unsigned int value) {
+        segment.set(LAYOUT$dedicatedMemory, OFFSET$dedicatedMemory, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        VmaAllocationInfo.LAYOUT.withName("allocationInfo"),
+        ValueLayout.JAVA_LONG.withName("blockSize"),
+        ValueLayout.JAVA_INT.withName("dedicatedMemory")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$allocationInfo = PathElement.groupElement("allocationInfo");
+    public static final PathElement PATH$blockSize = PathElement.groupElement("blockSize");
+    public static final PathElement PATH$dedicatedMemory = PathElement.groupElement("dedicatedMemory");
 
+    public static final StructLayout LAYOUT$allocationInfo = (StructLayout) LAYOUT.select(PATH$allocationInfo);
+    public static final OfLong LAYOUT$blockSize = (OfLong) LAYOUT.select(PATH$blockSize);
+    public static final OfInt LAYOUT$dedicatedMemory = (OfInt) LAYOUT.select(PATH$dedicatedMemory);
 
+    public static final long SIZE$allocationInfo = LAYOUT$allocationInfo.byteSize();
+    public static final long SIZE$blockSize = LAYOUT$blockSize.byteSize();
+    public static final long SIZE$dedicatedMemory = LAYOUT$dedicatedMemory.byteSize();
 
+    public static final long OFFSET$allocationInfo = LAYOUT.byteOffset(PATH$allocationInfo);
+    public static final long OFFSET$blockSize = LAYOUT.byteOffset(PATH$blockSize);
+    public static final long OFFSET$dedicatedMemory = LAYOUT.byteOffset(PATH$dedicatedMemory);
 }

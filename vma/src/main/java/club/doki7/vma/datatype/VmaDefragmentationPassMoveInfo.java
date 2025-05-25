@@ -17,6 +17,7 @@ import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import static club.doki7.vulkan.VkConstants.*;
 
 /// Represents a pointer to a {@code VmaDefragmentationPassMoveInfo} structure in native memory.
 ///
@@ -24,6 +25,8 @@ import club.doki7.vulkan.handle.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VmaDefragmentationPassMoveInfo {
+///     uint32_t moveCount; // @link substring="moveCount" target="#moveCount"
+///     VmaDefragmentationMove* pMoves; // optional // @link substring="VmaDefragmentationMove" target="VmaDefragmentationMove" @link substring="pMoves" target="#pMoves"
 /// } VmaDefragmentationPassMoveInfo;
 /// }
 ///
@@ -138,10 +141,60 @@ public record VmaDefragmentationPassMoveInfo(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public static final StructLayout LAYOUT = NativeLayout.structLayout();
+    public @Unsigned int moveCount() {
+        return segment.get(LAYOUT$moveCount, OFFSET$moveCount);
+    }
+
+    public void moveCount(@Unsigned int value) {
+        segment.set(LAYOUT$moveCount, OFFSET$moveCount, value);
+    }
+
+    public void pMoves(@Nullable IVmaDefragmentationMove value) {
+        MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
+        pMovesRaw(s);
+    }
+
+    @Unsafe public @Nullable VmaDefragmentationMove.Ptr pMoves(int assumedCount) {
+        MemorySegment s = pMovesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+
+        s = s.reinterpret(assumedCount * VmaDefragmentationMove.BYTES);
+        return new VmaDefragmentationMove.Ptr(s);
+    }
+
+    public @Nullable VmaDefragmentationMove pMoves() {
+        MemorySegment s = pMovesRaw();
+        if (s.equals(MemorySegment.NULL)) {
+            return null;
+        }
+        return new VmaDefragmentationMove(s);
+    }
+
+    public @Pointer(target=VmaDefragmentationMove.class) MemorySegment pMovesRaw() {
+        return segment.get(LAYOUT$pMoves, OFFSET$pMoves);
+    }
+
+    public void pMovesRaw(@Pointer(target=VmaDefragmentationMove.class) MemorySegment value) {
+        segment.set(LAYOUT$pMoves, OFFSET$pMoves, value);
+    }
+
+    public static final StructLayout LAYOUT = NativeLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("moveCount"),
+        ValueLayout.ADDRESS.withTargetLayout(VmaDefragmentationMove.LAYOUT).withName("pMoves")
+    );
     public static final long BYTES = LAYOUT.byteSize();
 
+    public static final PathElement PATH$moveCount = PathElement.groupElement("moveCount");
+    public static final PathElement PATH$pMoves = PathElement.groupElement("pMoves");
 
+    public static final OfInt LAYOUT$moveCount = (OfInt) LAYOUT.select(PATH$moveCount);
+    public static final AddressLayout LAYOUT$pMoves = (AddressLayout) LAYOUT.select(PATH$pMoves);
 
+    public static final long SIZE$moveCount = LAYOUT$moveCount.byteSize();
+    public static final long SIZE$pMoves = LAYOUT$pMoves.byteSize();
 
+    public static final long OFFSET$moveCount = LAYOUT.byteOffset(PATH$moveCount);
+    public static final long OFFSET$pMoves = LAYOUT.byteOffset(PATH$pMoves);
 }
