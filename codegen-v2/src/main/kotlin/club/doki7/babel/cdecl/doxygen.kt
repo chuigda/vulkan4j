@@ -99,6 +99,9 @@ fun doxygen2javadoc(doxygen: String): String {
     }
 
     return tmp
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace("&", "&amp;")
         .replace("\\brief", "")
         .replace("\\ref", "")
         .replace("\\note", "@apiNode")

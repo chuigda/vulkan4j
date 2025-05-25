@@ -349,9 +349,9 @@ public final class VMA {
     /// This algorithm tries to find a memory type that:
     ///
     /// - Is allowed by memoryTypeBits.
-    /// - Contains all the flags from pAllocationCreateInfo->requiredFlags.
+    /// - Contains all the flags from pAllocationCreateInfo-&amp;gt;requiredFlags.
     /// - Matches intended usage.
-    /// - Has as many flags from pAllocationCreateInfo->preferredFlags as possible.
+    /// - Has as many flags from pAllocationCreateInfo-&amp;gt;preferredFlags as possible.
     ///
     /// @return Returns VK_ERROR_FEATURE_NOT_PRESENT if not found. Receiving such result
     /// from this function or any other allocating function probably means that your
@@ -1449,7 +1449,7 @@ public final class VMA {
     /// This function is similar to vmaBindBufferMemory(), but it provides additional parameters.
     ///
     /// If `pNext` is not null, {@code VmaAllocator} object must have been created with {@code VMA_ALLOCATOR_CREATE_KHR_BIND_MEMORY2_BIT} flag
-    /// or with VmaAllocatorCreateInfo::vulkanApiVersion `>= VK_API_VERSION_1_1`. Otherwise the call fails.
+    /// or with VmaAllocatorCreateInfo::vulkanApiVersion `&amp;gt;= VK_API_VERSION_1_1`. Otherwise the call fails.
     ///
     public @EnumType(VkResult.class) int bindBufferMemory2(
         VmaAllocator allocator,
@@ -1512,7 +1512,7 @@ public final class VMA {
     /// This function is similar to vmaBindImageMemory(), but it provides additional parameters.
     ///
     /// If `pNext` is not null, {@code VmaAllocator} object must have been created with {@code VMA_ALLOCATOR_CREATE_KHR_BIND_MEMORY2_BIT} flag
-    /// or with VmaAllocatorCreateInfo::vulkanApiVersion `>= VK_API_VERSION_1_1`. Otherwise the call fails.
+    /// or with VmaAllocatorCreateInfo::vulkanApiVersion `&amp;gt;= VK_API_VERSION_1_1`. Otherwise the call fails.
     ///
     public @EnumType(VkResult.class) int bindImageMemory2(
         VmaAllocator allocator,

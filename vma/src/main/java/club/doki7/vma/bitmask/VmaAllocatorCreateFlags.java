@@ -30,7 +30,7 @@ public final class VmaAllocatorCreateFlags {
     ///
     /// You may set this flag only if you:
     ///
-    /// 1. (For Vulkan version < 1.2) Found as available and enabled device extension
+    /// 1. (For Vulkan version &amp;lt; 1.2) Found as available and enabled device extension
     /// VK_KHR_buffer_device_address.
     /// This extension is promoted to core Vulkan 1.2.
     /// 2. Found as available and enabled device feature `VkPhysicalDeviceBufferDeviceAddressFeatures::bufferDeviceAddress`.
@@ -117,7 +117,7 @@ public final class VmaAllocatorCreateFlags {
     /// When this flag is set, you can experience following warnings reported by Vulkan
     /// validation layer. You can ignore them.
     ///
-    /// > vkBindBufferMemory(): Binding memory to buffer 0x2d but vkGetBufferMemoryRequirements() has not been called on that buffer.
+    /// &amp;gt; vkBindBufferMemory(): Binding memory to buffer 0x2d but vkGetBufferMemoryRequirements() has not been called on that buffer.
     public static final int KHR_DEDICATED_ALLOCATION = 0x2;
 
     /// Enables usage of VK_KHR_external_memory_win32 extension in the library.

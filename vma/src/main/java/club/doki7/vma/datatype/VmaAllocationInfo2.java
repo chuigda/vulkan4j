@@ -61,7 +61,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// <li>{@link #dedicatedMemory} `VK_TRUE` if the allocation has dedicated memory, `VK_FALSE` if it was placed as part of a larger memory block.
 ///
 /// When `VK_TRUE`, it also means `VkMemoryDedicatedAllocateInfo` was used when creating the allocation
-/// (if VK_KHR_dedicated_allocation extension or Vulkan version >= 1.1 is enabled).
+/// (if VK_KHR_dedicated_allocation extension or Vulkan version &amp;gt;= 1.1 is enabled).
 /// </li>
 /// </ul>
 ///
