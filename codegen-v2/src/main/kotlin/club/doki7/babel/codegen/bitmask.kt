@@ -21,6 +21,13 @@ fun generateBitmask(
     +"package ${codegenOptions.packageName}.bitmask;"
     +""
 
+    if (codegenOptions.extraImport.isNotEmpty()) {
+        for (import in codegenOptions.extraImport) {
+            +"import $import;"
+        }
+        +""
+    }
+
     if (bitflags.isNotEmpty()) {
         +"import club.doki7.ffm.annotation.*;"
         +""

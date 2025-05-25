@@ -15,6 +15,7 @@ import club.doki7.babel.registry.Identifier
 import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.registry.intern
+import club.doki7.babel.util.Either
 import club.doki7.babel.util.render
 import java.io.File
 
@@ -86,15 +87,34 @@ fun vmaMain(vulkanRegistry: RegistryBase) {
     File("$packageDir/${codegenOptions.functionTypeClassName}.java")
         .writeText(render(functionTypeDoc))
 
-    val bitmaskAndEnumCodegenOptiosn = codegenOptions.copy(extraImport = emptyList())
+    val bitmaskAndEnumCodegenOptions = codegenOptions.copy(extraImport = emptyList())
     for (bitmask in registry.bitmasks.values) {
-        val bitmaskDoc = generateBitmask(bitmask, bitmaskAndEnumCodegenOptiosn)
+        if (bitmask.name.original == "VmaVirtualAllocationCreateFlags") {
+            continue
+        }
+
+        val bitmaskDoc = generateBitmask(bitmask, bitmaskAndEnumCodegenOptions)
         File("$packageDir/bitmask/${bitmask.name}.java")
             .writeText(render(bitmaskDoc))
     }
 
+    do {
+        val bitmask = registry.bitmasks["VmaVirtualAllocationCreateFlags".intern()]!!
+        bitmask.bitflags.forEach {
+            if (it.value is Either.Right) {
+                for ((idx, value) in it.value.value.withIndex()) {
+                    it.value.value[idx] = "VmaAllocationCreateFlags." +
+                            value.removePrefix("VMA_ALLOCATION_CREATE_")
+                }
+            }
+        }
+        val bitmaskDoc = generateBitmask(bitmask, bitmaskAndEnumCodegenOptions)
+        File("$packageDir/bitmask/VmaVirtualAllocationCreateFlags.java")
+            .writeText(render(bitmaskDoc))
+    } while (false)
+
     for (enumeration in registry.enumerations.values) {
-        val enumerationDoc = generateEnumeration(registry, enumeration, bitmaskAndEnumCodegenOptiosn)
+        val enumerationDoc = generateEnumeration(registry, enumeration, bitmaskAndEnumCodegenOptions)
         File("$packageDir/enumtype/${enumeration.name}.java")
             .writeText(render(enumerationDoc))
     }

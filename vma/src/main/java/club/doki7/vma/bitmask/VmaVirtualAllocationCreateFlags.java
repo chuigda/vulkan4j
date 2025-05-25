@@ -7,11 +7,11 @@ import java.util.List;
 
 public final class VmaVirtualAllocationCreateFlags {
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
-    public static final int STRATEGY_MASK = STRATEGY_MASK;
-    public static final int STRATEGY_MIN_MEMORY = VMA_ALLOCATION_CREATE_STRATEGY_MIN_MEMORY;
-    public static final int STRATEGY_MIN_OFFSET = VMA_ALLOCATION_CREATE_STRATEGY_MIN_OFFSET;
-    public static final int STRATEGY_MIN_TIME = VMA_ALLOCATION_CREATE_STRATEGY_MIN_TIME;
-    public static final int UPPER_ADDRESS = VMA_ALLOCATION_CREATE_UPPER_ADDRESS;
+    public static final int STRATEGY_MASK = VmaAllocationCreateFlags.STRATEGY_MASK;
+    public static final int STRATEGY_MIN_MEMORY = VmaAllocationCreateFlags.STRATEGY_MIN_MEMORY;
+    public static final int STRATEGY_MIN_OFFSET = VmaAllocationCreateFlags.STRATEGY_MIN_OFFSET;
+    public static final int STRATEGY_MIN_TIME = VmaAllocationCreateFlags.STRATEGY_MIN_TIME;
+    public static final int UPPER_ADDRESS = VmaAllocationCreateFlags.UPPER_ADDRESS;
 
     public static String explain(@EnumType(VmaVirtualAllocationCreateFlags.class) int flags) {
         List<String> detectedFlagBits = new ArrayList<>();
