@@ -1282,16 +1282,15 @@ public final class VMA {
 
     /// Begins defragmentation process.
     ///
-    /// - `VK_SUCCESS` if defragmentation can begin.
-    /// - `VK_ERROR_FEATURE_NOT_PRESENT` if defragmentation is not supported.
-    ///
     /// For more information about defragmentation, see documentation chapter:
     /// [Defragmentation](@ref defragmentation).
     ///
     /// @param allocator Allocator object.
     /// @param pInfo Structure filled with parameters of defragmentation.
     /// @param pContext Context object that must be passed to vmaEndDefragmentation() to finish defragmentation.
-    /// @returns
+    /// @return
+    /// <li>`VK_SUCCESS` if defragmentation can begin.</li>
+    /// <li>`VK_ERROR_FEATURE_NOT_PRESENT` if defragmentation is not supported.</li>
     public @EnumType(VkResult.class) int beginDefragmentation(
         VmaAllocator allocator,
         @Pointer IVmaDefragmentationInfo pInfo,
@@ -1335,14 +1334,12 @@ public final class VMA {
 
     /// Starts single defragmentation pass.
     ///
-    /// - `VK_SUCCESS` if no more moves are possible. Then you can omit call to vmaEndDefragmentationPass() and simply end whole defragmentation.
-    /// - `VK_INCOMPLETE` if there are pending moves returned in `pPassInfo`. You need to perform them, call vmaEndDefragmentationPass(),
-    /// and then preferably try another pass with vmaBeginDefragmentationPass().
-    ///
     /// @param allocator Allocator object.
     /// @param context Context object that has been created by vmaBeginDefragmentation().
     /// @param pPassInfo Computed information for current pass.
-    /// @returns
+    /// @return
+    /// <li>`VK_SUCCESS` if no more moves are possible. Then you can omit call to vmaEndDefragmentationPass() and simply end whole defragmentation.</li>
+    /// <li>`VK_INCOMPLETE` if there are pending moves returned in `pPassInfo`. You need to perform them, call vmaEndDefragmentationPass(),</li>
     public @EnumType(VkResult.class) int beginDefragmentationPass(
         VmaAllocator allocator,
         VmaDefragmentationContext context,

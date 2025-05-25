@@ -168,9 +168,21 @@ private fun generateCommandWrapper(
         val atLines = mutableListOf<String>()
 
         var lastLineWasEmpty = false
-        for (line in loweredCommand.command.doc) {
+        var index = 0
+        while (index < loweredCommand.command.doc!!.size) {
+            val line = loweredCommand.command.doc!![index++].trim()
             if (line.startsWith("@")) {
                 atLines.add(line)
+                if (line == "@return") {
+                    while (true) {
+                        val returnLine = loweredCommand.command.doc!![index++].trim()
+                        if (returnLine.startsWith("- ")) {
+                            atLines.add(returnLine)
+                        } else {
+                            break
+                        }
+                    }
+                }
             } else if (line.isBlank()) {
                 if (!lastLineWasEmpty) {
                     nonAtLines.add("")
@@ -198,7 +210,11 @@ private fun generateCommandWrapper(
         }
         if (atLines.isNotEmpty()) {
             for (line in atLines) {
-                +"/// $line"
+                if (line.startsWith("- ")) {
+                    +"/// <li>${line.substring(2)}</li>"
+                } else {
+                    +"/// $line"
+                }
             }
         }
     }

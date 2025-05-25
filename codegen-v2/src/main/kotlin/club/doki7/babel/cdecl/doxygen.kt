@@ -107,6 +107,7 @@ fun doxygen2javadoc(doxygen: String): String {
         .replace("\\note", "@apiNode")
         .replace("\\param[out]", "@param")
         .replace("\\param", "@param")
+        .replace("\\returns", "@return")
         .replace("\\return", "@return")
         .replace("\\deprecated", "@deprecated")
         .replace("\\section", "###")
