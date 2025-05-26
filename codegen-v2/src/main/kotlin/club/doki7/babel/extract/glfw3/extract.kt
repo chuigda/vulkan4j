@@ -4,18 +4,22 @@ import club.doki7.babel.cdecl.*
 import club.doki7.babel.extract.*
 import club.doki7.babel.extract.vma.log
 import club.doki7.babel.registry.*
+import java.util.logging.Logger
 import kotlin.io.path.Path
 
-fun main() {
-    val content = Path("codegen-v2/input/glfw3.h").toFile().readText()
-    val registry = extractGLFWHeader(content)
-    return
-}
+private val inputDir = Path("codegen-v2/input")
+internal val log = Logger.getLogger("c.d.b.extract.vma")
 
-fun extractGLFWHeader(fileContent: String): Registry<EmptyMergeable> {
+fun extractGLFWHeader(): Registry<EmptyMergeable> {
+    val fileContent = inputDir.resolve("glfw3.h").toFile().readText() +
+            "\n" +
+            inputDir.resolve("glfw3native.h").toFile().readText()
+
     val lines = fileContent.splitToSequence('\n').map(String::trim)
         .toList()
-    return Glfw3HeaderParser(lines).parse().collect()
+    val registry = Glfw3HeaderParser(lines).parse().collect()
+    registry.renameEntities()
+    return registry
 }
 
 /**
@@ -168,7 +172,7 @@ class Glfw3StructParser<P : HeaderParser<*>>(delegate: P) :
             }
 
             else -> {
-                // TODO: unknown line!
+                log.warning("glfw3.h: unknown line: $currentLine")
                 nextLine()      // consume
             }
         }
@@ -228,12 +232,14 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
 
                 val name = parts[1].trim()
                 val value = parts[2].trim()
-                val constant = Constant(name, IdentifierType("int"), value)        // FIXME: type
+                val constant = Constant(name, IdentifierType("int32_t"), value)
                 constants[constant.name] = constant
             }
 
             currentLine.startsWith("GLFWAPI ") -> {
                 // TODO: this may not work well with multi-line declaration, lucky there isn't for now.
+                // This is going to be fixed in a further `babel` release. Now we can just use the GLFW3 header as
+                // it is.
                 val (decl, _) = parseFunctionDecl(listOf(currentLine), 0)
                 val cmd = morphFunctionDecl(decl)
                 commands[cmd.name] = cmd
