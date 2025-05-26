@@ -391,4 +391,66 @@ class TestParseTypedef {
         assertEquals("void", param5PointeeType.ident)
         assertTrue(param5PointeeType.trivia.isEmpty())
     }
+
+    @Test
+    fun test3() {
+        val tokenizer = Tokenizer(listOf("typedef void (* GLFWdropfun)(GLFWwindow* window, int path_count, const char* paths[]);"), 0)
+        val typedefDecl = parseTypedefDecl(tokenizer)
+
+        assertEquals("GLFWdropfun", typedefDecl.name)
+        assertTrue(typedefDecl.aliasedType is RawFunctionType)
+        assertTrue(typedefDecl.trivia.isEmpty())
+
+        val functionType = typedefDecl.aliasedType
+        assertTrue(functionType.trivia.isEmpty())
+
+        // Assert return type: void
+        assertTrue(functionType.returnType is RawIdentifierType)
+        val returnType = functionType.returnType as RawIdentifierType
+        assertEquals("void", returnType.ident)
+        assertFalse(returnType.unsigned)
+        assertTrue(returnType.trivia.isEmpty())
+
+        // Assert parameters
+        assertEquals(3, functionType.params.size)
+        val params = functionType.params
+
+        // Param 0: GLFWwindow* window
+        assertEquals("window", params[0].first)
+        assertTrue(params[0].second is RawPointerType)
+        val param0Type = params[0].second as RawPointerType
+        assertFalse(param0Type.const)
+        assertTrue(param0Type.trivia.isEmpty())
+        assertTrue(param0Type.pointee is RawIdentifierType)
+        val param0Pointee = param0Type.pointee as RawIdentifierType
+        assertEquals("GLFWwindow", param0Pointee.ident)
+        assertFalse(param0Pointee.unsigned)
+        assertTrue(param0Pointee.trivia.isEmpty())
+
+        // Param 1: int path_count
+        assertEquals("path_count", params[1].first)
+        assertTrue(params[1].second is RawIdentifierType)
+        val param1Type = params[1].second as RawIdentifierType
+        assertEquals("int", param1Type.ident)
+        assertFalse(param1Type.unsigned)
+        assertTrue(param1Type.trivia.isEmpty())
+
+        // Param 2: const char* paths[]
+        assertEquals("paths", params[2].first)
+        assertTrue(params[2].second is RawArrayType)
+        val param2Type = params[2].second as RawArrayType
+        assertEquals("", param2Type.size)
+        assertTrue(param2Type.trivia.isEmpty())
+        assertTrue(param2Type.element is RawPointerType)
+        val param2ElementType = param2Type.element as RawPointerType
+        assertTrue(param2ElementType.const)
+        assertTrue(param2ElementType.trivia.isEmpty())
+        assertTrue(param2ElementType.pointee is RawIdentifierType)
+        val param2ElementPointee = param2ElementType.pointee as RawIdentifierType
+        assertEquals("char", param2ElementPointee.ident)
+        assertFalse(param2ElementPointee.unsigned)
+        assertTrue(param2ElementPointee.trivia.isEmpty())
+
+        assertEquals(TokenKind.EOI, tokenizer.next().kind)
+    }
 }

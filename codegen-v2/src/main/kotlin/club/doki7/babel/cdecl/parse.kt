@@ -138,12 +138,11 @@ internal fun parseTypedefDecl(tokenizer: Tokenizer): TypedefDecl {
         skipTrivia(tokenizer, triviaList)
         expectAndConsume(TokenKind.SYMBOL, tokenizer, ")")
 
-        // 解析函数参数
         val params = parseFunctionParamList(tokenizer)
         val paramsList = params.map { Pair(it.name, it.type) }
 
         skipTrivia(tokenizer, triviaList)
-        expectAndConsume(TokenKind.SYMBOL, tokenizer, ";") // 消费 ";"
+        expectAndConsume(TokenKind.SYMBOL, tokenizer, ";")
 
         val functionType = RawFunctionType(type, paramsList, mutableListOf())
         return TypedefDecl(nameToken.value, functionType, triviaList)
@@ -151,7 +150,7 @@ internal fun parseTypedefDecl(tokenizer: Tokenizer): TypedefDecl {
         // 处理普通 typedef
         val nameToken = expectAndConsume(TokenKind.IDENT, tokenizer)
         skipTrivia(tokenizer, triviaList)
-        expectAndConsume(TokenKind.SYMBOL, tokenizer, ";") // 消费 ";"
+        expectAndConsume(TokenKind.SYMBOL, tokenizer, ";")
 
         return TypedefDecl(nameToken.value, type, triviaList)
     }
@@ -163,10 +162,10 @@ private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {
     while (true) {
         val paramTriviaList = mutableListOf<String>()
 
-        val paramType = parseType(tokenizer)
+        var paramType = parseType(tokenizer)
         skipTrivia(tokenizer, paramTriviaList)
 
-        val peekedToken = tokenizer.peek()
+        var peekedToken = tokenizer.peek()
         if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == ")") {
             if (paramType is RawIdentifierType && paramType.ident == "void") {
                 if (params.isNotEmpty()) {
@@ -181,15 +180,27 @@ private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {
         val paramName = expectAndConsume(TokenKind.IDENT, tokenizer)
         skipTrivia(tokenizer, paramTriviaList)
 
-        val peekedToken2 = tokenizer.peek()
-        if (peekedToken2.kind == TokenKind.SYMBOL && peekedToken2.value == ",") {
+        peekedToken = tokenizer.peek()
+        if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == "[") {
+            tokenizer.next()
+            skipTrivia(tokenizer, paramTriviaList)
+
+            // Currently, appointing array size in function parameters is not supported.
+            expectAndConsume(TokenKind.SYMBOL, tokenizer, "]")
+            skipTrivia(tokenizer, paramTriviaList)
+
+            paramType = RawArrayType(paramType, "", mutableListOf())
+            peekedToken = tokenizer.peek()
+        }
+
+        if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == ",") {
             tokenizer.next()
             params.add(VarDecl(paramName.value, paramType, paramTriviaList))
-        } else if (peekedToken2.kind == TokenKind.SYMBOL && peekedToken2.value == ")") {
+        } else if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == ")") {
             params.add(VarDecl(paramName.value, paramType, paramTriviaList))
             break
         } else {
-            syntaxError("Expected ',' or ')' after parameter declaration", peekedToken2)
+            syntaxError("Expected ',' or ')' after parameter declaration", peekedToken)
         }
     }
 
