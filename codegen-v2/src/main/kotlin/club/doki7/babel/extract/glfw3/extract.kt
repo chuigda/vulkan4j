@@ -187,6 +187,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
     private val structures: MutableMap<Identifier, Structure> = mutableMapOf()
     private val opaqueTypedefs: MutableMap<Identifier, OpaqueTypedef> = mutableMapOf()
     private val constants: MutableMap<Identifier, Constant> = mutableMapOf()
+    private val commands: MutableMap<Identifier, Command> = mutableMapOf()
     private var savedDoc: List<String>? = null
 
     fun getDocument(): List<String>? {
@@ -196,7 +197,19 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
     }
 
     override fun collect(): Registry<EmptyMergeable> {
-        TODO()
+        return Registry(
+            mutableMapOf(),
+            mutableMapOf(),
+            constants,
+            commands,
+            mutableMapOf(),
+            functionTypedefs,
+            mutableMapOf(),
+            opaqueTypedefs,
+            structures,
+            mutableMapOf(),
+            EmptyMergeable()
+        )
     }
 
     override fun parseOne(): Boolean {
@@ -209,7 +222,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
         val currentLine = nextLine() ?: return false
 
         when {
-            currentLine.startsWith("#define ") -> {
+            currentLine.startsWith("#define GLFW_") -> {
                 val parts = currentLine.split(' ', limit = 3)
                 if (parts.size < 3) return true
 
@@ -220,7 +233,11 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
             }
 
             currentLine.startsWith("GLFWAPI ") -> {
-                // TODO
+                // TODO: this may not work well with multi-line declaration, lucky there isn't for now.
+                val theLine = currentLine.substring(8)
+                val (decl, _) = parseFunctionDecl(listOf(theLine), 0)
+                val cmd = morphFunctionDecl(decl)
+                commands[cmd.name] = cmd
             }
 
             else -> {
@@ -328,9 +345,5 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
         struct.doc = getDocument()
         structures[struct.name] = struct
         // after call holes
-    }
-
-    fun parseTypedef(kind: TypedefKind) {
-
     }
 }
