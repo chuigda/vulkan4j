@@ -234,8 +234,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
 
             currentLine.startsWith("GLFWAPI ") -> {
                 // TODO: this may not work well with multi-line declaration, lucky there isn't for now.
-                val theLine = currentLine.substring(8)
-                val (decl, _) = parseFunctionDecl(listOf(theLine), 0)
+                val (decl, _) = parseFunctionDecl(listOf(currentLine), 0)
                 val cmd = morphFunctionDecl(decl)
                 commands[cmd.name] = cmd
             }
