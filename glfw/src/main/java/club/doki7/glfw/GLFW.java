@@ -2,3205 +2,3532 @@ package club.doki7.glfw;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+import java.util.Objects;
 
 import org.jetbrains.annotations.Nullable;
-import tech.icey.panama.RawFunctionLoader;
-import tech.icey.panama.NativeLayout;
-import tech.icey.panama.annotation.*;
-import tech.icey.panama.buffer.*;
-import tech.icey.glfw.datatype.*;
-import tech.icey.glfw.handle.*;
-import tech.icey.vk4j.datatype.*;
-import tech.icey.vk4j.enumtype.*;
-import tech.icey.vk4j.handle.*;
+import club.doki7.ffm.NativeLayout;
+import club.doki7.ffm.RawFunctionLoader;
+import club.doki7.ffm.annotation.*;
+import club.doki7.ffm.ptr.*;
+import club.doki7.glfw.datatype.*;
 
 public final class GLFW {
-    public int glfwInit() {
-        try {
-            return (int) HANDLE$glfwInit.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
+    public GLFW(RawFunctionLoader loader) {
+        SEGMENT$glfwCreateCursor = loader.apply("glfwCreateCursor");
+        HANDLE$glfwCreateCursor = RawFunctionLoader.link(SEGMENT$glfwCreateCursor, Descriptors.DESCRIPTOR$glfwCreateCursor);
+        SEGMENT$glfwCreateStandardCursor = loader.apply("glfwCreateStandardCursor");
+        HANDLE$glfwCreateStandardCursor = RawFunctionLoader.link(SEGMENT$glfwCreateStandardCursor, Descriptors.DESCRIPTOR$glfwCreateStandardCursor);
+        SEGMENT$glfwCreateWindow = loader.apply("glfwCreateWindow");
+        HANDLE$glfwCreateWindow = RawFunctionLoader.link(SEGMENT$glfwCreateWindow, Descriptors.DESCRIPTOR$glfwCreateWindow);
+        SEGMENT$glfwCreateWindowSurface = loader.apply("glfwCreateWindowSurface");
+        HANDLE$glfwCreateWindowSurface = RawFunctionLoader.link(SEGMENT$glfwCreateWindowSurface, Descriptors.DESCRIPTOR$glfwCreateWindowSurface);
+        SEGMENT$glfwDefaultWindowHints = loader.apply("glfwDefaultWindowHints");
+        HANDLE$glfwDefaultWindowHints = RawFunctionLoader.link(SEGMENT$glfwDefaultWindowHints, Descriptors.DESCRIPTOR$glfwDefaultWindowHints);
+        SEGMENT$glfwDestroyCursor = loader.apply("glfwDestroyCursor");
+        HANDLE$glfwDestroyCursor = RawFunctionLoader.link(SEGMENT$glfwDestroyCursor, Descriptors.DESCRIPTOR$glfwDestroyCursor);
+        SEGMENT$glfwDestroyWindow = loader.apply("glfwDestroyWindow");
+        HANDLE$glfwDestroyWindow = RawFunctionLoader.link(SEGMENT$glfwDestroyWindow, Descriptors.DESCRIPTOR$glfwDestroyWindow);
+        SEGMENT$glfwExtensionSupported = loader.apply("glfwExtensionSupported");
+        HANDLE$glfwExtensionSupported = RawFunctionLoader.link(SEGMENT$glfwExtensionSupported, Descriptors.DESCRIPTOR$glfwExtensionSupported);
+        SEGMENT$glfwFocusWindow = loader.apply("glfwFocusWindow");
+        HANDLE$glfwFocusWindow = RawFunctionLoader.link(SEGMENT$glfwFocusWindow, Descriptors.DESCRIPTOR$glfwFocusWindow);
+        SEGMENT$glfwGetClipboardString = loader.apply("glfwGetClipboardString");
+        HANDLE$glfwGetClipboardString = RawFunctionLoader.link(SEGMENT$glfwGetClipboardString, Descriptors.DESCRIPTOR$glfwGetClipboardString);
+        SEGMENT$glfwGetCocoaMonitor = loader.apply("glfwGetCocoaMonitor");
+        HANDLE$glfwGetCocoaMonitor = RawFunctionLoader.link(SEGMENT$glfwGetCocoaMonitor, Descriptors.DESCRIPTOR$glfwGetCocoaMonitor);
+        SEGMENT$glfwGetCocoaView = loader.apply("glfwGetCocoaView");
+        HANDLE$glfwGetCocoaView = RawFunctionLoader.link(SEGMENT$glfwGetCocoaView, Descriptors.DESCRIPTOR$glfwGetCocoaView);
+        SEGMENT$glfwGetCocoaWindow = loader.apply("glfwGetCocoaWindow");
+        HANDLE$glfwGetCocoaWindow = RawFunctionLoader.link(SEGMENT$glfwGetCocoaWindow, Descriptors.DESCRIPTOR$glfwGetCocoaWindow);
+        SEGMENT$glfwGetCurrentContext = loader.apply("glfwGetCurrentContext");
+        HANDLE$glfwGetCurrentContext = RawFunctionLoader.link(SEGMENT$glfwGetCurrentContext, Descriptors.DESCRIPTOR$glfwGetCurrentContext);
+        SEGMENT$glfwGetCursorPos = loader.apply("glfwGetCursorPos");
+        HANDLE$glfwGetCursorPos = RawFunctionLoader.link(SEGMENT$glfwGetCursorPos, Descriptors.DESCRIPTOR$glfwGetCursorPos);
+        SEGMENT$glfwGetEGLContext = loader.apply("glfwGetEGLContext");
+        HANDLE$glfwGetEGLContext = RawFunctionLoader.link(SEGMENT$glfwGetEGLContext, Descriptors.DESCRIPTOR$glfwGetEGLContext);
+        SEGMENT$glfwGetEGLDisplay = loader.apply("glfwGetEGLDisplay");
+        HANDLE$glfwGetEGLDisplay = RawFunctionLoader.link(SEGMENT$glfwGetEGLDisplay, Descriptors.DESCRIPTOR$glfwGetEGLDisplay);
+        SEGMENT$glfwGetEGLSurface = loader.apply("glfwGetEGLSurface");
+        HANDLE$glfwGetEGLSurface = RawFunctionLoader.link(SEGMENT$glfwGetEGLSurface, Descriptors.DESCRIPTOR$glfwGetEGLSurface);
+        SEGMENT$glfwGetError = loader.apply("glfwGetError");
+        HANDLE$glfwGetError = RawFunctionLoader.link(SEGMENT$glfwGetError, Descriptors.DESCRIPTOR$glfwGetError);
+        SEGMENT$glfwGetFramebufferSize = loader.apply("glfwGetFramebufferSize");
+        HANDLE$glfwGetFramebufferSize = RawFunctionLoader.link(SEGMENT$glfwGetFramebufferSize, Descriptors.DESCRIPTOR$glfwGetFramebufferSize);
+        SEGMENT$glfwGetGLXContext = loader.apply("glfwGetGLXContext");
+        HANDLE$glfwGetGLXContext = RawFunctionLoader.link(SEGMENT$glfwGetGLXContext, Descriptors.DESCRIPTOR$glfwGetGLXContext);
+        SEGMENT$glfwGetGLXWindow = loader.apply("glfwGetGLXWindow");
+        HANDLE$glfwGetGLXWindow = RawFunctionLoader.link(SEGMENT$glfwGetGLXWindow, Descriptors.DESCRIPTOR$glfwGetGLXWindow);
+        SEGMENT$glfwGetGamepadName = loader.apply("glfwGetGamepadName");
+        HANDLE$glfwGetGamepadName = RawFunctionLoader.link(SEGMENT$glfwGetGamepadName, Descriptors.DESCRIPTOR$glfwGetGamepadName);
+        SEGMENT$glfwGetGamepadState = loader.apply("glfwGetGamepadState");
+        HANDLE$glfwGetGamepadState = RawFunctionLoader.link(SEGMENT$glfwGetGamepadState, Descriptors.DESCRIPTOR$glfwGetGamepadState);
+        SEGMENT$glfwGetGammaRamp = loader.apply("glfwGetGammaRamp");
+        HANDLE$glfwGetGammaRamp = RawFunctionLoader.link(SEGMENT$glfwGetGammaRamp, Descriptors.DESCRIPTOR$glfwGetGammaRamp);
+        SEGMENT$glfwGetInputMode = loader.apply("glfwGetInputMode");
+        HANDLE$glfwGetInputMode = RawFunctionLoader.link(SEGMENT$glfwGetInputMode, Descriptors.DESCRIPTOR$glfwGetInputMode);
+        SEGMENT$glfwGetInstanceProcAddress = loader.apply("glfwGetInstanceProcAddress");
+        HANDLE$glfwGetInstanceProcAddress = RawFunctionLoader.link(SEGMENT$glfwGetInstanceProcAddress, Descriptors.DESCRIPTOR$glfwGetInstanceProcAddress);
+        SEGMENT$glfwGetJoystickAxes = loader.apply("glfwGetJoystickAxes");
+        HANDLE$glfwGetJoystickAxes = RawFunctionLoader.link(SEGMENT$glfwGetJoystickAxes, Descriptors.DESCRIPTOR$glfwGetJoystickAxes);
+        SEGMENT$glfwGetJoystickButtons = loader.apply("glfwGetJoystickButtons");
+        HANDLE$glfwGetJoystickButtons = RawFunctionLoader.link(SEGMENT$glfwGetJoystickButtons, Descriptors.DESCRIPTOR$glfwGetJoystickButtons);
+        SEGMENT$glfwGetJoystickGUID = loader.apply("glfwGetJoystickGUID");
+        HANDLE$glfwGetJoystickGUID = RawFunctionLoader.link(SEGMENT$glfwGetJoystickGUID, Descriptors.DESCRIPTOR$glfwGetJoystickGUID);
+        SEGMENT$glfwGetJoystickHats = loader.apply("glfwGetJoystickHats");
+        HANDLE$glfwGetJoystickHats = RawFunctionLoader.link(SEGMENT$glfwGetJoystickHats, Descriptors.DESCRIPTOR$glfwGetJoystickHats);
+        SEGMENT$glfwGetJoystickName = loader.apply("glfwGetJoystickName");
+        HANDLE$glfwGetJoystickName = RawFunctionLoader.link(SEGMENT$glfwGetJoystickName, Descriptors.DESCRIPTOR$glfwGetJoystickName);
+        SEGMENT$glfwGetJoystickUserPointer = loader.apply("glfwGetJoystickUserPointer");
+        HANDLE$glfwGetJoystickUserPointer = RawFunctionLoader.link(SEGMENT$glfwGetJoystickUserPointer, Descriptors.DESCRIPTOR$glfwGetJoystickUserPointer);
+        SEGMENT$glfwGetKey = loader.apply("glfwGetKey");
+        HANDLE$glfwGetKey = RawFunctionLoader.link(SEGMENT$glfwGetKey, Descriptors.DESCRIPTOR$glfwGetKey);
+        SEGMENT$glfwGetKeyName = loader.apply("glfwGetKeyName");
+        HANDLE$glfwGetKeyName = RawFunctionLoader.link(SEGMENT$glfwGetKeyName, Descriptors.DESCRIPTOR$glfwGetKeyName);
+        SEGMENT$glfwGetKeyScancode = loader.apply("glfwGetKeyScancode");
+        HANDLE$glfwGetKeyScancode = RawFunctionLoader.link(SEGMENT$glfwGetKeyScancode, Descriptors.DESCRIPTOR$glfwGetKeyScancode);
+        SEGMENT$glfwGetMonitorContentScale = loader.apply("glfwGetMonitorContentScale");
+        HANDLE$glfwGetMonitorContentScale = RawFunctionLoader.link(SEGMENT$glfwGetMonitorContentScale, Descriptors.DESCRIPTOR$glfwGetMonitorContentScale);
+        SEGMENT$glfwGetMonitorName = loader.apply("glfwGetMonitorName");
+        HANDLE$glfwGetMonitorName = RawFunctionLoader.link(SEGMENT$glfwGetMonitorName, Descriptors.DESCRIPTOR$glfwGetMonitorName);
+        SEGMENT$glfwGetMonitorPhysicalSize = loader.apply("glfwGetMonitorPhysicalSize");
+        HANDLE$glfwGetMonitorPhysicalSize = RawFunctionLoader.link(SEGMENT$glfwGetMonitorPhysicalSize, Descriptors.DESCRIPTOR$glfwGetMonitorPhysicalSize);
+        SEGMENT$glfwGetMonitorPos = loader.apply("glfwGetMonitorPos");
+        HANDLE$glfwGetMonitorPos = RawFunctionLoader.link(SEGMENT$glfwGetMonitorPos, Descriptors.DESCRIPTOR$glfwGetMonitorPos);
+        SEGMENT$glfwGetMonitorUserPointer = loader.apply("glfwGetMonitorUserPointer");
+        HANDLE$glfwGetMonitorUserPointer = RawFunctionLoader.link(SEGMENT$glfwGetMonitorUserPointer, Descriptors.DESCRIPTOR$glfwGetMonitorUserPointer);
+        SEGMENT$glfwGetMonitorWorkarea = loader.apply("glfwGetMonitorWorkarea");
+        HANDLE$glfwGetMonitorWorkarea = RawFunctionLoader.link(SEGMENT$glfwGetMonitorWorkarea, Descriptors.DESCRIPTOR$glfwGetMonitorWorkarea);
+        SEGMENT$glfwGetMonitors = loader.apply("glfwGetMonitors");
+        HANDLE$glfwGetMonitors = RawFunctionLoader.link(SEGMENT$glfwGetMonitors, Descriptors.DESCRIPTOR$glfwGetMonitors);
+        SEGMENT$glfwGetMouseButton = loader.apply("glfwGetMouseButton");
+        HANDLE$glfwGetMouseButton = RawFunctionLoader.link(SEGMENT$glfwGetMouseButton, Descriptors.DESCRIPTOR$glfwGetMouseButton);
+        SEGMENT$glfwGetNSGLContext = loader.apply("glfwGetNSGLContext");
+        HANDLE$glfwGetNSGLContext = RawFunctionLoader.link(SEGMENT$glfwGetNSGLContext, Descriptors.DESCRIPTOR$glfwGetNSGLContext);
+        SEGMENT$glfwGetOSMesaColorBuffer = loader.apply("glfwGetOSMesaColorBuffer");
+        HANDLE$glfwGetOSMesaColorBuffer = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaColorBuffer, Descriptors.DESCRIPTOR$glfwGetOSMesaColorBuffer);
+        SEGMENT$glfwGetOSMesaContext = loader.apply("glfwGetOSMesaContext");
+        HANDLE$glfwGetOSMesaContext = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaContext, Descriptors.DESCRIPTOR$glfwGetOSMesaContext);
+        SEGMENT$glfwGetOSMesaDepthBuffer = loader.apply("glfwGetOSMesaDepthBuffer");
+        HANDLE$glfwGetOSMesaDepthBuffer = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaDepthBuffer, Descriptors.DESCRIPTOR$glfwGetOSMesaDepthBuffer);
+        SEGMENT$glfwGetPhysicalDevicePresentationSupport = loader.apply("glfwGetPhysicalDevicePresentationSupport");
+        HANDLE$glfwGetPhysicalDevicePresentationSupport = RawFunctionLoader.link(SEGMENT$glfwGetPhysicalDevicePresentationSupport, Descriptors.DESCRIPTOR$glfwGetPhysicalDevicePresentationSupport);
+        SEGMENT$glfwGetPlatform = loader.apply("glfwGetPlatform");
+        HANDLE$glfwGetPlatform = RawFunctionLoader.link(SEGMENT$glfwGetPlatform, Descriptors.DESCRIPTOR$glfwGetPlatform);
+        SEGMENT$glfwGetPrimaryMonitor = loader.apply("glfwGetPrimaryMonitor");
+        HANDLE$glfwGetPrimaryMonitor = RawFunctionLoader.link(SEGMENT$glfwGetPrimaryMonitor, Descriptors.DESCRIPTOR$glfwGetPrimaryMonitor);
+        SEGMENT$glfwGetProcAddress = loader.apply("glfwGetProcAddress");
+        HANDLE$glfwGetProcAddress = RawFunctionLoader.link(SEGMENT$glfwGetProcAddress, Descriptors.DESCRIPTOR$glfwGetProcAddress);
+        SEGMENT$glfwGetRequiredInstanceExtensions = loader.apply("glfwGetRequiredInstanceExtensions");
+        HANDLE$glfwGetRequiredInstanceExtensions = RawFunctionLoader.link(SEGMENT$glfwGetRequiredInstanceExtensions, Descriptors.DESCRIPTOR$glfwGetRequiredInstanceExtensions);
+        SEGMENT$glfwGetTime = loader.apply("glfwGetTime");
+        HANDLE$glfwGetTime = RawFunctionLoader.link(SEGMENT$glfwGetTime, Descriptors.DESCRIPTOR$glfwGetTime);
+        SEGMENT$glfwGetTimerFrequency = loader.apply("glfwGetTimerFrequency");
+        HANDLE$glfwGetTimerFrequency = RawFunctionLoader.link(SEGMENT$glfwGetTimerFrequency, Descriptors.DESCRIPTOR$glfwGetTimerFrequency);
+        SEGMENT$glfwGetTimerValue = loader.apply("glfwGetTimerValue");
+        HANDLE$glfwGetTimerValue = RawFunctionLoader.link(SEGMENT$glfwGetTimerValue, Descriptors.DESCRIPTOR$glfwGetTimerValue);
+        SEGMENT$glfwGetVersion = loader.apply("glfwGetVersion");
+        HANDLE$glfwGetVersion = RawFunctionLoader.link(SEGMENT$glfwGetVersion, Descriptors.DESCRIPTOR$glfwGetVersion);
+        SEGMENT$glfwGetVersionString = loader.apply("glfwGetVersionString");
+        HANDLE$glfwGetVersionString = RawFunctionLoader.link(SEGMENT$glfwGetVersionString, Descriptors.DESCRIPTOR$glfwGetVersionString);
+        SEGMENT$glfwGetVideoMode = loader.apply("glfwGetVideoMode");
+        HANDLE$glfwGetVideoMode = RawFunctionLoader.link(SEGMENT$glfwGetVideoMode, Descriptors.DESCRIPTOR$glfwGetVideoMode);
+        SEGMENT$glfwGetVideoModes = loader.apply("glfwGetVideoModes");
+        HANDLE$glfwGetVideoModes = RawFunctionLoader.link(SEGMENT$glfwGetVideoModes, Descriptors.DESCRIPTOR$glfwGetVideoModes);
+        SEGMENT$glfwGetWGLContext = loader.apply("glfwGetWGLContext");
+        HANDLE$glfwGetWGLContext = RawFunctionLoader.link(SEGMENT$glfwGetWGLContext, Descriptors.DESCRIPTOR$glfwGetWGLContext);
+        SEGMENT$glfwGetWaylandDisplay = loader.apply("glfwGetWaylandDisplay");
+        HANDLE$glfwGetWaylandDisplay = RawFunctionLoader.link(SEGMENT$glfwGetWaylandDisplay, Descriptors.DESCRIPTOR$glfwGetWaylandDisplay);
+        SEGMENT$glfwGetWaylandMonitor = loader.apply("glfwGetWaylandMonitor");
+        HANDLE$glfwGetWaylandMonitor = RawFunctionLoader.link(SEGMENT$glfwGetWaylandMonitor, Descriptors.DESCRIPTOR$glfwGetWaylandMonitor);
+        SEGMENT$glfwGetWaylandWindow = loader.apply("glfwGetWaylandWindow");
+        HANDLE$glfwGetWaylandWindow = RawFunctionLoader.link(SEGMENT$glfwGetWaylandWindow, Descriptors.DESCRIPTOR$glfwGetWaylandWindow);
+        SEGMENT$glfwGetWin32Adapter = loader.apply("glfwGetWin32Adapter");
+        HANDLE$glfwGetWin32Adapter = RawFunctionLoader.link(SEGMENT$glfwGetWin32Adapter, Descriptors.DESCRIPTOR$glfwGetWin32Adapter);
+        SEGMENT$glfwGetWin32Monitor = loader.apply("glfwGetWin32Monitor");
+        HANDLE$glfwGetWin32Monitor = RawFunctionLoader.link(SEGMENT$glfwGetWin32Monitor, Descriptors.DESCRIPTOR$glfwGetWin32Monitor);
+        SEGMENT$glfwGetWin32Window = loader.apply("glfwGetWin32Window");
+        HANDLE$glfwGetWin32Window = RawFunctionLoader.link(SEGMENT$glfwGetWin32Window, Descriptors.DESCRIPTOR$glfwGetWin32Window);
+        SEGMENT$glfwGetWindowAttrib = loader.apply("glfwGetWindowAttrib");
+        HANDLE$glfwGetWindowAttrib = RawFunctionLoader.link(SEGMENT$glfwGetWindowAttrib, Descriptors.DESCRIPTOR$glfwGetWindowAttrib);
+        SEGMENT$glfwGetWindowContentScale = loader.apply("glfwGetWindowContentScale");
+        HANDLE$glfwGetWindowContentScale = RawFunctionLoader.link(SEGMENT$glfwGetWindowContentScale, Descriptors.DESCRIPTOR$glfwGetWindowContentScale);
+        SEGMENT$glfwGetWindowFrameSize = loader.apply("glfwGetWindowFrameSize");
+        HANDLE$glfwGetWindowFrameSize = RawFunctionLoader.link(SEGMENT$glfwGetWindowFrameSize, Descriptors.DESCRIPTOR$glfwGetWindowFrameSize);
+        SEGMENT$glfwGetWindowMonitor = loader.apply("glfwGetWindowMonitor");
+        HANDLE$glfwGetWindowMonitor = RawFunctionLoader.link(SEGMENT$glfwGetWindowMonitor, Descriptors.DESCRIPTOR$glfwGetWindowMonitor);
+        SEGMENT$glfwGetWindowOpacity = loader.apply("glfwGetWindowOpacity");
+        HANDLE$glfwGetWindowOpacity = RawFunctionLoader.link(SEGMENT$glfwGetWindowOpacity, Descriptors.DESCRIPTOR$glfwGetWindowOpacity);
+        SEGMENT$glfwGetWindowPos = loader.apply("glfwGetWindowPos");
+        HANDLE$glfwGetWindowPos = RawFunctionLoader.link(SEGMENT$glfwGetWindowPos, Descriptors.DESCRIPTOR$glfwGetWindowPos);
+        SEGMENT$glfwGetWindowSize = loader.apply("glfwGetWindowSize");
+        HANDLE$glfwGetWindowSize = RawFunctionLoader.link(SEGMENT$glfwGetWindowSize, Descriptors.DESCRIPTOR$glfwGetWindowSize);
+        SEGMENT$glfwGetWindowTitle = loader.apply("glfwGetWindowTitle");
+        HANDLE$glfwGetWindowTitle = RawFunctionLoader.link(SEGMENT$glfwGetWindowTitle, Descriptors.DESCRIPTOR$glfwGetWindowTitle);
+        SEGMENT$glfwGetWindowUserPointer = loader.apply("glfwGetWindowUserPointer");
+        HANDLE$glfwGetWindowUserPointer = RawFunctionLoader.link(SEGMENT$glfwGetWindowUserPointer, Descriptors.DESCRIPTOR$glfwGetWindowUserPointer);
+        SEGMENT$glfwGetX11Adapter = loader.apply("glfwGetX11Adapter");
+        HANDLE$glfwGetX11Adapter = RawFunctionLoader.link(SEGMENT$glfwGetX11Adapter, Descriptors.DESCRIPTOR$glfwGetX11Adapter);
+        SEGMENT$glfwGetX11Display = loader.apply("glfwGetX11Display");
+        HANDLE$glfwGetX11Display = RawFunctionLoader.link(SEGMENT$glfwGetX11Display, Descriptors.DESCRIPTOR$glfwGetX11Display);
+        SEGMENT$glfwGetX11Monitor = loader.apply("glfwGetX11Monitor");
+        HANDLE$glfwGetX11Monitor = RawFunctionLoader.link(SEGMENT$glfwGetX11Monitor, Descriptors.DESCRIPTOR$glfwGetX11Monitor);
+        SEGMENT$glfwGetX11SelectionString = loader.apply("glfwGetX11SelectionString");
+        HANDLE$glfwGetX11SelectionString = RawFunctionLoader.link(SEGMENT$glfwGetX11SelectionString, Descriptors.DESCRIPTOR$glfwGetX11SelectionString);
+        SEGMENT$glfwGetX11Window = loader.apply("glfwGetX11Window");
+        HANDLE$glfwGetX11Window = RawFunctionLoader.link(SEGMENT$glfwGetX11Window, Descriptors.DESCRIPTOR$glfwGetX11Window);
+        SEGMENT$glfwHideWindow = loader.apply("glfwHideWindow");
+        HANDLE$glfwHideWindow = RawFunctionLoader.link(SEGMENT$glfwHideWindow, Descriptors.DESCRIPTOR$glfwHideWindow);
+        SEGMENT$glfwIconifyWindow = loader.apply("glfwIconifyWindow");
+        HANDLE$glfwIconifyWindow = RawFunctionLoader.link(SEGMENT$glfwIconifyWindow, Descriptors.DESCRIPTOR$glfwIconifyWindow);
+        SEGMENT$glfwInit = loader.apply("glfwInit");
+        HANDLE$glfwInit = RawFunctionLoader.link(SEGMENT$glfwInit, Descriptors.DESCRIPTOR$glfwInit);
+        SEGMENT$glfwInitAllocator = loader.apply("glfwInitAllocator");
+        HANDLE$glfwInitAllocator = RawFunctionLoader.link(SEGMENT$glfwInitAllocator, Descriptors.DESCRIPTOR$glfwInitAllocator);
+        SEGMENT$glfwInitHint = loader.apply("glfwInitHint");
+        HANDLE$glfwInitHint = RawFunctionLoader.link(SEGMENT$glfwInitHint, Descriptors.DESCRIPTOR$glfwInitHint);
+        SEGMENT$glfwInitVulkanLoader = loader.apply("glfwInitVulkanLoader");
+        HANDLE$glfwInitVulkanLoader = RawFunctionLoader.link(SEGMENT$glfwInitVulkanLoader, Descriptors.DESCRIPTOR$glfwInitVulkanLoader);
+        SEGMENT$glfwJoystickIsGamepad = loader.apply("glfwJoystickIsGamepad");
+        HANDLE$glfwJoystickIsGamepad = RawFunctionLoader.link(SEGMENT$glfwJoystickIsGamepad, Descriptors.DESCRIPTOR$glfwJoystickIsGamepad);
+        SEGMENT$glfwJoystickPresent = loader.apply("glfwJoystickPresent");
+        HANDLE$glfwJoystickPresent = RawFunctionLoader.link(SEGMENT$glfwJoystickPresent, Descriptors.DESCRIPTOR$glfwJoystickPresent);
+        SEGMENT$glfwMakeContextCurrent = loader.apply("glfwMakeContextCurrent");
+        HANDLE$glfwMakeContextCurrent = RawFunctionLoader.link(SEGMENT$glfwMakeContextCurrent, Descriptors.DESCRIPTOR$glfwMakeContextCurrent);
+        SEGMENT$glfwMaximizeWindow = loader.apply("glfwMaximizeWindow");
+        HANDLE$glfwMaximizeWindow = RawFunctionLoader.link(SEGMENT$glfwMaximizeWindow, Descriptors.DESCRIPTOR$glfwMaximizeWindow);
+        SEGMENT$glfwPlatformSupported = loader.apply("glfwPlatformSupported");
+        HANDLE$glfwPlatformSupported = RawFunctionLoader.link(SEGMENT$glfwPlatformSupported, Descriptors.DESCRIPTOR$glfwPlatformSupported);
+        SEGMENT$glfwPollEvents = loader.apply("glfwPollEvents");
+        HANDLE$glfwPollEvents = RawFunctionLoader.link(SEGMENT$glfwPollEvents, Descriptors.DESCRIPTOR$glfwPollEvents);
+        SEGMENT$glfwPostEmptyEvent = loader.apply("glfwPostEmptyEvent");
+        HANDLE$glfwPostEmptyEvent = RawFunctionLoader.link(SEGMENT$glfwPostEmptyEvent, Descriptors.DESCRIPTOR$glfwPostEmptyEvent);
+        SEGMENT$glfwRawMouseMotionSupported = loader.apply("glfwRawMouseMotionSupported");
+        HANDLE$glfwRawMouseMotionSupported = RawFunctionLoader.link(SEGMENT$glfwRawMouseMotionSupported, Descriptors.DESCRIPTOR$glfwRawMouseMotionSupported);
+        SEGMENT$glfwRequestWindowAttention = loader.apply("glfwRequestWindowAttention");
+        HANDLE$glfwRequestWindowAttention = RawFunctionLoader.link(SEGMENT$glfwRequestWindowAttention, Descriptors.DESCRIPTOR$glfwRequestWindowAttention);
+        SEGMENT$glfwRestoreWindow = loader.apply("glfwRestoreWindow");
+        HANDLE$glfwRestoreWindow = RawFunctionLoader.link(SEGMENT$glfwRestoreWindow, Descriptors.DESCRIPTOR$glfwRestoreWindow);
+        SEGMENT$glfwSetCharCallback = loader.apply("glfwSetCharCallback");
+        HANDLE$glfwSetCharCallback = RawFunctionLoader.link(SEGMENT$glfwSetCharCallback, Descriptors.DESCRIPTOR$glfwSetCharCallback);
+        SEGMENT$glfwSetCharModsCallback = loader.apply("glfwSetCharModsCallback");
+        HANDLE$glfwSetCharModsCallback = RawFunctionLoader.link(SEGMENT$glfwSetCharModsCallback, Descriptors.DESCRIPTOR$glfwSetCharModsCallback);
+        SEGMENT$glfwSetClipboardString = loader.apply("glfwSetClipboardString");
+        HANDLE$glfwSetClipboardString = RawFunctionLoader.link(SEGMENT$glfwSetClipboardString, Descriptors.DESCRIPTOR$glfwSetClipboardString);
+        SEGMENT$glfwSetCursor = loader.apply("glfwSetCursor");
+        HANDLE$glfwSetCursor = RawFunctionLoader.link(SEGMENT$glfwSetCursor, Descriptors.DESCRIPTOR$glfwSetCursor);
+        SEGMENT$glfwSetCursorEnterCallback = loader.apply("glfwSetCursorEnterCallback");
+        HANDLE$glfwSetCursorEnterCallback = RawFunctionLoader.link(SEGMENT$glfwSetCursorEnterCallback, Descriptors.DESCRIPTOR$glfwSetCursorEnterCallback);
+        SEGMENT$glfwSetCursorPos = loader.apply("glfwSetCursorPos");
+        HANDLE$glfwSetCursorPos = RawFunctionLoader.link(SEGMENT$glfwSetCursorPos, Descriptors.DESCRIPTOR$glfwSetCursorPos);
+        SEGMENT$glfwSetCursorPosCallback = loader.apply("glfwSetCursorPosCallback");
+        HANDLE$glfwSetCursorPosCallback = RawFunctionLoader.link(SEGMENT$glfwSetCursorPosCallback, Descriptors.DESCRIPTOR$glfwSetCursorPosCallback);
+        SEGMENT$glfwSetDropCallback = loader.apply("glfwSetDropCallback");
+        HANDLE$glfwSetDropCallback = RawFunctionLoader.link(SEGMENT$glfwSetDropCallback, Descriptors.DESCRIPTOR$glfwSetDropCallback);
+        SEGMENT$glfwSetErrorCallback = loader.apply("glfwSetErrorCallback");
+        HANDLE$glfwSetErrorCallback = RawFunctionLoader.link(SEGMENT$glfwSetErrorCallback, Descriptors.DESCRIPTOR$glfwSetErrorCallback);
+        SEGMENT$glfwSetFramebufferSizeCallback = loader.apply("glfwSetFramebufferSizeCallback");
+        HANDLE$glfwSetFramebufferSizeCallback = RawFunctionLoader.link(SEGMENT$glfwSetFramebufferSizeCallback, Descriptors.DESCRIPTOR$glfwSetFramebufferSizeCallback);
+        SEGMENT$glfwSetGamma = loader.apply("glfwSetGamma");
+        HANDLE$glfwSetGamma = RawFunctionLoader.link(SEGMENT$glfwSetGamma, Descriptors.DESCRIPTOR$glfwSetGamma);
+        SEGMENT$glfwSetGammaRamp = loader.apply("glfwSetGammaRamp");
+        HANDLE$glfwSetGammaRamp = RawFunctionLoader.link(SEGMENT$glfwSetGammaRamp, Descriptors.DESCRIPTOR$glfwSetGammaRamp);
+        SEGMENT$glfwSetInputMode = loader.apply("glfwSetInputMode");
+        HANDLE$glfwSetInputMode = RawFunctionLoader.link(SEGMENT$glfwSetInputMode, Descriptors.DESCRIPTOR$glfwSetInputMode);
+        SEGMENT$glfwSetJoystickCallback = loader.apply("glfwSetJoystickCallback");
+        HANDLE$glfwSetJoystickCallback = RawFunctionLoader.link(SEGMENT$glfwSetJoystickCallback, Descriptors.DESCRIPTOR$glfwSetJoystickCallback);
+        SEGMENT$glfwSetJoystickUserPointer = loader.apply("glfwSetJoystickUserPointer");
+        HANDLE$glfwSetJoystickUserPointer = RawFunctionLoader.link(SEGMENT$glfwSetJoystickUserPointer, Descriptors.DESCRIPTOR$glfwSetJoystickUserPointer);
+        SEGMENT$glfwSetKeyCallback = loader.apply("glfwSetKeyCallback");
+        HANDLE$glfwSetKeyCallback = RawFunctionLoader.link(SEGMENT$glfwSetKeyCallback, Descriptors.DESCRIPTOR$glfwSetKeyCallback);
+        SEGMENT$glfwSetMonitorCallback = loader.apply("glfwSetMonitorCallback");
+        HANDLE$glfwSetMonitorCallback = RawFunctionLoader.link(SEGMENT$glfwSetMonitorCallback, Descriptors.DESCRIPTOR$glfwSetMonitorCallback);
+        SEGMENT$glfwSetMonitorUserPointer = loader.apply("glfwSetMonitorUserPointer");
+        HANDLE$glfwSetMonitorUserPointer = RawFunctionLoader.link(SEGMENT$glfwSetMonitorUserPointer, Descriptors.DESCRIPTOR$glfwSetMonitorUserPointer);
+        SEGMENT$glfwSetMouseButtonCallback = loader.apply("glfwSetMouseButtonCallback");
+        HANDLE$glfwSetMouseButtonCallback = RawFunctionLoader.link(SEGMENT$glfwSetMouseButtonCallback, Descriptors.DESCRIPTOR$glfwSetMouseButtonCallback);
+        SEGMENT$glfwSetScrollCallback = loader.apply("glfwSetScrollCallback");
+        HANDLE$glfwSetScrollCallback = RawFunctionLoader.link(SEGMENT$glfwSetScrollCallback, Descriptors.DESCRIPTOR$glfwSetScrollCallback);
+        SEGMENT$glfwSetTime = loader.apply("glfwSetTime");
+        HANDLE$glfwSetTime = RawFunctionLoader.link(SEGMENT$glfwSetTime, Descriptors.DESCRIPTOR$glfwSetTime);
+        SEGMENT$glfwSetWindowAspectRatio = loader.apply("glfwSetWindowAspectRatio");
+        HANDLE$glfwSetWindowAspectRatio = RawFunctionLoader.link(SEGMENT$glfwSetWindowAspectRatio, Descriptors.DESCRIPTOR$glfwSetWindowAspectRatio);
+        SEGMENT$glfwSetWindowAttrib = loader.apply("glfwSetWindowAttrib");
+        HANDLE$glfwSetWindowAttrib = RawFunctionLoader.link(SEGMENT$glfwSetWindowAttrib, Descriptors.DESCRIPTOR$glfwSetWindowAttrib);
+        SEGMENT$glfwSetWindowCloseCallback = loader.apply("glfwSetWindowCloseCallback");
+        HANDLE$glfwSetWindowCloseCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowCloseCallback, Descriptors.DESCRIPTOR$glfwSetWindowCloseCallback);
+        SEGMENT$glfwSetWindowContentScaleCallback = loader.apply("glfwSetWindowContentScaleCallback");
+        HANDLE$glfwSetWindowContentScaleCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowContentScaleCallback, Descriptors.DESCRIPTOR$glfwSetWindowContentScaleCallback);
+        SEGMENT$glfwSetWindowFocusCallback = loader.apply("glfwSetWindowFocusCallback");
+        HANDLE$glfwSetWindowFocusCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowFocusCallback, Descriptors.DESCRIPTOR$glfwSetWindowFocusCallback);
+        SEGMENT$glfwSetWindowIcon = loader.apply("glfwSetWindowIcon");
+        HANDLE$glfwSetWindowIcon = RawFunctionLoader.link(SEGMENT$glfwSetWindowIcon, Descriptors.DESCRIPTOR$glfwSetWindowIcon);
+        SEGMENT$glfwSetWindowIconifyCallback = loader.apply("glfwSetWindowIconifyCallback");
+        HANDLE$glfwSetWindowIconifyCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowIconifyCallback, Descriptors.DESCRIPTOR$glfwSetWindowIconifyCallback);
+        SEGMENT$glfwSetWindowMaximizeCallback = loader.apply("glfwSetWindowMaximizeCallback");
+        HANDLE$glfwSetWindowMaximizeCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowMaximizeCallback, Descriptors.DESCRIPTOR$glfwSetWindowMaximizeCallback);
+        SEGMENT$glfwSetWindowMonitor = loader.apply("glfwSetWindowMonitor");
+        HANDLE$glfwSetWindowMonitor = RawFunctionLoader.link(SEGMENT$glfwSetWindowMonitor, Descriptors.DESCRIPTOR$glfwSetWindowMonitor);
+        SEGMENT$glfwSetWindowOpacity = loader.apply("glfwSetWindowOpacity");
+        HANDLE$glfwSetWindowOpacity = RawFunctionLoader.link(SEGMENT$glfwSetWindowOpacity, Descriptors.DESCRIPTOR$glfwSetWindowOpacity);
+        SEGMENT$glfwSetWindowPos = loader.apply("glfwSetWindowPos");
+        HANDLE$glfwSetWindowPos = RawFunctionLoader.link(SEGMENT$glfwSetWindowPos, Descriptors.DESCRIPTOR$glfwSetWindowPos);
+        SEGMENT$glfwSetWindowPosCallback = loader.apply("glfwSetWindowPosCallback");
+        HANDLE$glfwSetWindowPosCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowPosCallback, Descriptors.DESCRIPTOR$glfwSetWindowPosCallback);
+        SEGMENT$glfwSetWindowRefreshCallback = loader.apply("glfwSetWindowRefreshCallback");
+        HANDLE$glfwSetWindowRefreshCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowRefreshCallback, Descriptors.DESCRIPTOR$glfwSetWindowRefreshCallback);
+        SEGMENT$glfwSetWindowShouldClose = loader.apply("glfwSetWindowShouldClose");
+        HANDLE$glfwSetWindowShouldClose = RawFunctionLoader.link(SEGMENT$glfwSetWindowShouldClose, Descriptors.DESCRIPTOR$glfwSetWindowShouldClose);
+        SEGMENT$glfwSetWindowSize = loader.apply("glfwSetWindowSize");
+        HANDLE$glfwSetWindowSize = RawFunctionLoader.link(SEGMENT$glfwSetWindowSize, Descriptors.DESCRIPTOR$glfwSetWindowSize);
+        SEGMENT$glfwSetWindowSizeCallback = loader.apply("glfwSetWindowSizeCallback");
+        HANDLE$glfwSetWindowSizeCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowSizeCallback, Descriptors.DESCRIPTOR$glfwSetWindowSizeCallback);
+        SEGMENT$glfwSetWindowSizeLimits = loader.apply("glfwSetWindowSizeLimits");
+        HANDLE$glfwSetWindowSizeLimits = RawFunctionLoader.link(SEGMENT$glfwSetWindowSizeLimits, Descriptors.DESCRIPTOR$glfwSetWindowSizeLimits);
+        SEGMENT$glfwSetWindowTitle = loader.apply("glfwSetWindowTitle");
+        HANDLE$glfwSetWindowTitle = RawFunctionLoader.link(SEGMENT$glfwSetWindowTitle, Descriptors.DESCRIPTOR$glfwSetWindowTitle);
+        SEGMENT$glfwSetWindowUserPointer = loader.apply("glfwSetWindowUserPointer");
+        HANDLE$glfwSetWindowUserPointer = RawFunctionLoader.link(SEGMENT$glfwSetWindowUserPointer, Descriptors.DESCRIPTOR$glfwSetWindowUserPointer);
+        SEGMENT$glfwSetX11SelectionString = loader.apply("glfwSetX11SelectionString");
+        HANDLE$glfwSetX11SelectionString = RawFunctionLoader.link(SEGMENT$glfwSetX11SelectionString, Descriptors.DESCRIPTOR$glfwSetX11SelectionString);
+        SEGMENT$glfwShowWindow = loader.apply("glfwShowWindow");
+        HANDLE$glfwShowWindow = RawFunctionLoader.link(SEGMENT$glfwShowWindow, Descriptors.DESCRIPTOR$glfwShowWindow);
+        SEGMENT$glfwSwapBuffers = loader.apply("glfwSwapBuffers");
+        HANDLE$glfwSwapBuffers = RawFunctionLoader.link(SEGMENT$glfwSwapBuffers, Descriptors.DESCRIPTOR$glfwSwapBuffers);
+        SEGMENT$glfwSwapInterval = loader.apply("glfwSwapInterval");
+        HANDLE$glfwSwapInterval = RawFunctionLoader.link(SEGMENT$glfwSwapInterval, Descriptors.DESCRIPTOR$glfwSwapInterval);
+        SEGMENT$glfwTerminate = loader.apply("glfwTerminate");
+        HANDLE$glfwTerminate = RawFunctionLoader.link(SEGMENT$glfwTerminate, Descriptors.DESCRIPTOR$glfwTerminate);
+        SEGMENT$glfwUpdateGamepadMappings = loader.apply("glfwUpdateGamepadMappings");
+        HANDLE$glfwUpdateGamepadMappings = RawFunctionLoader.link(SEGMENT$glfwUpdateGamepadMappings, Descriptors.DESCRIPTOR$glfwUpdateGamepadMappings);
+        SEGMENT$glfwVulkanSupported = loader.apply("glfwVulkanSupported");
+        HANDLE$glfwVulkanSupported = RawFunctionLoader.link(SEGMENT$glfwVulkanSupported, Descriptors.DESCRIPTOR$glfwVulkanSupported);
+        SEGMENT$glfwWaitEvents = loader.apply("glfwWaitEvents");
+        HANDLE$glfwWaitEvents = RawFunctionLoader.link(SEGMENT$glfwWaitEvents, Descriptors.DESCRIPTOR$glfwWaitEvents);
+        SEGMENT$glfwWaitEventsTimeout = loader.apply("glfwWaitEventsTimeout");
+        HANDLE$glfwWaitEventsTimeout = RawFunctionLoader.link(SEGMENT$glfwWaitEventsTimeout, Descriptors.DESCRIPTOR$glfwWaitEventsTimeout);
+        SEGMENT$glfwWindowHint = loader.apply("glfwWindowHint");
+        HANDLE$glfwWindowHint = RawFunctionLoader.link(SEGMENT$glfwWindowHint, Descriptors.DESCRIPTOR$glfwWindowHint);
+        SEGMENT$glfwWindowHintString = loader.apply("glfwWindowHintString");
+        HANDLE$glfwWindowHintString = RawFunctionLoader.link(SEGMENT$glfwWindowHintString, Descriptors.DESCRIPTOR$glfwWindowHintString);
+        SEGMENT$glfwWindowShouldClose = loader.apply("glfwWindowShouldClose");
+        HANDLE$glfwWindowShouldClose = RawFunctionLoader.link(SEGMENT$glfwWindowShouldClose, Descriptors.DESCRIPTOR$glfwWindowShouldClose);
     }
 
-    public void glfwTerminate() {
-        try {
-            HANDLE$glfwTerminate.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
-    }
+    // region command wrappers
 
-    public void glfwInitHint(
-            int hint,
-            int value
+    public GLFWcursor createCursor(
+        @Pointer IGLFWimage image,
+        int xhot,
+        int yhot
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateCursor);
         try {
-            HANDLE$glfwInitHint.invokeExact(
-                    hint,
-                    value
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                image.segment(),
+                xhot,
+                yhot
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new GLFWcursor(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwInitAllocator(
-            @Nullable @pointer(target=GLFWallocator.class) GLFWallocator allocator
+    public GLFWcursor createStandardCursor(
+        int shape
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateStandardCursor);
         try {
-            HANDLE$glfwInitAllocator.invokeExact(
-                    (MemorySegment) (allocator != null ? allocator.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                shape
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new GLFWcursor(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwInitVulkanLoader(
-            @pointer(comment="PFN_vkGetInstanceProcAddr") MemorySegment loader
+    public GLFWwindow createWindow(
+        int width,
+        int height,
+        BytePtr title,
+        GLFWmonitor monitor,
+        GLFWwindow share
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateWindow);
         try {
-            HANDLE$glfwInitVulkanLoader.invokeExact(
-                    loader
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                width,
+                height,
+                title.segment(),
+                monitor.segment(),
+                share.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new GLFWwindow(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetVersion(
-            @Nullable IntBuffer major,
-            @Nullable IntBuffer minor,
-            @Nullable IntBuffer rev
+    public @EnumType(VkResult.class) int createWindowSurface(
+        VkInstance instance,
+        GLFWwindow window,
+        @Pointer IVkAllocationCallbacks allocator,
+        @Pointer VkSurfaceKHR.Ptr surface
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateWindowSurface);
         try {
-            HANDLE$glfwGetVersion.invokeExact(
-                    (MemorySegment) (major != null ? major.segment() : MemorySegment.NULL),
-                    (MemorySegment) (minor != null ? minor.segment() : MemorySegment.NULL),
-                    (MemorySegment) (rev != null ? rev.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                instance.segment(),
+                window.segment(),
+                allocator.segment(),
+                surface.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetVersionString() {
+    public void defaultWindowHints() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwDefaultWindowHints);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetVersionString.invokeExact();
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
-    }
-
-    public int glfwGetError(
-            @Nullable PointerBuffer description
-    ) {
-        try {
-            return (int) HANDLE$glfwGetError.invokeExact(
-                    (MemorySegment) (description != null ? description.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWerrorfun") MemorySegment glfwSetErrorCallback(
-            @pointer(comment="GLFWerrorfun") MemorySegment callback
+    public void destroyCursor(
+        GLFWcursor cursor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwDestroyCursor);
         try {
-            return (MemorySegment) HANDLE$glfwSetErrorCallback.invokeExact(
-                    callback
+            hFunction.invokeExact(
+                cursor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetPlatform() {
-        try {
-            return (int) HANDLE$glfwGetPlatform.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
-    }
-
-    public int glfwPlatformSupported(
-            int platform
+    public void destroyWindow(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwDestroyWindow);
         try {
-            return (int) HANDLE$glfwPlatformSupported.invokeExact(
-                    platform
+            hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable @pointer(target=GLFWmonitor.class) GLFWmonitor.Buffer glfwGetMonitors(
-            @Nullable IntBuffer count
+    public int extensionSupported(
+        BytePtr extension
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwExtensionSupported);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetMonitors.invokeExact(
-                    (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                extension.segment()
             );
-            return s.address() == 0 ? null : new GLFWmonitor.Buffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable GLFWmonitor glfwGetPrimaryMonitor() {
-        try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetPrimaryMonitor.invokeExact();
-            return s.address() == 0 ? null : new GLFWmonitor(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
-    }
-
-    public void glfwGetMonitorPos(
-            @Nullable GLFWmonitor monitor,
-            @Nullable IntBuffer xpos,
-            @Nullable IntBuffer ypos
+    public void focusWindow(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwFocusWindow);
         try {
-            HANDLE$glfwGetMonitorPos.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    (MemorySegment) (xpos != null ? xpos.segment() : MemorySegment.NULL),
-                    (MemorySegment) (ypos != null ? ypos.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetMonitorWorkarea(
-            @Nullable GLFWmonitor monitor,
-            @Nullable IntBuffer xpos,
-            @Nullable IntBuffer ypos,
-            @Nullable IntBuffer width,
-            @Nullable IntBuffer height
+    public BytePtr getClipboardString(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetClipboardString);
         try {
-            HANDLE$glfwGetMonitorWorkarea.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    (MemorySegment) (xpos != null ? xpos.segment() : MemorySegment.NULL),
-                    (MemorySegment) (ypos != null ? ypos.segment() : MemorySegment.NULL),
-                    (MemorySegment) (width != null ? width.segment() : MemorySegment.NULL),
-                    (MemorySegment) (height != null ? height.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetMonitorPhysicalSize(
-            @Nullable GLFWmonitor monitor,
-            @Nullable IntBuffer widthMM,
-            @Nullable IntBuffer heightMM
+    public @NativeType("CGDirectDisplayID") @Unsigned int getCocoaMonitor(
+        GLFWmonitor monitor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCocoaMonitor);
         try {
-            HANDLE$glfwGetMonitorPhysicalSize.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    (MemorySegment) (widthMM != null ? widthMM.segment() : MemorySegment.NULL),
-                    (MemorySegment) (heightMM != null ? heightMM.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                monitor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetMonitorContentScale(
-            @Nullable GLFWmonitor monitor,
-            @Nullable FloatBuffer xscale,
-            @Nullable FloatBuffer yscale
+    public @Pointer(comment="id") MemorySegment getCocoaView(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCocoaView);
         try {
-            HANDLE$glfwGetMonitorContentScale.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    (MemorySegment) (xscale != null ? xscale.segment() : MemorySegment.NULL),
-                    (MemorySegment) (yscale != null ? yscale.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetMonitorName(
-            @Nullable GLFWmonitor monitor
+    public @Pointer(comment="id") MemorySegment getCocoaWindow(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCocoaWindow);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetMonitorName.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetMonitorUserPointer(
-            @Nullable GLFWmonitor monitor,
-            @pointer(comment="void*") MemorySegment pointer
-    ) {
+    public GLFWwindow getCurrentContext() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCurrentContext);
         try {
-            HANDLE$glfwSetMonitorUserPointer.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    pointer
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new GLFWwindow(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetMonitorUserPointer(
-            @Nullable GLFWmonitor monitor
+    public void getCursorPos(
+        GLFWwindow window,
+        DoublePtr xpos,
+        DoublePtr ypos
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCursorPos);
         try {
-            return (MemorySegment) HANDLE$glfwGetMonitorUserPointer.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                xpos.segment(),
+                ypos.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWmonitorfun") MemorySegment glfwSetMonitorCallback(
-            @pointer(comment="GLFWmonitorfun") MemorySegment callback
+    public @Pointer(comment="EGLContext") MemorySegment getEGLContext(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLContext);
         try {
-            return (MemorySegment) HANDLE$glfwSetMonitorCallback.invokeExact(
-                    callback
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable @pointer(target=GLFWvidmode.class) GLFWvidmode glfwGetVideoModes(
-            @Nullable GLFWmonitor monitor,
-            @Nullable IntBuffer count
-    ) {
+    public @Pointer(comment="EGLDisplay") MemorySegment getEGLDisplay() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLDisplay);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetVideoModes.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new GLFWvidmode(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable @pointer(target=GLFWvidmode.class) GLFWvidmode glfwGetVideoMode(
-            @Nullable GLFWmonitor monitor
+    public @Pointer(comment="EGLSurface") MemorySegment getEGLSurface(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLSurface);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetVideoMode.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-            return s.address() == 0 ? null : new GLFWvidmode(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetGamma(
-            @Nullable GLFWmonitor monitor,
-            float gamma
+    public int getError(
+        PointerPtr description
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetError);
         try {
-            HANDLE$glfwSetGamma.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    gamma
+            return (int) hFunction.invokeExact(
+                description.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable @pointer(target=GLFWgammaramp.class) GLFWgammaramp glfwGetGammaRamp(
-            @Nullable GLFWmonitor monitor
+    public void getFramebufferSize(
+        GLFWwindow window,
+        IntPtr width,
+        IntPtr height
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetFramebufferSize);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetGammaRamp.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                width.segment(),
+                height.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public @Pointer(comment="GLXContext") MemorySegment getGLXContext(
+        GLFWwindow window
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGLXContext);
+        try {
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public @NativeType("GLXWindow") long getGLXWindow(
+        GLFWwindow window
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGLXWindow);
+        try {
+            return (long) hFunction.invokeExact(
+                window.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public BytePtr getGamepadName(
+        int jid
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGamepadName);
+        try {
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                jid
+            );
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getGamepadState(
+        int jid,
+        @Pointer IGLFWgamepadstate state
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGamepadState);
+        try {
+            return (int) hFunction.invokeExact(
+                jid,
+                state.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public @Pointer IGLFWgammaramp getGammaRamp(
+        GLFWmonitor monitor
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGammaRamp);
+        try {
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                monitor.segment()
             );
             return s.address() == 0 ? null : new GLFWgammaramp(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetGammaRamp(
-            @Nullable GLFWmonitor monitor,
-            @Nullable @pointer(target=GLFWgammaramp.class) GLFWgammaramp ramp
+    public int getInputMode(
+        GLFWwindow window,
+        int mode
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetInputMode);
         try {
-            HANDLE$glfwSetGammaRamp.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    (MemorySegment) (ramp != null ? ramp.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                window.segment(),
+                mode
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwDefaultWindowHints() {
-        try {
-            HANDLE$glfwDefaultWindowHints.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
-    }
-
-    public void glfwWindowHint(
-            int hint,
-            int value
+    public @Pointer(comment="GLFWvkproc") MemorySegment getInstanceProcAddress(
+        VkInstance instance,
+        BytePtr procname
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetInstanceProcAddress);
         try {
-            HANDLE$glfwWindowHint.invokeExact(
-                    hint,
-                    value
+            return (MemorySegment) hFunction.invokeExact(
+                instance.segment(),
+                procname.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwWindowHintString(
-            int hint,
-            @Nullable ByteBuffer value
+    public FloatPtr getJoystickAxes(
+        int jid,
+        IntPtr count
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickAxes);
         try {
-            HANDLE$glfwWindowHintString.invokeExact(
-                    hint,
-                    (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                jid,
+                count.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new FloatPtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable GLFWwindow glfwCreateWindow(
-            int width,
-            int height,
-            @Nullable ByteBuffer title,
-            @Nullable GLFWmonitor monitor,
-            @Nullable GLFWwindow share
+    public BytePtr getJoystickButtons(
+        int jid,
+        IntPtr count
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickButtons);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwCreateWindow.invokeExact(
-                    width,
-                    height,
-                    (MemorySegment) (title != null ? title.segment() : MemorySegment.NULL),
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    (MemorySegment) (share != null ? share.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                jid,
+                count.segment()
             );
-            return s.address() == 0 ? null : new GLFWwindow(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwDestroyWindow(
-            @Nullable GLFWwindow window
+    public BytePtr getJoystickGUID(
+        int jid
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickGUID);
         try {
-            HANDLE$glfwDestroyWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                jid
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwWindowShouldClose(
-            @Nullable GLFWwindow window
+    public BytePtr getJoystickHats(
+        int jid,
+        IntPtr count
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickHats);
         try {
-            return (int) HANDLE$glfwWindowShouldClose.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                jid,
+                count.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowShouldClose(
-            @Nullable GLFWwindow window,
-            int value
+    public BytePtr getJoystickName(
+        int jid
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickName);
         try {
-            HANDLE$glfwSetWindowShouldClose.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    value
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                jid
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetWindowTitle(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="void*") MemorySegment getJoystickUserPointer(
+        int jid
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetJoystickUserPointer);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetWindowTitle.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                jid
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowTitle(
-            @Nullable GLFWwindow window,
-            @Nullable ByteBuffer title
+    public int getKey(
+        GLFWwindow window,
+        int key
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetKey);
         try {
-            HANDLE$glfwSetWindowTitle.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (title != null ? title.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                window.segment(),
+                key
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowIcon(
-            @Nullable GLFWwindow window,
-            int count,
-            @Nullable @pointer(target=GLFWimage.class) GLFWimage images
+    public BytePtr getKeyName(
+        int key,
+        int scancode
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetKeyName);
         try {
-            HANDLE$glfwSetWindowIcon.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    count,
-                    (MemorySegment) (images != null ? images.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                key,
+                scancode
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetWindowPos(
-            @Nullable GLFWwindow window,
-            @Nullable IntBuffer xpos,
-            @Nullable IntBuffer ypos
+    public int getKeyScancode(
+        int key
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetKeyScancode);
         try {
-            HANDLE$glfwGetWindowPos.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (xpos != null ? xpos.segment() : MemorySegment.NULL),
-                    (MemorySegment) (ypos != null ? ypos.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                key
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowPos(
-            @Nullable GLFWwindow window,
-            int xpos,
-            int ypos
+    public void getMonitorContentScale(
+        GLFWmonitor monitor,
+        FloatPtr xscale,
+        FloatPtr yscale
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorContentScale);
         try {
-            HANDLE$glfwSetWindowPos.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    xpos,
-                    ypos
+            hFunction.invokeExact(
+                monitor.segment(),
+                xscale.segment(),
+                yscale.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetWindowSize(
-            @Nullable GLFWwindow window,
-            @Nullable IntBuffer width,
-            @Nullable IntBuffer height
+    public BytePtr getMonitorName(
+        GLFWmonitor monitor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorName);
         try {
-            HANDLE$glfwGetWindowSize.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (width != null ? width.segment() : MemorySegment.NULL),
-                    (MemorySegment) (height != null ? height.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                monitor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowSizeLimits(
-            @Nullable GLFWwindow window,
-            int minwidth,
-            int minheight,
-            int maxwidth,
-            int maxheight
+    public void getMonitorPhysicalSize(
+        GLFWmonitor monitor,
+        IntPtr widthMM,
+        IntPtr heightMM
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorPhysicalSize);
         try {
-            HANDLE$glfwSetWindowSizeLimits.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    minwidth,
-                    minheight,
-                    maxwidth,
-                    maxheight
+            hFunction.invokeExact(
+                monitor.segment(),
+                widthMM.segment(),
+                heightMM.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowAspectRatio(
-            @Nullable GLFWwindow window,
-            int numer,
-            int denom
+    public void getMonitorPos(
+        GLFWmonitor monitor,
+        IntPtr xpos,
+        IntPtr ypos
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorPos);
         try {
-            HANDLE$glfwSetWindowAspectRatio.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    numer,
-                    denom
+            hFunction.invokeExact(
+                monitor.segment(),
+                xpos.segment(),
+                ypos.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowSize(
-            @Nullable GLFWwindow window,
-            int width,
-            int height
+    public @Pointer(comment="void*") MemorySegment getMonitorUserPointer(
+        GLFWmonitor monitor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorUserPointer);
         try {
-            HANDLE$glfwSetWindowSize.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    width,
-                    height
+            return (MemorySegment) hFunction.invokeExact(
+                monitor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetFramebufferSize(
-            @Nullable GLFWwindow window,
-            @Nullable IntBuffer width,
-            @Nullable IntBuffer height
+    public void getMonitorWorkarea(
+        GLFWmonitor monitor,
+        IntPtr xpos,
+        IntPtr ypos,
+        IntPtr width,
+        IntPtr height
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorWorkarea);
         try {
-            HANDLE$glfwGetFramebufferSize.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (width != null ? width.segment() : MemorySegment.NULL),
-                    (MemorySegment) (height != null ? height.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                monitor.segment(),
+                xpos.segment(),
+                ypos.segment(),
+                width.segment(),
+                height.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetWindowFrameSize(
-            @Nullable GLFWwindow window,
-            @Nullable IntBuffer left,
-            @Nullable IntBuffer top,
-            @Nullable IntBuffer right,
-            @Nullable IntBuffer bottom
+    public @Pointer GLFWmonitor.Ptr getMonitors(
+        IntPtr count
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitors);
         try {
-            HANDLE$glfwGetWindowFrameSize.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (left != null ? left.segment() : MemorySegment.NULL),
-                    (MemorySegment) (top != null ? top.segment() : MemorySegment.NULL),
-                    (MemorySegment) (right != null ? right.segment() : MemorySegment.NULL),
-                    (MemorySegment) (bottom != null ? bottom.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                count.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new GLFWmonitor.Ptr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetWindowContentScale(
-            @Nullable GLFWwindow window,
-            @Nullable FloatBuffer xscale,
-            @Nullable FloatBuffer yscale
+    public int getMouseButton(
+        GLFWwindow window,
+        int button
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMouseButton);
         try {
-            HANDLE$glfwGetWindowContentScale.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (xscale != null ? xscale.segment() : MemorySegment.NULL),
-                    (MemorySegment) (yscale != null ? yscale.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                window.segment(),
+                button
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public float glfwGetWindowOpacity(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="id") MemorySegment getNSGLContext(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetNSGLContext);
         try {
-            return (float) HANDLE$glfwGetWindowOpacity.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowOpacity(
-            @Nullable GLFWwindow window,
-            float opacity
+    public int getOSMesaColorBuffer(
+        GLFWwindow window,
+        IntPtr width,
+        IntPtr height,
+        IntPtr format,
+        PointerPtr buffer
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaColorBuffer);
         try {
-            HANDLE$glfwSetWindowOpacity.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    opacity
+            return (int) hFunction.invokeExact(
+                window.segment(),
+                width.segment(),
+                height.segment(),
+                format.segment(),
+                buffer.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwIconifyWindow(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="OSMesaContext") MemorySegment getOSMesaContext(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaContext);
         try {
-            HANDLE$glfwIconifyWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwRestoreWindow(
-            @Nullable GLFWwindow window
+    public int getOSMesaDepthBuffer(
+        GLFWwindow window,
+        IntPtr width,
+        IntPtr height,
+        IntPtr bytesPerValue,
+        PointerPtr buffer
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaDepthBuffer);
         try {
-            HANDLE$glfwRestoreWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                window.segment(),
+                width.segment(),
+                height.segment(),
+                bytesPerValue.segment(),
+                buffer.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwMaximizeWindow(
-            @Nullable GLFWwindow window
+    public int getPhysicalDevicePresentationSupport(
+        VkInstance instance,
+        VkPhysicalDevice device,
+        @Unsigned int queuefamily
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetPhysicalDevicePresentationSupport);
         try {
-            HANDLE$glfwMaximizeWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                instance.segment(),
+                device.segment(),
+                queuefamily
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwShowWindow(
-            @Nullable GLFWwindow window
-    ) {
+    public int getPlatform() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetPlatform);
         try {
-            HANDLE$glfwShowWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwHideWindow(
-            @Nullable GLFWwindow window
-    ) {
+    public GLFWmonitor getPrimaryMonitor() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetPrimaryMonitor);
         try {
-            HANDLE$glfwHideWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
-    }
-
-    public void glfwFocusWindow(
-            @Nullable GLFWwindow window
-    ) {
-        try {
-            HANDLE$glfwFocusWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
-    }
-
-    public void glfwRequestWindowAttention(
-            @Nullable GLFWwindow window
-    ) {
-        try {
-            HANDLE$glfwRequestWindowAttention.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
-        }
-    }
-
-    public @Nullable GLFWmonitor glfwGetWindowMonitor(
-            @Nullable GLFWwindow window
-    ) {
-        try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetWindowMonitor.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
             return s.address() == 0 ? null : new GLFWmonitor(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowMonitor(
-            @Nullable GLFWwindow window,
-            @Nullable GLFWmonitor monitor,
-            int xpos,
-            int ypos,
-            int width,
-            int height,
-            int refreshRate
+    public @Pointer(comment="GLFWglproc") MemorySegment getProcAddress(
+        BytePtr procname
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetProcAddress);
         try {
-            HANDLE$glfwSetWindowMonitor.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
-                    xpos,
-                    ypos,
-                    width,
-                    height,
-                    refreshRate
+            return (MemorySegment) hFunction.invokeExact(
+                procname.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetWindowAttrib(
-            @Nullable GLFWwindow window,
-            int attrib
+    public PointerPtr getRequiredInstanceExtensions(
+        @Unsigned IntPtr count
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetRequiredInstanceExtensions);
         try {
-            return (int) HANDLE$glfwGetWindowAttrib.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    attrib
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                count.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new PointerPtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowAttrib(
-            @Nullable GLFWwindow window,
-            int attrib,
-            int value
-    ) {
+    public double getTime() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetTime);
         try {
-            HANDLE$glfwSetWindowAttrib.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    attrib,
-                    value
+            return (double) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetWindowUserPointer(
-            @Nullable GLFWwindow window,
-            @pointer(comment="void*") MemorySegment pointer
-    ) {
+    public @Unsigned long getTimerFrequency() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetTimerFrequency);
         try {
-            HANDLE$glfwSetWindowUserPointer.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    pointer
+            return (long) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetWindowUserPointer(
-            @Nullable GLFWwindow window
-    ) {
+    public @Unsigned long getTimerValue() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetTimerValue);
         try {
-            return (MemorySegment) HANDLE$glfwGetWindowUserPointer.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (long) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWwindowposfun") MemorySegment glfwSetWindowPosCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWwindowposfun") MemorySegment callback
+    public void getVersion(
+        IntPtr major,
+        IntPtr minor,
+        IntPtr rev
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetVersion);
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowPosCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            hFunction.invokeExact(
+                major.segment(),
+                minor.segment(),
+                rev.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWwindowsizefun") MemorySegment glfwSetWindowSizeCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWwindowsizefun") MemorySegment callback
-    ) {
+    public BytePtr getVersionString() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetVersionString);
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowSizeCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWwindowclosefun") MemorySegment glfwSetWindowCloseCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWwindowclosefun") MemorySegment callback
+    public @Pointer IGLFWvidmode getVideoMode(
+        GLFWmonitor monitor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetVideoMode);
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowCloseCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                monitor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new GLFWvidmode(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWwindowrefreshfun") MemorySegment glfwSetWindowRefreshCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWwindowrefreshfun") MemorySegment callback
+    public @Pointer IGLFWvidmode getVideoModes(
+        GLFWmonitor monitor,
+        IntPtr count
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetVideoModes);
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowRefreshCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                monitor.segment(),
+                count.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new GLFWvidmode(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWwindowfocusfun") MemorySegment glfwSetWindowFocusCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWwindowfocusfun") MemorySegment callback
+    public @Pointer(comment="HGLRC") MemorySegment getWGLContext(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWGLContext);
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowFocusCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWwindowiconifyfun") MemorySegment glfwSetWindowIconifyCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWwindowiconifyfun") MemorySegment callback
-    ) {
+    public PointerPtr getWaylandDisplay() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandDisplay);
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowIconifyCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new PointerPtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWwindowmaximizefun") MemorySegment glfwSetWindowMaximizeCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWwindowmaximizefun") MemorySegment callback
+    public @Pointer(comment="void*") MemorySegment getWaylandMonitor(
+        GLFWmonitor monitor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandMonitor);
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowMaximizeCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            return (MemorySegment) hFunction.invokeExact(
+                monitor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWframebuffersizefun") MemorySegment glfwSetFramebufferSizeCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWframebuffersizefun") MemorySegment callback
+    public PointerPtr getWaylandWindow(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandWindow);
         try {
-            return (MemorySegment) HANDLE$glfwSetFramebufferSizeCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new PointerPtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWwindowcontentscalefun") MemorySegment glfwSetWindowContentScaleCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWwindowcontentscalefun") MemorySegment callback
+    public BytePtr getWin32Adapter(
+        GLFWmonitor monitor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Adapter);
         try {
-            return (MemorySegment) HANDLE$glfwSetWindowContentScaleCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                monitor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwPollEvents() {
+    public BytePtr getWin32Monitor(
+        GLFWmonitor monitor
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Monitor);
         try {
-            HANDLE$glfwPollEvents.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                monitor.segment()
+            );
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwWaitEvents() {
+    public @Pointer(comment="HWND") MemorySegment getWin32Window(
+        GLFWwindow window
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Window);
         try {
-            HANDLE$glfwWaitEvents.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwWaitEventsTimeout(
-            double timeout
+    public int getWindowAttrib(
+        GLFWwindow window,
+        int attrib
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowAttrib);
         try {
-            HANDLE$glfwWaitEventsTimeout.invokeExact(
-                    timeout
+            return (int) hFunction.invokeExact(
+                window.segment(),
+                attrib
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwPostEmptyEvent() {
+    public void getWindowContentScale(
+        GLFWwindow window,
+        FloatPtr xscale,
+        FloatPtr yscale
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowContentScale);
         try {
-            HANDLE$glfwPostEmptyEvent.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            hFunction.invokeExact(
+                window.segment(),
+                xscale.segment(),
+                yscale.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetInputMode(
-            @Nullable GLFWwindow window,
-            int mode
+    public void getWindowFrameSize(
+        GLFWwindow window,
+        IntPtr left,
+        IntPtr top,
+        IntPtr right,
+        IntPtr bottom
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowFrameSize);
         try {
-            return (int) HANDLE$glfwGetInputMode.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    mode
+            hFunction.invokeExact(
+                window.segment(),
+                left.segment(),
+                top.segment(),
+                right.segment(),
+                bottom.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetInputMode(
-            @Nullable GLFWwindow window,
-            int mode,
-            int value
+    public GLFWmonitor getWindowMonitor(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowMonitor);
         try {
-            HANDLE$glfwSetInputMode.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    mode,
-                    value
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new GLFWmonitor(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwRawMouseMotionSupported() {
+    public float getWindowOpacity(
+        GLFWwindow window
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowOpacity);
         try {
-            return (int) HANDLE$glfwRawMouseMotionSupported.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return (float) hFunction.invokeExact(
+                window.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetKeyName(
-            int key,
-            int scancode
+    public void getWindowPos(
+        GLFWwindow window,
+        IntPtr xpos,
+        IntPtr ypos
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowPos);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetKeyName.invokeExact(
-                    key,
-                    scancode
+            hFunction.invokeExact(
+                window.segment(),
+                xpos.segment(),
+                ypos.segment()
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetKeyScancode(
-            int key
+    public void getWindowSize(
+        GLFWwindow window,
+        IntPtr width,
+        IntPtr height
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowSize);
         try {
-            return (int) HANDLE$glfwGetKeyScancode.invokeExact(
-                    key
+            hFunction.invokeExact(
+                window.segment(),
+                width.segment(),
+                height.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetKey(
-            @Nullable GLFWwindow window,
-            int key
+    public BytePtr getWindowTitle(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowTitle);
         try {
-            return (int) HANDLE$glfwGetKey.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    key
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetMouseButton(
-            @Nullable GLFWwindow window,
-            int button
+    public @Pointer(comment="void*") MemorySegment getWindowUserPointer(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowUserPointer);
         try {
-            return (int) HANDLE$glfwGetMouseButton.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    button
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwGetCursorPos(
-            @Nullable GLFWwindow window,
-            @Nullable DoubleBuffer xpos,
-            @Nullable DoubleBuffer ypos
+    public @NativeType("RRCrtc") long getX11Adapter(
+        GLFWmonitor monitor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Adapter);
         try {
-            HANDLE$glfwGetCursorPos.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (xpos != null ? xpos.segment() : MemorySegment.NULL),
-                    (MemorySegment) (ypos != null ? ypos.segment() : MemorySegment.NULL)
+            return (long) hFunction.invokeExact(
+                monitor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetCursorPos(
-            @Nullable GLFWwindow window,
-            double xpos,
-            double ypos
-    ) {
+    public PointerPtr getX11Display() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Display);
         try {
-            HANDLE$glfwSetCursorPos.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    xpos,
-                    ypos
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new PointerPtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable GLFWcursor glfwCreateCursor(
-            @Nullable @pointer(target=GLFWimage.class) GLFWimage image,
-            int xhot,
-            int yhot
+    public @NativeType("RROutput") long getX11Monitor(
+        GLFWmonitor monitor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Monitor);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwCreateCursor.invokeExact(
-                    (MemorySegment) (image != null ? image.segment() : MemorySegment.NULL),
-                    xhot,
-                    yhot
+            return (long) hFunction.invokeExact(
+                monitor.segment()
             );
-            return s.address() == 0 ? null : new GLFWcursor(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable GLFWcursor glfwCreateStandardCursor(
-            int shape
-    ) {
+    public BytePtr getX11SelectionString() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11SelectionString);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwCreateStandardCursor.invokeExact(
-                    shape
+            MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new GLFWcursor(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return s.address() == 0 ? null : new BytePtr(s);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwDestroyCursor(
-            @Nullable GLFWcursor cursor
+    public @NativeType("Window") long getX11Window(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Window);
         try {
-            HANDLE$glfwDestroyCursor.invokeExact(
-                    (MemorySegment) (cursor != null ? cursor.segment() : MemorySegment.NULL)
+            return (long) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetCursor(
-            @Nullable GLFWwindow window,
-            @Nullable GLFWcursor cursor
+    public void hideWindow(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwHideWindow);
         try {
-            HANDLE$glfwSetCursor.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (cursor != null ? cursor.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWkeyfun") MemorySegment glfwSetKeyCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWkeyfun") MemorySegment callback
+    public void iconifyWindow(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwIconifyWindow);
         try {
-            return (MemorySegment) HANDLE$glfwSetKeyCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWcharfun") MemorySegment glfwSetCharCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWcharfun") MemorySegment callback
-    ) {
+    public int init() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwInit);
         try {
-            return (MemorySegment) HANDLE$glfwSetCharCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            return (int) hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWcharmodsfun") MemorySegment glfwSetCharModsCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWcharmodsfun") MemorySegment callback
+    public void initAllocator(
+        @Pointer IGLFWallocator allocator
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwInitAllocator);
         try {
-            return (MemorySegment) HANDLE$glfwSetCharModsCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            hFunction.invokeExact(
+                allocator.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWmousebuttonfun") MemorySegment glfwSetMouseButtonCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWmousebuttonfun") MemorySegment callback
+    public void initHint(
+        int hint,
+        int value
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwInitHint);
         try {
-            return (MemorySegment) HANDLE$glfwSetMouseButtonCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            hFunction.invokeExact(
+                hint,
+                value
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWcursorposfun") MemorySegment glfwSetCursorPosCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWcursorposfun") MemorySegment callback
+    public void initVulkanLoader(
+        @Pointer(comment="PFN_vkGetInstanceProcAddr") MemorySegment loader
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwInitVulkanLoader);
         try {
-            return (MemorySegment) HANDLE$glfwSetCursorPosCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            hFunction.invokeExact(
+                loader
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWcursorenterfun") MemorySegment glfwSetCursorEnterCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWcursorenterfun") MemorySegment callback
+    public int joystickIsGamepad(
+        int jid
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwJoystickIsGamepad);
         try {
-            return (MemorySegment) HANDLE$glfwSetCursorEnterCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            return (int) hFunction.invokeExact(
+                jid
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWscrollfun") MemorySegment glfwSetScrollCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWscrollfun") MemorySegment callback
+    public int joystickPresent(
+        int jid
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwJoystickPresent);
         try {
-            return (MemorySegment) HANDLE$glfwSetScrollCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            return (int) hFunction.invokeExact(
+                jid
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWdropfun") MemorySegment glfwSetDropCallback(
-            @Nullable GLFWwindow window,
-            @pointer(comment="GLFWdropfun") MemorySegment callback
+    public void makeContextCurrent(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwMakeContextCurrent);
         try {
-            return (MemorySegment) HANDLE$glfwSetDropCallback.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    callback
+            hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwJoystickPresent(
-            int jid
+    public void maximizeWindow(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwMaximizeWindow);
         try {
-            return (int) HANDLE$glfwJoystickPresent.invokeExact(
-                    jid
+            hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable FloatBuffer glfwGetJoystickAxes(
-            int jid,
-            @Nullable IntBuffer count
+    public int platformSupported(
+        int platform
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwPlatformSupported);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetJoystickAxes.invokeExact(
-                    jid,
-                    (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                platform
             );
-            return s.address() == 0 ? null : new FloatBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetJoystickButtons(
-            int jid,
-            @Nullable IntBuffer count
-    ) {
+    public void pollEvents() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwPollEvents);
+        try {
+            hFunction.invokeExact(
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void postEmptyEvent() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwPostEmptyEvent);
+        try {
+            hFunction.invokeExact(
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int rawMouseMotionSupported() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwRawMouseMotionSupported);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetJoystickButtons.invokeExact(
-                    jid,
-                    (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetJoystickHats(
-            int jid,
-            @Nullable IntBuffer count
+    public void requestWindowAttention(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwRequestWindowAttention);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetJoystickHats.invokeExact(
-                    jid,
-                    (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment()
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetJoystickName(
-            int jid
+    public void restoreWindow(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwRestoreWindow);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetJoystickName.invokeExact(
-                    jid
+            hFunction.invokeExact(
+                window.segment()
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetJoystickGUID(
-            int jid
+    public @Pointer(comment="GLFWcharfun") MemorySegment setCharCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWcharfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCharCallback);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetJoystickGUID.invokeExact(
-                    jid
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetJoystickUserPointer(
-            int jid,
-            @pointer(comment="void*") MemorySegment pointer
+    public @Pointer(comment="GLFWcharmodsfun") MemorySegment setCharModsCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWcharmodsfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCharModsCallback);
         try {
-            HANDLE$glfwSetJoystickUserPointer.invokeExact(
-                    jid,
-                    pointer
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetJoystickUserPointer(
-            int jid
+    public void setClipboardString(
+        GLFWwindow window,
+        BytePtr string
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetClipboardString);
         try {
-            return (MemorySegment) HANDLE$glfwGetJoystickUserPointer.invokeExact(
-                    jid
+            hFunction.invokeExact(
+                window.segment(),
+                string.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwJoystickIsGamepad(
-            int jid
+    public void setCursor(
+        GLFWwindow window,
+        GLFWcursor cursor
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursor);
         try {
-            return (int) HANDLE$glfwJoystickIsGamepad.invokeExact(
-                    jid
+            hFunction.invokeExact(
+                window.segment(),
+                cursor.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWjoystickfun") MemorySegment glfwSetJoystickCallback(
-            @pointer(comment="GLFWjoystickfun") MemorySegment callback
+    public @Pointer(comment="GLFWcursorenterfun") MemorySegment setCursorEnterCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWcursorenterfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursorEnterCallback);
         try {
-            return (MemorySegment) HANDLE$glfwSetJoystickCallback.invokeExact(
-                    callback
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwUpdateGamepadMappings(
-            @Nullable ByteBuffer string
+    public void setCursorPos(
+        GLFWwindow window,
+        double xpos,
+        double ypos
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursorPos);
         try {
-            return (int) HANDLE$glfwUpdateGamepadMappings.invokeExact(
-                    (MemorySegment) (string != null ? string.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                xpos,
+                ypos
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetGamepadName(
-            int jid
+    public @Pointer(comment="GLFWcursorposfun") MemorySegment setCursorPosCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWcursorposfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursorPosCallback);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetGamepadName.invokeExact(
-                    jid
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetGamepadState(
-            int jid,
-            @Nullable @pointer(target=GLFWgamepadstate.class) GLFWgamepadstate state
+    public @Pointer(comment="GLFWdropfun") MemorySegment setDropCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWdropfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetDropCallback);
         try {
-            return (int) HANDLE$glfwGetGamepadState.invokeExact(
-                    jid,
-                    (MemorySegment) (state != null ? state.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetClipboardString(
-            @Nullable GLFWwindow window,
-            @Nullable ByteBuffer string
+    public @Pointer(comment="GLFWerrorfun") MemorySegment setErrorCallback(
+        @Pointer(comment="GLFWerrorfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetErrorCallback);
         try {
-            HANDLE$glfwSetClipboardString.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (string != null ? string.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetClipboardString(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="GLFWframebuffersizefun") MemorySegment setFramebufferSizeCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWframebuffersizefun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetFramebufferSizeCallback);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetClipboardString.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public double glfwGetTime() {
+    public void setGamma(
+        GLFWmonitor monitor,
+        float gamma
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetGamma);
         try {
-            return (double) HANDLE$glfwGetTime.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            hFunction.invokeExact(
+                monitor.segment(),
+                gamma
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetTime(
-            double time
+    public void setGammaRamp(
+        GLFWmonitor monitor,
+        @Pointer IGLFWgammaramp ramp
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetGammaRamp);
         try {
-            HANDLE$glfwSetTime.invokeExact(
-                    time
+            hFunction.invokeExact(
+                monitor.segment(),
+                ramp.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @unsigned long glfwGetTimerValue() {
+    public void setInputMode(
+        GLFWwindow window,
+        int mode,
+        int value
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetInputMode);
         try {
-            return (long) HANDLE$glfwGetTimerValue.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            hFunction.invokeExact(
+                window.segment(),
+                mode,
+                value
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @unsigned long glfwGetTimerFrequency() {
+    public @Pointer(comment="GLFWjoystickfun") MemorySegment setJoystickCallback(
+        @Pointer(comment="GLFWjoystickfun") MemorySegment callback
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetJoystickCallback);
         try {
-            return (long) HANDLE$glfwGetTimerFrequency.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return (MemorySegment) hFunction.invokeExact(
+                callback
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwMakeContextCurrent(
-            @Nullable GLFWwindow window
+    public void setJoystickUserPointer(
+        int jid,
+        @Pointer(comment="void*") MemorySegment pointer
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetJoystickUserPointer);
         try {
-            HANDLE$glfwMakeContextCurrent.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                jid,
+                pointer
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable GLFWwindow glfwGetCurrentContext() {
+    public @Pointer(comment="GLFWkeyfun") MemorySegment setKeyCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWkeyfun") MemorySegment callback
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetKeyCallback);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetCurrentContext.invokeExact();
-            return s.address() == 0 ? null : new GLFWwindow(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSwapBuffers(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="GLFWmonitorfun") MemorySegment setMonitorCallback(
+        @Pointer(comment="GLFWmonitorfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetMonitorCallback);
         try {
-            HANDLE$glfwSwapBuffers.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSwapInterval(
-            int interval
+    public void setMonitorUserPointer(
+        GLFWmonitor monitor,
+        @Pointer(comment="void*") MemorySegment pointer
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetMonitorUserPointer);
         try {
-            HANDLE$glfwSwapInterval.invokeExact(
-                    interval
+            hFunction.invokeExact(
+                monitor.segment(),
+                pointer
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwExtensionSupported(
-            @Nullable ByteBuffer extension
+    public @Pointer(comment="GLFWmousebuttonfun") MemorySegment setMouseButtonCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWmousebuttonfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetMouseButtonCallback);
         try {
-            return (int) HANDLE$glfwExtensionSupported.invokeExact(
-                    (MemorySegment) (extension != null ? extension.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWglproc") MemorySegment glfwGetProcAddress(
-            @Nullable ByteBuffer procname
+    public @Pointer(comment="GLFWscrollfun") MemorySegment setScrollCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWscrollfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetScrollCallback);
         try {
-            return (MemorySegment) HANDLE$glfwGetProcAddress.invokeExact(
-                    (MemorySegment) (procname != null ? procname.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwVulkanSupported() {
+    public void setTime(
+        double time
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetTime);
         try {
-            return (int) HANDLE$glfwVulkanSupported.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            hFunction.invokeExact(
+                time
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable PointerBuffer glfwGetRequiredInstanceExtensions(
-            @Nullable @unsigned IntBuffer count
+    public void setWindowAspectRatio(
+        GLFWwindow window,
+        int numer,
+        int denom
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowAspectRatio);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetRequiredInstanceExtensions.invokeExact(
-                    (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                numer,
+                denom
             );
-            return s.address() == 0 ? null : new PointerBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="GLFWvkproc") MemorySegment glfwGetInstanceProcAddress(
-            @Nullable VkInstance instance,
-            @Nullable ByteBuffer procname
+    public void setWindowAttrib(
+        GLFWwindow window,
+        int attrib,
+        int value
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowAttrib);
         try {
-            return (MemorySegment) HANDLE$glfwGetInstanceProcAddress.invokeExact(
-                    (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
-                    (MemorySegment) (procname != null ? procname.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                attrib,
+                value
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetPhysicalDevicePresentationSupport(
-            @Nullable VkInstance instance,
-            @Nullable VkPhysicalDevice device,
-            @unsigned int queuefamily
+    public @Pointer(comment="GLFWwindowclosefun") MemorySegment setWindowCloseCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWwindowclosefun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowCloseCallback);
         try {
-            return (int) HANDLE$glfwGetPhysicalDevicePresentationSupport.invokeExact(
-                    (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
-                    (MemorySegment) (device != null ? device.segment() : MemorySegment.NULL),
-                    queuefamily
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @enumtype(VkResult.class) int glfwCreateWindowSurface(
-            @Nullable VkInstance instance,
-            @Nullable GLFWwindow window,
-            @Nullable @pointer(target=VkAllocationCallbacks.class) VkAllocationCallbacks allocator,
-            @Nullable @pointer(target=VkSurfaceKHR.class) VkSurfaceKHR.Buffer surface
+    public @Pointer(comment="GLFWwindowcontentscalefun") MemorySegment setWindowContentScaleCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWwindowcontentscalefun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowContentScaleCallback);
         try {
-            return (int) HANDLE$glfwCreateWindowSurface.invokeExact(
-                    (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (allocator != null ? allocator.segment() : MemorySegment.NULL),
-                    (MemorySegment) (surface != null ? surface.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetWin32Adapter(
-            @Nullable GLFWmonitor monitor
+    public @Pointer(comment="GLFWwindowfocusfun") MemorySegment setWindowFocusCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWwindowfocusfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowFocusCallback);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetWin32Adapter.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetWin32Monitor(
-            @Nullable GLFWmonitor monitor
+    public void setWindowIcon(
+        GLFWwindow window,
+        int count,
+        @Pointer IGLFWimage images
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowIcon);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetWin32Monitor.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                count,
+                images.segment()
             );
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetWin32Window(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="GLFWwindowiconifyfun") MemorySegment setWindowIconifyCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWwindowiconifyfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowIconifyCallback);
         try {
-            return (MemorySegment) HANDLE$glfwGetWin32Window.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetWGLContext(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="GLFWwindowmaximizefun") MemorySegment setWindowMaximizeCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWwindowmaximizefun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowMaximizeCallback);
         try {
-            return (MemorySegment) HANDLE$glfwGetWGLContext.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @unsigned int glfwGetCocoaMonitor(
-            @Nullable GLFWmonitor monitor
+    public void setWindowMonitor(
+        GLFWwindow window,
+        GLFWmonitor monitor,
+        int xpos,
+        int ypos,
+        int width,
+        int height,
+        int refreshRate
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowMonitor);
         try {
-            return (int) HANDLE$glfwGetCocoaMonitor.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                monitor.segment(),
+                xpos,
+                ypos,
+                width,
+                height,
+                refreshRate
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetCocoaWindow(
-            @Nullable GLFWwindow window
+    public void setWindowOpacity(
+        GLFWwindow window,
+        float opacity
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowOpacity);
         try {
-            return (MemorySegment) HANDLE$glfwGetCocoaWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                opacity
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetCocoaView(
-            @Nullable GLFWwindow window
+    public void setWindowPos(
+        GLFWwindow window,
+        int xpos,
+        int ypos
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowPos);
         try {
-            return (MemorySegment) HANDLE$glfwGetCocoaView.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                xpos,
+                ypos
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetNSGLContext(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="GLFWwindowposfun") MemorySegment setWindowPosCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWwindowposfun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowPosCallback);
         try {
-            return (MemorySegment) HANDLE$glfwGetNSGLContext.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable PointerBuffer glfwGetX11Display() {
+    public @Pointer(comment="GLFWwindowrefreshfun") MemorySegment setWindowRefreshCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWwindowrefreshfun") MemorySegment callback
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowRefreshCallback);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetX11Display.invokeExact();
-            return s.address() == 0 ? null : new PointerBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public long glfwGetX11Adapter(
-            @Nullable GLFWmonitor monitor
+    public void setWindowShouldClose(
+        GLFWwindow window,
+        int value
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowShouldClose);
         try {
-            return (long) HANDLE$glfwGetX11Adapter.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                value
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public long glfwGetX11Monitor(
-            @Nullable GLFWmonitor monitor
+    public void setWindowSize(
+        GLFWwindow window,
+        int width,
+        int height
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowSize);
         try {
-            return (long) HANDLE$glfwGetX11Monitor.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                width,
+                height
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public long glfwGetX11Window(
-            @Nullable GLFWwindow window
+    public @Pointer(comment="GLFWwindowsizefun") MemorySegment setWindowSizeCallback(
+        GLFWwindow window,
+        @Pointer(comment="GLFWwindowsizefun") MemorySegment callback
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowSizeCallback);
         try {
-            return (long) HANDLE$glfwGetX11Window.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (MemorySegment) hFunction.invokeExact(
+                window.segment(),
+                callback
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void glfwSetX11SelectionString(
-            @Nullable ByteBuffer string
+    public void setWindowSizeLimits(
+        GLFWwindow window,
+        int minwidth,
+        int minheight,
+        int maxwidth,
+        int maxheight
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowSizeLimits);
         try {
-            HANDLE$glfwSetX11SelectionString.invokeExact(
-                    (MemorySegment) (string != null ? string.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                minwidth,
+                minheight,
+                maxwidth,
+                maxheight
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable ByteBuffer glfwGetX11SelectionString() {
+    public void setWindowTitle(
+        GLFWwindow window,
+        BytePtr title
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowTitle);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetX11SelectionString.invokeExact();
-            return s.address() == 0 ? null : new ByteBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            hFunction.invokeExact(
+                window.segment(),
+                title.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetGLXContext(
-            @Nullable GLFWwindow window
+    public void setWindowUserPointer(
+        GLFWwindow window,
+        @Pointer(comment="void*") MemorySegment pointer
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowUserPointer);
         try {
-            return (MemorySegment) HANDLE$glfwGetGLXContext.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment(),
+                pointer
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public long glfwGetGLXWindow(
-            @Nullable GLFWwindow window
+    public void setX11SelectionString(
+        BytePtr string
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetX11SelectionString);
         try {
-            return (long) HANDLE$glfwGetGLXWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                string.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable PointerBuffer glfwGetWaylandDisplay() {
+    public void showWindow(
+        GLFWwindow window
+    ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwShowWindow);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetWaylandDisplay.invokeExact();
-            return s.address() == 0 ? null : new PointerBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            hFunction.invokeExact(
+                window.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetWaylandMonitor(
-            @Nullable GLFWmonitor monitor
+    public void swapBuffers(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSwapBuffers);
         try {
-            return (MemorySegment) HANDLE$glfwGetWaylandMonitor.invokeExact(
-                    (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @Nullable PointerBuffer glfwGetWaylandWindow(
-            @Nullable GLFWwindow window
+    public void swapInterval(
+        int interval
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSwapInterval);
         try {
-            MemorySegment s = (MemorySegment) HANDLE$glfwGetWaylandWindow.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                interval
             );
-            return s.address() == 0 ? null : new PointerBuffer(s);
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetEGLDisplay() {
+    public void terminate() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwTerminate);
         try {
-            return (MemorySegment) HANDLE$glfwGetEGLDisplay.invokeExact();
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+            hFunction.invokeExact(
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetEGLContext(
-            @Nullable GLFWwindow window
+    public int updateGamepadMappings(
+        BytePtr string
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwUpdateGamepadMappings);
+        try {
+            return (int) hFunction.invokeExact(
+                string.segment()
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int vulkanSupported() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwVulkanSupported);
+        try {
+            return (int) hFunction.invokeExact(
+            );
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void waitEvents() {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwWaitEvents);
         try {
-            return (MemorySegment) HANDLE$glfwGetEGLContext.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetEGLSurface(
-            @Nullable GLFWwindow window
+    public void waitEventsTimeout(
+        double timeout
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwWaitEventsTimeout);
         try {
-            return (MemorySegment) HANDLE$glfwGetEGLSurface.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                timeout
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetOSMesaColorBuffer(
-            @Nullable GLFWwindow window,
-            @Nullable IntBuffer width,
-            @Nullable IntBuffer height,
-            @Nullable IntBuffer format,
-            @Nullable PointerBuffer buffer
+    public void windowHint(
+        int hint,
+        int value
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwWindowHint);
         try {
-            return (int) HANDLE$glfwGetOSMesaColorBuffer.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (width != null ? width.segment() : MemorySegment.NULL),
-                    (MemorySegment) (height != null ? height.segment() : MemorySegment.NULL),
-                    (MemorySegment) (format != null ? format.segment() : MemorySegment.NULL),
-                    (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                hint,
+                value
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public int glfwGetOSMesaDepthBuffer(
-            @Nullable GLFWwindow window,
-            @Nullable IntBuffer width,
-            @Nullable IntBuffer height,
-            @Nullable IntBuffer bytesPerValue,
-            @Nullable PointerBuffer buffer
+    public void windowHintString(
+        int hint,
+        BytePtr value
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwWindowHintString);
         try {
-            return (int) HANDLE$glfwGetOSMesaDepthBuffer.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                    (MemorySegment) (width != null ? width.segment() : MemorySegment.NULL),
-                    (MemorySegment) (height != null ? height.segment() : MemorySegment.NULL),
-                    (MemorySegment) (bytesPerValue != null ? bytesPerValue.segment() : MemorySegment.NULL),
-                    (MemorySegment) (buffer != null ? buffer.segment() : MemorySegment.NULL)
+            hFunction.invokeExact(
+                hint,
+                value.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public @pointer(comment="void*") MemorySegment glfwGetOSMesaContext(
-            @Nullable GLFWwindow window
+    public int windowShouldClose(
+        GLFWwindow window
     ) {
+        MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwWindowShouldClose);
         try {
-            return (MemorySegment) HANDLE$glfwGetOSMesaContext.invokeExact(
-                    (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
+            return (int) hFunction.invokeExact(
+                window.segment()
             );
-        } catch (Throwable t) {
-            throw new RuntimeException(t);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
+    // endregion
+
+    // region segments and handles
+    public final @Nullable MemorySegment SEGMENT$glfwCreateCursor;
+    public final @Nullable MemorySegment SEGMENT$glfwCreateStandardCursor;
+    public final @Nullable MemorySegment SEGMENT$glfwCreateWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwCreateWindowSurface;
+    public final @Nullable MemorySegment SEGMENT$glfwDefaultWindowHints;
+    public final @Nullable MemorySegment SEGMENT$glfwDestroyCursor;
+    public final @Nullable MemorySegment SEGMENT$glfwDestroyWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwExtensionSupported;
+    public final @Nullable MemorySegment SEGMENT$glfwFocusWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwGetClipboardString;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaView;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCurrentContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetCursorPos;
+    public final @Nullable MemorySegment SEGMENT$glfwGetEGLContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetEGLDisplay;
+    public final @Nullable MemorySegment SEGMENT$glfwGetEGLSurface;
+    public final @Nullable MemorySegment SEGMENT$glfwGetError;
+    public final @Nullable MemorySegment SEGMENT$glfwGetFramebufferSize;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGLXContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGLXWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGamepadName;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGamepadState;
+    public final @Nullable MemorySegment SEGMENT$glfwGetGammaRamp;
+    public final @Nullable MemorySegment SEGMENT$glfwGetInputMode;
+    public final @Nullable MemorySegment SEGMENT$glfwGetInstanceProcAddress;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickAxes;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickButtons;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickGUID;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickHats;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickName;
+    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetKey;
+    public final @Nullable MemorySegment SEGMENT$glfwGetKeyName;
+    public final @Nullable MemorySegment SEGMENT$glfwGetKeyScancode;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorContentScale;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorName;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorPhysicalSize;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorPos;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorWorkarea;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMonitors;
+    public final @Nullable MemorySegment SEGMENT$glfwGetMouseButton;
+    public final @Nullable MemorySegment SEGMENT$glfwGetNSGLContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaColorBuffer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaDepthBuffer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetPhysicalDevicePresentationSupport;
+    public final @Nullable MemorySegment SEGMENT$glfwGetPlatform;
+    public final @Nullable MemorySegment SEGMENT$glfwGetPrimaryMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetProcAddress;
+    public final @Nullable MemorySegment SEGMENT$glfwGetRequiredInstanceExtensions;
+    public final @Nullable MemorySegment SEGMENT$glfwGetTime;
+    public final @Nullable MemorySegment SEGMENT$glfwGetTimerFrequency;
+    public final @Nullable MemorySegment SEGMENT$glfwGetTimerValue;
+    public final @Nullable MemorySegment SEGMENT$glfwGetVersion;
+    public final @Nullable MemorySegment SEGMENT$glfwGetVersionString;
+    public final @Nullable MemorySegment SEGMENT$glfwGetVideoMode;
+    public final @Nullable MemorySegment SEGMENT$glfwGetVideoModes;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWGLContext;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandDisplay;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Adapter;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Monitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Window;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowAttrib;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowContentScale;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowFrameSize;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowOpacity;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowPos;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowSize;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowTitle;
+    public final @Nullable MemorySegment SEGMENT$glfwGetWindowUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11Adapter;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11Display;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11Monitor;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11SelectionString;
+    public final @Nullable MemorySegment SEGMENT$glfwGetX11Window;
+    public final @Nullable MemorySegment SEGMENT$glfwHideWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwIconifyWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwInit;
+    public final @Nullable MemorySegment SEGMENT$glfwInitAllocator;
+    public final @Nullable MemorySegment SEGMENT$glfwInitHint;
+    public final @Nullable MemorySegment SEGMENT$glfwInitVulkanLoader;
+    public final @Nullable MemorySegment SEGMENT$glfwJoystickIsGamepad;
+    public final @Nullable MemorySegment SEGMENT$glfwJoystickPresent;
+    public final @Nullable MemorySegment SEGMENT$glfwMakeContextCurrent;
+    public final @Nullable MemorySegment SEGMENT$glfwMaximizeWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwPlatformSupported;
+    public final @Nullable MemorySegment SEGMENT$glfwPollEvents;
+    public final @Nullable MemorySegment SEGMENT$glfwPostEmptyEvent;
+    public final @Nullable MemorySegment SEGMENT$glfwRawMouseMotionSupported;
+    public final @Nullable MemorySegment SEGMENT$glfwRequestWindowAttention;
+    public final @Nullable MemorySegment SEGMENT$glfwRestoreWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCharCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCharModsCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetClipboardString;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCursor;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCursorEnterCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCursorPos;
+    public final @Nullable MemorySegment SEGMENT$glfwSetCursorPosCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetDropCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetErrorCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetFramebufferSizeCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetGamma;
+    public final @Nullable MemorySegment SEGMENT$glfwSetGammaRamp;
+    public final @Nullable MemorySegment SEGMENT$glfwSetInputMode;
+    public final @Nullable MemorySegment SEGMENT$glfwSetJoystickCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetJoystickUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwSetKeyCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetMonitorCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetMonitorUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwSetMouseButtonCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetScrollCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetTime;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowAspectRatio;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowAttrib;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowCloseCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowContentScaleCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowFocusCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowIcon;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowIconifyCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowMaximizeCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowMonitor;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowOpacity;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowPos;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowPosCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowRefreshCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowShouldClose;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSize;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSizeCallback;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSizeLimits;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowTitle;
+    public final @Nullable MemorySegment SEGMENT$glfwSetWindowUserPointer;
+    public final @Nullable MemorySegment SEGMENT$glfwSetX11SelectionString;
+    public final @Nullable MemorySegment SEGMENT$glfwShowWindow;
+    public final @Nullable MemorySegment SEGMENT$glfwSwapBuffers;
+    public final @Nullable MemorySegment SEGMENT$glfwSwapInterval;
+    public final @Nullable MemorySegment SEGMENT$glfwTerminate;
+    public final @Nullable MemorySegment SEGMENT$glfwUpdateGamepadMappings;
+    public final @Nullable MemorySegment SEGMENT$glfwVulkanSupported;
+    public final @Nullable MemorySegment SEGMENT$glfwWaitEvents;
+    public final @Nullable MemorySegment SEGMENT$glfwWaitEventsTimeout;
+    public final @Nullable MemorySegment SEGMENT$glfwWindowHint;
+    public final @Nullable MemorySegment SEGMENT$glfwWindowHintString;
+    public final @Nullable MemorySegment SEGMENT$glfwWindowShouldClose;
+    public final @Nullable MethodHandle HANDLE$glfwCreateCursor;
+    public final @Nullable MethodHandle HANDLE$glfwCreateStandardCursor;
+    public final @Nullable MethodHandle HANDLE$glfwCreateWindow;
+    public final @Nullable MethodHandle HANDLE$glfwCreateWindowSurface;
+    public final @Nullable MethodHandle HANDLE$glfwDefaultWindowHints;
+    public final @Nullable MethodHandle HANDLE$glfwDestroyCursor;
+    public final @Nullable MethodHandle HANDLE$glfwDestroyWindow;
+    public final @Nullable MethodHandle HANDLE$glfwExtensionSupported;
+    public final @Nullable MethodHandle HANDLE$glfwFocusWindow;
+    public final @Nullable MethodHandle HANDLE$glfwGetClipboardString;
+    public final @Nullable MethodHandle HANDLE$glfwGetCocoaMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetCocoaView;
+    public final @Nullable MethodHandle HANDLE$glfwGetCocoaWindow;
+    public final @Nullable MethodHandle HANDLE$glfwGetCurrentContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetCursorPos;
+    public final @Nullable MethodHandle HANDLE$glfwGetEGLContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetEGLDisplay;
+    public final @Nullable MethodHandle HANDLE$glfwGetEGLSurface;
+    public final @Nullable MethodHandle HANDLE$glfwGetError;
+    public final @Nullable MethodHandle HANDLE$glfwGetFramebufferSize;
+    public final @Nullable MethodHandle HANDLE$glfwGetGLXContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetGLXWindow;
+    public final @Nullable MethodHandle HANDLE$glfwGetGamepadName;
+    public final @Nullable MethodHandle HANDLE$glfwGetGamepadState;
+    public final @Nullable MethodHandle HANDLE$glfwGetGammaRamp;
+    public final @Nullable MethodHandle HANDLE$glfwGetInputMode;
+    public final @Nullable MethodHandle HANDLE$glfwGetInstanceProcAddress;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickAxes;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickButtons;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickGUID;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickHats;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickName;
+    public final @Nullable MethodHandle HANDLE$glfwGetJoystickUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwGetKey;
+    public final @Nullable MethodHandle HANDLE$glfwGetKeyName;
+    public final @Nullable MethodHandle HANDLE$glfwGetKeyScancode;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorContentScale;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorName;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorPhysicalSize;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorPos;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitorWorkarea;
+    public final @Nullable MethodHandle HANDLE$glfwGetMonitors;
+    public final @Nullable MethodHandle HANDLE$glfwGetMouseButton;
+    public final @Nullable MethodHandle HANDLE$glfwGetNSGLContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaColorBuffer;
+    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaDepthBuffer;
+    public final @Nullable MethodHandle HANDLE$glfwGetPhysicalDevicePresentationSupport;
+    public final @Nullable MethodHandle HANDLE$glfwGetPlatform;
+    public final @Nullable MethodHandle HANDLE$glfwGetPrimaryMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetProcAddress;
+    public final @Nullable MethodHandle HANDLE$glfwGetRequiredInstanceExtensions;
+    public final @Nullable MethodHandle HANDLE$glfwGetTime;
+    public final @Nullable MethodHandle HANDLE$glfwGetTimerFrequency;
+    public final @Nullable MethodHandle HANDLE$glfwGetTimerValue;
+    public final @Nullable MethodHandle HANDLE$glfwGetVersion;
+    public final @Nullable MethodHandle HANDLE$glfwGetVersionString;
+    public final @Nullable MethodHandle HANDLE$glfwGetVideoMode;
+    public final @Nullable MethodHandle HANDLE$glfwGetVideoModes;
+    public final @Nullable MethodHandle HANDLE$glfwGetWGLContext;
+    public final @Nullable MethodHandle HANDLE$glfwGetWaylandDisplay;
+    public final @Nullable MethodHandle HANDLE$glfwGetWaylandMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetWaylandWindow;
+    public final @Nullable MethodHandle HANDLE$glfwGetWin32Adapter;
+    public final @Nullable MethodHandle HANDLE$glfwGetWin32Monitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetWin32Window;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowAttrib;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowContentScale;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowFrameSize;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowOpacity;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowPos;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowSize;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowTitle;
+    public final @Nullable MethodHandle HANDLE$glfwGetWindowUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11Adapter;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11Display;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11Monitor;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11SelectionString;
+    public final @Nullable MethodHandle HANDLE$glfwGetX11Window;
+    public final @Nullable MethodHandle HANDLE$glfwHideWindow;
+    public final @Nullable MethodHandle HANDLE$glfwIconifyWindow;
+    public final @Nullable MethodHandle HANDLE$glfwInit;
+    public final @Nullable MethodHandle HANDLE$glfwInitAllocator;
+    public final @Nullable MethodHandle HANDLE$glfwInitHint;
+    public final @Nullable MethodHandle HANDLE$glfwInitVulkanLoader;
+    public final @Nullable MethodHandle HANDLE$glfwJoystickIsGamepad;
+    public final @Nullable MethodHandle HANDLE$glfwJoystickPresent;
+    public final @Nullable MethodHandle HANDLE$glfwMakeContextCurrent;
+    public final @Nullable MethodHandle HANDLE$glfwMaximizeWindow;
+    public final @Nullable MethodHandle HANDLE$glfwPlatformSupported;
+    public final @Nullable MethodHandle HANDLE$glfwPollEvents;
+    public final @Nullable MethodHandle HANDLE$glfwPostEmptyEvent;
+    public final @Nullable MethodHandle HANDLE$glfwRawMouseMotionSupported;
+    public final @Nullable MethodHandle HANDLE$glfwRequestWindowAttention;
+    public final @Nullable MethodHandle HANDLE$glfwRestoreWindow;
+    public final @Nullable MethodHandle HANDLE$glfwSetCharCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetCharModsCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetClipboardString;
+    public final @Nullable MethodHandle HANDLE$glfwSetCursor;
+    public final @Nullable MethodHandle HANDLE$glfwSetCursorEnterCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetCursorPos;
+    public final @Nullable MethodHandle HANDLE$glfwSetCursorPosCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetDropCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetErrorCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetFramebufferSizeCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetGamma;
+    public final @Nullable MethodHandle HANDLE$glfwSetGammaRamp;
+    public final @Nullable MethodHandle HANDLE$glfwSetInputMode;
+    public final @Nullable MethodHandle HANDLE$glfwSetJoystickCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetJoystickUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwSetKeyCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetMonitorCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetMonitorUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwSetMouseButtonCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetScrollCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetTime;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowAspectRatio;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowAttrib;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowCloseCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowContentScaleCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowFocusCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowIcon;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowIconifyCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowMaximizeCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowMonitor;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowOpacity;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowPos;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowPosCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowRefreshCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowShouldClose;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowSize;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowSizeCallback;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowSizeLimits;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowTitle;
+    public final @Nullable MethodHandle HANDLE$glfwSetWindowUserPointer;
+    public final @Nullable MethodHandle HANDLE$glfwSetX11SelectionString;
+    public final @Nullable MethodHandle HANDLE$glfwShowWindow;
+    public final @Nullable MethodHandle HANDLE$glfwSwapBuffers;
+    public final @Nullable MethodHandle HANDLE$glfwSwapInterval;
+    public final @Nullable MethodHandle HANDLE$glfwTerminate;
+    public final @Nullable MethodHandle HANDLE$glfwUpdateGamepadMappings;
+    public final @Nullable MethodHandle HANDLE$glfwVulkanSupported;
+    public final @Nullable MethodHandle HANDLE$glfwWaitEvents;
+    public final @Nullable MethodHandle HANDLE$glfwWaitEventsTimeout;
+    public final @Nullable MethodHandle HANDLE$glfwWindowHint;
+    public final @Nullable MethodHandle HANDLE$glfwWindowHintString;
+    public final @Nullable MethodHandle HANDLE$glfwWindowShouldClose;
+    // endregion
 
-    public static final FunctionDescriptor DESCRIPTOR$glfwInit = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwTerminate = FunctionDescriptor.ofVoid();
-    public static final FunctionDescriptor DESCRIPTOR$glfwInitHint = FunctionDescriptor.ofVoid(
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwInitAllocator = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS.withTargetLayout(GLFWallocator.LAYOUT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwInitVulkanLoader = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetVersion = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetVersionString = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetError = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE))
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetErrorCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetPlatform = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwPlatformSupported = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitors = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetPrimaryMonitor = FunctionDescriptor.of(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorPos = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorWorkarea = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorPhysicalSize = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorContentScale = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorName = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetMonitorUserPointer = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorUserPointer = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetMonitorCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetVideoModes = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(GLFWvidmode.LAYOUT),
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetVideoMode = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(GLFWvidmode.LAYOUT),
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetGamma = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_FLOAT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetGammaRamp = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(GLFWgammaramp.LAYOUT),
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetGammaRamp = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(GLFWgammaramp.LAYOUT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwDefaultWindowHints = FunctionDescriptor.ofVoid();
-    public static final FunctionDescriptor DESCRIPTOR$glfwWindowHint = FunctionDescriptor.ofVoid(
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwWindowHintString = FunctionDescriptor.ofVoid(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwCreateWindow = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwDestroyWindow = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwWindowShouldClose = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowShouldClose = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowTitle = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowTitle = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowIcon = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(GLFWimage.LAYOUT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowPos = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowPos = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowSize = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowSizeLimits = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowAspectRatio = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowSize = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetFramebufferSize = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowFrameSize = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowContentScale = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowOpacity = FunctionDescriptor.of(
-            ValueLayout.JAVA_FLOAT,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowOpacity = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_FLOAT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwIconifyWindow = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwRestoreWindow = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwMaximizeWindow = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwShowWindow = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwHideWindow = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwFocusWindow = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwRequestWindowAttention = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowMonitor = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowMonitor = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowAttrib = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowAttrib = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowUserPointer = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowUserPointer = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowPosCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowSizeCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowCloseCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowRefreshCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowFocusCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowIconifyCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowMaximizeCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetFramebufferSizeCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowContentScaleCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwPollEvents = FunctionDescriptor.ofVoid();
-    public static final FunctionDescriptor DESCRIPTOR$glfwWaitEvents = FunctionDescriptor.ofVoid();
-    public static final FunctionDescriptor DESCRIPTOR$glfwWaitEventsTimeout = FunctionDescriptor.ofVoid(
-            ValueLayout.JAVA_DOUBLE
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwPostEmptyEvent = FunctionDescriptor.ofVoid();
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetInputMode = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetInputMode = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwRawMouseMotionSupported = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetKeyName = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetKeyScancode = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetKey = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetMouseButton = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetCursorPos = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_DOUBLE),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_DOUBLE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetCursorPos = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_DOUBLE,
-            ValueLayout.JAVA_DOUBLE
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwCreateCursor = FunctionDescriptor.of(
+    public static final class Descriptors {
+        public static final FunctionDescriptor DESCRIPTOR$glfwCreateCursor = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(GLFWimage.LAYOUT),
             ValueLayout.JAVA_INT,
             ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwCreateStandardCursor = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwCreateStandardCursor = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwDestroyCursor = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetCursor = FunctionDescriptor.ofVoid(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwCreateWindow = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetKeyCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetCharCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetCharModsCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetMouseButtonCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetCursorPosCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetCursorEnterCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetScrollCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetDropCallback = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwJoystickPresent = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickAxes = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT),
             ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickButtons = FunctionDescriptor.of(
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickHats = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickName = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickGUID = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetJoystickUserPointer = FunctionDescriptor.ofVoid(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickUserPointer = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwJoystickIsGamepad = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetJoystickCallback = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwUpdateGamepadMappings = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetGamepadName = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetGamepadState = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(GLFWgamepadstate.LAYOUT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetClipboardString = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetClipboardString = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetTime = FunctionDescriptor.of(
-            ValueLayout.JAVA_DOUBLE
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetTime = FunctionDescriptor.ofVoid(
-            ValueLayout.JAVA_DOUBLE
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetTimerValue = FunctionDescriptor.of(
-            ValueLayout.JAVA_LONG
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetTimerFrequency = FunctionDescriptor.of(
-            ValueLayout.JAVA_LONG
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwMakeContextCurrent = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetCurrentContext = FunctionDescriptor.of(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSwapBuffers = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSwapInterval = FunctionDescriptor.ofVoid(
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwExtensionSupported = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetProcAddress = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwVulkanSupported = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetRequiredInstanceExtensions = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetInstanceProcAddress = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetPhysicalDevicePresentationSupport = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwCreateWindowSurface = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwCreateWindowSurface = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWin32Adapter = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwDefaultWindowHints = FunctionDescriptor.ofVoid(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwDestroyCursor = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwDestroyWindow = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwExtensionSupported = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwFocusWindow = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetClipboardString = FunctionDescriptor.of(
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWin32Monitor = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWin32Window = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWGLContext = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetCocoaMonitor = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetCocoaMonitor = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetCocoaWindow = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetCocoaView = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetCocoaView = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetCocoaWindow = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetNSGLContext = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetCurrentContext = FunctionDescriptor.of(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetCursorPos = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_DOUBLE),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_DOUBLE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLContext = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Display = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Adapter = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLDisplay = FunctionDescriptor.of(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLSurface = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetError = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE))
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetFramebufferSize = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetGLXContext = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetGLXWindow = FunctionDescriptor.of(
             NativeLayout.C_LONG,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Monitor = FunctionDescriptor.of(
-            NativeLayout.C_LONG,
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetGamepadName = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetGamepadState = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(GLFWgamepadstate.LAYOUT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetGammaRamp = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(GLFWgammaramp.LAYOUT),
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Window = FunctionDescriptor.of(
-            NativeLayout.C_LONG,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwSetX11SelectionString = FunctionDescriptor.ofVoid(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetInputMode = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetInstanceProcAddress = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetX11SelectionString = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetGLXContext = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickAxes = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT),
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickButtons = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickGUID = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickHats = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickName = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetJoystickUserPointer = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetKey = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetKeyName = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetKeyScancode = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorContentScale = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorName = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorPhysicalSize = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorPos = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorUserPointer = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetGLXWindow = FunctionDescriptor.of(
-            NativeLayout.C_LONG,
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitorWorkarea = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetMonitors = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetMouseButton = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetNSGLContext = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandDisplay = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaColorBuffer = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandMonitor = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaContext = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandWindow = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaDepthBuffer = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetPhysicalDevicePresentationSupport = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetPlatform = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetPrimaryMonitor = FunctionDescriptor.of(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetProcAddress = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetRequiredInstanceExtensions = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetTime = FunctionDescriptor.of(
+            ValueLayout.JAVA_DOUBLE
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetTimerFrequency = FunctionDescriptor.of(
+            ValueLayout.JAVA_LONG
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetTimerValue = FunctionDescriptor.of(
+            ValueLayout.JAVA_LONG
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetVersion = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetVersionString = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetVideoMode = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(GLFWvidmode.LAYOUT),
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetVideoModes = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(GLFWvidmode.LAYOUT),
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWGLContext = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandDisplay = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandMonitor = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWaylandWindow = FunctionDescriptor.of(
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS),
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLDisplay = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWin32Adapter = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLContext = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWin32Monitor = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWin32Window = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetEGLSurface = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaColorBuffer = FunctionDescriptor.of(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowAttrib = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaDepthBuffer = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowContentScale = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_FLOAT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowFrameSize = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-    );
-    public static final FunctionDescriptor DESCRIPTOR$glfwGetOSMesaContext = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowMonitor = FunctionDescriptor.of(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS
-    );
+        );
 
-    public final @Nullable MemorySegment SEGMENT$glfwInit;
-    public final @Nullable MemorySegment SEGMENT$glfwTerminate;
-    public final @Nullable MemorySegment SEGMENT$glfwInitHint;
-    public final @Nullable MemorySegment SEGMENT$glfwInitAllocator;
-    public final @Nullable MemorySegment SEGMENT$glfwInitVulkanLoader;
-    public final @Nullable MemorySegment SEGMENT$glfwGetVersion;
-    public final @Nullable MemorySegment SEGMENT$glfwGetVersionString;
-    public final @Nullable MemorySegment SEGMENT$glfwGetError;
-    public final @Nullable MemorySegment SEGMENT$glfwSetErrorCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwGetPlatform;
-    public final @Nullable MemorySegment SEGMENT$glfwPlatformSupported;
-    public final @Nullable MemorySegment SEGMENT$glfwGetMonitors;
-    public final @Nullable MemorySegment SEGMENT$glfwGetPrimaryMonitor;
-    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorPos;
-    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorWorkarea;
-    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorPhysicalSize;
-    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorContentScale;
-    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorName;
-    public final @Nullable MemorySegment SEGMENT$glfwSetMonitorUserPointer;
-    public final @Nullable MemorySegment SEGMENT$glfwGetMonitorUserPointer;
-    public final @Nullable MemorySegment SEGMENT$glfwSetMonitorCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwGetVideoModes;
-    public final @Nullable MemorySegment SEGMENT$glfwGetVideoMode;
-    public final @Nullable MemorySegment SEGMENT$glfwSetGamma;
-    public final @Nullable MemorySegment SEGMENT$glfwGetGammaRamp;
-    public final @Nullable MemorySegment SEGMENT$glfwSetGammaRamp;
-    public final @Nullable MemorySegment SEGMENT$glfwDefaultWindowHints;
-    public final @Nullable MemorySegment SEGMENT$glfwWindowHint;
-    public final @Nullable MemorySegment SEGMENT$glfwWindowHintString;
-    public final @Nullable MemorySegment SEGMENT$glfwCreateWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwDestroyWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwWindowShouldClose;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowShouldClose;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowTitle;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowTitle;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowIcon;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowPos;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowPos;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowSize;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSizeLimits;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowAspectRatio;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSize;
-    public final @Nullable MemorySegment SEGMENT$glfwGetFramebufferSize;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowFrameSize;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowContentScale;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowOpacity;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowOpacity;
-    public final @Nullable MemorySegment SEGMENT$glfwIconifyWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwRestoreWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwMaximizeWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwShowWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwHideWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwFocusWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwRequestWindowAttention;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowMonitor;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowMonitor;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowAttrib;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowAttrib;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowUserPointer;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWindowUserPointer;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowPosCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowSizeCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowCloseCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowRefreshCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowFocusCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowIconifyCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowMaximizeCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetFramebufferSizeCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetWindowContentScaleCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwPollEvents;
-    public final @Nullable MemorySegment SEGMENT$glfwWaitEvents;
-    public final @Nullable MemorySegment SEGMENT$glfwWaitEventsTimeout;
-    public final @Nullable MemorySegment SEGMENT$glfwPostEmptyEvent;
-    public final @Nullable MemorySegment SEGMENT$glfwGetInputMode;
-    public final @Nullable MemorySegment SEGMENT$glfwSetInputMode;
-    public final @Nullable MemorySegment SEGMENT$glfwRawMouseMotionSupported;
-    public final @Nullable MemorySegment SEGMENT$glfwGetKeyName;
-    public final @Nullable MemorySegment SEGMENT$glfwGetKeyScancode;
-    public final @Nullable MemorySegment SEGMENT$glfwGetKey;
-    public final @Nullable MemorySegment SEGMENT$glfwGetMouseButton;
-    public final @Nullable MemorySegment SEGMENT$glfwGetCursorPos;
-    public final @Nullable MemorySegment SEGMENT$glfwSetCursorPos;
-    public final @Nullable MemorySegment SEGMENT$glfwCreateCursor;
-    public final @Nullable MemorySegment SEGMENT$glfwCreateStandardCursor;
-    public final @Nullable MemorySegment SEGMENT$glfwDestroyCursor;
-    public final @Nullable MemorySegment SEGMENT$glfwSetCursor;
-    public final @Nullable MemorySegment SEGMENT$glfwSetKeyCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetCharCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetCharModsCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetMouseButtonCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetCursorPosCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetCursorEnterCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetScrollCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwSetDropCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwJoystickPresent;
-    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickAxes;
-    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickButtons;
-    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickHats;
-    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickName;
-    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickGUID;
-    public final @Nullable MemorySegment SEGMENT$glfwSetJoystickUserPointer;
-    public final @Nullable MemorySegment SEGMENT$glfwGetJoystickUserPointer;
-    public final @Nullable MemorySegment SEGMENT$glfwJoystickIsGamepad;
-    public final @Nullable MemorySegment SEGMENT$glfwSetJoystickCallback;
-    public final @Nullable MemorySegment SEGMENT$glfwUpdateGamepadMappings;
-    public final @Nullable MemorySegment SEGMENT$glfwGetGamepadName;
-    public final @Nullable MemorySegment SEGMENT$glfwGetGamepadState;
-    public final @Nullable MemorySegment SEGMENT$glfwSetClipboardString;
-    public final @Nullable MemorySegment SEGMENT$glfwGetClipboardString;
-    public final @Nullable MemorySegment SEGMENT$glfwGetTime;
-    public final @Nullable MemorySegment SEGMENT$glfwSetTime;
-    public final @Nullable MemorySegment SEGMENT$glfwGetTimerValue;
-    public final @Nullable MemorySegment SEGMENT$glfwGetTimerFrequency;
-    public final @Nullable MemorySegment SEGMENT$glfwMakeContextCurrent;
-    public final @Nullable MemorySegment SEGMENT$glfwGetCurrentContext;
-    public final @Nullable MemorySegment SEGMENT$glfwSwapBuffers;
-    public final @Nullable MemorySegment SEGMENT$glfwSwapInterval;
-    public final @Nullable MemorySegment SEGMENT$glfwExtensionSupported;
-    public final @Nullable MemorySegment SEGMENT$glfwGetProcAddress;
-    public final @Nullable MemorySegment SEGMENT$glfwVulkanSupported;
-    public final @Nullable MemorySegment SEGMENT$glfwGetRequiredInstanceExtensions;
-    public final @Nullable MemorySegment SEGMENT$glfwGetInstanceProcAddress;
-    public final @Nullable MemorySegment SEGMENT$glfwGetPhysicalDevicePresentationSupport;
-    public final @Nullable MemorySegment SEGMENT$glfwCreateWindowSurface;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Adapter;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Monitor;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWin32Window;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWGLContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaMonitor;
-    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwGetCocoaView;
-    public final @Nullable MemorySegment SEGMENT$glfwGetNSGLContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetX11Display;
-    public final @Nullable MemorySegment SEGMENT$glfwGetX11Adapter;
-    public final @Nullable MemorySegment SEGMENT$glfwGetX11Monitor;
-    public final @Nullable MemorySegment SEGMENT$glfwGetX11Window;
-    public final @Nullable MemorySegment SEGMENT$glfwSetX11SelectionString;
-    public final @Nullable MemorySegment SEGMENT$glfwGetX11SelectionString;
-    public final @Nullable MemorySegment SEGMENT$glfwGetGLXContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetGLXWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandDisplay;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandMonitor;
-    public final @Nullable MemorySegment SEGMENT$glfwGetWaylandWindow;
-    public final @Nullable MemorySegment SEGMENT$glfwGetEGLDisplay;
-    public final @Nullable MemorySegment SEGMENT$glfwGetEGLContext;
-    public final @Nullable MemorySegment SEGMENT$glfwGetEGLSurface;
-    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaColorBuffer;
-    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaDepthBuffer;
-    public final @Nullable MemorySegment SEGMENT$glfwGetOSMesaContext;
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowOpacity = FunctionDescriptor.of(
+            ValueLayout.JAVA_FLOAT,
+            ValueLayout.ADDRESS
+        );
 
-    public final @Nullable MethodHandle HANDLE$glfwInit;
-    public final @Nullable MethodHandle HANDLE$glfwTerminate;
-    public final @Nullable MethodHandle HANDLE$glfwInitHint;
-    public final @Nullable MethodHandle HANDLE$glfwInitAllocator;
-    public final @Nullable MethodHandle HANDLE$glfwInitVulkanLoader;
-    public final @Nullable MethodHandle HANDLE$glfwGetVersion;
-    public final @Nullable MethodHandle HANDLE$glfwGetVersionString;
-    public final @Nullable MethodHandle HANDLE$glfwGetError;
-    public final @Nullable MethodHandle HANDLE$glfwSetErrorCallback;
-    public final @Nullable MethodHandle HANDLE$glfwGetPlatform;
-    public final @Nullable MethodHandle HANDLE$glfwPlatformSupported;
-    public final @Nullable MethodHandle HANDLE$glfwGetMonitors;
-    public final @Nullable MethodHandle HANDLE$glfwGetPrimaryMonitor;
-    public final @Nullable MethodHandle HANDLE$glfwGetMonitorPos;
-    public final @Nullable MethodHandle HANDLE$glfwGetMonitorWorkarea;
-    public final @Nullable MethodHandle HANDLE$glfwGetMonitorPhysicalSize;
-    public final @Nullable MethodHandle HANDLE$glfwGetMonitorContentScale;
-    public final @Nullable MethodHandle HANDLE$glfwGetMonitorName;
-    public final @Nullable MethodHandle HANDLE$glfwSetMonitorUserPointer;
-    public final @Nullable MethodHandle HANDLE$glfwGetMonitorUserPointer;
-    public final @Nullable MethodHandle HANDLE$glfwSetMonitorCallback;
-    public final @Nullable MethodHandle HANDLE$glfwGetVideoModes;
-    public final @Nullable MethodHandle HANDLE$glfwGetVideoMode;
-    public final @Nullable MethodHandle HANDLE$glfwSetGamma;
-    public final @Nullable MethodHandle HANDLE$glfwGetGammaRamp;
-    public final @Nullable MethodHandle HANDLE$glfwSetGammaRamp;
-    public final @Nullable MethodHandle HANDLE$glfwDefaultWindowHints;
-    public final @Nullable MethodHandle HANDLE$glfwWindowHint;
-    public final @Nullable MethodHandle HANDLE$glfwWindowHintString;
-    public final @Nullable MethodHandle HANDLE$glfwCreateWindow;
-    public final @Nullable MethodHandle HANDLE$glfwDestroyWindow;
-    public final @Nullable MethodHandle HANDLE$glfwWindowShouldClose;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowShouldClose;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowTitle;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowTitle;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowIcon;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowPos;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowPos;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowSize;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowSizeLimits;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowAspectRatio;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowSize;
-    public final @Nullable MethodHandle HANDLE$glfwGetFramebufferSize;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowFrameSize;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowContentScale;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowOpacity;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowOpacity;
-    public final @Nullable MethodHandle HANDLE$glfwIconifyWindow;
-    public final @Nullable MethodHandle HANDLE$glfwRestoreWindow;
-    public final @Nullable MethodHandle HANDLE$glfwMaximizeWindow;
-    public final @Nullable MethodHandle HANDLE$glfwShowWindow;
-    public final @Nullable MethodHandle HANDLE$glfwHideWindow;
-    public final @Nullable MethodHandle HANDLE$glfwFocusWindow;
-    public final @Nullable MethodHandle HANDLE$glfwRequestWindowAttention;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowMonitor;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowMonitor;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowAttrib;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowAttrib;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowUserPointer;
-    public final @Nullable MethodHandle HANDLE$glfwGetWindowUserPointer;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowPosCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowSizeCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowCloseCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowRefreshCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowFocusCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowIconifyCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowMaximizeCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetFramebufferSizeCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetWindowContentScaleCallback;
-    public final @Nullable MethodHandle HANDLE$glfwPollEvents;
-    public final @Nullable MethodHandle HANDLE$glfwWaitEvents;
-    public final @Nullable MethodHandle HANDLE$glfwWaitEventsTimeout;
-    public final @Nullable MethodHandle HANDLE$glfwPostEmptyEvent;
-    public final @Nullable MethodHandle HANDLE$glfwGetInputMode;
-    public final @Nullable MethodHandle HANDLE$glfwSetInputMode;
-    public final @Nullable MethodHandle HANDLE$glfwRawMouseMotionSupported;
-    public final @Nullable MethodHandle HANDLE$glfwGetKeyName;
-    public final @Nullable MethodHandle HANDLE$glfwGetKeyScancode;
-    public final @Nullable MethodHandle HANDLE$glfwGetKey;
-    public final @Nullable MethodHandle HANDLE$glfwGetMouseButton;
-    public final @Nullable MethodHandle HANDLE$glfwGetCursorPos;
-    public final @Nullable MethodHandle HANDLE$glfwSetCursorPos;
-    public final @Nullable MethodHandle HANDLE$glfwCreateCursor;
-    public final @Nullable MethodHandle HANDLE$glfwCreateStandardCursor;
-    public final @Nullable MethodHandle HANDLE$glfwDestroyCursor;
-    public final @Nullable MethodHandle HANDLE$glfwSetCursor;
-    public final @Nullable MethodHandle HANDLE$glfwSetKeyCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetCharCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetCharModsCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetMouseButtonCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetCursorPosCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetCursorEnterCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetScrollCallback;
-    public final @Nullable MethodHandle HANDLE$glfwSetDropCallback;
-    public final @Nullable MethodHandle HANDLE$glfwJoystickPresent;
-    public final @Nullable MethodHandle HANDLE$glfwGetJoystickAxes;
-    public final @Nullable MethodHandle HANDLE$glfwGetJoystickButtons;
-    public final @Nullable MethodHandle HANDLE$glfwGetJoystickHats;
-    public final @Nullable MethodHandle HANDLE$glfwGetJoystickName;
-    public final @Nullable MethodHandle HANDLE$glfwGetJoystickGUID;
-    public final @Nullable MethodHandle HANDLE$glfwSetJoystickUserPointer;
-    public final @Nullable MethodHandle HANDLE$glfwGetJoystickUserPointer;
-    public final @Nullable MethodHandle HANDLE$glfwJoystickIsGamepad;
-    public final @Nullable MethodHandle HANDLE$glfwSetJoystickCallback;
-    public final @Nullable MethodHandle HANDLE$glfwUpdateGamepadMappings;
-    public final @Nullable MethodHandle HANDLE$glfwGetGamepadName;
-    public final @Nullable MethodHandle HANDLE$glfwGetGamepadState;
-    public final @Nullable MethodHandle HANDLE$glfwSetClipboardString;
-    public final @Nullable MethodHandle HANDLE$glfwGetClipboardString;
-    public final @Nullable MethodHandle HANDLE$glfwGetTime;
-    public final @Nullable MethodHandle HANDLE$glfwSetTime;
-    public final @Nullable MethodHandle HANDLE$glfwGetTimerValue;
-    public final @Nullable MethodHandle HANDLE$glfwGetTimerFrequency;
-    public final @Nullable MethodHandle HANDLE$glfwMakeContextCurrent;
-    public final @Nullable MethodHandle HANDLE$glfwGetCurrentContext;
-    public final @Nullable MethodHandle HANDLE$glfwSwapBuffers;
-    public final @Nullable MethodHandle HANDLE$glfwSwapInterval;
-    public final @Nullable MethodHandle HANDLE$glfwExtensionSupported;
-    public final @Nullable MethodHandle HANDLE$glfwGetProcAddress;
-    public final @Nullable MethodHandle HANDLE$glfwVulkanSupported;
-    public final @Nullable MethodHandle HANDLE$glfwGetRequiredInstanceExtensions;
-    public final @Nullable MethodHandle HANDLE$glfwGetInstanceProcAddress;
-    public final @Nullable MethodHandle HANDLE$glfwGetPhysicalDevicePresentationSupport;
-    public final @Nullable MethodHandle HANDLE$glfwCreateWindowSurface;
-    public final @Nullable MethodHandle HANDLE$glfwGetWin32Adapter;
-    public final @Nullable MethodHandle HANDLE$glfwGetWin32Monitor;
-    public final @Nullable MethodHandle HANDLE$glfwGetWin32Window;
-    public final @Nullable MethodHandle HANDLE$glfwGetWGLContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetCocoaMonitor;
-    public final @Nullable MethodHandle HANDLE$glfwGetCocoaWindow;
-    public final @Nullable MethodHandle HANDLE$glfwGetCocoaView;
-    public final @Nullable MethodHandle HANDLE$glfwGetNSGLContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetX11Display;
-    public final @Nullable MethodHandle HANDLE$glfwGetX11Adapter;
-    public final @Nullable MethodHandle HANDLE$glfwGetX11Monitor;
-    public final @Nullable MethodHandle HANDLE$glfwGetX11Window;
-    public final @Nullable MethodHandle HANDLE$glfwSetX11SelectionString;
-    public final @Nullable MethodHandle HANDLE$glfwGetX11SelectionString;
-    public final @Nullable MethodHandle HANDLE$glfwGetGLXContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetGLXWindow;
-    public final @Nullable MethodHandle HANDLE$glfwGetWaylandDisplay;
-    public final @Nullable MethodHandle HANDLE$glfwGetWaylandMonitor;
-    public final @Nullable MethodHandle HANDLE$glfwGetWaylandWindow;
-    public final @Nullable MethodHandle HANDLE$glfwGetEGLDisplay;
-    public final @Nullable MethodHandle HANDLE$glfwGetEGLContext;
-    public final @Nullable MethodHandle HANDLE$glfwGetEGLSurface;
-    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaColorBuffer;
-    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaDepthBuffer;
-    public final @Nullable MethodHandle HANDLE$glfwGetOSMesaContext;
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowPos = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
 
-    public GLFW(RawFunctionLoader loader) {
-        SEGMENT$glfwInit = loader.apply("glfwInit");
-        HANDLE$glfwInit = RawFunctionLoader.link(SEGMENT$glfwInit, DESCRIPTOR$glfwInit);
-        SEGMENT$glfwTerminate = loader.apply("glfwTerminate");
-        HANDLE$glfwTerminate = RawFunctionLoader.link(SEGMENT$glfwTerminate, DESCRIPTOR$glfwTerminate);
-        SEGMENT$glfwInitHint = loader.apply("glfwInitHint");
-        HANDLE$glfwInitHint = RawFunctionLoader.link(SEGMENT$glfwInitHint, DESCRIPTOR$glfwInitHint);
-        SEGMENT$glfwInitAllocator = loader.apply("glfwInitAllocator");
-        HANDLE$glfwInitAllocator = RawFunctionLoader.link(SEGMENT$glfwInitAllocator, DESCRIPTOR$glfwInitAllocator);
-        SEGMENT$glfwInitVulkanLoader = loader.apply("glfwInitVulkanLoader");
-        HANDLE$glfwInitVulkanLoader = RawFunctionLoader.link(SEGMENT$glfwInitVulkanLoader, DESCRIPTOR$glfwInitVulkanLoader);
-        SEGMENT$glfwGetVersion = loader.apply("glfwGetVersion");
-        HANDLE$glfwGetVersion = RawFunctionLoader.link(SEGMENT$glfwGetVersion, DESCRIPTOR$glfwGetVersion);
-        SEGMENT$glfwGetVersionString = loader.apply("glfwGetVersionString");
-        HANDLE$glfwGetVersionString = RawFunctionLoader.link(SEGMENT$glfwGetVersionString, DESCRIPTOR$glfwGetVersionString);
-        SEGMENT$glfwGetError = loader.apply("glfwGetError");
-        HANDLE$glfwGetError = RawFunctionLoader.link(SEGMENT$glfwGetError, DESCRIPTOR$glfwGetError);
-        SEGMENT$glfwSetErrorCallback = loader.apply("glfwSetErrorCallback");
-        HANDLE$glfwSetErrorCallback = RawFunctionLoader.link(SEGMENT$glfwSetErrorCallback, DESCRIPTOR$glfwSetErrorCallback);
-        SEGMENT$glfwGetPlatform = loader.apply("glfwGetPlatform");
-        HANDLE$glfwGetPlatform = RawFunctionLoader.link(SEGMENT$glfwGetPlatform, DESCRIPTOR$glfwGetPlatform);
-        SEGMENT$glfwPlatformSupported = loader.apply("glfwPlatformSupported");
-        HANDLE$glfwPlatformSupported = RawFunctionLoader.link(SEGMENT$glfwPlatformSupported, DESCRIPTOR$glfwPlatformSupported);
-        SEGMENT$glfwGetMonitors = loader.apply("glfwGetMonitors");
-        HANDLE$glfwGetMonitors = RawFunctionLoader.link(SEGMENT$glfwGetMonitors, DESCRIPTOR$glfwGetMonitors);
-        SEGMENT$glfwGetPrimaryMonitor = loader.apply("glfwGetPrimaryMonitor");
-        HANDLE$glfwGetPrimaryMonitor = RawFunctionLoader.link(SEGMENT$glfwGetPrimaryMonitor, DESCRIPTOR$glfwGetPrimaryMonitor);
-        SEGMENT$glfwGetMonitorPos = loader.apply("glfwGetMonitorPos");
-        HANDLE$glfwGetMonitorPos = RawFunctionLoader.link(SEGMENT$glfwGetMonitorPos, DESCRIPTOR$glfwGetMonitorPos);
-        SEGMENT$glfwGetMonitorWorkarea = loader.apply("glfwGetMonitorWorkarea");
-        HANDLE$glfwGetMonitorWorkarea = RawFunctionLoader.link(SEGMENT$glfwGetMonitorWorkarea, DESCRIPTOR$glfwGetMonitorWorkarea);
-        SEGMENT$glfwGetMonitorPhysicalSize = loader.apply("glfwGetMonitorPhysicalSize");
-        HANDLE$glfwGetMonitorPhysicalSize = RawFunctionLoader.link(SEGMENT$glfwGetMonitorPhysicalSize, DESCRIPTOR$glfwGetMonitorPhysicalSize);
-        SEGMENT$glfwGetMonitorContentScale = loader.apply("glfwGetMonitorContentScale");
-        HANDLE$glfwGetMonitorContentScale = RawFunctionLoader.link(SEGMENT$glfwGetMonitorContentScale, DESCRIPTOR$glfwGetMonitorContentScale);
-        SEGMENT$glfwGetMonitorName = loader.apply("glfwGetMonitorName");
-        HANDLE$glfwGetMonitorName = RawFunctionLoader.link(SEGMENT$glfwGetMonitorName, DESCRIPTOR$glfwGetMonitorName);
-        SEGMENT$glfwSetMonitorUserPointer = loader.apply("glfwSetMonitorUserPointer");
-        HANDLE$glfwSetMonitorUserPointer = RawFunctionLoader.link(SEGMENT$glfwSetMonitorUserPointer, DESCRIPTOR$glfwSetMonitorUserPointer);
-        SEGMENT$glfwGetMonitorUserPointer = loader.apply("glfwGetMonitorUserPointer");
-        HANDLE$glfwGetMonitorUserPointer = RawFunctionLoader.link(SEGMENT$glfwGetMonitorUserPointer, DESCRIPTOR$glfwGetMonitorUserPointer);
-        SEGMENT$glfwSetMonitorCallback = loader.apply("glfwSetMonitorCallback");
-        HANDLE$glfwSetMonitorCallback = RawFunctionLoader.link(SEGMENT$glfwSetMonitorCallback, DESCRIPTOR$glfwSetMonitorCallback);
-        SEGMENT$glfwGetVideoModes = loader.apply("glfwGetVideoModes");
-        HANDLE$glfwGetVideoModes = RawFunctionLoader.link(SEGMENT$glfwGetVideoModes, DESCRIPTOR$glfwGetVideoModes);
-        SEGMENT$glfwGetVideoMode = loader.apply("glfwGetVideoMode");
-        HANDLE$glfwGetVideoMode = RawFunctionLoader.link(SEGMENT$glfwGetVideoMode, DESCRIPTOR$glfwGetVideoMode);
-        SEGMENT$glfwSetGamma = loader.apply("glfwSetGamma");
-        HANDLE$glfwSetGamma = RawFunctionLoader.link(SEGMENT$glfwSetGamma, DESCRIPTOR$glfwSetGamma);
-        SEGMENT$glfwGetGammaRamp = loader.apply("glfwGetGammaRamp");
-        HANDLE$glfwGetGammaRamp = RawFunctionLoader.link(SEGMENT$glfwGetGammaRamp, DESCRIPTOR$glfwGetGammaRamp);
-        SEGMENT$glfwSetGammaRamp = loader.apply("glfwSetGammaRamp");
-        HANDLE$glfwSetGammaRamp = RawFunctionLoader.link(SEGMENT$glfwSetGammaRamp, DESCRIPTOR$glfwSetGammaRamp);
-        SEGMENT$glfwDefaultWindowHints = loader.apply("glfwDefaultWindowHints");
-        HANDLE$glfwDefaultWindowHints = RawFunctionLoader.link(SEGMENT$glfwDefaultWindowHints, DESCRIPTOR$glfwDefaultWindowHints);
-        SEGMENT$glfwWindowHint = loader.apply("glfwWindowHint");
-        HANDLE$glfwWindowHint = RawFunctionLoader.link(SEGMENT$glfwWindowHint, DESCRIPTOR$glfwWindowHint);
-        SEGMENT$glfwWindowHintString = loader.apply("glfwWindowHintString");
-        HANDLE$glfwWindowHintString = RawFunctionLoader.link(SEGMENT$glfwWindowHintString, DESCRIPTOR$glfwWindowHintString);
-        SEGMENT$glfwCreateWindow = loader.apply("glfwCreateWindow");
-        HANDLE$glfwCreateWindow = RawFunctionLoader.link(SEGMENT$glfwCreateWindow, DESCRIPTOR$glfwCreateWindow);
-        SEGMENT$glfwDestroyWindow = loader.apply("glfwDestroyWindow");
-        HANDLE$glfwDestroyWindow = RawFunctionLoader.link(SEGMENT$glfwDestroyWindow, DESCRIPTOR$glfwDestroyWindow);
-        SEGMENT$glfwWindowShouldClose = loader.apply("glfwWindowShouldClose");
-        HANDLE$glfwWindowShouldClose = RawFunctionLoader.link(SEGMENT$glfwWindowShouldClose, DESCRIPTOR$glfwWindowShouldClose);
-        SEGMENT$glfwSetWindowShouldClose = loader.apply("glfwSetWindowShouldClose");
-        HANDLE$glfwSetWindowShouldClose = RawFunctionLoader.link(SEGMENT$glfwSetWindowShouldClose, DESCRIPTOR$glfwSetWindowShouldClose);
-        SEGMENT$glfwGetWindowTitle = loader.apply("glfwGetWindowTitle");
-        HANDLE$glfwGetWindowTitle = RawFunctionLoader.link(SEGMENT$glfwGetWindowTitle, DESCRIPTOR$glfwGetWindowTitle);
-        SEGMENT$glfwSetWindowTitle = loader.apply("glfwSetWindowTitle");
-        HANDLE$glfwSetWindowTitle = RawFunctionLoader.link(SEGMENT$glfwSetWindowTitle, DESCRIPTOR$glfwSetWindowTitle);
-        SEGMENT$glfwSetWindowIcon = loader.apply("glfwSetWindowIcon");
-        HANDLE$glfwSetWindowIcon = RawFunctionLoader.link(SEGMENT$glfwSetWindowIcon, DESCRIPTOR$glfwSetWindowIcon);
-        SEGMENT$glfwGetWindowPos = loader.apply("glfwGetWindowPos");
-        HANDLE$glfwGetWindowPos = RawFunctionLoader.link(SEGMENT$glfwGetWindowPos, DESCRIPTOR$glfwGetWindowPos);
-        SEGMENT$glfwSetWindowPos = loader.apply("glfwSetWindowPos");
-        HANDLE$glfwSetWindowPos = RawFunctionLoader.link(SEGMENT$glfwSetWindowPos, DESCRIPTOR$glfwSetWindowPos);
-        SEGMENT$glfwGetWindowSize = loader.apply("glfwGetWindowSize");
-        HANDLE$glfwGetWindowSize = RawFunctionLoader.link(SEGMENT$glfwGetWindowSize, DESCRIPTOR$glfwGetWindowSize);
-        SEGMENT$glfwSetWindowSizeLimits = loader.apply("glfwSetWindowSizeLimits");
-        HANDLE$glfwSetWindowSizeLimits = RawFunctionLoader.link(SEGMENT$glfwSetWindowSizeLimits, DESCRIPTOR$glfwSetWindowSizeLimits);
-        SEGMENT$glfwSetWindowAspectRatio = loader.apply("glfwSetWindowAspectRatio");
-        HANDLE$glfwSetWindowAspectRatio = RawFunctionLoader.link(SEGMENT$glfwSetWindowAspectRatio, DESCRIPTOR$glfwSetWindowAspectRatio);
-        SEGMENT$glfwSetWindowSize = loader.apply("glfwSetWindowSize");
-        HANDLE$glfwSetWindowSize = RawFunctionLoader.link(SEGMENT$glfwSetWindowSize, DESCRIPTOR$glfwSetWindowSize);
-        SEGMENT$glfwGetFramebufferSize = loader.apply("glfwGetFramebufferSize");
-        HANDLE$glfwGetFramebufferSize = RawFunctionLoader.link(SEGMENT$glfwGetFramebufferSize, DESCRIPTOR$glfwGetFramebufferSize);
-        SEGMENT$glfwGetWindowFrameSize = loader.apply("glfwGetWindowFrameSize");
-        HANDLE$glfwGetWindowFrameSize = RawFunctionLoader.link(SEGMENT$glfwGetWindowFrameSize, DESCRIPTOR$glfwGetWindowFrameSize);
-        SEGMENT$glfwGetWindowContentScale = loader.apply("glfwGetWindowContentScale");
-        HANDLE$glfwGetWindowContentScale = RawFunctionLoader.link(SEGMENT$glfwGetWindowContentScale, DESCRIPTOR$glfwGetWindowContentScale);
-        SEGMENT$glfwGetWindowOpacity = loader.apply("glfwGetWindowOpacity");
-        HANDLE$glfwGetWindowOpacity = RawFunctionLoader.link(SEGMENT$glfwGetWindowOpacity, DESCRIPTOR$glfwGetWindowOpacity);
-        SEGMENT$glfwSetWindowOpacity = loader.apply("glfwSetWindowOpacity");
-        HANDLE$glfwSetWindowOpacity = RawFunctionLoader.link(SEGMENT$glfwSetWindowOpacity, DESCRIPTOR$glfwSetWindowOpacity);
-        SEGMENT$glfwIconifyWindow = loader.apply("glfwIconifyWindow");
-        HANDLE$glfwIconifyWindow = RawFunctionLoader.link(SEGMENT$glfwIconifyWindow, DESCRIPTOR$glfwIconifyWindow);
-        SEGMENT$glfwRestoreWindow = loader.apply("glfwRestoreWindow");
-        HANDLE$glfwRestoreWindow = RawFunctionLoader.link(SEGMENT$glfwRestoreWindow, DESCRIPTOR$glfwRestoreWindow);
-        SEGMENT$glfwMaximizeWindow = loader.apply("glfwMaximizeWindow");
-        HANDLE$glfwMaximizeWindow = RawFunctionLoader.link(SEGMENT$glfwMaximizeWindow, DESCRIPTOR$glfwMaximizeWindow);
-        SEGMENT$glfwShowWindow = loader.apply("glfwShowWindow");
-        HANDLE$glfwShowWindow = RawFunctionLoader.link(SEGMENT$glfwShowWindow, DESCRIPTOR$glfwShowWindow);
-        SEGMENT$glfwHideWindow = loader.apply("glfwHideWindow");
-        HANDLE$glfwHideWindow = RawFunctionLoader.link(SEGMENT$glfwHideWindow, DESCRIPTOR$glfwHideWindow);
-        SEGMENT$glfwFocusWindow = loader.apply("glfwFocusWindow");
-        HANDLE$glfwFocusWindow = RawFunctionLoader.link(SEGMENT$glfwFocusWindow, DESCRIPTOR$glfwFocusWindow);
-        SEGMENT$glfwRequestWindowAttention = loader.apply("glfwRequestWindowAttention");
-        HANDLE$glfwRequestWindowAttention = RawFunctionLoader.link(SEGMENT$glfwRequestWindowAttention, DESCRIPTOR$glfwRequestWindowAttention);
-        SEGMENT$glfwGetWindowMonitor = loader.apply("glfwGetWindowMonitor");
-        HANDLE$glfwGetWindowMonitor = RawFunctionLoader.link(SEGMENT$glfwGetWindowMonitor, DESCRIPTOR$glfwGetWindowMonitor);
-        SEGMENT$glfwSetWindowMonitor = loader.apply("glfwSetWindowMonitor");
-        HANDLE$glfwSetWindowMonitor = RawFunctionLoader.link(SEGMENT$glfwSetWindowMonitor, DESCRIPTOR$glfwSetWindowMonitor);
-        SEGMENT$glfwGetWindowAttrib = loader.apply("glfwGetWindowAttrib");
-        HANDLE$glfwGetWindowAttrib = RawFunctionLoader.link(SEGMENT$glfwGetWindowAttrib, DESCRIPTOR$glfwGetWindowAttrib);
-        SEGMENT$glfwSetWindowAttrib = loader.apply("glfwSetWindowAttrib");
-        HANDLE$glfwSetWindowAttrib = RawFunctionLoader.link(SEGMENT$glfwSetWindowAttrib, DESCRIPTOR$glfwSetWindowAttrib);
-        SEGMENT$glfwSetWindowUserPointer = loader.apply("glfwSetWindowUserPointer");
-        HANDLE$glfwSetWindowUserPointer = RawFunctionLoader.link(SEGMENT$glfwSetWindowUserPointer, DESCRIPTOR$glfwSetWindowUserPointer);
-        SEGMENT$glfwGetWindowUserPointer = loader.apply("glfwGetWindowUserPointer");
-        HANDLE$glfwGetWindowUserPointer = RawFunctionLoader.link(SEGMENT$glfwGetWindowUserPointer, DESCRIPTOR$glfwGetWindowUserPointer);
-        SEGMENT$glfwSetWindowPosCallback = loader.apply("glfwSetWindowPosCallback");
-        HANDLE$glfwSetWindowPosCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowPosCallback, DESCRIPTOR$glfwSetWindowPosCallback);
-        SEGMENT$glfwSetWindowSizeCallback = loader.apply("glfwSetWindowSizeCallback");
-        HANDLE$glfwSetWindowSizeCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowSizeCallback, DESCRIPTOR$glfwSetWindowSizeCallback);
-        SEGMENT$glfwSetWindowCloseCallback = loader.apply("glfwSetWindowCloseCallback");
-        HANDLE$glfwSetWindowCloseCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowCloseCallback, DESCRIPTOR$glfwSetWindowCloseCallback);
-        SEGMENT$glfwSetWindowRefreshCallback = loader.apply("glfwSetWindowRefreshCallback");
-        HANDLE$glfwSetWindowRefreshCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowRefreshCallback, DESCRIPTOR$glfwSetWindowRefreshCallback);
-        SEGMENT$glfwSetWindowFocusCallback = loader.apply("glfwSetWindowFocusCallback");
-        HANDLE$glfwSetWindowFocusCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowFocusCallback, DESCRIPTOR$glfwSetWindowFocusCallback);
-        SEGMENT$glfwSetWindowIconifyCallback = loader.apply("glfwSetWindowIconifyCallback");
-        HANDLE$glfwSetWindowIconifyCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowIconifyCallback, DESCRIPTOR$glfwSetWindowIconifyCallback);
-        SEGMENT$glfwSetWindowMaximizeCallback = loader.apply("glfwSetWindowMaximizeCallback");
-        HANDLE$glfwSetWindowMaximizeCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowMaximizeCallback, DESCRIPTOR$glfwSetWindowMaximizeCallback);
-        SEGMENT$glfwSetFramebufferSizeCallback = loader.apply("glfwSetFramebufferSizeCallback");
-        HANDLE$glfwSetFramebufferSizeCallback = RawFunctionLoader.link(SEGMENT$glfwSetFramebufferSizeCallback, DESCRIPTOR$glfwSetFramebufferSizeCallback);
-        SEGMENT$glfwSetWindowContentScaleCallback = loader.apply("glfwSetWindowContentScaleCallback");
-        HANDLE$glfwSetWindowContentScaleCallback = RawFunctionLoader.link(SEGMENT$glfwSetWindowContentScaleCallback, DESCRIPTOR$glfwSetWindowContentScaleCallback);
-        SEGMENT$glfwPollEvents = loader.apply("glfwPollEvents");
-        HANDLE$glfwPollEvents = RawFunctionLoader.link(SEGMENT$glfwPollEvents, DESCRIPTOR$glfwPollEvents);
-        SEGMENT$glfwWaitEvents = loader.apply("glfwWaitEvents");
-        HANDLE$glfwWaitEvents = RawFunctionLoader.link(SEGMENT$glfwWaitEvents, DESCRIPTOR$glfwWaitEvents);
-        SEGMENT$glfwWaitEventsTimeout = loader.apply("glfwWaitEventsTimeout");
-        HANDLE$glfwWaitEventsTimeout = RawFunctionLoader.link(SEGMENT$glfwWaitEventsTimeout, DESCRIPTOR$glfwWaitEventsTimeout);
-        SEGMENT$glfwPostEmptyEvent = loader.apply("glfwPostEmptyEvent");
-        HANDLE$glfwPostEmptyEvent = RawFunctionLoader.link(SEGMENT$glfwPostEmptyEvent, DESCRIPTOR$glfwPostEmptyEvent);
-        SEGMENT$glfwGetInputMode = loader.apply("glfwGetInputMode");
-        HANDLE$glfwGetInputMode = RawFunctionLoader.link(SEGMENT$glfwGetInputMode, DESCRIPTOR$glfwGetInputMode);
-        SEGMENT$glfwSetInputMode = loader.apply("glfwSetInputMode");
-        HANDLE$glfwSetInputMode = RawFunctionLoader.link(SEGMENT$glfwSetInputMode, DESCRIPTOR$glfwSetInputMode);
-        SEGMENT$glfwRawMouseMotionSupported = loader.apply("glfwRawMouseMotionSupported");
-        HANDLE$glfwRawMouseMotionSupported = RawFunctionLoader.link(SEGMENT$glfwRawMouseMotionSupported, DESCRIPTOR$glfwRawMouseMotionSupported);
-        SEGMENT$glfwGetKeyName = loader.apply("glfwGetKeyName");
-        HANDLE$glfwGetKeyName = RawFunctionLoader.link(SEGMENT$glfwGetKeyName, DESCRIPTOR$glfwGetKeyName);
-        SEGMENT$glfwGetKeyScancode = loader.apply("glfwGetKeyScancode");
-        HANDLE$glfwGetKeyScancode = RawFunctionLoader.link(SEGMENT$glfwGetKeyScancode, DESCRIPTOR$glfwGetKeyScancode);
-        SEGMENT$glfwGetKey = loader.apply("glfwGetKey");
-        HANDLE$glfwGetKey = RawFunctionLoader.link(SEGMENT$glfwGetKey, DESCRIPTOR$glfwGetKey);
-        SEGMENT$glfwGetMouseButton = loader.apply("glfwGetMouseButton");
-        HANDLE$glfwGetMouseButton = RawFunctionLoader.link(SEGMENT$glfwGetMouseButton, DESCRIPTOR$glfwGetMouseButton);
-        SEGMENT$glfwGetCursorPos = loader.apply("glfwGetCursorPos");
-        HANDLE$glfwGetCursorPos = RawFunctionLoader.link(SEGMENT$glfwGetCursorPos, DESCRIPTOR$glfwGetCursorPos);
-        SEGMENT$glfwSetCursorPos = loader.apply("glfwSetCursorPos");
-        HANDLE$glfwSetCursorPos = RawFunctionLoader.link(SEGMENT$glfwSetCursorPos, DESCRIPTOR$glfwSetCursorPos);
-        SEGMENT$glfwCreateCursor = loader.apply("glfwCreateCursor");
-        HANDLE$glfwCreateCursor = RawFunctionLoader.link(SEGMENT$glfwCreateCursor, DESCRIPTOR$glfwCreateCursor);
-        SEGMENT$glfwCreateStandardCursor = loader.apply("glfwCreateStandardCursor");
-        HANDLE$glfwCreateStandardCursor = RawFunctionLoader.link(SEGMENT$glfwCreateStandardCursor, DESCRIPTOR$glfwCreateStandardCursor);
-        SEGMENT$glfwDestroyCursor = loader.apply("glfwDestroyCursor");
-        HANDLE$glfwDestroyCursor = RawFunctionLoader.link(SEGMENT$glfwDestroyCursor, DESCRIPTOR$glfwDestroyCursor);
-        SEGMENT$glfwSetCursor = loader.apply("glfwSetCursor");
-        HANDLE$glfwSetCursor = RawFunctionLoader.link(SEGMENT$glfwSetCursor, DESCRIPTOR$glfwSetCursor);
-        SEGMENT$glfwSetKeyCallback = loader.apply("glfwSetKeyCallback");
-        HANDLE$glfwSetKeyCallback = RawFunctionLoader.link(SEGMENT$glfwSetKeyCallback, DESCRIPTOR$glfwSetKeyCallback);
-        SEGMENT$glfwSetCharCallback = loader.apply("glfwSetCharCallback");
-        HANDLE$glfwSetCharCallback = RawFunctionLoader.link(SEGMENT$glfwSetCharCallback, DESCRIPTOR$glfwSetCharCallback);
-        SEGMENT$glfwSetCharModsCallback = loader.apply("glfwSetCharModsCallback");
-        HANDLE$glfwSetCharModsCallback = RawFunctionLoader.link(SEGMENT$glfwSetCharModsCallback, DESCRIPTOR$glfwSetCharModsCallback);
-        SEGMENT$glfwSetMouseButtonCallback = loader.apply("glfwSetMouseButtonCallback");
-        HANDLE$glfwSetMouseButtonCallback = RawFunctionLoader.link(SEGMENT$glfwSetMouseButtonCallback, DESCRIPTOR$glfwSetMouseButtonCallback);
-        SEGMENT$glfwSetCursorPosCallback = loader.apply("glfwSetCursorPosCallback");
-        HANDLE$glfwSetCursorPosCallback = RawFunctionLoader.link(SEGMENT$glfwSetCursorPosCallback, DESCRIPTOR$glfwSetCursorPosCallback);
-        SEGMENT$glfwSetCursorEnterCallback = loader.apply("glfwSetCursorEnterCallback");
-        HANDLE$glfwSetCursorEnterCallback = RawFunctionLoader.link(SEGMENT$glfwSetCursorEnterCallback, DESCRIPTOR$glfwSetCursorEnterCallback);
-        SEGMENT$glfwSetScrollCallback = loader.apply("glfwSetScrollCallback");
-        HANDLE$glfwSetScrollCallback = RawFunctionLoader.link(SEGMENT$glfwSetScrollCallback, DESCRIPTOR$glfwSetScrollCallback);
-        SEGMENT$glfwSetDropCallback = loader.apply("glfwSetDropCallback");
-        HANDLE$glfwSetDropCallback = RawFunctionLoader.link(SEGMENT$glfwSetDropCallback, DESCRIPTOR$glfwSetDropCallback);
-        SEGMENT$glfwJoystickPresent = loader.apply("glfwJoystickPresent");
-        HANDLE$glfwJoystickPresent = RawFunctionLoader.link(SEGMENT$glfwJoystickPresent, DESCRIPTOR$glfwJoystickPresent);
-        SEGMENT$glfwGetJoystickAxes = loader.apply("glfwGetJoystickAxes");
-        HANDLE$glfwGetJoystickAxes = RawFunctionLoader.link(SEGMENT$glfwGetJoystickAxes, DESCRIPTOR$glfwGetJoystickAxes);
-        SEGMENT$glfwGetJoystickButtons = loader.apply("glfwGetJoystickButtons");
-        HANDLE$glfwGetJoystickButtons = RawFunctionLoader.link(SEGMENT$glfwGetJoystickButtons, DESCRIPTOR$glfwGetJoystickButtons);
-        SEGMENT$glfwGetJoystickHats = loader.apply("glfwGetJoystickHats");
-        HANDLE$glfwGetJoystickHats = RawFunctionLoader.link(SEGMENT$glfwGetJoystickHats, DESCRIPTOR$glfwGetJoystickHats);
-        SEGMENT$glfwGetJoystickName = loader.apply("glfwGetJoystickName");
-        HANDLE$glfwGetJoystickName = RawFunctionLoader.link(SEGMENT$glfwGetJoystickName, DESCRIPTOR$glfwGetJoystickName);
-        SEGMENT$glfwGetJoystickGUID = loader.apply("glfwGetJoystickGUID");
-        HANDLE$glfwGetJoystickGUID = RawFunctionLoader.link(SEGMENT$glfwGetJoystickGUID, DESCRIPTOR$glfwGetJoystickGUID);
-        SEGMENT$glfwSetJoystickUserPointer = loader.apply("glfwSetJoystickUserPointer");
-        HANDLE$glfwSetJoystickUserPointer = RawFunctionLoader.link(SEGMENT$glfwSetJoystickUserPointer, DESCRIPTOR$glfwSetJoystickUserPointer);
-        SEGMENT$glfwGetJoystickUserPointer = loader.apply("glfwGetJoystickUserPointer");
-        HANDLE$glfwGetJoystickUserPointer = RawFunctionLoader.link(SEGMENT$glfwGetJoystickUserPointer, DESCRIPTOR$glfwGetJoystickUserPointer);
-        SEGMENT$glfwJoystickIsGamepad = loader.apply("glfwJoystickIsGamepad");
-        HANDLE$glfwJoystickIsGamepad = RawFunctionLoader.link(SEGMENT$glfwJoystickIsGamepad, DESCRIPTOR$glfwJoystickIsGamepad);
-        SEGMENT$glfwSetJoystickCallback = loader.apply("glfwSetJoystickCallback");
-        HANDLE$glfwSetJoystickCallback = RawFunctionLoader.link(SEGMENT$glfwSetJoystickCallback, DESCRIPTOR$glfwSetJoystickCallback);
-        SEGMENT$glfwUpdateGamepadMappings = loader.apply("glfwUpdateGamepadMappings");
-        HANDLE$glfwUpdateGamepadMappings = RawFunctionLoader.link(SEGMENT$glfwUpdateGamepadMappings, DESCRIPTOR$glfwUpdateGamepadMappings);
-        SEGMENT$glfwGetGamepadName = loader.apply("glfwGetGamepadName");
-        HANDLE$glfwGetGamepadName = RawFunctionLoader.link(SEGMENT$glfwGetGamepadName, DESCRIPTOR$glfwGetGamepadName);
-        SEGMENT$glfwGetGamepadState = loader.apply("glfwGetGamepadState");
-        HANDLE$glfwGetGamepadState = RawFunctionLoader.link(SEGMENT$glfwGetGamepadState, DESCRIPTOR$glfwGetGamepadState);
-        SEGMENT$glfwSetClipboardString = loader.apply("glfwSetClipboardString");
-        HANDLE$glfwSetClipboardString = RawFunctionLoader.link(SEGMENT$glfwSetClipboardString, DESCRIPTOR$glfwSetClipboardString);
-        SEGMENT$glfwGetClipboardString = loader.apply("glfwGetClipboardString");
-        HANDLE$glfwGetClipboardString = RawFunctionLoader.link(SEGMENT$glfwGetClipboardString, DESCRIPTOR$glfwGetClipboardString);
-        SEGMENT$glfwGetTime = loader.apply("glfwGetTime");
-        HANDLE$glfwGetTime = RawFunctionLoader.link(SEGMENT$glfwGetTime, DESCRIPTOR$glfwGetTime);
-        SEGMENT$glfwSetTime = loader.apply("glfwSetTime");
-        HANDLE$glfwSetTime = RawFunctionLoader.link(SEGMENT$glfwSetTime, DESCRIPTOR$glfwSetTime);
-        SEGMENT$glfwGetTimerValue = loader.apply("glfwGetTimerValue");
-        HANDLE$glfwGetTimerValue = RawFunctionLoader.link(SEGMENT$glfwGetTimerValue, DESCRIPTOR$glfwGetTimerValue);
-        SEGMENT$glfwGetTimerFrequency = loader.apply("glfwGetTimerFrequency");
-        HANDLE$glfwGetTimerFrequency = RawFunctionLoader.link(SEGMENT$glfwGetTimerFrequency, DESCRIPTOR$glfwGetTimerFrequency);
-        SEGMENT$glfwMakeContextCurrent = loader.apply("glfwMakeContextCurrent");
-        HANDLE$glfwMakeContextCurrent = RawFunctionLoader.link(SEGMENT$glfwMakeContextCurrent, DESCRIPTOR$glfwMakeContextCurrent);
-        SEGMENT$glfwGetCurrentContext = loader.apply("glfwGetCurrentContext");
-        HANDLE$glfwGetCurrentContext = RawFunctionLoader.link(SEGMENT$glfwGetCurrentContext, DESCRIPTOR$glfwGetCurrentContext);
-        SEGMENT$glfwSwapBuffers = loader.apply("glfwSwapBuffers");
-        HANDLE$glfwSwapBuffers = RawFunctionLoader.link(SEGMENT$glfwSwapBuffers, DESCRIPTOR$glfwSwapBuffers);
-        SEGMENT$glfwSwapInterval = loader.apply("glfwSwapInterval");
-        HANDLE$glfwSwapInterval = RawFunctionLoader.link(SEGMENT$glfwSwapInterval, DESCRIPTOR$glfwSwapInterval);
-        SEGMENT$glfwExtensionSupported = loader.apply("glfwExtensionSupported");
-        HANDLE$glfwExtensionSupported = RawFunctionLoader.link(SEGMENT$glfwExtensionSupported, DESCRIPTOR$glfwExtensionSupported);
-        SEGMENT$glfwGetProcAddress = loader.apply("glfwGetProcAddress");
-        HANDLE$glfwGetProcAddress = RawFunctionLoader.link(SEGMENT$glfwGetProcAddress, DESCRIPTOR$glfwGetProcAddress);
-        SEGMENT$glfwVulkanSupported = loader.apply("glfwVulkanSupported");
-        HANDLE$glfwVulkanSupported = RawFunctionLoader.link(SEGMENT$glfwVulkanSupported, DESCRIPTOR$glfwVulkanSupported);
-        SEGMENT$glfwGetRequiredInstanceExtensions = loader.apply("glfwGetRequiredInstanceExtensions");
-        HANDLE$glfwGetRequiredInstanceExtensions = RawFunctionLoader.link(SEGMENT$glfwGetRequiredInstanceExtensions, DESCRIPTOR$glfwGetRequiredInstanceExtensions);
-        SEGMENT$glfwGetInstanceProcAddress = loader.apply("glfwGetInstanceProcAddress");
-        HANDLE$glfwGetInstanceProcAddress = RawFunctionLoader.link(SEGMENT$glfwGetInstanceProcAddress, DESCRIPTOR$glfwGetInstanceProcAddress);
-        SEGMENT$glfwGetPhysicalDevicePresentationSupport = loader.apply("glfwGetPhysicalDevicePresentationSupport");
-        HANDLE$glfwGetPhysicalDevicePresentationSupport = RawFunctionLoader.link(SEGMENT$glfwGetPhysicalDevicePresentationSupport, DESCRIPTOR$glfwGetPhysicalDevicePresentationSupport);
-        SEGMENT$glfwCreateWindowSurface = loader.apply("glfwCreateWindowSurface");
-        HANDLE$glfwCreateWindowSurface = RawFunctionLoader.link(SEGMENT$glfwCreateWindowSurface, DESCRIPTOR$glfwCreateWindowSurface);
-        SEGMENT$glfwGetWin32Adapter = loader.apply("glfwGetWin32Adapter");
-        HANDLE$glfwGetWin32Adapter = RawFunctionLoader.link(SEGMENT$glfwGetWin32Adapter, DESCRIPTOR$glfwGetWin32Adapter);
-        SEGMENT$glfwGetWin32Monitor = loader.apply("glfwGetWin32Monitor");
-        HANDLE$glfwGetWin32Monitor = RawFunctionLoader.link(SEGMENT$glfwGetWin32Monitor, DESCRIPTOR$glfwGetWin32Monitor);
-        SEGMENT$glfwGetWin32Window = loader.apply("glfwGetWin32Window");
-        HANDLE$glfwGetWin32Window = RawFunctionLoader.link(SEGMENT$glfwGetWin32Window, DESCRIPTOR$glfwGetWin32Window);
-        SEGMENT$glfwGetWGLContext = loader.apply("glfwGetWGLContext");
-        HANDLE$glfwGetWGLContext = RawFunctionLoader.link(SEGMENT$glfwGetWGLContext, DESCRIPTOR$glfwGetWGLContext);
-        SEGMENT$glfwGetCocoaMonitor = loader.apply("glfwGetCocoaMonitor");
-        HANDLE$glfwGetCocoaMonitor = RawFunctionLoader.link(SEGMENT$glfwGetCocoaMonitor, DESCRIPTOR$glfwGetCocoaMonitor);
-        SEGMENT$glfwGetCocoaWindow = loader.apply("glfwGetCocoaWindow");
-        HANDLE$glfwGetCocoaWindow = RawFunctionLoader.link(SEGMENT$glfwGetCocoaWindow, DESCRIPTOR$glfwGetCocoaWindow);
-        SEGMENT$glfwGetCocoaView = loader.apply("glfwGetCocoaView");
-        HANDLE$glfwGetCocoaView = RawFunctionLoader.link(SEGMENT$glfwGetCocoaView, DESCRIPTOR$glfwGetCocoaView);
-        SEGMENT$glfwGetNSGLContext = loader.apply("glfwGetNSGLContext");
-        HANDLE$glfwGetNSGLContext = RawFunctionLoader.link(SEGMENT$glfwGetNSGLContext, DESCRIPTOR$glfwGetNSGLContext);
-        SEGMENT$glfwGetX11Display = loader.apply("glfwGetX11Display");
-        HANDLE$glfwGetX11Display = RawFunctionLoader.link(SEGMENT$glfwGetX11Display, DESCRIPTOR$glfwGetX11Display);
-        SEGMENT$glfwGetX11Adapter = loader.apply("glfwGetX11Adapter");
-        HANDLE$glfwGetX11Adapter = RawFunctionLoader.link(SEGMENT$glfwGetX11Adapter, DESCRIPTOR$glfwGetX11Adapter);
-        SEGMENT$glfwGetX11Monitor = loader.apply("glfwGetX11Monitor");
-        HANDLE$glfwGetX11Monitor = RawFunctionLoader.link(SEGMENT$glfwGetX11Monitor, DESCRIPTOR$glfwGetX11Monitor);
-        SEGMENT$glfwGetX11Window = loader.apply("glfwGetX11Window");
-        HANDLE$glfwGetX11Window = RawFunctionLoader.link(SEGMENT$glfwGetX11Window, DESCRIPTOR$glfwGetX11Window);
-        SEGMENT$glfwSetX11SelectionString = loader.apply("glfwSetX11SelectionString");
-        HANDLE$glfwSetX11SelectionString = RawFunctionLoader.link(SEGMENT$glfwSetX11SelectionString, DESCRIPTOR$glfwSetX11SelectionString);
-        SEGMENT$glfwGetX11SelectionString = loader.apply("glfwGetX11SelectionString");
-        HANDLE$glfwGetX11SelectionString = RawFunctionLoader.link(SEGMENT$glfwGetX11SelectionString, DESCRIPTOR$glfwGetX11SelectionString);
-        SEGMENT$glfwGetGLXContext = loader.apply("glfwGetGLXContext");
-        HANDLE$glfwGetGLXContext = RawFunctionLoader.link(SEGMENT$glfwGetGLXContext, DESCRIPTOR$glfwGetGLXContext);
-        SEGMENT$glfwGetGLXWindow = loader.apply("glfwGetGLXWindow");
-        HANDLE$glfwGetGLXWindow = RawFunctionLoader.link(SEGMENT$glfwGetGLXWindow, DESCRIPTOR$glfwGetGLXWindow);
-        SEGMENT$glfwGetWaylandDisplay = loader.apply("glfwGetWaylandDisplay");
-        HANDLE$glfwGetWaylandDisplay = RawFunctionLoader.link(SEGMENT$glfwGetWaylandDisplay, DESCRIPTOR$glfwGetWaylandDisplay);
-        SEGMENT$glfwGetWaylandMonitor = loader.apply("glfwGetWaylandMonitor");
-        HANDLE$glfwGetWaylandMonitor = RawFunctionLoader.link(SEGMENT$glfwGetWaylandMonitor, DESCRIPTOR$glfwGetWaylandMonitor);
-        SEGMENT$glfwGetWaylandWindow = loader.apply("glfwGetWaylandWindow");
-        HANDLE$glfwGetWaylandWindow = RawFunctionLoader.link(SEGMENT$glfwGetWaylandWindow, DESCRIPTOR$glfwGetWaylandWindow);
-        SEGMENT$glfwGetEGLDisplay = loader.apply("glfwGetEGLDisplay");
-        HANDLE$glfwGetEGLDisplay = RawFunctionLoader.link(SEGMENT$glfwGetEGLDisplay, DESCRIPTOR$glfwGetEGLDisplay);
-        SEGMENT$glfwGetEGLContext = loader.apply("glfwGetEGLContext");
-        HANDLE$glfwGetEGLContext = RawFunctionLoader.link(SEGMENT$glfwGetEGLContext, DESCRIPTOR$glfwGetEGLContext);
-        SEGMENT$glfwGetEGLSurface = loader.apply("glfwGetEGLSurface");
-        HANDLE$glfwGetEGLSurface = RawFunctionLoader.link(SEGMENT$glfwGetEGLSurface, DESCRIPTOR$glfwGetEGLSurface);
-        SEGMENT$glfwGetOSMesaColorBuffer = loader.apply("glfwGetOSMesaColorBuffer");
-        HANDLE$glfwGetOSMesaColorBuffer = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaColorBuffer, DESCRIPTOR$glfwGetOSMesaColorBuffer);
-        SEGMENT$glfwGetOSMesaDepthBuffer = loader.apply("glfwGetOSMesaDepthBuffer");
-        HANDLE$glfwGetOSMesaDepthBuffer = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaDepthBuffer, DESCRIPTOR$glfwGetOSMesaDepthBuffer);
-        SEGMENT$glfwGetOSMesaContext = loader.apply("glfwGetOSMesaContext");
-        HANDLE$glfwGetOSMesaContext = RawFunctionLoader.link(SEGMENT$glfwGetOSMesaContext, DESCRIPTOR$glfwGetOSMesaContext);
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowSize = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowTitle = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetWindowUserPointer = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Adapter = FunctionDescriptor.of(
+            NativeLayout.C_LONG,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Display = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Monitor = FunctionDescriptor.of(
+            NativeLayout.C_LONG,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetX11SelectionString = FunctionDescriptor.of(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwGetX11Window = FunctionDescriptor.of(
+            NativeLayout.C_LONG,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwHideWindow = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwIconifyWindow = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwInit = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwInitAllocator = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS.withTargetLayout(GLFWallocator.LAYOUT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwInitHint = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwInitVulkanLoader = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwJoystickIsGamepad = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwJoystickPresent = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwMakeContextCurrent = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwMaximizeWindow = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwPlatformSupported = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwPollEvents = FunctionDescriptor.ofVoid(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwPostEmptyEvent = FunctionDescriptor.ofVoid(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwRawMouseMotionSupported = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwRequestWindowAttention = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwRestoreWindow = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetCharCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetCharModsCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetClipboardString = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetCursor = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetCursorEnterCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetCursorPos = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_DOUBLE,
+            ValueLayout.JAVA_DOUBLE
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetCursorPosCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetDropCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetErrorCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetFramebufferSizeCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetGamma = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_FLOAT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetGammaRamp = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(GLFWgammaramp.LAYOUT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetInputMode = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetJoystickCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetJoystickUserPointer = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetKeyCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetMonitorCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetMonitorUserPointer = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetMouseButtonCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetScrollCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetTime = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_DOUBLE
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowAspectRatio = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowAttrib = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowCloseCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowContentScaleCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowFocusCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowIcon = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(GLFWimage.LAYOUT)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowIconifyCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowMaximizeCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowMonitor = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowOpacity = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_FLOAT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowPos = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowPosCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowRefreshCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowShouldClose = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowSize = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowSizeCallback = FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowSizeLimits = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowTitle = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetWindowUserPointer = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSetX11SelectionString = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwShowWindow = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSwapBuffers = FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwSwapInterval = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwTerminate = FunctionDescriptor.ofVoid(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwUpdateGamepadMappings = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwVulkanSupported = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwWaitEvents = FunctionDescriptor.ofVoid(
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwWaitEventsTimeout = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_DOUBLE
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwWindowHint = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwWindowHintString = FunctionDescriptor.ofVoid(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
+        );
+
+        public static final FunctionDescriptor DESCRIPTOR$glfwWindowShouldClose = FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS
+        );
+
+        /// Constructing this class is nonsense so the constructor is made private.
+        private Descriptors() {}
     }
 }
