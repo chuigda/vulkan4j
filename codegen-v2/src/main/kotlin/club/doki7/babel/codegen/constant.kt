@@ -24,7 +24,7 @@ fun generateConstants(registry: RegistryBase, codegenOptions: CodegenOptions) = 
         val (stringConstants, nonStringConstants) = constants
             .partition { it.type.ident.value == "CONSTANTS_JavaString" }
 
-        val (nonAliasConstants, aliasConstants) = constants
+        val (nonAliasConstants, aliasConstants) = nonStringConstants
             .partition { it.expr.isDecOrHexNumber() }
 
         for (constant in nonAliasConstants.sortedBy { it.name }) {
