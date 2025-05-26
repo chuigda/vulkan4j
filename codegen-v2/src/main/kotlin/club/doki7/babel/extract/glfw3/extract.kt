@@ -232,7 +232,10 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
 
                 val name = parts[1].trim()
                 val value = parts[2].trim()
-                val constant = Constant(name, IdentifierType("int32_t"), value)
+                val constant = Constant(
+                    name,IdentifierType("int32_t"),
+                    value.replace("GLFW_", "")
+                )
                 constants[constant.name] = constant
             }
 

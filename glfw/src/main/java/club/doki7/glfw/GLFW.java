@@ -1,4 +1,4 @@
-package tech.icey.glfw;
+package club.doki7.glfw;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;

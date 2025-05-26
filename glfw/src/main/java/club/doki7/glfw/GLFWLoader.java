@@ -1,4 +1,4 @@
-package tech.icey.glfw;
+package club.doki7.glfw;
 
 import tech.icey.panama.FunctionLoader;
 import tech.icey.panama.Loader;
