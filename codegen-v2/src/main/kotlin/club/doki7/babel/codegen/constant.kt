@@ -44,7 +44,7 @@ fun generateConstants(registry: RegistryBase, codegenOptions: CodegenOptions) = 
             }
 
             val ctype = lowerIdentifierType(registry, codegenOptions.refRegistries, constant.type)
-            +"public static final ${ctype.jType} ${constant.name} = ${constant.expr}; // alias for ${constant.expr}"
+            +"public static final ${ctype.jType} ${constant.name} = ${constant.expr};"
         }
 
         if (stringConstants.isNotEmpty() && nonStringConstants.isNotEmpty()) {
