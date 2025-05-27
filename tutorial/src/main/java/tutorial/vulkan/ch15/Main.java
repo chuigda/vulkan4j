@@ -72,15 +72,20 @@ class Application {
         createFramebuffers();
         createCommandPool();
         createCommandBuffer();
+        createSyncObjects();
     }
 
     private void mainLoop() {
         while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
             glfw.pollEvents();
+            drawFrame();
         }
     }
 
     private void cleanup() {
+        deviceCommands.destroySemaphore(device, imageAvailableSemaphore, null);
+        deviceCommands.destroySemaphore(device, renderFinishedSemaphore, null);
+        deviceCommands.destroyFence(device, inFlightFence, null);
         deviceCommands.destroyCommandPool(device, commandPool, null);
         for (var framebuffer : swapChainFramebuffers) {
             deviceCommands.destroyFramebuffer(device, framebuffer, null);
@@ -396,11 +401,22 @@ class Application {
             subpass.colorAttachmentCount(1);
             subpass.pColorAttachments(colorAttachmentRef);
 
+            var dependency = VkSubpassDependency.allocate(arena);
+            dependency.srcSubpass(VkConstants.SUBPASS_EXTERNAL);
+            dependency.dstSubpass(0);
+            dependency.srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
+            dependency.srcAccessMask(0);
+            dependency.dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
+            dependency.dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE);
+
             var renderPassInfo = VkRenderPassCreateInfo.allocate(arena);
             renderPassInfo.attachmentCount(1);
             renderPassInfo.pAttachments(colorAttachment);
             renderPassInfo.subpassCount(1);
             renderPassInfo.pSubpasses(subpass);
+
+            renderPassInfo.dependencyCount(1);
+            renderPassInfo.pDependencies(dependency);
 
             var pRenderPass = VkRenderPass.Ptr.allocate(arena);
             var result = deviceCommands.createRenderPass(device, renderPassInfo, null, pRenderPass);
@@ -563,6 +579,89 @@ class Application {
                 throw new RuntimeException("Failed to allocate command buffer, vulkan error code: " + VkResult.explain(result));
             }
             commandBuffer = Objects.requireNonNull(pCommandBuffer.read());
+        }
+    }
+
+    private void createSyncObjects() {
+        try (var arena = Arena.ofConfined()) {
+            var semaphoreInfo = VkSemaphoreCreateInfo.allocate(arena);
+            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena);
+            fenceCreateInfo.flags(VkFenceCreateFlags.SIGNALED);
+
+            var pImageAvailableSemaphore = VkSemaphore.Ptr.allocate(arena);
+            var pRenderFinishedSemaphore = VkSemaphore.Ptr.allocate(arena);
+            var pInFlightFence = VkFence.Ptr.allocate(arena);
+
+            if (deviceCommands.createSemaphore(device, semaphoreInfo, null, pImageAvailableSemaphore) != VkResult.SUCCESS
+                || deviceCommands.createSemaphore(device, semaphoreInfo, null, pRenderFinishedSemaphore) != VkResult.SUCCESS
+                || deviceCommands.createFence(device, fenceCreateInfo, null, pInFlightFence) != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to create synchronization objects for a frame");
+            }
+
+            imageAvailableSemaphore = Objects.requireNonNull(pImageAvailableSemaphore.read());
+            renderFinishedSemaphore = Objects.requireNonNull(pRenderFinishedSemaphore.read());
+            inFlightFence = Objects.requireNonNull(pInFlightFence.read());
+        }
+    }
+
+    private void drawFrame() {
+        try (var arena = Arena.ofConfined()) {
+            var pInFlightFences = VkFence.Ptr.allocate(arena);
+            pInFlightFences.write(inFlightFence);
+            deviceCommands.waitForFences(device, 1, pInFlightFences, VkConstants.TRUE, NativeLayout.UINT64_MAX);
+            deviceCommands.resetFences(device, 1, pInFlightFences);
+
+            var pImageIndex = IntPtr.allocate(arena);
+            deviceCommands.acquireNextImageKHR(
+                    device,
+                    swapChain,
+                    NativeLayout.UINT64_MAX,
+                    imageAvailableSemaphore,
+                    null,
+                    pImageIndex
+            );
+            var imageIndex = pImageIndex.read();
+
+            deviceCommands.resetCommandBuffer(commandBuffer, 0);
+            recordCommandBuffer(commandBuffer, imageIndex);
+            var submitInfo = VkSubmitInfo.allocate(arena);
+            var pWaitSemaphores = VkSemaphore.Ptr.allocate(arena);
+            pWaitSemaphores.write(imageAvailableSemaphore);
+            var pWaitStages = IntPtr.allocate(arena);
+            pWaitStages.write(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
+            submitInfo.waitSemaphoreCount(1);
+            submitInfo.pWaitSemaphores(pWaitSemaphores);
+            submitInfo.pWaitDstStageMask(pWaitStages);
+
+            var pCommandBuffers = VkCommandBuffer.Ptr.allocate(arena);
+            pCommandBuffers.write(commandBuffer);
+            submitInfo.commandBufferCount(1);
+            submitInfo.pCommandBuffers(pCommandBuffers);
+
+            var pSignalSemaphores = VkSemaphore.Ptr.allocate(arena);
+            pSignalSemaphores.write(renderFinishedSemaphore);
+            submitInfo.signalSemaphoreCount(1);
+            submitInfo.pSignalSemaphores(pSignalSemaphores);
+
+            var result = deviceCommands.queueSubmit(graphicsQueue, 1, submitInfo, inFlightFence);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to submit draw command buffer, vulkan error code: " + VkResult.explain(result));
+            }
+
+            var presentInfo = VkPresentInfoKHR.allocate(arena);
+            presentInfo.waitSemaphoreCount(1);
+            presentInfo.pWaitSemaphores(pSignalSemaphores);
+
+            var pSwapchain = VkSwapchainKHR.Ptr.allocate(arena);
+            pSwapchain.write(swapChain);
+            presentInfo.swapchainCount(1);
+            presentInfo.pSwapchains(pSwapchain);
+            presentInfo.pImageIndices(pImageIndex);
+
+            result = deviceCommands.queuePresentKHR(presentQueue, presentInfo);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to present swap chain image, vulkan error code: " + VkResult.explain(result));
+            }
         }
     }
 
@@ -909,6 +1008,9 @@ class Application {
     private VkFramebuffer.Ptr swapChainFramebuffers;
     private VkCommandPool commandPool;
     private VkCommandBuffer commandBuffer;
+    private VkSemaphore imageAvailableSemaphore;
+    private VkSemaphore renderFinishedSemaphore;
+    private VkFence inFlightFence;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
