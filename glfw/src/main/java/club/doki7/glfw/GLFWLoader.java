@@ -1,7 +1,7 @@
 package club.doki7.glfw;
 
-import tech.icey.panama.FunctionLoader;
-import tech.icey.panama.Loader;
+import club.doki7.ffm.FunctionLoader;
+import club.doki7.ffm.Loader;
 
 public final class GLFWLoader {
     /// Try loading the GLFW library.
