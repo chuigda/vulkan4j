@@ -25,18 +25,21 @@ Then we need to create multiple command buffers. Rename `createCommandBuffer` to
 
 ```java
 private void createCommandBuffers() {
+    commandBuffers = VkCommandBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+
     try (var arena = Arena.ofConfined()) {
         var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
         allocInfo.commandPool(commandPool);
-        allocInfo.level(VkCommandBufferLevel.VK_COMMAND_BUFFER_LEVEL_PRIMARY);
+        allocInfo.level(VkCommandBufferLevel.PRIMARY);
         allocInfo.commandBufferCount(MAX_FRAMES_IN_FLIGHT);
 
-        var pCommandBuffers = VkCommandBuffer.Buffer.allocate(arena, MAX_FRAMES_IN_FLIGHT);
-        var result = deviceCommands.vkAllocateCommandBuffers(device, allocInfo, pCommandBuffers);
-        if (result != VkResult.VK_SUCCESS) {
-            throw new RuntimeException("Failed to allocate command buffer, vulkan error code: " + VkResult.explain(result));
+        for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+            var pCommandBuffers = commandBuffers.offset(i);
+            var result = deviceCommands.allocateCommandBuffers(device, allocInfo, pCommandBuffers);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to allocate command buffer, vulkan error code: " + VkResult.explain(result));
+            }
         }
-        commandBuffers = pCommandBuffers.readAll();
     }
 }
 ```
@@ -45,29 +48,25 @@ The `createSyncObjects` function should be changed to create all the objects:
 
 ```java
 private void createSyncObjects() {
+    imageAvailableSemaphores = VkSemaphore.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+    renderFinishedSemaphores = VkSemaphore.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+    inFlightFences = VkFence.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+
     try (var arena = Arena.ofConfined()) {
         var semaphoreInfo = VkSemaphoreCreateInfo.allocate(arena);
         var fenceCreateInfo = VkFenceCreateInfo.allocate(arena);
-        fenceCreateInfo.flags(VkFenceCreateFlags.VK_FENCE_CREATE_SIGNALED_BIT);
-
-        var pImageAvailableSemaphore = VkSemaphore.Buffer.allocate(arena);
-        var pRenderFinishedSemaphore = VkSemaphore.Buffer.allocate(arena);
-        var pInFlightFence = VkFence.Buffer.allocate(arena);
-
-        imageAvailableSemaphores = new VkSemaphore[MAX_FRAMES_IN_FLIGHT];
-        renderFinishedSemaphores = new VkSemaphore[MAX_FRAMES_IN_FLIGHT];
-        inFlightFences = new VkFence[MAX_FRAMES_IN_FLIGHT];
+        fenceCreateInfo.flags(VkFenceCreateFlags.SIGNALED);
 
         for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-            if (deviceCommands.vkCreateSemaphore(device, semaphoreInfo, null, pImageAvailableSemaphore) != VkResult.VK_SUCCESS ||
-                    deviceCommands.vkCreateSemaphore(device, semaphoreInfo, null, pRenderFinishedSemaphore) != VkResult.VK_SUCCESS ||
-                    deviceCommands.vkCreateFence(device, fenceCreateInfo, null, pInFlightFence) != VkResult.VK_SUCCESS) {
-                throw new RuntimeException("Failed to create synchronization objects");
-            }
+            var pImageAvailableSemaphore = imageAvailableSemaphores.offset(i);
+            var pRenderFinishedSemaphore = renderFinishedSemaphores.offset(i);
+            var pInFlightFence = inFlightFences.offset(i);
 
-            imageAvailableSemaphores[i] = pImageAvailableSemaphore.read();
-            renderFinishedSemaphores[i] = pRenderFinishedSemaphore.read();
-            inFlightFences[i] = pInFlightFence.read();
+            if (deviceCommands.createSemaphore(device, semaphoreInfo, null, pImageAvailableSemaphore) != VkResult.SUCCESS
+                || deviceCommands.createSemaphore(device, semaphoreInfo, null, pRenderFinishedSemaphore) != VkResult.SUCCESS
+                || deviceCommands.createFence(device, fenceCreateInfo, null, pInFlightFence) != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to create synchronization objects for a frame");
+            }
         }
     }
 }
@@ -77,12 +76,15 @@ Similarly, they should also all be cleaned up:
 
 ```java
 private void cleanup() {
-    for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-        deviceCommands.vkDestroySemaphore(device, renderFinishedSemaphores[i], null);
-        deviceCommands.vkDestroySemaphore(device, imageAvailableSemaphores[i], null);
-        deviceCommands.vkDestroyFence(device, inFlightFences[i], null);
+    for (var semaphore : imageAvailableSemaphores) {
+        deviceCommands.destroySemaphore(device, semaphore, null);
     }
-
+    for (var semaphore : renderFinishedSemaphores) {
+        deviceCommands.destroySemaphore(device, semaphore, null);
+    }
+    for (var fence : inFlightFences) {
+        deviceCommands.destroyFence(device, fence, null);
+    }
     // ...
 }
 ```
@@ -99,10 +101,12 @@ The `drawFrame` function can now be modified to use the right objects:
 
 ```java
 private void drawFrame() {
-    var inFlightFence = inFlightFences[currentFrame];
-    var imageAvailableSemaphore = imageAvailableSemaphores[currentFrame];
-    var renderFinishedSemaphore = renderFinishedSemaphores[currentFrame];
-    var commandBuffer = commandBuffers[currentFrame];
+    var pInFlightFence = inFlightFences.offset(currentFrame);
+    var pImageAvailableSemaphore = imageAvailableSemaphores.offset(currentFrame);
+    var pRenderFinishedSemaphore = renderFinishedSemaphores.offset(currentFrame);
+    var inFlightFence = pInFlightFence.read();
+    var imageAvailableSemaphore = pImageAvailableSemaphore.read();
+    var commandBuffer = commandBuffers.read(currentFrame);
     // ...
 }
 ```
@@ -112,13 +116,13 @@ Of course, we shouldn't forget to advance to the next frame every time:
 ```java
 private void drawFrame() {
     // ...
-    currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+    s
 }
 ```
 
 By using the modulo (%) operator, we ensure that the frame index loops around after every MAX_FRAMES_IN_FLIGHT enqueued frames.
 
-We've now implemented all the needed synchronization to ensure that there are no more than `MAX_FRAMES_IN_FLIGHT` frames of work enqueued and that these frames are not stepping over eachother. Note that it is fine for other parts of the code, like the final cleanup, to rely on more rough synchronization like `vkDeviceWaitIdle`. You should decide on which approach to use based on performance requirements.
+We've now implemented all the needed synchronization to ensure that there are no more than `MAX_FRAMES_IN_FLIGHT` frames of work enqueued and that these frames are not stepping over eachother. Note that it is fine for other parts of the code, like the final cleanup, to rely on more rough synchronization like `VkDeviceCommands::deviceWaitIdle`. You should decide on which approach to use based on performance requirements.
 
 To learn more about synchronization through examples, have a look at [this extensive overview](https://github.com/KhronosGroup/Vulkan-Docs/wiki/Synchronization-Examples#swapchain-image-acquire-and-present) by Khronos.
 
