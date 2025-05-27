@@ -12,7 +12,7 @@ All of these combined fully define the functionality of the graphics pipeline, s
 ```java
 var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena);
 pipelineInfo.stageCount(2);
-pipelineInfo.pStages(shaderStages[0]);
+pipelineInfo.pStages(shaderStages);
 ```
 
 We start by referencing the array of `VkPipelineShaderStageCreateInfo` structs.
@@ -59,9 +59,9 @@ private VkPipeline graphicsPipeline;
 And finally create the graphics pipeline:
 
 ```java
-var pGraphicsPipeline = VkPipeline.Buffer.allocate(arena);
-result = deviceCommands.vkCreateGraphicsPipelines(device, null, 1, pipelineInfo, null, pGraphicsPipeline);
-if (result != VkResult.VK_SUCCESS) {
+var pGraphicsPipeline = VkPipeline.Ptr.allocate(arena);
+result = deviceCommands.createGraphicsPipelines(device, null, 1, pipelineInfo, null, pGraphicsPipeline);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create graphics pipeline, vulkan error code: " + VkResult.explain(result));
 }
 graphicsPipeline = pGraphicsPipeline.read();
@@ -75,7 +75,7 @@ The graphics pipeline is required for all common drawing operations, so it shoul
 
 ```java
 private void cleanup() {
-    deviceCommands.vkDestroyPipeline(device, graphicsPipeline, null);
+    deviceCommands.destroyPipeline(device, graphicsPipeline, null);
     // ...
 }
 ```
