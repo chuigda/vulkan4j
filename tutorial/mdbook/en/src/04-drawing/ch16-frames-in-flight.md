@@ -15,27 +15,27 @@ We choose the number 2 because we don't want the CPU to get *too* far ahead of t
 Each frame should have its own command buffer, set of semaphores, and fence. Rename and then change them to array of objects:
 
 ```java
-private VkCommandBuffer[] commandBuffers;
-private VkSemaphore[] imageAvailableSemaphores;
-private VkSemaphore[] renderFinishedSemaphores;
-private VkFence[] inFlightFences;
+private VkCommandBuffer.Ptr pCommandBuffers;
+private VkSemaphore.Ptr pImageAvailableSemaphores;
+private VkSemaphore.Ptr pRenderFinishedSemaphores;
+private VkFence.Ptr pInFlightFences;
 ```
 
 Then we need to create multiple command buffers. Rename `createCommandBuffer` to `createCommandBuffers`. Next we need to alter the `VkCommandBufferAllocateInfo` to create many command buffers:
 
 ```java
 private void createCommandBuffers() {
-    commandBuffers = VkCommandBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+    pCommandBuffers = VkCommandBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
 
     try (var arena = Arena.ofConfined()) {
         var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
         allocInfo.commandPool(commandPool);
         allocInfo.level(VkCommandBufferLevel.PRIMARY);
-        allocInfo.commandBufferCount(MAX_FRAMES_IN_FLIGHT);
+        allocInfo.commandBufferCount(1);
 
         for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-            var pCommandBuffers = commandBuffers.offset(i);
-            var result = deviceCommands.allocateCommandBuffers(device, allocInfo, pCommandBuffers);
+            var pCommandBuffer = pCommandBuffers.offset(i);
+            var result = deviceCommands.allocateCommandBuffers(device, allocInfo, pCommandBuffer);
             if (result != VkResult.SUCCESS) {
                 throw new RuntimeException("Failed to allocate command buffer, vulkan error code: " + VkResult.explain(result));
             }
@@ -44,13 +44,19 @@ private void createCommandBuffers() {
 }
 ```
 
+<!-- TODO: precisely explain why `swapChainImages.size()` semaphores are required here.
+Previous tutorial often uses `MAX_FRAMES_IN_FLIGHT` semaphores and use `currentFrame` to index into
+them. But most recent VVL complains about that, discovering that all previous tutorials and code
+are incorrect.
+-->
+
 The `createSyncObjects` function should be changed to create all the objects:
 
 ```java
 private void createSyncObjects() {
-    imageAvailableSemaphores = VkSemaphore.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
-    renderFinishedSemaphores = VkSemaphore.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
-    inFlightFences = VkFence.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+    pImageAvailableSemaphores = VkSemaphore.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+    pInFlightFences = VkFence.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+    pRenderFinishedSemaphores = VkSemaphore.Ptr.allocate(Arena.ofAuto(), swapChainImages.size());
 
     try (var arena = Arena.ofConfined()) {
         var semaphoreInfo = VkSemaphoreCreateInfo.allocate(arena);
@@ -58,14 +64,19 @@ private void createSyncObjects() {
         fenceCreateInfo.flags(VkFenceCreateFlags.SIGNALED);
 
         for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-            var pImageAvailableSemaphore = imageAvailableSemaphores.offset(i);
-            var pRenderFinishedSemaphore = renderFinishedSemaphores.offset(i);
-            var pInFlightFence = inFlightFences.offset(i);
+            var pImageAvailableSemaphore = pImageAvailableSemaphores.offset(i);
+            var pInFlightFence = pInFlightFences.offset(i);
 
             if (deviceCommands.createSemaphore(device, semaphoreInfo, null, pImageAvailableSemaphore) != VkResult.SUCCESS
-                || deviceCommands.createSemaphore(device, semaphoreInfo, null, pRenderFinishedSemaphore) != VkResult.SUCCESS
                 || deviceCommands.createFence(device, fenceCreateInfo, null, pInFlightFence) != VkResult.SUCCESS) {
                 throw new RuntimeException("Failed to create synchronization objects for a frame");
+            }
+        }
+
+        for (int i = 0; i < swapChainImages.size(); i++) {
+            var pRenderFinishedSemaphore = pRenderFinishedSemaphores.offset(i);
+            if (deviceCommands.createSemaphore(device, semaphoreInfo, null, pRenderFinishedSemaphore) != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to create render finished semaphore for swap chain image " + i);
             }
         }
     }
@@ -76,13 +87,13 @@ Similarly, they should also all be cleaned up:
 
 ```java
 private void cleanup() {
-    for (var semaphore : imageAvailableSemaphores) {
+    for (var semaphore : pImageAvailableSemaphores) {
         deviceCommands.destroySemaphore(device, semaphore, null);
     }
-    for (var semaphore : renderFinishedSemaphores) {
+    for (var semaphore : pRenderFinishedSemaphores) {
         deviceCommands.destroySemaphore(device, semaphore, null);
     }
-    for (var fence : inFlightFences) {
+    for (var fence : pInFlightFences) {
         deviceCommands.destroyFence(device, fence, null);
     }
     // ...
@@ -101,13 +112,15 @@ The `drawFrame` function can now be modified to use the right objects:
 
 ```java
 private void drawFrame() {
-    var pInFlightFence = inFlightFences.offset(currentFrame);
-    var pImageAvailableSemaphore = imageAvailableSemaphores.offset(currentFrame);
-    var pRenderFinishedSemaphore = renderFinishedSemaphores.offset(currentFrame);
+    var pInFlightFence = pInFlightFences.offset(currentFrame);
+    var pImageAvailableSemaphore = pImageAvailableSemaphores.offset(currentFrame);
     var inFlightFence = pInFlightFence.read();
     var imageAvailableSemaphore = pImageAvailableSemaphore.read();
-    var commandBuffer = commandBuffers.read(currentFrame);
+    var commandBuffer = pCommandBuffers.read(currentFrame);
     // ...
+
+    var imageIndex = pImageIndex.read();
+    var pRenderFinishedSemaphore = pRenderFinishedSemaphores.offset(imageIndex);
 }
 ```
 
@@ -116,13 +129,14 @@ Of course, we shouldn't forget to advance to the next frame every time:
 ```java
 private void drawFrame() {
     // ...
-    s
+
+    currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
 }
 ```
 
 By using the modulo (%) operator, we ensure that the frame index loops around after every MAX_FRAMES_IN_FLIGHT enqueued frames.
 
-We've now implemented all the needed synchronization to ensure that there are no more than `MAX_FRAMES_IN_FLIGHT` frames of work enqueued and that these frames are not stepping over eachother. Note that it is fine for other parts of the code, like the final cleanup, to rely on more rough synchronization like `VkDeviceCommands::deviceWaitIdle`. You should decide on which approach to use based on performance requirements.
+We've now implemented all the needed synchronization to ensure that there are no more than `MAX_FRAMES_IN_FLIGHT` frames of work enqueued and that these frames are not stepping over each other. Note that it is fine for other parts of the code, like the final cleanup, to rely on more rough synchronization like `VkDeviceCommands::deviceWaitIdle`. You should decide on which approach to use based on performance requirements.
 
 To learn more about synchronization through examples, have a look at [this extensive overview](https://github.com/KhronosGroup/Vulkan-Docs/wiki/Synchronization-Examples#swapchain-image-acquire-and-present) by Khronos.
 

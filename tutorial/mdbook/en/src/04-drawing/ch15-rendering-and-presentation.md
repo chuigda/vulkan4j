@@ -407,7 +407,7 @@ private void mainLoop() {
 
 You can also wait for operations in a specific command queue to be finished with `VkDeviceCommands::queueWaitIdle`. These functions can be used as a very rudimentary way to perform synchronization. You'll see that the program now exits without problems when closing the window.
 
-> If you're using a decent version of Vulkan and Vulkan SDK, you may also notice another validation layer warning:
+> If you're using a decent version (1.4.313+) of Vulkan and Vulkan SDK, you may also notice another validation layer warning:
 > 
 > ```asciidoc
 > Validation layer: vkQueueSubmit(): pSubmits[0].pSignalSemaphores[0] (VkSemaphore 0x170000000017) is being signaled by VkQueue 0x76d4145e7f90, but it may still be in use by VkSwapchainKHR 0x30000000003.
@@ -417,7 +417,7 @@ You can also wait for operations in a specific command queue to be finished with
 > Vulkan insight: One solution is to assign each image its own semaphore. Here are some common methods to ensure that a semaphore passed to vkQueuePresentKHR is not in use and cannot be safely reused with image index 1.
 > ```
 > 
-> Well, this should be either Vulkan-Tutorial's fault, or a bug of validation layers. I am also waiting for a fix.
+> We will resolve this issue in the next chapter.
 
 ## Conclusion
 
