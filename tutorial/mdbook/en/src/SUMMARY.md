@@ -25,13 +25,13 @@
 - [Conclusion](pipeline/ch12-conclusion.md)
 
 # Drawing
-- [Framebuffers](drawing/framebuffers.md)
-- [Command buffers](drawing/command-buffers.md)
-- [Rendering and presentation](drawing/rendering-and-presentation.md)
-- [Frames in flight](drawing/frames-in-flight.md)
+- [Framebuffers](drawing/13-framebuffers.md)
+- [Command buffers](drawing/14-command-buffers.md)
+- [Rendering and presentation](drawing/15-rendering-and-presentation.md)
+- [Frames in flight](drawing/16-frames-in-flight.md)
 
 # Swap chain
-- [Swap chain recreation](swapchain/swap-chain-recreation.md)
+- [Swap chain recreation](swapchain/17-swap-chain-recreation.md)
 
 # Vertex buffers
 - [Vertex input description](vertex-buffers/vertex-input-description.md)
