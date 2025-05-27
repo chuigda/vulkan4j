@@ -13,18 +13,18 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
-/// @brief Image data.
+///  @brief Image data.
 /// *
-/// This describes a single 2D image.  See the documentation for each related
-/// function what the expected pixel format is.
+///  This describes a single 2D image.  See the documentation for each related
+///  function what the expected pixel format is.
 /// *
-/// @sa @ref cursor_custom
-/// @sa @ref window_icon
+///  @sa @ref cursor_custom
+///  @sa @ref window_icon
 /// *
-/// @since Added in version 2.1.
-/// @glfw3 Removed format and bytes-per-pixel members.
+///  @since Added in version 2.1.
+///  @glfw3 Removed format and bytes-per-pixel members.
 /// *
-/// @ingroup window
+///  @ingroup window
 ///
 /// ## Structure
 ///
@@ -49,9 +49,9 @@ import static club.doki7.glfw.GLFWConstants.*;
 /// ## Member documentation
 ///
 /// <ul>
-/// <li>{@link #width} The width, in pixels, of this image.</li>
-/// <li>{@link #height} The height, in pixels, of this image.</li>
-/// <li>{@link #pixels} The pixel data of this image, arranged left-to-right, top-to-bottom.</li>
+/// <li>{@link #width}  The width, in pixels, of this image.</li>
+/// <li>{@link #height}  The height, in pixels, of this image.</li>
+/// <li>{@link #pixels}  The pixel data of this image, arranged left-to-right, top-to-bottom.</li>
 /// </ul>
 @ValueBasedCandidate
 @UnsafeConstructor

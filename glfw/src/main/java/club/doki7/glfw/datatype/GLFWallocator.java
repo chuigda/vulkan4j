@@ -13,17 +13,17 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
-/// @brief Custom heap memory allocator.
+///  @brief Custom heap memory allocator.
 /// *
-/// This describes a custom heap memory allocator for GLFW.  To set an allocator, pass it
-/// to @ref glfwInitAllocator before initializing the library.
+///  This describes a custom heap memory allocator for GLFW.  To set an allocator, pass it
+///  to @ref glfwInitAllocator before initializing the library.
 /// *
-/// @sa @ref init_allocator
-/// @sa @ref glfwInitAllocator
+///  @sa @ref init_allocator
+///  @sa @ref glfwInitAllocator
 /// *
-/// @since Added in version 3.4.
+///  @since Added in version 3.4.
 /// *
-/// @ingroup init
+///  @ingroup init
 ///
 /// ## Structure
 ///
@@ -49,17 +49,17 @@ import static club.doki7.glfw.GLFWConstants.*;
 /// ## Member documentation
 ///
 /// <ul>
-/// <li>{@link #allocate} The memory allocation function.  See @ref GLFWallocatefun for details about
-/// allocation function.
+/// <li>{@link #allocate}  The memory allocation function.  See @ref GLFWallocatefun for details about
+///  allocation function.
 /// </li>
-/// <li>{@link #reallocate} The memory reallocation function.  See @ref GLFWreallocatefun for details about
-/// reallocation function.
+/// <li>{@link #reallocate}  The memory reallocation function.  See @ref GLFWreallocatefun for details about
+///  reallocation function.
 /// </li>
-/// <li>{@link #deallocate} The memory deallocation function.  See @ref GLFWdeallocatefun for details about
-/// deallocation function.
+/// <li>{@link #deallocate}  The memory deallocation function.  See @ref GLFWdeallocatefun for details about
+///  deallocation function.
 /// </li>
-/// <li>{@link #user} The user pointer for this custom allocator.  This value will be passed to the
-/// allocator functions.
+/// <li>{@link #user}  The user pointer for this custom allocator.  This value will be passed to the
+///  allocator functions.
 /// </li>
 /// </ul>
 @ValueBasedCandidate

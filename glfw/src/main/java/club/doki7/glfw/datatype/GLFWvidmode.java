@@ -13,18 +13,18 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
-/// @brief Video mode type.
+///  @brief Video mode type.
 /// *
-/// This describes a single video mode.
+///  This describes a single video mode.
 /// *
-/// @sa @ref monitor_modes
-/// @sa @ref glfwGetVideoMode
-/// @sa @ref glfwGetVideoModes
+///  @sa @ref monitor_modes
+///  @sa @ref glfwGetVideoMode
+///  @sa @ref glfwGetVideoModes
 /// *
-/// @since Added in version 1.0.
-/// @glfw3 Added refresh rate member.
+///  @since Added in version 1.0.
+///  @glfw3 Added refresh rate member.
 /// *
-/// @ingroup monitor
+///  @ingroup monitor
 ///
 /// ## Structure
 ///
@@ -52,12 +52,12 @@ import static club.doki7.glfw.GLFWConstants.*;
 /// ## Member documentation
 ///
 /// <ul>
-/// <li>{@link #width} The width, in screen coordinates, of the video mode.</li>
-/// <li>{@link #height} The height, in screen coordinates, of the video mode.</li>
-/// <li>{@link #redBits} The bit depth of the red channel of the video mode.</li>
-/// <li>{@link #greenBits} The bit depth of the green channel of the video mode.</li>
-/// <li>{@link #blueBits} The bit depth of the blue channel of the video mode.</li>
-/// <li>{@link #refreshRate} The refresh rate, in Hz, of the video mode.</li>
+/// <li>{@link #width}  The width, in screen coordinates, of the video mode.</li>
+/// <li>{@link #height}  The height, in screen coordinates, of the video mode.</li>
+/// <li>{@link #redBits}  The bit depth of the red channel of the video mode.</li>
+/// <li>{@link #greenBits}  The bit depth of the green channel of the video mode.</li>
+/// <li>{@link #blueBits}  The bit depth of the blue channel of the video mode.</li>
+/// <li>{@link #refreshRate}  The refresh rate, in Hz, of the video mode.</li>
 /// </ul>
 @ValueBasedCandidate
 @UnsafeConstructor

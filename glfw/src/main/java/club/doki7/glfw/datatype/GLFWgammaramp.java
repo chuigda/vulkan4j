@@ -13,17 +13,17 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
-/// @brief Gamma ramp.
+///  @brief Gamma ramp.
 /// *
-/// This describes the gamma ramp for a monitor.
+///  This describes the gamma ramp for a monitor.
 /// *
-/// @sa @ref monitor_gamma
-/// @sa @ref glfwGetGammaRamp
-/// @sa @ref glfwSetGammaRamp
+///  @sa @ref monitor_gamma
+///  @sa @ref glfwGetGammaRamp
+///  @sa @ref glfwSetGammaRamp
 /// *
-/// @since Added in version 3.0.
+///  @since Added in version 3.0.
 /// *
-/// @ingroup monitor
+///  @ingroup monitor
 ///
 /// ## Structure
 ///
@@ -49,10 +49,10 @@ import static club.doki7.glfw.GLFWConstants.*;
 /// ## Member documentation
 ///
 /// <ul>
-/// <li>{@link #red} An array of value describing the response of the red channel.</li>
-/// <li>{@link #green} An array of value describing the response of the green channel.</li>
-/// <li>{@link #blue} An array of value describing the response of the blue channel.</li>
-/// <li>{@link #size} The number of elements in each array.</li>
+/// <li>{@link #red}  An array of value describing the response of the red channel.</li>
+/// <li>{@link #green}  An array of value describing the response of the green channel.</li>
+/// <li>{@link #blue}  An array of value describing the response of the blue channel.</li>
+/// <li>{@link #size}  The number of elements in each array.</li>
 /// </ul>
 @ValueBasedCandidate
 @UnsafeConstructor

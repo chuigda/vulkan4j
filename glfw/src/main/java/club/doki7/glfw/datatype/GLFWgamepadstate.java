@@ -13,16 +13,16 @@ import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
-/// @brief Gamepad input state
+///  @brief Gamepad input state
 /// *
-/// This describes the input state of a gamepad.
+///  This describes the input state of a gamepad.
 /// *
-/// @sa @ref gamepad
-/// @sa @ref glfwGetGamepadState
+///  @sa @ref gamepad
+///  @sa @ref glfwGetGamepadState
 /// *
-/// @since Added in version 3.3.
+///  @since Added in version 3.3.
 /// *
-/// @ingroup input
+///  @ingroup input
 ///
 /// ## Structure
 ///
@@ -46,11 +46,11 @@ import static club.doki7.glfw.GLFWConstants.*;
 /// ## Member documentation
 ///
 /// <ul>
-/// <li>{@link #buttons} The states of each [gamepad button](@ref gamepad_buttons), `GLFW_PRESS`
-/// or `GLFW_RELEASE`.
+/// <li>{@link #buttons}  The states of each [gamepad button](@ref gamepad_buttons), `GLFW_PRESS`
+///  or `GLFW_RELEASE`.
 /// </li>
-/// <li>{@link #axes} The states of each [gamepad axis](@ref gamepad_axes), in the range -1.0
-/// to 1.0 inclusive.
+/// <li>{@link #axes}  The states of each [gamepad axis](@ref gamepad_axes), in the range -1.0
+///  to 1.0 inclusive.
 /// </li>
 /// </ul>
 @ValueBasedCandidate
