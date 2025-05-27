@@ -13,9 +13,9 @@
 - [Logical Devices and Queues](setup/ch04-logical-device-and-queues.md)
 
 # Presentation
-- [Window surface](presentation/window-surface.md)
-- [Swap chain](presentation/swap-chain.md)
-- [Image views](presentation/image-views.md)
+- [Window surface](presentation/ch05-window-surface.md)
+- [Swap chain](presentation/ch06-swap-chain.md)
+- [Image views](presentation/ch07-image-views.md)
 
 # Graphics pipeline basics
 - [Introduction](pipeline/introduction.md)
