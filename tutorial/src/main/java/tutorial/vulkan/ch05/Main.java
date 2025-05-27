@@ -62,6 +62,7 @@ class Application {
 
         createInstance();
         setupDebugMessenger();
+        createSurface();
         pickPhysicalDevice();
         createLogicalDevice();
     }
@@ -74,11 +75,10 @@ class Application {
 
     private void cleanup() {
         deviceCommands.destroyDevice(device, null);
-
+        instanceCommands.destroySurfaceKHR(instance, surface, null);
         if (ENABLE_VALIDATION_LAYERS) {
             instanceCommands.destroyDebugUtilsMessengerEXT(instance, debugMessenger, null);
         }
-
         instanceCommands.destroyInstance(instance, null);
         glfw.destroyWindow(window);
         glfw.terminate();
@@ -148,6 +148,17 @@ class Application {
         }
     }
 
+    private void createSurface() {
+        try (var arena = Arena.ofConfined()) {
+            var pSurface = VkSurfaceKHR.Ptr.allocate(arena);
+            var result = glfw.createWindowSurface(instance, window, null, pSurface);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to create window surface, vulkan error code: " + VkResult.explain(result));
+            }
+            surface = Objects.requireNonNull(pSurface.read());
+        }
+    }
+
     private void pickPhysicalDevice() {
         try (var arena = Arena.ofConfined()) {
             var pDeviceCount = IntPtr.allocate(arena);
@@ -185,19 +196,32 @@ class Application {
         assert indices != null : "Queue family indices should not be null";
 
         try (var arena = Arena.ofConfined()) {
-            var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena);
-            queueCreateInfo.queueCount(1);
-            queueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
-
+            var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
             var pQueuePriorities = FloatPtr.allocate(arena);
             pQueuePriorities.write(1.0f);
-            queueCreateInfo.pQueuePriorities(pQueuePriorities);
-
-            var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
-
-            var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
             deviceCreateInfo.queueCreateInfoCount(1);
-            deviceCreateInfo.pQueueCreateInfos(queueCreateInfo);
+            if (indices.graphicsFamily == indices.presentFamily) {
+                var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena);
+                queueCreateInfo.queueCount(1);
+                queueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
+                queueCreateInfo.pQueuePriorities(pQueuePriorities);
+                deviceCreateInfo.queueCreateInfoCount(1);
+                deviceCreateInfo.pQueueCreateInfos(queueCreateInfo);
+            }
+            else {
+                var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
+                var graphicsQueueCreateInfo = queueCreateInfos.at(0);
+                var presentQueueCreateInfo = queueCreateInfos.at(1);
+                graphicsQueueCreateInfo.queueCount(1);
+                graphicsQueueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
+                graphicsQueueCreateInfo.pQueuePriorities(pQueuePriorities);
+                presentQueueCreateInfo.queueCount(1);
+                presentQueueCreateInfo.queueFamilyIndex(indices.presentFamily());
+                presentQueueCreateInfo.pQueuePriorities(pQueuePriorities);
+                deviceCreateInfo.queueCreateInfoCount(2);
+                deviceCreateInfo.pQueueCreateInfos(queueCreateInfos);
+            }
+            var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
             deviceCreateInfo.pEnabledFeatures(deviceFeatures);
 
             if (ENABLE_VALIDATION_LAYERS) {
@@ -218,6 +242,9 @@ class Application {
             var pQueue = VkQueue.Ptr.allocate(arena);
             deviceCommands.getDeviceQueue(device, indices.graphicsFamily(), 0, pQueue);
             graphicsQueue = Objects.requireNonNull(pQueue.read());
+
+            deviceCommands.getDeviceQueue(device, indices.presentFamily(), 0, pQueue);
+            presentQueue = Objects.requireNonNull(pQueue.read());
         }
     }
 
@@ -275,7 +302,7 @@ class Application {
         return findQueueFamilies(device) != null;
     }
 
-    private record QueueFamilyIndices(int graphicsFamily) {}
+    private record QueueFamilyIndices(int graphicsFamily, int presentFamily) {}
 
     private QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
         try (var arena = Arena.ofConfined()) {
@@ -287,16 +314,26 @@ class Application {
             instanceCommands.getPhysicalDeviceQueueFamilyProperties(device, pQueueFamilyCount, queueFamilies);
 
             int graphicsFamily = -1;
+            int presentFamily = -1;
+            var pSurfaceSupport = IntPtr.allocate(arena);
             for (int i = 0; i < queueFamilyCount; i++) {
                 var queueFamily = queueFamilies.at(i);
                 if ((queueFamily.queueFlags() & VkQueueFlags.GRAPHICS) != 0) {
                     graphicsFamily = i;
+                }
+
+                if (instanceCommands.getPhysicalDeviceSurfaceSupportKHR(device, i, surface, pSurfaceSupport) == VkResult.SUCCESS
+                    && pSurfaceSupport.read() == VkConstants.TRUE) {
+                    presentFamily = i;
+                }
+
+                if (graphicsFamily != -1 && presentFamily != -1) {
                     break;
                 }
             }
 
-            if (graphicsFamily >= 0) {
-                return new QueueFamilyIndices(graphicsFamily);
+            if (graphicsFamily >= 0 && presentFamily >= 0) {
+                return new QueueFamilyIndices(graphicsFamily, presentFamily);
             } else {
                 return null;
             }
@@ -340,6 +377,8 @@ class Application {
     private VkDevice device;
     private VkDeviceCommands deviceCommands;
     private VkQueue graphicsQueue;
+    private VkSurfaceKHR surface;
+    private VkQueue presentQueue;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;

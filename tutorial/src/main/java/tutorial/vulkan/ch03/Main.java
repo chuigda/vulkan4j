@@ -79,7 +79,6 @@ class Application {
         if (ENABLE_VALIDATION_LAYERS) {
             instanceCommands.destroyDebugUtilsMessengerEXT(instance, debugMessenger, null);
         }
-
         instanceCommands.destroyInstance(instance, null);
         glfw.destroyWindow(window);
         glfw.terminate();

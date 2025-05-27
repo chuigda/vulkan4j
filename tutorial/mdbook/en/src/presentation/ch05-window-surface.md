@@ -2,7 +2,7 @@
 
 Since Vulkan is a platform-agnostic API, it can not interface directly with the window system on its own. To establish the connection between Vulkan and the window system to present results to the screen, we need to use the WSI (Window System Integration) extensions. In this chapter we'll discuss the first one, which is `VK_KHR_surface`. It exposes a `VkSurfaceKHR` object that represents an abstract type of surface to present rendered images to. The surface in our program will be backed by the window that we've already opened with GLFW.
 
-The `VK_KHR_surface` extension is an instance level extension and we've actually already enabled it, because it's included in the list returned by `glfwGetRequiredInstanceExtensions`. The list also includes some other WSI extensions that we'll use in the next couple of chapters.
+The `VK_KHR_surface` extension is an instance level extension and we've actually already enabled it, because it's included in the list returned by `getRequiredInstanceExtensions`. The list also includes some other WSI extensions that we'll use in the next couple of chapters.
 
 The window surface needs to be created right after the instance creation, because it can actually influence the physical device selection. The reason we postponed this is that window surfaces are part of the larger topic of render targets and presentation for which the explanation would have cluttered the basic setup. It should also be noted that window surfaces are an entirely optional component in Vulkan, if you just need off-screen rendering. Vulkan allows you to do that without hacks like creating an invisible window (necessary for OpenGL).
 
@@ -14,33 +14,33 @@ Start by adding a `surface` class member right below the debug callback.
 private VkSurfaceKHR surface;
 ```
 
-Although the `VkSurfaceKHR` object and its usage is platform-agnostic, its creation isn't because it depends on window system details. For example, it needs the `HWND` and `HMODULE` handles on Windows. Therefore, there is a platform-specific addition to the extension, which on Windows is called `VK_KHR_win32_surface` and is also automatically included in the list from `glfwGetRequiredInstanceExtensions`.
+Although the `VkSurfaceKHR` object and its usage is platform-agnostic, its creation isn't because it depends on window system details. For example, it needs the `HWND` and `HMODULE` handles on Windows. Therefore, there is a platform-specific addition to the extension, which on Windows is called `VK_KHR_win32_surface` and is also automatically included in the list from `getRequiredInstanceExtensions`.
 
-I will demonstrate how this platform specific extension can be used to create a surface on Windows, but we **won't actually use it in this tutorial**. It doesn't make any sense to use a library like GLFW and then proceed to use platform-specific code anyway. GLFW actually has `glfwCreateWindowSurface` that handles the platform differences for us. Still, it's good to see what it does behind the scenes before we start relying on it.
+I will demonstrate how this platform specific extension can be used to create a surface on Windows, but we **won't actually use it in this tutorial**. It doesn't make any sense to use a library like GLFW and then proceed to use platform-specific code anyway. GLFW actually has `createWindowSurface` that handles the platform differences for us. Still, it's good to see what it does behind the scenes before we start relying on it.
 
 Because a window surface is a Vulkan object, it comes with a `VkWin32SurfaceCreateInfoKHR` struct that needs to be filled in. It has two important parameters: hwnd and hinstance. These are the handles to the window and the process.
 
 ```java
 try (var arena = Arena.ofConfined()) {
     var createInfo = VkWin32SurfaceCreateInfoKHR.allocate(arena)
-            .hwnd(glfw.glfwGetWin32Window(window))
+            .hwnd(glfw.getWin32Window(window))
             .hinstance(libKernel32.GetModuleHandle(null));
 }
 ```
 
-The `glfwGetWin32Window` function is used to get the raw `HWND` from the GLFW window object. The `GetModuleHandle` call returns the `HINSTANCE` handle of the current process.
+The `getWin32Window` function is used to get the raw `HWND` from the GLFW window object. The `GetModuleHandle` call returns the `HINSTANCE` handle of the current process.
 
-After that the surface can be created with `vkCreateWin32SurfaceKHR`, which includes a parameter for the instance, surface creation details, custom allocators and the variable for the surface handle to be stored in. Technically this is a WSI extension function, but it is so commonly used that the standard Vulkan loader includes it, so unlike other extensions you don't need to explicitly load it.
+After that the surface can be created with `createWin32SurfaceKHR`, which includes a parameter for the instance, surface creation details, custom allocators and the variable for the surface handle to be stored in. Technically this is a WSI extension function, but it is so commonly used that the standard Vulkan loader includes it, so unlike other extensions you don't need to explicitly load it.
 
 ```java
-if (instanceCommands.vkCreateWin32SurfaceKHR(instance, createInfo.address(), null, pSurface) != VkResult.VK_SUCCESS) {
+if (instanceCommands.createWin32SurfaceKHR(instance, createInfo, null, pSurface) != VkResult.SUCCESS) {
     throw new RuntimeError("Failed to create surface");
 }
 ```
 
-The process is similar for other platforms like Linux, where `vkCreateXcbSurfaceKHR` takes an XCB connection and window as creation details with X11.
+The process is similar for other platforms like Linux, where `createXcbSurfaceKHR` takes an XCB connection and window as creation details with X11.
 
-The `glfwCreateWindowSurface` function performs exactly this operation with a different implementation for each platform. We'll now integrate it into our program. Add a function `createSurface` to be called from `initVulkan` right after instance creation and `setupDebugMessenger`.
+The `createWindowSurface` function performs exactly this operation with a different implementation for each platform. We'll now integrate it into our program. Add a function `createSurface` to be called from `initVulkan` right after instance creation and `setupDebugMessenger`.
 
 ```java
 private void initVulkan() {
@@ -60,12 +60,12 @@ The GLFW call takes simple parameters instead of a struct which makes the implem
 ```java
 private void createSurface() {
     try (var arena = Arena.ofConfined()) {
-        var pSurface = VkSurfaceKHR.Buffer.allocate(arena);
-        var result = glfw.glfwCreateWindowSurface(instance, window, null, pSurface);
-        if (result != VkResult.VK_SUCCESS) {
+        var pSurface = VkSurfaceKHR.Ptr.allocate(arena);
+        var result = glfw.createWindowSurface(instance, window, null, pSurface);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to create window surface, vulkan error code: " + VkResult.explain(result));
         }
-        surface = pSurface.read();
+        surface = Objects.requireNonNull(pSurface.read());
     }
 }
 ```
@@ -75,8 +75,8 @@ The parameters are the `VkInstance`, GLFW window pointer, custom allocators and 
 ```java
 private void cleanup() {
     // ...
-    instanceCommands.vkDestroySurfaceKHR(instance, surface, null);
-    instanceCommands.vkDestroyInstance(instance, null);
+    instanceCommands.destroySurfaceKHR(instance, surface, null);
+    instanceCommands.destroyInstance(instance, null);
     // ...
 }
 ```
@@ -93,18 +93,33 @@ It's actually possible that the queue families supporting drawing commands and t
 private record QueueFamilyIndices(int graphicsFamily, int presentFamily) {}
 ```
 
-Next, we'll modify the `findQueueFamilies` function to look for a queue family that has the capability of presenting to our window surface. The function to check for that is `vkGetPhysicalDeviceSurfaceSupportKHR`, which takes the physical device, queue family index and surface as parameters. Add a call to it in the same loop as the `VK_QUEUE_GRAPHICS_BIT`:
+Next, we'll modify the `findQueueFamilies` function to look for a queue family that has the capability of presenting to our window surface. The function to check for that is `getPhysicalDeviceSurfaceSupportKHR`, which takes the physical device, queue family index and surface as parameters. Add a call to it in the same loop as the `VK_QUEUE_GRAPHICS_BIT`:
 
 ```java
-Integer presentFamily = null;
+int presentFamily = -1;
 var pSurfaceSupport = IntBuffer.allocate(arena);
 
 for (int i = 0; i < queueFamilyCount; i++) {
-    // ...
+    var queueFamily = queueFamilies.at(i);
+    if ((queueFamily.queueFlags() & VkQueueFlags.GRAPHICS) != 0) {
+        graphicsFamily = i;
+        // DELETE the previous `break;` line!
+    }
 
-    if (pSurfaceSupport.read() == Constants.VK_TRUE) {
+    if (instanceCommands.getPhysicalDeviceSurfaceSupportKHR(device, i, surface, pSurfaceSupport) == VkResult.SUCCESS
+        && pSurfaceSupport.read() == VkConstants.TRUE) {
         presentFamily = i;
     }
+    
+    if (graphicsFamily != -1 && presentFamily != -1) {
+        break;
+    }
+}
+
+if (graphicsFamily >= 0 && presentFamily >= 0) {
+    return new QueueFamilyIndices(graphicsFamily, presentFamily);
+} else {
+    return null;
 }
 ```
 
@@ -122,8 +137,9 @@ Next, we need to have multiple `VkDeviceQueueCreateInfo` structs to create a que
 
 ```java
 var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
-var pQueuePriorities = FloatBuffer.allocate(arena);
+var pQueuePriorities = FloatPtr.allocate(arena);
 pQueuePriorities.write(1.0f);
+deviceCreateInfo.queueCreateInfoCount(1);
 if (indices.graphicsFamily == indices.presentFamily) {
     var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena);
     queueCreateInfo.queueCount(1);
@@ -134,23 +150,24 @@ if (indices.graphicsFamily == indices.presentFamily) {
 }
 else {
     var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-    queueCreateInfos[0].queueCount(1);
-    queueCreateInfos[0].queueFamilyIndex(indices.graphicsFamily());
-    queueCreateInfos[0].pQueuePriorities(pQueuePriorities);
-    queueCreateInfos[1].queueCount(1);
-    queueCreateInfos[1].queueFamilyIndex(indices.presentFamily());
-    queueCreateInfos[1].pQueuePriorities(pQueuePriorities);
+    var graphicsQueueCreateInfo = queueCreateInfos.at(0);
+    var presentQueueCreateInfo = queueCreateInfos.at(1);
+    graphicsQueueCreateInfo.queueCount(1);
+    graphicsQueueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
+    graphicsQueueCreateInfo.pQueuePriorities(pQueuePriorities);
+    presentQueueCreateInfo.queueCount(1);
+    presentQueueCreateInfo.queueFamilyIndex(indices.presentFamily());
+    presentQueueCreateInfo.pQueuePriorities(pQueuePriorities);
     deviceCreateInfo.queueCreateInfoCount(2);
-    deviceCreateInfo.pQueueCreateInfos(queueCreateInfos[0]);
+    deviceCreateInfo.pQueueCreateInfos(queueCreateInfos);
 }
 ```
 
 Finally, add a call to retrieve the queue handle:
 
 ```java
-deviceCommands.vkGetDeviceQueue(device, indices.presentFamily(), 0, pQueue);
+deviceCommands.getDeviceQueue(device, indices.presentFamily(), 0, pQueue);
 presentQueue = pQueue.read();
 ```
 
 In case the queue families are the same, the two handles will most likely have the same value now. In the next chapter we're going to look at swap chains and how they give us the ability to present images to the surface.
-
