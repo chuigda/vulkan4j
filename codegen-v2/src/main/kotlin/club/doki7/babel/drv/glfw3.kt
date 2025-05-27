@@ -56,11 +56,11 @@ fun glfw3Main(vulkanRegistry: RegistryBase, vulkanAdditionalRegistry: RegistryBa
             .writeText(render(structureDoc))
     }
 
-    for (handle in registry.opaqueTypedefs.values) {
-        val handleTypedef = OpaqueHandleTypedef(handle.name)
-        handleTypedef.doc = handle.doc
+    for (opaqueTypedef in registry.opaqueTypedefs.values) {
+        val handleTypedef = OpaqueHandleTypedef(opaqueTypedef.name)
+        handleTypedef.doc = opaqueTypedef.doc
         val handleDoc = generateHandle(registry, handleTypedef, codegenOptions)
-        File("$packageDir/handle/${handle.name}.java")
+        File("$packageDir/handle/${opaqueTypedef.name}.java")
             .writeText(render(handleDoc))
     }
 }

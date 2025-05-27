@@ -341,6 +341,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
             val name = names[1]
             val typedef = OpaqueTypedef(name)
             typedef.isHandle = true
+            typedef.doc = getDocument()
             opaqueTypedefs[typedef.name] = typedef
 
             // no need to consume due to the call assumption
