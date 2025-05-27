@@ -90,50 +90,41 @@ The Vulkan API is defined in terms of the C programming language. The canonical 
 
 The [Vulkan headers](https://github.com/KhronosGroup/Vulkan-Headers) that are part of the Vulkan SDK you will be installing in the next chapter are generated from this Vulkan API Registry. However, we will not be using these headers, directly or indirectly, because `vulkan4j` includes a Java interface to the Vulkan API generated from the Vulkan API registry that is independent of the C interface provided by the Vulkan SDK.
 
-### Coding conventions
+### Type names
 
-<!-- Since `vulkan4j` is designed to stick to original Vulkan API flavor more, most function names, data type names and constants are kept the same as in the Vulkan API:
-
-- Functions have a lower case `vk` prefix
-- Types like enumerations and structs have a `Vk` prefix
-- Enumeration values and constants have a `VK_` prefix.
-
-One little difference is that `vulkan4j` merges `Flags` and `FlagBits` enumeration names. For example, `VkBufferUsageFlags` and `VkBufferUsageFlagBits` are merged into one single `VkBufferUsageFlags`.
-
-`struct` and `union` types are in `tech.icey.vk4j.datatype` package, enum types are in `tech.icey.vk4j.enumtype` package, while Vulkan handle types (like `VkInstance`, `VkDevice`, `VkQueue`, etc.) are in `tech.icey.vk4j.handle` package. -->
+Java has some kind of namespace support (package) unlike C. However, Java doesn't have any syntactic sugar to help with the issue of name collisions. Therefore, vulkan types such as structs, unions and enums kept their `Vk` prefix.
 
 ### Structs and unions representation
 
-<!-- Structs and unions are represented with Java `record`s. Each `record` instance contains a `MemorySegment` representing the native memory of the struct or union. Calling static method `allocate` will automatically allocate a native memory segment for that struct or union, and create a new instance of the `record` with that memory segment. It also initializes fields like `sType` for you. Manually creating the `record` instance is not recommended but possible via the `record`'s constructor. 
+Structs and unions are represented with Java `record`s. Each `record` instance contains a `MemorySegment`, which points to the first byte of struct or union in native memory. Calling static method `allocate` will automatically allocate a properly aligned native memory segment for that struct or union, and create a new instance of the `record` with that memory segment. It also initializes fields like `sType` for you. Manually creating the `record` instance is not recommended (marked as unsafe) but possible via the `record`'s constructor. 
 
-Since the `record` type representing struct or union is already a pointer, command taking struct as parameter and command taking struct pointer as parameter will have no difference on their function signature. In order to distinguish them, `vulkan4j` uses a `@pointer` annotation to mark that a parameter will be passed as a pointer (thus Vulkan may modify its content, and if conforming Vulkan specification, the parameter can be `null`). -->
+To represent an array of structs or unions, `vulkan4j` uses a nested `Ptr` type. For example, an array of `VkGraphicsPipelineCreateInfo` structure is represented with a `VkGraphicsPipelineCreateInfo.Ptr` object. The `Ptr` type is a `record` that contains a `MemorySegment` pointing to the first byte of the array in native memory, and it provides methods to access the individual elements of the array. The `allocate` method has a overloading that accepts a `count` and returns such a `Ptr`.
 
-The `allocate` method has a overloading that accepts a `count` and returns an Java array of that struct or union. If you want to pass such an array or union to a Vulkan command, just pass the first element of the array. 
+Some Vulkan commands (for example, `vkCreateGraphicsPipelines`) can take single or multiple structs or unions as parameters. For their command wrapper, we use an interface type (`IVkGraphicsPipelineCreateInfo` in this case) to unify the structure type and its nested `Ptr` type. Some Vulkan commands (for example, `vkCreateInstance`), on the other hand, can take only one struct or union as a parameter. In such case, their command wrappers will only accept the structure type itself, not the nested `Ptr` type.
 
 ### Handles representation
 
-<!-- Handles like `VkInstance`, `VkDevice` or `VkQueue` are represented with Java `record`s as well. Each handle type has a `MemorySegment` field that represents the native handle itself.
+Handles like `VkInstance`, `VkDevice` or `VkQueue` are represented with Java `record`s as well. Each handle type has a `MemorySegment` field that represents the native handle itself.
 
-When creating a pointer to a handle, you should use the `allocate` static method on the corresponding `Buffer` type such as `VkInstance.Buffer.allocate`. The return type is a `VkInstance.Buffer`. Calling `read` on the buffer will return the handle.
+When creating a pointer to a handle, you should use the `allocate` static method on the corresponding `Ptr` type such as `VkInstance.Ptr.allocate`. The return type is a `VkInstance.Ptr`. Calling `read` on the buffer will return the handle.
 
-Handles are usually created by Vulkan commands and most time you'll be creating pointers to handles and passing them to Vulkan commands. It's also possible to wrap a raw `MemorySegment` into a handle using the handle's constructor. -->
+Handles are usually created by Vulkan commands and most time you'll be creating pointers to handles and passing them to Vulkan commands. It's also possible to wrap a raw `MemorySegment` into a handle using the handle's constructor.
 
 ### Enums and bitmasks representation
 
-`vulkan4j` uses conventional Java `int` and `long` types to represent Vulkan enums and bitmasks. Java enums are not used because they are very unfriendly to bitwise operations, and requires conversion during FFI calls. Vulkan enum and bitmask values are modelled with `public static final` fields in the corresponding enum classes. 
+`vulkan4j` uses conventional Java `int` and `long` types to represent Vulkan enums and bitmasks. Java enums are not used because they are very unfriendly to bitwise operations, and requires conversion during FFI calls. Vulkan enum and bitmask values are modelled with `public static final` fields in the corresponding enum classes.
 
-In order to make APIs involving Vulkan enums and bitmasks easier to use, `vulkan4j` provides an annotation `tech.icey.vk4j.annotation.enumtype`. This annotation is used to mark an `int` or `long` value to be a specific Vulkan enum or bitmask, thus when you Ctrl-click to jump to the documentation of some data type or API, you could Ctrl-click the enum or bitmask type to see what values can be used for that field or parameter.
+In order to make APIs involving Vulkan enums and bitmasks easier to use, `vulkan4j` provides an annotation `club.doki7.ffm.annotation.EnumType`. This annotation is used to mark an `int` or `long` value to be a specific Vulkan enum or bitmask, thus when you Ctrl-click to jump to the documentation of some data type or API, you could Ctrl-click the enum or bitmask type to see what values can be used for that field or parameter.
 
 `vulkan4j` enum classes also come with a handy `explain` static method that can be used to get a human-readable explanation of a Vulkan enum or bitmask value.
 
 ### Commands
 
-<!--
 The types for raw Vulkan commands like `vkCreateInstance` are defined in `vulkan4j` as `FunctionDescriptor`s with the `DESCRIPTOR$` prefix. So the `vulkan4j` type definition for `vkCreateInstance` is `DESCRIPTOR$vkCreateInstance`.
 
 These function descriptors are not enough on their own to call Vulkan commands, we first need to load the commands described by these types. The Vulkan specification has a [detailed description](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization-functionpointers) of how this is done, but I will present a simplified version here.
 
-The first Vulkan command to load is `vkGetInstanceProcAddr`. We can load it with Java `NativeLinker` and `SymbolLookup` which are part of Project Panama APIs. `vulkan4j` provided a light-weight encapsulation of these APIs, making command loading much easier.
+The first Vulkan command to load is `vkGetInstanceProcAddr`. We can load it with Java `NativeLinker` and `SymbolLookup` which are part of Java 22 FFM APIs. `vulkan4j` provided a light-weight encapsulation of these APIs, making command loading much easier.
 
 However, there may be multiple versions of Vulkan commands available depending on the Vulkan implementations on your system. For example, if your system has both a dedicated NVIDIA GPU and an integrated Intel GPU, there may be separate implementations of device-specific Vulkan commands like `allocate_memory` for each device. In cases like this, `vkGetInstanceProcAddr` will return a command that will dispatch calls to the appropriate device-specific command depending on the device in use.
 
@@ -141,14 +132,12 @@ To avoid the runtime overhead of this dispatch, the `vkGetDeviceProcAddr` comman
 
 We will be calling dozens of Vulkan commands in this tutorial. Fortunately we won't have to load them one by one, `vulkan4j` provides a `Loader` type which can be used to easily load all the Vulkan commands in one of four categories:
 
-* `StaticCommands` &ndash; The Vulkan commands loaded in a platform-specific manner that can then used to load the other commands (i.e., `vkGetInstanceProcAddr` and `vkGetDeviceProcAddr`)
-* `EntryCommands` &ndash; The Vulkan commands loaded using `vkGetInstanceProcAddr` and a null Vulkan instance. These commands are not tied to a specific Vulkan instance and are used to query instance support and create instances
-* `InstanceCommands` &ndash; The Vulkan commands loaded using `vkGetInstanceProcAddr` and a valid Vulkan instance. These commands are tied to a specific Vulkan instance and, among other things, are used to query device support and create devices
-* `DeviceCommands` &ndash; The Vulkan commands loaded using `vkGetDeviceProcAddr` and a valid Vulkan device. These commands are tied to a specific Vulkan device and expose most of the functionality you would expect from a graphics API
+* `VkStaticCommands` &ndash; The Vulkan commands loaded in a platform-specific manner that can then used to load the other commands (i.e., `vkGetInstanceProcAddr` and `vkGetDeviceProcAddr`)
+* `VkEntryCommands` &ndash; The Vulkan commands loaded using `vkGetInstanceProcAddr` and a null Vulkan instance. These commands are not tied to a specific Vulkan instance and are used to query instance support and create instances
+* `VkInstanceCommands` &ndash; The Vulkan commands loaded using `vkGetInstanceProcAddr` and a valid Vulkan instance. These commands are tied to a specific Vulkan instance and, among other things, are used to query device support and create devices
+* `VkDeviceCommands` &ndash; The Vulkan commands loaded using `vkGetDeviceProcAddr` and a valid Vulkan device. These commands are tied to a specific Vulkan device and expose most of the functionality you would expect from a graphics API
 
 These classes allow you to easily load and call raw Vulkan commands from Java.
-
--->
 
 ## Validation layers
 

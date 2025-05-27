@@ -173,12 +173,12 @@ fun generateHandle(
             }
             +""
 
-            defun("public", "Ptr", "allocate", "Arena arena") {
+            defun("public static", "Ptr", "allocate", "Arena arena") {
                 +"return new Ptr(arena.allocate(ValueLayout.ADDRESS));"
             }
             +""
 
-            defun("public", "Ptr", "allocate", "Arena arena", "long size") {
+            defun("public static", "Ptr", "allocate", "Arena arena", "long size") {
                 +"return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));"
             }
         }

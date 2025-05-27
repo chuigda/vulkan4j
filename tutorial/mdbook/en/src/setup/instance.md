@@ -5,8 +5,8 @@
 Before we can start using Vulkan, we need to load the Vulkan library and several fundamental Vulkan commands, just like what we did with GLFW. Add the following private fields to the `Application` class:
 
 ```java
-private StaticCommands staticCommands;
-private EntryCommands entryCommands;
+private VkStaticCommands staticCommands;
+private VkEntryCommands entryCommands;
 ```
 
 Then load Vulkan library and initialize these two fields in the `initVulkan` function:
@@ -15,7 +15,7 @@ Then load Vulkan library and initialize these two fields in the `initVulkan` fun
 void initVulkan() {
     VulkanLoader.loadVulkanLibrary();
     staticCommands = VulkanLoader.loadStaticCommands();
-    entryCommands = VulkanLoader.loadEntryCommands();
+    entryCommands = VulkanLoader.loadEntryCommands(staticCommands);
 }
 ```
 
@@ -44,11 +44,11 @@ Now, to create an instance we'll first have to fill in a struct with some inform
 private void createInstance() {
     try (var arena = Arena.ofConfined()) {
         var appInfo = VkApplicationInfo.allocate(arena);
-        appInfo.pApplicationName(ByteBuffer.allocateString(arena, "Zdravstvuyte, Vulkan!"));
-        appInfo.applicationVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
-        appInfo.pEngineName(ByteBuffer.allocateString(arena, "Soloviev D-30"));
-        appInfo.engineVersion(Version.vkMakeAPIVersion(0, 1, 0, 0));
-        appInfo.apiVersion(Version.VK_API_VERSION_1_0);
+        appInfo.pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"));
+        appInfo.applicationVersion(new Version(0, 1, 0, 0).encode());
+        appInfo.pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"));
+        appInfo.engineVersion(new Version(0, 1, 0, 0).encode());
+        appInfo.apiVersion(Version.VK_API_VERSION_1_0.encode());
     }
 }
 ```
@@ -67,8 +67,8 @@ instanceCreateInfo.pApplicationInfo(appInfo);
 The first field `pApplicationInfo` is straightforward. The next two fields specify the desired global extensions. As mentioned in the overview chapter, Vulkan is a platform-agnostic API, which means that you need an extension to interface with the window system. GLFW has a handy built-in function that returns the extension(s) it needs to do that which we can pass to the struct:
 
 ```java
-var pGLFWExtensionCount = IntBuffer.allocate(arena);
-var glfwExtensions = glfw.glfwGetRequiredInstanceExtensions(pGLFWExtensionCount);
+var pGLFWExtensionCount = IntPtr.allocate(arena);
+var glfwExtensions = glfw.getRequiredInstanceExtensions(pGLFWExtensionCount);
 if (glfwExtensions == null) {
     throw new RuntimeException("Failed to get GLFW required instance extensions");
 }
@@ -79,21 +79,21 @@ instanceCreateInfo.enabledExtensionCount(glfwExtensionCount);
 instanceCreateInfo.ppEnabledExtensionNames(glfwExtensions);
 ```
 
-> Note: here we call `reinterpret` on the `glfwExtensions` buffer to mark its size as `glfwExtensionCount`. We need to do this on ourselves because the auto-generated bindings don't know how to correctly set the size of the buffer when it's returned from a function. For now this step is not necessary yet, because `vkCreateInstance` doesn't need the size information of our `PointerBuffer` -- it acquires the size from the `VkInstanceCreateInfo::enabledExtensionCount` field instead. However, in the following chapaters we'll read `glfwExtensions` from Java code, and we'll need correct size information. 
+> Note: here we call `reinterpret` on the `glfwExtensions` to mark its size as `glfwExtensionCount`. We need to do this on ourselves because the auto-generated bindings don't know how to correctly set the size of the buffer when it's returned from a function. For now this step is not necessary yet, because `vkCreateInstance` doesn't need the size information of our `PointerBuffer` -- it acquires the size from the `VkInstanceCreateInfo::enabledExtensionCount` field instead. However, in the following chapters we'll read `glfwExtensions` from Java code, and we'll need correct size information. 
 
 ```java
 instanceCreateInfo.enabledLayerCount(0);
 ```
 
-We've now specified everything Vulkan needs to create an instance and we can finally issue the `vkCreateInstance` call:
+We've now specified everything Vulkan needs to create an instance, and we can finally issue the `createInstance` call:
 
 ```java
-var pInstance = VkInstance.Buffer.allocate(arena);
-var result = entryCommands.vkCreateInstance(instanceCreateInfo, null, pInstance);
-if (result != VkResult.VK_SUCCESS) {
+var pInstance = VkInstance.Ptr.allocate(arena);
+var result = entryCommands.createInstance(instanceCreateInfo, null, pInstance);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create instance, vulkan error code: " + VkResult.explain(result));
 }
-instance = pInstance.read();
+instance = Objects.requireNonNull(pInstance.read());
 ```
 
 As you'll see, the general pattern that object creation function parameters in Vulkan follow is:
@@ -102,14 +102,14 @@ As you'll see, the general pattern that object creation function parameters in V
 - Pointer to custom allocator callbacks, always `null` in this tutorial
 - Pointer to the variable that stores the handle to the new object
 
-If everything went well then the handle to the instance was stored in the `VkInstance` class member. Nearly all Vulkan functions return a value of type `VkResult` that is either `VK_SUCCESS` or an error code.
+If everything went well then the handle to the instance was stored in the `VkInstance` class member. Nearly all Vulkan functions return a value of type `VkResult` that is either `VkResult.SUCCESS` or an error code.
 
 ## Loading instance level Vulkan commands
 
 After creating the instance, we can load the instance level Vulkan commands. Add a new field to the `Application` class:
 
 ```java
-private InstanceCommands instanceCommands;
+private VkInstanceCommands instanceCommands;
 ```
 
 Then load the instance level commands in the `initVulkan` function:
@@ -122,14 +122,14 @@ instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
 
 If you look at the `vkCreateInstance` documentation then you'll see that one of the possible error codes is `VK_ERROR_EXTENSION_NOT_PRESENT`. We could simply specify the extensions we require and terminate if that error code comes back. That makes sense for essential extensions like the window system interface, but what if we want to check for optional functionality?
 
-To retrieve a list of supported extensions before creating an instance, there's the `vkEnumerateInstanceExtensionProperties` function. It takes a pointer to a variable that stores the number of extensions and an array of `VkExtensionProperties` to store details of the extensions. It also takes an optional first parameter that allows us to filter extensions by a specific validation layer, which we'll ignore for now.
+To retrieve a list of supported extensions before creating an instance, there's the `enumerateInstanceExtensionProperties` function. It takes a pointer to a variable that stores the number of extensions and an array of `extensionProperties` to store details of the extensions. It also takes an optional first parameter that allows us to filter extensions by a specific validation layer, which we'll ignore for now.
 
 To allocate an array to hold the extension details we first need to know how many there are. You can request just the number of extensions by leaving the latter parameter empty:
 
 ```java
-IntBuffer pExtensionCount = IntBuffer.allocate(arena);
-var result = entryCommands.vkEnumerateInstanceExtensionProperties(null, pExtensionCount, null);
-if (result != VkResult.VK_SUCCESS) {
+IntPtr pExtensionCount = IntPtr.allocate(arena);
+var result = entryCommands.enumerateInstanceExtensionProperties(null, pExtensionCount, null);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to enumerate instance extension properties, vulkan error code: " + VkResult.explain(result));
 }
 var extensionCount = pExtensionCount.read();
@@ -139,13 +139,11 @@ Now allocate an array to hold the extension details:
 
 ```java
 var extensions = VkExtensionProperties.allocate(arena, extensionCount);
-result = entryCommands.vkEnumerateInstanceExtensionProperties(null, pExtensionCount, extensions[0]);
-if (result != VkResult.VK_SUCCESS) {
+result = entryCommands.enumerateInstanceExtensionProperties(null, pExtensionCount, extensions);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to enumerate instance extension properties, vulkan error code: " + VkResult.explain(result));
 }
 ```
-
-> Note: in `vulkan4j`, when passing an array of structs/unions to a Vulkan function wrapper, you should pass the first element of the array. 
 
 Each `VkExtensionProperties` struct contains the name and version of an extension. We can list them with a simple for loop (\t is a tab for indentation):
 

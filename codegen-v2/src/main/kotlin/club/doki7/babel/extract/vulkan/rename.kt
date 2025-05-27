@@ -5,6 +5,7 @@ import club.doki7.babel.extract.renameVariantOrBitflag
 import club.doki7.babel.extract.toSnakeCase
 import club.doki7.babel.registry.Entity
 import club.doki7.babel.registry.Registry
+import club.doki7.babel.registry.intern
 import java.io.File
 
 private const val renamedEntitiesFile = "codegen-v2/output/vulkan-renamed-entities.csv"
@@ -27,6 +28,10 @@ internal fun Registry<VulkanRegistryExt>.renameEntities() {
             value.rename { renameVariantOrBitflag(this, enum.name.value) }
             putEntityIfNameReplaced(value)
         }
+    }
+
+    enumerations["VkResult".intern()]!!.variants.forEach {
+        it.rename(::renameConstant)
     }
 
     for (bitmask in bitmasks.values) {

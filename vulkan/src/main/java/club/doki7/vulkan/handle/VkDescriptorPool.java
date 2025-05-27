@@ -116,11 +116,11 @@ public record VkDescriptorPool(@NotNull MemorySegment segment) implements IPoint
             return new Ptr(segment.asSlice(0, end * ValueLayout.ADDRESS.byteSize()));
         }
 
-        public Ptr allocate(Arena arena) {
+        public static Ptr allocate(Arena arena) {
             return new Ptr(arena.allocate(ValueLayout.ADDRESS));
         }
 
-        public Ptr allocate(Arena arena, long size) {
+        public static Ptr allocate(Arena arena, long size) {
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
     }

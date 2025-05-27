@@ -1,10 +1,10 @@
-package ch00;
+package tutorial.vulkan.ch00;
 
-import tech.icey.glfw.GLFWConstants;
-import tech.icey.glfw.handle.GLFWwindow;
-import tech.icey.glfw.GLFW;
-import tech.icey.glfw.GLFWLoader;
-import tech.icey.panama.buffer.ByteBuffer;
+import club.doki7.glfw.GLFWConstants;
+import club.doki7.glfw.handle.GLFWwindow;
+import club.doki7.glfw.GLFW;
+import club.doki7.glfw.GLFWLoader;
+import club.doki7.ffm.ptr.BytePtr;
 
 import java.lang.foreign.Arena;
 
@@ -19,31 +19,31 @@ class Application {
     private void initWindow() {
         GLFWLoader.loadGLFWLibrary();
         glfw = GLFWLoader.loadGLFW();
-        if (glfw.glfwInit() != GLFWConstants.GLFW_TRUE) {
+        if (glfw.init() != GLFWConstants.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
 
-        if (glfw.glfwVulkanSupported() != GLFWConstants.GLFW_TRUE) {
+        if (glfw.vulkanSupported() != GLFWConstants.TRUE) {
             throw new RuntimeException("Vulkan is not supported");
         }
 
-        glfw.glfwWindowHint(GLFWConstants.GLFW_CLIENT_API, GLFWConstants.GLFW_NO_API);
-        glfw.glfwWindowHint(GLFWConstants.GLFW_RESIZABLE, GLFWConstants.GLFW_FALSE);
-        window = glfw.glfwCreateWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
+        glfw.windowHint(GLFWConstants.CLIENT_API, GLFWConstants.NO_API);
+        glfw.windowHint(GLFWConstants.RESIZABLE, GLFWConstants.FALSE);
+        window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
     }
 
     private void initVulkan() {
     }
 
     private void mainLoop() {
-        while (glfw.glfwWindowShouldClose(window) == GLFWConstants.GLFW_FALSE) {
-            glfw.glfwPollEvents();
+        while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+            glfw.pollEvents();
         }
     }
 
     private void cleanup() {
-        glfw.glfwDestroyWindow(window);
-        glfw.glfwTerminate();
+        glfw.destroyWindow(window);
+        glfw.terminate();
     }
 
     private GLFW glfw;
@@ -51,7 +51,7 @@ class Application {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
-    private static final ByteBuffer WINDOW_TITLE = ByteBuffer.allocateString(Arena.global(), "Vulkan");
+    private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(), "Vulkan");
 }
 
 public class Main {

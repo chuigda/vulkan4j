@@ -11,7 +11,11 @@ class Identifier internal constructor(val original: String) : Comparable<Identif
     val renamed get() = _renamed
 
     fun rename(value: String) {
-        if (_renamed && value != _value) {
+        if (value == _value) {
+            return
+        }
+
+        if (_renamed) {
             error("Identifier $original has already been renamed to $_value, colliding with fresh $value")
         }
 
