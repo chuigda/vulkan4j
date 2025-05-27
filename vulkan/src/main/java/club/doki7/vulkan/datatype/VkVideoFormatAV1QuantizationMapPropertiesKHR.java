@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoFormatAV1QuantizationMapPropertiesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoFormatAV1QuantizationMapPropertiesKHR, Iterable<VkVideoFormatAV1QuantizationMapPropertiesKHR> {
         public long size() {
             return segment.byteSize() / VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkVideoFormatAV1QuantizationMapPropertiesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkVideoFormatAV1QuantizationMapPropertiesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoFormatAV1QuantizationMapPropertiesKHR ret = new VkVideoFormatAV1QuantizationMapPropertiesKHR(segment.asSlice(0, VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES));
+                segment = segment.asSlice(VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -2,6 +2,8 @@ package club.doki7.vma.handle;
 
 import java.lang.foreign.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +41,7 @@ public record VmaVirtualAllocation(@NotNull MemorySegment segment) implements IP
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IPointer {
+    public record Ptr(@NotNull MemorySegment segment) implements IPointer, Iterable<VmaVirtualAllocation> {
         public long size() {
             return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
         }
@@ -124,6 +126,35 @@ public record VmaVirtualAllocation(@NotNull MemorySegment segment) implements IP
 
         public static Ptr allocate(Arena arena, long size) {
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the handles in this pointer.
+        public static class Iter implements Iterator<VmaVirtualAllocation> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / ValueLayout.ADDRESS.byteSize()) > 0;
+            }
+
+            @Override
+            public VmaVirtualAllocation next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
+                segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
+                return new VmaVirtualAllocation(s);
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 }

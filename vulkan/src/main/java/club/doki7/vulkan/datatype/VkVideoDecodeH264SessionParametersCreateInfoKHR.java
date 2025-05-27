@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkVideoDecodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeH264SessionParametersCreateInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeH264SessionParametersCreateInfoKHR, Iterable<VkVideoDecodeH264SessionParametersCreateInfoKHR> {
         public long size() {
             return segment.byteSize() / VkVideoDecodeH264SessionParametersCreateInfoKHR.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkVideoDecodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkVideoDecodeH264SessionParametersCreateInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkVideoDecodeH264SessionParametersCreateInfoKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkVideoDecodeH264SessionParametersCreateInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoDecodeH264SessionParametersCreateInfoKHR ret = new VkVideoDecodeH264SessionParametersCreateInfoKHR(segment.asSlice(0, VkVideoDecodeH264SessionParametersCreateInfoKHR.BYTES));
+                segment = segment.asSlice(VkVideoDecodeH264SessionParametersCreateInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

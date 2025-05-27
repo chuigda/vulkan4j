@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceDepthClipEnableFeaturesEXT(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceDepthClipEnableFeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceDepthClipEnableFeaturesEXT, Iterable<VkPhysicalDeviceDepthClipEnableFeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceDepthClipEnableFeaturesEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceDepthClipEnableFeaturesEXT(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceDepthClipEnableFeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceDepthClipEnableFeaturesEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceDepthClipEnableFeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceDepthClipEnableFeaturesEXT ret = new VkPhysicalDeviceDepthClipEnableFeaturesEXT(segment.asSlice(0, VkPhysicalDeviceDepthClipEnableFeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceDepthClipEnableFeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeAV1ProfileInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeAV1ProfileInfoKHR, Iterable<VkVideoDecodeAV1ProfileInfoKHR> {
         public long size() {
             return segment.byteSize() / VkVideoDecodeAV1ProfileInfoKHR.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkVideoDecodeAV1ProfileInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkVideoDecodeAV1ProfileInfoKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkVideoDecodeAV1ProfileInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoDecodeAV1ProfileInfoKHR ret = new VkVideoDecodeAV1ProfileInfoKHR(segment.asSlice(0, VkVideoDecodeAV1ProfileInfoKHR.BYTES));
+                segment = segment.asSlice(VkVideoDecodeAV1ProfileInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

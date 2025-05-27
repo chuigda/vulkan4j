@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -114,7 +116,7 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaPoolCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaPoolCreateInfo, Iterable<VmaPoolCreateInfo> {
         public long size() {
             return segment.byteSize() / VmaPoolCreateInfo.BYTES;
         }
@@ -175,6 +177,35 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VmaPoolCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VmaPoolCreateInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VmaPoolCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaPoolCreateInfo ret = new VmaPoolCreateInfo(segment.asSlice(0, VmaPoolCreateInfo.BYTES));
+                segment = segment.asSlice(VmaPoolCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

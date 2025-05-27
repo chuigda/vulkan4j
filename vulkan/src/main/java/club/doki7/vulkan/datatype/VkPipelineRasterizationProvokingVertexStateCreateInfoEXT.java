@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineRasterizationProvokingVertexStateCreateInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineRasterizationProvokingVertexStateCreateInfoEXT, Iterable<VkPipelineRasterizationProvokingVertexStateCreateInfoEXT> {
         public long size() {
             return segment.byteSize() / VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPipelineRasterizationProvokingVertexStateCreateInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ret = new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment.asSlice(0, VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.BYTES));
+                segment = segment.asSlice(VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -62,7 +64,7 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkShaderResourceUsageAMD {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkShaderResourceUsageAMD, Iterable<VkShaderResourceUsageAMD> {
         public long size() {
             return segment.byteSize() / VkShaderResourceUsageAMD.BYTES;
         }
@@ -123,6 +125,35 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkShaderResourceUsageAMD> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkShaderResourceUsageAMD.BYTES) > 0;
+            }
+
+            @Override
+            public VkShaderResourceUsageAMD next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkShaderResourceUsageAMD ret = new VkShaderResourceUsageAMD(segment.asSlice(0, VkShaderResourceUsageAMD.BYTES));
+                segment = segment.asSlice(VkShaderResourceUsageAMD.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

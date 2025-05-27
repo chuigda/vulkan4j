@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -74,7 +76,7 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkRayTracingShaderGroupCreateInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkRayTracingShaderGroupCreateInfoKHR, Iterable<VkRayTracingShaderGroupCreateInfoKHR> {
         public long size() {
             return segment.byteSize() / VkRayTracingShaderGroupCreateInfoKHR.BYTES;
         }
@@ -135,6 +137,35 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkRayTracingShaderGroupCreateInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkRayTracingShaderGroupCreateInfoKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkRayTracingShaderGroupCreateInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkRayTracingShaderGroupCreateInfoKHR ret = new VkRayTracingShaderGroupCreateInfoKHR(segment.asSlice(0, VkRayTracingShaderGroupCreateInfoKHR.BYTES));
+                segment = segment.asSlice(VkRayTracingShaderGroupCreateInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

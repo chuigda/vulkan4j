@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -74,7 +76,7 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeAV1RateControlLayerInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeAV1RateControlLayerInfoKHR, Iterable<VkVideoEncodeAV1RateControlLayerInfoKHR> {
         public long size() {
             return segment.byteSize() / VkVideoEncodeAV1RateControlLayerInfoKHR.BYTES;
         }
@@ -135,6 +137,35 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkVideoEncodeAV1RateControlLayerInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkVideoEncodeAV1RateControlLayerInfoKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkVideoEncodeAV1RateControlLayerInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoEncodeAV1RateControlLayerInfoKHR ret = new VkVideoEncodeAV1RateControlLayerInfoKHR(segment.asSlice(0, VkVideoEncodeAV1RateControlLayerInfoKHR.BYTES));
+                segment = segment.asSlice(VkVideoEncodeAV1RateControlLayerInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

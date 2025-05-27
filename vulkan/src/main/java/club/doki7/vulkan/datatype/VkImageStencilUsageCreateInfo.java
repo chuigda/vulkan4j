@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkImageStencilUsageCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkImageStencilUsageCreateInfo, Iterable<VkImageStencilUsageCreateInfo> {
         public long size() {
             return segment.byteSize() / VkImageStencilUsageCreateInfo.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkImageStencilUsageCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkImageStencilUsageCreateInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VkImageStencilUsageCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkImageStencilUsageCreateInfo ret = new VkImageStencilUsageCreateInfo(segment.asSlice(0, VkImageStencilUsageCreateInfo.BYTES));
+                segment = segment.asSlice(VkImageStencilUsageCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

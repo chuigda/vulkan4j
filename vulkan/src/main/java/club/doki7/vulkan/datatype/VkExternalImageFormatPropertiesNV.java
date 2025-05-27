@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -61,7 +63,7 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkExternalImageFormatPropertiesNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkExternalImageFormatPropertiesNV, Iterable<VkExternalImageFormatPropertiesNV> {
         public long size() {
             return segment.byteSize() / VkExternalImageFormatPropertiesNV.BYTES;
         }
@@ -122,6 +124,35 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkExternalImageFormatPropertiesNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkExternalImageFormatPropertiesNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkExternalImageFormatPropertiesNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkExternalImageFormatPropertiesNV ret = new VkExternalImageFormatPropertiesNV(segment.asSlice(0, VkExternalImageFormatPropertiesNV.BYTES));
+                segment = segment.asSlice(VkExternalImageFormatPropertiesNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

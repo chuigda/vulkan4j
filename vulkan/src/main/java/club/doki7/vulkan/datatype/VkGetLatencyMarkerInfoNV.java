@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkGetLatencyMarkerInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkGetLatencyMarkerInfoNV, Iterable<VkGetLatencyMarkerInfoNV> {
         public long size() {
             return segment.byteSize() / VkGetLatencyMarkerInfoNV.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkGetLatencyMarkerInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkGetLatencyMarkerInfoNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkGetLatencyMarkerInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkGetLatencyMarkerInfoNV ret = new VkGetLatencyMarkerInfoNV(segment.asSlice(0, VkGetLatencyMarkerInfoNV.BYTES));
+                segment = segment.asSlice(VkGetLatencyMarkerInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -66,7 +68,7 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaTotalStatistics {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaTotalStatistics, Iterable<VmaTotalStatistics> {
         public long size() {
             return segment.byteSize() / VmaTotalStatistics.BYTES;
         }
@@ -127,6 +129,35 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VmaTotalStatistics> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VmaTotalStatistics.BYTES) > 0;
+            }
+
+            @Override
+            public VmaTotalStatistics next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaTotalStatistics ret = new VmaTotalStatistics(segment.asSlice(0, VmaTotalStatistics.BYTES));
+                segment = segment.asSlice(VmaTotalStatistics.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

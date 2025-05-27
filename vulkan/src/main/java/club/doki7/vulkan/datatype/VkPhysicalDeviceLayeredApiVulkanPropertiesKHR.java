@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceLayeredApiVulkanPropertiesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceLayeredApiVulkanPropertiesKHR, Iterable<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceLayeredApiVulkanPropertiesKHR ret = new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(segment.asSlice(0, VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceLayeredApiVulkanPropertiesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +82,7 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderAtomicFloat2FeaturesEXT, Iterable<VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.BYTES;
         }
@@ -141,6 +143,35 @@ public record VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(@NotNull MemorySegme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT ret = new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(segment.asSlice(0, VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

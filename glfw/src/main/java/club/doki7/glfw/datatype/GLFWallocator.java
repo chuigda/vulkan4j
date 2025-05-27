@@ -3,6 +3,8 @@ package club.doki7.glfw.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -84,7 +86,7 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IGLFWallocator {
+    public record Ptr(@NotNull MemorySegment segment) implements IGLFWallocator, Iterable<GLFWallocator> {
         public long size() {
             return segment.byteSize() / GLFWallocator.BYTES;
         }
@@ -145,6 +147,35 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<GLFWallocator> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / GLFWallocator.BYTES) > 0;
+            }
+
+            @Override
+            public GLFWallocator next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                GLFWallocator ret = new GLFWallocator(segment.asSlice(0, GLFWallocator.BYTES));
+                segment = segment.asSlice(GLFWallocator.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +74,7 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceImageDrmFormatModifierInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceImageDrmFormatModifierInfoEXT, Iterable<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceImageDrmFormatModifierInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceImageDrmFormatModifierInfoEXT ret = new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.asSlice(0, VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceImageDrmFormatModifierInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkRenderPassTileShadingCreateInfoQCOM {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkRenderPassTileShadingCreateInfoQCOM, Iterable<VkRenderPassTileShadingCreateInfoQCOM> {
         public long size() {
             return segment.byteSize() / VkRenderPassTileShadingCreateInfoQCOM.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkRenderPassTileShadingCreateInfoQCOM> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkRenderPassTileShadingCreateInfoQCOM.BYTES) > 0;
+            }
+
+            @Override
+            public VkRenderPassTileShadingCreateInfoQCOM next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkRenderPassTileShadingCreateInfoQCOM ret = new VkRenderPassTileShadingCreateInfoQCOM(segment.asSlice(0, VkRenderPassTileShadingCreateInfoQCOM.BYTES));
+                segment = segment.asSlice(VkRenderPassTileShadingCreateInfoQCOM.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

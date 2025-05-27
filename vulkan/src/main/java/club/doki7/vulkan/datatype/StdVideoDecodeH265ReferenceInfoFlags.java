@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -58,7 +60,7 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeH265ReferenceInfoFlags {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeH265ReferenceInfoFlags, Iterable<StdVideoDecodeH265ReferenceInfoFlags> {
         public long size() {
             return segment.byteSize() / StdVideoDecodeH265ReferenceInfoFlags.BYTES;
         }
@@ -119,6 +121,35 @@ public record StdVideoDecodeH265ReferenceInfoFlags(@NotNull MemorySegment segmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<StdVideoDecodeH265ReferenceInfoFlags> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / StdVideoDecodeH265ReferenceInfoFlags.BYTES) > 0;
+            }
+
+            @Override
+            public StdVideoDecodeH265ReferenceInfoFlags next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoDecodeH265ReferenceInfoFlags ret = new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(0, StdVideoDecodeH265ReferenceInfoFlags.BYTES));
+                segment = segment.asSlice(StdVideoDecodeH265ReferenceInfoFlags.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

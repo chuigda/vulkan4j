@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -81,7 +83,7 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaVirtualAllocationCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaVirtualAllocationCreateInfo, Iterable<VmaVirtualAllocationCreateInfo> {
         public long size() {
             return segment.byteSize() / VmaVirtualAllocationCreateInfo.BYTES;
         }
@@ -142,6 +144,35 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VmaVirtualAllocationCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VmaVirtualAllocationCreateInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VmaVirtualAllocationCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaVirtualAllocationCreateInfo ret = new VmaVirtualAllocationCreateInfo(segment.asSlice(0, VmaVirtualAllocationCreateInfo.BYTES));
+                segment = segment.asSlice(VmaVirtualAllocationCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

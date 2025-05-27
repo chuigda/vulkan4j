@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(@NotNull MemorySegment segment)
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceAntiLagFeaturesAMD {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceAntiLagFeaturesAMD, Iterable<VkPhysicalDeviceAntiLagFeaturesAMD> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceAntiLagFeaturesAMD.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(@NotNull MemorySegment segment)
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceAntiLagFeaturesAMD> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceAntiLagFeaturesAMD.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceAntiLagFeaturesAMD next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceAntiLagFeaturesAMD ret = new VkPhysicalDeviceAntiLagFeaturesAMD(segment.asSlice(0, VkPhysicalDeviceAntiLagFeaturesAMD.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceAntiLagFeaturesAMD.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

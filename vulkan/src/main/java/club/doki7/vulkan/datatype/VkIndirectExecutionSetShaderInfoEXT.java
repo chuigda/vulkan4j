@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -74,7 +76,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkIndirectExecutionSetShaderInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkIndirectExecutionSetShaderInfoEXT, Iterable<VkIndirectExecutionSetShaderInfoEXT> {
         public long size() {
             return segment.byteSize() / VkIndirectExecutionSetShaderInfoEXT.BYTES;
         }
@@ -135,6 +137,35 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkIndirectExecutionSetShaderInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkIndirectExecutionSetShaderInfoEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkIndirectExecutionSetShaderInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkIndirectExecutionSetShaderInfoEXT ret = new VkIndirectExecutionSetShaderInfoEXT(segment.asSlice(0, VkIndirectExecutionSetShaderInfoEXT.BYTES));
+                segment = segment.asSlice(VkIndirectExecutionSetShaderInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

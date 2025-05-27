@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -76,7 +78,7 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkClusterAccelerationStructureCommandsInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkClusterAccelerationStructureCommandsInfoNV, Iterable<VkClusterAccelerationStructureCommandsInfoNV> {
         public long size() {
             return segment.byteSize() / VkClusterAccelerationStructureCommandsInfoNV.BYTES;
         }
@@ -137,6 +139,35 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkClusterAccelerationStructureCommandsInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkClusterAccelerationStructureCommandsInfoNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkClusterAccelerationStructureCommandsInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkClusterAccelerationStructureCommandsInfoNV ret = new VkClusterAccelerationStructureCommandsInfoNV(segment.asSlice(0, VkClusterAccelerationStructureCommandsInfoNV.BYTES));
+                segment = segment.asSlice(VkClusterAccelerationStructureCommandsInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

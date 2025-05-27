@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -102,7 +104,7 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaVulkanFunctions {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaVulkanFunctions, Iterable<VmaVulkanFunctions> {
         public long size() {
             return segment.byteSize() / VmaVulkanFunctions.BYTES;
         }
@@ -163,6 +165,35 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VmaVulkanFunctions> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VmaVulkanFunctions.BYTES) > 0;
+            }
+
+            @Override
+            public VmaVulkanFunctions next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaVulkanFunctions ret = new VmaVulkanFunctions(segment.asSlice(0, VmaVulkanFunctions.BYTES));
+                segment = segment.asSlice(VmaVulkanFunctions.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

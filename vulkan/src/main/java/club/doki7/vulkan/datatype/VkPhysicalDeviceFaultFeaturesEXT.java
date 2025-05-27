@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPhysicalDeviceFaultFeaturesEXT(@NotNull MemorySegment segment) i
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceFaultFeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceFaultFeaturesEXT, Iterable<VkPhysicalDeviceFaultFeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceFaultFeaturesEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPhysicalDeviceFaultFeaturesEXT(@NotNull MemorySegment segment) i
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceFaultFeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceFaultFeaturesEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceFaultFeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceFaultFeaturesEXT ret = new VkPhysicalDeviceFaultFeaturesEXT(segment.asSlice(0, VkPhysicalDeviceFaultFeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceFaultFeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

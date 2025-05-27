@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -76,7 +78,7 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV, Iterable<VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV> {
         public long size() {
             return segment.byteSize() / VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV.BYTES;
         }
@@ -137,6 +139,35 @@ public record VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(@
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV ret = new VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV(segment.asSlice(0, VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV.BYTES));
+                segment = segment.asSlice(VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceRayQueryFeaturesKHR(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceRayQueryFeaturesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceRayQueryFeaturesKHR, Iterable<VkPhysicalDeviceRayQueryFeaturesKHR> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceRayQueryFeaturesKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceRayQueryFeaturesKHR(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceRayQueryFeaturesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceRayQueryFeaturesKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceRayQueryFeaturesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceRayQueryFeaturesKHR ret = new VkPhysicalDeviceRayQueryFeaturesKHR(segment.asSlice(0, VkPhysicalDeviceRayQueryFeaturesKHR.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceRayQueryFeaturesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

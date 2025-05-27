@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkBufferOpaqueCaptureAddressCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkBufferOpaqueCaptureAddressCreateInfo, Iterable<VkBufferOpaqueCaptureAddressCreateInfo> {
         public long size() {
             return segment.byteSize() / VkBufferOpaqueCaptureAddressCreateInfo.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkBufferOpaqueCaptureAddressCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkBufferOpaqueCaptureAddressCreateInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VkBufferOpaqueCaptureAddressCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkBufferOpaqueCaptureAddressCreateInfo ret = new VkBufferOpaqueCaptureAddressCreateInfo(segment.asSlice(0, VkBufferOpaqueCaptureAddressCreateInfo.BYTES));
+                segment = segment.asSlice(VkBufferOpaqueCaptureAddressCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -86,7 +88,7 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeAV1PictureInfoFlags {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeAV1PictureInfoFlags, Iterable<StdVideoDecodeAV1PictureInfoFlags> {
         public long size() {
             return segment.byteSize() / StdVideoDecodeAV1PictureInfoFlags.BYTES;
         }
@@ -147,6 +149,35 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<StdVideoDecodeAV1PictureInfoFlags> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / StdVideoDecodeAV1PictureInfoFlags.BYTES) > 0;
+            }
+
+            @Override
+            public StdVideoDecodeAV1PictureInfoFlags next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoDecodeAV1PictureInfoFlags ret = new StdVideoDecodeAV1PictureInfoFlags(segment.asSlice(0, StdVideoDecodeAV1PictureInfoFlags.BYTES));
+                segment = segment.asSlice(StdVideoDecodeAV1PictureInfoFlags.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

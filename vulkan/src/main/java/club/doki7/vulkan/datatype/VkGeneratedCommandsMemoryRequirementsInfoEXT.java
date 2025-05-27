@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +74,7 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkGeneratedCommandsMemoryRequirementsInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkGeneratedCommandsMemoryRequirementsInfoEXT, Iterable<VkGeneratedCommandsMemoryRequirementsInfoEXT> {
         public long size() {
             return segment.byteSize() / VkGeneratedCommandsMemoryRequirementsInfoEXT.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkGeneratedCommandsMemoryRequirementsInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkGeneratedCommandsMemoryRequirementsInfoEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkGeneratedCommandsMemoryRequirementsInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkGeneratedCommandsMemoryRequirementsInfoEXT ret = new VkGeneratedCommandsMemoryRequirementsInfoEXT(segment.asSlice(0, VkGeneratedCommandsMemoryRequirementsInfoEXT.BYTES));
+                segment = segment.asSlice(VkGeneratedCommandsMemoryRequirementsInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

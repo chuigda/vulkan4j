@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineColorWriteCreateInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineColorWriteCreateInfoEXT, Iterable<VkPipelineColorWriteCreateInfoEXT> {
         public long size() {
             return segment.byteSize() / VkPipelineColorWriteCreateInfoEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPipelineColorWriteCreateInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPipelineColorWriteCreateInfoEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPipelineColorWriteCreateInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineColorWriteCreateInfoEXT ret = new VkPipelineColorWriteCreateInfoEXT(segment.asSlice(0, VkPipelineColorWriteCreateInfoEXT.BYTES));
+                segment = segment.asSlice(VkPipelineColorWriteCreateInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

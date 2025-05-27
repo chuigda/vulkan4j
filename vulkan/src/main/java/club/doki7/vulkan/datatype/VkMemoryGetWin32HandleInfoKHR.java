@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkMemoryGetWin32HandleInfoKHR(@NotNull MemorySegment segment) impl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkMemoryGetWin32HandleInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkMemoryGetWin32HandleInfoKHR, Iterable<VkMemoryGetWin32HandleInfoKHR> {
         public long size() {
             return segment.byteSize() / VkMemoryGetWin32HandleInfoKHR.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkMemoryGetWin32HandleInfoKHR(@NotNull MemorySegment segment) impl
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkMemoryGetWin32HandleInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkMemoryGetWin32HandleInfoKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkMemoryGetWin32HandleInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkMemoryGetWin32HandleInfoKHR ret = new VkMemoryGetWin32HandleInfoKHR(segment.asSlice(0, VkMemoryGetWin32HandleInfoKHR.BYTES));
+                segment = segment.asSlice(VkMemoryGetWin32HandleInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

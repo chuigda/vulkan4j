@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkExecutionGraphPipelineScratchSizeAMDX {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkExecutionGraphPipelineScratchSizeAMDX, Iterable<VkExecutionGraphPipelineScratchSizeAMDX> {
         public long size() {
             return segment.byteSize() / VkExecutionGraphPipelineScratchSizeAMDX.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkExecutionGraphPipelineScratchSizeAMDX> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkExecutionGraphPipelineScratchSizeAMDX.BYTES) > 0;
+            }
+
+            @Override
+            public VkExecutionGraphPipelineScratchSizeAMDX next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkExecutionGraphPipelineScratchSizeAMDX ret = new VkExecutionGraphPipelineScratchSizeAMDX(segment.asSlice(0, VkExecutionGraphPipelineScratchSizeAMDX.BYTES));
+                segment = segment.asSlice(VkExecutionGraphPipelineScratchSizeAMDX.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

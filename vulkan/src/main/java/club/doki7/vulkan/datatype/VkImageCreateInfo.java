@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -81,7 +83,7 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkImageCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkImageCreateInfo, Iterable<VkImageCreateInfo> {
         public long size() {
             return segment.byteSize() / VkImageCreateInfo.BYTES;
         }
@@ -142,6 +144,35 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkImageCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkImageCreateInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VkImageCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkImageCreateInfo ret = new VkImageCreateInfo(segment.asSlice(0, VkImageCreateInfo.BYTES));
+                segment = segment.asSlice(VkImageCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

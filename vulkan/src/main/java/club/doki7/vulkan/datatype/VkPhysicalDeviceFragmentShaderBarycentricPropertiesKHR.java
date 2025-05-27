@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull Me
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR, Iterable<VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull Me
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR ret = new VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(segment.asSlice(0, VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

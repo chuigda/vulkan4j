@@ -2,7 +2,7 @@
 
 ## General structure
 
-In the previous chapter you've created a Vulkan project with all of the proper configuration and tested it with the sample code. In this chapter we're starting from scratch with the following code:
+In the previous chapter you've created a Vulkan project with all the proper configuration and tested it with the sample code. In this chapter we're starting from scratch with the following code:
 
 ```java
 class Application {
@@ -128,7 +128,7 @@ window = glfw.createWindow(800, 600, ByteBuffer.allocateString(Arena.global(), "
 
 The first three parameters specify the width, height and title of the window. The fourth parameter allows you to optionally specify a monitor to open the window on and the last parameter is only relevant to OpenGL.
 
-It's a good idea to use constants instead of hardcoded width and height numbers because we'll be referring to these values a couple of times in the future. Also, using constants helps reducing expression size. I've added the following constants in the `Application` class definition: 
+It's a good idea to use constants instead of hardcoded width and height numbers because we'll be referring to these values a couple of times in the future. Also, using constants helps reduce expression size. I've added the following constants in the `Application` class definition: 
 
 ```java
 private static final int WIDTH = 800;
@@ -184,4 +184,4 @@ private void cleanup() {
 }
 ```
 
-When you run the program now you should see a window titled Vulkan show up until the application is terminated by closing the window. Now that we have the skeleton for the Vulkan application, let's [create the first Vulkan object](instance.md)!
+When you run the program now you should see a window titled Vulkan show up until the application is terminated by closing the window. Now that we have the skeleton for the Vulkan application, let's [create the first Vulkan object](ch01-instance.md)!

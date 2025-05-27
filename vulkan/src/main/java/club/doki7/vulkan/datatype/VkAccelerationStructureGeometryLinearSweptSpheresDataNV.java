@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -79,7 +81,7 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureGeometryLinearSweptSpheresDataNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureGeometryLinearSweptSpheresDataNV, Iterable<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> {
         public long size() {
             return segment.byteSize() / VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES;
         }
@@ -140,6 +142,35 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkAccelerationStructureGeometryLinearSweptSpheresDataNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkAccelerationStructureGeometryLinearSweptSpheresDataNV ret = new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(segment.asSlice(0, VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES));
+                segment = segment.asSlice(VkAccelerationStructureGeometryLinearSweptSpheresDataNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

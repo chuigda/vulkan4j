@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -79,7 +81,7 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeAV1PictureInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeAV1PictureInfo, Iterable<StdVideoDecodeAV1PictureInfo> {
         public long size() {
             return segment.byteSize() / StdVideoDecodeAV1PictureInfo.BYTES;
         }
@@ -140,6 +142,35 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<StdVideoDecodeAV1PictureInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / StdVideoDecodeAV1PictureInfo.BYTES) > 0;
+            }
+
+            @Override
+            public StdVideoDecodeAV1PictureInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoDecodeAV1PictureInfo ret = new StdVideoDecodeAV1PictureInfo(segment.asSlice(0, StdVideoDecodeAV1PictureInfo.BYTES));
+                segment = segment.asSlice(StdVideoDecodeAV1PictureInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPresentRegionsKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPresentRegionsKHR, Iterable<VkPresentRegionsKHR> {
         public long size() {
             return segment.byteSize() / VkPresentRegionsKHR.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPresentRegionsKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPresentRegionsKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkPresentRegionsKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPresentRegionsKHR ret = new VkPresentRegionsKHR(segment.asSlice(0, VkPresentRegionsKHR.BYTES));
+                segment = segment.asSlice(VkPresentRegionsKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

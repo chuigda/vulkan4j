@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +74,7 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVertexInputAttributeDescription2EXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVertexInputAttributeDescription2EXT, Iterable<VkVertexInputAttributeDescription2EXT> {
         public long size() {
             return segment.byteSize() / VkVertexInputAttributeDescription2EXT.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkVertexInputAttributeDescription2EXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkVertexInputAttributeDescription2EXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkVertexInputAttributeDescription2EXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVertexInputAttributeDescription2EXT ret = new VkVertexInputAttributeDescription2EXT(segment.asSlice(0, VkVertexInputAttributeDescription2EXT.BYTES));
+                segment = segment.asSlice(VkVertexInputAttributeDescription2EXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

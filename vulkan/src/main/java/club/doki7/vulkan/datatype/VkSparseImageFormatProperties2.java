@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkSparseImageFormatProperties2(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkSparseImageFormatProperties2 {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkSparseImageFormatProperties2, Iterable<VkSparseImageFormatProperties2> {
         public long size() {
             return segment.byteSize() / VkSparseImageFormatProperties2.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkSparseImageFormatProperties2(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkSparseImageFormatProperties2> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkSparseImageFormatProperties2.BYTES) > 0;
+            }
+
+            @Override
+            public VkSparseImageFormatProperties2 next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkSparseImageFormatProperties2 ret = new VkSparseImageFormatProperties2(segment.asSlice(0, VkSparseImageFormatProperties2.BYTES));
+                segment = segment.asSlice(VkSparseImageFormatProperties2.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

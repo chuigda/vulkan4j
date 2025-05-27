@@ -57,7 +57,7 @@ private void createInstance() {
 
 Vulkan C API requires you to explicitly specify the type in the `sType` member. However, `vulkan4j` has already taken care of this for you. The `VkApplicationInfo.allocate` method will fill in the `sType` field after allocating the struct. What's more, `Arena.ofConfined()` creates an arena whose `allocate` method will automatically fill allocated memory with zeros, so we don't need to zero-initialize the rest of the struct fields one by one.
 
-A lot of information in Vulkan is passed through structs instead of function parameters and we'll have to fill in one more struct to provide sufficient information for creating an instance. This next struct is not optional and tells the Vulkan driver which global extensions and validation layers we want to use. Global here means that they apply to the entire program and not a specific device, which will become clear in the next few chapters.
+A lot of information in Vulkan is passed through structs instead of function parameters, and we'll have to fill in one more struct to provide sufficient information for creating an instance. This next struct is not optional and tells the Vulkan driver which global extensions and validation layers we want to use. Global here means that they apply to the entire program and not a specific device, which will become clear in the next few chapters.
 
 ```java
 var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena);
@@ -79,7 +79,7 @@ instanceCreateInfo.enabledExtensionCount(glfwExtensionCount);
 instanceCreateInfo.ppEnabledExtensionNames(glfwExtensions);
 ```
 
-> Note: here we call `reinterpret` on the `glfwExtensions` to mark its size as `glfwExtensionCount`. We need to do this on ourselves because the auto-generated bindings don't know how to correctly set the size of the buffer when it's returned from a function. For now this step is not necessary yet, because `vkCreateInstance` doesn't need the size information of our `PointerBuffer` -- it acquires the size from the `VkInstanceCreateInfo::enabledExtensionCount` field instead. However, in the following chapters we'll read `glfwExtensions` from Java code, and we'll need correct size information. 
+> Note: here we call `reinterpret` on the `glfwExtensions` to mark its size as `glfwExtensionCount`. We need to do this on ourselves because the auto-generated bindings don't know how to correctly set the size of the buffer when it's returned from a function. For now this step is not necessary yet, because `createInstance` doesn't need the size information of our `PointerPtr` -- it acquires the size from the `VkInstanceCreateInfo::enabledExtensionCount` field instead. However, in the following chapters we'll read `glfwExtensions` from Java code, and we'll need correct size information. 
 
 ```java
 instanceCreateInfo.enabledLayerCount(0);
@@ -153,19 +153,19 @@ for (var extension : extensions) {
 }
 ```
 
-You can add this code to the `createInstance` function if you'd like to provide some details about the Vulkan support. As a challenge, try to create a function that checks if all the extensions returned by `glfwGetRequiredInstanceExtensions` are included in the supported extensions list.
+You can add this code to the `createInstance` function if you'd like to provide some details about the Vulkan support. As a challenge, try to create a function that checks if all the extensions returned by `getRequiredInstanceExtensions` are included in the supported extensions list.
 
 ## Cleaning up
 
-The `VkInstance` should be only destroyed right before the program exits. It can be destroyed in cleanup with the `vkDestroyInstance` function:
+The `VkInstance` should be only destroyed right before the program exits. It can be destroyed in cleanup with the `destroyInstance` function:
 
 ```java
 void cleanup() {
-    instanceCommands.vkDestroyInstance(instance, null);
+    instanceCommands.destroyInstance(instance, null);
     // ...
 }
 ```
 
-The parameters for the `vkDestroyInstance` function are straightforward. As mentioned in the previous chapter, the allocation and deallocation functions in Vulkan have an optional allocator callback that we'll ignore by passing `null` to it. All the other Vulkan resources that we'll create in the following chapters should be cleaned up before the instance is destroyed.
+The parameters for the `destroyInstance` function are straightforward. As mentioned in the previous chapter, the allocation and deallocation functions in Vulkan have an optional allocator callback that we'll ignore by passing `null` to it. All the other Vulkan resources that we'll create in the following chapters should be cleaned up before the instance is destroyed.
 
-Before continuing with the more complex steps after instance creation, it's time to evaluate our debugging options by checking out [validation layers](validation-layers.md).
+Before continuing with the more complex steps after instance creation, it's time to evaluate our debugging options by checking out [validation layers](ch02-validation-layers.md).

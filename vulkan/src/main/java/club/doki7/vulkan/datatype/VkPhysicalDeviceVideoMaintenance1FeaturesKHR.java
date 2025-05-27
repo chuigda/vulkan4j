@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceVideoMaintenance1FeaturesKHR(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceVideoMaintenance1FeaturesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceVideoMaintenance1FeaturesKHR, Iterable<VkPhysicalDeviceVideoMaintenance1FeaturesKHR> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceVideoMaintenance1FeaturesKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceVideoMaintenance1FeaturesKHR(@NotNull MemorySegmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceVideoMaintenance1FeaturesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceVideoMaintenance1FeaturesKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceVideoMaintenance1FeaturesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceVideoMaintenance1FeaturesKHR ret = new VkPhysicalDeviceVideoMaintenance1FeaturesKHR(segment.asSlice(0, VkPhysicalDeviceVideoMaintenance1FeaturesKHR.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceVideoMaintenance1FeaturesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMultiviewProperties {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMultiviewProperties, Iterable<VkPhysicalDeviceMultiviewProperties> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceMultiviewProperties.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceMultiviewProperties> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceMultiviewProperties.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceMultiviewProperties next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceMultiviewProperties ret = new VkPhysicalDeviceMultiviewProperties(segment.asSlice(0, VkPhysicalDeviceMultiviewProperties.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceMultiviewProperties.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

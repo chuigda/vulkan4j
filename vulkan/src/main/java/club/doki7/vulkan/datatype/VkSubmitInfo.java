@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -75,7 +77,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkSubmitInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkSubmitInfo, Iterable<VkSubmitInfo> {
         public long size() {
             return segment.byteSize() / VkSubmitInfo.BYTES;
         }
@@ -136,6 +138,35 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkSubmitInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkSubmitInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VkSubmitInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkSubmitInfo ret = new VkSubmitInfo(segment.asSlice(0, VkSubmitInfo.BYTES));
+                segment = segment.asSlice(VkSubmitInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

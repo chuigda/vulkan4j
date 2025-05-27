@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265ShortTermRefPicSet {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265ShortTermRefPicSet, Iterable<StdVideoH265ShortTermRefPicSet> {
         public long size() {
             return segment.byteSize() / StdVideoH265ShortTermRefPicSet.BYTES;
         }
@@ -130,6 +132,35 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<StdVideoH265ShortTermRefPicSet> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / StdVideoH265ShortTermRefPicSet.BYTES) > 0;
+            }
+
+            @Override
+            public StdVideoH265ShortTermRefPicSet next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoH265ShortTermRefPicSet ret = new StdVideoH265ShortTermRefPicSet(segment.asSlice(0, StdVideoH265ShortTermRefPicSet.BYTES));
+                segment = segment.asSlice(StdVideoH265ShortTermRefPicSet.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

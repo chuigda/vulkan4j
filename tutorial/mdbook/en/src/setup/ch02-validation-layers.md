@@ -20,7 +20,6 @@ VkResult vkCreateInstance(
     const VkAllocationCallbacks* pAllocator,
     VkInstance* instance
 ) {
-
     if (pCreateInfo == NULL || instance == NULL) {
         log("Null pointer passed to required parameter!");
         return VK_ERROR_INITIALIZATION_FAILED;
@@ -53,27 +52,27 @@ Validation layers will be enabled if the JVM option `validation` is set. If you'
 Then let's also make validation layer name a named constant:
 
 ```java
-private static String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
+private static final String VALIDATION_LAYER_NAME = "VK_LAYER_KHRONOS_validation";
 ```
 
-We'll add a new function `checkValidationLayerSupport` that checks if the validation layer we want to use is available. First list all the available layers using the `vkEnumerateInstanceLayerProperties` function.
+We'll add a new function `checkValidationLayerSupport` that checks if the validation layer we want to use is available. First list all the available layers using the `enumerateInstanceLayerProperties` function.
 
 ```java
 private boolean checkValidationLayerSupport() {
     try (var arena = Arena.ofConfined()) {
-        var pLayerCount = IntBuffer.allocate(arena);
-        var result = entryCommands.vkEnumerateInstanceLayerProperties(pLayerCount, null);
-        if (result != VkResult.VK_SUCCESS) {
+        var pLayerCount = IntPtr.allocate(arena);
+        var result = entryCommands.enumerateInstanceLayerProperties(pLayerCount, null);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to enumerate instance layer properties, vulkan error code: " + VkResult.explain(result));
         }
 
         var layerCount = pLayerCount.read();
         var availableLayers = VkLayerProperties.allocate(arena, layerCount);
-        result = entryCommands.vkEnumerateInstanceLayerProperties(pLayerCount, availableLayers[0]);
-        if (result != VkResult.VK_SUCCESS) {
+        result = entryCommands.enumerateInstanceLayerProperties(pLayerCount, availableLayers);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to enumerate instance layer properties, vulkan error code: " + VkResult.explain(result));
         }
-        
+
         return false;
     }
 }
@@ -110,13 +109,13 @@ Finally, modify the `VkInstanceCreateInfo` struct instantiation to include the v
 ```java
 if (ENABLE_VALIDATION_LAYERS) {
     instanceCreateInfo.enabledLayerCount(1);
-    PointerBuffer ppEnabledLayerNames = PointerBuffer.allocate(arena);
-    ppEnabledLayerNames.write(ByteBuffer.allocateString(arena, VALIDATION_LAYER_NAME));
+PointerPtr ppEnabledLayerNames = PointerPtr.allocate(arena);
+    ppEnabledLayerNames.write(BytePtr.allocateString(arena, VALIDATION_LAYER_NAME));
     instanceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
 }
 ```
 
-If the check was successful then `vkCreateInstance` should not ever return a `VK_ERROR_LAYER_NOT_PRESENT` error, but you should run the program to make sure.
+If the check was successful then `createInstance` should not ever return a `VK_ERROR_LAYER_NOT_PRESENT` error, but you should run the program to make sure.
 
 ## Message callback
 
@@ -127,10 +126,10 @@ To set up a callback in the program to handle messages and the associated detail
 We'll first create a `getRequiredExtensions` function that will return the required list of extensions based on whether validation layers are enabled or not:
 
 ```java
-private PointerBuffer getRequiredExtensions(Arena arena) {
+private PointerPtr getRequiredExtensions(Arena arena) {
     try (var localArena = Arena.ofConfined()) {
-        var pGLFWExtensionCount = IntBuffer.allocate(localArena);
-        var glfwExtensions = glfw.glfwGetRequiredInstanceExtensions(pGLFWExtensionCount);
+        var pGLFWExtensionCount = IntPtr.allocate(localArena);
+        var glfwExtensions = glfw.getRequiredInstanceExtensions(pGLFWExtensionCount);
         if (glfwExtensions == null) {
             throw new RuntimeException("Failed to get GLFW required instance extensions");
         }
@@ -141,21 +140,21 @@ private PointerBuffer getRequiredExtensions(Arena arena) {
             return glfwExtensions;
         }
         else {
-            var extensions = PointerBuffer.allocate(arena, glfwExtensionCount + 1);
+            var extensions = PointerPtr.allocate(arena, glfwExtensionCount + 1);
             for (int i = 0; i < glfwExtensionCount; i++) {
                 extensions.write(i, glfwExtensions.read(i));
             }
 
-            extensions.write(glfwExtensionCount, ByteBuffer.allocateString(arena, Constants.VK_EXT_DEBUG_UTILS_EXTENSION_NAME));
+            extensions.write(glfwExtensionCount, BytePtr.allocateString(arena, VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME));
             return extensions;
         }
     }
 }
 ```
 
-> Note: here we want the created `PointerBuffer` to be valid after returning from the function, so we'll allocate it with a caller-provided `Arena`.
+> Note: here we want the created `PointerPtr` to be valid after returning from the function, so we'll allocate it with a caller-provided `Arena`.
 
-The extensions specified by GLFW are always required, but the debug messenger extension is conditionally added. Note that I've used the `Constants.VK_EXT_DEBUG_UTILS_EXTENSION_NAME` constant here which is equal to the literal string `"VK_EXT_debug_utils"`. Using this named constant lets you avoid typos.
+The extensions specified by GLFW are always required, but the debug messenger extension is conditionally added. Note that I've used the `VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME` constant here which is equal to the literal string `"VK_EXT_debug_utils"`. Using this named constant lets you avoid typos.
 
 We can now use this function in `createInstance`:
 
@@ -170,21 +169,21 @@ Run the program to make sure you don't receive a `VK_ERROR_EXTENSION_NOT_PRESENT
 Now let's see what a debug callback function looks like. Add a new static member function called `debugCallback` like such:
 
 ```java
-private static /* VkBool32 */ int debugCallback(
-        @enumtype(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity,
-        @enumtype(VkDebugUtilsMessageTypeFlagsEXT.class) int messageType,
-        @pointer(comment="const VkDebugUtilsMessengerCallbackDataEXT*") MemorySegment pCallbackData,
-        @pointer(comment="void*") MemorySegment pUserData
+private static @NativeType("VkBool32") @Unsigned int debugCallback(
+        @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int ignoredMessageSeverity,
+        @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int ignoredMessageType,
+        @Pointer(target=VkDebugUtilsMessengerCallbackDataEXT.class) MemorySegment pCallbackData,
+        @Pointer(comment="void*") MemorySegment ignoredPUserData
 ) {
-    var callbackData = new VkDebugUtilsMessengerCallbackDataEXT(pCallbackData.reinterpret(VkDebugUtilsMessengerCallbackDataEXT.SIZE));
+    var callbackData = new VkDebugUtilsMessengerCallbackDataEXT(pCallbackData.reinterpret(VkDebugUtilsMessengerCallbackDataEXT.BYTES));
     System.err.println("Validation layer: " + Objects.requireNonNull(callbackData.pMessage()).readString());
-    return Constants.VK_FALSE;
+    return VkConstants.FALSE;
 }
 ```
 
 > Note1: since Vulkan will directly call our callback function, it is not possible to use wrapper types like `VkDebugUtilsMessengerCallbackDataEXT` directly. Instead, we'll use the `MemorySegment` type to accept the raw pointer and then wrap it in the `VkDebugUtilsMessengerCallbackDataEXT` class on ourselves. To convince that the `MemorySegment` is a pointer to the correct struct, we'll use the `reinterpret` method to cast it to the correct size, so JVM won't complain about buffer overflow in future accesses.
 
-> Note2: the `@enumtype` annotations are completely optional, but useful indicating the expected type of the integer values. Also this makes Ctrl-clicking navigation in IDEs work.
+> Note2: the `@EnumType` annotations are completely optional, but useful indicating the expected type of the integer values. Also, this makes Ctrl-clicking navigation in IDEs work. `@NativeType` is also optional.
 
 The first parameter specifies the severity of the message, which is one of the following flags:
 
@@ -216,23 +215,11 @@ The `pCallbackData` parameter refers to a `VkDebugUtilsMessengerCallbackDataEXT`
 
 Finally, the `pUserData` parameter contains a pointer that was specified during the setup of the callback and allows you to pass your own data to it.
 
-The callback returns a boolean that indicates if the Vulkan call that triggered the validation layer message should be aborted. If the callback returns true, then the call is aborted with the `VK_ERROR_VALIDATION_FAILED_EXT` error. This is normally only used to test the validation layers themselves, so you should always return `VK_FALSE`.
+The callback returns a boolean that indicates if the Vulkan call that triggered the validation layer message should be aborted. If the callback returns true, then the call is aborted with the `VK_ERROR_VALIDATION_FAILED_EXT` error. This is normally only used to test the validation layers themselves, so you should always return `VkConstants.FALSE`.
 
-### Creating a upcall stub
+### Creating an upcall stub
 
-Now our `debugCallback` is a Java function. In order to make it a ready-to-use C function pointer, we need several extra steps. First, we need a function descriptor:
-
-```java
-private static final FunctionDescriptor DESCRIPTOR_debugCallback = FunctionDescriptor.of(
-        ValueLayout.JAVA_INT, // return value VkBool32
-        ValueLayout.JAVA_INT, // int messageSeverity
-        ValueLayout.JAVA_INT, // int messageType
-        ValueLayout.ADDRESS, // const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData
-        ValueLayout.ADDRESS  // void* pUserData
-);
-```
-
-Then we need to retrieve the method handle to `debugCallback`:
+Now our `debugCallback` is a Java function. In order to make it a ready-to-use C function pointer, we need two extra steps. First, we need to retrieve the method handle to `debugCallback`:
 
 ```java
 private static final MethodHandle HANDLE_debugCallback;
@@ -240,26 +227,34 @@ static {
     try {
         HANDLE_debugCallback = MethodHandles
                 .lookup()
-                .findStatic(Application.class, "debugCallback", DESCRIPTOR_debugCallback.toMethodType());
+                .findStatic(
+                        Application.class,
+                        "debugCallback",
+                        VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT.toMethodType());
     } catch (Exception e) {
         throw new RuntimeException(e);
     }
 }
 ```
 
-Finally, we create a upcall-ready `MemorySegment` with `Linker`
+The `VkFunctionTypes` class stores most of the useful function types (as `FunctionDescriptor`s) in Vulkan.
+
+Then, we create an upcall-ready `MemorySegment` with `Linker`
 
 ```java
 private static final MemorySegment UPCALL_debugCallback = Linker
         .nativeLinker()
-        .upcallStub(HANDLE_debugCallback, DESCRIPTOR_debugCallback, Arena.global());
+        .upcallStub(
+                HANDLE_debugCallback,
+                VkFunctionTypes.PFN_vkDebugUtilsMessengerCallbackEXT,
+                Arena.global());
 ```
 
 <div style="color: gray; user-select: none">
 I'm a cute end-of-section message, crawling cutely _(ÒωÓ๑ゝ∠)_
 </div>
 
-All that remains now is telling Vulkan about the callback function. Perhaps somewhat surprisingly, even the debug callback in Vulkan is managed with a handle that needs to be explicitly created and destroyed. Such a callback is part of a debug messenger and you can have as many of them as you want. Add a class member for this handle right under `instance`:
+All that remains now is telling Vulkan about the callback function. Perhaps somewhat surprisingly, even the debug callback in Vulkan is managed with a handle that needs to be explicitly created and destroyed. Such a callback is part of a debug messenger, and you can have as many of them as you want. Add a class member for this handle right under `instance`:
 
 ```java
 private VkDebugUtilsMessengerEXT debugMessenger;
@@ -288,14 +283,14 @@ We'll need to fill in a structure with details about the messenger and its callb
 try (var arena = Arena.ofConfined()) {
     var debugUtilsMessengerCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
     debugUtilsMessengerCreateInfo.messageSeverity(
-            VkDebugUtilsMessageSeverityFlagsEXT.VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT |
-                    VkDebugUtilsMessageSeverityFlagsEXT.VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT |
-                    VkDebugUtilsMessageSeverityFlagsEXT.VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT
+            VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
+            | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
+            | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
     );
     debugUtilsMessengerCreateInfo.messageType(
-            VkDebugUtilsMessageTypeFlagsEXT.VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT |
-                    VkDebugUtilsMessageTypeFlagsEXT.VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT |
-                    VkDebugUtilsMessageTypeFlagsEXT.VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT
+            VkDebugUtilsMessageTypeFlagsEXT.GENERAL
+            | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
+            | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
     );
     debugUtilsMessengerCreateInfo.pfnUserCallback(UPCALL_debugCallback);
 }
@@ -303,36 +298,36 @@ try (var arena = Arena.ofConfined()) {
 
 The `messageSeverity` field allows you to specify all the types of severities you would like your callback to be called for. I've specified all types except for `VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT` here to receive notifications about possible problems while leaving out verbose general debug info.
 
-Similarly the `messageType` field lets you filter which types of messages your callback is notified about. I've simply enabled all types here. You can always disable some if they're not useful to you.
+Similarly, the `messageType` field lets you filter which types of messages your callback is notified about. I've simply enabled all types here. You can always disable some if they're not useful to you.
 
 Finally, the `pfnUserCallback` field specifies the pointer to the callback function. You can optionally pass a pointer to the `pUserData` field which will be passed along to the callback function via the `pUserData` parameter.
 
 Note that there are many more ways to configure validation layer messages and debug callbacks, but this is a good setup to get started with for this tutorial. See the [extension specification](https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/chap50.html#VK_EXT_debug_utils) for more info about the possibilities.
 
-This struct should be passed to the `vkCreateDebugUtilsMessengerEXT` function to create the `VkDebugUtilsMessengerEXT` object.
+This struct should be passed to the `createDebugUtilsMessengerEXT` function to create the `VkDebugUtilsMessengerEXT` object.
 
 ```java
-var pDebugMessenger = VkDebugUtilsMessengerEXT.Buffer.allocate(arena);
-var result = instanceCommands.vkCreateDebugUtilsMessengerEXT(
+var pDebugMessenger = VkDebugUtilsMessengerEXT.Ptr.allocate(arena);
+var result = instanceCommands.createDebugUtilsMessengerEXT(
         instance,
         debugUtilsMessengerCreateInfo,
         null,
         pDebugMessenger
 );
-if (result != VkResult.VK_SUCCESS) {
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to set up debug messenger, vulkan error code: " + VkResult.explain(result));
 }
-debugMessenger = pDebugMessenger.read();
+debugMessenger = Objects.requireNonNull(pDebugMessenger.read());
 ```
 
 The second to last parameter is again the optional allocator callback that we set to `null`, other than that the parameters are fairly straightforward. Since the debug messenger is specific to our Vulkan instance and its layers, it needs to be explicitly specified as first argument. You will also see this pattern with other child objects later on.
 
-The `VkDebugUtilsMessengerEXT` object also needs to be cleaned up with a call to `vkDestroyDebugUtilsMessengerEXT`.
+The `VkDebugUtilsMessengerEXT` object also needs to be cleaned up with a call to `destroyDebugUtilsMessengerEXT`.
 
 ```java
 void cleanup() {
     if (ENABLE_VALIDATION_LAYERS) {
-        instanceCommands.vkDestroyDebugUtilsMessengerEXT(instance, debugMessenger, null);
+        instanceCommands.destroyDebugUtilsMessengerEXT(instance, debugMessenger, null);
     }
 
     // ...
@@ -341,7 +336,7 @@ void cleanup() {
 
 ## Debugging instance creation and destruction
 
-Although we've now added debugging with validation layers to the program we're not covering everything quite yet. The `vkCreateDebugUtilsMessengerEXT` call requires a valid instance to have been created and `vkDestroyDebugUtilsMessengerEXT` must be called before the instance is destroyed. This currently leaves us unable to debug any issues in the `vkCreateInstance` and `vkDestroyInstance` calls.
+Although we've now added debugging with validation layers to the program we're not covering everything quite yet. The `createDebugUtilsMessengerEXT` call requires a valid instance to have been created and `destroyDebugUtilsMessengerEXT` must be called before the instance is destroyed. This currently leaves us unable to debug any issues in the `createInstance` and `destroyInstance` calls.
 
 However, if you closely read the [extension documentation](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/appendices/VK_EXT_debug_utils.adoc#examples), you'll see that there is a way to create a separate debug utils messenger specifically for those two function calls. It requires you to simply pass a pointer to a `VkDebugUtilsMessengerCreateInfoEXT` struct in the `pNext` extension field of `VkInstanceCreateInfo`. First extract population of the messenger create info into a separate function:
 
@@ -355,16 +350,16 @@ private void setupDebugMessenger() {
     // ...
 }
 
-private void populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfo) {
+private static void populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfo) {
     debugUtilsMessengerCreateInfo.messageSeverity(
-            VkDebugUtilsMessageSeverityFlagsEXT.VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT |
-                    VkDebugUtilsMessageSeverityFlagsEXT.VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT |
-                    VkDebugUtilsMessageSeverityFlagsEXT.VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT
+            VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
+            | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
+            | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
     );
     debugUtilsMessengerCreateInfo.messageType(
-            VkDebugUtilsMessageTypeFlagsEXT.VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT |
-                    VkDebugUtilsMessageTypeFlagsEXT.VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT |
-                    VkDebugUtilsMessageTypeFlagsEXT.VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT
+            VkDebugUtilsMessageTypeFlagsEXT.GENERAL
+            | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
+            | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
     );
     debugUtilsMessengerCreateInfo.pfnUserCallback(UPCALL_debugCallback);
 }
@@ -385,15 +380,14 @@ private void createInstance() {
 }
 ```
 
-By creating an additional debug messenger this way it will automatically be used during `vkCreateInstance` and `vkDestroyInstance` and cleaned up after that.
+By creating an additional debug messenger this way it will automatically be used during `createInstance` and `destroyInstance` and cleaned up after that.
 
 ## Testing
 
-Now let's intentionally make a mistake to see the validation layers in action. Temporarily remove the call to `DestroyDebugUtilsMessengerEXT` in the `cleanup` function and run your program. Once it exits you should see something like this:
+Now let's intentionally make a mistake to see the validation layers in action. Temporarily remove the call to `destroyDebugUtilsMessengerEXT` in the `cleanup` function and run your program. Once it exits you should see something like this:
 
 ```
-Validation layer: Validation Error: [ VUID-vkDestroyInstance-instance-00629 ] Object 0: handle = 0x27be19342d0, type = VK_OBJECT_TYPE_INSTANCE; Object 1: handle = 0xfd5b260000000001, type = VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT; | MessageID = 0x8b3d8e18 | OBJ ERROR : For VkInstance 0x27be19342d0[], VkDebugUtilsMessengerEXT 0xfd5b260000000001[] has not been destroyed. The Vulkan spec states: All child objects created using instance must have been destroyed prior to destroying instance (https://vulkan.lunarg.com/doc/view/1.3.250.0/windows/1.3-extensions/vkspec.html#VUID-vkDestroyInstance-instance-00629)
-Validation layer: Validation Error: [ VUID-vkDestroyInstance-instance-00629 ] Object 0: handle = 0x27be19342d0, type = VK_OBJECT_TYPE_INSTANCE; Object 1: handle = 0xfd5b260000000001, type = VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT; | MessageID = 0x8b3d8e18 | OBJ ERROR : For VkInstance 0x27be19342d0[], VkDebugUtilsMessengerEXT 0xfd5b260000000001[] has not been destroyed. The Vulkan spec states: All child objects created using instance must have been destroyed prior to destroying instance (https://vulkan.lunarg.com/doc/view/1.3.250.0/windows/1.3-extensions/vkspec.html#VUID-vkDestroyInstance-instance-00629)
+Validation layer: vkDestroyInstance(): Object Tracking - For VkInstance 0x7097843c4420, VkDebugUtilsMessengerEXT 0x10000000001 has not been destroyed.
 ```
 
 > If you don't see any messages then [check your installation](https://vulkan.lunarg.com/doc/view/1.2.131.1/windows/getting_started.html#user-content-verify-the-installation).

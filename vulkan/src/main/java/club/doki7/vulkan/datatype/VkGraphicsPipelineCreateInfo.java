@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -85,7 +87,7 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkGraphicsPipelineCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkGraphicsPipelineCreateInfo, Iterable<VkGraphicsPipelineCreateInfo> {
         public long size() {
             return segment.byteSize() / VkGraphicsPipelineCreateInfo.BYTES;
         }
@@ -146,6 +148,35 @@ public record VkGraphicsPipelineCreateInfo(@NotNull MemorySegment segment) imple
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkGraphicsPipelineCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkGraphicsPipelineCreateInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VkGraphicsPipelineCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkGraphicsPipelineCreateInfo ret = new VkGraphicsPipelineCreateInfo(segment.asSlice(0, VkGraphicsPipelineCreateInfo.BYTES));
+                segment = segment.asSlice(VkGraphicsPipelineCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +74,7 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkRenderingInputAttachmentIndexInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkRenderingInputAttachmentIndexInfo, Iterable<VkRenderingInputAttachmentIndexInfo> {
         public long size() {
             return segment.byteSize() / VkRenderingInputAttachmentIndexInfo.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkRenderingInputAttachmentIndexInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkRenderingInputAttachmentIndexInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VkRenderingInputAttachmentIndexInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkRenderingInputAttachmentIndexInfo ret = new VkRenderingInputAttachmentIndexInfo(segment.asSlice(0, VkRenderingInputAttachmentIndexInfo.BYTES));
+                segment = segment.asSlice(VkRenderingInputAttachmentIndexInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

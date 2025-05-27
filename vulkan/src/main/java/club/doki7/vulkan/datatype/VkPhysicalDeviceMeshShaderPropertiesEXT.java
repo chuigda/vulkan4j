@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -96,7 +98,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMeshShaderPropertiesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMeshShaderPropertiesEXT, Iterable<VkPhysicalDeviceMeshShaderPropertiesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES;
         }
@@ -157,6 +159,35 @@ public record VkPhysicalDeviceMeshShaderPropertiesEXT(@NotNull MemorySegment seg
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceMeshShaderPropertiesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceMeshShaderPropertiesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceMeshShaderPropertiesEXT ret = new VkPhysicalDeviceMeshShaderPropertiesEXT(segment.asSlice(0, VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceMeshShaderPropertiesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

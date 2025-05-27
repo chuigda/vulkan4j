@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkMultisampledRenderToSingleSampledInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkMultisampledRenderToSingleSampledInfoEXT, Iterable<VkMultisampledRenderToSingleSampledInfoEXT> {
         public long size() {
             return segment.byteSize() / VkMultisampledRenderToSingleSampledInfoEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkMultisampledRenderToSingleSampledInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkMultisampledRenderToSingleSampledInfoEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkMultisampledRenderToSingleSampledInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkMultisampledRenderToSingleSampledInfoEXT ret = new VkMultisampledRenderToSingleSampledInfoEXT(segment.asSlice(0, VkMultisampledRenderToSingleSampledInfoEXT.BYTES));
+                segment = segment.asSlice(VkMultisampledRenderToSingleSampledInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

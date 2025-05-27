@@ -12,7 +12,6 @@ import club.doki7.vulkan.command.VkEntryCommands;
 import club.doki7.vulkan.command.VkInstanceCommands;
 import club.doki7.vulkan.command.VkStaticCommands;
 import club.doki7.vulkan.datatype.VkApplicationInfo;
-import club.doki7.vulkan.datatype.VkExtensionProperties;
 import club.doki7.vulkan.datatype.VkInstanceCreateInfo;
 import club.doki7.vulkan.enumtype.VkResult;
 import club.doki7.vulkan.handle.VkInstance;
@@ -31,6 +30,7 @@ class Application {
     private void initWindow() {
         GLFWLoader.loadGLFWLibrary();
         glfw = GLFWLoader.loadGLFW();
+        glfw.initHint(GLFWConstants.PLATFORM, GLFWConstants.PLATFORM_X11);
         if (glfw.init() != GLFWConstants.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
@@ -94,23 +94,6 @@ class Application {
             }
             instance = Objects.requireNonNull(pInstance.read());
             instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
-
-            IntPtr pExtensionCount = IntPtr.allocate(arena);
-            result = entryCommands.enumerateInstanceExtensionProperties(null, pExtensionCount, null);
-            if (result != VkResult.SUCCESS) {
-                throw new RuntimeException("Failed to enumerate instance extension properties, vulkan error code: " + VkResult.explain(result));
-            }
-            var extensionCount = pExtensionCount.read();
-            var extensions = VkExtensionProperties.allocate(arena, extensionCount);
-            result = entryCommands.enumerateInstanceExtensionProperties(null, pExtensionCount, extensions);
-            if (result != VkResult.SUCCESS) {
-                throw new RuntimeException("Failed to enumerate instance extension properties, vulkan error code: " + VkResult.explain(result));
-            }
-
-            for (int i = 0; i < extensionCount; i++) {
-                var extension = extensions.at(i);
-                System.out.printf("Extension %d: %s (version: %d)\n", i, extension.extensionName().readString(), extension.specVersion());
-            }
         }
     }
 

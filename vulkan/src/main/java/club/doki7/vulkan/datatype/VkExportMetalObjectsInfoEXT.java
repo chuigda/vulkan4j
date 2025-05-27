@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -68,7 +70,7 @@ public record VkExportMetalObjectsInfoEXT(@NotNull MemorySegment segment) implem
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkExportMetalObjectsInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkExportMetalObjectsInfoEXT, Iterable<VkExportMetalObjectsInfoEXT> {
         public long size() {
             return segment.byteSize() / VkExportMetalObjectsInfoEXT.BYTES;
         }
@@ -129,6 +131,35 @@ public record VkExportMetalObjectsInfoEXT(@NotNull MemorySegment segment) implem
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkExportMetalObjectsInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkExportMetalObjectsInfoEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkExportMetalObjectsInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkExportMetalObjectsInfoEXT ret = new VkExportMetalObjectsInfoEXT(segment.asSlice(0, VkExportMetalObjectsInfoEXT.BYTES));
+                segment = segment.asSlice(VkExportMetalObjectsInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

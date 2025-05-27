@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -76,7 +78,7 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceRayTracingPropertiesNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceRayTracingPropertiesNV, Iterable<VkPhysicalDeviceRayTracingPropertiesNV> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceRayTracingPropertiesNV.BYTES;
         }
@@ -137,6 +139,35 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceRayTracingPropertiesNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceRayTracingPropertiesNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceRayTracingPropertiesNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceRayTracingPropertiesNV ret = new VkPhysicalDeviceRayTracingPropertiesNV(segment.asSlice(0, VkPhysicalDeviceRayTracingPropertiesNV.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceRayTracingPropertiesNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

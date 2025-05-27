@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -73,7 +75,7 @@ public record VkCopyImageToMemoryInfo(@NotNull MemorySegment segment) implements
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkCopyImageToMemoryInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkCopyImageToMemoryInfo, Iterable<VkCopyImageToMemoryInfo> {
         public long size() {
             return segment.byteSize() / VkCopyImageToMemoryInfo.BYTES;
         }
@@ -134,6 +136,35 @@ public record VkCopyImageToMemoryInfo(@NotNull MemorySegment segment) implements
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkCopyImageToMemoryInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkCopyImageToMemoryInfo.BYTES) > 0;
+            }
+
+            @Override
+            public VkCopyImageToMemoryInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkCopyImageToMemoryInfo ret = new VkCopyImageToMemoryInfo(segment.asSlice(0, VkCopyImageToMemoryInfo.BYTES));
+                segment = segment.asSlice(VkCopyImageToMemoryInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

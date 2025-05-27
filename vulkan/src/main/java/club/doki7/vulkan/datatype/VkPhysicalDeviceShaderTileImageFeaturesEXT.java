@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderTileImageFeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderTileImageFeaturesEXT, Iterable<VkPhysicalDeviceShaderTileImageFeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceShaderTileImageFeaturesEXT.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceShaderTileImageFeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceShaderTileImageFeaturesEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceShaderTileImageFeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceShaderTileImageFeaturesEXT ret = new VkPhysicalDeviceShaderTileImageFeaturesEXT(segment.asSlice(0, VkPhysicalDeviceShaderTileImageFeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceShaderTileImageFeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeAV1DpbSlotInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeAV1DpbSlotInfoKHR, Iterable<VkVideoDecodeAV1DpbSlotInfoKHR> {
         public long size() {
             return segment.byteSize() / VkVideoDecodeAV1DpbSlotInfoKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkVideoDecodeAV1DpbSlotInfoKHR(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkVideoDecodeAV1DpbSlotInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkVideoDecodeAV1DpbSlotInfoKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkVideoDecodeAV1DpbSlotInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoDecodeAV1DpbSlotInfoKHR ret = new VkVideoDecodeAV1DpbSlotInfoKHR(segment.asSlice(0, VkVideoDecodeAV1DpbSlotInfoKHR.BYTES));
+                segment = segment.asSlice(VkVideoDecodeAV1DpbSlotInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

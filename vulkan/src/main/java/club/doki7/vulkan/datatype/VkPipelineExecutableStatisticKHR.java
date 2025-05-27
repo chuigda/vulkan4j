@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +74,7 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineExecutableStatisticKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineExecutableStatisticKHR, Iterable<VkPipelineExecutableStatisticKHR> {
         public long size() {
             return segment.byteSize() / VkPipelineExecutableStatisticKHR.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPipelineExecutableStatisticKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPipelineExecutableStatisticKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkPipelineExecutableStatisticKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineExecutableStatisticKHR ret = new VkPipelineExecutableStatisticKHR(segment.asSlice(0, VkPipelineExecutableStatisticKHR.BYTES));
+                segment = segment.asSlice(VkPipelineExecutableStatisticKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

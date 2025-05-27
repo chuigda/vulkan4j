@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -73,7 +75,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceSampleLocationsPropertiesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceSampleLocationsPropertiesEXT, Iterable<VkPhysicalDeviceSampleLocationsPropertiesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES;
         }
@@ -134,6 +136,35 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceSampleLocationsPropertiesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceSampleLocationsPropertiesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceSampleLocationsPropertiesEXT ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(0, VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

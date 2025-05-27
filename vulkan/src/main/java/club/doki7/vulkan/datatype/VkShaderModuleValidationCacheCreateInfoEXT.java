@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkShaderModuleValidationCacheCreateInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkShaderModuleValidationCacheCreateInfoEXT, Iterable<VkShaderModuleValidationCacheCreateInfoEXT> {
         public long size() {
             return segment.byteSize() / VkShaderModuleValidationCacheCreateInfoEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkShaderModuleValidationCacheCreateInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkShaderModuleValidationCacheCreateInfoEXT.BYTES) > 0;
+            }
+
+            @Override
+            public VkShaderModuleValidationCacheCreateInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkShaderModuleValidationCacheCreateInfoEXT ret = new VkShaderModuleValidationCacheCreateInfoEXT(segment.asSlice(0, VkShaderModuleValidationCacheCreateInfoEXT.BYTES));
+                segment = segment.asSlice(VkShaderModuleValidationCacheCreateInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

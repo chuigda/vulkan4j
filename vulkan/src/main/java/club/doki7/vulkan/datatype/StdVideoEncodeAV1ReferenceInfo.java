@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -61,7 +63,7 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1ReferenceInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1ReferenceInfo, Iterable<StdVideoEncodeAV1ReferenceInfo> {
         public long size() {
             return segment.byteSize() / StdVideoEncodeAV1ReferenceInfo.BYTES;
         }
@@ -122,6 +124,35 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<StdVideoEncodeAV1ReferenceInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / StdVideoEncodeAV1ReferenceInfo.BYTES) > 0;
+            }
+
+            @Override
+            public StdVideoEncodeAV1ReferenceInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoEncodeAV1ReferenceInfo ret = new StdVideoEncodeAV1ReferenceInfo(segment.asSlice(0, StdVideoEncodeAV1ReferenceInfo.BYTES));
+                segment = segment.asSlice(StdVideoEncodeAV1ReferenceInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

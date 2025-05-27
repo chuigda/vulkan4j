@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceInheritedViewportScissorFeaturesNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceInheritedViewportScissorFeaturesNV, Iterable<VkPhysicalDeviceInheritedViewportScissorFeaturesNV> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceInheritedViewportScissorFeaturesNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceInheritedViewportScissorFeaturesNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceInheritedViewportScissorFeaturesNV ret = new VkPhysicalDeviceInheritedViewportScissorFeaturesNV(segment.asSlice(0, VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceInheritedViewportScissorFeaturesNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

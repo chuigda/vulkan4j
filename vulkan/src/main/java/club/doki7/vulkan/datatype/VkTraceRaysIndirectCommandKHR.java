@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -60,7 +62,7 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkTraceRaysIndirectCommandKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkTraceRaysIndirectCommandKHR, Iterable<VkTraceRaysIndirectCommandKHR> {
         public long size() {
             return segment.byteSize() / VkTraceRaysIndirectCommandKHR.BYTES;
         }
@@ -121,6 +123,35 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkTraceRaysIndirectCommandKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkTraceRaysIndirectCommandKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkTraceRaysIndirectCommandKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkTraceRaysIndirectCommandKHR ret = new VkTraceRaysIndirectCommandKHR(segment.asSlice(0, VkTraceRaysIndirectCommandKHR.BYTES));
+                segment = segment.asSlice(VkTraceRaysIndirectCommandKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

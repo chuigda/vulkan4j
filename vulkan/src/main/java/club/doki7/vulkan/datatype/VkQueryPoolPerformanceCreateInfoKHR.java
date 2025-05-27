@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkQueryPoolPerformanceCreateInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkQueryPoolPerformanceCreateInfoKHR, Iterable<VkQueryPoolPerformanceCreateInfoKHR> {
         public long size() {
             return segment.byteSize() / VkQueryPoolPerformanceCreateInfoKHR.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkQueryPoolPerformanceCreateInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkQueryPoolPerformanceCreateInfoKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkQueryPoolPerformanceCreateInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkQueryPoolPerformanceCreateInfoKHR ret = new VkQueryPoolPerformanceCreateInfoKHR(segment.asSlice(0, VkQueryPoolPerformanceCreateInfoKHR.BYTES));
+                segment = segment.asSlice(VkQueryPoolPerformanceCreateInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

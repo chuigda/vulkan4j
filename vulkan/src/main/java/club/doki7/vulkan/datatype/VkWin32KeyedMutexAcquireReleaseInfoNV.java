@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -75,7 +77,7 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkWin32KeyedMutexAcquireReleaseInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkWin32KeyedMutexAcquireReleaseInfoNV, Iterable<VkWin32KeyedMutexAcquireReleaseInfoNV> {
         public long size() {
             return segment.byteSize() / VkWin32KeyedMutexAcquireReleaseInfoNV.BYTES;
         }
@@ -136,6 +138,35 @@ public record VkWin32KeyedMutexAcquireReleaseInfoNV(@NotNull MemorySegment segme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkWin32KeyedMutexAcquireReleaseInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkWin32KeyedMutexAcquireReleaseInfoNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkWin32KeyedMutexAcquireReleaseInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkWin32KeyedMutexAcquireReleaseInfoNV ret = new VkWin32KeyedMutexAcquireReleaseInfoNV(segment.asSlice(0, VkWin32KeyedMutexAcquireReleaseInfoNV.BYTES));
+                segment = segment.asSlice(VkWin32KeyedMutexAcquireReleaseInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

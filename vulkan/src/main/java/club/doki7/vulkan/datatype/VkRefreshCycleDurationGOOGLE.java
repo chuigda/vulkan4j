@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -58,7 +60,7 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkRefreshCycleDurationGOOGLE {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkRefreshCycleDurationGOOGLE, Iterable<VkRefreshCycleDurationGOOGLE> {
         public long size() {
             return segment.byteSize() / VkRefreshCycleDurationGOOGLE.BYTES;
         }
@@ -119,6 +121,35 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkRefreshCycleDurationGOOGLE> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkRefreshCycleDurationGOOGLE.BYTES) > 0;
+            }
+
+            @Override
+            public VkRefreshCycleDurationGOOGLE next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkRefreshCycleDurationGOOGLE ret = new VkRefreshCycleDurationGOOGLE(segment.asSlice(0, VkRefreshCycleDurationGOOGLE.BYTES));
+                segment = segment.asSlice(VkRefreshCycleDurationGOOGLE.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

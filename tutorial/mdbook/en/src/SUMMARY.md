@@ -6,9 +6,9 @@
 [FAQ](faq.md)
 
 # Setup
-- [Base code](setup/base-code.md)
-- [Instance](setup/instance.md)
-- [Validation Layers](setup/validation-layers.md)
+- [Base code](setup/ch00-base-code.md)
+- [Instance](setup/ch01-instance.md)
+- [Validation Layers](setup/ch02-validation-layers.md)
 - [Physical Devices and Queue Families](setup/physical-devices-and-queue-families.md)
 - [Logical Devices and Queues](setup/logical-device-and-queues.md)
 

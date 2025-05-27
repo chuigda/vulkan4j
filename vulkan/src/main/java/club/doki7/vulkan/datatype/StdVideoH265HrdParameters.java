@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265HrdParameters {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265HrdParameters, Iterable<StdVideoH265HrdParameters> {
         public long size() {
             return segment.byteSize() / StdVideoH265HrdParameters.BYTES;
         }
@@ -131,6 +133,35 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<StdVideoH265HrdParameters> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / StdVideoH265HrdParameters.BYTES) > 0;
+            }
+
+            @Override
+            public StdVideoH265HrdParameters next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoH265HrdParameters ret = new StdVideoH265HrdParameters(segment.asSlice(0, StdVideoH265HrdParameters.BYTES));
+                segment = segment.asSlice(StdVideoH265HrdParameters.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

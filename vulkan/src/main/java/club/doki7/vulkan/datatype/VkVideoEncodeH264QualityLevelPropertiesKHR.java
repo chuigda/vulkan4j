@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -77,7 +79,7 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH264QualityLevelPropertiesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH264QualityLevelPropertiesKHR, Iterable<VkVideoEncodeH264QualityLevelPropertiesKHR> {
         public long size() {
             return segment.byteSize() / VkVideoEncodeH264QualityLevelPropertiesKHR.BYTES;
         }
@@ -138,6 +140,35 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkVideoEncodeH264QualityLevelPropertiesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkVideoEncodeH264QualityLevelPropertiesKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkVideoEncodeH264QualityLevelPropertiesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoEncodeH264QualityLevelPropertiesKHR ret = new VkVideoEncodeH264QualityLevelPropertiesKHR(segment.asSlice(0, VkVideoEncodeH264QualityLevelPropertiesKHR.BYTES));
+                segment = segment.asSlice(VkVideoEncodeH264QualityLevelPropertiesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

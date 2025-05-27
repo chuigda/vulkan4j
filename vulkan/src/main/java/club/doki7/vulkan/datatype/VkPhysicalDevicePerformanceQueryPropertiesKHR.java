@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(@NotNull MemorySegme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDevicePerformanceQueryPropertiesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDevicePerformanceQueryPropertiesKHR, Iterable<VkPhysicalDevicePerformanceQueryPropertiesKHR> {
         public long size() {
             return segment.byteSize() / VkPhysicalDevicePerformanceQueryPropertiesKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDevicePerformanceQueryPropertiesKHR(@NotNull MemorySegme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDevicePerformanceQueryPropertiesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDevicePerformanceQueryPropertiesKHR.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDevicePerformanceQueryPropertiesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDevicePerformanceQueryPropertiesKHR ret = new VkPhysicalDevicePerformanceQueryPropertiesKHR(segment.asSlice(0, VkPhysicalDevicePerformanceQueryPropertiesKHR.BYTES));
+                segment = segment.asSlice(VkPhysicalDevicePerformanceQueryPropertiesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

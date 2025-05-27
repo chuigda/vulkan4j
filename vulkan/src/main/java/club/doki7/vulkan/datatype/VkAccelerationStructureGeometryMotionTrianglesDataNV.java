@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureGeometryMotionTrianglesDataNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureGeometryMotionTrianglesDataNV, Iterable<VkAccelerationStructureGeometryMotionTrianglesDataNV> {
         public long size() {
             return segment.byteSize() / VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkAccelerationStructureGeometryMotionTrianglesDataNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES) > 0;
+            }
+
+            @Override
+            public VkAccelerationStructureGeometryMotionTrianglesDataNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkAccelerationStructureGeometryMotionTrianglesDataNV ret = new VkAccelerationStructureGeometryMotionTrianglesDataNV(segment.asSlice(0, VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES));
+                segment = segment.asSlice(VkAccelerationStructureGeometryMotionTrianglesDataNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

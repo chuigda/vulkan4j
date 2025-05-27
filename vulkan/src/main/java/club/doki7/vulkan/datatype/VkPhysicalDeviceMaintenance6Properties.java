@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkPhysicalDeviceMaintenance6Properties(@NotNull MemorySegment segm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMaintenance6Properties {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMaintenance6Properties, Iterable<VkPhysicalDeviceMaintenance6Properties> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceMaintenance6Properties.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkPhysicalDeviceMaintenance6Properties(@NotNull MemorySegment segm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDeviceMaintenance6Properties> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDeviceMaintenance6Properties.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDeviceMaintenance6Properties next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceMaintenance6Properties ret = new VkPhysicalDeviceMaintenance6Properties(segment.asSlice(0, VkPhysicalDeviceMaintenance6Properties.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceMaintenance6Properties.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -88,7 +90,7 @@ public record VmaBudget(@NotNull MemorySegment segment) implements IVmaBudget {
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaBudget {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaBudget, Iterable<VmaBudget> {
         public long size() {
             return segment.byteSize() / VmaBudget.BYTES;
         }
@@ -149,6 +151,35 @@ public record VmaBudget(@NotNull MemorySegment segment) implements IVmaBudget {
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VmaBudget> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VmaBudget.BYTES) > 0;
+            }
+
+            @Override
+            public VmaBudget next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaBudget ret = new VmaBudget(segment.asSlice(0, VmaBudget.BYTES));
+                segment = segment.asSlice(VmaBudget.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

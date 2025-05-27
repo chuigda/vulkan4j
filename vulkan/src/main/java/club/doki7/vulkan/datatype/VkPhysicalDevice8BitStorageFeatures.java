@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDevice8BitStorageFeatures {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDevice8BitStorageFeatures, Iterable<VkPhysicalDevice8BitStorageFeatures> {
         public long size() {
             return segment.byteSize() / VkPhysicalDevice8BitStorageFeatures.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures in this pointer.
+        public static final class Iter implements Iterator<VkPhysicalDevice8BitStorageFeatures> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return (segment.byteSize() / VkPhysicalDevice8BitStorageFeatures.BYTES) > 0;
+            }
+
+            @Override
+            public VkPhysicalDevice8BitStorageFeatures next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDevice8BitStorageFeatures ret = new VkPhysicalDevice8BitStorageFeatures(segment.asSlice(0, VkPhysicalDevice8BitStorageFeatures.BYTES));
+                segment = segment.asSlice(VkPhysicalDevice8BitStorageFeatures.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
