@@ -443,7 +443,12 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
             if (type.pointee is IdentifierType &&
                 (registry.opaqueTypedefs.contains(type.pointee.ident)
                  || refRegistries.any { it.opaqueTypedefs.contains(type.pointee.ident) })) {
-                return CHandleType(type.pointee.ident.value)
+                return CPointerType(
+                    pointee = CVoidType(),
+                    const = true,
+                    pointerToOne = true,
+                    comment = "${type.pointee.ident.original}*"
+                )
             }
 
             val pointee = lowerType(registry, refRegistries, type.pointee)

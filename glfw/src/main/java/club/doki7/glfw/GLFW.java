@@ -10,6 +10,9 @@ import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.datatype.*;
+import club.doki7.vulkan.datatype.*;
+import club.doki7.vulkan.enumtype.*;
+import club.doki7.vulkan.handle.*;
 
 public final class GLFW {
     public GLFW(RawFunctionLoader loader) {
@@ -315,55 +318,52 @@ public final class GLFW {
 
     // region command wrappers
 
-    public GLFWcursor createCursor(
+    public @Pointer(comment="GLFWcursor*") MemorySegment createCursor(
         @Pointer IGLFWimage image,
         int xhot,
         int yhot
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateCursor);
         try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+            return (MemorySegment) hFunction.invokeExact(
                 image.segment(),
                 xhot,
                 yhot
             );
-            return s.address() == 0 ? null : new GLFWcursor(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
-    public GLFWcursor createStandardCursor(
+    public @Pointer(comment="GLFWcursor*") MemorySegment createStandardCursor(
         int shape
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateStandardCursor);
         try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+            return (MemorySegment) hFunction.invokeExact(
                 shape
             );
-            return s.address() == 0 ? null : new GLFWcursor(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
-    public GLFWwindow createWindow(
+    public @Pointer(comment="GLFWwindow*") MemorySegment createWindow(
         int width,
         int height,
         BytePtr title,
-        GLFWmonitor monitor,
-        GLFWwindow share
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
+        @Pointer(comment="GLFWwindow*") MemorySegment share
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateWindow);
         try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+            return (MemorySegment) hFunction.invokeExact(
                 width,
                 height,
                 title.segment(),
-                monitor.segment(),
-                share.segment()
+                monitor,
+                share
             );
-            return s.address() == 0 ? null : new GLFWwindow(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -371,7 +371,7 @@ public final class GLFW {
 
     public @EnumType(VkResult.class) int createWindowSurface(
         VkInstance instance,
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer IVkAllocationCallbacks allocator,
         @Pointer VkSurfaceKHR.Ptr surface
     ) {
@@ -379,7 +379,7 @@ public final class GLFW {
         try {
             return (int) hFunction.invokeExact(
                 instance.segment(),
-                window.segment(),
+                window,
                 allocator.segment(),
                 surface.segment()
             );
@@ -399,12 +399,12 @@ public final class GLFW {
     }
 
     public void destroyCursor(
-        GLFWcursor cursor
+        @Pointer(comment="GLFWcursor*") MemorySegment cursor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwDestroyCursor);
         try {
             hFunction.invokeExact(
-                cursor.segment()
+                cursor
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -412,12 +412,12 @@ public final class GLFW {
     }
 
     public void destroyWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwDestroyWindow);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -438,12 +438,12 @@ public final class GLFW {
     }
 
     public void focusWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwFocusWindow);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -451,12 +451,12 @@ public final class GLFW {
     }
 
     public BytePtr getClipboardString(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetClipboardString);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
             return s.address() == 0 ? null : new BytePtr(s);
         } catch (Throwable e) {
@@ -465,12 +465,12 @@ public final class GLFW {
     }
 
     public @NativeType("CGDirectDisplayID") @Unsigned int getCocoaMonitor(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCocoaMonitor);
         try {
             return (int) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -478,12 +478,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="id") MemorySegment getCocoaView(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCocoaView);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -491,38 +491,37 @@ public final class GLFW {
     }
 
     public @Pointer(comment="id") MemorySegment getCocoaWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCocoaWindow);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
-    public GLFWwindow getCurrentContext() {
+    public @Pointer(comment="GLFWwindow*") MemorySegment getCurrentContext() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCurrentContext);
         try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+            return (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new GLFWwindow(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
     public void getCursorPos(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         DoublePtr xpos,
         DoublePtr ypos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetCursorPos);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 xpos.segment(),
                 ypos.segment()
             );
@@ -532,12 +531,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="EGLContext") MemorySegment getEGLContext(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLContext);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -555,12 +554,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="EGLSurface") MemorySegment getEGLSurface(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetEGLSurface);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -581,14 +580,14 @@ public final class GLFW {
     }
 
     public void getFramebufferSize(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         IntPtr width,
         IntPtr height
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetFramebufferSize);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 width.segment(),
                 height.segment()
             );
@@ -598,12 +597,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLXContext") MemorySegment getGLXContext(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGLXContext);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -611,12 +610,12 @@ public final class GLFW {
     }
 
     public @NativeType("GLXWindow") long getGLXWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGLXWindow);
         try {
             return (long) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -653,12 +652,12 @@ public final class GLFW {
     }
 
     public @Pointer IGLFWgammaramp getGammaRamp(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetGammaRamp);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
             return s.address() == 0 ? null : new GLFWgammaramp(s);
         } catch (Throwable e) {
@@ -667,13 +666,13 @@ public final class GLFW {
     }
 
     public int getInputMode(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int mode
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetInputMode);
         try {
             return (int) hFunction.invokeExact(
-                window.segment(),
+                window,
                 mode
             );
         } catch (Throwable e) {
@@ -786,13 +785,13 @@ public final class GLFW {
     }
 
     public int getKey(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int key
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetKey);
         try {
             return (int) hFunction.invokeExact(
-                window.segment(),
+                window,
                 key
             );
         } catch (Throwable e) {
@@ -830,14 +829,14 @@ public final class GLFW {
     }
 
     public void getMonitorContentScale(
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         FloatPtr xscale,
         FloatPtr yscale
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorContentScale);
         try {
             hFunction.invokeExact(
-                monitor.segment(),
+                monitor,
                 xscale.segment(),
                 yscale.segment()
             );
@@ -847,12 +846,12 @@ public final class GLFW {
     }
 
     public BytePtr getMonitorName(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorName);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
             return s.address() == 0 ? null : new BytePtr(s);
         } catch (Throwable e) {
@@ -861,14 +860,14 @@ public final class GLFW {
     }
 
     public void getMonitorPhysicalSize(
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         IntPtr widthMM,
         IntPtr heightMM
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorPhysicalSize);
         try {
             hFunction.invokeExact(
-                monitor.segment(),
+                monitor,
                 widthMM.segment(),
                 heightMM.segment()
             );
@@ -878,14 +877,14 @@ public final class GLFW {
     }
 
     public void getMonitorPos(
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         IntPtr xpos,
         IntPtr ypos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorPos);
         try {
             hFunction.invokeExact(
-                monitor.segment(),
+                monitor,
                 xpos.segment(),
                 ypos.segment()
             );
@@ -895,12 +894,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="void*") MemorySegment getMonitorUserPointer(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorUserPointer);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -908,7 +907,7 @@ public final class GLFW {
     }
 
     public void getMonitorWorkarea(
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         IntPtr xpos,
         IntPtr ypos,
         IntPtr width,
@@ -917,7 +916,7 @@ public final class GLFW {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitorWorkarea);
         try {
             hFunction.invokeExact(
-                monitor.segment(),
+                monitor,
                 xpos.segment(),
                 ypos.segment(),
                 width.segment(),
@@ -928,7 +927,7 @@ public final class GLFW {
         }
     }
 
-    public @Pointer GLFWmonitor.Ptr getMonitors(
+    public PointerPtr getMonitors(
         IntPtr count
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMonitors);
@@ -936,20 +935,20 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 count.segment()
             );
-            return s.address() == 0 ? null : new GLFWmonitor.Ptr(s);
+            return s.address() == 0 ? null : new PointerPtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
     public int getMouseButton(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int button
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetMouseButton);
         try {
             return (int) hFunction.invokeExact(
-                window.segment(),
+                window,
                 button
             );
         } catch (Throwable e) {
@@ -958,12 +957,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="id") MemorySegment getNSGLContext(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetNSGLContext);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -971,7 +970,7 @@ public final class GLFW {
     }
 
     public int getOSMesaColorBuffer(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         IntPtr width,
         IntPtr height,
         IntPtr format,
@@ -980,7 +979,7 @@ public final class GLFW {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaColorBuffer);
         try {
             return (int) hFunction.invokeExact(
-                window.segment(),
+                window,
                 width.segment(),
                 height.segment(),
                 format.segment(),
@@ -992,12 +991,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="OSMesaContext") MemorySegment getOSMesaContext(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaContext);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1005,7 +1004,7 @@ public final class GLFW {
     }
 
     public int getOSMesaDepthBuffer(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         IntPtr width,
         IntPtr height,
         IntPtr bytesPerValue,
@@ -1014,7 +1013,7 @@ public final class GLFW {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetOSMesaDepthBuffer);
         try {
             return (int) hFunction.invokeExact(
-                window.segment(),
+                window,
                 width.segment(),
                 height.segment(),
                 bytesPerValue.segment(),
@@ -1052,12 +1051,11 @@ public final class GLFW {
         }
     }
 
-    public GLFWmonitor getPrimaryMonitor() {
+    public @Pointer(comment="GLFWmonitor*") MemorySegment getPrimaryMonitor() {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetPrimaryMonitor);
         try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
+            return (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new GLFWmonitor(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1149,12 +1147,12 @@ public final class GLFW {
     }
 
     public @Pointer IGLFWvidmode getVideoMode(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetVideoMode);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
             return s.address() == 0 ? null : new GLFWvidmode(s);
         } catch (Throwable e) {
@@ -1163,13 +1161,13 @@ public final class GLFW {
     }
 
     public @Pointer IGLFWvidmode getVideoModes(
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         IntPtr count
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetVideoModes);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                monitor.segment(),
+                monitor,
                 count.segment()
             );
             return s.address() == 0 ? null : new GLFWvidmode(s);
@@ -1179,12 +1177,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="HGLRC") MemorySegment getWGLContext(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWGLContext);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1203,12 +1201,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="void*") MemorySegment getWaylandMonitor(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandMonitor);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1216,12 +1214,12 @@ public final class GLFW {
     }
 
     public PointerPtr getWaylandWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWaylandWindow);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
             return s.address() == 0 ? null : new PointerPtr(s);
         } catch (Throwable e) {
@@ -1230,12 +1228,12 @@ public final class GLFW {
     }
 
     public BytePtr getWin32Adapter(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Adapter);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
             return s.address() == 0 ? null : new BytePtr(s);
         } catch (Throwable e) {
@@ -1244,12 +1242,12 @@ public final class GLFW {
     }
 
     public BytePtr getWin32Monitor(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Monitor);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
             return s.address() == 0 ? null : new BytePtr(s);
         } catch (Throwable e) {
@@ -1258,12 +1256,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="HWND") MemorySegment getWin32Window(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWin32Window);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1271,13 +1269,13 @@ public final class GLFW {
     }
 
     public int getWindowAttrib(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int attrib
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowAttrib);
         try {
             return (int) hFunction.invokeExact(
-                window.segment(),
+                window,
                 attrib
             );
         } catch (Throwable e) {
@@ -1286,14 +1284,14 @@ public final class GLFW {
     }
 
     public void getWindowContentScale(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         FloatPtr xscale,
         FloatPtr yscale
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowContentScale);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 xscale.segment(),
                 yscale.segment()
             );
@@ -1303,7 +1301,7 @@ public final class GLFW {
     }
 
     public void getWindowFrameSize(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         IntPtr left,
         IntPtr top,
         IntPtr right,
@@ -1312,7 +1310,7 @@ public final class GLFW {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowFrameSize);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 left.segment(),
                 top.segment(),
                 right.segment(),
@@ -1323,27 +1321,26 @@ public final class GLFW {
         }
     }
 
-    public GLFWmonitor getWindowMonitor(
-        GLFWwindow window
+    public @Pointer(comment="GLFWmonitor*") MemorySegment getWindowMonitor(
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowMonitor);
         try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                window.segment()
+            return (MemorySegment) hFunction.invokeExact(
+                window
             );
-            return s.address() == 0 ? null : new GLFWmonitor(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
     public float getWindowOpacity(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowOpacity);
         try {
             return (float) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1351,14 +1348,14 @@ public final class GLFW {
     }
 
     public void getWindowPos(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         IntPtr xpos,
         IntPtr ypos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowPos);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 xpos.segment(),
                 ypos.segment()
             );
@@ -1368,14 +1365,14 @@ public final class GLFW {
     }
 
     public void getWindowSize(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         IntPtr width,
         IntPtr height
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowSize);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 width.segment(),
                 height.segment()
             );
@@ -1385,12 +1382,12 @@ public final class GLFW {
     }
 
     public BytePtr getWindowTitle(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowTitle);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
             return s.address() == 0 ? null : new BytePtr(s);
         } catch (Throwable e) {
@@ -1399,12 +1396,12 @@ public final class GLFW {
     }
 
     public @Pointer(comment="void*") MemorySegment getWindowUserPointer(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetWindowUserPointer);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1412,12 +1409,12 @@ public final class GLFW {
     }
 
     public @NativeType("RRCrtc") long getX11Adapter(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Adapter);
         try {
             return (long) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1436,12 +1433,12 @@ public final class GLFW {
     }
 
     public @NativeType("RROutput") long getX11Monitor(
-        GLFWmonitor monitor
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Monitor);
         try {
             return (long) hFunction.invokeExact(
-                monitor.segment()
+                monitor
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1460,12 +1457,12 @@ public final class GLFW {
     }
 
     public @NativeType("Window") long getX11Window(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetX11Window);
         try {
             return (long) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1473,12 +1470,12 @@ public final class GLFW {
     }
 
     public void hideWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwHideWindow);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1486,12 +1483,12 @@ public final class GLFW {
     }
 
     public void iconifyWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwIconifyWindow);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1576,12 +1573,12 @@ public final class GLFW {
     }
 
     public void makeContextCurrent(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwMakeContextCurrent);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1589,12 +1586,12 @@ public final class GLFW {
     }
 
     public void maximizeWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwMaximizeWindow);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1645,12 +1642,12 @@ public final class GLFW {
     }
 
     public void requestWindowAttention(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwRequestWindowAttention);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1658,12 +1655,12 @@ public final class GLFW {
     }
 
     public void restoreWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwRestoreWindow);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1671,13 +1668,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWcharfun") MemorySegment setCharCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWcharfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCharCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1686,13 +1683,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWcharmodsfun") MemorySegment setCharModsCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWcharmodsfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCharModsCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1701,13 +1698,13 @@ public final class GLFW {
     }
 
     public void setClipboardString(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         BytePtr string
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetClipboardString);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 string.segment()
             );
         } catch (Throwable e) {
@@ -1716,14 +1713,14 @@ public final class GLFW {
     }
 
     public void setCursor(
-        GLFWwindow window,
-        GLFWcursor cursor
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
+        @Pointer(comment="GLFWcursor*") MemorySegment cursor
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursor);
         try {
             hFunction.invokeExact(
-                window.segment(),
-                cursor.segment()
+                window,
+                cursor
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1731,13 +1728,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWcursorenterfun") MemorySegment setCursorEnterCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWcursorenterfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursorEnterCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1746,14 +1743,14 @@ public final class GLFW {
     }
 
     public void setCursorPos(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         double xpos,
         double ypos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursorPos);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 xpos,
                 ypos
             );
@@ -1763,13 +1760,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWcursorposfun") MemorySegment setCursorPosCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWcursorposfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetCursorPosCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1778,13 +1775,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWdropfun") MemorySegment setDropCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWdropfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetDropCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1806,13 +1803,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWframebuffersizefun") MemorySegment setFramebufferSizeCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWframebuffersizefun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetFramebufferSizeCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1821,13 +1818,13 @@ public final class GLFW {
     }
 
     public void setGamma(
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         float gamma
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetGamma);
         try {
             hFunction.invokeExact(
-                monitor.segment(),
+                monitor,
                 gamma
             );
         } catch (Throwable e) {
@@ -1836,13 +1833,13 @@ public final class GLFW {
     }
 
     public void setGammaRamp(
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         @Pointer IGLFWgammaramp ramp
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetGammaRamp);
         try {
             hFunction.invokeExact(
-                monitor.segment(),
+                monitor,
                 ramp.segment()
             );
         } catch (Throwable e) {
@@ -1851,14 +1848,14 @@ public final class GLFW {
     }
 
     public void setInputMode(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int mode,
         int value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetInputMode);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 mode,
                 value
             );
@@ -1896,13 +1893,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWkeyfun") MemorySegment setKeyCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWkeyfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetKeyCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1924,13 +1921,13 @@ public final class GLFW {
     }
 
     public void setMonitorUserPointer(
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         @Pointer(comment="void*") MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetMonitorUserPointer);
         try {
             hFunction.invokeExact(
-                monitor.segment(),
+                monitor,
                 pointer
             );
         } catch (Throwable e) {
@@ -1939,13 +1936,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWmousebuttonfun") MemorySegment setMouseButtonCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWmousebuttonfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetMouseButtonCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1954,13 +1951,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWscrollfun") MemorySegment setScrollCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWscrollfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetScrollCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -1982,14 +1979,14 @@ public final class GLFW {
     }
 
     public void setWindowAspectRatio(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int numer,
         int denom
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowAspectRatio);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 numer,
                 denom
             );
@@ -1999,14 +1996,14 @@ public final class GLFW {
     }
 
     public void setWindowAttrib(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int attrib,
         int value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowAttrib);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 attrib,
                 value
             );
@@ -2016,13 +2013,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWwindowclosefun") MemorySegment setWindowCloseCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWwindowclosefun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowCloseCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -2031,13 +2028,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWwindowcontentscalefun") MemorySegment setWindowContentScaleCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWwindowcontentscalefun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowContentScaleCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -2046,13 +2043,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWwindowfocusfun") MemorySegment setWindowFocusCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWwindowfocusfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowFocusCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -2061,14 +2058,14 @@ public final class GLFW {
     }
 
     public void setWindowIcon(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int count,
         @Pointer IGLFWimage images
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowIcon);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 count,
                 images.segment()
             );
@@ -2078,13 +2075,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWwindowiconifyfun") MemorySegment setWindowIconifyCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWwindowiconifyfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowIconifyCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -2093,13 +2090,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWwindowmaximizefun") MemorySegment setWindowMaximizeCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWwindowmaximizefun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowMaximizeCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -2108,8 +2105,8 @@ public final class GLFW {
     }
 
     public void setWindowMonitor(
-        GLFWwindow window,
-        GLFWmonitor monitor,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
+        @Pointer(comment="GLFWmonitor*") MemorySegment monitor,
         int xpos,
         int ypos,
         int width,
@@ -2119,8 +2116,8 @@ public final class GLFW {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowMonitor);
         try {
             hFunction.invokeExact(
-                window.segment(),
-                monitor.segment(),
+                window,
+                monitor,
                 xpos,
                 ypos,
                 width,
@@ -2133,13 +2130,13 @@ public final class GLFW {
     }
 
     public void setWindowOpacity(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         float opacity
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowOpacity);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 opacity
             );
         } catch (Throwable e) {
@@ -2148,14 +2145,14 @@ public final class GLFW {
     }
 
     public void setWindowPos(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int xpos,
         int ypos
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowPos);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 xpos,
                 ypos
             );
@@ -2165,13 +2162,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWwindowposfun") MemorySegment setWindowPosCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWwindowposfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowPosCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -2180,13 +2177,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWwindowrefreshfun") MemorySegment setWindowRefreshCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWwindowrefreshfun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowRefreshCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -2195,13 +2192,13 @@ public final class GLFW {
     }
 
     public void setWindowShouldClose(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowShouldClose);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 value
             );
         } catch (Throwable e) {
@@ -2210,14 +2207,14 @@ public final class GLFW {
     }
 
     public void setWindowSize(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int width,
         int height
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowSize);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 width,
                 height
             );
@@ -2227,13 +2224,13 @@ public final class GLFW {
     }
 
     public @Pointer(comment="GLFWwindowsizefun") MemorySegment setWindowSizeCallback(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="GLFWwindowsizefun") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowSizeCallback);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                window.segment(),
+                window,
                 callback
             );
         } catch (Throwable e) {
@@ -2242,7 +2239,7 @@ public final class GLFW {
     }
 
     public void setWindowSizeLimits(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         int minwidth,
         int minheight,
         int maxwidth,
@@ -2251,7 +2248,7 @@ public final class GLFW {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowSizeLimits);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 minwidth,
                 minheight,
                 maxwidth,
@@ -2263,13 +2260,13 @@ public final class GLFW {
     }
 
     public void setWindowTitle(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         BytePtr title
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowTitle);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 title.segment()
             );
         } catch (Throwable e) {
@@ -2278,13 +2275,13 @@ public final class GLFW {
     }
 
     public void setWindowUserPointer(
-        GLFWwindow window,
+        @Pointer(comment="GLFWwindow*") MemorySegment window,
         @Pointer(comment="void*") MemorySegment pointer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSetWindowUserPointer);
         try {
             hFunction.invokeExact(
-                window.segment(),
+                window,
                 pointer
             );
         } catch (Throwable e) {
@@ -2306,12 +2303,12 @@ public final class GLFW {
     }
 
     public void showWindow(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwShowWindow);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2319,12 +2316,12 @@ public final class GLFW {
     }
 
     public void swapBuffers(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwSwapBuffers);
         try {
             hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2431,12 +2428,12 @@ public final class GLFW {
     }
 
     public int windowShouldClose(
-        GLFWwindow window
+        @Pointer(comment="GLFWwindow*") MemorySegment window
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwWindowShouldClose);
         try {
             return (int) hFunction.invokeExact(
-                window.segment()
+                window
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);

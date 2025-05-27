@@ -11,11 +11,6 @@ import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import static club.doki7.glfw.GLFWConstants.*;
-import club.doki7.vulkan.bitmask.*;
-import club.doki7.vulkan.datatype.*;
-import club.doki7.vulkan.enumtype.*;
-import club.doki7.vulkan.handle.*;
-import static club.doki7.vulkan.VkConstants.*;
 
 /// @brief Gamma ramp.
 /// *

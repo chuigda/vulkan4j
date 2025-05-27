@@ -27,31 +27,29 @@ fun glfw3Main(vulkanRegistry: RegistryBase, vulkanAdditionalRegistry: RegistryBa
     File("$packageDir/${codegenOptions.constantClassName}.java")
         .writeText(render(constantsDoc))
 
+    val commandCodegenOptions = codegenOptions.copy(
+        extraImport = listOf(
+            "club.doki7.vulkan.datatype.*",
+            "club.doki7.vulkan.enumtype.*",
+            "club.doki7.vulkan.handle.*"
+        )
+    )
     val commandsDoc = generateCommandFile(
         registry,
         "GLFW",
         registry.commands.values.sortedBy { it.name },
-        codegenOptions,
+        commandCodegenOptions,
         null
     )
     File("$packageDir/GLFW.java")
         .writeText(render(commandsDoc))
 
-    val structureCodegenOptions = codegenOptions.copy(
-        extraImport = listOf(
-            "club.doki7.vulkan.bitmask.*",
-            "club.doki7.vulkan.datatype.*",
-            "club.doki7.vulkan.enumtype.*",
-            "club.doki7.vulkan.handle.*",
-            "static club.doki7.vulkan.VkConstants.*"
-        )
-    )
     for (structure in registry.structures.values) {
         val structureInterfaceDoc = generateStructureInterface(structure, codegenOptions)
         File("$packageDir/datatype/I${structure.name}.java")
             .writeText(render(structureInterfaceDoc))
 
-        val structureDoc = generateStructure(registry, structure, false, structureCodegenOptions)
+        val structureDoc = generateStructure(registry, structure, false, codegenOptions)
         File("$packageDir/datatype/${structure.name}.java")
             .writeText(render(structureDoc))
     }
