@@ -21,7 +21,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkExtensionProperties {
-///     char extensionName; // @link substring="extensionName" target="#extensionName"
+///     char[VK_MAX_EXTENSION_NAME_SIZE] extensionName; // @link substring="extensionName" target="#extensionName"
 ///     uint32_t specVersion; // @link substring="specVersion" target="#specVersion"
 /// } VkExtensionProperties;
 /// }
@@ -138,12 +138,16 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         return ret;
     }
 
-    public byte extensionName() {
-        return segment.get(LAYOUT$extensionName, OFFSET$extensionName);
+    public BytePtr extensionName() {
+        return new BytePtr(extensionNameRaw());
     }
 
-    public void extensionName(byte value) {
-        segment.set(LAYOUT$extensionName, OFFSET$extensionName, value);
+    public void extensionName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$extensionName, SIZE$extensionName);
+    }
+
+    public MemorySegment extensionNameRaw() {
+        return segment.asSlice(OFFSET$extensionName, SIZE$extensionName);
     }
 
     public @Unsigned int specVersion() {
@@ -155,7 +159,7 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("extensionName"),
+        MemoryLayout.sequenceLayout(MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("extensionName"),
         ValueLayout.JAVA_INT.withName("specVersion")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -163,7 +167,7 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$extensionName = PathElement.groupElement("extensionName");
     public static final PathElement PATH$specVersion = PathElement.groupElement("specVersion");
 
-    public static final OfByte LAYOUT$extensionName = (OfByte) LAYOUT.select(PATH$extensionName);
+    public static final SequenceLayout LAYOUT$extensionName = (SequenceLayout) LAYOUT.select(PATH$extensionName);
     public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);
 
     public static final long SIZE$extensionName = LAYOUT$extensionName.byteSize();

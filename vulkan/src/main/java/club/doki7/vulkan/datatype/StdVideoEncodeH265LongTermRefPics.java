@@ -23,11 +23,11 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct StdVideoEncodeH265LongTermRefPics {
 ///     uint8_t num_long_term_sps; // @link substring="num_long_term_sps" target="#num_long_term_sps"
 ///     uint8_t num_long_term_pics; // @link substring="num_long_term_pics" target="#num_long_term_pics"
-///     uint8_t lt_idx_sps; // @link substring="lt_idx_sps" target="#lt_idx_sps"
-///     uint8_t poc_lsb_lt; // @link substring="poc_lsb_lt" target="#poc_lsb_lt"
+///     uint8_t[STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS] lt_idx_sps; // @link substring="lt_idx_sps" target="#lt_idx_sps"
+///     uint8_t[STD_VIDEO_H265_MAX_LONG_TERM_PICS] poc_lsb_lt; // @link substring="poc_lsb_lt" target="#poc_lsb_lt"
 ///     uint16_t used_by_curr_pic_lt_flag; // @link substring="used_by_curr_pic_lt_flag" target="#used_by_curr_pic_lt_flag"
-///     uint8_t delta_poc_msb_present_flag; // @link substring="delta_poc_msb_present_flag" target="#delta_poc_msb_present_flag"
-///     uint8_t delta_poc_msb_cycle_lt; // @link substring="delta_poc_msb_cycle_lt" target="#delta_poc_msb_cycle_lt"
+///     uint8_t[STD_VIDEO_H265_MAX_DELTA_POC] delta_poc_msb_present_flag; // @link substring="delta_poc_msb_present_flag" target="#delta_poc_msb_present_flag"
+///     uint8_t[STD_VIDEO_H265_MAX_DELTA_POC] delta_poc_msb_cycle_lt; // @link substring="delta_poc_msb_cycle_lt" target="#delta_poc_msb_cycle_lt"
 /// } StdVideoEncodeH265LongTermRefPics;
 /// }
 ///
@@ -157,20 +157,28 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$num_long_term_pics, OFFSET$num_long_term_pics, value);
     }
 
-    public @Unsigned byte lt_idx_sps() {
-        return segment.get(LAYOUT$lt_idx_sps, OFFSET$lt_idx_sps);
+    public @Unsigned BytePtr lt_idx_sps() {
+        return new BytePtr(lt_idx_spsRaw());
     }
 
-    public void lt_idx_sps(@Unsigned byte value) {
-        segment.set(LAYOUT$lt_idx_sps, OFFSET$lt_idx_sps, value);
+    public void lt_idx_sps(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lt_idx_sps, SIZE$lt_idx_sps);
     }
 
-    public @Unsigned byte poc_lsb_lt() {
-        return segment.get(LAYOUT$poc_lsb_lt, OFFSET$poc_lsb_lt);
+    public MemorySegment lt_idx_spsRaw() {
+        return segment.asSlice(OFFSET$lt_idx_sps, SIZE$lt_idx_sps);
     }
 
-    public void poc_lsb_lt(@Unsigned byte value) {
-        segment.set(LAYOUT$poc_lsb_lt, OFFSET$poc_lsb_lt, value);
+    public @Unsigned BytePtr poc_lsb_lt() {
+        return new BytePtr(poc_lsb_ltRaw());
+    }
+
+    public void poc_lsb_lt(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$poc_lsb_lt, SIZE$poc_lsb_lt);
+    }
+
+    public MemorySegment poc_lsb_ltRaw() {
+        return segment.asSlice(OFFSET$poc_lsb_lt, SIZE$poc_lsb_lt);
     }
 
     public @Unsigned short used_by_curr_pic_lt_flag() {
@@ -181,30 +189,38 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$used_by_curr_pic_lt_flag, OFFSET$used_by_curr_pic_lt_flag, value);
     }
 
-    public @Unsigned byte delta_poc_msb_present_flag() {
-        return segment.get(LAYOUT$delta_poc_msb_present_flag, OFFSET$delta_poc_msb_present_flag);
+    public @Unsigned BytePtr delta_poc_msb_present_flag() {
+        return new BytePtr(delta_poc_msb_present_flagRaw());
     }
 
-    public void delta_poc_msb_present_flag(@Unsigned byte value) {
-        segment.set(LAYOUT$delta_poc_msb_present_flag, OFFSET$delta_poc_msb_present_flag, value);
+    public void delta_poc_msb_present_flag(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_msb_present_flag, SIZE$delta_poc_msb_present_flag);
     }
 
-    public @Unsigned byte delta_poc_msb_cycle_lt() {
-        return segment.get(LAYOUT$delta_poc_msb_cycle_lt, OFFSET$delta_poc_msb_cycle_lt);
+    public MemorySegment delta_poc_msb_present_flagRaw() {
+        return segment.asSlice(OFFSET$delta_poc_msb_present_flag, SIZE$delta_poc_msb_present_flag);
     }
 
-    public void delta_poc_msb_cycle_lt(@Unsigned byte value) {
-        segment.set(LAYOUT$delta_poc_msb_cycle_lt, OFFSET$delta_poc_msb_cycle_lt, value);
+    public @Unsigned BytePtr delta_poc_msb_cycle_lt() {
+        return new BytePtr(delta_poc_msb_cycle_ltRaw());
+    }
+
+    public void delta_poc_msb_cycle_lt(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_msb_cycle_lt, SIZE$delta_poc_msb_cycle_lt);
+    }
+
+    public MemorySegment delta_poc_msb_cycle_ltRaw() {
+        return segment.asSlice(OFFSET$delta_poc_msb_cycle_lt, SIZE$delta_poc_msb_cycle_lt);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_BYTE.withName("num_long_term_sps"),
         ValueLayout.JAVA_BYTE.withName("num_long_term_pics"),
-        ValueLayout.JAVA_BYTE.withName("lt_idx_sps"),
-        ValueLayout.JAVA_BYTE.withName("poc_lsb_lt"),
+        MemoryLayout.sequenceLayout(H265_MAX_LONG_TERM_REF_PICS_SPS, ValueLayout.JAVA_BYTE).withName("lt_idx_sps"),
+        MemoryLayout.sequenceLayout(H265_MAX_LONG_TERM_PICS, ValueLayout.JAVA_BYTE).withName("poc_lsb_lt"),
         ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_lt_flag"),
-        ValueLayout.JAVA_BYTE.withName("delta_poc_msb_present_flag"),
-        ValueLayout.JAVA_BYTE.withName("delta_poc_msb_cycle_lt")
+        MemoryLayout.sequenceLayout(H265_MAX_DELTA_POC, ValueLayout.JAVA_BYTE).withName("delta_poc_msb_present_flag"),
+        MemoryLayout.sequenceLayout(H265_MAX_DELTA_POC, ValueLayout.JAVA_BYTE).withName("delta_poc_msb_cycle_lt")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -218,11 +234,11 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
 
     public static final OfByte LAYOUT$num_long_term_sps = (OfByte) LAYOUT.select(PATH$num_long_term_sps);
     public static final OfByte LAYOUT$num_long_term_pics = (OfByte) LAYOUT.select(PATH$num_long_term_pics);
-    public static final OfByte LAYOUT$lt_idx_sps = (OfByte) LAYOUT.select(PATH$lt_idx_sps);
-    public static final OfByte LAYOUT$poc_lsb_lt = (OfByte) LAYOUT.select(PATH$poc_lsb_lt);
+    public static final SequenceLayout LAYOUT$lt_idx_sps = (SequenceLayout) LAYOUT.select(PATH$lt_idx_sps);
+    public static final SequenceLayout LAYOUT$poc_lsb_lt = (SequenceLayout) LAYOUT.select(PATH$poc_lsb_lt);
     public static final OfShort LAYOUT$used_by_curr_pic_lt_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_lt_flag);
-    public static final OfByte LAYOUT$delta_poc_msb_present_flag = (OfByte) LAYOUT.select(PATH$delta_poc_msb_present_flag);
-    public static final OfByte LAYOUT$delta_poc_msb_cycle_lt = (OfByte) LAYOUT.select(PATH$delta_poc_msb_cycle_lt);
+    public static final SequenceLayout LAYOUT$delta_poc_msb_present_flag = (SequenceLayout) LAYOUT.select(PATH$delta_poc_msb_present_flag);
+    public static final SequenceLayout LAYOUT$delta_poc_msb_cycle_lt = (SequenceLayout) LAYOUT.select(PATH$delta_poc_msb_cycle_lt);
 
     public static final long SIZE$num_long_term_sps = LAYOUT$num_long_term_sps.byteSize();
     public static final long SIZE$num_long_term_pics = LAYOUT$num_long_term_pics.byteSize();

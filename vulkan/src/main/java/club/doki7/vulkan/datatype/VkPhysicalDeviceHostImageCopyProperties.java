@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkImageLayout* pCopySrcLayouts; // optional // @link substring="VkImageLayout" target="VkImageLayout" @link substring="pCopySrcLayouts" target="#pCopySrcLayouts"
 ///     uint32_t copyDstLayoutCount; // optional // @link substring="copyDstLayoutCount" target="#copyDstLayoutCount"
 ///     VkImageLayout* pCopyDstLayouts; // optional // @link substring="VkImageLayout" target="VkImageLayout" @link substring="pCopyDstLayouts" target="#pCopyDstLayouts"
-///     uint8_t optimalTilingLayoutUUID; // optional // @link substring="optimalTilingLayoutUUID" target="#optimalTilingLayoutUUID"
+///     uint8_t[VK_UUID_SIZE] optimalTilingLayoutUUID; // optional // @link substring="optimalTilingLayoutUUID" target="#optimalTilingLayoutUUID"
 ///     VkBool32 identicalMemoryTypeRequirements; // @link substring="identicalMemoryTypeRequirements" target="#identicalMemoryTypeRequirements"
 /// } VkPhysicalDeviceHostImageCopyProperties;
 /// }
@@ -251,12 +251,16 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
 
-    public @Unsigned byte optimalTilingLayoutUUID() {
-        return segment.get(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID);
+    public @Unsigned BytePtr optimalTilingLayoutUUID() {
+        return new BytePtr(optimalTilingLayoutUUIDRaw());
     }
 
-    public void optimalTilingLayoutUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
+    public void optimalTilingLayoutUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
+    }
+
+    public MemorySegment optimalTilingLayoutUUIDRaw() {
+        return segment.asSlice(OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
     }
 
     public @NativeType("VkBool32") @Unsigned int identicalMemoryTypeRequirements() {
@@ -274,7 +278,7 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopySrcLayouts"),
         ValueLayout.JAVA_INT.withName("copyDstLayoutCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopyDstLayouts"),
-        ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("optimalTilingLayoutUUID"),
         ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -294,7 +298,7 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
     public static final AddressLayout LAYOUT$pCopySrcLayouts = (AddressLayout) LAYOUT.select(PATH$pCopySrcLayouts);
     public static final OfInt LAYOUT$copyDstLayoutCount = (OfInt) LAYOUT.select(PATH$copyDstLayoutCount);
     public static final AddressLayout LAYOUT$pCopyDstLayouts = (AddressLayout) LAYOUT.select(PATH$pCopyDstLayouts);
-    public static final OfByte LAYOUT$optimalTilingLayoutUUID = (OfByte) LAYOUT.select(PATH$optimalTilingLayoutUUID);
+    public static final SequenceLayout LAYOUT$optimalTilingLayoutUUID = (SequenceLayout) LAYOUT.select(PATH$optimalTilingLayoutUUID);
     public static final OfInt LAYOUT$identicalMemoryTypeRequirements = (OfInt) LAYOUT.select(PATH$identicalMemoryTypeRequirements);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

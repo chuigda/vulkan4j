@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t numPhysicalSgprs; // @link substring="numPhysicalSgprs" target="#numPhysicalSgprs"
 ///     uint32_t numAvailableVgprs; // @link substring="numAvailableVgprs" target="#numAvailableVgprs"
 ///     uint32_t numAvailableSgprs; // @link substring="numAvailableSgprs" target="#numAvailableSgprs"
-///     uint32_t computeWorkGroupSize; // @link substring="computeWorkGroupSize" target="#computeWorkGroupSize"
+///     uint32_t[3] computeWorkGroupSize; // @link substring="computeWorkGroupSize" target="#computeWorkGroupSize"
 /// } VkShaderStatisticsInfoAMD;
 /// }
 ///
@@ -191,12 +191,16 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$numAvailableSgprs, OFFSET$numAvailableSgprs, value);
     }
 
-    public @Unsigned int computeWorkGroupSize() {
-        return segment.get(LAYOUT$computeWorkGroupSize, OFFSET$computeWorkGroupSize);
+    public @Unsigned IntPtr computeWorkGroupSize() {
+        return new IntPtr(computeWorkGroupSizeRaw());
     }
 
-    public void computeWorkGroupSize(@Unsigned int value) {
-        segment.set(LAYOUT$computeWorkGroupSize, OFFSET$computeWorkGroupSize, value);
+    public void computeWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
+    }
+
+    public MemorySegment computeWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -206,7 +210,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("numPhysicalSgprs"),
         ValueLayout.JAVA_INT.withName("numAvailableVgprs"),
         ValueLayout.JAVA_INT.withName("numAvailableSgprs"),
-        ValueLayout.JAVA_INT.withName("computeWorkGroupSize")
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("computeWorkGroupSize")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -224,7 +228,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
     public static final OfInt LAYOUT$numPhysicalSgprs = (OfInt) LAYOUT.select(PATH$numPhysicalSgprs);
     public static final OfInt LAYOUT$numAvailableVgprs = (OfInt) LAYOUT.select(PATH$numAvailableVgprs);
     public static final OfInt LAYOUT$numAvailableSgprs = (OfInt) LAYOUT.select(PATH$numAvailableSgprs);
-    public static final OfInt LAYOUT$computeWorkGroupSize = (OfInt) LAYOUT.select(PATH$computeWorkGroupSize);
+    public static final SequenceLayout LAYOUT$computeWorkGroupSize = (SequenceLayout) LAYOUT.select(PATH$computeWorkGroupSize);
 
     public static final long SIZE$shaderStageMask = LAYOUT$shaderStageMask.byteSize();
     public static final long SIZE$resourceUsage = LAYOUT$resourceUsage.byteSize();

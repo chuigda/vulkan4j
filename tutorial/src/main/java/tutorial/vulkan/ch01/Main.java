@@ -109,7 +109,7 @@ class Application {
 
             for (int i = 0; i < extensionCount; i++) {
                 var extension = extensions.at(i);
-                System.out.printf("Extension %d: %s (version: %d)\n", i, extension.extensionName(), extension.specVersion());
+                System.out.printf("Extension %d: %s (version: %d)\n", i, extension.extensionName().readString(), extension.specVersion());
             }
         }
     }

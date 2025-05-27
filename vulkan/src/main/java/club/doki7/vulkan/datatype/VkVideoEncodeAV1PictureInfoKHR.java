@@ -27,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkVideoEncodeAV1RateControlGroupKHR rateControlGroup; // @link substring="VkVideoEncodeAV1RateControlGroupKHR" target="VkVideoEncodeAV1RateControlGroupKHR" @link substring="rateControlGroup" target="#rateControlGroup"
 ///     uint32_t constantQIndex; // @link substring="constantQIndex" target="#constantQIndex"
 ///     StdVideoEncodeAV1PictureInfo const* pStdPictureInfo; // @link substring="StdVideoEncodeAV1PictureInfo" target="StdVideoEncodeAV1PictureInfo" @link substring="pStdPictureInfo" target="#pStdPictureInfo"
-///     int32_t referenceNameSlotIndices; // @link substring="referenceNameSlotIndices" target="#referenceNameSlotIndices"
+///     int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR] referenceNameSlotIndices; // @link substring="referenceNameSlotIndices" target="#referenceNameSlotIndices"
 ///     VkBool32 primaryReferenceCdfOnly; // @link substring="primaryReferenceCdfOnly" target="#primaryReferenceCdfOnly"
 ///     VkBool32 generateObuExtensionHeader; // @link substring="generateObuExtensionHeader" target="#generateObuExtensionHeader"
 /// } VkVideoEncodeAV1PictureInfoKHR;
@@ -239,12 +239,16 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
-    public int referenceNameSlotIndices() {
-        return segment.get(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices);
+    public IntPtr referenceNameSlotIndices() {
+        return new IntPtr(referenceNameSlotIndicesRaw());
     }
 
-    public void referenceNameSlotIndices(int value) {
-        segment.set(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices, value);
+    public void referenceNameSlotIndices(IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
+    }
+
+    public MemorySegment referenceNameSlotIndicesRaw() {
+        return segment.asSlice(OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
     }
 
     public @NativeType("VkBool32") @Unsigned int primaryReferenceCdfOnly() {
@@ -270,7 +274,7 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("rateControlGroup"),
         ValueLayout.JAVA_INT.withName("constantQIndex"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1PictureInfo.LAYOUT).withName("pStdPictureInfo"),
-        ValueLayout.JAVA_INT.withName("referenceNameSlotIndices"),
+        MemoryLayout.sequenceLayout(MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
         ValueLayout.JAVA_INT.withName("primaryReferenceCdfOnly"),
         ValueLayout.JAVA_INT.withName("generateObuExtensionHeader")
     );
@@ -292,7 +296,7 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     public static final OfInt LAYOUT$rateControlGroup = (OfInt) LAYOUT.select(PATH$rateControlGroup);
     public static final OfInt LAYOUT$constantQIndex = (OfInt) LAYOUT.select(PATH$constantQIndex);
     public static final AddressLayout LAYOUT$pStdPictureInfo = (AddressLayout) LAYOUT.select(PATH$pStdPictureInfo);
-    public static final OfInt LAYOUT$referenceNameSlotIndices = (OfInt) LAYOUT.select(PATH$referenceNameSlotIndices);
+    public static final SequenceLayout LAYOUT$referenceNameSlotIndices = (SequenceLayout) LAYOUT.select(PATH$referenceNameSlotIndices);
     public static final OfInt LAYOUT$primaryReferenceCdfOnly = (OfInt) LAYOUT.select(PATH$primaryReferenceCdfOnly);
     public static final OfInt LAYOUT$generateObuExtensionHeader = (OfInt) LAYOUT.select(PATH$generateObuExtensionHeader);
 

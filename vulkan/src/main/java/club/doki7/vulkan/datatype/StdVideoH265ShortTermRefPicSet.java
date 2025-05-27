@@ -33,8 +33,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t reserved3;
 ///     uint8_t num_negative_pics; // @link substring="num_negative_pics" target="#num_negative_pics"
 ///     uint8_t num_positive_pics; // @link substring="num_positive_pics" target="#num_positive_pics"
-///     uint16_t delta_poc_s0_minus1; // @link substring="delta_poc_s0_minus1" target="#delta_poc_s0_minus1"
-///     uint16_t delta_poc_s1_minus1; // @link substring="delta_poc_s1_minus1" target="#delta_poc_s1_minus1"
+///     uint16_t[STD_VIDEO_H265_MAX_DPB_SIZE] delta_poc_s0_minus1; // @link substring="delta_poc_s0_minus1" target="#delta_poc_s0_minus1"
+///     uint16_t[STD_VIDEO_H265_MAX_DPB_SIZE] delta_poc_s1_minus1; // @link substring="delta_poc_s1_minus1" target="#delta_poc_s1_minus1"
 /// } StdVideoH265ShortTermRefPicSet;
 /// }
 ///
@@ -223,20 +223,28 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$num_positive_pics, OFFSET$num_positive_pics, value);
     }
 
-    public @Unsigned short delta_poc_s0_minus1() {
-        return segment.get(LAYOUT$delta_poc_s0_minus1, OFFSET$delta_poc_s0_minus1);
+    public @Unsigned ShortPtr delta_poc_s0_minus1() {
+        return new ShortPtr(delta_poc_s0_minus1Raw());
     }
 
-    public void delta_poc_s0_minus1(@Unsigned short value) {
-        segment.set(LAYOUT$delta_poc_s0_minus1, OFFSET$delta_poc_s0_minus1, value);
+    public void delta_poc_s0_minus1(@Unsigned ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_s0_minus1, SIZE$delta_poc_s0_minus1);
     }
 
-    public @Unsigned short delta_poc_s1_minus1() {
-        return segment.get(LAYOUT$delta_poc_s1_minus1, OFFSET$delta_poc_s1_minus1);
+    public MemorySegment delta_poc_s0_minus1Raw() {
+        return segment.asSlice(OFFSET$delta_poc_s0_minus1, SIZE$delta_poc_s0_minus1);
     }
 
-    public void delta_poc_s1_minus1(@Unsigned short value) {
-        segment.set(LAYOUT$delta_poc_s1_minus1, OFFSET$delta_poc_s1_minus1, value);
+    public @Unsigned ShortPtr delta_poc_s1_minus1() {
+        return new ShortPtr(delta_poc_s1_minus1Raw());
+    }
+
+    public void delta_poc_s1_minus1(@Unsigned ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_s1_minus1, SIZE$delta_poc_s1_minus1);
+    }
+
+    public MemorySegment delta_poc_s1_minus1Raw() {
+        return segment.asSlice(OFFSET$delta_poc_s1_minus1, SIZE$delta_poc_s1_minus1);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -252,8 +260,8 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_BYTE.withName("reserved3"),
         ValueLayout.JAVA_BYTE.withName("num_negative_pics"),
         ValueLayout.JAVA_BYTE.withName("num_positive_pics"),
-        ValueLayout.JAVA_SHORT.withName("delta_poc_s0_minus1"),
-        ValueLayout.JAVA_SHORT.withName("delta_poc_s1_minus1")
+        MemoryLayout.sequenceLayout(H265_MAX_DPB_SIZE, ValueLayout.JAVA_SHORT).withName("delta_poc_s0_minus1"),
+        MemoryLayout.sequenceLayout(H265_MAX_DPB_SIZE, ValueLayout.JAVA_SHORT).withName("delta_poc_s1_minus1")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -278,8 +286,8 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
     public static final OfShort LAYOUT$used_by_curr_pic_s1_flag = (OfShort) LAYOUT.select(PATH$used_by_curr_pic_s1_flag);
     public static final OfByte LAYOUT$num_negative_pics = (OfByte) LAYOUT.select(PATH$num_negative_pics);
     public static final OfByte LAYOUT$num_positive_pics = (OfByte) LAYOUT.select(PATH$num_positive_pics);
-    public static final OfShort LAYOUT$delta_poc_s0_minus1 = (OfShort) LAYOUT.select(PATH$delta_poc_s0_minus1);
-    public static final OfShort LAYOUT$delta_poc_s1_minus1 = (OfShort) LAYOUT.select(PATH$delta_poc_s1_minus1);
+    public static final SequenceLayout LAYOUT$delta_poc_s0_minus1 = (SequenceLayout) LAYOUT.select(PATH$delta_poc_s0_minus1);
+    public static final SequenceLayout LAYOUT$delta_poc_s1_minus1 = (SequenceLayout) LAYOUT.select(PATH$delta_poc_s1_minus1);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$delta_idx_minus1 = LAYOUT$delta_idx_minus1.byteSize();

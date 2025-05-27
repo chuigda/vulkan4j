@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t frame_num; // @link substring="frame_num" target="#frame_num"
 ///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
 ///     uint8_t temporal_id; // @link substring="temporal_id" target="#temporal_id"
-///     uint8_t reserved1;
+///     uint8_t[3] reserved1;
 ///     StdVideoEncodeH264ReferenceListsInfo const* pRefLists; // @link substring="StdVideoEncodeH264ReferenceListsInfo" target="StdVideoEncodeH264ReferenceListsInfo" @link substring="pRefLists" target="#pRefLists"
 /// } StdVideoEncodeH264PictureInfo;
 /// }
@@ -249,7 +249,7 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("frame_num"),
         ValueLayout.JAVA_INT.withName("PicOrderCnt"),
         ValueLayout.JAVA_BYTE.withName("temporal_id"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264ReferenceListsInfo.LAYOUT).withName("pRefLists")
     );
     public static final long BYTES = LAYOUT.byteSize();

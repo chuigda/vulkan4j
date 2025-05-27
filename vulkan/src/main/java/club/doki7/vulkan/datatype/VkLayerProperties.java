@@ -21,10 +21,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkLayerProperties {
-///     char layerName; // @link substring="layerName" target="#layerName"
+///     char[VK_MAX_EXTENSION_NAME_SIZE] layerName; // @link substring="layerName" target="#layerName"
 ///     uint32_t specVersion; // @link substring="specVersion" target="#specVersion"
 ///     uint32_t implementationVersion; // @link substring="implementationVersion" target="#implementationVersion"
-///     char description; // @link substring="description" target="#description"
+///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 /// } VkLayerProperties;
 /// }
 ///
@@ -140,12 +140,16 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         return ret;
     }
 
-    public byte layerName() {
-        return segment.get(LAYOUT$layerName, OFFSET$layerName);
+    public BytePtr layerName() {
+        return new BytePtr(layerNameRaw());
     }
 
-    public void layerName(byte value) {
-        segment.set(LAYOUT$layerName, OFFSET$layerName, value);
+    public void layerName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, SIZE$layerName);
+    }
+
+    public MemorySegment layerNameRaw() {
+        return segment.asSlice(OFFSET$layerName, SIZE$layerName);
     }
 
     public @Unsigned int specVersion() {
@@ -164,19 +168,23 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         segment.set(LAYOUT$implementationVersion, OFFSET$implementationVersion, value);
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
     }
 
-    public void description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public void description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    }
+
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("layerName"),
+        MemoryLayout.sequenceLayout(MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layerName"),
         ValueLayout.JAVA_INT.withName("specVersion"),
         ValueLayout.JAVA_INT.withName("implementationVersion"),
-        ValueLayout.JAVA_BYTE.withName("description")
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -185,10 +193,10 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
     public static final PathElement PATH$implementationVersion = PathElement.groupElement("implementationVersion");
     public static final PathElement PATH$description = PathElement.groupElement("description");
 
-    public static final OfByte LAYOUT$layerName = (OfByte) LAYOUT.select(PATH$layerName);
+    public static final SequenceLayout LAYOUT$layerName = (SequenceLayout) LAYOUT.select(PATH$layerName);
     public static final OfInt LAYOUT$specVersion = (OfInt) LAYOUT.select(PATH$specVersion);
     public static final OfInt LAYOUT$implementationVersion = (OfInt) LAYOUT.select(PATH$implementationVersion);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
 
     public static final long SIZE$layerName = LAYOUT$layerName.byteSize();
     public static final long SIZE$specVersion = LAYOUT$specVersion.byteSize();

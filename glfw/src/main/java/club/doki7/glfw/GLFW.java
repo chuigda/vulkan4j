@@ -366,7 +366,7 @@ public final class GLFW {
                 xhot,
                 yhot
             );
-            return s.address() == 0 ? null : new GLFWcursor(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWcursor(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -425,7 +425,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 shape
             );
-            return s.address() == 0 ? null : new GLFWcursor(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWcursor(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -588,7 +588,7 @@ public final class GLFW {
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
                 (MemorySegment) (share != null ? share.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new GLFWwindow(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWwindow(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -919,7 +919,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1029,7 +1029,7 @@ public final class GLFW {
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new GLFWwindow(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWwindow(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1342,7 +1342,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 jid
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1433,7 +1433,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new GLFWgammaramp(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWgammaramp(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1569,7 +1569,7 @@ public final class GLFW {
                 jid,
                 (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new FloatPtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new FloatPtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1623,7 +1623,7 @@ public final class GLFW {
                 jid,
                 (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1675,7 +1675,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 jid
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1745,7 +1745,7 @@ public final class GLFW {
                 jid,
                 (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1787,7 +1787,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 jid
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -1953,7 +1953,7 @@ public final class GLFW {
                 key,
                 scancode
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -2076,7 +2076,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -2287,7 +2287,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new GLFWmonitor.Ptr(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWmonitor.Ptr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -2577,7 +2577,7 @@ public final class GLFW {
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new GLFWmonitor(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWmonitor(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -2684,7 +2684,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new PointerPtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new PointerPtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -2860,7 +2860,7 @@ public final class GLFW {
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -2899,7 +2899,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new GLFWvidmode(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWvidmode(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -2946,7 +2946,7 @@ public final class GLFW {
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL),
                 (MemorySegment) (count != null ? count.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new GLFWvidmode(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWvidmode(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3006,7 +3006,7 @@ public final class GLFW {
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new PointerPtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new PointerPtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3061,7 +3061,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new PointerPtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new PointerPtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3090,7 +3090,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3119,7 +3119,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (monitor != null ? monitor.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3338,7 +3338,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new GLFWmonitor(s);
+            return s.equals(MemorySegment.NULL) ? null : new GLFWmonitor(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3508,7 +3508,7 @@ public final class GLFW {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL)
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3591,7 +3591,7 @@ public final class GLFW {
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new PointerPtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new PointerPtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -3654,7 +3654,7 @@ public final class GLFW {
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }

@@ -21,7 +21,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkTransformMatrixKHR {
-///     float matrix; // @link substring="matrix" target="#matrix"
+///     float[4][3] matrix; // @link substring="matrix" target="#matrix"
 /// } VkTransformMatrixKHR;
 /// }
 ///
@@ -137,22 +137,26 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public float matrix() {
-        return segment.get(LAYOUT$matrix, OFFSET$matrix);
+    public FloatPtr matrix() {
+        return new FloatPtr(matrixRaw());
     }
 
-    public void matrix(float value) {
-        segment.set(LAYOUT$matrix, OFFSET$matrix, value);
+    public void matrix(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrix, SIZE$matrix);
+    }
+
+    public MemorySegment matrixRaw() {
+        return segment.asSlice(OFFSET$matrix, SIZE$matrix);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_FLOAT.withName("matrix")
+        MemoryLayout.sequenceLayout(3, MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT)).withName("matrix")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$matrix = PathElement.groupElement("matrix");
 
-    public static final OfFloat LAYOUT$matrix = (OfFloat) LAYOUT.select(PATH$matrix);
+    public static final SequenceLayout LAYOUT$matrix = (SequenceLayout) LAYOUT.select(PATH$matrix);
 
     public static final long SIZE$matrix = LAYOUT$matrix.byteSize();
 

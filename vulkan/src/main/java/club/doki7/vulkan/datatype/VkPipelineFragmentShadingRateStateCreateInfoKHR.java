@@ -24,7 +24,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkExtent2D fragmentSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="fragmentSize" target="#fragmentSize"
-///     VkFragmentShadingRateCombinerOpKHR combinerOps; // @link substring="VkFragmentShadingRateCombinerOpKHR" target="VkFragmentShadingRateCombinerOpKHR" @link substring="combinerOps" target="#combinerOps"
+///     VkFragmentShadingRateCombinerOpKHR[2] combinerOps; // @link substring="VkFragmentShadingRateCombinerOpKHR" target="VkFragmentShadingRateCombinerOpKHR" @link substring="combinerOps" target="#combinerOps"
 /// } VkPipelineFragmentShadingRateStateCreateInfoKHR;
 /// }
 ///
@@ -187,19 +187,23 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, SIZE$fragmentSize);
     }
 
-    public @EnumType(VkFragmentShadingRateCombinerOpKHR.class) int combinerOps() {
-        return segment.get(LAYOUT$combinerOps, OFFSET$combinerOps);
+    public @EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr combinerOps() {
+        return new IntPtr(combinerOpsRaw());
     }
 
-    public void combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) int value) {
-        segment.set(LAYOUT$combinerOps, OFFSET$combinerOps, value);
+    public void combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$combinerOps, SIZE$combinerOps);
+    }
+
+    public MemorySegment combinerOpsRaw() {
+        return segment.asSlice(OFFSET$combinerOps, SIZE$combinerOps);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         VkExtent2D.LAYOUT.withName("fragmentSize"),
-        ValueLayout.JAVA_INT.withName("combinerOps")
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -211,7 +215,7 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final StructLayout LAYOUT$fragmentSize = (StructLayout) LAYOUT.select(PATH$fragmentSize);
-    public static final OfInt LAYOUT$combinerOps = (OfInt) LAYOUT.select(PATH$combinerOps);
+    public static final SequenceLayout LAYOUT$combinerOps = (SequenceLayout) LAYOUT.select(PATH$combinerOps);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

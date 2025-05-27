@@ -21,7 +21,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265PredictorPaletteEntries {
-///     uint16_t PredictorPaletteEntries; // @link substring="PredictorPaletteEntries" target="#PredictorPaletteEntries"
+///     uint16_t[STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE][STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE] PredictorPaletteEntries; // @link substring="PredictorPaletteEntries" target="#PredictorPaletteEntries"
 /// } StdVideoH265PredictorPaletteEntries;
 /// }
 ///
@@ -135,22 +135,26 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
         return ret;
     }
 
-    public @Unsigned short PredictorPaletteEntries() {
-        return segment.get(LAYOUT$PredictorPaletteEntries, OFFSET$PredictorPaletteEntries);
+    public @Unsigned ShortPtr PredictorPaletteEntries() {
+        return new ShortPtr(PredictorPaletteEntriesRaw());
     }
 
-    public void PredictorPaletteEntries(@Unsigned short value) {
-        segment.set(LAYOUT$PredictorPaletteEntries, OFFSET$PredictorPaletteEntries, value);
+    public void PredictorPaletteEntries(@Unsigned ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$PredictorPaletteEntries, SIZE$PredictorPaletteEntries);
+    }
+
+    public MemorySegment PredictorPaletteEntriesRaw() {
+        return segment.asSlice(OFFSET$PredictorPaletteEntries, SIZE$PredictorPaletteEntries);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_SHORT.withName("PredictorPaletteEntries")
+        MemoryLayout.sequenceLayout(H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE, MemoryLayout.sequenceLayout(H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE, ValueLayout.JAVA_SHORT)).withName("PredictorPaletteEntries")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$PredictorPaletteEntries = PathElement.groupElement("PredictorPaletteEntries");
 
-    public static final OfShort LAYOUT$PredictorPaletteEntries = (OfShort) LAYOUT.select(PATH$PredictorPaletteEntries);
+    public static final SequenceLayout LAYOUT$PredictorPaletteEntries = (SequenceLayout) LAYOUT.select(PATH$PredictorPaletteEntries);
 
     public static final long SIZE$PredictorPaletteEntries = LAYOUT$PredictorPaletteEntries.byteSize();
 

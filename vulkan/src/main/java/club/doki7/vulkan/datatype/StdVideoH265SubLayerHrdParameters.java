@@ -21,10 +21,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265SubLayerHrdParameters {
-///     uint32_t bit_rate_value_minus1; // @link substring="bit_rate_value_minus1" target="#bit_rate_value_minus1"
-///     uint32_t cpb_size_value_minus1; // @link substring="cpb_size_value_minus1" target="#cpb_size_value_minus1"
-///     uint32_t cpb_size_du_value_minus1; // @link substring="cpb_size_du_value_minus1" target="#cpb_size_du_value_minus1"
-///     uint32_t bit_rate_du_value_minus1; // @link substring="bit_rate_du_value_minus1" target="#bit_rate_du_value_minus1"
+///     uint32_t[STD_VIDEO_H265_CPB_CNT_LIST_SIZE] bit_rate_value_minus1; // @link substring="bit_rate_value_minus1" target="#bit_rate_value_minus1"
+///     uint32_t[STD_VIDEO_H265_CPB_CNT_LIST_SIZE] cpb_size_value_minus1; // @link substring="cpb_size_value_minus1" target="#cpb_size_value_minus1"
+///     uint32_t[STD_VIDEO_H265_CPB_CNT_LIST_SIZE] cpb_size_du_value_minus1; // @link substring="cpb_size_du_value_minus1" target="#cpb_size_du_value_minus1"
+///     uint32_t[STD_VIDEO_H265_CPB_CNT_LIST_SIZE] bit_rate_du_value_minus1; // @link substring="bit_rate_du_value_minus1" target="#bit_rate_du_value_minus1"
 ///     uint32_t cbr_flag; // @link substring="cbr_flag" target="#cbr_flag"
 /// } StdVideoH265SubLayerHrdParameters;
 /// }
@@ -139,36 +139,52 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return ret;
     }
 
-    public @Unsigned int bit_rate_value_minus1() {
-        return segment.get(LAYOUT$bit_rate_value_minus1, OFFSET$bit_rate_value_minus1);
+    public @Unsigned IntPtr bit_rate_value_minus1() {
+        return new IntPtr(bit_rate_value_minus1Raw());
     }
 
-    public void bit_rate_value_minus1(@Unsigned int value) {
-        segment.set(LAYOUT$bit_rate_value_minus1, OFFSET$bit_rate_value_minus1, value);
+    public void bit_rate_value_minus1(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
     }
 
-    public @Unsigned int cpb_size_value_minus1() {
-        return segment.get(LAYOUT$cpb_size_value_minus1, OFFSET$cpb_size_value_minus1);
+    public MemorySegment bit_rate_value_minus1Raw() {
+        return segment.asSlice(OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
     }
 
-    public void cpb_size_value_minus1(@Unsigned int value) {
-        segment.set(LAYOUT$cpb_size_value_minus1, OFFSET$cpb_size_value_minus1, value);
+    public @Unsigned IntPtr cpb_size_value_minus1() {
+        return new IntPtr(cpb_size_value_minus1Raw());
     }
 
-    public @Unsigned int cpb_size_du_value_minus1() {
-        return segment.get(LAYOUT$cpb_size_du_value_minus1, OFFSET$cpb_size_du_value_minus1);
+    public void cpb_size_value_minus1(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
     }
 
-    public void cpb_size_du_value_minus1(@Unsigned int value) {
-        segment.set(LAYOUT$cpb_size_du_value_minus1, OFFSET$cpb_size_du_value_minus1, value);
+    public MemorySegment cpb_size_value_minus1Raw() {
+        return segment.asSlice(OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
     }
 
-    public @Unsigned int bit_rate_du_value_minus1() {
-        return segment.get(LAYOUT$bit_rate_du_value_minus1, OFFSET$bit_rate_du_value_minus1);
+    public @Unsigned IntPtr cpb_size_du_value_minus1() {
+        return new IntPtr(cpb_size_du_value_minus1Raw());
     }
 
-    public void bit_rate_du_value_minus1(@Unsigned int value) {
-        segment.set(LAYOUT$bit_rate_du_value_minus1, OFFSET$bit_rate_du_value_minus1, value);
+    public void cpb_size_du_value_minus1(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_du_value_minus1, SIZE$cpb_size_du_value_minus1);
+    }
+
+    public MemorySegment cpb_size_du_value_minus1Raw() {
+        return segment.asSlice(OFFSET$cpb_size_du_value_minus1, SIZE$cpb_size_du_value_minus1);
+    }
+
+    public @Unsigned IntPtr bit_rate_du_value_minus1() {
+        return new IntPtr(bit_rate_du_value_minus1Raw());
+    }
+
+    public void bit_rate_du_value_minus1(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_du_value_minus1, SIZE$bit_rate_du_value_minus1);
+    }
+
+    public MemorySegment bit_rate_du_value_minus1Raw() {
+        return segment.asSlice(OFFSET$bit_rate_du_value_minus1, SIZE$bit_rate_du_value_minus1);
     }
 
     public @Unsigned int cbr_flag() {
@@ -180,10 +196,10 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("bit_rate_value_minus1"),
-        ValueLayout.JAVA_INT.withName("cpb_size_value_minus1"),
-        ValueLayout.JAVA_INT.withName("cpb_size_du_value_minus1"),
-        ValueLayout.JAVA_INT.withName("bit_rate_du_value_minus1"),
+        MemoryLayout.sequenceLayout(H265_CPB_CNT_LIST_SIZE, ValueLayout.JAVA_INT).withName("bit_rate_value_minus1"),
+        MemoryLayout.sequenceLayout(H265_CPB_CNT_LIST_SIZE, ValueLayout.JAVA_INT).withName("cpb_size_value_minus1"),
+        MemoryLayout.sequenceLayout(H265_CPB_CNT_LIST_SIZE, ValueLayout.JAVA_INT).withName("cpb_size_du_value_minus1"),
+        MemoryLayout.sequenceLayout(H265_CPB_CNT_LIST_SIZE, ValueLayout.JAVA_INT).withName("bit_rate_du_value_minus1"),
         ValueLayout.JAVA_INT.withName("cbr_flag")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -194,10 +210,10 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
     public static final PathElement PATH$bit_rate_du_value_minus1 = PathElement.groupElement("bit_rate_du_value_minus1");
     public static final PathElement PATH$cbr_flag = PathElement.groupElement("cbr_flag");
 
-    public static final OfInt LAYOUT$bit_rate_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_value_minus1);
-    public static final OfInt LAYOUT$cpb_size_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_value_minus1);
-    public static final OfInt LAYOUT$cpb_size_du_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_du_value_minus1);
-    public static final OfInt LAYOUT$bit_rate_du_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_du_value_minus1);
+    public static final SequenceLayout LAYOUT$bit_rate_value_minus1 = (SequenceLayout) LAYOUT.select(PATH$bit_rate_value_minus1);
+    public static final SequenceLayout LAYOUT$cpb_size_value_minus1 = (SequenceLayout) LAYOUT.select(PATH$cpb_size_value_minus1);
+    public static final SequenceLayout LAYOUT$cpb_size_du_value_minus1 = (SequenceLayout) LAYOUT.select(PATH$cpb_size_du_value_minus1);
+    public static final SequenceLayout LAYOUT$bit_rate_du_value_minus1 = (SequenceLayout) LAYOUT.select(PATH$bit_rate_du_value_minus1);
     public static final OfInt LAYOUT$cbr_flag = (OfInt) LAYOUT.select(PATH$cbr_flag);
 
     public static final long SIZE$bit_rate_value_minus1 = LAYOUT$bit_rate_value_minus1.byteSize();

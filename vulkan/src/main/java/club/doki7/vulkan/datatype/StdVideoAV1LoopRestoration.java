@@ -21,8 +21,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1LoopRestoration {
-///     StdVideoAV1FrameRestorationType FrameRestorationType; // @link substring="StdVideoAV1FrameRestorationType" target="StdVideoAV1FrameRestorationType" @link substring="FrameRestorationType" target="#FrameRestorationType"
-///     uint16_t LoopRestorationSize; // @link substring="LoopRestorationSize" target="#LoopRestorationSize"
+///     StdVideoAV1FrameRestorationType[STD_VIDEO_AV1_MAX_NUM_PLANES] FrameRestorationType; // @link substring="StdVideoAV1FrameRestorationType" target="StdVideoAV1FrameRestorationType" @link substring="FrameRestorationType" target="#FrameRestorationType"
+///     uint16_t[STD_VIDEO_AV1_MAX_NUM_PLANES] LoopRestorationSize; // @link substring="LoopRestorationSize" target="#LoopRestorationSize"
 /// } StdVideoAV1LoopRestoration;
 /// }
 ///
@@ -136,33 +136,41 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public @EnumType(StdVideoAV1FrameRestorationType.class) int FrameRestorationType() {
-        return segment.get(LAYOUT$FrameRestorationType, OFFSET$FrameRestorationType);
+    public @EnumType(StdVideoAV1FrameRestorationType.class) IntPtr FrameRestorationType() {
+        return new IntPtr(FrameRestorationTypeRaw());
     }
 
-    public void FrameRestorationType(@EnumType(StdVideoAV1FrameRestorationType.class) int value) {
-        segment.set(LAYOUT$FrameRestorationType, OFFSET$FrameRestorationType, value);
+    public void FrameRestorationType(@EnumType(StdVideoAV1FrameRestorationType.class) IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$FrameRestorationType, SIZE$FrameRestorationType);
     }
 
-    public @Unsigned short LoopRestorationSize() {
-        return segment.get(LAYOUT$LoopRestorationSize, OFFSET$LoopRestorationSize);
+    public MemorySegment FrameRestorationTypeRaw() {
+        return segment.asSlice(OFFSET$FrameRestorationType, SIZE$FrameRestorationType);
     }
 
-    public void LoopRestorationSize(@Unsigned short value) {
-        segment.set(LAYOUT$LoopRestorationSize, OFFSET$LoopRestorationSize, value);
+    public @Unsigned ShortPtr LoopRestorationSize() {
+        return new ShortPtr(LoopRestorationSizeRaw());
+    }
+
+    public void LoopRestorationSize(@Unsigned ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$LoopRestorationSize, SIZE$LoopRestorationSize);
+    }
+
+    public MemorySegment LoopRestorationSizeRaw() {
+        return segment.asSlice(OFFSET$LoopRestorationSize, SIZE$LoopRestorationSize);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("FrameRestorationType"),
-        ValueLayout.JAVA_SHORT.withName("LoopRestorationSize")
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_PLANES, ValueLayout.JAVA_INT).withName("FrameRestorationType"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_PLANES, ValueLayout.JAVA_SHORT).withName("LoopRestorationSize")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$FrameRestorationType = PathElement.groupElement("FrameRestorationType");
     public static final PathElement PATH$LoopRestorationSize = PathElement.groupElement("LoopRestorationSize");
 
-    public static final OfInt LAYOUT$FrameRestorationType = (OfInt) LAYOUT.select(PATH$FrameRestorationType);
-    public static final OfShort LAYOUT$LoopRestorationSize = (OfShort) LAYOUT.select(PATH$LoopRestorationSize);
+    public static final SequenceLayout LAYOUT$FrameRestorationType = (SequenceLayout) LAYOUT.select(PATH$FrameRestorationType);
+    public static final SequenceLayout LAYOUT$LoopRestorationSize = (SequenceLayout) LAYOUT.select(PATH$LoopRestorationSize);
 
     public static final long SIZE$FrameRestorationType = LAYOUT$FrameRestorationType.byteSize();
     public static final long SIZE$LoopRestorationSize = LAYOUT$LoopRestorationSize.byteSize();

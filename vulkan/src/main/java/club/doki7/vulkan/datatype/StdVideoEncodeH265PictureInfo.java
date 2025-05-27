@@ -29,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t short_term_ref_pic_set_idx; // @link substring="short_term_ref_pic_set_idx" target="#short_term_ref_pic_set_idx"
 ///     int32_t PicOrderCntVal; // @link substring="PicOrderCntVal" target="#PicOrderCntVal"
 ///     uint8_t TemporalId; // @link substring="TemporalId" target="#TemporalId"
-///     uint8_t reserved1;
+///     uint8_t[7] reserved1;
 ///     StdVideoEncodeH265ReferenceListsInfo const* pRefLists; // @link substring="StdVideoEncodeH265ReferenceListsInfo" target="StdVideoEncodeH265ReferenceListsInfo" @link substring="pRefLists" target="#pRefLists"
 ///     StdVideoH265ShortTermRefPicSet const* pShortTermRefPicSet; // @link substring="StdVideoH265ShortTermRefPicSet" target="StdVideoH265ShortTermRefPicSet" @link substring="pShortTermRefPicSet" target="#pShortTermRefPicSet"
 ///     StdVideoEncodeH265LongTermRefPics const* pLongTermRefPics; // @link substring="StdVideoEncodeH265LongTermRefPics" target="StdVideoEncodeH265LongTermRefPics" @link substring="pLongTermRefPics" target="#pLongTermRefPics"
@@ -313,7 +313,7 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_BYTE.withName("short_term_ref_pic_set_idx"),
         ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
         ValueLayout.JAVA_BYTE.withName("TemporalId"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH265ReferenceListsInfo.LAYOUT).withName("pRefLists"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ShortTermRefPicSet.LAYOUT).withName("pShortTermRefPicSet"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH265LongTermRefPics.LAYOUT).withName("pLongTermRefPics")

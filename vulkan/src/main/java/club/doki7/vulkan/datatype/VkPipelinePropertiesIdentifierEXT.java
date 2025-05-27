@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPipelinePropertiesIdentifierEXT {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     uint8_t pipelineIdentifier; // @link substring="pipelineIdentifier" target="#pipelineIdentifier"
+///     uint8_t[VK_UUID_SIZE] pipelineIdentifier; // @link substring="pipelineIdentifier" target="#pipelineIdentifier"
 /// } VkPipelinePropertiesIdentifierEXT;
 /// }
 ///
@@ -178,18 +178,22 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned byte pipelineIdentifier() {
-        return segment.get(LAYOUT$pipelineIdentifier, OFFSET$pipelineIdentifier);
+    public @Unsigned BytePtr pipelineIdentifier() {
+        return new BytePtr(pipelineIdentifierRaw());
     }
 
-    public void pipelineIdentifier(@Unsigned byte value) {
-        segment.set(LAYOUT$pipelineIdentifier, OFFSET$pipelineIdentifier, value);
+    public void pipelineIdentifier(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
+    }
+
+    public MemorySegment pipelineIdentifierRaw() {
+        return segment.asSlice(OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("pipelineIdentifier")
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -199,7 +203,7 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$pipelineIdentifier = (OfByte) LAYOUT.select(PATH$pipelineIdentifier);
+    public static final SequenceLayout LAYOUT$pipelineIdentifier = (SequenceLayout) LAYOUT.select(PATH$pipelineIdentifier);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

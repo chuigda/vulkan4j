@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPhysicalDeviceShaderObjectPropertiesEXT {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     uint8_t shaderBinaryUUID; // @link substring="shaderBinaryUUID" target="#shaderBinaryUUID"
+///     uint8_t[VK_UUID_SIZE] shaderBinaryUUID; // @link substring="shaderBinaryUUID" target="#shaderBinaryUUID"
 ///     uint32_t shaderBinaryVersion; // @link substring="shaderBinaryVersion" target="#shaderBinaryVersion"
 /// } VkPhysicalDeviceShaderObjectPropertiesEXT;
 /// }
@@ -179,12 +179,16 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned byte shaderBinaryUUID() {
-        return segment.get(LAYOUT$shaderBinaryUUID, OFFSET$shaderBinaryUUID);
+    public @Unsigned BytePtr shaderBinaryUUID() {
+        return new BytePtr(shaderBinaryUUIDRaw());
     }
 
-    public void shaderBinaryUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$shaderBinaryUUID, OFFSET$shaderBinaryUUID, value);
+    public void shaderBinaryUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderBinaryUUID, SIZE$shaderBinaryUUID);
+    }
+
+    public MemorySegment shaderBinaryUUIDRaw() {
+        return segment.asSlice(OFFSET$shaderBinaryUUID, SIZE$shaderBinaryUUID);
     }
 
     public @Unsigned int shaderBinaryVersion() {
@@ -198,7 +202,7 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("shaderBinaryUUID"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("shaderBinaryUUID"),
         ValueLayout.JAVA_INT.withName("shaderBinaryVersion")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -210,7 +214,7 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$shaderBinaryUUID = (OfByte) LAYOUT.select(PATH$shaderBinaryUUID);
+    public static final SequenceLayout LAYOUT$shaderBinaryUUID = (SequenceLayout) LAYOUT.select(PATH$shaderBinaryUUID);
     public static final OfInt LAYOUT$shaderBinaryVersion = (OfInt) LAYOUT.select(PATH$shaderBinaryVersion);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

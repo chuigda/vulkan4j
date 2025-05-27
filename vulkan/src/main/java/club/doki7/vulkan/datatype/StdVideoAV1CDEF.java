@@ -23,10 +23,10 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct StdVideoAV1CDEF {
 ///     uint8_t cdef_damping_minus_3; // @link substring="cdef_damping_minus_3" target="#cdef_damping_minus_3"
 ///     uint8_t cdef_bits; // @link substring="cdef_bits" target="#cdef_bits"
-///     uint8_t cdef_y_pri_strength; // @link substring="cdef_y_pri_strength" target="#cdef_y_pri_strength"
-///     uint8_t cdef_y_sec_strength; // @link substring="cdef_y_sec_strength" target="#cdef_y_sec_strength"
-///     uint8_t cdef_uv_pri_strength; // @link substring="cdef_uv_pri_strength" target="#cdef_uv_pri_strength"
-///     uint8_t cdef_uv_sec_strength; // @link substring="cdef_uv_sec_strength" target="#cdef_uv_sec_strength"
+///     uint8_t[STD_VIDEO_AV1_MAX_CDEF_FILTER_STRENGTHS] cdef_y_pri_strength; // @link substring="cdef_y_pri_strength" target="#cdef_y_pri_strength"
+///     uint8_t[STD_VIDEO_AV1_MAX_CDEF_FILTER_STRENGTHS] cdef_y_sec_strength; // @link substring="cdef_y_sec_strength" target="#cdef_y_sec_strength"
+///     uint8_t[STD_VIDEO_AV1_MAX_CDEF_FILTER_STRENGTHS] cdef_uv_pri_strength; // @link substring="cdef_uv_pri_strength" target="#cdef_uv_pri_strength"
+///     uint8_t[STD_VIDEO_AV1_MAX_CDEF_FILTER_STRENGTHS] cdef_uv_sec_strength; // @link substring="cdef_uv_sec_strength" target="#cdef_uv_sec_strength"
 /// } StdVideoAV1CDEF;
 /// }
 ///
@@ -156,45 +156,61 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
         segment.set(LAYOUT$cdef_bits, OFFSET$cdef_bits, value);
     }
 
-    public @Unsigned byte cdef_y_pri_strength() {
-        return segment.get(LAYOUT$cdef_y_pri_strength, OFFSET$cdef_y_pri_strength);
+    public @Unsigned BytePtr cdef_y_pri_strength() {
+        return new BytePtr(cdef_y_pri_strengthRaw());
     }
 
-    public void cdef_y_pri_strength(@Unsigned byte value) {
-        segment.set(LAYOUT$cdef_y_pri_strength, OFFSET$cdef_y_pri_strength, value);
+    public void cdef_y_pri_strength(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_y_pri_strength, SIZE$cdef_y_pri_strength);
     }
 
-    public @Unsigned byte cdef_y_sec_strength() {
-        return segment.get(LAYOUT$cdef_y_sec_strength, OFFSET$cdef_y_sec_strength);
+    public MemorySegment cdef_y_pri_strengthRaw() {
+        return segment.asSlice(OFFSET$cdef_y_pri_strength, SIZE$cdef_y_pri_strength);
     }
 
-    public void cdef_y_sec_strength(@Unsigned byte value) {
-        segment.set(LAYOUT$cdef_y_sec_strength, OFFSET$cdef_y_sec_strength, value);
+    public @Unsigned BytePtr cdef_y_sec_strength() {
+        return new BytePtr(cdef_y_sec_strengthRaw());
     }
 
-    public @Unsigned byte cdef_uv_pri_strength() {
-        return segment.get(LAYOUT$cdef_uv_pri_strength, OFFSET$cdef_uv_pri_strength);
+    public void cdef_y_sec_strength(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_y_sec_strength, SIZE$cdef_y_sec_strength);
     }
 
-    public void cdef_uv_pri_strength(@Unsigned byte value) {
-        segment.set(LAYOUT$cdef_uv_pri_strength, OFFSET$cdef_uv_pri_strength, value);
+    public MemorySegment cdef_y_sec_strengthRaw() {
+        return segment.asSlice(OFFSET$cdef_y_sec_strength, SIZE$cdef_y_sec_strength);
     }
 
-    public @Unsigned byte cdef_uv_sec_strength() {
-        return segment.get(LAYOUT$cdef_uv_sec_strength, OFFSET$cdef_uv_sec_strength);
+    public @Unsigned BytePtr cdef_uv_pri_strength() {
+        return new BytePtr(cdef_uv_pri_strengthRaw());
     }
 
-    public void cdef_uv_sec_strength(@Unsigned byte value) {
-        segment.set(LAYOUT$cdef_uv_sec_strength, OFFSET$cdef_uv_sec_strength, value);
+    public void cdef_uv_pri_strength(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_uv_pri_strength, SIZE$cdef_uv_pri_strength);
+    }
+
+    public MemorySegment cdef_uv_pri_strengthRaw() {
+        return segment.asSlice(OFFSET$cdef_uv_pri_strength, SIZE$cdef_uv_pri_strength);
+    }
+
+    public @Unsigned BytePtr cdef_uv_sec_strength() {
+        return new BytePtr(cdef_uv_sec_strengthRaw());
+    }
+
+    public void cdef_uv_sec_strength(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cdef_uv_sec_strength, SIZE$cdef_uv_sec_strength);
+    }
+
+    public MemorySegment cdef_uv_sec_strengthRaw() {
+        return segment.asSlice(OFFSET$cdef_uv_sec_strength, SIZE$cdef_uv_sec_strength);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_BYTE.withName("cdef_damping_minus_3"),
         ValueLayout.JAVA_BYTE.withName("cdef_bits"),
-        ValueLayout.JAVA_BYTE.withName("cdef_y_pri_strength"),
-        ValueLayout.JAVA_BYTE.withName("cdef_y_sec_strength"),
-        ValueLayout.JAVA_BYTE.withName("cdef_uv_pri_strength"),
-        ValueLayout.JAVA_BYTE.withName("cdef_uv_sec_strength")
+        MemoryLayout.sequenceLayout(AV1_MAX_CDEF_FILTER_STRENGTHS, ValueLayout.JAVA_BYTE).withName("cdef_y_pri_strength"),
+        MemoryLayout.sequenceLayout(AV1_MAX_CDEF_FILTER_STRENGTHS, ValueLayout.JAVA_BYTE).withName("cdef_y_sec_strength"),
+        MemoryLayout.sequenceLayout(AV1_MAX_CDEF_FILTER_STRENGTHS, ValueLayout.JAVA_BYTE).withName("cdef_uv_pri_strength"),
+        MemoryLayout.sequenceLayout(AV1_MAX_CDEF_FILTER_STRENGTHS, ValueLayout.JAVA_BYTE).withName("cdef_uv_sec_strength")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -207,10 +223,10 @@ public record StdVideoAV1CDEF(@NotNull MemorySegment segment) implements IStdVid
 
     public static final OfByte LAYOUT$cdef_damping_minus_3 = (OfByte) LAYOUT.select(PATH$cdef_damping_minus_3);
     public static final OfByte LAYOUT$cdef_bits = (OfByte) LAYOUT.select(PATH$cdef_bits);
-    public static final OfByte LAYOUT$cdef_y_pri_strength = (OfByte) LAYOUT.select(PATH$cdef_y_pri_strength);
-    public static final OfByte LAYOUT$cdef_y_sec_strength = (OfByte) LAYOUT.select(PATH$cdef_y_sec_strength);
-    public static final OfByte LAYOUT$cdef_uv_pri_strength = (OfByte) LAYOUT.select(PATH$cdef_uv_pri_strength);
-    public static final OfByte LAYOUT$cdef_uv_sec_strength = (OfByte) LAYOUT.select(PATH$cdef_uv_sec_strength);
+    public static final SequenceLayout LAYOUT$cdef_y_pri_strength = (SequenceLayout) LAYOUT.select(PATH$cdef_y_pri_strength);
+    public static final SequenceLayout LAYOUT$cdef_y_sec_strength = (SequenceLayout) LAYOUT.select(PATH$cdef_y_sec_strength);
+    public static final SequenceLayout LAYOUT$cdef_uv_pri_strength = (SequenceLayout) LAYOUT.select(PATH$cdef_uv_pri_strength);
+    public static final SequenceLayout LAYOUT$cdef_uv_sec_strength = (SequenceLayout) LAYOUT.select(PATH$cdef_uv_sec_strength);
 
     public static final long SIZE$cdef_damping_minus_3 = LAYOUT$cdef_damping_minus_3.byteSize();
     public static final long SIZE$cdef_bits = LAYOUT$cdef_bits.byteSize();

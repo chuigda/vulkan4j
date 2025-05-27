@@ -22,7 +22,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPartitionedAccelerationStructureWriteInstanceDataNV {
 ///     VkTransformMatrixKHR transform; // @link substring="VkTransformMatrixKHR" target="VkTransformMatrixKHR" @link substring="transform" target="#transform"
-///     float explicitAABB; // @link substring="explicitAABB" target="#explicitAABB"
+///     float[6] explicitAABB; // @link substring="explicitAABB" target="#explicitAABB"
 ///     uint32_t instanceID; // @link substring="instanceID" target="#instanceID"
 ///     uint32_t instanceMask; // @link substring="instanceMask" target="#instanceMask"
 ///     uint32_t instanceContributionToHitGroupIndex; // @link substring="instanceContributionToHitGroupIndex" target="#instanceContributionToHitGroupIndex"
@@ -153,12 +153,16 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, SIZE$transform);
     }
 
-    public float explicitAABB() {
-        return segment.get(LAYOUT$explicitAABB, OFFSET$explicitAABB);
+    public FloatPtr explicitAABB() {
+        return new FloatPtr(explicitAABBRaw());
     }
 
-    public void explicitAABB(float value) {
-        segment.set(LAYOUT$explicitAABB, OFFSET$explicitAABB, value);
+    public void explicitAABB(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$explicitAABB, SIZE$explicitAABB);
+    }
+
+    public MemorySegment explicitAABBRaw() {
+        return segment.asSlice(OFFSET$explicitAABB, SIZE$explicitAABB);
     }
 
     public @Unsigned int instanceID() {
@@ -219,7 +223,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         VkTransformMatrixKHR.LAYOUT.withName("transform"),
-        ValueLayout.JAVA_FLOAT.withName("explicitAABB"),
+        MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_FLOAT).withName("explicitAABB"),
         ValueLayout.JAVA_INT.withName("instanceID"),
         ValueLayout.JAVA_INT.withName("instanceMask"),
         ValueLayout.JAVA_INT.withName("instanceContributionToHitGroupIndex"),
@@ -241,7 +245,7 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
     public static final PathElement PATH$accelerationStructure = PathElement.groupElement("accelerationStructure");
 
     public static final StructLayout LAYOUT$transform = (StructLayout) LAYOUT.select(PATH$transform);
-    public static final OfFloat LAYOUT$explicitAABB = (OfFloat) LAYOUT.select(PATH$explicitAABB);
+    public static final SequenceLayout LAYOUT$explicitAABB = (SequenceLayout) LAYOUT.select(PATH$explicitAABB);
     public static final OfInt LAYOUT$instanceID = (OfInt) LAYOUT.select(PATH$instanceID);
     public static final OfInt LAYOUT$instanceMask = (OfInt) LAYOUT.select(PATH$instanceMask);
     public static final OfInt LAYOUT$instanceContributionToHitGroupIndex = (OfInt) LAYOUT.select(PATH$instanceContributionToHitGroupIndex);

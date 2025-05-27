@@ -22,7 +22,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265LongTermRefPicsSps {
 ///     uint32_t used_by_curr_pic_lt_sps_flag; // @link substring="used_by_curr_pic_lt_sps_flag" target="#used_by_curr_pic_lt_sps_flag"
-///     uint32_t lt_ref_pic_poc_lsb_sps; // @link substring="lt_ref_pic_poc_lsb_sps" target="#lt_ref_pic_poc_lsb_sps"
+///     uint32_t[STD_VIDEO_H265_MAX_LONG_TERM_REF_PICS_SPS] lt_ref_pic_poc_lsb_sps; // @link substring="lt_ref_pic_poc_lsb_sps" target="#lt_ref_pic_poc_lsb_sps"
 /// } StdVideoH265LongTermRefPicsSps;
 /// }
 ///
@@ -144,17 +144,21 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag, value);
     }
 
-    public @Unsigned int lt_ref_pic_poc_lsb_sps() {
-        return segment.get(LAYOUT$lt_ref_pic_poc_lsb_sps, OFFSET$lt_ref_pic_poc_lsb_sps);
+    public @Unsigned IntPtr lt_ref_pic_poc_lsb_sps() {
+        return new IntPtr(lt_ref_pic_poc_lsb_spsRaw());
     }
 
-    public void lt_ref_pic_poc_lsb_sps(@Unsigned int value) {
-        segment.set(LAYOUT$lt_ref_pic_poc_lsb_sps, OFFSET$lt_ref_pic_poc_lsb_sps, value);
+    public void lt_ref_pic_poc_lsb_sps(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lt_ref_pic_poc_lsb_sps, SIZE$lt_ref_pic_poc_lsb_sps);
+    }
+
+    public MemorySegment lt_ref_pic_poc_lsb_spsRaw() {
+        return segment.asSlice(OFFSET$lt_ref_pic_poc_lsb_sps, SIZE$lt_ref_pic_poc_lsb_sps);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("used_by_curr_pic_lt_sps_flag"),
-        ValueLayout.JAVA_INT.withName("lt_ref_pic_poc_lsb_sps")
+        MemoryLayout.sequenceLayout(H265_MAX_LONG_TERM_REF_PICS_SPS, ValueLayout.JAVA_INT).withName("lt_ref_pic_poc_lsb_sps")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -162,7 +166,7 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
     public static final PathElement PATH$lt_ref_pic_poc_lsb_sps = PathElement.groupElement("lt_ref_pic_poc_lsb_sps");
 
     public static final OfInt LAYOUT$used_by_curr_pic_lt_sps_flag = (OfInt) LAYOUT.select(PATH$used_by_curr_pic_lt_sps_flag);
-    public static final OfInt LAYOUT$lt_ref_pic_poc_lsb_sps = (OfInt) LAYOUT.select(PATH$lt_ref_pic_poc_lsb_sps);
+    public static final SequenceLayout LAYOUT$lt_ref_pic_poc_lsb_sps = (SequenceLayout) LAYOUT.select(PATH$lt_ref_pic_poc_lsb_sps);
 
     public static final long SIZE$used_by_curr_pic_lt_sps_flag = LAYOUT$used_by_curr_pic_lt_sps_flag.byteSize();
     public static final long SIZE$lt_ref_pic_poc_lsb_sps = LAYOUT$lt_ref_pic_poc_lsb_sps.byteSize();

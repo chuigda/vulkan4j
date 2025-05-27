@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkLogicOp logicOp; // @link substring="VkLogicOp" target="VkLogicOp" @link substring="logicOp" target="#logicOp"
 ///     uint32_t attachmentCount; // optional // @link substring="attachmentCount" target="#attachmentCount"
 ///     VkPipelineColorBlendAttachmentState const* pAttachments; // optional // @link substring="VkPipelineColorBlendAttachmentState" target="VkPipelineColorBlendAttachmentState" @link substring="pAttachments" target="#pAttachments"
-///     float blendConstants; // @link substring="blendConstants" target="#blendConstants"
+///     float[4] blendConstants; // @link substring="blendConstants" target="#blendConstants"
 /// } VkPipelineColorBlendStateCreateInfo;
 /// }
 ///
@@ -246,12 +246,16 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$pAttachments, OFFSET$pAttachments, value);
     }
 
-    public float blendConstants() {
-        return segment.get(LAYOUT$blendConstants, OFFSET$blendConstants);
+    public FloatPtr blendConstants() {
+        return new FloatPtr(blendConstantsRaw());
     }
 
-    public void blendConstants(float value) {
-        segment.set(LAYOUT$blendConstants, OFFSET$blendConstants, value);
+    public void blendConstants(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$blendConstants, SIZE$blendConstants);
+    }
+
+    public MemorySegment blendConstantsRaw() {
+        return segment.asSlice(OFFSET$blendConstants, SIZE$blendConstants);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -262,7 +266,7 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         ValueLayout.JAVA_INT.withName("logicOp"),
         ValueLayout.JAVA_INT.withName("attachmentCount"),
         ValueLayout.ADDRESS.withTargetLayout(VkPipelineColorBlendAttachmentState.LAYOUT).withName("pAttachments"),
-        ValueLayout.JAVA_FLOAT.withName("blendConstants")
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("blendConstants")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -282,7 +286,7 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
     public static final OfInt LAYOUT$logicOp = (OfInt) LAYOUT.select(PATH$logicOp);
     public static final OfInt LAYOUT$attachmentCount = (OfInt) LAYOUT.select(PATH$attachmentCount);
     public static final AddressLayout LAYOUT$pAttachments = (AddressLayout) LAYOUT.select(PATH$pAttachments);
-    public static final OfFloat LAYOUT$blendConstants = (OfFloat) LAYOUT.select(PATH$blendConstants);
+    public static final SequenceLayout LAYOUT$blendConstants = (SequenceLayout) LAYOUT.select(PATH$blendConstants);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

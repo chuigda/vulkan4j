@@ -23,9 +23,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPhysicalDeviceIDProperties {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     uint8_t deviceUUID; // @link substring="deviceUUID" target="#deviceUUID"
-///     uint8_t driverUUID; // @link substring="driverUUID" target="#driverUUID"
-///     uint8_t deviceLUID; // @link substring="deviceLUID" target="#deviceLUID"
+///     uint8_t[VK_UUID_SIZE] deviceUUID; // @link substring="deviceUUID" target="#deviceUUID"
+///     uint8_t[VK_UUID_SIZE] driverUUID; // @link substring="driverUUID" target="#driverUUID"
+///     uint8_t[VK_LUID_SIZE] deviceLUID; // @link substring="deviceLUID" target="#deviceLUID"
 ///     uint32_t deviceNodeMask; // @link substring="deviceNodeMask" target="#deviceNodeMask"
 ///     VkBool32 deviceLUIDValid; // @link substring="deviceLUIDValid" target="#deviceLUIDValid"
 /// } VkPhysicalDeviceIDProperties;
@@ -182,28 +182,40 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned byte deviceUUID() {
-        return segment.get(LAYOUT$deviceUUID, OFFSET$deviceUUID);
+    public @Unsigned BytePtr deviceUUID() {
+        return new BytePtr(deviceUUIDRaw());
     }
 
-    public void deviceUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$deviceUUID, OFFSET$deviceUUID, value);
+    public void deviceUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
-    public @Unsigned byte driverUUID() {
-        return segment.get(LAYOUT$driverUUID, OFFSET$driverUUID);
+    public MemorySegment deviceUUIDRaw() {
+        return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
-    public void driverUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$driverUUID, OFFSET$driverUUID, value);
+    public @Unsigned BytePtr driverUUID() {
+        return new BytePtr(driverUUIDRaw());
     }
 
-    public @Unsigned byte deviceLUID() {
-        return segment.get(LAYOUT$deviceLUID, OFFSET$deviceLUID);
+    public void driverUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
     }
 
-    public void deviceLUID(@Unsigned byte value) {
-        segment.set(LAYOUT$deviceLUID, OFFSET$deviceLUID, value);
+    public MemorySegment driverUUIDRaw() {
+        return segment.asSlice(OFFSET$driverUUID, SIZE$driverUUID);
+    }
+
+    public @Unsigned BytePtr deviceLUID() {
+        return new BytePtr(deviceLUIDRaw());
+    }
+
+    public void deviceLUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
+    }
+
+    public MemorySegment deviceLUIDRaw() {
+        return segment.asSlice(OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 
     public @Unsigned int deviceNodeMask() {
@@ -225,9 +237,9 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("deviceUUID"),
-        ValueLayout.JAVA_BYTE.withName("driverUUID"),
-        ValueLayout.JAVA_BYTE.withName("deviceLUID"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("deviceUUID"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("driverUUID"),
+        MemoryLayout.sequenceLayout(LUID_SIZE, ValueLayout.JAVA_BYTE).withName("deviceLUID"),
         ValueLayout.JAVA_INT.withName("deviceNodeMask"),
         ValueLayout.JAVA_INT.withName("deviceLUIDValid")
     );
@@ -243,9 +255,9 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$deviceUUID = (OfByte) LAYOUT.select(PATH$deviceUUID);
-    public static final OfByte LAYOUT$driverUUID = (OfByte) LAYOUT.select(PATH$driverUUID);
-    public static final OfByte LAYOUT$deviceLUID = (OfByte) LAYOUT.select(PATH$deviceLUID);
+    public static final SequenceLayout LAYOUT$deviceUUID = (SequenceLayout) LAYOUT.select(PATH$deviceUUID);
+    public static final SequenceLayout LAYOUT$driverUUID = (SequenceLayout) LAYOUT.select(PATH$driverUUID);
+    public static final SequenceLayout LAYOUT$deviceLUID = (SequenceLayout) LAYOUT.select(PATH$deviceLUID);
     public static final OfInt LAYOUT$deviceNodeMask = (OfInt) LAYOUT.select(PATH$deviceNodeMask);
     public static final OfInt LAYOUT$deviceLUIDValid = (OfInt) LAYOUT.select(PATH$deviceLUIDValid);
 

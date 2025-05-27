@@ -25,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t frame_type; // @link substring="frame_type" target="#frame_type"
 ///     uint8_t RefFrameSignBias; // @link substring="RefFrameSignBias" target="#RefFrameSignBias"
 ///     uint8_t OrderHint; // @link substring="OrderHint" target="#OrderHint"
-///     uint8_t SavedOrderHints; // @link substring="SavedOrderHints" target="#SavedOrderHints"
+///     uint8_t[STD_VIDEO_AV1_NUM_REF_FRAMES] SavedOrderHints; // @link substring="SavedOrderHints" target="#SavedOrderHints"
 /// } StdVideoDecodeAV1ReferenceInfo;
 /// }
 ///
@@ -171,12 +171,16 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$OrderHint, OFFSET$OrderHint, value);
     }
 
-    public @Unsigned byte SavedOrderHints() {
-        return segment.get(LAYOUT$SavedOrderHints, OFFSET$SavedOrderHints);
+    public @Unsigned BytePtr SavedOrderHints() {
+        return new BytePtr(SavedOrderHintsRaw());
     }
 
-    public void SavedOrderHints(@Unsigned byte value) {
-        segment.set(LAYOUT$SavedOrderHints, OFFSET$SavedOrderHints, value);
+    public void SavedOrderHints(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$SavedOrderHints, SIZE$SavedOrderHints);
+    }
+
+    public MemorySegment SavedOrderHintsRaw() {
+        return segment.asSlice(OFFSET$SavedOrderHints, SIZE$SavedOrderHints);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -184,7 +188,7 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_BYTE.withName("frame_type"),
         ValueLayout.JAVA_BYTE.withName("RefFrameSignBias"),
         ValueLayout.JAVA_BYTE.withName("OrderHint"),
-        ValueLayout.JAVA_BYTE.withName("SavedOrderHints")
+        MemoryLayout.sequenceLayout(AV1_NUM_REF_FRAMES, ValueLayout.JAVA_BYTE).withName("SavedOrderHints")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -198,7 +202,7 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
     public static final OfByte LAYOUT$frame_type = (OfByte) LAYOUT.select(PATH$frame_type);
     public static final OfByte LAYOUT$RefFrameSignBias = (OfByte) LAYOUT.select(PATH$RefFrameSignBias);
     public static final OfByte LAYOUT$OrderHint = (OfByte) LAYOUT.select(PATH$OrderHint);
-    public static final OfByte LAYOUT$SavedOrderHints = (OfByte) LAYOUT.select(PATH$SavedOrderHints);
+    public static final SequenceLayout LAYOUT$SavedOrderHints = (SequenceLayout) LAYOUT.select(PATH$SavedOrderHints);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$frame_type = LAYOUT$frame_type.byteSize();

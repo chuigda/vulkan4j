@@ -387,13 +387,13 @@ private fun extractType(e: Element): Type {
             e.parentNode.childNodes
                 .toList()
                 .filter { it.nodeType == Node.TEXT_NODE || (it is Element && it.tagName == "enum") }
-                .joinToString { it.textContent }
+                .joinToString("") { it.textContent }
                 .trim()
 
         if (contents.startsWith('[') && contents.endsWith(']')) {
             val lengths = contents
                 .removePrefix("[")
-                .removePrefix("]")
+                .removeSuffix("]")
                 .split("][")
                 .map { it.trim().intern() }
                 .reversed()

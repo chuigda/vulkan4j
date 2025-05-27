@@ -24,8 +24,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkShaderStageFlags stages; // @link substring="VkShaderStageFlags" target="VkShaderStageFlags" @link substring="stages" target="#stages"
-///     char name; // @link substring="name" target="#name"
-///     char description; // @link substring="description" target="#description"
+///     char[VK_MAX_DESCRIPTION_SIZE] name; // @link substring="name" target="#name"
+///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 ///     uint32_t subgroupSize; // @link substring="subgroupSize" target="#subgroupSize"
 /// } VkPipelineExecutablePropertiesKHR;
 /// }
@@ -189,20 +189,28 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$stages, OFFSET$stages, value);
     }
 
-    public byte name() {
-        return segment.get(LAYOUT$name, OFFSET$name);
+    public BytePtr name() {
+        return new BytePtr(nameRaw());
     }
 
-    public void name(byte value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
+    public void name(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
-    public void description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
+    }
+
+    public void description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    }
+
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public @Unsigned int subgroupSize() {
@@ -217,8 +225,8 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("stages"),
-        ValueLayout.JAVA_BYTE.withName("name"),
-        ValueLayout.JAVA_BYTE.withName("description"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("subgroupSize")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -233,8 +241,8 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$stages = (OfInt) LAYOUT.select(PATH$stages);
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
     public static final OfInt LAYOUT$subgroupSize = (OfInt) LAYOUT.select(PATH$subgroupSize);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

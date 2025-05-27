@@ -26,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
 ///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
 ///     VkPhysicalDeviceLayeredApiKHR layeredAPI; // @link substring="VkPhysicalDeviceLayeredApiKHR" target="VkPhysicalDeviceLayeredApiKHR" @link substring="layeredAPI" target="#layeredAPI"
-///     char deviceName; // @link substring="deviceName" target="#deviceName"
+///     char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE] deviceName; // @link substring="deviceName" target="#deviceName"
 /// } VkPhysicalDeviceLayeredApiPropertiesKHR;
 /// }
 ///
@@ -205,12 +205,16 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         segment.set(LAYOUT$layeredAPI, OFFSET$layeredAPI, value);
     }
 
-    public byte deviceName() {
-        return segment.get(LAYOUT$deviceName, OFFSET$deviceName);
+    public BytePtr deviceName() {
+        return new BytePtr(deviceNameRaw());
     }
 
-    public void deviceName(byte value) {
-        segment.set(LAYOUT$deviceName, OFFSET$deviceName, value);
+    public void deviceName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
+    }
+
+    public MemorySegment deviceNameRaw() {
+        return segment.asSlice(OFFSET$deviceName, SIZE$deviceName);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -219,7 +223,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
         ValueLayout.JAVA_INT.withName("layeredAPI"),
-        ValueLayout.JAVA_BYTE.withName("deviceName")
+        MemoryLayout.sequenceLayout(MAX_PHYSICAL_DEVICE_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("deviceName")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -235,7 +239,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
     public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
     public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
     public static final OfInt LAYOUT$layeredAPI = (OfInt) LAYOUT.select(PATH$layeredAPI);
-    public static final OfByte LAYOUT$deviceName = (OfByte) LAYOUT.select(PATH$deviceName);
+    public static final SequenceLayout LAYOUT$deviceName = (SequenceLayout) LAYOUT.select(PATH$deviceName);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

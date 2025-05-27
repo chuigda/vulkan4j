@@ -22,12 +22,12 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1LoopFilter {
 ///     StdVideoAV1LoopFilterFlags flags; // @link substring="StdVideoAV1LoopFilterFlags" target="StdVideoAV1LoopFilterFlags" @link substring="flags" target="#flags"
-///     uint8_t loop_filter_level; // @link substring="loop_filter_level" target="#loop_filter_level"
+///     uint8_t[STD_VIDEO_AV1_MAX_LOOP_FILTER_STRENGTHS] loop_filter_level; // @link substring="loop_filter_level" target="#loop_filter_level"
 ///     uint8_t loop_filter_sharpness; // @link substring="loop_filter_sharpness" target="#loop_filter_sharpness"
 ///     uint8_t update_ref_delta; // @link substring="update_ref_delta" target="#update_ref_delta"
-///     int8_t loop_filter_ref_deltas; // @link substring="loop_filter_ref_deltas" target="#loop_filter_ref_deltas"
+///     int8_t[STD_VIDEO_AV1_TOTAL_REFS_PER_FRAME] loop_filter_ref_deltas; // @link substring="loop_filter_ref_deltas" target="#loop_filter_ref_deltas"
 ///     uint8_t update_mode_delta; // @link substring="update_mode_delta" target="#update_mode_delta"
-///     int8_t loop_filter_mode_deltas; // @link substring="loop_filter_mode_deltas" target="#loop_filter_mode_deltas"
+///     int8_t[STD_VIDEO_AV1_LOOP_FILTER_ADJUSTMENTS] loop_filter_mode_deltas; // @link substring="loop_filter_mode_deltas" target="#loop_filter_mode_deltas"
 /// } StdVideoAV1LoopFilter;
 /// }
 ///
@@ -149,12 +149,16 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
     }
 
-    public @Unsigned byte loop_filter_level() {
-        return segment.get(LAYOUT$loop_filter_level, OFFSET$loop_filter_level);
+    public @Unsigned BytePtr loop_filter_level() {
+        return new BytePtr(loop_filter_levelRaw());
     }
 
-    public void loop_filter_level(@Unsigned byte value) {
-        segment.set(LAYOUT$loop_filter_level, OFFSET$loop_filter_level, value);
+    public void loop_filter_level(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$loop_filter_level, SIZE$loop_filter_level);
+    }
+
+    public MemorySegment loop_filter_levelRaw() {
+        return segment.asSlice(OFFSET$loop_filter_level, SIZE$loop_filter_level);
     }
 
     public @Unsigned byte loop_filter_sharpness() {
@@ -173,12 +177,16 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$update_ref_delta, OFFSET$update_ref_delta, value);
     }
 
-    public byte loop_filter_ref_deltas() {
-        return segment.get(LAYOUT$loop_filter_ref_deltas, OFFSET$loop_filter_ref_deltas);
+    public BytePtr loop_filter_ref_deltas() {
+        return new BytePtr(loop_filter_ref_deltasRaw());
     }
 
-    public void loop_filter_ref_deltas(byte value) {
-        segment.set(LAYOUT$loop_filter_ref_deltas, OFFSET$loop_filter_ref_deltas, value);
+    public void loop_filter_ref_deltas(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$loop_filter_ref_deltas, SIZE$loop_filter_ref_deltas);
+    }
+
+    public MemorySegment loop_filter_ref_deltasRaw() {
+        return segment.asSlice(OFFSET$loop_filter_ref_deltas, SIZE$loop_filter_ref_deltas);
     }
 
     public @Unsigned byte update_mode_delta() {
@@ -189,22 +197,26 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$update_mode_delta, OFFSET$update_mode_delta, value);
     }
 
-    public byte loop_filter_mode_deltas() {
-        return segment.get(LAYOUT$loop_filter_mode_deltas, OFFSET$loop_filter_mode_deltas);
+    public BytePtr loop_filter_mode_deltas() {
+        return new BytePtr(loop_filter_mode_deltasRaw());
     }
 
-    public void loop_filter_mode_deltas(byte value) {
-        segment.set(LAYOUT$loop_filter_mode_deltas, OFFSET$loop_filter_mode_deltas, value);
+    public void loop_filter_mode_deltas(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$loop_filter_mode_deltas, SIZE$loop_filter_mode_deltas);
+    }
+
+    public MemorySegment loop_filter_mode_deltasRaw() {
+        return segment.asSlice(OFFSET$loop_filter_mode_deltas, SIZE$loop_filter_mode_deltas);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         StdVideoAV1LoopFilterFlags.LAYOUT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("loop_filter_level"),
+        MemoryLayout.sequenceLayout(AV1_MAX_LOOP_FILTER_STRENGTHS, ValueLayout.JAVA_BYTE).withName("loop_filter_level"),
         ValueLayout.JAVA_BYTE.withName("loop_filter_sharpness"),
         ValueLayout.JAVA_BYTE.withName("update_ref_delta"),
-        ValueLayout.JAVA_BYTE.withName("loop_filter_ref_deltas"),
+        MemoryLayout.sequenceLayout(AV1_TOTAL_REFS_PER_FRAME, ValueLayout.JAVA_BYTE).withName("loop_filter_ref_deltas"),
         ValueLayout.JAVA_BYTE.withName("update_mode_delta"),
-        ValueLayout.JAVA_BYTE.withName("loop_filter_mode_deltas")
+        MemoryLayout.sequenceLayout(AV1_LOOP_FILTER_ADJUSTMENTS, ValueLayout.JAVA_BYTE).withName("loop_filter_mode_deltas")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -217,12 +229,12 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
     public static final PathElement PATH$loop_filter_mode_deltas = PathElement.groupElement("loop_filter_mode_deltas");
 
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$loop_filter_level = (OfByte) LAYOUT.select(PATH$loop_filter_level);
+    public static final SequenceLayout LAYOUT$loop_filter_level = (SequenceLayout) LAYOUT.select(PATH$loop_filter_level);
     public static final OfByte LAYOUT$loop_filter_sharpness = (OfByte) LAYOUT.select(PATH$loop_filter_sharpness);
     public static final OfByte LAYOUT$update_ref_delta = (OfByte) LAYOUT.select(PATH$update_ref_delta);
-    public static final OfByte LAYOUT$loop_filter_ref_deltas = (OfByte) LAYOUT.select(PATH$loop_filter_ref_deltas);
+    public static final SequenceLayout LAYOUT$loop_filter_ref_deltas = (SequenceLayout) LAYOUT.select(PATH$loop_filter_ref_deltas);
     public static final OfByte LAYOUT$update_mode_delta = (OfByte) LAYOUT.select(PATH$update_mode_delta);
-    public static final OfByte LAYOUT$loop_filter_mode_deltas = (OfByte) LAYOUT.select(PATH$loop_filter_mode_deltas);
+    public static final SequenceLayout LAYOUT$loop_filter_mode_deltas = (SequenceLayout) LAYOUT.select(PATH$loop_filter_mode_deltas);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$loop_filter_level = LAYOUT$loop_filter_level.byteSize();

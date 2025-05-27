@@ -24,14 +24,14 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     StdVideoEncodeH264WeightTableFlags flags; // @link substring="StdVideoEncodeH264WeightTableFlags" target="StdVideoEncodeH264WeightTableFlags" @link substring="flags" target="#flags"
 ///     uint8_t luma_log2_weight_denom; // @link substring="luma_log2_weight_denom" target="#luma_log2_weight_denom"
 ///     uint8_t chroma_log2_weight_denom; // @link substring="chroma_log2_weight_denom" target="#chroma_log2_weight_denom"
-///     int8_t luma_weight_l0; // @link substring="luma_weight_l0" target="#luma_weight_l0"
-///     int8_t luma_offset_l0; // @link substring="luma_offset_l0" target="#luma_offset_l0"
-///     int8_t chroma_weight_l0; // @link substring="chroma_weight_l0" target="#chroma_weight_l0"
-///     int8_t chroma_offset_l0; // @link substring="chroma_offset_l0" target="#chroma_offset_l0"
-///     int8_t luma_weight_l1; // @link substring="luma_weight_l1" target="#luma_weight_l1"
-///     int8_t luma_offset_l1; // @link substring="luma_offset_l1" target="#luma_offset_l1"
-///     int8_t chroma_weight_l1; // @link substring="chroma_weight_l1" target="#chroma_weight_l1"
-///     int8_t chroma_offset_l1; // @link substring="chroma_offset_l1" target="#chroma_offset_l1"
+///     int8_t[STD_VIDEO_H264_MAX_NUM_LIST_REF] luma_weight_l0; // @link substring="luma_weight_l0" target="#luma_weight_l0"
+///     int8_t[STD_VIDEO_H264_MAX_NUM_LIST_REF] luma_offset_l0; // @link substring="luma_offset_l0" target="#luma_offset_l0"
+///     int8_t[STD_VIDEO_H264_MAX_CHROMA_PLANES][STD_VIDEO_H264_MAX_NUM_LIST_REF] chroma_weight_l0; // @link substring="chroma_weight_l0" target="#chroma_weight_l0"
+///     int8_t[STD_VIDEO_H264_MAX_CHROMA_PLANES][STD_VIDEO_H264_MAX_NUM_LIST_REF] chroma_offset_l0; // @link substring="chroma_offset_l0" target="#chroma_offset_l0"
+///     int8_t[STD_VIDEO_H264_MAX_NUM_LIST_REF] luma_weight_l1; // @link substring="luma_weight_l1" target="#luma_weight_l1"
+///     int8_t[STD_VIDEO_H264_MAX_NUM_LIST_REF] luma_offset_l1; // @link substring="luma_offset_l1" target="#luma_offset_l1"
+///     int8_t[STD_VIDEO_H264_MAX_CHROMA_PLANES][STD_VIDEO_H264_MAX_NUM_LIST_REF] chroma_weight_l1; // @link substring="chroma_weight_l1" target="#chroma_weight_l1"
+///     int8_t[STD_VIDEO_H264_MAX_CHROMA_PLANES][STD_VIDEO_H264_MAX_NUM_LIST_REF] chroma_offset_l1; // @link substring="chroma_offset_l1" target="#chroma_offset_l1"
 /// } StdVideoEncodeH264WeightTable;
 /// }
 ///
@@ -169,82 +169,114 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$chroma_log2_weight_denom, OFFSET$chroma_log2_weight_denom, value);
     }
 
-    public byte luma_weight_l0() {
-        return segment.get(LAYOUT$luma_weight_l0, OFFSET$luma_weight_l0);
+    public BytePtr luma_weight_l0() {
+        return new BytePtr(luma_weight_l0Raw());
     }
 
-    public void luma_weight_l0(byte value) {
-        segment.set(LAYOUT$luma_weight_l0, OFFSET$luma_weight_l0, value);
+    public void luma_weight_l0(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_weight_l0, SIZE$luma_weight_l0);
     }
 
-    public byte luma_offset_l0() {
-        return segment.get(LAYOUT$luma_offset_l0, OFFSET$luma_offset_l0);
+    public MemorySegment luma_weight_l0Raw() {
+        return segment.asSlice(OFFSET$luma_weight_l0, SIZE$luma_weight_l0);
     }
 
-    public void luma_offset_l0(byte value) {
-        segment.set(LAYOUT$luma_offset_l0, OFFSET$luma_offset_l0, value);
+    public BytePtr luma_offset_l0() {
+        return new BytePtr(luma_offset_l0Raw());
     }
 
-    public byte chroma_weight_l0() {
-        return segment.get(LAYOUT$chroma_weight_l0, OFFSET$chroma_weight_l0);
+    public void luma_offset_l0(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_offset_l0, SIZE$luma_offset_l0);
     }
 
-    public void chroma_weight_l0(byte value) {
-        segment.set(LAYOUT$chroma_weight_l0, OFFSET$chroma_weight_l0, value);
+    public MemorySegment luma_offset_l0Raw() {
+        return segment.asSlice(OFFSET$luma_offset_l0, SIZE$luma_offset_l0);
     }
 
-    public byte chroma_offset_l0() {
-        return segment.get(LAYOUT$chroma_offset_l0, OFFSET$chroma_offset_l0);
+    public BytePtr chroma_weight_l0() {
+        return new BytePtr(chroma_weight_l0Raw());
     }
 
-    public void chroma_offset_l0(byte value) {
-        segment.set(LAYOUT$chroma_offset_l0, OFFSET$chroma_offset_l0, value);
+    public void chroma_weight_l0(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_weight_l0, SIZE$chroma_weight_l0);
     }
 
-    public byte luma_weight_l1() {
-        return segment.get(LAYOUT$luma_weight_l1, OFFSET$luma_weight_l1);
+    public MemorySegment chroma_weight_l0Raw() {
+        return segment.asSlice(OFFSET$chroma_weight_l0, SIZE$chroma_weight_l0);
     }
 
-    public void luma_weight_l1(byte value) {
-        segment.set(LAYOUT$luma_weight_l1, OFFSET$luma_weight_l1, value);
+    public BytePtr chroma_offset_l0() {
+        return new BytePtr(chroma_offset_l0Raw());
     }
 
-    public byte luma_offset_l1() {
-        return segment.get(LAYOUT$luma_offset_l1, OFFSET$luma_offset_l1);
+    public void chroma_offset_l0(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_offset_l0, SIZE$chroma_offset_l0);
     }
 
-    public void luma_offset_l1(byte value) {
-        segment.set(LAYOUT$luma_offset_l1, OFFSET$luma_offset_l1, value);
+    public MemorySegment chroma_offset_l0Raw() {
+        return segment.asSlice(OFFSET$chroma_offset_l0, SIZE$chroma_offset_l0);
     }
 
-    public byte chroma_weight_l1() {
-        return segment.get(LAYOUT$chroma_weight_l1, OFFSET$chroma_weight_l1);
+    public BytePtr luma_weight_l1() {
+        return new BytePtr(luma_weight_l1Raw());
     }
 
-    public void chroma_weight_l1(byte value) {
-        segment.set(LAYOUT$chroma_weight_l1, OFFSET$chroma_weight_l1, value);
+    public void luma_weight_l1(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_weight_l1, SIZE$luma_weight_l1);
     }
 
-    public byte chroma_offset_l1() {
-        return segment.get(LAYOUT$chroma_offset_l1, OFFSET$chroma_offset_l1);
+    public MemorySegment luma_weight_l1Raw() {
+        return segment.asSlice(OFFSET$luma_weight_l1, SIZE$luma_weight_l1);
     }
 
-    public void chroma_offset_l1(byte value) {
-        segment.set(LAYOUT$chroma_offset_l1, OFFSET$chroma_offset_l1, value);
+    public BytePtr luma_offset_l1() {
+        return new BytePtr(luma_offset_l1Raw());
+    }
+
+    public void luma_offset_l1(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$luma_offset_l1, SIZE$luma_offset_l1);
+    }
+
+    public MemorySegment luma_offset_l1Raw() {
+        return segment.asSlice(OFFSET$luma_offset_l1, SIZE$luma_offset_l1);
+    }
+
+    public BytePtr chroma_weight_l1() {
+        return new BytePtr(chroma_weight_l1Raw());
+    }
+
+    public void chroma_weight_l1(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_weight_l1, SIZE$chroma_weight_l1);
+    }
+
+    public MemorySegment chroma_weight_l1Raw() {
+        return segment.asSlice(OFFSET$chroma_weight_l1, SIZE$chroma_weight_l1);
+    }
+
+    public BytePtr chroma_offset_l1() {
+        return new BytePtr(chroma_offset_l1Raw());
+    }
+
+    public void chroma_offset_l1(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$chroma_offset_l1, SIZE$chroma_offset_l1);
+    }
+
+    public MemorySegment chroma_offset_l1Raw() {
+        return segment.asSlice(OFFSET$chroma_offset_l1, SIZE$chroma_offset_l1);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         StdVideoEncodeH264WeightTableFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("luma_log2_weight_denom"),
         ValueLayout.JAVA_BYTE.withName("chroma_log2_weight_denom"),
-        ValueLayout.JAVA_BYTE.withName("luma_weight_l0"),
-        ValueLayout.JAVA_BYTE.withName("luma_offset_l0"),
-        ValueLayout.JAVA_BYTE.withName("chroma_weight_l0"),
-        ValueLayout.JAVA_BYTE.withName("chroma_offset_l0"),
-        ValueLayout.JAVA_BYTE.withName("luma_weight_l1"),
-        ValueLayout.JAVA_BYTE.withName("luma_offset_l1"),
-        ValueLayout.JAVA_BYTE.withName("chroma_weight_l1"),
-        ValueLayout.JAVA_BYTE.withName("chroma_offset_l1")
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("luma_weight_l0"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("luma_offset_l0"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, MemoryLayout.sequenceLayout(H264_MAX_CHROMA_PLANES, ValueLayout.JAVA_BYTE)).withName("chroma_weight_l0"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, MemoryLayout.sequenceLayout(H264_MAX_CHROMA_PLANES, ValueLayout.JAVA_BYTE)).withName("chroma_offset_l0"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("luma_weight_l1"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("luma_offset_l1"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, MemoryLayout.sequenceLayout(H264_MAX_CHROMA_PLANES, ValueLayout.JAVA_BYTE)).withName("chroma_weight_l1"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, MemoryLayout.sequenceLayout(H264_MAX_CHROMA_PLANES, ValueLayout.JAVA_BYTE)).withName("chroma_offset_l1")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -263,14 +295,14 @@ public record StdVideoEncodeH264WeightTable(@NotNull MemorySegment segment) impl
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$luma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$luma_log2_weight_denom);
     public static final OfByte LAYOUT$chroma_log2_weight_denom = (OfByte) LAYOUT.select(PATH$chroma_log2_weight_denom);
-    public static final OfByte LAYOUT$luma_weight_l0 = (OfByte) LAYOUT.select(PATH$luma_weight_l0);
-    public static final OfByte LAYOUT$luma_offset_l0 = (OfByte) LAYOUT.select(PATH$luma_offset_l0);
-    public static final OfByte LAYOUT$chroma_weight_l0 = (OfByte) LAYOUT.select(PATH$chroma_weight_l0);
-    public static final OfByte LAYOUT$chroma_offset_l0 = (OfByte) LAYOUT.select(PATH$chroma_offset_l0);
-    public static final OfByte LAYOUT$luma_weight_l1 = (OfByte) LAYOUT.select(PATH$luma_weight_l1);
-    public static final OfByte LAYOUT$luma_offset_l1 = (OfByte) LAYOUT.select(PATH$luma_offset_l1);
-    public static final OfByte LAYOUT$chroma_weight_l1 = (OfByte) LAYOUT.select(PATH$chroma_weight_l1);
-    public static final OfByte LAYOUT$chroma_offset_l1 = (OfByte) LAYOUT.select(PATH$chroma_offset_l1);
+    public static final SequenceLayout LAYOUT$luma_weight_l0 = (SequenceLayout) LAYOUT.select(PATH$luma_weight_l0);
+    public static final SequenceLayout LAYOUT$luma_offset_l0 = (SequenceLayout) LAYOUT.select(PATH$luma_offset_l0);
+    public static final SequenceLayout LAYOUT$chroma_weight_l0 = (SequenceLayout) LAYOUT.select(PATH$chroma_weight_l0);
+    public static final SequenceLayout LAYOUT$chroma_offset_l0 = (SequenceLayout) LAYOUT.select(PATH$chroma_offset_l0);
+    public static final SequenceLayout LAYOUT$luma_weight_l1 = (SequenceLayout) LAYOUT.select(PATH$luma_weight_l1);
+    public static final SequenceLayout LAYOUT$luma_offset_l1 = (SequenceLayout) LAYOUT.select(PATH$luma_offset_l1);
+    public static final SequenceLayout LAYOUT$chroma_weight_l1 = (SequenceLayout) LAYOUT.select(PATH$chroma_weight_l1);
+    public static final SequenceLayout LAYOUT$chroma_offset_l1 = (SequenceLayout) LAYOUT.select(PATH$chroma_offset_l1);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$luma_log2_weight_denom = LAYOUT$luma_log2_weight_denom.byteSize();

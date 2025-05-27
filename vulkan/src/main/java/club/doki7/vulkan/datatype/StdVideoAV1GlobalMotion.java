@@ -21,8 +21,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1GlobalMotion {
-///     uint8_t GmType; // @link substring="GmType" target="#GmType"
-///     int32_t gm_params; // @link substring="gm_params" target="#gm_params"
+///     uint8_t[STD_VIDEO_AV1_NUM_REF_FRAMES] GmType; // @link substring="GmType" target="#GmType"
+///     int32_t[STD_VIDEO_AV1_GLOBAL_MOTION_PARAMS][STD_VIDEO_AV1_NUM_REF_FRAMES] gm_params; // @link substring="gm_params" target="#gm_params"
 /// } StdVideoAV1GlobalMotion;
 /// }
 ///
@@ -136,33 +136,41 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @Unsigned byte GmType() {
-        return segment.get(LAYOUT$GmType, OFFSET$GmType);
+    public @Unsigned BytePtr GmType() {
+        return new BytePtr(GmTypeRaw());
     }
 
-    public void GmType(@Unsigned byte value) {
-        segment.set(LAYOUT$GmType, OFFSET$GmType, value);
+    public void GmType(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$GmType, SIZE$GmType);
     }
 
-    public int gm_params() {
-        return segment.get(LAYOUT$gm_params, OFFSET$gm_params);
+    public MemorySegment GmTypeRaw() {
+        return segment.asSlice(OFFSET$GmType, SIZE$GmType);
     }
 
-    public void gm_params(int value) {
-        segment.set(LAYOUT$gm_params, OFFSET$gm_params, value);
+    public IntPtr gm_params() {
+        return new IntPtr(gm_paramsRaw());
+    }
+
+    public void gm_params(IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$gm_params, SIZE$gm_params);
+    }
+
+    public MemorySegment gm_paramsRaw() {
+        return segment.asSlice(OFFSET$gm_params, SIZE$gm_params);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("GmType"),
-        ValueLayout.JAVA_INT.withName("gm_params")
+        MemoryLayout.sequenceLayout(AV1_NUM_REF_FRAMES, ValueLayout.JAVA_BYTE).withName("GmType"),
+        MemoryLayout.sequenceLayout(AV1_NUM_REF_FRAMES, MemoryLayout.sequenceLayout(AV1_GLOBAL_MOTION_PARAMS, ValueLayout.JAVA_INT)).withName("gm_params")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$GmType = PathElement.groupElement("GmType");
     public static final PathElement PATH$gm_params = PathElement.groupElement("gm_params");
 
-    public static final OfByte LAYOUT$GmType = (OfByte) LAYOUT.select(PATH$GmType);
-    public static final OfInt LAYOUT$gm_params = (OfInt) LAYOUT.select(PATH$gm_params);
+    public static final SequenceLayout LAYOUT$GmType = (SequenceLayout) LAYOUT.select(PATH$GmType);
+    public static final SequenceLayout LAYOUT$gm_params = (SequenceLayout) LAYOUT.select(PATH$gm_params);
 
     public static final long SIZE$GmType = LAYOUT$GmType.byteSize();
     public static final long SIZE$gm_params = LAYOUT$gm_params.byteSize();

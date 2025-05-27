@@ -24,9 +24,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkImageSubresourceLayers srcSubresource; // @link substring="VkImageSubresourceLayers" target="VkImageSubresourceLayers" @link substring="srcSubresource" target="#srcSubresource"
-///     VkOffset3D srcOffsets; // @link substring="VkOffset3D" target="VkOffset3D" @link substring="srcOffsets" target="#srcOffsets"
+///     VkOffset3D[2] srcOffsets; // @link substring="VkOffset3D" target="VkOffset3D" @link substring="srcOffsets" target="#srcOffsets"
 ///     VkImageSubresourceLayers dstSubresource; // @link substring="VkImageSubresourceLayers" target="VkImageSubresourceLayers" @link substring="dstSubresource" target="#dstSubresource"
-///     VkOffset3D dstOffsets; // @link substring="VkOffset3D" target="VkOffset3D" @link substring="dstOffsets" target="#dstOffsets"
+///     VkOffset3D[2] dstOffsets; // @link substring="VkOffset3D" target="VkOffset3D" @link substring="dstOffsets" target="#dstOffsets"
 /// } VkImageBlit2;
 /// }
 ///
@@ -189,12 +189,27 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
     }
 
-    public @NotNull VkOffset3D srcOffsets() {
-        return new VkOffset3D(segment.asSlice(OFFSET$srcOffsets, LAYOUT$srcOffsets));
+    public VkOffset3D.Ptr srcOffsets() {
+        return new VkOffset3D.Ptr(srcOffsetsRaw());
     }
 
-    public void srcOffsets(@NotNull VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcOffsets, SIZE$srcOffsets);
+    public void srcOffsets(VkOffset3D.Ptr value) {
+        MemorySegment s = srcOffsetsRaw();
+        s.copyFrom(value.segment());
+    }
+
+    public VkOffset3D srcOffsetsAt(int index) {
+        MemorySegment s = srcOffsetsRaw();
+        return new VkOffset3D(s.asSlice(index * VkOffset3D.BYTES, VkOffset3D.BYTES));
+    }
+
+    public void srcOffsetsAt(int index, VkOffset3D value) {
+        MemorySegment s = srcOffsetsRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VkOffset3D.BYTES, VkOffset3D.BYTES);
+    }
+
+    public MemorySegment srcOffsetsRaw() {
+        return segment.asSlice(OFFSET$srcOffsets, SIZE$srcOffsets);
     }
 
     public @NotNull VkImageSubresourceLayers dstSubresource() {
@@ -205,21 +220,36 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
     }
 
-    public @NotNull VkOffset3D dstOffsets() {
-        return new VkOffset3D(segment.asSlice(OFFSET$dstOffsets, LAYOUT$dstOffsets));
+    public VkOffset3D.Ptr dstOffsets() {
+        return new VkOffset3D.Ptr(dstOffsetsRaw());
     }
 
-    public void dstOffsets(@NotNull VkOffset3D value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstOffsets, SIZE$dstOffsets);
+    public void dstOffsets(VkOffset3D.Ptr value) {
+        MemorySegment s = dstOffsetsRaw();
+        s.copyFrom(value.segment());
+    }
+
+    public VkOffset3D dstOffsetsAt(int index) {
+        MemorySegment s = dstOffsetsRaw();
+        return new VkOffset3D(s.asSlice(index * VkOffset3D.BYTES, VkOffset3D.BYTES));
+    }
+
+    public void dstOffsetsAt(int index, VkOffset3D value) {
+        MemorySegment s = dstOffsetsRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VkOffset3D.BYTES, VkOffset3D.BYTES);
+    }
+
+    public MemorySegment dstOffsetsRaw() {
+        return segment.asSlice(OFFSET$dstOffsets, SIZE$dstOffsets);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
-        VkOffset3D.LAYOUT.withName("srcOffsets"),
+        MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("srcOffsets"),
         VkImageSubresourceLayers.LAYOUT.withName("dstSubresource"),
-        VkOffset3D.LAYOUT.withName("dstOffsets")
+        MemoryLayout.sequenceLayout(2, VkOffset3D.LAYOUT).withName("dstOffsets")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -233,9 +263,9 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final StructLayout LAYOUT$srcSubresource = (StructLayout) LAYOUT.select(PATH$srcSubresource);
-    public static final StructLayout LAYOUT$srcOffsets = (StructLayout) LAYOUT.select(PATH$srcOffsets);
+    public static final SequenceLayout LAYOUT$srcOffsets = (SequenceLayout) LAYOUT.select(PATH$srcOffsets);
     public static final StructLayout LAYOUT$dstSubresource = (StructLayout) LAYOUT.select(PATH$dstSubresource);
-    public static final StructLayout LAYOUT$dstOffsets = (StructLayout) LAYOUT.select(PATH$dstOffsets);
+    public static final SequenceLayout LAYOUT$dstOffsets = (SequenceLayout) LAYOUT.select(PATH$dstOffsets);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

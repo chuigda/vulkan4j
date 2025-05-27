@@ -105,6 +105,6 @@ private fun generateHandleArrayAccessor(elementType: CHandleType, member: Layout
 
     defun("public", "void", atName, "int index", "${elementType.name} value") {
         +"MemorySegment s = $rawName();"
-        +"s.put(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value.segment());"
+        +"s.set(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value.segment());"
     }
 }

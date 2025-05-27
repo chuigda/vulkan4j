@@ -26,8 +26,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
 ///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
 ///     VkPhysicalDeviceType deviceType; // @link substring="VkPhysicalDeviceType" target="VkPhysicalDeviceType" @link substring="deviceType" target="#deviceType"
-///     char deviceName; // @link substring="deviceName" target="#deviceName"
-///     uint8_t pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
+///     char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE] deviceName; // @link substring="deviceName" target="#deviceName"
+///     uint8_t[VK_UUID_SIZE] pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
 ///     VkPhysicalDeviceLimits limits; // @link substring="VkPhysicalDeviceLimits" target="VkPhysicalDeviceLimits" @link substring="limits" target="#limits"
 ///     VkPhysicalDeviceSparseProperties sparseProperties; // @link substring="VkPhysicalDeviceSparseProperties" target="VkPhysicalDeviceSparseProperties" @link substring="sparseProperties" target="#sparseProperties"
 /// } VkPhysicalDeviceProperties;
@@ -185,20 +185,28 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$deviceType, OFFSET$deviceType, value);
     }
 
-    public byte deviceName() {
-        return segment.get(LAYOUT$deviceName, OFFSET$deviceName);
+    public BytePtr deviceName() {
+        return new BytePtr(deviceNameRaw());
     }
 
-    public void deviceName(byte value) {
-        segment.set(LAYOUT$deviceName, OFFSET$deviceName, value);
+    public void deviceName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
     }
 
-    public @Unsigned byte pipelineCacheUUID() {
-        return segment.get(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID);
+    public MemorySegment deviceNameRaw() {
+        return segment.asSlice(OFFSET$deviceName, SIZE$deviceName);
     }
 
-    public void pipelineCacheUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID, value);
+    public @Unsigned BytePtr pipelineCacheUUID() {
+        return new BytePtr(pipelineCacheUUIDRaw());
+    }
+
+    public void pipelineCacheUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    }
+
+    public MemorySegment pipelineCacheUUIDRaw() {
+        return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
     }
 
     public @NotNull VkPhysicalDeviceLimits limits() {
@@ -223,8 +231,8 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
         ValueLayout.JAVA_INT.withName("deviceType"),
-        ValueLayout.JAVA_BYTE.withName("deviceName"),
-        ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID"),
+        MemoryLayout.sequenceLayout(MAX_PHYSICAL_DEVICE_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("deviceName"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID"),
         VkPhysicalDeviceLimits.LAYOUT.withName("limits"),
         VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties")
     );
@@ -245,8 +253,8 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
     public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
     public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
     public static final OfInt LAYOUT$deviceType = (OfInt) LAYOUT.select(PATH$deviceType);
-    public static final OfByte LAYOUT$deviceName = (OfByte) LAYOUT.select(PATH$deviceName);
-    public static final OfByte LAYOUT$pipelineCacheUUID = (OfByte) LAYOUT.select(PATH$pipelineCacheUUID);
+    public static final SequenceLayout LAYOUT$deviceName = (SequenceLayout) LAYOUT.select(PATH$deviceName);
+    public static final SequenceLayout LAYOUT$pipelineCacheUUID = (SequenceLayout) LAYOUT.select(PATH$pipelineCacheUUID);
     public static final StructLayout LAYOUT$limits = (StructLayout) LAYOUT.select(PATH$limits);
     public static final StructLayout LAYOUT$sparseProperties = (StructLayout) LAYOUT.select(PATH$sparseProperties);
 

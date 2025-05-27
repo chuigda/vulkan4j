@@ -32,11 +32,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     StdVideoAV1TxMode TxMode; // @link substring="StdVideoAV1TxMode" target="StdVideoAV1TxMode" @link substring="TxMode" target="#TxMode"
 ///     uint8_t delta_q_res; // @link substring="delta_q_res" target="#delta_q_res"
 ///     uint8_t delta_lf_res; // @link substring="delta_lf_res" target="#delta_lf_res"
-///     uint8_t SkipModeFrame; // @link substring="SkipModeFrame" target="#SkipModeFrame"
+///     uint8_t[STD_VIDEO_AV1_SKIP_MODE_FRAMES] SkipModeFrame; // @link substring="SkipModeFrame" target="#SkipModeFrame"
 ///     uint8_t coded_denom; // @link substring="coded_denom" target="#coded_denom"
-///     uint8_t reserved2;
-///     uint8_t OrderHints; // @link substring="OrderHints" target="#OrderHints"
-///     uint32_t expectedFrameId; // @link substring="expectedFrameId" target="#expectedFrameId"
+///     uint8_t[3] reserved2;
+///     uint8_t[STD_VIDEO_AV1_NUM_REF_FRAMES] OrderHints; // @link substring="OrderHints" target="#OrderHints"
+///     uint32_t[STD_VIDEO_AV1_NUM_REF_FRAMES] expectedFrameId; // @link substring="expectedFrameId" target="#expectedFrameId"
 ///     StdVideoAV1TileInfo const* pTileInfo; // @link substring="StdVideoAV1TileInfo" target="StdVideoAV1TileInfo" @link substring="pTileInfo" target="#pTileInfo"
 ///     StdVideoAV1Quantization const* pQuantization; // @link substring="StdVideoAV1Quantization" target="StdVideoAV1Quantization" @link substring="pQuantization" target="#pQuantization"
 ///     StdVideoAV1Segmentation const* pSegmentation; // @link substring="StdVideoAV1Segmentation" target="StdVideoAV1Segmentation" @link substring="pSegmentation" target="#pSegmentation"
@@ -239,12 +239,16 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$delta_lf_res, OFFSET$delta_lf_res, value);
     }
 
-    public @Unsigned byte SkipModeFrame() {
-        return segment.get(LAYOUT$SkipModeFrame, OFFSET$SkipModeFrame);
+    public @Unsigned BytePtr SkipModeFrame() {
+        return new BytePtr(SkipModeFrameRaw());
     }
 
-    public void SkipModeFrame(@Unsigned byte value) {
-        segment.set(LAYOUT$SkipModeFrame, OFFSET$SkipModeFrame, value);
+    public void SkipModeFrame(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$SkipModeFrame, SIZE$SkipModeFrame);
+    }
+
+    public MemorySegment SkipModeFrameRaw() {
+        return segment.asSlice(OFFSET$SkipModeFrame, SIZE$SkipModeFrame);
     }
 
     public @Unsigned byte coded_denom() {
@@ -256,20 +260,28 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     }
 
 
-    public @Unsigned byte OrderHints() {
-        return segment.get(LAYOUT$OrderHints, OFFSET$OrderHints);
+    public @Unsigned BytePtr OrderHints() {
+        return new BytePtr(OrderHintsRaw());
     }
 
-    public void OrderHints(@Unsigned byte value) {
-        segment.set(LAYOUT$OrderHints, OFFSET$OrderHints, value);
+    public void OrderHints(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$OrderHints, SIZE$OrderHints);
     }
 
-    public @Unsigned int expectedFrameId() {
-        return segment.get(LAYOUT$expectedFrameId, OFFSET$expectedFrameId);
+    public MemorySegment OrderHintsRaw() {
+        return segment.asSlice(OFFSET$OrderHints, SIZE$OrderHints);
     }
 
-    public void expectedFrameId(@Unsigned int value) {
-        segment.set(LAYOUT$expectedFrameId, OFFSET$expectedFrameId, value);
+    public @Unsigned IntPtr expectedFrameId() {
+        return new IntPtr(expectedFrameIdRaw());
+    }
+
+    public void expectedFrameId(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$expectedFrameId, SIZE$expectedFrameId);
+    }
+
+    public MemorySegment expectedFrameIdRaw() {
+        return segment.asSlice(OFFSET$expectedFrameId, SIZE$expectedFrameId);
     }
 
     public void pTileInfo(@Nullable IStdVideoAV1TileInfo value) {
@@ -532,11 +544,11 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         ValueLayout.JAVA_INT.withName("TxMode"),
         ValueLayout.JAVA_BYTE.withName("delta_q_res"),
         ValueLayout.JAVA_BYTE.withName("delta_lf_res"),
-        ValueLayout.JAVA_BYTE.withName("SkipModeFrame"),
+        MemoryLayout.sequenceLayout(AV1_SKIP_MODE_FRAMES, ValueLayout.JAVA_BYTE).withName("SkipModeFrame"),
         ValueLayout.JAVA_BYTE.withName("coded_denom"),
-        ValueLayout.JAVA_BYTE.withName("reserved2"),
-        ValueLayout.JAVA_BYTE.withName("OrderHints"),
-        ValueLayout.JAVA_INT.withName("expectedFrameId"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("reserved2"),
+        MemoryLayout.sequenceLayout(AV1_NUM_REF_FRAMES, ValueLayout.JAVA_BYTE).withName("OrderHints"),
+        MemoryLayout.sequenceLayout(AV1_NUM_REF_FRAMES, ValueLayout.JAVA_INT).withName("expectedFrameId"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TileInfo.LAYOUT).withName("pTileInfo"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Quantization.LAYOUT).withName("pQuantization"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Segmentation.LAYOUT).withName("pSegmentation"),
@@ -581,10 +593,10 @@ public record StdVideoDecodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final OfInt LAYOUT$TxMode = (OfInt) LAYOUT.select(PATH$TxMode);
     public static final OfByte LAYOUT$delta_q_res = (OfByte) LAYOUT.select(PATH$delta_q_res);
     public static final OfByte LAYOUT$delta_lf_res = (OfByte) LAYOUT.select(PATH$delta_lf_res);
-    public static final OfByte LAYOUT$SkipModeFrame = (OfByte) LAYOUT.select(PATH$SkipModeFrame);
+    public static final SequenceLayout LAYOUT$SkipModeFrame = (SequenceLayout) LAYOUT.select(PATH$SkipModeFrame);
     public static final OfByte LAYOUT$coded_denom = (OfByte) LAYOUT.select(PATH$coded_denom);
-    public static final OfByte LAYOUT$OrderHints = (OfByte) LAYOUT.select(PATH$OrderHints);
-    public static final OfInt LAYOUT$expectedFrameId = (OfInt) LAYOUT.select(PATH$expectedFrameId);
+    public static final SequenceLayout LAYOUT$OrderHints = (SequenceLayout) LAYOUT.select(PATH$OrderHints);
+    public static final SequenceLayout LAYOUT$expectedFrameId = (SequenceLayout) LAYOUT.select(PATH$expectedFrameId);
     public static final AddressLayout LAYOUT$pTileInfo = (AddressLayout) LAYOUT.select(PATH$pTileInfo);
     public static final AddressLayout LAYOUT$pQuantization = (AddressLayout) LAYOUT.select(PATH$pQuantization);
     public static final AddressLayout LAYOUT$pSegmentation = (AddressLayout) LAYOUT.select(PATH$pSegmentation);

@@ -21,7 +21,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkDeviceFaultVendorInfoEXT {
-///     char description; // @link substring="description" target="#description"
+///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 ///     uint64_t vendorFaultCode; // @link substring="vendorFaultCode" target="#vendorFaultCode"
 ///     uint64_t vendorFaultData; // @link substring="vendorFaultData" target="#vendorFaultData"
 /// } VkDeviceFaultVendorInfoEXT;
@@ -139,12 +139,16 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
         return ret;
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
     }
 
-    public void description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public void description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    }
+
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public @Unsigned long vendorFaultCode() {
@@ -164,7 +168,7 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("description"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_LONG.withName("vendorFaultCode"),
         ValueLayout.JAVA_LONG.withName("vendorFaultData")
     );
@@ -174,7 +178,7 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
     public static final PathElement PATH$vendorFaultCode = PathElement.groupElement("vendorFaultCode");
     public static final PathElement PATH$vendorFaultData = PathElement.groupElement("vendorFaultData");
 
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
     public static final OfLong LAYOUT$vendorFaultCode = (OfLong) LAYOUT.select(PATH$vendorFaultCode);
     public static final OfLong LAYOUT$vendorFaultData = (OfLong) LAYOUT.select(PATH$vendorFaultData);
 

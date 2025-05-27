@@ -24,10 +24,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     StdVideoEncodeH265ReferenceListsInfoFlags flags; // @link substring="StdVideoEncodeH265ReferenceListsInfoFlags" target="StdVideoEncodeH265ReferenceListsInfoFlags" @link substring="flags" target="#flags"
 ///     uint8_t num_ref_idx_l0_active_minus1; // @link substring="num_ref_idx_l0_active_minus1" target="#num_ref_idx_l0_active_minus1"
 ///     uint8_t num_ref_idx_l1_active_minus1; // @link substring="num_ref_idx_l1_active_minus1" target="#num_ref_idx_l1_active_minus1"
-///     uint8_t RefPicList0; // @link substring="RefPicList0" target="#RefPicList0"
-///     uint8_t RefPicList1; // @link substring="RefPicList1" target="#RefPicList1"
-///     uint8_t list_entry_l0; // @link substring="list_entry_l0" target="#list_entry_l0"
-///     uint8_t list_entry_l1; // @link substring="list_entry_l1" target="#list_entry_l1"
+///     uint8_t[STD_VIDEO_H265_MAX_NUM_LIST_REF] RefPicList0; // @link substring="RefPicList0" target="#RefPicList0"
+///     uint8_t[STD_VIDEO_H265_MAX_NUM_LIST_REF] RefPicList1; // @link substring="RefPicList1" target="#RefPicList1"
+///     uint8_t[STD_VIDEO_H265_MAX_NUM_LIST_REF] list_entry_l0; // @link substring="list_entry_l0" target="#list_entry_l0"
+///     uint8_t[STD_VIDEO_H265_MAX_NUM_LIST_REF] list_entry_l1; // @link substring="list_entry_l1" target="#list_entry_l1"
 /// } StdVideoEncodeH265ReferenceListsInfo;
 /// }
 ///
@@ -165,46 +165,62 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$num_ref_idx_l1_active_minus1, OFFSET$num_ref_idx_l1_active_minus1, value);
     }
 
-    public @Unsigned byte RefPicList0() {
-        return segment.get(LAYOUT$RefPicList0, OFFSET$RefPicList0);
+    public @Unsigned BytePtr RefPicList0() {
+        return new BytePtr(RefPicList0Raw());
     }
 
-    public void RefPicList0(@Unsigned byte value) {
-        segment.set(LAYOUT$RefPicList0, OFFSET$RefPicList0, value);
+    public void RefPicList0(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList0, SIZE$RefPicList0);
     }
 
-    public @Unsigned byte RefPicList1() {
-        return segment.get(LAYOUT$RefPicList1, OFFSET$RefPicList1);
+    public MemorySegment RefPicList0Raw() {
+        return segment.asSlice(OFFSET$RefPicList0, SIZE$RefPicList0);
     }
 
-    public void RefPicList1(@Unsigned byte value) {
-        segment.set(LAYOUT$RefPicList1, OFFSET$RefPicList1, value);
+    public @Unsigned BytePtr RefPicList1() {
+        return new BytePtr(RefPicList1Raw());
     }
 
-    public @Unsigned byte list_entry_l0() {
-        return segment.get(LAYOUT$list_entry_l0, OFFSET$list_entry_l0);
+    public void RefPicList1(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList1, SIZE$RefPicList1);
     }
 
-    public void list_entry_l0(@Unsigned byte value) {
-        segment.set(LAYOUT$list_entry_l0, OFFSET$list_entry_l0, value);
+    public MemorySegment RefPicList1Raw() {
+        return segment.asSlice(OFFSET$RefPicList1, SIZE$RefPicList1);
     }
 
-    public @Unsigned byte list_entry_l1() {
-        return segment.get(LAYOUT$list_entry_l1, OFFSET$list_entry_l1);
+    public @Unsigned BytePtr list_entry_l0() {
+        return new BytePtr(list_entry_l0Raw());
     }
 
-    public void list_entry_l1(@Unsigned byte value) {
-        segment.set(LAYOUT$list_entry_l1, OFFSET$list_entry_l1, value);
+    public void list_entry_l0(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$list_entry_l0, SIZE$list_entry_l0);
+    }
+
+    public MemorySegment list_entry_l0Raw() {
+        return segment.asSlice(OFFSET$list_entry_l0, SIZE$list_entry_l0);
+    }
+
+    public @Unsigned BytePtr list_entry_l1() {
+        return new BytePtr(list_entry_l1Raw());
+    }
+
+    public void list_entry_l1(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$list_entry_l1, SIZE$list_entry_l1);
+    }
+
+    public MemorySegment list_entry_l1Raw() {
+        return segment.asSlice(OFFSET$list_entry_l1, SIZE$list_entry_l1);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         StdVideoEncodeH265ReferenceListsInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
         ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),
-        ValueLayout.JAVA_BYTE.withName("RefPicList0"),
-        ValueLayout.JAVA_BYTE.withName("RefPicList1"),
-        ValueLayout.JAVA_BYTE.withName("list_entry_l0"),
-        ValueLayout.JAVA_BYTE.withName("list_entry_l1")
+        MemoryLayout.sequenceLayout(H265_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("RefPicList0"),
+        MemoryLayout.sequenceLayout(H265_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("RefPicList1"),
+        MemoryLayout.sequenceLayout(H265_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("list_entry_l0"),
+        MemoryLayout.sequenceLayout(H265_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("list_entry_l1")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -219,10 +235,10 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);
     public static final OfByte LAYOUT$num_ref_idx_l1_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_active_minus1);
-    public static final OfByte LAYOUT$RefPicList0 = (OfByte) LAYOUT.select(PATH$RefPicList0);
-    public static final OfByte LAYOUT$RefPicList1 = (OfByte) LAYOUT.select(PATH$RefPicList1);
-    public static final OfByte LAYOUT$list_entry_l0 = (OfByte) LAYOUT.select(PATH$list_entry_l0);
-    public static final OfByte LAYOUT$list_entry_l1 = (OfByte) LAYOUT.select(PATH$list_entry_l1);
+    public static final SequenceLayout LAYOUT$RefPicList0 = (SequenceLayout) LAYOUT.select(PATH$RefPicList0);
+    public static final SequenceLayout LAYOUT$RefPicList1 = (SequenceLayout) LAYOUT.select(PATH$RefPicList1);
+    public static final SequenceLayout LAYOUT$list_entry_l0 = (SequenceLayout) LAYOUT.select(PATH$list_entry_l0);
+    public static final SequenceLayout LAYOUT$list_entry_l1 = (SequenceLayout) LAYOUT.select(PATH$list_entry_l1);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$num_ref_idx_l0_active_minus1 = LAYOUT$num_ref_idx_l0_active_minus1.byteSize();

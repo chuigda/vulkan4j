@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t maxExecutionGraphShaderPayloadSize; // @link substring="maxExecutionGraphShaderPayloadSize" target="#maxExecutionGraphShaderPayloadSize"
 ///     uint32_t maxExecutionGraphShaderPayloadCount; // @link substring="maxExecutionGraphShaderPayloadCount" target="#maxExecutionGraphShaderPayloadCount"
 ///     uint32_t executionGraphDispatchAddressAlignment; // @link substring="executionGraphDispatchAddressAlignment" target="#executionGraphDispatchAddressAlignment"
-///     uint32_t maxExecutionGraphWorkgroupCount; // @link substring="maxExecutionGraphWorkgroupCount" target="#maxExecutionGraphWorkgroupCount"
+///     uint32_t[3] maxExecutionGraphWorkgroupCount; // @link substring="maxExecutionGraphWorkgroupCount" target="#maxExecutionGraphWorkgroupCount"
 ///     uint32_t maxExecutionGraphWorkgroups; // @link substring="maxExecutionGraphWorkgroups" target="#maxExecutionGraphWorkgroups"
 /// } VkPhysicalDeviceShaderEnqueuePropertiesAMDX;
 /// }
@@ -224,12 +224,16 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         segment.set(LAYOUT$executionGraphDispatchAddressAlignment, OFFSET$executionGraphDispatchAddressAlignment, value);
     }
 
-    public @Unsigned int maxExecutionGraphWorkgroupCount() {
-        return segment.get(LAYOUT$maxExecutionGraphWorkgroupCount, OFFSET$maxExecutionGraphWorkgroupCount);
+    public @Unsigned IntPtr maxExecutionGraphWorkgroupCount() {
+        return new IntPtr(maxExecutionGraphWorkgroupCountRaw());
     }
 
-    public void maxExecutionGraphWorkgroupCount(@Unsigned int value) {
-        segment.set(LAYOUT$maxExecutionGraphWorkgroupCount, OFFSET$maxExecutionGraphWorkgroupCount, value);
+    public void maxExecutionGraphWorkgroupCount(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxExecutionGraphWorkgroupCount, SIZE$maxExecutionGraphWorkgroupCount);
+    }
+
+    public MemorySegment maxExecutionGraphWorkgroupCountRaw() {
+        return segment.asSlice(OFFSET$maxExecutionGraphWorkgroupCount, SIZE$maxExecutionGraphWorkgroupCount);
     }
 
     public @Unsigned int maxExecutionGraphWorkgroups() {
@@ -248,7 +252,7 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadSize"),
         ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadCount"),
         ValueLayout.JAVA_INT.withName("executionGraphDispatchAddressAlignment"),
-        ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxExecutionGraphWorkgroupCount"),
         ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroups")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -270,7 +274,7 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
     public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadSize = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderPayloadSize);
     public static final OfInt LAYOUT$maxExecutionGraphShaderPayloadCount = (OfInt) LAYOUT.select(PATH$maxExecutionGraphShaderPayloadCount);
     public static final OfInt LAYOUT$executionGraphDispatchAddressAlignment = (OfInt) LAYOUT.select(PATH$executionGraphDispatchAddressAlignment);
-    public static final OfInt LAYOUT$maxExecutionGraphWorkgroupCount = (OfInt) LAYOUT.select(PATH$maxExecutionGraphWorkgroupCount);
+    public static final SequenceLayout LAYOUT$maxExecutionGraphWorkgroupCount = (SequenceLayout) LAYOUT.select(PATH$maxExecutionGraphWorkgroupCount);
     public static final OfInt LAYOUT$maxExecutionGraphWorkgroups = (OfInt) LAYOUT.select(PATH$maxExecutionGraphWorkgroups);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

@@ -25,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t RefFrameId; // @link substring="RefFrameId" target="#RefFrameId"
 ///     StdVideoAV1FrameType frame_type; // @link substring="StdVideoAV1FrameType" target="StdVideoAV1FrameType" @link substring="frame_type" target="#frame_type"
 ///     uint8_t OrderHint; // @link substring="OrderHint" target="#OrderHint"
-///     uint8_t reserved1;
+///     uint8_t[3] reserved1;
 ///     StdVideoEncodeAV1ExtensionHeader const* pExtensionHeader; // @link substring="StdVideoEncodeAV1ExtensionHeader" target="StdVideoEncodeAV1ExtensionHeader" @link substring="pExtensionHeader" target="#pExtensionHeader"
 /// } StdVideoEncodeAV1ReferenceInfo;
 /// }
@@ -209,7 +209,7 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("RefFrameId"),
         ValueLayout.JAVA_INT.withName("frame_type"),
         ValueLayout.JAVA_BYTE.withName("OrderHint"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1ExtensionHeader.LAYOUT).withName("pExtensionHeader")
     );
     public static final long BYTES = LAYOUT.byteSize();

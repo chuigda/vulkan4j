@@ -73,9 +73,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t maxFragmentDualSrcAttachments; // @link substring="maxFragmentDualSrcAttachments" target="#maxFragmentDualSrcAttachments"
 ///     uint32_t maxFragmentCombinedOutputResources; // @link substring="maxFragmentCombinedOutputResources" target="#maxFragmentCombinedOutputResources"
 ///     uint32_t maxComputeSharedMemorySize; // @link substring="maxComputeSharedMemorySize" target="#maxComputeSharedMemorySize"
-///     uint32_t maxComputeWorkGroupCount; // @link substring="maxComputeWorkGroupCount" target="#maxComputeWorkGroupCount"
+///     uint32_t[3] maxComputeWorkGroupCount; // @link substring="maxComputeWorkGroupCount" target="#maxComputeWorkGroupCount"
 ///     uint32_t maxComputeWorkGroupInvocations; // @link substring="maxComputeWorkGroupInvocations" target="#maxComputeWorkGroupInvocations"
-///     uint32_t maxComputeWorkGroupSize; // @link substring="maxComputeWorkGroupSize" target="#maxComputeWorkGroupSize"
+///     uint32_t[3] maxComputeWorkGroupSize; // @link substring="maxComputeWorkGroupSize" target="#maxComputeWorkGroupSize"
 ///     uint32_t subPixelPrecisionBits; // @link substring="subPixelPrecisionBits" target="#subPixelPrecisionBits"
 ///     uint32_t subTexelPrecisionBits; // @link substring="subTexelPrecisionBits" target="#subTexelPrecisionBits"
 ///     uint32_t mipmapPrecisionBits; // @link substring="mipmapPrecisionBits" target="#mipmapPrecisionBits"
@@ -84,8 +84,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     float maxSamplerLodBias; // @link substring="maxSamplerLodBias" target="#maxSamplerLodBias"
 ///     float maxSamplerAnisotropy; // @link substring="maxSamplerAnisotropy" target="#maxSamplerAnisotropy"
 ///     uint32_t maxViewports; // @link substring="maxViewports" target="#maxViewports"
-///     uint32_t maxViewportDimensions; // @link substring="maxViewportDimensions" target="#maxViewportDimensions"
-///     float viewportBoundsRange; // @link substring="viewportBoundsRange" target="#viewportBoundsRange"
+///     uint32_t[2] maxViewportDimensions; // @link substring="maxViewportDimensions" target="#maxViewportDimensions"
+///     float[2] viewportBoundsRange; // @link substring="viewportBoundsRange" target="#viewportBoundsRange"
 ///     uint32_t viewportSubPixelBits; // @link substring="viewportSubPixelBits" target="#viewportSubPixelBits"
 ///     size_t minMemoryMapAlignment; // @link substring="minMemoryMapAlignment" target="#minMemoryMapAlignment"
 ///     VkDeviceSize minTexelBufferOffsetAlignment; // @link substring="minTexelBufferOffsetAlignment" target="#minTexelBufferOffsetAlignment"
@@ -118,8 +118,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t maxCullDistances; // @link substring="maxCullDistances" target="#maxCullDistances"
 ///     uint32_t maxCombinedClipAndCullDistances; // @link substring="maxCombinedClipAndCullDistances" target="#maxCombinedClipAndCullDistances"
 ///     uint32_t discreteQueuePriorities; // @link substring="discreteQueuePriorities" target="#discreteQueuePriorities"
-///     float pointSizeRange; // @link substring="pointSizeRange" target="#pointSizeRange"
-///     float lineWidthRange; // @link substring="lineWidthRange" target="#lineWidthRange"
+///     float[2] pointSizeRange; // @link substring="pointSizeRange" target="#pointSizeRange"
+///     float[2] lineWidthRange; // @link substring="lineWidthRange" target="#lineWidthRange"
 ///     float pointSizeGranularity; // @link substring="pointSizeGranularity" target="#pointSizeGranularity"
 ///     float lineWidthGranularity; // @link substring="lineWidthGranularity" target="#lineWidthGranularity"
 ///     VkBool32 strictLines; // @link substring="strictLines" target="#strictLines"
@@ -658,12 +658,16 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$maxComputeSharedMemorySize, OFFSET$maxComputeSharedMemorySize, value);
     }
 
-    public @Unsigned int maxComputeWorkGroupCount() {
-        return segment.get(LAYOUT$maxComputeWorkGroupCount, OFFSET$maxComputeWorkGroupCount);
+    public @Unsigned IntPtr maxComputeWorkGroupCount() {
+        return new IntPtr(maxComputeWorkGroupCountRaw());
     }
 
-    public void maxComputeWorkGroupCount(@Unsigned int value) {
-        segment.set(LAYOUT$maxComputeWorkGroupCount, OFFSET$maxComputeWorkGroupCount, value);
+    public void maxComputeWorkGroupCount(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
+    }
+
+    public MemorySegment maxComputeWorkGroupCountRaw() {
+        return segment.asSlice(OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
     }
 
     public @Unsigned int maxComputeWorkGroupInvocations() {
@@ -674,12 +678,16 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$maxComputeWorkGroupInvocations, OFFSET$maxComputeWorkGroupInvocations, value);
     }
 
-    public @Unsigned int maxComputeWorkGroupSize() {
-        return segment.get(LAYOUT$maxComputeWorkGroupSize, OFFSET$maxComputeWorkGroupSize);
+    public @Unsigned IntPtr maxComputeWorkGroupSize() {
+        return new IntPtr(maxComputeWorkGroupSizeRaw());
     }
 
-    public void maxComputeWorkGroupSize(@Unsigned int value) {
-        segment.set(LAYOUT$maxComputeWorkGroupSize, OFFSET$maxComputeWorkGroupSize, value);
+    public void maxComputeWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
+    }
+
+    public MemorySegment maxComputeWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
     }
 
     public @Unsigned int subPixelPrecisionBits() {
@@ -746,20 +754,28 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$maxViewports, OFFSET$maxViewports, value);
     }
 
-    public @Unsigned int maxViewportDimensions() {
-        return segment.get(LAYOUT$maxViewportDimensions, OFFSET$maxViewportDimensions);
+    public @Unsigned IntPtr maxViewportDimensions() {
+        return new IntPtr(maxViewportDimensionsRaw());
     }
 
-    public void maxViewportDimensions(@Unsigned int value) {
-        segment.set(LAYOUT$maxViewportDimensions, OFFSET$maxViewportDimensions, value);
+    public void maxViewportDimensions(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
     }
 
-    public float viewportBoundsRange() {
-        return segment.get(LAYOUT$viewportBoundsRange, OFFSET$viewportBoundsRange);
+    public MemorySegment maxViewportDimensionsRaw() {
+        return segment.asSlice(OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
     }
 
-    public void viewportBoundsRange(float value) {
-        segment.set(LAYOUT$viewportBoundsRange, OFFSET$viewportBoundsRange, value);
+    public FloatPtr viewportBoundsRange() {
+        return new FloatPtr(viewportBoundsRangeRaw());
+    }
+
+    public void viewportBoundsRange(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
+    }
+
+    public MemorySegment viewportBoundsRangeRaw() {
+        return segment.asSlice(OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
     }
 
     public @Unsigned int viewportSubPixelBits() {
@@ -1018,20 +1034,28 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$discreteQueuePriorities, OFFSET$discreteQueuePriorities, value);
     }
 
-    public float pointSizeRange() {
-        return segment.get(LAYOUT$pointSizeRange, OFFSET$pointSizeRange);
+    public FloatPtr pointSizeRange() {
+        return new FloatPtr(pointSizeRangeRaw());
     }
 
-    public void pointSizeRange(float value) {
-        segment.set(LAYOUT$pointSizeRange, OFFSET$pointSizeRange, value);
+    public void pointSizeRange(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, SIZE$pointSizeRange);
     }
 
-    public float lineWidthRange() {
-        return segment.get(LAYOUT$lineWidthRange, OFFSET$lineWidthRange);
+    public MemorySegment pointSizeRangeRaw() {
+        return segment.asSlice(OFFSET$pointSizeRange, SIZE$pointSizeRange);
     }
 
-    public void lineWidthRange(float value) {
-        segment.set(LAYOUT$lineWidthRange, OFFSET$lineWidthRange, value);
+    public FloatPtr lineWidthRange() {
+        return new FloatPtr(lineWidthRangeRaw());
+    }
+
+    public void lineWidthRange(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, SIZE$lineWidthRange);
+    }
+
+    public MemorySegment lineWidthRangeRaw() {
+        return segment.asSlice(OFFSET$lineWidthRange, SIZE$lineWidthRange);
     }
 
     public float pointSizeGranularity() {
@@ -1143,9 +1167,9 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_INT.withName("maxFragmentDualSrcAttachments"),
         ValueLayout.JAVA_INT.withName("maxFragmentCombinedOutputResources"),
         ValueLayout.JAVA_INT.withName("maxComputeSharedMemorySize"),
-        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxComputeWorkGroupCount"),
         ValueLayout.JAVA_INT.withName("maxComputeWorkGroupInvocations"),
-        ValueLayout.JAVA_INT.withName("maxComputeWorkGroupSize"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxComputeWorkGroupSize"),
         ValueLayout.JAVA_INT.withName("subPixelPrecisionBits"),
         ValueLayout.JAVA_INT.withName("subTexelPrecisionBits"),
         ValueLayout.JAVA_INT.withName("mipmapPrecisionBits"),
@@ -1154,8 +1178,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_FLOAT.withName("maxSamplerLodBias"),
         ValueLayout.JAVA_FLOAT.withName("maxSamplerAnisotropy"),
         ValueLayout.JAVA_INT.withName("maxViewports"),
-        ValueLayout.JAVA_INT.withName("maxViewportDimensions"),
-        ValueLayout.JAVA_FLOAT.withName("viewportBoundsRange"),
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("maxViewportDimensions"),
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_FLOAT).withName("viewportBoundsRange"),
         ValueLayout.JAVA_INT.withName("viewportSubPixelBits"),
         NativeLayout.C_SIZE_T.withName("minMemoryMapAlignment"),
         ValueLayout.JAVA_LONG.withName("minTexelBufferOffsetAlignment"),
@@ -1188,8 +1212,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         ValueLayout.JAVA_INT.withName("maxCullDistances"),
         ValueLayout.JAVA_INT.withName("maxCombinedClipAndCullDistances"),
         ValueLayout.JAVA_INT.withName("discreteQueuePriorities"),
-        ValueLayout.JAVA_FLOAT.withName("pointSizeRange"),
-        ValueLayout.JAVA_FLOAT.withName("lineWidthRange"),
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_FLOAT).withName("pointSizeRange"),
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_FLOAT).withName("lineWidthRange"),
         ValueLayout.JAVA_FLOAT.withName("pointSizeGranularity"),
         ValueLayout.JAVA_FLOAT.withName("lineWidthGranularity"),
         ValueLayout.JAVA_INT.withName("strictLines"),
@@ -1359,9 +1383,9 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     public static final OfInt LAYOUT$maxFragmentDualSrcAttachments = (OfInt) LAYOUT.select(PATH$maxFragmentDualSrcAttachments);
     public static final OfInt LAYOUT$maxFragmentCombinedOutputResources = (OfInt) LAYOUT.select(PATH$maxFragmentCombinedOutputResources);
     public static final OfInt LAYOUT$maxComputeSharedMemorySize = (OfInt) LAYOUT.select(PATH$maxComputeSharedMemorySize);
-    public static final OfInt LAYOUT$maxComputeWorkGroupCount = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupCount);
+    public static final SequenceLayout LAYOUT$maxComputeWorkGroupCount = (SequenceLayout) LAYOUT.select(PATH$maxComputeWorkGroupCount);
     public static final OfInt LAYOUT$maxComputeWorkGroupInvocations = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupInvocations);
-    public static final OfInt LAYOUT$maxComputeWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxComputeWorkGroupSize);
+    public static final SequenceLayout LAYOUT$maxComputeWorkGroupSize = (SequenceLayout) LAYOUT.select(PATH$maxComputeWorkGroupSize);
     public static final OfInt LAYOUT$subPixelPrecisionBits = (OfInt) LAYOUT.select(PATH$subPixelPrecisionBits);
     public static final OfInt LAYOUT$subTexelPrecisionBits = (OfInt) LAYOUT.select(PATH$subTexelPrecisionBits);
     public static final OfInt LAYOUT$mipmapPrecisionBits = (OfInt) LAYOUT.select(PATH$mipmapPrecisionBits);
@@ -1370,8 +1394,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     public static final OfFloat LAYOUT$maxSamplerLodBias = (OfFloat) LAYOUT.select(PATH$maxSamplerLodBias);
     public static final OfFloat LAYOUT$maxSamplerAnisotropy = (OfFloat) LAYOUT.select(PATH$maxSamplerAnisotropy);
     public static final OfInt LAYOUT$maxViewports = (OfInt) LAYOUT.select(PATH$maxViewports);
-    public static final OfInt LAYOUT$maxViewportDimensions = (OfInt) LAYOUT.select(PATH$maxViewportDimensions);
-    public static final OfFloat LAYOUT$viewportBoundsRange = (OfFloat) LAYOUT.select(PATH$viewportBoundsRange);
+    public static final SequenceLayout LAYOUT$maxViewportDimensions = (SequenceLayout) LAYOUT.select(PATH$maxViewportDimensions);
+    public static final SequenceLayout LAYOUT$viewportBoundsRange = (SequenceLayout) LAYOUT.select(PATH$viewportBoundsRange);
     public static final OfInt LAYOUT$viewportSubPixelBits = (OfInt) LAYOUT.select(PATH$viewportSubPixelBits);
     public static final OfLong LAYOUT$minTexelBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minTexelBufferOffsetAlignment);
     public static final OfLong LAYOUT$minUniformBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$minUniformBufferOffsetAlignment);
@@ -1403,8 +1427,8 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
     public static final OfInt LAYOUT$maxCullDistances = (OfInt) LAYOUT.select(PATH$maxCullDistances);
     public static final OfInt LAYOUT$maxCombinedClipAndCullDistances = (OfInt) LAYOUT.select(PATH$maxCombinedClipAndCullDistances);
     public static final OfInt LAYOUT$discreteQueuePriorities = (OfInt) LAYOUT.select(PATH$discreteQueuePriorities);
-    public static final OfFloat LAYOUT$pointSizeRange = (OfFloat) LAYOUT.select(PATH$pointSizeRange);
-    public static final OfFloat LAYOUT$lineWidthRange = (OfFloat) LAYOUT.select(PATH$lineWidthRange);
+    public static final SequenceLayout LAYOUT$pointSizeRange = (SequenceLayout) LAYOUT.select(PATH$pointSizeRange);
+    public static final SequenceLayout LAYOUT$lineWidthRange = (SequenceLayout) LAYOUT.select(PATH$lineWidthRange);
     public static final OfFloat LAYOUT$pointSizeGranularity = (OfFloat) LAYOUT.select(PATH$pointSizeGranularity);
     public static final OfFloat LAYOUT$lineWidthGranularity = (OfFloat) LAYOUT.select(PATH$lineWidthGranularity);
     public static final OfInt LAYOUT$strictLines = (OfInt) LAYOUT.select(PATH$strictLines);

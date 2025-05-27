@@ -31,9 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t initial_cpb_removal_delay_length_minus1; // @link substring="initial_cpb_removal_delay_length_minus1" target="#initial_cpb_removal_delay_length_minus1"
 ///     uint8_t au_cpb_removal_delay_length_minus1; // @link substring="au_cpb_removal_delay_length_minus1" target="#au_cpb_removal_delay_length_minus1"
 ///     uint8_t dpb_output_delay_length_minus1; // @link substring="dpb_output_delay_length_minus1" target="#dpb_output_delay_length_minus1"
-///     uint8_t cpb_cnt_minus1; // @link substring="cpb_cnt_minus1" target="#cpb_cnt_minus1"
-///     uint16_t elemental_duration_in_tc_minus1; // @link substring="elemental_duration_in_tc_minus1" target="#elemental_duration_in_tc_minus1"
-///     uint16_t reserved;
+///     uint8_t[STD_VIDEO_H265_SUBLAYERS_LIST_SIZE] cpb_cnt_minus1; // @link substring="cpb_cnt_minus1" target="#cpb_cnt_minus1"
+///     uint16_t[STD_VIDEO_H265_SUBLAYERS_LIST_SIZE] elemental_duration_in_tc_minus1; // @link substring="elemental_duration_in_tc_minus1" target="#elemental_duration_in_tc_minus1"
+///     uint16_t[3] reserved;
 ///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersNal; // @link substring="StdVideoH265SubLayerHrdParameters" target="StdVideoH265SubLayerHrdParameters" @link substring="pSubLayerHrdParametersNal" target="#pSubLayerHrdParametersNal"
 ///     StdVideoH265SubLayerHrdParameters const* pSubLayerHrdParametersVcl; // @link substring="StdVideoH265SubLayerHrdParameters" target="StdVideoH265SubLayerHrdParameters" @link substring="pSubLayerHrdParametersVcl" target="#pSubLayerHrdParametersVcl"
 /// } StdVideoH265HrdParameters;
@@ -229,20 +229,28 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$dpb_output_delay_length_minus1, OFFSET$dpb_output_delay_length_minus1, value);
     }
 
-    public @Unsigned byte cpb_cnt_minus1() {
-        return segment.get(LAYOUT$cpb_cnt_minus1, OFFSET$cpb_cnt_minus1);
+    public @Unsigned BytePtr cpb_cnt_minus1() {
+        return new BytePtr(cpb_cnt_minus1Raw());
     }
 
-    public void cpb_cnt_minus1(@Unsigned byte value) {
-        segment.set(LAYOUT$cpb_cnt_minus1, OFFSET$cpb_cnt_minus1, value);
+    public void cpb_cnt_minus1(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_cnt_minus1, SIZE$cpb_cnt_minus1);
     }
 
-    public @Unsigned short elemental_duration_in_tc_minus1() {
-        return segment.get(LAYOUT$elemental_duration_in_tc_minus1, OFFSET$elemental_duration_in_tc_minus1);
+    public MemorySegment cpb_cnt_minus1Raw() {
+        return segment.asSlice(OFFSET$cpb_cnt_minus1, SIZE$cpb_cnt_minus1);
     }
 
-    public void elemental_duration_in_tc_minus1(@Unsigned short value) {
-        segment.set(LAYOUT$elemental_duration_in_tc_minus1, OFFSET$elemental_duration_in_tc_minus1, value);
+    public @Unsigned ShortPtr elemental_duration_in_tc_minus1() {
+        return new ShortPtr(elemental_duration_in_tc_minus1Raw());
+    }
+
+    public void elemental_duration_in_tc_minus1(@Unsigned ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$elemental_duration_in_tc_minus1, SIZE$elemental_duration_in_tc_minus1);
+    }
+
+    public MemorySegment elemental_duration_in_tc_minus1Raw() {
+        return segment.asSlice(OFFSET$elemental_duration_in_tc_minus1, SIZE$elemental_duration_in_tc_minus1);
     }
 
 
@@ -319,9 +327,9 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_BYTE.withName("initial_cpb_removal_delay_length_minus1"),
         ValueLayout.JAVA_BYTE.withName("au_cpb_removal_delay_length_minus1"),
         ValueLayout.JAVA_BYTE.withName("dpb_output_delay_length_minus1"),
-        ValueLayout.JAVA_BYTE.withName("cpb_cnt_minus1"),
-        ValueLayout.JAVA_SHORT.withName("elemental_duration_in_tc_minus1"),
-        ValueLayout.JAVA_SHORT.withName("reserved"),
+        MemoryLayout.sequenceLayout(H265_SUBLAYERS_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("cpb_cnt_minus1"),
+        MemoryLayout.sequenceLayout(H265_SUBLAYERS_LIST_SIZE, ValueLayout.JAVA_SHORT).withName("elemental_duration_in_tc_minus1"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_SHORT).withName("reserved"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SubLayerHrdParameters.LAYOUT).withName("pSubLayerHrdParametersNal"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265SubLayerHrdParameters.LAYOUT).withName("pSubLayerHrdParametersVcl")
     );
@@ -352,8 +360,8 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     public static final OfByte LAYOUT$initial_cpb_removal_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$initial_cpb_removal_delay_length_minus1);
     public static final OfByte LAYOUT$au_cpb_removal_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$au_cpb_removal_delay_length_minus1);
     public static final OfByte LAYOUT$dpb_output_delay_length_minus1 = (OfByte) LAYOUT.select(PATH$dpb_output_delay_length_minus1);
-    public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
-    public static final OfShort LAYOUT$elemental_duration_in_tc_minus1 = (OfShort) LAYOUT.select(PATH$elemental_duration_in_tc_minus1);
+    public static final SequenceLayout LAYOUT$cpb_cnt_minus1 = (SequenceLayout) LAYOUT.select(PATH$cpb_cnt_minus1);
+    public static final SequenceLayout LAYOUT$elemental_duration_in_tc_minus1 = (SequenceLayout) LAYOUT.select(PATH$elemental_duration_in_tc_minus1);
     public static final AddressLayout LAYOUT$pSubLayerHrdParametersNal = (AddressLayout) LAYOUT.select(PATH$pSubLayerHrdParametersNal);
     public static final AddressLayout LAYOUT$pSubLayerHrdParametersVcl = (AddressLayout) LAYOUT.select(PATH$pSubLayerHrdParametersVcl);
 

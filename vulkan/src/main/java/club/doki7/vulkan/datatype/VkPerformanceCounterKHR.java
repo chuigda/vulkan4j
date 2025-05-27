@@ -26,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkPerformanceCounterUnitKHR unit; // @link substring="VkPerformanceCounterUnitKHR" target="VkPerformanceCounterUnitKHR" @link substring="unit" target="#unit"
 ///     VkPerformanceCounterScopeKHR scope; // @link substring="VkPerformanceCounterScopeKHR" target="VkPerformanceCounterScopeKHR" @link substring="scope" target="#scope"
 ///     VkPerformanceCounterStorageKHR storage; // @link substring="VkPerformanceCounterStorageKHR" target="VkPerformanceCounterStorageKHR" @link substring="storage" target="#storage"
-///     uint8_t uuid; // @link substring="uuid" target="#uuid"
+///     uint8_t[VK_UUID_SIZE] uuid; // @link substring="uuid" target="#uuid"
 /// } VkPerformanceCounterKHR;
 /// }
 ///
@@ -205,12 +205,16 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$storage, OFFSET$storage, value);
     }
 
-    public @Unsigned byte uuid() {
-        return segment.get(LAYOUT$uuid, OFFSET$uuid);
+    public @Unsigned BytePtr uuid() {
+        return new BytePtr(uuidRaw());
     }
 
-    public void uuid(@Unsigned byte value) {
-        segment.set(LAYOUT$uuid, OFFSET$uuid, value);
+    public void uuid(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uuid, SIZE$uuid);
+    }
+
+    public MemorySegment uuidRaw() {
+        return segment.asSlice(OFFSET$uuid, SIZE$uuid);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -219,7 +223,7 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("unit"),
         ValueLayout.JAVA_INT.withName("scope"),
         ValueLayout.JAVA_INT.withName("storage"),
-        ValueLayout.JAVA_BYTE.withName("uuid")
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("uuid")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -235,7 +239,7 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
     public static final OfInt LAYOUT$unit = (OfInt) LAYOUT.select(PATH$unit);
     public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
     public static final OfInt LAYOUT$storage = (OfInt) LAYOUT.select(PATH$storage);
-    public static final OfByte LAYOUT$uuid = (OfByte) LAYOUT.select(PATH$uuid);
+    public static final SequenceLayout LAYOUT$uuid = (SequenceLayout) LAYOUT.select(PATH$uuid);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkDeviceGroupPresentCapabilitiesKHR {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     uint32_t presentMask; // @link substring="presentMask" target="#presentMask"
+///     uint32_t[VK_MAX_DEVICE_GROUP_SIZE] presentMask; // @link substring="presentMask" target="#presentMask"
 ///     VkDeviceGroupPresentModeFlagsKHR modes; // @link substring="VkDeviceGroupPresentModeFlagsKHR" target="VkDeviceGroupPresentModeFlagsKHR" @link substring="modes" target="#modes"
 /// } VkDeviceGroupPresentCapabilitiesKHR;
 /// }
@@ -179,12 +179,16 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int presentMask() {
-        return segment.get(LAYOUT$presentMask, OFFSET$presentMask);
+    public @Unsigned IntPtr presentMask() {
+        return new IntPtr(presentMaskRaw());
     }
 
-    public void presentMask(@Unsigned int value) {
-        segment.set(LAYOUT$presentMask, OFFSET$presentMask, value);
+    public void presentMask(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$presentMask, SIZE$presentMask);
+    }
+
+    public MemorySegment presentMaskRaw() {
+        return segment.asSlice(OFFSET$presentMask, SIZE$presentMask);
     }
 
     public @EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int modes() {
@@ -198,7 +202,7 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("presentMask"),
+        MemoryLayout.sequenceLayout(MAX_DEVICE_GROUP_SIZE, ValueLayout.JAVA_INT).withName("presentMask"),
         ValueLayout.JAVA_INT.withName("modes")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -210,7 +214,7 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$presentMask = (OfInt) LAYOUT.select(PATH$presentMask);
+    public static final SequenceLayout LAYOUT$presentMask = (SequenceLayout) LAYOUT.select(PATH$presentMask);
     public static final OfInt LAYOUT$modes = (OfInt) LAYOUT.select(PATH$modes);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

@@ -23,8 +23,8 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     uint32_t maxWorkGroupCount; // @link substring="maxWorkGroupCount" target="#maxWorkGroupCount"
-///     uint32_t maxWorkGroupSize; // @link substring="maxWorkGroupSize" target="#maxWorkGroupSize"
+///     uint32_t[3] maxWorkGroupCount; // @link substring="maxWorkGroupCount" target="#maxWorkGroupCount"
+///     uint32_t[3] maxWorkGroupSize; // @link substring="maxWorkGroupSize" target="#maxWorkGroupSize"
 ///     uint32_t maxOutputClusterCount; // @link substring="maxOutputClusterCount" target="#maxOutputClusterCount"
 ///     VkDeviceSize indirectBufferOffsetAlignment; // @link substring="indirectBufferOffsetAlignment" target="#indirectBufferOffsetAlignment"
 /// } VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI;
@@ -181,20 +181,28 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned int maxWorkGroupCount() {
-        return segment.get(LAYOUT$maxWorkGroupCount, OFFSET$maxWorkGroupCount);
+    public @Unsigned IntPtr maxWorkGroupCount() {
+        return new IntPtr(maxWorkGroupCountRaw());
     }
 
-    public void maxWorkGroupCount(@Unsigned int value) {
-        segment.set(LAYOUT$maxWorkGroupCount, OFFSET$maxWorkGroupCount, value);
+    public void maxWorkGroupCount(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupCount, SIZE$maxWorkGroupCount);
     }
 
-    public @Unsigned int maxWorkGroupSize() {
-        return segment.get(LAYOUT$maxWorkGroupSize, OFFSET$maxWorkGroupSize);
+    public MemorySegment maxWorkGroupCountRaw() {
+        return segment.asSlice(OFFSET$maxWorkGroupCount, SIZE$maxWorkGroupCount);
     }
 
-    public void maxWorkGroupSize(@Unsigned int value) {
-        segment.set(LAYOUT$maxWorkGroupSize, OFFSET$maxWorkGroupSize, value);
+    public @Unsigned IntPtr maxWorkGroupSize() {
+        return new IntPtr(maxWorkGroupSizeRaw());
+    }
+
+    public void maxWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupSize, SIZE$maxWorkGroupSize);
+    }
+
+    public MemorySegment maxWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$maxWorkGroupSize, SIZE$maxWorkGroupSize);
     }
 
     public @Unsigned int maxOutputClusterCount() {
@@ -216,8 +224,8 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxWorkGroupCount"),
-        ValueLayout.JAVA_INT.withName("maxWorkGroupSize"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxWorkGroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxWorkGroupSize"),
         ValueLayout.JAVA_INT.withName("maxOutputClusterCount"),
         ValueLayout.JAVA_LONG.withName("indirectBufferOffsetAlignment")
     );
@@ -232,8 +240,8 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfInt LAYOUT$maxWorkGroupCount = (OfInt) LAYOUT.select(PATH$maxWorkGroupCount);
-    public static final OfInt LAYOUT$maxWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxWorkGroupSize);
+    public static final SequenceLayout LAYOUT$maxWorkGroupCount = (SequenceLayout) LAYOUT.select(PATH$maxWorkGroupCount);
+    public static final SequenceLayout LAYOUT$maxWorkGroupSize = (SequenceLayout) LAYOUT.select(PATH$maxWorkGroupSize);
     public static final OfInt LAYOUT$maxOutputClusterCount = (OfInt) LAYOUT.select(PATH$maxOutputClusterCount);
     public static final OfLong LAYOUT$indirectBufferOffsetAlignment = (OfLong) LAYOUT.select(PATH$indirectBufferOffsetAlignment);
 

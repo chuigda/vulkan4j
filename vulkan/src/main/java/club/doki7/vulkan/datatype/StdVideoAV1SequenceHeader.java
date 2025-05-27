@@ -32,7 +32,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t order_hint_bits_minus_1; // @link substring="order_hint_bits_minus_1" target="#order_hint_bits_minus_1"
 ///     uint8_t seq_force_integer_mv; // @link substring="seq_force_integer_mv" target="#seq_force_integer_mv"
 ///     uint8_t seq_force_screen_content_tools; // @link substring="seq_force_screen_content_tools" target="#seq_force_screen_content_tools"
-///     uint8_t reserved1;
+///     uint8_t[5] reserved1;
 ///     StdVideoAV1ColorConfig const* pColorConfig; // @link substring="StdVideoAV1ColorConfig" target="StdVideoAV1ColorConfig" @link substring="pColorConfig" target="#pColorConfig"
 ///     StdVideoAV1TimingInfo const* pTimingInfo; // @link substring="StdVideoAV1TimingInfo" target="StdVideoAV1TimingInfo" @link substring="pTimingInfo" target="#pTimingInfo"
 /// } StdVideoAV1SequenceHeader;
@@ -311,7 +311,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_BYTE.withName("order_hint_bits_minus_1"),
         ValueLayout.JAVA_BYTE.withName("seq_force_integer_mv"),
         ValueLayout.JAVA_BYTE.withName("seq_force_screen_content_tools"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(5, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1ColorConfig.LAYOUT).withName("pColorConfig"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TimingInfo.LAYOUT).withName("pTimingInfo")
     );

@@ -23,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     uint8_t shaderModuleIdentifierAlgorithmUUID; // @link substring="shaderModuleIdentifierAlgorithmUUID" target="#shaderModuleIdentifierAlgorithmUUID"
+///     uint8_t[VK_UUID_SIZE] shaderModuleIdentifierAlgorithmUUID; // @link substring="shaderModuleIdentifierAlgorithmUUID" target="#shaderModuleIdentifierAlgorithmUUID"
 /// } VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT;
 /// }
 ///
@@ -178,18 +178,22 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(@NotNull Memor
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned byte shaderModuleIdentifierAlgorithmUUID() {
-        return segment.get(LAYOUT$shaderModuleIdentifierAlgorithmUUID, OFFSET$shaderModuleIdentifierAlgorithmUUID);
+    public @Unsigned BytePtr shaderModuleIdentifierAlgorithmUUID() {
+        return new BytePtr(shaderModuleIdentifierAlgorithmUUIDRaw());
     }
 
-    public void shaderModuleIdentifierAlgorithmUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$shaderModuleIdentifierAlgorithmUUID, OFFSET$shaderModuleIdentifierAlgorithmUUID, value);
+    public void shaderModuleIdentifierAlgorithmUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderModuleIdentifierAlgorithmUUID, SIZE$shaderModuleIdentifierAlgorithmUUID);
+    }
+
+    public MemorySegment shaderModuleIdentifierAlgorithmUUIDRaw() {
+        return segment.asSlice(OFFSET$shaderModuleIdentifierAlgorithmUUID, SIZE$shaderModuleIdentifierAlgorithmUUID);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("shaderModuleIdentifierAlgorithmUUID")
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("shaderModuleIdentifierAlgorithmUUID")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -199,7 +203,7 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(@NotNull Memor
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$shaderModuleIdentifierAlgorithmUUID = (OfByte) LAYOUT.select(PATH$shaderModuleIdentifierAlgorithmUUID);
+    public static final SequenceLayout LAYOUT$shaderModuleIdentifierAlgorithmUUID = (SequenceLayout) LAYOUT.select(PATH$shaderModuleIdentifierAlgorithmUUID);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

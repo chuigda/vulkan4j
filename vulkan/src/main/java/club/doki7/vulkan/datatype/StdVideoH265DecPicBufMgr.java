@@ -21,9 +21,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265DecPicBufMgr {
-///     uint32_t max_latency_increase_plus1; // @link substring="max_latency_increase_plus1" target="#max_latency_increase_plus1"
-///     uint8_t max_dec_pic_buffering_minus1; // @link substring="max_dec_pic_buffering_minus1" target="#max_dec_pic_buffering_minus1"
-///     uint8_t max_num_reorder_pics; // @link substring="max_num_reorder_pics" target="#max_num_reorder_pics"
+///     uint32_t[STD_VIDEO_H265_SUBLAYERS_LIST_SIZE] max_latency_increase_plus1; // @link substring="max_latency_increase_plus1" target="#max_latency_increase_plus1"
+///     uint8_t[STD_VIDEO_H265_SUBLAYERS_LIST_SIZE] max_dec_pic_buffering_minus1; // @link substring="max_dec_pic_buffering_minus1" target="#max_dec_pic_buffering_minus1"
+///     uint8_t[STD_VIDEO_H265_SUBLAYERS_LIST_SIZE] max_num_reorder_pics; // @link substring="max_num_reorder_pics" target="#max_num_reorder_pics"
 /// } StdVideoH265DecPicBufMgr;
 /// }
 ///
@@ -137,34 +137,46 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @Unsigned int max_latency_increase_plus1() {
-        return segment.get(LAYOUT$max_latency_increase_plus1, OFFSET$max_latency_increase_plus1);
+    public @Unsigned IntPtr max_latency_increase_plus1() {
+        return new IntPtr(max_latency_increase_plus1Raw());
     }
 
-    public void max_latency_increase_plus1(@Unsigned int value) {
-        segment.set(LAYOUT$max_latency_increase_plus1, OFFSET$max_latency_increase_plus1, value);
+    public void max_latency_increase_plus1(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_latency_increase_plus1, SIZE$max_latency_increase_plus1);
     }
 
-    public @Unsigned byte max_dec_pic_buffering_minus1() {
-        return segment.get(LAYOUT$max_dec_pic_buffering_minus1, OFFSET$max_dec_pic_buffering_minus1);
+    public MemorySegment max_latency_increase_plus1Raw() {
+        return segment.asSlice(OFFSET$max_latency_increase_plus1, SIZE$max_latency_increase_plus1);
     }
 
-    public void max_dec_pic_buffering_minus1(@Unsigned byte value) {
-        segment.set(LAYOUT$max_dec_pic_buffering_minus1, OFFSET$max_dec_pic_buffering_minus1, value);
+    public @Unsigned BytePtr max_dec_pic_buffering_minus1() {
+        return new BytePtr(max_dec_pic_buffering_minus1Raw());
     }
 
-    public @Unsigned byte max_num_reorder_pics() {
-        return segment.get(LAYOUT$max_num_reorder_pics, OFFSET$max_num_reorder_pics);
+    public void max_dec_pic_buffering_minus1(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_dec_pic_buffering_minus1, SIZE$max_dec_pic_buffering_minus1);
     }
 
-    public void max_num_reorder_pics(@Unsigned byte value) {
-        segment.set(LAYOUT$max_num_reorder_pics, OFFSET$max_num_reorder_pics, value);
+    public MemorySegment max_dec_pic_buffering_minus1Raw() {
+        return segment.asSlice(OFFSET$max_dec_pic_buffering_minus1, SIZE$max_dec_pic_buffering_minus1);
+    }
+
+    public @Unsigned BytePtr max_num_reorder_pics() {
+        return new BytePtr(max_num_reorder_picsRaw());
+    }
+
+    public void max_num_reorder_pics(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_num_reorder_pics, SIZE$max_num_reorder_pics);
+    }
+
+    public MemorySegment max_num_reorder_picsRaw() {
+        return segment.asSlice(OFFSET$max_num_reorder_pics, SIZE$max_num_reorder_pics);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("max_latency_increase_plus1"),
-        ValueLayout.JAVA_BYTE.withName("max_dec_pic_buffering_minus1"),
-        ValueLayout.JAVA_BYTE.withName("max_num_reorder_pics")
+        MemoryLayout.sequenceLayout(H265_SUBLAYERS_LIST_SIZE, ValueLayout.JAVA_INT).withName("max_latency_increase_plus1"),
+        MemoryLayout.sequenceLayout(H265_SUBLAYERS_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("max_dec_pic_buffering_minus1"),
+        MemoryLayout.sequenceLayout(H265_SUBLAYERS_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("max_num_reorder_pics")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -172,9 +184,9 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$max_dec_pic_buffering_minus1 = PathElement.groupElement("max_dec_pic_buffering_minus1");
     public static final PathElement PATH$max_num_reorder_pics = PathElement.groupElement("max_num_reorder_pics");
 
-    public static final OfInt LAYOUT$max_latency_increase_plus1 = (OfInt) LAYOUT.select(PATH$max_latency_increase_plus1);
-    public static final OfByte LAYOUT$max_dec_pic_buffering_minus1 = (OfByte) LAYOUT.select(PATH$max_dec_pic_buffering_minus1);
-    public static final OfByte LAYOUT$max_num_reorder_pics = (OfByte) LAYOUT.select(PATH$max_num_reorder_pics);
+    public static final SequenceLayout LAYOUT$max_latency_increase_plus1 = (SequenceLayout) LAYOUT.select(PATH$max_latency_increase_plus1);
+    public static final SequenceLayout LAYOUT$max_dec_pic_buffering_minus1 = (SequenceLayout) LAYOUT.select(PATH$max_dec_pic_buffering_minus1);
+    public static final SequenceLayout LAYOUT$max_num_reorder_pics = (SequenceLayout) LAYOUT.select(PATH$max_num_reorder_pics);
 
     public static final long SIZE$max_latency_increase_plus1 = LAYOUT$max_latency_increase_plus1.byteSize();
     public static final long SIZE$max_dec_pic_buffering_minus1 = LAYOUT$max_dec_pic_buffering_minus1.byteSize();

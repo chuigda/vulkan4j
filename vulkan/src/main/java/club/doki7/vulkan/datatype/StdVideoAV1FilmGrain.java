@@ -29,17 +29,17 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint16_t grain_seed; // @link substring="grain_seed" target="#grain_seed"
 ///     uint8_t film_grain_params_ref_idx; // @link substring="film_grain_params_ref_idx" target="#film_grain_params_ref_idx"
 ///     uint8_t num_y_points; // @link substring="num_y_points" target="#num_y_points"
-///     uint8_t point_y_value; // @link substring="point_y_value" target="#point_y_value"
-///     uint8_t point_y_scaling; // @link substring="point_y_scaling" target="#point_y_scaling"
+///     uint8_t[STD_VIDEO_AV1_MAX_NUM_Y_POINTS] point_y_value; // @link substring="point_y_value" target="#point_y_value"
+///     uint8_t[STD_VIDEO_AV1_MAX_NUM_Y_POINTS] point_y_scaling; // @link substring="point_y_scaling" target="#point_y_scaling"
 ///     uint8_t num_cb_points; // @link substring="num_cb_points" target="#num_cb_points"
-///     uint8_t point_cb_value; // @link substring="point_cb_value" target="#point_cb_value"
-///     uint8_t point_cb_scaling; // @link substring="point_cb_scaling" target="#point_cb_scaling"
+///     uint8_t[STD_VIDEO_AV1_MAX_NUM_CB_POINTS] point_cb_value; // @link substring="point_cb_value" target="#point_cb_value"
+///     uint8_t[STD_VIDEO_AV1_MAX_NUM_CB_POINTS] point_cb_scaling; // @link substring="point_cb_scaling" target="#point_cb_scaling"
 ///     uint8_t num_cr_points; // @link substring="num_cr_points" target="#num_cr_points"
-///     uint8_t point_cr_value; // @link substring="point_cr_value" target="#point_cr_value"
-///     uint8_t point_cr_scaling; // @link substring="point_cr_scaling" target="#point_cr_scaling"
-///     int8_t ar_coeffs_y_plus_128; // @link substring="ar_coeffs_y_plus_128" target="#ar_coeffs_y_plus_128"
-///     int8_t ar_coeffs_cb_plus_128; // @link substring="ar_coeffs_cb_plus_128" target="#ar_coeffs_cb_plus_128"
-///     int8_t ar_coeffs_cr_plus_128; // @link substring="ar_coeffs_cr_plus_128" target="#ar_coeffs_cr_plus_128"
+///     uint8_t[STD_VIDEO_AV1_MAX_NUM_CR_POINTS] point_cr_value; // @link substring="point_cr_value" target="#point_cr_value"
+///     uint8_t[STD_VIDEO_AV1_MAX_NUM_CR_POINTS] point_cr_scaling; // @link substring="point_cr_scaling" target="#point_cr_scaling"
+///     int8_t[STD_VIDEO_AV1_MAX_NUM_POS_LUMA] ar_coeffs_y_plus_128; // @link substring="ar_coeffs_y_plus_128" target="#ar_coeffs_y_plus_128"
+///     int8_t[STD_VIDEO_AV1_MAX_NUM_POS_CHROMA] ar_coeffs_cb_plus_128; // @link substring="ar_coeffs_cb_plus_128" target="#ar_coeffs_cb_plus_128"
+///     int8_t[STD_VIDEO_AV1_MAX_NUM_POS_CHROMA] ar_coeffs_cr_plus_128; // @link substring="ar_coeffs_cr_plus_128" target="#ar_coeffs_cr_plus_128"
 ///     uint8_t cb_mult; // @link substring="cb_mult" target="#cb_mult"
 ///     uint8_t cb_luma_mult; // @link substring="cb_luma_mult" target="#cb_luma_mult"
 ///     uint16_t cb_offset; // @link substring="cb_offset" target="#cb_offset"
@@ -223,20 +223,28 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         segment.set(LAYOUT$num_y_points, OFFSET$num_y_points, value);
     }
 
-    public @Unsigned byte point_y_value() {
-        return segment.get(LAYOUT$point_y_value, OFFSET$point_y_value);
+    public @Unsigned BytePtr point_y_value() {
+        return new BytePtr(point_y_valueRaw());
     }
 
-    public void point_y_value(@Unsigned byte value) {
-        segment.set(LAYOUT$point_y_value, OFFSET$point_y_value, value);
+    public void point_y_value(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_y_value, SIZE$point_y_value);
     }
 
-    public @Unsigned byte point_y_scaling() {
-        return segment.get(LAYOUT$point_y_scaling, OFFSET$point_y_scaling);
+    public MemorySegment point_y_valueRaw() {
+        return segment.asSlice(OFFSET$point_y_value, SIZE$point_y_value);
     }
 
-    public void point_y_scaling(@Unsigned byte value) {
-        segment.set(LAYOUT$point_y_scaling, OFFSET$point_y_scaling, value);
+    public @Unsigned BytePtr point_y_scaling() {
+        return new BytePtr(point_y_scalingRaw());
+    }
+
+    public void point_y_scaling(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_y_scaling, SIZE$point_y_scaling);
+    }
+
+    public MemorySegment point_y_scalingRaw() {
+        return segment.asSlice(OFFSET$point_y_scaling, SIZE$point_y_scaling);
     }
 
     public @Unsigned byte num_cb_points() {
@@ -247,20 +255,28 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         segment.set(LAYOUT$num_cb_points, OFFSET$num_cb_points, value);
     }
 
-    public @Unsigned byte point_cb_value() {
-        return segment.get(LAYOUT$point_cb_value, OFFSET$point_cb_value);
+    public @Unsigned BytePtr point_cb_value() {
+        return new BytePtr(point_cb_valueRaw());
     }
 
-    public void point_cb_value(@Unsigned byte value) {
-        segment.set(LAYOUT$point_cb_value, OFFSET$point_cb_value, value);
+    public void point_cb_value(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cb_value, SIZE$point_cb_value);
     }
 
-    public @Unsigned byte point_cb_scaling() {
-        return segment.get(LAYOUT$point_cb_scaling, OFFSET$point_cb_scaling);
+    public MemorySegment point_cb_valueRaw() {
+        return segment.asSlice(OFFSET$point_cb_value, SIZE$point_cb_value);
     }
 
-    public void point_cb_scaling(@Unsigned byte value) {
-        segment.set(LAYOUT$point_cb_scaling, OFFSET$point_cb_scaling, value);
+    public @Unsigned BytePtr point_cb_scaling() {
+        return new BytePtr(point_cb_scalingRaw());
+    }
+
+    public void point_cb_scaling(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cb_scaling, SIZE$point_cb_scaling);
+    }
+
+    public MemorySegment point_cb_scalingRaw() {
+        return segment.asSlice(OFFSET$point_cb_scaling, SIZE$point_cb_scaling);
     }
 
     public @Unsigned byte num_cr_points() {
@@ -271,44 +287,64 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         segment.set(LAYOUT$num_cr_points, OFFSET$num_cr_points, value);
     }
 
-    public @Unsigned byte point_cr_value() {
-        return segment.get(LAYOUT$point_cr_value, OFFSET$point_cr_value);
+    public @Unsigned BytePtr point_cr_value() {
+        return new BytePtr(point_cr_valueRaw());
     }
 
-    public void point_cr_value(@Unsigned byte value) {
-        segment.set(LAYOUT$point_cr_value, OFFSET$point_cr_value, value);
+    public void point_cr_value(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cr_value, SIZE$point_cr_value);
     }
 
-    public @Unsigned byte point_cr_scaling() {
-        return segment.get(LAYOUT$point_cr_scaling, OFFSET$point_cr_scaling);
+    public MemorySegment point_cr_valueRaw() {
+        return segment.asSlice(OFFSET$point_cr_value, SIZE$point_cr_value);
     }
 
-    public void point_cr_scaling(@Unsigned byte value) {
-        segment.set(LAYOUT$point_cr_scaling, OFFSET$point_cr_scaling, value);
+    public @Unsigned BytePtr point_cr_scaling() {
+        return new BytePtr(point_cr_scalingRaw());
     }
 
-    public byte ar_coeffs_y_plus_128() {
-        return segment.get(LAYOUT$ar_coeffs_y_plus_128, OFFSET$ar_coeffs_y_plus_128);
+    public void point_cr_scaling(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cr_scaling, SIZE$point_cr_scaling);
     }
 
-    public void ar_coeffs_y_plus_128(byte value) {
-        segment.set(LAYOUT$ar_coeffs_y_plus_128, OFFSET$ar_coeffs_y_plus_128, value);
+    public MemorySegment point_cr_scalingRaw() {
+        return segment.asSlice(OFFSET$point_cr_scaling, SIZE$point_cr_scaling);
     }
 
-    public byte ar_coeffs_cb_plus_128() {
-        return segment.get(LAYOUT$ar_coeffs_cb_plus_128, OFFSET$ar_coeffs_cb_plus_128);
+    public BytePtr ar_coeffs_y_plus_128() {
+        return new BytePtr(ar_coeffs_y_plus_128Raw());
     }
 
-    public void ar_coeffs_cb_plus_128(byte value) {
-        segment.set(LAYOUT$ar_coeffs_cb_plus_128, OFFSET$ar_coeffs_cb_plus_128, value);
+    public void ar_coeffs_y_plus_128(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_y_plus_128, SIZE$ar_coeffs_y_plus_128);
     }
 
-    public byte ar_coeffs_cr_plus_128() {
-        return segment.get(LAYOUT$ar_coeffs_cr_plus_128, OFFSET$ar_coeffs_cr_plus_128);
+    public MemorySegment ar_coeffs_y_plus_128Raw() {
+        return segment.asSlice(OFFSET$ar_coeffs_y_plus_128, SIZE$ar_coeffs_y_plus_128);
     }
 
-    public void ar_coeffs_cr_plus_128(byte value) {
-        segment.set(LAYOUT$ar_coeffs_cr_plus_128, OFFSET$ar_coeffs_cr_plus_128, value);
+    public BytePtr ar_coeffs_cb_plus_128() {
+        return new BytePtr(ar_coeffs_cb_plus_128Raw());
+    }
+
+    public void ar_coeffs_cb_plus_128(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_cb_plus_128, SIZE$ar_coeffs_cb_plus_128);
+    }
+
+    public MemorySegment ar_coeffs_cb_plus_128Raw() {
+        return segment.asSlice(OFFSET$ar_coeffs_cb_plus_128, SIZE$ar_coeffs_cb_plus_128);
+    }
+
+    public BytePtr ar_coeffs_cr_plus_128() {
+        return new BytePtr(ar_coeffs_cr_plus_128Raw());
+    }
+
+    public void ar_coeffs_cr_plus_128(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_cr_plus_128, SIZE$ar_coeffs_cr_plus_128);
+    }
+
+    public MemorySegment ar_coeffs_cr_plus_128Raw() {
+        return segment.asSlice(OFFSET$ar_coeffs_cr_plus_128, SIZE$ar_coeffs_cr_plus_128);
     }
 
     public @Unsigned byte cb_mult() {
@@ -368,17 +404,17 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         ValueLayout.JAVA_SHORT.withName("grain_seed"),
         ValueLayout.JAVA_BYTE.withName("film_grain_params_ref_idx"),
         ValueLayout.JAVA_BYTE.withName("num_y_points"),
-        ValueLayout.JAVA_BYTE.withName("point_y_value"),
-        ValueLayout.JAVA_BYTE.withName("point_y_scaling"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_Y_POINTS, ValueLayout.JAVA_BYTE).withName("point_y_value"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_Y_POINTS, ValueLayout.JAVA_BYTE).withName("point_y_scaling"),
         ValueLayout.JAVA_BYTE.withName("num_cb_points"),
-        ValueLayout.JAVA_BYTE.withName("point_cb_value"),
-        ValueLayout.JAVA_BYTE.withName("point_cb_scaling"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_CB_POINTS, ValueLayout.JAVA_BYTE).withName("point_cb_value"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_CB_POINTS, ValueLayout.JAVA_BYTE).withName("point_cb_scaling"),
         ValueLayout.JAVA_BYTE.withName("num_cr_points"),
-        ValueLayout.JAVA_BYTE.withName("point_cr_value"),
-        ValueLayout.JAVA_BYTE.withName("point_cr_scaling"),
-        ValueLayout.JAVA_BYTE.withName("ar_coeffs_y_plus_128"),
-        ValueLayout.JAVA_BYTE.withName("ar_coeffs_cb_plus_128"),
-        ValueLayout.JAVA_BYTE.withName("ar_coeffs_cr_plus_128"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_CR_POINTS, ValueLayout.JAVA_BYTE).withName("point_cr_value"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_CR_POINTS, ValueLayout.JAVA_BYTE).withName("point_cr_scaling"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_POS_LUMA, ValueLayout.JAVA_BYTE).withName("ar_coeffs_y_plus_128"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_POS_CHROMA, ValueLayout.JAVA_BYTE).withName("ar_coeffs_cb_plus_128"),
+        MemoryLayout.sequenceLayout(AV1_MAX_NUM_POS_CHROMA, ValueLayout.JAVA_BYTE).withName("ar_coeffs_cr_plus_128"),
         ValueLayout.JAVA_BYTE.withName("cb_mult"),
         ValueLayout.JAVA_BYTE.withName("cb_luma_mult"),
         ValueLayout.JAVA_SHORT.withName("cb_offset"),
@@ -422,17 +458,17 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
     public static final OfShort LAYOUT$grain_seed = (OfShort) LAYOUT.select(PATH$grain_seed);
     public static final OfByte LAYOUT$film_grain_params_ref_idx = (OfByte) LAYOUT.select(PATH$film_grain_params_ref_idx);
     public static final OfByte LAYOUT$num_y_points = (OfByte) LAYOUT.select(PATH$num_y_points);
-    public static final OfByte LAYOUT$point_y_value = (OfByte) LAYOUT.select(PATH$point_y_value);
-    public static final OfByte LAYOUT$point_y_scaling = (OfByte) LAYOUT.select(PATH$point_y_scaling);
+    public static final SequenceLayout LAYOUT$point_y_value = (SequenceLayout) LAYOUT.select(PATH$point_y_value);
+    public static final SequenceLayout LAYOUT$point_y_scaling = (SequenceLayout) LAYOUT.select(PATH$point_y_scaling);
     public static final OfByte LAYOUT$num_cb_points = (OfByte) LAYOUT.select(PATH$num_cb_points);
-    public static final OfByte LAYOUT$point_cb_value = (OfByte) LAYOUT.select(PATH$point_cb_value);
-    public static final OfByte LAYOUT$point_cb_scaling = (OfByte) LAYOUT.select(PATH$point_cb_scaling);
+    public static final SequenceLayout LAYOUT$point_cb_value = (SequenceLayout) LAYOUT.select(PATH$point_cb_value);
+    public static final SequenceLayout LAYOUT$point_cb_scaling = (SequenceLayout) LAYOUT.select(PATH$point_cb_scaling);
     public static final OfByte LAYOUT$num_cr_points = (OfByte) LAYOUT.select(PATH$num_cr_points);
-    public static final OfByte LAYOUT$point_cr_value = (OfByte) LAYOUT.select(PATH$point_cr_value);
-    public static final OfByte LAYOUT$point_cr_scaling = (OfByte) LAYOUT.select(PATH$point_cr_scaling);
-    public static final OfByte LAYOUT$ar_coeffs_y_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_y_plus_128);
-    public static final OfByte LAYOUT$ar_coeffs_cb_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_cb_plus_128);
-    public static final OfByte LAYOUT$ar_coeffs_cr_plus_128 = (OfByte) LAYOUT.select(PATH$ar_coeffs_cr_plus_128);
+    public static final SequenceLayout LAYOUT$point_cr_value = (SequenceLayout) LAYOUT.select(PATH$point_cr_value);
+    public static final SequenceLayout LAYOUT$point_cr_scaling = (SequenceLayout) LAYOUT.select(PATH$point_cr_scaling);
+    public static final SequenceLayout LAYOUT$ar_coeffs_y_plus_128 = (SequenceLayout) LAYOUT.select(PATH$ar_coeffs_y_plus_128);
+    public static final SequenceLayout LAYOUT$ar_coeffs_cb_plus_128 = (SequenceLayout) LAYOUT.select(PATH$ar_coeffs_cb_plus_128);
+    public static final SequenceLayout LAYOUT$ar_coeffs_cr_plus_128 = (SequenceLayout) LAYOUT.select(PATH$ar_coeffs_cr_plus_128);
     public static final OfByte LAYOUT$cb_mult = (OfByte) LAYOUT.select(PATH$cb_mult);
     public static final OfByte LAYOUT$cb_luma_mult = (OfByte) LAYOUT.select(PATH$cb_luma_mult);
     public static final OfShort LAYOUT$cb_offset = (OfShort) LAYOUT.select(PATH$cb_offset);

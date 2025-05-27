@@ -22,9 +22,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPhysicalDeviceMemoryProperties {
 ///     uint32_t memoryTypeCount; // @link substring="memoryTypeCount" target="#memoryTypeCount"
-///     VkMemoryType memoryTypes; // @link substring="VkMemoryType" target="VkMemoryType" @link substring="memoryTypes" target="#memoryTypes"
+///     VkMemoryType[VK_MAX_MEMORY_TYPES] memoryTypes; // @link substring="VkMemoryType" target="VkMemoryType" @link substring="memoryTypes" target="#memoryTypes"
 ///     uint32_t memoryHeapCount; // @link substring="memoryHeapCount" target="#memoryHeapCount"
-///     VkMemoryHeap memoryHeaps; // @link substring="VkMemoryHeap" target="VkMemoryHeap" @link substring="memoryHeaps" target="#memoryHeaps"
+///     VkMemoryHeap[VK_MAX_MEMORY_HEAPS] memoryHeaps; // @link substring="VkMemoryHeap" target="VkMemoryHeap" @link substring="memoryHeaps" target="#memoryHeaps"
 /// } VkPhysicalDeviceMemoryProperties;
 /// }
 ///
@@ -148,12 +148,27 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$memoryTypeCount, OFFSET$memoryTypeCount, value);
     }
 
-    public @NotNull VkMemoryType memoryTypes() {
-        return new VkMemoryType(segment.asSlice(OFFSET$memoryTypes, LAYOUT$memoryTypes));
+    public VkMemoryType.Ptr memoryTypes() {
+        return new VkMemoryType.Ptr(memoryTypesRaw());
     }
 
-    public void memoryTypes(@NotNull VkMemoryType value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryTypes, SIZE$memoryTypes);
+    public void memoryTypes(VkMemoryType.Ptr value) {
+        MemorySegment s = memoryTypesRaw();
+        s.copyFrom(value.segment());
+    }
+
+    public VkMemoryType memoryTypesAt(int index) {
+        MemorySegment s = memoryTypesRaw();
+        return new VkMemoryType(s.asSlice(index * VkMemoryType.BYTES, VkMemoryType.BYTES));
+    }
+
+    public void memoryTypesAt(int index, VkMemoryType value) {
+        MemorySegment s = memoryTypesRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VkMemoryType.BYTES, VkMemoryType.BYTES);
+    }
+
+    public MemorySegment memoryTypesRaw() {
+        return segment.asSlice(OFFSET$memoryTypes, SIZE$memoryTypes);
     }
 
     public @Unsigned int memoryHeapCount() {
@@ -164,19 +179,34 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$memoryHeapCount, OFFSET$memoryHeapCount, value);
     }
 
-    public @NotNull VkMemoryHeap memoryHeaps() {
-        return new VkMemoryHeap(segment.asSlice(OFFSET$memoryHeaps, LAYOUT$memoryHeaps));
+    public VkMemoryHeap.Ptr memoryHeaps() {
+        return new VkMemoryHeap.Ptr(memoryHeapsRaw());
     }
 
-    public void memoryHeaps(@NotNull VkMemoryHeap value) {
-        MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryHeaps, SIZE$memoryHeaps);
+    public void memoryHeaps(VkMemoryHeap.Ptr value) {
+        MemorySegment s = memoryHeapsRaw();
+        s.copyFrom(value.segment());
+    }
+
+    public VkMemoryHeap memoryHeapsAt(int index) {
+        MemorySegment s = memoryHeapsRaw();
+        return new VkMemoryHeap(s.asSlice(index * VkMemoryHeap.BYTES, VkMemoryHeap.BYTES));
+    }
+
+    public void memoryHeapsAt(int index, VkMemoryHeap value) {
+        MemorySegment s = memoryHeapsRaw();
+        MemorySegment.copy(value.segment(), 0, s, index * VkMemoryHeap.BYTES, VkMemoryHeap.BYTES);
+    }
+
+    public MemorySegment memoryHeapsRaw() {
+        return segment.asSlice(OFFSET$memoryHeaps, SIZE$memoryHeaps);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("memoryTypeCount"),
-        VkMemoryType.LAYOUT.withName("memoryTypes"),
+        MemoryLayout.sequenceLayout(MAX_MEMORY_TYPES, VkMemoryType.LAYOUT).withName("memoryTypes"),
         ValueLayout.JAVA_INT.withName("memoryHeapCount"),
-        VkMemoryHeap.LAYOUT.withName("memoryHeaps")
+        MemoryLayout.sequenceLayout(MAX_MEMORY_HEAPS, VkMemoryHeap.LAYOUT).withName("memoryHeaps")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -186,9 +216,9 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
     public static final PathElement PATH$memoryHeaps = PathElement.groupElement("memoryHeaps");
 
     public static final OfInt LAYOUT$memoryTypeCount = (OfInt) LAYOUT.select(PATH$memoryTypeCount);
-    public static final StructLayout LAYOUT$memoryTypes = (StructLayout) LAYOUT.select(PATH$memoryTypes);
+    public static final SequenceLayout LAYOUT$memoryTypes = (SequenceLayout) LAYOUT.select(PATH$memoryTypes);
     public static final OfInt LAYOUT$memoryHeapCount = (OfInt) LAYOUT.select(PATH$memoryHeapCount);
-    public static final StructLayout LAYOUT$memoryHeaps = (StructLayout) LAYOUT.select(PATH$memoryHeaps);
+    public static final SequenceLayout LAYOUT$memoryHeaps = (SequenceLayout) LAYOUT.select(PATH$memoryHeaps);
 
     public static final long SIZE$memoryTypeCount = LAYOUT$memoryTypeCount.byteSize();
     public static final long SIZE$memoryTypes = LAYOUT$memoryTypes.byteSize();

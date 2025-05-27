@@ -26,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t TileRows; // @link substring="TileRows" target="#TileRows"
 ///     uint16_t context_update_tile_id; // @link substring="context_update_tile_id" target="#context_update_tile_id"
 ///     uint8_t tile_size_bytes_minus_1; // @link substring="tile_size_bytes_minus_1" target="#tile_size_bytes_minus_1"
-///     uint8_t reserved1;
+///     uint8_t[7] reserved1;
 ///     uint16_t const* pMiColStarts; // @link substring="pMiColStarts" target="#pMiColStarts"
 ///     uint16_t const* pMiRowStarts; // @link substring="pMiRowStarts" target="#pMiRowStarts"
 ///     uint16_t const* pWidthInSbsMinus1; // @link substring="pWidthInSbsMinus1" target="#pWidthInSbsMinus1"
@@ -291,7 +291,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         ValueLayout.JAVA_BYTE.withName("TileRows"),
         ValueLayout.JAVA_SHORT.withName("context_update_tile_id"),
         ValueLayout.JAVA_BYTE.withName("tile_size_bytes_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiColStarts"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiRowStarts"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pWidthInSbsMinus1"),

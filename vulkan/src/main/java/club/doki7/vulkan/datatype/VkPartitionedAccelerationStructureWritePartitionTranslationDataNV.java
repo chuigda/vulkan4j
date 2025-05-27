@@ -22,7 +22,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkPartitionedAccelerationStructureWritePartitionTranslationDataNV {
 ///     uint32_t partitionIndex; // @link substring="partitionIndex" target="#partitionIndex"
-///     float partitionTranslation; // @link substring="partitionTranslation" target="#partitionTranslation"
+///     float[3] partitionTranslation; // @link substring="partitionTranslation" target="#partitionTranslation"
 /// } VkPartitionedAccelerationStructureWritePartitionTranslationDataNV;
 /// }
 ///
@@ -146,17 +146,21 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         segment.set(LAYOUT$partitionIndex, OFFSET$partitionIndex, value);
     }
 
-    public float partitionTranslation() {
-        return segment.get(LAYOUT$partitionTranslation, OFFSET$partitionTranslation);
+    public FloatPtr partitionTranslation() {
+        return new FloatPtr(partitionTranslationRaw());
     }
 
-    public void partitionTranslation(float value) {
-        segment.set(LAYOUT$partitionTranslation, OFFSET$partitionTranslation, value);
+    public void partitionTranslation(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$partitionTranslation, SIZE$partitionTranslation);
+    }
+
+    public MemorySegment partitionTranslationRaw() {
+        return segment.asSlice(OFFSET$partitionTranslation, SIZE$partitionTranslation);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("partitionIndex"),
-        ValueLayout.JAVA_FLOAT.withName("partitionTranslation")
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_FLOAT).withName("partitionTranslation")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -164,7 +168,7 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
     public static final PathElement PATH$partitionTranslation = PathElement.groupElement("partitionTranslation");
 
     public static final OfInt LAYOUT$partitionIndex = (OfInt) LAYOUT.select(PATH$partitionIndex);
-    public static final OfFloat LAYOUT$partitionTranslation = (OfFloat) LAYOUT.select(PATH$partitionTranslation);
+    public static final SequenceLayout LAYOUT$partitionTranslation = (SequenceLayout) LAYOUT.select(PATH$partitionTranslation);
 
     public static final long SIZE$partitionIndex = LAYOUT$partitionIndex.byteSize();
     public static final long SIZE$partitionTranslation = LAYOUT$partitionTranslation.byteSize();

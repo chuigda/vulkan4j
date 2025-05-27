@@ -35,10 +35,10 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     StdVideoAV1TxMode TxMode; // @link substring="StdVideoAV1TxMode" target="StdVideoAV1TxMode" @link substring="TxMode" target="#TxMode"
 ///     uint8_t delta_q_res; // @link substring="delta_q_res" target="#delta_q_res"
 ///     uint8_t delta_lf_res; // @link substring="delta_lf_res" target="#delta_lf_res"
-///     uint8_t ref_order_hint; // @link substring="ref_order_hint" target="#ref_order_hint"
-///     int8_t ref_frame_idx; // @link substring="ref_frame_idx" target="#ref_frame_idx"
-///     uint8_t reserved1;
-///     uint32_t delta_frame_id_minus_1; // @link substring="delta_frame_id_minus_1" target="#delta_frame_id_minus_1"
+///     uint8_t[STD_VIDEO_AV1_NUM_REF_FRAMES] ref_order_hint; // @link substring="ref_order_hint" target="#ref_order_hint"
+///     int8_t[STD_VIDEO_AV1_REFS_PER_FRAME] ref_frame_idx; // @link substring="ref_frame_idx" target="#ref_frame_idx"
+///     uint8_t[3] reserved1;
+///     uint32_t[STD_VIDEO_AV1_REFS_PER_FRAME] delta_frame_id_minus_1; // @link substring="delta_frame_id_minus_1" target="#delta_frame_id_minus_1"
 ///     StdVideoAV1TileInfo const* pTileInfo; // @link substring="StdVideoAV1TileInfo" target="StdVideoAV1TileInfo" @link substring="pTileInfo" target="#pTileInfo"
 ///     StdVideoAV1Quantization const* pQuantization; // @link substring="StdVideoAV1Quantization" target="StdVideoAV1Quantization" @link substring="pQuantization" target="#pQuantization"
 ///     StdVideoAV1Segmentation const* pSegmentation; // @link substring="StdVideoAV1Segmentation" target="StdVideoAV1Segmentation" @link substring="pSegmentation" target="#pSegmentation"
@@ -273,29 +273,41 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$delta_lf_res, OFFSET$delta_lf_res, value);
     }
 
-    public @Unsigned byte ref_order_hint() {
-        return segment.get(LAYOUT$ref_order_hint, OFFSET$ref_order_hint);
+    public @Unsigned BytePtr ref_order_hint() {
+        return new BytePtr(ref_order_hintRaw());
     }
 
-    public void ref_order_hint(@Unsigned byte value) {
-        segment.set(LAYOUT$ref_order_hint, OFFSET$ref_order_hint, value);
+    public void ref_order_hint(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ref_order_hint, SIZE$ref_order_hint);
     }
 
-    public byte ref_frame_idx() {
-        return segment.get(LAYOUT$ref_frame_idx, OFFSET$ref_frame_idx);
+    public MemorySegment ref_order_hintRaw() {
+        return segment.asSlice(OFFSET$ref_order_hint, SIZE$ref_order_hint);
     }
 
-    public void ref_frame_idx(byte value) {
-        segment.set(LAYOUT$ref_frame_idx, OFFSET$ref_frame_idx, value);
+    public BytePtr ref_frame_idx() {
+        return new BytePtr(ref_frame_idxRaw());
+    }
+
+    public void ref_frame_idx(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ref_frame_idx, SIZE$ref_frame_idx);
+    }
+
+    public MemorySegment ref_frame_idxRaw() {
+        return segment.asSlice(OFFSET$ref_frame_idx, SIZE$ref_frame_idx);
     }
 
 
-    public @Unsigned int delta_frame_id_minus_1() {
-        return segment.get(LAYOUT$delta_frame_id_minus_1, OFFSET$delta_frame_id_minus_1);
+    public @Unsigned IntPtr delta_frame_id_minus_1() {
+        return new IntPtr(delta_frame_id_minus_1Raw());
     }
 
-    public void delta_frame_id_minus_1(@Unsigned int value) {
-        segment.set(LAYOUT$delta_frame_id_minus_1, OFFSET$delta_frame_id_minus_1, value);
+    public void delta_frame_id_minus_1(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_frame_id_minus_1, SIZE$delta_frame_id_minus_1);
+    }
+
+    public MemorySegment delta_frame_id_minus_1Raw() {
+        return segment.asSlice(OFFSET$delta_frame_id_minus_1, SIZE$delta_frame_id_minus_1);
     }
 
     public void pTileInfo(@Nullable IStdVideoAV1TileInfo value) {
@@ -586,10 +598,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         ValueLayout.JAVA_INT.withName("TxMode"),
         ValueLayout.JAVA_BYTE.withName("delta_q_res"),
         ValueLayout.JAVA_BYTE.withName("delta_lf_res"),
-        ValueLayout.JAVA_BYTE.withName("ref_order_hint"),
-        ValueLayout.JAVA_BYTE.withName("ref_frame_idx"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.JAVA_INT.withName("delta_frame_id_minus_1"),
+        MemoryLayout.sequenceLayout(AV1_NUM_REF_FRAMES, ValueLayout.JAVA_BYTE).withName("ref_order_hint"),
+        MemoryLayout.sequenceLayout(AV1_REFS_PER_FRAME, ValueLayout.JAVA_BYTE).withName("ref_frame_idx"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("reserved1"),
+        MemoryLayout.sequenceLayout(AV1_REFS_PER_FRAME, ValueLayout.JAVA_INT).withName("delta_frame_id_minus_1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TileInfo.LAYOUT).withName("pTileInfo"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Quantization.LAYOUT).withName("pQuantization"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1Segmentation.LAYOUT).withName("pSegmentation"),
@@ -643,9 +655,9 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
     public static final OfInt LAYOUT$TxMode = (OfInt) LAYOUT.select(PATH$TxMode);
     public static final OfByte LAYOUT$delta_q_res = (OfByte) LAYOUT.select(PATH$delta_q_res);
     public static final OfByte LAYOUT$delta_lf_res = (OfByte) LAYOUT.select(PATH$delta_lf_res);
-    public static final OfByte LAYOUT$ref_order_hint = (OfByte) LAYOUT.select(PATH$ref_order_hint);
-    public static final OfByte LAYOUT$ref_frame_idx = (OfByte) LAYOUT.select(PATH$ref_frame_idx);
-    public static final OfInt LAYOUT$delta_frame_id_minus_1 = (OfInt) LAYOUT.select(PATH$delta_frame_id_minus_1);
+    public static final SequenceLayout LAYOUT$ref_order_hint = (SequenceLayout) LAYOUT.select(PATH$ref_order_hint);
+    public static final SequenceLayout LAYOUT$ref_frame_idx = (SequenceLayout) LAYOUT.select(PATH$ref_frame_idx);
+    public static final SequenceLayout LAYOUT$delta_frame_id_minus_1 = (SequenceLayout) LAYOUT.select(PATH$delta_frame_id_minus_1);
     public static final AddressLayout LAYOUT$pTileInfo = (AddressLayout) LAYOUT.select(PATH$pTileInfo);
     public static final AddressLayout LAYOUT$pQuantization = (AddressLayout) LAYOUT.select(PATH$pQuantization);
     public static final AddressLayout LAYOUT$pSegmentation = (AddressLayout) LAYOUT.select(PATH$pSegmentation);

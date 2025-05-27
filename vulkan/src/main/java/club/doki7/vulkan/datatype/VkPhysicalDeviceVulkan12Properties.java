@@ -24,8 +24,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkDriverId driverID; // @link substring="VkDriverId" target="VkDriverId" @link substring="driverID" target="#driverID"
-///     char driverName; // @link substring="driverName" target="#driverName"
-///     char driverInfo; // @link substring="driverInfo" target="#driverInfo"
+///     char[VK_MAX_DRIVER_NAME_SIZE] driverName; // @link substring="driverName" target="#driverName"
+///     char[VK_MAX_DRIVER_INFO_SIZE] driverInfo; // @link substring="driverInfo" target="#driverInfo"
 ///     VkConformanceVersion conformanceVersion; // @link substring="VkConformanceVersion" target="VkConformanceVersion" @link substring="conformanceVersion" target="#conformanceVersion"
 ///     VkShaderFloatControlsIndependence denormBehaviorIndependence; // @link substring="VkShaderFloatControlsIndependence" target="VkShaderFloatControlsIndependence" @link substring="denormBehaviorIndependence" target="#denormBehaviorIndependence"
 ///     VkShaderFloatControlsIndependence roundingModeIndependence; // @link substring="VkShaderFloatControlsIndependence" target="VkShaderFloatControlsIndependence" @link substring="roundingModeIndependence" target="#roundingModeIndependence"
@@ -237,20 +237,28 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$driverID, OFFSET$driverID, value);
     }
 
-    public byte driverName() {
-        return segment.get(LAYOUT$driverName, OFFSET$driverName);
+    public BytePtr driverName() {
+        return new BytePtr(driverNameRaw());
     }
 
-    public void driverName(byte value) {
-        segment.set(LAYOUT$driverName, OFFSET$driverName, value);
+    public void driverName(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverName, SIZE$driverName);
     }
 
-    public byte driverInfo() {
-        return segment.get(LAYOUT$driverInfo, OFFSET$driverInfo);
+    public MemorySegment driverNameRaw() {
+        return segment.asSlice(OFFSET$driverName, SIZE$driverName);
     }
 
-    public void driverInfo(byte value) {
-        segment.set(LAYOUT$driverInfo, OFFSET$driverInfo, value);
+    public BytePtr driverInfo() {
+        return new BytePtr(driverInfoRaw());
+    }
+
+    public void driverInfo(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverInfo, SIZE$driverInfo);
+    }
+
+    public MemorySegment driverInfoRaw() {
+        return segment.asSlice(OFFSET$driverInfo, SIZE$driverInfo);
     }
 
     public @NotNull VkConformanceVersion conformanceVersion() {
@@ -649,8 +657,8 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("driverID"),
-        ValueLayout.JAVA_BYTE.withName("driverName"),
-        ValueLayout.JAVA_BYTE.withName("driverInfo"),
+        MemoryLayout.sequenceLayout(MAX_DRIVER_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("driverName"),
+        MemoryLayout.sequenceLayout(MAX_DRIVER_INFO_SIZE, ValueLayout.JAVA_BYTE).withName("driverInfo"),
         VkConformanceVersion.LAYOUT.withName("conformanceVersion"),
         ValueLayout.JAVA_INT.withName("denormBehaviorIndependence"),
         ValueLayout.JAVA_INT.withName("roundingModeIndependence"),
@@ -761,8 +769,8 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$driverID = (OfInt) LAYOUT.select(PATH$driverID);
-    public static final OfByte LAYOUT$driverName = (OfByte) LAYOUT.select(PATH$driverName);
-    public static final OfByte LAYOUT$driverInfo = (OfByte) LAYOUT.select(PATH$driverInfo);
+    public static final SequenceLayout LAYOUT$driverName = (SequenceLayout) LAYOUT.select(PATH$driverName);
+    public static final SequenceLayout LAYOUT$driverInfo = (SequenceLayout) LAYOUT.select(PATH$driverInfo);
     public static final StructLayout LAYOUT$conformanceVersion = (StructLayout) LAYOUT.select(PATH$conformanceVersion);
     public static final OfInt LAYOUT$denormBehaviorIndependence = (OfInt) LAYOUT.select(PATH$denormBehaviorIndependence);
     public static final OfInt LAYOUT$roundingModeIndependence = (OfInt) LAYOUT.select(PATH$roundingModeIndependence);

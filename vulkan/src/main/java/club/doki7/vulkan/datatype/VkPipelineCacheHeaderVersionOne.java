@@ -25,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkPipelineCacheHeaderVersion headerVersion; // @link substring="VkPipelineCacheHeaderVersion" target="VkPipelineCacheHeaderVersion" @link substring="headerVersion" target="#headerVersion"
 ///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
 ///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
-///     uint8_t pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
+///     uint8_t[VK_UUID_SIZE] pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
 /// } VkPipelineCacheHeaderVersionOne;
 /// }
 ///
@@ -173,12 +173,16 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
     }
 
-    public @Unsigned byte pipelineCacheUUID() {
-        return segment.get(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID);
+    public @Unsigned BytePtr pipelineCacheUUID() {
+        return new BytePtr(pipelineCacheUUIDRaw());
     }
 
-    public void pipelineCacheUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID, value);
+    public void pipelineCacheUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    }
+
+    public MemorySegment pipelineCacheUUIDRaw() {
+        return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -186,7 +190,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_INT.withName("headerVersion"),
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
-        ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID")
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -200,7 +204,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
     public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);
     public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
     public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
-    public static final OfByte LAYOUT$pipelineCacheUUID = (OfByte) LAYOUT.select(PATH$pipelineCacheUUID);
+    public static final SequenceLayout LAYOUT$pipelineCacheUUID = (SequenceLayout) LAYOUT.select(PATH$pipelineCacheUUID);
 
     public static final long SIZE$headerSize = LAYOUT$headerSize.byteSize();
     public static final long SIZE$headerVersion = LAYOUT$headerVersion.byteSize();

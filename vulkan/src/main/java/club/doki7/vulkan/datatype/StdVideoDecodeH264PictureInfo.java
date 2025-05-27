@@ -28,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t reserved2;
 ///     uint16_t frame_num; // @link substring="frame_num" target="#frame_num"
 ///     uint16_t idr_pic_id; // @link substring="idr_pic_id" target="#idr_pic_id"
-///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
+///     int32_t[STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE] PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
 /// } StdVideoDecodeH264PictureInfo;
 /// }
 ///
@@ -184,12 +184,16 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$idr_pic_id, OFFSET$idr_pic_id, value);
     }
 
-    public int PicOrderCnt() {
-        return segment.get(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt);
+    public IntPtr PicOrderCnt() {
+        return new IntPtr(PicOrderCntRaw());
     }
 
-    public void PicOrderCnt(int value) {
-        segment.set(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt, value);
+    public void PicOrderCnt(IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
+    }
+
+    public MemorySegment PicOrderCntRaw() {
+        return segment.asSlice(OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -200,7 +204,7 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_BYTE.withName("reserved2"),
         ValueLayout.JAVA_SHORT.withName("frame_num"),
         ValueLayout.JAVA_SHORT.withName("idr_pic_id"),
-        ValueLayout.JAVA_INT.withName("PicOrderCnt")
+        MemoryLayout.sequenceLayout(DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE, ValueLayout.JAVA_INT).withName("PicOrderCnt")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -216,7 +220,7 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
     public static final OfByte LAYOUT$pic_parameter_set_id = (OfByte) LAYOUT.select(PATH$pic_parameter_set_id);
     public static final OfShort LAYOUT$frame_num = (OfShort) LAYOUT.select(PATH$frame_num);
     public static final OfShort LAYOUT$idr_pic_id = (OfShort) LAYOUT.select(PATH$idr_pic_id);
-    public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
+    public static final SequenceLayout LAYOUT$PicOrderCnt = (SequenceLayout) LAYOUT.select(PATH$PicOrderCnt);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$seq_parameter_set_id = LAYOUT$seq_parameter_set_id.byteSize();

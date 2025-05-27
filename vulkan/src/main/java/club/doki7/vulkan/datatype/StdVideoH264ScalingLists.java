@@ -23,8 +23,8 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct StdVideoH264ScalingLists {
 ///     uint16_t scaling_list_present_mask; // @link substring="scaling_list_present_mask" target="#scaling_list_present_mask"
 ///     uint16_t use_default_scaling_matrix_mask; // @link substring="use_default_scaling_matrix_mask" target="#use_default_scaling_matrix_mask"
-///     uint8_t ScalingList4x4; // @link substring="ScalingList4x4" target="#ScalingList4x4"
-///     uint8_t ScalingList8x8; // @link substring="ScalingList8x8" target="#ScalingList8x8"
+///     uint8_t[STD_VIDEO_H264_SCALING_LIST_4X4_NUM_ELEMENTS][STD_VIDEO_H264_SCALING_LIST_4X4_NUM_LISTS] ScalingList4x4; // @link substring="ScalingList4x4" target="#ScalingList4x4"
+///     uint8_t[STD_VIDEO_H264_SCALING_LIST_8X8_NUM_ELEMENTS][STD_VIDEO_H264_SCALING_LIST_8X8_NUM_LISTS] ScalingList8x8; // @link substring="ScalingList8x8" target="#ScalingList8x8"
 /// } StdVideoH264ScalingLists;
 /// }
 ///
@@ -154,27 +154,35 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$use_default_scaling_matrix_mask, OFFSET$use_default_scaling_matrix_mask, value);
     }
 
-    public @Unsigned byte ScalingList4x4() {
-        return segment.get(LAYOUT$ScalingList4x4, OFFSET$ScalingList4x4);
+    public @Unsigned BytePtr ScalingList4x4() {
+        return new BytePtr(ScalingList4x4Raw());
     }
 
-    public void ScalingList4x4(@Unsigned byte value) {
-        segment.set(LAYOUT$ScalingList4x4, OFFSET$ScalingList4x4, value);
+    public void ScalingList4x4(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
     }
 
-    public @Unsigned byte ScalingList8x8() {
-        return segment.get(LAYOUT$ScalingList8x8, OFFSET$ScalingList8x8);
+    public MemorySegment ScalingList4x4Raw() {
+        return segment.asSlice(OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
     }
 
-    public void ScalingList8x8(@Unsigned byte value) {
-        segment.set(LAYOUT$ScalingList8x8, OFFSET$ScalingList8x8, value);
+    public @Unsigned BytePtr ScalingList8x8() {
+        return new BytePtr(ScalingList8x8Raw());
+    }
+
+    public void ScalingList8x8(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
+    }
+
+    public MemorySegment ScalingList8x8Raw() {
+        return segment.asSlice(OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_SHORT.withName("scaling_list_present_mask"),
         ValueLayout.JAVA_SHORT.withName("use_default_scaling_matrix_mask"),
-        ValueLayout.JAVA_BYTE.withName("ScalingList4x4"),
-        ValueLayout.JAVA_BYTE.withName("ScalingList8x8")
+        MemoryLayout.sequenceLayout(H264_SCALING_LIST_4X4_NUM_LISTS, MemoryLayout.sequenceLayout(H264_SCALING_LIST_4X4_NUM_ELEMENTS, ValueLayout.JAVA_BYTE)).withName("ScalingList4x4"),
+        MemoryLayout.sequenceLayout(H264_SCALING_LIST_8X8_NUM_LISTS, MemoryLayout.sequenceLayout(H264_SCALING_LIST_8X8_NUM_ELEMENTS, ValueLayout.JAVA_BYTE)).withName("ScalingList8x8")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -185,8 +193,8 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
 
     public static final OfShort LAYOUT$scaling_list_present_mask = (OfShort) LAYOUT.select(PATH$scaling_list_present_mask);
     public static final OfShort LAYOUT$use_default_scaling_matrix_mask = (OfShort) LAYOUT.select(PATH$use_default_scaling_matrix_mask);
-    public static final OfByte LAYOUT$ScalingList4x4 = (OfByte) LAYOUT.select(PATH$ScalingList4x4);
-    public static final OfByte LAYOUT$ScalingList8x8 = (OfByte) LAYOUT.select(PATH$ScalingList8x8);
+    public static final SequenceLayout LAYOUT$ScalingList4x4 = (SequenceLayout) LAYOUT.select(PATH$ScalingList4x4);
+    public static final SequenceLayout LAYOUT$ScalingList8x8 = (SequenceLayout) LAYOUT.select(PATH$ScalingList8x8);
 
     public static final long SIZE$scaling_list_present_mask = LAYOUT$scaling_list_present_mask.byteSize();
     public static final long SIZE$use_default_scaling_matrix_mask = LAYOUT$use_default_scaling_matrix_mask.byteSize();
