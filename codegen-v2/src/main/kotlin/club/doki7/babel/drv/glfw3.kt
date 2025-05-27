@@ -3,9 +3,11 @@ package club.doki7.babel.drv
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateCommandFile
 import club.doki7.babel.codegen.generateConstants
+import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.codegen.generateStructure
 import club.doki7.babel.codegen.generateStructureInterface
 import club.doki7.babel.extract.glfw3.extractGLFWHeader
+import club.doki7.babel.registry.OpaqueHandleTypedef
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.util.render
 import java.io.File
@@ -52,5 +54,13 @@ fun glfw3Main(vulkanRegistry: RegistryBase, vulkanAdditionalRegistry: RegistryBa
         val structureDoc = generateStructure(registry, structure, false, codegenOptions)
         File("$packageDir/datatype/${structure.name}.java")
             .writeText(render(structureDoc))
+    }
+
+    for (handle in registry.opaqueTypedefs.values) {
+        val handleTypedef = OpaqueHandleTypedef(handle.name)
+        handleTypedef.doc = handle.doc
+        val handleDoc = generateHandle(registry, handleTypedef, codegenOptions)
+        File("$packageDir/handle/${handle.name}.java")
+            .writeText(render(handleDoc))
     }
 }

@@ -19,6 +19,10 @@ fun extractGLFWHeader(): Registry<EmptyMergeable> {
         .toList()
     val registry = Glfw3HeaderParser(lines).parse().collect()
     registry.renameEntities()
+
+    // ensure `import handle` generation in GLFW.java
+    registry.opaqueHandleTypedefs.putEntityIfAbsent(OpaqueHandleTypedef("__Placeholder".intern()))
+
     return registry
 }
 
@@ -334,6 +338,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
 
             val name = names[1]
             val typedef = OpaqueTypedef(name)
+            typedef.isHandle = true
             opaqueTypedefs[typedef.name] = typedef
 
             // no need to consume due to the call assumption

@@ -2,7 +2,9 @@ package club.doki7.babel.ctype
 
 import club.doki7.babel.registry.ArrayType
 import club.doki7.babel.registry.IdentifierType
+import club.doki7.babel.registry.OpaqueTypedef
 import club.doki7.babel.registry.PointerType
+import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.registry.Type
 import kotlin.collections.contains
@@ -440,15 +442,20 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
             CArrayType(elementType, type.length.value)
         }
         is PointerType -> {
-            if (type.pointee is IdentifierType &&
-                (registry.opaqueTypedefs.contains(type.pointee.ident)
-                 || refRegistries.any { it.opaqueTypedefs.contains(type.pointee.ident) })) {
-                return CPointerType(
-                    pointee = CVoidType(),
-                    const = true,
-                    pointerToOne = true,
-                    comment = "${type.pointee.ident.original}*"
-                )
+            if (type.pointee is IdentifierType) {
+                val opaqueTypedef = lookupOpaqueTypedef(registry, refRegistries, type.pointee)
+                if (opaqueTypedef != null) {
+                    return if (opaqueTypedef.isHandle) {
+                        CHandleType(opaqueTypedef.name.value)
+                    } else {
+                        CPointerType(
+                            pointee = CVoidType(),
+                            const = true,
+                            pointerToOne = true,
+                            comment = "${type.pointee.ident.original}*"
+                        )
+                    }
+                }
             }
 
             val pointee = lowerType(registry, refRegistries, type.pointee)
@@ -456,6 +463,24 @@ fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: T
         }
         is IdentifierType -> lowerIdentifierType(registry, refRegistries, type)
     }
+}
+
+fun lookupOpaqueTypedef(
+    registry: RegistryBase,
+    refRegistries: List<RegistryBase>,
+    type: IdentifierType
+): OpaqueTypedef? {
+    if (registry.opaqueTypedefs.contains(type.ident)) {
+        return registry.opaqueTypedefs[type.ident]!!
+    }
+
+    for (refRegistry in refRegistries) {
+        if (refRegistry.opaqueTypedefs.contains(type.ident)) {
+            return refRegistry.opaqueTypedefs[type.ident]!!
+        }
+    }
+
+    return null
 }
 
 fun lowerIdentifierType(

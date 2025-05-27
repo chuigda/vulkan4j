@@ -10,6 +10,7 @@ import club.doki7.ffm.IPointer;
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
+import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
 /// @brief Image data.
