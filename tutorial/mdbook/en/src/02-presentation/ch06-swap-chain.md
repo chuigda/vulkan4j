@@ -365,8 +365,8 @@ else {
 
 Next, we need to specify how to handle swap chain images that will be used across multiple queue families. That will be the case in our application if the graphics queue family is different from the presentation queue. We'll be drawing on the images in the swap chain from the graphics queue and then submitting them on the presentation queue. There are two ways to handle images that are accessed from multiple queues:
 
-- `VK_SHARING_MODE_EXCLUSIVE`: An image is owned by one queue family at a time and ownership must be explicitly transferred before using it in another queue family. This option offers the best performance.
-- `VK_SHARING_MODE_CONCURRENT`: Images can be used across multiple queue families without explicit ownership transfers.
+- `VkSharingMode.EXCLUSIVE`: An image is owned by one queue family at a time and ownership must be explicitly transferred before using it in another queue family. This option offers the best performance.
+- `VkSharingMode.CONCURRENT`: Images can be used across multiple queue families without explicit ownership transfers.
 
 If the queue families differ, then we'll be using the concurrent mode in this tutorial to avoid having to do the ownership chapters, because these involve some concepts that are better explained at a later time. Concurrent mode requires you to specify in advance between which queue families ownership will be shared using the `queueFamilyIndexCount` and `pQueueFamilyIndices` parameters. If the graphics queue family and presentation queue family are the same, which will be the case on most hardware, then we should stick to exclusive mode, because concurrent mode requires you to specify at least two distinct queue families.
 
@@ -380,7 +380,7 @@ We can specify that a certain transform should be applied to images in the swap 
 createInfo.compositeAlpha(VkCompositeAlphaFlagsKHR.OPAQUE);
 ```
 
-The `compositeAlpha` field specifies if the alpha channel should be used for blending with other windows in the window system. You'll almost always want to simply ignore the alpha channel, hence `VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR`.
+The `compositeAlpha` field specifies if the alpha channel should be used for blending with other windows in the window system. You'll almost always want to simply ignore the alpha channel, hence `VkCompositeAlpha.OPAQUE`.
 
 ```java
 createInfo.presentMode(presentMode);
@@ -421,7 +421,7 @@ private void cleanup() {
 }
 ```
 
-Now run the application to ensure that the swap chain is created successfully! If at this point you get an access violation error in `vkCreateSwapchainKHR` or see a message like Failed to find `'vkGetInstanceProcAddress' in layer SteamOverlayVulkanLayer.dll`, then see the FAQ entry about the Steam overlay layer.
+Now run the application to ensure that the swap chain is created successfully! If at this point you get an access violation error in `VkDeviceCommands.createSwapchainKHR` or see a message like Failed to find `'vkGetInstanceProcAddress' in layer SteamOverlayVulkanLayer.dll`, then see the FAQ entry about the Steam overlay layer.
 
 Try removing the `createInfo.imageExtent(extent);` line with validation layers enabled. You'll see that one of the validation layers immediately catches the mistake and a helpful message is printed:
 

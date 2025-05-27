@@ -120,7 +120,7 @@ instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
 
 ## Checking for extension support
 
-If you look at the `vkCreateInstance` documentation then you'll see that one of the possible error codes is `VK_ERROR_EXTENSION_NOT_PRESENT`. We could simply specify the extensions we require and terminate if that error code comes back. That makes sense for essential extensions like the window system interface, but what if we want to check for optional functionality?
+If you look at the `vkCreateInstance` documentation then you'll see that one of the possible error codes is `ERROR_EXTENSION_NOT_PRESENT`. We could simply specify the extensions we require and terminate if that error code comes back. That makes sense for essential extensions like the window system interface, but what if we want to check for optional functionality?
 
 To retrieve a list of supported extensions before creating an instance, there's the `VkEntryCommands::enumerateInstanceExtensionProperties` function. It takes a pointer to a variable that stores the number of extensions and an array of `extensionProperties` to store details of the extensions. It also takes an optional first parameter that allows us to filter extensions by a specific validation layer, which we'll ignore for now.
 

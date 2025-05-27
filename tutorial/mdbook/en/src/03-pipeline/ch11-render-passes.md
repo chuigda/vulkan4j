@@ -41,14 +41,14 @@ colorAttachment.storeOp(VkAttachmentStoreOp.STORE);
 
 The `loadOp` and `storeOp` determine what to do with the data in the attachment before rendering and after rendering. We have the following choices for `loadOp`:
 
-- `VK_ATTACHMENT_LOAD_OP_LOAD`: Preserve the existing contents of the attachment
-- `VK_ATTACHMENT_LOAD_OP_CLEAR`: Clear the values to a constant at the start
-- `VK_ATTACHMENT_LOAD_OP_DONT_CARE`: Existing contents are undefined; we don't care about them
+- `VkAttachmentLoadOp.LOAD`: Preserve the existing contents of the attachment
+- `VkAttachmentLoadOp.CLEAR`: Clear the values to a constant at the start
+- `VkAttachmentLoadOp.DONT_CARE`: Existing contents are undefined; we don't care about them
 
 In our case we're going to use the clear operation to clear the framebuffer to black before drawing a new frame. There are only two possibilities for the `storeOp`:
 
-- `VK_ATTACHMENT_STORE_OP_STORE`: Rendered contents will be stored in memory and can be read later
-- `VK_ATTACHMENT_STORE_OP_DONT_CARE`: Contents of the framebuffer will be undefined after the rendering operation
+- `VkAttachmentStoreOp.STORE`: Rendered contents will be stored in memory and can be read later
+- `VkAttachmentStoreOp.DONT_CARE`: Contents of the framebuffer will be undefined after the rendering operation
 
 We're interested in seeing the rendered triangle on the screen, so we're going with the store operation here.
 
@@ -68,13 +68,13 @@ Textures and framebuffers in Vulkan are represented by `VkImage` objects with a 
 
 Some of the most common layouts are:
 
-- `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`: Images used as color attachment
-- `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR`: Images to be presented in the swap chain
-- `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`: Images to be used as destination for a memory copy operation
+- `VkImageLayout.COLOR_ATTACHMENT_OPTIMAL`: Images used as color attachment
+- `VkImageLayout.PRESENT_SRC_KHR`: Images to be presented in the swap chain
+- `VkImageLayout.TRANSFER_DST_OPTIMAL`: Images to be used as destination for a memory copy operation
 
 We'll discuss this topic in more depth in the texturing chapter, but what's important to know right now is that images need to be transitioned to specific layouts that are suitable for the operation that they're going to be involved in next.
 
-The `initialLayout` specifies which layout the image will have before the render pass begins. The `finalLayout` specifies the layout to automatically transition to when the render pass finishes. Using `VK_IMAGE_LAYOUT_UNDEFINED` for `initialLayout` means that we don't care what previous layout the image was in. The caveat of this special value is that the contents of the image are not guaranteed to be preserved, but that doesn't matter since we're going to clear it anyway. We want the image to be ready for presentation using the swap chain after rendering, which is why we use `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR` as `finalLayout`.
+The `initialLayout` specifies which layout the image will have before the render pass begins. The `finalLayout` specifies the layout to automatically transition to when the render pass finishes. Using `VkImageLayout.UNDEFINED` for `initialLayout` means that we don't care what previous layout the image was in. The caveat of this special value is that the contents of the image are not guaranteed to be preserved, but that doesn't matter since we're going to clear it anyway. We want the image to be ready for presentation using the swap chain after rendering, which is why we use `VkImageLayout.PRESENT_SRC_KHR` as `finalLayout`.
 
 ## Subpasses and attachment references
 
@@ -88,7 +88,7 @@ colorAttachmentRef.attachment(0);
 colorAttachmentRef.layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
 ```
 
-The `attachment` parameter specifies which attachment to reference by its index in the attachment descriptions array. Our array consists of a single `VkAttachmentDescription`, so its index is `0`. The `layout` specifies which layout we would like the attachment to have during a subpass that uses this reference. Vulkan will automatically transition the attachment to this layout when the subpass is started. We intend to use the attachment to function as a color buffer and the `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` layout will give us the best performance, as its name implies.
+The `attachment` parameter specifies which attachment to reference by its index in the attachment descriptions array. Our array consists of a single `VkAttachmentDescription`, so its index is `0`. The `layout` specifies which layout we would like the attachment to have during a subpass that uses this reference. Vulkan will automatically transition the attachment to this layout when the subpass is started. We intend to use the attachment to function as a color buffer and the `VkImageLayout.COLOR_ATTACHMENT_OPTIMAL` layout will give us the best performance, as its name implies.
 
 The subpass is described using a `VkSubpassDescription` structure:
 

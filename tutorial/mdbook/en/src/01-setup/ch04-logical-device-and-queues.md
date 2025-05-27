@@ -49,7 +49,7 @@ queueCreateInfo.pQueuePriorities(pQueuePriorities);
 
 ## Specifying used device features
 
-The next information to specify is the set of device features that we'll be using. These are the features that we queried support for with `VkInstanceCommands::getPhysicalDeviceFeatures` in the previous chapter, like geometry shaders. Right now we don't need anything special, so we can simply define it and leave everything to `VK_FALSE` (`0`). We'll come back to this structure once we're about to start doing more interesting things with Vulkan.
+The next information to specify is the set of device features that we'll be using. These are the features that we queried support for with `VkInstanceCommands::getPhysicalDeviceFeatures` in the previous chapter, like geometry shaders. Right now we don't need anything special, so we can simply define it and leave everything to `VkConstants.FALSE`. We'll come back to this structure once we're about to start doing more interesting things with Vulkan.
 
 ```java
 var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);

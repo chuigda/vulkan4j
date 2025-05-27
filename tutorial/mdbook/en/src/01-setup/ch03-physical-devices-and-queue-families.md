@@ -166,7 +166,7 @@ try (var arena = Arena.ofConfined()) {
 }
 ```
 
-The `VkQueueFamilyProperties` struct contains some details about the queue family, including the type of operations that are supported and the number of queues that can be created based on that family. We need to find at least one queue family that supports `VK_QUEUE_GRAPHICS_BIT`.
+The `VkQueueFamilyProperties` struct contains some details about the queue family, including the type of operations that are supported and the number of queues that can be created based on that family. We need to find at least one queue family that supports `VkQueueFlags.GRAPHICS`.
 
 ```java
 int graphicsFamily = -1;

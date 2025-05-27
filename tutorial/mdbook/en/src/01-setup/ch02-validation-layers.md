@@ -115,7 +115,7 @@ PointerPtr ppEnabledLayerNames = PointerPtr.allocate(arena);
 }
 ```
 
-If the check was successful then `createInstance` should not ever return a `VK_ERROR_LAYER_NOT_PRESENT` error, but you should run the program to make sure.
+If the check was successful then `createInstance` should not ever return a `ERROR_LAYER_NOT_PRESENT` error, but you should run the program to make sure.
 
 ## Message callback
 
@@ -164,7 +164,7 @@ instanceCreateInfo.enabledExtensionCount((int) extensions.size());
 instanceCreateInfo.ppEnabledExtensionNames(extensions);
 ```
 
-Run the program to make sure you don't receive a `VK_ERROR_EXTENSION_NOT_PRESENT` error. We don't really need to check for the existence of this extension, because it should be implied by the availability of the validation layers.
+Run the program to make sure you don't receive a `ERROR_EXTENSION_NOT_PRESENT` error. We don't really need to check for the existence of this extension, because it should be implied by the availability of the validation layers.
 
 Now let's see what a debug callback function looks like. Add a new static member function called `debugCallback` like such:
 
@@ -188,24 +188,24 @@ private static @NativeType("VkBool32") @Unsigned int debugCallback(
 The first parameter specifies the severity of the message, which is one of the following flags:
 
 
-- `VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT`: Diagnostic message
-- `VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT`: Informational message like the creation of a resource
-- `VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT`: Message about behavior that is not necessarily an error, but very likely a bug in your application
-- `VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT`: Message about behavior that is invalid and may cause crashes
+- `VkDebugUtilsMessageSeverity.VERBOSE`: Diagnostic message
+- `VkDebugUtilsMessageSeverity.INFO`: Informational message like the creation of a resource
+- `VkDebugUtilsMessageSeverity.WARNING`: Message about behavior that is not necessarily an error, but very likely a bug in your application
+- `VkDebugUtilsMessageSeverity.ERROR`: Message about behavior that is invalid and may cause crashes
 
 The values of this enumeration are set up in such a way that you can use a comparison operation to check if a message is equal or worse compared to some level of severity, for example:
 
 ```java
-if (messageSeverity >= VkDebugUtilsMessageSeverityFlagsEXT.VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) {
+if (messageSeverity >= VkDebugUtilsMessageSeverityFlagsEXT.WARNING) {
     // Message is important enough to show
 }
 ```
 
 The `messageType` parameter can have the following values:
 
-- `VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT`: Some event has happened that is unrelated to the specification or performance
-- `VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT`: Something has happened that violates the specification or indicates a possible mistake
-- `VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT`: Potential non-optimal use of Vulkan
+- `VkDebugUtilsMessageType.GENERAL`: Some event has happened that is unrelated to the specification or performance
+- `VkDebugUtilsMessageType.VALIDATION`: Something has happened that violates the specification or indicates a possible mistake
+- `VkDebugUtilsMessageType.PERFORMANCE`: Potential non-optimal use of Vulkan
 
 The `pCallbackData` parameter refers to a `VkDebugUtilsMessengerCallbackDataEXT` struct containing the details of the message itself, with the most important members being:
 
@@ -215,7 +215,7 @@ The `pCallbackData` parameter refers to a `VkDebugUtilsMessengerCallbackDataEXT`
 
 Finally, the `pUserData` parameter contains a pointer that was specified during the setup of the callback and allows you to pass your own data to it.
 
-The callback returns a boolean that indicates if the Vulkan call that triggered the validation layer message should be aborted. If the callback returns true, then the call is aborted with the `VK_ERROR_VALIDATION_FAILED_EXT` error. This is normally only used to test the validation layers themselves, so you should always return `VkConstants.FALSE`.
+The callback returns a boolean that indicates if the Vulkan call that triggered the validation layer message should be aborted. If the callback returns true, then the call is aborted with the `ERROR_VALIDATION_FAILED_EXT` error. This is normally only used to test the validation layers themselves, so you should always return `VkConstants.FALSE`.
 
 ### Creating an upcall stub
 
@@ -296,7 +296,7 @@ try (var arena = Arena.ofConfined()) {
 }
 ```
 
-The `messageSeverity` field allows you to specify all the types of severities you would like your callback to be called for. I've specified all types except for `VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT` here to receive notifications about possible problems while leaving out verbose general debug info.
+The `messageSeverity` field allows you to specify all the types of severities you would like your callback to be called for. I've specified all types except for `VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO` here to receive notifications about possible problems while leaving out verbose general debug info.
 
 Similarly, the `messageType` field lets you filter which types of messages your callback is notified about. I've simply enabled all types here. You can always disable some if they're not useful to you.
 
@@ -322,7 +322,7 @@ debugMessenger = Objects.requireNonNull(pDebugMessenger.read());
 
 The second to last parameter is again the optional allocator callback that we set to `null`, other than that the parameters are fairly straightforward. Since the debug messenger is specific to our Vulkan instance and its layers, it needs to be explicitly specified as first argument. You will also see this pattern with other child objects later on.
 
-The `VkDebugUtilsMessengerEXT` object also needs to be cleaned up with a call to `destroyDebugUtilsMessengerEXT`.
+The `VkDebugUtilsMessengerEXT` object also needs to be cleaned up with a call to `InstanceCommands::destroyDebugUtilsMessengerEXT`.
 
 ```java
 void cleanup() {
@@ -336,7 +336,7 @@ void cleanup() {
 
 ## Debugging instance creation and destruction
 
-Although we've now added debugging with validation layers to the program we're not covering everything quite yet. The `createDebugUtilsMessengerEXT` call requires a valid instance to have been created and `destroyDebugUtilsMessengerEXT` must be called before the instance is destroyed. This currently leaves us unable to debug any issues in the `createInstance` and `destroyInstance` calls.
+Although we've now added debugging with validation layers to the program we're not covering everything quite yet. The `VkInstanceCommands::createDebugUtilsMessengerEXT` call requires a valid instance to have been created and `InstanceCommands::destroyDebugUtilsMessengerEXT` must be called before the instance is destroyed. This currently leaves us unable to debug any issues in the `EntryCommands::createInstance` and `InstanceCommands::destroyInstance` calls.
 
 However, if you closely read the [extension documentation](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/appendices/VK_EXT_debug_utils.adoc#examples), you'll see that there is a way to create a separate debug utils messenger specifically for those two function calls. It requires you to simply pass a pointer to a `VkDebugUtilsMessengerCreateInfoEXT` struct in the `pNext` extension field of `VkInstanceCreateInfo`. First extract population of the messenger create info into a separate function:
 
@@ -380,11 +380,11 @@ private void createInstance() {
 }
 ```
 
-By creating an additional debug messenger this way it will automatically be used during `createInstance` and `destroyInstance` and cleaned up after that.
+By creating an additional debug messenger this way it will automatically be used during `VkEntryCommands::createInstance` and `VkInstanceCommands::destroyInstance` and cleaned up after that.
 
 ## Testing
 
-Now let's intentionally make a mistake to see the validation layers in action. Temporarily remove the call to `destroyDebugUtilsMessengerEXT` in the `cleanup` function and run your program. Once it exits you should see something like this:
+Now let's intentionally make a mistake to see the validation layers in action. Temporarily remove the call to `VkInstanceCommands::destroyDebugUtilsMessengerEXT` in the `cleanup` function and run your program. Once it exits you should see something like this:
 
 ```
 Validation layer: vkDestroyInstance(): Object Tracking - For VkInstance 0x7097843c4420, VkDebugUtilsMessengerEXT 0x10000000001 has not been destroyed.

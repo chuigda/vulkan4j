@@ -38,13 +38,13 @@ Add this structure to the `createGraphicsPipeline` function right after the `sha
 
 The `VkPipelineInputAssemblyStateCreateInfo` struct describes two things: what kind of geometry will be drawn from the vertices and if primitive restart should be enabled. The former is specified in the `topology` member and can have values like:
 
-- `VK_PRIMITIVE_TOPOLOGY_POINT_LIST`: points from vertices
-- `VK_PRIMITIVE_TOPOLOGY_LINE_LIST`: line from every 2 vertices without reuse
-- `VK_PRIMITIVE_TOPOLOGY_LINE_STRIP`: the end vertex of every line is used as start vertex for the next line
-- `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST`: triangle from every 3 vertices without reuse
-- `VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP`: the second and third vertex of every triangle are used as first two vertices of the next triangle
+- `VkPrimitiveTopology.POINT_LIST`: points from vertices
+- `VkPrimitiveTopology.LINE_LIST`: line from every 2 vertices without reuse
+- `VkPrimitiveTopology.LINE_STRIP`: the end vertex of every line is used as start vertex for the next line
+- `VkPrimitiveTopology.TRIANGLE_LIST`: triangle from every 3 vertices without reuse
+- `VkPrimitiveTopology.TRIANGLE_STRIP`: the second and third vertex of every triangle are used as first two vertices of the next triangle
 
-Normally, the vertices are loaded from the vertex buffer by index in sequential order, but with an element buffer you can specify the indices to use yourself. This allows you to perform optimizations like reusing vertices. If you set the `primitiveRestartEnable` member to `VK_TRUE`, then it's possible to break up lines and triangles in the `_STRIP` topology modes by using a special index of `0xFFFF` or `0xFFFFFFFF`.
+Normally, the vertices are loaded from the vertex buffer by index in sequential order, but with an element buffer you can specify the indices to use yourself. This allows you to perform optimizations like reusing vertices. If you set the `primitiveRestartEnable` member to `VkConstants.TRUE`, then it's possible to break up lines and triangles in the `_STRIP` topology modes by using a special index of `0xFFFF` or `0xFFFFFFFF`.
 
 We intend to draw triangles throughout this tutorial, so we'll stick to the following data for the structure:
 
@@ -90,9 +90,9 @@ Viewport(s) and scissor rectangle(s) can either be specified as a static part of
 When opting for dynamic viewport(s) and scissor rectangle(s) you need to enable the respective dynamic states for the pipeline as we've stated before:
 
 ```java
-var dynamicStates = IntBuffer.allocate(arena, 2);
-dynamicStates.write(0, VkDynamicState.VK_DYNAMIC_STATE_VIEWPORT);
-dynamicStates.write(1, VkDynamicState.VK_DYNAMIC_STATE_SCISSOR);
+var dynamicStates = IntPtr.allocate(arena, 2);
+dynamicStates.write(0, VkDynamicState.VIEWPORT);
+dynamicStates.write(1, VkDynamicState.SCISSOR);
 var dynamicStateInfo = VkPipelineDynamicStateCreateInfo.allocate(arena);
 dynamicStateInfo.dynamicStateCount(2);
 dynamicStateInfo.pDynamicStates(dynamicStates);
@@ -133,13 +133,13 @@ var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena);
 rasterizer.depthClampEnable(VkConstants.FALSE);
 ```
 
-If `depthClampEnable` is set to `VK_TRUE`, then fragments that are beyond the near and far planes are clamped to them as opposed to discarding them. This is useful in some special cases like shadow maps. Using this requires enabling a GPU feature.
+If `depthClampEnable` is set to `VkConstants.TRUE`, then fragments that are beyond the near and far planes are clamped to them as opposed to discarding them. This is useful in some special cases like shadow maps. Using this requires enabling a GPU feature.
 
 ```java
 rasterizer.rasterizerDiscardEnable(VkConstants.FALSE);
 ```
 
-If `rasterizerDiscardEnable` is set to `VK_TRUE`, then geometry never passes through the rasterizer stage. This basically disables any output to the framebuffer.
+If `rasterizerDiscardEnable` is set to `VkConstants.TRUE`, then geometry never passes through the rasterizer stage. This basically disables any output to the framebuffer.
 
 ```java
 rasterizer.polygonMode(VkPolygonMode.FILL);
@@ -147,9 +147,9 @@ rasterizer.polygonMode(VkPolygonMode.FILL);
 
 The polygonMode determines how fragments are generated for geometry. The following modes are available:
 
-- `VK_POLYGON_MODE_FILL`: fill the area of the polygon with fragments
-- `VK_POLYGON_MODE_LINE`: polygon edges are drawn as lines
-- `VK_POLYGON_MODE_POINT`: polygon vertices are drawn as points
+- `VkPolygonMode.FILL`: fill the area of the polygon with fragments
+- `VkPolygonMode.LINE`: polygon edges are drawn as lines
+- `VkPolygonMode.POINT`: polygon vertices are drawn as points
 
 Using any mode other than fill requires enabling a GPU feature.
 
@@ -271,7 +271,7 @@ colorBlending.blendConstants().write(2, 0.0f); // Optional
 colorBlending.blendConstants().write(3, 0.0f); // Optional
 ```
 
-If you want to use the second method of blending (bitwise combination), then you should set `logicOpEnable` to `VK_TRUE`. The bitwise operation can then be specified in the `logicOp` field. Note that this will automatically disable the first method, as if you had set `blendEnable` to `VK_FALSE` for every attached framebuffer! The `colorWriteMask` will also be used in this mode to determine which channels in the framebuffer will actually be affected. It is also possible to disable both modes, as we've done here, in which case the fragment colors will be written to the framebuffer unmodified.
+If you want to use the second method of blending (bitwise combination), then you should set `logicOpEnable` to `VkConstants.TRUE`. The bitwise operation can then be specified in the `logicOp` field. Note that this will automatically disable the first method, as if you had set `blendEnable` to `VkConstants.FALSE` for every attached framebuffer! The `colorWriteMask` will also be used in this mode to determine which channels in the framebuffer will actually be affected. It is also possible to disable both modes, as we've done here, in which case the fragment colors will be written to the framebuffer unmodified.
 
 ## Pipeline layout
 

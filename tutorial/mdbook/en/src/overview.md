@@ -106,7 +106,7 @@ Some Vulkan commands (for example, `vkCreateGraphicsPipelines`) can take single 
 
 Handles like `VkInstance`, `VkDevice` or `VkQueue` are represented with Java `record`s as well. Each handle type has a `MemorySegment` field that represents the native handle itself.
 
-When creating a pointer to a handle, you should use the `allocate` static method on the corresponding `Ptr` type such as `VkInstance.Ptr.allocate`. The return type is a `VkInstance.Ptr`. Calling `read` on the buffer will return the handle.
+When creating a pointer to a handle, you should use the `allocate` static method on the corresponding `Ptr` type such as `VkInstance.Ptr::allocate`. The return type is a `VkInstance.Ptr`. Calling `read` on the buffer will return the handle.
 
 Handles are usually created by Vulkan commands and most time you'll be creating pointers to handles and passing them to Vulkan commands. It's also possible to wrap a raw `MemorySegment` into a handle using the handle's constructor.
 
@@ -133,9 +133,9 @@ To avoid the runtime overhead of this dispatch, the `vkGetDeviceProcAddr` comman
 We will be calling dozens of Vulkan commands in this tutorial. Fortunately we won't have to load them one by one, `vulkan4j` provides a `Loader` type which can be used to easily load all the Vulkan commands in one of four categories:
 
 * `VkStaticCommands` &ndash; The Vulkan commands loaded in a platform-specific manner that can then used to load the other commands (i.e., `vkGetInstanceProcAddr` and `vkGetDeviceProcAddr`)
-* `VkEntryCommands` &ndash; The Vulkan commands loaded using `vkGetInstanceProcAddr` and a null Vulkan instance. These commands are not tied to a specific Vulkan instance and are used to query instance support and create instances
-* `VkInstanceCommands` &ndash; The Vulkan commands loaded using `vkGetInstanceProcAddr` and a valid Vulkan instance. These commands are tied to a specific Vulkan instance and, among other things, are used to query device support and create devices
-* `VkDeviceCommands` &ndash; The Vulkan commands loaded using `vkGetDeviceProcAddr` and a valid Vulkan device. These commands are tied to a specific Vulkan device and expose most of the functionality you would expect from a graphics API
+* `VkEntryCommands` &ndash; The Vulkan commands loaded using `VkStaticCommands::getInstanceProcAddr` and a null Vulkan instance. These commands are not tied to a specific Vulkan instance and are used to query instance support and create instances
+* `VkInstanceCommands` &ndash; The Vulkan commands loaded using `VkStaticCommands::getInstanceProcAddr` and a valid Vulkan instance. These commands are tied to a specific Vulkan instance and, among other things, are used to query device support and create devices
+* `VkDeviceCommands` &ndash; The Vulkan commands loaded using `VkInstanceCommands::getDeviceProcAddr` and a valid Vulkan device. These commands are tied to a specific Vulkan device and expose most of the functionality you would expect from a graphics API
 
 These classes allow you to easily load and call raw Vulkan commands from Java.
 
