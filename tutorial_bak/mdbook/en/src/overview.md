@@ -92,7 +92,7 @@ The [Vulkan headers](https://github.com/KhronosGroup/Vulkan-Headers) that are pa
 
 ### Coding conventions
 
-Since `vulkan4j` is designed to stick to original Vulkan API flavor more, most function names, data type names and constants are kept the same as in the Vulkan API:
+<!-- Since `vulkan4j` is designed to stick to original Vulkan API flavor more, most function names, data type names and constants are kept the same as in the Vulkan API:
 
 - Functions have a lower case `vk` prefix
 - Types like enumerations and structs have a `Vk` prefix
@@ -100,23 +100,23 @@ Since `vulkan4j` is designed to stick to original Vulkan API flavor more, most f
 
 One little difference is that `vulkan4j` merges `Flags` and `FlagBits` enumeration names. For example, `VkBufferUsageFlags` and `VkBufferUsageFlagBits` are merged into one single `VkBufferUsageFlags`.
 
-`struct` and `union` types are in `tech.icey.vk4j.datatype` package, enum types are in `tech.icey.vk4j.enumtype` package, while Vulkan handle types (like `VkInstance`, `VkDevice`, `VkQueue`, etc.) are in `tech.icey.vk4j.handle` package.
+`struct` and `union` types are in `tech.icey.vk4j.datatype` package, enum types are in `tech.icey.vk4j.enumtype` package, while Vulkan handle types (like `VkInstance`, `VkDevice`, `VkQueue`, etc.) are in `tech.icey.vk4j.handle` package. -->
 
 ### Structs and unions representation
 
-Structs and unions are represented with Java `record`s. Each `record` instance contains a `MemorySegment` representing the native memory of the struct or union. Calling static method `allocate` will automatically allocate a native memory segment for that struct or union, and create a new instance of the `record` with that memory segment. It also initializes fields like `sType` for you. Manually creating the `record` instance is not recommended but possible via the `record`'s constructor. 
+<!-- Structs and unions are represented with Java `record`s. Each `record` instance contains a `MemorySegment` representing the native memory of the struct or union. Calling static method `allocate` will automatically allocate a native memory segment for that struct or union, and create a new instance of the `record` with that memory segment. It also initializes fields like `sType` for you. Manually creating the `record` instance is not recommended but possible via the `record`'s constructor. 
 
-Since the `record` type representing struct or union is already a pointer, command taking struct as parameter and command taking struct pointer as parameter will have no difference on their function signature. In order to distinguish them, `vulkan4j` uses a `@pointer` annotation to mark that a parameter will be passed as a pointer (thus Vulkan may modify its content, and if conforming Vulkan specification, the parameter can be `null`).
+Since the `record` type representing struct or union is already a pointer, command taking struct as parameter and command taking struct pointer as parameter will have no difference on their function signature. In order to distinguish them, `vulkan4j` uses a `@pointer` annotation to mark that a parameter will be passed as a pointer (thus Vulkan may modify its content, and if conforming Vulkan specification, the parameter can be `null`). -->
 
 The `allocate` method has a overloading that accepts a `count` and returns an Java array of that struct or union. If you want to pass such an array or union to a Vulkan command, just pass the first element of the array. 
 
 ### Handles representation
 
-Handles like `VkInstance`, `VkDevice` or `VkQueue` are represented with Java `record`s as well. Each handle type has a `MemorySegment` field that represents the native handle itself.
+<!-- Handles like `VkInstance`, `VkDevice` or `VkQueue` are represented with Java `record`s as well. Each handle type has a `MemorySegment` field that represents the native handle itself.
 
 When creating a pointer to a handle, you should use the `allocate` static method on the corresponding `Buffer` type such as `VkInstance.Buffer.allocate`. The return type is a `VkInstance.Buffer`. Calling `read` on the buffer will return the handle.
 
-Handles are usually created by Vulkan commands and most time you'll be creating pointers to handles and passing them to Vulkan commands. It's also possible to wrap a raw `MemorySegment` into a handle using the handle's constructor.
+Handles are usually created by Vulkan commands and most time you'll be creating pointers to handles and passing them to Vulkan commands. It's also possible to wrap a raw `MemorySegment` into a handle using the handle's constructor. -->
 
 ### Enums and bitmasks representation
 
@@ -128,6 +128,7 @@ In order to make APIs involving Vulkan enums and bitmasks easier to use, `vulkan
 
 ### Commands
 
+<!--
 The types for raw Vulkan commands like `vkCreateInstance` are defined in `vulkan4j` as `FunctionDescriptor`s with the `DESCRIPTOR$` prefix. So the `vulkan4j` type definition for `vkCreateInstance` is `DESCRIPTOR$vkCreateInstance`.
 
 These function descriptors are not enough on their own to call Vulkan commands, we first need to load the commands described by these types. The Vulkan specification has a [detailed description](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization-functionpointers) of how this is done, but I will present a simplified version here.
@@ -146,6 +147,8 @@ We will be calling dozens of Vulkan commands in this tutorial. Fortunately we wo
 * `DeviceCommands` &ndash; The Vulkan commands loaded using `vkGetDeviceProcAddr` and a valid Vulkan device. These commands are tied to a specific Vulkan device and expose most of the functionality you would expect from a graphics API
 
 These classes allow you to easily load and call raw Vulkan commands from Java.
+
+-->
 
 ## Validation layers
 

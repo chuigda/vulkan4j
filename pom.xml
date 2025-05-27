@@ -46,9 +46,7 @@
         <module>gles2</module>
         <module>vma</module>
         <module>glfw</module>
-        <!--
         <module>tutorial</module>
-        -->
     </modules>
 
     <build>
