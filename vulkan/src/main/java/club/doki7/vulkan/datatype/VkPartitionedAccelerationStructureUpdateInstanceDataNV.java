@@ -130,7 +130,7 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPartitionedAccelerationStructureUpdateInstanceDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPartitionedAccelerationStructureUpdateInstanceDataNV.BYTES) > 0;
+                return segment.byteSize() >= VkPartitionedAccelerationStructureUpdateInstanceDataNV.BYTES;
             }
 
             @Override

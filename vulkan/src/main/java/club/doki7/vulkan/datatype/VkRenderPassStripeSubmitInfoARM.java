@@ -140,7 +140,7 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkRenderPassStripeSubmitInfoARM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkRenderPassStripeSubmitInfoARM.BYTES) > 0;
+                return segment.byteSize() >= VkRenderPassStripeSubmitInfoARM.BYTES;
             }
 
             @Override

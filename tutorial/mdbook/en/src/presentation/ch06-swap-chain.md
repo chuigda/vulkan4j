@@ -6,7 +6,7 @@ Vulkan does not have the concept of a "default framebuffer", hence it requires a
 
 Not all graphics cards are capable of presenting images directly to a screen for various reasons, for example because they are designed for servers and don't have any display outputs. Secondly, since image presentation is heavily tied into the window system and the surfaces associated with windows, it is not actually part of the Vulkan core. You have to enable the `VK_KHR_swapchain` device extension after querying for its support.
 
-For that purpose we'll first extend the `isDeviceSuitable` function to check if this extension is supported. We've previously seen how to list the extensions that are supported by a `VkPhysicalDevice`, so doing that should be fairly straightforward. Note that the `vulkan4j` provides a nice named constant `Constants.VK_KHR_SWAPCHAIN_EXTENSION_NAME` hat is defined as `VK_KHR_swapchain`. The advantage of using this named constant is that the compiler will catch misspellings.
+For that purpose we'll first extend the `isDeviceSuitable` function to check if this extension is supported. We've previously seen how to list the extensions that are supported by a `VkPhysicalDevice`, so doing that should be fairly straightforward. Note that the `vulkan4j` provides a nice named constant `VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME` hat is defined as `VK_KHR_swapchain`. The advantage of using this named constant is that the compiler will catch misspellings.
 
 Create a new function `checkDeviceExtensionSupport` that is called from `isDeviceSuitable` as an additional check:
 
@@ -22,26 +22,26 @@ boolean checkDeviceExtensionSupport(VkPhysicalDevice device) {
 }
 ```
 
-Modify the body of the function to enumerate the extensions and check if all of the required extensions are amongst them.
+Modify the body of the function to enumerate the extensions and check if all the required extensions are amongst them.
 
 ```java
 private boolean checkDeviceExtensionSupport(VkPhysicalDevice device) {
     try (var arena = Arena.ofConfined()) {
-        var pExtensionCount = IntBuffer.allocate(arena);
-        var result = instanceCommands.vkEnumerateDeviceExtensionProperties(device, null, pExtensionCount, null);
-        if (result != VkResult.VK_SUCCESS) {
+        var pExtensionCount = IntPtr.allocate(arena);
+        var result = instanceCommands.enumerateDeviceExtensionProperties(device, null, pExtensionCount, null);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to enumerate device extension properties, vulkan error code: " + VkResult.explain(result));
         }
 
         var extensionCount = pExtensionCount.read();
         var availableExtensions = VkExtensionProperties.allocate(arena, extensionCount);
-        result = instanceCommands.vkEnumerateDeviceExtensionProperties(device, null, pExtensionCount, availableExtensions[0]);
-        if (result != VkResult.VK_SUCCESS) {
+        result = instanceCommands.enumerateDeviceExtensionProperties(device, null, pExtensionCount, availableExtensions);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to enumerate device extension properties, vulkan error code: " + VkResult.explain(result));
         }
 
         for (var extension : availableExtensions) {
-            if (Constants.VK_KHR_SWAPCHAIN_EXTENSION_NAME.equals(extension.extensionName().readString())) {
+            if (VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME.equals(extension.extensionName().readString())) {
                 return true;
             }
         }
@@ -59,9 +59,9 @@ Using a swapchain requires enabling the `VK_KHR_swapchain` extension first. Enab
 
 ```java
 deviceCreateInfo.enabledExtensionCount(1);
-var ppDeviceExtensions = PointerBuffer.allocate(arena);
-ppDeviceExtensions.write(ByteBuffer.allocateString(arena, Constants.VK_KHR_SWAPCHAIN_EXTENSION_NAME));
-deviceCreateInfo.ppEnabledExtensionNames(ppDeviceExtensions);
+var ppEnabledExtensionNames = PointerPtr.allocate(arena);
+ppEnabledExtensionNames.write(BytePtr.allocateString(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME));
+deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 ```
 
 ## Querying details of swap chain support
@@ -79,8 +79,8 @@ Similar to `findQueueFamilies`, we'll use a record to pass these details around 
 ```java
 private record SwapchainSupportDetails(
         VkSurfaceCapabilitiesKHR capabilities,
-        VkSurfaceFormatKHR[] formats,
-        @enumtype(VkPresentModeKHR.class) IntBuffer presentModes
+        VkSurfaceFormatKHR.Ptr formats,
+        @EnumType(VkPresentModeKHR.class) IntPtr presentModes
 ) {}
 ```
 
@@ -97,8 +97,8 @@ Let's start with the basic surface capabilities. These properties are simple to 
 
 ```java
 var surfaceCapabilities = VkSurfaceCapabilitiesKHR.allocate(arena);
-var result = instanceCommands.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device, surface, surfaceCapabilities);
-if (result != VkResult.VK_SUCCESS) {
+var result = instanceCommands.getPhysicalDeviceSurfaceCapabilitiesKHR(device, surface, surfaceCapabilities);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to get physical device surface capabilities, vulkan error code: " + VkResult.explain(result));
 }
 ```
@@ -109,34 +109,34 @@ The next step is about querying the supported surface formats. Because this is a
 
 ```java
 try (var localArena = Arena.ofConfined()) {
-    var pFormatCount = IntBuffer.allocate(localArena);
-    result = instanceCommands.vkGetPhysicalDeviceSurfaceFormatsKHR(device, surface, pFormatCount, null);
-    if (result != VkResult.VK_SUCCESS) {
+    var pFormatCount = IntPtr.allocate(localArena);
+    result = instanceCommands.getPhysicalDeviceSurfaceFormatsKHR(device, surface, pFormatCount, null);
+    if (result != VkResult.SUCCESS) {
         throw new RuntimeException("Failed to get physical device surface formats, vulkan error code: " + VkResult.explain(result));
     }
 
     var formatCount = pFormatCount.read();
     var formats = VkSurfaceFormatKHR.allocate(arena, formatCount);
-    result = instanceCommands.vkGetPhysicalDeviceSurfaceFormatsKHR(device, surface, pFormatCount, formats[0]);
-    if (result != VkResult.VK_SUCCESS) {
+    result = instanceCommands.getPhysicalDeviceSurfaceFormatsKHR(device, surface, pFormatCount, formats);
+    if (result != VkResult.SUCCESS) {
         throw new RuntimeException("Failed to get physical device surface formats, vulkan error code: " + VkResult.explain(result));
     }
 }
 ```
 
-And finally, querying the supported presentation modes works exactly the same way with `vkGetPhysicalDeviceSurfacePresentModesKHR`:
+And finally, querying the supported presentation modes works exactly the same way with `VkInstanceCommands::getPhysicalDeviceSurfacePresentModesKHR`:
 
 ```java
-var pPresentModeCount = IntBuffer.allocate(localArena);
-result = instanceCommands.vkGetPhysicalDeviceSurfacePresentModesKHR(device, surface, pPresentModeCount, null);
-if (result != VkResult.VK_SUCCESS) {
+var pPresentModeCount = IntPtr.allocate(localArena);
+result = instanceCommands.getPhysicalDeviceSurfacePresentModesKHR(device, surface, pPresentModeCount, null);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to get physical device surface present modes, vulkan error code: " + VkResult.explain(result));
 }
 
 var presentModeCount = pPresentModeCount.read();
-var presentModes = IntBuffer.allocate(arena, presentModeCount);
-result = instanceCommands.vkGetPhysicalDeviceSurfacePresentModesKHR(device, surface, pPresentModeCount, presentModes);
-if (result != VkResult.VK_SUCCESS) {
+var presentModes = IntPtr.allocate(arena, presentModeCount);
+result = instanceCommands.getPhysicalDeviceSurfacePresentModesKHR(device, surface, pPresentModeCount, presentModes);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to get physical device surface present modes, vulkan error code: " + VkResult.explain(result));
 }
 
@@ -155,7 +155,7 @@ private boolean isDeviceSuitable(VkPhysicalDevice device) {
 
     try (var arena = Arena.ofConfined()) {
         var swapChainSupport = querySwapChainSupport(device, arena);
-        return swapChainSupport.formats().length != 0 && swapChainSupport.presentModes().size() != 0;
+        return swapChainSupport.formats().size() != 0 && swapChainSupport.presentModes().size() != 0;
     }
 }
 ```
@@ -164,7 +164,7 @@ It is important that we only try to query for swap chain support after verifying
 
 ## Choosing the right settings for the swap chain
 
-If the `swapChainAdequate` conditions were met then the support is definitely sufficient, but there may still be many different modes of varying optimality. We'll now write a couple of functions to find the right settings for the best possible swap chain. There are three types of settings to determine:
+If the `swapChainSupport` conditions were met then the support is definitely sufficient, but there may still be many different modes of varying optimality. We'll now write a couple of functions to find the right settings for the best possible swap chain. There are three types of settings to determine:
 
 - Surface format (color depth)
 - Presentation mode (conditions for "swapping" images to the screen)
@@ -189,8 +189,8 @@ Let's go through the list and see if the preferred combination is available:
 
 ```java
 for (var format : formats) {
-    if (format.format() == VkFormat.VK_FORMAT_B8G8R8A8_SRGB &&
-            format.colorSpace() == VkColorSpaceKHR.VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
+    if (format.format() == VkFormat.B8G8R8A8_SRGB
+        && format.colorSpace() == VkColorSpaceKHR.SRGB_NONLINEAR) {
         return format;
     }
 }
@@ -199,15 +199,15 @@ for (var format : formats) {
 If that also fails then we could start ranking the available formats based on how "good" they are, but in most cases it's okay to just settle with the first format that is specified.
 
 ```java
-private VkSurfaceFormatKHR chooseSwapSurfaceFormat(VkSurfaceFormatKHR[] formats) {
+private VkSurfaceFormatKHR chooseSwapSurfaceFormat(VkSurfaceFormatKHR.Ptr formats) {
     for (var format : formats) {
-        if (format.format() == VkFormat.VK_FORMAT_B8G8R8A8_SRGB &&
-                format.colorSpace() == VkColorSpaceKHR.VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
+        if (format.format() == VkFormat.B8G8R8A8_SRGB
+            && format.colorSpace() == VkColorSpaceKHR.SRGB_NONLINEAR) {
             return format;
         }
     }
 
-    return formats[0];
+    return formats.at(0);
 }
 ```
 
@@ -224,26 +224,25 @@ The presentation mode is arguably the most important setting for the swap chain,
 Only the `VK_PRESENT_MODE_FIFO_KHR` mode is guaranteed to be available, so we'll again have to write a function that looks for the best mode that is available:
 
 ```java
-private @enumtype(VkPresentModeKHR.class) int chooseSwapPresentMode(
-        @enumtype(VkPresentModeKHR.class) IntBuffer presentModes
+private @EnumType(VkPresentModeKHR.class) int chooseSwapPresentMode(
+        @EnumType(VkPresentModeKHR.class) IntPtr presentModes
 ) {
-    return VkPresentModeKHR.VK_PRESENT_MODE_FIFO_KHR;
+    return VkPresentModeKHR.FIFO;
 }
 ```
 
 I personally think that `VK_PRESENT_MODE_MAILBOX_KHR` is a very nice trade-off if energy usage is not a concern. It allows us to avoid tearing while still maintaining a fairly low latency by rendering new images that are as up-to-date as possible right until the vertical blank. On mobile devices, where energy usage is more important, you will probably want to use `VK_PRESENT_MODE_FIFO_KHR` instead. Now, let's look through the list to see if `VK_PRESENT_MODE_MAILBOX_KHR` is available:
 
 ```java
-private @enumtype(VkPresentModeKHR.class) int chooseSwapPresentMode(
-        @enumtype(VkPresentModeKHR.class) IntBuffer presentModes
+private @EnumType(VkPresentModeKHR.class) int chooseSwapPresentMode(
+        @EnumType(VkPresentModeKHR.class) IntPtr presentModes
 ) {
-    for (int i = 0; i < presentModes.size(); i++) {
-        if (presentModes.read(i) == VkPresentModeKHR.VK_PRESENT_MODE_MAILBOX_KHR) {
-            return VkPresentModeKHR.VK_PRESENT_MODE_MAILBOX_KHR;
+    for (int presentMode : presentModes) {
+        if (presentMode == VkPresentModeKHR.MAILBOX) {
+            return presentMode;
         }
     }
-
-    return VkPresentModeKHR.VK_PRESENT_MODE_FIFO_KHR;
+    return VkPresentModeKHR.FIFO;
 }
 ```
 
@@ -258,7 +257,7 @@ private VkExtent2D chooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities, Arena
 
 The swap extent is the resolution of the swap chain images and it's almost always exactly equal to the resolution of the window that we're drawing to in pixels (more on that in a moment). The range of the possible resolutions is defined in the `VkSurfaceCapabilitiesKHR` structure. Vulkan tells us to match the resolution of the window by setting the width and height in the `currentExtent` member. However, some window managers do allow us to differ here and this is indicated by setting the width and height in `currentExtent` to a special value: the maximum value of `uint32_t`. In that case we'll pick the resolution that best matches the window within the `minImageExtent` and `maxImageExtent` bounds. But we must specify the resolution in the correct unit.
 
-GLFW uses two units when measuring sizes: pixels and [screen coordinates](https://www.glfw.org/docs/latest/intro_guide.html#coordinate_systems). For example, the resolution `{WIDTH, HEIGHT}` that we specified earlier when creating the window is measured in screen coordinates. But Vulkan works with pixels, so the swap chain extent must be specified in pixels as well. Unfortunately, if you are using a high DPI display (like Apple's Retina display), screen coordinates don't correspond to pixels. Instead, due to the higher pixel density, the resolution of the window in pixel will be larger than the resolution in screen coordinates. So if Vulkan doesn't fix the swap extent for us, we can't just use the original `{WIDTH, HEIGHT}`. Instead, we must use `glfwGetFramebufferSize` to query the resolution of the window in pixel before matching it against the minimum and maximum image extent.
+GLFW uses two units when measuring sizes: pixels and [screen coordinates](https://www.glfw.org/docs/latest/intro_guide.html#coordinate_systems). For example, the resolution `{WIDTH, HEIGHT}` that we specified earlier when creating the window is measured in screen coordinates. But Vulkan works with pixels, so the swap chain extent must be specified in pixels as well. Unfortunately, if you are using a high DPI display (like Apple's Retina display), screen coordinates don't correspond to pixels. Instead, due to the higher pixel density, the resolution of the window in pixel will be larger than the resolution in screen coordinates. So if Vulkan doesn't fix the swap extent for us, we can't just use the original `{WIDTH, HEIGHT}`. Instead, we must use `GLFW::getFramebufferSize` to query the resolution of the window in pixel before matching it against the minimum and maximum image extent.
 
 ```java
 private VkExtent2D chooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities, Arena arena) {
@@ -267,9 +266,9 @@ private VkExtent2D chooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities, Arena
     }
     else {
         try (var localArena = Arena.ofConfined()) {
-            var pWidth = IntBuffer.allocate(localArena);
-            var pHeight = IntBuffer.allocate(localArena);
-            glfw.glfwGetFramebufferSize(window, pWidth, pHeight);
+            var pWidth = IntPtr.allocate(localArena);
+            var pHeight = IntPtr.allocate(localArena);
+            glfw.getFramebufferSize(window, pWidth, pHeight);
             var width = pWidth.read();
             var height = pHeight.read();
 
@@ -323,7 +322,7 @@ We should also make sure to not exceed the maximum number of images while doing 
 
 ```java
 if (swapChainSupport.capabilities.maxImageCount() > 0 
-        && imageCount > swapChainSupport.capabilities.maxImageCount()) {
+    && imageCount > swapChainSupport.capabilities.maxImageCount()) {
     imageCount = swapChainSupport.capabilities.maxImageCount();
 }
 ```
@@ -343,23 +342,24 @@ createInfo.imageFormat(surfaceFormat.format());
 createInfo.imageColorSpace(surfaceFormat.colorSpace());
 createInfo.imageExtent(extent);
 createInfo.imageArrayLayers(1);
-createInfo.imageUsage(VkImageUsageFlags.VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT);
+createInfo.imageUsage(VkImageUsageFlags.COLOR_ATTACHMENT);
 ```
 
 The `imageArrayLayers` specifies the amount of layers each image consists of. This is always `1` unless you are developing a stereoscopic 3D application. The `imageUsage` bit field specifies what kind of operations we'll use the images in the swap chain for. In this tutorial we're going to render directly to them, which means that they're used as color attachment. It is also possible that you'll render images to a separate image first to perform operations like post-processing. In that case you may use a value like `VK_IMAGE_USAGE_TRANSFER_DST_BIT` instead and use a memory operation to transfer the rendered image to a swap chain image.
 
 ```java
 var indices = findQueueFamilies(physicalDevice);
-assert indices != null;
+assert indices != null : "Queue family indices should not be null";
 if (indices.graphicsFamily != indices.presentFamily) {
-    createInfo.imageSharingMode(VkSharingMode.VK_SHARING_MODE_CONCURRENT);
+    createInfo.imageSharingMode(VkSharingMode.CONCURRENT);
     createInfo.queueFamilyIndexCount(2);
-    var pQueueFamilyIndices = IntBuffer.allocate(arena);
-    pQueueFamilyIndices.write(indices.graphicsFamily(), indices.presentFamily());
+    var pQueueFamilyIndices = IntPtr.allocate(arena, 2);
+    pQueueFamilyIndices.write(0, indices.graphicsFamily());
+    pQueueFamilyIndices.write(1, indices.presentFamily());
     createInfo.pQueueFamilyIndices(pQueueFamilyIndices);
 }
 else {
-    createInfo.imageSharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
+    createInfo.imageSharingMode(VkSharingMode.EXCLUSIVE);
 }
 ```
 
@@ -377,14 +377,14 @@ createInfo.preTransform(swapChainSupport.capabilities.currentTransform());
 We can specify that a certain transform should be applied to images in the swap chain if it is supported (`supportedTransforms` in `capabilities`), like a 90-degree clockwise rotation or horizontal flip. To specify that you do not want any transformation, simply specify the current transformation.
 
 ```java
-createInfo.compositeAlpha(VkCompositeAlphaFlagsKHR.VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR);
+createInfo.compositeAlpha(VkCompositeAlphaFlagsKHR.OPAQUE);
 ```
 
 The `compositeAlpha` field specifies if the alpha channel should be used for blending with other windows in the window system. You'll almost always want to simply ignore the alpha channel, hence `VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR`.
 
 ```java
 createInfo.presentMode(presentMode);
-createInfo.clipped(Constants.VK_TRUE);
+createInfo.clipped(VkConstants.TRUE);
 ```
 
 The `presentMode` member speaks for itself. If the clipped member is set to VK_TRUE then that means that we don't care about the color of pixels that are obscured, for example because another window is in front of them. Unless you really need to be able to read these pixels back and get predictable results, you'll get the best performance by enabling clipping.
@@ -401,22 +401,22 @@ Now add a class member to store the `VkSwapchainKHR` object:
 private VkSwapchainKHR swapChain;
 ```
 
-Creating the swap chain is now as simple as calling `vkCreateSwapchainKHR`:
+Creating the swap chain is now as simple as calling `DeviceCommands::createSwapchainKHR`:
 
 ```java
-var pSwapChain = VkSwapchainKHR.Buffer.allocate(arena);
-var result = deviceCommands.vkCreateSwapchainKHR(device, createInfo, null, pSwapChain);
-if (result != VkResult.VK_SUCCESS) {
+var pSwapChain = VkSwapchainKHR.Ptr.allocate(arena);
+var result = deviceCommands.createSwapchainKHR(device, createInfo, null, pSwapChain);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create swap chain, vulkan error code: " + VkResult.explain(result));
 }
-swapChain = pSwapChain.read();
+swapChain = Objects.requireNonNull(pSwapChain.read());
 ```
 
-The parameters are the logical device, swap chain creation info, optional custom allocators and a pointer to the variable to store the handle in. No surprises there. It should be cleaned up using `vkDestroySwapchainKHR` before the device:
+The parameters are the logical device, swap chain creation info, optional custom allocators and a pointer to the variable to store the handle in. No surprises there. It should be cleaned up using `VkDeviceCommands::destroySwapchainKHR` before the device:
 
 ```java
-private void cleanupSwapChain() {
-    deviceCommands.vkDestroySwapchainKHR(device, swapChain, null);
+private void cleanup() {
+    deviceCommands.destroySwapchainKHR(device, swapChain, null);
     // ...
 }
 ```
@@ -426,8 +426,8 @@ Now run the application to ensure that the swap chain is created successfully! I
 Try removing the `createInfo.imageExtent(extent);` line with validation layers enabled. You'll see that one of the validation layers immediately catches the mistake and a helpful message is printed:
 
 ```
-Validation layer: Validation Error: [ VUID-VkSwapchainCreateInfoKHR-imageExtent-01689 ] Object 0: handle = 0x23826ecf640, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x13140d69 | vkCreateSwapchainKHR(): pCreateInfo->imageExtent = (0, 0) which is illegal. The Vulkan spec states: imageExtent members width and height must both be non-zero (https://vulkan.lunarg.com/doc/view/1.3.250.0/windows/1.3-extensions/vkspec.html#VUID-VkSwapchainCreateInfoKHR-imageExtent-01689)
-Validation layer: Validation Error: [ VUID-VkSwapchainCreateInfoKHR-imageExtent-01274 ] Object 0: handle = 0x23826ecf640, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0x7cd0911d | vkCreateSwapchainKHR() called with imageExtent = (0,0), which is outside the bounds returned by vkGetPhysicalDeviceSurfaceCapabilitiesKHR(): currentExtent = (800,600), minImageExtent = (800,600), maxImageExtent = (800,600). The Vulkan spec states: imageExtent must be between minImageExtent and maxImageExtent, inclusive, where minImageExtent and maxImageExtent are members of the VkSurfaceCapabilitiesKHR structure returned by vkGetPhysicalDeviceSurfaceCapabilitiesKHR for the surface (https://vulkan.lunarg.com/doc/view/1.3.250.0/windows/1.3-extensions/vkspec.html#VUID-VkSwapchainCreateInfoKHR-imageExtent-01274)
+Validation layer: vkCreateSwapchainKHR(): pCreateInfo->imageExtent (width = 0, height = 0) is invalid.
+The Vulkan spec states: imageExtent members width and height must both be non-zero (https://docs.vulkan.org/spec/latest/chapters/VK_KHR_surface/wsi.html#VUID-VkSwapchainCreateInfoKHR-imageExtent-01689)
 ```
 
 ## Retrieving the swap chain images
@@ -435,44 +435,39 @@ Validation layer: Validation Error: [ VUID-VkSwapchainCreateInfoKHR-imageExtent-
 The swap chain has been created now, so all that remains is retrieving the handles of the `VkImage`s in it. We'll reference these during rendering operations in later chapters. Add a class member to store the handles:
 
 ```
-private VkImage[] swapChainImages;
+private VkImage.Ptr swapChainImages;
 ```
 
 The images were created by the implementation for the swap chain, and they will be automatically cleaned up once the swap chain has been destroyed, therefore we don't need to add any cleanup code.
 
-I'm adding the code to retrieve the handles to the end of the `createSwapChain` function, right after the `vkCreateSwapchainKHR` call. Retrieving them is very similar to the other times when we retrieved an array of objects from Vulkan. Remember that we only specified a minimum number of images in the swap chain, so the implementation is allowed to create a swap chain with more. That's why we'll first query the final number of images with `vkGetSwapchainImagesKHR`, then resize the container and finally call it again to retrieve the handles.
+I'm adding the code to retrieve the handles to the end of the `createSwapChain` function, right after the `VkDeviceCommands::createSwapchainKHR` call. Retrieving them is very similar to the other times when we retrieved an array of objects from Vulkan. Remember that we only specified a minimum number of images in the swap chain, so the implementation is allowed to create a swap chain with more. That's why we'll first query the final number of images with `VkDeviceCommands::getSwapchainImagesKHR`, then resize the container and finally call it again to retrieve the handles.
 
 ```java
-var pImageCount = IntBuffer.allocate(arena);
-result = deviceCommands.vkGetSwapchainImagesKHR(device, swapChain, pImageCount, null);
-if (result != VkResult.VK_SUCCESS) {
+var pImageCount = IntPtr.allocate(arena);
+result = deviceCommands.getSwapchainImagesKHR(device, swapChain, pImageCount, null);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to get swap chain images, vulkan error code: " + VkResult.explain(result));
 }
+assert pImageCount.read() == imageCount : "Image count mismatch";
 
-imageCount = pImageCount.read();
-var pSwapChainImages = VkImage.Buffer.allocate(arena, imageCount);
-result = deviceCommands.vkGetSwapchainImagesKHR(device, swapChain, pImageCount, pSwapChainImages);
-if (result != VkResult.VK_SUCCESS) {
+swapChainImages = VkImage.Ptr.allocate(Arena.ofAuto(), imageCount);
+result = deviceCommands.getSwapchainImagesKHR(device, swapChain, pImageCount, swapChainImages);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to get swap chain images, vulkan error code: " + VkResult.explain(result));
 }
-
-swapChainImages = pSwapChainImages.readAll();
 ```
+
+> Here we are allocating the `swapChainImages` array in the auto arena instead of the confined, temporary arena. This is because the swap chain images will be used throughout the lifetime of the application, so we need to ensure that they are not deallocated after function returns.
 
 One last thing, store the format and extent we've chosen for the swap chain images in member variables. We'll need them in future chapters.
 
 ```java
-private Arena applicationArena = Arena.ofShared();
-// ...
-private @enumtype(VkFormat.class) int swapChainImageFormat;
+private @EnumType(VkFormat.class) int swapChainImageFormat;
 private VkExtent2D swapChainExtent;
-
 ...
 
 swapChainImageFormat = surfaceFormat.format();
-swapChainExtent = VkExtent2D.clone(applicationArena, extent);
+swapChainExtent = VkExtent2D.clone(Arena.ofAuto(), extent);
 ```
-
-> Note: since the `extent` in `chooseSwapExtent` may be allocated from the local arena, as we want to keep it alive after the function returns, we need to make a clone using the shared arena.
 
 We now have a set of images that can be drawn onto and can be presented to the window. The next chapter will begin to cover how we can set up the images as render targets and then we start looking into the actual graphics pipeline and drawing commands!

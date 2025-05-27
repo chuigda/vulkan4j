@@ -139,7 +139,7 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT.BYTES;
             }
 
             @Override

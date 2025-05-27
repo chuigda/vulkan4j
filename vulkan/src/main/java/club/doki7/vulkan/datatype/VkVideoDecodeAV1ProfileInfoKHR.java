@@ -140,7 +140,7 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkVideoDecodeAV1ProfileInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkVideoDecodeAV1ProfileInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkVideoDecodeAV1ProfileInfoKHR.BYTES;
             }
 
             @Override

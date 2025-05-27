@@ -141,7 +141,7 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkAntiLagDataAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkAntiLagDataAMD.BYTES) > 0;
+                return segment.byteSize() >= VkAntiLagDataAMD.BYTES;
             }
 
             @Override

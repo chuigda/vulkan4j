@@ -132,7 +132,7 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkColorBlendAdvancedEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -140,7 +140,7 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkColorBlendAdvancedEXT.BYTES) > 0;
+                return segment.byteSize() >= VkColorBlendAdvancedEXT.BYTES;
             }
 
             @Override

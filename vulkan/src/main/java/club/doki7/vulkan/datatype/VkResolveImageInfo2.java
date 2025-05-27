@@ -144,7 +144,7 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkResolveImageInfo2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -152,7 +152,7 @@ public record VkResolveImageInfo2(@NotNull MemorySegment segment) implements IVk
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkResolveImageInfo2.BYTES) > 0;
+                return segment.byteSize() >= VkResolveImageInfo2.BYTES;
             }
 
             @Override

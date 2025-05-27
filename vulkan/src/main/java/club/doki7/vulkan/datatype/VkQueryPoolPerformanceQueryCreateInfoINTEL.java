@@ -139,7 +139,7 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkQueryPoolPerformanceQueryCreateInfoINTEL> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkQueryPoolPerformanceQueryCreateInfoINTEL.BYTES) > 0;
+                return segment.byteSize() >= VkQueryPoolPerformanceQueryCreateInfoINTEL.BYTES;
             }
 
             @Override

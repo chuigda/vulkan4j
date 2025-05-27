@@ -127,7 +127,7 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<StdVideoAV1GlobalMotion> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -135,7 +135,7 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / StdVideoAV1GlobalMotion.BYTES) > 0;
+                return segment.byteSize() >= StdVideoAV1GlobalMotion.BYTES;
             }
 
             @Override

@@ -142,7 +142,7 @@ public record VkApplicationParametersEXT(@NotNull MemorySegment segment) impleme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkApplicationParametersEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkApplicationParametersEXT(@NotNull MemorySegment segment) impleme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkApplicationParametersEXT.BYTES) > 0;
+                return segment.byteSize() >= VkApplicationParametersEXT.BYTES;
             }
 
             @Override

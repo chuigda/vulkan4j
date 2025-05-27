@@ -129,7 +129,7 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMultiDrawInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMultiDrawInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkMultiDrawInfoEXT.BYTES;
             }
 
             @Override

@@ -142,7 +142,7 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceExternalSciSync2FeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkPhysicalDeviceExternalSciSync2FeaturesNV(@NotNull MemorySegment 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceExternalSciSync2FeaturesNV.BYTES;
             }
 
             @Override

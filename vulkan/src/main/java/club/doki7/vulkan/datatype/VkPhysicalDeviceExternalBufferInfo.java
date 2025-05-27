@@ -141,7 +141,7 @@ public record VkPhysicalDeviceExternalBufferInfo(@NotNull MemorySegment segment)
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceExternalBufferInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkPhysicalDeviceExternalBufferInfo(@NotNull MemorySegment segment)
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceExternalBufferInfo.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceExternalBufferInfo.BYTES;
             }
 
             @Override

@@ -2,7 +2,7 @@
 
 Since Vulkan is a platform-agnostic API, it can not interface directly with the window system on its own. To establish the connection between Vulkan and the window system to present results to the screen, we need to use the WSI (Window System Integration) extensions. In this chapter we'll discuss the first one, which is `VK_KHR_surface`. It exposes a `VkSurfaceKHR` object that represents an abstract type of surface to present rendered images to. The surface in our program will be backed by the window that we've already opened with GLFW.
 
-The `VK_KHR_surface` extension is an instance level extension and we've actually already enabled it, because it's included in the list returned by `getRequiredInstanceExtensions`. The list also includes some other WSI extensions that we'll use in the next couple of chapters.
+The `VK_KHR_surface` extension is an instance level extension and we've actually already enabled it, because it's included in the list returned by `GLFW::getRequiredInstanceExtensions`. The list also includes some other WSI extensions that we'll use in the next couple of chapters.
 
 The window surface needs to be created right after the instance creation, because it can actually influence the physical device selection. The reason we postponed this is that window surfaces are part of the larger topic of render targets and presentation for which the explanation would have cluttered the basic setup. It should also be noted that window surfaces are an entirely optional component in Vulkan, if you just need off-screen rendering. Vulkan allows you to do that without hacks like creating an invisible window (necessary for OpenGL).
 
@@ -14,9 +14,9 @@ Start by adding a `surface` class member right below the debug callback.
 private VkSurfaceKHR surface;
 ```
 
-Although the `VkSurfaceKHR` object and its usage is platform-agnostic, its creation isn't because it depends on window system details. For example, it needs the `HWND` and `HMODULE` handles on Windows. Therefore, there is a platform-specific addition to the extension, which on Windows is called `VK_KHR_win32_surface` and is also automatically included in the list from `getRequiredInstanceExtensions`.
+Although the `VkSurfaceKHR` object and its usage is platform-agnostic, its creation isn't because it depends on window system details. For example, it needs the `HWND` and `HMODULE` handles on Windows. Therefore, there is a platform-specific addition to the extension, which on Windows is called `VK_KHR_win32_surface` and is also automatically included in the list from `GLFW::getRequiredInstanceExtensions`.
 
-I will demonstrate how this platform specific extension can be used to create a surface on Windows, but we **won't actually use it in this tutorial**. It doesn't make any sense to use a library like GLFW and then proceed to use platform-specific code anyway. GLFW actually has `createWindowSurface` that handles the platform differences for us. Still, it's good to see what it does behind the scenes before we start relying on it.
+I will demonstrate how this platform specific extension can be used to create a surface on Windows, but we **won't actually use it in this tutorial**. It doesn't make any sense to use a library like GLFW and then proceed to use platform-specific code anyway. GLFW actually has `GLFW::createWindowSurface` that handles the platform differences for us. Still, it's good to see what it does behind the scenes before we start relying on it.
 
 Because a window surface is a Vulkan object, it comes with a `VkWin32SurfaceCreateInfoKHR` struct that needs to be filled in. It has two important parameters: hwnd and hinstance. These are the handles to the window and the process.
 
@@ -40,7 +40,7 @@ if (instanceCommands.createWin32SurfaceKHR(instance, createInfo, null, pSurface)
 
 The process is similar for other platforms like Linux, where `createXcbSurfaceKHR` takes an XCB connection and window as creation details with X11.
 
-The `createWindowSurface` function performs exactly this operation with a different implementation for each platform. We'll now integrate it into our program. Add a function `createSurface` to be called from `initVulkan` right after instance creation and `setupDebugMessenger`.
+The `GLFW::createWindowSurface` function performs exactly this operation with a different implementation for each platform. We'll now integrate it into our program. Add a function `createSurface` to be called from `initVulkan` right after instance creation and `setupDebugMessenger`.
 
 ```java
 private void initVulkan() {
@@ -93,7 +93,7 @@ It's actually possible that the queue families supporting drawing commands and t
 private record QueueFamilyIndices(int graphicsFamily, int presentFamily) {}
 ```
 
-Next, we'll modify the `findQueueFamilies` function to look for a queue family that has the capability of presenting to our window surface. The function to check for that is `getPhysicalDeviceSurfaceSupportKHR`, which takes the physical device, queue family index and surface as parameters. Add a call to it in the same loop as the `VK_QUEUE_GRAPHICS_BIT`:
+Next, we'll modify the `findQueueFamilies` function to look for a queue family that has the capability of presenting to our window surface. The function to check for that is `VkInstanceCommands::getPhysicalDeviceSurfaceSupportKHR`, which takes the physical device, queue family index and surface as parameters. Add a call to it in the same loop as the `VK_QUEUE_GRAPHICS_BIT`:
 
 ```java
 int presentFamily = -1;

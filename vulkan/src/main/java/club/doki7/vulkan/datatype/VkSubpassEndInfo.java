@@ -138,7 +138,7 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkSubpassEndInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -146,7 +146,7 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkSubpassEndInfo.BYTES) > 0;
+                return segment.byteSize() >= VkSubpassEndInfo.BYTES;
             }
 
             @Override

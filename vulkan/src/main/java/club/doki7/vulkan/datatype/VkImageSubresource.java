@@ -130,7 +130,7 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImageSubresource> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImageSubresource.BYTES) > 0;
+                return segment.byteSize() >= VkImageSubresource.BYTES;
             }
 
             @Override

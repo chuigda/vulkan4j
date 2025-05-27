@@ -140,7 +140,7 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.BYTES;
             }
 
             @Override

@@ -139,7 +139,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceSchedulingControlsPropertiesARM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceSchedulingControlsPropertiesARM(@NotNull MemorySeg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceSchedulingControlsPropertiesARM.BYTES;
             }
 
             @Override

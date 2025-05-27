@@ -130,7 +130,7 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDescriptorBufferInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDescriptorBufferInfo.BYTES) > 0;
+                return segment.byteSize() >= VkDescriptorBufferInfo.BYTES;
             }
 
             @Override

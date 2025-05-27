@@ -139,7 +139,7 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(@NotNull Memor
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineShaderStageRequiredSubgroupSizeCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(@NotNull Memor
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineShaderStageRequiredSubgroupSizeCreateInfo.BYTES;
             }
 
             @Override

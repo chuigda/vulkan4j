@@ -184,7 +184,7 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VmaPoolCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -192,7 +192,7 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VmaPoolCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VmaPoolCreateInfo.BYTES;
             }
 
             @Override

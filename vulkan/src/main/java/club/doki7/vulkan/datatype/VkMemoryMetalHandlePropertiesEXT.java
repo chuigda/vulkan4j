@@ -139,7 +139,7 @@ public record VkMemoryMetalHandlePropertiesEXT(@NotNull MemorySegment segment) i
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMemoryMetalHandlePropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkMemoryMetalHandlePropertiesEXT(@NotNull MemorySegment segment) i
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMemoryMetalHandlePropertiesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkMemoryMetalHandlePropertiesEXT.BYTES;
             }
 
             @Override

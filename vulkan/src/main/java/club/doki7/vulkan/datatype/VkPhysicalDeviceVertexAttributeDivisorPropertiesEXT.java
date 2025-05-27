@@ -139,7 +139,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(@NotNull Memor
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(@NotNull Memor
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.BYTES;
             }
 
             @Override

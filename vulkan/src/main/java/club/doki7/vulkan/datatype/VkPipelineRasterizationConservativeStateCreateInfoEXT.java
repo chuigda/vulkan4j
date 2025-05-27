@@ -141,7 +141,7 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineRasterizationConservativeStateCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineRasterizationConservativeStateCreateInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineRasterizationConservativeStateCreateInfoEXT.BYTES;
             }
 
             @Override

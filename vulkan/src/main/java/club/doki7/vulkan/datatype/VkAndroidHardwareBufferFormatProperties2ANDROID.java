@@ -146,7 +146,7 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(@NotNull MemorySeg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkAndroidHardwareBufferFormatProperties2ANDROID> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -154,7 +154,7 @@ public record VkAndroidHardwareBufferFormatProperties2ANDROID(@NotNull MemorySeg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkAndroidHardwareBufferFormatProperties2ANDROID.BYTES) > 0;
+                return segment.byteSize() >= VkAndroidHardwareBufferFormatProperties2ANDROID.BYTES;
             }
 
             @Override

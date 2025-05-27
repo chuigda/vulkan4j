@@ -143,7 +143,7 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkBufferViewCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkBufferViewCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkBufferViewCreateInfo.BYTES;
             }
 
             @Override

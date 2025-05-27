@@ -140,7 +140,7 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineViewportExclusiveScissorStateCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineViewportExclusiveScissorStateCreateInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineViewportExclusiveScissorStateCreateInfoNV.BYTES;
             }
 
             @Override

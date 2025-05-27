@@ -139,7 +139,7 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineViewportDepthClipControlCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPipelineViewportDepthClipControlCreateInfoEXT(@NotNull MemorySeg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineViewportDepthClipControlCreateInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineViewportDepthClipControlCreateInfoEXT.BYTES;
             }
 
             @Override

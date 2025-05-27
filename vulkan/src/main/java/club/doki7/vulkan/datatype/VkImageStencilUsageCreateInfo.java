@@ -139,7 +139,7 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImageStencilUsageCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImageStencilUsageCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkImageStencilUsageCreateInfo.BYTES;
             }
 
             @Override

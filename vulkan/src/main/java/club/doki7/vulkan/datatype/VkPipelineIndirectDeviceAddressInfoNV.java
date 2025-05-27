@@ -140,7 +140,7 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineIndirectDeviceAddressInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineIndirectDeviceAddressInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineIndirectDeviceAddressInfoNV.BYTES;
             }
 
             @Override

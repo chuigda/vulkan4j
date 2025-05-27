@@ -140,7 +140,7 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(@NotNull M
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(@NotNull M
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT.BYTES;
             }
 
             @Override

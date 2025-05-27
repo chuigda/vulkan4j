@@ -141,7 +141,7 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImageCompressionControlEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImageCompressionControlEXT.BYTES) > 0;
+                return segment.byteSize() >= VkImageCompressionControlEXT.BYTES;
             }
 
             @Override

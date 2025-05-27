@@ -141,7 +141,7 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDepthBiasInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDepthBiasInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkDepthBiasInfoEXT.BYTES;
             }
 
             @Override

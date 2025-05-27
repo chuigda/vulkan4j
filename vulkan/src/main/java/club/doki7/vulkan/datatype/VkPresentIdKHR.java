@@ -140,7 +140,7 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPresentIdKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPresentIdKHR.BYTES) > 0;
+                return segment.byteSize() >= VkPresentIdKHR.BYTES;
             }
 
             @Override

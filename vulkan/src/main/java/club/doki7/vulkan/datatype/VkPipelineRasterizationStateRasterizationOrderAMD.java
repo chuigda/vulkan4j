@@ -139,7 +139,7 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(@NotNull MemoryS
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineRasterizationStateRasterizationOrderAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(@NotNull MemoryS
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineRasterizationStateRasterizationOrderAMD.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineRasterizationStateRasterizationOrderAMD.BYTES;
             }
 
             @Override

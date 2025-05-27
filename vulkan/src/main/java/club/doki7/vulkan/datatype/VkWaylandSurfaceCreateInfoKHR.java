@@ -141,7 +141,7 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkWaylandSurfaceCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkWaylandSurfaceCreateInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkWaylandSurfaceCreateInfoKHR.BYTES;
             }
 
             @Override

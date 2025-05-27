@@ -131,7 +131,7 @@ public record VkValidationCacheEXT(@NotNull MemorySegment segment) implements IP
             return new Iter(this.segment());
         }
 
-        /// An iterator over the handles in this pointer.
+        /// An iterator over the handles.
         public static class Iter implements Iterator<VkValidationCacheEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -139,7 +139,7 @@ public record VkValidationCacheEXT(@NotNull MemorySegment segment) implements IP
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / ValueLayout.ADDRESS.byteSize()) > 0;
+                return segment.byteSize() >= ValueLayout.ADDRESS.byteSize();
             }
 
             @Override

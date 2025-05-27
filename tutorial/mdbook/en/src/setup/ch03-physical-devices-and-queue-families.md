@@ -78,7 +78,7 @@ The next section will introduce the first requirements that we'll check for in t
 
 ## Base device suitability checks
 
-To evaluate the suitability of a device we can start by querying for some details. Basic device properties like the name, type and supported Vulkan version can be queried using `getPhysicalDeviceProperties`.
+To evaluate the suitability of a device we can start by querying for some details. Basic device properties like the name, type and supported Vulkan version can be queried using `VkInstanceCommands::getPhysicalDeviceProperties`.
 
 ```java
 try (Arena arena = Arena.ofConfined()) {
@@ -89,7 +89,7 @@ try (Arena arena = Arena.ofConfined()) {
 }
 ```
 
-The support for optional features like texture compression, 64-bit floats and multi viewport rendering (useful for VR) can be queried using `getPhysicalDeviceFeatures`:
+The support for optional features like texture compression, 64-bit floats and multi viewport rendering (useful for VR) can be queried using `VkInstanceCommands::getPhysicalDeviceFeatures`:
 
 ```java
 var features = VkPhysicalDeviceFeatures.allocate(arena);
@@ -153,7 +153,7 @@ private QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
 }
 ```
 
-The process of retrieving the list of queue families is exactly what you expect and uses `getPhysicalDeviceQueueFamilyProperties`:
+The process of retrieving the list of queue families is exactly what you expect and uses `VkInstanceCommands::getPhysicalDeviceQueueFamilyProperties`:
 
 ```java
 try (var arena = Arena.ofConfined()) {
@@ -185,7 +185,7 @@ if (graphicsFamily >= 0) {
 }
 ```
 
-> Use `at` for struct array, but `read` for integer pointer/array?
+> Using `at` for struct array, but `read` for integer pointer/array?
 > 
 > When operating on an element of a struct/union array, the element you get is actually a view into the array, thus your modification on the element will be reflected in the original array. So we explicitly use `at` to distinguish it from `read`, which returns a copy of the value.
 

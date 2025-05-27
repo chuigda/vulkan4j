@@ -139,7 +139,7 @@ public record VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(@NotNull M
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX(@NotNull M
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.BYTES;
             }
 
             @Override

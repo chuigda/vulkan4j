@@ -172,7 +172,7 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VmaVulkanFunctions> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -180,7 +180,7 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VmaVulkanFunctions.BYTES) > 0;
+                return segment.byteSize() >= VmaVulkanFunctions.BYTES;
             }
 
             @Override

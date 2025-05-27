@@ -140,7 +140,7 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkExportMetalCommandQueueInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkExportMetalCommandQueueInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkExportMetalCommandQueueInfoEXT.BYTES;
             }
 
             @Override

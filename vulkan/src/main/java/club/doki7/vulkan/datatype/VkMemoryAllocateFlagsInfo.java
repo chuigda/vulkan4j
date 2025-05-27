@@ -140,7 +140,7 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMemoryAllocateFlagsInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMemoryAllocateFlagsInfo.BYTES) > 0;
+                return segment.byteSize() >= VkMemoryAllocateFlagsInfo.BYTES;
             }
 
             @Override

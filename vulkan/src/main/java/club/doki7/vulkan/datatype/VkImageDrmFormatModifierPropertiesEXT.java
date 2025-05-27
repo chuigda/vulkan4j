@@ -139,7 +139,7 @@ public record VkImageDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImageDrmFormatModifierPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkImageDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImageDrmFormatModifierPropertiesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkImageDrmFormatModifierPropertiesEXT.BYTES;
             }
 
             @Override

@@ -149,7 +149,7 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceOpticalFlowPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -157,7 +157,7 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceOpticalFlowPropertiesNV.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceOpticalFlowPropertiesNV.BYTES;
             }
 
             @Override

@@ -49,7 +49,7 @@ queueCreateInfo.pQueuePriorities(pQueuePriorities);
 
 ## Specifying used device features
 
-The next information to specify is the set of device features that we'll be using. These are the features that we queried support for with `getPhysicalDeviceFeatures` in the previous chapter, like geometry shaders. Right now we don't need anything special, so we can simply define it and leave everything to `VK_FALSE` (`0`). We'll come back to this structure once we're about to start doing more interesting things with Vulkan.
+The next information to specify is the set of device features that we'll be using. These are the features that we queried support for with `VkInstanceCommands::getPhysicalDeviceFeatures` in the previous chapter, like geometry shaders. Right now we don't need anything special, so we can simply define it and leave everything to `VK_FALSE` (`0`). We'll come back to this structure once we're about to start doing more interesting things with Vulkan.
 
 ```java
 var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
@@ -84,7 +84,7 @@ if (ENABLE_VALIDATION_LAYERS) {
 
 We won't need any device specific extensions for now.
 
-That's it, we're now ready to instantiate the logical device with a call to the appropriately named `createDevice` function.
+That's it, we're now ready to instantiate the logical device with a call to the appropriately named `VkInstanceCommands::createDevice` function.
 
 ```java
 var pDevice = VkDevice.Ptr.allocate(arena);
@@ -113,7 +113,7 @@ deviceCommands = VulkanLoader.loadDeviceCommands(instance, device, staticCommand
 
 ## Cleanup
 
-The device should be destroyed in `cleanup` with the `dsestroyDevice` function:
+The device should be destroyed in `cleanup` with the `VkDeviceCommands::dsestroyDevice` function:
 
 ```java
 private void cleanup() {

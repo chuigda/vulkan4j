@@ -141,7 +141,7 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkReleaseSwapchainImagesInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkReleaseSwapchainImagesInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkReleaseSwapchainImagesInfoEXT.BYTES;
             }
 
             @Override

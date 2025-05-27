@@ -129,7 +129,7 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPerformanceValueINTEL> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPerformanceValueINTEL.BYTES) > 0;
+                return segment.byteSize() >= VkPerformanceValueINTEL.BYTES;
             }
 
             @Override

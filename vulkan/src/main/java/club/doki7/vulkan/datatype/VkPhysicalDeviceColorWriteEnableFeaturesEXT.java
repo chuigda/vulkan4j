@@ -139,7 +139,7 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(@NotNull MemorySegment
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceColorWriteEnableFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(@NotNull MemorySegment
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceColorWriteEnableFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceColorWriteEnableFeaturesEXT.BYTES;
             }
 
             @Override

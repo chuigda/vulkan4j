@@ -132,7 +132,7 @@ public record VkImageCopy(@NotNull MemorySegment segment) implements IVkImageCop
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImageCopy> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -140,7 +140,7 @@ public record VkImageCopy(@NotNull MemorySegment segment) implements IVkImageCop
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImageCopy.BYTES) > 0;
+                return segment.byteSize() >= VkImageCopy.BYTES;
             }
 
             @Override

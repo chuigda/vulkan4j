@@ -130,7 +130,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkClearColorValue> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkClearColorValue.BYTES) > 0;
+                return segment.byteSize() >= VkClearColorValue.BYTES;
             }
 
             @Override

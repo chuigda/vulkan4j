@@ -143,7 +143,7 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceImageFormatInfo2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkPhysicalDeviceImageFormatInfo2(@NotNull MemorySegment segment) i
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceImageFormatInfo2.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceImageFormatInfo2.BYTES;
             }
 
             @Override

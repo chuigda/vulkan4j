@@ -146,7 +146,7 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<GLFWgammaramp> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -154,7 +154,7 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / GLFWgammaramp.BYTES) > 0;
+                return segment.byteSize() >= GLFWgammaramp.BYTES;
             }
 
             @Override

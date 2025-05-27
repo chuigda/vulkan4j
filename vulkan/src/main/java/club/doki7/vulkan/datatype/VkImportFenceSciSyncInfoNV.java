@@ -141,7 +141,7 @@ public record VkImportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImportFenceSciSyncInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkImportFenceSciSyncInfoNV(@NotNull MemorySegment segment) impleme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImportFenceSciSyncInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkImportFenceSciSyncInfoNV.BYTES;
             }
 
             @Override

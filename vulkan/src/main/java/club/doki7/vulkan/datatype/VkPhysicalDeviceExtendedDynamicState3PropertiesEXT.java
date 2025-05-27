@@ -139,7 +139,7 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(@NotNull Memory
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceExtendedDynamicState3PropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(@NotNull Memory
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceExtendedDynamicState3PropertiesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceExtendedDynamicState3PropertiesEXT.BYTES;
             }
 
             @Override

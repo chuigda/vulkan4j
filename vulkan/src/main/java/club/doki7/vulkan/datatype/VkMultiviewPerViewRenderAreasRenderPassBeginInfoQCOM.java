@@ -140,7 +140,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES) > 0;
+                return segment.byteSize() >= VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM.BYTES;
             }
 
             @Override

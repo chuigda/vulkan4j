@@ -191,7 +191,7 @@ fun generateHandle(
             }
             +""
 
-            +"/// An iterator over the handles in this pointer."
+            +"/// An iterator over the handles."
             +"public static class Iter implements Iterator<$className> {"
             indent {
                 +"Iter(@NotNull MemorySegment segment) {"
@@ -203,7 +203,7 @@ fun generateHandle(
 
                 +"@Override"
                 defun("public", "boolean", "hasNext") {
-                    +"return (segment.byteSize() / ValueLayout.ADDRESS.byteSize()) > 0;"
+                    +"return segment.byteSize() >= ValueLayout.ADDRESS.byteSize();"
                 }
                 +""
 

@@ -139,7 +139,7 @@ public record VkPipelineInfoKHR(@NotNull MemorySegment segment) implements IVkPi
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPipelineInfoKHR(@NotNull MemorySegment segment) implements IVkPi
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineInfoKHR.BYTES;
             }
 
             @Override

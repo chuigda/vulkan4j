@@ -134,7 +134,7 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkStencilOpState> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -142,7 +142,7 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkStencilOpState.BYTES) > 0;
+                return segment.byteSize() >= VkStencilOpState.BYTES;
             }
 
             @Override

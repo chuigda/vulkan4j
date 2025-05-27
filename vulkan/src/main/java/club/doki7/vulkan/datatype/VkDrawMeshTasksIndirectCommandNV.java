@@ -129,7 +129,7 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDrawMeshTasksIndirectCommandNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDrawMeshTasksIndirectCommandNV.BYTES) > 0;
+                return segment.byteSize() >= VkDrawMeshTasksIndirectCommandNV.BYTES;
             }
 
             @Override

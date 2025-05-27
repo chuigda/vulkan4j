@@ -138,7 +138,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -146,7 +146,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES) > 0;
+                return segment.byteSize() >= VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES;
             }
 
             @Override

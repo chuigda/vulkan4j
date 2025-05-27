@@ -142,7 +142,7 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkHostImageLayoutTransitionInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkHostImageLayoutTransitionInfo.BYTES) > 0;
+                return segment.byteSize() >= VkHostImageLayoutTransitionInfo.BYTES;
             }
 
             @Override

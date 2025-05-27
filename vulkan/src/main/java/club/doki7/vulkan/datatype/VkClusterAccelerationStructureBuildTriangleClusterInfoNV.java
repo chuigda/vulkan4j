@@ -145,7 +145,7 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkClusterAccelerationStructureBuildTriangleClusterInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -153,7 +153,7 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkClusterAccelerationStructureBuildTriangleClusterInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkClusterAccelerationStructureBuildTriangleClusterInfoNV.BYTES;
             }
 
             @Override

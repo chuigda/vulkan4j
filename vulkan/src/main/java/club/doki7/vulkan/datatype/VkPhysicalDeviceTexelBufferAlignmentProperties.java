@@ -142,7 +142,7 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegm
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceTexelBufferAlignmentProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkPhysicalDeviceTexelBufferAlignmentProperties(@NotNull MemorySegm
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceTexelBufferAlignmentProperties.BYTES;
             }
 
             @Override

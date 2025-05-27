@@ -139,7 +139,7 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(@NotNull Me
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures.BYTES;
             }
 
             @Override

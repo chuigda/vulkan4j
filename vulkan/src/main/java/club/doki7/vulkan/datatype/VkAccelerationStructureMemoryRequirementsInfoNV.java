@@ -140,7 +140,7 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkAccelerationStructureMemoryRequirementsInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkAccelerationStructureMemoryRequirementsInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkAccelerationStructureMemoryRequirementsInfoNV.BYTES;
             }
 
             @Override

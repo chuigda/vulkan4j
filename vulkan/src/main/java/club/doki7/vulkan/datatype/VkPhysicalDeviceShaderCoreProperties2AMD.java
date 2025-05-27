@@ -140,7 +140,7 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceShaderCoreProperties2AMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceShaderCoreProperties2AMD.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceShaderCoreProperties2AMD.BYTES;
             }
 
             @Override

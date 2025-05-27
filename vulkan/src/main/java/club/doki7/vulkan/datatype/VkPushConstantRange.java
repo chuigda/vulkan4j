@@ -130,7 +130,7 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPushConstantRange> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPushConstantRange.BYTES) > 0;
+                return segment.byteSize() >= VkPushConstantRange.BYTES;
             }
 
             @Override

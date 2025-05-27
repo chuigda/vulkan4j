@@ -140,7 +140,7 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkValidationFlagsEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkValidationFlagsEXT.BYTES) > 0;
+                return segment.byteSize() >= VkValidationFlagsEXT.BYTES;
             }
 
             @Override

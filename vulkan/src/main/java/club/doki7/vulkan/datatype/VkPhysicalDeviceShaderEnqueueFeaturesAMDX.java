@@ -140,7 +140,7 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceShaderEnqueueFeaturesAMDX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceShaderEnqueueFeaturesAMDX.BYTES;
             }
 
             @Override

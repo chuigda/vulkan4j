@@ -144,7 +144,7 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkVideoEncodeAV1RateControlLayerInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -152,7 +152,7 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkVideoEncodeAV1RateControlLayerInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkVideoEncodeAV1RateControlLayerInfoKHR.BYTES;
             }
 
             @Override

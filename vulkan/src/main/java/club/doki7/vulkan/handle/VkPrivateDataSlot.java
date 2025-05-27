@@ -131,7 +131,7 @@ public record VkPrivateDataSlot(@NotNull MemorySegment segment) implements IPoin
             return new Iter(this.segment());
         }
 
-        /// An iterator over the handles in this pointer.
+        /// An iterator over the handles.
         public static class Iter implements Iterator<VkPrivateDataSlot> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -139,7 +139,7 @@ public record VkPrivateDataSlot(@NotNull MemorySegment segment) implements IPoin
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / ValueLayout.ADDRESS.byteSize()) > 0;
+                return segment.byteSize() >= ValueLayout.ADDRESS.byteSize();
             }
 
             @Override

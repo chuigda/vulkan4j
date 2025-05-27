@@ -131,7 +131,7 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkQueueFamilyProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -139,7 +139,7 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkQueueFamilyProperties.BYTES) > 0;
+                return segment.byteSize() >= VkQueueFamilyProperties.BYTES;
             }
 
             @Override

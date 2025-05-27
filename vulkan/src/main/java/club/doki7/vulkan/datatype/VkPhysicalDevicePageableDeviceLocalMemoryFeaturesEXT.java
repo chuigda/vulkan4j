@@ -139,7 +139,7 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(@NotNull Memo
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(@NotNull Memo
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT.BYTES;
             }
 
             @Override

@@ -154,7 +154,7 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<GLFWallocator> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -162,7 +162,7 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / GLFWallocator.BYTES) > 0;
+                return segment.byteSize() >= GLFWallocator.BYTES;
             }
 
             @Override

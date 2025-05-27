@@ -139,7 +139,7 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkShaderModuleValidationCacheCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkShaderModuleValidationCacheCreateInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkShaderModuleValidationCacheCreateInfoEXT.BYTES;
             }
 
             @Override

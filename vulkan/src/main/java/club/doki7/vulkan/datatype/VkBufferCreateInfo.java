@@ -144,7 +144,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkBufferCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -152,7 +152,7 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkBufferCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkBufferCreateInfo.BYTES;
             }
 
             @Override

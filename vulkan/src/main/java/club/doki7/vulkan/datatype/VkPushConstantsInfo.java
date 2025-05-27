@@ -143,7 +143,7 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPushConstantsInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPushConstantsInfo.BYTES) > 0;
+                return segment.byteSize() >= VkPushConstantsInfo.BYTES;
             }
 
             @Override

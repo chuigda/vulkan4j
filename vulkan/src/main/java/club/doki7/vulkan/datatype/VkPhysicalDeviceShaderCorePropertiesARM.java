@@ -141,7 +141,7 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(@NotNull MemorySegment seg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceShaderCorePropertiesARM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(@NotNull MemorySegment seg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceShaderCorePropertiesARM.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceShaderCorePropertiesARM.BYTES;
             }
 
             @Override

@@ -130,7 +130,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkRenderPassSubpassFeedbackInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkRenderPassSubpassFeedbackInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkRenderPassSubpassFeedbackInfoEXT.BYTES;
             }
 
             @Override

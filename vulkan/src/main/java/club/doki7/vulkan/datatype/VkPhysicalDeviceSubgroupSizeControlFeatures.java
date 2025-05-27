@@ -140,7 +140,7 @@ public record VkPhysicalDeviceSubgroupSizeControlFeatures(@NotNull MemorySegment
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceSubgroupSizeControlFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPhysicalDeviceSubgroupSizeControlFeatures(@NotNull MemorySegment
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceSubgroupSizeControlFeatures.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceSubgroupSizeControlFeatures.BYTES;
             }
 
             @Override

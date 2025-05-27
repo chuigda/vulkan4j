@@ -150,7 +150,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<StdVideoAV1FilmGrain> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -158,7 +158,7 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / StdVideoAV1FilmGrain.BYTES) > 0;
+                return segment.byteSize() >= StdVideoAV1FilmGrain.BYTES;
             }
 
             @Override

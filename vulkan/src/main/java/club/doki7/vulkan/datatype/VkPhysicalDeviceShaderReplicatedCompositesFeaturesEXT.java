@@ -139,7 +139,7 @@ public record VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(@NotNull Mem
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(@NotNull Mem
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT.BYTES;
             }
 
             @Override

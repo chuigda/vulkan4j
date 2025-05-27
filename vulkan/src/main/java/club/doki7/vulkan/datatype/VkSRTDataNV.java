@@ -143,7 +143,7 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IVkSRTDataN
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkSRTDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IVkSRTDataN
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkSRTDataNV.BYTES) > 0;
+                return segment.byteSize() >= VkSRTDataNV.BYTES;
             }
 
             @Override

@@ -139,7 +139,7 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(@NotNull MemorySegme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(@NotNull MemorySegme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT.BYTES;
             }
 
             @Override

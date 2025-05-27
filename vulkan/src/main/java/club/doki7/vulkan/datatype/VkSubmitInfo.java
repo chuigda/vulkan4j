@@ -145,7 +145,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkSubmitInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -153,7 +153,7 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkSubmitInfo.BYTES) > 0;
+                return segment.byteSize() >= VkSubmitInfo.BYTES;
             }
 
             @Override

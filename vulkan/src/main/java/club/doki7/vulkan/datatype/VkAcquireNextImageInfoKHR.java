@@ -143,7 +143,7 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkAcquireNextImageInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkAcquireNextImageInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkAcquireNextImageInfoKHR.BYTES;
             }
 
             @Override

@@ -139,7 +139,7 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineCreateFlags2CreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineCreateFlags2CreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineCreateFlags2CreateInfo.BYTES;
             }
 
             @Override

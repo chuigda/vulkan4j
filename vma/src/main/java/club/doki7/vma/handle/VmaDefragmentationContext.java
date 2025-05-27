@@ -132,7 +132,7 @@ public record VmaDefragmentationContext(@NotNull MemorySegment segment) implemen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the handles in this pointer.
+        /// An iterator over the handles.
         public static class Iter implements Iterator<VmaDefragmentationContext> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -140,7 +140,7 @@ public record VmaDefragmentationContext(@NotNull MemorySegment segment) implemen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / ValueLayout.ADDRESS.byteSize()) > 0;
+                return segment.byteSize() >= ValueLayout.ADDRESS.byteSize();
             }
 
             @Override

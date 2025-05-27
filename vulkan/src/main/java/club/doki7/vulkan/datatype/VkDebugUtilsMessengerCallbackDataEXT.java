@@ -148,7 +148,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDebugUtilsMessengerCallbackDataEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -156,7 +156,7 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDebugUtilsMessengerCallbackDataEXT.BYTES) > 0;
+                return segment.byteSize() >= VkDebugUtilsMessengerCallbackDataEXT.BYTES;
             }
 
             @Override

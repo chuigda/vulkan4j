@@ -145,7 +145,7 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkFramebufferCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -153,7 +153,7 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkFramebufferCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkFramebufferCreateInfo.BYTES;
             }
 
             @Override

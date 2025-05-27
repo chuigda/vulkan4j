@@ -139,7 +139,7 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceImageProcessing2PropertiesQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceImageProcessing2PropertiesQCOM.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceImageProcessing2PropertiesQCOM.BYTES;
             }
 
             @Override

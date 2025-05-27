@@ -139,7 +139,7 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMemoryMapPlacedInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMemoryMapPlacedInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkMemoryMapPlacedInfoEXT.BYTES;
             }
 
             @Override

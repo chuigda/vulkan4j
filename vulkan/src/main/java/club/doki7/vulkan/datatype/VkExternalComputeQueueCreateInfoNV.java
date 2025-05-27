@@ -139,7 +139,7 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkExternalComputeQueueCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkExternalComputeQueueCreateInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkExternalComputeQueueCreateInfoNV.BYTES;
             }
 
             @Override

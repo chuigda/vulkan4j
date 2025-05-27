@@ -140,7 +140,7 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkViSurfaceCreateInfoNN> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkViSurfaceCreateInfoNN.BYTES) > 0;
+                return segment.byteSize() >= VkViSurfaceCreateInfoNN.BYTES;
             }
 
             @Override

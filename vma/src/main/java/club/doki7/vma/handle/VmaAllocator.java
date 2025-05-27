@@ -135,7 +135,7 @@ public record VmaAllocator(@NotNull MemorySegment segment) implements IPointer {
             return new Iter(this.segment());
         }
 
-        /// An iterator over the handles in this pointer.
+        /// An iterator over the handles.
         public static class Iter implements Iterator<VmaAllocator> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -143,7 +143,7 @@ public record VmaAllocator(@NotNull MemorySegment segment) implements IPointer {
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / ValueLayout.ADDRESS.byteSize()) > 0;
+                return segment.byteSize() >= ValueLayout.ADDRESS.byteSize();
             }
 
             @Override

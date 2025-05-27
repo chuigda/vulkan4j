@@ -129,7 +129,7 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IVkClearVa
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkClearValue> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IVkClearVa
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkClearValue.BYTES) > 0;
+                return segment.byteSize() >= VkClearValue.BYTES;
             }
 
             @Override

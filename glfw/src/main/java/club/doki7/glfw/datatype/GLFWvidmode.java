@@ -151,7 +151,7 @@ public record GLFWvidmode(@NotNull MemorySegment segment) implements IGLFWvidmod
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<GLFWvidmode> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -159,7 +159,7 @@ public record GLFWvidmode(@NotNull MemorySegment segment) implements IGLFWvidmod
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / GLFWvidmode.BYTES) > 0;
+                return segment.byteSize() >= GLFWvidmode.BYTES;
             }
 
             @Override

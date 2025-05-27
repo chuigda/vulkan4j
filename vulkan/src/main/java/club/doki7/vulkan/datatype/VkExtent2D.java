@@ -129,7 +129,7 @@ public record VkExtent2D(@NotNull MemorySegment segment) implements IVkExtent2D 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkExtent2D> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkExtent2D(@NotNull MemorySegment segment) implements IVkExtent2D 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkExtent2D.BYTES) > 0;
+                return segment.byteSize() >= VkExtent2D.BYTES;
             }
 
             @Override

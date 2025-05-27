@@ -133,7 +133,7 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IVkA
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkAabbPositionsKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -141,7 +141,7 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IVkA
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkAabbPositionsKHR.BYTES) > 0;
+                return segment.byteSize() >= VkAabbPositionsKHR.BYTES;
             }
 
             @Override

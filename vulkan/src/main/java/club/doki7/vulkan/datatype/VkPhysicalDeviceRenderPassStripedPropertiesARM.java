@@ -140,7 +140,7 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(@NotNull MemorySegm
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceRenderPassStripedPropertiesARM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(@NotNull MemorySegm
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceRenderPassStripedPropertiesARM.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceRenderPassStripedPropertiesARM.BYTES;
             }
 
             @Override

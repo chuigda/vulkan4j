@@ -129,7 +129,7 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<StdVideoEncodeH264WeightTableFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / StdVideoEncodeH264WeightTableFlags.BYTES) > 0;
+                return segment.byteSize() >= StdVideoEncodeH264WeightTableFlags.BYTES;
             }
 
             @Override

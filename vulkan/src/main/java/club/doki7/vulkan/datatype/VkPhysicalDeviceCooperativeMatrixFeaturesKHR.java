@@ -140,7 +140,7 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesKHR(@NotNull MemorySegmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceCooperativeMatrixFeaturesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesKHR(@NotNull MemorySegmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceCooperativeMatrixFeaturesKHR.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceCooperativeMatrixFeaturesKHR.BYTES;
             }
 
             @Override

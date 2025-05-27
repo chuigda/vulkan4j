@@ -129,7 +129,7 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMemoryHeap> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkMemoryHeap(@NotNull MemorySegment segment) implements IVkMemoryH
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMemoryHeap.BYTES) > 0;
+                return segment.byteSize() >= VkMemoryHeap.BYTES;
             }
 
             @Override

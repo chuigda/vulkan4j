@@ -129,7 +129,7 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkBaseInStructure> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkBaseInStructure.BYTES) > 0;
+                return segment.byteSize() >= VkBaseInStructure.BYTES;
             }
 
             @Override

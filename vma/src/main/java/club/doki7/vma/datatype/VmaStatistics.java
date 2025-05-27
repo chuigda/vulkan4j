@@ -159,7 +159,7 @@ public record VmaStatistics(@NotNull MemorySegment segment) implements IVmaStati
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VmaStatistics> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -167,7 +167,7 @@ public record VmaStatistics(@NotNull MemorySegment segment) implements IVmaStati
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VmaStatistics.BYTES) > 0;
+                return segment.byteSize() >= VmaStatistics.BYTES;
             }
 
             @Override

@@ -130,7 +130,7 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IVkRectL
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkRectLayerKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IVkRectL
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkRectLayerKHR.BYTES) > 0;
+                return segment.byteSize() >= VkRectLayerKHR.BYTES;
             }
 
             @Override

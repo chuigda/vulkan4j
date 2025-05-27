@@ -134,7 +134,7 @@ public record VmaVirtualBlock(@NotNull MemorySegment segment) implements IPointe
             return new Iter(this.segment());
         }
 
-        /// An iterator over the handles in this pointer.
+        /// An iterator over the handles.
         public static class Iter implements Iterator<VmaVirtualBlock> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -142,7 +142,7 @@ public record VmaVirtualBlock(@NotNull MemorySegment segment) implements IPointe
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / ValueLayout.ADDRESS.byteSize()) > 0;
+                return segment.byteSize() >= ValueLayout.ADDRESS.byteSize();
             }
 
             @Override

@@ -140,7 +140,7 @@ public record VkMemoryBarrier(@NotNull MemorySegment segment) implements IVkMemo
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMemoryBarrier> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkMemoryBarrier(@NotNull MemorySegment segment) implements IVkMemo
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMemoryBarrier.BYTES) > 0;
+                return segment.byteSize() >= VkMemoryBarrier.BYTES;
             }
 
             @Override

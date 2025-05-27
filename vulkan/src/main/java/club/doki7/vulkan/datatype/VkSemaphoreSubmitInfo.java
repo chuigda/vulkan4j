@@ -142,7 +142,7 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkSemaphoreSubmitInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkSemaphoreSubmitInfo.BYTES) > 0;
+                return segment.byteSize() >= VkSemaphoreSubmitInfo.BYTES;
             }
 
             @Override

@@ -142,7 +142,7 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkD3D12FenceSubmitInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkD3D12FenceSubmitInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkD3D12FenceSubmitInfoKHR.BYTES;
             }
 
             @Override

@@ -139,7 +139,7 @@ public record VkReleaseCapturedPipelineDataInfoKHR(@NotNull MemorySegment segmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkReleaseCapturedPipelineDataInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkReleaseCapturedPipelineDataInfoKHR(@NotNull MemorySegment segmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkReleaseCapturedPipelineDataInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkReleaseCapturedPipelineDataInfoKHR.BYTES;
             }
 
             @Override

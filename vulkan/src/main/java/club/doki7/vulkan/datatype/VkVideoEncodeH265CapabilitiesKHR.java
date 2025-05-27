@@ -154,7 +154,7 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkVideoEncodeH265CapabilitiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -162,7 +162,7 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkVideoEncodeH265CapabilitiesKHR.BYTES) > 0;
+                return segment.byteSize() >= VkVideoEncodeH265CapabilitiesKHR.BYTES;
             }
 
             @Override

@@ -139,7 +139,7 @@ public record VkPhysicalDeviceMultiDrawPropertiesEXT(@NotNull MemorySegment segm
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceMultiDrawPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceMultiDrawPropertiesEXT(@NotNull MemorySegment segm
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceMultiDrawPropertiesEXT.BYTES;
             }
 
             @Override

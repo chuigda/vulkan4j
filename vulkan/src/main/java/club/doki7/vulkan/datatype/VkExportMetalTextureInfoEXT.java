@@ -143,7 +143,7 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkExportMetalTextureInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkExportMetalTextureInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkExportMetalTextureInfoEXT.BYTES;
             }
 
             @Override

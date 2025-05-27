@@ -139,7 +139,7 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDevicePointClippingProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDevicePointClippingProperties.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDevicePointClippingProperties.BYTES;
             }
 
             @Override

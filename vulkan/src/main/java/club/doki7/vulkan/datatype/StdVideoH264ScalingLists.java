@@ -129,7 +129,7 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<StdVideoH264ScalingLists> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / StdVideoH264ScalingLists.BYTES) > 0;
+                return segment.byteSize() >= StdVideoH264ScalingLists.BYTES;
             }
 
             @Override

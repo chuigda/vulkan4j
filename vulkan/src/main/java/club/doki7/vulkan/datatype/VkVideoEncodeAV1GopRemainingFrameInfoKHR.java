@@ -142,7 +142,7 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkVideoEncodeAV1GopRemainingFrameInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkVideoEncodeAV1GopRemainingFrameInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkVideoEncodeAV1GopRemainingFrameInfoKHR.BYTES;
             }
 
             @Override

@@ -139,7 +139,7 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(@NotNull Memo
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(@NotNull Memo
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV.BYTES;
             }
 
             @Override

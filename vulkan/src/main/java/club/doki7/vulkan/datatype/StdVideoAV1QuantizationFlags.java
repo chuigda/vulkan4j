@@ -129,7 +129,7 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<StdVideoAV1QuantizationFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / StdVideoAV1QuantizationFlags.BYTES) > 0;
+                return segment.byteSize() >= StdVideoAV1QuantizationFlags.BYTES;
             }
 
             @Override

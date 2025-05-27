@@ -132,7 +132,7 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPastPresentationTimingGOOGLE> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -140,7 +140,7 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPastPresentationTimingGOOGLE.BYTES) > 0;
+                return segment.byteSize() >= VkPastPresentationTimingGOOGLE.BYTES;
             }
 
             @Override

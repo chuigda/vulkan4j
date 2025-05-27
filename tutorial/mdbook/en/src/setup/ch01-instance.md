@@ -85,7 +85,7 @@ instanceCreateInfo.ppEnabledExtensionNames(glfwExtensions);
 instanceCreateInfo.enabledLayerCount(0);
 ```
 
-We've now specified everything Vulkan needs to create an instance, and we can finally issue the `createInstance` call:
+We've now specified everything Vulkan needs to create an instance, and we can finally issue the `VkEntryCommands::createInstance` call:
 
 ```java
 var pInstance = VkInstance.Ptr.allocate(arena);
@@ -122,7 +122,7 @@ instanceCommands = VulkanLoader.loadInstanceCommands(instance, staticCommands);
 
 If you look at the `vkCreateInstance` documentation then you'll see that one of the possible error codes is `VK_ERROR_EXTENSION_NOT_PRESENT`. We could simply specify the extensions we require and terminate if that error code comes back. That makes sense for essential extensions like the window system interface, but what if we want to check for optional functionality?
 
-To retrieve a list of supported extensions before creating an instance, there's the `enumerateInstanceExtensionProperties` function. It takes a pointer to a variable that stores the number of extensions and an array of `extensionProperties` to store details of the extensions. It also takes an optional first parameter that allows us to filter extensions by a specific validation layer, which we'll ignore for now.
+To retrieve a list of supported extensions before creating an instance, there's the `VkEntryCommands::enumerateInstanceExtensionProperties` function. It takes a pointer to a variable that stores the number of extensions and an array of `extensionProperties` to store details of the extensions. It also takes an optional first parameter that allows us to filter extensions by a specific validation layer, which we'll ignore for now.
 
 To allocate an array to hold the extension details we first need to know how many there are. You can request just the number of extensions by leaving the latter parameter empty:
 
@@ -153,11 +153,11 @@ for (var extension : extensions) {
 }
 ```
 
-You can add this code to the `createInstance` function if you'd like to provide some details about the Vulkan support. As a challenge, try to create a function that checks if all the extensions returned by `getRequiredInstanceExtensions` are included in the supported extensions list.
+You can add this code to the `VkEntryCommands::createInstance` function if you'd like to provide some details about the Vulkan support. As a challenge, try to create a function that checks if all the extensions returned by `getRequiredInstanceExtensions` are included in the supported extensions list.
 
 ## Cleaning up
 
-The `VkInstance` should be only destroyed right before the program exits. It can be destroyed in cleanup with the `destroyInstance` function:
+The `VkInstance` should be only destroyed right before the program exits. It can be destroyed in cleanup with the `VkInstanceCommands::destroyInstance` function:
 
 ```java
 void cleanup() {
@@ -166,6 +166,6 @@ void cleanup() {
 }
 ```
 
-The parameters for the `destroyInstance` function are straightforward. As mentioned in the previous chapter, the allocation and deallocation functions in Vulkan have an optional allocator callback that we'll ignore by passing `null` to it. All the other Vulkan resources that we'll create in the following chapters should be cleaned up before the instance is destroyed.
+The parameters for the `VkInstanceCommands::destroyInstance` function are straightforward. As mentioned in the previous chapter, the allocation and deallocation functions in Vulkan have an optional allocator callback that we'll ignore by passing `null` to it. All the other Vulkan resources that we'll create in the following chapters should be cleaned up before the instance is destroyed.
 
 Before continuing with the more complex steps after instance creation, it's time to evaluate our debugging options by checking out [validation layers](ch02-validation-layers.md).

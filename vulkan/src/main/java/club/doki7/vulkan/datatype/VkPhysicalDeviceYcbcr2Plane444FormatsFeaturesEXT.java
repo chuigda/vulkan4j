@@ -139,7 +139,7 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySe
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySe
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT.BYTES;
             }
 
             @Override

@@ -130,7 +130,7 @@ public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment)
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkBindIndexBufferIndirectCommandNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkBindIndexBufferIndirectCommandNV(@NotNull MemorySegment segment)
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkBindIndexBufferIndirectCommandNV.BYTES) > 0;
+                return segment.byteSize() >= VkBindIndexBufferIndirectCommandNV.BYTES;
             }
 
             @Override

@@ -141,7 +141,7 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDeviceQueueInfo2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDeviceQueueInfo2.BYTES) > 0;
+                return segment.byteSize() >= VkDeviceQueueInfo2.BYTES;
             }
 
             @Override

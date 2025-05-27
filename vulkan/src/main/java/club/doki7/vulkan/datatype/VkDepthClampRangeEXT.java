@@ -129,7 +129,7 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IV
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDepthClampRangeEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IV
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDepthClampRangeEXT.BYTES) > 0;
+                return segment.byteSize() >= VkDepthClampRangeEXT.BYTES;
             }
 
             @Override

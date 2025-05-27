@@ -141,7 +141,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImageViewSampleWeightCreateInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImageViewSampleWeightCreateInfoQCOM.BYTES) > 0;
+                return segment.byteSize() >= VkImageViewSampleWeightCreateInfoQCOM.BYTES;
             }
 
             @Override

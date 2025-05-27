@@ -140,7 +140,7 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkWriteIndirectExecutionSetPipelineEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkWriteIndirectExecutionSetPipelineEXT.BYTES) > 0;
+                return segment.byteSize() >= VkWriteIndirectExecutionSetPipelineEXT.BYTES;
             }
 
             @Override

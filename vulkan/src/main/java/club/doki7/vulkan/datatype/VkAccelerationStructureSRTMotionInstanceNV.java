@@ -135,7 +135,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkAccelerationStructureSRTMotionInstanceNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -143,7 +143,7 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkAccelerationStructureSRTMotionInstanceNV.BYTES) > 0;
+                return segment.byteSize() >= VkAccelerationStructureSRTMotionInstanceNV.BYTES;
             }
 
             @Override

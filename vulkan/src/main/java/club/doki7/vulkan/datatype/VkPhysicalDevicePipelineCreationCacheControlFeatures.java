@@ -139,7 +139,7 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(@NotNull Memo
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDevicePipelineCreationCacheControlFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(@NotNull Memo
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDevicePipelineCreationCacheControlFeatures.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDevicePipelineCreationCacheControlFeatures.BYTES;
             }
 
             @Override

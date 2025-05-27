@@ -132,7 +132,7 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkLayerSettingEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -140,7 +140,7 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkLayerSettingEXT.BYTES) > 0;
+                return segment.byteSize() >= VkLayerSettingEXT.BYTES;
             }
 
             @Override

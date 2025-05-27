@@ -140,7 +140,7 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkCheckpointData2NV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkCheckpointData2NV.BYTES) > 0;
+                return segment.byteSize() >= VkCheckpointData2NV.BYTES;
             }
 
             @Override

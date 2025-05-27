@@ -130,7 +130,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<StdVideoH265SubLayerHrdParameters> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / StdVideoH265SubLayerHrdParameters.BYTES) > 0;
+                return segment.byteSize() >= StdVideoH265SubLayerHrdParameters.BYTES;
             }
 
             @Override

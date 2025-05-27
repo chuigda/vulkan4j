@@ -140,7 +140,7 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineShaderStageNodeCreateInfoAMDX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineShaderStageNodeCreateInfoAMDX.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineShaderStageNodeCreateInfoAMDX.BYTES;
             }
 
             @Override

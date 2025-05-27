@@ -141,7 +141,7 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceMapMemoryPlacedFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.BYTES;
             }
 
             @Override

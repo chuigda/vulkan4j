@@ -148,7 +148,7 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkBindSparseInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -156,7 +156,7 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkBindSparseInfo.BYTES) > 0;
+                return segment.byteSize() >= VkBindSparseInfo.BYTES;
             }
 
             @Override

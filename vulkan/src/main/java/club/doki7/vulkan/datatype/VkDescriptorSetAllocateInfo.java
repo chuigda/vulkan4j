@@ -141,7 +141,7 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDescriptorSetAllocateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDescriptorSetAllocateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkDescriptorSetAllocateInfo.BYTES;
             }
 
             @Override

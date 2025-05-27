@@ -1,5 +1,6 @@
 package tutorial.vulkan.ch06;
 
+import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.annotation.EnumType;
 import club.doki7.ffm.annotation.NativeType;
 import club.doki7.ffm.annotation.Pointer;
@@ -15,12 +16,10 @@ import club.doki7.glfw.handle.GLFWwindow;
 import club.doki7.vulkan.Version;
 import club.doki7.vulkan.VkConstants;
 import club.doki7.vulkan.VkFunctionTypes;
-import club.doki7.vulkan.bitmask.VkDebugUtilsMessageSeverityFlagsEXT;
-import club.doki7.vulkan.bitmask.VkDebugUtilsMessageTypeFlagsEXT;
-import club.doki7.vulkan.bitmask.VkQueueFlags;
+import club.doki7.vulkan.bitmask.*;
 import club.doki7.vulkan.command.*;
 import club.doki7.vulkan.datatype.*;
-import club.doki7.vulkan.enumtype.VkResult;
+import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 
 import java.lang.foreign.Arena;
@@ -65,6 +64,7 @@ class Application {
         createSurface();
         pickPhysicalDevice();
         createLogicalDevice();
+        createSwapchain();
     }
 
     private void mainLoop() {
@@ -74,6 +74,7 @@ class Application {
     }
 
     private void cleanup() {
+        cleanupSwapchain();
         deviceCommands.destroyDevice(device, null);
         instanceCommands.destroySurfaceKHR(instance, surface, null);
         if (ENABLE_VALIDATION_LAYERS) {
@@ -231,6 +232,11 @@ class Application {
                 deviceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
             }
 
+            deviceCreateInfo.enabledExtensionCount(1);
+            var ppEnabledExtensionNames = PointerPtr.allocate(arena);
+            ppEnabledExtensionNames.write(BytePtr.allocateString(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME));
+            deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
+
             var pDevice = VkDevice.Ptr.allocate(arena);
             var result = instanceCommands.createDevice(physicalDevice, deviceCreateInfo, null, pDevice);
             if (result != VkResult.SUCCESS) {
@@ -246,6 +252,78 @@ class Application {
             deviceCommands.getDeviceQueue(device, indices.presentFamily(), 0, pQueue);
             presentQueue = Objects.requireNonNull(pQueue.read());
         }
+    }
+
+    private void createSwapchain() {
+        try (var arena = Arena.ofConfined()) {
+            var swapChainSupport = querySwapChainSupport(physicalDevice, arena);
+
+            var surfaceFormat = chooseSwapSurfaceFormat(swapChainSupport.formats());
+            var presentMode = chooseSwapPresentMode(swapChainSupport.presentModes());
+            var extent = chooseSwapExtent(swapChainSupport.capabilities(), arena);
+
+            var imageCount = swapChainSupport.capabilities.minImageCount() + 1;
+            if (swapChainSupport.capabilities.maxImageCount() > 0
+                && imageCount > swapChainSupport.capabilities.maxImageCount()) {
+                imageCount = swapChainSupport.capabilities.maxImageCount();
+            }
+
+            var createInfo = VkSwapchainCreateInfoKHR.allocate(arena);
+            createInfo.surface(surface);
+            createInfo.minImageCount(imageCount);
+            createInfo.imageFormat(surfaceFormat.format());
+            createInfo.imageColorSpace(surfaceFormat.colorSpace());
+            createInfo.imageExtent(extent);
+            createInfo.imageArrayLayers(1);
+            createInfo.imageUsage(VkImageUsageFlags.COLOR_ATTACHMENT);
+
+            var indices = findQueueFamilies(physicalDevice);
+            assert indices != null : "Queue family indices should not be null";
+            if (indices.graphicsFamily != indices.presentFamily) {
+                createInfo.imageSharingMode(VkSharingMode.CONCURRENT);
+                createInfo.queueFamilyIndexCount(2);
+                var pQueueFamilyIndices = IntPtr.allocate(arena, 2);
+                pQueueFamilyIndices.write(0, indices.graphicsFamily());
+                pQueueFamilyIndices.write(1, indices.presentFamily());
+                createInfo.pQueueFamilyIndices(pQueueFamilyIndices);
+            }
+            else {
+                createInfo.imageSharingMode(VkSharingMode.EXCLUSIVE);
+            }
+
+            createInfo.preTransform(swapChainSupport.capabilities.currentTransform());
+            createInfo.compositeAlpha(VkCompositeAlphaFlagsKHR.OPAQUE);
+            createInfo.presentMode(presentMode);
+            createInfo.clipped(VkConstants.TRUE);
+            createInfo.oldSwapchain(null);
+
+            var pSwapChain = VkSwapchainKHR.Ptr.allocate(arena);
+            var result = deviceCommands.createSwapchainKHR(device, createInfo, null, pSwapChain);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to create swap chain, vulkan error code: " + VkResult.explain(result));
+            }
+            swapChain = Objects.requireNonNull(pSwapChain.read());
+
+            var pImageCount = IntPtr.allocate(arena);
+            result = deviceCommands.getSwapchainImagesKHR(device, swapChain, pImageCount, null);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to get swap chain images, vulkan error code: " + VkResult.explain(result));
+            }
+            assert pImageCount.read() == imageCount : "Image count mismatch";
+
+            swapChainImages = VkImage.Ptr.allocate(Arena.ofAuto(), imageCount);
+            result = deviceCommands.getSwapchainImagesKHR(device, swapChain, pImageCount, swapChainImages);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to get swap chain images, vulkan error code: " + VkResult.explain(result));
+            }
+
+            swapChainImageFormat = surfaceFormat.format();
+            swapChainExtent = VkExtent2D.clone(Arena.ofAuto(), extent);
+        }
+    }
+
+    private void cleanupSwapchain() {
+        deviceCommands.destroySwapchainKHR(device, swapChain, null);
     }
 
     private boolean checkValidationLayerSupport() {
@@ -299,7 +377,16 @@ class Application {
     }
 
     private boolean isDeviceSuitable(VkPhysicalDevice device) {
-        return findQueueFamilies(device) != null;
+        var indices = findQueueFamilies(device);
+        var extensionsSupported = checkDeviceExtensionSupport(device);
+        if ((indices == null) || !extensionsSupported) {
+            return false;
+        }
+
+        try (var arena = Arena.ofConfined()) {
+            var swapChainSupport = querySwapChainSupport(device, arena);
+            return swapChainSupport.formats().size() != 0 && swapChainSupport.presentModes().size() != 0;
+        }
     }
 
     private record QueueFamilyIndices(int graphicsFamily, int presentFamily) {}
@@ -336,6 +423,117 @@ class Application {
                 return new QueueFamilyIndices(graphicsFamily, presentFamily);
             } else {
                 return null;
+            }
+        }
+    }
+
+    private boolean checkDeviceExtensionSupport(VkPhysicalDevice device) {
+        try (var arena = Arena.ofConfined()) {
+            var pExtensionCount = IntPtr.allocate(arena);
+            var result = instanceCommands.enumerateDeviceExtensionProperties(device, null, pExtensionCount, null);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to enumerate device extension properties, vulkan error code: " + VkResult.explain(result));
+            }
+
+            var extensionCount = pExtensionCount.read();
+            var availableExtensions = VkExtensionProperties.allocate(arena, extensionCount);
+            result = instanceCommands.enumerateDeviceExtensionProperties(device, null, pExtensionCount, availableExtensions);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to enumerate device extension properties, vulkan error code: " + VkResult.explain(result));
+            }
+
+            for (var extension : availableExtensions) {
+                if (VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME.equals(extension.extensionName().readString())) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+
+    private record SwapchainSupportDetails(
+            VkSurfaceCapabilitiesKHR capabilities,
+            VkSurfaceFormatKHR.Ptr formats,
+            @EnumType(VkPresentModeKHR.class) IntPtr presentModes
+    ) {}
+
+    private SwapchainSupportDetails querySwapChainSupport(VkPhysicalDevice device, Arena arena) {
+        var surfaceCapabilities = VkSurfaceCapabilitiesKHR.allocate(arena);
+        var result = instanceCommands.getPhysicalDeviceSurfaceCapabilitiesKHR(device, surface, surfaceCapabilities);
+        if (result != VkResult.SUCCESS) {
+            throw new RuntimeException("Failed to get physical device surface capabilities, vulkan error code: " + VkResult.explain(result));
+        }
+
+        try (var localArena = Arena.ofConfined()) {
+            var pFormatCount = IntPtr.allocate(localArena);
+            result = instanceCommands.getPhysicalDeviceSurfaceFormatsKHR(device, surface, pFormatCount, null);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to get physical device surface formats, vulkan error code: " + VkResult.explain(result));
+            }
+
+            var formatCount = pFormatCount.read();
+            var formats = VkSurfaceFormatKHR.allocate(arena, formatCount);
+            result = instanceCommands.getPhysicalDeviceSurfaceFormatsKHR(device, surface, pFormatCount, formats);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to get physical device surface formats, vulkan error code: " + VkResult.explain(result));
+            }
+
+            var pPresentModeCount = IntPtr.allocate(localArena);
+            result = instanceCommands.getPhysicalDeviceSurfacePresentModesKHR(device, surface, pPresentModeCount, null);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to get physical device surface present modes, vulkan error code: " + VkResult.explain(result));
+            }
+
+            var presentModeCount = pPresentModeCount.read();
+            var presentModes = IntPtr.allocate(arena, presentModeCount);
+            result = instanceCommands.getPhysicalDeviceSurfacePresentModesKHR(device, surface, pPresentModeCount, presentModes);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to get physical device surface present modes, vulkan error code: " + VkResult.explain(result));
+            }
+
+            return new SwapchainSupportDetails(surfaceCapabilities, formats, presentModes);
+        }
+    }
+
+    private VkSurfaceFormatKHR chooseSwapSurfaceFormat(VkSurfaceFormatKHR.Ptr formats) {
+        for (var format : formats) {
+            if (format.format() == VkFormat.B8G8R8A8_SRGB
+                && format.colorSpace() == VkColorSpaceKHR.SRGB_NONLINEAR) {
+                return format;
+            }
+        }
+
+        return formats.at(0);
+    }
+
+    private @EnumType(VkPresentModeKHR.class) int chooseSwapPresentMode(
+            @EnumType(VkPresentModeKHR.class) IntPtr presentModes
+    ) {
+        for (int presentMode : presentModes) {
+            if (presentMode == VkPresentModeKHR.MAILBOX) {
+                return presentMode;
+            }
+        }
+        return VkPresentModeKHR.FIFO;
+    }
+
+    private VkExtent2D chooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities, Arena arena) {
+        if (capabilities.currentExtent().width() != NativeLayout.UINT32_MAX) {
+            return capabilities.currentExtent();
+        }
+        else {
+            try (var localArena = Arena.ofConfined()) {
+                var pWidth = IntPtr.allocate(localArena);
+                var pHeight = IntPtr.allocate(localArena);
+                glfw.getFramebufferSize(window, pWidth, pHeight);
+                var width = pWidth.read();
+                var height = pHeight.read();
+
+                var actualExtent = VkExtent2D.allocate(arena);
+                actualExtent.width(Math.clamp(width, capabilities.minImageExtent().width(), capabilities.maxImageExtent().width()));
+                actualExtent.height(Math.clamp(height, capabilities.minImageExtent().height(), capabilities.maxImageExtent().height()));
+                return actualExtent;
             }
         }
     }
@@ -379,6 +577,10 @@ class Application {
     private VkQueue graphicsQueue;
     private VkSurfaceKHR surface;
     private VkQueue presentQueue;
+    private VkSwapchainKHR swapChain;
+    private VkImage.Ptr swapChainImages;
+    private @EnumType(VkFormat.class) int swapChainImageFormat;
+    private VkExtent2D swapChainExtent;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;

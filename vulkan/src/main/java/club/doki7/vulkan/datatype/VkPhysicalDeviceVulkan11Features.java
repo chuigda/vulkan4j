@@ -150,7 +150,7 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceVulkan11Features> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -158,7 +158,7 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceVulkan11Features.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceVulkan11Features.BYTES;
             }
 
             @Override

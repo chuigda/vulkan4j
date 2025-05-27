@@ -129,7 +129,7 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkIndirectCommandsExecutionSetTokenEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkIndirectCommandsExecutionSetTokenEXT.BYTES) > 0;
+                return segment.byteSize() >= VkIndirectCommandsExecutionSetTokenEXT.BYTES;
             }
 
             @Override

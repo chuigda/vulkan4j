@@ -147,7 +147,7 @@ public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implemen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VmaVirtualBlockCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -155,7 +155,7 @@ public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implemen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VmaVirtualBlockCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VmaVirtualBlockCreateInfo.BYTES;
             }
 
             @Override

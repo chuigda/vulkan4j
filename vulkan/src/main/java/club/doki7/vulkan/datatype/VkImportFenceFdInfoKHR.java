@@ -142,7 +142,7 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImportFenceFdInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImportFenceFdInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkImportFenceFdInfoKHR.BYTES;
             }
 
             @Override

@@ -139,7 +139,7 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceRawAccessChainsFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceRawAccessChainsFeaturesNV.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceRawAccessChainsFeaturesNV.BYTES;
             }
 
             @Override

@@ -143,7 +143,7 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDebugMarkerObjectTagInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDebugMarkerObjectTagInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkDebugMarkerObjectTagInfoEXT.BYTES;
             }
 
             @Override

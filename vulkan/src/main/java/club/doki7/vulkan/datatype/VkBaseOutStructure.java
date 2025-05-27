@@ -129,7 +129,7 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkBaseOutStructure> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkBaseOutStructure.BYTES) > 0;
+                return segment.byteSize() >= VkBaseOutStructure.BYTES;
             }
 
             @Override

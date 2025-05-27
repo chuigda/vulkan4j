@@ -140,7 +140,7 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkAmigoProfilingSubmitInfoSEC> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkAmigoProfilingSubmitInfoSEC.BYTES) > 0;
+                return segment.byteSize() >= VkAmigoProfilingSubmitInfoSEC.BYTES;
             }
 
             @Override

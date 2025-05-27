@@ -137,7 +137,7 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkSurfaceCapabilitiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -145,7 +145,7 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkSurfaceCapabilitiesKHR.BYTES) > 0;
+                return segment.byteSize() >= VkSurfaceCapabilitiesKHR.BYTES;
             }
 
             @Override

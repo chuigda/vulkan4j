@@ -139,7 +139,7 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkVideoFormatAV1QuantizationMapPropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkVideoFormatAV1QuantizationMapPropertiesKHR(@NotNull MemorySegmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES) > 0;
+                return segment.byteSize() >= VkVideoFormatAV1QuantizationMapPropertiesKHR.BYTES;
             }
 
             @Override

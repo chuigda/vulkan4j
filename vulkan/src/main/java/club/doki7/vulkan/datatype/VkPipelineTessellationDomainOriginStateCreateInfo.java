@@ -139,7 +139,7 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineTessellationDomainOriginStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineTessellationDomainOriginStateCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineTessellationDomainOriginStateCreateInfo.BYTES;
             }
 
             @Override

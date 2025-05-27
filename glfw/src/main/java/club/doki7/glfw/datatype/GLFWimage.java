@@ -145,7 +145,7 @@ public record GLFWimage(@NotNull MemorySegment segment) implements IGLFWimage {
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<GLFWimage> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -153,7 +153,7 @@ public record GLFWimage(@NotNull MemorySegment segment) implements IGLFWimage {
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / GLFWimage.BYTES) > 0;
+                return segment.byteSize() >= GLFWimage.BYTES;
             }
 
             @Override

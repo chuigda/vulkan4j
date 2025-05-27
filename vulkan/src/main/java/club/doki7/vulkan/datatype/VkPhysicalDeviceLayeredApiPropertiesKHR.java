@@ -142,7 +142,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceLayeredApiPropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceLayeredApiPropertiesKHR.BYTES;
             }
 
             @Override

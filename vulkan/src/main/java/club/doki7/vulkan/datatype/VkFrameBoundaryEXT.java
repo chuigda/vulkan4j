@@ -147,7 +147,7 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkFrameBoundaryEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -155,7 +155,7 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkFrameBoundaryEXT.BYTES) > 0;
+                return segment.byteSize() >= VkFrameBoundaryEXT.BYTES;
             }
 
             @Override

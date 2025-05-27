@@ -143,7 +143,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkBindAccelerationStructureMemoryInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkBindAccelerationStructureMemoryInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkBindAccelerationStructureMemoryInfoNV.BYTES;
             }
 
             @Override

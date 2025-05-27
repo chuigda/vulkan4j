@@ -145,7 +145,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineMultisampleStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -153,7 +153,7 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineMultisampleStateCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineMultisampleStateCreateInfo.BYTES;
             }
 
             @Override

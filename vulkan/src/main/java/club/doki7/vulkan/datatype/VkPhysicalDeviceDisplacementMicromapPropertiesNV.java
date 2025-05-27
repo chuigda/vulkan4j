@@ -139,7 +139,7 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(@NotNull MemorySe
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceDisplacementMicromapPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(@NotNull MemorySe
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceDisplacementMicromapPropertiesNV.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceDisplacementMicromapPropertiesNV.BYTES;
             }
 
             @Override

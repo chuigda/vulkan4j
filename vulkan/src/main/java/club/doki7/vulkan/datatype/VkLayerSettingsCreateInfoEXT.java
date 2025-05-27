@@ -140,7 +140,7 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkLayerSettingsCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkLayerSettingsCreateInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkLayerSettingsCreateInfoEXT.BYTES;
             }
 
             @Override

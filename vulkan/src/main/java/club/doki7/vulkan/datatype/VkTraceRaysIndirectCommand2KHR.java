@@ -141,7 +141,7 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkTraceRaysIndirectCommand2KHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkTraceRaysIndirectCommand2KHR.BYTES) > 0;
+                return segment.byteSize() >= VkTraceRaysIndirectCommand2KHR.BYTES;
             }
 
             @Override

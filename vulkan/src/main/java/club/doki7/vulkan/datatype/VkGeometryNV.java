@@ -141,7 +141,7 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkGeometryNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkGeometryNV.BYTES) > 0;
+                return segment.byteSize() >= VkGeometryNV.BYTES;
             }
 
             @Override

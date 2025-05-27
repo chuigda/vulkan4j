@@ -126,7 +126,7 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<NvSciSyncFenceVKREF> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -134,7 +134,7 @@ public record NvSciSyncFenceVKREF(@NotNull MemorySegment segment) implements INv
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / NvSciSyncFenceVKREF.BYTES) > 0;
+                return segment.byteSize() >= NvSciSyncFenceVKREF.BYTES;
             }
 
             @Override

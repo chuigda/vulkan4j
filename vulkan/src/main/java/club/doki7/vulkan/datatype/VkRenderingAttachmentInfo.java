@@ -146,7 +146,7 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkRenderingAttachmentInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -154,7 +154,7 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkRenderingAttachmentInfo.BYTES) > 0;
+                return segment.byteSize() >= VkRenderingAttachmentInfo.BYTES;
             }
 
             @Override

@@ -147,7 +147,7 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkRenderPassCreateInfo2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -155,7 +155,7 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkRenderPassCreateInfo2.BYTES) > 0;
+                return segment.byteSize() >= VkRenderPassCreateInfo2.BYTES;
             }
 
             @Override

@@ -355,7 +355,7 @@ fun generateStructure(
             }
             +""
 
-            +"/// An iterator over the structures in this pointer."
+            +"/// An iterator over the structures."
             +"public static final class Iter implements Iterator<$className> {"
             indent {
                 +"Iter(@NotNull MemorySegment segment) {"
@@ -367,7 +367,7 @@ fun generateStructure(
 
                 +"@Override"
                 defun("public", "boolean", "hasNext") {
-                    +"return (segment.byteSize() / $className.BYTES) > 0;"
+                    +"return segment.byteSize() >= $className.BYTES;"
                 }
                 +""
 

@@ -130,7 +130,7 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.BYTES;
             }
 
             @Override

@@ -130,7 +130,7 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMicromapUsageEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMicromapUsageEXT.BYTES) > 0;
+                return segment.byteSize() >= VkMicromapUsageEXT.BYTES;
             }
 
             @Override

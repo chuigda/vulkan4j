@@ -141,7 +141,7 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkFormatProperties3> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkFormatProperties3.BYTES) > 0;
+                return segment.byteSize() >= VkFormatProperties3.BYTES;
             }
 
             @Override

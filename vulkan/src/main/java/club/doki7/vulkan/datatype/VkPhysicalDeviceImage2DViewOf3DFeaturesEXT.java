@@ -140,7 +140,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES;
             }
 
             @Override

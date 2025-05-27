@@ -129,7 +129,7 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkMutableDescriptorTypeListEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkMutableDescriptorTypeListEXT.BYTES) > 0;
+                return segment.byteSize() >= VkMutableDescriptorTypeListEXT.BYTES;
             }
 
             @Override

@@ -129,7 +129,7 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IVk
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPresentTimeGOOGLE> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IVk
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPresentTimeGOOGLE.BYTES) > 0;
+                return segment.byteSize() >= VkPresentTimeGOOGLE.BYTES;
             }
 
             @Override

@@ -94,7 +94,7 @@ if (glfw.init() != GLFWConstants.TRUE) {
 }
 ```
 
-Then we will check Vulkan support with `glfwVulkanSupported()`:
+Then we will check Vulkan support with `GLFW::vulkanSupported()`:
 
 ```java
 if (glfw.vulkanSupported() != GLFWConstants.TRUE) {

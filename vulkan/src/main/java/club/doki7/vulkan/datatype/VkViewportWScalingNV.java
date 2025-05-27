@@ -129,7 +129,7 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IV
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkViewportWScalingNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -137,7 +137,7 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IV
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkViewportWScalingNV.BYTES) > 0;
+                return segment.byteSize() >= VkViewportWScalingNV.BYTES;
             }
 
             @Override

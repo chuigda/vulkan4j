@@ -141,7 +141,7 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkExportSemaphoreWin32HandleInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -149,7 +149,7 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkExportSemaphoreWin32HandleInfoKHR.BYTES) > 0;
+                return segment.byteSize() >= VkExportSemaphoreWin32HandleInfoKHR.BYTES;
             }
 
             @Override

@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
+import java.util.Iterator;
 import java.util.List;
 
 /// Represents a pointer to 32-bit integer(s) in native memory.
@@ -27,7 +28,7 @@ import java.util.List;
 /// normal users, {@link #checked(MemorySegment)} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
+public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterable<Integer> {
     public long size() {
         return segment.byteSize() / Integer.BYTES;
     }
@@ -77,6 +78,11 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
 
     public @NotNull IntPtr slice(long end) {
         return new IntPtr(segment.asSlice(0, end * Integer.BYTES));
+    }
+
+    @Override
+    public @NotNull Iter iterator() {
+        return new Iter(segment);
     }
 
     /// Create a new {@link IntPtr} using {@code segment} as backing storage, with argument
@@ -178,5 +184,29 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer {
         s.copyFrom(MemorySegment.ofBuffer(buffer));
 
         return new IntPtr(s);
+    }
+
+    /// An iterator over the integers.
+    public static final class Iter implements Iterator<Integer> {
+        Iter(@NotNull MemorySegment segment) {
+            this.segment = segment;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return segment.byteSize() >= Integer.BYTES;
+        }
+
+        @Override
+        public Integer next() {
+            if (!hasNext()) {
+                throw new IndexOutOfBoundsException("No more integers to read");
+            }
+            int value = segment.get(ValueLayout.JAVA_INT, 0);
+            segment = segment.asSlice(Integer.BYTES);
+            return value;
+        }
+
+        private @NotNull MemorySegment segment;
     }
 }

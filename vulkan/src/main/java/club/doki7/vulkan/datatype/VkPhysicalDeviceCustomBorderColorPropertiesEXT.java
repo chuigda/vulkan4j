@@ -139,7 +139,7 @@ public record VkPhysicalDeviceCustomBorderColorPropertiesEXT(@NotNull MemorySegm
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceCustomBorderColorPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceCustomBorderColorPropertiesEXT(@NotNull MemorySegm
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceCustomBorderColorPropertiesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceCustomBorderColorPropertiesEXT.BYTES;
             }
 
             @Override

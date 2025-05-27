@@ -132,7 +132,7 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDecompressMemoryRegionNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -140,7 +140,7 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDecompressMemoryRegionNV.BYTES) > 0;
+                return segment.byteSize() >= VkDecompressMemoryRegionNV.BYTES;
             }
 
             @Override

@@ -144,7 +144,7 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -152,7 +152,7 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.BYTES;
             }
 
             @Override

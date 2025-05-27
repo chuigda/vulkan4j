@@ -143,7 +143,7 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceInlineUniformBlockProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -151,7 +151,7 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceInlineUniformBlockProperties.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceInlineUniformBlockProperties.BYTES;
             }
 
             @Override

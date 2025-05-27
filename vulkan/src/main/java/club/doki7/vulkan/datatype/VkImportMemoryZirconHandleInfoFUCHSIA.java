@@ -140,7 +140,7 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImportMemoryZirconHandleInfoFUCHSIA> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -148,7 +148,7 @@ public record VkImportMemoryZirconHandleInfoFUCHSIA(@NotNull MemorySegment segme
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImportMemoryZirconHandleInfoFUCHSIA.BYTES) > 0;
+                return segment.byteSize() >= VkImportMemoryZirconHandleInfoFUCHSIA.BYTES;
             }
 
             @Override

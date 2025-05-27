@@ -139,7 +139,7 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(@NotNull Mem
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(@NotNull Mem
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.BYTES;
             }
 
             @Override

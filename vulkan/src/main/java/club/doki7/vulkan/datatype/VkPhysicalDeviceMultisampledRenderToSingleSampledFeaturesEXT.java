@@ -139,7 +139,7 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(@NotN
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(@NotN
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT.BYTES;
             }
 
             @Override

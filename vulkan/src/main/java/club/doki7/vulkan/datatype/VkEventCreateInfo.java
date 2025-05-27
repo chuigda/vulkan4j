@@ -139,7 +139,7 @@ public record VkEventCreateInfo(@NotNull MemorySegment segment) implements IVkEv
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkEventCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkEventCreateInfo(@NotNull MemorySegment segment) implements IVkEv
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkEventCreateInfo.BYTES) > 0;
+                return segment.byteSize() >= VkEventCreateInfo.BYTES;
             }
 
             @Override

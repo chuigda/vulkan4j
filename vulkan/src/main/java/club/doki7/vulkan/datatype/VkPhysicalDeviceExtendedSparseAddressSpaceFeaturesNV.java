@@ -139,7 +139,7 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(@NotNull Memo
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(@NotNull Memo
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV.BYTES;
             }
 
             @Override

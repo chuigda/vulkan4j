@@ -139,7 +139,7 @@ public record VkQueueFamilyCheckpointProperties2NV(@NotNull MemorySegment segmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkQueueFamilyCheckpointProperties2NV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkQueueFamilyCheckpointProperties2NV(@NotNull MemorySegment segmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkQueueFamilyCheckpointProperties2NV.BYTES) > 0;
+                return segment.byteSize() >= VkQueueFamilyCheckpointProperties2NV.BYTES;
             }
 
             @Override

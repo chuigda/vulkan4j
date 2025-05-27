@@ -139,7 +139,7 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkImageViewASTCDecodeModeEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkImageViewASTCDecodeModeEXT.BYTES) > 0;
+                return segment.byteSize() >= VkImageViewASTCDecodeModeEXT.BYTES;
             }
 
             @Override

@@ -142,7 +142,7 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkCopyBufferInfo2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkCopyBufferInfo2.BYTES) > 0;
+                return segment.byteSize() >= VkCopyBufferInfo2.BYTES;
             }
 
             @Override

@@ -144,7 +144,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkIndirectExecutionSetShaderInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -152,7 +152,7 @@ public record VkIndirectExecutionSetShaderInfoEXT(@NotNull MemorySegment segment
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkIndirectExecutionSetShaderInfoEXT.BYTES) > 0;
+                return segment.byteSize() >= VkIndirectExecutionSetShaderInfoEXT.BYTES;
             }
 
             @Override

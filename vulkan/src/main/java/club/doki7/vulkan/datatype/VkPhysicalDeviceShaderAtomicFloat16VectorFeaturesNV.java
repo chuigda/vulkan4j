@@ -139,7 +139,7 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.BYTES;
             }
 
             @Override

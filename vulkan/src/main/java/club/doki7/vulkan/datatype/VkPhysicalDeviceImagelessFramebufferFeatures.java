@@ -139,7 +139,7 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceImagelessFramebufferFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceImagelessFramebufferFeatures(@NotNull MemorySegmen
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceImagelessFramebufferFeatures.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceImagelessFramebufferFeatures.BYTES;
             }
 
             @Override

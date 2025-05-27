@@ -139,7 +139,7 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(@NotNull MemorySegment 
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceExclusiveScissorFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(@NotNull MemorySegment 
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceExclusiveScissorFeaturesNV.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceExclusiveScissorFeaturesNV.BYTES;
             }
 
             @Override

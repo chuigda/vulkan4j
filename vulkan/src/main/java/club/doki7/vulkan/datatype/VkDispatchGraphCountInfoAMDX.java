@@ -130,7 +130,7 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDispatchGraphCountInfoAMDX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -138,7 +138,7 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDispatchGraphCountInfoAMDX.BYTES) > 0;
+                return segment.byteSize() >= VkDispatchGraphCountInfoAMDX.BYTES;
             }
 
             @Override

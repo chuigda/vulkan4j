@@ -139,7 +139,7 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(@NotNull Mem
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPipelineRepresentativeFragmentTestStateCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(@NotNull Mem
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPipelineRepresentativeFragmentTestStateCreateInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkPipelineRepresentativeFragmentTestStateCreateInfoNV.BYTES;
             }
 
             @Override

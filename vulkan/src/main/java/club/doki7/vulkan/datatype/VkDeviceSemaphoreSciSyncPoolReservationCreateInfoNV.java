@@ -139,7 +139,7 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(@NotNull Memor
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -147,7 +147,7 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(@NotNull Memor
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV.BYTES) > 0;
+                return segment.byteSize() >= VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV.BYTES;
             }
 
             @Override

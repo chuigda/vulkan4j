@@ -142,7 +142,7 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
             return new Iter(this.segment());
         }
 
-        /// An iterator over the structures in this pointer.
+        /// An iterator over the structures.
         public static final class Iter implements Iterator<VkPhysicalDeviceTileShadingPropertiesQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
@@ -150,7 +150,7 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
 
             @Override
             public boolean hasNext() {
-                return (segment.byteSize() / VkPhysicalDeviceTileShadingPropertiesQCOM.BYTES) > 0;
+                return segment.byteSize() >= VkPhysicalDeviceTileShadingPropertiesQCOM.BYTES;
             }
 
             @Override
