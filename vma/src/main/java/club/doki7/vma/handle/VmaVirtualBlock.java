@@ -8,7 +8,12 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VmaVirtualBlock}.
+/// Handle to a virtual block object that allows to use core allocation algorithm without allocating any real GPU memory.
+///
+/// Fill in {@code VmaVirtualBlockCreateInfo} structure and use vmaCreateVirtualBlock() to create it. Use vmaDestroyVirtualBlock() to destroy it.
+/// For more information, see documentation chapter  virtual_allocator.
+///
+/// This object is not thread-safe - should not be used from multiple threads simultaneously, must be synchronized externally.
 ///
 /// ## Contracts
 ///

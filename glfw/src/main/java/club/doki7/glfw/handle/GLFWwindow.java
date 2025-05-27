@@ -8,7 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code GLFWwindow}.
+///  @brief Opaque window object.
+///
+///  Opaque window object.
+///
+///  @see @ref window_object
+///
+///  @since Added in version 3.0.
+///
+///  @ingroup window
 ///
 /// ## Contracts
 ///

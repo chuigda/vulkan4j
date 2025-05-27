@@ -8,7 +8,11 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VmaVirtualAllocation}.
+/// Represents single memory allocation done inside VmaVirtualBlock.
+///
+/// Use it as a unique identifier to virtual allocation within the single block.
+///
+/// Use value `VK_NULL_HANDLE` to represent a null/invalid allocation.
 ///
 /// ## Contracts
 ///

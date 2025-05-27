@@ -8,7 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code GLFWcursor}.
+///  @brief Opaque cursor object.
+///
+///  Opaque cursor object.
+///
+///  @see @ref cursor_object
+///
+///  @since Added in version 3.1.
+///
+///  @ingroup input
 ///
 /// ## Contracts
 ///

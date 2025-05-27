@@ -8,7 +8,13 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VmaAllocator}.
+/// Represents main object of this library initialized.
+///
+/// Fill structure {@code VmaAllocatorCreateInfo} and call function vmaCreateAllocator() to create it.
+/// Call function vmaDestroyAllocator() to destroy it.
+///
+/// It is recommended to create just one object of this type per `VkDevice` object,
+/// right after Vulkan is initialized and keep it alive until before Vulkan device is destroyed.
 ///
 /// ## Contracts
 ///

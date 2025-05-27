@@ -8,7 +8,12 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VmaPool}.
+/// Represents custom memory pool
+///
+/// Fill structure VmaPoolCreateInfo and call function vmaCreatePool() to create it.
+/// Call function vmaDestroyPool() to destroy it.
+///
+/// For more information see [Custom memory pools](@ref choosing_memory_type_custom_memory_pools).
 ///
 /// ## Contracts
 ///

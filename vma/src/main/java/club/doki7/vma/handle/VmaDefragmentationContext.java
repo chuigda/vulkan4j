@@ -8,7 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VmaDefragmentationContext}.
+/// An opaque object that represents started defragmentation process.
+///
+/// Fill structure {@code VmaDefragmentationInfo} and call function vmaBeginDefragmentation() to create it.
+/// Call function vmaEndDefragmentation() to destroy it.
 ///
 /// ## Contracts
 ///

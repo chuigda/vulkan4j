@@ -8,7 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code GLFWmonitor}.
+///  @brief Opaque monitor object.
+///
+///  Opaque monitor object.
+///
+///  @see @ref monitor_object
+///
+///  @since Added in version 3.0.
+///
+///  @ingroup monitor
 ///
 /// ## Contracts
 ///

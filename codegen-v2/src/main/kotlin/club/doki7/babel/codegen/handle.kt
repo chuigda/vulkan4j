@@ -29,7 +29,9 @@ fun generateHandle(
 
     val seeLink = codegenOptions.seeLinkProvider(handle)
 
-    if (seeLink != null) {
+    if (handle.doc != null) {
+        handle.doc!!.forEach { +"/// $it" }
+    } else if (seeLink != null) {
         +"/// Represents an opaque handle type $seeLink."
     } else {
         +"/// Represents an opaque handle type {@code $originalTypeName}."

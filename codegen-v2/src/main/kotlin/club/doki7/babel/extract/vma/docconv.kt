@@ -7,10 +7,10 @@ import club.doki7.babel.registry.RegistryBase
 
 internal fun postprocessDoc(registry: RegistryBase) {
     registry.constants.values.forEach(::postprocessEntityDoc)
-    registry.opaqueHandleTypedefs.values.forEach(::postprocessEntityDoc)
+    registry.opaqueHandleTypedefs.values.forEach(::postprocessStructOrHandleDoc)
     registry.functionTypedefs.values.forEach(::postprocessEntityDoc)
     registry.structures.values.forEach {
-        postprocessEntityDoc(it)
+        postprocessStructOrHandleDoc(it)
         it.members.forEach(::postprocessEntityDoc)
     }
     registry.bitmasks.values.forEach {
@@ -23,6 +23,12 @@ internal fun postprocessDoc(registry: RegistryBase) {
     }
 
     registry.commands.values.forEach(::postprocessCommandDoc)
+}
+
+private fun postprocessStructOrHandleDoc(entity: Entity) {
+    if (entity.doc != null) {
+        entity.doc = postprocessDoxygen(entity.doc!!).filter { !it.startsWith("\\struct") }
+    }
 }
 
 private fun postprocessEntityDoc(entity: Entity) {
