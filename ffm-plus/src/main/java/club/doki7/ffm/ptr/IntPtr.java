@@ -163,6 +163,12 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
     }
 
+    public static @NotNull IntPtr allocate(@NotNull Arena arena, byte @NotNull [] array) {
+        var segment = arena.allocate(ValueLayout.JAVA_INT, array.length / Integer.BYTES);
+        segment.copyFrom(MemorySegment.ofArray(array));
+        return new IntPtr(segment);
+    }
+
     /// Allocate a new {@link IntPtr} in {@code arena} and copy the contents of {@code buffer} into
     /// the newly allocated {@link IntPtr}.
     ///

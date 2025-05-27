@@ -179,7 +179,7 @@ Compiling shaders on the commandline is one of the most straightforward options 
 Now that we have a way of producing SPIR-V shaders, it's time to load them into our program to plug them into the graphics pipeline at some point. We'll first write a simple helper function to load the binary data from the files.
 
 ```java
-private static IntBuffer readShaderFile(String filename, Arena arena) {
+private static IntPtr readShaderFile(String filename, Arena arena) {
     try (var stream = Application.class.getResourceAsStream(filename)) {
         if (stream == null) {
             throw new RuntimeException("Failed to open shader file: " + filename);
@@ -187,8 +187,7 @@ private static IntBuffer readShaderFile(String filename, Arena arena) {
 
         var bytes = stream.readAllBytes();
         assert bytes.length % Integer.BYTES == 0;
-
-        return IntBuffer.allocate(arena, bytes);
+        return IntPtr.allocate(arena, bytes);
     }
     catch (IOException e) {
         throw new RuntimeException("Failed to read shader file: " + filename, e);
@@ -196,7 +195,7 @@ private static IntBuffer readShaderFile(String filename, Arena arena) {
 }
 ```
 
-We're using Java resource system to load the files, which may not be very optimal but sufficient for this tutorial. The function reads the entire file into a byte array and then copies it into an `IntBuffer` that we can use to create a Vulkan shader module.
+We're using Java resource system to load the files, which may not be very optimal but sufficient for this tutorial. The function reads the entire file into a byte array and then copies it into an `IntPtr` that we can use to create a Vulkan shader module.
 
 We'll now call this function from `createGraphicsPipeline` to load the bytecode of the two shaders:
 
@@ -214,31 +213,31 @@ private void createGraphicsPipeline() {
 Before we can pass the code to the pipeline, we have to wrap it in a `VkShaderModule` object. Let's create a helper function `createShaderModule` to do that.
 
 ```java
-private VkShaderModule createShaderModule(IntBuffer code) {
+private VkShaderModule createShaderModule(IntPtr code) {
 }
 ```
 
 The function will take a buffer with the bytecode as parameter and create a `VkShaderModule` from it.
 
-Creating a shader module is simple, we only need to specify a pointer to the buffer with the bytecode and the length of it. This information is specified in a `VkShaderModuleCreateInfo` structure. The one catch is that the size of the bytecode is specified in bytes, but the bytecode pointer is a `uint32_t` pointer rather than a char pointer. And that's why we were using an `IntBuffer` to store the bytecode.
+Creating a shader module is simple, we only need to specify a pointer to the buffer with the bytecode and the length of it. This information is specified in a `VkShaderModuleCreateInfo` structure. The one catch is that the size of the bytecode is specified in bytes, but the bytecode pointer is a `uint32_t` pointer rather than a char pointer. And that's why we were using an `IntPtr` to store the bytecode.
 
 ```java
-try (var localArena = Arena.ofConfined()) {
-    var createInfo = VkShaderModuleCreateInfo.allocate(localArena);
+try (var arena = Arena.ofConfined()) {
+    var createInfo = VkShaderModuleCreateInfo.allocate(arena);
     createInfo.codeSize(code.size() * Integer.BYTES);
     createInfo.pCode(code);
 }
 ```
 
-The `VkShaderModule` can then be created with a call to `vkCreateShaderModule`:
+The `VkShaderModule` can then be created with a call to `DeviceCommands::createShaderModule`:
 
 ```java
-var pShaderModule = VkShaderModule.Buffer.allocate(localArena);
-var result = deviceCommands.vkCreateShaderModule(device, createInfo, null, pShaderModule);
-if (result != VkResult.VK_SUCCESS) {
+var pShaderModule = VkShaderModule.Ptr.allocate(arena);
+var result = deviceCommands.createShaderModule(device, createInfo, null, pShaderModule);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create shader module, vulkan error code: " + VkResult.explain(result));
 }
-return pShaderModule.read();
+return Objects.requireNonNull(pShaderModule.read());
 ```
 
 The parameters are the same as those in previous object creation functions: the logical device, pointer to create info structure, optional pointer to custom allocators and handle output variable. The buffer with the code can be freed immediately after creating the shader module, but we keep it simple and do not try to optimize this further.
@@ -250,13 +249,13 @@ var vertexShaderModule = createShaderModule(vertShaderCode);
 var fragmentShaderModule = createShaderModule(fragShaderCode);
 ```
 
-The cleanup should then happen at the end of the function by adding two calls to `vkDestroyShaderModule`. All the remaining code in this chapter will be inserted before these lines.
+The cleanup should then happen at the end of the function by adding two calls to `DeviceCommands::destroyShaderModule`. All the remaining code in this chapter will be inserted before these lines.
 
 ```java
 // ...
 
-deviceCommands.vkDestroyShaderModule(device, vertexShaderModule, null);
-deviceCommands.vkDestroyShaderModule(device, fragmentShaderModule, null);
+deviceCommands.destroyShaderModule(device, vertexShaderModule, null);
+deviceCommands.destroyShaderModule(device, fragmentShaderModule, null);
 ```
 
 ## Shader stage creation
@@ -268,15 +267,15 @@ We'll start by filling in the structure for the vertex shader, again in the `cre
 ```java
 var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
 
-var vertShaderStageInfo = shaderStages[0];
-vertShaderStageInfo.stage(VkShaderStageFlags.VK_SHADER_STAGE_VERTEX_BIT);
+var vertShaderStageInfo = shaderStages.at(0);
+vertShaderStageInfo.stage(VkShaderStageFlags.VERTEX);
 ```
 
 The first step, is telling Vulkan in which pipeline stage the shader is going to be used. There is an enum value for each of the programmable stages described in the previous chapter.
 
 ```java
 vertShaderStageInfo.module(vertexShaderModule);
-vertShaderStageInfo.pName(ByteBuffer.allocateString(arena, "main"));
+vertShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
 ```
 
 The next two members specify the shader module containing the code, and the function to invoke, known as the *entrypoint*. That means that it's possible to combine multiple fragment shaders into a single shader module and use different entry points to differentiate between their behaviors. In this case we'll stick to the standard main, however.
@@ -286,10 +285,10 @@ There is one more (optional) member, `pSpecializationInfo`, which we won't be us
 Modifying the structure to suit the fragment shader is easy:
 
 ```java
-var fragShaderStageInfo = shaderStages[1];
-fragShaderStageInfo.stage(VkShaderStageFlags.VK_SHADER_STAGE_FRAGMENT_BIT);
+var fragShaderStageInfo = shaderStages.at(1);
+fragShaderStageInfo.stage(VkShaderStageFlags.FRAGMENT);
 fragShaderStageInfo.module(fragmentShaderModule);
-fragShaderStageInfo.pName(ByteBuffer.allocateString(arena, "main"));
+fragShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
 ```
 
 That's all there is describing the programmable stages of the pipeline. In the next chapter we'll look at the fixed-function stages.
