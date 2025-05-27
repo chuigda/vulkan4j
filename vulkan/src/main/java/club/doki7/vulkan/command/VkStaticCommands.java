@@ -23,6 +23,7 @@ public final class VkStaticCommands {
     }
 
     // region command wrappers
+
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetDeviceProcAddr.html"><code>vkGetDeviceProcAddr</code></a>
     public @Pointer(comment="PFN_vkVoidFunction") MemorySegment getDeviceProcAddr(
         VkDevice device,

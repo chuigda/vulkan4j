@@ -8,12 +8,17 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VmaPool}.
+/// Represents custom memory pool
+///
+/// Fill structure VmaPoolCreateInfo and call function vmaCreatePool() to create it.
+/// Call function vmaDestroyPool() to destroy it.
+///
+/// For more information see [Custom memory pools](@ref choosing_memory_type_custom_memory_pools).
 ///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///

@@ -29,7 +29,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VkPipelineCacheHeaderVersionOne;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

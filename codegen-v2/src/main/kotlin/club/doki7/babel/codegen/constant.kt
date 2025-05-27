@@ -3,6 +3,7 @@ package club.doki7.babel.codegen
 import club.doki7.babel.ctype.lowerIdentifierType
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.util.buildDoc
+import club.doki7.babel.util.isDecOrHexNumber
 
 fun generateConstants(registry: RegistryBase, codegenOptions: CodegenOptions) = buildDoc {
     val constants = registry.constants.values
@@ -23,7 +24,20 @@ fun generateConstants(registry: RegistryBase, codegenOptions: CodegenOptions) = 
         val (stringConstants, nonStringConstants) = constants
             .partition { it.type.ident.value == "CONSTANTS_JavaString" }
 
-        for (constant in nonStringConstants.sortedBy { it.name }) {
+        val (nonAliasConstants, aliasConstants) = nonStringConstants
+            .partition { it.expr.isDecOrHexNumber() }
+
+        for (constant in nonAliasConstants.sortedBy { it.name }) {
+            val docLink = codegenOptions.seeLinkProvider(constant)
+            if (docLink != null) {
+                +"/// @see $docLink"
+            }
+
+            val ctype = lowerIdentifierType(registry, codegenOptions.refRegistries, constant.type)
+            +"public static final ${ctype.jType} ${constant.name} = ${constant.expr};"
+        }
+
+        for (constant in aliasConstants.sortedBy { it.name }) {
             val docLink = codegenOptions.seeLinkProvider(constant)
             if (docLink != null) {
                 +"/// @see $docLink"

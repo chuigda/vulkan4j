@@ -33,7 +33,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } StdVideoAV1ColorConfig;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

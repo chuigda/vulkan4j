@@ -229,6 +229,11 @@ internal fun parseType(tokenizer: Tokenizer): RawType {
         token = tokenizer.next()
     }
 
+    if (token.kind == TokenKind.IDENT && token.value == "struct") {
+        skipTrivia(tokenizer, triviaList)
+        token = tokenizer.next()
+    }
+
     if (token.kind != TokenKind.IDENT) {
         syntaxError("Expected identifier but got ${token.kind}", token)
     }

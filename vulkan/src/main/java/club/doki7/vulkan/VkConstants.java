@@ -57,12 +57,8 @@ public final class VkConstants {
     public static final int H265_SCALING_LIST_8X8_NUM_ELEMENTS = 64;
     public static final int H265_SCALING_LIST_8X8_NUM_LISTS = 6;
     public static final long H265_SUBLAYERS_LIST_SIZE = 7;
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_ATTACHMENT_UNUSED.html"><code>VK_ATTACHMENT_UNUSED</code></a>
-    public static final @Unsigned int ATTACHMENT_UNUSED = (~0);
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_FALSE.html"><code>VK_FALSE</code></a>
     public static final @Unsigned int FALSE = 0;
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_LOD_CLAMP_NONE.html"><code>VK_LOD_CLAMP_NONE</code></a>
-    public static final float LOD_CLAMP_NONE = 1000.0F;
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_LUID_SIZE.html"><code>VK_LUID_SIZE</code></a>
     public static final long LUID_SIZE = 8;
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_MAX_DESCRIPTION_SIZE.html"><code>VK_MAX_DESCRIPTION_SIZE</code></a>
@@ -89,6 +85,14 @@ public final class VkConstants {
     public static final long MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32;
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR.html"><code>VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR</code></a>
     public static final long MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_TRUE.html"><code>VK_TRUE</code></a>
+    public static final @Unsigned int TRUE = 1;
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_UUID_SIZE.html"><code>VK_UUID_SIZE</code></a>
+    public static final long UUID_SIZE = 16;
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_ATTACHMENT_UNUSED.html"><code>VK_ATTACHMENT_UNUSED</code></a>
+    public static final @Unsigned int ATTACHMENT_UNUSED = (~0);
+    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_LOD_CLAMP_NONE.html"><code>VK_LOD_CLAMP_NONE</code></a>
+    public static final float LOD_CLAMP_NONE = 1000.0F;
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV.html"><code>VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV</code></a>
     public static final @Unsigned int PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV = (~0);
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_QUEUE_FAMILY_EXTERNAL.html"><code>VK_QUEUE_FAMILY_EXTERNAL</code></a>
@@ -109,10 +113,6 @@ public final class VkConstants {
     public static final @Unsigned int SHADER_UNUSED_KHR = (~0);
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_SUBPASS_EXTERNAL.html"><code>VK_SUBPASS_EXTERNAL</code></a>
     public static final @Unsigned int SUBPASS_EXTERNAL = (~0);
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_TRUE.html"><code>VK_TRUE</code></a>
-    public static final @Unsigned int TRUE = 1;
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_UUID_SIZE.html"><code>VK_UUID_SIZE</code></a>
-    public static final long UUID_SIZE = 16;
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_WHOLE_SIZE.html"><code>VK_WHOLE_SIZE</code></a>
     public static final long WHOLE_SIZE = (~0L);
 

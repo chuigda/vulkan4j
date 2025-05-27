@@ -200,6 +200,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
         ext = EmptyMergeable()
     )
 
+    postprocessDoc(r)
     return r
 }
 

@@ -223,7 +223,8 @@ class FunctionTypedef(
 }
 
 class OpaqueTypedef(
-    name: Identifier
+    name: Identifier,
+    var isHandle: Boolean = false
 ) : Entity(name) {
     constructor(name: String) : this(name.intern())
 

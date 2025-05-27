@@ -8,12 +8,30 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VmaAllocation}.
+/// Represents single memory allocation.
+///
+/// It may be either dedicated block of `VkDeviceMemory` or a specific region of a bigger block of this type
+/// plus unique offset.
+///
+/// There are multiple ways to create such object.
+/// You need to fill structure VmaAllocationCreateInfo.
+/// For more information see [Choosing memory type](@ref choosing_memory_type).
+///
+/// Although the library provides convenience functions that create Vulkan buffer or image,
+/// allocate memory for it and bind them together,
+/// binding of the allocation to a buffer or an image is out of scope of the allocation itself.
+/// Allocation object can exist without buffer/image bound,
+/// binding can be done manually by the user, and destruction of it can be done
+/// independently of destruction of the allocation.
+///
+/// The object also remembers its size and some other information.
+/// To retrieve this information, use function vmaGetAllocationInfo() and inspect
+/// returned structure VmaAllocationInfo.
 ///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///

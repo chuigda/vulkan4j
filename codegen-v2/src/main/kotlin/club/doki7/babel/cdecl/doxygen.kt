@@ -5,22 +5,24 @@ fun parseBlockDoxygen(lines: List<String>, startLine: Int): Pair<List<String>?, 
 
     var line = startLine
     while (line < lines.size) {
-        val curLine = lines[line]
+        val curLine = lines[line].trim()
         if (curLine.endsWith("*/")) {
             val lineDoc = if (curLine.startsWith("/**") || curLine.startsWith("/*!")) {
                     curLine.substring(3, curLine.length - 2)
-            } else if (curLine.startsWith("* ")) {
+            } else if (curLine == "*" || curLine.startsWith("* ")) {
                 curLine.substring(2, curLine.length - 2)
             } else {
                 curLine.substring(0, curLine.length - 2)
             }
-            doxygen.add(doxygen2javadoc(lineDoc).trim())
+            doxygen.add(lineDoc)
             line++
             break
         }
 
         val lineDoc = if (curLine.startsWith("/**") || curLine.startsWith("/*!")) {
             curLine.substring(3)
+        } else if (curLine == "*") {
+            ""
         } else if (curLine.startsWith("* ")) {
             curLine.substring(2)
         } else {
@@ -28,7 +30,7 @@ fun parseBlockDoxygen(lines: List<String>, startLine: Int): Pair<List<String>?, 
         }
 
         lineDoc.split("\\n").forEachIndexed { i, it ->
-            doxygen.add(doxygen2javadoc(it).trim())
+            doxygen.add(it)
         }
         line++
     }
@@ -58,7 +60,7 @@ fun parseTriSlashDoxygen(lines: List<String>, startLine: Int): Pair<List<String>
         }
 
         curLine.substring(3).split("\\n").forEachIndexed { i, it ->
-            doxygen.add(doxygen2javadoc(it).trim())
+            doxygen.add(it.trim())
         }
         line++
     }
@@ -75,44 +77,4 @@ fun parseTriSlashDoxygen(lines: List<String>, startLine: Int): Pair<List<String>
         return Pair(null, line)
     }
     return Pair(doxygen, line)
-}
-
-fun doxygen2javadoc(doxygen: String): String {
-    var tmp = doxygen
-    while (true) {
-        val index = tmp.indexOf("#")
-        if (index == -1) {
-            break
-        }
-
-        var end = index + 1
-        while (end < tmp.length && (tmp[end].isIdentChar())) {
-            end++
-        }
-
-        if (end == index + 1) {
-            break
-        }
-
-        val name = tmp.substring(index + 1, end)
-        tmp = tmp.replace("#$name", "{@code $name}")
-    }
-
-    return tmp
-        .replace("<", "&lt;")
-        .replace(">", "&gt;")
-        .replace("&", "&amp;")
-        .replace("\\brief", "")
-        .replace("\\ref", "")
-        .replace("\\note", "@apiNode")
-        .replace("\\param[out]", "@param")
-        .replace("\\param", "@param")
-        .replace("\\returns", "@return")
-        .replace("\\return", "@return")
-        .replace("\\deprecated", "@deprecated")
-        .replace("\\section", "###")
-        .replace("\\warning", "<b>Warning: </b>")
-        .replace("\\code", "{@snippet lang=c:")
-        .replace("\\endcode", "}")
-        .replace("[DEPRECATED]", "(deprecated)")
 }

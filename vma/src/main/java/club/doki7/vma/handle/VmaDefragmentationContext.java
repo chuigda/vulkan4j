@@ -8,12 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import club.doki7.ffm.IPointer;
 import club.doki7.ffm.annotation.*;
 
-/// Represents an opaque handle type {@code VmaDefragmentationContext}.
+/// An opaque object that represents started defragmentation process.
+///
+/// Fill structure {@code VmaDefragmentationInfo} and call function vmaBeginDefragmentation() to create it.
+/// Call function vmaEndDefragmentation() to destroy it.
 ///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
-/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
 /// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
 /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
 ///

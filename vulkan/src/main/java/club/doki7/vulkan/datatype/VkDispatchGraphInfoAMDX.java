@@ -28,7 +28,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VkDispatchGraphInfoAMDX;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

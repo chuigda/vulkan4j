@@ -26,7 +26,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VkBaseInStructure;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

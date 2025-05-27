@@ -163,61 +163,7 @@ private fun generateCommandWrapper(
         callArgs.forEachIndexed { idx, it -> +if (idx != callArgs.size - 1) "$it, " else it }
     }
 
-    if (loweredCommand.command.doc != null) {
-        val nonAtLines = mutableListOf<String>()
-        val atLines = mutableListOf<String>()
-
-        var lastLineWasEmpty = false
-        var index = 0
-        while (index < loweredCommand.command.doc!!.size) {
-            val line = loweredCommand.command.doc!![index++].trim()
-            if (line.startsWith("@")) {
-                atLines.add(line)
-                if (line == "@return") {
-                    while (true) {
-                        val returnLine = loweredCommand.command.doc!![index++].trim()
-                        if (returnLine.startsWith("- ")) {
-                            atLines.add(returnLine)
-                        } else {
-                            break
-                        }
-                    }
-                }
-            } else if (line.isBlank()) {
-                if (!lastLineWasEmpty) {
-                    nonAtLines.add("")
-                    lastLineWasEmpty = true
-                }
-            } else {
-                nonAtLines.add(line)
-                lastLineWasEmpty = false
-            }
-        }
-
-        while (nonAtLines.isNotEmpty() && nonAtLines.first().isBlank()) {
-            nonAtLines.removeFirst()
-        }
-
-        while (nonAtLines.isNotEmpty() && nonAtLines.last().isBlank()) {
-            nonAtLines.removeLast()
-        }
-
-        if (nonAtLines.isNotEmpty()) {
-            for (line in nonAtLines) {
-                +"/// $line"
-            }
-            +"///"
-        }
-        if (atLines.isNotEmpty()) {
-            for (line in atLines) {
-                if (line.startsWith("- ")) {
-                    +"/// <li>${line.substring(2)}</li>"
-                } else {
-                    +"/// $line"
-                }
-            }
-        }
-    }
+    loweredCommand.command.doc?.forEach { +"/// $it" }
 
     val seeLink = codegenOptions.seeLinkProvider(loweredCommand.command)
     if (seeLink != null) {

@@ -32,7 +32,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VkAccelerationStructureMatrixMotionInstanceNV;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
