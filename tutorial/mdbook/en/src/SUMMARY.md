@@ -6,32 +6,32 @@
 [FAQ](faq.md)
 
 # Setup
-- [Base code](setup/ch00-base-code.md)
-- [Instance](setup/ch01-instance.md)
-- [Validation Layers](setup/ch02-validation-layers.md)
-- [Physical Devices and Queue Families](setup/ch03-physical-devices-and-queue-families.md)
-- [Logical Devices and Queues](setup/ch04-logical-device-and-queues.md)
+- [Base code](01-setup/ch00-base-code.md)
+- [Instance](01-setup/ch01-instance.md)
+- [Validation Layers](01-setup/ch02-validation-layers.md)
+- [Physical Devices and Queue Families](01-setup/ch03-physical-devices-and-queue-families.md)
+- [Logical Devices and Queues](01-setup/ch04-logical-device-and-queues.md)
 
 # Presentation
-- [Window surface](presentation/ch05-window-surface.md)
-- [Swap chain](presentation/ch06-swap-chain.md)
-- [Image views](presentation/ch07-image-views.md)
+- [Window surface](02-presentation/ch05-window-surface.md)
+- [Swap chain](02-presentation/ch06-swap-chain.md)
+- [Image views](02-presentation/ch07-image-views.md)
 
 # Graphics pipeline basics
-- [Introduction](pipeline/ch08-pipeline-intro.md)
-- [Shader modules](pipeline/ch09-shader-modules.md)
-- [Fixed functions](pipeline/ch10-fixed-functions.md)
-- [Render passes](pipeline/ch11-render-passes.md)
-- [Conclusion](pipeline/ch12-conclusion.md)
+- [Introduction](03-pipeline/ch08-pipeline-intro.md)
+- [Shader modules](03-pipeline/ch09-shader-modules.md)
+- [Fixed functions](03-pipeline/ch10-fixed-functions.md)
+- [Render passes](03-pipeline/ch11-render-passes.md)
+- [Conclusion](03-pipeline/ch12-conclusion.md)
 
 # Drawing
-- [Framebuffers](drawing/13-framebuffers.md)
-- [Command buffers](drawing/14-command-buffers.md)
-- [Rendering and presentation](drawing/15-rendering-and-presentation.md)
-- [Frames in flight](drawing/16-frames-in-flight.md)
+- [Framebuffers](04-drawing/13-framebuffers.md)
+- [Command buffers](04-drawing/14-command-buffers.md)
+- [Rendering and presentation](04-drawing/15-rendering-and-presentation.md)
+- [Frames in flight](04-drawing/16-frames-in-flight.md)
 
 # Swap chain
-- [Swap chain recreation](swapchain/17-swap-chain-recreation.md)
+- [Swap chain recreation](05-swapchain/17-swap-chain-recreation.md)
 
 # Vertex buffers
 - [Vertex input description](vertex-buffers/vertex-input-description.md)
