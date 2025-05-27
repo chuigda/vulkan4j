@@ -26,7 +26,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VkVertexInputBindingDivisorDescription;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

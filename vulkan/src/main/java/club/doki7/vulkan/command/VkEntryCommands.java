@@ -27,6 +27,7 @@ public final class VkEntryCommands {
     }
 
     // region command wrappers
+
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateInstance.html"><code>vkCreateInstance</code></a>
     public @EnumType(VkResult.class) int createInstance(
         @Pointer VkInstanceCreateInfo pCreateInfo,

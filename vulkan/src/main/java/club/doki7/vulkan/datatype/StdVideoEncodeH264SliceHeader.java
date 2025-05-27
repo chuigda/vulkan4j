@@ -34,7 +34,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } StdVideoEncodeH264SliceHeader;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

@@ -25,7 +25,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VkClusterAccelerationStructureMoveObjectsInfoNV;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

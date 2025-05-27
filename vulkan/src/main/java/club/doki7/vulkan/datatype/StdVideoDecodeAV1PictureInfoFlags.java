@@ -55,7 +55,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } StdVideoDecodeAV1PictureInfoFlags;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

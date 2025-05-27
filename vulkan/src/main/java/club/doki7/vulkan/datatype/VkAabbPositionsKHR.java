@@ -30,7 +30,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VkAabbPositionsKHR;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null

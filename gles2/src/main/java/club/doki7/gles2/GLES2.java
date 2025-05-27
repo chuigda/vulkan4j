@@ -299,6 +299,7 @@ public final class GLES2 {
     }
 
     // region command wrappers
+
     /// @see <a href="https://docs.gl/es2/glActiveTexture"><code>glActiveTexture</code></a>
     public void activeTexture(
         @NativeType("GLenum") int texture

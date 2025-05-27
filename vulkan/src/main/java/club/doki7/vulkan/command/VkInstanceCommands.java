@@ -207,6 +207,7 @@ public final class VkInstanceCommands {
     }
 
     // region command wrappers
+
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAcquireDrmDisplayEXT.html"><code>vkAcquireDrmDisplayEXT</code></a>
     public @EnumType(VkResult.class) int acquireDrmDisplayEXT(
         VkPhysicalDevice physicalDevice,

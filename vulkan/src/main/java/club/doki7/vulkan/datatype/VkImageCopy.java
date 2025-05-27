@@ -29,7 +29,6 @@ import static club.doki7.vulkan.VkConstants.*;
 /// } VkImageCopy;
 /// }
 ///
-///
 /// ## Contracts
 ///
 /// The property {@link #segment()} should always be not-null
