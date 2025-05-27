@@ -14,15 +14,15 @@ import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
 ///  @brief Custom heap memory allocator.
-/// *
+///
 ///  This describes a custom heap memory allocator for GLFW.  To set an allocator, pass it
 ///  to @ref glfwInitAllocator before initializing the library.
-/// *
+///
 ///  @sa @ref init_allocator
 ///  @sa @ref glfwInitAllocator
-/// *
+///
 ///  @since Added in version 3.4.
-/// *
+///
 ///  @ingroup init
 ///
 /// ## Structure

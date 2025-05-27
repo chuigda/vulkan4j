@@ -14,15 +14,15 @@ import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
 ///  @brief Gamma ramp.
-/// *
+///
 ///  This describes the gamma ramp for a monitor.
-/// *
+///
 ///  @sa @ref monitor_gamma
 ///  @sa @ref glfwGetGammaRamp
 ///  @sa @ref glfwSetGammaRamp
-/// *
+///
 ///  @since Added in version 3.0.
-/// *
+///
 ///  @ingroup monitor
 ///
 /// ## Structure

@@ -14,16 +14,16 @@ import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
 ///  @brief Video mode type.
-/// *
+///
 ///  This describes a single video mode.
-/// *
+///
 ///  @sa @ref monitor_modes
 ///  @sa @ref glfwGetVideoMode
 ///  @sa @ref glfwGetVideoModes
-/// *
+///
 ///  @since Added in version 1.0.
 ///  @glfw3 Added refresh rate member.
-/// *
+///
 ///  @ingroup monitor
 ///
 /// ## Structure

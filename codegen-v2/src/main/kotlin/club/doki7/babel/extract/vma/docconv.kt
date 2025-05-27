@@ -3,14 +3,35 @@ package club.doki7.babel.extract.vma
 import club.doki7.babel.cdecl.isIdentChar
 import club.doki7.babel.registry.Command
 import club.doki7.babel.registry.Entity
+import club.doki7.babel.registry.RegistryBase
 
-internal fun postprocessEntityDoc(entity: Entity) {
+internal fun postprocessDoc(registry: RegistryBase) {
+    registry.constants.values.forEach(::postprocessEntityDoc)
+    registry.opaqueHandleTypedefs.values.forEach(::postprocessEntityDoc)
+    registry.functionTypedefs.values.forEach(::postprocessEntityDoc)
+    registry.structures.values.forEach {
+        postprocessEntityDoc(it)
+        it.members.forEach(::postprocessEntityDoc)
+    }
+    registry.bitmasks.values.forEach {
+        postprocessEntityDoc(it)
+        it.bitflags.forEach(::postprocessEntityDoc)
+    }
+    registry.enumerations.values.forEach {
+        postprocessEntityDoc(it)
+        it.variants.forEach(::postprocessEntityDoc)
+    }
+
+    registry.commands.values.forEach(::postprocessCommandDoc)
+}
+
+private fun postprocessEntityDoc(entity: Entity) {
     if (entity.doc != null) {
         entity.doc = postprocessDoxygen(entity.doc!!)
     }
 }
 
-internal fun postprocessCommandDoc(entity: Command) {
+private fun postprocessCommandDoc(entity: Command) {
     if (entity.doc != null) {
         entity.doc = postprocessCommandDoxygen(entity.doc!!)
     }

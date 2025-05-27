@@ -14,16 +14,16 @@ import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
 ///  @brief Image data.
-/// *
+///
 ///  This describes a single 2D image.  See the documentation for each related
 ///  function what the expected pixel format is.
-/// *
+///
 ///  @sa @ref cursor_custom
 ///  @sa @ref window_icon
-/// *
+///
 ///  @since Added in version 2.1.
 ///  @glfw3 Removed format and bytes-per-pixel members.
-/// *
+///
 ///  @ingroup window
 ///
 /// ## Structure

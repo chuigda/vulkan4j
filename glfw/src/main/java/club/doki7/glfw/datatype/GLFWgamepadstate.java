@@ -14,14 +14,14 @@ import club.doki7.glfw.handle.*;
 import static club.doki7.glfw.GLFWConstants.*;
 
 ///  @brief Gamepad input state
-/// *
+///
 ///  This describes the input state of a gamepad.
-/// *
+///
 ///  @sa @ref gamepad
 ///  @sa @ref glfwGetGamepadState
-/// *
+///
 ///  @since Added in version 3.3.
-/// *
+///
 ///  @ingroup input
 ///
 /// ## Structure

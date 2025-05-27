@@ -5,11 +5,11 @@ fun parseBlockDoxygen(lines: List<String>, startLine: Int): Pair<List<String>?, 
 
     var line = startLine
     while (line < lines.size) {
-        val curLine = lines[line]
+        val curLine = lines[line].trim()
         if (curLine.endsWith("*/")) {
             val lineDoc = if (curLine.startsWith("/**") || curLine.startsWith("/*!")) {
                     curLine.substring(3, curLine.length - 2)
-            } else if (curLine.startsWith("* ")) {
+            } else if (curLine == "*" || curLine.startsWith("* ")) {
                 curLine.substring(2, curLine.length - 2)
             } else {
                 curLine.substring(0, curLine.length - 2)
@@ -21,6 +21,8 @@ fun parseBlockDoxygen(lines: List<String>, startLine: Int): Pair<List<String>?, 
 
         val lineDoc = if (curLine.startsWith("/**") || curLine.startsWith("/*!")) {
             curLine.substring(3)
+        } else if (curLine == "*") {
+            ""
         } else if (curLine.startsWith("* ")) {
             curLine.substring(2)
         } else {

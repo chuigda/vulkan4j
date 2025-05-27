@@ -249,6 +249,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
                 // it is.
                 val (decl, _) = parseFunctionDecl(listOf(currentLine), 0)
                 val cmd = morphFunctionDecl(decl)
+                cmd.doc = getDocument()
                 commands[cmd.name] = cmd
             }
 
@@ -312,6 +313,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
         val (typedef, newIdx) = parseTypedefDecl(lines, lineIndex - 1)
         this.lineIndex = newIdx
         val functionTypedef = morphFunctionTypedef(typedef)
+        functionTypedef.doc = getDocument()
         functionTypedefs[functionTypedef.name] = functionTypedef
     }
 

@@ -186,24 +186,6 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
         }
     }
 
-    constants.values.forEach(::postprocessEntityDoc)
-    opaqueHandleTypedefs.values.forEach(::postprocessEntityDoc)
-    functionTypedefs.values.forEach(::postprocessEntityDoc)
-    structures.values.forEach {
-        postprocessEntityDoc(it)
-        it.members.forEach(::postprocessEntityDoc)
-    }
-    bitmasks.values.forEach {
-        postprocessEntityDoc(it)
-        it.bitflags.forEach(::postprocessEntityDoc)
-    }
-    enumerations.values.forEach {
-        postprocessEntityDoc(it)
-        it.variants.forEach(::postprocessEntityDoc)
-    }
-
-    commands.values.forEach(::postprocessCommandDoc)
-
     val r = Registry(
         aliases = mutableMapOf(),
         bitmasks = bitmasks,
@@ -218,6 +200,7 @@ private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
         ext = EmptyMergeable()
     )
 
+    postprocessDoc(r)
     return r
 }
 
