@@ -1,4 +1,4 @@
-package tutorial.vulkan.ch10;
+package tutorial.vulkan.ch11;
 
 import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.annotation.EnumType;

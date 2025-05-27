@@ -373,9 +373,6 @@ class Application {
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
 
-            deviceCommands.destroyShaderModule(device, vertexShaderModule, null);
-            deviceCommands.destroyShaderModule(device, fragmentShaderModule, null);
-
             var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
             var vertShaderStageInfo = shaderStages.at(0);
             vertShaderStageInfo.stage(VkShaderStageFlags.VERTEX);
@@ -385,6 +382,9 @@ class Application {
             fragShaderStageInfo.stage(VkShaderStageFlags.FRAGMENT);
             fragShaderStageInfo.module(fragmentShaderModule);
             fragShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
+
+            deviceCommands.destroyShaderModule(device, vertexShaderModule, null);
+            deviceCommands.destroyShaderModule(device, fragmentShaderModule, null);
         }
     }
 

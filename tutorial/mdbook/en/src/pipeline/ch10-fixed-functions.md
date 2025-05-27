@@ -7,13 +7,13 @@ The older graphics APIs provided default state for most of the stages of the gra
 While *most* of the pipeline state needs to be baked into the pipeline state, a limited amount of the state can actually be changed without recreating the pipeline at draw time. Examples are the size of the viewport, line width and blend constants. If you want to use dynamic state and keep these properties out, then you'll have to fill in a `VkPipelineDynamicStateCreateInfo` structure like this:
 
 ```java
-var dynamicStates = IntBuffer.allocate(arena, 2);
-dynamicStates.write(0, VkDynamicState.VK_DYNAMIC_STATE_VIEWPORT);
-dynamicStates.write(1, VkDynamicState.VK_DYNAMIC_STATE_SCISSOR);
+var dynamicStates = IntPtr.allocate(arena, 2);
+dynamicStates.write(0, VkDynamicState.VIEWPORT);
+dynamicStates.write(1, VkDynamicState.SCISSOR);
 
 var dynamicStateInfo = VkPipelineDynamicStateCreateInfo.allocate(arena);
-dynamicState.dynamicStateCount(2);
-dynamicState.pDynamicStates(dynamicStates);
+dynamicStateInfo.dynamicStateCount(2);
+dynamicStateInfo.pDynamicStates(dynamicStates);
 ```
 
 This will cause the configuration of these values to be ignored, and you will be able (and required) to specify the data at drawing time. This results in a more flexible setup and is very common for things like viewport and scissor state, which would result in a more complex setup when being baked into the pipeline state.
@@ -50,8 +50,8 @@ We intend to draw triangles throughout this tutorial, so we'll stick to the foll
 
 ```java
 var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena);
-inputAssembly.topology(VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
-inputAssembly.primitiveRestartEnable(Constants.VK_FALSE);
+inputAssembly.topology(VkPrimitiveTopology.TRIANGLE_LIST);
+inputAssembly.primitiveRestartEnable(VkConstants.FALSE);
 ```
 
 ## Viewports and scissors
@@ -87,7 +87,7 @@ scissor.extent(swapChainExtent);
 
 Viewport(s) and scissor rectangle(s) can either be specified as a static part of the pipeline or as a [dynamic state](https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Fixed_functions#dynamic-state) set in the command buffer. While the former is more in line with the other states it's often convenient to make viewport and scissor state dynamic as it gives you a lot more flexibility. This is very common and all implementations can handle this dynamic state without a performance penalty.
 
-When opting for dynamic viewport(s) and scissor rectangle(s) you need to enable the respective dynamic states for the pipeline:
+When opting for dynamic viewport(s) and scissor rectangle(s) you need to enable the respective dynamic states for the pipeline as we've stated before:
 
 ```java
 var dynamicStates = IntBuffer.allocate(arena, 2);
@@ -130,19 +130,19 @@ The rasterizer takes the geometry that is shaped by the vertices from the vertex
 
 ```java
 var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena);
-rasterizer.depthClampEnable(Constants.VK_FALSE);
+rasterizer.depthClampEnable(VkConstants.FALSE);
 ```
 
 If `depthClampEnable` is set to `VK_TRUE`, then fragments that are beyond the near and far planes are clamped to them as opposed to discarding them. This is useful in some special cases like shadow maps. Using this requires enabling a GPU feature.
 
 ```java
-rasterizer.rasterizerDiscardEnable(Constants.VK_FALSE);
+rasterizer.rasterizerDiscardEnable(VkConstants.FALSE);
 ```
 
 If `rasterizerDiscardEnable` is set to `VK_TRUE`, then geometry never passes through the rasterizer stage. This basically disables any output to the framebuffer.
 
 ```java
-rasterizer.polygonMode(VkPolygonMode.VK_POLYGON_MODE_FILL);
+rasterizer.polygonMode(VkPolygonMode.FILL);
 ```
 
 The polygonMode determines how fragments are generated for geometry. The following modes are available:
@@ -160,14 +160,14 @@ rasterizer.lineWidth(1.0f);
 The `lineWidth` member is straightforward, it describes the thickness of lines in terms of number of fragments. The maximum line width that is supported depends on the hardware and any line thicker than `1.0f` requires you to enable the `wideLines` GPU feature.
 
 ```java
-rasterizer.cullMode(VkCullModeFlags.VK_CULL_MODE_BACK_BIT);
-rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_CLOCKWISE);
+rasterizer.cullMode(VkCullModeFlags.BACK);
+rasterizer.frontFace(VkFrontFace.CLOCKWISE);
 ```
 
 The `cullMode` variable determines the type of face culling to use. You can disable culling, cull the front faces, cull the back faces or both. The `frontFace` variable specifies the vertex order for faces to be considered front-facing and can be clockwise or counterclockwise.
 
 ```java
-rasterizer.depthBiasEnable(Constants.VK_FALSE);
+rasterizer.depthBiasEnable(VkConstants.FALSE);
 rasterizer.depthBiasConstantFactor(0.0f); // optional
 rasterizer.depthBiasClamp(0.0f); // optional
 rasterizer.depthBiasSlopeFactor(0.0f); // optional
@@ -181,12 +181,12 @@ The `VkPipelineMultisampleStateCreateInfo` struct configures multisampling, whic
 
 ```java
 var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena);
-multisampling.sampleShadingEnable(Constants.VK_FALSE);
-multisampling.rasterizationSamples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
+multisampling.sampleShadingEnable(VkConstants.FALSE);
+multisampling.rasterizationSamples(VkSampleCountFlags._1);
 multisampling.minSampleShading(1.0f); // Optional
 multisampling.pSampleMask(null); // Optional
-multisampling.alphaToCoverageEnable(Constants.VK_FALSE); // Optional
-multisampling.alphaToOneEnable(Constants.VK_FALSE); // Optional
+multisampling.alphaToCoverageEnable(VkConstants.FALSE); // Optional
+multisampling.alphaToOneEnable(VkConstants.FALSE); // Optional
 ```
 
 We'll revisit multisampling in later chapter, for now let's keep it disabled.
@@ -207,18 +207,18 @@ There are two types of structs to configure color blending. The first struct, `V
 ```java
 var colorBlendAttachment = VkPipelineColorBlendAttachmentState.allocate(arena);
 colorBlendAttachment.colorWriteMask(
-        VkColorComponentFlags.VK_COLOR_COMPONENT_R_BIT |
-                VkColorComponentFlags.VK_COLOR_COMPONENT_G_BIT |
-                VkColorComponentFlags.VK_COLOR_COMPONENT_B_BIT |
-                VkColorComponentFlags.VK_COLOR_COMPONENT_A_BIT
+        VkColorComponentFlags.R
+        | VkColorComponentFlags.G
+        | VkColorComponentFlags.B
+        | VkColorComponentFlags.A
 );
-colorBlendAttachment.blendEnable(Constants.VK_FALSE);
-colorBlendAttachment.srcColorBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ONE); // Optional
-colorBlendAttachment.dstColorBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ZERO); // Optional
-colorBlendAttachment.colorBlendOp(VkBlendOp.VK_BLEND_OP_ADD); // Optional
-colorBlendAttachment.srcAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ONE); // Optional
-colorBlendAttachment.dstAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ZERO); // Optional
-colorBlendAttachment.alphaBlendOp(VkBlendOp.VK_BLEND_OP_ADD); // Optional
+colorBlendAttachment.blendEnable(VkConstants.FALSE); // Optional
+colorBlendAttachment.srcColorBlendFactor(VkBlendFactor.ONE); // Optional
+colorBlendAttachment.dstColorBlendFactor(VkBlendFactor.ZERO); // Optional
+colorBlendAttachment.colorBlendOp(VkBlendOp.ADD); // Optional
+colorBlendAttachment.srcAlphaBlendFactor(VkBlendFactor.ONE); // Optional
+colorBlendAttachment.dstAlphaBlendFactor(VkBlendFactor.ZERO); // Optional
+colorBlendAttachment.alphaBlendOp(VkBlendOp.ADD); // Optional
 ```
 
 This per-framebuffer struct allows you to configure the first way of color blending. The operations that will be performed are best demonstrated using the following pseudocode:
@@ -246,13 +246,13 @@ finalColor.a = newAlpha.a;
 This can be accomplished with the following parameters:
 
 ```java
-colorBlendAttachment.blendEnable(Constants.VK_TRUE);
-colorBlendAttachment.srcColorBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_SRC_ALPHA);
-colorBlendAttachment.dstColorBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA);
-colorBlendAttachment.colorBlendOp(VkBlendOp.VK_BLEND_OP_ADD);
-colorBlendAttachment.srcAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ONE);
-colorBlendAttachment.dstAlphaBlendFactor(VkBlendFactor.VK_BLEND_FACTOR_ZERO);
-colorBlendAttachment.alphaBlendOp(VkBlendOp.VK_BLEND_OP_ADD);
+colorBlendAttachment.blendEnable(VkConstants.TRUE);
+colorBlendAttachment.srcColorBlendFactor(VkBlendFactor.SRC_ALPHA);
+colorBlendAttachment.dstColorBlendFactor(VkBlendFactor.ONE_MINUS_SRC_ALPHA);
+colorBlendAttachment.colorBlendOp(VkBlendOp.ADD);
+colorBlendAttachment.srcAlphaBlendFactor(VkBlendFactor.ONE);
+colorBlendAttachment.dstAlphaBlendFactor(VkBlendFactor.ZERO);
+colorBlendAttachment.alphaBlendOp(VkBlendOp.ADD);
 ```
 
 You can find all the possible operations in the `VkBlendFactor` and `VkBlendOp` enumerations in the specification.
@@ -262,7 +262,7 @@ The second structure references the array of structures for all the framebuffers
 ```java
 var colorBlending = VkPipelineColorBlendStateCreateInfo.allocate(arena);
 colorBlending.logicOpEnable(Constants.VK_FALSE);
-colorBlending.logicOp(VkLogicOp.VK_LOGIC_OP_COPY); // Optional
+colorBlending.logicOp(VkLogicOp.COPY); // Optional
 colorBlending.attachmentCount(1);
 colorBlending.pAttachments(colorBlendAttachment);
 colorBlending.blendConstants().write(0, 0.0f); // Optional
@@ -289,24 +289,22 @@ And then create the object in the `createGraphicsPipeline` function:
 
 ```java
 var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
-pipelineLayoutInfo.setLayoutCount(0); // Optional
-pipelineLayoutInfo.pSetLayouts(null); // Optional
-pipelineLayoutInfo.pushConstantRangeCount(0); // Optional
-pipelineLayoutInfo.pPushConstantRanges(null); // Optional
-
-var pPipelineLayout = VkPipelineLayout.Buffer.allocate(arena);
-var result = deviceCommands.vkCreatePipelineLayout(device, pipelineLayoutInfo, null, pPipelineLayout);
-if (result != VkResult.VK_SUCCESS) {
+var pPipelineLayout = VkPipelineLayout.Ptr.allocate(arena);
+var result = deviceCommands.createPipelineLayout(device, pipelineLayoutInfo, null, pPipelineLayout);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create pipeline layout, vulkan error code: " + VkResult.explain(result));
 }
-pipelineLayout = pPipelineLayout.read();
+pipelineLayout = Objects.requireNonNull(pPipelineLayout.read());
+
+deviceCommands.destroyShaderModule(device, vertexShaderModule, null);
+deviceCommands.destroyShaderModule(device, fragmentShaderModule, null);
 ```
 
 The structure also specifies *push constants*, which are another way of passing dynamic values to shaders that we may get into in a future chapter. The pipeline layout will be referenced throughout the program's lifetime, so it should be destroyed at the end:
 
 ```java
 private void cleanup() {
-    deviceCommands.vkDestroyPipelineLayout(device, pipelineLayout, null);
+    deviceCommands.destroyPipelineLayout(device, pipelineLayout, null);
     // ...
 }
 ```
