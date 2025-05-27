@@ -7,7 +7,7 @@ The attachments specified during render pass creation are bound by wrapping them
 To that end, create another array class member to hold all the framebuffers:
 
 ```java
-private VkFramebuffer[] swapChainFramebuffers;
+private VkFramebuffer.Ptr swapChainFramebuffers;
 ```
 
 We'll create the objects for this array in a new function `createFramebuffers` that is called from `initVulkan` right after creating the graphics pipeline:
@@ -24,21 +24,21 @@ private void createFramebuffers() {
 }
 ```
 
-Start by creating a Java array to hold the framebuffers:
+Start by creating a buffer to hold the framebuffers:
 
 ```java
 private void createFramebuffers() {
-    swapChainFramebuffers = new VkFramebuffer[swapChainImageViews.length];
+    swapChainFramebuffers = VkFramebuffer.Ptr.allocate(Arena.ofAuto(), swapChainImageViews.size());
 }
 ```
 
 We'll then iterate through the image views and create framebuffers from them:
 
 ```java
-for (int i = 0; i < swapChainImageViews.length; i++) {
+for (int i = 0; i < swapChainImageViews.size(); i++) {
     try (var arena = Arena.ofConfined()) {
-        var pAttachments = VkImageView.Buffer.allocate(arena);
-        pAttachments.write(0, swapChainImageViews[i]);
+        var pAttachments = VkImageView.Ptr.allocate(arena);
+        pAttachments.write(0, swapChainImageViews.read(i));
 
         var framebufferInfo = VkFramebufferCreateInfo.allocate(arena);
         framebufferInfo.renderPass(renderPass);
@@ -48,12 +48,11 @@ for (int i = 0; i < swapChainImageViews.length; i++) {
         framebufferInfo.height(swapChainExtent.height());
         framebufferInfo.layers(1);
 
-        var pFramebuffer = VkFramebuffer.Buffer.allocate(arena);
-        var result = deviceCommands.vkCreateFramebuffer(device, framebufferInfo, null, pFramebuffer);
-        if (result != VkResult.VK_SUCCESS) {
+        var pFramebuffer = swapChainFramebuffers.offset(i);
+        var result = deviceCommands.createFramebuffer(device, framebufferInfo, null, pFramebuffer);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to create framebuffer, vulkan error code: " + VkResult.explain(result));
         }
-        swapChainFramebuffers[i] = pFramebuffer.read();
     }
 }
 ```
@@ -69,7 +68,7 @@ We should delete the framebuffers before the image views and render pass that th
 ```java
 private void clenaup() {
     for (var framebuffer : swapChainFramebuffers) {
-        deviceCommands.vkDestroyFramebuffer(device, framebuffer, null);
+        deviceCommands.destroyFramebuffer(device, framebuffer, null);
     }
 
     // ...
