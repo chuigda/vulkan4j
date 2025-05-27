@@ -74,7 +74,7 @@ class Application {
     }
 
     private void cleanup() {
-        cleanupSwapchain();
+        deviceCommands.destroySwapchainKHR(device, swapChain, null);
         deviceCommands.destroyDevice(device, null);
         instanceCommands.destroySurfaceKHR(instance, surface, null);
         if (ENABLE_VALIDATION_LAYERS) {
@@ -320,10 +320,6 @@ class Application {
             swapChainImageFormat = surfaceFormat.format();
             swapChainExtent = VkExtent2D.clone(Arena.ofAuto(), extent);
         }
-    }
-
-    private void cleanupSwapchain() {
-        deviceCommands.destroySwapchainKHR(device, swapChain, null);
     }
 
     private boolean checkValidationLayerSupport() {

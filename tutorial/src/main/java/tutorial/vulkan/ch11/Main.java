@@ -80,7 +80,10 @@ class Application {
     private void cleanup() {
         deviceCommands.destroyPipelineLayout(device, pipelineLayout, null);
         deviceCommands.destroyRenderPass(device, renderPass, null);
-        cleanupSwapchain();
+        for (var imageView : swapChainImageViews) {
+            deviceCommands.destroyImageView(device, imageView, null);
+        }
+        deviceCommands.destroySwapchainKHR(device, swapChain, null);
         deviceCommands.destroyDevice(device, null);
         instanceCommands.destroySurfaceKHR(instance, surface, null);
         if (ENABLE_VALIDATION_LAYERS) {
@@ -326,13 +329,6 @@ class Application {
             swapChainImageFormat = surfaceFormat.format();
             swapChainExtent = VkExtent2D.clone(Arena.ofAuto(), extent);
         }
-    }
-
-    private void cleanupSwapchain() {
-        for (var imageView : swapChainImageViews) {
-            deviceCommands.destroyImageView(device, imageView, null);
-        }
-        deviceCommands.destroySwapchainKHR(device, swapChain, null);
     }
 
     private void createImageViews() {

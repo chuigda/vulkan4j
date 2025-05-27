@@ -91,7 +91,7 @@ swapChainImageViews.write(i, Objects.requireNonNull(pImageView.read()));
 Unlike images, the image views were explicitly created by us, so we need to add a similar loop to destroy them again at the end of the program:
 
 ```java
-private void cleanupSwapchain() {
+private void cleanup() {
     for (var imageView : swapChainImageViews) {
         deviceCommands.destroyImageView(device, imageView, null);
     }
