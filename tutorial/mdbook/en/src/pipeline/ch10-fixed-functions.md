@@ -315,4 +315,4 @@ private void cleanup() {
 
 That's it for all the fixed-function state! It's a lot of work to set all of this up from scratch, but the advantage is that we're now nearly fully aware of everything that is going on in the graphics pipeline! This reduces the chance of running into unexpected behavior because the default state of certain components is not what you expect.
 
-There is however one more object to create before we can finally create the graphics pipeline and that is a [render pass](render-passes.md).
+There is however one more object to create before we can finally create the graphics pipeline and that is a [render pass](ch11-render-passes.md).

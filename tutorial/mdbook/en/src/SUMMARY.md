@@ -18,11 +18,11 @@
 - [Image views](presentation/ch07-image-views.md)
 
 # Graphics pipeline basics
-- [Introduction](pipeline/introduction.md)
-- [Shader modules](pipeline/shader-modules.md)
-- [Fixed functions](pipeline/fixed-functions.md)
-- [Render passes](pipeline/render-passes.md)
-- [Conclusion](pipeline/conclusion.md)
+- [Introduction](pipeline/ch08-pipeline-intro.md)
+- [Shader modules](pipeline/ch09-shader-modules.md)
+- [Fixed functions](pipeline/ch10-fixed-functions.md)
+- [Render passes](pipeline/ch11-render-passes.md)
+- [Conclusion](pipeline/ch12-conclusion.md)
 
 # Drawing
 - [Framebuffers](drawing/framebuffers.md)
