@@ -7,7 +7,7 @@ In this chapter we'll write a createImageViews function that creates a basic ima
 First add a class member to store the image views in:
 
 ```java
-private VkImageView[] swapChainImageViews;
+private VkImageView.Ptr swapChainImageViews;
 ```
 
 Create the `createImageViews` function and call it right after swap chain creation.
@@ -22,11 +22,11 @@ private void createImageViews() {
 }
 ```
 
-The first thing we need to do is to create a Java array capable of holding all the image views we'll be creating:
+The first thing we need to do is to create a buffer capable of holding all the image views we'll be creating:
 
 ```java
 private void createImageViews() {
-    swapChainImageViews = new VkImageView[swapChainImages.length];
+    swapChainImageViews = VkImageView.Ptr.allocate(Arena.ofAuto(), swapChainImages.size());
 }
 ```
 
@@ -45,13 +45,13 @@ try (var arena = Arena.ofConfined()) {
 The parameters for image view creation are specified in a `VkImageViewCreateInfo` structure. The first few parameters are straightforward.
 
 ```java
-createInfo.image(swapChainImages[i]);
+createInfo.image(swapChainImages.read(i));
 ```
 
 The `viewType` and format fields specify how the image data should be interpreted. The `viewType` parameter allows you to treat images as 1D textures, 2D textures, 3D textures and cube maps.
 
 ```java
-createInfo.viewType(VkImageViewType.VK_IMAGE_VIEW_TYPE_2D);
+createInfo.viewType(VkImageViewType._2D);
 createInfo.format(swapChainImageFormat);
 ```
 
@@ -59,17 +59,17 @@ The `components` field allows you to swizzle the color channels around. For exam
 
 ```java
 var components = createInfo.components();
-components.r(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
-components.g(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
-components.b(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
-components.a(VkComponentSwizzle.VK_COMPONENT_SWIZZLE_IDENTITY);
+components.r(VkComponentSwizzle.IDENTITY);
+components.g(VkComponentSwizzle.IDENTITY);
+components.b(VkComponentSwizzle.IDENTITY);
+components.a(VkComponentSwizzle.IDENTITY);
 ```
 
 The `subresourceRange` field describes what the image's purpose is and which part of the image should be accessed. Our images will be used as color targets without any mipmapping levels or multiple layers.
 
 ```java
 var subresourceRange = createInfo.subresourceRange();
-subresourceRange.aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
+subresourceRange.aspectMask(VkImageAspectFlags.COLOR);
 subresourceRange.baseMipLevel(0);
 subresourceRange.levelCount(1);
 subresourceRange.baseArrayLayer(0);
@@ -78,22 +78,22 @@ subresourceRange.layerCount(1);
 
 If you were working on a stereographic 3D application, then you would create a swap chain with multiple layers. You could then create multiple image views for each image representing the views for the left and right eyes by accessing different layers.
 
-Creating the image view is now a matter of calling `vkCreateImageView`:
+Creating the image view is now a matter of calling `DeviceCommands::createImageView`:
 
 ```java
-var result = deviceCommands.vkCreateImageView(device, createInfo, null, pImageView);
-if (result != VkResult.VK_SUCCESS) {
+var result = deviceCommands.createImageView(device, createInfo, null, pImageView);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create image views, vulkan error code: " + VkResult.explain(result));
 }
-swapChainImageViews[i] = pImageView.read();
+swapChainImageViews.write(i, Objects.requireNonNull(pImageView.read()));
 ```
 
 Unlike images, the image views were explicitly created by us, so we need to add a similar loop to destroy them again at the end of the program:
 
 ```java
-private void cleanup() {
+private void cleanupSwapchain() {
     for (var imageView : swapChainImageViews) {
-        deviceCommands.vkDestroyImageView(device, imageView, null);
+        deviceCommands.destroyImageView(device, imageView, null);
     }
     // ...
 }

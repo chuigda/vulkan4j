@@ -65,6 +65,7 @@ class Application {
         pickPhysicalDevice();
         createLogicalDevice();
         createSwapchain();
+        createImageViews();
     }
 
     private void mainLoop() {
@@ -323,7 +324,44 @@ class Application {
     }
 
     private void cleanupSwapchain() {
+        for (var imageView : swapChainImageViews) {
+            deviceCommands.destroyImageView(device, imageView, null);
+        }
         deviceCommands.destroySwapchainKHR(device, swapChain, null);
+    }
+
+    private void createImageViews() {
+        swapChainImageViews = VkImageView.Ptr.allocate(Arena.ofAuto(), swapChainImages.size());
+
+        try (var arena = Arena.ofConfined()) {
+            var createInfo = VkImageViewCreateInfo.allocate(arena);
+            var pImageView = VkImageView.Ptr.allocate(arena);
+
+            for (long i = 0; i < swapChainImages.size(); i++) {
+                createInfo.image(swapChainImages.read(i));
+                createInfo.viewType(VkImageViewType._2D);
+                createInfo.format(swapChainImageFormat);
+
+                var components = createInfo.components();
+                components.r(VkComponentSwizzle.IDENTITY);
+                components.g(VkComponentSwizzle.IDENTITY);
+                components.b(VkComponentSwizzle.IDENTITY);
+                components.a(VkComponentSwizzle.IDENTITY);
+
+                var subresourceRange = createInfo.subresourceRange();
+                subresourceRange.aspectMask(VkImageAspectFlags.COLOR);
+                subresourceRange.baseMipLevel(0);
+                subresourceRange.levelCount(1);
+                subresourceRange.baseArrayLayer(0);
+                subresourceRange.layerCount(1);
+
+                var result = deviceCommands.createImageView(device, createInfo, null, pImageView);
+                if (result != VkResult.SUCCESS) {
+                    throw new RuntimeException("Failed to create image views, vulkan error code: " + VkResult.explain(result));
+                }
+                swapChainImageViews.write(i, Objects.requireNonNull(pImageView.read()));
+            }
+        }
     }
 
     private boolean checkValidationLayerSupport() {
@@ -581,6 +619,7 @@ class Application {
     private VkImage.Ptr swapChainImages;
     private @EnumType(VkFormat.class) int swapChainImageFormat;
     private VkExtent2D swapChainExtent;
+    private VkImageView.Ptr swapChainImageViews;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
