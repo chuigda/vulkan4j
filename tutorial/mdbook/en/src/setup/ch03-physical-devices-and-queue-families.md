@@ -27,9 +27,9 @@ Listing the graphics cards is very similar to listing extensions and starts with
 ```java
 private void pickPhysicalDevice() {
     try (var arena = Arena.ofConfined()) {
-        var pDeviceCount = IntBuffer.allocate(arena);
-        var result = instanceCommands.vkEnumeratePhysicalDevices(instance, pDeviceCount, null);
-        if (result != VkResult.VK_SUCCESS) {
+        var pDeviceCount = IntPtr.allocate(arena);
+        var result = instanceCommands.enumeratePhysicalDevices(instance, pDeviceCount, null);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to enumerate physical devices, vulkan error code: " + VkResult.explain(result));
         }
 
@@ -49,7 +49,6 @@ result = instanceCommands.vkEnumeratePhysicalDevices(instance, pDeviceCount, pDe
 if (result != VkResult.VK_SUCCESS) {
     throw new RuntimeException("Failed to enumerate physical devices, vulkan error code: " + VkResult.explain(result));
 }
-var devices = pDevices.readAll();
 ```
 
 Now we need to evaluate each of them and check if they are suitable for the operations we want to perform, because not all graphics cards are created equal. For that we'll introduce a new function:
@@ -71,7 +70,7 @@ for (var device : devices) {
 }
 
 if (physicalDevice == null) {
-    throw new RuntimeException("Failed to find a suitable GPU");
+        throw new RuntimeException("Failed to find a suitable Vulkan physical device");
 }
 ```
 
@@ -79,18 +78,22 @@ The next section will introduce the first requirements that we'll check for in t
 
 ## Base device suitability checks
 
-To evaluate the suitability of a device we can start by querying for some details. Basic device properties like the name, type and supported Vulkan version can be queried using `vkGetPhysicalDeviceProperties`.
+To evaluate the suitability of a device we can start by querying for some details. Basic device properties like the name, type and supported Vulkan version can be queried using `getPhysicalDeviceProperties`.
 
 ```java
-var properties = VkPhysicalDeviceProperties.allocate(arena);
-instanceCommands.vkGetPhysicalDeviceProperties(device, properties);
+try (Arena arena = Arena.ofConfined()) {
+    var properties = VkPhysicalDeviceProperties.allocate(arena);
+    instanceCommands.getPhysicalDeviceProperties(device, properties);
+    
+    // ...
+}
 ```
 
-The support for optional features like texture compression, 64-bit floats and multi viewport rendering (useful for VR) can be queried using `vkGetPhysicalDeviceFeatures`:
+The support for optional features like texture compression, 64-bit floats and multi viewport rendering (useful for VR) can be queried using `getPhysicalDeviceFeatures`:
 
 ```java
 var features = VkPhysicalDeviceFeatures.allocate(arena);
-instanceCommands.vkGetPhysicalDeviceFeatures(device, features);
+instanceCommands.getPhysicalDeviceFeatures(device, features);
 ```
 
 There are more details that can be queried from devices that we'll discuss later concerning device memory and queue families (see the next section).
@@ -106,8 +109,8 @@ private boolean isDeviceSuitable(VkPhysicalDevice device) {
         var features = VkPhysicalDeviceFeatures.allocate(arena);
         instanceCommands.vkGetPhysicalDeviceFeatures(device, features);
 
-        return properties.deviceType() == VkPhysicalDeviceType.VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU &&
-                features.geometryShader() == Constants.VK_TRUE;
+        return properties.deviceType() == VkPhysicalDeviceType.DISCRETE_GPU
+               && features.geometryShader() == VkConstants.TRUE;
     }
 }
 ```
@@ -118,6 +121,8 @@ Because we're just starting out, Vulkan support is the only thing we need, and t
 
 ```java
 private boolean isDeviceSuitable(VkPhysicalDevice device) {
+    // ...
+
     return true;
 } 
 ```
@@ -148,37 +153,41 @@ private QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
 }
 ```
 
-The process of retrieving the list of queue families is exactly what you expect and uses `vkGetPhysicalDeviceQueueFamilyProperties`:
+The process of retrieving the list of queue families is exactly what you expect and uses `getPhysicalDeviceQueueFamilyProperties`:
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var pQueueFamilyCount = IntBuffer.allocate(arena);
-        instanceCommands.vkGetPhysicalDeviceQueueFamilyProperties(device, pQueueFamilyCount, null);
-    
+    var pQueueFamilyCount = IntPtr.allocate(arena); 
+    instanceCommands.getPhysicalDeviceQueueFamilyProperties(device, pQueueFamilyCount, null);
+
     var queueFamilyCount = pQueueFamilyCount.read();
     var queueFamilies = VkQueueFamilyProperties.allocate(arena, queueFamilyCount);
-        instanceCommands.vkGetPhysicalDeviceQueueFamilyProperties(device, pQueueFamilyCount, queueFamilies[0]);
+    instanceCommands.getPhysicalDeviceQueueFamilyProperties(device, pQueueFamilyCount, queueFamilies);
 }
 ```
 
 The `VkQueueFamilyProperties` struct contains some details about the queue family, including the type of operations that are supported and the number of queues that can be created based on that family. We need to find at least one queue family that supports `VK_QUEUE_GRAPHICS_BIT`.
 
 ```java
-Integer graphicsFamily = null;
+int graphicsFamily = -1;
 for (int i = 0; i < queueFamilyCount; i++) {
-    if (queueFamilies[i].queueCount() > 0 && (queueFamilies[i].queueFlags() & VkQueueFlags.VK_QUEUE_GRAPHICS_BIT) != 0) {
+    var queueFamily = queueFamilies.at(i);
+    if ((queueFamily.queueFlags() & VkQueueFlags.GRAPHICS) != 0) {
         graphicsFamily = i;
         break;
     }
 }
 
-if (graphicsFamily != null) {
-    return new QueueFamilyIndices(graphicsFamily);
-}
-else {
+if (graphicsFamily >= 0) {
+    return new QueueFamilyIndices(graphicsFamily); 
+} else {
     return null;
 }
 ```
+
+> Use `at` for struct array, but `read` for integer pointer/array?
+> 
+> When operating on an element of a struct/union array, the element you get is actually a view into the array, thus your modification on the element will be reflected in the original array. So we explicitly use `at` to distinguish it from `read`, which returns a copy of the value.
 
 Now that we have this fancy queue family lookup function, we can use it as a check in the `isDeviceSuitable` function to ensure that the device can process the commands we want to use:
 
@@ -188,4 +197,4 @@ private boolean isDeviceSuitable(VkPhysicalDevice device) {
 }
 ```
 
-Great, that's all we need for now to find the right physical device! The next step is to [create a logical device](logical-device-and-queues.md) to interface with it.
+Great, that's all we need for now to find the right physical device! The next step is to [create a logical device](ch04-logical-device-and-queues.md) to interface with it.

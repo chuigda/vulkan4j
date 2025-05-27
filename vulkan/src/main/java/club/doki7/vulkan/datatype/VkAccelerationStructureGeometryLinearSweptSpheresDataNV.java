@@ -341,13 +341,13 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$vertexFormat = (OfInt) LAYOUT.select(PATH$vertexFormat);
-    public static final StructLayout LAYOUT$vertexData = (StructLayout) LAYOUT.select(PATH$vertexData);
+    public static final UnionLayout LAYOUT$vertexData = (UnionLayout) LAYOUT.select(PATH$vertexData);
     public static final OfLong LAYOUT$vertexStride = (OfLong) LAYOUT.select(PATH$vertexStride);
     public static final OfInt LAYOUT$radiusFormat = (OfInt) LAYOUT.select(PATH$radiusFormat);
-    public static final StructLayout LAYOUT$radiusData = (StructLayout) LAYOUT.select(PATH$radiusData);
+    public static final UnionLayout LAYOUT$radiusData = (UnionLayout) LAYOUT.select(PATH$radiusData);
     public static final OfLong LAYOUT$radiusStride = (OfLong) LAYOUT.select(PATH$radiusStride);
     public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
-    public static final StructLayout LAYOUT$indexData = (StructLayout) LAYOUT.select(PATH$indexData);
+    public static final UnionLayout LAYOUT$indexData = (UnionLayout) LAYOUT.select(PATH$indexData);
     public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
     public static final OfInt LAYOUT$indexingMode = (OfInt) LAYOUT.select(PATH$indexingMode);
     public static final OfInt LAYOUT$endCapsMode = (OfInt) LAYOUT.select(PATH$endCapsMode);

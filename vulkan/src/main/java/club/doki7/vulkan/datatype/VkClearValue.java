@@ -194,7 +194,7 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IVkClearVa
     public static final PathElement PATH$color = PathElement.groupElement("color");
     public static final PathElement PATH$depthStencil = PathElement.groupElement("depthStencil");
 
-    public static final StructLayout LAYOUT$color = (StructLayout) LAYOUT.select(PATH$color);
+    public static final UnionLayout LAYOUT$color = (UnionLayout) LAYOUT.select(PATH$color);
     public static final StructLayout LAYOUT$depthStencil = (StructLayout) LAYOUT.select(PATH$depthStencil);
 
     public static final long SIZE$color = LAYOUT$color.byteSize();

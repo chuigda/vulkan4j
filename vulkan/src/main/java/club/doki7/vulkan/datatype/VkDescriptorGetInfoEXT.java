@@ -242,7 +242,7 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final StructLayout LAYOUT$data = (StructLayout) LAYOUT.select(PATH$data);
+    public static final UnionLayout LAYOUT$data = (UnionLayout) LAYOUT.select(PATH$data);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

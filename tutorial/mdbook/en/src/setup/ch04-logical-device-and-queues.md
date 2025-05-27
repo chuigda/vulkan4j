@@ -28,7 +28,7 @@ The creation of a logical device involves specifying a bunch of details in struc
 
 ```java
 var indices = findQueueFamilies(physicalDevice);
-assert indices != null;
+assert indices != null : "Queue family indices should not be null";
 
 try (var arena = Arena.ofConfined()) {
     var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena);
@@ -42,18 +42,20 @@ The currently available drivers will only allow you to create a small number of 
 Vulkan lets you assign priorities to queues to influence the scheduling of command buffer execution using floating point numbers between `0.0` and `1.0`. This is required even if there is only a single queue:
 
 ```java
-var pQueuePriorities = FloatBuffer.allocate(arena);
+var pQueuePriorities = FloatPtr.allocate(arena);
 pQueuePriorities.write(1.0f);
 queueCreateInfo.pQueuePriorities(pQueuePriorities);
 ```
 
 ## Specifying used device features
 
-The next information to specify is the set of device features that we'll be using. These are the features that we queried support for with `vkGetPhysicalDeviceFeatures` in the previous chapter, like geometry shaders. Right now we don't need anything special, so we can simply define it and leave everything to `VK_FALSE`. We'll come back to this structure once we're about to start doing more interesting things with Vulkan.
+The next information to specify is the set of device features that we'll be using. These are the features that we queried support for with `getPhysicalDeviceFeatures` in the previous chapter, like geometry shaders. Right now we don't need anything special, so we can simply define it and leave everything to `VK_FALSE` (`0`). We'll come back to this structure once we're about to start doing more interesting things with Vulkan.
 
 ```java
 var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
 ```
+
+> Note: all `MemorySegment`s allocated by for kinds of Java builtin arenas (`Arena.ofConfined`, `Arena.ofAuto`, `Arena.ofShared` and `Arena.global`) are automatically zero-initialized, and the `allocate` series methods will create structures with these zero-initialized segments.
 
 ## Creating the logical device
 
@@ -74,23 +76,23 @@ Previous implementations of Vulkan made a distinction between instance and devic
 ```java
 if (ENABLE_VALIDATION_LAYERS) {
     deviceCreateInfo.enabledLayerCount(1);
-    PointerBuffer ppEnabledLayerNames = PointerBuffer.allocate(arena);
-    ppEnabledLayerNames.write(ByteBuffer.allocateString(arena, VALIDATION_LAYER_NAME));
+    PointerPtr ppEnabledLayerNames = PointerPtr.allocate(arena);
+    ppEnabledLayerNames.write(BytePtr.allocateString(arena, VALIDATION_LAYER_NAME));
     deviceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
 }
 ```
 
 We won't need any device specific extensions for now.
 
-That's it, we're now ready to instantiate the logical device with a call to the appropriately named `vkCreateDevice` function.
+That's it, we're now ready to instantiate the logical device with a call to the appropriately named `createDevice` function.
 
 ```java
-var pDevice = VkDevice.Buffer.allocate(arena);
-var result = instanceCommands.vkCreateDevice(physicalDevice, deviceCreateInfo, null, pDevice);
-if (result != VkResult.VK_SUCCESS) {
+var pDevice = VkDevice.Ptr.allocate(arena);
+var result = instanceCommands.createDevice(physicalDevice, deviceCreateInfo, null, pDevice);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create logical device, vulkan error code: " + VkResult.explain(result));
 }
-device = pDevice.read();
+device = Objects.requireNonNull(pDevice.read());
 ```
 
 The parameters are the physical device to interface with, the queue and usage info we just specified, the optional allocation callbacks pointer and a pointer to a variable to store the logical device handle in. Similarly to the instance creation function, this call can return errors based on enabling non-existent extensions or specifying the desired usage of unsupported features.
@@ -100,7 +102,7 @@ The parameters are the physical device to interface with, the queue and usage in
 After creating the device, we can load the device level Vulkan commands. Add a new field to the `Application` class:
 
 ```java
-private DeviceCommands deviceCommands;
+private VkDeviceCommands deviceCommands;
 ```
 
 Then load the device level commands in the `createLogicalDevice` function:
@@ -111,11 +113,11 @@ deviceCommands = VulkanLoader.loadDeviceCommands(instance, device, staticCommand
 
 ## Cleanup
 
-The device should be destroyed in `cleanup` with the `vkDestroyDevice` function:
+The device should be destroyed in `cleanup` with the `dsestroyDevice` function:
 
 ```java
 private void cleanup() {
-    deviceCommands.vkDestroyDevice(device, null);
+    deviceCommands.destroyDevice(device, null);
     // ...
 }
 ```
@@ -130,12 +132,12 @@ private VkQueue graphicsQueue;
 
 Device queues are implicitly cleaned up when the device is destroyed, so we don't need to do anything in `cleanup`.
 
-We can use the `vkGetDeviceQueue` function to retrieve queue handles for each queue family. The parameters are the logical device, queue family, queue index and a pointer to the variable to store the queue handle in. Because we're only creating a single queue from this family, we'll simply use index `0`.
+We can use the `getDeviceQueue` function to retrieve queue handles for each queue family. The parameters are the logical device, queue family, queue index and a pointer to the variable to store the queue handle in. Because we're only creating a single queue from this family, we'll simply use index `0`.
 
 ```java
-var pQueue = VkQueue.Buffer.allocate(arena);
-deviceCommands.vkGetDeviceQueue(device, indices.graphicsFamily(), 0, pQueue);
-graphicsQueue = pQueue.read();
+var pQueue = VkQueue.Ptr.allocate(arena);
+deviceCommands.getDeviceQueue(device, indices.graphicsFamily(), 0, pQueue);
+graphicsQueue = Objects.requireNonNull(pQueue.read());
 ```
 
 With the logical device and queue handles we can now actually start using the graphics card to do things! In the next few chapters we'll set up the resources to present results to the window system.

@@ -195,7 +195,7 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
     public static final PathElement PATH$data = PathElement.groupElement("data");
 
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final StructLayout LAYOUT$data = (StructLayout) LAYOUT.select(PATH$data);
+    public static final UnionLayout LAYOUT$data = (UnionLayout) LAYOUT.select(PATH$data);
 
     public static final long SIZE$type = LAYOUT$type.byteSize();
     public static final long SIZE$data = LAYOUT$data.byteSize();

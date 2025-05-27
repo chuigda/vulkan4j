@@ -274,7 +274,7 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
     public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
     public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
-    public static final StructLayout LAYOUT$value = (StructLayout) LAYOUT.select(PATH$value);
+    public static final UnionLayout LAYOUT$value = (UnionLayout) LAYOUT.select(PATH$value);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

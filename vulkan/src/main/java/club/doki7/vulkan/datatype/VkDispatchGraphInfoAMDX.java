@@ -218,7 +218,7 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
 
     public static final OfInt LAYOUT$nodeIndex = (OfInt) LAYOUT.select(PATH$nodeIndex);
     public static final OfInt LAYOUT$payloadCount = (OfInt) LAYOUT.select(PATH$payloadCount);
-    public static final StructLayout LAYOUT$payloads = (StructLayout) LAYOUT.select(PATH$payloads);
+    public static final UnionLayout LAYOUT$payloads = (UnionLayout) LAYOUT.select(PATH$payloads);
     public static final OfLong LAYOUT$payloadStride = (OfLong) LAYOUT.select(PATH$payloadStride);
 
     public static final long SIZE$nodeIndex = LAYOUT$nodeIndex.byteSize();

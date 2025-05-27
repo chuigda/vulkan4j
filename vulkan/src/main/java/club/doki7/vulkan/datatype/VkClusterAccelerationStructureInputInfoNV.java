@@ -278,7 +278,7 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
     public static final OfInt LAYOUT$opType = (OfInt) LAYOUT.select(PATH$opType);
     public static final OfInt LAYOUT$opMode = (OfInt) LAYOUT.select(PATH$opMode);
-    public static final StructLayout LAYOUT$opInput = (StructLayout) LAYOUT.select(PATH$opInput);
+    public static final UnionLayout LAYOUT$opInput = (UnionLayout) LAYOUT.select(PATH$opInput);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

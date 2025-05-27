@@ -253,7 +253,7 @@ public record VkAccelerationStructureGeometryKHR(@NotNull MemorySegment segment)
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$geometryType = (OfInt) LAYOUT.select(PATH$geometryType);
-    public static final StructLayout LAYOUT$geometry = (StructLayout) LAYOUT.select(PATH$geometry);
+    public static final UnionLayout LAYOUT$geometry = (UnionLayout) LAYOUT.select(PATH$geometry);
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

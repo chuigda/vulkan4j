@@ -256,7 +256,7 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$src = (StructLayout) LAYOUT.select(PATH$src);
+    public static final UnionLayout LAYOUT$src = (UnionLayout) LAYOUT.select(PATH$src);
     public static final AddressLayout LAYOUT$dst = (AddressLayout) LAYOUT.select(PATH$dst);
     public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
 

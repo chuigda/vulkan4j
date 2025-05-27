@@ -207,7 +207,7 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
 
     public static final OfInt LAYOUT$aspectMask = (OfInt) LAYOUT.select(PATH$aspectMask);
     public static final OfInt LAYOUT$colorAttachment = (OfInt) LAYOUT.select(PATH$colorAttachment);
-    public static final StructLayout LAYOUT$clearValue = (StructLayout) LAYOUT.select(PATH$clearValue);
+    public static final UnionLayout LAYOUT$clearValue = (UnionLayout) LAYOUT.select(PATH$clearValue);
 
     public static final long SIZE$aspectMask = LAYOUT$aspectMask.byteSize();
     public static final long SIZE$colorAttachment = LAYOUT$colorAttachment.byteSize();

@@ -241,7 +241,7 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(@NotNull MemorySegment seg
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$customBorderColor = (StructLayout) LAYOUT.select(PATH$customBorderColor);
+    public static final UnionLayout LAYOUT$customBorderColor = (UnionLayout) LAYOUT.select(PATH$customBorderColor);
     public static final OfInt LAYOUT$format = (OfInt) LAYOUT.select(PATH$format);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

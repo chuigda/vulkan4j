@@ -390,9 +390,9 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
     public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);
     public static final AddressLayout LAYOUT$pUsageCounts = (AddressLayout) LAYOUT.select(PATH$pUsageCounts);
     public static final AddressLayout LAYOUT$ppUsageCounts = (AddressLayout) LAYOUT.select(PATH$ppUsageCounts);
-    public static final StructLayout LAYOUT$data = (StructLayout) LAYOUT.select(PATH$data);
-    public static final StructLayout LAYOUT$scratchData = (StructLayout) LAYOUT.select(PATH$scratchData);
-    public static final StructLayout LAYOUT$triangleArray = (StructLayout) LAYOUT.select(PATH$triangleArray);
+    public static final UnionLayout LAYOUT$data = (UnionLayout) LAYOUT.select(PATH$data);
+    public static final UnionLayout LAYOUT$scratchData = (UnionLayout) LAYOUT.select(PATH$scratchData);
+    public static final UnionLayout LAYOUT$triangleArray = (UnionLayout) LAYOUT.select(PATH$triangleArray);
     public static final OfLong LAYOUT$triangleArrayStride = (OfLong) LAYOUT.select(PATH$triangleArrayStride);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

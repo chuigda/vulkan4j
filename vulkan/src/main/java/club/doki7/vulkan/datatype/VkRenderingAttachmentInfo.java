@@ -322,7 +322,7 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
     public static final OfInt LAYOUT$resolveImageLayout = (OfInt) LAYOUT.select(PATH$resolveImageLayout);
     public static final OfInt LAYOUT$loadOp = (OfInt) LAYOUT.select(PATH$loadOp);
     public static final OfInt LAYOUT$storeOp = (OfInt) LAYOUT.select(PATH$storeOp);
-    public static final StructLayout LAYOUT$clearValue = (StructLayout) LAYOUT.select(PATH$clearValue);
+    public static final UnionLayout LAYOUT$clearValue = (UnionLayout) LAYOUT.select(PATH$clearValue);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

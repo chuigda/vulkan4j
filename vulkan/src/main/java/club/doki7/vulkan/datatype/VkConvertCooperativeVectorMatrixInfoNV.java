@@ -368,9 +368,9 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$srcData = (StructLayout) LAYOUT.select(PATH$srcData);
+    public static final UnionLayout LAYOUT$srcData = (UnionLayout) LAYOUT.select(PATH$srcData);
     public static final AddressLayout LAYOUT$pDstSize = (AddressLayout) LAYOUT.select(PATH$pDstSize);
-    public static final StructLayout LAYOUT$dstData = (StructLayout) LAYOUT.select(PATH$dstData);
+    public static final UnionLayout LAYOUT$dstData = (UnionLayout) LAYOUT.select(PATH$dstData);
     public static final OfInt LAYOUT$srcComponentType = (OfInt) LAYOUT.select(PATH$srcComponentType);
     public static final OfInt LAYOUT$dstComponentType = (OfInt) LAYOUT.select(PATH$dstComponentType);
     public static final OfInt LAYOUT$numRows = (OfInt) LAYOUT.select(PATH$numRows);
