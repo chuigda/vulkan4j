@@ -34,10 +34,10 @@
 - [Swap chain recreation](05-swapchain/ch17-swap-chain-recreation.md)
 
 # Vertex buffers
-- [Vertex input description](vertex-buffers/vertex-input-description.md)
-- [Vertex buffer creation](vertex-buffers/vertex-buffer-creation.md)
-- [Staging buffer](vertex-buffers/staging-buffer.md)
-- [Index buffer](vertex-buffers/index-buffer.md)
+- [Vertex input description](06-vertex-buffers/ch18-vertex-input-description.md)
+- [Vertex buffer creation](06-vertex-buffers/ch19-vertex-buffer-creation.md)
+- [Staging buffer](06-vertex-buffers/ch20-staging-buffer.md)
+- [Index buffer](06-vertex-buffers/ch21-index-buffer.md)
 
 # Uniform buffers
 - [Descriptor set layout and buffer](uniform-buffers/descriptor-set-layout-and-buffer.md)
@@ -58,3 +58,5 @@
 
 # Advanced topics
 - [Vulkan memory allocator](./advanced-topics/vulkan-memory-allocator.md)
+- [Dynamic Rendering](./advanced-topics/dynamic-rendering.md)
+- [Push Constants](./advanced-topics/push-constants.md)

@@ -59,15 +59,15 @@ private static VkVertexInputBindingDescription getBindingDescription(Arena arena
     var description = VkVertexInputBindingDescription.allocate(arena);
     description.binding(0);
     description.stride(Float.BYTES * 5);
-    description.inputRate(VkVertexInputRate.VK_VERTEX_INPUT_RATE_VERTEX);
+    description.inputRate(VkVertexInputRate.VERTEX);
     return description;
 }
 ```
 
 All of our per-vertex data is packed together in one array, so we're only going to have one binding. The `binding` parameter specifies the index of the binding in the array of bindings. The `stride` parameter specifies the number of bytes from one entry to the next, and the `inputRate` parameter can have one of the following values:
 
-- `VK_VERTEX_INPUT_RATE_VERTEX`: Move to the next data entry after each vertex
-- `VK_VERTEX_INPUT_RATE_INSTANCE`: Move to the next data entry after each instance
+- `VkVertexInputRate.VERTEX`: Move to the next data entry after each vertex
+- `VkVertexInputRate.INSTANCE`: Move to the next data entry after each instance
 
 We're not going to use instanced rendering, so we'll stick to per-vertex data.
 
@@ -76,8 +76,10 @@ We're not going to use instanced rendering, so we'll stick to per-vertex data.
 The second structure that describes how to handle vertex input is `VkVertexInputAttributeDescription`. We're going to add another helper function to fill in these structs.
 
 ```java
-private static VkVertexInputAttributeDescription[] getAttributeDescriptions(Arena arena) {
+private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
     var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 2);
+    var vertexAttribute = attributeDescriptions.at(0);
+    var colorAttribute = attributeDescriptions.at(1);
 
     return attributeDescriptions;
 }
@@ -86,34 +88,34 @@ private static VkVertexInputAttributeDescription[] getAttributeDescriptions(Aren
 As the function prototype indicates, there are going to be two of these structures. An attribute description struct describes how to extract a vertex attribute from a chunk of vertex data originating from a binding description. We have two attributes, position and color, so we need two attribute description structs.
 
 ```java
-attributeDescriptions[0].binding(0);
-attributeDescriptions[0].location(0);
-attributeDescriptions[0].format(VkFormat.VK_FORMAT_R32G32_SFLOAT);
-attributeDescriptions[0].offset(0);
+vertexAttribute.binding(0);
+vertexAttribute.location(0);
+vertexAttribute.format(VkFormat.R32G32_SFLOAT);
+vertexAttribute.offset(0);
 ```
 
 The `binding` parameter tells Vulkan from which binding the per-vertex data comes. The `location` parameter references the location directive of the input in the vertex shader. The input in the vertex shader with location `0` is the position, which has two 32-bit float components.
 
 The `format` parameter describes the type of data for the attribute. A bit confusingly, the formats are specified using the same enumeration as color formats. The following shader types and formats are commonly used together:
 
-- `float`: `VK_FORMAT_R32_SFLOAT`
-- `vec2`: `VK_FORMAT_R32G32_SFLOAT`
-- `vec3`: `VK_FORMAT_R32G32B32_SFLOAT`
-- `vec4`: `VK_FORMAT_R32G32B32A32_SFLOAT`
+- `float`: `VkFormat.R32_SFLOAT`
+- `vec2`: `VkFormat.R32G32_SFLOAT`
+- `vec3`: `VkFormat.R32G32B32_SFLOAT`
+- `vec4`: `VkFormat.R32G32B32A32_SFLOAT`
 
 As you can see, you should use the format where the amount of color channels matches the number of components in the shader data type. It is allowed to use more channels than the number of components in the shader, but they will be silently discarded. If the number of channels is lower than the number of components, then the BGA components will use default values of `(0, 0, 1)`. The color type `(SFLOAT, UINT, SINT)` and bit width should also match the type of the shader input. See the following examples:
 
-- `ivec2`: `VK_FORMAT_R32G32_SINT`, a 2-component vector of 32-bit signed integers
-- `uvec4`: `VK_FORMAT_R32G32B32A32_UINT`, a 4-component vector of 32-bit unsigned integers
-- `double`: `VK_FORMAT_R64_SFLOAT`, a double-precision (64-bit) float
+- `ivec2`: `VkFormat.R32G32_SINT`, a 2-component vector of 32-bit signed integers
+- `uvec4`: `VkFormat.R32G32B32A32_UINT`, a 4-component vector of 32-bit unsigned integers
+- `double`: `VkFormat.R64_SFLOAT`, a double-precision (64-bit) float
 
 The `format` parameter implicitly defines the byte size of attribute data and the `offset` parameter specifies the number of bytes since the start of the per-vertex data to read from. The binding is loading one vertex at a time and the position attribute (`pos`) is at an offset of `0` bytes from the beginning of this struct. here.
 
 ```java
-attributeDescriptions[1].binding(0);
-attributeDescriptions[1].location(1);
-attributeDescriptions[1].format(VkFormat.VK_FORMAT_R32G32B32_SFLOAT);
-attributeDescriptions[1].offset(Float.BYTES * 2);
+colorAttribute.binding(0);
+colorAttribute.location(1);
+colorAttribute.format(VkFormat.R32G32B32_SFLOAT);
+colorAttribute.offset(Float.BYTES * 2);
 ```
 
 The color attribute is described in much the same way.
@@ -128,8 +130,8 @@ var bindingDescription = getBindingDescription(arena);
 var attributeDescription = getAttributeDescriptions(arena);
 vertexInputInfo.vertexBindingDescriptionCount(1);
 vertexInputInfo.pVertexBindingDescriptions(bindingDescription);
-vertexInputInfo.vertexAttributeDescriptionCount(attributeDescription.length);
-vertexInputInfo.pVertexAttributeDescriptions(attributeDescription[0]);
+vertexInputInfo.vertexAttributeDescriptionCount((int) attributeDescription.size());
+vertexInputInfo.pVertexAttributeDescriptions(attributeDescription);
 ```
 
 The pipeline is now ready to accept vertex data in the format of the `vertices` container and pass it on to our vertex shader. If you run the program now with validation layers enabled, you'll see that it complains that there is no vertex buffer bound to the binding. The next step is to create a vertex buffer and move the vertex data to it so the GPU is able to access it.
