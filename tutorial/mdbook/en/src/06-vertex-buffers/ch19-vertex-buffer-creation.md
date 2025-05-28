@@ -34,20 +34,20 @@ try (var arena = Arena.ofConfined()) {
 The first field of the struct is `size`, which specifies the size of the buffer in bytes. Calculating the byte size of the vertex data is straightforward with the `size` method of the `FloatBuffer`.
 
 ```java
-bufferInfo.usage(VkBufferUsageFlags.VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
+bufferInfo.usage(VkBufferUsageFlags.VERTEX_BUFFER);
 ```
 
 The second field is `usage`, which indicates for which purposes the data in the buffer is going to be used. It is possible to specify multiple purposes using a bitwise or. Our use case will be a vertex buffer, we'll look at other types of usage in future chapters.
 
 ```java
-bufferInfo.sharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
+bufferInfo.sharingMode(VkSharingMode.EXCLUSIVE);
 ```
 
 Just like the images in the swap chain, buffers can also be owned by a specific queue family or be shared between multiple at the same time. The buffer will only be used from the graphics queue, so we can stick to exclusive access.
 
 The `flags` field is used to configure sparse buffer memory, which is not relevant right now. We'll leave it at the default value of `0`.
 
-We can now create the buffer with `vkCreateBuffer`. Define a class member to hold the buffer handle and call it `vertexBuffer`.
+We can now create the buffer with `VkDeviceCommands::createBuffer`. Define a class member to hold the buffer handle and call it `vertexBuffer`.
 
 ```java
 private VkBuffer vertexBuffer;
@@ -58,12 +58,12 @@ private void createVertexBuffer() {
     try (var arena = Arena.ofConfined()) {
         var bufferInfo = VkBufferCreateInfo.allocate(arena);
         bufferInfo.size(VERTICES.length * Float.BYTES);
-        bufferInfo.usage(VkBufferUsageFlags.VK_BUFFER_USAGE_VERTEX_BUFFER_BIT);
-        bufferInfo.sharingMode(VkSharingMode.VK_SHARING_MODE_EXCLUSIVE);
+        bufferInfo.usage(VkBufferUsageFlags.VERTEX_BUFFER);
+        bufferInfo.sharingMode(VkSharingMode.EXCLUSIVE);
 
-        var pBuffer = VkBuffer.Buffer.allocate(arena);
-        var result = deviceCommands.vkCreateBuffer(device, bufferInfo, null, pBuffer);
-        if (result != VkResult.VK_SUCCESS) {
+        var pBuffer = VkBuffer.Ptr.allocate(arena);
+        var result = deviceCommands.createBuffer(device, bufferInfo, null, pBuffer);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to create vertex buffer, vulkan error code: " + VkResult.explain(result));
         }
 
@@ -78,18 +78,18 @@ The buffer should be available for use in rendering commands until the end of th
 private void cleanup() {
     // ...
     cleanupSwapchain();
-    deviceCommands.vkDestroyBuffer(device, vertexBuffer, null);
+    deviceCommands.destroyBuffer(device, vertexBuffer, null);
     // ...
 }
 ```
 
-## Memory requriements
+## Memory requirements
 
-The buffer has been created, but it doesn't actually have any memory assigned to it yet. The first step of allocating memory for the buffer is to query its memory requirements using the aptly named `vkGetBufferMemoryRequirements` function.
+The buffer has been created, but it doesn't actually have any memory assigned to it yet. The first step of allocating memory for the buffer is to query its memory requirements using the aptly named `VkDeviceCommands::getBufferMemoryRequirements` function.
 
 ```java
 var memRequirements = VkMemoryRequirements.allocate(arena);
-deviceCommands.vkGetBufferMemoryRequirements(device, vertexBuffer, memRequirements);
+deviceCommands.getBufferMemoryRequirements(device, vertexBuffer, memRequirements);
 ```
 
 The `VkMemoryRequirements` struct has three fields:
@@ -102,11 +102,10 @@ Graphics cards can offer different types of memory to allocate from. Each type o
 
 ```java
 private int findMemoryType(int typeFilter, @enumtype(VkMemoryPropertyFlags.class) int properties) {
-
 }
 ```
 
-First we need to query info about the available types of memory using `vkGetPhysicalDeviceMemoryProperties`.
+First we need to query info about the available types of memory using `VkInstanceCommands::getPhysicalDeviceMemoryProperties`.
 
 ```java
 try (var arena = Arena.ofConfined()) {
@@ -131,18 +130,18 @@ throw new RuntimeException("Failed to find suitable memory type");
 
 The `typeFilter` parameter will be used to specify the bit field of memory types that are suitable. That means that we can find the index of a suitable memory type by simply iterating over them and checking if the corresponding bit is set to `1`.
 
-However, we're not just interested in a memory type that is suitable for the vertex buffer. We also need to be able to write our vertex data to that memory. The `memoryTypes` array consists of `VkMemoryType` structs that specify the heap and properties of each type of memory. The properties define special features of the memory, like being able to map it so we can write to it from the CPU. This property is indicated with `VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT`, but we also need to use the `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` property. We'll see why when we map the memory.
+However, we're not just interested in a memory type that is suitable for the vertex buffer. We also need to be able to write our vertex data to that memory. The `memoryTypes` array consists of `VkMemoryType` structs that specify the heap and properties of each type of memory. The properties define special features of the memory, like being able to map it so we can write to it from the CPU. This property is indicated with `VkMemoryPropertyFlags.HOST_VISIBLE`, but we also need to use the `VkMemoryPropertyFlags.HOST_COHERENT` property. We'll see why when we map the memory.
 
 ```java
 for (int i = 0; i < memProperties.memoryTypeCount(); i++) {
     if ((typeFilter & (1 << i)) != 0 &&
-            (memProperties.memoryTypesAt(i).propertyFlags() & properties) == properties) {
+        (memProperties.memoryTypes().at(i).propertyFlags() & properties) == properties) {
         return i;
     }
 }
 ```
 
-We may have more than one desirable property, so we should check if the result of the bitwise AND is not just non-zero, but equal to the desired properties bit field. If there is a memory type suitable for the buffer that also has all of the properties we need, then we return its index, otherwise we throw an exception.
+We may have more than one desirable property, so we should check if the result of the bitwise AND is not just non-zero, but equal to the desired properties bit field. If there is a memory type suitable for the buffer that also has all the properties we need, then we return its index, otherwise we throw an exception.
 
 ## Memory allocation
 
@@ -153,30 +152,30 @@ var allocInfo = VkMemoryAllocateInfo.allocate(arena);
 allocInfo.allocationSize(memRequirements.size());
 allocInfo.memoryTypeIndex(findMemoryType(
         memRequirements.memoryTypeBits(),
-        VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT
-        | VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_COHERENT_BIT
+        VkMemoryPropertyFlags.HOST_VISIBLE
+        | VkMemoryPropertyFlags.HOST_COHERENT
 ));
 ```
 
-Memory allocation is now as simple as specifying the size and type, both of which are derived from the memory requirements of the vertex buffer and the desired property. Create a class member to store the handle to the memory and allocate it with `vkAllocateMemory`.
+Memory allocation is now as simple as specifying the size and type, both of which are derived from the memory requirements of the vertex buffer and the desired property. Create a class member to store the handle to the memory and allocate it with `VkDeviceCommands::allocateMemory`.
 
 ```java
 private VkDeviceMemory vertexBufferMemory;
 
 // ...
 
-var pVertexBufferMemory = VkDeviceMemory.Buffer.allocate(arena);
-result = deviceCommands.vkAllocateMemory(device, allocInfo, null, pVertexBufferMemory);
-if (result != VkResult.VK_SUCCESS) {
+var pVertexBufferMemory = VkDeviceMemory.Ptr.allocate(arena);
+result = deviceCommands.allocateMemory(device, allocInfo, null, pVertexBufferMemory);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to allocate vertex buffer memory, vulkan error code: " + VkResult.explain(result));
 }
 vertexBufferMemory = pVertexBufferMemory.read();
 ```
 
-If memory allocation was successful, then we can now associate this memory with the buffer using `vkBindBufferMemory`:
+If memory allocation was successful, then we can now associate this memory with the buffer using `VkDeviceCommands::bindBufferMemory`:
 
 ```java
-deviceCommands.vkBindBufferMemory(device, vertexBuffer, vertexBufferMemory, 0);
+deviceCommands.bindBufferMemory(device, vertexBuffer, vertexBufferMemory, 0);
 ```
 
 The first three parameters are self-explanatory and the fourth parameter is the offset within the region of memory. Since this memory is allocated specifically for this the vertex buffer, the offset is simply `0`. If the offset is non-zero, then it is required to be divisible by `memRequirements.alignment`.
@@ -186,28 +185,26 @@ Of course, just like dynamic memory allocation in C++, the memory should be free
 ```java
 private void cleanup() {
     // ...
-    deviceCommands.vkDestroyBuffer(device, vertexBuffer, null);
-    deviceCommands.vkFreeMemory(device, vertexBufferMemory, null);
+    deviceCommands.destroyBuffer(device, vertexBuffer, null);
+    deviceCommands.freeMemory(device, vertexBufferMemory, null);
     // ...
 }
 ```
 
 ## Filling the vertex buffer
 
-It is now time to copy the vertex data to the buffer. This is done by mapping the buffer memory into CPU accessible memory with `vkMapMemory`.
+It is now time to copy the vertex data to the buffer. This is done by mapping the buffer memory into CPU accessible memory with `VkDeviceCommands::mapMemory`.
 
 ```java
-var ppData = PointerBuffer.allocate(arena);
-result = deviceCommands.vkMapMemory(device, vertexBufferMemory, 0, bufferInfo.size(), 0, ppData.segment());
-if (result != VkResult.VK_SUCCESS) {
+var ppData = PointerPtr.allocate(arena);
+result = deviceCommands.mapMemory(device, vertexBufferMemory, 0, bufferInfo.size(), 0, ppData);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to map vertex buffer memory, vulkan error code: " + VkResult.explain(result));
 }
 var pData = ppData.read().reinterpret(bufferInfo.size());
 ```
 
-> Note: in `vulkan4j` we rarely need to deal with raw `MemorySegment`s. But here `vkMapMemory` accepts a `void** ppData` parameter. `vulkan4j` binding generator doesn't know what Java type to use for `void**`, so it uses `MemorySegment` and that allows user to choose the right type of `MemorySegment` to use.
-
-This function allows us to access a region of the specified memory resource defined by an offset and size. The offset and size here are `0` and `bufferInfo.size`, respectively. It is also possible to specify the special value `VK_WHOLE_SIZE` to map all the memory. The second to last parameter can be used to specify flags, but there aren't any available yet in the current API. It must be set to the value `0`. The last parameter specifies the output for the pointer to the mapped memory.
+This function allows us to access a region of the specified memory resource defined by an offset and size. The offset and size here are `0` and `bufferInfo.size`, respectively. It is also possible to specify the special value `VkConstants.WHOLE_SIZE` to map all the memory. The second to last parameter can be used to specify flags, but there aren't any available yet in the current API. It must be set to the value `0`. The last parameter specifies the output for the pointer to the mapped memory.
 
 ```java
 pData.copyFrom(MemorySegment.ofArray(VERTICES));
@@ -216,8 +213,8 @@ deviceCommands.vkUnmapMemory(device, vertexBufferMemory);
 
 You can now simply use `MemorySegment.copyFrom` to copy the vertex data to mapped memory and unmap it again using `vkUnmapMemory`. Unfortunately the driver may not immediately copy the data into the buffer memory, for example because of caching. It is also possible that writes to the buffer are not visible in the mapped memory yet. There are two ways to deal with that problem: 
 
-- Use a memory heap that is host coherent, indicated with `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT`
-- Call `vkFlushMappedMemoryRanges` after writing to the mapped memory, and call `vkInvalidateMappedMemoryRanges` before reading from the mapped memory
+- Use a memory heap that is host coherent, indicated with `VkMemoryPropertyFlags.HOST_COHERENT`
+- Call `VkDeviceCommands::flushMappedMemoryRanges` after writing to the mapped memory, and call `VkDeviceCommands::invalidateMappedMemoryRanges` before reading from the mapped memory
 
 We went for the first approach, which ensures that the mapped memory always matches the contents of the allocated memory. Do keep in mind that this may lead to slightly worse performance than explicit flushing, but we'll see why that does not matter in the next chapter.
 
@@ -228,18 +225,18 @@ All that remains now is binding the vertex buffer during rendering operations. W
 ```java
 // ...
 
-var vertexBuffers = VkBuffer.Buffer.allocate(arena);
+var vertexBuffers = VkBuffer.Ptr.allocate(arena);
 vertexBuffers.write(vertexBuffer);
-var offsets = LongBuffer.allocate(arena);
+var offsets = LongPtr.allocate(arena);
 offsets.write(0);
-deviceCommands.vkCmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
+deviceCommands.cmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
 
-deviceCommands.vkCmdDraw(commandBuffer, 3, 1, 0, 0);
+deviceCommands.cmdDraw(commandBuffer, 3, 1, 0, 0);
 
 // ...
 ```
 
-The `vkCmdBindVertexBuffers` function is used to bind vertex buffers to bindings, like the one we set up in the previous chapter. The first two parameters, besides the command buffer, specify the offset and number of bindings we're going to specify vertex buffers for. The last two parameters specify the array of vertex buffers to bind and the byte offsets to start reading vertex data from.
+The `VkDeviceCommands::cmdBindVertexBuffers` function is used to bind vertex buffers to bindings, like the one we set up in the previous chapter. The first two parameters, besides the command buffer, specify the offset and number of bindings we're going to specify vertex buffers for. The last two parameters specify the array of vertex buffers to bind and the byte offsets to start reading vertex data from.
 
 Now run the program and you should see the familiar triangle again:
 
