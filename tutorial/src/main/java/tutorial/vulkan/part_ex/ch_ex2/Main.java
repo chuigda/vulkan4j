@@ -310,10 +310,14 @@ class Application {
                 deviceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
             }
 
-            deviceCreateInfo.enabledExtensionCount(2);
-            var ppEnabledExtensionNames = PointerPtr.allocate(arena, 2);
+            deviceCreateInfo.enabledExtensionCount(6);
+            var ppEnabledExtensionNames = PointerPtr.allocate(arena, 6);
             ppEnabledExtensionNames.write(0, BytePtr.allocateString(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME));
             ppEnabledExtensionNames.write(1, BytePtr.allocateString(arena, VkConstants.KHR_DYNAMIC_RENDERING_EXTENSION_NAME));
+            ppEnabledExtensionNames.write(2, BytePtr.allocateString(arena, VkConstants.KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME));
+            ppEnabledExtensionNames.write(3, BytePtr.allocateString(arena, VkConstants.KHR_CREATE_RENDERPASS_2_EXTENSION_NAME));
+            ppEnabledExtensionNames.write(4, BytePtr.allocateString(arena, VkConstants.KHR_MULTIVIEW_EXTENSION_NAME));
+            ppEnabledExtensionNames.write(5, BytePtr.allocateString(arena, VkConstants.KHR_MAINTENANCE_2_EXTENSION_NAME));
             deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 
             var dynamicRenderingFeature = VkPhysicalDeviceDynamicRenderingFeatures.allocate(arena);
@@ -1293,18 +1297,24 @@ class Application {
 
             var glfwExtensionCount = pGLFWExtensionCount.read();
             glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
+
+            PointerPtr extensions;
             if (!ENABLE_VALIDATION_LAYERS) {
-                return glfwExtensions;
+                extensions = PointerPtr.allocate(arena, glfwExtensionCount + 1);
             }
             else {
-                var extensions = PointerPtr.allocate(arena, glfwExtensionCount + 1);
-                for (int i = 0; i < glfwExtensionCount; i++) {
-                    extensions.write(i, glfwExtensions.read(i));
-                }
-
-                extensions.write(glfwExtensionCount, BytePtr.allocateString(arena, VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME));
-                return extensions;
+                extensions = PointerPtr.allocate(arena, glfwExtensionCount + 2);
             }
+
+            for (int i = 0; i < glfwExtensionCount; i++) {
+                extensions.write(i, glfwExtensions.read(i));
+            }
+
+            extensions.write(glfwExtensionCount, BytePtr.allocateString(arena, VkConstants.KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME));
+            if (ENABLE_VALIDATION_LAYERS) {
+                extensions.write(glfwExtensionCount + 1, BytePtr.allocateString(arena, VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME));
+            }
+            return extensions;
         }
     }
 

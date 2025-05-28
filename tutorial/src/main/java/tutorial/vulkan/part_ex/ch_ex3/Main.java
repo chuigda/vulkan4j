@@ -142,11 +142,7 @@ class Application {
         vma.destroyBuffer(vmaAllocator, indexBuffer, indexBufferAllocation);
         deviceCommands.destroyPipeline(device, graphicsPipeline, null);
         deviceCommands.destroyPipelineLayout(device, pipelineLayout, null);
-        for (long i = 0; i < uniformBuffers.size(); i++) {
-            var uniformBuffer = uniformBuffers.read(i);
-            var allocation = uniformBuffersAllocations.read(i);
-            vma.destroyBuffer(vmaAllocator, uniformBuffer, allocation);
-        }
+        vma.destroyBuffer(vmaAllocator, uniformBuffer, uniformBufferAllocation);
         deviceCommands.destroyDescriptorPool(device, descriptorPool, null);
         deviceCommands.destroyDescriptorSetLayout(device, descriptorSetLayout, null);
         vma.destroyAllocator(vmaAllocator);
@@ -310,10 +306,14 @@ class Application {
                 deviceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
             }
 
-            deviceCreateInfo.enabledExtensionCount(2);
-            var ppEnabledExtensionNames = PointerPtr.allocate(arena, 2);
+            deviceCreateInfo.enabledExtensionCount(6);
+            var ppEnabledExtensionNames = PointerPtr.allocate(arena, 6);
             ppEnabledExtensionNames.write(0, BytePtr.allocateString(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME));
             ppEnabledExtensionNames.write(1, BytePtr.allocateString(arena, VkConstants.KHR_DYNAMIC_RENDERING_EXTENSION_NAME));
+            ppEnabledExtensionNames.write(2, BytePtr.allocateString(arena, VkConstants.KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME));
+            ppEnabledExtensionNames.write(3, BytePtr.allocateString(arena, VkConstants.KHR_CREATE_RENDERPASS_2_EXTENSION_NAME));
+            ppEnabledExtensionNames.write(4, BytePtr.allocateString(arena, VkConstants.KHR_MULTIVIEW_EXTENSION_NAME));
+            ppEnabledExtensionNames.write(5, BytePtr.allocateString(arena, VkConstants.KHR_MAINTENANCE_2_EXTENSION_NAME));
             deviceCreateInfo.ppEnabledExtensionNames(ppEnabledExtensionNames);
 
             var dynamicRenderingFeature = VkPhysicalDeviceDynamicRenderingFeatures.allocate(arena);
@@ -478,7 +478,7 @@ class Application {
 
     private void createGraphicsPipeline() {
         try (var arena = Arena.ofConfined()) {
-            var vertShaderCode = readShaderFile("/shader/ch27.vert.spv", arena);
+            var vertShaderCode = readShaderFile("/shader/ch_ex3.vert.spv", arena);
             var fragShaderCode = readShaderFile("/shader/ch26.frag.spv", arena);
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
@@ -553,6 +553,12 @@ class Application {
             colorBlending.pAttachments(colorBlendAttachment);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
+            var pushConstantRange = VkPushConstantRange.allocate(arena);
+            pushConstantRange.stageFlags(VkShaderStageFlags.VERTEX);
+            pushConstantRange.offset(0);
+            pushConstantRange.size(16 * Float.BYTES);
+            pipelineLayoutInfo.pushConstantRangeCount(1);
+            pipelineLayoutInfo.pPushConstantRanges(pushConstantRange);
             var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
             pDescriptorSetLayout.write(descriptorSetLayout);
             pipelineLayoutInfo.setLayoutCount(1);
@@ -764,24 +770,21 @@ class Application {
 
     private void createUniformBuffers() {
         var bufferSize = UniformBufferObject.bufferSize();
-        uniformBuffers = VkBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
-        uniformBuffersAllocations = VmaAllocation.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
-        uniformBuffersMapped = new FloatPtr[MAX_FRAMES_IN_FLIGHT];
 
         try (var arena = Arena.ofConfined()) {
             var allocationInfo = VmaAllocationInfo.allocate(arena);
-            for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-                var pair = createBuffer(
-                        bufferSize * Float.BYTES,
-                        VkBufferUsageFlags.UNIFORM_BUFFER,
-                        VmaAllocationCreateFlags.MAPPED | VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
-                        allocationInfo
-                );
-                uniformBuffers.write(i, pair.first);
-                uniformBuffersAllocations.write(i, pair.second);
-                uniformBuffersMapped[i] = new FloatPtr(allocationInfo.pMappedData()).reinterpret(bufferSize);
-            }
+            var pair = createBuffer(
+                    bufferSize * Float.BYTES,
+                    VkBufferUsageFlags.UNIFORM_BUFFER,
+                    VmaAllocationCreateFlags.MAPPED | VmaAllocationCreateFlags.HOST_ACCESS_RANDOM,
+                    allocationInfo
+            );
+            uniformBuffer = pair.first;
+            uniformBufferAllocation = pair.second;
+            uniformBufferMapped = new FloatPtr(allocationInfo.pMappedData()).reinterpret(bufferSize);
         }
+
+        updateUniformBuffer();
     }
 
     private void createDescriptorPool() {
@@ -826,7 +829,7 @@ class Application {
 
             for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++){
                 var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
-                bufferInfo.buffer(uniformBuffers.read(i));
+                bufferInfo.buffer(uniformBuffer);
                 bufferInfo.offset(0);
                 bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
 
@@ -1047,7 +1050,6 @@ class Application {
 
             deviceCommands.resetCommandBuffer(commandBuffer, 0);
             recordCommandBuffer(commandBuffer, imageIndex);
-            updateUniformBuffer();
 
             var submitInfo = VkSubmitInfo.allocate(arena);
             submitInfo.waitSemaphoreCount(1);
@@ -1185,6 +1187,19 @@ class Application {
                     null
             );
 
+            var time = (System.currentTimeMillis() - startTime) / 1000.0f;
+            var model = new Matrix4f().rotate((float) (Math.toRadians(90.0f) * time), 0.0f, 0.0f, 1.0f);
+            var pushConstantBuffer = FloatPtr.allocate(arena, 16);
+            model.get(pushConstantBuffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            deviceCommands.cmdPushConstants(
+                    commandBuffer,
+                    pipelineLayout,
+                    VkShaderStageFlags.VERTEX,
+                    0,
+                    16 * Float.BYTES,
+                    pushConstantBuffer.segment()
+            );
+
             deviceCommands.cmdDrawIndexed(commandBuffer, indices.length, 1, 0, 0, 0);
 
             deviceCommands.cmdEndRenderingKHR(commandBuffer);
@@ -1218,8 +1233,6 @@ class Application {
     }
 
     private void updateUniformBuffer() {
-        var time = (System.currentTimeMillis() - startTime) / 1000.0f;
-        var model = new Matrix4f().rotate((float) (Math.toRadians(90.0f) * time), 0.0f, 0.0f, 1.0f);
         var view = new Matrix4f().lookAt(
                 2.0f, 2.0f, 2.0f,
                 0.0f, 0.0f, 0.0f,
@@ -1233,7 +1246,7 @@ class Application {
                 true
         );
         proj.m11(-proj.m11());
-        new UniformBufferObject(model, view, proj).writeToFloatPtr(uniformBuffersMapped[currentFrame]);
+        new UniformBufferObject(view, proj).writeToFloatPtr(uniformBufferMapped);
     }
 
     private void recreateSwapchain() {
@@ -1256,6 +1269,8 @@ class Application {
         createColorResources();
         createDepthResources();
         createSwapchainSyncObjects();
+
+        updateUniformBuffer();
     }
 
     private boolean checkValidationLayerSupport() {
@@ -1293,18 +1308,24 @@ class Application {
 
             var glfwExtensionCount = pGLFWExtensionCount.read();
             glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
+
+            PointerPtr extensions;
             if (!ENABLE_VALIDATION_LAYERS) {
-                return glfwExtensions;
+                extensions = PointerPtr.allocate(arena, glfwExtensionCount + 1);
             }
             else {
-                var extensions = PointerPtr.allocate(arena, glfwExtensionCount + 1);
-                for (int i = 0; i < glfwExtensionCount; i++) {
-                    extensions.write(i, glfwExtensions.read(i));
-                }
-
-                extensions.write(glfwExtensionCount, BytePtr.allocateString(arena, VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME));
-                return extensions;
+                extensions = PointerPtr.allocate(arena, glfwExtensionCount + 2);
             }
+
+            for (int i = 0; i < glfwExtensionCount; i++) {
+                extensions.write(i, glfwExtensions.read(i));
+            }
+
+            extensions.write(glfwExtensionCount, BytePtr.allocateString(arena, VkConstants.KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME));
+            if (ENABLE_VALIDATION_LAYERS) {
+                extensions.write(glfwExtensionCount + 1, BytePtr.allocateString(arena, VkConstants.EXT_DEBUG_UTILS_EXTENSION_NAME));
+            }
+            return extensions;
         }
     }
 
@@ -1555,17 +1576,16 @@ class Application {
         }
     }
 
-    private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj) {
+    private record UniformBufferObject(Matrix4f view, Matrix4f proj) {
         public static int bufferSize() {
-            return 16 * 3;
+            return 16 * 2;
         }
 
         public void writeToFloatPtr(FloatPtr buffer) {
             assert buffer.size() >= bufferSize();
 
-            model.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
-            view.get(buffer.offset(16).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
-            proj.get(buffer.offset(32).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            view.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            proj.get(buffer.offset(16).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
         }
     }
 
@@ -2119,9 +2139,9 @@ class Application {
     private VmaAllocation vertexBufferAllocation;
     private VkBuffer indexBuffer;
     private VmaAllocation indexBufferAllocation;
-    private VkBuffer.Ptr uniformBuffers;
-    private VmaAllocation.Ptr uniformBuffersAllocations;
-    private FloatPtr[] uniformBuffersMapped;
+    private VkBuffer uniformBuffer;
+    private VmaAllocation uniformBufferAllocation;
+    private FloatPtr uniformBufferMapped;
     private VkDescriptorPool descriptorPool;
     private VkDescriptorSet.Ptr descriptorSets;
     private int textureMipLevels;
