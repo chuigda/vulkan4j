@@ -49,8 +49,8 @@
 - [Combined image sampler](08-texture-mapping/ch26-combined-image-sampler.md)
 
 # Depth buffering
-- [Depth buffering](depth-buffering/depth-buffering.md)
-- [Loading models](depth-buffering/loading-models.md)
+- [Depth buffering](09-depth-buffering/ch27-depth-buffering.md)
+- [Loading models](09-depth-buffering/ch28-loading-models.md)
 
 # Rendering quality
 - [Generating mipmaps](quality/generating-mipmaps.md)

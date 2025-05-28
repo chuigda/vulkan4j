@@ -12,55 +12,54 @@ Browse to the `createDescriptorSetLayout` function and add a `VkDescriptorSetLay
 
 ```java
 var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2);
-var uboLayoutBinding = bindings[0];
+var uboLayoutBinding = bindings.at(0);
 uboLayoutBinding.binding(0);
-uboLayoutBinding.descriptorType(VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
+uboLayoutBinding.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
 uboLayoutBinding.descriptorCount(1);
-uboLayoutBinding.stageFlags(VkShaderStageFlags.VK_SHADER_STAGE_VERTEX_BIT);
-uboLayoutBinding.pImmutableSamplers(null);
-var samplerLayoutBinding = bindings[1];
+uboLayoutBinding.stageFlags(VkShaderStageFlags.VERTEX);
+var samplerLayoutBinding = bindings.at(1);
 samplerLayoutBinding.binding(1);
 samplerLayoutBinding.descriptorCount(1);
-samplerLayoutBinding.descriptorType(VkDescriptorType.VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER);
-samplerLayoutBinding.stageFlags(VkShaderStageFlags.VK_SHADER_STAGE_FRAGMENT_BIT);
+samplerLayoutBinding.descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
+samplerLayoutBinding.stageFlags(VkShaderStageFlags.FRAGMENT);
 
 var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena);
 layoutInfo.bindingCount(2);
-layoutInfo.pBindings(bindings[0]);
+layoutInfo.pBindings(bindings);
 ```
 
 Make sure to set the `stageFlags` to indicate that we intend to use the combined image sampler descriptor in the fragment shader. That's where the color of the fragment is going to be determined. It is possible to use texture sampling in the vertex shader, for example to dynamically deform a grid of vertices by a [heightmap](https://en.wikipedia.org/wiki/Heightmap).
 
-We must also create a larger descriptor pool to make room for the allocation of the combined image sampler by adding another `VkPoolSize` of type `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` to the `VkDescriptorPoolCreateInfo`. Go to the `createDescriptorPool` function and modify it to include a `VkDescriptorPoolSize` for this descriptor:
+We must also create a larger descriptor pool to make room for the allocation of the combined image sampler by adding another `VkPoolSize` of type `VkDescriptorType.COMBINED_IMAGE_SAMPLER` to the `VkDescriptorPoolCreateInfo`. Go to the `createDescriptorPool` function and modify it to include a `VkDescriptorPoolSize` for this descriptor:
 
 ```java
 var poolSizes = VkDescriptorPoolSize.allocate(arena, 2);
-poolSizes[0].type(VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
-poolSizes[0].descriptorCount(MAX_FRAMES_IN_FLIGHT);
-poolSizes[1].type(VkDescriptorType.VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER);
-poolSizes[1].descriptorCount(MAX_FRAMES_IN_FLIGHT);
+poolSizes.at(0).type(VkDescriptorType.UNIFORM_BUFFER);
+poolSizes.at(0).descriptorCount(MAX_FRAMES_IN_FLIGHT);
+poolSizes.at(1).type(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
+poolSizes.at(1).descriptorCount(MAX_FRAMES_IN_FLIGHT);
 
 var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena);
 poolInfo.poolSizeCount(2);
-poolInfo.pPoolSizes(poolSizes[0]);
+poolInfo.pPoolSizes(poolSizes);
 poolInfo.maxSets(MAX_FRAMES_IN_FLIGHT);
 ```
 
-Inadequate descriptor pools are a good example of a problem that the validation layers will not catch: As of Vulkan 1.1, `vkAllocateDescriptorSets` may fail with the error code `VK_ERROR_POOL_OUT_OF_MEMORY` if the pool is not sufficiently large, but the driver may also try to solve the problem internally. This means that sometimes (depending on hardware, pool size and allocation size) the driver will let us get away with an allocation that exceeds the limits of our descriptor pool. Other times, `vkAllocateDescriptorSets` will fail and return `VK_ERROR_POOL_OUT_OF_MEMORY`. This can be particularly frustrating if the allocation succeeds on some machines, but fails on others.
+Inadequate descriptor pools are a good example of a problem that the validation layers will not catch: As of Vulkan 1.1, `VkDeviceComands::allocateDescriptorSets` may fail with the error code `VkResult.ERROR_POOL_OUT_OF_MEMORY` if the pool is not sufficiently large, but the driver may also try to solve the problem internally. This means that sometimes (depending on hardware, pool size and allocation size) the driver will let us get away with an allocation that exceeds the limits of our descriptor pool. Other times, `VkDeviceComands::allocateDescriptorSets` will fail and return `VkResult.ERROR_POOL_OUT_OF_MEMORY`. This can be particularly frustrating if the allocation succeeds on some machines, but fails on others.
 
-Since Vulkan shifts the responsiblity for the allocation to the driver, it is no longer a strict requirement to only allocate as many descriptors of a certain type (`VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`, etc.) as specified by the corresponding `descriptorCount` members for the creation of the descriptor pool. However, it remains best practise to do so, and in the future, `VK_LAYER_KHRONOS_validation` will warn about this type of problem if you enable Best Practice Validation.
+Since Vulkan shifts the responsibility for the allocation to the driver, it is no longer a strict requirement to only allocate as many descriptors of a certain type (`VkDescriptorType.COMBINED_IMAGE_SAMPLER`, etc.) as specified by the corresponding `descriptorCount` members for the creation of the descriptor pool. However, it remains best practise to do so, and in the future, `VK_LAYER_KHRONOS_validation` will warn about this type of problem if you enable Best Practice Validation.
 
 The final step is to bind the actual image and sampler resources to the descriptors in the descriptor set. Go to the `createDescriptorSets` function.
 
 ```java
 for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
     var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
-    bufferInfo.buffer(uniformBuffers[i]);
+    bufferInfo.buffer(uniformBuffers.read(i));
     bufferInfo.offset(0);
     bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
-
+    
     var imageInfo = VkDescriptorImageInfo.allocate(arena);
-    imageInfo.imageLayout(VkImageLayout.VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+    imageInfo.imageLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL);
     imageInfo.imageView(textureImageView);
     imageInfo.sampler(textureSampler);
     
@@ -71,24 +70,24 @@ for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
 The resources for a combined image sampler structure must be specified in a `VkDescriptorImageInfo` struct, just like the buffer resource for a uniform buffer descriptor is specified in a `VkDescriptorBufferInfo` struct. This is where the objects from the previous chapter come together.
 
 ```java
-var descriptorWrites = VkWriteDescriptorSet.allocate(arena, 2);
-descriptorWrites[0].dstSet(descriptorSets[i]);
-descriptorWrites[0].dstBinding(0);
-descriptorWrites[0].dstArrayElement(0);
-descriptorWrites[0].descriptorType(VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
-descriptorWrites[0].descriptorCount(1);
-descriptorWrites[0].pBufferInfo(bufferInfo);
-descriptorWrites[0].pImageInfo(null);
-descriptorWrites[0].pTexelBufferView(null);
+var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2);
+var descriptorWrite0 = descriptorWrite.at(0);
+descriptorWrite0.dstSet(descriptorSets.read(i));
+descriptorWrite0.dstBinding(0);
+descriptorWrite0.dstArrayElement(0);
+descriptorWrite0.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
+descriptorWrite0.descriptorCount(1);
+descriptorWrite0.pBufferInfo(bufferInfo);
 
-descriptorWrites[1].dstSet(descriptorSets[i]);
-descriptorWrites[1].dstBinding(1);
-descriptorWrites[1].dstArrayElement(0);
-descriptorWrites[1].descriptorType(VkDescriptorType.VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER);
-descriptorWrites[1].descriptorCount(1);
-descriptorWrites[1].pImageInfo(imageInfo);
+var descriptorWrite1 = descriptorWrite.at(1);
+descriptorWrite1.dstSet(descriptorSets.read(i));
+descriptorWrite1.dstBinding(1);
+descriptorWrite1.dstArrayElement(0);
+descriptorWrite1.descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
+descriptorWrite1.descriptorCount(1);
+descriptorWrite1.pImageInfo(imageInfo);
 
-deviceCommands.vkUpdateDescriptorSets(device, 2, descriptorWrites[0], 0, null);
+deviceCommands.updateDescriptorSets(device, 2, descriptorWrite, 0, null);
 ```
 
 The descriptors must be updated with this image info, just like the buffer. This time we're using the `pImageInfo` array instead of `pBufferInfo`. The descriptors are now ready to be used by the shaders!
@@ -102,27 +101,30 @@ private static VkVertexInputBindingDescription getBindingDescription(Arena arena
     var description = VkVertexInputBindingDescription.allocate(arena);
     description.binding(0);
     description.stride(Float.BYTES * 7); // 2 floats for position, 3 for color, 2 for texture coordinates
-    description.inputRate(VkVertexInputRate.VK_VERTEX_INPUT_RATE_VERTEX);
+    description.inputRate(VkVertexInputRate.VERTEX);
     return description;
 }
 
-private static VkVertexInputAttributeDescription[] getAttributeDescriptions(Arena arena) {
+private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
     var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 3);
+    var vertexAttribute = attributeDescriptions.at(0);
+    var colorAttribute = attributeDescriptions.at(1);
+    var texCoordAttribute = attributeDescriptions.at(2);
 
-    attributeDescriptions[0].binding(0);
-    attributeDescriptions[0].location(0);
-    attributeDescriptions[0].format(VkFormat.VK_FORMAT_R32G32_SFLOAT);
-    attributeDescriptions[0].offset(0);
+    vertexAttribute.binding(0);
+    vertexAttribute.location(0);
+    vertexAttribute.format(VkFormat.R32G32_SFLOAT);
+    vertexAttribute.offset(0);
 
-    attributeDescriptions[1].binding(0);
-    attributeDescriptions[1].location(1);
-    attributeDescriptions[1].format(VkFormat.VK_FORMAT_R32G32B32_SFLOAT);
-    attributeDescriptions[1].offset(Float.BYTES * 2);
+    colorAttribute.binding(0);
+    colorAttribute.location(1);
+    colorAttribute.format(VkFormat.R32G32B32_SFLOAT);
+    colorAttribute.offset(Float.BYTES * 2);
 
-    attributeDescriptions[2].binding(0);
-    attributeDescriptions[2].location(2);
-    attributeDescriptions[2].format(VkFormat.VK_FORMAT_R32G32_SFLOAT);
-    attributeDescriptions[2].offset(Float.BYTES * 5);
+    texCoordAttribute.binding(0);
+    texCoordAttribute.location(2);
+    texCoordAttribute.format(VkFormat.R32G32_SFLOAT);
+    texCoordAttribute.offset(Float.BYTES * 5);
 
     return attributeDescriptions;
 }
