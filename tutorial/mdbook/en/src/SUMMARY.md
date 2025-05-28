@@ -53,10 +53,10 @@
 - [Loading models](09-depth-buffering/ch28-loading-models.md)
 
 # Rendering quality
-- [Generating mipmaps](quality/generating-mipmaps.md)
-- [Multisampling](quality/multisampling.md)
+- [Generating mipmaps](10-quality/ch29-generating-mipmaps.md)
+- [Multisampling](10-quality/ch30-multisampling.md)
 
 # Advanced topics
-- [Vulkan memory allocator](./advanced-topics/vulkan-memory-allocator.md)
-- [Dynamic Rendering](./advanced-topics/dynamic-rendering.md)
-- [Push Constants](./advanced-topics/push-constants.md)
+- [Vulkan memory allocator](11-advanced-topics/ch31-vulkan-memory-allocator.md)
+- [Dynamic Rendering](11-advanced-topics/ch32-dynamic-rendering.md)
+- [Push Constants](11-advanced-topics/ch33-push-constants.md)
