@@ -19,6 +19,7 @@ import club.doki7.vulkan.command.*;
 import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
+import org.joml.Matrix4f;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
@@ -26,6 +27,7 @@ import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
+import java.nio.ByteOrder;
 import java.util.Objects;
 
 class Application {
@@ -78,11 +80,13 @@ class Application {
         createSwapchain();
         createImageViews();
         createRenderPass();
+        createDescriptorSetLayout();
         createGraphicsPipeline();
         createFramebuffers();
         createCommandPool();
         createVertexBuffer();
         createIndexBuffer();
+        createUniformBuffers();
         createCommandBuffers();
         createSyncObjects();
     }
@@ -111,6 +115,13 @@ class Application {
         deviceCommands.freeMemory(device, indexBufferMemory, null);
         deviceCommands.destroyPipeline(device, graphicsPipeline, null);
         deviceCommands.destroyPipelineLayout(device, pipelineLayout, null);
+        for (var uniformBuffer : uniformBuffers) {
+            deviceCommands.destroyBuffer(device, uniformBuffer, null);
+        }
+        for (var uniformBufferMemory : uniformBuffersMemory) {
+            deviceCommands.freeMemory(device, uniformBufferMemory, null);
+        }
+        deviceCommands.destroyDescriptorSetLayout(device, descriptorSetLayout, null);
         deviceCommands.destroyRenderPass(device, renderPass, null);
         deviceCommands.destroyDevice(device, null);
         instanceCommands.destroySurfaceKHR(instance, surface, null);
@@ -442,9 +453,30 @@ class Application {
         }
     }
 
+    private void createDescriptorSetLayout() {
+        try (var arena = Arena.ofConfined()) {
+            var uboLayoutBinding = VkDescriptorSetLayoutBinding.allocate(arena);
+            uboLayoutBinding.binding(0);
+            uboLayoutBinding.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
+            uboLayoutBinding.descriptorCount(1);
+            uboLayoutBinding.stageFlags(VkShaderStageFlags.VERTEX);
+
+            var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena);
+            layoutInfo.bindingCount(1);
+            layoutInfo.pBindings(uboLayoutBinding);
+
+            var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
+            var result = deviceCommands.createDescriptorSetLayout(device, layoutInfo, null, pDescriptorSetLayout);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to create descriptor set layout, vulkan error code: " + VkResult.explain(result));
+            }
+            descriptorSetLayout = Objects.requireNonNull(pDescriptorSetLayout.read());
+        }
+    }
+
     private void createGraphicsPipeline() {
         try (var arena = Arena.ofConfined()) {
-            var vertShaderCode = readShaderFile("/shader/ch18.vert.spv", arena);
+            var vertShaderCode = readShaderFile("/shader/ch22.vert.spv", arena);
             var fragShaderCode = readShaderFile("/shader/frag.spv", arena);
             var vertexShaderModule = createShaderModule(vertShaderCode);
             var fragmentShaderModule = createShaderModule(fragShaderCode);
@@ -511,6 +543,10 @@ class Application {
             colorBlending.pAttachments(colorBlendAttachment);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
+            var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
+            pDescriptorSetLayout.write(descriptorSetLayout);
+            pipelineLayoutInfo.setLayoutCount(1);
+            pipelineLayoutInfo.pSetLayouts(pDescriptorSetLayout);
             var pPipelineLayout = VkPipelineLayout.Ptr.allocate(arena);
             var result = deviceCommands.createPipelineLayout(device, pipelineLayoutInfo, null, pPipelineLayout);
             if (result != VkResult.SUCCESS) {
@@ -660,6 +696,41 @@ class Application {
         }
     }
 
+    private void createUniformBuffers() {
+        var bufferSize = UniformBufferObject.bufferSize();
+        uniformBuffers = VkBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+        uniformBuffersMemory = VkDeviceMemory.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+        uniformBuffersMapped = new FloatPtr[MAX_FRAMES_IN_FLIGHT];
+
+        try (var arena = Arena.ofConfined()) {
+            var pMappedMemory = PointerPtr.allocate(arena);
+
+            for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+                var pair = createBuffer(
+                        bufferSize * Float.BYTES,
+                        VkBufferUsageFlags.UNIFORM_BUFFER,
+                        VkMemoryPropertyFlags.HOST_VISIBLE | VkMemoryPropertyFlags.HOST_COHERENT
+                );
+                uniformBuffers.write(i, pair.first);
+                uniformBuffersMemory.write(i, pair.second);
+
+                var result = deviceCommands.mapMemory(
+                        device,
+                        uniformBuffersMemory.read(i),
+                        0,
+                        (long) bufferSize * Float.BYTES,
+                        0,
+                        pMappedMemory
+                );
+                if (result != VkResult.SUCCESS) {
+                    throw new RuntimeException("Failed to map uniform buffer memory, vulkan error code: " + VkResult.explain(result));
+                }
+
+                uniformBuffersMapped[i] = new FloatPtr(pMappedMemory.read()).reinterpret(bufferSize);
+            }
+        }
+    }
+
     private void createCommandBuffers() {
         pCommandBuffers = VkCommandBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
 
@@ -735,7 +806,8 @@ class Application {
             var pRenderFinishedSemaphore = pRenderFinishedSemaphores.offset(imageIndex);
 
             deviceCommands.resetCommandBuffer(commandBuffer, 0);
-            recordCommandBuffer(commandBuffer, imageIndex);
+            recordCommandBuffer(commandBuffer, currentFrame);
+            updateUniformBuffer();
 
             var submitInfo = VkSubmitInfo.allocate(arena);
             submitInfo.waitSemaphoreCount(1);
@@ -837,6 +909,24 @@ class Application {
                 throw new RuntimeException("Failed to end recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
         }
+    }
+
+    private void updateUniformBuffer() {
+        var time = (System.currentTimeMillis() - startTime) / 1000.0f;
+        var model = new Matrix4f().rotate((float) (Math.toRadians(90.0f) * time), 0.0f, 0.0f, 1.0f);
+        var view = new Matrix4f().lookAt(
+                2.0f, 2.0f, 2.0f,
+                0.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, 1.0f
+        );
+        var proj = new Matrix4f().perspective(
+                (float) Math.toRadians(45.0f),
+                swapChainExtent.width() / (float) swapChainExtent.height(),
+                0.1f,
+                10.0f,
+                true
+        );
+        new UniformBufferObject(model, view, proj).writeToFloatPtr(uniformBuffersMapped[currentFrame]);
     }
 
     private void recreateSwapchain() {
@@ -1175,6 +1265,20 @@ class Application {
         }
     }
 
+    private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj) {
+        public static int bufferSize() {
+            return 16 * 3;
+        }
+
+        public void writeToFloatPtr(FloatPtr buffer) {
+            assert buffer.size() >= bufferSize();
+
+            model.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            view.get(buffer.offset(16).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+            proj.get(buffer.offset(32).segment().asByteBuffer().order(ByteOrder.nativeOrder()));
+        }
+    }
+
     private void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, int size) {
         try (var arena = Arena.ofConfined()) {
             var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
@@ -1305,6 +1409,7 @@ class Application {
     private VkExtent2D swapChainExtent;
     private VkImageView.Ptr swapChainImageViews;
     private VkRenderPass renderPass;
+    private VkDescriptorSetLayout descriptorSetLayout;
     private VkPipelineLayout pipelineLayout;
     private VkPipeline graphicsPipeline;
     private VkFramebuffer.Ptr swapChainFramebuffers;
@@ -1319,6 +1424,9 @@ class Application {
     private VkDeviceMemory vertexBufferMemory;
     private VkBuffer indexBuffer;
     private VkDeviceMemory indexBufferMemory;
+    private VkBuffer.Ptr uniformBuffers;
+    private VkDeviceMemory.Ptr uniformBuffersMemory;
+    private FloatPtr[] uniformBuffersMapped;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
@@ -1355,6 +1463,7 @@ class Application {
             0, 1, 2,
             2, 3, 0
     };
+    private static final long startTime = System.currentTimeMillis();
 }
 
 public class Main {

@@ -40,8 +40,8 @@
 - [Index buffer](06-vertex-buffers/ch21-index-buffer.md)
 
 # Uniform buffers
-- [Descriptor set layout and buffer](uniform-buffers/descriptor-set-layout-and-buffer.md)
-- [Descriptor pool and sets](uniform-buffers/descriptor-pool-and-sets.md)
+- [Descriptor set layout and buffer](07-uniform-buffers/ch22-descriptor-set-layout-and-buffer.md)
+- [Descriptor pool and sets](07-uniform-buffers/ch23-descriptor-pool-and-sets.md)
 
 # Texture mapping
 - [Images](texture-mapping/images.md)

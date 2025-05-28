@@ -81,7 +81,7 @@ private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj)
         return 16 * 3;
     }
 
-    public void writeToBuffer(FloatBuffer buffer) {
+    public void writeToFloatPtr(FloatPtr buffer) {
         assert buffer.size() >= bufferSize();
 
         model.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
@@ -113,7 +113,7 @@ Every binding needs to be described through a `VkDescriptorSetLayoutBinding` str
 try (var arena = Arena.ofConfined()) {
     var uboLayoutBinding = VkDescriptorSetLayoutBinding.allocate(arena);
     uboLayoutBinding.binding(0);
-    uboLayoutBinding.descriptorType(VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
+    uboLayoutBinding.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
     uboLayoutBinding.descriptorCount(1);
 }
 ```
@@ -121,10 +121,10 @@ try (var arena = Arena.ofConfined()) {
 The first two fields specify the `binding` used in the shader and the type of descriptor, which is a uniform buffer object. It is possible for the shader variable to represent an array of uniform buffer objects, and `descriptorCount` specifies the number of values in the array. This could be used to specify a transformation for each of the bones in a skeleton for skeletal animation, for example. Our MVP transformation is in a single uniform buffer object, so we're using a `descriptorCount` of `1`.
 
 ```java
-uboLayoutBinding.stageFlags(VkShaderStageFlags.VK_SHADER_STAGE_VERTEX_BIT);
+uboLayoutBinding.stageFlags(VkShaderStageFlags.VERTEX);
 ```
 
-We also need to specify in which shader stages the descriptor is going to be referenced. The `stageFlags` field can be a combination of `VkShaderStageFlagBits` values or the value `VK_SHADER_STAGE_ALL_GRAPHICS`. In our case, we're only referencing the descriptor from the vertex shader.
+We also need to specify in which shader stages the descriptor is going to be referenced. The `stageFlags` field can be a combination of `VkShaderStageFlagBits` values or the value `VkShaderStageFlags.ALL_GRAPHICS`. In our case, we're only referencing the descriptor from the vertex shader.
 
 ```java
 uboLayoutBinding.pImmutableSamplers(null); // Optional
@@ -146,19 +146,19 @@ var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena);
 layoutInfo.bindingCount(1);
 layoutInfo.pBindings(uboLayoutBinding);
 
-var pDescriptorSetLayout = VkDescriptorSetLayout.Buffer.allocate(arena);
-var result = deviceCommands.vkCreateDescriptorSetLayout(device, layoutInfo, null, pDescriptorSetLayout);
-if (result != VkResult.VK_SUCCESS) {
+var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
+var result = deviceCommands.createDescriptorSetLayout(device, layoutInfo, null, pDescriptorSetLayout);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create descriptor set layout, vulkan error code: " + VkResult.explain(result));
 }
-descriptorSetLayout = pDescriptorSetLayout.read();
+descriptorSetLayout = Objects.requireNonNull(pDescriptorSetLayout.read());
 ```
 
 We need to specify the descriptor set layout during pipeline creation to tell Vulkan which descriptors the shaders will be using. Descriptor set layouts are specified in the pipeline layout object. Modify the `VkPipelineLayoutCreateInfo` to reference the layout object:
 
 ```java
-var pDescriptorSetLayout = VkDescriptorSetLayout.Buffer.allocate(arena);
-pDescriptorSetLayout.write(0, descriptorSetLayout);
+var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
+pDescriptorSetLayout.write(descriptorSetLayout);
 pipelineLayoutInfo.setLayoutCount(1);
 pipelineLayoutInfo.pSetLayouts(pDescriptorSetLayout);
 ```
@@ -170,7 +170,7 @@ The descriptor set layout should stick around while we may create new graphics p
 ```java
 private void cleanup() {
     // ...
-    deviceCommands.vkDestroyDescriptorSetLayout(device, descriptorSetLayout, null);
+    deviceCommands.destroyDescriptorSetLayout(device, descriptorSetLayout, null);
     // ...
 }
 ```
@@ -184,9 +184,9 @@ We should have multiple buffers, because multiple frames may be in flight at the
 To that end, add new class members for `uniformBuffers`, and `uniformBuffersMemory`:
 
 ```java
-private VkBuffer[] uniformBuffers;
-private VkDeviceMemory[] uniformBuffersMemory;
-private FloatBuffer[] uniformBuffersMapped;
+private VkBuffer.Ptr uniformBuffers;
+private VkDeviceMemory.Ptr uniformBuffersMemory;
+private FloatPtr[] uniformBuffersMapped;
 ```
 
 Similarly, create a new function `createUniformBuffers` that is called after `createIndexBuffer` and allocates the buffers:
@@ -204,36 +204,35 @@ private void initVulkan() {
 
 private void createUniformBuffers() {
     var bufferSize = UniformBufferObject.bufferSize();
-    uniformBuffers = new VkBuffer[MAX_FRAMES_IN_FLIGHT];
-    uniformBuffersMemory = new VkDeviceMemory[MAX_FRAMES_IN_FLIGHT];
-    uniformBuffersMapped = new FloatBuffer[MAX_FRAMES_IN_FLIGHT];
+    uniformBuffers = VkBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+    uniformBuffersMemory = VkDeviceMemory.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+    uniformBuffersMapped = new FloatPtr[MAX_FRAMES_IN_FLIGHT];
 
     try (var arena = Arena.ofConfined()) {
-        var pMappedMemory = PointerBuffer.allocate(arena);
+        var pMappedMemory = PointerPtr.allocate(arena);
 
         for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
             var pair = createBuffer(
                     bufferSize * Float.BYTES,
-                    VkBufferUsageFlags.VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
-                    VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT
-                            | VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_COHERENT_BIT
+                    VkBufferUsageFlags.UNIFORM_BUFFER,
+                    VkMemoryPropertyFlags.HOST_VISIBLE | VkMemoryPropertyFlags.HOST_COHERENT
             );
-            uniformBuffers[i] = pair.first;
-            uniformBuffersMemory[i] = pair.second;
+            uniformBuffers.write(i, pair.first);
+            uniformBuffersMemory.write(i, pair.second);
 
-            var result = deviceCommands.vkMapMemory(
+            var result = deviceCommands.mapMemory(
                     device,
-                    uniformBuffersMemory[i],
+                    uniformBuffersMemory.read(i),
                     0,
                     (long) bufferSize * Float.BYTES,
                     0,
-                    pMappedMemory.segment()
+                    pMappedMemory
             );
-            if (result != VkResult.VK_SUCCESS) {
+            if (result != VkResult.SUCCESS) {
                 throw new RuntimeException("Failed to map uniform buffer memory, vulkan error code: " + VkResult.explain(result));
             }
 
-            uniformBuffersMapped[i] = new FloatBuffer(pMappedMemory.read()).reinterpret(bufferSize);
+            uniformBuffersMapped[i] = new FloatPtr(pMappedMemory.read()).reinterpret(bufferSize);
         }
     }
 }
@@ -247,9 +246,11 @@ The uniform data will be used for all draw calls, so the buffer containing it sh
 ```java
 private void cleanup() {
     // ...
-    for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-        deviceCommands.vkDestroyBuffer(device, uniformBuffers[i], null);
-        deviceCommands.vkFreeMemory(device, uniformBuffersMemory[i], null);
+    for (var uniformBuffer : uniformBuffers) {
+        deviceCommands.destroyBuffer(device, uniformBuffer, null);
+    }
+    for (var uniformBufferMemory : uniformBuffersMemory) {
+        deviceCommands.freeMemory(device, uniformBufferMemory, null);
     }
     deviceCommands.vkDestroyDescriptorSetLayout(device, descriptorSetLayout, null);
     // ...
@@ -263,7 +264,7 @@ Create a new function `updateUniformBuffer` and add a call to it from the `drawF
 ```java
 private void drawFrame() {
     // ...
-    updateUniformBuffer(currentImage);
+    updateUniformBuffer();
     // ...
     var submitInfo = VkSubmitInfo.allocate(arena);
     // ...
