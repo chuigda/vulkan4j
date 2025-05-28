@@ -597,7 +597,7 @@ class Application {
                 throw new RuntimeException("Failed to create vertex buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            vertexBuffer = pBuffer.read();
+            vertexBuffer = Objects.requireNonNull(pBuffer.read());
 
             var memRequirements = VkMemoryRequirements.allocate(arena);
             deviceCommands.getBufferMemoryRequirements(device, vertexBuffer, memRequirements);
@@ -615,7 +615,7 @@ class Application {
             if (result != VkResult.SUCCESS) {
                 throw new RuntimeException("Failed to allocate vertex buffer memory, vulkan error code: " + VkResult.explain(result));
             }
-            vertexBufferMemory = pVertexBufferMemory.read();
+            vertexBufferMemory = Objects.requireNonNull(pVertexBufferMemory.read());
             deviceCommands.bindBufferMemory(device, vertexBuffer, vertexBufferMemory, 0);
 
             var ppData = PointerPtr.allocate(arena);

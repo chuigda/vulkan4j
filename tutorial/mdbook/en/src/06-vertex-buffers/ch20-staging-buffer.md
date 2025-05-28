@@ -159,7 +159,7 @@ private void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, int size) {
         if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to allocate command buffer, vulkan error code: " + VkResult.explain(result));
         }
-        var commandBuffer = pCommandBuffer.read();
+        var commandBuffer = Objects.requireNonNull(pCommandBuffer.read());
     }
 }
 ```
