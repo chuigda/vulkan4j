@@ -10,7 +10,7 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>ffm-plus</artifactId>
-    <version>0.1.4</version>
+    <version>0.2.0</version>
 </dependency>
 <dependency>
     <groupId>club.doki7</groupId>
