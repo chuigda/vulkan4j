@@ -36,10 +36,10 @@ private Pair<VkImage, VkDeviceMemory> createImage(
         int width,
         int height,
         int mipLevels,
-        @enumtype(VkFormat.class) int format,
-        @enumtype(VkImageTiling.class) int tiling,
-        @enumtype(VkImageUsageFlags.class) int usage,
-        @enumtype(VkMemoryPropertyFlags.class) int properties
+        @EnumType(VkFormat.class) int format,
+        @EnumType(VkImageTiling.class) int tiling,
+        @EnumType(VkImageUsageFlags.class) int usage,
+        @EnumType(VkMemoryPropertyFlags.class) int properties
 ) {
     // ...
     imageInfo.mipLevels(mipLevels);
@@ -50,8 +50,8 @@ private Pair<VkImage, VkDeviceMemory> createImage(
 ```java
 private VkImageView createImageView(
         VkImage image,
-        @enumtype(VkFormat.class) int format,
-        @enumtype(VkImageAspectFlags.class) int aspect,
+        @EnumType(VkFormat.class) int format,
+        @EnumType(VkImageAspectFlags.class) int aspect,
         int mipLevels
 ) {
     // ...
@@ -77,96 +77,110 @@ private void transitionImageLayout(
 Update all calls to these functions to use the right values:
 
 ```java
-var pair = createImage(
-        swapChainExtent.width(),
-        swapChainExtent.height(),
-        1,
-        depthFormat,
-        VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
-        VkImageUsageFlags.VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
-        VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
-);
-depthImage = pair.first;
-depthImageMemory = pair.second;
+private void createImageViews() {
+    swapChainImageViews = VkImageView.Ptr.allocate(Arena.ofAuto(), swapChainImages.size());
+    for (long i = 0; i < swapChainImages.size(); i++) {
+        swapChainImageViews.write(i, createImageView(
+                swapChainImages.read(i),
+                swapChainImageFormat,
+                VkImageAspectFlags.COLOR,
+                1
+        ));
+    }
+}
 
-// ...
+private void createDepthResources() {
+    var depthFormat = findDepthFormat();
+    var pair = createImage(
+            swapChainExtent.width(),
+            swapChainExtent.height(),
+            1,
+            depthFormat,
+            VkImageTiling.OPTIMAL,
+            VkImageUsageFlags.DEPTH_STENCIL_ATTACHMENT,
+            VkMemoryPropertyFlags.DEVICE_LOCAL
+    );
+    depthImage = pair.first;
+    depthImageMemory = pair.second;
+    depthImageView = createImageView(depthImage, depthFormat, VkImageAspectFlags.DEPTH, 1);
 
-var pair2 = createImage(
-        width,
-        height,
-        textureMipLevels,
-        VkFormat.VK_FORMAT_R8G8B8A8_SRGB,
-        VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
-        VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_DST_BIT
-                    | VkImageUsageFlags.VK_IMAGE_USAGE_SAMPLED_BIT,
-        VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
-);
-textureImage = pair2.first;
-textureImageMemory = pair2.second;
-```
+    transitionImageLayout(
+            depthImage,
+            depthFormat,
+            VkImageLayout.UNDEFINED,
+            VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL,
+            1
+    );
+}
 
-```java
-swapChainImageViews[i] = createImageView(
-        swapChainImages[i],
-        swapChainImageFormat,
-        VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT
-);
+private void createTextureImage() {
+    // ...
 
-// ...
+    var pair2 = createImage(
+            width,
+            height,
+            textureMipLevels,
+            VkFormat.R8G8B8A8_SRGB,
+            VkImageTiling.OPTIMAL,
+            VkImageUsageFlags.TRANSFER_DST | VkImageUsageFlags.SAMPLED,
+            VkMemoryPropertyFlags.DEVICE_LOCAL
+    );
+    textureImage = pair2.first;
+    textureImageMemory = pair2.second;
 
-depthImageView = createImageView(depthImage, depthFormat, VkImageAspectFlags.VK_IMAGE_ASPECT_DEPTH_BIT, 1);
+    transitionImageLayout(
+            textureImage,
+            VkFormat.R8G8B8A8_SRGB,
+            VkImageLayout.UNDEFINED,
+            VkImageLayout.TRANSFER_DST_OPTIMAL,
+            textureMipLevels,
+    );
+    copyBufferToImage(stagingBuffer, textureImage, width, height);
+    transitionImageLayout(
+            textureImage,
+            VkFormat.R8G8B8A8_SRGB,
+            VkImageLayout.TRANSFER_DST_OPTIMAL,
+            VkImageLayout.SHADER_READ_ONLY_OPTIMAL,
+            textureMipLevels,
+    );
 
-// ...
+    deviceCommands.destroyBuffer(device, stagingBuffer, null);
+    deviceCommands.freeMemory(device, stagingBufferMemory, null);
+}
 
-textureImageView = createImageView(
-        textureImage,
-        VkFormat.VK_FORMAT_R8G8B8A8_SRGB,
-        VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT,
-        textureMipLevels
-);
-```
-
-```java
-transitionImageLayout(
-        depthImage,
-        depthFormat,
-        VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED,
-        VkImageLayout.VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL,
-        1
-);
-// ...
-transitionImageLayout(
-        textureImage,
-        VkFormat.VK_FORMAT_R8G8B8A8_SRGB,
-        VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED,
-        VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
-        textureMipLevels
-);
+private void createTextureImageView() {
+    textureImageView = createImageView(
+            textureImage,
+            VkFormat.R8G8B8A8_SRGB,
+            VkImageAspectFlags.COLOR,
+            textureMipLevels
+    );
+}
 ```
 
 ## Generating Mipmaps
 
-Our texture image now has multiple mip levels, but the staging buffer can only be used to fill mip level 0. The other levels are still undefined. To fill these levels we need to generate the data from the single level that we have. We will use the `vkCmdBlitImage` command. This command performs copying, scaling, and filtering operations. We will call this multiple times to blit data to each level of our texture image.
+Our texture image now has multiple mip levels, but the staging buffer can only be used to fill mip level 0. The other levels are still undefined. To fill these levels we need to generate the data from the single level that we have. We will use the `VkDeviceCommands::cmdBlitImage` command. This command performs copying, scaling, and filtering operations. We will call this multiple times to blit data to each level of our texture image.
 
-`vkCmdBlitImage` is considered a transfer operation, so we must inform Vulkan that we intend to use the texture image as both the source and destination of a transfer. Add `VK_IMAGE_USAGE_TRANSFER_SRC_BIT` to the texture image's usage flags in `createTextureImage`:
+`VkDeviceCommands::cmdBlitImage` is considered a transfer operation, so we must inform Vulkan that we intend to use the texture image as both the source and destination of a transfer. Add `VkImageUsageFlags.TRANSFER_SRC` to the texture image's usage flags in `createTextureImage`:
 
 ```java
 var pair2 = createImage(
         width,
         height,
         textureMipLevels,
-        VkFormat.VK_FORMAT_R8G8B8A8_SRGB,
-        VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
-        VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_DST_BIT
-                | VkImageUsageFlags.VK_IMAGE_USAGE_SAMPLED_BIT
-                | VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_SRC_BIT,
-        VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+        VkFormat.R8G8B8A8_SRGB,
+        VkImageTiling.OPTIMAL,
+        VkImageUsageFlags.TRANSFER_DST
+        | VkImageUsageFlags.SAMPLED
+        | VkImageUsageFlags.TRANSFER_SRC,
+        VkMemoryPropertyFlags.DEVICE_LOCAL
 );
 ```
 
-Like other image operations, `vkCmdBlitImage` depends on the layout of the image it operates on. We could transition the entire image to `VK_IMAGE_LAYOUT_GENERAL`, but this will most likely be slow. For optimal performance, the source image should be in `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` and the destination image should be in `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`. Vulkan allows us to transition each mip level of an image independently. Each blit will only deal with two mip levels at a time, so we can transition each level into the optimal layout between blits commands.
+Like other image operations, `VkDeviceCommands::cmdBlitImage` depends on the layout of the image it operates on. We could transition the entire image to `VkImageLayout.GENERAL`, but this will most likely be slow. For optimal performance, the source image should be in `VkImageLayout.TRANSFER_SRC_OPTIMAL` and the destination image should be in `VkImageLayout.TRANSFER_DST_OPTIMAL`. Vulkan allows us to transition each mip level of an image independently. Each blit will only deal with two mip levels at a time, so we can transition each level into the optimal layout between blits commands.
 
-`transitionImageLayout` only performs layout transitions on the entire image, so we'll need to write a few more pipeline barrier commands. Remove the existing transition to `VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` in `createTextureImage`:
+`transitionImageLayout` only performs layout transitions on the entire image, so we'll need to write a few more pipeline barrier commands. Remove the existing transition to `VkImageLayout.SHADER_READ_ONLY_OPTIMAL` in `createTextureImage`:
 
 ```java
 // REMOVE this line from your createTextureImage function
@@ -191,9 +205,9 @@ private void generateMipmaps(VkImage image, int texWidth, int texHeight, int mip
 
         var barrier = VkImageMemoryBarrier.allocate(arena);
         barrier.image(image);
-        barrier.srcQueueFamilyIndex(Constants.VK_QUEUE_FAMILY_IGNORED);
-        barrier.dstQueueFamilyIndex(Constants.VK_QUEUE_FAMILY_IGNORED);
-        barrier.subresourceRange().aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
+        barrier.srcQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
+        barrier.dstQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
+        barrier.subresourceRange().aspectMask(VkImageAspectFlags.COLOR);
         barrier.subresourceRange().baseArrayLayer(0);
         barrier.subresourceRange().layerCount(1);
         barrier.subresourceRange().levelCount(1);
@@ -203,6 +217,7 @@ private void generateMipmaps(VkImage image, int texWidth, int texHeight, int mip
         endSingleTimeCommands(commandBuffer);
     }
 }
+
 ```
 
 We're going to make several transitions, so we'll reuse this `VkImageMemoryBarrier`. The fields set above will remain the same for all barriers. `subresourceRange.miplevel`, `oldLayout`, `newLayout`, `srcAccessMask`, and `dstAccessMask` will be changed for each transition. We also pre-allocate a `VkImageBlit` struct so we don't reallocate it for each blit, we'll see that soon.
@@ -215,18 +230,18 @@ for (var i = 1; i < mipLevels; i++) {
 }
 ```
 
-This loop will record each of the `VkCmdBlitImage` commands. Note that the loop variable **starts at 1**, not 0.
+This loop will record each of the `VkDeviceCommands::cmdBlitImage` commands. Note that the loop variable **starts at 1**, not 0.
 
 ```java
 barrier.subresourceRange().baseMipLevel(i - 1);
-barrier.oldLayout(VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
-barrier.newLayout(VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
-barrier.srcAccessMask(VkAccessFlags.VK_ACCESS_TRANSFER_WRITE_BIT);
-barrier.dstAccessMask(VkAccessFlags.VK_ACCESS_TRANSFER_READ_BIT);
-deviceCommands.vkCmdPipelineBarrier(
+barrier.oldLayout(VkImageLayout.TRANSFER_DST_OPTIMAL);
+barrier.newLayout(VkImageLayout.TRANSFER_SRC_OPTIMAL);
+barrier.srcAccessMask(VkAccessFlags.TRANSFER_WRITE);
+barrier.dstAccessMask(VkAccessFlags.TRANSFER_READ);
+deviceCommands.cmdPipelineBarrier(
         commandBuffer,
-        VkPipelineStageFlags.VK_PIPELINE_STAGE_TRANSFER_BIT,
-        VkPipelineStageFlags.VK_PIPELINE_STAGE_TRANSFER_BIT,
+        VkPipelineStageFlags.TRANSFER,
+        VkPipelineStageFlags.TRANSFER,
         0,
         0, null,
         0, null,
@@ -234,65 +249,65 @@ deviceCommands.vkCmdPipelineBarrier(
 );
 ```
 
-First, we transition level `i - 1` to `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL`. This transition will wait for level `i - 1` to be filled, either from the previous blit command, or from `vkCmdCopyBufferToImage`. The current blit command will wait on this transition.
+First, we transition level `i - 1` to `VkImageLayout.TRANSFER_SRC_OPTIMAL`. This transition will wait for level `i - 1` to be filled, either from the previous blit command, or from `VkDeviceCommands::cmdCopyBufferToImage`. The current blit command will wait on this transition.
 
 ```java
 var srcOffsets = blit.srcOffsets();
-srcOffsets[0].x(0);
-srcOffsets[0].y(0);
-srcOffsets[0].z(0);
-srcOffsets[1].x(mipWidth);
-srcOffsets[1].y(mipHeight);
-srcOffsets[1].z(1);
+srcOffsets.at(0).x(0);
+srcOffsets.at(0).y(0);
+srcOffsets.at(0).z(0);
+srcOffsets.at(1).x(mipWidth);
+srcOffsets.at(1).y(mipHeight);
+srcOffsets.at(1).z(1);
 var srcSubresource = blit.srcSubresource();
-srcSubresource.aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
+srcSubresource.aspectMask(VkImageAspectFlags.COLOR);
 srcSubresource.mipLevel(i - 1);
 srcSubresource.baseArrayLayer(0);
 srcSubresource.layerCount(1);
 var dstOffsets = blit.dstOffsets();
-dstOffsets[0].x(0);
-dstOffsets[0].y(0);
-dstOffsets[0].z(0);
-dstOffsets[1].x(mipWidth > 1 ? mipWidth / 2 : 1);
-dstOffsets[1].y(mipHeight > 1 ? mipHeight / 2 : 1);
-dstOffsets[1].z(1);
+dstOffsets.at(0).x(0);
+dstOffsets.at(0).y(0);
+dstOffsets.at(0).z(0);
+dstOffsets.at(1).x(mipWidth > 1 ? mipWidth / 2 : 1);
+dstOffsets.at(1).y(mipHeight > 1 ? mipHeight / 2 : 1);
+dstOffsets.at(1).z(1);
 var dstSubresource = blit.dstSubresource();
-dstSubresource.aspectMask(VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT);
+dstSubresource.aspectMask(VkImageAspectFlags.COLOR);
 dstSubresource.mipLevel(i);
 dstSubresource.baseArrayLayer(0);
 dstSubresource.layerCount(1);
 ```
 
-Next, we specify the regions that will be used in the blit operation. The source mip level is `i - 1` and the destination mip level is `i`. The two elements of the `srcOffsets` array determine the 3D region that data will be blitted from. `dstOffsets` determines the region that data will be blitted to. The X and Y dimensions of the `dstOffsets[1]` are divided by two since each mip level is half the size of the previous level. The Z dimension of `srcOffsets[1]` and `dstOffsets[1]` must be 1, since a 2D image has a depth of 1.
+Next, we specify the regions that will be used in the blit operation. The source mip level is `i - 1` and the destination mip level is `i`. The two elements of the `srcOffsets` array determine the 3D region that data will be blitted from. `dstOffsets` determines the region that data will be blitted to. The X and Y dimensions of the `dstOffsets.at(1)` are divided by two since each mip level is half the size of the previous level. The Z dimension of `srcOffsets.at(1)` and `dstOffsets.at(1)` must be 1, since a 2D image has a depth of 1.
 
 ```java
-deviceCommands.vkCmdBlitImage(
+deviceCommands.cmdBlitImage(
         commandBuffer,
         image,
-        VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,
+        VkImageLayout.TRANSFER_SRC_OPTIMAL,
         image,
-        VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
+        VkImageLayout.TRANSFER_DST_OPTIMAL,
         1,
         blit,
-        VkFilter.VK_FILTER_LINEAR
+        VkFilter.LINEAR
 );
 ```
 
-Now, we record the blit command. Note that `textureImage` is used for both the `srcImage` and `dstImage` parameter. This is because we're blitting between different levels of the same image. The source mip level was just transitioned to `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` and the destination level is still in `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` from `createTextureImage`.
+Now, we record the blit command. Note that `textureImage` is used for both the `srcImage` and `dstImage` parameter. This is because we're blitting between different levels of the same image. The source mip level was just transitioned to `VkImageLayout.TRANSFER_SRC_OPTIMAL` and the destination level is still in `VkImageLayout.TRANSFER_DST_OPTIMAL` from `createTextureImage`.
 
-Beware if you are using a dedicated transfer queue (as suggested in [Vertex buffers](../vertex-buffers/staging-buffer.md)): `vkCmdBlitImage` must be submitted to a queue with graphics capability.
+Beware if you are using a dedicated transfer queue (as suggested in [Vertex buffers](../vertex-buffers/staging-buffer.md)): `VkDeviceCommands::cmdBlitImage` must be submitted to a queue with graphics capability.
 
-The last parameter allows us to specify a `VkFilter` to use in the blit. We have the same filtering options here that we had when making the `VkSampler`. We use the `VK_FILTER_LINEAR` to enable interpolation.
+The last parameter allows us to specify a `VkFilter` to use in the blit. We have the same filtering options here that we had when making the `VkSampler`. We use the `VkFilter.LINEAR` to enable interpolation.
 
 ```java
-barrier.oldLayout(VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
-barrier.newLayout(VkImageLayout.VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
-barrier.srcAccessMask(VkAccessFlags.VK_ACCESS_TRANSFER_READ_BIT);
-barrier.dstAccessMask(VkAccessFlags.VK_ACCESS_SHADER_READ_BIT);
-deviceCommands.vkCmdPipelineBarrier(
+barrier.oldLayout(VkImageLayout.TRANSFER_SRC_OPTIMAL);
+barrier.newLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL);
+barrier.srcAccessMask(VkAccessFlags.TRANSFER_READ);
+barrier.dstAccessMask(VkAccessFlags.SHADER_READ);
+deviceCommands.cmdPipelineBarrier(
         commandBuffer,
-        VkPipelineStageFlags.VK_PIPELINE_STAGE_TRANSFER_BIT,
-        VkPipelineStageFlags.VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT,
+        VkPipelineStageFlags.TRANSFER,
+        VkPipelineStageFlags.FRAGMENT_SHADER,
         0,
         0, null,
         0, null,
@@ -300,7 +315,7 @@ deviceCommands.vkCmdPipelineBarrier(
 );
 ```
 
-This barrier transitions mip level `i - 1` to `VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`. This transition waits on the current blit command to finish. All sampling operations will wait on this transition to finish.
+This barrier transitions mip level `i - 1` to `VkImageLayout.SHADER_READ_ONLY_OPTIMAL`. This transition waits on the current blit command to finish. All sampling operations will wait on this transition to finish.
 
 ```java
 if (mipWidth > 1) {
@@ -315,15 +330,15 @@ At the end of the loop, we divide the current mip dimensions by two. We check ea
 
 ```java
 barrier.subresourceRange().baseMipLevel(mipLevels - 1);
-barrier.oldLayout(VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
-barrier.newLayout(VkImageLayout.VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
-barrier.srcAccessMask(VkAccessFlags.VK_ACCESS_TRANSFER_WRITE_BIT);
-barrier.dstAccessMask(VkAccessFlags.VK_ACCESS_SHADER_READ_BIT);
+barrier.oldLayout(VkImageLayout.TRANSFER_DST_OPTIMAL);
+barrier.newLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL);
+barrier.srcAccessMask(VkAccessFlags.TRANSFER_WRITE);
+barrier.dstAccessMask(VkAccessFlags.SHADER_READ);
 
-deviceCommands.vkCmdPipelineBarrier(
+deviceCommands.cmdPipelineBarrier(
         commandBuffer,
-        VkPipelineStageFlags.VK_PIPELINE_STAGE_TRANSFER_BIT,
-        VkPipelineStageFlags.VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT,
+        VkPipelineStageFlags.TRANSFER,
+        VkPipelineStageFlags.FRAGMENT_SHADER,
         0,
         0, null,
         0, null,
@@ -331,7 +346,7 @@ deviceCommands.vkCmdPipelineBarrier(
 );
 ```
 
-Before we end the command buffer, we insert one more pipeline barrier. This barrier transitions the last mip level from `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` to `VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL`. This wasn't handled by the loop, since the last mip level is never blitted from.
+Before we end the command buffer, we insert one more pipeline barrier. This barrier transitions the last mip level from `VkImageLayout.TRANSFER_DST_OPTIMAL` to `VkImageLayout.SHADER_READ_ONLY_OPTIMAL`. This wasn't handled by the loop, since the last mip level is never blitted from.
 
 Finally, add the call to `generateMipmaps` in `createTextureImage`:
 
@@ -345,18 +360,18 @@ Our texture image's mipmaps are now completely filled.
 
 ## Linear filtering support
 
-It is very convenient to use a built-in function like `vkCmdBlitImage` to generate all the mip levels, but unfortunately it is not guaranteed to be supported on all platforms. It requires the texture image format we use to support linear filtering, which can be checked with the `vkGetPhysicalDeviceFormatProperties` function. We will add a check to the `generateMipmaps` function for this.
+It is very convenient to use a built-in function like `VkDeviceCommands:;cmdBlitImage` to generate all the mip levels, but unfortunately it is not guaranteed to be supported on all platforms. It requires the texture image format we use to support linear filtering, which can be checked with the `VkInstanceCommands::getPhysicalDeviceFormatProperties` function. We will add a check to the `generateMipmaps` function for this.
 
 First add one additional parameter that specifies the image format:
 
 ```java
-generateMipmaps(textureImage, VkFormat.VK_FORMAT_R8G8B8A8_SRGB, width, height, textureMipLevels);
+generateMipmaps(textureImage, VkFormat.R8G8B8A8_SRGB, width, height, textureMipLevels);
 
 // ...
 
 private void generateMipmaps(
         VkImage image,
-        @enumtype(VkFormat.class) int imageFormat,
+        @EnumType(VkFormat.class) int imageFormat,
         int texWidth,
         int texHeight,
         int mipLevels
@@ -370,24 +385,24 @@ In the `generateMipmaps` function, use `vkGetPhysicalDeviceFormatProperties` to 
 ```java
 private void generateMipmaps(
         VkImage image,
-        @enumtype(VkFormat.class) int imageFormat,
+        @EnumType(VkFormat.class) int imageFormat,
         int texWidth,
         int texHeight,
         int mipLevels
 ) {
     try (var arena = Arena.ofConfined()) {
         var formatProperties = VkFormatProperties.allocate(arena);
-        instanceCommands.vkGetPhysicalDeviceFormatProperties(physicalDevice, imageFormat, formatProperties);
+        instanceCommands.getPhysicalDeviceFormatProperties(physicalDevice, imageFormat, formatProperties);
 
         // ...
     }
 }
 ```
 
-The VkFormatProperties struct has three fields named `linearTilingFeatures`, `optimalTilingFeatures` and `bufferFeatures` that each describe how the format can be used depending on the way it is used. We create a texture image with the optimal tiling format, so we need to check optimalTilingFeatures. Support for the linear filtering feature can be checked with the `VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT`:
+The VkFormatProperties struct has three fields named `linearTilingFeatures`, `optimalTilingFeatures` and `bufferFeatures` that each describe how the format can be used depending on the way it is used. We create a texture image with the optimal tiling format, so we need to check optimalTilingFeatures. Support for the linear filtering feature can be checked with the `VkFormatFeatureFlags.SAMPLED_IMAGE_FILTER_LINEAR`:
 
 ```java
-if ((formatProperties.optimalTilingFeatures() & VkFormatFeatureFlags.VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT) == 0) {
+if ((formatProperties.optimalTilingFeatures() & VkFormatFeatureFlags.SAMPLED_IMAGE_FILTER_LINEAR) == 0) {
     throw new RuntimeException("Texture image format does not support linear blitting");
 }
 ```
@@ -406,14 +421,14 @@ lod = clamp(lod + mipLodBias, minLod, maxLod);
 
 level = clamp(floor(lod), 0, texture.mipLevels - 1);  //clamped to the number of mip levels in the texture
 
-if (mipmapMode == VK_SAMPLER_MIPMAP_MODE_NEAREST) {
+if (mipmapMode == VkSamplerMipmapMode.NEAREST) {
     color = sample(level);
 } else {
     color = blend(sample(level), sample(level + 1));
 }
 ```
 
-If `samplerInfo.mipmapMode` is `VK_SAMPLER_MIPMAP_MODE_NEAREST`, `lod` selects the mip level to sample from. If the mipmap mode is `VK_SAMPLER_MIPMAP_MODE_LINEAR`, `lod` is used to select two mip levels to be sampled. Those levels are sampled and the results are linearly blended.
+If `samplerInfo.mipmapMode` is `VkSamplerMipmapMode.NEAREST`, `lod` selects the mip level to sample from. If the mipmap mode is `VkSamplerMipmapMode.LINEAR`, `lod` is used to select two mip levels to be sampled. Those levels are sampled and the results are linearly blended.
 
 The sample operation is also affected by `lod`:
 
@@ -427,7 +442,7 @@ if (lod <= 0) {
 
 If the object is close to the camera, `magFilter` is used as the filter. If the object is further from the camera, `minFilter` is used. Normally, `lod` is non-negative, and is only 0 when close the camera. `mipLodBias` lets us force Vulkan to use lower `lod` and `level` than it would normally use.
 
-To see the results of this chapter, we need to choose values for our `textureSampler`. We've already set the `minFilter` and `magFilter` to use `VK_FILTER_LINEAR`. We just need to choose values for `minLod`, `maxLod`, `mipLodBias`, and `mipmapMode`.
+To see the results of this chapter, we need to choose values for our `textureSampler`. We've already set the `minFilter` and `magFilter` to use `VkFilter.LINEAR`. We just need to choose values for `minLod`, `maxLod`, `mipLodBias`, and `mipmapMode`.
 
 ```java
 private void createTextureSampler() {
