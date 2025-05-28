@@ -67,7 +67,7 @@ private void createVertexBuffer() {
             throw new RuntimeException("Failed to create vertex buffer, vulkan error code: " + VkResult.explain(result));
         }
 
-        vertexBuffer = pBuffer.read();
+        vertexBuffer = Objects.requireNonNull(pBuffer.read());
     }
 }
 ```
@@ -169,7 +169,7 @@ result = deviceCommands.allocateMemory(device, allocInfo, null, pVertexBufferMem
 if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to allocate vertex buffer memory, vulkan error code: " + VkResult.explain(result));
 }
-vertexBufferMemory = pVertexBufferMemory.read();
+vertexBufferMemory = Objects.requireNonNull(pVertexBufferMemory.read());
 ```
 
 If memory allocation was successful, then we can now associate this memory with the buffer using `VkDeviceCommands::bindBufferMemory`:

@@ -167,7 +167,7 @@ Finally, add a call to retrieve the queue handle:
 
 ```java
 deviceCommands.getDeviceQueue(device, indices.presentFamily(), 0, pQueue);
-presentQueue = pQueue.read();
+presentQueue = Objects.requireNonNull(pQueue.read());
 ```
 
 In case the queue families are the same, the two handles will most likely have the same value now. In the next chapter we're going to look at swap chains and how they give us the ability to present images to the surface.
