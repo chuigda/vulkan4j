@@ -220,7 +220,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
         @Override
         public Byte next() {
             if (!hasNext()) {
-                throw new NoSuchElementException("No more integers to read");
+                throw new NoSuchElementException("No more bytes to read");
             }
             byte value = segment.get(ValueLayout.JAVA_BYTE, 0);
             segment = segment.asSlice(1);
