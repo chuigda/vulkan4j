@@ -45,16 +45,30 @@ private VkBuffer vertexBuffer;
 private VkDeviceMemory vertexBufferMemory;
 ```
 
-You should change the type of the indices from `short` to `int`, because there are going to be a lot more vertices than `32767`. Remember to also change the `vkCmdBindIndexBuffer` parameter:
+You should change the type of the indices from `short` to `int`, because there are going to be a lot more vertices than `32767`. Remember to also change the `VkDeviceCommands::cmdBindIndexBuffer` parameter:
 
 ```java
-deviceCommands.vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.VK_INDEX_TYPE_UINT32);
+deviceCommands.cmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.UINT32);
 ```
 
-And the `bufferSize` calculation in `createIndexBuffer`:
+Then update the `bufferSize` calculation and data copy in `createVertexBuffer`/`createIndexBuffer`:
 
 ```java
-var bufferSize = indices.length * Integer.BYTES;
+private void createVertexBuffer() {
+    // ...
+    var bufferSize = vertices.length * Float.BYTES;
+    // ...
+    pData.copyFrom(MemorySegment.ofArray(vertices));
+    // ...
+}
+
+private void createIndexBuffer() {
+    // ...
+    var bufferSize = indices.length * Integer.BYTES;
+    // ...
+    pData.copyFrom(MemorySegment.ofArray(indices));
+    // ...
+}
 ```
 
 We're now going to write a `loadModel` function that uses the [`Obj`](https://github.com/javagl/Obj) library to populate the vertices and indices containers with the vertex data from the mesh. It should be called somewhere before the vertex and index buffers are created:
@@ -78,7 +92,7 @@ A model is loaded into the library's data structures by calling the `ObjReader.r
 
 ```java
 private void loadModel() {
-    try (var stream = Application.class.getResourceAsStream("/model/viking_room.obj")) {
+    try (var stream = Application.class.getResourceAsStream(MODEL_PATH)) {
         if (stream == null) {
             throw new RuntimeException("Failed to load model");
         }
