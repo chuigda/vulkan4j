@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkVideoDecodeH264DpbSlotInfoKHR(@NotNull MemorySegment segment) im
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeH264DpbSlotInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeH264DpbSlotInfoKHR, Iterable<VkVideoDecodeH264DpbSlotInfoKHR> {
         public long size() {
             return segment.byteSize() / VkVideoDecodeH264DpbSlotInfoKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkVideoDecodeH264DpbSlotInfoKHR(@NotNull MemorySegment segment) im
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkVideoDecodeH264DpbSlotInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkVideoDecodeH264DpbSlotInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkVideoDecodeH264DpbSlotInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoDecodeH264DpbSlotInfoKHR ret = new VkVideoDecodeH264DpbSlotInfoKHR(segment.asSlice(0, VkVideoDecodeH264DpbSlotInfoKHR.BYTES));
+                segment = segment.asSlice(VkVideoDecodeH264DpbSlotInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

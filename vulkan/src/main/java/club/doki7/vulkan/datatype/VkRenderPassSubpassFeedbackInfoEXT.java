@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -22,7 +24,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// {@snippet lang=c :
 /// typedef struct VkRenderPassSubpassFeedbackInfoEXT {
 ///     VkSubpassMergeStatusEXT subpassMergeStatus; // @link substring="VkSubpassMergeStatusEXT" target="VkSubpassMergeStatusEXT" @link substring="subpassMergeStatus" target="#subpassMergeStatus"
-///     char description; // @link substring="description" target="#description"
+///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 ///     uint32_t postMergeIndex; // @link substring="postMergeIndex" target="#postMergeIndex"
 /// } VkRenderPassSubpassFeedbackInfoEXT;
 /// }
@@ -60,7 +62,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkRenderPassSubpassFeedbackInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkRenderPassSubpassFeedbackInfoEXT, Iterable<VkRenderPassSubpassFeedbackInfoEXT> {
         public long size() {
             return segment.byteSize() / VkRenderPassSubpassFeedbackInfoEXT.BYTES;
         }
@@ -122,6 +124,35 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkRenderPassSubpassFeedbackInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkRenderPassSubpassFeedbackInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkRenderPassSubpassFeedbackInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkRenderPassSubpassFeedbackInfoEXT ret = new VkRenderPassSubpassFeedbackInfoEXT(segment.asSlice(0, VkRenderPassSubpassFeedbackInfoEXT.BYTES));
+                segment = segment.asSlice(VkRenderPassSubpassFeedbackInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkRenderPassSubpassFeedbackInfoEXT allocate(Arena arena) {
@@ -147,12 +178,16 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$subpassMergeStatus, OFFSET$subpassMergeStatus, value);
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
     }
 
-    public void description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public void description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    }
+
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public @Unsigned int postMergeIndex() {
@@ -165,7 +200,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("subpassMergeStatus"),
-        ValueLayout.JAVA_BYTE.withName("description"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("postMergeIndex")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -175,7 +210,7 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
     public static final PathElement PATH$postMergeIndex = PathElement.groupElement("postMergeIndex");
 
     public static final OfInt LAYOUT$subpassMergeStatus = (OfInt) LAYOUT.select(PATH$subpassMergeStatus);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
     public static final OfInt LAYOUT$postMergeIndex = (OfInt) LAYOUT.select(PATH$postMergeIndex);
 
     public static final long SIZE$subpassMergeStatus = LAYOUT$subpassMergeStatus.byteSize();

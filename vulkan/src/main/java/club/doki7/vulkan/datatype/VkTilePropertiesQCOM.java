@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkTilePropertiesQCOM(@NotNull MemorySegment segment) implements IV
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkTilePropertiesQCOM {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkTilePropertiesQCOM, Iterable<VkTilePropertiesQCOM> {
         public long size() {
             return segment.byteSize() / VkTilePropertiesQCOM.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkTilePropertiesQCOM(@NotNull MemorySegment segment) implements IV
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkTilePropertiesQCOM> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkTilePropertiesQCOM.BYTES;
+            }
+
+            @Override
+            public VkTilePropertiesQCOM next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkTilePropertiesQCOM ret = new VkTilePropertiesQCOM(segment.asSlice(0, VkTilePropertiesQCOM.BYTES));
+                segment = segment.asSlice(VkTilePropertiesQCOM.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

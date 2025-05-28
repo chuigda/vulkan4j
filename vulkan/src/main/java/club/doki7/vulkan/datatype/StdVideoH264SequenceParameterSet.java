@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +82,7 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH264SequenceParameterSet {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH264SequenceParameterSet, Iterable<StdVideoH264SequenceParameterSet> {
         public long size() {
             return segment.byteSize() / StdVideoH264SequenceParameterSet.BYTES;
         }
@@ -141,6 +143,35 @@ public record StdVideoH264SequenceParameterSet(@NotNull MemorySegment segment) i
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoH264SequenceParameterSet> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoH264SequenceParameterSet.BYTES;
+            }
+
+            @Override
+            public StdVideoH264SequenceParameterSet next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoH264SequenceParameterSet ret = new StdVideoH264SequenceParameterSet(segment.asSlice(0, StdVideoH264SequenceParameterSet.BYTES));
+                segment = segment.asSlice(StdVideoH264SequenceParameterSet.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

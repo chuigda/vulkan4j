@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -68,7 +70,7 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkSubpassEndInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkSubpassEndInfo, Iterable<VkSubpassEndInfo> {
         public long size() {
             return segment.byteSize() / VkSubpassEndInfo.BYTES;
         }
@@ -129,6 +131,35 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkSubpassEndInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkSubpassEndInfo.BYTES;
+            }
+
+            @Override
+            public VkSubpassEndInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkSubpassEndInfo ret = new VkSubpassEndInfo(segment.asSlice(0, VkSubpassEndInfo.BYTES));
+                segment = segment.asSlice(VkSubpassEndInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

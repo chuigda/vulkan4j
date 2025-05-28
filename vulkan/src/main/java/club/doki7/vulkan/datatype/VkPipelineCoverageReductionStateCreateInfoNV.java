@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineCoverageReductionStateCreateInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineCoverageReductionStateCreateInfoNV, Iterable<VkPipelineCoverageReductionStateCreateInfoNV> {
         public long size() {
             return segment.byteSize() / VkPipelineCoverageReductionStateCreateInfoNV.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPipelineCoverageReductionStateCreateInfoNV(@NotNull MemorySegmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPipelineCoverageReductionStateCreateInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPipelineCoverageReductionStateCreateInfoNV.BYTES;
+            }
+
+            @Override
+            public VkPipelineCoverageReductionStateCreateInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineCoverageReductionStateCreateInfoNV ret = new VkPipelineCoverageReductionStateCreateInfoNV(segment.asSlice(0, VkPipelineCoverageReductionStateCreateInfoNV.BYTES));
+                segment = segment.asSlice(VkPipelineCoverageReductionStateCreateInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

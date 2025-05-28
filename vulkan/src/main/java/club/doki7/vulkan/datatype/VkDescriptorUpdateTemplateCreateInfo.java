@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -76,7 +78,7 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDescriptorUpdateTemplateCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDescriptorUpdateTemplateCreateInfo, Iterable<VkDescriptorUpdateTemplateCreateInfo> {
         public long size() {
             return segment.byteSize() / VkDescriptorUpdateTemplateCreateInfo.BYTES;
         }
@@ -137,6 +139,35 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDescriptorUpdateTemplateCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDescriptorUpdateTemplateCreateInfo.BYTES;
+            }
+
+            @Override
+            public VkDescriptorUpdateTemplateCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDescriptorUpdateTemplateCreateInfo ret = new VkDescriptorUpdateTemplateCreateInfo(segment.asSlice(0, VkDescriptorUpdateTemplateCreateInfo.BYTES));
+                segment = segment.asSlice(VkDescriptorUpdateTemplateCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

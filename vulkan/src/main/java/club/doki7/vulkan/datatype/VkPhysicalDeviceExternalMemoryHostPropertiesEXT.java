@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(@NotNull MemorySeg
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceExternalMemoryHostPropertiesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceExternalMemoryHostPropertiesEXT, Iterable<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(@NotNull MemorySeg
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceExternalMemoryHostPropertiesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceExternalMemoryHostPropertiesEXT ret = new VkPhysicalDeviceExternalMemoryHostPropertiesEXT(segment.asSlice(0, VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceExternalMemoryHostPropertiesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

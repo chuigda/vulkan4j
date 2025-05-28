@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDescriptorGetInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDescriptorGetInfoEXT, Iterable<VkDescriptorGetInfoEXT> {
         public long size() {
             return segment.byteSize() / VkDescriptorGetInfoEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDescriptorGetInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDescriptorGetInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkDescriptorGetInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDescriptorGetInfoEXT ret = new VkDescriptorGetInfoEXT(segment.asSlice(0, VkDescriptorGetInfoEXT.BYTES));
+                segment = segment.asSlice(VkDescriptorGetInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -211,7 +242,7 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final StructLayout LAYOUT$data = (StructLayout) LAYOUT.select(PATH$data);
+    public static final UnionLayout LAYOUT$data = (UnionLayout) LAYOUT.select(PATH$data);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

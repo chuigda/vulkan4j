@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -24,12 +26,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     StdVideoEncodeH264ReferenceListsInfoFlags flags; // @link substring="StdVideoEncodeH264ReferenceListsInfoFlags" target="StdVideoEncodeH264ReferenceListsInfoFlags" @link substring="flags" target="#flags"
 ///     uint8_t num_ref_idx_l0_active_minus1; // @link substring="num_ref_idx_l0_active_minus1" target="#num_ref_idx_l0_active_minus1"
 ///     uint8_t num_ref_idx_l1_active_minus1; // @link substring="num_ref_idx_l1_active_minus1" target="#num_ref_idx_l1_active_minus1"
-///     uint8_t RefPicList0; // @link substring="RefPicList0" target="#RefPicList0"
-///     uint8_t RefPicList1; // @link substring="RefPicList1" target="#RefPicList1"
+///     uint8_t[STD_VIDEO_H264_MAX_NUM_LIST_REF] RefPicList0; // @link substring="RefPicList0" target="#RefPicList0"
+///     uint8_t[STD_VIDEO_H264_MAX_NUM_LIST_REF] RefPicList1; // @link substring="RefPicList1" target="#RefPicList1"
 ///     uint8_t refList0ModOpCount; // @link substring="refList0ModOpCount" target="#refList0ModOpCount"
 ///     uint8_t refList1ModOpCount; // @link substring="refList1ModOpCount" target="#refList1ModOpCount"
 ///     uint8_t refPicMarkingOpCount; // @link substring="refPicMarkingOpCount" target="#refPicMarkingOpCount"
-///     uint8_t reserved1;
+///     uint8_t[7] reserved1;
 ///     StdVideoEncodeH264RefListModEntry const* pRefList0ModOperations; // @link substring="StdVideoEncodeH264RefListModEntry" target="StdVideoEncodeH264RefListModEntry" @link substring="pRefList0ModOperations" target="#pRefList0ModOperations"
 ///     StdVideoEncodeH264RefListModEntry const* pRefList1ModOperations; // @link substring="StdVideoEncodeH264RefListModEntry" target="StdVideoEncodeH264RefListModEntry" @link substring="pRefList1ModOperations" target="#pRefList1ModOperations"
 ///     StdVideoEncodeH264RefPicMarkingEntry const* pRefPicMarkingOperations; // @link substring="StdVideoEncodeH264RefPicMarkingEntry" target="StdVideoEncodeH264RefPicMarkingEntry" @link substring="pRefPicMarkingOperations" target="#pRefPicMarkingOperations"
@@ -67,7 +69,7 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264ReferenceListsInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264ReferenceListsInfo, Iterable<StdVideoEncodeH264ReferenceListsInfo> {
         public long size() {
             return segment.byteSize() / StdVideoEncodeH264ReferenceListsInfo.BYTES;
         }
@@ -129,6 +131,35 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoEncodeH264ReferenceListsInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoEncodeH264ReferenceListsInfo.BYTES;
+            }
+
+            @Override
+            public StdVideoEncodeH264ReferenceListsInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoEncodeH264ReferenceListsInfo ret = new StdVideoEncodeH264ReferenceListsInfo(segment.asSlice(0, StdVideoEncodeH264ReferenceListsInfo.BYTES));
+                segment = segment.asSlice(StdVideoEncodeH264ReferenceListsInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static StdVideoEncodeH264ReferenceListsInfo allocate(Arena arena) {
@@ -170,20 +201,28 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$num_ref_idx_l1_active_minus1, OFFSET$num_ref_idx_l1_active_minus1, value);
     }
 
-    public @Unsigned byte RefPicList0() {
-        return segment.get(LAYOUT$RefPicList0, OFFSET$RefPicList0);
+    public @Unsigned BytePtr RefPicList0() {
+        return new BytePtr(RefPicList0Raw());
     }
 
-    public void RefPicList0(@Unsigned byte value) {
-        segment.set(LAYOUT$RefPicList0, OFFSET$RefPicList0, value);
+    public void RefPicList0(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList0, SIZE$RefPicList0);
     }
 
-    public @Unsigned byte RefPicList1() {
-        return segment.get(LAYOUT$RefPicList1, OFFSET$RefPicList1);
+    public MemorySegment RefPicList0Raw() {
+        return segment.asSlice(OFFSET$RefPicList0, SIZE$RefPicList0);
     }
 
-    public void RefPicList1(@Unsigned byte value) {
-        segment.set(LAYOUT$RefPicList1, OFFSET$RefPicList1, value);
+    public @Unsigned BytePtr RefPicList1() {
+        return new BytePtr(RefPicList1Raw());
+    }
+
+    public void RefPicList1(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList1, SIZE$RefPicList1);
+    }
+
+    public MemorySegment RefPicList1Raw() {
+        return segment.asSlice(OFFSET$RefPicList1, SIZE$RefPicList1);
     }
 
     public @Unsigned byte refList0ModOpCount() {
@@ -308,12 +347,12 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
         StdVideoEncodeH264ReferenceListsInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
         ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),
-        ValueLayout.JAVA_BYTE.withName("RefPicList0"),
-        ValueLayout.JAVA_BYTE.withName("RefPicList1"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("RefPicList0"),
+        MemoryLayout.sequenceLayout(H264_MAX_NUM_LIST_REF, ValueLayout.JAVA_BYTE).withName("RefPicList1"),
         ValueLayout.JAVA_BYTE.withName("refList0ModOpCount"),
         ValueLayout.JAVA_BYTE.withName("refList1ModOpCount"),
         ValueLayout.JAVA_BYTE.withName("refPicMarkingOpCount"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList0ModOperations"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefListModEntry.LAYOUT).withName("pRefList1ModOperations"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264RefPicMarkingEntry.LAYOUT).withName("pRefPicMarkingOperations")
@@ -335,8 +374,8 @@ public record StdVideoEncodeH264ReferenceListsInfo(@NotNull MemorySegment segmen
     public static final StructLayout LAYOUT$flags = (StructLayout) LAYOUT.select(PATH$flags);
     public static final OfByte LAYOUT$num_ref_idx_l0_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l0_active_minus1);
     public static final OfByte LAYOUT$num_ref_idx_l1_active_minus1 = (OfByte) LAYOUT.select(PATH$num_ref_idx_l1_active_minus1);
-    public static final OfByte LAYOUT$RefPicList0 = (OfByte) LAYOUT.select(PATH$RefPicList0);
-    public static final OfByte LAYOUT$RefPicList1 = (OfByte) LAYOUT.select(PATH$RefPicList1);
+    public static final SequenceLayout LAYOUT$RefPicList0 = (SequenceLayout) LAYOUT.select(PATH$RefPicList0);
+    public static final SequenceLayout LAYOUT$RefPicList1 = (SequenceLayout) LAYOUT.select(PATH$RefPicList1);
     public static final OfByte LAYOUT$refList0ModOpCount = (OfByte) LAYOUT.select(PATH$refList0ModOpCount);
     public static final OfByte LAYOUT$refList1ModOpCount = (OfByte) LAYOUT.select(PATH$refList1ModOpCount);
     public static final OfByte LAYOUT$refPicMarkingOpCount = (OfByte) LAYOUT.select(PATH$refPicMarkingOpCount);

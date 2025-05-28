@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -61,7 +63,7 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1FilmGrainFlags {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1FilmGrainFlags, Iterable<StdVideoAV1FilmGrainFlags> {
         public long size() {
             return segment.byteSize() / StdVideoAV1FilmGrainFlags.BYTES;
         }
@@ -122,6 +124,35 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoAV1FilmGrainFlags> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoAV1FilmGrainFlags.BYTES;
+            }
+
+            @Override
+            public StdVideoAV1FilmGrainFlags next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoAV1FilmGrainFlags ret = new StdVideoAV1FilmGrainFlags(segment.asSlice(0, StdVideoAV1FilmGrainFlags.BYTES));
+                segment = segment.asSlice(StdVideoAV1FilmGrainFlags.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

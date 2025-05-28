@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     char const* pMarkerName; // @link substring="pMarkerName" target="#pMarkerName"
-///     float color; // @link substring="color" target="#color"
+///     float[4] color; // @link substring="color" target="#color"
 /// } VkDebugMarkerMarkerInfoEXT;
 /// }
 ///
@@ -70,7 +72,7 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDebugMarkerMarkerInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDebugMarkerMarkerInfoEXT, Iterable<VkDebugMarkerMarkerInfoEXT> {
         public long size() {
             return segment.byteSize() / VkDebugMarkerMarkerInfoEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDebugMarkerMarkerInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDebugMarkerMarkerInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkDebugMarkerMarkerInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDebugMarkerMarkerInfoEXT ret = new VkDebugMarkerMarkerInfoEXT(segment.asSlice(0, VkDebugMarkerMarkerInfoEXT.BYTES));
+                segment = segment.asSlice(VkDebugMarkerMarkerInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -204,19 +235,23 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pMarkerName, OFFSET$pMarkerName, value);
     }
 
-    public float color() {
-        return segment.get(LAYOUT$color, OFFSET$color);
+    public FloatPtr color() {
+        return new FloatPtr(colorRaw());
     }
 
-    public void color(float value) {
-        segment.set(LAYOUT$color, OFFSET$color, value);
+    public void color(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
+    }
+
+    public MemorySegment colorRaw() {
+        return segment.asSlice(OFFSET$color, SIZE$color);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE).withName("pMarkerName"),
-        ValueLayout.JAVA_FLOAT.withName("color")
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("color")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -228,7 +263,7 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final AddressLayout LAYOUT$pMarkerName = (AddressLayout) LAYOUT.select(PATH$pMarkerName);
-    public static final OfFloat LAYOUT$color = (OfFloat) LAYOUT.select(PATH$color);
+    public static final SequenceLayout LAYOUT$color = (SequenceLayout) LAYOUT.select(PATH$color);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

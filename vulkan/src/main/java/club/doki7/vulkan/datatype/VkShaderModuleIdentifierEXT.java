@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t identifierSize; // @link substring="identifierSize" target="#identifierSize"
-///     uint8_t identifier; // @link substring="identifier" target="#identifier"
+///     uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT] identifier; // @link substring="identifier" target="#identifier"
 /// } VkShaderModuleIdentifierEXT;
 /// }
 ///
@@ -70,7 +72,7 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkShaderModuleIdentifierEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkShaderModuleIdentifierEXT, Iterable<VkShaderModuleIdentifierEXT> {
         public long size() {
             return segment.byteSize() / VkShaderModuleIdentifierEXT.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkShaderModuleIdentifierEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkShaderModuleIdentifierEXT.BYTES;
+            }
+
+            @Override
+            public VkShaderModuleIdentifierEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkShaderModuleIdentifierEXT ret = new VkShaderModuleIdentifierEXT(segment.asSlice(0, VkShaderModuleIdentifierEXT.BYTES));
+                segment = segment.asSlice(VkShaderModuleIdentifierEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkShaderModuleIdentifierEXT allocate(Arena arena) {
@@ -187,19 +218,23 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$identifierSize, OFFSET$identifierSize, value);
     }
 
-    public @Unsigned byte identifier() {
-        return segment.get(LAYOUT$identifier, OFFSET$identifier);
+    public @Unsigned BytePtr identifier() {
+        return new BytePtr(identifierRaw());
     }
 
-    public void identifier(@Unsigned byte value) {
-        segment.set(LAYOUT$identifier, OFFSET$identifier, value);
+    public void identifier(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$identifier, SIZE$identifier);
+    }
+
+    public MemorySegment identifierRaw() {
+        return segment.asSlice(OFFSET$identifier, SIZE$identifier);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("identifierSize"),
-        ValueLayout.JAVA_BYTE.withName("identifier")
+        MemoryLayout.sequenceLayout(MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT, ValueLayout.JAVA_BYTE).withName("identifier")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -211,7 +246,7 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$identifierSize = (OfInt) LAYOUT.select(PATH$identifierSize);
-    public static final OfByte LAYOUT$identifier = (OfByte) LAYOUT.select(PATH$identifier);
+    public static final SequenceLayout LAYOUT$identifier = (SequenceLayout) LAYOUT.select(PATH$identifier);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

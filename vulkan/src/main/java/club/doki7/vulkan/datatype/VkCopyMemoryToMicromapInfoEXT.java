@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkCopyMemoryToMicromapInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkCopyMemoryToMicromapInfoEXT, Iterable<VkCopyMemoryToMicromapInfoEXT> {
         public long size() {
             return segment.byteSize() / VkCopyMemoryToMicromapInfoEXT.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkCopyMemoryToMicromapInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkCopyMemoryToMicromapInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkCopyMemoryToMicromapInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkCopyMemoryToMicromapInfoEXT ret = new VkCopyMemoryToMicromapInfoEXT(segment.asSlice(0, VkCopyMemoryToMicromapInfoEXT.BYTES));
+                segment = segment.asSlice(VkCopyMemoryToMicromapInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -225,7 +256,7 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$src = (StructLayout) LAYOUT.select(PATH$src);
+    public static final UnionLayout LAYOUT$src = (UnionLayout) LAYOUT.select(PATH$src);
     public static final AddressLayout LAYOUT$dst = (AddressLayout) LAYOUT.select(PATH$dst);
     public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
 

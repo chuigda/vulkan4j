@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceCommandBufferInheritanceFeaturesNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceCommandBufferInheritanceFeaturesNV, Iterable<VkPhysicalDeviceCommandBufferInheritanceFeaturesNV> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceCommandBufferInheritanceFeaturesNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceCommandBufferInheritanceFeaturesNV ret = new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(segment.asSlice(0, VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceCommandBufferInheritanceFeaturesNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

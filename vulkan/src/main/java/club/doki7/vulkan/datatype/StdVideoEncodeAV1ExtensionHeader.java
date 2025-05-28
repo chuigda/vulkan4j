@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -57,7 +59,7 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1ExtensionHeader {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1ExtensionHeader, Iterable<StdVideoEncodeAV1ExtensionHeader> {
         public long size() {
             return segment.byteSize() / StdVideoEncodeAV1ExtensionHeader.BYTES;
         }
@@ -118,6 +120,35 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoEncodeAV1ExtensionHeader> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoEncodeAV1ExtensionHeader.BYTES;
+            }
+
+            @Override
+            public StdVideoEncodeAV1ExtensionHeader next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoEncodeAV1ExtensionHeader ret = new StdVideoEncodeAV1ExtensionHeader(segment.asSlice(0, StdVideoEncodeAV1ExtensionHeader.BYTES));
+                segment = segment.asSlice(StdVideoEncodeAV1ExtensionHeader.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

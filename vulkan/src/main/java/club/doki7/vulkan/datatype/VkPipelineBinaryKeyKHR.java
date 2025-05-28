@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t keySize; // @link substring="keySize" target="#keySize"
-///     uint8_t key; // @link substring="key" target="#key"
+///     uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR] key; // @link substring="key" target="#key"
 /// } VkPipelineBinaryKeyKHR;
 /// }
 ///
@@ -70,7 +72,7 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineBinaryKeyKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineBinaryKeyKHR, Iterable<VkPipelineBinaryKeyKHR> {
         public long size() {
             return segment.byteSize() / VkPipelineBinaryKeyKHR.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPipelineBinaryKeyKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPipelineBinaryKeyKHR.BYTES;
+            }
+
+            @Override
+            public VkPipelineBinaryKeyKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineBinaryKeyKHR ret = new VkPipelineBinaryKeyKHR(segment.asSlice(0, VkPipelineBinaryKeyKHR.BYTES));
+                segment = segment.asSlice(VkPipelineBinaryKeyKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkPipelineBinaryKeyKHR allocate(Arena arena) {
@@ -187,19 +218,23 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$keySize, OFFSET$keySize, value);
     }
 
-    public @Unsigned byte key() {
-        return segment.get(LAYOUT$key, OFFSET$key);
+    public @Unsigned BytePtr key() {
+        return new BytePtr(keyRaw());
     }
 
-    public void key(@Unsigned byte value) {
-        segment.set(LAYOUT$key, OFFSET$key, value);
+    public void key(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$key, SIZE$key);
+    }
+
+    public MemorySegment keyRaw() {
+        return segment.asSlice(OFFSET$key, SIZE$key);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("keySize"),
-        ValueLayout.JAVA_BYTE.withName("key")
+        MemoryLayout.sequenceLayout(MAX_PIPELINE_BINARY_KEY_SIZE_KHR, ValueLayout.JAVA_BYTE).withName("key")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -211,7 +246,7 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$keySize = (OfInt) LAYOUT.select(PATH$keySize);
-    public static final OfByte LAYOUT$key = (OfByte) LAYOUT.select(PATH$key);
+    public static final SequenceLayout LAYOUT$key = (SequenceLayout) LAYOUT.select(PATH$key);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

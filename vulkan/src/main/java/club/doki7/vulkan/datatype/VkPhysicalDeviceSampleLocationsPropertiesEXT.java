@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkSampleCountFlags sampleLocationSampleCounts; // @link substring="VkSampleCountFlags" target="VkSampleCountFlags" @link substring="sampleLocationSampleCounts" target="#sampleLocationSampleCounts"
 ///     VkExtent2D maxSampleLocationGridSize; // @link substring="VkExtent2D" target="VkExtent2D" @link substring="maxSampleLocationGridSize" target="#maxSampleLocationGridSize"
-///     float sampleLocationCoordinateRange; // @link substring="sampleLocationCoordinateRange" target="#sampleLocationCoordinateRange"
+///     float[2] sampleLocationCoordinateRange; // @link substring="sampleLocationCoordinateRange" target="#sampleLocationCoordinateRange"
 ///     uint32_t sampleLocationSubPixelBits; // @link substring="sampleLocationSubPixelBits" target="#sampleLocationSubPixelBits"
 ///     VkBool32 variableSampleLocations; // @link substring="variableSampleLocations" target="#variableSampleLocations"
 /// } VkPhysicalDeviceSampleLocationsPropertiesEXT;
@@ -73,7 +75,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceSampleLocationsPropertiesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceSampleLocationsPropertiesEXT, Iterable<VkPhysicalDeviceSampleLocationsPropertiesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES;
         }
@@ -134,6 +136,35 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceSampleLocationsPropertiesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceSampleLocationsPropertiesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceSampleLocationsPropertiesEXT ret = new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.asSlice(0, VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceSampleLocationsPropertiesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -198,12 +229,16 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSampleLocationGridSize, SIZE$maxSampleLocationGridSize);
     }
 
-    public float sampleLocationCoordinateRange() {
-        return segment.get(LAYOUT$sampleLocationCoordinateRange, OFFSET$sampleLocationCoordinateRange);
+    public FloatPtr sampleLocationCoordinateRange() {
+        return new FloatPtr(sampleLocationCoordinateRangeRaw());
     }
 
-    public void sampleLocationCoordinateRange(float value) {
-        segment.set(LAYOUT$sampleLocationCoordinateRange, OFFSET$sampleLocationCoordinateRange, value);
+    public void sampleLocationCoordinateRange(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationCoordinateRange, SIZE$sampleLocationCoordinateRange);
+    }
+
+    public MemorySegment sampleLocationCoordinateRangeRaw() {
+        return segment.asSlice(OFFSET$sampleLocationCoordinateRange, SIZE$sampleLocationCoordinateRange);
     }
 
     public @Unsigned int sampleLocationSubPixelBits() {
@@ -227,7 +262,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("sampleLocationSampleCounts"),
         VkExtent2D.LAYOUT.withName("maxSampleLocationGridSize"),
-        ValueLayout.JAVA_FLOAT.withName("sampleLocationCoordinateRange"),
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_FLOAT).withName("sampleLocationCoordinateRange"),
         ValueLayout.JAVA_INT.withName("sampleLocationSubPixelBits"),
         ValueLayout.JAVA_INT.withName("variableSampleLocations")
     );
@@ -245,7 +280,7 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$sampleLocationSampleCounts = (OfInt) LAYOUT.select(PATH$sampleLocationSampleCounts);
     public static final StructLayout LAYOUT$maxSampleLocationGridSize = (StructLayout) LAYOUT.select(PATH$maxSampleLocationGridSize);
-    public static final OfFloat LAYOUT$sampleLocationCoordinateRange = (OfFloat) LAYOUT.select(PATH$sampleLocationCoordinateRange);
+    public static final SequenceLayout LAYOUT$sampleLocationCoordinateRange = (SequenceLayout) LAYOUT.select(PATH$sampleLocationCoordinateRange);
     public static final OfInt LAYOUT$sampleLocationSubPixelBits = (OfInt) LAYOUT.select(PATH$sampleLocationSubPixelBits);
     public static final OfInt LAYOUT$variableSampleLocations = (OfInt) LAYOUT.select(PATH$variableSampleLocations);
 

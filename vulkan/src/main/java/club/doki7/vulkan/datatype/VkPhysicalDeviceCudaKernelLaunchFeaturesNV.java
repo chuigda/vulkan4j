@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceCudaKernelLaunchFeaturesNV(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceCudaKernelLaunchFeaturesNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceCudaKernelLaunchFeaturesNV, Iterable<VkPhysicalDeviceCudaKernelLaunchFeaturesNV> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceCudaKernelLaunchFeaturesNV.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceCudaKernelLaunchFeaturesNV(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceCudaKernelLaunchFeaturesNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceCudaKernelLaunchFeaturesNV.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceCudaKernelLaunchFeaturesNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceCudaKernelLaunchFeaturesNV ret = new VkPhysicalDeviceCudaKernelLaunchFeaturesNV(segment.asSlice(0, VkPhysicalDeviceCudaKernelLaunchFeaturesNV.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceCudaKernelLaunchFeaturesNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

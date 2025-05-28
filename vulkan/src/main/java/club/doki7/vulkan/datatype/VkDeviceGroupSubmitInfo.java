@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -74,7 +76,7 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceGroupSubmitInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceGroupSubmitInfo, Iterable<VkDeviceGroupSubmitInfo> {
         public long size() {
             return segment.byteSize() / VkDeviceGroupSubmitInfo.BYTES;
         }
@@ -135,6 +137,35 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDeviceGroupSubmitInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDeviceGroupSubmitInfo.BYTES;
+            }
+
+            @Override
+            public VkDeviceGroupSubmitInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDeviceGroupSubmitInfo ret = new VkDeviceGroupSubmitInfo(segment.asSlice(0, VkDeviceGroupSubmitInfo.BYTES));
+                segment = segment.asSlice(VkDeviceGroupSubmitInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -95,10 +95,17 @@ fun parseType(s: String): RawType {
 /// Only call this function when you're sure that you DO NOT need to retain trivia
 fun RawType.toType(): Type = when (this) {
     is RawIdentifierType -> IdentifierType(ident)
-    is RawArrayType -> ArrayType(
-        element = element.toType(),
-        length = size.intern()
-    )
+    is RawArrayType -> if (size.isBlank()) {
+        PointerType(
+            pointee = element.toType(),
+            const = false
+        )
+    } else {
+        ArrayType(
+            element = element.toType(),
+            length = size.intern()
+        )
+    }
     is RawPointerType -> PointerType(
         pointee = pointee.toType(),
         const = const

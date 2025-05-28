@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -46,7 +48,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkImageLayout* pCopySrcLayouts; // optional // @link substring="VkImageLayout" target="VkImageLayout" @link substring="pCopySrcLayouts" target="#pCopySrcLayouts"
 ///     uint32_t copyDstLayoutCount; // optional // @link substring="copyDstLayoutCount" target="#copyDstLayoutCount"
 ///     VkImageLayout* pCopyDstLayouts; // optional // @link substring="VkImageLayout" target="VkImageLayout" @link substring="pCopyDstLayouts" target="#pCopyDstLayouts"
-///     uint8_t optimalTilingLayoutUUID; // optional // @link substring="optimalTilingLayoutUUID" target="#optimalTilingLayoutUUID"
+///     uint8_t[VK_UUID_SIZE] optimalTilingLayoutUUID; // optional // @link substring="optimalTilingLayoutUUID" target="#optimalTilingLayoutUUID"
 ///     VkBool32 identicalMemoryTypeRequirements; // @link substring="identicalMemoryTypeRequirements" target="#identicalMemoryTypeRequirements"
 /// } VkPhysicalDeviceVulkan14Properties;
 /// }
@@ -93,7 +95,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceVulkan14Properties {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceVulkan14Properties, Iterable<VkPhysicalDeviceVulkan14Properties> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceVulkan14Properties.BYTES;
         }
@@ -154,6 +156,35 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceVulkan14Properties> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceVulkan14Properties.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceVulkan14Properties next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceVulkan14Properties ret = new VkPhysicalDeviceVulkan14Properties(segment.asSlice(0, VkPhysicalDeviceVulkan14Properties.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceVulkan14Properties.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -422,12 +453,16 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pCopyDstLayouts, OFFSET$pCopyDstLayouts, value);
     }
 
-    public @Unsigned byte optimalTilingLayoutUUID() {
-        return segment.get(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID);
+    public @Unsigned BytePtr optimalTilingLayoutUUID() {
+        return new BytePtr(optimalTilingLayoutUUIDRaw());
     }
 
-    public void optimalTilingLayoutUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$optimalTilingLayoutUUID, OFFSET$optimalTilingLayoutUUID, value);
+    public void optimalTilingLayoutUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
+    }
+
+    public MemorySegment optimalTilingLayoutUUIDRaw() {
+        return segment.asSlice(OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
     }
 
     public @NativeType("VkBool32") @Unsigned int identicalMemoryTypeRequirements() {
@@ -464,7 +499,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopySrcLayouts"),
         ValueLayout.JAVA_INT.withName("copyDstLayoutCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pCopyDstLayouts"),
-        ValueLayout.JAVA_BYTE.withName("optimalTilingLayoutUUID"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("optimalTilingLayoutUUID"),
         ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -522,7 +557,7 @@ public record VkPhysicalDeviceVulkan14Properties(@NotNull MemorySegment segment)
     public static final AddressLayout LAYOUT$pCopySrcLayouts = (AddressLayout) LAYOUT.select(PATH$pCopySrcLayouts);
     public static final OfInt LAYOUT$copyDstLayoutCount = (OfInt) LAYOUT.select(PATH$copyDstLayoutCount);
     public static final AddressLayout LAYOUT$pCopyDstLayouts = (AddressLayout) LAYOUT.select(PATH$pCopyDstLayouts);
-    public static final OfByte LAYOUT$optimalTilingLayoutUUID = (OfByte) LAYOUT.select(PATH$optimalTilingLayoutUUID);
+    public static final SequenceLayout LAYOUT$optimalTilingLayoutUUID = (SequenceLayout) LAYOUT.select(PATH$optimalTilingLayoutUUID);
     public static final OfInt LAYOUT$identicalMemoryTypeRequirements = (OfInt) LAYOUT.select(PATH$identicalMemoryTypeRequirements);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

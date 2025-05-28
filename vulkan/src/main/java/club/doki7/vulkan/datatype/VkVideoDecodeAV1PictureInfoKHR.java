@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void const* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     StdVideoDecodeAV1PictureInfo const* pStdPictureInfo; // @link substring="StdVideoDecodeAV1PictureInfo" target="StdVideoDecodeAV1PictureInfo" @link substring="pStdPictureInfo" target="#pStdPictureInfo"
-///     int32_t referenceNameSlotIndices; // @link substring="referenceNameSlotIndices" target="#referenceNameSlotIndices"
+///     int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR] referenceNameSlotIndices; // @link substring="referenceNameSlotIndices" target="#referenceNameSlotIndices"
 ///     uint32_t frameHeaderOffset; // @link substring="frameHeaderOffset" target="#frameHeaderOffset"
 ///     uint32_t tileCount; // @link substring="tileCount" target="#tileCount"
 ///     uint32_t const* pTileOffsets; // @link substring="pTileOffsets" target="#pTileOffsets"
@@ -74,7 +76,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeAV1PictureInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeAV1PictureInfoKHR, Iterable<VkVideoDecodeAV1PictureInfoKHR> {
         public long size() {
             return segment.byteSize() / VkVideoDecodeAV1PictureInfoKHR.BYTES;
         }
@@ -135,6 +137,35 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkVideoDecodeAV1PictureInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkVideoDecodeAV1PictureInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkVideoDecodeAV1PictureInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoDecodeAV1PictureInfoKHR ret = new VkVideoDecodeAV1PictureInfoKHR(segment.asSlice(0, VkVideoDecodeAV1PictureInfoKHR.BYTES));
+                segment = segment.asSlice(VkVideoDecodeAV1PictureInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -214,12 +245,16 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
-    public int referenceNameSlotIndices() {
-        return segment.get(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices);
+    public IntPtr referenceNameSlotIndices() {
+        return new IntPtr(referenceNameSlotIndicesRaw());
     }
 
-    public void referenceNameSlotIndices(int value) {
-        segment.set(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices, value);
+    public void referenceNameSlotIndices(IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
+    }
+
+    public MemorySegment referenceNameSlotIndicesRaw() {
+        return segment.asSlice(OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
     }
 
     public @Unsigned int frameHeaderOffset() {
@@ -292,7 +327,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoDecodeAV1PictureInfo.LAYOUT).withName("pStdPictureInfo"),
-        ValueLayout.JAVA_INT.withName("referenceNameSlotIndices"),
+        MemoryLayout.sequenceLayout(MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
         ValueLayout.JAVA_INT.withName("frameHeaderOffset"),
         ValueLayout.JAVA_INT.withName("tileCount"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTileOffsets"),
@@ -312,7 +347,7 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final AddressLayout LAYOUT$pStdPictureInfo = (AddressLayout) LAYOUT.select(PATH$pStdPictureInfo);
-    public static final OfInt LAYOUT$referenceNameSlotIndices = (OfInt) LAYOUT.select(PATH$referenceNameSlotIndices);
+    public static final SequenceLayout LAYOUT$referenceNameSlotIndices = (SequenceLayout) LAYOUT.select(PATH$referenceNameSlotIndices);
     public static final OfInt LAYOUT$frameHeaderOffset = (OfInt) LAYOUT.select(PATH$frameHeaderOffset);
     public static final OfInt LAYOUT$tileCount = (OfInt) LAYOUT.select(PATH$tileCount);
     public static final AddressLayout LAYOUT$pTileOffsets = (AddressLayout) LAYOUT.select(PATH$pTileOffsets);

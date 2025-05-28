@@ -1531,7 +1531,7 @@ public final class GLES2 {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
                 name
             );
-            return s.address() == 0 ? null : new BytePtr(s);
+            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }

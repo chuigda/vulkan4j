@@ -6,55 +6,57 @@
 [FAQ](faq.md)
 
 # Setup
-- [Base code](setup/base-code.md)
-- [Instance](setup/instance.md)
-- [Validation Layers](setup/validation-layers.md)
-- [Physical Devices and Queue Families](setup/physical-devices-and-queue-families.md)
-- [Logical Devices and Queues](setup/logical-device-and-queues.md)
+- [Base code](01-setup/ch00-base-code.md)
+- [Instance](01-setup/ch01-instance.md)
+- [Validation Layers](01-setup/ch02-validation-layers.md)
+- [Physical Devices and Queue Families](01-setup/ch03-physical-devices-and-queue-families.md)
+- [Logical Devices and Queues](01-setup/ch04-logical-device-and-queues.md)
 
 # Presentation
-- [Window surface](presentation/window-surface.md)
-- [Swap chain](presentation/swap-chain.md)
-- [Image views](presentation/image-views.md)
+- [Window surface](02-presentation/ch05-window-surface.md)
+- [Swap chain](02-presentation/ch06-swap-chain.md)
+- [Image views](02-presentation/ch07-image-views.md)
 
 # Graphics pipeline basics
-- [Introduction](pipeline/introduction.md)
-- [Shader modules](pipeline/shader-modules.md)
-- [Fixed functions](pipeline/fixed-functions.md)
-- [Render passes](pipeline/render-passes.md)
-- [Conclusion](pipeline/conclusion.md)
+- [Introduction](03-pipeline/ch08-pipeline-intro.md)
+- [Shader modules](03-pipeline/ch09-shader-modules.md)
+- [Fixed functions](03-pipeline/ch10-fixed-functions.md)
+- [Render passes](03-pipeline/ch11-render-passes.md)
+- [Conclusion](03-pipeline/ch12-conclusion.md)
 
 # Drawing
-- [Framebuffers](drawing/framebuffers.md)
-- [Command buffers](drawing/command-buffers.md)
-- [Rendering and presentation](drawing/rendering-and-presentation.md)
-- [Frames in flight](drawing/frames-in-flight.md)
+- [Framebuffers](04-drawing/ch13-framebuffers.md)
+- [Command buffers](04-drawing/ch14-command-buffers.md)
+- [Rendering and presentation](04-drawing/ch15-rendering-and-presentation.md)
+- [Frames in flight](04-drawing/ch16-frames-in-flight.md)
 
 # Swap chain
-- [Swap chain recreation](swapchain/swap-chain-recreation.md)
+- [Swap chain recreation](05-swapchain/ch17-swap-chain-recreation.md)
 
 # Vertex buffers
-- [Vertex input description](vertex-buffers/vertex-input-description.md)
-- [Vertex buffer creation](vertex-buffers/vertex-buffer-creation.md)
-- [Staging buffer](vertex-buffers/staging-buffer.md)
-- [Index buffer](vertex-buffers/index-buffer.md)
+- [Vertex input description](06-vertex-buffers/ch18-vertex-input-description.md)
+- [Vertex buffer creation](06-vertex-buffers/ch19-vertex-buffer-creation.md)
+- [Staging buffer](06-vertex-buffers/ch20-staging-buffer.md)
+- [Index buffer](06-vertex-buffers/ch21-index-buffer.md)
 
 # Uniform buffers
-- [Descriptor set layout and buffer](uniform-buffers/descriptor-set-layout-and-buffer.md)
-- [Descriptor pool and sets](uniform-buffers/descriptor-pool-and-sets.md)
+- [Descriptor set layout and buffer](07-uniform-buffers/ch22-descriptor-set-layout-and-buffer.md)
+- [Descriptor pool and sets](07-uniform-buffers/ch23-descriptor-pool-and-sets.md)
 
 # Texture mapping
-- [Images](texture-mapping/images.md)
-- [Image view and sampler](texture-mapping/image-view-and-sampler.md)
-- [Combined image sampler](texture-mapping/combined-image-sampler.md)
+- [Images](08-texture-mapping/ch24-images.md)
+- [Image view and sampler](08-texture-mapping/ch25-image-view-and-sampler.md)
+- [Combined image sampler](08-texture-mapping/ch26-combined-image-sampler.md)
 
 # Depth buffering
-- [Depth buffering](depth-buffering/depth-buffering.md)
-- [Loading models](depth-buffering/loading-models.md)
+- [Depth buffering](09-depth-buffering/ch27-depth-buffering.md)
+- [Loading models](09-depth-buffering/ch28-loading-models.md)
 
 # Rendering quality
-- [Generating mipmaps](quality/generating-mipmaps.md)
-- [Multisampling](quality/multisampling.md)
+- [Generating mipmaps](10-quality/ch29-generating-mipmaps.md)
+- [Multisampling](10-quality/ch30-multisampling.md)
 
 # Advanced topics
-- [Vulkan memory allocator](./advanced-topics/vulkan-memory-allocator.md)
+- [Vulkan memory allocator](11-advanced-topics/ch31-vulkan-memory-allocator.md)
+- [Dynamic Rendering](11-advanced-topics/ch32-dynamic-rendering.md)
+- [Push Constants](11-advanced-topics/ch33-push-constants.md)

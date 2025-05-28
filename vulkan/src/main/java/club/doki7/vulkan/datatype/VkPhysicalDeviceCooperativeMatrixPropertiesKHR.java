@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesKHR(@NotNull MemorySegm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceCooperativeMatrixPropertiesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceCooperativeMatrixPropertiesKHR, Iterable<VkPhysicalDeviceCooperativeMatrixPropertiesKHR> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceCooperativeMatrixPropertiesKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesKHR(@NotNull MemorySegm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceCooperativeMatrixPropertiesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceCooperativeMatrixPropertiesKHR.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceCooperativeMatrixPropertiesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceCooperativeMatrixPropertiesKHR ret = new VkPhysicalDeviceCooperativeMatrixPropertiesKHR(segment.asSlice(0, VkPhysicalDeviceCooperativeMatrixPropertiesKHR.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceCooperativeMatrixPropertiesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

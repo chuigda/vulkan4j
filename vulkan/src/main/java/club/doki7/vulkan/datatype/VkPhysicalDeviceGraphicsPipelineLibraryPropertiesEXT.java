@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT, Iterable<VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT ret = new VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(segment.asSlice(0, VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265PredictorPaletteEntries {
-///     uint16_t PredictorPaletteEntries; // @link substring="PredictorPaletteEntries" target="#PredictorPaletteEntries"
+///     uint16_t[STD_VIDEO_H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE][STD_VIDEO_H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE] PredictorPaletteEntries; // @link substring="PredictorPaletteEntries" target="#PredictorPaletteEntries"
 /// } StdVideoH265PredictorPaletteEntries;
 /// }
 ///
@@ -56,7 +58,7 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265PredictorPaletteEntries {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265PredictorPaletteEntries, Iterable<StdVideoH265PredictorPaletteEntries> {
         public long size() {
             return segment.byteSize() / StdVideoH265PredictorPaletteEntries.BYTES;
         }
@@ -118,6 +120,35 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoH265PredictorPaletteEntries> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoH265PredictorPaletteEntries.BYTES;
+            }
+
+            @Override
+            public StdVideoH265PredictorPaletteEntries next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoH265PredictorPaletteEntries ret = new StdVideoH265PredictorPaletteEntries(segment.asSlice(0, StdVideoH265PredictorPaletteEntries.BYTES));
+                segment = segment.asSlice(StdVideoH265PredictorPaletteEntries.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static StdVideoH265PredictorPaletteEntries allocate(Arena arena) {
@@ -135,22 +166,26 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
         return ret;
     }
 
-    public @Unsigned short PredictorPaletteEntries() {
-        return segment.get(LAYOUT$PredictorPaletteEntries, OFFSET$PredictorPaletteEntries);
+    public @Unsigned ShortPtr PredictorPaletteEntries() {
+        return new ShortPtr(PredictorPaletteEntriesRaw());
     }
 
-    public void PredictorPaletteEntries(@Unsigned short value) {
-        segment.set(LAYOUT$PredictorPaletteEntries, OFFSET$PredictorPaletteEntries, value);
+    public void PredictorPaletteEntries(@Unsigned ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$PredictorPaletteEntries, SIZE$PredictorPaletteEntries);
+    }
+
+    public MemorySegment PredictorPaletteEntriesRaw() {
+        return segment.asSlice(OFFSET$PredictorPaletteEntries, SIZE$PredictorPaletteEntries);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_SHORT.withName("PredictorPaletteEntries")
+        MemoryLayout.sequenceLayout(H265_PREDICTOR_PALETTE_COMPONENTS_LIST_SIZE, MemoryLayout.sequenceLayout(H265_PREDICTOR_PALETTE_COMP_ENTRIES_LIST_SIZE, ValueLayout.JAVA_SHORT)).withName("PredictorPaletteEntries")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$PredictorPaletteEntries = PathElement.groupElement("PredictorPaletteEntries");
 
-    public static final OfShort LAYOUT$PredictorPaletteEntries = (OfShort) LAYOUT.select(PATH$PredictorPaletteEntries);
+    public static final SequenceLayout LAYOUT$PredictorPaletteEntries = (SequenceLayout) LAYOUT.select(PATH$PredictorPaletteEntries);
 
     public static final long SIZE$PredictorPaletteEntries = LAYOUT$PredictorPaletteEntries.byteSize();
 

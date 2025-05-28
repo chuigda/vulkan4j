@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceRGBA10X6FormatsFeaturesEXT, Iterable<VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT ret = new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.asSlice(0, VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

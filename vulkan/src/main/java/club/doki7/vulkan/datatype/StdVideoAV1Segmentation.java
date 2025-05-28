@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -21,8 +23,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoAV1Segmentation {
-///     uint8_t FeatureEnabled; // @link substring="FeatureEnabled" target="#FeatureEnabled"
-///     int16_t FeatureData; // @link substring="FeatureData" target="#FeatureData"
+///     uint8_t[STD_VIDEO_AV1_MAX_SEGMENTS] FeatureEnabled; // @link substring="FeatureEnabled" target="#FeatureEnabled"
+///     int16_t[STD_VIDEO_AV1_SEG_LVL_MAX][STD_VIDEO_AV1_MAX_SEGMENTS] FeatureData; // @link substring="FeatureData" target="#FeatureData"
 /// } StdVideoAV1Segmentation;
 /// }
 ///
@@ -57,7 +59,7 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1Segmentation {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1Segmentation, Iterable<StdVideoAV1Segmentation> {
         public long size() {
             return segment.byteSize() / StdVideoAV1Segmentation.BYTES;
         }
@@ -119,6 +121,35 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoAV1Segmentation> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoAV1Segmentation.BYTES;
+            }
+
+            @Override
+            public StdVideoAV1Segmentation next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoAV1Segmentation ret = new StdVideoAV1Segmentation(segment.asSlice(0, StdVideoAV1Segmentation.BYTES));
+                segment = segment.asSlice(StdVideoAV1Segmentation.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static StdVideoAV1Segmentation allocate(Arena arena) {
@@ -136,33 +167,41 @@ public record StdVideoAV1Segmentation(@NotNull MemorySegment segment) implements
         return ret;
     }
 
-    public @Unsigned byte FeatureEnabled() {
-        return segment.get(LAYOUT$FeatureEnabled, OFFSET$FeatureEnabled);
+    public @Unsigned BytePtr FeatureEnabled() {
+        return new BytePtr(FeatureEnabledRaw());
     }
 
-    public void FeatureEnabled(@Unsigned byte value) {
-        segment.set(LAYOUT$FeatureEnabled, OFFSET$FeatureEnabled, value);
+    public void FeatureEnabled(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$FeatureEnabled, SIZE$FeatureEnabled);
     }
 
-    public short FeatureData() {
-        return segment.get(LAYOUT$FeatureData, OFFSET$FeatureData);
+    public MemorySegment FeatureEnabledRaw() {
+        return segment.asSlice(OFFSET$FeatureEnabled, SIZE$FeatureEnabled);
     }
 
-    public void FeatureData(short value) {
-        segment.set(LAYOUT$FeatureData, OFFSET$FeatureData, value);
+    public ShortPtr FeatureData() {
+        return new ShortPtr(FeatureDataRaw());
+    }
+
+    public void FeatureData(ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$FeatureData, SIZE$FeatureData);
+    }
+
+    public MemorySegment FeatureDataRaw() {
+        return segment.asSlice(OFFSET$FeatureData, SIZE$FeatureData);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("FeatureEnabled"),
-        ValueLayout.JAVA_SHORT.withName("FeatureData")
+        MemoryLayout.sequenceLayout(AV1_MAX_SEGMENTS, ValueLayout.JAVA_BYTE).withName("FeatureEnabled"),
+        MemoryLayout.sequenceLayout(AV1_MAX_SEGMENTS, MemoryLayout.sequenceLayout(AV1_SEG_LVL_MAX, ValueLayout.JAVA_SHORT)).withName("FeatureData")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$FeatureEnabled = PathElement.groupElement("FeatureEnabled");
     public static final PathElement PATH$FeatureData = PathElement.groupElement("FeatureData");
 
-    public static final OfByte LAYOUT$FeatureEnabled = (OfByte) LAYOUT.select(PATH$FeatureEnabled);
-    public static final OfShort LAYOUT$FeatureData = (OfShort) LAYOUT.select(PATH$FeatureData);
+    public static final SequenceLayout LAYOUT$FeatureEnabled = (SequenceLayout) LAYOUT.select(PATH$FeatureEnabled);
+    public static final SequenceLayout LAYOUT$FeatureData = (SequenceLayout) LAYOUT.select(PATH$FeatureData);
 
     public static final long SIZE$FeatureEnabled = LAYOUT$FeatureEnabled.byteSize();
     public static final long SIZE$FeatureData = LAYOUT$FeatureData.byteSize();

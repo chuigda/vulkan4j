@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -78,7 +80,7 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceTransformFeedbackPropertiesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceTransformFeedbackPropertiesEXT, Iterable<VkPhysicalDeviceTransformFeedbackPropertiesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceTransformFeedbackPropertiesEXT.BYTES;
         }
@@ -139,6 +141,35 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceTransformFeedbackPropertiesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceTransformFeedbackPropertiesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceTransformFeedbackPropertiesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceTransformFeedbackPropertiesEXT ret = new VkPhysicalDeviceTransformFeedbackPropertiesEXT(segment.asSlice(0, VkPhysicalDeviceTransformFeedbackPropertiesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceTransformFeedbackPropertiesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

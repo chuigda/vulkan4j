@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -29,9 +31,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     int32_t PicOrderCntVal; // @link substring="PicOrderCntVal" target="#PicOrderCntVal"
 ///     uint16_t NumBitsForSTRefPicSetInSlice; // @link substring="NumBitsForSTRefPicSetInSlice" target="#NumBitsForSTRefPicSetInSlice"
 ///     uint16_t reserved;
-///     uint8_t RefPicSetStCurrBefore; // @link substring="RefPicSetStCurrBefore" target="#RefPicSetStCurrBefore"
-///     uint8_t RefPicSetStCurrAfter; // @link substring="RefPicSetStCurrAfter" target="#RefPicSetStCurrAfter"
-///     uint8_t RefPicSetLtCurr; // @link substring="RefPicSetLtCurr" target="#RefPicSetLtCurr"
+///     uint8_t[STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE] RefPicSetStCurrBefore; // @link substring="RefPicSetStCurrBefore" target="#RefPicSetStCurrBefore"
+///     uint8_t[STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE] RefPicSetStCurrAfter; // @link substring="RefPicSetStCurrAfter" target="#RefPicSetStCurrAfter"
+///     uint8_t[STD_VIDEO_DECODE_H265_REF_PIC_SET_LIST_SIZE] RefPicSetLtCurr; // @link substring="RefPicSetLtCurr" target="#RefPicSetLtCurr"
 /// } StdVideoDecodeH265PictureInfo;
 /// }
 ///
@@ -66,7 +68,7 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeH265PictureInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeH265PictureInfo, Iterable<StdVideoDecodeH265PictureInfo> {
         public long size() {
             return segment.byteSize() / StdVideoDecodeH265PictureInfo.BYTES;
         }
@@ -127,6 +129,35 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoDecodeH265PictureInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoDecodeH265PictureInfo.BYTES;
+            }
+
+            @Override
+            public StdVideoDecodeH265PictureInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoDecodeH265PictureInfo ret = new StdVideoDecodeH265PictureInfo(segment.asSlice(0, StdVideoDecodeH265PictureInfo.BYTES));
+                segment = segment.asSlice(StdVideoDecodeH265PictureInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -202,28 +233,40 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     }
 
 
-    public @Unsigned byte RefPicSetStCurrBefore() {
-        return segment.get(LAYOUT$RefPicSetStCurrBefore, OFFSET$RefPicSetStCurrBefore);
+    public @Unsigned BytePtr RefPicSetStCurrBefore() {
+        return new BytePtr(RefPicSetStCurrBeforeRaw());
     }
 
-    public void RefPicSetStCurrBefore(@Unsigned byte value) {
-        segment.set(LAYOUT$RefPicSetStCurrBefore, OFFSET$RefPicSetStCurrBefore, value);
+    public void RefPicSetStCurrBefore(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicSetStCurrBefore, SIZE$RefPicSetStCurrBefore);
     }
 
-    public @Unsigned byte RefPicSetStCurrAfter() {
-        return segment.get(LAYOUT$RefPicSetStCurrAfter, OFFSET$RefPicSetStCurrAfter);
+    public MemorySegment RefPicSetStCurrBeforeRaw() {
+        return segment.asSlice(OFFSET$RefPicSetStCurrBefore, SIZE$RefPicSetStCurrBefore);
     }
 
-    public void RefPicSetStCurrAfter(@Unsigned byte value) {
-        segment.set(LAYOUT$RefPicSetStCurrAfter, OFFSET$RefPicSetStCurrAfter, value);
+    public @Unsigned BytePtr RefPicSetStCurrAfter() {
+        return new BytePtr(RefPicSetStCurrAfterRaw());
     }
 
-    public @Unsigned byte RefPicSetLtCurr() {
-        return segment.get(LAYOUT$RefPicSetLtCurr, OFFSET$RefPicSetLtCurr);
+    public void RefPicSetStCurrAfter(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicSetStCurrAfter, SIZE$RefPicSetStCurrAfter);
     }
 
-    public void RefPicSetLtCurr(@Unsigned byte value) {
-        segment.set(LAYOUT$RefPicSetLtCurr, OFFSET$RefPicSetLtCurr, value);
+    public MemorySegment RefPicSetStCurrAfterRaw() {
+        return segment.asSlice(OFFSET$RefPicSetStCurrAfter, SIZE$RefPicSetStCurrAfter);
+    }
+
+    public @Unsigned BytePtr RefPicSetLtCurr() {
+        return new BytePtr(RefPicSetLtCurrRaw());
+    }
+
+    public void RefPicSetLtCurr(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicSetLtCurr, SIZE$RefPicSetLtCurr);
+    }
+
+    public MemorySegment RefPicSetLtCurrRaw() {
+        return segment.asSlice(OFFSET$RefPicSetLtCurr, SIZE$RefPicSetLtCurr);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -235,9 +278,9 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
         ValueLayout.JAVA_SHORT.withName("NumBitsForSTRefPicSetInSlice"),
         ValueLayout.JAVA_SHORT.withName("reserved"),
-        ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrBefore"),
-        ValueLayout.JAVA_BYTE.withName("RefPicSetStCurrAfter"),
-        ValueLayout.JAVA_BYTE.withName("RefPicSetLtCurr")
+        MemoryLayout.sequenceLayout(DECODE_H265_REF_PIC_SET_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("RefPicSetStCurrBefore"),
+        MemoryLayout.sequenceLayout(DECODE_H265_REF_PIC_SET_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("RefPicSetStCurrAfter"),
+        MemoryLayout.sequenceLayout(DECODE_H265_REF_PIC_SET_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("RefPicSetLtCurr")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -259,9 +302,9 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
     public static final OfByte LAYOUT$NumDeltaPocsOfRefRpsIdx = (OfByte) LAYOUT.select(PATH$NumDeltaPocsOfRefRpsIdx);
     public static final OfInt LAYOUT$PicOrderCntVal = (OfInt) LAYOUT.select(PATH$PicOrderCntVal);
     public static final OfShort LAYOUT$NumBitsForSTRefPicSetInSlice = (OfShort) LAYOUT.select(PATH$NumBitsForSTRefPicSetInSlice);
-    public static final OfByte LAYOUT$RefPicSetStCurrBefore = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrBefore);
-    public static final OfByte LAYOUT$RefPicSetStCurrAfter = (OfByte) LAYOUT.select(PATH$RefPicSetStCurrAfter);
-    public static final OfByte LAYOUT$RefPicSetLtCurr = (OfByte) LAYOUT.select(PATH$RefPicSetLtCurr);
+    public static final SequenceLayout LAYOUT$RefPicSetStCurrBefore = (SequenceLayout) LAYOUT.select(PATH$RefPicSetStCurrBefore);
+    public static final SequenceLayout LAYOUT$RefPicSetStCurrAfter = (SequenceLayout) LAYOUT.select(PATH$RefPicSetStCurrAfter);
+    public static final SequenceLayout LAYOUT$RefPicSetLtCurr = (SequenceLayout) LAYOUT.select(PATH$RefPicSetLtCurr);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$sps_video_parameter_set_id = LAYOUT$sps_video_parameter_set_id.byteSize();

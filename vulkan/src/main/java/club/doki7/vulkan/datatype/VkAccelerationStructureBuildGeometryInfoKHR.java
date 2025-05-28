@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -77,7 +79,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureBuildGeometryInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureBuildGeometryInfoKHR, Iterable<VkAccelerationStructureBuildGeometryInfoKHR> {
         public long size() {
             return segment.byteSize() / VkAccelerationStructureBuildGeometryInfoKHR.BYTES;
         }
@@ -138,6 +140,35 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkAccelerationStructureBuildGeometryInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkAccelerationStructureBuildGeometryInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkAccelerationStructureBuildGeometryInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkAccelerationStructureBuildGeometryInfoKHR ret = new VkAccelerationStructureBuildGeometryInfoKHR(segment.asSlice(0, VkAccelerationStructureBuildGeometryInfoKHR.BYTES));
+                segment = segment.asSlice(VkAccelerationStructureBuildGeometryInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -342,7 +373,7 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
     public static final OfInt LAYOUT$geometryCount = (OfInt) LAYOUT.select(PATH$geometryCount);
     public static final AddressLayout LAYOUT$pGeometries = (AddressLayout) LAYOUT.select(PATH$pGeometries);
     public static final AddressLayout LAYOUT$ppGeometries = (AddressLayout) LAYOUT.select(PATH$ppGeometries);
-    public static final StructLayout LAYOUT$scratchData = (StructLayout) LAYOUT.select(PATH$scratchData);
+    public static final UnionLayout LAYOUT$scratchData = (UnionLayout) LAYOUT.select(PATH$scratchData);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

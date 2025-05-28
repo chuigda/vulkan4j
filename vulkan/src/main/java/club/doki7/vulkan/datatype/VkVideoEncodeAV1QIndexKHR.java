@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -60,7 +62,7 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeAV1QIndexKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeAV1QIndexKHR, Iterable<VkVideoEncodeAV1QIndexKHR> {
         public long size() {
             return segment.byteSize() / VkVideoEncodeAV1QIndexKHR.BYTES;
         }
@@ -121,6 +123,35 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkVideoEncodeAV1QIndexKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkVideoEncodeAV1QIndexKHR.BYTES;
+            }
+
+            @Override
+            public VkVideoEncodeAV1QIndexKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoEncodeAV1QIndexKHR ret = new VkVideoEncodeAV1QIndexKHR(segment.asSlice(0, VkVideoEncodeAV1QIndexKHR.BYTES));
+                segment = segment.asSlice(VkVideoEncodeAV1QIndexKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

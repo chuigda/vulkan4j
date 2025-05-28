@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -58,7 +60,7 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265ProfileTierLevel {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265ProfileTierLevel, Iterable<StdVideoH265ProfileTierLevel> {
         public long size() {
             return segment.byteSize() / StdVideoH265ProfileTierLevel.BYTES;
         }
@@ -119,6 +121,35 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoH265ProfileTierLevel> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoH265ProfileTierLevel.BYTES;
+            }
+
+            @Override
+            public StdVideoH265ProfileTierLevel next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoH265ProfileTierLevel ret = new StdVideoH265ProfileTierLevel(segment.asSlice(0, StdVideoH265ProfileTierLevel.BYTES));
+                segment = segment.asSlice(StdVideoH265ProfileTierLevel.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

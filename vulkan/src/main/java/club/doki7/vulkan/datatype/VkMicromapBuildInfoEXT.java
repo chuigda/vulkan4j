@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -79,7 +81,7 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkMicromapBuildInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkMicromapBuildInfoEXT, Iterable<VkMicromapBuildInfoEXT> {
         public long size() {
             return segment.byteSize() / VkMicromapBuildInfoEXT.BYTES;
         }
@@ -140,6 +142,35 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkMicromapBuildInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkMicromapBuildInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkMicromapBuildInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkMicromapBuildInfoEXT ret = new VkMicromapBuildInfoEXT(segment.asSlice(0, VkMicromapBuildInfoEXT.BYTES));
+                segment = segment.asSlice(VkMicromapBuildInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -359,9 +390,9 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
     public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);
     public static final AddressLayout LAYOUT$pUsageCounts = (AddressLayout) LAYOUT.select(PATH$pUsageCounts);
     public static final AddressLayout LAYOUT$ppUsageCounts = (AddressLayout) LAYOUT.select(PATH$ppUsageCounts);
-    public static final StructLayout LAYOUT$data = (StructLayout) LAYOUT.select(PATH$data);
-    public static final StructLayout LAYOUT$scratchData = (StructLayout) LAYOUT.select(PATH$scratchData);
-    public static final StructLayout LAYOUT$triangleArray = (StructLayout) LAYOUT.select(PATH$triangleArray);
+    public static final UnionLayout LAYOUT$data = (UnionLayout) LAYOUT.select(PATH$data);
+    public static final UnionLayout LAYOUT$scratchData = (UnionLayout) LAYOUT.select(PATH$scratchData);
+    public static final UnionLayout LAYOUT$triangleArray = (UnionLayout) LAYOUT.select(PATH$triangleArray);
     public static final OfLong LAYOUT$triangleArrayStride = (OfLong) LAYOUT.select(PATH$triangleArrayStride);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

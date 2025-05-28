@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(@NotNull MemorySegment s
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderAtomicInt64Features {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceShaderAtomicInt64Features, Iterable<VkPhysicalDeviceShaderAtomicInt64Features> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceShaderAtomicInt64Features.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(@NotNull MemorySegment s
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceShaderAtomicInt64Features> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceShaderAtomicInt64Features.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceShaderAtomicInt64Features next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceShaderAtomicInt64Features ret = new VkPhysicalDeviceShaderAtomicInt64Features(segment.asSlice(0, VkPhysicalDeviceShaderAtomicInt64Features.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceShaderAtomicInt64Features.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

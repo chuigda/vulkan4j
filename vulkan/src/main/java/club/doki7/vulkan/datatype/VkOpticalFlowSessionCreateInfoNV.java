@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -77,7 +79,7 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkOpticalFlowSessionCreateInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkOpticalFlowSessionCreateInfoNV, Iterable<VkOpticalFlowSessionCreateInfoNV> {
         public long size() {
             return segment.byteSize() / VkOpticalFlowSessionCreateInfoNV.BYTES;
         }
@@ -138,6 +140,35 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkOpticalFlowSessionCreateInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkOpticalFlowSessionCreateInfoNV.BYTES;
+            }
+
+            @Override
+            public VkOpticalFlowSessionCreateInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkOpticalFlowSessionCreateInfoNV ret = new VkOpticalFlowSessionCreateInfoNV(segment.asSlice(0, VkOpticalFlowSessionCreateInfoNV.BYTES));
+                segment = segment.asSlice(VkOpticalFlowSessionCreateInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

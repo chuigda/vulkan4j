@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -88,7 +90,7 @@ public record VmaDetailedStatistics(@NotNull MemorySegment segment) implements I
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaDetailedStatistics {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaDetailedStatistics, Iterable<VmaDetailedStatistics> {
         public long size() {
             return segment.byteSize() / VmaDetailedStatistics.BYTES;
         }
@@ -149,6 +151,35 @@ public record VmaDetailedStatistics(@NotNull MemorySegment segment) implements I
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VmaDetailedStatistics> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VmaDetailedStatistics.BYTES;
+            }
+
+            @Override
+            public VmaDetailedStatistics next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaDetailedStatistics ret = new VmaDetailedStatistics(segment.asSlice(0, VmaDetailedStatistics.BYTES));
+                segment = segment.asSlice(VmaDetailedStatistics.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

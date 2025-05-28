@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +74,7 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkFramebufferMixedSamplesCombinationNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkFramebufferMixedSamplesCombinationNV, Iterable<VkFramebufferMixedSamplesCombinationNV> {
         public long size() {
             return segment.byteSize() / VkFramebufferMixedSamplesCombinationNV.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkFramebufferMixedSamplesCombinationNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkFramebufferMixedSamplesCombinationNV.BYTES;
+            }
+
+            @Override
+            public VkFramebufferMixedSamplesCombinationNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkFramebufferMixedSamplesCombinationNV ret = new VkFramebufferMixedSamplesCombinationNV(segment.asSlice(0, VkFramebufferMixedSamplesCombinationNV.BYTES));
+                segment = segment.asSlice(VkFramebufferMixedSamplesCombinationNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

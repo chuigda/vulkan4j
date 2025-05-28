@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -29,7 +31,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t frame_num; // @link substring="frame_num" target="#frame_num"
 ///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
 ///     uint8_t temporal_id; // @link substring="temporal_id" target="#temporal_id"
-///     uint8_t reserved1;
+///     uint8_t[3] reserved1;
 ///     StdVideoEncodeH264ReferenceListsInfo const* pRefLists; // @link substring="StdVideoEncodeH264ReferenceListsInfo" target="StdVideoEncodeH264ReferenceListsInfo" @link substring="pRefLists" target="#pRefLists"
 /// } StdVideoEncodeH264PictureInfo;
 /// }
@@ -65,7 +67,7 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264PictureInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264PictureInfo, Iterable<StdVideoEncodeH264PictureInfo> {
         public long size() {
             return segment.byteSize() / StdVideoEncodeH264PictureInfo.BYTES;
         }
@@ -126,6 +128,35 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoEncodeH264PictureInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoEncodeH264PictureInfo.BYTES;
+            }
+
+            @Override
+            public StdVideoEncodeH264PictureInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoEncodeH264PictureInfo ret = new StdVideoEncodeH264PictureInfo(segment.asSlice(0, StdVideoEncodeH264PictureInfo.BYTES));
+                segment = segment.asSlice(StdVideoEncodeH264PictureInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -249,7 +280,7 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_INT.withName("frame_num"),
         ValueLayout.JAVA_INT.withName("PicOrderCnt"),
         ValueLayout.JAVA_BYTE.withName("temporal_id"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeH264ReferenceListsInfo.LAYOUT).withName("pRefLists")
     );
     public static final long BYTES = LAYOUT.byteSize();

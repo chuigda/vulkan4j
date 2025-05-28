@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -77,7 +79,7 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureGeometrySpheresDataNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureGeometrySpheresDataNV, Iterable<VkAccelerationStructureGeometrySpheresDataNV> {
         public long size() {
             return segment.byteSize() / VkAccelerationStructureGeometrySpheresDataNV.BYTES;
         }
@@ -138,6 +140,35 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkAccelerationStructureGeometrySpheresDataNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkAccelerationStructureGeometrySpheresDataNV.BYTES;
+            }
+
+            @Override
+            public VkAccelerationStructureGeometrySpheresDataNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkAccelerationStructureGeometrySpheresDataNV ret = new VkAccelerationStructureGeometrySpheresDataNV(segment.asSlice(0, VkAccelerationStructureGeometrySpheresDataNV.BYTES));
+                segment = segment.asSlice(VkAccelerationStructureGeometrySpheresDataNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -288,13 +319,13 @@ public record VkAccelerationStructureGeometrySpheresDataNV(@NotNull MemorySegmen
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$vertexFormat = (OfInt) LAYOUT.select(PATH$vertexFormat);
-    public static final StructLayout LAYOUT$vertexData = (StructLayout) LAYOUT.select(PATH$vertexData);
+    public static final UnionLayout LAYOUT$vertexData = (UnionLayout) LAYOUT.select(PATH$vertexData);
     public static final OfLong LAYOUT$vertexStride = (OfLong) LAYOUT.select(PATH$vertexStride);
     public static final OfInt LAYOUT$radiusFormat = (OfInt) LAYOUT.select(PATH$radiusFormat);
-    public static final StructLayout LAYOUT$radiusData = (StructLayout) LAYOUT.select(PATH$radiusData);
+    public static final UnionLayout LAYOUT$radiusData = (UnionLayout) LAYOUT.select(PATH$radiusData);
     public static final OfLong LAYOUT$radiusStride = (OfLong) LAYOUT.select(PATH$radiusStride);
     public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
-    public static final StructLayout LAYOUT$indexData = (StructLayout) LAYOUT.select(PATH$indexData);
+    public static final UnionLayout LAYOUT$indexData = (UnionLayout) LAYOUT.select(PATH$indexData);
     public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

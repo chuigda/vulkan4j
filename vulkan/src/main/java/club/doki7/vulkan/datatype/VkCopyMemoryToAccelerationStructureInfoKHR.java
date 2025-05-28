@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkCopyMemoryToAccelerationStructureInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkCopyMemoryToAccelerationStructureInfoKHR, Iterable<VkCopyMemoryToAccelerationStructureInfoKHR> {
         public long size() {
             return segment.byteSize() / VkCopyMemoryToAccelerationStructureInfoKHR.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkCopyMemoryToAccelerationStructureInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkCopyMemoryToAccelerationStructureInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkCopyMemoryToAccelerationStructureInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkCopyMemoryToAccelerationStructureInfoKHR ret = new VkCopyMemoryToAccelerationStructureInfoKHR(segment.asSlice(0, VkCopyMemoryToAccelerationStructureInfoKHR.BYTES));
+                segment = segment.asSlice(VkCopyMemoryToAccelerationStructureInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -225,7 +256,7 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$src = (StructLayout) LAYOUT.select(PATH$src);
+    public static final UnionLayout LAYOUT$src = (UnionLayout) LAYOUT.select(PATH$src);
     public static final AddressLayout LAYOUT$dst = (AddressLayout) LAYOUT.select(PATH$dst);
     public static final OfInt LAYOUT$mode = (OfInt) LAYOUT.select(PATH$mode);
 

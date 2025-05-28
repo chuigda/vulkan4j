@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +74,7 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceDepthBiasControlFeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceDepthBiasControlFeaturesEXT, Iterable<VkPhysicalDeviceDepthBiasControlFeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceDepthBiasControlFeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceDepthBiasControlFeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceDepthBiasControlFeaturesEXT ret = new VkPhysicalDeviceDepthBiasControlFeaturesEXT(segment.asSlice(0, VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

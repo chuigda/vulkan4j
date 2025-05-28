@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -62,7 +64,7 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1OperatingPointInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeAV1OperatingPointInfo, Iterable<StdVideoEncodeAV1OperatingPointInfo> {
         public long size() {
             return segment.byteSize() / StdVideoEncodeAV1OperatingPointInfo.BYTES;
         }
@@ -123,6 +125,35 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoEncodeAV1OperatingPointInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoEncodeAV1OperatingPointInfo.BYTES;
+            }
+
+            @Override
+            public StdVideoEncodeAV1OperatingPointInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoEncodeAV1OperatingPointInfo ret = new StdVideoEncodeAV1OperatingPointInfo(segment.asSlice(0, StdVideoEncodeAV1OperatingPointInfo.BYTES));
+                segment = segment.asSlice(StdVideoEncodeAV1OperatingPointInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

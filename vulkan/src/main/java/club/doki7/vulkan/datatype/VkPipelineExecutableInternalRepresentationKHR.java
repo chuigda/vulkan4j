@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +25,8 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPipelineExecutableInternalRepresentationKHR {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     char name; // @link substring="name" target="#name"
-///     char description; // @link substring="description" target="#description"
+///     char[VK_MAX_DESCRIPTION_SIZE] name; // @link substring="name" target="#name"
+///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 ///     VkBool32 isText; // @link substring="isText" target="#isText"
 ///     size_t dataSize; // @link substring="dataSize" target="#dataSize"
 ///     void* pData; // optional // @link substring="pData" target="#pData"
@@ -73,7 +75,7 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineExecutableInternalRepresentationKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineExecutableInternalRepresentationKHR, Iterable<VkPipelineExecutableInternalRepresentationKHR> {
         public long size() {
             return segment.byteSize() / VkPipelineExecutableInternalRepresentationKHR.BYTES;
         }
@@ -135,6 +137,35 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPipelineExecutableInternalRepresentationKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPipelineExecutableInternalRepresentationKHR.BYTES;
+            }
+
+            @Override
+            public VkPipelineExecutableInternalRepresentationKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineExecutableInternalRepresentationKHR ret = new VkPipelineExecutableInternalRepresentationKHR(segment.asSlice(0, VkPipelineExecutableInternalRepresentationKHR.BYTES));
+                segment = segment.asSlice(VkPipelineExecutableInternalRepresentationKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkPipelineExecutableInternalRepresentationKHR allocate(Arena arena) {
@@ -182,20 +213,28 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public byte name() {
-        return segment.get(LAYOUT$name, OFFSET$name);
+    public BytePtr name() {
+        return new BytePtr(nameRaw());
     }
 
-    public void name(byte value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
+    public void name(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
-    public void description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
+    }
+
+    public void description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    }
+
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public @NativeType("VkBool32") @Unsigned int isText() {
@@ -229,8 +268,8 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("name"),
-        ValueLayout.JAVA_BYTE.withName("description"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("isText"),
         NativeLayout.C_SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
@@ -247,8 +286,8 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
     public static final OfInt LAYOUT$isText = (OfInt) LAYOUT.select(PATH$isText);
     public static final AddressLayout LAYOUT$pData = (AddressLayout) LAYOUT.select(PATH$pData);
 

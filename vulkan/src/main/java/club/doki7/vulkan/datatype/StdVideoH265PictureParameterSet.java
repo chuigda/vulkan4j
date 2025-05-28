@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -38,8 +40,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t log2_max_transform_skip_block_size_minus2; // @link substring="log2_max_transform_skip_block_size_minus2" target="#log2_max_transform_skip_block_size_minus2"
 ///     uint8_t diff_cu_chroma_qp_offset_depth; // @link substring="diff_cu_chroma_qp_offset_depth" target="#diff_cu_chroma_qp_offset_depth"
 ///     uint8_t chroma_qp_offset_list_len_minus1; // @link substring="chroma_qp_offset_list_len_minus1" target="#chroma_qp_offset_list_len_minus1"
-///     int8_t cb_qp_offset_list; // @link substring="cb_qp_offset_list" target="#cb_qp_offset_list"
-///     int8_t cr_qp_offset_list; // @link substring="cr_qp_offset_list" target="#cr_qp_offset_list"
+///     int8_t[STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE] cb_qp_offset_list; // @link substring="cb_qp_offset_list" target="#cb_qp_offset_list"
+///     int8_t[STD_VIDEO_H265_CHROMA_QP_OFFSET_LIST_SIZE] cr_qp_offset_list; // @link substring="cr_qp_offset_list" target="#cr_qp_offset_list"
 ///     uint8_t log2_sao_offset_scale_luma; // @link substring="log2_sao_offset_scale_luma" target="#log2_sao_offset_scale_luma"
 ///     uint8_t log2_sao_offset_scale_chroma; // @link substring="log2_sao_offset_scale_chroma" target="#log2_sao_offset_scale_chroma"
 ///     int8_t pps_act_y_qp_offset_plus5; // @link substring="pps_act_y_qp_offset_plus5" target="#pps_act_y_qp_offset_plus5"
@@ -52,8 +54,8 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t num_tile_rows_minus1; // @link substring="num_tile_rows_minus1" target="#num_tile_rows_minus1"
 ///     uint8_t reserved1;
 ///     uint8_t reserved2;
-///     uint16_t column_width_minus1; // @link substring="column_width_minus1" target="#column_width_minus1"
-///     uint16_t row_height_minus1; // @link substring="row_height_minus1" target="#row_height_minus1"
+///     uint16_t[STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE] column_width_minus1; // @link substring="column_width_minus1" target="#column_width_minus1"
+///     uint16_t[STD_VIDEO_H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE] row_height_minus1; // @link substring="row_height_minus1" target="#row_height_minus1"
 ///     uint32_t reserved3;
 ///     StdVideoH265ScalingLists const* pScalingLists; // @link substring="StdVideoH265ScalingLists" target="StdVideoH265ScalingLists" @link substring="pScalingLists" target="#pScalingLists"
 ///     StdVideoH265PredictorPaletteEntries const* pPredictorPaletteEntries; // @link substring="StdVideoH265PredictorPaletteEntries" target="StdVideoH265PredictorPaletteEntries" @link substring="pPredictorPaletteEntries" target="#pPredictorPaletteEntries"
@@ -91,7 +93,7 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265PictureParameterSet {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265PictureParameterSet, Iterable<StdVideoH265PictureParameterSet> {
         public long size() {
             return segment.byteSize() / StdVideoH265PictureParameterSet.BYTES;
         }
@@ -152,6 +154,35 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoH265PictureParameterSet> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoH265PictureParameterSet.BYTES;
+            }
+
+            @Override
+            public StdVideoH265PictureParameterSet next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoH265PictureParameterSet ret = new StdVideoH265PictureParameterSet(segment.asSlice(0, StdVideoH265PictureParameterSet.BYTES));
+                segment = segment.asSlice(StdVideoH265PictureParameterSet.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -306,20 +337,28 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$chroma_qp_offset_list_len_minus1, OFFSET$chroma_qp_offset_list_len_minus1, value);
     }
 
-    public byte cb_qp_offset_list() {
-        return segment.get(LAYOUT$cb_qp_offset_list, OFFSET$cb_qp_offset_list);
+    public BytePtr cb_qp_offset_list() {
+        return new BytePtr(cb_qp_offset_listRaw());
     }
 
-    public void cb_qp_offset_list(byte value) {
-        segment.set(LAYOUT$cb_qp_offset_list, OFFSET$cb_qp_offset_list, value);
+    public void cb_qp_offset_list(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cb_qp_offset_list, SIZE$cb_qp_offset_list);
     }
 
-    public byte cr_qp_offset_list() {
-        return segment.get(LAYOUT$cr_qp_offset_list, OFFSET$cr_qp_offset_list);
+    public MemorySegment cb_qp_offset_listRaw() {
+        return segment.asSlice(OFFSET$cb_qp_offset_list, SIZE$cb_qp_offset_list);
     }
 
-    public void cr_qp_offset_list(byte value) {
-        segment.set(LAYOUT$cr_qp_offset_list, OFFSET$cr_qp_offset_list, value);
+    public BytePtr cr_qp_offset_list() {
+        return new BytePtr(cr_qp_offset_listRaw());
+    }
+
+    public void cr_qp_offset_list(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cr_qp_offset_list, SIZE$cr_qp_offset_list);
+    }
+
+    public MemorySegment cr_qp_offset_listRaw() {
+        return segment.asSlice(OFFSET$cr_qp_offset_list, SIZE$cr_qp_offset_list);
     }
 
     public @Unsigned byte log2_sao_offset_scale_luma() {
@@ -404,20 +443,28 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
 
 
 
-    public @Unsigned short column_width_minus1() {
-        return segment.get(LAYOUT$column_width_minus1, OFFSET$column_width_minus1);
+    public @Unsigned ShortPtr column_width_minus1() {
+        return new ShortPtr(column_width_minus1Raw());
     }
 
-    public void column_width_minus1(@Unsigned short value) {
-        segment.set(LAYOUT$column_width_minus1, OFFSET$column_width_minus1, value);
+    public void column_width_minus1(@Unsigned ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$column_width_minus1, SIZE$column_width_minus1);
     }
 
-    public @Unsigned short row_height_minus1() {
-        return segment.get(LAYOUT$row_height_minus1, OFFSET$row_height_minus1);
+    public MemorySegment column_width_minus1Raw() {
+        return segment.asSlice(OFFSET$column_width_minus1, SIZE$column_width_minus1);
     }
 
-    public void row_height_minus1(@Unsigned short value) {
-        segment.set(LAYOUT$row_height_minus1, OFFSET$row_height_minus1, value);
+    public @Unsigned ShortPtr row_height_minus1() {
+        return new ShortPtr(row_height_minus1Raw());
+    }
+
+    public void row_height_minus1(@Unsigned ShortPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$row_height_minus1, SIZE$row_height_minus1);
+    }
+
+    public MemorySegment row_height_minus1Raw() {
+        return segment.asSlice(OFFSET$row_height_minus1, SIZE$row_height_minus1);
     }
 
 
@@ -501,8 +548,8 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_BYTE.withName("log2_max_transform_skip_block_size_minus2"),
         ValueLayout.JAVA_BYTE.withName("diff_cu_chroma_qp_offset_depth"),
         ValueLayout.JAVA_BYTE.withName("chroma_qp_offset_list_len_minus1"),
-        ValueLayout.JAVA_BYTE.withName("cb_qp_offset_list"),
-        ValueLayout.JAVA_BYTE.withName("cr_qp_offset_list"),
+        MemoryLayout.sequenceLayout(H265_CHROMA_QP_OFFSET_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("cb_qp_offset_list"),
+        MemoryLayout.sequenceLayout(H265_CHROMA_QP_OFFSET_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("cr_qp_offset_list"),
         ValueLayout.JAVA_BYTE.withName("log2_sao_offset_scale_luma"),
         ValueLayout.JAVA_BYTE.withName("log2_sao_offset_scale_chroma"),
         ValueLayout.JAVA_BYTE.withName("pps_act_y_qp_offset_plus5"),
@@ -515,8 +562,8 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_BYTE.withName("num_tile_rows_minus1"),
         ValueLayout.JAVA_BYTE.withName("reserved1"),
         ValueLayout.JAVA_BYTE.withName("reserved2"),
-        ValueLayout.JAVA_SHORT.withName("column_width_minus1"),
-        ValueLayout.JAVA_SHORT.withName("row_height_minus1"),
+        MemoryLayout.sequenceLayout(H265_CHROMA_QP_OFFSET_TILE_COLS_LIST_SIZE, ValueLayout.JAVA_SHORT).withName("column_width_minus1"),
+        MemoryLayout.sequenceLayout(H265_CHROMA_QP_OFFSET_TILE_ROWS_LIST_SIZE, ValueLayout.JAVA_SHORT).withName("row_height_minus1"),
         ValueLayout.JAVA_INT.withName("reserved3"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265ScalingLists.LAYOUT).withName("pScalingLists"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoH265PredictorPaletteEntries.LAYOUT).withName("pPredictorPaletteEntries")
@@ -574,8 +621,8 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     public static final OfByte LAYOUT$log2_max_transform_skip_block_size_minus2 = (OfByte) LAYOUT.select(PATH$log2_max_transform_skip_block_size_minus2);
     public static final OfByte LAYOUT$diff_cu_chroma_qp_offset_depth = (OfByte) LAYOUT.select(PATH$diff_cu_chroma_qp_offset_depth);
     public static final OfByte LAYOUT$chroma_qp_offset_list_len_minus1 = (OfByte) LAYOUT.select(PATH$chroma_qp_offset_list_len_minus1);
-    public static final OfByte LAYOUT$cb_qp_offset_list = (OfByte) LAYOUT.select(PATH$cb_qp_offset_list);
-    public static final OfByte LAYOUT$cr_qp_offset_list = (OfByte) LAYOUT.select(PATH$cr_qp_offset_list);
+    public static final SequenceLayout LAYOUT$cb_qp_offset_list = (SequenceLayout) LAYOUT.select(PATH$cb_qp_offset_list);
+    public static final SequenceLayout LAYOUT$cr_qp_offset_list = (SequenceLayout) LAYOUT.select(PATH$cr_qp_offset_list);
     public static final OfByte LAYOUT$log2_sao_offset_scale_luma = (OfByte) LAYOUT.select(PATH$log2_sao_offset_scale_luma);
     public static final OfByte LAYOUT$log2_sao_offset_scale_chroma = (OfByte) LAYOUT.select(PATH$log2_sao_offset_scale_chroma);
     public static final OfByte LAYOUT$pps_act_y_qp_offset_plus5 = (OfByte) LAYOUT.select(PATH$pps_act_y_qp_offset_plus5);
@@ -586,8 +633,8 @@ public record StdVideoH265PictureParameterSet(@NotNull MemorySegment segment) im
     public static final OfByte LAYOUT$chroma_bit_depth_entry_minus8 = (OfByte) LAYOUT.select(PATH$chroma_bit_depth_entry_minus8);
     public static final OfByte LAYOUT$num_tile_columns_minus1 = (OfByte) LAYOUT.select(PATH$num_tile_columns_minus1);
     public static final OfByte LAYOUT$num_tile_rows_minus1 = (OfByte) LAYOUT.select(PATH$num_tile_rows_minus1);
-    public static final OfShort LAYOUT$column_width_minus1 = (OfShort) LAYOUT.select(PATH$column_width_minus1);
-    public static final OfShort LAYOUT$row_height_minus1 = (OfShort) LAYOUT.select(PATH$row_height_minus1);
+    public static final SequenceLayout LAYOUT$column_width_minus1 = (SequenceLayout) LAYOUT.select(PATH$column_width_minus1);
+    public static final SequenceLayout LAYOUT$row_height_minus1 = (SequenceLayout) LAYOUT.select(PATH$row_height_minus1);
     public static final AddressLayout LAYOUT$pScalingLists = (AddressLayout) LAYOUT.select(PATH$pScalingLists);
     public static final AddressLayout LAYOUT$pPredictorPaletteEntries = (AddressLayout) LAYOUT.select(PATH$pPredictorPaletteEntries);
 

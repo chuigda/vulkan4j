@@ -1,10 +1,12 @@
 package club.doki7.vulkan;
 
 import club.doki7.ffm.annotation.Unsigned;
+import club.doki7.ffm.annotation.ValueBasedCandidate;
 
 /// Utility class for encoding/decoding Vulkan API versions
 ///
 /// @see <a href="https://docs.vulkan.org/guide/latest/versions.html">Vulkan versions</a>
+@ValueBasedCandidate
 public record Version(
         @Unsigned int variant,
         @Unsigned int major,

@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t numPhysicalSgprs; // @link substring="numPhysicalSgprs" target="#numPhysicalSgprs"
 ///     uint32_t numAvailableVgprs; // @link substring="numAvailableVgprs" target="#numAvailableVgprs"
 ///     uint32_t numAvailableSgprs; // @link substring="numAvailableSgprs" target="#numAvailableSgprs"
-///     uint32_t computeWorkGroupSize; // @link substring="computeWorkGroupSize" target="#computeWorkGroupSize"
+///     uint32_t[3] computeWorkGroupSize; // @link substring="computeWorkGroupSize" target="#computeWorkGroupSize"
 /// } VkShaderStatisticsInfoAMD;
 /// }
 ///
@@ -64,7 +66,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkShaderStatisticsInfoAMD {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkShaderStatisticsInfoAMD, Iterable<VkShaderStatisticsInfoAMD> {
         public long size() {
             return segment.byteSize() / VkShaderStatisticsInfoAMD.BYTES;
         }
@@ -125,6 +127,35 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkShaderStatisticsInfoAMD> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkShaderStatisticsInfoAMD.BYTES;
+            }
+
+            @Override
+            public VkShaderStatisticsInfoAMD next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkShaderStatisticsInfoAMD ret = new VkShaderStatisticsInfoAMD(segment.asSlice(0, VkShaderStatisticsInfoAMD.BYTES));
+                segment = segment.asSlice(VkShaderStatisticsInfoAMD.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -191,12 +222,16 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$numAvailableSgprs, OFFSET$numAvailableSgprs, value);
     }
 
-    public @Unsigned int computeWorkGroupSize() {
-        return segment.get(LAYOUT$computeWorkGroupSize, OFFSET$computeWorkGroupSize);
+    public @Unsigned IntPtr computeWorkGroupSize() {
+        return new IntPtr(computeWorkGroupSizeRaw());
     }
 
-    public void computeWorkGroupSize(@Unsigned int value) {
-        segment.set(LAYOUT$computeWorkGroupSize, OFFSET$computeWorkGroupSize, value);
+    public void computeWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
+    }
+
+    public MemorySegment computeWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -206,7 +241,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_INT.withName("numPhysicalSgprs"),
         ValueLayout.JAVA_INT.withName("numAvailableVgprs"),
         ValueLayout.JAVA_INT.withName("numAvailableSgprs"),
-        ValueLayout.JAVA_INT.withName("computeWorkGroupSize")
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("computeWorkGroupSize")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -224,7 +259,7 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
     public static final OfInt LAYOUT$numPhysicalSgprs = (OfInt) LAYOUT.select(PATH$numPhysicalSgprs);
     public static final OfInt LAYOUT$numAvailableVgprs = (OfInt) LAYOUT.select(PATH$numAvailableVgprs);
     public static final OfInt LAYOUT$numAvailableSgprs = (OfInt) LAYOUT.select(PATH$numAvailableSgprs);
-    public static final OfInt LAYOUT$computeWorkGroupSize = (OfInt) LAYOUT.select(PATH$computeWorkGroupSize);
+    public static final SequenceLayout LAYOUT$computeWorkGroupSize = (SequenceLayout) LAYOUT.select(PATH$computeWorkGroupSize);
 
     public static final long SIZE$shaderStageMask = LAYOUT$shaderStageMask.byteSize();
     public static final long SIZE$resourceUsage = LAYOUT$resourceUsage.byteSize();

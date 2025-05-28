@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -60,7 +62,7 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkImageSubresource {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkImageSubresource, Iterable<VkImageSubresource> {
         public long size() {
             return segment.byteSize() / VkImageSubresource.BYTES;
         }
@@ -121,6 +123,35 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkImageSubresource> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkImageSubresource.BYTES;
+            }
+
+            @Override
+            public VkImageSubresource next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkImageSubresource ret = new VkImageSubresource(segment.asSlice(0, VkImageSubresource.BYTES));
+                segment = segment.asSlice(VkImageSubresource.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

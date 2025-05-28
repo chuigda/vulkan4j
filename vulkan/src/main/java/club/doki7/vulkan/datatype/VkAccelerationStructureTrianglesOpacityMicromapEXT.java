@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -76,7 +78,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureTrianglesOpacityMicromapEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureTrianglesOpacityMicromapEXT, Iterable<VkAccelerationStructureTrianglesOpacityMicromapEXT> {
         public long size() {
             return segment.byteSize() / VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES;
         }
@@ -137,6 +139,35 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkAccelerationStructureTrianglesOpacityMicromapEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES;
+            }
+
+            @Override
+            public VkAccelerationStructureTrianglesOpacityMicromapEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkAccelerationStructureTrianglesOpacityMicromapEXT ret = new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.asSlice(0, VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES));
+                segment = segment.asSlice(VkAccelerationStructureTrianglesOpacityMicromapEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -320,7 +351,7 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
-    public static final StructLayout LAYOUT$indexBuffer = (StructLayout) LAYOUT.select(PATH$indexBuffer);
+    public static final UnionLayout LAYOUT$indexBuffer = (UnionLayout) LAYOUT.select(PATH$indexBuffer);
     public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
     public static final OfInt LAYOUT$baseTriangle = (OfInt) LAYOUT.select(PATH$baseTriangle);
     public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);

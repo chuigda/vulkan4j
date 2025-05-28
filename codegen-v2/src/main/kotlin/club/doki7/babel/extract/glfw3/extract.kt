@@ -285,7 +285,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
                 type = it.type.toType(),
                 len = null,
                 argLen = null,
-                optional = false,
+                optional = true,
             )
         },
         result = functionDecl.returnType.toType(),

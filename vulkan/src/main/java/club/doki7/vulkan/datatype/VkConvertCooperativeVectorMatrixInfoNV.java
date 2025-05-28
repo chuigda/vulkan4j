@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +82,7 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkConvertCooperativeVectorMatrixInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkConvertCooperativeVectorMatrixInfoNV, Iterable<VkConvertCooperativeVectorMatrixInfoNV> {
         public long size() {
             return segment.byteSize() / VkConvertCooperativeVectorMatrixInfoNV.BYTES;
         }
@@ -141,6 +143,35 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkConvertCooperativeVectorMatrixInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkConvertCooperativeVectorMatrixInfoNV.BYTES;
+            }
+
+            @Override
+            public VkConvertCooperativeVectorMatrixInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkConvertCooperativeVectorMatrixInfoNV ret = new VkConvertCooperativeVectorMatrixInfoNV(segment.asSlice(0, VkConvertCooperativeVectorMatrixInfoNV.BYTES));
+                segment = segment.asSlice(VkConvertCooperativeVectorMatrixInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -337,9 +368,9 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final StructLayout LAYOUT$srcData = (StructLayout) LAYOUT.select(PATH$srcData);
+    public static final UnionLayout LAYOUT$srcData = (UnionLayout) LAYOUT.select(PATH$srcData);
     public static final AddressLayout LAYOUT$pDstSize = (AddressLayout) LAYOUT.select(PATH$pDstSize);
-    public static final StructLayout LAYOUT$dstData = (StructLayout) LAYOUT.select(PATH$dstData);
+    public static final UnionLayout LAYOUT$dstData = (UnionLayout) LAYOUT.select(PATH$dstData);
     public static final OfInt LAYOUT$srcComponentType = (OfInt) LAYOUT.select(PATH$srcComponentType);
     public static final OfInt LAYOUT$dstComponentType = (OfInt) LAYOUT.select(PATH$dstComponentType);
     public static final OfInt LAYOUT$numRows = (OfInt) LAYOUT.select(PATH$numRows);

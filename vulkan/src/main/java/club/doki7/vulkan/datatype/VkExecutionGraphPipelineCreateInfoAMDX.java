@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -75,7 +77,7 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkExecutionGraphPipelineCreateInfoAMDX {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkExecutionGraphPipelineCreateInfoAMDX, Iterable<VkExecutionGraphPipelineCreateInfoAMDX> {
         public long size() {
             return segment.byteSize() / VkExecutionGraphPipelineCreateInfoAMDX.BYTES;
         }
@@ -136,6 +138,35 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkExecutionGraphPipelineCreateInfoAMDX> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkExecutionGraphPipelineCreateInfoAMDX.BYTES;
+            }
+
+            @Override
+            public VkExecutionGraphPipelineCreateInfoAMDX next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkExecutionGraphPipelineCreateInfoAMDX ret = new VkExecutionGraphPipelineCreateInfoAMDX(segment.asSlice(0, VkExecutionGraphPipelineCreateInfoAMDX.BYTES));
+                segment = segment.asSlice(VkExecutionGraphPipelineCreateInfoAMDX.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

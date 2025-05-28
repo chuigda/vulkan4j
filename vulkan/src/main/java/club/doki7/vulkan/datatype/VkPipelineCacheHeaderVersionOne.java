@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +27,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkPipelineCacheHeaderVersion headerVersion; // @link substring="VkPipelineCacheHeaderVersion" target="VkPipelineCacheHeaderVersion" @link substring="headerVersion" target="#headerVersion"
 ///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
 ///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
-///     uint8_t pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
+///     uint8_t[VK_UUID_SIZE] pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
 /// } VkPipelineCacheHeaderVersionOne;
 /// }
 ///
@@ -62,7 +64,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineCacheHeaderVersionOne {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineCacheHeaderVersionOne, Iterable<VkPipelineCacheHeaderVersionOne> {
         public long size() {
             return segment.byteSize() / VkPipelineCacheHeaderVersionOne.BYTES;
         }
@@ -124,6 +126,35 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPipelineCacheHeaderVersionOne> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPipelineCacheHeaderVersionOne.BYTES;
+            }
+
+            @Override
+            public VkPipelineCacheHeaderVersionOne next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineCacheHeaderVersionOne ret = new VkPipelineCacheHeaderVersionOne(segment.asSlice(0, VkPipelineCacheHeaderVersionOne.BYTES));
+                segment = segment.asSlice(VkPipelineCacheHeaderVersionOne.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkPipelineCacheHeaderVersionOne allocate(Arena arena) {
@@ -173,12 +204,16 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
     }
 
-    public @Unsigned byte pipelineCacheUUID() {
-        return segment.get(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID);
+    public @Unsigned BytePtr pipelineCacheUUID() {
+        return new BytePtr(pipelineCacheUUIDRaw());
     }
 
-    public void pipelineCacheUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID, value);
+    public void pipelineCacheUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    }
+
+    public MemorySegment pipelineCacheUUIDRaw() {
+        return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -186,7 +221,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_INT.withName("headerVersion"),
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
-        ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID")
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -200,7 +235,7 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
     public static final OfInt LAYOUT$headerVersion = (OfInt) LAYOUT.select(PATH$headerVersion);
     public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
     public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
-    public static final OfByte LAYOUT$pipelineCacheUUID = (OfByte) LAYOUT.select(PATH$pipelineCacheUUID);
+    public static final SequenceLayout LAYOUT$pipelineCacheUUID = (SequenceLayout) LAYOUT.select(PATH$pipelineCacheUUID);
 
     public static final long SIZE$headerSize = LAYOUT$headerSize.byteSize();
     public static final long SIZE$headerVersion = LAYOUT$headerVersion.byteSize();

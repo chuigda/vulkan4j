@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -25,9 +27,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t bit_rate_scale; // @link substring="bit_rate_scale" target="#bit_rate_scale"
 ///     uint8_t cpb_size_scale; // @link substring="cpb_size_scale" target="#cpb_size_scale"
 ///     uint8_t reserved1;
-///     uint32_t bit_rate_value_minus1; // @link substring="bit_rate_value_minus1" target="#bit_rate_value_minus1"
-///     uint32_t cpb_size_value_minus1; // @link substring="cpb_size_value_minus1" target="#cpb_size_value_minus1"
-///     uint8_t cbr_flag; // @link substring="cbr_flag" target="#cbr_flag"
+///     uint32_t[STD_VIDEO_H264_CPB_CNT_LIST_SIZE] bit_rate_value_minus1; // @link substring="bit_rate_value_minus1" target="#bit_rate_value_minus1"
+///     uint32_t[STD_VIDEO_H264_CPB_CNT_LIST_SIZE] cpb_size_value_minus1; // @link substring="cpb_size_value_minus1" target="#cpb_size_value_minus1"
+///     uint8_t[STD_VIDEO_H264_CPB_CNT_LIST_SIZE] cbr_flag; // @link substring="cbr_flag" target="#cbr_flag"
 ///     uint32_t initial_cpb_removal_delay_length_minus1; // @link substring="initial_cpb_removal_delay_length_minus1" target="#initial_cpb_removal_delay_length_minus1"
 ///     uint32_t cpb_removal_delay_length_minus1; // @link substring="cpb_removal_delay_length_minus1" target="#cpb_removal_delay_length_minus1"
 ///     uint32_t dpb_output_delay_length_minus1; // @link substring="dpb_output_delay_length_minus1" target="#dpb_output_delay_length_minus1"
@@ -66,7 +68,7 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH264HrdParameters {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH264HrdParameters, Iterable<StdVideoH264HrdParameters> {
         public long size() {
             return segment.byteSize() / StdVideoH264HrdParameters.BYTES;
         }
@@ -128,6 +130,35 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoH264HrdParameters> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoH264HrdParameters.BYTES;
+            }
+
+            @Override
+            public StdVideoH264HrdParameters next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoH264HrdParameters ret = new StdVideoH264HrdParameters(segment.asSlice(0, StdVideoH264HrdParameters.BYTES));
+                segment = segment.asSlice(StdVideoH264HrdParameters.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static StdVideoH264HrdParameters allocate(Arena arena) {
@@ -170,28 +201,40 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     }
 
 
-    public @Unsigned int bit_rate_value_minus1() {
-        return segment.get(LAYOUT$bit_rate_value_minus1, OFFSET$bit_rate_value_minus1);
+    public @Unsigned IntPtr bit_rate_value_minus1() {
+        return new IntPtr(bit_rate_value_minus1Raw());
     }
 
-    public void bit_rate_value_minus1(@Unsigned int value) {
-        segment.set(LAYOUT$bit_rate_value_minus1, OFFSET$bit_rate_value_minus1, value);
+    public void bit_rate_value_minus1(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
     }
 
-    public @Unsigned int cpb_size_value_minus1() {
-        return segment.get(LAYOUT$cpb_size_value_minus1, OFFSET$cpb_size_value_minus1);
+    public MemorySegment bit_rate_value_minus1Raw() {
+        return segment.asSlice(OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
     }
 
-    public void cpb_size_value_minus1(@Unsigned int value) {
-        segment.set(LAYOUT$cpb_size_value_minus1, OFFSET$cpb_size_value_minus1, value);
+    public @Unsigned IntPtr cpb_size_value_minus1() {
+        return new IntPtr(cpb_size_value_minus1Raw());
     }
 
-    public @Unsigned byte cbr_flag() {
-        return segment.get(LAYOUT$cbr_flag, OFFSET$cbr_flag);
+    public void cpb_size_value_minus1(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
     }
 
-    public void cbr_flag(@Unsigned byte value) {
-        segment.set(LAYOUT$cbr_flag, OFFSET$cbr_flag, value);
+    public MemorySegment cpb_size_value_minus1Raw() {
+        return segment.asSlice(OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
+    }
+
+    public @Unsigned BytePtr cbr_flag() {
+        return new BytePtr(cbr_flagRaw());
+    }
+
+    public void cbr_flag(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$cbr_flag, SIZE$cbr_flag);
+    }
+
+    public MemorySegment cbr_flagRaw() {
+        return segment.asSlice(OFFSET$cbr_flag, SIZE$cbr_flag);
     }
 
     public @Unsigned int initial_cpb_removal_delay_length_minus1() {
@@ -231,9 +274,9 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_BYTE.withName("bit_rate_scale"),
         ValueLayout.JAVA_BYTE.withName("cpb_size_scale"),
         ValueLayout.JAVA_BYTE.withName("reserved1"),
-        ValueLayout.JAVA_INT.withName("bit_rate_value_minus1"),
-        ValueLayout.JAVA_INT.withName("cpb_size_value_minus1"),
-        ValueLayout.JAVA_BYTE.withName("cbr_flag"),
+        MemoryLayout.sequenceLayout(H264_CPB_CNT_LIST_SIZE, ValueLayout.JAVA_INT).withName("bit_rate_value_minus1"),
+        MemoryLayout.sequenceLayout(H264_CPB_CNT_LIST_SIZE, ValueLayout.JAVA_INT).withName("cpb_size_value_minus1"),
+        MemoryLayout.sequenceLayout(H264_CPB_CNT_LIST_SIZE, ValueLayout.JAVA_BYTE).withName("cbr_flag"),
         ValueLayout.JAVA_INT.withName("initial_cpb_removal_delay_length_minus1"),
         ValueLayout.JAVA_INT.withName("cpb_removal_delay_length_minus1"),
         ValueLayout.JAVA_INT.withName("dpb_output_delay_length_minus1"),
@@ -255,9 +298,9 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
     public static final OfByte LAYOUT$cpb_cnt_minus1 = (OfByte) LAYOUT.select(PATH$cpb_cnt_minus1);
     public static final OfByte LAYOUT$bit_rate_scale = (OfByte) LAYOUT.select(PATH$bit_rate_scale);
     public static final OfByte LAYOUT$cpb_size_scale = (OfByte) LAYOUT.select(PATH$cpb_size_scale);
-    public static final OfInt LAYOUT$bit_rate_value_minus1 = (OfInt) LAYOUT.select(PATH$bit_rate_value_minus1);
-    public static final OfInt LAYOUT$cpb_size_value_minus1 = (OfInt) LAYOUT.select(PATH$cpb_size_value_minus1);
-    public static final OfByte LAYOUT$cbr_flag = (OfByte) LAYOUT.select(PATH$cbr_flag);
+    public static final SequenceLayout LAYOUT$bit_rate_value_minus1 = (SequenceLayout) LAYOUT.select(PATH$bit_rate_value_minus1);
+    public static final SequenceLayout LAYOUT$cpb_size_value_minus1 = (SequenceLayout) LAYOUT.select(PATH$cpb_size_value_minus1);
+    public static final SequenceLayout LAYOUT$cbr_flag = (SequenceLayout) LAYOUT.select(PATH$cbr_flag);
     public static final OfInt LAYOUT$initial_cpb_removal_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$initial_cpb_removal_delay_length_minus1);
     public static final OfInt LAYOUT$cpb_removal_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$cpb_removal_delay_length_minus1);
     public static final OfInt LAYOUT$dpb_output_delay_length_minus1 = (OfInt) LAYOUT.select(PATH$dpb_output_delay_length_minus1);

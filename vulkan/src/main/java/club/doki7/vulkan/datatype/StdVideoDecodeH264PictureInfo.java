@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +30,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t reserved2;
 ///     uint16_t frame_num; // @link substring="frame_num" target="#frame_num"
 ///     uint16_t idr_pic_id; // @link substring="idr_pic_id" target="#idr_pic_id"
-///     int32_t PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
+///     int32_t[STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE] PicOrderCnt; // @link substring="PicOrderCnt" target="#PicOrderCnt"
 /// } StdVideoDecodeH264PictureInfo;
 /// }
 ///
@@ -63,7 +65,7 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeH264PictureInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoDecodeH264PictureInfo, Iterable<StdVideoDecodeH264PictureInfo> {
         public long size() {
             return segment.byteSize() / StdVideoDecodeH264PictureInfo.BYTES;
         }
@@ -125,6 +127,35 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoDecodeH264PictureInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoDecodeH264PictureInfo.BYTES;
+            }
+
+            @Override
+            public StdVideoDecodeH264PictureInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoDecodeH264PictureInfo ret = new StdVideoDecodeH264PictureInfo(segment.asSlice(0, StdVideoDecodeH264PictureInfo.BYTES));
+                segment = segment.asSlice(StdVideoDecodeH264PictureInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static StdVideoDecodeH264PictureInfo allocate(Arena arena) {
@@ -184,12 +215,16 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$idr_pic_id, OFFSET$idr_pic_id, value);
     }
 
-    public int PicOrderCnt() {
-        return segment.get(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt);
+    public IntPtr PicOrderCnt() {
+        return new IntPtr(PicOrderCntRaw());
     }
 
-    public void PicOrderCnt(int value) {
-        segment.set(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt, value);
+    public void PicOrderCnt(IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
+    }
+
+    public MemorySegment PicOrderCntRaw() {
+        return segment.asSlice(OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -200,7 +235,7 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         ValueLayout.JAVA_BYTE.withName("reserved2"),
         ValueLayout.JAVA_SHORT.withName("frame_num"),
         ValueLayout.JAVA_SHORT.withName("idr_pic_id"),
-        ValueLayout.JAVA_INT.withName("PicOrderCnt")
+        MemoryLayout.sequenceLayout(DECODE_H264_FIELD_ORDER_COUNT_LIST_SIZE, ValueLayout.JAVA_INT).withName("PicOrderCnt")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -216,7 +251,7 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
     public static final OfByte LAYOUT$pic_parameter_set_id = (OfByte) LAYOUT.select(PATH$pic_parameter_set_id);
     public static final OfShort LAYOUT$frame_num = (OfShort) LAYOUT.select(PATH$frame_num);
     public static final OfShort LAYOUT$idr_pic_id = (OfShort) LAYOUT.select(PATH$idr_pic_id);
-    public static final OfInt LAYOUT$PicOrderCnt = (OfInt) LAYOUT.select(PATH$PicOrderCnt);
+    public static final SequenceLayout LAYOUT$PicOrderCnt = (SequenceLayout) LAYOUT.select(PATH$PicOrderCnt);
 
     public static final long SIZE$flags = LAYOUT$flags.byteSize();
     public static final long SIZE$seq_parameter_set_id = LAYOUT$seq_parameter_set_id.byteSize();

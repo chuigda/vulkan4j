@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +29,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkVideoEncodeAV1RateControlGroupKHR rateControlGroup; // @link substring="VkVideoEncodeAV1RateControlGroupKHR" target="VkVideoEncodeAV1RateControlGroupKHR" @link substring="rateControlGroup" target="#rateControlGroup"
 ///     uint32_t constantQIndex; // @link substring="constantQIndex" target="#constantQIndex"
 ///     StdVideoEncodeAV1PictureInfo const* pStdPictureInfo; // @link substring="StdVideoEncodeAV1PictureInfo" target="StdVideoEncodeAV1PictureInfo" @link substring="pStdPictureInfo" target="#pStdPictureInfo"
-///     int32_t referenceNameSlotIndices; // @link substring="referenceNameSlotIndices" target="#referenceNameSlotIndices"
+///     int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR] referenceNameSlotIndices; // @link substring="referenceNameSlotIndices" target="#referenceNameSlotIndices"
 ///     VkBool32 primaryReferenceCdfOnly; // @link substring="primaryReferenceCdfOnly" target="#primaryReferenceCdfOnly"
 ///     VkBool32 generateObuExtensionHeader; // @link substring="generateObuExtensionHeader" target="#generateObuExtensionHeader"
 /// } VkVideoEncodeAV1PictureInfoKHR;
@@ -75,7 +77,7 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeAV1PictureInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeAV1PictureInfoKHR, Iterable<VkVideoEncodeAV1PictureInfoKHR> {
         public long size() {
             return segment.byteSize() / VkVideoEncodeAV1PictureInfoKHR.BYTES;
         }
@@ -136,6 +138,35 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkVideoEncodeAV1PictureInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkVideoEncodeAV1PictureInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkVideoEncodeAV1PictureInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoEncodeAV1PictureInfoKHR ret = new VkVideoEncodeAV1PictureInfoKHR(segment.asSlice(0, VkVideoEncodeAV1PictureInfoKHR.BYTES));
+                segment = segment.asSlice(VkVideoEncodeAV1PictureInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -239,12 +270,16 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pStdPictureInfo, OFFSET$pStdPictureInfo, value);
     }
 
-    public int referenceNameSlotIndices() {
-        return segment.get(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices);
+    public IntPtr referenceNameSlotIndices() {
+        return new IntPtr(referenceNameSlotIndicesRaw());
     }
 
-    public void referenceNameSlotIndices(int value) {
-        segment.set(LAYOUT$referenceNameSlotIndices, OFFSET$referenceNameSlotIndices, value);
+    public void referenceNameSlotIndices(IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
+    }
+
+    public MemorySegment referenceNameSlotIndicesRaw() {
+        return segment.asSlice(OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
     }
 
     public @NativeType("VkBool32") @Unsigned int primaryReferenceCdfOnly() {
@@ -270,7 +305,7 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         ValueLayout.JAVA_INT.withName("rateControlGroup"),
         ValueLayout.JAVA_INT.withName("constantQIndex"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoEncodeAV1PictureInfo.LAYOUT).withName("pStdPictureInfo"),
-        ValueLayout.JAVA_INT.withName("referenceNameSlotIndices"),
+        MemoryLayout.sequenceLayout(MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
         ValueLayout.JAVA_INT.withName("primaryReferenceCdfOnly"),
         ValueLayout.JAVA_INT.withName("generateObuExtensionHeader")
     );
@@ -292,7 +327,7 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
     public static final OfInt LAYOUT$rateControlGroup = (OfInt) LAYOUT.select(PATH$rateControlGroup);
     public static final OfInt LAYOUT$constantQIndex = (OfInt) LAYOUT.select(PATH$constantQIndex);
     public static final AddressLayout LAYOUT$pStdPictureInfo = (AddressLayout) LAYOUT.select(PATH$pStdPictureInfo);
-    public static final OfInt LAYOUT$referenceNameSlotIndices = (OfInt) LAYOUT.select(PATH$referenceNameSlotIndices);
+    public static final SequenceLayout LAYOUT$referenceNameSlotIndices = (SequenceLayout) LAYOUT.select(PATH$referenceNameSlotIndices);
     public static final OfInt LAYOUT$primaryReferenceCdfOnly = (OfInt) LAYOUT.select(PATH$primaryReferenceCdfOnly);
     public static final OfInt LAYOUT$generateObuExtensionHeader = (OfInt) LAYOUT.select(PATH$generateObuExtensionHeader);
 

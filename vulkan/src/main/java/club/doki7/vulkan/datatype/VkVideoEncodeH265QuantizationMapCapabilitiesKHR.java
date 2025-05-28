@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkVideoEncodeH265QuantizationMapCapabilitiesKHR(@NotNull MemorySeg
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH265QuantizationMapCapabilitiesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH265QuantizationMapCapabilitiesKHR, Iterable<VkVideoEncodeH265QuantizationMapCapabilitiesKHR> {
         public long size() {
             return segment.byteSize() / VkVideoEncodeH265QuantizationMapCapabilitiesKHR.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkVideoEncodeH265QuantizationMapCapabilitiesKHR(@NotNull MemorySeg
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkVideoEncodeH265QuantizationMapCapabilitiesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkVideoEncodeH265QuantizationMapCapabilitiesKHR.BYTES;
+            }
+
+            @Override
+            public VkVideoEncodeH265QuantizationMapCapabilitiesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoEncodeH265QuantizationMapCapabilitiesKHR ret = new VkVideoEncodeH265QuantizationMapCapabilitiesKHR(segment.asSlice(0, VkVideoEncodeH265QuantizationMapCapabilitiesKHR.BYTES));
+                segment = segment.asSlice(VkVideoEncodeH265QuantizationMapCapabilitiesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

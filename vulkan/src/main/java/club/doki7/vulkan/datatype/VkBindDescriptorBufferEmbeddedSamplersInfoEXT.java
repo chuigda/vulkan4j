@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkBindDescriptorBufferEmbeddedSamplersInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkBindDescriptorBufferEmbeddedSamplersInfoEXT, Iterable<VkBindDescriptorBufferEmbeddedSamplersInfoEXT> {
         public long size() {
             return segment.byteSize() / VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkBindDescriptorBufferEmbeddedSamplersInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkBindDescriptorBufferEmbeddedSamplersInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkBindDescriptorBufferEmbeddedSamplersInfoEXT ret = new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(segment.asSlice(0, VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES));
+                segment = segment.asSlice(VkBindDescriptorBufferEmbeddedSamplersInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

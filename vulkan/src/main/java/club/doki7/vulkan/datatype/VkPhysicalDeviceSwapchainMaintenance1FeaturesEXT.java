@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(@NotNull MemorySe
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceSwapchainMaintenance1FeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceSwapchainMaintenance1FeaturesEXT, Iterable<VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(@NotNull MemorySe
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT ret = new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(segment.asSlice(0, VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

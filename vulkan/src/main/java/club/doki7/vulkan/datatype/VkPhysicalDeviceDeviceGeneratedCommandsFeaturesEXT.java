@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(@NotNull Memory
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT, Iterable<VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(@NotNull Memory
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT ret = new VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(segment.asSlice(0, VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

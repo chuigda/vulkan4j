@@ -19,6 +19,8 @@ fun generateHandle(
     +""
     imports("java.lang.foreign.*")
     imports("java.util.List")
+    imports("java.util.Iterator")
+    imports("java.util.NoSuchElementException")
     +""
     imports("org.jetbrains.annotations.Nullable")
     imports("org.jetbrains.annotations.NotNull")
@@ -74,7 +76,7 @@ fun generateHandle(
 
         +"@ValueBasedCandidate"
         +"@UnsafeConstructor"
-        +"public record Ptr(@NotNull MemorySegment segment) implements IPointer {"
+        +"public record Ptr(@NotNull MemorySegment segment) implements IPointer, Iterable<$className> {"
         indent {
             defun("public", "long", "size") {
                 +"return segment.byteSize() / ValueLayout.ADDRESS.byteSize();"
@@ -173,14 +175,54 @@ fun generateHandle(
             }
             +""
 
-            defun("public", "Ptr", "allocate", "Arena arena") {
+            defun("public static", "Ptr", "allocate", "Arena arena") {
                 +"return new Ptr(arena.allocate(ValueLayout.ADDRESS));"
             }
             +""
 
-            defun("public", "Ptr", "allocate", "Arena arena", "long size") {
+            defun("public static", "Ptr", "allocate", "Arena arena", "long size") {
                 +"return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));"
             }
+            +""
+
+            +"@Override"
+            defun("public", "@NotNull Iter", "iterator") {
+                +"return new Iter(this.segment());"
+            }
+            +""
+
+            +"/// An iterator over the handles."
+            +"public static class Iter implements Iterator<$className> {"
+            indent {
+                +"Iter(@NotNull MemorySegment segment) {"
+                indent {
+                    +"this.segment = segment;"
+                }
+                +"}"
+                +""
+
+                +"@Override"
+                defun("public", "boolean", "hasNext") {
+                    +"return segment.byteSize() >= ValueLayout.ADDRESS.byteSize();"
+                }
+                +""
+
+                +"@Override"
+                defun("public", className, "next") {
+                    +"if (!hasNext()) {"
+                    indent {
+                        +"throw new NoSuchElementException();"
+                    }
+                    +"}"
+                    +"MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);"
+                    +"segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());"
+                    +"return new $className(s);"
+                }
+                +""
+
+                +"private @NotNull MemorySegment segment;"
+            }
+            +"}"
         }
         +"}"
     }

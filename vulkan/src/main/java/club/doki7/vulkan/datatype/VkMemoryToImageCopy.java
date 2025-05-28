@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -74,7 +76,7 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkMemoryToImageCopy {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkMemoryToImageCopy, Iterable<VkMemoryToImageCopy> {
         public long size() {
             return segment.byteSize() / VkMemoryToImageCopy.BYTES;
         }
@@ -135,6 +137,35 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkMemoryToImageCopy> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkMemoryToImageCopy.BYTES;
+            }
+
+            @Override
+            public VkMemoryToImageCopy next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkMemoryToImageCopy ret = new VkMemoryToImageCopy(segment.asSlice(0, VkMemoryToImageCopy.BYTES));
+                segment = segment.asSlice(VkMemoryToImageCopy.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

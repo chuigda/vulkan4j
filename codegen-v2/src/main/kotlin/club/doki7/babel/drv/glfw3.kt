@@ -3,6 +3,7 @@ package club.doki7.babel.drv
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateCommandFile
 import club.doki7.babel.codegen.generateConstants
+import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.codegen.generateStructure
 import club.doki7.babel.codegen.generateStructureInterface
@@ -63,4 +64,8 @@ fun glfw3Main(vulkanRegistry: RegistryBase, vulkanAdditionalRegistry: RegistryBa
         File("$packageDir/handle/${opaqueTypedef.name}.java")
             .writeText(render(handleDoc))
     }
+
+    val functionTypedefDoc = generateFunctionTypedefs(registry, codegenOptions)
+    File("$packageDir/${codegenOptions.functionTypeClassName}.java")
+        .writeText(render(functionTypedefDoc))
 }

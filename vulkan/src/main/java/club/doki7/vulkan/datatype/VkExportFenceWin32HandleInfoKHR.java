@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkExportFenceWin32HandleInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkExportFenceWin32HandleInfoKHR, Iterable<VkExportFenceWin32HandleInfoKHR> {
         public long size() {
             return segment.byteSize() / VkExportFenceWin32HandleInfoKHR.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkExportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkExportFenceWin32HandleInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkExportFenceWin32HandleInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkExportFenceWin32HandleInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkExportFenceWin32HandleInfoKHR ret = new VkExportFenceWin32HandleInfoKHR(segment.asSlice(0, VkExportFenceWin32HandleInfoKHR.BYTES));
+                segment = segment.asSlice(VkExportFenceWin32HandleInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

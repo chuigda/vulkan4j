@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -73,7 +75,7 @@ public record VkRayTracingShaderGroupCreateInfoNV(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkRayTracingShaderGroupCreateInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkRayTracingShaderGroupCreateInfoNV, Iterable<VkRayTracingShaderGroupCreateInfoNV> {
         public long size() {
             return segment.byteSize() / VkRayTracingShaderGroupCreateInfoNV.BYTES;
         }
@@ -134,6 +136,35 @@ public record VkRayTracingShaderGroupCreateInfoNV(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkRayTracingShaderGroupCreateInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkRayTracingShaderGroupCreateInfoNV.BYTES;
+            }
+
+            @Override
+            public VkRayTracingShaderGroupCreateInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkRayTracingShaderGroupCreateInfoNV ret = new VkRayTracingShaderGroupCreateInfoNV(segment.asSlice(0, VkRayTracingShaderGroupCreateInfoNV.BYTES));
+                segment = segment.asSlice(VkRayTracingShaderGroupCreateInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

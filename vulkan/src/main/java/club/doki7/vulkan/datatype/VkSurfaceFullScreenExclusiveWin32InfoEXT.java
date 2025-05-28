@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkSurfaceFullScreenExclusiveWin32InfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkSurfaceFullScreenExclusiveWin32InfoEXT, Iterable<VkSurfaceFullScreenExclusiveWin32InfoEXT> {
         public long size() {
             return segment.byteSize() / VkSurfaceFullScreenExclusiveWin32InfoEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkSurfaceFullScreenExclusiveWin32InfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkSurfaceFullScreenExclusiveWin32InfoEXT.BYTES;
+            }
+
+            @Override
+            public VkSurfaceFullScreenExclusiveWin32InfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkSurfaceFullScreenExclusiveWin32InfoEXT ret = new VkSurfaceFullScreenExclusiveWin32InfoEXT(segment.asSlice(0, VkSurfaceFullScreenExclusiveWin32InfoEXT.BYTES));
+                segment = segment.asSlice(VkSurfaceFullScreenExclusiveWin32InfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

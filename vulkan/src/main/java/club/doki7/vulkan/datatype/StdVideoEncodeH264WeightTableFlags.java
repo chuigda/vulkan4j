@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -59,7 +61,7 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264WeightTableFlags {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoEncodeH264WeightTableFlags, Iterable<StdVideoEncodeH264WeightTableFlags> {
         public long size() {
             return segment.byteSize() / StdVideoEncodeH264WeightTableFlags.BYTES;
         }
@@ -120,6 +122,35 @@ public record StdVideoEncodeH264WeightTableFlags(@NotNull MemorySegment segment)
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoEncodeH264WeightTableFlags> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoEncodeH264WeightTableFlags.BYTES;
+            }
+
+            @Override
+            public StdVideoEncodeH264WeightTableFlags next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoEncodeH264WeightTableFlags ret = new StdVideoEncodeH264WeightTableFlags(segment.asSlice(0, StdVideoEncodeH264WeightTableFlags.BYTES));
+                segment = segment.asSlice(StdVideoEncodeH264WeightTableFlags.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

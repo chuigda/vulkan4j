@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceImageMemoryRequirements {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceImageMemoryRequirements, Iterable<VkDeviceImageMemoryRequirements> {
         public long size() {
             return segment.byteSize() / VkDeviceImageMemoryRequirements.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDeviceImageMemoryRequirements> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDeviceImageMemoryRequirements.BYTES;
+            }
+
+            @Override
+            public VkDeviceImageMemoryRequirements next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDeviceImageMemoryRequirements ret = new VkDeviceImageMemoryRequirements(segment.asSlice(0, VkDeviceImageMemoryRequirements.BYTES));
+                segment = segment.asSlice(VkDeviceImageMemoryRequirements.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

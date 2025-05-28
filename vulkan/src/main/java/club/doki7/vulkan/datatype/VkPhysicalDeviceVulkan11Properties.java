@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -23,9 +25,9 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPhysicalDeviceVulkan11Properties {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     uint8_t deviceUUID; // @link substring="deviceUUID" target="#deviceUUID"
-///     uint8_t driverUUID; // @link substring="driverUUID" target="#driverUUID"
-///     uint8_t deviceLUID; // @link substring="deviceLUID" target="#deviceLUID"
+///     uint8_t[VK_UUID_SIZE] deviceUUID; // @link substring="deviceUUID" target="#deviceUUID"
+///     uint8_t[VK_UUID_SIZE] driverUUID; // @link substring="driverUUID" target="#driverUUID"
+///     uint8_t[VK_LUID_SIZE] deviceLUID; // @link substring="deviceLUID" target="#deviceLUID"
 ///     uint32_t deviceNodeMask; // @link substring="deviceNodeMask" target="#deviceNodeMask"
 ///     VkBool32 deviceLUIDValid; // @link substring="deviceLUIDValid" target="#deviceLUIDValid"
 ///     uint32_t subgroupSize; // @link substring="subgroupSize" target="#subgroupSize"
@@ -83,7 +85,7 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceVulkan11Properties {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceVulkan11Properties, Iterable<VkPhysicalDeviceVulkan11Properties> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceVulkan11Properties.BYTES;
         }
@@ -145,6 +147,35 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceVulkan11Properties> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceVulkan11Properties.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceVulkan11Properties next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceVulkan11Properties ret = new VkPhysicalDeviceVulkan11Properties(segment.asSlice(0, VkPhysicalDeviceVulkan11Properties.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceVulkan11Properties.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkPhysicalDeviceVulkan11Properties allocate(Arena arena) {
@@ -192,28 +223,40 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @Unsigned byte deviceUUID() {
-        return segment.get(LAYOUT$deviceUUID, OFFSET$deviceUUID);
+    public @Unsigned BytePtr deviceUUID() {
+        return new BytePtr(deviceUUIDRaw());
     }
 
-    public void deviceUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$deviceUUID, OFFSET$deviceUUID, value);
+    public void deviceUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
-    public @Unsigned byte driverUUID() {
-        return segment.get(LAYOUT$driverUUID, OFFSET$driverUUID);
+    public MemorySegment deviceUUIDRaw() {
+        return segment.asSlice(OFFSET$deviceUUID, SIZE$deviceUUID);
     }
 
-    public void driverUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$driverUUID, OFFSET$driverUUID, value);
+    public @Unsigned BytePtr driverUUID() {
+        return new BytePtr(driverUUIDRaw());
     }
 
-    public @Unsigned byte deviceLUID() {
-        return segment.get(LAYOUT$deviceLUID, OFFSET$deviceLUID);
+    public void driverUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
     }
 
-    public void deviceLUID(@Unsigned byte value) {
-        segment.set(LAYOUT$deviceLUID, OFFSET$deviceLUID, value);
+    public MemorySegment driverUUIDRaw() {
+        return segment.asSlice(OFFSET$driverUUID, SIZE$driverUUID);
+    }
+
+    public @Unsigned BytePtr deviceLUID() {
+        return new BytePtr(deviceLUIDRaw());
+    }
+
+    public void deviceLUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
+    }
+
+    public MemorySegment deviceLUIDRaw() {
+        return segment.asSlice(OFFSET$deviceLUID, SIZE$deviceLUID);
     }
 
     public @Unsigned int deviceNodeMask() {
@@ -315,9 +358,9 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("deviceUUID"),
-        ValueLayout.JAVA_BYTE.withName("driverUUID"),
-        ValueLayout.JAVA_BYTE.withName("deviceLUID"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("deviceUUID"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("driverUUID"),
+        MemoryLayout.sequenceLayout(LUID_SIZE, ValueLayout.JAVA_BYTE).withName("deviceLUID"),
         ValueLayout.JAVA_INT.withName("deviceNodeMask"),
         ValueLayout.JAVA_INT.withName("deviceLUIDValid"),
         ValueLayout.JAVA_INT.withName("subgroupSize"),
@@ -353,9 +396,9 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$deviceUUID = (OfByte) LAYOUT.select(PATH$deviceUUID);
-    public static final OfByte LAYOUT$driverUUID = (OfByte) LAYOUT.select(PATH$driverUUID);
-    public static final OfByte LAYOUT$deviceLUID = (OfByte) LAYOUT.select(PATH$deviceLUID);
+    public static final SequenceLayout LAYOUT$deviceUUID = (SequenceLayout) LAYOUT.select(PATH$deviceUUID);
+    public static final SequenceLayout LAYOUT$driverUUID = (SequenceLayout) LAYOUT.select(PATH$driverUUID);
+    public static final SequenceLayout LAYOUT$deviceLUID = (SequenceLayout) LAYOUT.select(PATH$deviceLUID);
     public static final OfInt LAYOUT$deviceNodeMask = (OfInt) LAYOUT.select(PATH$deviceNodeMask);
     public static final OfInt LAYOUT$deviceLUIDValid = (OfInt) LAYOUT.select(PATH$deviceLUIDValid);
     public static final OfInt LAYOUT$subgroupSize = (OfInt) LAYOUT.select(PATH$subgroupSize);

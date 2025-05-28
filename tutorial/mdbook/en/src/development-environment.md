@@ -8,19 +8,19 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 
 ```xml
 <dependency>
-    <groupId>tech.icey</groupId>
-    <artifactId>panama-plus</artifactId>
-    <version>0.1.3</version>
+    <groupId>club.doki7</groupId>
+    <artifactId>ffm-plus</artifactId>
+    <version>0.1.4</version>
 </dependency>
 <dependency>
-    <groupId>tech.icey</groupId>
-    <artifactId>vulkan4j</artifactId>
-    <version>0.2.2</version>
+    <groupId>club.doki7</groupId>
+    <artifactId>vulkan</artifactId>
+    <version>0.3.0</version>
 </dependency>
 <dependency>
-    <groupId>tech.icey</groupId>
+    <groupId>club.doki7</groupId>
     <artifactId>glfw</artifactId>
-    <version>0.2.2</version>
+    <version>0.3.0</version>
 </dependency>
 <dependency>
     <groupId>org.joml</groupId>
@@ -34,20 +34,20 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 </dependency>
 ```
 
-`tech.icey.vulkan4j` is the Vulkan binding for Java, `tech.icey.panama-plus` is a library that provides a thin wrapper over the Project Panama APIs to make them easier and more type-safe to use. `tech.icey.glfw` is a Java binding for the GLFW library, which we'll use for window creation. `org.joml` is a math library that we'll use for vector and matrix operations. `de.javagl.obj` is a library for loading Wavefront OBJ files, which we'll use for loading 3D models.
+`club.doki7.vulkan` is the Vulkan binding for Java, `club.doki7.ffm-plus` is a library that provides a thin wrapper over the Java 22 FFM APIs to make them easier and more type-safe to use. `club.doki7.glfw` is a Java binding for the GLFW library, which we'll use for window creation. `org.joml` is a math library that we'll use for vector and matrix operations. `de.javagl.obj` is a library for loading Wavefront OBJ files, which we'll use for loading 3D models.
 
 ## GLFW
 
-Unlike `lwjgl-glfw` and other Java bindings for GLFW, `tech.icey.glfw` does not come up with the native binaries. You'll need to download the GLFW binaries for your operating system and architecture, either from the [official website](https://www.glfw.org/download.html), or using your favorite package manager. 
+Unlike `lwjgl-glfw` and other Java bindings for GLFW, `club.doki7.glfw` does not come up with the native binaries. You'll need to download the GLFW binaries for your operating system and architecture, either from the [official website](https://www.glfw.org/download.html), or using your favorite package manager. 
 
 If you're using a package manager, all things should be set up for you automatically. However, if you're downloading the binaries manually, you'll need a bit more effort to make JVM find the native libraries. There are two ways to do this:
 
-- Copy the native libraries (`glfw3.dll`) to some directory that is included by `PATH` environment variable.
+- Copy (or link) the native library file (`glfw3.dll`) to some directory that is included by `PATH` environment variable.
 - Set the `java.library.path` system property to the directory containing the native libraries. This can be done by adding the following line to JVM arguments: `-Djava.library.path=/path/to/glfw/native/libs`. If you're using IDEs, you can usually set this in the run configuration. Consult your IDE documentation for more information.
 
 In realworld production you may want to bundle the native libraries with your application (usually a JAR file), in that case you may use some solution like [native-utils](https://github.com/adamheinrich/native-utils).
 
-> Chuigda did not bundle the native libraries with `tech.icey.glfw` because he doesn't know what's the best practice in Java world, <del>definitely not because he's lazy</del>. If you have a good idea, a pull request is always welcome.
+> Chuigda did not bundle the native libraries with `club.doki7.glfw` because he doesn't know what's the best practice in Java world, <del>definitely not because he's lazy</del>. If you have a good idea, a pull request is always welcome.
 
 ## Vulkan SDK
 
@@ -65,7 +65,7 @@ Proceed through the installation and pay attention to the installation location 
 
 If you receive an error message then ensure that your drivers are up-to-date, include the Vulkan runtime and that your graphics card is supported. See the [introduction chapter](introduction.md) for links to drivers from the major vendors.
 
-There is another program in this directory that will be useful for development. The `glslangValidator.exe` and `glslc.exe` programs will be used to compile shaders from the human-readable [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) to bytecode. We'll cover this in depth in the [shader modules chapter](./pipeline/shader-modules.md). The `Bin` directory also contains the binaries of the Vulkan loader and the validation layers, while the `Lib` directory contains the libraries.
+There is another program in this directory that will be useful for development. The `glslangValidator.exe` and `glslc.exe` programs will be used to compile shaders from the human-readable [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) to bytecode. We'll cover this in depth in the [shader modules chapter](pipeline/ch09-shader-modules.md). The `Bin` directory also contains the binaries of the Vulkan loader and the validation layers, while the `Lib` directory contains the libraries.
 
 Feel free to explore the other files, but we won't need them for this tutorial.
 

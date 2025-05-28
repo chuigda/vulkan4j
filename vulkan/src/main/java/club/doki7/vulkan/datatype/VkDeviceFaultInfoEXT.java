@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +25,7 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkDeviceFaultInfoEXT {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     char description; // @link substring="description" target="#description"
+///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 ///     VkDeviceFaultAddressInfoEXT* pAddressInfos; // optional // @link substring="VkDeviceFaultAddressInfoEXT" target="VkDeviceFaultAddressInfoEXT" @link substring="pAddressInfos" target="#pAddressInfos"
 ///     VkDeviceFaultVendorInfoEXT* pVendorInfos; // optional // @link substring="VkDeviceFaultVendorInfoEXT" target="VkDeviceFaultVendorInfoEXT" @link substring="pVendorInfos" target="#pVendorInfos"
 ///     void* pVendorBinaryData; // optional // @link substring="pVendorBinaryData" target="#pVendorBinaryData"
@@ -72,7 +74,7 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceFaultInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceFaultInfoEXT, Iterable<VkDeviceFaultInfoEXT> {
         public long size() {
             return segment.byteSize() / VkDeviceFaultInfoEXT.BYTES;
         }
@@ -134,6 +136,35 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDeviceFaultInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDeviceFaultInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkDeviceFaultInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDeviceFaultInfoEXT ret = new VkDeviceFaultInfoEXT(segment.asSlice(0, VkDeviceFaultInfoEXT.BYTES));
+                segment = segment.asSlice(VkDeviceFaultInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkDeviceFaultInfoEXT allocate(Arena arena) {
@@ -181,12 +212,16 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
     }
 
-    public void description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public void description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    }
+
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public void pAddressInfos(@Nullable IVkDeviceFaultAddressInfoEXT value) {
@@ -266,7 +301,7 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("description"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.ADDRESS.withTargetLayout(VkDeviceFaultAddressInfoEXT.LAYOUT).withName("pAddressInfos"),
         ValueLayout.ADDRESS.withTargetLayout(VkDeviceFaultVendorInfoEXT.LAYOUT).withName("pVendorInfos"),
         ValueLayout.ADDRESS.withName("pVendorBinaryData")
@@ -282,7 +317,7 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
     public static final AddressLayout LAYOUT$pAddressInfos = (AddressLayout) LAYOUT.select(PATH$pAddressInfos);
     public static final AddressLayout LAYOUT$pVendorInfos = (AddressLayout) LAYOUT.select(PATH$pVendorInfos);
     public static final AddressLayout LAYOUT$pVendorBinaryData = (AddressLayout) LAYOUT.select(PATH$pVendorBinaryData);

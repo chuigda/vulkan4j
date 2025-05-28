@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPipelineInfoKHR(@NotNull MemorySegment segment) implements IVkPi
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineInfoKHR, Iterable<VkPipelineInfoKHR> {
         public long size() {
             return segment.byteSize() / VkPipelineInfoKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPipelineInfoKHR(@NotNull MemorySegment segment) implements IVkPi
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPipelineInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPipelineInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkPipelineInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineInfoKHR ret = new VkPipelineInfoKHR(segment.asSlice(0, VkPipelineInfoKHR.BYTES));
+                segment = segment.asSlice(VkPipelineInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

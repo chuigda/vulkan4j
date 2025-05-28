@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -73,7 +75,7 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkImageResolve2 {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkImageResolve2, Iterable<VkImageResolve2> {
         public long size() {
             return segment.byteSize() / VkImageResolve2.BYTES;
         }
@@ -134,6 +136,35 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkImageResolve2> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkImageResolve2.BYTES;
+            }
+
+            @Override
+            public VkImageResolve2 next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkImageResolve2 ret = new VkImageResolve2(segment.asSlice(0, VkImageResolve2.BYTES));
+                segment = segment.asSlice(VkImageResolve2.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

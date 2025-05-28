@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +23,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkTransformMatrixKHR {
-///     float matrix; // @link substring="matrix" target="#matrix"
+///     float[4][3] matrix; // @link substring="matrix" target="#matrix"
 /// } VkTransformMatrixKHR;
 /// }
 ///
@@ -58,7 +60,7 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkTransformMatrixKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkTransformMatrixKHR, Iterable<VkTransformMatrixKHR> {
         public long size() {
             return segment.byteSize() / VkTransformMatrixKHR.BYTES;
         }
@@ -120,6 +122,35 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkTransformMatrixKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkTransformMatrixKHR.BYTES;
+            }
+
+            @Override
+            public VkTransformMatrixKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkTransformMatrixKHR ret = new VkTransformMatrixKHR(segment.asSlice(0, VkTransformMatrixKHR.BYTES));
+                segment = segment.asSlice(VkTransformMatrixKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkTransformMatrixKHR allocate(Arena arena) {
@@ -137,22 +168,26 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
         return ret;
     }
 
-    public float matrix() {
-        return segment.get(LAYOUT$matrix, OFFSET$matrix);
+    public FloatPtr matrix() {
+        return new FloatPtr(matrixRaw());
     }
 
-    public void matrix(float value) {
-        segment.set(LAYOUT$matrix, OFFSET$matrix, value);
+    public void matrix(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrix, SIZE$matrix);
+    }
+
+    public MemorySegment matrixRaw() {
+        return segment.asSlice(OFFSET$matrix, SIZE$matrix);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_FLOAT.withName("matrix")
+        MemoryLayout.sequenceLayout(3, MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT)).withName("matrix")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
     public static final PathElement PATH$matrix = PathElement.groupElement("matrix");
 
-    public static final OfFloat LAYOUT$matrix = (OfFloat) LAYOUT.select(PATH$matrix);
+    public static final SequenceLayout LAYOUT$matrix = (SequenceLayout) LAYOUT.select(PATH$matrix);
 
     public static final long SIZE$matrix = LAYOUT$matrix.byteSize();
 

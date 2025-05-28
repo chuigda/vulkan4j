@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t TileRows; // @link substring="TileRows" target="#TileRows"
 ///     uint16_t context_update_tile_id; // @link substring="context_update_tile_id" target="#context_update_tile_id"
 ///     uint8_t tile_size_bytes_minus_1; // @link substring="tile_size_bytes_minus_1" target="#tile_size_bytes_minus_1"
-///     uint8_t reserved1;
+///     uint8_t[7] reserved1;
 ///     uint16_t const* pMiColStarts; // @link substring="pMiColStarts" target="#pMiColStarts"
 ///     uint16_t const* pMiRowStarts; // @link substring="pMiRowStarts" target="#pMiRowStarts"
 ///     uint16_t const* pWidthInSbsMinus1; // @link substring="pWidthInSbsMinus1" target="#pWidthInSbsMinus1"
@@ -65,7 +67,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1TileInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1TileInfo, Iterable<StdVideoAV1TileInfo> {
         public long size() {
             return segment.byteSize() / StdVideoAV1TileInfo.BYTES;
         }
@@ -126,6 +128,35 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoAV1TileInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoAV1TileInfo.BYTES;
+            }
+
+            @Override
+            public StdVideoAV1TileInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoAV1TileInfo ret = new StdVideoAV1TileInfo(segment.asSlice(0, StdVideoAV1TileInfo.BYTES));
+                segment = segment.asSlice(StdVideoAV1TileInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -291,7 +322,7 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         ValueLayout.JAVA_BYTE.withName("TileRows"),
         ValueLayout.JAVA_SHORT.withName("context_update_tile_id"),
         ValueLayout.JAVA_BYTE.withName("tile_size_bytes_minus_1"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiColStarts"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pMiRowStarts"),
         ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_SHORT).withName("pWidthInSbsMinus1"),

@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -132,7 +134,7 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaAllocatorCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaAllocatorCreateInfo, Iterable<VmaAllocatorCreateInfo> {
         public long size() {
             return segment.byteSize() / VmaAllocatorCreateInfo.BYTES;
         }
@@ -193,6 +195,35 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VmaAllocatorCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VmaAllocatorCreateInfo.BYTES;
+            }
+
+            @Override
+            public VmaAllocatorCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaAllocatorCreateInfo ret = new VmaAllocatorCreateInfo(segment.asSlice(0, VmaAllocatorCreateInfo.BYTES));
+                segment = segment.asSlice(VmaAllocatorCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

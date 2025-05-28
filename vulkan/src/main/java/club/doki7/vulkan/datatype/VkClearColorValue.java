@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -21,9 +23,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct VkClearColorValue {
-///     float float32; // @link substring="float32" target="#float32"
-///     int32_t int32; // @link substring="int32" target="#int32"
-///     uint32_t uint32; // @link substring="uint32" target="#uint32"
+///     float[4] float32; // @link substring="float32" target="#float32"
+///     int32_t[4] int32; // @link substring="int32" target="#int32"
+///     uint32_t[4] uint32; // @link substring="uint32" target="#uint32"
 /// } VkClearColorValue;
 /// }
 ///
@@ -60,7 +62,7 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkClearColorValue {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkClearColorValue, Iterable<VkClearColorValue> {
         public long size() {
             return segment.byteSize() / VkClearColorValue.BYTES;
         }
@@ -122,6 +124,35 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkClearColorValue> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkClearColorValue.BYTES;
+            }
+
+            @Override
+            public VkClearColorValue next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkClearColorValue ret = new VkClearColorValue(segment.asSlice(0, VkClearColorValue.BYTES));
+                segment = segment.asSlice(VkClearColorValue.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkClearColorValue allocate(Arena arena) {
@@ -139,34 +170,46 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         return ret;
     }
 
-    public float float32() {
-        return segment.get(LAYOUT$float32, OFFSET$float32);
+    public FloatPtr float32() {
+        return new FloatPtr(float32Raw());
     }
 
-    public void float32(float value) {
-        segment.set(LAYOUT$float32, OFFSET$float32, value);
+    public void float32(FloatPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$float32, SIZE$float32);
     }
 
-    public int int32() {
-        return segment.get(LAYOUT$int32, OFFSET$int32);
+    public MemorySegment float32Raw() {
+        return segment.asSlice(OFFSET$float32, SIZE$float32);
     }
 
-    public void int32(int value) {
-        segment.set(LAYOUT$int32, OFFSET$int32, value);
+    public IntPtr int32() {
+        return new IntPtr(int32Raw());
     }
 
-    public @Unsigned int uint32() {
-        return segment.get(LAYOUT$uint32, OFFSET$uint32);
+    public void int32(IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$int32, SIZE$int32);
     }
 
-    public void uint32(@Unsigned int value) {
-        segment.set(LAYOUT$uint32, OFFSET$uint32, value);
+    public MemorySegment int32Raw() {
+        return segment.asSlice(OFFSET$int32, SIZE$int32);
+    }
+
+    public @Unsigned IntPtr uint32() {
+        return new IntPtr(uint32Raw());
+    }
+
+    public void uint32(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uint32, SIZE$uint32);
+    }
+
+    public MemorySegment uint32Raw() {
+        return segment.asSlice(OFFSET$uint32, SIZE$uint32);
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(
-        ValueLayout.JAVA_FLOAT.withName("float32"),
-        ValueLayout.JAVA_INT.withName("int32"),
-        ValueLayout.JAVA_INT.withName("uint32")
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("float32"),
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("int32"),
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("uint32")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -174,9 +217,9 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
     public static final PathElement PATH$int32 = PathElement.groupElement("int32");
     public static final PathElement PATH$uint32 = PathElement.groupElement("uint32");
 
-    public static final OfFloat LAYOUT$float32 = (OfFloat) LAYOUT.select(PATH$float32);
-    public static final OfInt LAYOUT$int32 = (OfInt) LAYOUT.select(PATH$int32);
-    public static final OfInt LAYOUT$uint32 = (OfInt) LAYOUT.select(PATH$uint32);
+    public static final SequenceLayout LAYOUT$float32 = (SequenceLayout) LAYOUT.select(PATH$float32);
+    public static final SequenceLayout LAYOUT$int32 = (SequenceLayout) LAYOUT.select(PATH$int32);
+    public static final SequenceLayout LAYOUT$uint32 = (SequenceLayout) LAYOUT.select(PATH$uint32);
 
     public static final long SIZE$float32 = LAYOUT$float32.byteSize();
     public static final long SIZE$int32 = LAYOUT$int32.byteSize();

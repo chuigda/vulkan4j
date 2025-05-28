@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +74,7 @@ public record VkVideoEncodeH264GopRemainingFrameInfoKHR(@NotNull MemorySegment s
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH264GopRemainingFrameInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoEncodeH264GopRemainingFrameInfoKHR, Iterable<VkVideoEncodeH264GopRemainingFrameInfoKHR> {
         public long size() {
             return segment.byteSize() / VkVideoEncodeH264GopRemainingFrameInfoKHR.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkVideoEncodeH264GopRemainingFrameInfoKHR(@NotNull MemorySegment s
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkVideoEncodeH264GopRemainingFrameInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkVideoEncodeH264GopRemainingFrameInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkVideoEncodeH264GopRemainingFrameInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoEncodeH264GopRemainingFrameInfoKHR ret = new VkVideoEncodeH264GopRemainingFrameInfoKHR(segment.asSlice(0, VkVideoEncodeH264GopRemainingFrameInfoKHR.BYTES));
+                segment = segment.asSlice(VkVideoEncodeH264GopRemainingFrameInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

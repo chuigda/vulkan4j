@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -59,7 +61,7 @@ public record VkXYColorEXT(@NotNull MemorySegment segment) implements IVkXYColor
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkXYColorEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkXYColorEXT, Iterable<VkXYColorEXT> {
         public long size() {
             return segment.byteSize() / VkXYColorEXT.BYTES;
         }
@@ -120,6 +122,35 @@ public record VkXYColorEXT(@NotNull MemorySegment segment) implements IVkXYColor
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkXYColorEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkXYColorEXT.BYTES;
+            }
+
+            @Override
+            public VkXYColorEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkXYColorEXT ret = new VkXYColorEXT(segment.asSlice(0, VkXYColorEXT.BYTES));
+                segment = segment.asSlice(VkXYColorEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

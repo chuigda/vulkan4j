@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t physicalDeviceCount; // @link substring="physicalDeviceCount" target="#physicalDeviceCount"
-///     VkPhysicalDevice physicalDevices; // @link substring="VkPhysicalDevice" target="VkPhysicalDevice" @link substring="physicalDevices" target="#physicalDevices"
+///     VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE] physicalDevices; // @link substring="VkPhysicalDevice" target="VkPhysicalDevice" @link substring="physicalDevices" target="#physicalDevices"
 ///     VkBool32 subsetAllocation; // @link substring="subsetAllocation" target="#subsetAllocation"
 /// } VkPhysicalDeviceGroupProperties;
 /// }
@@ -71,7 +73,7 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceGroupProperties {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceGroupProperties, Iterable<VkPhysicalDeviceGroupProperties> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceGroupProperties.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceGroupProperties> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceGroupProperties.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceGroupProperties next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceGroupProperties ret = new VkPhysicalDeviceGroupProperties(segment.asSlice(0, VkPhysicalDeviceGroupProperties.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceGroupProperties.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkPhysicalDeviceGroupProperties allocate(Arena arena) {
@@ -188,16 +219,27 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount, value);
     }
 
-    public @Nullable VkPhysicalDevice physicalDevices() {
-        MemorySegment s = segment.asSlice(OFFSET$physicalDevices, SIZE$physicalDevices);
-        if (s.equals(MemorySegment.NULL)) {
-            return null;
-        }
-        return new VkPhysicalDevice(s);
+    public MemorySegment physicalDevicesRaw() {
+        return segment.asSlice(OFFSET$physicalDevices, SIZE$physicalDevices);
     }
 
-    public void physicalDevices(@Nullable VkPhysicalDevice value) {
-        segment.set(LAYOUT$physicalDevices, OFFSET$physicalDevices, value != null ? value.segment() : MemorySegment.NULL);
+    public VkPhysicalDevice.Ptr physicalDevices() {
+        return new VkPhysicalDevice.Ptr(physicalDevicesRaw());
+    }
+
+    public void physicalDevices(VkPhysicalDevice.Ptr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDevices, SIZE$physicalDevices);
+    }
+
+    public VkPhysicalDevice physicalDevicesAt(int index) {
+        MemorySegment s = physicalDevicesRaw();
+        MemorySegment deref = s.get(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize());
+        return new VkPhysicalDevice(deref);
+    }
+
+    public void physicalDevicesAt(int index, VkPhysicalDevice value) {
+        MemorySegment s = physicalDevicesRaw();
+        s.set(ValueLayout.ADDRESS, index * ValueLayout.ADDRESS.byteSize(), value.segment());
     }
 
     public @NativeType("VkBool32") @Unsigned int subsetAllocation() {
@@ -212,7 +254,7 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("physicalDeviceCount"),
-        ValueLayout.ADDRESS.withName("physicalDevices"),
+        MemoryLayout.sequenceLayout(MAX_DEVICE_GROUP_SIZE, ValueLayout.ADDRESS).withName("physicalDevices"),
         ValueLayout.JAVA_INT.withName("subsetAllocation")
     );
     public static final long BYTES = LAYOUT.byteSize();
@@ -226,7 +268,7 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$physicalDeviceCount = (OfInt) LAYOUT.select(PATH$physicalDeviceCount);
-    public static final AddressLayout LAYOUT$physicalDevices = (AddressLayout) LAYOUT.select(PATH$physicalDevices);
+    public static final SequenceLayout LAYOUT$physicalDevices = (SequenceLayout) LAYOUT.select(PATH$physicalDevices);
     public static final OfInt LAYOUT$subsetAllocation = (OfInt) LAYOUT.select(PATH$subsetAllocation);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();

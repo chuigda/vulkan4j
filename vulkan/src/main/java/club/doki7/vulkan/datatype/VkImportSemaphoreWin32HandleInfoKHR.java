@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -73,7 +75,7 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkImportSemaphoreWin32HandleInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkImportSemaphoreWin32HandleInfoKHR, Iterable<VkImportSemaphoreWin32HandleInfoKHR> {
         public long size() {
             return segment.byteSize() / VkImportSemaphoreWin32HandleInfoKHR.BYTES;
         }
@@ -134,6 +136,35 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkImportSemaphoreWin32HandleInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkImportSemaphoreWin32HandleInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkImportSemaphoreWin32HandleInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkImportSemaphoreWin32HandleInfoKHR ret = new VkImportSemaphoreWin32HandleInfoKHR(segment.asSlice(0, VkImportSemaphoreWin32HandleInfoKHR.BYTES));
+                segment = segment.asSlice(VkImportSemaphoreWin32HandleInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

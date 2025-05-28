@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment s
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDedicatedAllocationMemoryAllocateInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDedicatedAllocationMemoryAllocateInfoNV, Iterable<VkDedicatedAllocationMemoryAllocateInfoNV> {
         public long size() {
             return segment.byteSize() / VkDedicatedAllocationMemoryAllocateInfoNV.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkDedicatedAllocationMemoryAllocateInfoNV(@NotNull MemorySegment s
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDedicatedAllocationMemoryAllocateInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDedicatedAllocationMemoryAllocateInfoNV.BYTES;
+            }
+
+            @Override
+            public VkDedicatedAllocationMemoryAllocateInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDedicatedAllocationMemoryAllocateInfoNV ret = new VkDedicatedAllocationMemoryAllocateInfoNV(segment.asSlice(0, VkDedicatedAllocationMemoryAllocateInfoNV.BYTES));
+                segment = segment.asSlice(VkDedicatedAllocationMemoryAllocateInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

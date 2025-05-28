@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -61,7 +63,7 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureBuildRangeInfoKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureBuildRangeInfoKHR, Iterable<VkAccelerationStructureBuildRangeInfoKHR> {
         public long size() {
             return segment.byteSize() / VkAccelerationStructureBuildRangeInfoKHR.BYTES;
         }
@@ -122,6 +124,35 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkAccelerationStructureBuildRangeInfoKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkAccelerationStructureBuildRangeInfoKHR.BYTES;
+            }
+
+            @Override
+            public VkAccelerationStructureBuildRangeInfoKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkAccelerationStructureBuildRangeInfoKHR ret = new VkAccelerationStructureBuildRangeInfoKHR(segment.asSlice(0, VkAccelerationStructureBuildRangeInfoKHR.BYTES));
+                segment = segment.asSlice(VkAccelerationStructureBuildRangeInfoKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

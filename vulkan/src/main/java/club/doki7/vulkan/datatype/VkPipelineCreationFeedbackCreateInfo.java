@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineCreationFeedbackCreateInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPipelineCreationFeedbackCreateInfo, Iterable<VkPipelineCreationFeedbackCreateInfo> {
         public long size() {
             return segment.byteSize() / VkPipelineCreationFeedbackCreateInfo.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPipelineCreationFeedbackCreateInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPipelineCreationFeedbackCreateInfo.BYTES;
+            }
+
+            @Override
+            public VkPipelineCreationFeedbackCreateInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPipelineCreationFeedbackCreateInfo ret = new VkPipelineCreationFeedbackCreateInfo(segment.asSlice(0, VkPipelineCreationFeedbackCreateInfo.BYTES));
+                segment = segment.asSlice(VkPipelineCreationFeedbackCreateInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

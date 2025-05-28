@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +25,8 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     VkDeviceSize heapBudget; // @link substring="heapBudget" target="#heapBudget"
-///     VkDeviceSize heapUsage; // @link substring="heapUsage" target="#heapUsage"
+///     VkDeviceSize[VK_MAX_MEMORY_HEAPS] heapBudget; // @link substring="heapBudget" target="#heapBudget"
+///     VkDeviceSize[VK_MAX_MEMORY_HEAPS] heapUsage; // @link substring="heapUsage" target="#heapUsage"
 /// } VkPhysicalDeviceMemoryBudgetPropertiesEXT;
 /// }
 ///
@@ -70,7 +72,7 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMemoryBudgetPropertiesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMemoryBudgetPropertiesEXT, Iterable<VkPhysicalDeviceMemoryBudgetPropertiesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceMemoryBudgetPropertiesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceMemoryBudgetPropertiesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceMemoryBudgetPropertiesEXT ret = new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.asSlice(0, VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceMemoryBudgetPropertiesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkPhysicalDeviceMemoryBudgetPropertiesEXT allocate(Arena arena) {
@@ -179,27 +210,35 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public @NativeType("VkDeviceSize") @Unsigned long heapBudget() {
-        return segment.get(LAYOUT$heapBudget, OFFSET$heapBudget);
+    public @Pointer(comment="VkDeviceSize") @Unsigned LongPtr heapBudget() {
+        return new LongPtr(heapBudgetRaw());
     }
 
-    public void heapBudget(@NativeType("VkDeviceSize") @Unsigned long value) {
-        segment.set(LAYOUT$heapBudget, OFFSET$heapBudget, value);
+    public void heapBudget(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapBudget, SIZE$heapBudget);
     }
 
-    public @NativeType("VkDeviceSize") @Unsigned long heapUsage() {
-        return segment.get(LAYOUT$heapUsage, OFFSET$heapUsage);
+    public MemorySegment heapBudgetRaw() {
+        return segment.asSlice(OFFSET$heapBudget, SIZE$heapBudget);
     }
 
-    public void heapUsage(@NativeType("VkDeviceSize") @Unsigned long value) {
-        segment.set(LAYOUT$heapUsage, OFFSET$heapUsage, value);
+    public @Pointer(comment="VkDeviceSize") @Unsigned LongPtr heapUsage() {
+        return new LongPtr(heapUsageRaw());
+    }
+
+    public void heapUsage(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapUsage, SIZE$heapUsage);
+    }
+
+    public MemorySegment heapUsageRaw() {
+        return segment.asSlice(OFFSET$heapUsage, SIZE$heapUsage);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_LONG.withName("heapBudget"),
-        ValueLayout.JAVA_LONG.withName("heapUsage")
+        MemoryLayout.sequenceLayout(MAX_MEMORY_HEAPS, ValueLayout.JAVA_LONG).withName("heapBudget"),
+        MemoryLayout.sequenceLayout(MAX_MEMORY_HEAPS, ValueLayout.JAVA_LONG).withName("heapUsage")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -210,8 +249,8 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfLong LAYOUT$heapBudget = (OfLong) LAYOUT.select(PATH$heapBudget);
-    public static final OfLong LAYOUT$heapUsage = (OfLong) LAYOUT.select(PATH$heapUsage);
+    public static final SequenceLayout LAYOUT$heapBudget = (SequenceLayout) LAYOUT.select(PATH$heapBudget);
+    public static final SequenceLayout LAYOUT$heapUsage = (SequenceLayout) LAYOUT.select(PATH$heapUsage);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

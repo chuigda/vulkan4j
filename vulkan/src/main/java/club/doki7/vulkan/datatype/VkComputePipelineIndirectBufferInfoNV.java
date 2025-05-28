@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkComputePipelineIndirectBufferInfoNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkComputePipelineIndirectBufferInfoNV, Iterable<VkComputePipelineIndirectBufferInfoNV> {
         public long size() {
             return segment.byteSize() / VkComputePipelineIndirectBufferInfoNV.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkComputePipelineIndirectBufferInfoNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkComputePipelineIndirectBufferInfoNV.BYTES;
+            }
+
+            @Override
+            public VkComputePipelineIndirectBufferInfoNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkComputePipelineIndirectBufferInfoNV ret = new VkComputePipelineIndirectBufferInfoNV(segment.asSlice(0, VkComputePipelineIndirectBufferInfoNV.BYTES));
+                segment = segment.asSlice(VkComputePipelineIndirectBufferInfoNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

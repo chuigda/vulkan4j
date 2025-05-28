@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +82,7 @@ public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVma
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaAllocationInfo2 {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaAllocationInfo2, Iterable<VmaAllocationInfo2> {
         public long size() {
             return segment.byteSize() / VmaAllocationInfo2.BYTES;
         }
@@ -141,6 +143,35 @@ public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVma
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VmaAllocationInfo2> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VmaAllocationInfo2.BYTES;
+            }
+
+            @Override
+            public VmaAllocationInfo2 next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaAllocationInfo2 ret = new VmaAllocationInfo2(segment.asSlice(0, VmaAllocationInfo2.BYTES));
+                segment = segment.asSlice(VmaAllocationInfo2.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

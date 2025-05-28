@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -23,11 +25,11 @@ import static club.doki7.vulkan.VkConstants.*;
 /// typedef struct VkPhysicalDeviceToolProperties {
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
-///     char name; // @link substring="name" target="#name"
-///     char version; // @link substring="version" target="#version"
+///     char[VK_MAX_EXTENSION_NAME_SIZE] name; // @link substring="name" target="#name"
+///     char[VK_MAX_EXTENSION_NAME_SIZE] version; // @link substring="version" target="#version"
 ///     VkToolPurposeFlags purposes; // @link substring="VkToolPurposeFlags" target="VkToolPurposeFlags" @link substring="purposes" target="#purposes"
-///     char description; // @link substring="description" target="#description"
-///     char layer; // @link substring="layer" target="#layer"
+///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
+///     char[VK_MAX_EXTENSION_NAME_SIZE] layer; // @link substring="layer" target="#layer"
 /// } VkPhysicalDeviceToolProperties;
 /// }
 ///
@@ -73,7 +75,7 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceToolProperties {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceToolProperties, Iterable<VkPhysicalDeviceToolProperties> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceToolProperties.BYTES;
         }
@@ -135,6 +137,35 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceToolProperties> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceToolProperties.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceToolProperties next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceToolProperties ret = new VkPhysicalDeviceToolProperties(segment.asSlice(0, VkPhysicalDeviceToolProperties.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceToolProperties.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkPhysicalDeviceToolProperties allocate(Arena arena) {
@@ -182,20 +213,28 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
     }
 
-    public byte name() {
-        return segment.get(LAYOUT$name, OFFSET$name);
+    public BytePtr name() {
+        return new BytePtr(nameRaw());
     }
 
-    public void name(byte value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
+    public void name(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
     }
 
-    public byte version() {
-        return segment.get(LAYOUT$version, OFFSET$version);
+    public MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
-    public void version(byte value) {
-        segment.set(LAYOUT$version, OFFSET$version, value);
+    public BytePtr version() {
+        return new BytePtr(versionRaw());
+    }
+
+    public void version(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$version, SIZE$version);
+    }
+
+    public MemorySegment versionRaw() {
+        return segment.asSlice(OFFSET$version, SIZE$version);
     }
 
     public @EnumType(VkToolPurposeFlags.class) int purposes() {
@@ -206,30 +245,38 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$purposes, OFFSET$purposes, value);
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
     }
 
-    public void description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public void description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
     }
 
-    public byte layer() {
-        return segment.get(LAYOUT$layer, OFFSET$layer);
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
-    public void layer(byte value) {
-        segment.set(LAYOUT$layer, OFFSET$layer, value);
+    public BytePtr layer() {
+        return new BytePtr(layerRaw());
+    }
+
+    public void layer(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$layer, SIZE$layer);
+    }
+
+    public MemorySegment layerRaw() {
+        return segment.asSlice(OFFSET$layer, SIZE$layer);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_BYTE.withName("name"),
-        ValueLayout.JAVA_BYTE.withName("version"),
+        MemoryLayout.sequenceLayout(MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("version"),
         ValueLayout.JAVA_INT.withName("purposes"),
-        ValueLayout.JAVA_BYTE.withName("description"),
-        ValueLayout.JAVA_BYTE.withName("layer")
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layer")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -243,11 +290,11 @@ public record VkPhysicalDeviceToolProperties(@NotNull MemorySegment segment) imp
 
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
-    public static final OfByte LAYOUT$version = (OfByte) LAYOUT.select(PATH$version);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$version = (SequenceLayout) LAYOUT.select(PATH$version);
     public static final OfInt LAYOUT$purposes = (OfInt) LAYOUT.select(PATH$purposes);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
-    public static final OfByte LAYOUT$layer = (OfByte) LAYOUT.select(PATH$layer);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$layer = (SequenceLayout) LAYOUT.select(PATH$layer);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

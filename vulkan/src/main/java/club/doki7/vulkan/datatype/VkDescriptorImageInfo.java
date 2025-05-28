@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -60,7 +62,7 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDescriptorImageInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDescriptorImageInfo, Iterable<VkDescriptorImageInfo> {
         public long size() {
             return segment.byteSize() / VkDescriptorImageInfo.BYTES;
         }
@@ -121,6 +123,35 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDescriptorImageInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDescriptorImageInfo.BYTES;
+            }
+
+            @Override
+            public VkDescriptorImageInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDescriptorImageInfo ret = new VkDescriptorImageInfo(segment.asSlice(0, VkDescriptorImageInfo.BYTES));
+                segment = segment.asSlice(VkDescriptorImageInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

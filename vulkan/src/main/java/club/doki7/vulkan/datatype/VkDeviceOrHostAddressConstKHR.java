@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -59,7 +61,7 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceOrHostAddressConstKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceOrHostAddressConstKHR, Iterable<VkDeviceOrHostAddressConstKHR> {
         public long size() {
             return segment.byteSize() / VkDeviceOrHostAddressConstKHR.BYTES;
         }
@@ -120,6 +122,35 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDeviceOrHostAddressConstKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDeviceOrHostAddressConstKHR.BYTES;
+            }
+
+            @Override
+            public VkDeviceOrHostAddressConstKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDeviceOrHostAddressConstKHR ret = new VkDeviceOrHostAddressConstKHR(segment.asSlice(0, VkDeviceOrHostAddressConstKHR.BYTES));
+                segment = segment.asSlice(VkDeviceOrHostAddressConstKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

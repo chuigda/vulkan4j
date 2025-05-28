@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceImage2DViewOf3DFeaturesEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceImage2DViewOf3DFeaturesEXT, Iterable<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceImage2DViewOf3DFeaturesEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceImage2DViewOf3DFeaturesEXT ret = new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.asSlice(0, VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

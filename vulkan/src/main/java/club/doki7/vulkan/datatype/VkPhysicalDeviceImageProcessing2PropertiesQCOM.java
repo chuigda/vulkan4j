@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceImageProcessing2PropertiesQCOM {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceImageProcessing2PropertiesQCOM, Iterable<VkPhysicalDeviceImageProcessing2PropertiesQCOM> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceImageProcessing2PropertiesQCOM.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceImageProcessing2PropertiesQCOM> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceImageProcessing2PropertiesQCOM.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceImageProcessing2PropertiesQCOM next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceImageProcessing2PropertiesQCOM ret = new VkPhysicalDeviceImageProcessing2PropertiesQCOM(segment.asSlice(0, VkPhysicalDeviceImageProcessing2PropertiesQCOM.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceImageProcessing2PropertiesQCOM.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

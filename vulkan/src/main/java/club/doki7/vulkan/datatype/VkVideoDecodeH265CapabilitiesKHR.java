@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkVideoDecodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeH265CapabilitiesKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkVideoDecodeH265CapabilitiesKHR, Iterable<VkVideoDecodeH265CapabilitiesKHR> {
         public long size() {
             return segment.byteSize() / VkVideoDecodeH265CapabilitiesKHR.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkVideoDecodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkVideoDecodeH265CapabilitiesKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkVideoDecodeH265CapabilitiesKHR.BYTES;
+            }
+
+            @Override
+            public VkVideoDecodeH265CapabilitiesKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkVideoDecodeH265CapabilitiesKHR ret = new VkVideoDecodeH265CapabilitiesKHR(segment.asSlice(0, VkVideoDecodeH265CapabilitiesKHR.BYTES));
+                segment = segment.asSlice(VkVideoDecodeH265CapabilitiesKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

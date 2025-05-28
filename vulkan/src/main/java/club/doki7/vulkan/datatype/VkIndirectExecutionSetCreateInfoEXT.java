@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkIndirectExecutionSetCreateInfoEXT(@NotNull MemorySegment segment
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkIndirectExecutionSetCreateInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkIndirectExecutionSetCreateInfoEXT, Iterable<VkIndirectExecutionSetCreateInfoEXT> {
         public long size() {
             return segment.byteSize() / VkIndirectExecutionSetCreateInfoEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkIndirectExecutionSetCreateInfoEXT(@NotNull MemorySegment segment
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkIndirectExecutionSetCreateInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkIndirectExecutionSetCreateInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkIndirectExecutionSetCreateInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkIndirectExecutionSetCreateInfoEXT ret = new VkIndirectExecutionSetCreateInfoEXT(segment.asSlice(0, VkIndirectExecutionSetCreateInfoEXT.BYTES));
+                segment = segment.asSlice(VkIndirectExecutionSetCreateInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -211,7 +242,7 @@ public record VkIndirectExecutionSetCreateInfoEXT(@NotNull MemorySegment segment
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$type = (OfInt) LAYOUT.select(PATH$type);
-    public static final StructLayout LAYOUT$info = (StructLayout) LAYOUT.select(PATH$info);
+    public static final UnionLayout LAYOUT$info = (UnionLayout) LAYOUT.select(PATH$info);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

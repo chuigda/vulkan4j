@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +26,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t priorityCount; // @link substring="priorityCount" target="#priorityCount"
-///     VkQueueGlobalPriority priorities; // @link substring="VkQueueGlobalPriority" target="VkQueueGlobalPriority" @link substring="priorities" target="#priorities"
+///     VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE] priorities; // @link substring="VkQueueGlobalPriority" target="VkQueueGlobalPriority" @link substring="priorities" target="#priorities"
 /// } VkQueueFamilyGlobalPriorityProperties;
 /// }
 ///
@@ -70,7 +72,7 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkQueueFamilyGlobalPriorityProperties {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkQueueFamilyGlobalPriorityProperties, Iterable<VkQueueFamilyGlobalPriorityProperties> {
         public long size() {
             return segment.byteSize() / VkQueueFamilyGlobalPriorityProperties.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkQueueFamilyGlobalPriorityProperties> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkQueueFamilyGlobalPriorityProperties.BYTES;
+            }
+
+            @Override
+            public VkQueueFamilyGlobalPriorityProperties next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkQueueFamilyGlobalPriorityProperties ret = new VkQueueFamilyGlobalPriorityProperties(segment.asSlice(0, VkQueueFamilyGlobalPriorityProperties.BYTES));
+                segment = segment.asSlice(VkQueueFamilyGlobalPriorityProperties.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkQueueFamilyGlobalPriorityProperties allocate(Arena arena) {
@@ -187,19 +218,23 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         segment.set(LAYOUT$priorityCount, OFFSET$priorityCount, value);
     }
 
-    public @EnumType(VkQueueGlobalPriority.class) int priorities() {
-        return segment.get(LAYOUT$priorities, OFFSET$priorities);
+    public @EnumType(VkQueueGlobalPriority.class) IntPtr priorities() {
+        return new IntPtr(prioritiesRaw());
     }
 
-    public void priorities(@EnumType(VkQueueGlobalPriority.class) int value) {
-        segment.set(LAYOUT$priorities, OFFSET$priorities, value);
+    public void priorities(@EnumType(VkQueueGlobalPriority.class) IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$priorities, SIZE$priorities);
+    }
+
+    public MemorySegment prioritiesRaw() {
+        return segment.asSlice(OFFSET$priorities, SIZE$priorities);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("priorityCount"),
-        ValueLayout.JAVA_INT.withName("priorities")
+        MemoryLayout.sequenceLayout(MAX_GLOBAL_PRIORITY_SIZE, ValueLayout.JAVA_INT).withName("priorities")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -211,7 +246,7 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$priorityCount = (OfInt) LAYOUT.select(PATH$priorityCount);
-    public static final OfInt LAYOUT$priorities = (OfInt) LAYOUT.select(PATH$priorities);
+    public static final SequenceLayout LAYOUT$priorities = (SequenceLayout) LAYOUT.select(PATH$priorities);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

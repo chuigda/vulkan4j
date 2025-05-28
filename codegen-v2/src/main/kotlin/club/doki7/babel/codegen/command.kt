@@ -312,22 +312,22 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
         is CNonRefType -> Triple(
             "MemorySegment s = (MemorySegment) ",
             "",
-            "return s.address() == 0 ? null : new ${retType.pointee.jPtrTypeNoAnnotation}(s);"
+            "return s.equals(MemorySegment.NULL) ? null : new ${retType.pointee.jPtrTypeNoAnnotation}(s);"
         )
         is CStructType -> Triple(
             "MemorySegment s = (MemorySegment) ",
             "",
-            "return s.address() == 0 ? null : new ${retType.pointee.name}(s);"
+            "return s.equals(MemorySegment.NULL) ? null : new ${retType.pointee.name}(s);"
         )
         is CHandleType -> Triple(
             "MemorySegment s = (MemorySegment) ",
             "",
-            "return s.address() == 0 ? null : new ${retType.pointee.name}.Ptr(s);"
+            "return s.equals(MemorySegment.NULL) ? null : new ${retType.pointee.name}.Ptr(s);"
         )
         is CPointerType -> Triple(
             "MemorySegment s = (MemorySegment) ",
             "",
-            "return s.address() == 0 ? null : new PointerPtr(s);"
+            "return s.equals(MemorySegment.NULL) ? null : new PointerPtr(s);"
         )
         is CVoidType -> Triple(
             "return (MemorySegment) ",
@@ -339,7 +339,7 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
     is CHandleType -> Triple(
         "MemorySegment s = (MemorySegment) ",
         "",
-        "return s.address() == 0 ? null : new ${retType.name}(s);"
+        "return s.equals(MemorySegment.NULL) ? null : new ${retType.name}(s);"
     )
     is CNonRefType -> Triple(
         "return (${retType.jTypeNoSign}) ",

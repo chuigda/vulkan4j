@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint32_t vendorID; // @link substring="vendorID" target="#vendorID"
 ///     uint32_t deviceID; // @link substring="deviceID" target="#deviceID"
 ///     uint32_t driverVersion; // @link substring="driverVersion" target="#driverVersion"
-///     uint8_t pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
+///     uint8_t[VK_UUID_SIZE] pipelineCacheUUID; // @link substring="pipelineCacheUUID" target="#pipelineCacheUUID"
 ///     uint32_t applicationNameOffset; // @link substring="applicationNameOffset" target="#applicationNameOffset"
 ///     uint32_t applicationVersion; // @link substring="applicationVersion" target="#applicationVersion"
 ///     uint32_t engineNameOffset; // @link substring="engineNameOffset" target="#engineNameOffset"
@@ -68,7 +70,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceFaultVendorBinaryHeaderVersionOneEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDeviceFaultVendorBinaryHeaderVersionOneEXT, Iterable<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> {
         public long size() {
             return segment.byteSize() / VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES;
+            }
+
+            @Override
+            public VkDeviceFaultVendorBinaryHeaderVersionOneEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDeviceFaultVendorBinaryHeaderVersionOneEXT ret = new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(segment.asSlice(0, VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES));
+                segment = segment.asSlice(VkDeviceFaultVendorBinaryHeaderVersionOneEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT allocate(Arena arena) {
@@ -187,12 +218,16 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$driverVersion, OFFSET$driverVersion, value);
     }
 
-    public @Unsigned byte pipelineCacheUUID() {
-        return segment.get(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID);
+    public @Unsigned BytePtr pipelineCacheUUID() {
+        return new BytePtr(pipelineCacheUUIDRaw());
     }
 
-    public void pipelineCacheUUID(@Unsigned byte value) {
-        segment.set(LAYOUT$pipelineCacheUUID, OFFSET$pipelineCacheUUID, value);
+    public void pipelineCacheUUID(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+    }
+
+    public MemorySegment pipelineCacheUUIDRaw() {
+        return segment.asSlice(OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
     }
 
     public @Unsigned int applicationNameOffset() {
@@ -241,7 +276,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
         ValueLayout.JAVA_INT.withName("driverVersion"),
-        ValueLayout.JAVA_BYTE.withName("pipelineCacheUUID"),
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID"),
         ValueLayout.JAVA_INT.withName("applicationNameOffset"),
         ValueLayout.JAVA_INT.withName("applicationVersion"),
         ValueLayout.JAVA_INT.withName("engineNameOffset"),
@@ -267,7 +302,7 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
     public static final OfInt LAYOUT$vendorID = (OfInt) LAYOUT.select(PATH$vendorID);
     public static final OfInt LAYOUT$deviceID = (OfInt) LAYOUT.select(PATH$deviceID);
     public static final OfInt LAYOUT$driverVersion = (OfInt) LAYOUT.select(PATH$driverVersion);
-    public static final OfByte LAYOUT$pipelineCacheUUID = (OfByte) LAYOUT.select(PATH$pipelineCacheUUID);
+    public static final SequenceLayout LAYOUT$pipelineCacheUUID = (SequenceLayout) LAYOUT.select(PATH$pipelineCacheUUID);
     public static final OfInt LAYOUT$applicationNameOffset = (OfInt) LAYOUT.select(PATH$applicationNameOffset);
     public static final OfInt LAYOUT$applicationVersion = (OfInt) LAYOUT.select(PATH$applicationVersion);
     public static final OfInt LAYOUT$engineNameOffset = (OfInt) LAYOUT.select(PATH$engineNameOffset);

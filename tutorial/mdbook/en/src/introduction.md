@@ -26,7 +26,7 @@ This tutorial will not assume knowledge of OpenGL or Direct3D concepts, but it d
 
 If you want a C++ tutorial instead, see the original tutorial: <https://vulkan-tutorial.com>
 
-This tutorial uses the [`vulkan4j`](https://github.com/chuigda/vulkan4j) package to provide access to the Vulkan API from Java. `vulkan4j` provides raw bindings to the Vulkan API as well as a thin wrapper over said bindings to make them easier and more idiomatic to use from Java. What's more, `vulkan4j` is built on top of the [`Project Panama`](https://openjdk.java.net/projects/panama/) `java.lang.foreign` APIs, which is slightly more advanced.
+This tutorial uses the [`vulkan4j`](https://github.com/chuigda/vulkan4j) package to provide access to the Vulkan API from Java. `vulkan4j` provides raw bindings to the Vulkan API as well as a thin wrapper over said bindings to make them easier and more idiomatic to use from Java. What's more, `vulkan4j` is built on top of the [`Java 22 FFM`](https://openjdk.java.net/projects/panama/) APIs, which is slightly more advanced.
 
 If you want a Java vulkan tutorial that uses a more mature package, checkout these two LWJGL-based tutorials: [vulkanbook](https://github.com/lwjglgamedev/vulkanbook/tree/master), [Vulkan-Tutorial-Java](https://github.com/Naitsirc98/Vulkan-Tutorial-Java).
 
@@ -40,7 +40,7 @@ After that we'll implement all the basic components of a Vulkan program that are
 * Use all the relevant API calls to integrate it into your program
 * Abstract parts of it into helper functions
 
-Although each chapter is written as a follow-up on the previous one, it is also possible to read the chapters as standalone articles introducing a certain Vulkan feature. That means that the site is also useful as a reference. <!-- 现在还不能吹这个牛 All the Vulkan functions and types are linked to either the Vulkan specification or to the `vulkan4j` documentation, so you can click them to learn more. --> Vulkan is still a fairly young API, so there may be some shortcomings in the specification itself. You are encouraged to submit feedback to [this Khronos repository](https://github.com/KhronosGroup/Vulkan-Docs).
+Although each chapter is written as a follow-up on the previous one, it is also possible to read the chapters as standalone articles introducing a certain Vulkan feature. That means that the site is also useful as a reference. All the Vulkan functions and types are linked to the Vulkan specification, so you can click them to learn more. Vulkan is still a fairly young API, so there may be some shortcomings in the specification itself. You are encouraged to submit feedback to [this Khronos repository](https://github.com/KhronosGroup/Vulkan-Docs).
 
 Every chapter will also start with a link to the final code for that chapter. You can refer to it if you have any doubts about the structure of the code, or if you're dealing with a bug and want to compare.
 

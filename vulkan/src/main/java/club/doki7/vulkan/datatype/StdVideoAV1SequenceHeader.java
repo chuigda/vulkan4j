@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +34,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     uint8_t order_hint_bits_minus_1; // @link substring="order_hint_bits_minus_1" target="#order_hint_bits_minus_1"
 ///     uint8_t seq_force_integer_mv; // @link substring="seq_force_integer_mv" target="#seq_force_integer_mv"
 ///     uint8_t seq_force_screen_content_tools; // @link substring="seq_force_screen_content_tools" target="#seq_force_screen_content_tools"
-///     uint8_t reserved1;
+///     uint8_t[5] reserved1;
 ///     StdVideoAV1ColorConfig const* pColorConfig; // @link substring="StdVideoAV1ColorConfig" target="StdVideoAV1ColorConfig" @link substring="pColorConfig" target="#pColorConfig"
 ///     StdVideoAV1TimingInfo const* pTimingInfo; // @link substring="StdVideoAV1TimingInfo" target="StdVideoAV1TimingInfo" @link substring="pTimingInfo" target="#pTimingInfo"
 /// } StdVideoAV1SequenceHeader;
@@ -69,7 +71,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1SequenceHeader {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoAV1SequenceHeader, Iterable<StdVideoAV1SequenceHeader> {
         public long size() {
             return segment.byteSize() / StdVideoAV1SequenceHeader.BYTES;
         }
@@ -130,6 +132,35 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoAV1SequenceHeader> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoAV1SequenceHeader.BYTES;
+            }
+
+            @Override
+            public StdVideoAV1SequenceHeader next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoAV1SequenceHeader ret = new StdVideoAV1SequenceHeader(segment.asSlice(0, StdVideoAV1SequenceHeader.BYTES));
+                segment = segment.asSlice(StdVideoAV1SequenceHeader.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -311,7 +342,7 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         ValueLayout.JAVA_BYTE.withName("order_hint_bits_minus_1"),
         ValueLayout.JAVA_BYTE.withName("seq_force_integer_mv"),
         ValueLayout.JAVA_BYTE.withName("seq_force_screen_content_tools"),
-        ValueLayout.JAVA_BYTE.withName("reserved1"),
+        MemoryLayout.sequenceLayout(5, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1ColorConfig.LAYOUT).withName("pColorConfig"),
         ValueLayout.ADDRESS.withTargetLayout(StdVideoAV1TimingInfo.LAYOUT).withName("pTimingInfo")
     );

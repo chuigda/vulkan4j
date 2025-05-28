@@ -162,7 +162,7 @@ class Param(
     val type: Type,
     val len: Identifier?,
     val argLen: List<Identifier>?,
-    val optional: Boolean
+    var optional: Boolean
 ) : Entity(name) {
     constructor(
         name: String,

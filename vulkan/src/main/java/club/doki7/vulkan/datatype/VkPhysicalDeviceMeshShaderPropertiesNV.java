@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -25,11 +27,11 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     uint32_t maxDrawMeshTasksCount; // @link substring="maxDrawMeshTasksCount" target="#maxDrawMeshTasksCount"
 ///     uint32_t maxTaskWorkGroupInvocations; // @link substring="maxTaskWorkGroupInvocations" target="#maxTaskWorkGroupInvocations"
-///     uint32_t maxTaskWorkGroupSize; // @link substring="maxTaskWorkGroupSize" target="#maxTaskWorkGroupSize"
+///     uint32_t[3] maxTaskWorkGroupSize; // @link substring="maxTaskWorkGroupSize" target="#maxTaskWorkGroupSize"
 ///     uint32_t maxTaskTotalMemorySize; // @link substring="maxTaskTotalMemorySize" target="#maxTaskTotalMemorySize"
 ///     uint32_t maxTaskOutputCount; // @link substring="maxTaskOutputCount" target="#maxTaskOutputCount"
 ///     uint32_t maxMeshWorkGroupInvocations; // @link substring="maxMeshWorkGroupInvocations" target="#maxMeshWorkGroupInvocations"
-///     uint32_t maxMeshWorkGroupSize; // @link substring="maxMeshWorkGroupSize" target="#maxMeshWorkGroupSize"
+///     uint32_t[3] maxMeshWorkGroupSize; // @link substring="maxMeshWorkGroupSize" target="#maxMeshWorkGroupSize"
 ///     uint32_t maxMeshTotalMemorySize; // @link substring="maxMeshTotalMemorySize" target="#maxMeshTotalMemorySize"
 ///     uint32_t maxMeshOutputVertices; // @link substring="maxMeshOutputVertices" target="#maxMeshOutputVertices"
 ///     uint32_t maxMeshOutputPrimitives; // @link substring="maxMeshOutputPrimitives" target="#maxMeshOutputPrimitives"
@@ -81,7 +83,7 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMeshShaderPropertiesNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPhysicalDeviceMeshShaderPropertiesNV, Iterable<VkPhysicalDeviceMeshShaderPropertiesNV> {
         public long size() {
             return segment.byteSize() / VkPhysicalDeviceMeshShaderPropertiesNV.BYTES;
         }
@@ -142,6 +144,35 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPhysicalDeviceMeshShaderPropertiesNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPhysicalDeviceMeshShaderPropertiesNV.BYTES;
+            }
+
+            @Override
+            public VkPhysicalDeviceMeshShaderPropertiesNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPhysicalDeviceMeshShaderPropertiesNV ret = new VkPhysicalDeviceMeshShaderPropertiesNV(segment.asSlice(0, VkPhysicalDeviceMeshShaderPropertiesNV.BYTES));
+                segment = segment.asSlice(VkPhysicalDeviceMeshShaderPropertiesNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -206,12 +237,16 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations, value);
     }
 
-    public @Unsigned int maxTaskWorkGroupSize() {
-        return segment.get(LAYOUT$maxTaskWorkGroupSize, OFFSET$maxTaskWorkGroupSize);
+    public @Unsigned IntPtr maxTaskWorkGroupSize() {
+        return new IntPtr(maxTaskWorkGroupSizeRaw());
     }
 
-    public void maxTaskWorkGroupSize(@Unsigned int value) {
-        segment.set(LAYOUT$maxTaskWorkGroupSize, OFFSET$maxTaskWorkGroupSize, value);
+    public void maxTaskWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
+    }
+
+    public MemorySegment maxTaskWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
     }
 
     public @Unsigned int maxTaskTotalMemorySize() {
@@ -238,12 +273,16 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations, value);
     }
 
-    public @Unsigned int maxMeshWorkGroupSize() {
-        return segment.get(LAYOUT$maxMeshWorkGroupSize, OFFSET$maxMeshWorkGroupSize);
+    public @Unsigned IntPtr maxMeshWorkGroupSize() {
+        return new IntPtr(maxMeshWorkGroupSizeRaw());
     }
 
-    public void maxMeshWorkGroupSize(@Unsigned int value) {
-        segment.set(LAYOUT$maxMeshWorkGroupSize, OFFSET$maxMeshWorkGroupSize, value);
+    public void maxMeshWorkGroupSize(@Unsigned IntPtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
+    }
+
+    public MemorySegment maxMeshWorkGroupSizeRaw() {
+        return segment.asSlice(OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
     }
 
     public @Unsigned int maxMeshTotalMemorySize() {
@@ -299,11 +338,11 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maxDrawMeshTasksCount"),
         ValueLayout.JAVA_INT.withName("maxTaskWorkGroupInvocations"),
-        ValueLayout.JAVA_INT.withName("maxTaskWorkGroupSize"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxTaskWorkGroupSize"),
         ValueLayout.JAVA_INT.withName("maxTaskTotalMemorySize"),
         ValueLayout.JAVA_INT.withName("maxTaskOutputCount"),
         ValueLayout.JAVA_INT.withName("maxMeshWorkGroupInvocations"),
-        ValueLayout.JAVA_INT.withName("maxMeshWorkGroupSize"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxMeshWorkGroupSize"),
         ValueLayout.JAVA_INT.withName("maxMeshTotalMemorySize"),
         ValueLayout.JAVA_INT.withName("maxMeshOutputVertices"),
         ValueLayout.JAVA_INT.withName("maxMeshOutputPrimitives"),
@@ -333,11 +372,11 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$maxDrawMeshTasksCount = (OfInt) LAYOUT.select(PATH$maxDrawMeshTasksCount);
     public static final OfInt LAYOUT$maxTaskWorkGroupInvocations = (OfInt) LAYOUT.select(PATH$maxTaskWorkGroupInvocations);
-    public static final OfInt LAYOUT$maxTaskWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxTaskWorkGroupSize);
+    public static final SequenceLayout LAYOUT$maxTaskWorkGroupSize = (SequenceLayout) LAYOUT.select(PATH$maxTaskWorkGroupSize);
     public static final OfInt LAYOUT$maxTaskTotalMemorySize = (OfInt) LAYOUT.select(PATH$maxTaskTotalMemorySize);
     public static final OfInt LAYOUT$maxTaskOutputCount = (OfInt) LAYOUT.select(PATH$maxTaskOutputCount);
     public static final OfInt LAYOUT$maxMeshWorkGroupInvocations = (OfInt) LAYOUT.select(PATH$maxMeshWorkGroupInvocations);
-    public static final OfInt LAYOUT$maxMeshWorkGroupSize = (OfInt) LAYOUT.select(PATH$maxMeshWorkGroupSize);
+    public static final SequenceLayout LAYOUT$maxMeshWorkGroupSize = (SequenceLayout) LAYOUT.select(PATH$maxMeshWorkGroupSize);
     public static final OfInt LAYOUT$maxMeshTotalMemorySize = (OfInt) LAYOUT.select(PATH$maxMeshTotalMemorySize);
     public static final OfInt LAYOUT$maxMeshOutputVertices = (OfInt) LAYOUT.select(PATH$maxMeshOutputVertices);
     public static final OfInt LAYOUT$maxMeshOutputPrimitives = (OfInt) LAYOUT.select(PATH$maxMeshOutputPrimitives);

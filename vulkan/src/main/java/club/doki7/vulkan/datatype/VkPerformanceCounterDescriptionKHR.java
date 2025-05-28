@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -24,9 +26,9 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkStructureType sType; // @link substring="VkStructureType" target="VkStructureType" @link substring="sType" target="#sType"
 ///     void* pNext; // optional // @link substring="pNext" target="#pNext"
 ///     VkPerformanceCounterDescriptionFlagsKHR flags; // optional // @link substring="VkPerformanceCounterDescriptionFlagsKHR" target="VkPerformanceCounterDescriptionFlagsKHR" @link substring="flags" target="#flags"
-///     char name; // @link substring="name" target="#name"
-///     char category; // @link substring="category" target="#category"
-///     char description; // @link substring="description" target="#description"
+///     char[VK_MAX_DESCRIPTION_SIZE] name; // @link substring="name" target="#name"
+///     char[VK_MAX_DESCRIPTION_SIZE] category; // @link substring="category" target="#category"
+///     char[VK_MAX_DESCRIPTION_SIZE] description; // @link substring="description" target="#description"
 /// } VkPerformanceCounterDescriptionKHR;
 /// }
 ///
@@ -72,7 +74,7 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPerformanceCounterDescriptionKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPerformanceCounterDescriptionKHR, Iterable<VkPerformanceCounterDescriptionKHR> {
         public long size() {
             return segment.byteSize() / VkPerformanceCounterDescriptionKHR.BYTES;
         }
@@ -134,6 +136,35 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPerformanceCounterDescriptionKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPerformanceCounterDescriptionKHR.BYTES;
+            }
+
+            @Override
+            public VkPerformanceCounterDescriptionKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPerformanceCounterDescriptionKHR ret = new VkPerformanceCounterDescriptionKHR(segment.asSlice(0, VkPerformanceCounterDescriptionKHR.BYTES));
+                segment = segment.asSlice(VkPerformanceCounterDescriptionKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static VkPerformanceCounterDescriptionKHR allocate(Arena arena) {
@@ -189,37 +220,49 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         segment.set(LAYOUT$flags, OFFSET$flags, value);
     }
 
-    public byte name() {
-        return segment.get(LAYOUT$name, OFFSET$name);
+    public BytePtr name() {
+        return new BytePtr(nameRaw());
     }
 
-    public void name(byte value) {
-        segment.set(LAYOUT$name, OFFSET$name, value);
+    public void name(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
     }
 
-    public byte category() {
-        return segment.get(LAYOUT$category, OFFSET$category);
+    public MemorySegment nameRaw() {
+        return segment.asSlice(OFFSET$name, SIZE$name);
     }
 
-    public void category(byte value) {
-        segment.set(LAYOUT$category, OFFSET$category, value);
+    public BytePtr category() {
+        return new BytePtr(categoryRaw());
     }
 
-    public byte description() {
-        return segment.get(LAYOUT$description, OFFSET$description);
+    public void category(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$category, SIZE$category);
     }
 
-    public void description(byte value) {
-        segment.set(LAYOUT$description, OFFSET$description, value);
+    public MemorySegment categoryRaw() {
+        return segment.asSlice(OFFSET$category, SIZE$category);
+    }
+
+    public BytePtr description() {
+        return new BytePtr(descriptionRaw());
+    }
+
+    public void description(BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+    }
+
+    public MemorySegment descriptionRaw() {
+        return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.JAVA_BYTE.withName("name"),
-        ValueLayout.JAVA_BYTE.withName("category"),
-        ValueLayout.JAVA_BYTE.withName("description")
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("category"),
+        MemoryLayout.sequenceLayout(MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -233,9 +276,9 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
     public static final OfInt LAYOUT$sType = (OfInt) LAYOUT.select(PATH$sType);
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$flags = (OfInt) LAYOUT.select(PATH$flags);
-    public static final OfByte LAYOUT$name = (OfByte) LAYOUT.select(PATH$name);
-    public static final OfByte LAYOUT$category = (OfByte) LAYOUT.select(PATH$category);
-    public static final OfByte LAYOUT$description = (OfByte) LAYOUT.select(PATH$description);
+    public static final SequenceLayout LAYOUT$name = (SequenceLayout) LAYOUT.select(PATH$name);
+    public static final SequenceLayout LAYOUT$category = (SequenceLayout) LAYOUT.select(PATH$category);
+    public static final SequenceLayout LAYOUT$description = (SequenceLayout) LAYOUT.select(PATH$description);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();

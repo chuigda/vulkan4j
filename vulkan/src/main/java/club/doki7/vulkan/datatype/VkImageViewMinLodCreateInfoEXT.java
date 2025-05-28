@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +71,7 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkImageViewMinLodCreateInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkImageViewMinLodCreateInfoEXT, Iterable<VkImageViewMinLodCreateInfoEXT> {
         public long size() {
             return segment.byteSize() / VkImageViewMinLodCreateInfoEXT.BYTES;
         }
@@ -130,6 +132,35 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkImageViewMinLodCreateInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkImageViewMinLodCreateInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkImageViewMinLodCreateInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkImageViewMinLodCreateInfoEXT ret = new VkImageViewMinLodCreateInfoEXT(segment.asSlice(0, VkImageViewMinLodCreateInfoEXT.BYTES));
+                segment = segment.asSlice(VkImageViewMinLodCreateInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

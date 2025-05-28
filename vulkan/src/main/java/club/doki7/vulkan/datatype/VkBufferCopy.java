@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -60,7 +62,7 @@ public record VkBufferCopy(@NotNull MemorySegment segment) implements IVkBufferC
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkBufferCopy {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkBufferCopy, Iterable<VkBufferCopy> {
         public long size() {
             return segment.byteSize() / VkBufferCopy.BYTES;
         }
@@ -121,6 +123,35 @@ public record VkBufferCopy(@NotNull MemorySegment segment) implements IVkBufferC
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkBufferCopy> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkBufferCopy.BYTES;
+            }
+
+            @Override
+            public VkBufferCopy next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkBufferCopy ret = new VkBufferCopy(segment.asSlice(0, VkBufferCopy.BYTES));
+                segment = segment.asSlice(VkBufferCopy.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

@@ -3,6 +3,8 @@ package club.doki7.vma.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -122,7 +124,7 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVmaAllocationInfo {
+    public record Ptr(@NotNull MemorySegment segment) implements IVmaAllocationInfo, Iterable<VmaAllocationInfo> {
         public long size() {
             return segment.byteSize() / VmaAllocationInfo.BYTES;
         }
@@ -183,6 +185,35 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VmaAllocationInfo> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VmaAllocationInfo.BYTES;
+            }
+
+            @Override
+            public VmaAllocationInfo next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VmaAllocationInfo ret = new VmaAllocationInfo(segment.asSlice(0, VmaAllocationInfo.BYTES));
+                segment = segment.asSlice(VmaAllocationInfo.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

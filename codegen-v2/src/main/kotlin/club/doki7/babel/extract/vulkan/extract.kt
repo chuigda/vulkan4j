@@ -163,12 +163,24 @@ private fun extractBitflag(e: Element) =
 
 private fun extractCommand(e: Element): Command {
     val proto = e.getFirstElement("proto")!!
+    val params = e.query("param")
+        .map(::extractParam)
+        .filter { it.isVulkanAPI() }
+        .toList()
+
+    val paramsMap = params.associateBy { it.name }
+    for (param in params) {
+        if (param.len != null && paramsMap.contains(param.len)) {
+            val lenParam = paramsMap[param.len]!!
+            if (lenParam.optional) {
+                param.optional = true
+            }
+        }
+    }
+
     return Command(
         name = proto.getFirstElement("name")!!.textContent.trim(),
-        params = e.query("param")
-            .map(::extractParam)
-            .filter { it.isVulkanAPI() }
-            .toList(),
+        params = params,
         result = extractType(proto.getFirstElement("type")!!),
         successCodes = e.getAttributeText("successcodes")
             ?.split(",")
@@ -387,13 +399,13 @@ private fun extractType(e: Element): Type {
             e.parentNode.childNodes
                 .toList()
                 .filter { it.nodeType == Node.TEXT_NODE || (it is Element && it.tagName == "enum") }
-                .joinToString { it.textContent }
+                .joinToString("") { it.textContent }
                 .trim()
 
         if (contents.startsWith('[') && contents.endsWith(']')) {
             val lengths = contents
                 .removePrefix("[")
-                .removePrefix("]")
+                .removeSuffix("]")
                 .split("][")
                 .map { it.trim().intern() }
                 .reversed()

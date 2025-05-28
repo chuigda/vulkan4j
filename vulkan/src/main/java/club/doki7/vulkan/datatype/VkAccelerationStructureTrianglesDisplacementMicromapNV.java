@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -84,7 +86,7 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureTrianglesDisplacementMicromapNV {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkAccelerationStructureTrianglesDisplacementMicromapNV, Iterable<VkAccelerationStructureTrianglesDisplacementMicromapNV> {
         public long size() {
             return segment.byteSize() / VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES;
         }
@@ -145,6 +147,35 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkAccelerationStructureTrianglesDisplacementMicromapNV> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES;
+            }
+
+            @Override
+            public VkAccelerationStructureTrianglesDisplacementMicromapNV next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkAccelerationStructureTrianglesDisplacementMicromapNV ret = new VkAccelerationStructureTrianglesDisplacementMicromapNV(segment.asSlice(0, VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES));
+                segment = segment.asSlice(VkAccelerationStructureTrianglesDisplacementMicromapNV.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -409,14 +440,14 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
     public static final AddressLayout LAYOUT$pNext = (AddressLayout) LAYOUT.select(PATH$pNext);
     public static final OfInt LAYOUT$displacementBiasAndScaleFormat = (OfInt) LAYOUT.select(PATH$displacementBiasAndScaleFormat);
     public static final OfInt LAYOUT$displacementVectorFormat = (OfInt) LAYOUT.select(PATH$displacementVectorFormat);
-    public static final StructLayout LAYOUT$displacementBiasAndScaleBuffer = (StructLayout) LAYOUT.select(PATH$displacementBiasAndScaleBuffer);
+    public static final UnionLayout LAYOUT$displacementBiasAndScaleBuffer = (UnionLayout) LAYOUT.select(PATH$displacementBiasAndScaleBuffer);
     public static final OfLong LAYOUT$displacementBiasAndScaleStride = (OfLong) LAYOUT.select(PATH$displacementBiasAndScaleStride);
-    public static final StructLayout LAYOUT$displacementVectorBuffer = (StructLayout) LAYOUT.select(PATH$displacementVectorBuffer);
+    public static final UnionLayout LAYOUT$displacementVectorBuffer = (UnionLayout) LAYOUT.select(PATH$displacementVectorBuffer);
     public static final OfLong LAYOUT$displacementVectorStride = (OfLong) LAYOUT.select(PATH$displacementVectorStride);
-    public static final StructLayout LAYOUT$displacedMicromapPrimitiveFlags = (StructLayout) LAYOUT.select(PATH$displacedMicromapPrimitiveFlags);
+    public static final UnionLayout LAYOUT$displacedMicromapPrimitiveFlags = (UnionLayout) LAYOUT.select(PATH$displacedMicromapPrimitiveFlags);
     public static final OfLong LAYOUT$displacedMicromapPrimitiveFlagsStride = (OfLong) LAYOUT.select(PATH$displacedMicromapPrimitiveFlagsStride);
     public static final OfInt LAYOUT$indexType = (OfInt) LAYOUT.select(PATH$indexType);
-    public static final StructLayout LAYOUT$indexBuffer = (StructLayout) LAYOUT.select(PATH$indexBuffer);
+    public static final UnionLayout LAYOUT$indexBuffer = (UnionLayout) LAYOUT.select(PATH$indexBuffer);
     public static final OfLong LAYOUT$indexStride = (OfLong) LAYOUT.select(PATH$indexStride);
     public static final OfInt LAYOUT$baseTriangle = (OfInt) LAYOUT.select(PATH$baseTriangle);
     public static final OfInt LAYOUT$usageCountsCount = (OfInt) LAYOUT.select(PATH$usageCountsCount);

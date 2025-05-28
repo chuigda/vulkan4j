@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -21,12 +23,12 @@ import static club.doki7.vulkan.VkConstants.*;
 ///
 /// {@snippet lang=c :
 /// typedef struct StdVideoH265ScalingLists {
-///     uint8_t ScalingList4x4; // @link substring="ScalingList4x4" target="#ScalingList4x4"
-///     uint8_t ScalingList8x8; // @link substring="ScalingList8x8" target="#ScalingList8x8"
-///     uint8_t ScalingList16x16; // @link substring="ScalingList16x16" target="#ScalingList16x16"
-///     uint8_t ScalingList32x32; // @link substring="ScalingList32x32" target="#ScalingList32x32"
-///     uint8_t ScalingListDCCoef16x16; // @link substring="ScalingListDCCoef16x16" target="#ScalingListDCCoef16x16"
-///     uint8_t ScalingListDCCoef32x32; // @link substring="ScalingListDCCoef32x32" target="#ScalingListDCCoef32x32"
+///     uint8_t[STD_VIDEO_H265_SCALING_LIST_4X4_NUM_ELEMENTS][STD_VIDEO_H265_SCALING_LIST_4X4_NUM_LISTS] ScalingList4x4; // @link substring="ScalingList4x4" target="#ScalingList4x4"
+///     uint8_t[STD_VIDEO_H265_SCALING_LIST_8X8_NUM_ELEMENTS][STD_VIDEO_H265_SCALING_LIST_8X8_NUM_LISTS] ScalingList8x8; // @link substring="ScalingList8x8" target="#ScalingList8x8"
+///     uint8_t[STD_VIDEO_H265_SCALING_LIST_16X16_NUM_ELEMENTS][STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS] ScalingList16x16; // @link substring="ScalingList16x16" target="#ScalingList16x16"
+///     uint8_t[STD_VIDEO_H265_SCALING_LIST_32X32_NUM_ELEMENTS][STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS] ScalingList32x32; // @link substring="ScalingList32x32" target="#ScalingList32x32"
+///     uint8_t[STD_VIDEO_H265_SCALING_LIST_16X16_NUM_LISTS] ScalingListDCCoef16x16; // @link substring="ScalingListDCCoef16x16" target="#ScalingListDCCoef16x16"
+///     uint8_t[STD_VIDEO_H265_SCALING_LIST_32X32_NUM_LISTS] ScalingListDCCoef32x32; // @link substring="ScalingListDCCoef32x32" target="#ScalingListDCCoef32x32"
 /// } StdVideoH265ScalingLists;
 /// }
 ///
@@ -61,7 +63,7 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265ScalingLists {
+    public record Ptr(@NotNull MemorySegment segment) implements IStdVideoH265ScalingLists, Iterable<StdVideoH265ScalingLists> {
         public long size() {
             return segment.byteSize() / StdVideoH265ScalingLists.BYTES;
         }
@@ -123,6 +125,35 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
             }
             return ret;
         }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<StdVideoH265ScalingLists> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= StdVideoH265ScalingLists.BYTES;
+            }
+
+            @Override
+            public StdVideoH265ScalingLists next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                StdVideoH265ScalingLists ret = new StdVideoH265ScalingLists(segment.asSlice(0, StdVideoH265ScalingLists.BYTES));
+                segment = segment.asSlice(StdVideoH265ScalingLists.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
+        }
     }
 
     public static StdVideoH265ScalingLists allocate(Arena arena) {
@@ -140,61 +171,85 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
         return ret;
     }
 
-    public @Unsigned byte ScalingList4x4() {
-        return segment.get(LAYOUT$ScalingList4x4, OFFSET$ScalingList4x4);
+    public @Unsigned BytePtr ScalingList4x4() {
+        return new BytePtr(ScalingList4x4Raw());
     }
 
-    public void ScalingList4x4(@Unsigned byte value) {
-        segment.set(LAYOUT$ScalingList4x4, OFFSET$ScalingList4x4, value);
+    public void ScalingList4x4(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
     }
 
-    public @Unsigned byte ScalingList8x8() {
-        return segment.get(LAYOUT$ScalingList8x8, OFFSET$ScalingList8x8);
+    public MemorySegment ScalingList4x4Raw() {
+        return segment.asSlice(OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
     }
 
-    public void ScalingList8x8(@Unsigned byte value) {
-        segment.set(LAYOUT$ScalingList8x8, OFFSET$ScalingList8x8, value);
+    public @Unsigned BytePtr ScalingList8x8() {
+        return new BytePtr(ScalingList8x8Raw());
     }
 
-    public @Unsigned byte ScalingList16x16() {
-        return segment.get(LAYOUT$ScalingList16x16, OFFSET$ScalingList16x16);
+    public void ScalingList8x8(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
     }
 
-    public void ScalingList16x16(@Unsigned byte value) {
-        segment.set(LAYOUT$ScalingList16x16, OFFSET$ScalingList16x16, value);
+    public MemorySegment ScalingList8x8Raw() {
+        return segment.asSlice(OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
     }
 
-    public @Unsigned byte ScalingList32x32() {
-        return segment.get(LAYOUT$ScalingList32x32, OFFSET$ScalingList32x32);
+    public @Unsigned BytePtr ScalingList16x16() {
+        return new BytePtr(ScalingList16x16Raw());
     }
 
-    public void ScalingList32x32(@Unsigned byte value) {
-        segment.set(LAYOUT$ScalingList32x32, OFFSET$ScalingList32x32, value);
+    public void ScalingList16x16(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList16x16, SIZE$ScalingList16x16);
     }
 
-    public @Unsigned byte ScalingListDCCoef16x16() {
-        return segment.get(LAYOUT$ScalingListDCCoef16x16, OFFSET$ScalingListDCCoef16x16);
+    public MemorySegment ScalingList16x16Raw() {
+        return segment.asSlice(OFFSET$ScalingList16x16, SIZE$ScalingList16x16);
     }
 
-    public void ScalingListDCCoef16x16(@Unsigned byte value) {
-        segment.set(LAYOUT$ScalingListDCCoef16x16, OFFSET$ScalingListDCCoef16x16, value);
+    public @Unsigned BytePtr ScalingList32x32() {
+        return new BytePtr(ScalingList32x32Raw());
     }
 
-    public @Unsigned byte ScalingListDCCoef32x32() {
-        return segment.get(LAYOUT$ScalingListDCCoef32x32, OFFSET$ScalingListDCCoef32x32);
+    public void ScalingList32x32(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList32x32, SIZE$ScalingList32x32);
     }
 
-    public void ScalingListDCCoef32x32(@Unsigned byte value) {
-        segment.set(LAYOUT$ScalingListDCCoef32x32, OFFSET$ScalingListDCCoef32x32, value);
+    public MemorySegment ScalingList32x32Raw() {
+        return segment.asSlice(OFFSET$ScalingList32x32, SIZE$ScalingList32x32);
+    }
+
+    public @Unsigned BytePtr ScalingListDCCoef16x16() {
+        return new BytePtr(ScalingListDCCoef16x16Raw());
+    }
+
+    public void ScalingListDCCoef16x16(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingListDCCoef16x16, SIZE$ScalingListDCCoef16x16);
+    }
+
+    public MemorySegment ScalingListDCCoef16x16Raw() {
+        return segment.asSlice(OFFSET$ScalingListDCCoef16x16, SIZE$ScalingListDCCoef16x16);
+    }
+
+    public @Unsigned BytePtr ScalingListDCCoef32x32() {
+        return new BytePtr(ScalingListDCCoef32x32Raw());
+    }
+
+    public void ScalingListDCCoef32x32(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingListDCCoef32x32, SIZE$ScalingListDCCoef32x32);
+    }
+
+    public MemorySegment ScalingListDCCoef32x32Raw() {
+        return segment.asSlice(OFFSET$ScalingListDCCoef32x32, SIZE$ScalingListDCCoef32x32);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
-        ValueLayout.JAVA_BYTE.withName("ScalingList4x4"),
-        ValueLayout.JAVA_BYTE.withName("ScalingList8x8"),
-        ValueLayout.JAVA_BYTE.withName("ScalingList16x16"),
-        ValueLayout.JAVA_BYTE.withName("ScalingList32x32"),
-        ValueLayout.JAVA_BYTE.withName("ScalingListDCCoef16x16"),
-        ValueLayout.JAVA_BYTE.withName("ScalingListDCCoef32x32")
+        MemoryLayout.sequenceLayout(H265_SCALING_LIST_4X4_NUM_LISTS, MemoryLayout.sequenceLayout(H265_SCALING_LIST_4X4_NUM_ELEMENTS, ValueLayout.JAVA_BYTE)).withName("ScalingList4x4"),
+        MemoryLayout.sequenceLayout(H265_SCALING_LIST_8X8_NUM_LISTS, MemoryLayout.sequenceLayout(H265_SCALING_LIST_8X8_NUM_ELEMENTS, ValueLayout.JAVA_BYTE)).withName("ScalingList8x8"),
+        MemoryLayout.sequenceLayout(H265_SCALING_LIST_16X16_NUM_LISTS, MemoryLayout.sequenceLayout(H265_SCALING_LIST_16X16_NUM_ELEMENTS, ValueLayout.JAVA_BYTE)).withName("ScalingList16x16"),
+        MemoryLayout.sequenceLayout(H265_SCALING_LIST_32X32_NUM_LISTS, MemoryLayout.sequenceLayout(H265_SCALING_LIST_32X32_NUM_ELEMENTS, ValueLayout.JAVA_BYTE)).withName("ScalingList32x32"),
+        MemoryLayout.sequenceLayout(H265_SCALING_LIST_16X16_NUM_LISTS, ValueLayout.JAVA_BYTE).withName("ScalingListDCCoef16x16"),
+        MemoryLayout.sequenceLayout(H265_SCALING_LIST_32X32_NUM_LISTS, ValueLayout.JAVA_BYTE).withName("ScalingListDCCoef32x32")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -205,12 +260,12 @@ public record StdVideoH265ScalingLists(@NotNull MemorySegment segment) implement
     public static final PathElement PATH$ScalingListDCCoef16x16 = PathElement.groupElement("ScalingListDCCoef16x16");
     public static final PathElement PATH$ScalingListDCCoef32x32 = PathElement.groupElement("ScalingListDCCoef32x32");
 
-    public static final OfByte LAYOUT$ScalingList4x4 = (OfByte) LAYOUT.select(PATH$ScalingList4x4);
-    public static final OfByte LAYOUT$ScalingList8x8 = (OfByte) LAYOUT.select(PATH$ScalingList8x8);
-    public static final OfByte LAYOUT$ScalingList16x16 = (OfByte) LAYOUT.select(PATH$ScalingList16x16);
-    public static final OfByte LAYOUT$ScalingList32x32 = (OfByte) LAYOUT.select(PATH$ScalingList32x32);
-    public static final OfByte LAYOUT$ScalingListDCCoef16x16 = (OfByte) LAYOUT.select(PATH$ScalingListDCCoef16x16);
-    public static final OfByte LAYOUT$ScalingListDCCoef32x32 = (OfByte) LAYOUT.select(PATH$ScalingListDCCoef32x32);
+    public static final SequenceLayout LAYOUT$ScalingList4x4 = (SequenceLayout) LAYOUT.select(PATH$ScalingList4x4);
+    public static final SequenceLayout LAYOUT$ScalingList8x8 = (SequenceLayout) LAYOUT.select(PATH$ScalingList8x8);
+    public static final SequenceLayout LAYOUT$ScalingList16x16 = (SequenceLayout) LAYOUT.select(PATH$ScalingList16x16);
+    public static final SequenceLayout LAYOUT$ScalingList32x32 = (SequenceLayout) LAYOUT.select(PATH$ScalingList32x32);
+    public static final SequenceLayout LAYOUT$ScalingListDCCoef16x16 = (SequenceLayout) LAYOUT.select(PATH$ScalingListDCCoef16x16);
+    public static final SequenceLayout LAYOUT$ScalingListDCCoef32x32 = (SequenceLayout) LAYOUT.select(PATH$ScalingListDCCoef32x32);
 
     public static final long SIZE$ScalingList4x4 = LAYOUT$ScalingList4x4.byteSize();
     public static final long SIZE$ScalingList8x8 = LAYOUT$ScalingList8x8.byteSize();

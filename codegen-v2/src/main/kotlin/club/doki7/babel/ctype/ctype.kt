@@ -212,10 +212,10 @@ data class CFloatType(
     override val jPtrTypeNoAnnotation: String get() = jPtrType
 }
 
-data class CStructType(val name: String): CType {
+data class CStructType(val name: String, val isUnion: Boolean): CType {
     override val jType: String = "I$name"
     override val jLayout: String = "$name.LAYOUT"
-    override val jLayoutType: String = "StructLayout"
+    override val jLayoutType: String = if (isUnion) "UnionLayout" else "StructLayout"
     override val cType: String = name
 }
 
@@ -509,10 +509,10 @@ fun lowerIdentifierType(
 
 fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBase>, type: IdentifierType) =
     if (registry.structures.contains(type.ident)) {
-        CStructType(type.ident.value)
+        CStructType(type.ident.value, false)
     }
     else if (registry.unions.contains(type.ident)) {
-        CStructType(type.ident.value)
+        CStructType(type.ident.value, true)
     }
     else if (registry.enumerations.contains(type.ident)) {
         CEnumType(type.ident.value)

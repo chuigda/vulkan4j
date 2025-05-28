@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +72,7 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkWriteIndirectExecutionSetPipelineEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkWriteIndirectExecutionSetPipelineEXT, Iterable<VkWriteIndirectExecutionSetPipelineEXT> {
         public long size() {
             return segment.byteSize() / VkWriteIndirectExecutionSetPipelineEXT.BYTES;
         }
@@ -131,6 +133,35 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkWriteIndirectExecutionSetPipelineEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkWriteIndirectExecutionSetPipelineEXT.BYTES;
+            }
+
+            @Override
+            public VkWriteIndirectExecutionSetPipelineEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkWriteIndirectExecutionSetPipelineEXT ret = new VkWriteIndirectExecutionSetPipelineEXT(segment.asSlice(0, VkWriteIndirectExecutionSetPipelineEXT.BYTES));
+                segment = segment.asSlice(VkWriteIndirectExecutionSetPipelineEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

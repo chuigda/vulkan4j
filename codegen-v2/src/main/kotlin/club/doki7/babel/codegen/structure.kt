@@ -107,6 +107,9 @@ fun generateStructure(
     imports("java.lang.foreign.*")
     imports("java.lang.foreign.ValueLayout.*", true)
     imports("java.util.List")
+    imports("java.util.Iterator")
+    imports("java.util.NoSuchElementException")
+
     +""
     imports("org.jetbrains.annotations.Nullable")
     imports("org.jetbrains.annotations.NotNull")
@@ -270,7 +273,7 @@ fun generateStructure(
         +"/// perform any runtime check. The constructor can be useful for automatic code generators."
         +"@ValueBasedCandidate"
         +"@UnsafeConstructor"
-        +"public record Ptr(@NotNull MemorySegment segment) implements I${className} {"
+        +"public record Ptr(@NotNull MemorySegment segment) implements I${className}, Iterable<${className}> {"
         indent {
             defun("public", "long", "size") {
                 +"return segment.byteSize() / $className.BYTES;"
@@ -344,6 +347,46 @@ fun generateStructure(
                 +"}"
                 +"return ret;"
             }
+            +""
+
+            +"@Override"
+            defun("public", "@NotNull Iter", "iterator") {
+                +"return new Iter(this.segment());"
+            }
+            +""
+
+            +"/// An iterator over the structures."
+            +"public static final class Iter implements Iterator<$className> {"
+            indent {
+                +"Iter(@NotNull MemorySegment segment) {"
+                indent {
+                    +"this.segment = segment;"
+                }
+                +"}"
+                +""
+
+                +"@Override"
+                defun("public", "boolean", "hasNext") {
+                    +"return segment.byteSize() >= $className.BYTES;"
+                }
+                +""
+
+                +"@Override"
+                defun("public", className, "next") {
+                    +"if (!hasNext()) {"
+                    indent {
+                        +"throw new NoSuchElementException();"
+                    }
+                    +"}"
+                    +"$className ret = new $className(segment.asSlice(0, $className.BYTES));"
+                    +"segment = segment.asSlice($className.BYTES);"
+                    +"return ret;"
+                }
+                +""
+
+                +"private @NotNull MemorySegment segment;"
+            }
+            +"}"
         }
         +"}"
         +""

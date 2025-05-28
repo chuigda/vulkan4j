@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -71,7 +73,7 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkDebugReportCallbackCreateInfoEXT {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkDebugReportCallbackCreateInfoEXT, Iterable<VkDebugReportCallbackCreateInfoEXT> {
         public long size() {
             return segment.byteSize() / VkDebugReportCallbackCreateInfoEXT.BYTES;
         }
@@ -132,6 +134,35 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkDebugReportCallbackCreateInfoEXT> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkDebugReportCallbackCreateInfoEXT.BYTES;
+            }
+
+            @Override
+            public VkDebugReportCallbackCreateInfoEXT next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkDebugReportCallbackCreateInfoEXT ret = new VkDebugReportCallbackCreateInfoEXT(segment.asSlice(0, VkDebugReportCallbackCreateInfoEXT.BYTES));
+                segment = segment.asSlice(VkDebugReportCallbackCreateInfoEXT.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 

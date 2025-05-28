@@ -3,6 +3,8 @@ package club.doki7.vulkan.datatype;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +28,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkPerformanceCounterUnitKHR unit; // @link substring="VkPerformanceCounterUnitKHR" target="VkPerformanceCounterUnitKHR" @link substring="unit" target="#unit"
 ///     VkPerformanceCounterScopeKHR scope; // @link substring="VkPerformanceCounterScopeKHR" target="VkPerformanceCounterScopeKHR" @link substring="scope" target="#scope"
 ///     VkPerformanceCounterStorageKHR storage; // @link substring="VkPerformanceCounterStorageKHR" target="VkPerformanceCounterStorageKHR" @link substring="storage" target="#storage"
-///     uint8_t uuid; // @link substring="uuid" target="#uuid"
+///     uint8_t[VK_UUID_SIZE] uuid; // @link substring="uuid" target="#uuid"
 /// } VkPerformanceCounterKHR;
 /// }
 ///
@@ -72,7 +74,7 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
     /// perform any runtime check. The constructor can be useful for automatic code generators.
     @ValueBasedCandidate
     @UnsafeConstructor
-    public record Ptr(@NotNull MemorySegment segment) implements IVkPerformanceCounterKHR {
+    public record Ptr(@NotNull MemorySegment segment) implements IVkPerformanceCounterKHR, Iterable<VkPerformanceCounterKHR> {
         public long size() {
             return segment.byteSize() / VkPerformanceCounterKHR.BYTES;
         }
@@ -133,6 +135,35 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
                 ret[(int) i] = at(i);
             }
             return ret;
+        }
+
+        @Override
+        public @NotNull Iter iterator() {
+            return new Iter(this.segment());
+        }
+
+        /// An iterator over the structures.
+        public static final class Iter implements Iterator<VkPerformanceCounterKHR> {
+            Iter(@NotNull MemorySegment segment) {
+                this.segment = segment;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return segment.byteSize() >= VkPerformanceCounterKHR.BYTES;
+            }
+
+            @Override
+            public VkPerformanceCounterKHR next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                VkPerformanceCounterKHR ret = new VkPerformanceCounterKHR(segment.asSlice(0, VkPerformanceCounterKHR.BYTES));
+                segment = segment.asSlice(VkPerformanceCounterKHR.BYTES);
+                return ret;
+            }
+
+            private @NotNull MemorySegment segment;
         }
     }
 
@@ -205,12 +236,16 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$storage, OFFSET$storage, value);
     }
 
-    public @Unsigned byte uuid() {
-        return segment.get(LAYOUT$uuid, OFFSET$uuid);
+    public @Unsigned BytePtr uuid() {
+        return new BytePtr(uuidRaw());
     }
 
-    public void uuid(@Unsigned byte value) {
-        segment.set(LAYOUT$uuid, OFFSET$uuid, value);
+    public void uuid(@Unsigned BytePtr value) {
+        MemorySegment.copy(value.segment(), 0, segment, OFFSET$uuid, SIZE$uuid);
+    }
+
+    public MemorySegment uuidRaw() {
+        return segment.asSlice(OFFSET$uuid, SIZE$uuid);
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
@@ -219,7 +254,7 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         ValueLayout.JAVA_INT.withName("unit"),
         ValueLayout.JAVA_INT.withName("scope"),
         ValueLayout.JAVA_INT.withName("storage"),
-        ValueLayout.JAVA_BYTE.withName("uuid")
+        MemoryLayout.sequenceLayout(UUID_SIZE, ValueLayout.JAVA_BYTE).withName("uuid")
     );
     public static final long BYTES = LAYOUT.byteSize();
 
@@ -235,7 +270,7 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
     public static final OfInt LAYOUT$unit = (OfInt) LAYOUT.select(PATH$unit);
     public static final OfInt LAYOUT$scope = (OfInt) LAYOUT.select(PATH$scope);
     public static final OfInt LAYOUT$storage = (OfInt) LAYOUT.select(PATH$storage);
-    public static final OfByte LAYOUT$uuid = (OfByte) LAYOUT.select(PATH$uuid);
+    public static final SequenceLayout LAYOUT$uuid = (SequenceLayout) LAYOUT.select(PATH$uuid);
 
     public static final long SIZE$sType = LAYOUT$sType.byteSize();
     public static final long SIZE$pNext = LAYOUT$pNext.byteSize();
