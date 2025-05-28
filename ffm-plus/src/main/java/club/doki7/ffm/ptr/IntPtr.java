@@ -15,6 +15,7 @@ import java.nio.Buffer;
 import java.nio.IntBuffer;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to 32-bit integer(s) in native memory.
 ///
@@ -163,6 +164,15 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
     }
 
+    /// Allocate a new {@link IntPtr} in {@code arena} and copy the contents of {@code array} into
+    /// the newly allocated {@link IntPtr}.
+    ///
+    /// Be aware that if the length of {@code array} is not a multiple of {@link Integer#BYTES}, the
+    /// residual bytes will be simply discarded.
+    ///
+    /// @param arena the {@link Arena} to allocate the new {@link IntPtr} in
+    /// @param array the {@code byte} array to copy the contents from
+    /// @return a new {@link IntPtr} that contains the contents of {@code array}
     public static @NotNull IntPtr allocate(@NotNull Arena arena, byte @NotNull [] array) {
         var segment = arena.allocate(ValueLayout.JAVA_INT, array.length / Integer.BYTES);
         segment.copyFrom(MemorySegment.ofArray(array));
@@ -206,7 +216,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         @Override
         public Integer next() {
             if (!hasNext()) {
-                throw new IndexOutOfBoundsException("No more integers to read");
+                throw new NoSuchElementException("No more integers to read");
             }
             int value = segment.get(ValueLayout.JAVA_INT, 0);
             segment = segment.asSlice(Integer.BYTES);

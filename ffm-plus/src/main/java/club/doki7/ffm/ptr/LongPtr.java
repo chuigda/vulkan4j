@@ -13,7 +13,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.LongBuffer;
+import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to 64-bit long integer(s) in native memory.
 ///
@@ -27,7 +29,7 @@ import java.util.List;
 /// normal users, {@link #checked(MemorySegment)} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record LongPtr(@NotNull MemorySegment segment) implements IPointer {
+public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Iterable<Long> {
     public long size() {
         return segment.byteSize() / Long.BYTES;
     }
@@ -78,6 +80,11 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer {
 
     public @NotNull LongPtr slice(long end) {
         return new LongPtr(segment.asSlice(0, end * Long.BYTES));
+    }
+
+    @Override
+    public @NotNull Iter iterator() {
+        return new Iter(segment);
     }
 
     /// Create a new {@link LongPtr} using {@code segment} as backing storage, with argument
@@ -182,5 +189,29 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer {
         s.copyFrom(MemorySegment.ofBuffer(buffer));
 
         return new LongPtr(s);
+    }
+
+    /// An iterator over the long integers.
+    public static final class Iter implements Iterator<Long> {
+        Iter(@NotNull MemorySegment segment) {
+            this.segment = segment;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return segment.byteSize() >= Long.BYTES;
+        }
+
+        @Override
+        public Long next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("No more long integers to read");
+            }
+            long value = segment.get(ValueLayout.JAVA_LONG, 0);
+            segment = segment.asSlice(Long.BYTES);
+            return value;
+        }
+
+        private @NotNull MemorySegment segment;
     }
 }
