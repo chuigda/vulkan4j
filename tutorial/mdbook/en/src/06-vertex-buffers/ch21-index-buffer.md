@@ -60,41 +60,40 @@ private void createIndexBuffer() {
 
         var pair = createBuffer(
                 bufferSize,
-                VkBufferUsageFlags.VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
-                VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT
-                        | VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_HOST_COHERENT_BIT
+                VkBufferUsageFlags.TRANSFER_SRC,
+                VkMemoryPropertyFlags.HOST_VISIBLE | VkMemoryPropertyFlags.HOST_COHERENT
         );
         var stagingBuffer = pair.first;
         var stagingBufferMemory = pair.second;
 
-        var ppData = PointerBuffer.allocate(arena);
-        var result = deviceCommands.vkMapMemory(device, stagingBufferMemory, 0, bufferSize, 0, ppData.segment());
-        if (result != VkResult.VK_SUCCESS) {
+        var ppData = PointerPtr.allocate(arena);
+        var result = deviceCommands.mapMemory(device, stagingBufferMemory, 0, bufferSize, 0, ppData);
+        if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to map index buffer memory, vulkan error code: " + VkResult.explain(result));
         }
         var pData = ppData.read().reinterpret(bufferSize);
 
         pData.copyFrom(MemorySegment.ofArray(INDICES));
 
-        deviceCommands.vkUnmapMemory(device, stagingBufferMemory);
+        deviceCommands.unmapMemory(device, stagingBufferMemory);
 
         pair = createBuffer(
                 bufferSize,
-                VkBufferUsageFlags.VK_BUFFER_USAGE_TRANSFER_DST_BIT | VkBufferUsageFlags.VK_BUFFER_USAGE_INDEX_BUFFER_BIT,
-                VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+                VkBufferUsageFlags.TRANSFER_DST | VkBufferUsageFlags.INDEX_BUFFER,
+                VkMemoryPropertyFlags.DEVICE_LOCAL
         );
         indexBuffer = pair.first;
         indexBufferMemory = pair.second;
 
         copyBuffer(stagingBuffer, indexBuffer, bufferSize);
 
-        deviceCommands.vkDestroyBuffer(device, stagingBuffer, null);
-        deviceCommands.vkFreeMemory(device, stagingBufferMemory, null);
+        deviceCommands.destroyBuffer(device, stagingBuffer, null);
+        deviceCommands.freeMemory(device, stagingBufferMemory, null);
     }
 }
 ```
 
-There are only two notable differences. The `bufferSize` is now equal to the number of indices times the size of the index type, either `short` or `int`. The usage of the `indexBuffer` should be `VK_BUFFER_USAGE_INDEX_BUFFER_BIT` instead of `VK_BUFFER_USAGE_VERTEX_BUFFER_BIT`, which makes sense. Other than that, the process is exactly the same. We create a staging buffer to copy the contents of indices to and then copy it to the final device local index buffer.
+There are only two notable differences. The `bufferSize` is now equal to the number of indices times the size of the index type, either `short` or `int`. The usage of the `indexBuffer` should be `VkBufferUsageFlags.INDEX_BUFFER` instead of `VkBufferUsageFlags.VERTEX_BUFFER`, which makes sense. Other than that, the process is exactly the same. We create a staging buffer to copy the contents of indices to and then copy it to the final device local index buffer.
 
 The index buffer should be cleaned up at the end of the program, just like the vertex buffer:
 
@@ -112,19 +111,19 @@ private void cleanup() {
 Using an index buffer for drawing involves two changes to `recordCommandBuffer`. We first need to bind the index buffer, just like we did for the vertex buffer. The difference is that you can only have a single index buffer. It's unfortunately not possible to use different indices for each vertex attribute, so we do still have to completely duplicate vertex data even if just one attribute varies.
 
 ```java
-deviceCommands.vkCmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
-deviceCommands.vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.VK_INDEX_TYPE_UINT16);
+deviceCommands.cmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
+deviceCommands.cmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.UINT16);
 ```
 
-An index buffer is bound with `vkCmdBindIndexBuffer` which has the index buffer, a byte offset into it, and the type of index data as parameters. As mentioned before, the possible types are `VK_INDEX_TYPE_UINT16` and `VK_INDEX_TYPE_UINT32`.
+An index buffer is bound with `vkCmdBindIndexBuffer` which has the index buffer, a byte offset into it, and the type of index data as parameters. As mentioned before, the possible types are `VkIndexType.UINT16` and `VkIndexType.UINT32`.
 
-Just binding an index buffer doesn't change anything yet, we also need to change the drawing command to tell Vulkan to use the index buffer. Remove the `vkCmdDraw` line and replace it with `vkCmdDrawIndexed`:
+Just binding an index buffer doesn't change anything yet, we also need to change the drawing command to tell Vulkan to use the index buffer. Remove the `VkDeviceCommands::cmdDraw` line and replace it with `VkDeviceCommands::cmdDrawIndexed`:
 
 ```java
-deviceCommands.vkCmdDrawIndexed(commandBuffer, INDICES.length, 1, 0, 0, 0);
+deviceCommands.cmdDrawIndexed(commandBuffer, INDICES.length, 1, 0, 0, 0);
 ```
 
-A call to this function is very similar to `vkCmdDraw`. The first two parameters specify the number of indices and the number of instances. We're not using instancing, so just specify `1` instance. The number of indices represents the number of vertices that will be passed to the vertex shader. The next parameter specifies an offset into the index buffer, using a value of `1` would cause the graphics card to start reading at the second index. The second to last parameter specifies an offset to add to the indices in the index buffer. The final parameter specifies an offset for instancing, which we're not using.
+A call to this function is very similar to `VkDeviceCommands::cmdDraw`. The first two parameters specify the number of indices and the number of instances. We're not using instancing, so just specify `1` instance. The number of indices represents the number of vertices that will be passed to the vertex shader. The next parameter specifies an offset into the index buffer, using a value of `1` would cause the graphics card to start reading at the second index. The second to last parameter specifies an offset to add to the indices in the index buffer. The final parameter specifies an offset for instancing, which we're not using.
 
 Now run your program and you should see the following:
 
@@ -132,4 +131,4 @@ Now run your program and you should see the following:
 
 You now know how to save memory by reusing vertices with index buffers. This will become especially important in a future chapter where we're going to load complex 3D models.
 
-The previous chapter already mentioned that you should allocate multiple resources like buffers from a single memory allocation, but in fact you should go a step further. Driver developers recommend that you also store multiple buffers, like the vertex and index buffer, into a single `VkBuffer` and use offsets in commands like `vkCmdBindVertexBuffers`. The advantage is that your data is more cache friendly in that case, because it's closer together. It is even possible to reuse the same chunk of memory for multiple resources if they are not used during the same render operations, provided that their data is refreshed, of course. This is known as *aliasing* and some Vulkan functions have explicit flags to specify that you want to do this.
+The previous chapter already mentioned that you should allocate multiple resources like buffers from a single memory allocation, but in fact you should go a step further. Driver developers recommend that you also store multiple buffers, like the vertex and index buffer, into a single `VkBuffer` and use offsets in commands like `VkDeviceCommands::cmdBindVertexBuffers`. The advantage is that your data is more cache friendly in that case, because it's closer together. It is even possible to reuse the same chunk of memory for multiple resources if they are not used during the same render operations, provided that their data is refreshed, of course. This is known as *aliasing* and some Vulkan functions have explicit flags to specify that you want to do this.
