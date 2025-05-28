@@ -23,40 +23,40 @@ In our implementation, we will focus on using the maximum available sample count
 Let's start off by determining how many samples our hardware can use. Most modern GPUs support at least 8 samples but this number is not guaranteed to be the same everywhere. We'll keep track of it by adding a new class member:
 
 ```java
-private @enumtype(VkSampleCountFlags.class) int msaaSamples;
+private @EnumType(VkSampleCountFlags.class) int msaaSamples;
 ```
 
 By default, we'll be using only one sample per pixel which is equivalent to no multisampling, in which case the final image will remain unchanged. The exact maximum number of samples can be extracted from `VkPhysicalDeviceProperties` associated with our selected physical device. We're using a depth buffer, so we have to take into account the sample count for both color and depth. The highest sample count that is supported by both (&) will be the maximum we can support. Add a function that will fetch this information for us:By default we'll be using only one sample per pixel which is equivalent to no multisampling, in which case the final image will remain unchanged. The exact maximum number of samples can be extracted from VkPhysicalDeviceProperties associated with our selected physical device. We're using a depth buffer, so we have to take into account the sample count for both color and depth. The highest sample count that is supported by both (&) will be the maximum we can support. Add a function that will fetch this information for us:
 
 ```java
-private @enumtype(VkSampleCountFlags.class) int getMaxUsableSampleCount() {
+private @EnumType(VkSampleCountFlags.class) int getMaxUsableSampleCount() {
     try (var arena = Arena.ofConfined()) {
         var physicalDeviceProperties = VkPhysicalDeviceProperties.allocate(arena);
-        instanceCommands.vkGetPhysicalDeviceProperties(physicalDevice, physicalDeviceProperties);
+        instanceCommands.getPhysicalDeviceProperties(physicalDevice, physicalDeviceProperties);
 
         var counts = physicalDeviceProperties.limits().framebufferColorSampleCounts()
                      & physicalDeviceProperties.limits().framebufferDepthSampleCounts();
 
-        if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_64_BIT) != 0) {
-            return VkSampleCountFlags.VK_SAMPLE_COUNT_64_BIT;
+        if ((counts & VkSampleCountFlags._64) != 0) {
+            return VkSampleCountFlags._64;
         }
-        if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_32_BIT) != 0) {
-            return VkSampleCountFlags.VK_SAMPLE_COUNT_32_BIT;
+        if ((counts & VkSampleCountFlags._32) != 0) {
+            return VkSampleCountFlags._32;
         }
-        if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_16_BIT) != 0) {
-            return VkSampleCountFlags.VK_SAMPLE_COUNT_16_BIT;
+        if ((counts & VkSampleCountFlags._16) != 0) {
+            return VkSampleCountFlags._16;
         }
-        if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_8_BIT) != 0) {
-            return VkSampleCountFlags.VK_SAMPLE_COUNT_8_BIT;
+        if ((counts & VkSampleCountFlags._8) != 0) {
+            return VkSampleCountFlags._8;
         }
-        if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_4_BIT) != 0) {
-            return VkSampleCountFlags.VK_SAMPLE_COUNT_4_BIT;
+        if ((counts & VkSampleCountFlags._4) != 0) {
+            return VkSampleCountFlags._4;
         }
-        if ((counts & VkSampleCountFlags.VK_SAMPLE_COUNT_2_BIT) != 0) {
-            return VkSampleCountFlags.VK_SAMPLE_COUNT_2_BIT;
+        if ((counts & VkSampleCountFlags._2) != 0) {
+            return VkSampleCountFlags._2;
         }
 
-        return VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT;
+        return VkSampleCountFlags._1;
     }
 }
 ```
@@ -90,15 +90,15 @@ private VkImageView colorImageView;
 This new image will have to store the desired number of samples per pixel, so we need to pass this number to `VkImageCreateInfo` during the image creation process. Modify the `createImage` function by adding a `numSamples` parameter:
 
 ```java
-private Pair<VkImage, VkDeviceMemory> createImage(
+    private Pair<VkImage, VkDeviceMemory> createImage(
         int width,
         int height,
         int mipLevels,
-        @enumtype(VkSampleCountFlags.class) int numSamples,
-        @enumtype(VkFormat.class) int format,
-        @enumtype(VkImageTiling.class) int tiling,
-        @enumtype(VkImageUsageFlags.class) int usage,
-        @enumtype(VkMemoryPropertyFlags.class) int properties
+        @EnumType(VkSampleCountFlags.class) int numSamples,
+        @EnumType(VkFormat.class) int format,
+        @EnumType(VkImageTiling.class) int tiling,
+        @EnumType(VkImageUsageFlags.class) int usage,
+        @EnumType(VkMemoryPropertyFlags.class) int properties
 ) {
     // ...
     imageInfo.samples(numSamples);
@@ -113,11 +113,11 @@ var pair = createImage(
         swapChainExtent.width(),
         swapChainExtent.height(),
         1,
-        VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT,
+        VkSampleCountFlags._1,
         depthFormat,
-        VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
-        VkImageUsageFlags.VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
-        VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+        VkImageTiling.OPTIMAL,
+        VkImageUsageFlags.DEPTH_STENCIL_ATTACHMENT,
+        VkMemoryPropertyFlags.DEVICE_LOCAL
 );
 depthImage = pair.first;
 depthImageMemory = pair.second;
@@ -128,13 +128,13 @@ var pair2 = createImage(
         width,
         height,
         textureMipLevels,
-        VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT,
-        VkFormat.VK_FORMAT_R8G8B8A8_SRGB,
-        VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
-        VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_DST_BIT
-        | VkImageUsageFlags.VK_IMAGE_USAGE_SAMPLED_BIT
-        | VkImageUsageFlags.VK_IMAGE_USAGE_TRANSFER_SRC_BIT,
-        VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+        VkSampleCountFlags._1,
+        VkFormat.R8G8B8A8_SRGB,
+        VkImageTiling.OPTIMAL,
+        VkImageUsageFlags.TRANSFER_DST
+        | VkImageUsageFlags.SAMPLED
+        | VkImageUsageFlags.TRANSFER_SRC,
+        VkMemoryPropertyFlags.DEVICE_LOCAL
 );
 textureImage = pair2.first;
 textureImageMemory = pair2.second;
@@ -152,14 +152,13 @@ private void createColorResources() {
             1,
             msaaSamples,
             colorFormat,
-            VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
-            VkImageUsageFlags.VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT
-            | VkImageUsageFlags.VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
-            VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+            VkImageTiling.OPTIMAL,
+            VkImageUsageFlags.TRANSIENT_ATTACHMENT | VkImageUsageFlags.COLOR_ATTACHMENT,
+            VkMemoryPropertyFlags.DEVICE_LOCAL
     );
     colorImage = pair.first;
     colorImageMemory = pair.second;
-    colorImageView = createImageView(colorImage, colorFormat, VkImageAspectFlags.VK_IMAGE_ASPECT_COLOR_BIT, 1);
+    colorImageView = createImageView(colorImage, colorFormat, VkImageAspectFlags.COLOR, 1);
 }
 ```
 
@@ -183,9 +182,9 @@ var pair = createImage(
         1,
         msaaSamples,
         depthFormat,
-        VkImageTiling.VK_IMAGE_TILING_OPTIMAL,
-        VkImageUsageFlags.VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
-        VkMemoryPropertyFlags.VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT
+        VkImageTiling.OPTIMAL,
+        VkImageUsageFlags.DEPTH_STENCIL_ATTACHMENT,
+        VkMemoryPropertyFlags.DEVICE_LOCAL
 );
 ```
 
@@ -193,9 +192,9 @@ We have now created a couple of new Vulkan resources, so let's not forget to rel
 
 ```java
 private void cleanupSwapChain() {
-    deviceCommands.vkDestroyImageView(device, colorImageView, null);
-    deviceCommands.vkDestroyImage(device, colorImage, null);
-    deviceCommands.vkFreeMemory(device, colorImageMemory, null);
+    deviceCommands.destroyImageView(device, colorImageView, null);
+    deviceCommands.destroyImage(device, colorImage, null);
+    deviceCommands.freeMemory(device, colorImageMemory, null);
     // ...
 }
 ```
@@ -222,27 +221,27 @@ Let's take care of the render pass first. Modify `createRenderPass` and update c
 private void createRenderPass() {
     // ...
     colorAttachment.samples(msaaSamples);
-    colorAttachment.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+    colorAttachment.finalLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
     // ...
     depthAttachment.samples(msaaSamples);
     // ...
 }
 ```
 
-You'll notice that we have changed the finalLayout from `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR` to `VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL`. That's because multisampled images cannot be presented directly. We first need to resolve them to a regular image. This requirement does not apply to the depth buffer, since it won't be presented at any point. Therefore, we will have to add only one new attachment for color which is a so-called resolve attachment:
+You'll notice that we have changed the finalLayout from `VkImageLayout.PRESENT_SRC_KHR` to `VkImageLayout.COLOR_ATTACHMENT_OPTIMAL`. That's because multisampled images cannot be presented directly. We first need to resolve them to a regular image. This requirement does not apply to the depth buffer, since it won't be presented at any point. Therefore, we will have to add only one new attachment for color which is a so-called resolve attachment:
 
 ```java
 var attachments = VkAttachmentDescription.allocate(arena, 3);
 // ...
-var colorAttachmentResolve = attachments[2];
+var colorAttachmentResolve = attachments.at(2);
 colorAttachmentResolve.format(swapChainImageFormat);
-colorAttachmentResolve.samples(VkSampleCountFlags.VK_SAMPLE_COUNT_1_BIT);
-colorAttachmentResolve.loadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE);
-colorAttachmentResolve.storeOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE);
-colorAttachmentResolve.stencilLoadOp(VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_DONT_CARE);
-colorAttachmentResolve.stencilStoreOp(VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE);
-colorAttachmentResolve.initialLayout(VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED);
-colorAttachmentResolve.finalLayout(VkImageLayout.VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
+colorAttachmentResolve.samples(VkSampleCountFlags._1);
+colorAttachmentResolve.loadOp(VkAttachmentLoadOp.DONT_CARE);
+colorAttachmentResolve.storeOp(VkAttachmentStoreOp.STORE);
+colorAttachmentResolve.stencilLoadOp(VkAttachmentLoadOp.DONT_CARE);
+colorAttachmentResolve.stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
+colorAttachmentResolve.initialLayout(VkImageLayout.UNDEFINED);
+colorAttachmentResolve.finalLayout(VkImageLayout.PRESENT_SRC_KHR);
 ```
 
 The render pass now has to be instructed to resolve multisampled color image into regular attachment. Create a new attachment reference that will point to the color buffer which will serve as the resolve target:
@@ -251,7 +250,7 @@ The render pass now has to be instructed to resolve multisampled color image int
 // ...
 var colorAttachmentResolveRef = VkAttachmentReference.allocate(arena);
 colorAttachmentResolveRef.attachment(2);
-colorAttachmentResolveRef.layout(VkImageLayout.VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+colorAttachmentResolveRef.layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
 // ...
 ```
 
@@ -278,7 +277,7 @@ private void createFramebuffers() {
     var pAttachments = VkImageView.Buffer.allocate(arena, 3);
     pAttachments.write(0, colorImageView);
     pAttachments.write(1, depthImageView);
-    pAttachments.write(2, swapChainImageViews[i]);
+    pAttachments.write(2, swapChainImageViews.read(i));
     // ...
     framebufferInfo.attachmentCount(3);
     // ...
@@ -314,13 +313,13 @@ There are certain limitations of our current MSAA implementation which may impac
 ```java
 private void createLogicalDevice() {
     // ...
-    deviceFeatures.sampleRateShading(Constants.VK_TRUE);
+    deviceFeatures.sampleRateShading(VkConstants.TRUE);
     // ...
 }
 
 private void createGraphicsPipeline() {
     // ...
-    multisampling.sampleShadingEnable(Constants.VK_TRUE);
+    multisampling.sampleShadingEnable(VkConstants.TRUE);
     multisampling.minSampleShading(0.2f);
     // ...
 }
