@@ -64,7 +64,7 @@ result = deviceCommands.createGraphicsPipelines(device, null, 1, pipelineInfo, n
 if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create graphics pipeline, vulkan error code: " + VkResult.explain(result));
 }
-graphicsPipeline = pGraphicsPipeline.read();
+graphicsPipeline = Objects.requireNonNull(pGraphicsPipeline.read());
 ```
 
 The `vkCreateGraphicsPipelines` function actually has more parameters than the usual object creation functions in Vulkan. It is designed to take multiple `VkGraphicsPipelineCreateInfo` objects and create multiple `VkPipeline` objects in a single call.

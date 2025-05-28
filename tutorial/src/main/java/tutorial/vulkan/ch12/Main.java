@@ -493,7 +493,7 @@ class Application {
             if (result != VkResult.SUCCESS) {
                 throw new RuntimeException("Failed to create graphics pipeline, vulkan error code: " + VkResult.explain(result));
             }
-            graphicsPipeline = pGraphicsPipeline.read();
+            graphicsPipeline = Objects.requireNonNull(pGraphicsPipeline.read());
 
             deviceCommands.destroyShaderModule(device, vertexShaderModule, null);
             deviceCommands.destroyShaderModule(device, fragmentShaderModule, null);
