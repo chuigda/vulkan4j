@@ -1,6 +1,0 @@
-[book]
-authors = ["Chuigda Whitegive", "CousinZe"]
-language = "zh_CN"
-multilingual = false
-src = "src"
-title = "Vulkan 教程（Java）"
