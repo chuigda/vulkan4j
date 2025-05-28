@@ -5,4 +5,6 @@ module tutorial {
     requires org.joml;
     requires java.desktop;
     requires obj;
+    requires club.doki7.vma;
+    requires org.jetbrains.annotations;
 }
