@@ -521,7 +521,7 @@ class Application {
             rasterizer.polygonMode(VkPolygonMode.FILL);
             rasterizer.lineWidth(1.0f);
             rasterizer.cullMode(VkCullModeFlags.BACK);
-            rasterizer.frontFace(VkFrontFace.CLOCKWISE);
+            rasterizer.frontFace(VkFrontFace.COUNTER_CLOCKWISE);
             rasterizer.depthBiasEnable(VkConstants.FALSE);
 
             var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena);
@@ -806,7 +806,7 @@ class Application {
             var pRenderFinishedSemaphore = pRenderFinishedSemaphores.offset(imageIndex);
 
             deviceCommands.resetCommandBuffer(commandBuffer, 0);
-            recordCommandBuffer(commandBuffer, currentFrame);
+            recordCommandBuffer(commandBuffer, imageIndex);
             updateUniformBuffer();
 
             var submitInfo = VkSubmitInfo.allocate(arena);
@@ -926,6 +926,7 @@ class Application {
                 10.0f,
                 true
         );
+        proj.m11(-proj.m11());
         new UniformBufferObject(model, view, proj).writeToFloatPtr(uniformBuffersMapped[currentFrame]);
     }
 
@@ -1455,9 +1456,10 @@ class Application {
     private static final int MAX_FRAMES_IN_FLIGHT = 2;
     private static final float[] VERTICES = {
             // vec2 pos     // vec3 color
-            0.0f, -0.5f,    1.0f, 0.0f, 0.0f,
-            0.5f,  0.5f,    0.0f, 1.0f, 0.0f,
-            -0.5f,  0.5f,   0.0f, 0.0f, 1.0f
+            -0.5f, -0.5f,   1.0f, 0.0f, 0.0f,
+            0.5f, -0.5f,    0.0f, 1.0f, 0.0f,
+            0.5f, 0.5f,     0.0f, 0.0f, 1.0f,
+            -0.5f, 0.5f,    1.0f, 1.0f, 1.0f
     };
     private static final short[] INDICES = {
             0, 1, 2,

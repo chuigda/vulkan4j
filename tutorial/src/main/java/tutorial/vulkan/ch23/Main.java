@@ -87,6 +87,8 @@ class Application {
         createVertexBuffer();
         createIndexBuffer();
         createUniformBuffers();
+        createDescriptorPool();
+        createDescriptorSets();
         createCommandBuffers();
         createSyncObjects();
     }
@@ -121,6 +123,7 @@ class Application {
         for (var uniformBufferMemory : uniformBuffersMemory) {
             deviceCommands.freeMemory(device, uniformBufferMemory, null);
         }
+        deviceCommands.destroyDescriptorPool(device, descriptorPool, null);
         deviceCommands.destroyDescriptorSetLayout(device, descriptorSetLayout, null);
         deviceCommands.destroyRenderPass(device, renderPass, null);
         deviceCommands.destroyDevice(device, null);
@@ -521,7 +524,7 @@ class Application {
             rasterizer.polygonMode(VkPolygonMode.FILL);
             rasterizer.lineWidth(1.0f);
             rasterizer.cullMode(VkCullModeFlags.BACK);
-            rasterizer.frontFace(VkFrontFace.CLOCKWISE);
+            rasterizer.frontFace(VkFrontFace.COUNTER_CLOCKWISE);
             rasterizer.depthBiasEnable(VkConstants.FALSE);
 
             var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena);
@@ -731,6 +734,63 @@ class Application {
         }
     }
 
+    private void createDescriptorPool() {
+        try (var arena = Arena.ofConfined()) {
+            var poolSize = VkDescriptorPoolSize.allocate(arena);
+            poolSize.type(VkDescriptorType.UNIFORM_BUFFER);
+            poolSize.descriptorCount(MAX_FRAMES_IN_FLIGHT);
+
+            var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena);
+            poolInfo.poolSizeCount(1);
+            poolInfo.pPoolSizes(poolSize);
+            poolInfo.maxSets(MAX_FRAMES_IN_FLIGHT);
+
+            var pDescriptorPool = VkDescriptorPool.Ptr.allocate(arena);
+            var result = deviceCommands.createDescriptorPool(device, poolInfo, null, pDescriptorPool);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to create descriptor pool, vulkan error code: " + VkResult.explain(result));
+            }
+            descriptorPool = Objects.requireNonNull(pDescriptorPool.read());
+        }
+    }
+
+    private void createDescriptorSets() {
+        descriptorSets = VkDescriptorSet.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+
+        try (Arena arena = Arena.ofConfined()) {
+            var pLayouts = VkDescriptorSetLayout.Ptr.allocate(arena, MAX_FRAMES_IN_FLIGHT);
+            pLayouts.write(0, descriptorSetLayout);
+            pLayouts.write(1, descriptorSetLayout);
+
+            var allocInfo = VkDescriptorSetAllocateInfo.allocate(arena);
+            allocInfo.descriptorPool(descriptorPool);
+            allocInfo.descriptorSetCount(MAX_FRAMES_IN_FLIGHT);
+            allocInfo.pSetLayouts(pLayouts);
+
+            var result = deviceCommands.allocateDescriptorSets(device, allocInfo, descriptorSets);
+            if (result != VkResult.SUCCESS) {
+                throw new RuntimeException("Failed to allocate descriptor sets, vulkan error code: " + VkResult.explain(result));
+            }
+
+            for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++){
+                var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
+                bufferInfo.buffer(uniformBuffers.read(i));
+                bufferInfo.offset(0);
+                bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
+
+                var descriptorWrite = VkWriteDescriptorSet.allocate(arena);
+                descriptorWrite.dstSet(descriptorSets.read(i));
+                descriptorWrite.dstBinding(0);
+                descriptorWrite.dstArrayElement(0);
+                descriptorWrite.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
+                descriptorWrite.descriptorCount(1);
+                descriptorWrite.pBufferInfo(bufferInfo);
+
+                deviceCommands.updateDescriptorSets(device, 1, descriptorWrite, 0, null);
+            }
+        }
+    }
+
     private void createCommandBuffers() {
         pCommandBuffers = VkCommandBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
 
@@ -806,7 +866,7 @@ class Application {
             var pRenderFinishedSemaphore = pRenderFinishedSemaphores.offset(imageIndex);
 
             deviceCommands.resetCommandBuffer(commandBuffer, 0);
-            recordCommandBuffer(commandBuffer, currentFrame);
+            recordCommandBuffer(commandBuffer, imageIndex);
             updateUniformBuffer();
 
             var submitInfo = VkSubmitInfo.allocate(arena);
@@ -900,6 +960,19 @@ class Application {
             offsets.write(0);
             deviceCommands.cmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
             deviceCommands.cmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.UINT16);
+
+            var pDescriptorSet = descriptorSets.offset(currentFrame);
+            deviceCommands.cmdBindDescriptorSets(
+                    commandBuffer,
+                    VkPipelineBindPoint.GRAPHICS,
+                    pipelineLayout,
+                    0,
+                    1,
+                    pDescriptorSet,
+                    0,
+                    null
+            );
+
             deviceCommands.cmdDrawIndexed(commandBuffer, INDICES.length, 1, 0, 0, 0);
 
             deviceCommands.cmdEndRenderPass(commandBuffer);
@@ -926,6 +999,7 @@ class Application {
                 10.0f,
                 true
         );
+        proj.m11(-proj.m11());
         new UniformBufferObject(model, view, proj).writeToFloatPtr(uniformBuffersMapped[currentFrame]);
     }
 
@@ -1427,6 +1501,8 @@ class Application {
     private VkBuffer.Ptr uniformBuffers;
     private VkDeviceMemory.Ptr uniformBuffersMemory;
     private FloatPtr[] uniformBuffersMapped;
+    private VkDescriptorPool descriptorPool;
+    private VkDescriptorSet.Ptr descriptorSets;
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
@@ -1455,9 +1531,10 @@ class Application {
     private static final int MAX_FRAMES_IN_FLIGHT = 2;
     private static final float[] VERTICES = {
             // vec2 pos     // vec3 color
-            0.0f, -0.5f,    1.0f, 0.0f, 0.0f,
-            0.5f,  0.5f,    0.0f, 1.0f, 0.0f,
-            -0.5f,  0.5f,   0.0f, 0.0f, 1.0f
+            -0.5f, -0.5f,   1.0f, 0.0f, 0.0f,
+            0.5f, -0.5f,    0.0f, 1.0f, 0.0f,
+            0.5f, 0.5f,     0.0f, 0.0f, 1.0f,
+            -0.5f, 0.5f,    1.0f, 1.0f, 1.0f
     };
     private static final short[] INDICES = {
             0, 1, 2,

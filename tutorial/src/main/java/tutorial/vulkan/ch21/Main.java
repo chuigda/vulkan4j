@@ -1347,9 +1347,10 @@ class Application {
     private static final int MAX_FRAMES_IN_FLIGHT = 2;
     private static final float[] VERTICES = {
             // vec2 pos     // vec3 color
-            0.0f, -0.5f,    1.0f, 0.0f, 0.0f,
-            0.5f,  0.5f,    0.0f, 1.0f, 0.0f,
-            -0.5f,  0.5f,   0.0f, 0.0f, 1.0f
+            -0.5f, -0.5f,   1.0f, 0.0f, 0.0f,
+            0.5f, -0.5f,    0.0f, 1.0f, 0.0f,
+            0.5f, 0.5f,     0.0f, 0.0f, 1.0f,
+            -0.5f, 0.5f,    1.0f, 1.0f, 1.0f
     };
     private static final short[] INDICES = {
             0, 1, 2,

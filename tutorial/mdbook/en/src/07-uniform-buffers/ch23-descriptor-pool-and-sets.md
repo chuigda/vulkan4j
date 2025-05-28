@@ -27,7 +27,7 @@ We first need to describe which descriptor types our descriptor sets are going t
 ```java
 try (var arena = Arena.ofConfined()) {
     var poolSize = VkDescriptorPoolSize.allocate(arena);
-    poolSize.type(VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
+    poolSize.type(VkDescriptorType.UNIFORM_BUFFER);
     poolSize.descriptorCount(MAX_FRAMES_IN_FLIGHT);
 }
 ```
@@ -46,22 +46,22 @@ Aside from the maximum number of individual descriptors that are available, we a
 poolInfo.maxSets(MAX_FRAMES_IN_FLIGHT);
 ```
 
-The structure has an optional flag similar to command pools that determines if individual descriptor sets can be freed or not: `VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT`. We're not going to touch the descriptor set after creating it, so we don't need this flag. You can leave flags to its default value of `0`.
+The structure has an optional flag similar to command pools that determines if individual descriptor sets can be freed or not: `VkDescriptorPoolCreateFlags.FREE_DESCRIPTOR_SET`. We're not going to touch the descriptor set after creating it, so we don't need this flag. You can leave flags to its default value of `0`.
 
 ```java
 private VkDescriptorPool descriptorPool;
 
 // ...
 
-var pDescriptorPool = VkDescriptorPool.Buffer.allocate(arena);
-var result = deviceCommands.vkCreateDescriptorPool(device, poolInfo, null, pDescriptorPool);
-if (result != VkResult.VK_SUCCESS) {
+var pDescriptorPool = VkDescriptorPool.Ptr.allocate(arena);
+var result = deviceCommands.createDescriptorPool(device, poolInfo, null, pDescriptorPool);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to create descriptor pool, vulkan error code: " + VkResult.explain(result));
 }
-descriptorPool = pDescriptorPool.read();
+descriptorPool = Objects.requireNonNull(pDescriptorPool.read());
 ```
 
-Add a new class member to store the handle of the descriptor pool and call `vkCreateDescriptorPool` to create it.
+Add a new class member to store the handle of the descriptor pool and call `VkDeviceCommands::createDescriptorPool` to create it.
 
 ## Descriptor set
 
@@ -84,42 +84,46 @@ private void createDescriptorSets() {
 A descriptor set allocation is described with a `VkDescriptorSetAllocateInfo` struct. You need to specify the descriptor pool to allocate from, the number of descriptor sets to allocate, and the descriptor layout to base them on:
 
 ```java
-var pLayouts = VkDescriptorSetLayout.Buffer.allocate(arena, MAX_FRAMES_IN_FLIGHT);
-pLayouts.write(0, descriptorSetLayout);
-pLayouts.write(1, descriptorSetLayout);
+try (Arena arena = Arena.ofConfined()) {
+    var pLayouts = VkDescriptorSetLayout.Ptr.allocate(arena, MAX_FRAMES_IN_FLIGHT);
+    pLayouts.write(0, descriptorSetLayout);
+    pLayouts.write(1, descriptorSetLayout);
 
-var allocInfo = VkDescriptorSetAllocateInfo.allocate(arena);
-allocInfo.descriptorPool(descriptorPool);
-allocInfo.descriptorSetCount(MAX_FRAMES_IN_FLIGHT);
-allocInfo.pSetLayouts(pLayouts);
+    var allocInfo = VkDescriptorSetAllocateInfo.allocate(arena);
+    allocInfo.descriptorPool(descriptorPool);
+    allocInfo.descriptorSetCount(MAX_FRAMES_IN_FLIGHT);
+    allocInfo.pSetLayouts(pLayouts);
+}
 ```
 
 In our case we will create one descriptor set for each frame in flight, all with the same layout. Unfortunately we do need all the copies of the layout because the next function expects an array matching the number of sets.
 
-Add a class member to hold the descriptor set handles and allocate them with `vkAllocateDescriptorSets`:
+Add a class member to hold the descriptor set handles and allocate them with `VkDeviceCommands::allocateDescriptorSets`:
 
 ```java
-private VkDescriptorSet[] descriptorSets;
+private VkDescriptorSet.Ptr descriptorSets;
 
 // ...
 
-var pDescriptorSets = VkDescriptorSet.Buffer.allocate(arena, MAX_FRAMES_IN_FLIGHT);
-var result = deviceCommands.vkAllocateDescriptorSets(device, allocInfo, pDescriptorSets);
-if (result != VkResult.VK_SUCCESS) {
+descriptorSets = VkDescriptorSet.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
+
+// ...
+
+var result = deviceCommands.allocateDescriptorSets(device, allocInfo, descriptorSets);
+if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to allocate descriptor sets, vulkan error code: " + VkResult.explain(result));
 }
-descriptorSets = pDescriptorSets.readAll();
 ```
 
-The call to `vkAllocateDescriptorSets` will allocate descriptor sets, each with one uniform buffer descriptor.
+The call to `VkDeviceCommands::allocateDescriptorSets` will allocate descriptor sets, each with one uniform buffer descriptor.
 
 You don't need to explicitly clean up descriptor sets, because they will be automatically freed when the descriptor pool is destroyed.
 
 ```java
 private void cleanup() {
     // ...
-    deviceCommands.vkDestroyDescriptorPool(device, descriptorPool, null);
-    deviceCommands.vkDestroyDescriptorSetLayout(device, descriptorSetLayout, null);
+    deviceCommands.destroyDescriptorPool(device, descriptorPool, null);
+    deviceCommands.destroyDescriptorSetLayout(device, descriptorSetLayout, null);
     // ...
 }
 ```
@@ -134,19 +138,19 @@ for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++){
 Descriptors that refer to buffers, like our uniform buffer descriptor, are configured with a `VkDescriptorBufferInfo` struct. This structure specifies the buffer and the region within it that contains the data for the descriptor.
 
 ```java
-for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++){
     var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
-    bufferInfo.buffer(uniformBuffers[i]);
+    bufferInfo.buffer(uniformBuffers.read(i));
     bufferInfo.offset(0);
     bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
 }
 ```
 
-If you're overwriting the whole buffer, like we are in this case, then it is also possible to use the `VK_WHOLE_SIZE` value for the range. The configuration of descriptors is updated using the `vkUpdateDescriptorSets` function, which takes an array of `VkWriteDescriptorSet` structs as parameter.
+If you're overwriting the whole buffer, like we are in this case, then it is also possible to use the `VkConstants.WHOLE_SIZE` value for the range. The configuration of descriptors is updated using the `VkDeviceCommands::updateDescriptorSets` function, which takes an array of `VkWriteDescriptorSet` structs as parameter.
 
 ```java
 var descriptorWrite = VkWriteDescriptorSet.allocate(arena);
-descriptorWrite.dstSet(descriptorSets[i]);
+descriptorWrite.dstSet(descriptorSets.read(i));
 descriptorWrite.dstBinding(0);
 descriptorWrite.dstArrayElement(0);
 ```
@@ -154,7 +158,7 @@ descriptorWrite.dstArrayElement(0);
 The first two fields specify the descriptor set to update and the binding. We gave our uniform buffer binding index `0`. Remember that descriptors can be arrays, so we also need to specify the first index in the array that we want to update. We're not using an array, so the index is simply `0`.
 
 ```java
-descriptorWrite.descriptorType(VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER);
+descriptorWrite.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
 descriptorWrite.descriptorCount(1);
 ```
 
@@ -169,21 +173,20 @@ descriptorWrite.pTexelBufferView(null); // Optional
 The last field references an array with `descriptorCount` structs that actually configure the descriptors. It depends on the type of descriptor which one of the three you actually need to use. The `pBufferInfo` field is used for descriptors that refer to buffer data, `pImageInfo` is used for descriptors that refer to image data, and `pTexelBufferView` is used for descriptors that refer to buffer views. Our descriptor is based on buffers, so we're using `pBufferInfo`.
 
 ```java
-deviceCommands.vkUpdateDescriptorSets(device, 1, descriptorWrite, 0, null);
+deviceCommands.updateDescriptorSets(device, 1, descriptorWrite, 0, null);
 ```
 
-The updates are applied using `vkUpdateDescriptorSets`. It accepts two kinds of arrays as parameters: an array of `VkWriteDescriptorSet` and an array of `VkCopyDescriptorSet`. The latter can be used to copy descriptors to each other, as its name implies.
+The updates are applied using `VkDeviceCommands::updateDescriptorSets`. It accepts two kinds of arrays as parameters: an array of `VkWriteDescriptorSet` and an array of `VkCopyDescriptorSet`. The latter can be used to copy descriptors to each other, as its name implies.
 
 ## Updating descriptor sets
 
 We now need to update the `recordCommandBuffer` function to actually bind the right descriptor set for each frame to the descriptors in the shader with `vkCmdBindDescriptorSets`. This needs to be done before the `vkCmdDrawIndexed` call:
 
 ```java
-var pDescriptorSet = VkDescriptorSet.Buffer.allocate(arena);
-pDescriptorSet.write(descriptorSets[currentFrame]);
-deviceCommands.vkCmdBindDescriptorSets(
+var pDescriptorSet = descriptorSets.offset(currentFrame);
+deviceCommands.cmdBindDescriptorSets(
         commandBuffer,
-        VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS,
+        VkPipelineBindPoint.GRAPHICS,
         pipelineLayout,
         0,
         1,
@@ -191,7 +194,7 @@ deviceCommands.vkCmdBindDescriptorSets(
         0,
         null
 );
-deviceCommands.vkCmdDrawIndexed(commandBuffer, INDICES.length, 1, 0, 0, 0);
+deviceCommands.cmdDrawIndexed(commandBuffer, INDICES.length, 1, 0, 0, 0);
 ```
 
 Unlike vertex and index buffers, descriptor sets are not unique to graphics pipelines. Therefore, we need to specify if we want to bind descriptor sets to the graphics or compute pipeline. The next parameter is the layout that the descriptors are based on. The next three parameters specify the index of the first descriptor set, the number of sets to bind, and the array of sets to bind. We'll get back to this in a moment. The last two parameters specify an array of offsets that are used for dynamic descriptors. We'll look at these in a future chapter.
@@ -209,7 +212,7 @@ proj.m11(-proj.m11());
 And after this transformation, our triangles will have opposite winding order. So our rasterizer settings also needs to be changed:
 
 ```java
-rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_COUNTER_CLOCKWISE);
+rasterizer.frontFace(VkFrontFace.COUNTER_CLOCKWISE);
 ```
 
 ### Complicated way
@@ -224,11 +227,11 @@ If you'd like to stick to Vulkan 1.0, you can update function `checkDeviceExtens
 boolean hasSwapchain = false;
 boolean hasMaintenance1 = false;
 for (var extension : availableExtensions) {
-    if (Constants.VK_KHR_SWAPCHAIN_EXTENSION_NAME.equals(extension.extensionName().readString())) {
+    if (VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME.equals(extension.extensionName().readString())) {
         hasSwapchain = true;
     }
 
-    if (Constants.VK_KHR_MAINTENANCE_1_EXTENSION_NAME.equals(extension.extensionName().readString())) {
+    if (VkConstants.KHR_MAINTENANCE_1_EXTENSION_NAME.equals(extension.extensionName().readString())) {
         hasMaintenance1 = true;
     }
 
@@ -244,9 +247,9 @@ And request the extension in the `createLogicalDevice` function:
 
 ```java
 deviceCreateInfo.enabledExtensionCount(2);
-var ppDeviceExtensions = PointerBuffer.allocate(arena, 2);
-ppDeviceExtensions.write(0, ByteBuffer.allocateString(arena, Constants.VK_KHR_SWAPCHAIN_EXTENSION_NAME));
-ppDeviceExtensions.write(1, ByteBuffer.allocateString(arena, Constants.VK_KHR_MAINTENANCE_1_EXTENSION_NAME));
+var ppDeviceExtensions = PointerPtr.allocate(arena, 2);
+ppDeviceExtensions.write(0, BytePtr.allocateString(arena, VkConstants.KHR_SWAPCHAIN_EXTENSION_NAME));
+ppDeviceExtensions.write(1, ByteBuffer.allocateString(arena, VkConstants.KHR_MAINTENANCE_1_EXTENSION_NAME));
 deviceCreateInfo.ppEnabledExtensionNames(ppDeviceExtensions);
 ```
 
@@ -255,7 +258,7 @@ deviceCreateInfo.ppEnabledExtensionNames(ppDeviceExtensions);
 Or you may simply request a higher Vulkan version:
 
 ```java
-appInfo.apiVersion(Version.VK_API_VERSION_1_1);
+appInfo.apiVersion(Version.VK_API_VERSION_1_1.encode());
 ```
 
 <hr />
@@ -270,18 +273,18 @@ viewport.width(swapChainExtent.width());
 viewport.height(-swapChainExtent.height());
 viewport.minDepth(0.0f);
 viewport.maxDepth(1.0f);
-deviceCommands.vkCmdSetViewport(commandBuffer, 0, 1, viewport);
+deviceCommands.cmdSetViewport(commandBuffer, 0, 1, viewport);
 ```
 
 And still you need to change your front facing:
 
 ```java
-rasterizer.frontFace(VkFrontFace.VK_FRONT_FACE_COUNTER_CLOCKWISE);
+rasterizer.frontFace(VkFrontFace.COUNTER_CLOCKWISE);
 ```
 
 Now run the program, and you should see the correctly oriented triangle.
 
-![Spinning quad](../../../images/spinning_quad.png)
+![Spinning quad](../../images/spinning_quad.png)
 
 The rectangle has changed into a square because the projection matrix now corrects for aspect ratio. The `updateUniformBuffer` takes care of screen resizing, so we don't need to recreate the descriptor set in `recreateSwapChain`.
 
@@ -303,7 +306,7 @@ private record UniformBufferObject(Matrix4f model, Matrix4f view, Matrix4f proj)
         return 16 * 3;
     }
 
-    public void writeToBuffer(FloatBuffer buffer) {
+    public void writeToFloatPtr(FloatPtr buffer) {
         assert buffer.size() >= bufferSize();
 
         model.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
@@ -332,7 +335,7 @@ private record UniformBufferObject(Vector2f foo, Matrix4f model, Matrix4f view, 
         return 2 + 16 * 3;
     }
 
-    public void writeToBuffer(FloatBuffer buffer) {
+    public void writeToFloatPtr(FloatPtr buffer) {
         assert buffer.size() >= bufferSize();
 
         foo.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
@@ -367,7 +370,7 @@ private record UniformBufferObject(Vector2f foo, Matrix4f model, Matrix4f view, 
         return 4 + 16 * 3;
     }
 
-    public void writeToBuffer(FloatBuffer buffer) {
+    public void writeToFloatPtr(FloatPtr buffer) {
         assert buffer.size() >= bufferSize();
         
         foo.get(buffer.segment().asByteBuffer().order(ByteOrder.nativeOrder()));
