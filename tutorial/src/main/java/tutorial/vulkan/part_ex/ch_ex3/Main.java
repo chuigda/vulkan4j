@@ -1,4 +1,4 @@
-package tutorial.vulkan.part_ex.ch_ex2;
+package tutorial.vulkan.part_ex.ch_ex3;
 
 import club.doki7.ffm.Loader;
 import club.doki7.ffm.NativeLayout;
