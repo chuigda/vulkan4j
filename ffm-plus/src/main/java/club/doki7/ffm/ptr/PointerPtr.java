@@ -12,6 +12,7 @@ import java.lang.foreign.AddressLayout;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.util.Iterator;
 import java.util.List;
 
 /// Reperesents a pointer to pointer(s) in native memory.
@@ -26,7 +27,7 @@ import java.util.List;
 /// normal users, {@link #checked(MemorySegment)} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
+public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, Iterable<MemorySegment> {
     public long size() {
         return segment.byteSize() / ValueLayout.ADDRESS.byteSize();
     }
@@ -98,6 +99,11 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
         return new PointerPtr(segment.asSlice(0, end * ValueLayout.ADDRESS.byteSize()));
     }
 
+    @Override
+    public @NotNull Iter iterator() {
+        return new Iter(segment);
+    }
+
     /// Creata a new {@link PointerPtr} using {@code segment} as backing storage, with argument
     /// validation.
     ///
@@ -135,5 +141,29 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer {
 
     public static @NotNull PointerPtr allocate(@NotNull Arena arena, long size) {
         return new PointerPtr(arena.allocate(ValueLayout.ADDRESS, size));
+    }
+
+    /// An iterator over the pointers.
+    public static final class Iter implements Iterator<MemorySegment> {
+        Iter(@NotNull MemorySegment segment) {
+            this.segment = segment;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return segment.byteSize() >= ValueLayout.ADDRESS.byteSize();
+        }
+
+        @Override
+        public @NotNull MemorySegment next() {
+            if (!hasNext()) {
+                throw new IndexOutOfBoundsException("No more pointers to read");
+            }
+            MemorySegment value = segment.get(ValueLayout.ADDRESS, 0);
+            segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
+            return value;
+        }
+
+        private @NotNull MemorySegment segment;
     }
 }

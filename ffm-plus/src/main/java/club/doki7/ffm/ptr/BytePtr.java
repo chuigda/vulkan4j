@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
+import java.util.Iterator;
 import java.util.List;
 
 /// Represents a pointer to byte(s) in native memory.
@@ -27,7 +28,7 @@ import java.util.List;
 /// normal users, {@link #checked(MemorySegment)} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
+public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Iterable<Byte> {
     public long size() {
         return segment.byteSize();
     }
@@ -103,6 +104,11 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
 
     public @NotNull BytePtr slice(long end) {
         return new BytePtr(segment.asSlice(0, end));
+    }
+
+    @Override
+    public @NotNull Iter iterator() {
+        return new Iter(segment);
     }
 
     /// Create a new {@link BytePtr} using {@code segment} as backing storage, with argument
@@ -197,5 +203,29 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer {
 
     public static @NotNull BytePtr allocateString(@NotNull Arena arena, @NotNull String s) {
         return new BytePtr(arena.allocateFrom(s));
+    }
+
+    /// An iterator over the bytes.
+    public static final class Iter implements Iterator<Byte> {
+        Iter(@NotNull MemorySegment segment) {
+            this.segment = segment;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return segment.byteSize() != 0;
+        }
+
+        @Override
+        public Byte next() {
+            if (!hasNext()) {
+                throw new IndexOutOfBoundsException("No more integers to read");
+            }
+            byte value = segment.get(ValueLayout.JAVA_BYTE, 0);
+            segment = segment.asSlice(1);
+            return value;
+        }
+
+        private @NotNull MemorySegment segment;
     }
 }

@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.DoubleBuffer;
+import java.util.Iterator;
 import java.util.List;
 
 /// Represents a pointer to 64-bit double-precision float(s) in native memory
@@ -27,7 +28,7 @@ import java.util.List;
 /// normal users, {@link #checked(MemorySegment)} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record DoublePtr(@NotNull MemorySegment segment) implements IPointer {
+public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Iterable<Double> {
     public long size() {
         return segment.byteSize() / Double.BYTES;
     }
@@ -110,6 +111,11 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer {
         return new DoublePtr(segment);
     }
 
+    @Override
+    public @NotNull Iter iterator() {
+        return new Iter(segment);
+    }
+
     /// Create a new {@link DoublePtr} using the same backing storage as {@code buffer}, with
     /// argument validation.
     ///
@@ -178,5 +184,29 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer {
         var s = arena.allocate(ValueLayout.JAVA_DOUBLE, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
         return new DoublePtr(s);
+    }
+
+    /// An iterator over the double precision float numbers.
+    public static final class Iter implements Iterator<Double> {
+        Iter(@NotNull MemorySegment segment) {
+            this.segment = segment;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return segment.byteSize() >= Double.BYTES;
+        }
+
+        @Override
+        public Double next() {
+            if (!hasNext()) {
+                throw new IllegalStateException("No more doubles to read");
+            }
+            double value = segment.get(ValueLayout.JAVA_DOUBLE, 0);
+            segment = segment.asSlice(Double.BYTES);
+            return value;
+        }
+
+        private @NotNull MemorySegment segment;
     }
 }

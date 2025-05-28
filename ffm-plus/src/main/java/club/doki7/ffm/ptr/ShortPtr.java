@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.ShortBuffer;
+import java.util.Iterator;
 import java.util.List;
 
 /// Represents a pointer to 16-bit short integer(s) in native memory.
@@ -27,7 +28,7 @@ import java.util.List;
 /// normal users, {@link #checked(MemorySegment)} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record ShortPtr(@NotNull MemorySegment segment) implements IPointer {
+public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iterable<Short> {
     public long size() {
         return segment.byteSize() / Short.BYTES;
     }
@@ -78,6 +79,11 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer {
 
     public @NotNull ShortPtr slice(long end) {
         return new ShortPtr(segment.asSlice(0, end * Short.BYTES));
+    }
+
+    @Override
+    public @NotNull Iter iterator() {
+        return new Iter(segment);
     }
 
     /// Create a new {@link ShortPtr} using {@code segment} as backing storage, with argument
@@ -180,5 +186,30 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer {
         s.copyFrom(MemorySegment.ofBuffer(buffer));
 
         return new ShortPtr(s);
+    }
+
+    /// An iterator over the short integers.
+    public static final class Iter implements Iterator<Short> {
+        Iter(@NotNull MemorySegment segment) {
+            this.segment = segment;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return segment.byteSize() >= Short.BYTES;
+        }
+
+        @Override
+        public Short next() {
+            if (!hasNext()) {
+                throw new IllegalStateException("No more short integers to read");
+            }
+
+            short value = segment.get(ValueLayout.JAVA_SHORT, 0);
+            segment = segment.asSlice(Short.BYTES);
+            return value;
+        }
+
+        private @NotNull MemorySegment segment;
     }
 }

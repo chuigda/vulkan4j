@@ -13,6 +13,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
+import java.util.Iterator;
 import java.util.List;
 
 /// Represents a pointer to 32-bit float(s) in native memory
@@ -27,7 +28,7 @@ import java.util.List;
 /// normal users, {@link #checked(MemorySegment)} is a good safe alternative.
 @ValueBasedCandidate
 @UnsafeConstructor
-public record FloatPtr(@NotNull MemorySegment segment) implements IPointer {
+public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iterable<Float> {
     public long size() {
         return segment.byteSize() / Float.BYTES;
     }
@@ -77,6 +78,11 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer {
 
     public @NotNull FloatPtr slice(long end) {
         return new FloatPtr(segment.asSlice(0, end * Float.BYTES));
+    }
+
+    @Override
+    public @NotNull Iter iterator() {
+        return new Iter(segment);
     }
 
     /// Create a new {@link FloatPtr} using {@code segment} as backing storage, with argument
@@ -177,5 +183,29 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer {
         var s = arena.allocate(ValueLayout.JAVA_FLOAT, buffer.remaining());
         s.copyFrom(MemorySegment.ofBuffer(buffer));
         return new FloatPtr(s);
+    }
+
+    /// An iterator over the float numbers.
+    public static final class Iter implements Iterator<Float> {
+        Iter(@NotNull MemorySegment segment) {
+            this.segment = segment;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return segment.byteSize() >= Float.BYTES;
+        }
+
+        @Override
+        public Float next() {
+            if (!hasNext()) {
+                throw new IllegalStateException("No more floats to read");
+            }
+            float value = segment.get(ValueLayout.JAVA_FLOAT, 0);
+            segment = segment.asSlice(Float.BYTES);
+            return value;
+        }
+
+        private @NotNull MemorySegment segment;
     }
 }
