@@ -45,7 +45,6 @@ class Application {
     private void initWindow() {
         GLFWLoader.loadGLFWLibrary();
         glfw = GLFWLoader.loadGLFW();
-        glfw.initHint(GLFWConstants.PLATFORM, GLFWConstants.PLATFORM_X11);
         if (glfw.init() != GLFWConstants.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }

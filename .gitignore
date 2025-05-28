@@ -50,6 +50,7 @@ build/
 *.ilk
 *.exp
 *.obj
+!tutorial/src/main/resources/model/viking_room.obj
 
 # Assembly plugin produced files
 tutorial/dependency-reduced-pom.xml
