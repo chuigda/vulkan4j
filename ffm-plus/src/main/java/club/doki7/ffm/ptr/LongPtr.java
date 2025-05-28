@@ -15,6 +15,7 @@ import java.nio.Buffer;
 import java.nio.LongBuffer;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to 64-bit long integer(s) in native memory.
 ///
@@ -204,7 +205,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
         @Override
         public Long next() {
             if (!hasNext()) {
-                throw new IndexOutOfBoundsException("No more long integers to read");
+                throw new NoSuchElementException("No more long integers to read");
             }
             long value = segment.get(ValueLayout.JAVA_LONG, 0);
             segment = segment.asSlice(Long.BYTES);

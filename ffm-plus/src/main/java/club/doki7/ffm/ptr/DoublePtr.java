@@ -15,6 +15,7 @@ import java.nio.Buffer;
 import java.nio.DoubleBuffer;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to 64-bit double-precision float(s) in native memory
 ///
@@ -200,7 +201,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
         @Override
         public Double next() {
             if (!hasNext()) {
-                throw new IllegalStateException("No more doubles to read");
+                throw new NoSuchElementException("No more doubles to read");
             }
             double value = segment.get(ValueLayout.JAVA_DOUBLE, 0);
             segment = segment.asSlice(Double.BYTES);

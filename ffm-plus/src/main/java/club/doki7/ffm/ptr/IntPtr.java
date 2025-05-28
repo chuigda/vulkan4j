@@ -15,6 +15,7 @@ import java.nio.Buffer;
 import java.nio.IntBuffer;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to 32-bit integer(s) in native memory.
 ///
@@ -215,7 +216,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         @Override
         public Integer next() {
             if (!hasNext()) {
-                throw new IndexOutOfBoundsException("No more integers to read");
+                throw new NoSuchElementException("No more integers to read");
             }
             int value = segment.get(ValueLayout.JAVA_INT, 0);
             segment = segment.asSlice(Integer.BYTES);

@@ -15,6 +15,7 @@ import java.nio.Buffer;
 import java.nio.ShortBuffer;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to 16-bit short integer(s) in native memory.
 ///
@@ -202,7 +203,7 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
         @Override
         public Short next() {
             if (!hasNext()) {
-                throw new IllegalStateException("No more short integers to read");
+                throw new NoSuchElementException("No more short integers to read");
             }
 
             short value = segment.get(ValueLayout.JAVA_SHORT, 0);

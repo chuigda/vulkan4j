@@ -14,6 +14,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Reperesents a pointer to pointer(s) in native memory.
 ///
@@ -157,7 +158,7 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
         @Override
         public @NotNull MemorySegment next() {
             if (!hasNext()) {
-                throw new IndexOutOfBoundsException("No more pointers to read");
+                throw new NoSuchElementException("No more pointers to read");
             }
             MemorySegment value = segment.get(ValueLayout.ADDRESS, 0);
             segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());

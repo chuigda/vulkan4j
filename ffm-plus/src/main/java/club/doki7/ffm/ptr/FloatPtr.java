@@ -15,6 +15,7 @@ import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to 32-bit float(s) in native memory
 ///
@@ -199,7 +200,7 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
         @Override
         public Float next() {
             if (!hasNext()) {
-                throw new IllegalStateException("No more floats to read");
+                throw new NoSuchElementException("No more floats to read");
             }
             float value = segment.get(ValueLayout.JAVA_FLOAT, 0);
             segment = segment.asSlice(Float.BYTES);

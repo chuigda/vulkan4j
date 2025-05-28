@@ -15,6 +15,7 @@ import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to byte(s) in native memory.
 ///
@@ -219,7 +220,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
         @Override
         public Byte next() {
             if (!hasNext()) {
-                throw new IndexOutOfBoundsException("No more integers to read");
+                throw new NoSuchElementException("No more integers to read");
             }
             byte value = segment.get(ValueLayout.JAVA_BYTE, 0);
             segment = segment.asSlice(1);

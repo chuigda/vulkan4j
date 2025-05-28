@@ -13,6 +13,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /// Represents a pointer to 32-bit integer(s) in native memory.
 ///
@@ -137,7 +138,7 @@ public record CLongPtr(MemorySegment segment) implements IPointer, Iterable<Long
         @Override
         public Long next() {
             if (!hasNext()) {
-                throw new IndexOutOfBoundsException("No more elements to read");
+                throw new NoSuchElementException("No more elements to read");
             }
             long value = NativeLayout.readCLong(segment, 0);
             segment = segment.asSlice(NativeLayout.C_LONG_SIZE);
