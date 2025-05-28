@@ -44,9 +44,9 @@
 - [Descriptor pool and sets](07-uniform-buffers/ch23-descriptor-pool-and-sets.md)
 
 # Texture mapping
-- [Images](texture-mapping/images.md)
-- [Image view and sampler](texture-mapping/image-view-and-sampler.md)
-- [Combined image sampler](texture-mapping/combined-image-sampler.md)
+- [Images](08-texture-mapping/ch24-images.md)
+- [Image view and sampler](08-texture-mapping/ch25-image-view-and-sampler.md)
+- [Combined image sampler](08-texture-mapping/ch26-combined-image-sampler.md)
 
 # Depth buffering
 - [Depth buffering](depth-buffering/depth-buffering.md)
