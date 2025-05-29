@@ -47,7 +47,7 @@ private void createTextureImage() {
 
 Create a new directory `texture` next to the `shader` directory to store texture images in. We're going to load an image called `texture.jpg` from that directory. I've chosen to use the following [CC0 licensed image](https://pixabay.com/en/statue-sculpture-fig-historically-1275469/) resized to 512 x 512 pixels, but feel free to pick any image you want.
 
-![texture.png](../../../images/texture.png)
+![texture.png](../../images/texture.png)
 
 Loading an image with `javax.imageio` is easy:
 

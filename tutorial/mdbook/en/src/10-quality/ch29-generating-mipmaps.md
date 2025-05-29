@@ -6,7 +6,7 @@ Our program can now load and render 3D models. In this chapter, we will add one 
 
 Mipmaps are precalculated, downscaled versions of an image. Each new image is half the width and height of the previous one. Mipmaps are used as a form of *Level of Detail or LOD*. Objects that are far away from the camera will sample their textures from the smaller mip images. Using smaller images increases the rendering speed and avoids artifacts such as [Moiré patterns](https://en.wikipedia.org/wiki/Moir%C3%A9_pattern). An example of what mipmaps look like:
 
-![Mipmap LODs](../../../images/mipmaps_example.jpg)
+![Mipmap LODs](../../images/mipmaps_example.jpg)
 
 ## Image creation
 
@@ -459,11 +459,11 @@ To allow the full range of mip levels to be used, we set `minLod` to `0.0f`, and
 
 Now run your program and you should see the following:
 
-![Mipmaps](../../../images/mipmaps.png)
+![Mipmaps](../../images/mipmaps.png)
 
 It's not a dramatic difference, since our scene is so simple. There are subtle differences if you look closely.
 
-![Mipmaps comparison](../../../images/mipmaps_comparison.png)
+![Mipmaps comparison](../../images/mipmaps_comparison.png)
 
 The most noticeable difference is the writing on the papers. With mipmaps, the writing has been smoothed. Without mipmaps, the writing has harsh edges and gaps from Moiré artifacts.
 
@@ -475,6 +475,6 @@ samplerInfo.minLod(textureMipLevels / 2.0f);
 
 These settings will produce this image:
 
-![High mipmaps](../../../images/highmipmaps.png)
+![High mipmaps](../../images/highmipmaps.png)
 
 This is how higher mip levels will be used when objects are further away from the camera.

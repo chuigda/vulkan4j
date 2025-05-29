@@ -74,7 +74,7 @@ The `minDepth` and `maxDepth` values specify the range of depth values to use fo
 
 While viewports define the transformation from the image to the framebuffer, scissor rectangles define in which regions pixels will actually be stored. Any pixels outside the scissor rectangles will be discarded by the rasterizer. They function like a filter rather than a transformation. The difference is illustrated below. Note that the left scissor rectangle is just one of the many possibilities that would result in that image, as long as it's larger than the viewport.
 
-![viewport scissors](../images/viewports_scissors.png)
+![viewport scissors](../../images/viewports_scissors.png)
 
 So if we wanted to draw to the entire framebuffer, we would specify a scissor rectangle that covers it entirely:
 

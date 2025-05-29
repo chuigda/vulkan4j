@@ -16,13 +16,13 @@ The vertex shader processes each incoming vertex. It takes its attributes, like 
 
 A *clip coordinate* is a four dimensional vector from the vertex shader that is subsequently turned into a *normalized device coordinate* by dividing the whole vector by its last component. These normalized device coordinates are [homogeneous coordinates](https://en.wikipedia.org/wiki/Homogeneous_coordinates) that map the framebuffer to a `[-1, 1]` by `[-1, 1]` coordinate system that looks like the following:
 
-![normalized device coordinates](../../../images/normalized_device_coordinates_en.svg)
+![normalized device coordinates](../../images/normalized_device_coordinates_en.svg)
 
 You should already be familiar with these if you have dabbled in computer graphics before. If you have used OpenGL before, then you'll notice that the sign of the Y coordinates is now flipped. The Z coordinate now uses the same range as it does in Direct3D, from 0 to 1.
 
 For our first triangle we won't be applying any transformations, we'll just specify the positions of the three vertices directly as normalized device coordinates to create the following shape:
 
-![triangle coordinates](../../../images/normalized_device_coordinates_en.svg)
+![triangle coordinates](../../images/normalized_device_coordinates_en.svg)
 
 We can directly output normalized device coordinates by outputting them as clip coordinates from the vertex shader with the last component set to `1`. That way the division to transform clip coordinates to normalized device coordinates will not change anything.
 
@@ -64,7 +64,7 @@ The `main` function is called for every fragment just like the vertex shader `ma
 
 Making the entire triangle red is not very interesting, wouldn't something like the following look a lot nicer?
 
-![triangle coordinates colors](../../../images/triangle_coordinates_colors.png)
+![triangle coordinates colors](../../images/triangle_coordinates_colors.png)
 
 We have to make a couple of changes to both shaders to accomplish this. First off, we need to specify a distinct color for each of the three vertices. The vertex shader should now include an array with colors just like it does for positions:
 
