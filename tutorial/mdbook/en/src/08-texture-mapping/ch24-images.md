@@ -1,5 +1,7 @@
 # Images
 
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part08/ch24/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Images) 
+
 ## Introduction
 
 The geometry has been colored using per-vertex colors so far, which is a rather limited approach. In this part of the tutorial we're going to implement texture mapping to make the geometry look more interesting. This will also allow us to load and draw basic 3D models in a future chapter.

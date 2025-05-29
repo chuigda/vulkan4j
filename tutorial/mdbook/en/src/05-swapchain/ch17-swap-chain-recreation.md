@@ -1,5 +1,7 @@
 # Swap chain recreation
 
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part05/ch17/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Swap_chain_recreation)
+
 ## Introduction
 
 The application we have now successfully draws a triangle, but there are some circumstances that it isn't handling properly yet. It is possible for the window surface to change such that the swap chain is no longer compatible with it. One of the reasons that could cause this to happen is the size of the window changing. We have to catch these events and recreate the swap chain.

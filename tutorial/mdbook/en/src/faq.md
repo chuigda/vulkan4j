@@ -1,5 +1,7 @@
 # FAQ
 
+> [C++ version](https://vulkan-tutorial.com/FAQ)
+
 This page lists solutions to common problems that you may encounter while developing Vulkan applications.
 
 <!-- 
@@ -18,4 +20,4 @@ TODO: macOS
 
 Example:
 
-![Steam layers](../../images/steam_layers_env.png)
+![Steam layers](../images/steam_layers_env.png)

@@ -1,5 +1,7 @@
 # Descriptor pool and sets
 
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part07/ch23/Main.java) | [C++ version](https://vulkan-tutorial.com/Uniform_buffers/Descriptor_pool_and_sets)
+
 ## Introduction
 
 The descriptor layout from the previous chapter describes the type of descriptors that can be bound. In this chapter we're going to create a descriptor set for each `VkBuffer` resource to bind it to the uniform buffer descriptor.
