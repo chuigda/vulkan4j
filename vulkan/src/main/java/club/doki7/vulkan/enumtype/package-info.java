@@ -7,15 +7,15 @@
 /// {@link club.doki7.ffm.ptr} types when representing pointer to or array of enums.
 ///
 /// In order to tell what enum type an integral value represents, we use the annotation
-/// {@link club.doki7.ffm.annotation.enumtype @enumtype}. For example:
+/// {@link club.doki7.ffm.annotation.EnumType @EnumType}. For example:
 ///
 /// {@snippet :
 /// public record VkBufferCreateInfo(MemorySegment segment) {
-///     @enumtype(VkSharingMode.class) int sharingMode() {
+///     @EnumType(VkSharingMode.class) int sharingMode() {
 ///         // implementation omitted
 ///     }
 ///
-///     void sharingMode(@enumtype(VkSharingMode.class) int value) {
+///     void sharingMode(@EnumType(VkSharingMode.class) int value) {
 ///         // implementation omitted
 ///     }
 ///
@@ -23,7 +23,7 @@
 /// }
 /// }
 ///
-/// The {@link club.doki7.ffm.annotation.enumtype @enumtype} annotation provides useful in-IDE and
+/// The {@link club.doki7.ffm.annotation.EnumType @EnumType} annotation provides useful in-IDE and
 /// JavaDoc links, so you can Ctrl-Click on the annotation argument to jump to the definition of the
 /// bitmask type.
 ///
