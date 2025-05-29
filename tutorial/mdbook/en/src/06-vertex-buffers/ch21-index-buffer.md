@@ -6,7 +6,7 @@ The 3D meshes you'll be rendering in a real world application will often share v
 
 https://vulkan-tutorial.com/images/vertex_vs_index.svg
 
-![Rectangle](../../../images/vertex_vs_index_en.svg)
+![Rectangle](../../images/vertex_vs_index_en.svg)
 
 Drawing a rectangle takes two triangles, which means that we need a vertex buffer with 6 vertices. The problem is that the data of two vertices needs to be duplicated resulting in 50% redundancy. It only gets worse with more complex meshes, where vertices are reused in an average number of 3 triangles. The solution to this problem is to use an *index buffer*.
 
@@ -127,7 +127,7 @@ A call to this function is very similar to `VkDeviceCommands::cmdDraw`. The firs
 
 Now run your program and you should see the following:
 
-![Indexed rectangle](../../../images/indexed_rectangle.png)
+![Indexed rectangle](../../images/indexed_rectangle.png)
 
 You now know how to save memory by reusing vertices with index buffers. This will become especially important in a future chapter where we're going to load complex 3D models.
 

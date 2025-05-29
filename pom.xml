@@ -14,6 +14,7 @@
     <inceptionYear>2024</inceptionYear>
     <organization>
         <name>Doki Doki 7th Design Club!</name>
+        <url>https://doki7.club</url>
     </organization>
 
     <licenses>
@@ -28,7 +29,21 @@
             <name>Chuigda Whitegive</name>
             <email>icey@icey.tech</email>
             <organization>Doki Doki 7th Design Club!</organization>
-            <organizationUrl>https://self.icey.tech</organizationUrl>
+        </developer>
+        <developer>
+            <name>Cousin Ze</name>
+            <email>alex@ckx-ily.cn</email>
+            <organization>Doki Doki 7th Design Club!</organization>
+        </developer>
+        <developer>
+            <name>Shimogawa</name>
+            <email>admin@rebuild.moe</email>
+            <organization>Doki Doki 7th Design Club!</organization>
+        </developer>
+        <developer>
+            <name>Hoshino Tented</name>
+            <email>hoshinotented@qq.com</email>
+            <organization>Doki Doki 7th Design Club!</organization>
         </developer>
     </developers>
 
@@ -81,9 +96,10 @@
                             <report>aggregate</report>
                         </reports>
                         <configuration>
-                            <skippedModules>codegen-v2</skippedModules>
+                            <skippedModules>codegen-v2,tutorial</skippedModules>
                             <windowtitle>vulkan4j</windowtitle>
                             <doctitle><![CDATA[<code>vulkan4j</code>: CG library bindings implemented with FFM APIs]]></doctitle>
+                            <doclint>none</doclint>
                             <additionalOptions>
                                 <additionalOption>--add-stylesheet</additionalOption>
                                 <additionalOption>${project.basedir}/misc/github-colorblind.css</additionalOption>

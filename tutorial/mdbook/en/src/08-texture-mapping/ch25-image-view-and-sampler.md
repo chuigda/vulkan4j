@@ -115,19 +115,19 @@ It is possible for shaders to read texels directly from images, but that is not 
 
 These filters are helpful to deal with problems like oversampling. Consider a texture that is mapped to geometry with more fragments than texels. If you simply took the closest texel for the texture coordinate in each fragment, then you would get a result like the first image:
 
-![Nearest filtering](../../../images/texture_filtering.png)
+![Nearest filtering](../../images/texture_filtering.png)
 
 If you combined the 4 closest texels through linear interpolation, then you would get a smoother result like the one on the right. Of course your application may have art style requirements that fit the left style more (think Minecraft), but the right is preferred in conventional graphics applications. A sampler object automatically applies this filtering for you when reading a color from the texture.
 
 Under sampling is the opposite problem, where you have more texels than fragments. This will lead to artifacts when sampling high frequency patterns like a checkerboard texture at a sharp angle:
 
-![Anisotropic filtering](../../../images/anisotropic_filtering.png)
+![Anisotropic filtering](../../images/anisotropic_filtering.png)
 
 As shown in the left image, the texture turns into a blurry mess in the distance. The solution to this is [anisotropic filtering](https://en.wikipedia.org/wiki/Anisotropic_filtering), which can also be applied automatically by a sampler.
 
 Aside from these filters, a sampler can also take care of transformations. It determines what happens when you try to read texels outside the image through its *addressing mode*. The image below displays some of the possibilities:
 
-![Texture addressing](../../../images/texture_addressing.png)
+![Texture addressing](../../images/texture_addressing.png)
 
 We will now create a function `createTextureSampler` to set up such a sampler object. We'll be using that sampler to read colors from the texture in the shader later on.
 
@@ -290,7 +290,7 @@ In the next chapter we will expose the image and sampler objects to the shaders 
 
 You should see something like the image below. Don't forget to recompile the shaders!
 
-![Texture coordinate visualization](../../../images/texcoord_visualization.png)
+![Texture coordinate visualization](../../images/texcoord_visualization.png)
 
 The green channel represents the horizontal coordinates and the red channel the vertical coordinates. The black and yellow corners confirm that the texture coordinates are correctly interpolated from `0, 0` to `1, 1` across the square. Visualizing data using colors is the shader programming equivalent of printf debugging, for lack of a better option!
 
@@ -310,11 +310,11 @@ void main() {
 
 Textures are sampled using the built-in `texture` function. It takes a `sampler` and coordinate as arguments. The sampler automatically takes care of the filtering and transformations in the background. You should now see the texture on the square when you run the application:
 
-![Texture on square](../../../images/texture_on_square.png)
+![Texture on square](../../images/texture_on_square.png)
 
 Try experimenting with the addressing modes by scaling the texture coordinates to values higher than `1`. For example, the following fragment shader produces the result in the image below when using `VkSamplerAddressMode.REPEAT`:
 
-![Texture on square repeated](../../../images/texture_on_square_repeated.png)
+![Texture on square repeated](../../images/texture_on_square_repeated.png)
 
 You can also manipulate the texture colors using the vertex colors:
 
@@ -326,6 +326,6 @@ void main() {
 
 I've separated the RGB and alpha channels here to not scale the alpha channel.
 
-![Texture on square colorized](../../../images/texture_on_square_colorized.png)
+![Texture on square colorized](../../images/texture_on_square_colorized.png)
 
 You now know how to access images in shaders! This is a very powerful technique when combined with images that are also written to in framebuffers. You can use these images as inputs to implement cool effects like post-processing and camera displays within the 3D world.

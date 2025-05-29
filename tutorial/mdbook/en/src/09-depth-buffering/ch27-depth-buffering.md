@@ -70,7 +70,7 @@ void main() {
 
 If you run your application now, then you should see exactly the same result as before. It's time to add some extra geometry to make the scene more interesting, and to demonstrate the problem that we're going to tackle in this chapter. Duplicate the vertices to define positions for a square right under the current one like this:
 
-![Extra square](../../../images/extra_square.svg)
+![Extra square](../../images/extra_square.svg)
 
 Use Z coordinates of `-0.5f` and add the appropriate indices for the extra square:
 
@@ -98,7 +98,7 @@ private static final short[] INDICES = {
 
 Run your program now, and you'll see something resembling an Escher illustration:
 
-![Depth issues](../../../images/depth_issues.png)
+![Depth issues](../../images/depth_issues.png)
 
 The problem is that the fragments of the lower square are drawn over the fragments of the upper square, simply because it comes later in the index array. There are two ways to solve this:
 
@@ -504,7 +504,7 @@ Update the `VkGraphicsPipelineCreateInfo` struct to reference the depth stencil 
 
 If you run your program now, then you should see that the fragments of the geometry are now correctly ordered:
 
-![Depth correct](../../../images/depth_correct.png)
+![Depth correct](../../images/depth_correct.png)
 
 ## Handling window resize
 

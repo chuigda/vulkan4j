@@ -1,53 +1,44 @@
-# Sample workflow for building and deploying a mdBook site to GitHub Pages
-#
-# To get started with mdBook see: https://rust-lang.github.io/mdBook/index.html
-#
-name: Deploy website with GitHub Pages
+name: Website Deploy
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["dont-run-this-workflow-automatically-on-push-please-anyway"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
-    env:
-      MDBOOK_VERSION: 0.4.36
     steps:
       - uses: actions/checkout@v4
       - name: Install mdBook
         run: |
-          curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
-          rustup update
-          cargo install --version ${MDBOOK_VERSION} mdbook
+          wget https://github.com/rust-lang/mdBook/releases/download/v0.4.51/mdbook-v0.4.51-x86_64-unknown-linux-musl.tar.gz
+          tar -xvf mdbook-v0.4.51-x86_64-unknown-linux-musl.tar.gz
+      - name: Set up JDK 23
+        uses: actions/setup-java@v4
+        with:
+          java-version: '23' # Our JavaDoc works best with JDK 23, very funny.
+          distribution: 'liberica'
+          cache: maven
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Build website
-        run: website/scripts/makepages.sh
+      - name: Generate JavaDoc
+        run: mvn -B site --file pom.xml || true
+      - name: Build mdbook
+        run: ../../../mdbook build
+        working-directory: ./tutorial/mdbook/en
+      - name: Copy mdbook output to JavaDoc directory
+        run: |
+          mkdir -p ./target/site/apidocs/tutorial
+          mkdir -p ./target/site/apidocs/tutorial/en
+          cp -r ./tutorial/mdbook/en/book/* ./target/site/apidocs/tutorial/en/
+          cp -r ./tutorial/mdbook/images ./target/site/apidocs/tutorial/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./pages
+          path: ./target/site/apidocs
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages

@@ -4,17 +4,17 @@
 
 Our program can now load multiple levels of detail for textures which fixes artifacts when rendering objects far away from the viewer. The image is now a lot smoother, however on closer inspection you will notice jagged saw-like patterns along the edges of drawn geometric shapes. This is especially visible in one of our early programs when we rendered a quad:
 
-![Texture coordinate visualization](../../../images/texcoord_visualization.png)
+![Texture coordinate visualization](../../images/texcoord_visualization.png)
 
 This undesired effect is called "aliasing" and it's a result of a limited numbers of pixels that are available for rendering. Since there are no displays out there with unlimited resolution, it will be always visible to some extent. There's a number of ways to fix this and in this chapter we'll focus on one of the more popular ones: [Multisample antialiasing](https://en.wikipedia.org/wiki/Multisample_anti-aliasing) (MSAA).
 
 In ordinary rendering, the pixel color is determined based on a single sample point which in most cases is the center of the target pixel on screen. If part of the drawn line passes through a certain pixel but doesn't cover the sample point, that pixel will be left blank, leading to the jagged "staircase" effect.
 
-![Aliasing](../../../images/aliasing.png)
+![Aliasing](../../images/aliasing.png)
 
 What MSAA does is it uses multiple sample points per pixel (hence the name) to determine its final color. As one might expect, more samples lead to better results, however it is also more computationally expensive.
 
-![Aliasing](../../../images/antialiasing.png)
+![Aliasing](../../images/antialiasing.png)
 
 In our implementation, we will focus on using the maximum available sample count. Depending on your application this may not always be the best approach and it might be better to use less samples for the sake of higher performance if the final result meets your quality demands.
 
@@ -296,15 +296,15 @@ private void createGraphicsPipeline() {
 
 Now run your program and you should see the following:
 
-![Multisampling](../../../images/multisampling.png)
+![Multisampling](../../images/multisampling.png)
 
 Just like with mipmapping, the difference may not be apparent straight away. On a closer look you'll notice that the edges are not as jagged anymore and the whole image seems a bit smoother compared to the original.
 
-![Multisampling comparison](../../../images/multisampling_comparison.png)
+![Multisampling comparison](../../images/multisampling_comparison.png)
 
 The difference is more noticeable when looking up close at one of the edges:
 
-![Multisampling comparison axe](../../../images/multisampling_comparison_axe.png)
+![Multisampling comparison axe](../../images/multisampling_comparison_axe.png)
 
 ## Quality improvements
 
@@ -327,7 +327,7 @@ private void createGraphicsPipeline() {
 
 In certain scenarios the quality improvement may be noticeable:
 
-![Sample shading](../../../images/sample_shading.png)
+![Sample shading](../../images/sample_shading.png)
 
 ## Conclusion
 

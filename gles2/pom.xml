@@ -30,14 +30,17 @@
         <developer>
             <name>Chuigda Whitegive</name>
             <email>icey@icey.tech</email>
+            <organization>Doki Doki 7th Design Club!</organization>
         </developer>
         <developer>
             <name>Cousin Ze</name>
             <email>alex@ckx-ily.cn</email>
+            <organization>Doki Doki 7th Design Club!</organization>
         </developer>
         <developer>
             <name>Hoshino Tented</name>
             <email>hoshinotented@qq.com</email>
+            <organization>Doki Doki 7th Design Club!</organization>
         </developer>
     </developers>
 
@@ -60,7 +63,7 @@
         <dependency>
             <groupId>club.doki7</groupId>
             <artifactId>ffm-plus</artifactId>
-            <version>0.1.4</version>
+            <version>0.2.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

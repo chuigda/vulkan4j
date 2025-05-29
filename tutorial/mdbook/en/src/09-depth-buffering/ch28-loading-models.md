@@ -138,7 +138,7 @@ for (int i = 0; i < obj.getNumVertices(); i++) {
 
 When you run your program, you should now see the correct result:
 
-![Drawing model](../../../images/drawing_model.png)
+![Drawing model](../../images/drawing_model.png)
 
 All that hard work is finally beginning to pay off with a demo like this!
 

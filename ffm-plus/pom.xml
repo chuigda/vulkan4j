@@ -30,7 +30,6 @@
             <name>Chuigda Whitegive</name>
             <email>icey@icey.tech</email>
             <organization>Doki Doki 7th Design Club!</organization>
-            <organizationUrl>https://self.icey.tech</organizationUrl>
         </developer>
     </developers>
 
@@ -41,7 +40,7 @@
     </scm>
 
     <artifactId>ffm-plus</artifactId>
-    <version>0.1.4</version>
+    <version>0.2.0</version>
     <packaging>jar</packaging>
 
     <properties>

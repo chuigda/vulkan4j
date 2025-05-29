@@ -240,7 +240,7 @@ The `VkDeviceCommands::cmdBindVertexBuffers` function is used to bind vertex buf
 
 Now run the program and you should see the familiar triangle again:
 
-![Triangle](../../../images/triangle.png)
+![Triangle](../../images/triangle.png)
 
 Try changing the color of the top vertex to white by modifying the `VERTICES` array:
 
@@ -255,6 +255,6 @@ private static final float[] VERTICES = {
 
 Run the program again and you should see the following:
 
-![Triangle white](../../../images/triangle_white.png)
+![Triangle white](../../images/triangle_white.png)
 
 In the next chapter we'll look at a different way to copy vertex data to a vertex buffer that results in better performance, but takes some more work.

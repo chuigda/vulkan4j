@@ -2,7 +2,7 @@
 
 Over the course of the next few chapters we'll be setting up a graphics pipeline that is configured to draw our first triangle. The graphics pipeline is the sequence of operations that take the vertices and textures of your meshes all the way to the pixels in the render targets. A simplified overview is displayed below:
 
-![pipeline](../images/vulkan_simplified_pipeline_en.svg)
+![pipeline](../../images/vulkan_simplified_pipeline_en.svg)
 
 The *input assembler* collects the raw vertex data from the buffers you specify and may also use an index buffer to repeat certain elements without having to duplicate the vertex data itself.
 
