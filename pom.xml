@@ -105,6 +105,7 @@
                                 <additionalOption>-overview</additionalOption>
                                 <additionalOption>${project.basedir}/misc/overview.html</additionalOption>
                                 <additionalOption>--allow-script-in-comments</additionalOption>
+                                <additionalOption>-Xdoclint:none</additionalOption>
                             </additionalOptions>
                         </configuration>
                     </reportSet>
