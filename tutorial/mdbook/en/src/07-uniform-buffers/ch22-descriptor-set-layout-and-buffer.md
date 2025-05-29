@@ -1,6 +1,6 @@
 # Descriptor set layout and buffer
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part07/ch22/Main.java)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part07/ch22/Main.java) | [C++ version](https://vulkan-tutorial.com/Uniform_buffers/Descriptor_layout_and_buffer)
 
 ## Introduction
 

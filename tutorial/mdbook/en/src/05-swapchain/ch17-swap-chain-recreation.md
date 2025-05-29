@@ -1,6 +1,6 @@
 # Swap chain recreation
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part05/ch17/Main.java)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part05/ch17/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Swap_chain_recreation)
 
 ## Introduction
 

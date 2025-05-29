@@ -1,5 +1,7 @@
 # Introduction
 
+> [C++ version](https://vulkan-tutorial.com/)
+
 This tutorial is an adaptation of <https://vulkan-tutorial.com> to use Java instead of C++. The majority of the credit for this tutorial should go the author of the original tutorial ([Alexander Overvoorde](https://github.com/Overv)) and the [other contributors](https://github.com/Overv/VulkanTutorial/graphs/contributors).
 
 ## About

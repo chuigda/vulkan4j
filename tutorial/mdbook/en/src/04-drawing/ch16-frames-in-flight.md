@@ -1,6 +1,14 @@
 # Frames in flight
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part04/ch16/Main.java)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part04/ch16/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Frames_in_flight)
+
+> About `VUID-vkQueueSubmit-pSignalSemaphores-00067`:
+> 
+> When I was creating this Java version tutorial, a recent Vulkan Validation Layer (VVL) was released, and exposed the problem that most Vulkan tutorials (including original vulkan-tutorial.com, vkguide.dev, and other derivative works) have been using semaphores **incorrectly** to synchronize between rendering and presentation. Till this message was written, the original tutorial has not been updated to fix the issue. However, the issue is fixed in this Java version (though wording has not been fully adjusted), so you may see some differences in the code compared to the original tutorial.
+> 
+> Also, since the size `pRenderFinishedSemaphores` is now bound with `swapChainImages.size()`, swap chain recreation will also be slightly different with the original tutorial. So the code in the following chapaters will also have some differences compared to the original tutorial.
+> 
+> For more information, checkout [this issue](https://github.com/Overv/VulkanTutorial/issues/407). Feel free to contribute to this and other Vulkan tutorials to fix the issue.
 
 Right now our render loop has one glaring flaw. We are required to wait on the previous frame to finish before we can start rendering the next which results in unnecessary idling of the host.
 
