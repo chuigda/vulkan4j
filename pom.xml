@@ -99,13 +99,13 @@
                             <skippedModules>codegen-v2,tutorial</skippedModules>
                             <windowtitle>vulkan4j</windowtitle>
                             <doctitle><![CDATA[<code>vulkan4j</code>: CG library bindings implemented with FFM APIs]]></doctitle>
+                            <doclint>none</doclint>
                             <additionalOptions>
                                 <additionalOption>--add-stylesheet</additionalOption>
                                 <additionalOption>${project.basedir}/misc/github-colorblind.css</additionalOption>
                                 <additionalOption>-overview</additionalOption>
                                 <additionalOption>${project.basedir}/misc/overview.html</additionalOption>
                                 <additionalOption>--allow-script-in-comments</additionalOption>
-                                <additionalOption>-Xdoclint:none</additionalOption>
                             </additionalOptions>
                         </configuration>
                     </reportSet>
