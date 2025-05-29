@@ -51,7 +51,7 @@
     </scm>
 
     <artifactId>vulkan</artifactId>
-    <version>0.3.0-alpha</version>
+    <version>0.3.0</version>
     <packaging>jar</packaging>
 
     <properties>

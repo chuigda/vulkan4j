@@ -7,8 +7,18 @@
 /// For actual API documentation, see packages documentation. For vulkan documentation,
 /// see <a href="https://docs.vulkan.org/spec/latest/index.html">Vulkan specification</a>.
 /// For Vulkan tutorial using Java and {@code vulkan4j} ecosystem, see
-/// <a href="https://vk-java.doki7.club">vk-java.doki7.club</a>. The following content is
-/// literary and not relevant to the API itself.
+/// <a href="https://vk-java.doki7.club">vk-java.doki7.club</a>
+///
+/// ## Use in Maven
+///
+/// <pre><code>
+/// <dependency>
+///     <groupId>club.doki7</groupId>
+///     <artifactId>vulkan</artifactId>
+///     <version>0.3.0</version>
+///     <scope>compile</scope>
+/// </dependency>
+/// </code></pre>
 module club.doki7.vulkan {
     requires club.doki7.ffm;
     requires org.jetbrains.annotations;

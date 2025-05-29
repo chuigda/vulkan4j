@@ -1,6 +1,24 @@
+/// GLFW Java bindings implemented with Java 22 FFM (Project Panama) APIs.
+///
+/// GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on
+/// the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving
+/// input and events.
+///
+/// For actual API documentation, see packages documentation. For GLFW documentation, see
+/// <a href="https://www.glfw.org/documentation.html">GLFW website</a>.
+///
+/// ## Use in Maven
+///
+/// <pre><code>
+/// <dependency>
+///     <groupId>club.doki7</groupId>
+///     <artifactId>glfw</artifactId>
+///     <version>0.3.0</version>
+///     <scope>compile</scope>
+/// </dependency>
+/// </code></pre>
 module club.doki7.glfw {
     exports club.doki7.glfw;
-    // exports club.doki7.glfw.handle;
     exports club.doki7.glfw.datatype;
     exports club.doki7.glfw.handle;
 
