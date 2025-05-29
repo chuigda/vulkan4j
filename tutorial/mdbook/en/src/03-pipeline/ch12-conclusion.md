@@ -1,5 +1,7 @@
 # Conclusion
 
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part03/ch12/Main.java)
+
 We can now combine all the structures and objects from the previous chapters to create the graphics pipeline! Here's the types of objects we have now, as a quick recap:
 
 - Shader stages: the shader modules that define the functionality of the programmable stages of the graphics pipeline
@@ -7,7 +9,7 @@ We can now combine all the structures and objects from the previous chapters to 
 - Pipeline layout: the uniform and push values referenced by the shader that can be updated at draw time
 - Render pass: the attachments referenced by the pipeline stages and their usage
 
-All of these combined fully define the functionality of the graphics pipeline, so we can now begin filling in the `VkGraphicsPipelineCreateInfo` structure at the end of the `createGraphicsPipeline` function. But before the calls to `vkDestroyShaderModule` because these are still to be used during the creation.
+All of these combined fully define the functionality of the graphics pipeline, so we can now begin filling in the `VkGraphicsPipelineCreateInfo` structure at the end of the `createGraphicsPipeline` function. But before the calls to `VKDeviceCommands::destroyShaderModule` because these are still to be used during the creation.
 
 ```java
 var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena);

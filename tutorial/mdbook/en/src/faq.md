@@ -18,4 +18,4 @@ TODO: macOS
 
 Example:
 
-![Steam layers](../../images/steam_layers_env.png)
+![Steam layers](../images/steam_layers_env.png)

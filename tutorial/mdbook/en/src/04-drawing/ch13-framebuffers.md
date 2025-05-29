@@ -1,5 +1,7 @@
 # Framebuffers
 
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part04/ch13/Main.java)
+
 We've talked a lot about framebuffers in the past few chapters, and we've set up the render pass to expect a single framebuffer with the same format as the swap chain images, but we haven't actually created any yet.
 
 The attachments specified during render pass creation are bound by wrapping them into a `VkFramebuffer` object. A framebuffer object references all the `VkImageView` objects that represent the attachments. In our case that will be only a single one: the color attachment. However, the image that we have to use for the attachment depends on which image the swap chain returns when we retrieve one for presentation. That means that we have to create a framebuffer for all the images in the swap chain and use the one that corresponds to the retrieved image at drawing time.

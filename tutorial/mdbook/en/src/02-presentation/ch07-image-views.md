@@ -1,5 +1,7 @@
 # Image views
 
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part02/ch07/Main.java)
+
 To use any `VkImage`, including those in the swap chain, in the render pipeline we have to create a `VkImageView` object. An image view is quite literally a view into an image. It describes how to access the image and which part of the image to access, for example if it should be treated as a 2D texture depth texture without any mipmapping levels.
 
 In this chapter we'll write a createImageViews function that creates a basic image view for every image in the swap chain so that we can use them as color targets later on.

@@ -1,5 +1,7 @@
 # Frames in flight
 
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part04/ch16/Main.java)
+
 Right now our render loop has one glaring flaw. We are required to wait on the previous frame to finish before we can start rendering the next which results in unnecessary idling of the host.
 
 The way to fix this is to allow multiple frames to be *in-flight* at once, that is to say, allow the rendering of one frame to not interfere with the recording of the next. How do we do this? Any resource that is accessed and modified during rendering must be duplicated. Thus, we need multiple command buffers, semaphores, and fences. In later chapters we will also add multiple instances of other resources, so we will see this concept reappear.
