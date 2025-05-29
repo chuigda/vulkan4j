@@ -9,14 +9,14 @@
 ///
 /// ## Use in Maven
 ///
-/// <pre><code>
+/// ```
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>glfw</artifactId>
 ///     <version>0.3.0</version>
 ///     <scope>compile</scope>
 /// </dependency>
-/// </code></pre>
+/// ```
 module club.doki7.glfw {
     exports club.doki7.glfw;
     exports club.doki7.glfw.datatype;

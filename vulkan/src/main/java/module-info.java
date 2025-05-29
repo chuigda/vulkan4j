@@ -11,14 +11,14 @@
 ///
 /// ## Use in Maven
 ///
-/// <pre><code>
+/// ```
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>vulkan</artifactId>
 ///     <version>0.3.0</version>
 ///     <scope>compile</scope>
 /// </dependency>
-/// </code></pre>
+/// ```
 module club.doki7.vulkan {
     requires club.doki7.ffm;
     requires org.jetbrains.annotations;

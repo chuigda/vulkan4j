@@ -12,14 +12,14 @@
 ///
 /// ## Use in Maven
 ///
-/// <pre><code>
+/// ```
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>gles2</artifactId>
 ///     <version>0.3.0</version>
 ///     <scope>compile</scope>
 /// </dependency>
-/// </code></pre>
+/// ```
 module club.doki7.gles2 {
     exports club.doki7.gles2;
 

@@ -8,14 +8,14 @@
 ///
 /// ## Use in Maven
 ///
-/// <pre><code>
+/// ```
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>vma</artifactId>
 ///     <version>0.3.0</version>
 ///     <scope>compile</scope>
 /// </dependency>
-/// </code></pre>
+/// ```
 module club.doki7.vma {
     exports club.doki7.vma;
     exports club.doki7.vma.bitmask;

@@ -7,14 +7,14 @@
 ///
 /// ## Use in Maven
 ///
-/// <pre><code>
+/// ```xml
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>ffm-plus</artifactId>
 ///     <version>0.2.0</version>
 ///     <scope>compile</scope>
 /// </dependency>
-/// </code></pre>
+/// ```
 module club.doki7.ffm {
     exports club.doki7.ffm;
     exports club.doki7.ffm.annotation;

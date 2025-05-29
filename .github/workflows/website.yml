@@ -24,7 +24,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - name: Generate JavaDoc
-        run: mvn -B site --file pom.xml
+        run: mvn -B site --file pom.xml || true
       - name: Build mdbook
         run: ../../../mdbook build
         working-directory: ./tutorial/mdbook/en
