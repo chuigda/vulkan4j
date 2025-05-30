@@ -1,0 +1,5 @@
+# Dynamic Rendering
+
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part_ex/ch_ex2/Main.java)
+
+*This chapter is still under construction, only code available yet.*
