@@ -42,7 +42,7 @@ After that we'll implement all the basic components of a Vulkan program that are
 * Use all the relevant API calls to integrate it into your program
 * Abstract parts of it into helper functions
 
-Although each chapter is written as a follow-up on the previous one, it is also possible to read the chapters as standalone articles introducing a certain Vulkan feature. That means that the site is also useful as a reference. All the Vulkan functions and types are linked to the Vulkan specification, so you can click them to learn more. Vulkan is still a fairly young API, so there may be some shortcomings in the specification itself. You are encouraged to submit feedback to [this Khronos repository](https://github.com/KhronosGroup/Vulkan-Docs).
+Although each chapter is written as a follow-up on the previous one, it is also possible to read the chapters as standalone articles introducing a certain Vulkan feature. That means that the site is also useful as a reference. Vulkan is still a fairly young API, so there may be some shortcomings in the specification itself. You are encouraged to submit feedback to [this Khronos repository](https://github.com/KhronosGroup/Vulkan-Docs).
 
 Every chapter will also start with a link to the final code for that chapter. You can refer to it if you have any doubts about the structure of the code, or if you're dealing with a bug and want to compare.
 

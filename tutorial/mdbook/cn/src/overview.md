@@ -1,150 +1,152 @@
-# Overview
+# 概览
 
-> [C++ version](https://vulkan-tutorial.com/Overview)
+> 本章内容的翻译使用了生成式人工智能，可能存在不准确之处。如有问题，欢迎提交问题和拉取请求。
+> 
+> [英文版](https://vulkan4j.doki7.club/tutorial/en/overview.html) | [C++ 版本](https://vulkan-tutorial.com/Overview)
 
-This chapter will start off with an introduction of Vulkan and the problems it addresses. After that we're going to look at the ingredients that are required for the first triangle. This will give you a big picture to place each of the subsequent chapters in. We will conclude by covering the structure of the Vulkan API wrapper provided by `vulkan4j`.
+本章将首先介绍 Vulkan 及其解决的问题。之后，我们将了解绘制第一个三角形所需的要素。这将为你提供一个宏观的视角，以便理解后续各个章节的内容。最后，我们将介绍 `vulkan4j` 提供的 Vulkan API 封装的结构。
 
-## Origin of Vulkan
+## Vulkan 的起源
 
-Just like the previous graphics APIs, Vulkan is designed as a cross-platform abstraction over [GPUs](https://en.wikipedia.org/wiki/Graphics_processing_unit). The problem with most of these APIs is that the era in which they were designed featured graphics hardware that was mostly limited to configurable fixed functionality. Programmers had to provide the vertex data in a standard format and were at the mercy of the GPU manufacturers with regards to lighting and shading options.
+与以前的图形 API 一样，Vulkan 被设计为对[图形处理单元 (GPU)](https://en.wikipedia.org/wiki/Graphics_processing_unit) 的跨平台抽象。这些 API 大多数的问题在于，它们设计的那个时代，图形硬件主要局限于可配置的固定功能。程序员必须以标准格式提供顶点数据，并且在光照和着色选项方面受制于 GPU 制造商。
 
-As graphics card architectures matured, they started offering more and more programmable functionality. All this new functionality had to be integrated with the existing APIs somehow. This resulted in less than ideal abstractions and a lot of guesswork on the graphics driver side to map the programmer's intent to the modern graphics architectures. That's why there are so many driver updates for improving the performance in games, sometimes by significant margins. Because of the complexity of these drivers, application developers also need to deal with inconsistencies between vendors, like the syntax that is accepted for [shaders](https://en.wikipedia.org/wiki/Shader). Aside from these new features, the past decade also saw an influx of mobile devices with powerful graphics hardware. These mobile GPUs have different architectures based on their energy and space requirements. One such example is [tiled rendering](https://en.wikipedia.org/wiki/Tiled_rendering), which would benefit from improved performance by offering the programmer more control over this functionality. Another limitation originating from the age of these APIs is limited multi-threading support, which can result in a bottleneck on the CPU side.
+随着显卡架构的成熟，它们开始提供越来越多的可编程功能。所有这些新功能都必须以某种方式集成到现有的 API 中。这导致了不理想的抽象，以及图形驱动程序方面需要进行大量猜测来将程序员的意图映射到现代图形架构上。这就是为什么有那么多旨在提高游戏性能的驱动程序更新，有时性能提升幅度还相当大。由于这些驱动程序的复杂性，应用程序开发者还需要处理不同供应商之间的不一致性，例如[着色器](https://en.wikipedia.org/wiki/Shader)所接受的语法。除了这些新特性之外，过去十年中还涌现了大量配备强大图形硬件的移动设备。这些移动 GPU 由于其能源和空间需求而具有不同的架构。其中一个例子是[平铺渲染](https://en.wikipedia.org/wiki/Tiled_rendering)，通过为程序员提供对该功能的更多控制，可以从中获益以提高性能。源于这些 API 年代的另一个限制是有限的多线程支持，这可能导致 CPU 端的瓶颈。
 
-Vulkan solves these problems by being designed from scratch for modern graphics architectures. It reduces driver overhead by allowing programmers to clearly specify their intent using a more verbose API, and allows multiple threads to create and submit commands in parallel. It reduces inconsistencies in shader compilation by switching to a standardized byte code format with a single compiler. Lastly, it acknowledges the general purpose processing capabilities of modern graphics cards by unifying the graphics and compute functionality into a single API.
+Vulkan 通过从头开始为现代图形架构设计来解决这些问题。它通过允许程序员使用更冗长的 API 来清晰地指定其意图，从而减少了驱动程序开销，并允许多个线程并行创建和提交指令。它通过切换到使用单一编译器的标准化字节码格式，减少了着色器编译中的不一致性。最后，它通过将图形和计算功能统一到单个 API 中，承认了现代显卡的通用处理能力。
 
-## What it takes to draw a triangle
+## 绘制一个三角形需要什么
 
-We'll now look at an overview of all the steps it takes to render a triangle in a well-behaved Vulkan program. All the concepts introduced here will be elaborated on in the next chapters. This is just to give you a big picture to relate all of the individual components to.
+现在我们将概述在一个行为良好的 Vulkan 程序中渲染一个三角形所需的所有步骤。此处介绍的所有概念都将在后续章节中详细阐述。这只是为了让你对所有独立组件之间的关系有一个整体的了解。
 
-### Step 1 - Instance and physical device selection
+### 步骤 1 - 实例和物理设备选择
 
-A Vulkan application starts by setting up the Vulkan API through a `VkInstance`. An instance is created by describing your application and any API extensions you will be using. After creating the instance, you can query for Vulkan supported hardware and select one or more `VkPhysicalDevice`s to use for operations. You can query for properties like VRAM size and device capabilities to select desired devices, for example to prefer using dedicated graphics cards.
+一个 Vulkan 应用程序首先通过一个 `VkInstance` 来设置 Vulkan API。实例是通过描述你的应用程序以及你将使用的任何 API 扩展来创建的。创建实例后，你可以查询支持 Vulkan 的硬件，并选择一个或多个 `VkPhysicalDevice` 用于操作。你可以查询诸如 VRAM 大小和设备能力之类的属性来选择所需的设备，例如优先使用独立显卡。
 
-### Step 2 - Logical device and queue families
+### 步骤 2 - 逻辑设备和队列族
 
-After selecting the right hardware device to use, you need to create a `VkDevice` (logical device), where you describe more specifically which `VkPhysicalDeviceFeatures` you will be using, like multi-viewport rendering and 64-bit floats. You also need to specify which queue families you would like to use. Most operations performed with Vulkan, like draw commands and memory operations, are asynchronously executed by submitting them to a `VkQueue`. Queues are allocated from queue families, where each queue family supports a specific set of operations in its queues. For example, there could be separate queue families for graphics, compute and memory transfer operations. The availability of queue families could also be used as a distinguishing factor in physical device selection. It is possible for a device with Vulkan support to not offer any graphics functionality, however all graphics cards with Vulkan support today will generally support all queue operations that we're interested in.
+选择了要使用的正确硬件设备后，你需要创建一个 `VkDevice` (逻辑设备)，在其中更具体地描述你将使用的 `VkPhysicalDeviceFeatures`，例如多视口渲染和 64 位浮点数。你还需要指定希望使用的队列族。使用 Vulkan 执行的大多数操作，例如绘制指令和内存操作，都是通过将它们提交到 `VkQueue` 来异步执行的。队列是从队列族中分配的，其中每个队列族在其队列中支持一组特定的操作。例如，图形、计算和内存传输操作可能存在独立的队列族。队列族的可用性也可以作为物理设备选择中的一个区分因素。支持 Vulkan 的设备可能不提供任何图形功能，但是如今所有支持 Vulkan 的显卡通常都会支持我们感兴趣的所有队列操作。
 
-### Step 3 - Window surface and swapchain
+### 步骤 3 - 窗口表面和交换链
 
-Unless you're only interested in offscreen rendering, you will need to create a window to present rendered images to. Windows can be created with the native platform APIs or libraries like [GLFW](http://www.glfw.org/) or [SDL](https://www.libsdl.org/). We will be using the `GLFW` in this tutorial, since there's already a minimal integration with `vulkan4j`.
+除非你只对离屏渲染感兴趣，否则你需要创建一个窗口来呈现渲染后的图像。窗口可以使用原生平台 API 或诸如 [GLFW](http://www.glfw.org/) 或 [SDL](https://www.libsdl.org/) 之类的库来创建。在本教程中，我们将使用 `GLFW`，因为它已经与 `vulkan4j` 进行了最基本的集成。
 
-We need two more components to actually render to a window: a window surface (`VkSurfaceKHR`) and a swapchain (`VkSwapchainKHR`). Note the `KHR` postfix, which means that these objects are part of a Vulkan extension. The Vulkan API itself is completely platform-agnostic, which is why we need to use the standardized WSI (Window System Interface) extension to interact with the window manager. The surface is a cross-platform abstraction over windows to render to and is generally instantiated by providing a reference to the native window handle, for example `HWND` on Windows. However, GLFW has already provided a cross-platform way for dealing with surfaces.
+要实际渲染到窗口，我们还需要两个组件：一个窗口表面 (`VkSurfaceKHR`) 和一个交换链 (`VkSwapchainKHR`)。注意 `KHR` 后缀，这意味着这些对象是 Vulkan 扩展的一部分。Vulkan API 本身是完全平台无关的，这就是为什么我们需要使用标准化的 WSI (窗口系统接口) 扩展来与窗口管理器交互。表面是用于渲染的窗口的跨平台抽象，通常通过提供对原生窗口句柄的引用来实例化，例如 Windows 上的 `HWND`。然而，GLFW 已经提供了一种处理表面的跨平台方式。
 
-The swapchain is a collection of render targets. Its basic purpose is to ensure that the image that we're currently rendering to is different from the one that is currently on the screen. This is important to make sure that only complete images are shown. Every time we want to draw a frame we have to ask the swapchain to provide us with an image to render to. When we've finished drawing a frame, the image is returned to the swapchain for it to be presented to the screen at some point. The number of render targets and conditions for presenting finished images to the screen depends on the present mode. Common present modes are  double buffering (vsync) and triple buffering. We'll look into these in the swapchain creation chapter.
+交换链是渲染目标的集合。其基本目的是确保我们当前正在渲染的图像与当前显示在屏幕上的图像不同。这对于确保只显示完整的图像非常重要。每次我们想要绘制一帧时，都必须请求交换链为我们提供一个用于渲染的图像。当我们完成一帧的绘制后，图像将返回到交换链，以便在某个时刻呈现到屏幕上。渲染目标的数量以及将完成的图像呈现到屏幕的条件取决于呈现模式。常见的呈现模式是双缓冲 (vsync) 和三缓冲。我们将在交换链创建章节中研究这些内容。
 
-Some platforms allow you to render directly to a display without interacting with any window manager through the `VK_KHR_display` and `VK_KHR_display_swapchain` extensions. These allow you to create a surface that represents the entire screen and could be used to implement your own window manager, for example.
+某些平台允许你通过 `VK_KHR_display` 和 `VK_KHR_display_swapchain` 扩展直接渲染到显示器，而无需与任何窗口管理器交互。这些扩展允许你创建一个代表整个屏幕的表面，例如，可以用来实现你自己的窗口管理器。
 
-### Step 4 - Image views and framebuffers
+### 步骤 4 - 图像视图和帧缓冲
 
-To draw to an image acquired from the swapchain, we have to wrap it into a `VkImageView` and `VkFramebuffer`. An image view references a specific part of an image to be used, and a framebuffer references image views that are to be used for color, depth and stencil targets. Because there could be many different images in the swapchain, we'll preemptively create an image view and framebuffer for each of them and select the right one at draw time.
+要绘制到从交换链获取的图像，我们必须将其包装在 `VkImageView` 和 `VkFramebuffer` 中。图像视图引用要使用的图像的特定部分，而帧缓冲引用要用于颜色、深度和模板目标的图像视图。因为交换链中可能有许多不同的图像，所以我们将为每个图像预先创建一个图像视图和帧缓冲，并在绘制时选择正确的那个。
 
-### Step 5 - Render passes
+### 步骤 5 - 渲染流程
 
-Render passes in Vulkan describe the type of images that are used during rendering operations, how they will be used, and how their contents should be treated. In our initial triangle rendering application, we'll tell Vulkan that we will use a single image as color target and that we want it to be cleared to a solid color right before the drawing operation. Whereas a render pass only describes the type of images, a `VkFramebuffer` actually binds specific images to these slots.
+Vulkan 中的渲染流程描述了渲染操作期间使用的图像类型、它们将如何使用以及应如何处理其内容。在我们最初的三角形渲染应用程序中，我们将告诉 Vulkan 我们将使用单个图像作为颜色目标，并且我们希望在绘制操作之前将其清除为纯色。渲染流程仅描述图像的类型，而 `VkFramebuffer` 实际上将特定图像绑定到这些槽位。
 
-### Step 6 - Graphics pipeline
+### 步骤 6 - 图形管线
 
-The graphics pipeline in Vulkan is set up by creating a `VkPipeline` object. It describes the configurable state of the graphics card, like the viewport size and depth buffer operation and the programmable state using `VkShaderModule` objects. The `VkShaderModule` objects are created from shader byte code. The driver also needs to know which render targets will be used in the pipeline, which we specify by referencing the render pass.
+Vulkan 中的图形管线是通过创建 `VkPipeline` 对象来设置的。它描述了显卡的可配置状态，例如视口大小和深度缓冲操作，以及使用 `VkShaderModule` 对象的可编程状态。`VkShaderModule` 对象是根据着色器字节码创建的。驱动程序还需要知道管线中将使用哪些渲染目标，我们通过引用渲染流程来指定这一点。
 
-One of the most distinctive features of Vulkan compared to existing APIs, is that almost all configuration of the graphics pipeline needs to be set in advance. That means that if you want to switch to a different shader or slightly change your vertex layout, then you need to entirely recreate the graphics pipeline. That means that you will have to create many `VkPipeline` objects in advance for all the different combinations you need for your rendering operations. Only some basic configuration, like viewport size and clear color, can be changed dynamically. All of the state also needs to be described explicitly, there is no default color blend state, for example.
+与现有 API 相比，Vulkan 最显著的特性之一是，几乎所有图形管线的配置都需要预先设置。这意味着，如果你想切换到不同的着色器或稍微更改顶点布局，则需要完全重新创建图形管线。这意味着你将不得不为渲染操作所需的所有不同组合预先创建许多 `VkPipeline` 对象。只有一些基本配置，如视口大小和清除颜色，可以动态更改。所有状态也需要明确描述，例如，没有默认的颜色混合状态。
 
-The good news is that because you're doing the equivalent of ahead-of-time compilation versus just-in-time compilation, there are more optimization opportunities for the driver and runtime performance is more predictable, because large state changes like switching to a different graphics pipeline are made very explicit.
+好消息是，因为你正在进行相当于预先编译 (ahead-of-time compilation) 而非即时编译 (just-in-time compilation) 的操作，所以驱动程序有更多的优化机会，并且运行时性能更可预测，因为诸如切换到不同图形管线之类的大型状态更改都变得非常明确。
 
-### Step 7 - Command pools and command buffers
+### 步骤 7 - 指令池和指令缓冲
 
-As mentioned earlier, many of the operations in Vulkan that we want to execute, like drawing operations, need to be submitted to a queue. These operations first need to be recorded into a `VkCommandBuffer` before they can be submitted. These command buffers are allocated from a `VkCommandPool` that is associated with a specific queue family. To draw a simple triangle, we need to record a command buffer with the following operations:
+如前所述，我们希望在 Vulkan 中执行的许多操作，例如绘制操作，都需要提交到队列中。这些操作首先需要记录到 `VkCommandBuffer` 中，然后才能提交。这些指令缓冲是从与特定队列族关联的 `VkCommandPool` 中分配的。要绘制一个简单的三角形，我们需要记录一个包含以下操作的指令缓冲：
 
-* Begin the render pass
-* Bind the graphics pipeline
-* Draw 3 vertices
-* End the render pass
+* 开始渲染流程
+* 绑定图形管线
+* 绘制 3 个顶点
+* 结束渲染流程
 
-Because the image in the framebuffer depends on which specific image the swapchain will give us, we need to record a command buffer for each possible image and select the right one at draw time. The alternative would be to record the command buffer again every frame, which is not as efficient.
+因为帧缓冲中的图像取决于交换链将为我们提供哪个特定图像，所以我们需要为每个可能的图像记录一个指令缓冲，并在绘制时选择正确的那个。另一种方法是每帧重新记录指令缓冲，但这效率不高。
 
-### Step 8 - Main loop
+### 步骤 8 - 主循环
 
-Now that the drawing commands have been wrapped into a command buffer, the main loop is quite straightforward. We first acquire an image from the swapchain with `vkAcquireNextImageKHR`. We can then select the appropriate command buffer for that image and execute it with `vkQueueSubmit`. Finally, we return the image to the swapchain for presentation to the screen with `vkQueuePresentKHR`.
+现在绘制指令已经封装到指令缓冲中，主循环就非常简单了。我们首先使用 `vkAcquireNextImageKHR` 从交换链获取一个图像。然后我们可以为该图像选择适当的指令缓冲，并使用 `vkQueueSubmit` 执行它。最后，我们使用 `vkQueuePresentKHR` 将图像返回到交换链以呈现到屏幕上。
 
-Operations that are submitted to queues are executed asynchronously. Therefore we have to use synchronization objects like semaphores to ensure a correct order of execution. Execution of the draw command buffer must be set up to wait on image acquisition to finish, otherwise it may occur that we start rendering to an image that is still being read for presentation on the screen. The `vkQueuePresentKHR` call in turn needs to wait for rendering to be finished, for which we'll use a second semaphore that is signaled after rendering completes.
+提交到队列的操作是异步执行的。因此，我们必须使用诸如信号量之类的同步对象来确保正确的执行顺序。绘制指令缓冲的执行必须设置为等待图像获取完成，否则可能会发生我们开始渲染一个仍在被读取以在屏幕上呈现的图像的情况。而 `vkQueuePresentKHR` 调用则需要等待渲染完成，为此我们将使用第二个信号量，该信号量在渲染完成后发出信号。
 
-### Summary
+### 总结
 
-This whirlwind tour should give you a basic understanding of the work ahead for drawing the first triangle. A real-world program contains more steps, like allocating vertex buffers, creating uniform buffers and uploading texture images that will be covered in subsequent chapters, but we'll start simple because Vulkan has enough of a steep learning curve as it is. Note that we'll cheat a bit by initially embedding the vertex coordinates in the vertex shader instead of using a vertex buffer. That's because managing vertex buffers requires some familiarity with command buffers first.
+这次快速概览应该能让你对绘制第一个三角形所需的工作有一个基本的了解。一个真实的程序包含更多步骤，例如分配顶点缓冲、创建 uniform 缓冲和上传纹理图像，这些将在后续章节中介绍，但我们将从简单开始，因为 Vulkan 本身就有一个足够陡峭的学习曲线。请注意，我们最初会将顶点坐标嵌入顶点着色器中，而不是使用顶点缓冲，以此“作弊”一下。这是因为管理顶点缓冲首先需要对指令缓冲有一定的熟悉度。
 
-So in short, to draw the first triangle we need to:
+简而言之，要绘制第一个三角形，我们需要：
 
-* Create a `VkInstance`
-* Select a supported graphics card (`VkPhysicalDevice`)
-* Create a `VkDevice` and `VkQueue` for drawing and presentation
-* Create a window, window surface and swapchain
-* Wrap the swapchain images into `VkImageView`
-* Create a render pass that specifies the render targets and usage
-* Create framebuffers for the render pass
-* Set up the graphics pipeline
-* Allocate and record a command buffer with the draw commands for every possible swapchain image
-* Draw frames by acquiring images, submitting the right draw command buffer and returning the images back to the swapchain
+* 创建一个 `VkInstance`
+* 选择一个支持的显卡 (`VkPhysicalDevice`)
+* 为绘制和呈现创建一个 `VkDevice` 和 `VkQueue`
+* 创建一个窗口、窗口表面和交换链
+* 将交换链图像包装到 `VkImageView` 中
+* 创建一个指定渲染目标和用途的渲染流程
+* 为渲染流程创建帧缓冲
+* 设置图形管线
+* 为每个可能的交换链图像分配并记录一个包含绘制指令的指令缓冲
+* 通过获取图像、提交正确的绘制指令缓冲并将图像返回到交换链来绘制帧
 
-It's a lot of steps, but the purpose of each individual step will be made very simple and clear in the upcoming chapters. If you're confused about the relation of a single step compared to the whole program, you should refer back to this chapter.
+步骤很多，但每个单独步骤的目的在接下来的章节中都会变得非常简单和清晰。如果你对单个步骤与整个程序的关系感到困惑，你应该回顾本章。
 
-## API concepts
+## API 概念
 
-The Vulkan API is defined in terms of the C programming language. The canonical version of the Vulkan API is defined in the Vulkan API Registry which is [an XML file](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) which serves as a machine-readable definition of the Vulkan API.
+Vulkan API 是用 C 编程语言定义的。Vulkan API 的规范版本定义在 Vulkan API 注册表中，它是一个 [XML 文件](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml)，作为 Vulkan API 的机器可读定义。
 
-The [Vulkan headers](https://github.com/KhronosGroup/Vulkan-Headers) that are part of the Vulkan SDK you will be installing in the next chapter are generated from this Vulkan API Registry. However, we will not be using these headers, directly or indirectly, because `vulkan4j` includes a Java interface to the Vulkan API generated from the Vulkan API registry that is independent of the C interface provided by the Vulkan SDK.
+你将在下一章安装的 Vulkan SDK 中包含的 [Vulkan 头文件](https://github.com/KhronosGroup/Vulkan-Headers) 是从这个 Vulkan API 注册表生成的。然而，我们不会直接或间接使用这些头文件，因为 `vulkan4j` 包含一个从 Vulkan API 注册表生成的 Vulkan API 的 Java 接口，该接口独立于 Vulkan SDK 提供的 C 接口。
 
-### Type names
+### 类型名称
 
-Java has some kind of namespace support (package) unlike C. However, Java doesn't have any syntactic sugar to help with the issue of name collisions. Therefore, vulkan types such as structs, unions and enums kept their `Vk` prefix.
+与 C 不同，Java 具有某种名称空间支持 (包)。然而，Java 没有任何语法糖来帮助解决名称冲突的问题。因此，诸如结构体、联合体和枚举之类的 Vulkan 类型保留了它们的 `Vk` 前缀。
 
-### Structs and unions representation
+### 结构体和联合体的表示
 
-Structs and unions are represented with Java `record`s. Each `record` instance contains a `MemorySegment`, which points to the first byte of struct or union in native memory. Calling static method `allocate` will automatically allocate a properly aligned native memory segment for that struct or union, and create a new instance of the `record` with that memory segment. It also initializes fields like `sType` for you. Manually creating the `record` instance is not recommended (marked as unsafe) but possible via the `record`'s constructor. 
+结构体和联合体使用 Java `record` 表示。每个 `record` 实例包含一个 `MemorySegment`，它指向原生内存中结构体或联合体的第一个字节。调用静态方法 `allocate` 将自动为该结构体或联合体分配一个正确对齐的原生内存段，并使用该内存段创建一个新的 `record` 实例。它还会为你初始化像 `sType` 这样的字段。不推荐手动创建 `record` 实例 (标记为不安全)，但可以通过 `record` 的构造器实现。
 
-To represent an array of structs or unions, `vulkan4j` uses a nested `Ptr` type. For example, an array of `VkGraphicsPipelineCreateInfo` structure is represented with a `VkGraphicsPipelineCreateInfo.Ptr` object. The `Ptr` type is a `record` that contains a `MemorySegment` pointing to the first byte of the array in native memory, and it provides methods to access the individual elements of the array. The `allocate` method has a overloading that accepts a `count` and returns such a `Ptr`.
+为了表示结构体或联合体的数组，`vulkan4j` 使用嵌套的 `Ptr` 类型。例如，`VkGraphicsPipelineCreateInfo` 结构体的数组用 `VkGraphicsPipelineCreateInfo.Ptr` 对象表示。`Ptr` 类型也是一个 `record`，它包含一个指向原生内存中数组第一个字节的 `MemorySegment`，并提供访问数组各个元素的方法。`allocate` 方法有一个接受 `count` 参数并返回这样一个 `Ptr` 的重载。
 
-Some Vulkan commands (for example, `vkCreateGraphicsPipelines`) can take single or multiple structs or unions as parameters. For their command wrapper, we use an interface type (`IVkGraphicsPipelineCreateInfo` in this case) to unify the structure type and its nested `Ptr` type. Some Vulkan commands (for example, `vkCreateInstance`), on the other hand, can take only one struct or union as a parameter. In such case, their command wrappers will only accept the structure type itself, not the nested `Ptr` type.
+一些 Vulkan 函数 (例如 `vkCreateGraphicsPipelines`) 可以接受单个或多个结构体或联合体作为参数。对于它们的函数封装，我们使用一个接口类型 (本例中为 `IVkGraphicsPipelineCreateInfo`) 来统一结构体类型及其嵌套的 `Ptr` 类型。另一方面，一些 Vulkan 函数 (例如 `vkCreateInstance`) 只能接受一个结构体或联合体作为参数。在这种情况下，它们的函数封装将只接受结构体类型本身，而不是嵌套的 `Ptr` 类型。
 
-### Handles representation
+### 句柄的表示
 
-Handles like `VkInstance`, `VkDevice` or `VkQueue` are represented with Java `record`s as well. Each handle type has a `MemorySegment` field that represents the native handle itself.
+诸如 `VkInstance`、`VkDevice` 或 `VkQueue` 之类的句柄也用 Java `record` 表示。每种句柄类型都有一个 `MemorySegment` 字段，代表原生句柄本身。
 
-When creating a pointer to a handle, you should use the `allocate` static method on the corresponding `Ptr` type such as `VkInstance.Ptr::allocate`. The return type is a `VkInstance.Ptr`. Calling `read` on the buffer will return the handle.
+创建指向句柄的指针时，应使用相应 `Ptr` 类型上的 `allocate` 静态方法，例如 `VkInstance.Ptr::allocate`。返回类型是 `VkInstance.Ptr`。在缓冲上调用 `read` 将返回句柄。
 
-Handles are usually created by Vulkan commands and most time you'll be creating pointers to handles and passing them to Vulkan commands. It's also possible to wrap a raw `MemorySegment` into a handle using the handle's constructor.
+句柄通常由 Vulkan 函数创建，大多数时候你会创建指向句柄的指针并将它们传递给 Vulkan 函数。也可以使用句柄的构造器，从原始 `MemorySegment` 创建句柄。
 
-### Enums and bitmasks representation
+### 枚举和掩码的表示
 
-`vulkan4j` uses conventional Java `int` and `long` types to represent Vulkan enums and bitmasks. Java enums are not used because they are very unfriendly to bitwise operations, and requires conversion during FFI calls. Vulkan enum and bitmask values are modelled with `public static final` fields in the corresponding enum classes.
+`vulkan4j` 使用传统的 Java `int` 和 `long` 类型来表示 Vulkan 枚举和掩码。不使用 Java 枚举是因为它们对位运算非常不友好，并且在 FFI 调用期间需要转换。Vulkan 枚举和掩码值在相应的枚举类中用 `public static final` 字段表示。
 
-In order to make APIs involving Vulkan enums and bitmasks easier to use, `vulkan4j` provides an annotation `club.doki7.ffm.annotation.EnumType`. This annotation is used to mark an `int` or `long` value to be a specific Vulkan enum or bitmask, thus when you Ctrl-click to jump to the documentation of some data type or API, you could Ctrl-click the enum or bitmask type to see what values can be used for that field or parameter.
+为了使涉及 Vulkan 枚举和掩码的 API 更易于使用，`vulkan4j` 提供了一个注解 `club.doki7.ffm.annotation.EnumType`。此注解用于将 `int` 或 `long` 值标记为特定的 Vulkan 枚举或掩码，因此当你 Ctrl+单击以跳转到某个数据类型或 API 的文档时，可以 Ctrl+单击枚举或掩码类型以查看该字段或参数可以使用哪些值。
 
-`vulkan4j` enum classes also come with a handy `explain` static method that can be used to get a human-readable explanation of a Vulkan enum or bitmask value.
+`vulkan4j` 枚举类还带有一个方便的 `explain` 静态方法，可用于获取 Vulkan 枚举或掩码值的人类可读的解释。
 
-### Commands
+### 函数
 
-The types for raw Vulkan commands like `vkCreateInstance` are defined in `vulkan4j` as `FunctionDescriptor`s with the `DESCRIPTOR$` prefix. So the `vulkan4j` type definition for `vkCreateInstance` is `DESCRIPTOR$vkCreateInstance`.
+像 `vkCreateInstance` 这样的原始 Vulkan 函数的类型在 `vulkan4j` 中定义为带有 `DESCRIPTOR$` 前缀的 `FunctionDescriptor`。因此，`vkCreateInstance` 的 `vulkan4j` 类型定义是 `DESCRIPTOR$vkCreateInstance`。
 
-These function descriptors are not enough on their own to call Vulkan commands, we first need to load the commands described by these types. The Vulkan specification has a [detailed description](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization-functionpointers) of how this is done, but I will present a simplified version here.
+这些函数描述符本身不足以调用 Vulkan 函数，我们首先需要加载这些类型描述的函数。Vulkan 规范对如何完成此操作有[详细描述](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization-functionpointers)，但我将在此处提供一个简化版本。
 
-The first Vulkan command to load is `vkGetInstanceProcAddr`. We can load it with Java `NativeLinker` and `SymbolLookup` which are part of Java 22 FFM APIs. `vulkan4j` provided a light-weight encapsulation of these APIs, making command loading much easier.
+第一个要加载的 Vulkan 函数是 `vkGetInstanceProcAddr`。我们可以使用 Java `NativeLinker` 和 `SymbolLookup` 来加载它，它们是 Java 22 FFM API 的一部分。`vulkan4j` 提供了对这些 API 的轻量级封装，使函数加载更加容易。
 
-However, there may be multiple versions of Vulkan commands available depending on the Vulkan implementations on your system. For example, if your system has both a dedicated NVIDIA GPU and an integrated Intel GPU, there may be separate implementations of device-specific Vulkan commands like `allocate_memory` for each device. In cases like this, `vkGetInstanceProcAddr` will return a command that will dispatch calls to the appropriate device-specific command depending on the device in use.
+然而，根据系统上的 Vulkan 实现，可能存在多个版本的 Vulkan 函数。例如，如果你的系统同时拥有 NVIDIA 独立 GPU 和 Intel 集成 GPU，则对于每个设备，可能存在设备特定的 Vulkan 函数 (如 `allocate_memory`) 的单独实现。在这种情况下，`vkGetInstanceProcAddr` 将返回一个函数，该函数将根据正在使用的设备将调用分派到适当的设备特定函数。
 
-To avoid the runtime overhead of this dispatch, the `vkGetDeviceProcAddr` command can be used to directly load these device-specific Vulkan commands. This command is loaded in the same manner as `vkGetInstanceProcAddr`.
+为了避免这种分派的运行时开销，可以使用 `vkGetDeviceProcAddr` 函数直接加载这些设备特定的 Vulkan 函数。此函数的加载方式与 `vkGetInstanceProcAddr` 相同。
 
-We will be calling dozens of Vulkan commands in this tutorial. Fortunately we won't have to load them one by one, `vulkan4j` provides a `Loader` type which can be used to easily load all the Vulkan commands in one of four categories:
+在本教程中，我们将调用数十个 Vulkan 函数。幸运的是，我们不必逐个加载它们，`vulkan4j` 提供了一个 `Loader` 类型，可用于轻松加载以下四个类别中的所有 Vulkan 函数：
 
-* `VkStaticCommands` &ndash; The Vulkan commands loaded in a platform-specific manner that can then used to load the other commands (i.e., `vkGetInstanceProcAddr` and `vkGetDeviceProcAddr`)
-* `VkEntryCommands` &ndash; The Vulkan commands loaded using `VkStaticCommands::getInstanceProcAddr` and a null Vulkan instance. These commands are not tied to a specific Vulkan instance and are used to query instance support and create instances
-* `VkInstanceCommands` &ndash; The Vulkan commands loaded using `VkStaticCommands::getInstanceProcAddr` and a valid Vulkan instance. These commands are tied to a specific Vulkan instance and, among other things, are used to query device support and create devices
-* `VkDeviceCommands` &ndash; The Vulkan commands loaded using `VkInstanceCommands::getDeviceProcAddr` and a valid Vulkan device. These commands are tied to a specific Vulkan device and expose most of the functionality you would expect from a graphics API
+* `VkStaticCommands` – 以平台特定的方式加载的 Vulkan 函数，然后可用于加载其他函数 (即 `vkGetInstanceProcAddr` 和 `vkGetDeviceProcAddr`)
+* `VkEntryCommands` – 使用 `VkStaticCommands::getInstanceProcAddr` 和一个空 Vulkan 实例加载的 Vulkan 函数。这些函数不与特定的 Vulkan 实例绑定，用于查询实例支持和创建实例
+* `VkInstanceCommands` – 使用 `VkStaticCommands::getInstanceProcAddr` 和一个有效的 Vulkan 实例加载的 Vulkan 函数。这些函数与特定的 Vulkan 实例绑定，除其他外，还用于查询设备支持和创建设备
+* `VkDeviceCommands` – 使用 `VkInstanceCommands::getDeviceProcAddr` 和一个有效的 Vulkan 设备加载的 Vulkan 函数。这些函数与特定的 Vulkan 设备绑定，并暴露了你期望从图形 API 获得的大部分功能
 
-These classes allow you to easily load and call raw Vulkan commands from Java.
+这些类使你可以轻松地从 Java 加载和调用原始 Vulkan 函数。
 
-## Validation layers
+## 校验层
 
-As mentioned earlier, Vulkan is designed for high performance and low driver overhead. Therefore it will include very limited error checking and debugging capabilities by default. The driver will often crash instead of returning an error code if you do something wrong, or worse, it will appear to work on your graphics card and completely fail on others.
+如前所述，Vulkan 旨在实现高性能和低驱动程序开销。因此，默认情况下它只包含非常有限的错误检查和调试能力。如果你做错了什么，驱动程序通常会崩溃而不是返回错误代码，或者更糟的是，它在你的显卡上看起来可以工作，但在其他显卡上却完全失败。
 
-Vulkan allows you to enable extensive checks through a feature known as *validation layers*. Validation layers are pieces of code that can be inserted between the API and the graphics driver to do things like running extra checks on function parameters and tracking memory management problems. The nice thing is that you can enable them during development and then completely disable them when releasing your application for zero overhead. Anyone can write their own validation layers, but the Vulkan SDK by LunarG provides a standard set of validation layers that we'll be using in this tutorial. You also need to register a callback function to receive debug messages from the layers.
+Vulkan 允许你通过称为*校验层*的功能启用广泛的检查。校验层是可以插入 API 和图形驱动程序之间的代码片段，用于执行诸如对函数参数进行额外检查和跟踪内存管理问题之类的操作。好处在于，你可以在开发期间启用它们，然后在发布应用程序时完全禁用它们，从而实现零开销。任何人都可以编写自己的校验层，但 LunarG 的 Vulkan SDK 提供了一组标准的校验层，我们将在本教程中使用它们。你还需要注册一个回调函数来从这些层接收调试消息。
 
-Because Vulkan is so explicit about every operation and the validation layers are so extensive, it can actually be a lot easier to find out why your screen is black compared to OpenGL and Direct3D!
+因为 Vulkan 对每个操作都如此明确，并且校验层如此广泛，所以与 OpenGL 和 Direct3D 相比，找出为什么你的屏幕是黑色的实际上可能要容易得多！

@@ -1,12 +1,14 @@
-# Development environment
+# 开发环境
 
-> [C++ version](https://vulkan-tutorial.com/Development_environment)
+> 本章内容的翻译使用了生成式人工智能，可能存在不准确之处。如有问题，欢迎提交问题和拉取请求。
+>
+> [英文版](https://vulkan4j.doki7.club/tutorial/en/development-environment.html) | [C++ 版本](https://vulkan-tutorial.com/Development_environment)
 
-In this chapter we'll set up your environment for developing Vulkan applications by installing the Vulkan SDK for your operating system. This tutorial assumes you already have a working Java development environment.
+在本章中，我们将为你的操作系统安装 Vulkan SDK，配置你用于开发 Vulkan 应用程序的环境。本教程假定你已经拥有一个可用的 Java 开发环境。
 
-## Maven project
+## Maven 项目
 
-Create a Maven project and add the following dependencies to your `pom.xml` file:
+创建一个 Maven 项目，并将以下依赖项添加到你的 `pom.xml` 文件中：
 
 ```xml
 <dependency>
@@ -36,57 +38,57 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 </dependency>
 ```
 
-`club.doki7.vulkan` is the Vulkan binding for Java, `club.doki7.ffm-plus` is a library that provides a thin wrapper over the Java 22 FFM APIs to make them easier and more type-safe to use. `club.doki7.glfw` is a Java binding for the GLFW library, which we'll use for window creation. `org.joml` is a math library that we'll use for vector and matrix operations. `de.javagl.obj` is a library for loading Wavefront OBJ files, which we'll use for loading 3D models.
+`club.doki7.vulkan` 是 Vulkan 的 Java 绑定，`club.doki7.ffm-plus` 是一个库，它在 Java 22 FFM API 之上提供了一个轻量级封装，使其更易于使用且类型安全。`club.doki7.glfw` 是 GLFW 库的 Java 绑定，我们将用它来创建窗口。`org.joml` 是一个数学库，我们将用它进行向量和矩阵运算。`de.javagl.obj` 是一个用于加载 Wavefront OBJ 文件的库，我们将用它来加载 3D 模型。
 
 ## GLFW
 
-Unlike `lwjgl-glfw` and other Java bindings for GLFW, `club.doki7.glfw` does not come up with the native binaries. You'll need to download the GLFW binaries for your operating system and architecture, either from the [official website](https://www.glfw.org/download.html), or using your favorite package manager. 
+与 `lwjgl-glfw` 和其他 GLFW 的 Java 绑定不同，`club.doki7.glfw` 不附带原生二进制文件。你需要为你的操作系统和架构下载 GLFW 二进制文件，可以从[官方网站](https://www.glfw.org/download.html)下载，也可以使用你喜欢的包管理器。
 
-If you're using a package manager, all things should be set up for you automatically. However, if you're downloading the binaries manually, you'll need a bit more effort to make JVM find the native libraries. There are two ways to do this:
+如果你使用包管理器，所有事情都应该会自动为你设置好。但是，如果你手动下载二进制文件，则需要多花一些功夫才能让 JVM 找到原生库。有两种方法可以做到这一点：
 
-- Copy (or link) the native library file (`glfw3.dll`) to some directory that is included by `PATH` environment variable.
-- Set the `java.library.path` system property to the directory containing the native libraries. This can be done by adding the following line to JVM arguments: `-Djava.library.path=/path/to/glfw/native/libs`. If you're using IDEs, you can usually set this in the run configuration. Consult your IDE documentation for more information.
+-   将原生库文件（`glfw3.dll`）复制（或链接）到 `PATH` 环境变量包含的某个目录中。
+-   将 `java.library.path` 系统属性设置为包含原生库的目录。这可以通过向 JVM 参数添加以下行来完成：`-Djava.library.path=/path/to/glfw/native/libs`。如果你使用 IDE，通常可以在运行配置中进行设置。有关更多信息，请查阅你的 IDE 文档。
 
-In realworld production you may want to bundle the native libraries with your application (usually a JAR file), in that case you may use some solution like [native-utils](https://github.com/adamheinrich/native-utils).
+在实际生产中，你可能希望将原生库与你的应用程序（通常是 JAR 文件）捆绑在一起，在这种情况下，你可以使用像 [native-utils](https://github.com/adamheinrich/native-utils) 这样的解决方案。
 
-> Chuigda did not bundle the native libraries with `club.doki7.glfw` because he doesn't know what's the best practice in Java world, <del>definitely not because he's lazy</del>. If you have a good idea, a pull request is always welcome.
+> Chuigda 没有将原生库与 `club.doki7.glfw` 捆绑在一起，因为他不知道 Java 世界的最佳实践是什么<del>，绝对不是因为他懒</del>。如果你有好主意，随时欢迎提交拉取请求。
 
 ## Vulkan SDK
 
-The most important component you'll need for developing Vulkan applications is the SDK. It includes the headers, standard validation layers, debugging tools and a loader for the Vulkan functions. The loader looks up the functions in the driver at runtime, similarly to GLEW for OpenGL - if you're familiar with that.
+开发 Vulkan 应用程序所需的最重要的组件是 SDK。它包括头文件、标准校验层、调试工具以及 Vulkan 函数的加载器。该加载器在运行时从驱动程序中查找函数，类似于 OpenGL 的 GLEW——如果你熟悉的话。
 
 ### Windows
 
-The SDK can be downloaded from the [LunarG website](https://vulkan.lunarg.com/) using the buttons at the bottom of the page. You don't have to create an account, but it will give you access to some additional documentation that may be useful to you.
+SDK 可以从 [LunarG 网站](https://vulkan.lunarg.com/) 使用页面底部的按钮下载。你不需要创建账户，但这会让你能够访问一些可能对你有用的额外文档。
 
-![](../../images/vulkan_sdk_download_buttons.png)
+![](../images/vulkan_sdk_download_buttons.png)
 
-Proceed through the installation and pay attention to the installation location of the SDK. The first thing we'll do is verify that your graphics card and driver properly support Vulkan. Go to the directory where you installed the SDK, open the `Bin` directory and run the `vkcube.exe` demo. You should see the following:
+继续安装过程，并注意 SDK 的安装位置。我们要做的第一件事是验证你的显卡和驱动程序是否正确支持 Vulkan。转到你安装 SDK 的目录，打开 `Bin` 目录并运行 `vkcube.exe` 演示程序。你应该会看到以下内容：
 
-![](../../images/cube_demo.png)
+![](../images/cube_demo.png)
 
-If you receive an error message then ensure that your drivers are up-to-date, include the Vulkan runtime and that your graphics card is supported. See the [introduction chapter](introduction.md) for links to drivers from the major vendors.
+如果你收到错误消息，请确保你的驱动程序是最新的，包含 Vulkan 运行时，并且你的显卡受支持。有关主要供应商驱动程序的链接，请参阅[介绍章节](introduction.md)。
 
-There is another program in this directory that will be useful for development. The `glslangValidator.exe` and `glslc.exe` programs will be used to compile shaders from the human-readable [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) to bytecode. We'll cover this in depth in the [shader modules chapter](pipeline/ch09-shader-modules.md). The `Bin` directory also contains the binaries of the Vulkan loader and the validation layers, while the `Lib` directory contains the libraries.
+此目录中还有另一个对开发有用的程序。`glslangValidator.exe` 和 `glslc.exe` 程序将用于将人类可读的 [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) 着色器编译为字节码。我们将在[着色器模块章节](pipeline/ch09-shader-modules.md)深入介绍这一点。`Bin` 目录还包含 Vulkan 加载器和校验层的二进制文件，而 `Lib` 目录包含库文件。
 
-Feel free to explore the other files, but we won't need them for this tutorial.
+你可以随意浏览其他文件，但本教程不需要它们。
 
 ### Linux
 
-These instructions will be aimed at Ubuntu users, but you may be able to follow along by changing the `apt` commands to the package manager commands that are appropriate for you.
+这些说明主要面向 Ubuntu 用户，但你可以通过将 `apt` 命令更改为适合你的包管理器命令来参照执行。
 
-The most important components you'll need for developing Vulkan applications on Linux are the Vulkan loader, validation layers, and a couple of command-line utilities to test whether your machine is Vulkan-capable:
+在 Linux 上开发 Vulkan 应用程序所需的最重要的组件是 Vulkan 加载器、校验层以及一些用于测试你的机器是否支持 Vulkan 的命令行实用程序：
 
-* `sudo apt install vulkan-tools` &ndash; Command-line utilities, most importantly `vulkaninfo` and `vkcube`. Run these to confirm your machine supports Vulkan.
-* `sudo apt install libvulkan-dev` &ndash; Installs Vulkan loader. The loader looks up the functions in the driver at runtime, similarly to GLEW for OpenGL - if you're familiar with that.
-* `sudo apt install vulkan-validationlayers-dev` &ndash; Installs the standard validation layers. These are crucial when debugging Vulkan applications, and we'll discuss them in an upcoming chapter.
+*   `sudo apt install vulkan-tools` – 命令行实用程序，最重要的是 `vulkaninfo` 和 `vkcube`。运行这些程序以确认你的机器支持 Vulkan。
+*   `sudo apt install libvulkan-dev` – 安装 Vulkan 加载器。该加载器在运行时从驱动程序中查找函数，类似于 OpenGL 的 GLEW——如果你熟悉的话。
+*   `sudo apt install vulkan-validationlayers-dev` – 安装标准校验层。这些在调试 Vulkan 应用程序时至关重要，我们将在后续章节中讨论它们。
 
-If installation was successful, you should be all set with the Vulkan portion. Remember to run `vkcube` and ensure you see the following pop up in a window:
+如果安装成功，Vulkan 部分就应该准备就绪了。记住运行 `vkcube` 并确保你看到以下内容弹出一个窗口：
 
-![](../../images/cube_demo_nowindow.png)
+![](../images/cube_demo_nowindow.png)
 
-If you receive an error message then ensure that your drivers are up-to-date, include the Vulkan runtime and that your graphics card is supported. See the [introduction chapter](introduction.md) for links to drivers from the major vendors.
+如果你收到错误消息，请确保你的驱动程序是最新的，包含 Vulkan 运行时，并且你的显卡受支持。有关主要供应商驱动程序的链接，请参阅[介绍章节](introduction.md)。
 
 ### macOS
 
-> TODO: Author does not use macOS and cannot provide instructions. If you have reproducible instructions for macOS, please submit a pull request. 
+> TODO：作者不使用 macOS，也没有 macOS 实例，无法提供相关说明。如果你有适用于 macOS 的可复现的说明，请提交一个拉取请求。
