@@ -19,8 +19,9 @@ fun main() {
 
     val filesToParse = indexFileContent.filter { it.startsWith("#include") }
         .map { it.removePrefix("#include <SDL3/").removeSuffix(">") }
+        .toList()
 
-    println(indexFileContent)
+    println(filesToParse)
 }
 
 fun extractSDL3Headers(): Registry<EmptyMergeable> {
