@@ -17,8 +17,6 @@ public final class VmaDefragmentationFlags {
     public static final int FLAG_ALGORITHM_EXTENSIVE = 0x8;
     public static final int FLAG_ALGORITHM_FAST = 0x1;
     public static final int FLAG_ALGORITHM_FULL = 0x4;
-
-    /// A bit mask to extract only `ALGORITHM` bits from entire set of flags.
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
 
     /// A bit mask to extract only `ALGORITHM` bits from entire set of flags.

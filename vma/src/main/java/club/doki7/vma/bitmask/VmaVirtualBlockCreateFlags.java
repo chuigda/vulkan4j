@@ -8,7 +8,6 @@ import java.util.List;
 /// Flags to be passed as VmaVirtualBlockCreateInfo::flags.
 ///
 public final class VmaVirtualBlockCreateFlags {
-    /// Bit mask to extract only `ALGORITHM` bits from entire set of flags.
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
 
     /// Enables alternative, linear allocation algorithm in this virtual block.

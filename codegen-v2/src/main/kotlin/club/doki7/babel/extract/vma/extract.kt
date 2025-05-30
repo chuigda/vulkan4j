@@ -2,30 +2,28 @@
 
 package club.doki7.babel.extract.vma
 
-import club.doki7.babel.cdecl.ControlFlow
+import club.doki7.babel.hparse.ControlFlow
 import club.doki7.babel.cdecl.EnumeratorDecl
 import club.doki7.babel.cdecl.FunctionDecl
-import club.doki7.babel.cdecl.ParseConfig
+import club.doki7.babel.hparse.ParseConfig
 import club.doki7.babel.cdecl.RawFunctionType
 import club.doki7.babel.cdecl.RawIdentifierType
 import club.doki7.babel.cdecl.TypedefDecl
-import club.doki7.babel.cdecl.detectBlockComment
-import club.doki7.babel.cdecl.detectBlockDoxygen
-import club.doki7.babel.cdecl.detectLineComment
-import club.doki7.babel.cdecl.detectPreprocessor
-import club.doki7.babel.cdecl.detectTriSlashDoxygen
-import club.doki7.babel.cdecl.dummyAction
-import club.doki7.babel.cdecl.parseBlockDoxygen
+import club.doki7.babel.hparse.detectBlockComment
+import club.doki7.babel.hparse.detectBlockDoxygen
+import club.doki7.babel.hparse.detectLineComment
+import club.doki7.babel.hparse.detectPreprocessor
+import club.doki7.babel.hparse.detectTriSlashDoxygen
+import club.doki7.babel.hparse.dummyAction
 import club.doki7.babel.cdecl.parseEnumeratorDecl
 import club.doki7.babel.cdecl.parseFunctionDecl
 import club.doki7.babel.cdecl.parseStructFieldDecl
-import club.doki7.babel.cdecl.parseTriSlashDoxygen
 import club.doki7.babel.cdecl.parseTypedefDecl
-import club.doki7.babel.cdecl.nextLine
-import club.doki7.babel.cdecl.parse
-import club.doki7.babel.cdecl.parseAndSaveBlockDoxygen
-import club.doki7.babel.cdecl.parseAndSaveTriSlashDoxygen
-import club.doki7.babel.cdecl.skipBlockComment
+import club.doki7.babel.hparse.nextLine
+import club.doki7.babel.hparse.hparse
+import club.doki7.babel.hparse.parseAndSaveBlockDoxygen
+import club.doki7.babel.hparse.parseAndSaveTriSlashDoxygen
+import club.doki7.babel.hparse.skipBlockComment
 import club.doki7.babel.cdecl.toType
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.isDecOrHexNumber
@@ -58,13 +56,14 @@ fun extractVMAHeader(): Registry<EmptyMergeable> {
         ext = EmptyMergeable()
     )
 
-    parse(
+    hparse(
         headerParseConfig,
         registry,
         mutableMapOf("doxygen" to mutableListOf<String>()),
         headerFile,
         0
     )
+    postprocessDoc(registry)
     registry.renameEntities()
     return registry
 }
@@ -72,8 +71,8 @@ fun extractVMAHeader(): Registry<EmptyMergeable> {
 private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(0, ::detectBlockDoxygen, ::parseAndSaveBlockDoxygen)
     addRule(0, ::detectTriSlashDoxygen, ::parseAndSaveTriSlashDoxygen)
-    addRule(0, { line: String ->
-        if (line.startsWith("#ifdef VMA_IMPLEMENTATION")) {
+    addRule(0, {
+        if (it.startsWith("#ifdef VMA_IMPLEMENTATION")) {
             ControlFlow.RETURN
         } else {
             ControlFlow.NEXT
@@ -84,8 +83,8 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(10, ::detectPreprocessor, ::nextLine)
     addRule(10, ::detectBlockComment, ::skipBlockComment)
 
-    addRule(20, { line: String ->
-        if (line.startsWith("VK_DEFINE_HANDLE(") || line.startsWith("VK_DEFINE_NON_DISPATCHABLE_HANDLE(")) {
+    addRule(20, {
+        if (it.startsWith("VK_DEFINE_HANDLE(") || it.startsWith("VK_DEFINE_NON_DISPATCHABLE_HANDLE(")) {
             ControlFlow.ACCEPT
         } else {
             ControlFlow.NEXT
@@ -98,22 +97,22 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
             ControlFlow.NEXT
         }
     }, ::parsePFNTypedef)
-    addRule(20, { line: String ->
-        if (line.startsWith("typedef struct")) {
+    addRule(20, {
+        if (it.startsWith("typedef struct")) {
             ControlFlow.ACCEPT
         } else {
             ControlFlow.NEXT
         }
     }, ::parseAndSaveStructure)
-    addRule(20, { line: String ->
-        if (line.startsWith("typedef enum")) {
+    addRule(20, {
+        if (it.startsWith("typedef enum")) {
             ControlFlow.ACCEPT
         } else {
             ControlFlow.NEXT
         }
     }, ::parseAndSaveEnumeration)
-    addRule(20, { line: String ->
-        if (line.startsWith("VMA_CALL_PRE") && line.contains("VMA_CALL_POST")) {
+    addRule(20, {
+        if (it.startsWith("VMA_CALL_PRE") && it.contains("VMA_CALL_POST")) {
             ControlFlow.ACCEPT
         } else {
             ControlFlow.NEXT
@@ -140,6 +139,8 @@ private fun parseOpaqueHandleTypedef(
         handle.doc = cx["doxygen"] as List<String>
         cx.remove("doxygen")
     }
+
+    registry.opaqueHandleTypedefs.putEntityIfAbsent(handle)
     return index + 1
 }
 
@@ -158,7 +159,7 @@ private fun parsePFNTypedef(
         functionTypedef.doc = cx["doxygen"] as List<String>
         cx.remove("doxygen")
     }
-    registry.functionTypedefs[functionTypedef.name] = functionTypedef
+    registry.functionTypedefs.putEntityIfAbsent(functionTypedef)
     return nextIndex
 }
 
@@ -174,7 +175,7 @@ private fun parseAndSaveStructure(
     }
 
     val structureName = lines[index].removePrefix("typedef struct").trim()
-    val next = parse(structureParseConfig, registry, cx, lines, index + 2)
+    val next = hparse(structureParseConfig, registry, cx, lines, index + 2)
     val fields = cx["fields"] as MutableList<Member>
     cx.remove("fields")
 
@@ -195,6 +196,11 @@ private fun parseAndSaveStructure(
 private val structureParseConfig = ParseConfig<EmptyMergeable>().apply {
     addInit { it["fields"] = mutableListOf<Member>() }
 
+    addRule(
+        -5,
+        { if (it.startsWith("#else")) ControlFlow.ACCEPT else ControlFlow.NEXT },
+        { _, _, _, index -> index + 3 }
+    )
     addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
     addRule(0, ::detectBlockDoxygen, ::parseAndSaveBlockDoxygen)
     addRule(0, ::detectTriSlashDoxygen, ::parseAndSaveTriSlashDoxygen)
@@ -244,7 +250,7 @@ private fun parseAndSaveEnumeration(
     }
 
     val enumName = lines[index].removePrefix("typedef enum").trim()
-    val next = parse(enumerationParseConfig, registry, cx, lines, index + 2)
+    val next = hparse(enumerationParseConfig, registry, cx, lines, index + 2)
     val enumerators = cx["enumerators"] as MutableList<Pair<EnumeratorDecl, List<String>?>>
     cx.remove("enumerators")
 

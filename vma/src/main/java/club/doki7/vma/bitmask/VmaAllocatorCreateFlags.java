@@ -73,12 +73,6 @@ public final class VmaAllocatorCreateFlags {
     /// The value to be used for default priority is 0.5.
     /// For more details, see the documentation of the VK_EXT_memory_priority extension.
     public static final int EXT_MEMORY_PRIORITY = 0x40;
-
-    /// Enables usage of VK_KHR_external_memory_win32 extension in the library.
-    ///
-    /// You should set this flag if you found available and enabled this device extension,
-    /// while creating Vulkan device passed as VmaAllocatorCreateInfo::device.
-    /// For more information, see  vk_khr_external_memory_win32.
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
 
     /// Enables usage of VK_KHR_bind_memory2 extension.

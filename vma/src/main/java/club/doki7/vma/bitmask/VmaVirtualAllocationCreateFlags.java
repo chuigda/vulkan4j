@@ -8,9 +8,6 @@ import java.util.List;
 /// Flags to be passed as VmaVirtualAllocationCreateInfo::flags.
 ///
 public final class VmaVirtualAllocationCreateFlags {
-    /// A bit mask to extract only `STRATEGY` bits from entire set of flags.
-    ///
-    /// These strategy flags are binary compatible with equivalent flags in {@code VmaAllocationCreateFlagBits}.
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
 
     /// A bit mask to extract only `STRATEGY` bits from entire set of flags.

@@ -8,7 +8,6 @@ import java.util.List;
 /// Flags to be passed as VmaPoolCreateInfo::flags.
 ///
 public final class VmaPoolCreateFlags {
-    /// Bit mask to extract only `ALGORITHM` bits from entire set of flags.
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
 
     /// Use this flag if you always allocate only buffers and linear images or only optimal images out of this pool and so Buffer-Image Granularity can be ignored.

@@ -1,8 +1,9 @@
-package club.doki7.babel.cdecl
+package club.doki7.babel.hparse
 
+import club.doki7.babel.cdecl.parseBlockDoxygen
+import club.doki7.babel.cdecl.parseTriSlashDoxygen
 import club.doki7.babel.registry.IMergeable
 import club.doki7.babel.registry.Registry
-import java.util.TreeSet
 import java.util.logging.Logger
 
 enum class ControlFlow {
@@ -14,23 +15,19 @@ typealias LineMatcher = (List<String>, Int) -> ControlFlow
 typealias SingleLineMatcher = (String) -> ControlFlow
 typealias LineAction<E> = (Registry<E>, MutableMap<String, Any>, List<String>, Int) -> Int
 
-internal val log = Logger.getLogger("c.d.b.cdecl.hparse")
+internal val log = Logger.getLogger("c.d.b.hparse")
 
-internal data class LineHandler<E: IMergeable<E>>(
+internal class LineHandler<E: IMergeable<E>>(
     val priority: Int,
     val matcher: LineMatcher,
     val action: LineAction<E>
-) : Comparable<LineHandler<E>> {
-    override fun compareTo(other: LineHandler<E>): Int {
-        return priority.compareTo(other.priority)
-    }
-}
+)
 
 class ParseConfig<E: IMergeable<E>> internal constructor(
     internal val initSet: MutableSet<InitContext>,
-    internal val handlerSet: TreeSet<LineHandler<E>>
+    internal val handlerSet: MutableSet<LineHandler<E>>
 ) {
-    constructor() : this(mutableSetOf(), TreeSet())
+    constructor() : this(mutableSetOf(), mutableSetOf())
 
     fun addInit(init: InitContext) {
         initSet.add(init)
@@ -45,7 +42,7 @@ class ParseConfig<E: IMergeable<E>> internal constructor(
     }
 }
 
-fun <E: IMergeable<E>> parse(
+fun <E: IMergeable<E>> hparse(
     config: ParseConfig<E>,
     registry: Registry<E>,
     cx: MutableMap<String, Any>,
@@ -56,9 +53,9 @@ fun <E: IMergeable<E>> parse(
 
     var index = index
     var prevIndex: Int? = null
-    while (index < lines.size) {
+    outer@ while (index < lines.size) {
         if (prevIndex == index) {
-            log.warning("${index+1}: dead loop detected, forcing progress")
+            log.warning("${index+1}: dead loop detected, forcing progress: ${lines[index]}")
             index++
         }
         prevIndex = index
@@ -68,19 +65,18 @@ fun <E: IMergeable<E>> parse(
             continue
         }
 
-        for (handler in config.handlerSet) {
+        for (handler in config.handlerSet.sortedBy { it.priority }) {
             when (handler.matcher(lines, index)) {
                 ControlFlow.ACCEPT -> {
                     index = handler.action(registry, cx, lines, index)
-                    prevIndex = index
-                    break
+                    continue@outer
                 }
-                ControlFlow.NEXT -> continue // try next handler
+                ControlFlow.NEXT -> continue
                 ControlFlow.RETURN -> return index
             }
         }
 
-        log.warning("${index+1}: no handler matched, skipping line")
+        log.warning("${index+1}: unknown line: ${lines[index]}")
         index++
     }
 
@@ -100,7 +96,7 @@ fun <E: IMergeable<E>> parseAndSaveTriSlashDoxygen(
     lines: List<String>,
     index: Int
 ): Int {
-    val result = parseBlockDoxygen(lines, index)
+    val result = parseTriSlashDoxygen(lines, index)
     if (result.first != null) {
         cx["doxygen"] = result.first!!
     } else {
@@ -171,7 +167,10 @@ fun <E: IMergeable<E>> skipBlockComment(
     while (i < lines.size && !lines[i].contains("*/")) {
         i++
     }
-    return index
+    if (i >= lines.size) {
+        log.warning("Unterminated block comment starting at line $index")
+    }
+    return i + 1
 }
 
 fun <E: IMergeable<E>> dummyAction(

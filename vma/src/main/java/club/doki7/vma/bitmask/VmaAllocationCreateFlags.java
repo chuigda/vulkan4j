@@ -31,8 +31,6 @@ public final class VmaAllocationCreateFlags {
     /// through `VkMemoryDedicatedAllocateInfoKHR` structure in case the allocation ends up in its own memory block,
     /// use also flag {@code VMA_ALLOCATION_CREATE_CAN_ALIAS_BIT}.
     public static final int DONT_BIND = 0x80;
-
-    /// A bit mask to extract only `STRATEGY` bits from entire set of flags.
     public static final int FLAG_BITS_MAX_ENUM = 0x7fffffff;
 
     /// Together with {@code VMA_ALLOCATION_CREATE_HOST_ACCESS_SEQUENTIAL_WRITE_BIT} or {@code VMA_ALLOCATION_CREATE_HOST_ACCESS_RANDOM_BIT},
