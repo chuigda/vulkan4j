@@ -1,16 +1,31 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package club.doki7.babel.extract.vma
 
+import club.doki7.babel.cdecl.ControlFlow
 import club.doki7.babel.cdecl.EnumeratorDecl
 import club.doki7.babel.cdecl.FunctionDecl
+import club.doki7.babel.cdecl.ParseConfig
 import club.doki7.babel.cdecl.RawFunctionType
 import club.doki7.babel.cdecl.RawIdentifierType
 import club.doki7.babel.cdecl.TypedefDecl
+import club.doki7.babel.cdecl.detectBlockComment
+import club.doki7.babel.cdecl.detectBlockDoxygen
+import club.doki7.babel.cdecl.detectLineComment
+import club.doki7.babel.cdecl.detectPreprocessor
+import club.doki7.babel.cdecl.detectTriSlashDoxygen
+import club.doki7.babel.cdecl.dummyAction
 import club.doki7.babel.cdecl.parseBlockDoxygen
 import club.doki7.babel.cdecl.parseEnumeratorDecl
 import club.doki7.babel.cdecl.parseFunctionDecl
 import club.doki7.babel.cdecl.parseStructFieldDecl
 import club.doki7.babel.cdecl.parseTriSlashDoxygen
 import club.doki7.babel.cdecl.parseTypedefDecl
+import club.doki7.babel.cdecl.nextLine
+import club.doki7.babel.cdecl.parse
+import club.doki7.babel.cdecl.parseAndSaveBlockDoxygen
+import club.doki7.babel.cdecl.parseAndSaveTriSlashDoxygen
+import club.doki7.babel.cdecl.skipBlockComment
 import club.doki7.babel.cdecl.toType
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.isDecOrHexNumber
@@ -25,282 +40,312 @@ fun extractVMAHeader(): Registry<EmptyMergeable> {
     val headerFile = inputDir.resolve("vk_mem_alloc.h")
         .toFile()
         .readText()
+        .splitToSequence("\n")
+        .map(String::trim)
+        .toList()
 
-    val r = parseVMAHeader(headerFile)
-    r.renameEntities()
-    return r
-}
-
-private fun parseVMAHeader(fileContent: String): Registry<EmptyMergeable> {
-    val constants = mutableMapOf<Identifier, Constant>()
-    val commands = mutableMapOf<Identifier, Command>()
-    val opaqueHandleTypedefs = mutableMapOf<Identifier, OpaqueHandleTypedef>()
-    val structures = mutableMapOf<Identifier, Structure>()
-    val functionTypedefs = mutableMapOf<Identifier, FunctionTypedef>()
-    val bitmasks = mutableMapOf<Identifier, Bitmask>()
-    val enumerations = mutableMapOf<Identifier, Enumeration>()
-
-    val lines = fileContent.split("\n").map(String::trim)
-
-    var index = 0
-    var previousIndex: Int? = null
-
-    var savedDoc: List<String>? = null
-    while (index < lines.size) {
-        if (previousIndex != null && previousIndex == index) {
-            log.warning("vma.h: infinite loop detected at line $index: ${lines[index]}, forcing process")
-            index++
-        }
-        previousIndex = index
-
-        val curLine = lines[index]
-        if (curLine == "#ifdef VMA_IMPLEMENTATION") {
-            break
-        }
-
-        if (curLine.startsWith("/**") || curLine.startsWith("/*!")) {
-            val result = parseBlockDoxygen(lines, index)
-            savedDoc = result.first
-            index = result.second
-            continue
-        }
-
-        if (curLine.startsWith("///")) {
-            val result = parseTriSlashDoxygen(lines, index)
-            savedDoc = result.first
-            index = result.second
-            continue
-        }
-
-        if (curLine.isBlank() || curLine.startsWith("#") || curLine.startsWith("//")) {
-            index++
-            continue
-        }
-
-        if (curLine.startsWith("VK_DEFINE_HANDLE(") && curLine.endsWith(")")) {
-            val handleName = curLine.removePrefix("VK_DEFINE_HANDLE(").removeSuffix(")").trim()
-            val handle = OpaqueHandleTypedef(name = handleName)
-            handle.doc = savedDoc
-            opaqueHandleTypedefs[handle.name] = handle
-            savedDoc = null
-            index++
-        }
-        else if (curLine.startsWith("VK_DEFINE_NON_DISPATCHABLE_HANDLE(") && curLine.endsWith(")")) {
-            val handleName = curLine.removePrefix("VK_DEFINE_NON_DISPATCHABLE_HANDLE(").removeSuffix(")").trim()
-            val handle = OpaqueHandleTypedef(name = handleName)
-            handle.doc = savedDoc
-            opaqueHandleTypedefs[handle.name] = handle
-            savedDoc = null
-            index++
-        }
-        else if (curLine.startsWith("typedef") && curLine.contains("VKAPI_PTR") && curLine.contains("PFN_")) {
-            val parseResult = parseTypedefDecl(lines, index)
-            val typedef = parseResult.first
-            index = parseResult.second
-
-            val functionTypedef = morphFunctionTypedef(typedef)
-            functionTypedef.doc = savedDoc
-            savedDoc = null
-            functionTypedefs[functionTypedef.name] = functionTypedef
-        }
-        else if (curLine.startsWith("typedef struct")) {
-            assert(lines[index + 1].startsWith("{"))
-            val parseResult = parseStructFields(lines, index + 2)
-            val structMembers = parseResult.first
-            index = parseResult.second
-
-            assert(lines[index].startsWith("}") && lines[index].endsWith(";"))
-            val structName = lines[index].removePrefix("}").removeSuffix(";").trim()
-            index += 1
-
-            val struct = Structure(name = structName, members = structMembers)
-            struct.doc = savedDoc
-            savedDoc = null
-            structures[struct.name] = struct
-        }
-        else if (curLine.startsWith("typedef enum")) {
-            assert(lines[index + 1].startsWith("{"))
-            val parseResult = parseEnumerators(lines, index + 2)
-            val enumerators = parseResult.first
-            index = parseResult.second
-
-            assert(lines[index].startsWith("}") && lines[index].endsWith(";"))
-            val enumName = lines[index].removePrefix("}").removeSuffix(";").trim()
-            index += 1
-
-            val entity = if (enumName.endsWith("FlagBits")) {
-                val actualName = enumName.replace("FlagBits", "Flags")
-                val bitmask = Bitmask(
-                    name = actualName,
-                    bitwidth = 32,
-                    bitflags = enumerators.map { (enumDecl, doc) ->
-                        val bitflag = if (enumDecl.value.isDecOrHexNumber()) {
-                            Bitflag(
-                                name = enumDecl.name,
-                                value = enumDecl.value.parseDecOrHex().toBigInteger()
-                            )
-                        } else {
-                            Bitflag(
-                                name = enumDecl.name,
-                                value = enumDecl.value.split("|").map(String::trim).toMutableList()
-                            )
-                        }
-                        bitflag.doc = doc
-                        bitflag
-                    }.toMutableList()
-                )
-                bitmasks[bitmask.name] = bitmask
-                bitmask
-            } else {
-                val enum = Enumeration(
-                    name = enumName,
-                    variants = enumerators.map { (enumDecl, doc) ->
-                        val variant = EnumVariant(
-                            name = enumDecl.name,
-                            value = enumDecl.value.split("|").map(String::trim)
-                        )
-                        variant.doc = doc
-                        variant
-                    }.toMutableList()
-                )
-                enumerations[enum.name] = enum
-                enum
-            }
-
-            entity.doc = savedDoc
-            savedDoc = null
-        }
-        else if (curLine.startsWith("VMA_CALL_PRE") && curLine.contains("VMA_CALL_POST")) {
-            val parseResult = parseFunctionDecl(lines, index)
-            val functionDecl = parseResult.first
-            index = parseResult.second
-
-            val command = morphFunctionDecl(functionDecl)
-            command.doc = savedDoc
-            savedDoc = null
-            commands[command.name] = command
-        }
-        else {
-            log.warning("vma.h: unknown line: $curLine")
-            index++
-        }
-    }
-
-    val r = Registry(
+    val registry = Registry(
         aliases = mutableMapOf(),
-        bitmasks = bitmasks,
-        constants = constants,
-        commands = commands,
-        enumerations = enumerations,
-        functionTypedefs = functionTypedefs,
-        opaqueHandleTypedefs = opaqueHandleTypedefs,
+        bitmasks = mutableMapOf(),
+        constants = mutableMapOf(),
+        commands = mutableMapOf(),
+        enumerations = mutableMapOf(),
+        functionTypedefs = mutableMapOf(),
+        opaqueHandleTypedefs = mutableMapOf(),
         opaqueTypedefs = mutableMapOf(),
-        structures = structures,
+        structures = mutableMapOf(),
         unions = mutableMapOf(),
         ext = EmptyMergeable()
     )
 
-    postprocessDoc(r)
-    return r
+    parse(
+        headerParseConfig,
+        registry,
+        mutableMapOf("doxygen" to mutableListOf<String>()),
+        headerFile,
+        0
+    )
+    registry.renameEntities()
+    return registry
 }
 
-private fun parseStructFields(lines: List<String>, i: Int): Pair<List<Member>, Int> {
-    var index = i
-    val members = mutableListOf<Member>()
-    var savedDoc: List<String>? = null
-
-    while (index < lines.size && !lines[index].startsWith("}")) {
-        if (lines[index].isBlank()) {
-            index++
-            continue
+private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
+    addRule(0, ::detectBlockDoxygen, ::parseAndSaveBlockDoxygen)
+    addRule(0, ::detectTriSlashDoxygen, ::parseAndSaveTriSlashDoxygen)
+    addRule(0, { line: String ->
+        if (line.startsWith("#ifdef VMA_IMPLEMENTATION")) {
+            ControlFlow.RETURN
+        } else {
+            ControlFlow.NEXT
         }
+    }, ::dummyAction)
 
-        if (lines[index].startsWith("#if") || lines[index].startsWith("#endif")) {
-            index++
-            continue
+    addRule(10, ::detectLineComment, ::nextLine)
+    addRule(10, ::detectPreprocessor, ::nextLine)
+    addRule(10, ::detectBlockComment, ::skipBlockComment)
+
+    addRule(20, { line: String ->
+        if (line.startsWith("VK_DEFINE_HANDLE(") || line.startsWith("VK_DEFINE_NON_DISPATCHABLE_HANDLE(")) {
+            ControlFlow.ACCEPT
+        } else {
+            ControlFlow.NEXT
         }
-
-        else if (lines[index].startsWith("#elif") || lines[index].startsWith("#else")) {
-            index++
-            while (index < lines.size && !lines[index].startsWith("#endif")) {
-                index++
-            }
-            continue
+    }, ::parseOpaqueHandleTypedef)
+    addRule(20, {
+        if (it.startsWith("typedef") && it.contains("VKAPI_PTR") && it.contains("PFN_")) {
+            ControlFlow.ACCEPT
+        } else {
+            ControlFlow.NEXT
         }
-
-        if (lines[index].startsWith("/**")) {
-            val result = parseBlockDoxygen(lines, index)
-            savedDoc = result.first
-            index = result.second
-            continue
+    }, ::parsePFNTypedef)
+    addRule(20, { line: String ->
+        if (line.startsWith("typedef struct")) {
+            ControlFlow.ACCEPT
+        } else {
+            ControlFlow.NEXT
         }
-
-        if (lines[index].startsWith("///")) {
-            val result = parseTriSlashDoxygen(lines, index)
-            savedDoc = result.first
-            index = result.second
-            continue
+    }, ::parseAndSaveStructure)
+    addRule(20, { line: String ->
+        if (line.startsWith("typedef enum")) {
+            ControlFlow.ACCEPT
+        } else {
+            ControlFlow.NEXT
         }
+    }, ::parseAndSaveEnumeration)
+    addRule(20, { line: String ->
+        if (line.startsWith("VMA_CALL_PRE") && line.contains("VMA_CALL_POST")) {
+            ControlFlow.ACCEPT
+        } else {
+            ControlFlow.NEXT
+        }
+    }, ::parseAndSaveFunctionDecl)
+}
 
-        val parseResult = parseStructFieldDecl(lines, index)
-        val fieldDecl = parseResult.first
-        index = parseResult.second
+private fun parseOpaqueHandleTypedef(
+    @Suppress("unused") registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val line = lines[index]
+    val handle = if (line.startsWith("VK_DEFINE_HANDLE(")) {
+        val handleName = line.removePrefix("VK_DEFINE_HANDLE(").removeSuffix(")").trim()
+        OpaqueHandleTypedef(name = handleName)
+    } else /* if (line.startsWith("VK_DEFINE_NON_DISPATCHABLE_HANDLE(")) */ {
+        val handleName = line.removePrefix("VK_DEFINE_NON_DISPATCHABLE_HANDLE(").removeSuffix(")").trim()
+        OpaqueHandleTypedef(name = handleName)
+    }
 
-        val member = Member(
-            name = fieldDecl.name,
-            type = fieldDecl.type.toType(),
-            values = null,
-            len = null,
-            altLen = null,
-            optional = fieldDecl.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
-            bits = null
+    if ("doxygen" in cx) {
+        handle.doc = cx["doxygen"] as List<String>
+        cx.remove("doxygen")
+    }
+    return index + 1
+}
+
+private fun parsePFNTypedef(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val parseResult = parseTypedefDecl(lines, index)
+    val typedef = parseResult.first
+    val nextIndex = parseResult.second
+
+    val functionTypedef = morphFunctionTypedef(typedef)
+    if ("doxygen" in cx) {
+        functionTypedef.doc = cx["doxygen"] as List<String>
+        cx.remove("doxygen")
+    }
+    registry.functionTypedefs[functionTypedef.name] = functionTypedef
+    return nextIndex
+}
+
+private fun parseAndSaveStructure(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    if ("doxygen" in cx) {
+        cx["structureDoc"] = cx["doxygen"]!!
+        cx.remove("doxygen")
+    }
+
+    val structureName = lines[index].removePrefix("typedef struct").trim()
+    val next = parse(structureParseConfig, registry, cx, lines, index + 2)
+    val fields = cx["fields"] as MutableList<Member>
+    cx.remove("fields")
+
+    val structure = Structure(
+        name = structureName,
+        members = fields
+    )
+    if ("structureDoc" in cx) {
+        structure.doc = cx["structureDoc"] as List<String>
+        cx.remove("doxygen")
+    }
+    registry.structures.putEntityIfAbsent(structure)
+
+    assert(lines[next].startsWith("}") && lines[next].endsWith(";"))
+    return next + 1
+}
+
+private val structureParseConfig = ParseConfig<EmptyMergeable>().apply {
+    addInit { it["fields"] = mutableListOf<Member>() }
+
+    addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
+    addRule(0, ::detectBlockDoxygen, ::parseAndSaveBlockDoxygen)
+    addRule(0, ::detectTriSlashDoxygen, ::parseAndSaveTriSlashDoxygen)
+    addRule(10, ::detectLineComment, ::nextLine)
+    addRule(10, ::detectPreprocessor, ::nextLine)
+    addRule(10, ::detectBlockComment, ::skipBlockComment)
+    addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseStructField)
+}
+
+private fun parseStructField(
+    @Suppress("unused") registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val parseResult = parseStructFieldDecl(lines, index)
+    val fieldDecl = parseResult.first
+    val nextIndex = parseResult.second
+
+    val member = Member(
+        name = fieldDecl.name,
+        type = fieldDecl.type.toType(),
+        values = null,
+        len = null,
+        altLen = null,
+        optional = fieldDecl.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
+        bits = null
+    )
+    if ("doxygen" in cx) {
+        member.doc = cx["doxygen"] as List<String>
+        cx.remove("doxygen")
+    }
+
+    (cx["fields"] as MutableList<Member>).add(member)
+    return nextIndex
+}
+
+private fun parseAndSaveEnumeration(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    if ("doxygen" in cx) {
+        cx["enumerationDoxygen"] = cx["doxygen"]!!
+        cx.remove("doxygen")
+    }
+
+    val enumName = lines[index].removePrefix("typedef enum").trim()
+    val next = parse(enumerationParseConfig, registry, cx, lines, index + 2)
+    val enumerators = cx["enumerators"] as MutableList<Pair<EnumeratorDecl, List<String>?>>
+    cx.remove("enumerators")
+
+    val entity = if (enumName.endsWith("FlagBits")) {
+        val actualName = enumName.replace("FlagBits", "Flags")
+        val bitmask = Bitmask(
+            name = actualName,
+            bitwidth = 32,
+            bitflags = enumerators.map { (enumDecl, doc) ->
+                val bitflag = if (enumDecl.value.isDecOrHexNumber()) {
+                    Bitflag(
+                        name = enumDecl.name,
+                        value = enumDecl.value.parseDecOrHex().toBigInteger()
+                    )
+                } else {
+                    Bitflag(
+                        name = enumDecl.name,
+                        value = enumDecl.value.split("|").map(String::trim).toMutableList()
+                    )
+                }
+                bitflag.doc = doc
+                bitflag
+            }.toMutableList()
         )
-        member.doc = savedDoc
-        members.add(member)
-        savedDoc = null
+        registry.bitmasks.putEntityIfAbsent(bitmask)
+        bitmask
+    } else {
+        val enumeration = Enumeration(
+            name = enumName,
+            variants = enumerators.map { (enumDecl, doc) ->
+                val variant = EnumVariant(
+                    name = enumDecl.name,
+                    value = enumDecl.value.split("|").map(String::trim)
+                )
+                variant.doc = doc
+                variant
+            }.toMutableList()
+        )
+        registry.enumerations.putEntityIfAbsent(enumeration)
+        enumeration
     }
 
-    return Pair(members, index)
+    if ("enumerationDoxygen" in cx) {
+        entity.doc = cx["enumerationDoxygen"] as List<String>
+        cx.remove("enumerationDoxygen")
+    }
+
+    assert(lines[next].startsWith("}") && lines[next].endsWith(";"))
+    return next + 1
 }
 
-private fun parseEnumerators(lines: List<String>, i: Int): Pair<List<Pair<EnumeratorDecl, List<String>?>>, Int> {
-    var index = i
-    val enumerators = mutableListOf<Pair<EnumeratorDecl, List<String>?>>()
-    var savedDoc: List<String>? = null
+private val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
+    addInit { it["enumerators"] = mutableListOf<Pair<EnumeratorDecl, List<String>?>>() }
 
-    while (index < lines.size && !lines[index].startsWith("}")) {
-        if (lines[index].isBlank()) {
-            index++
-            continue
-        }
+    addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
+    addRule(0, ::detectBlockDoxygen, ::parseAndSaveBlockDoxygen)
+    addRule(0, ::detectTriSlashDoxygen, ::parseAndSaveTriSlashDoxygen)
+    addRule(10, ::detectLineComment, ::nextLine)
+    addRule(10, ::detectPreprocessor, ::nextLine)
+    addRule(10, ::detectBlockComment, ::skipBlockComment)
+    addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseEnumerator)
+}
 
-        if (lines[index].startsWith("#if") || lines[index].startsWith("#endif")) {
-            index++
-            continue
-        }
+private fun parseEnumerator(
+    @Suppress("unused") registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val parseResult = parseEnumeratorDecl(lines, index)
+    val enumDecl = parseResult.first
+    val nextIndex = parseResult.second
 
-        if (lines[index].startsWith("/**")) {
-            val result = parseBlockDoxygen(lines, index)
-            savedDoc = result.first
-            index = result.second
-            continue
-        }
-
-        if (lines[index].startsWith("///")) {
-            val result = parseTriSlashDoxygen(lines, index)
-            savedDoc = result.first
-            index = result.second
-            continue
-        }
-
-        val parseResult = parseEnumeratorDecl(lines, index)
-        val enumDecl = parseResult.first
-        index = parseResult.second
-
-        enumerators.add(Pair(enumDecl, savedDoc))
+    var enumeratorDoc: List<String>? = null
+    if ("doxygen" in cx) {
+        enumeratorDoc = cx["doxygen"] as List<String>
+        cx.remove("doxygen")
     }
 
-    return Pair(enumerators, index)
+    (cx["enumerators"] as MutableList<Pair<EnumeratorDecl, List<String>?>>).add(Pair(enumDecl, enumeratorDoc))
+    return nextIndex
+}
+
+private fun parseAndSaveFunctionDecl(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val parseResult = parseFunctionDecl(lines, index)
+    val functionDecl = parseResult.first
+    val nextIndex = parseResult.second
+
+    val command = morphFunctionDecl(functionDecl)
+    if ("doxygen" in cx) {
+        command.doc = cx["doxygen"] as List<String>
+        cx.remove("doxygen")
+    }
+    registry.commands.putEntityIfAbsent(command)
+
+    return nextIndex
 }
 
 private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(

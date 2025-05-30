@@ -10,8 +10,8 @@ enum class ControlFlow {
 }
 
 typealias InitContext = (MutableMap<String, Any>) -> Unit
-typealias LineMatcher = (MutableMap<String, Any>, List<String>, Int) -> ControlFlow
-typealias SingleLineMatcher = (MutableMap<String, Any>, String, Int) -> ControlFlow
+typealias LineMatcher = (List<String>, Int) -> ControlFlow
+typealias SingleLineMatcher = (String) -> ControlFlow
 typealias LineAction<E> = (Registry<E>, MutableMap<String, Any>, List<String>, Int) -> Int
 
 internal val log = Logger.getLogger("c.d.b.cdecl.hparse")
@@ -39,84 +39,39 @@ class ParseConfig<E: IMergeable<E>> internal constructor(
     fun addRule(priority: Int, matcher: LineMatcher, action: LineAction<E>) {
         handlerSet.add(LineHandler(priority, matcher, action))
     }
-
     fun addRule(priority: Int, matcher: SingleLineMatcher, action: LineAction<E>) {
-        val matcher: LineMatcher = { cx, lines, index -> matcher(cx, lines[index], index) }
+        val matcher: LineMatcher = { lines, index -> matcher(lines[index]) }
         addRule(priority, matcher, action)
-    }
-
-    fun addRule(
-        priority: Int,
-        matcher: LineMatcher,
-        action: (Registry<E>, List<String>, Int) -> Int
-    ) {
-        addRule(priority, matcher) { r, _, lines, index -> action(r, lines, index) }
-    }
-
-    fun addRule(
-        priority: Int,
-        matcher: SingleLineMatcher,
-        action: (Registry<E>, List<String>, Int) -> Int
-    ) {
-        addRule(priority, matcher) { r, _, lines, index -> action(r, lines, index) }
-    }
-
-    fun addRule(
-        priority: Int,
-        matcher: LineMatcher,
-        action: (MutableMap<String, Any>, List<String>, Int) -> Int
-    ) {
-        addRule(priority, matcher) { _, cx, lines, index -> action(cx, lines, index) }
-    }
-
-    fun addRule(
-        priority: Int,
-        matcher: SingleLineMatcher,
-        action: (MutableMap<String, Any>, List<String>, Int) -> Int
-    ) {
-        addRule(priority, matcher) { _, cx, lines, index -> action(cx, lines, index) }
-    }
-
-    fun addRule(
-        priority: Int,
-        matcher: LineMatcher,
-        action: (List<String>, Int) -> Int
-    ) {
-        addRule(priority, matcher) { _, _, lines, index -> action(lines, index) }
-    }
-
-    fun addRule(
-        priority: Int,
-        matcher: SingleLineMatcher,
-        action: (List<String>, Int) -> Int
-    ) {
-        addRule(priority, matcher) { _, _, lines, index -> action(lines, index) }
     }
 }
 
 fun <E: IMergeable<E>> parse(
     config: ParseConfig<E>,
     registry: Registry<E>,
-    fileName: String,
+    cx: MutableMap<String, Any>,
     lines: List<String>,
     index: Int
 ): Int {
-    val context = mutableMapOf<String, Any>()
-    config.initSet.forEach { it(context) }
+    config.initSet.forEach { it(cx) }
 
     var index = index
     var prevIndex: Int? = null
     while (index < lines.size) {
         if (prevIndex == index) {
-            log.warning("$fileName:${index+1}: dead loop detected, forcing progress")
+            log.warning("${index+1}: dead loop detected, forcing progress")
             index++
         }
         prevIndex = index
 
+        if (lines[index].isBlank()) {
+            index++
+            continue
+        }
+
         for (handler in config.handlerSet) {
-            when (handler.matcher(context, lines, index)) {
+            when (handler.matcher(lines, index)) {
                 ControlFlow.ACCEPT -> {
-                    index = handler.action(registry, context, lines, index)
+                    index = handler.action(registry, cx, lines, index)
                     prevIndex = index
                     break
                 }
@@ -125,9 +80,106 @@ fun <E: IMergeable<E>> parse(
             }
         }
 
-        log.warning("$fileName:${index+1}: no handler matched, skipping line")
+        log.warning("${index+1}: no handler matched, skipping line")
         index++
     }
 
     return index
+}
+
+fun detectTriSlashDoxygen(line: String) =
+    if (line.startsWith("///")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun <E: IMergeable<E>> parseAndSaveTriSlashDoxygen(
+    @Suppress("unused") registry: Registry<E>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val result = parseBlockDoxygen(lines, index)
+    if (result.first != null) {
+        cx["doxygen"] = result.first!!
+    } else {
+        cx.remove("doxygen")
+    }
+    return result.second
+}
+
+fun detectBlockDoxygen(line: String) =
+    if (line.startsWith("/*!")
+        || line.startsWith("/**")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun <E: IMergeable<E>> parseAndSaveBlockDoxygen(
+    @Suppress("unused") registry: Registry<E>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val result = parseBlockDoxygen(lines, index)
+    if (result.first != null) {
+        cx["doxygen"] = result.first!!
+    } else {
+        cx.remove("doxygen")
+    }
+    return result.second
+}
+
+fun detectLineComment(line: String) =
+    if (line.startsWith("//")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun detectPreprocessor(line: String) =
+    if (line.startsWith("#")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun <E: IMergeable<E>> nextLine(
+    @Suppress("unused") registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    @Suppress("unused") lines: List<String>,
+    index: Int
+) = index + 1
+
+fun detectBlockComment(line: String) =
+    if (line.startsWith("/*")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun <E: IMergeable<E>> skipBlockComment(
+    @Suppress("unused") registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    assert(lines[index].startsWith("/*")) { "Expected block comment start at line $index" }
+    var i = index + 1
+    while (i < lines.size && !lines[i].contains("*/")) {
+        i++
+    }
+    return index
+}
+
+fun <E: IMergeable<E>> dummyAction(
+    @Suppress("unused") registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    @Suppress("unused") lines: List<String>,
+    index: Int
+): Int {
+    log.warning("dummy operation at line $index called, did you correctly set ControlFlow.RETURN?")
+    return index + 1
 }

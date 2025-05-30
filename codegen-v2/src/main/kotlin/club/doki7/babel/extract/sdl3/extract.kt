@@ -26,7 +26,9 @@ fun main() {
 
 fun extractSDL3Headers(): Registry<EmptyMergeable> {
     val fileContent = inputDir.resolve("SDL3-3.2.14/include/SDL3/SDL.h").toFile().readText()
-    val lines = fileContent.splitToSequence('\n').map(String::trim)
+    val lines = fileContent
+        .splitToSequence('\n')
+        .map(String::trim)
         .toList()
     TODO()
 }
