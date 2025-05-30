@@ -1,23 +1,26 @@
-# FAQ
 
-> [C++ version](https://vulkan-tutorial.com/FAQ)
+# 常见问题解答
 
-This page lists solutions to common problems that you may encounter while developing Vulkan applications.
+> 本章内容的翻译使用了生成式人工智能，可能存在不准确之处。如有问题，欢迎提交问题和拉取请求。
+>
+> [英文版](https://vulkan4j.doki7.club/tutorial/en/faq.html) | [C++ 版本](https://vulkan-tutorial.com/FAQ)
+
+本页面列出了你在开发 Vulkan 应用程序时可能会遇到的常见问题及其解决方案。
 
 <!-- 
 TODO: macOS
-* **_(macOS)_ I installed the Vulkan SDK, but I get an error about `libvulkan.dylib` not being found when I run a Vulkan application** - see the [`Setup Environment` section of the Vulkan SDK setup instructions for macOS](./development-environment.md#setup-environment)
+* **（macOS）我安装了 Vulkan SDK，但在运行 Vulkan 应用程序时，遇到 `libvulkan.dylib` 未找到的错误** ——请参阅 [macOS 版 Vulkan SDK 安装说明中的`设置环境`部分](./development-environment.md#setup-environment)
 -->
 
-* **I get an access violation error in the core validation layer** &ndash; Make sure that MSI Afterburner / RivaTuner Statistics Server is not running, because it has some compatibility problems with Vulkan.
+* **我在核心校验层中遇到了访问冲突错误** —— 请确保 MSI Afterburner / RivaTuner Statistics Server 没有运行，因为它与 Vulkan 存在一些兼容性问题。
 
-* **I don't see any messages from the validation layers / Validation layers are not available** &ndash; First make sure that the validation layers get a chance to print errors by keeping the terminal open after your program exits. You can do this from Visual Studio by running your program with Ctrl-F5 instead of F5, and on Linux by executing your program from a terminal window. If there are still no messages and you are sure that validation layers are turned on, then you should ensure that your Vulkan SDK is correctly installed by following the "Verify the Installation" instructions [on this page](https://vulkan.lunarg.com/doc/view/1.2.135.0/windows/getting_started.html). Also ensure that your SDK version is at least 1.1.106.0 to support the `VK_LAYER_KHRONOS_validation` layer.
+* **我没有看到来自校验层的任何消息 / 校验层不可用** —— 首先，请确保校验层有机会打印错误，方法是在程序退出后保持终端打开。在 Visual Studio 中，你可以通过按 Ctrl+F5（而不是 F5）来运行程序以实现此目的；在 Linux 上，可以通过从终端窗口执行程序来实现。如果仍然没有消息，并且你确定校验层已启用，那么你应该确保你的 Vulkan SDK 已正确安装，方法是按照[此页面上的](https://vulkan.lunarg.com/doc/view/1.4.313.0/windows/getting_started.html)“验证安装”说明进行操作。另外，请确保你的 SDK 版本至少为 1.1.106.0，以支持 `VK_LAYER_KHRONOS_validation` 校验层。
 
-* **vkCreateSwapchainKHR triggers an error in SteamOverlayVulkanLayer64.dll** &ndash; This appears to be a compatibility problem in the Steam client beta. There are a few possible workarounds:
-  * Opt out of the Steam beta program.
-  * Set the `DISABLE_VK_LAYER_VALVE_steam_overlay_1` environment variable to `1`
-  * Delete the Steam overlay Vulkan layer entry in the registry under `HKEY_LOCAL_MACHINE\SOFTWARE\Khronos\Vulkan\ImplicitLayers`
+* **vkCreateSwapchainKHR 在 SteamOverlayVulkanLayer64.dll 中触发错误** —— 这似乎是 Steam 客户端测试版中的一个兼容性问题。有一些可能的解决方法：
+  * 退出 Steam 测试版计划。
+  * 将 `DISABLE_VK_LAYER_VALVE_steam_overlay_1` 环境变量设置为 `1`
+  * 删除注册表中 `HKEY_LOCAL_MACHINE\SOFTWARE\Khronos\Vulkan\ImplicitLayers` 下的 Steam overlay Vulkan layer 条目。
 
-Example:
+例如：
 
-![Steam layers](../images/steam_layers_env.png)
+![Steam 层](../images/steam_layers_env.png)

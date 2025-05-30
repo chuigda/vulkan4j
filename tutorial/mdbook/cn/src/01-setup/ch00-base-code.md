@@ -1,10 +1,12 @@
-# Base code
+# 基础代码
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part01/ch00/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Base_code)
+> 本章内容的翻译使用了生成式人工智能，可能存在不准确之处。如有问题，欢迎提交问题和拉取请求。
+>
+> [英文版](https://vulkan4j.doki7.club/tutorial/en/01-setup/ch00-base-code.html) | [Java 代码](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part01/ch00/Main.java) | [C++ 版本](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Base_code)
 
-## General structure
+## 基本结构
 
-In the previous chapter you've created a Vulkan project with all the proper configuration and tested it with the sample code. In this chapter we're starting from scratch with the following code:
+在上一章中，你创建了一个包含所有正确配置的 Vulkan 项目。在本章中，我们将从以下代码开始从头构建：
 
 ```java
 class Application {
@@ -37,23 +39,23 @@ public class Main {
 }
 ```
 
-The program itself is wrapped into a class where we'll store the Vulkan objects as private class members and add functions to initiate each of them, which will be called from the `initVulkan` function. Once everything has been prepared, we enter the main loop to start rendering frames. We'll fill in the `mainLoop` function to include a loop that iterates until the window is closed in a moment. Once the window is closed and mainLoop returns, we'll make sure to deallocate the resources we've used in the `cleanup` function.
+程序本身被封装在一个类中，我们将在该类中将 Vulkan 对象存储为私有类成员，并添加函数来初始化它们中的每一个，这些函数将从 `initVulkan` 函数中调用。一旦一切准备就绪，我们就进入主循环开始渲染帧。我们稍后会实现 `mainLoop` 函数，该函数中包含一个循环，该循环会一直迭代直到窗口关闭。一旦窗口关闭且 `mainLoop` 返回，我们将确保在 `cleanup` 函数中释放我们已使用的资源。
 
-If any kind of fatal error occurs during execution then we'll throw a `RuntimeException` exception with a descriptive message, which will propagate back to the main function and be printed to the command prompt. To handle a variety of standard exception types as well, we catch the more general `java.lang.Throwable`. One example of an error that we will deal with soon is finding out that a certain required extension is not supported.
+如果在执行过程中发生任何类型的致命错误，我们将抛出一个带有描述信息的 `RuntimeException` 异常，该异常将传播回主函数并打印到命令提示符。为了同时处理各种标准异常类型，我们捕获了更通用的 `java.lang.Throwable`。我们很快将处理的一个错误示例是发现某个必需的扩展不受支持。
 
-Roughly every chapter that follows after this one will add one new function that will be called from `initVulkan` and one or more new Vulkan objects to the private class members that need to be freed at the end in `cleanup`.
+在此之后，大致每一章都会添加一个将从 `initVulkan` 调用的新函数，以及一个或多个新的 Vulkan 对象到私有类成员中，这些对象需要在 `cleanup` 结束时被释放。
 
-## Resource management
+## 资源管理
 
-Just like each chunk of memory allocated with malloc requires a call to free, every Vulkan object that we create needs to be explicitly destroyed when we no longer need it. While in Java there are several ways to manage resources automatically, however, I've chosen to be explicit about allocation and deallocation of Vulkan objects in this tutorial. After all, Vulkan's niche is to be explicit about every operation to avoid mistakes, so it's good to be explicit about the lifetime of objects to learn how the API works. 
+就像每一块用 `malloc` 分配的内存都需要调用 `free` 来释放一样，我们创建的每一个 Vulkan 对象在不再需要时也需要被显式销毁。虽然在 Java 中有几种自动管理资源的方法，但是，在本教程中，我选择明确地进行 Vulkan 对象的分配和释放。毕竟，Vulkan 的特点就是对每个操作都明确指定以避免错误，因此明确对象的生存期以学习 API 的工作原理是很有益的。
 
-After following this tutorial, you could implement automatic resource management by writing Java classes that acquire Vulkan objects in their constructor and release them in maybe `Autoclosable::close`, depending on your ownership requirements. RAII is the recommended model for larger Vulkan programs, but for learning purposes it's always good to know what's going on behind the scenes.
+学习完本教程后，你可以自己编写 Java 类来实现自动资源管理，这些类在其构造器中获取 Vulkan 对象，并可能在 `Autoclosable::close` 中释放它们，具体取决于你的所有权要求。对于较大的 Vulkan 程序，try-with-resource 是推荐的模型，但为了学习目的，了解幕后发生的事情总是好的。
 
-Vulkan objects are either created directly with functions like `createXXX`, or allocated through another object with functions like `allocateXXX`. After making sure that an object is no longer used anywhere, you need to destroy it with the counterparts `destroyXXX` and `freeXXX`. The parameters for these functions generally vary for different types of objects, but there is one parameter that they all share: `pAllocator`. This is an optional parameter that allows you to specify callbacks for a custom memory allocator. We will ignore this parameter in the tutorial and always pass `null` as argument.
+Vulkan 对象要么通过像 `createXXX` 这样的函数直接创建，要么通过另一个对象使用像 `allocateXXX` 这样的函数进行分配。在确保某个对象不再被任何地方使用后，你需要用对应的 `destroyXXX` 和 `freeXXX` 来销毁它。这些函数的参数通常因对象类型而异，但它们共享一个参数：`pAllocator`。这是一个可选参数，允许你为自定义内存分配器指定回调。在本教程中，我们将忽略此参数，并始终传递 `null` 作为参数。
 
-## Initializing GLFW
+## 初始化 GLFW
 
-Vulkan works perfectly fine without creating a window if you want to use it for off-screen rendering, but it's a lot more exciting to actually show something! Add a `initWindow` function and add a call to it from the run function before the other calls. We'll use that function to initialize GLFW and create a window.
+如果你想将 Vulkan 用于离屏渲染，它在不创建窗口的情况下也能完美工作，但实际显示一些东西会更令人兴奋！添加一个 `initWindow` 函数，并在 `run` 函数中其他调用之前添加对它的调用。我们将使用该函数来初始化 GLFW 并创建一个窗口。
 
 ```java
 public void run() {
@@ -67,19 +69,19 @@ private void initWindow() {
 }
 ```
 
-Unlike in LWJGL or some other wrappers, with `vulkan4j`, you need to manually load both library and the library functions. Firstly we need to load GLFW native library into the JVM. This can be done with a single line of code:
+与 LWJGL 或其他一些封装不同，使用 `vulkan4j` 时，你需要手动加载库及其函数。首先，我们需要将 GLFW 本地库加载到 JVM 中。这可以通过一行代码完成：
 
 ```java
 GLFWLoader.loadGLFWLibrary();
 ```
 
-Then we want to load the GLFW functions. Add a private field to the `Application` class:
+然后我们要加载 GLFW 函数。向 `Application` 类添加一个私有字段：
 
 ```java
 private GLFW glfw;
 ```
 
-And then initialize it in the `initWindow` function:
+然后在 `initWindow` 函数中初始化它：
 
 ```java
 private void initWindow() {
@@ -88,49 +90,49 @@ private void initWindow() {
 }
 ```
 
-Then we can call `GLFW::init()` to initialize the GLFW library. If it fails, we'll throw an exception:
+然后我们可以调用 `GLFW::init()` 来初始化 GLFW 库。如果失败，我们将抛出一个异常：
 
 ```java
 if (glfw.init() != GLFWConstants.TRUE) {
-    throw new RuntimeException("Failed to initialize GLFW");
+    throw new RuntimeException("初始化 GLFW 失败");
 }
 ```
 
-Then we will check Vulkan support with `GLFW::vulkanSupported()`:
+然后我们将使用 `GLFW::vulkanSupported()` 检查 Vulkan 支持情况：
 
 ```java
 if (glfw.vulkanSupported() != GLFWConstants.TRUE) {
-    throw new RuntimeException("Vulkan is not supported");
+    throw new RuntimeException("不支持 Vulkan");
 }
 ```
 
-Then we start giving GLFW hints about the window we want to create. Because GLFW was originally designed to create an OpenGL context, we need to tell it to not create an OpenGL context with a subsequent call:
+然后我们开始向 GLFW 提供关于我们想要创建的窗口的提示。因为 GLFW 最初是为创建 OpenGL 上下文而设计的，所以我们需要通过后续调用告诉它不要创建 OpenGL 上下文：
 
 ```java
 glfw.windowHint(GLFWConstants.CLIENT_API, GLFWConstants.NO_API);
 ```
 
-Because handling resized windows takes special care that we'll look into later, disable it for now with another window hint call:
+因为处理调整大小的窗口需要特别注意，我们稍后会研究，所以现在用另一个窗口提示调用来禁用它：
 
 ```java
 glfw.windowHint(GLFWConstants.RESIZABLE, GLFWConstants.FALSE);
 ```
 
-All that's left now is creating the actual window. Add a private class member to store the window handle:
+现在剩下的就是创建实际的窗口了。添加一个私有类成员来存储窗口句柄：
 
 ```java
 private GLFWwindow window;
-``` 
+```
 
-And then initialize it with `GLFW::createWindow`:
+然后用 `GLFW::createWindow` 初始化它：
 
 ```java
 window = glfw.createWindow(800, 600, ByteBuffer.allocateString(Arena.global(), "Vulkan"), null, null);
 ```
 
-The first three parameters specify the width, height and title of the window. The fourth parameter allows you to optionally specify a monitor to open the window on and the last parameter is only relevant to OpenGL.
+前三个参数指定窗口的宽度、高度和标题。第四个参数允许你可选地指定一个显示器来打开窗口，最后一个参数仅与 OpenGL 相关。
 
-It's a good idea to use constants instead of hardcoded width and height numbers because we'll be referring to these values a couple of times in the future. Also, using constants helps reduce expression size. I've added the following constants in the `Application` class definition: 
+使用常量而不是硬编码的宽度和高度数字是一个好主意，因为我们将来会多次引用这些值。此外，使用常量有助于减小表达式的大小。我在 `Application` 类定义中添加了以下常量：
 
 ```java
 private static final int WIDTH = 800;
@@ -138,13 +140,13 @@ private static final int HEIGHT = 600;
 private static final BytePtr WINDOW_TITLE = BytePtr.allocateString(Arena.global(), "Vulkan");
 ```
 
-and replaced the window creation call with
+并将窗口创建调用替换为
 
 ```java
 window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
 ```
 
-You should now have a `initWindow` function that looks like this:
+你现在应该有一个如下所示的 `initWindow` 函数：
 
 ```java
 private void initWindow() {
@@ -152,11 +154,11 @@ private void initWindow() {
     glfw = GLFWLoader.loadGLFW();
 
     if (glfw.init() != GLFWConstants.TRUE) {
-        throw new RuntimeException("Failed to initialize GLFW");
+        throw new RuntimeException("初始化 GLFW 失败");
     }
 
     if (glfw.vulkanSupported() != GLFWConstants.TRUE) {
-        throw new RuntimeException("Vulkan is not supported");
+        throw new RuntimeException("不支持 Vulkan");
     }
 
     glfw.windowHint(GLFWConstants.CLIENT_API, GLFWConstants.NO_API);
@@ -165,7 +167,7 @@ private void initWindow() {
 }
 ```
 
-To keep the application running until either an error occurs or the window is closed, we need to add an event loop to the `mainLoop` function as follows:
+为了让应用程序一直运行直到发生错误或窗口关闭，我们需要在 `mainLoop` 函数中添加一个事件循环，如下所示：
 
 ```java
 private void mainLoop() {
@@ -175,9 +177,9 @@ private void mainLoop() {
 }
 ```
 
-This code should be fairly self-explanatory. It loops and checks for events like pressing the X button until the window has been closed by the user. This is also the loop where we'll later call a function to render a single frame.
+这段代码应该不言自明。它循环检查事件，例如按下 X 按钮，直到用户关闭窗口。这个循环也是我们稍后调用函数来渲染单个帧的地方。
 
-Once the window is closed, we need to clean up resources by destroying it and terminating GLFW itself. This will be our first `cleanup` code:
+一旦窗口关闭，我们需要通过销毁窗口并终止 GLFW 本身来清理资源。这将是我们的第一个 `cleanup` 代码：
 
 ```java
 private void cleanup() {
@@ -186,4 +188,4 @@ private void cleanup() {
 }
 ```
 
-When you run the program now you should see a window titled Vulkan show up until the application is terminated by closing the window. Now that we have the skeleton for the Vulkan application, let's [create the first Vulkan object](ch01-instance.md)!
+现在当你运行程序时，你应该会看到一个标题为 "Vulkan" 的窗口出现，直到通过关闭窗口来终止应用程序。既然我们已经有了 Vulkan 应用程序的骨架，让我们[创建第一个 Vulkan 对象](ch01-instance.md)吧！

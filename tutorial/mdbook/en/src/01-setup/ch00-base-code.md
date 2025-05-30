@@ -4,7 +4,7 @@
 
 ## General structure
 
-In the previous chapter you've created a Vulkan project with all the proper configuration and tested it with the sample code. In this chapter we're starting from scratch with the following code:
+In the previous chapter you've created a Vulkan project with all the proper configuration. In this chapter we're starting from scratch with the following code:
 
 ```java
 class Application {
@@ -47,7 +47,7 @@ Roughly every chapter that follows after this one will add one new function that
 
 Just like each chunk of memory allocated with malloc requires a call to free, every Vulkan object that we create needs to be explicitly destroyed when we no longer need it. While in Java there are several ways to manage resources automatically, however, I've chosen to be explicit about allocation and deallocation of Vulkan objects in this tutorial. After all, Vulkan's niche is to be explicit about every operation to avoid mistakes, so it's good to be explicit about the lifetime of objects to learn how the API works. 
 
-After following this tutorial, you could implement automatic resource management by writing Java classes that acquire Vulkan objects in their constructor and release them in maybe `Autoclosable::close`, depending on your ownership requirements. RAII is the recommended model for larger Vulkan programs, but for learning purposes it's always good to know what's going on behind the scenes.
+After following this tutorial, you could implement automatic resource management by writing Java classes that acquire Vulkan objects in their constructor and release them in maybe `Autoclosable::close`, depending on your ownership requirements. try-with-resource is the recommended model for larger Vulkan programs, but for learning purposes it's always good to know what's going on behind the scenes.
 
 Vulkan objects are either created directly with functions like `createXXX`, or allocated through another object with functions like `allocateXXX`. After making sure that an object is no longer used anywhere, you need to destroy it with the counterparts `destroyXXX` and `freeXXX`. The parameters for these functions generally vary for different types of objects, but there is one parameter that they all share: `pAllocator`. This is an optional parameter that allows you to specify callbacks for a custom memory allocator. We will ignore this parameter in the tutorial and always pass `null` as argument.
 
