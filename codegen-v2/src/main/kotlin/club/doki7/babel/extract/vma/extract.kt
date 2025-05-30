@@ -59,7 +59,7 @@ fun extractVMAHeader(): Registry<EmptyMergeable> {
     hparse(
         headerParseConfig,
         registry,
-        mutableMapOf("doxygen" to mutableListOf<String>()),
+        mutableMapOf(),
         headerFile,
         0
     )
