@@ -13,7 +13,7 @@
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
 ///     <artifactId>glfw</artifactId>
-///     <version>0.3.0</version>
+///     <version>0.3.1</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```
