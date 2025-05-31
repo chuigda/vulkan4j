@@ -310,8 +310,8 @@ fun generateStructure(
             +"/// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)"
             +"/// instead."
             +"@Unsafe"
-            defun("public @NotNull", "Ptr", "reinterpret", "long index") {
-                +"return new Ptr(segment.asSlice(index * $className.BYTES, $className.BYTES));"
+            defun("public @NotNull", "Ptr", "reinterpret", "long newSize") {
+                +"return new Ptr(segment.reinterpret(newSize * $className.BYTES));"
             }
             +""
 

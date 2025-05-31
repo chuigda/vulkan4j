@@ -110,8 +110,8 @@ public record VkBufferMemoryBarrier(@NotNull MemorySegment segment) implements I
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkBufferMemoryBarrier.BYTES, VkBufferMemoryBarrier.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkBufferMemoryBarrier.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

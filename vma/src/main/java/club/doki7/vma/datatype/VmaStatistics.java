@@ -124,8 +124,8 @@ public record VmaStatistics(@NotNull MemorySegment segment) implements IVmaStati
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VmaStatistics.BYTES, VmaStatistics.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VmaStatistics.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

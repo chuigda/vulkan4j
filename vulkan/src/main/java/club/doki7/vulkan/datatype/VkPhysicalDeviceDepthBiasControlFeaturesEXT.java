@@ -107,8 +107,8 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES, VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkPhysicalDeviceDepthBiasControlFeaturesEXT.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

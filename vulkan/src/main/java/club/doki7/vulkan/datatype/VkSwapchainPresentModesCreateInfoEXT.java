@@ -105,8 +105,8 @@ public record VkSwapchainPresentModesCreateInfoEXT(@NotNull MemorySegment segmen
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkSwapchainPresentModesCreateInfoEXT.BYTES, VkSwapchainPresentModesCreateInfoEXT.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkSwapchainPresentModesCreateInfoEXT.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

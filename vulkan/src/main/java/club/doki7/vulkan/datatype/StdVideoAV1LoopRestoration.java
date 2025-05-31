@@ -92,8 +92,8 @@ public record StdVideoAV1LoopRestoration(@NotNull MemorySegment segment) impleme
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * StdVideoAV1LoopRestoration.BYTES, StdVideoAV1LoopRestoration.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * StdVideoAV1LoopRestoration.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

@@ -94,8 +94,8 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IVk
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkPresentTimeGOOGLE.BYTES, VkPresentTimeGOOGLE.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkPresentTimeGOOGLE.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

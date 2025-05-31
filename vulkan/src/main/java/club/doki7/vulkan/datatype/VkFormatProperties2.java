@@ -104,8 +104,8 @@ public record VkFormatProperties2(@NotNull MemorySegment segment) implements IVk
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkFormatProperties2.BYTES, VkFormatProperties2.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkFormatProperties2.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {
