@@ -19,7 +19,14 @@ fun main() {
 
     val filesToParse = indexFileContent.filter { it.startsWith("#include") }
         .map { it.removePrefix("#include <SDL3/").removeSuffix(">") }
-        .toList()
+        .toMutableSet()
+
+    filesToParse.remove("SDL_stdinc.h")
+    filesToParse.remove("SDL_assert.h")
+    filesToParse.remove("SDL_atomic.h")
+    filesToParse.remove("SDL_bits.h")
+    filesToParse.remove("SDL_config.h")
+    filesToParse.remove("SDL_oldnames.h")
 
     println(filesToParse)
 }
