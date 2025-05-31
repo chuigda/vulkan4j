@@ -295,14 +295,7 @@ class Glfw3HeaderParser(lines: List<String>) : HeaderParser<Registry<EmptyMergea
     private fun morphFunctionTypedef(typedef: TypedefDecl) = FunctionTypedef(
         name = typedef.name,
         params = (typedef.aliasedType as RawFunctionType).params.map { it.second.toType() },
-        result =
-            if (typedef.aliasedType.returnType is RawIdentifierType &&
-                (typedef.aliasedType.returnType as RawIdentifierType).ident == "void"
-            ) {
-                null
-            } else {
-                typedef.aliasedType.returnType.toType()
-            },
+        result = typedef.aliasedType.returnType.toType()
     )
 
     /**

@@ -259,7 +259,7 @@ private fun extractFunctionTypedef(e: Element) =
         params = e.getElementSeq("type").map(::extractType).toList(),
         result =
             when (val type = e.textContent.substring(8, e.textContent.indexOf("(VKAPI_PTR")).trim()) {
-                "void" -> null
+                "void" -> IdentifierType("void".intern())
                 "void*" -> PointerType(IdentifierType("void".intern()), false)
                 "VkBool32" -> IdentifierType("VkBool32".intern())
                 "PFN_vkVoidFunction" -> IdentifierType("PFN_vkVoidFunction".intern())

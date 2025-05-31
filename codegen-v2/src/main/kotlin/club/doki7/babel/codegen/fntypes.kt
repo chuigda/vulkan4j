@@ -26,7 +26,7 @@ fun generateFunctionTypedefs(
                 +"/// @see $seeLink"
             }
 
-            if (it.result == null) {
+            if (it.result is IdentifierType && it.result.ident.original == "void") {
                 if (it.params.isEmpty()) {
                     +"public static final FunctionDescriptor ${it.name} = FunctionDescriptor.ofVoid();"
                 } else {
