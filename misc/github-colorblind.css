@@ -1,7 +1,7 @@
 :root {
     --body-font-family: sans-serif;
     --block-font-family: sans-serif;
-    --code-font-family: 'Fira Code', monospace;
+    --code-font-family: 'Fira Code', 'Noto Sans Mono', 'Dejavu Sans Mono', 'Consolas', 'Lucida Console', monospace;
 }
 
 .summary-table .col-first {
