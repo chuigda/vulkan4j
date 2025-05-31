@@ -2,13 +2,12 @@ package club.doki7.babel.extract.glfw3
 
 import club.doki7.babel.cdecl.*
 import club.doki7.babel.extract.*
-import club.doki7.babel.extract.vma.log
 import club.doki7.babel.registry.*
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
 private val inputDir = Path("codegen-v2/input")
-internal val log = Logger.getLogger("c.d.b.extract.vma")
+internal val log = Logger.getLogger("c.d.b.extract.glfw3")
 
 fun extractGLFWHeader(): Registry<EmptyMergeable> {
     val fileContent = inputDir.resolve("glfw3.h").toFile().readText() +

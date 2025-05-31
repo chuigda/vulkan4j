@@ -70,16 +70,6 @@ public final class VmaMemoryUsage {
     /// vmaCreateBuffer(), vmaCreateImage(), vmaFindMemoryTypeIndexForBufferInfo(), vmaFindMemoryTypeIndexForImageInfo()
     /// and not with generic memory allocation functions.
     public static final int AUTO_PREFER_HOST = 9;
-
-    /// Selects best memory type automatically with preference for CPU (host) memory.
-    ///
-    /// When using this flag, if you want to map the allocation (using vmaMapMemory() or {@code VMA_ALLOCATION_CREATE_MAPPED_BIT}),
-    /// you must pass one of the flags: {@code VMA_ALLOCATION_CREATE_HOST_ACCESS_SEQUENTIAL_WRITE_BIT} or {@code VMA_ALLOCATION_CREATE_HOST_ACCESS_RANDOM_BIT}
-    /// in VmaAllocationCreateInfo::flags.
-    ///
-    /// It can be used only with functions that let the library know `VkBufferCreateInfo` or `VkImageCreateInfo`, e.g.
-    /// vmaCreateBuffer(), vmaCreateImage(), vmaFindMemoryTypeIndexForBufferInfo(), vmaFindMemoryTypeIndexForImageInfo()
-    /// and not with generic memory allocation functions.
     public static final int MAX_ENUM = 0x7FFFFFFF;
 
     public static String explain(@EnumType(VmaMemoryUsage.class) int value) {
