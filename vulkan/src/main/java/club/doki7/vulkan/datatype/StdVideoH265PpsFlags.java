@@ -122,8 +122,8 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * StdVideoH265PpsFlags.BYTES, StdVideoH265PpsFlags.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * StdVideoH265PpsFlags.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

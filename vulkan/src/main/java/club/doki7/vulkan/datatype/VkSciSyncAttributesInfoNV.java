@@ -105,8 +105,8 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkSciSyncAttributesInfoNV.BYTES, VkSciSyncAttributesInfoNV.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkSciSyncAttributesInfoNV.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

@@ -104,8 +104,8 @@ public record VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT(@NotNull Memory
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT.BYTES, VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

@@ -110,8 +110,8 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkVideoEncodeAV1PictureInfoKHR.BYTES, VkVideoEncodeAV1PictureInfoKHR.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkVideoEncodeAV1PictureInfoKHR.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

@@ -104,8 +104,8 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkBufferUsageFlags2CreateInfo.BYTES, VkBufferUsageFlags2CreateInfo.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkBufferUsageFlags2CreateInfo.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

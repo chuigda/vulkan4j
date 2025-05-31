@@ -105,8 +105,8 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkVideoDecodeH264CapabilitiesKHR.BYTES, VkVideoDecodeH264CapabilitiesKHR.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkVideoDecodeH264CapabilitiesKHR.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

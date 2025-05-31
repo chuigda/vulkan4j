@@ -111,8 +111,8 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkHdrMetadataEXT.BYTES, VkHdrMetadataEXT.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkHdrMetadataEXT.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

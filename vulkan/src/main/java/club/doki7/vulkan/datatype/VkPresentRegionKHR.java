@@ -94,8 +94,8 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkPresentRegionKHR.BYTES, VkPresentRegionKHR.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkPresentRegionKHR.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

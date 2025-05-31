@@ -104,8 +104,8 @@ public record VkPhysicalDeviceSynchronization2Features(@NotNull MemorySegment se
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkPhysicalDeviceSynchronization2Features.BYTES, VkPhysicalDeviceSynchronization2Features.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkPhysicalDeviceSynchronization2Features.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {

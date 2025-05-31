@@ -105,8 +105,8 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
         /// you want to create a shrunk view, you may use {@link #slice(long)} (with validation)
         /// instead.
         @Unsafe
-        public @NotNull Ptr reinterpret(long index) {
-            return new Ptr(segment.asSlice(index * VkCheckpointData2NV.BYTES, VkCheckpointData2NV.BYTES));
+        public @NotNull Ptr reinterpret(long newSize) {
+            return new Ptr(segment.reinterpret(newSize * VkCheckpointData2NV.BYTES));
         }
 
         public @NotNull Ptr offset(long offset) {
