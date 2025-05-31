@@ -215,9 +215,9 @@ class EnumVariant(
 class FunctionTypedef(
     name: Identifier,
     val params: List<Type>,
-    val result: Type?
+    val result: Type
 ) : Entity(name) {
-    constructor(name: String, params: List<Type>, result: Type?) : this(name.intern(), params, result)
+    constructor(name: String, params: List<Type>, result: Type) : this(name.intern(), params, result)
 
     override fun toStringImpl() = "FunctionTypedef(name=\"$name\", params=$params, result=$result"
 }

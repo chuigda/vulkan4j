@@ -3,6 +3,7 @@ package club.doki7.babel.extract
 import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.FunctionTypedef
 import club.doki7.babel.registry.Identifier
+import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.intern
 
@@ -11,7 +12,7 @@ fun vulkanAdditionalRegistry(): Registry<EmptyMergeable> {
 
     fun pfn(s: String) {
         val name = s.intern()
-        additionalFunctionTypedefs[name] = FunctionTypedef(name, emptyList(), null)
+        additionalFunctionTypedefs[name] = FunctionTypedef(name, emptyList(), IdentifierType("void".intern()))
     }
 
     pfn("PFN_vkGetInstanceProcAddr")
