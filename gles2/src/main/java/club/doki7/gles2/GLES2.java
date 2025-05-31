@@ -414,10 +414,10 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glBlendColor"><code>glBlendColor</code></a>
     public void blendColor(
-        float red,
-        float green,
-        float blue,
-        float alpha
+        @NativeType("GLfloat") float red,
+        @NativeType("GLfloat") float green,
+        @NativeType("GLfloat") float blue,
+        @NativeType("GLfloat") float alpha
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glBlendColor);
         try {
@@ -568,10 +568,10 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glClearColor"><code>glClearColor</code></a>
     public void clearColor(
-        float red,
-        float green,
-        float blue,
-        float alpha
+        @NativeType("GLfloat") float red,
+        @NativeType("GLfloat") float green,
+        @NativeType("GLfloat") float blue,
+        @NativeType("GLfloat") float alpha
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearColor);
         try {
@@ -588,7 +588,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glClearDepthf"><code>glClearDepthf</code></a>
     public void clearDepthf(
-        float d
+        @NativeType("GLfloat") float d
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glClearDepthf);
         try {
@@ -923,8 +923,8 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glDepthRangef"><code>glDepthRangef</code></a>
     public void depthRangef(
-        float n,
-        float f
+        @NativeType("GLfloat") float n,
+        @NativeType("GLfloat") float f
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glDepthRangef);
         try {
@@ -1339,7 +1339,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glGetFloatv"><code>glGetFloatv</code></a>
     public void getFloatv(
         @NativeType("GLenum") int pname,
-        @Nullable FloatPtr data
+        @Nullable @Pointer(comment="GLfloat") FloatPtr data
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetFloatv);
         try {
@@ -1541,7 +1541,7 @@ public final class GLES2 {
     public void getTexParameterfv(
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int pname,
-        @Nullable FloatPtr params
+        @Nullable @Pointer(comment="GLfloat") FloatPtr params
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetTexParameterfv);
         try {
@@ -1593,7 +1593,7 @@ public final class GLES2 {
     public void getUniformfv(
         @NativeType("GLuint") @Unsigned int program,
         @NativeType("GLint") int location,
-        @Nullable FloatPtr params
+        @Nullable @Pointer(comment="GLfloat") FloatPtr params
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetUniformfv);
         try {
@@ -1647,7 +1647,7 @@ public final class GLES2 {
     public void getVertexAttribfv(
         @NativeType("GLuint") @Unsigned int index,
         @NativeType("GLenum") int pname,
-        @Nullable FloatPtr params
+        @Nullable @Pointer(comment="GLfloat") FloatPtr params
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glGetVertexAttribfv);
         try {
@@ -1795,7 +1795,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glLineWidth"><code>glLineWidth</code></a>
     public void lineWidth(
-        float width
+        @NativeType("GLfloat") float width
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glLineWidth);
         try {
@@ -1839,8 +1839,8 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glPolygonOffset"><code>glPolygonOffset</code></a>
     public void polygonOffset(
-        float factor,
-        float units
+        @NativeType("GLfloat") float factor,
+        @NativeType("GLfloat") float units
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glPolygonOffset);
         try {
@@ -1912,7 +1912,7 @@ public final class GLES2 {
 
     /// @see <a href="https://docs.gl/es2/glSampleCoverage"><code>glSampleCoverage</code></a>
     public void sampleCoverage(
-        float value,
+        @NativeType("GLfloat") float value,
         @NativeType("GLboolean") @Unsigned byte invert
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glSampleCoverage);
@@ -2128,7 +2128,7 @@ public final class GLES2 {
     public void texParameterf(
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int pname,
-        float param
+        @NativeType("GLfloat") float param
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexParameterf);
         try {
@@ -2146,7 +2146,7 @@ public final class GLES2 {
     public void texParameterfv(
         @NativeType("GLenum") int target,
         @NativeType("GLenum") int pname,
-        @Nullable FloatPtr params
+        @Nullable @Pointer(comment="GLfloat") FloatPtr params
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glTexParameterfv);
         try {
@@ -2229,7 +2229,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glUniform1f"><code>glUniform1f</code></a>
     public void uniform1f(
         @NativeType("GLint") int location,
-        float v0
+        @NativeType("GLfloat") float v0
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniform1f);
         try {
@@ -2246,7 +2246,7 @@ public final class GLES2 {
     public void uniform1fv(
         @NativeType("GLint") int location,
         @NativeType("GLsizei") int count,
-        @Nullable FloatPtr value
+        @Nullable @Pointer(comment="GLfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniform1fv);
         try {
@@ -2297,8 +2297,8 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glUniform2f"><code>glUniform2f</code></a>
     public void uniform2f(
         @NativeType("GLint") int location,
-        float v0,
-        float v1
+        @NativeType("GLfloat") float v0,
+        @NativeType("GLfloat") float v1
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniform2f);
         try {
@@ -2316,7 +2316,7 @@ public final class GLES2 {
     public void uniform2fv(
         @NativeType("GLint") int location,
         @NativeType("GLsizei") int count,
-        @Nullable FloatPtr value
+        @Nullable @Pointer(comment="GLfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniform2fv);
         try {
@@ -2369,9 +2369,9 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glUniform3f"><code>glUniform3f</code></a>
     public void uniform3f(
         @NativeType("GLint") int location,
-        float v0,
-        float v1,
-        float v2
+        @NativeType("GLfloat") float v0,
+        @NativeType("GLfloat") float v1,
+        @NativeType("GLfloat") float v2
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniform3f);
         try {
@@ -2390,7 +2390,7 @@ public final class GLES2 {
     public void uniform3fv(
         @NativeType("GLint") int location,
         @NativeType("GLsizei") int count,
-        @Nullable FloatPtr value
+        @Nullable @Pointer(comment="GLfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniform3fv);
         try {
@@ -2445,10 +2445,10 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glUniform4f"><code>glUniform4f</code></a>
     public void uniform4f(
         @NativeType("GLint") int location,
-        float v0,
-        float v1,
-        float v2,
-        float v3
+        @NativeType("GLfloat") float v0,
+        @NativeType("GLfloat") float v1,
+        @NativeType("GLfloat") float v2,
+        @NativeType("GLfloat") float v3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniform4f);
         try {
@@ -2468,7 +2468,7 @@ public final class GLES2 {
     public void uniform4fv(
         @NativeType("GLint") int location,
         @NativeType("GLsizei") int count,
-        @Nullable FloatPtr value
+        @Nullable @Pointer(comment="GLfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniform4fv);
         try {
@@ -2527,7 +2527,7 @@ public final class GLES2 {
         @NativeType("GLint") int location,
         @NativeType("GLsizei") int count,
         @NativeType("GLboolean") @Unsigned byte transpose,
-        @Nullable FloatPtr value
+        @Nullable @Pointer(comment="GLfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniformMatrix2fv);
         try {
@@ -2547,7 +2547,7 @@ public final class GLES2 {
         @NativeType("GLint") int location,
         @NativeType("GLsizei") int count,
         @NativeType("GLboolean") @Unsigned byte transpose,
-        @Nullable FloatPtr value
+        @Nullable @Pointer(comment="GLfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniformMatrix3fv);
         try {
@@ -2567,7 +2567,7 @@ public final class GLES2 {
         @NativeType("GLint") int location,
         @NativeType("GLsizei") int count,
         @NativeType("GLboolean") @Unsigned byte transpose,
-        @Nullable FloatPtr value
+        @Nullable @Pointer(comment="GLfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glUniformMatrix4fv);
         try {
@@ -2613,7 +2613,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glVertexAttrib1f"><code>glVertexAttrib1f</code></a>
     public void vertexAttrib1f(
         @NativeType("GLuint") @Unsigned int index,
-        float x
+        @NativeType("GLfloat") float x
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib1f);
         try {
@@ -2629,7 +2629,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glVertexAttrib1fv"><code>glVertexAttrib1fv</code></a>
     public void vertexAttrib1fv(
         @NativeType("GLuint") @Unsigned int index,
-        @Nullable FloatPtr v
+        @Nullable @Pointer(comment="GLfloat") FloatPtr v
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib1fv);
         try {
@@ -2645,8 +2645,8 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glVertexAttrib2f"><code>glVertexAttrib2f</code></a>
     public void vertexAttrib2f(
         @NativeType("GLuint") @Unsigned int index,
-        float x,
-        float y
+        @NativeType("GLfloat") float x,
+        @NativeType("GLfloat") float y
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib2f);
         try {
@@ -2663,7 +2663,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glVertexAttrib2fv"><code>glVertexAttrib2fv</code></a>
     public void vertexAttrib2fv(
         @NativeType("GLuint") @Unsigned int index,
-        @Nullable FloatPtr v
+        @Nullable @Pointer(comment="GLfloat") FloatPtr v
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib2fv);
         try {
@@ -2679,9 +2679,9 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glVertexAttrib3f"><code>glVertexAttrib3f</code></a>
     public void vertexAttrib3f(
         @NativeType("GLuint") @Unsigned int index,
-        float x,
-        float y,
-        float z
+        @NativeType("GLfloat") float x,
+        @NativeType("GLfloat") float y,
+        @NativeType("GLfloat") float z
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib3f);
         try {
@@ -2699,7 +2699,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glVertexAttrib3fv"><code>glVertexAttrib3fv</code></a>
     public void vertexAttrib3fv(
         @NativeType("GLuint") @Unsigned int index,
-        @Nullable FloatPtr v
+        @Nullable @Pointer(comment="GLfloat") FloatPtr v
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib3fv);
         try {
@@ -2715,10 +2715,10 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glVertexAttrib4f"><code>glVertexAttrib4f</code></a>
     public void vertexAttrib4f(
         @NativeType("GLuint") @Unsigned int index,
-        float x,
-        float y,
-        float z,
-        float w
+        @NativeType("GLfloat") float x,
+        @NativeType("GLfloat") float y,
+        @NativeType("GLfloat") float z,
+        @NativeType("GLfloat") float w
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib4f);
         try {
@@ -2737,7 +2737,7 @@ public final class GLES2 {
     /// @see <a href="https://docs.gl/es2/glVertexAttrib4fv"><code>glVertexAttrib4fv</code></a>
     public void vertexAttrib4fv(
         @NativeType("GLuint") @Unsigned int index,
-        @Nullable FloatPtr v
+        @Nullable @Pointer(comment="GLfloat") FloatPtr v
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glVertexAttrib4fv);
         try {

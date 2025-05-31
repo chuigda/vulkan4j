@@ -342,7 +342,7 @@ private fun generateResultConvert(retType: CType): Triple<String, String, String
         "return s.equals(MemorySegment.NULL) ? null : new ${retType.name}(s);"
     )
     is CNonRefType -> Triple(
-        "return (${retType.jTypeNoSign}) ",
+        "return (${retType.jTypeNoAnnotation}) ",
         "",
         null
     )

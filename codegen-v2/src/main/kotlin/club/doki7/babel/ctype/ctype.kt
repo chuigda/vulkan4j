@@ -4,7 +4,6 @@ import club.doki7.babel.registry.ArrayType
 import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.OpaqueTypedef
 import club.doki7.babel.registry.PointerType
-import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.registry.Type
 import kotlin.collections.contains
@@ -16,6 +15,12 @@ sealed interface CType {
     val cType: String
 
     val jDescriptorParamLayout: String get() = jLayout
+}
+
+interface ICommentable<SELF: CType> {
+    var comment: String?
+
+    fun copyWithComment(comment: String?): SELF
 }
 
 data class CVoidType(override val cType: String = "void") : CType {
@@ -30,8 +35,8 @@ data class CPointerType(
     val pointee: CType,
     val const: Boolean,
     val pointerToOne: Boolean,
-    val comment: String?,
-) : CType {
+    override var comment: String?,
+) : CType, ICommentable<CPointerType> {
     override val jType: String = if (comment != null) {
         """@Pointer(comment="$comment") MemorySegment"""
     }
@@ -58,6 +63,10 @@ data class CPointerType(
             append(" const")
         }
         append("*")
+    }
+
+    override fun copyWithComment(comment: String?): CPointerType {
+        return this.copy(comment = comment)
     }
 }
 
@@ -88,10 +97,9 @@ data class CArrayType(val element: CType, val length: String) : CType {
 }
 
 sealed interface CNonRefType : CType {
-    val jTypeNoSign: String
+    val jTypeNoAnnotation: String
     val jPtrType: String
     val jPtrTypeNoAnnotation: String
-    val comment: String?
 }
 
 sealed interface CFixedSizeType : CNonRefType {
@@ -102,8 +110,8 @@ data class CFixedIntType(
     override val cType: String,
     override val byteSize: Int,
     val unsigned: Boolean,
-    override val comment: String? = null
-) : CFixedSizeType {
+    override var comment: String? = null
+) : CFixedSizeType, ICommentable<CFixedIntType> {
     override val jType: String get() = buildString {
         if (comment != null) {
             append("@NativeType(\"$comment\") ")
@@ -111,7 +119,7 @@ data class CFixedIntType(
         if (unsigned) {
             append("@Unsigned ")
         }
-        append(jTypeNoSign)
+        append(jTypeNoAnnotation)
     }
 
     override val jLayout: String get() = when (byteSize) {
@@ -128,7 +136,7 @@ data class CFixedIntType(
         8 -> "OfLong"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val jTypeNoSign: String get() = when (byteSize) {
+    override val jTypeNoAnnotation: String get() = when (byteSize) {
         1 -> "byte"
         2 -> "short"
         4 -> "int"
@@ -152,22 +160,26 @@ data class CFixedIntType(
         8 -> "LongPtr"
         else -> error("unsupported byte size: $byteSize")
     }
+
+    override fun copyWithComment(comment: String?): CFixedIntType {
+        return this.copy(comment = comment)
+    }
 }
 
 data class CPlatformDependentIntType(
     override val cType: String,
-    override val jTypeNoSign: String,
+    override val jTypeNoAnnotation: String,
     override val jLayout: String,
     override val jPtrTypeNoAnnotation: String,
-    override val comment: String? = null
-) : CNonRefType {
+    override var comment: String? = null
+) : CNonRefType, ICommentable<CPlatformDependentIntType> {
     override val jLayoutType: String get() = error("should not call `jLayoutType` on `CPlatformDependentIntType`")
 
     override val jType: String get() = buildString {
         if (comment != null) {
             append("@NativeType(\"$comment\") ")
         }
-        append(jTypeNoSign)
+        append(jTypeNoAnnotation)
     }
 
     override val jPtrType: String get() = buildString {
@@ -176,16 +188,21 @@ data class CPlatformDependentIntType(
         }
         append(jPtrTypeNoAnnotation)
     }
+
+    override fun copyWithComment(comment: String?): CPlatformDependentIntType {
+        return this.copy(comment = comment)
+    }
 }
 
 data class CFloatType(
     override val byteSize: Int,
-    override val comment: String? = null
-) : CFixedSizeType {
-    override val jType: String get() = when (byteSize) {
-        4 -> "float"
-        8 -> "double"
-        else -> error("unsupported byte size: $byteSize")
+    override var comment: String? = null
+) : CFixedSizeType, ICommentable<CFloatType> {
+    override val jType: String get() = buildString {
+        if (comment != null) {
+            append("@NativeType(\"$comment\") ")
+        }
+        append(jTypeNoAnnotation)
     }
     override val jLayout: String get() = when (byteSize) {
         4 -> "ValueLayout.JAVA_FLOAT"
@@ -203,13 +220,26 @@ data class CFloatType(
             8 -> "double"
             else -> error("unsupported byte size: $byteSize")
         }
-    override val jTypeNoSign: String get() = jType
-    override val jPtrType: String get() = when (byteSize) {
+    override val jTypeNoAnnotation: String get() = when (byteSize) {
+        4 -> "float"
+        8 -> "double"
+        else -> error("unsupported byte size: $byteSize")
+    }
+    override val jPtrType: String get() = buildString {
+        if (comment != null) {
+            append("@Pointer(comment=\"$comment\") ")
+        }
+        append(jPtrTypeNoAnnotation)
+    }
+    override val jPtrTypeNoAnnotation: String get() = when (byteSize) {
         4 -> "FloatPtr"
         8 -> "DoublePtr"
         else -> error("unsupported byte size: $byteSize")
     }
-    override val jPtrTypeNoAnnotation: String get() = jPtrType
+
+    override fun copyWithComment(comment: String?): CFloatType {
+        return this.copy(comment = comment)
+    }
 }
 
 data class CStructType(val name: String, val isUnion: Boolean): CType {
@@ -221,8 +251,7 @@ data class CStructType(val name: String, val isUnion: Boolean): CType {
 
 data class CEnumType(
     val name: String,
-    val bitwidth: Int? = null,
-    override val comment: String? = null
+    val bitwidth: Int? = null
 ): CFixedSizeType {
     override val jType: String get() = when (bitwidth) {
         null, 32 -> {
@@ -256,7 +285,7 @@ data class CEnumType(
 
     override val cType: String = "enum $name"
 
-    override val jTypeNoSign: String get() = when (bitwidth) {
+    override val jTypeNoAnnotation: String get() = when (bitwidth) {
         null, 32 -> "int"
         64 -> "long"
         else -> error("unsupported bitwidth: $bitwidth")
@@ -290,13 +319,13 @@ private val cIntType = int32Type
 private val cUIntType = uint32Type
 private val cLongType = CPlatformDependentIntType(
     cType = "long",
-    jTypeNoSign = "long",
+    jTypeNoAnnotation = "long",
     jLayout = "NativeLayout.C_LONG",
     jPtrTypeNoAnnotation = "CLongPtr",
 )
 private val cSizeType = CPlatformDependentIntType(
     cType = "size_t",
-    jTypeNoSign = "long",
+    jTypeNoAnnotation = "long",
     jLayout = "NativeLayout.C_SIZE_T",
     jPtrTypeNoAnnotation = "PointerPtr",
 )
@@ -328,32 +357,32 @@ private val knownTypes = mapOf(
     "unsigned short" to uint16Type,
 
     // GLES2 base types
-    "GLbyte" to int8Type.copy(comment = "GLbyte"),
-    "GLubyte" to uint8Type.copy(comment = "GLubyte"),
-    "GLchar" to int8Type.copy(comment = "GLchar"),
-    "GLuchar" to uint8Type.copy(comment = "GLuchar"),
+    "GLbyte" to int8Type.copyWithComment(comment = "GLbyte"),
+    "GLubyte" to uint8Type.copyWithComment(comment = "GLubyte"),
+    "GLchar" to int8Type.copyWithComment(comment = "GLchar"),
+    "GLuchar" to uint8Type.copyWithComment(comment = "GLuchar"),
     "GLclampf" to floatType.copy(comment = "GLclampf"),
-    "GLfixed" to int32Type.copy(comment = "GLfixed"),
-    "GLint" to int32Type.copy(comment = "GLint"),
-    "GLuint" to uint32Type.copy(comment = "GLuint"),
-    "GLshort" to int16Type.copy(comment = "GLshort"),
-    "Glushort" to uint16Type.copy(comment = "GLushort"),
+    "GLfixed" to int32Type.copyWithComment(comment = "GLfixed"),
+    "GLint" to int32Type.copyWithComment(comment = "GLint"),
+    "GLuint" to uint32Type.copyWithComment(comment = "GLuint"),
+    "GLshort" to int16Type.copyWithComment(comment = "GLshort"),
+    "Glushort" to uint16Type.copyWithComment(comment = "GLushort"),
     "GLfloat" to floatType.copy(comment = "GLfloat"),
     "GLvoid" to voidType.copy(cType = "GLvoid"),
-    "GLenum" to int32Type.copy(comment = "GLenum"),
-    "GLsizei" to int32Type.copy(comment = "GLsizei"),
+    "GLenum" to int32Type.copyWithComment(comment = "GLenum"),
+    "GLsizei" to int32Type.copyWithComment(comment = "GLsizei"),
     "GLsizeiptr" to cSizeType.copy(comment = "GLsizeiptr"),
     "GLintptr" to cSizeType.copy(comment = "GLintptr"),
-    "GLbitfield" to uint32Type.copy(comment = "GLbitfield"),
-    "GLboolean" to uint8Type.copy(comment = "GLboolean"),
+    "GLbitfield" to uint32Type.copyWithComment(comment = "GLbitfield"),
+    "GLboolean" to uint8Type.copyWithComment(comment = "GLboolean"),
 
     // Vulkan base types
-    "VkSampleMask" to uint32Type.copy(comment = "VkSampleMask"),
-    "VkBool32" to uint32Type.copy(comment = "VkBool32"),
-    "VkFlags" to uint32Type.copy(comment = "VkFlags"),
-    "VkFlags64" to uint64Type.copy(comment = "VkFlags64"),
-    "VkDeviceSize" to uint64Type.copy(comment = "VkDeviceSize"),
-    "VkDeviceAddress" to uint64Type.copy(comment = "VkDeviceAddress"),
+    "VkSampleMask" to uint32Type.copyWithComment(comment = "VkSampleMask"),
+    "VkBool32" to uint32Type.copyWithComment(comment = "VkBool32"),
+    "VkFlags" to uint32Type.copyWithComment(comment = "VkFlags"),
+    "VkFlags64" to uint64Type.copyWithComment(comment = "VkFlags64"),
+    "VkDeviceSize" to uint64Type.copyWithComment(comment = "VkDeviceSize"),
+    "VkDeviceAddress" to uint64Type.copyWithComment(comment = "VkDeviceAddress"),
     "VkRemoteAddressNV" to pvoidType("VkRemoteAddressNV"),
 
     // Android
@@ -367,15 +396,15 @@ private val knownTypes = mapOf(
     // iOS or macOS
     "id" to pvoidType("id"),
     "CAMetalLayer" to pvoidType("CAMetalLayer"),
-    "GgpFrameToken" to uint32Type.copy(comment = "GgpFrameToken"),
-    "GgpStreamDescriptor" to uint32Type.copy(comment = "GgpStreamDescriptor"),
+    "GgpFrameToken" to uint32Type.copyWithComment(comment = "GgpFrameToken"),
+    "GgpStreamDescriptor" to uint32Type.copyWithComment(comment = "GgpStreamDescriptor"),
     "IOSurfaceRef" to pvoidType("IOSurfaceRef"),
     "MTLBuffer_id" to pvoidType("MTLBuffer_id"),
     "MTLCommandQueue_id" to pvoidType("MTLCommandQueue_id"),
     "MTLDevice_id" to pvoidType("MTLDevice_id"),
     "MTLSharedEvent_id" to pvoidType("MTLSharedEvent_id"),
     "MTLTexture_id" to pvoidType("MTLTexture_id"),
-    "CGDirectDisplayID" to uint32Type.copy(comment = "CGDirectDisplayID"),
+    "CGDirectDisplayID" to uint32Type.copyWithComment(comment = "CGDirectDisplayID"),
 
     // QNX
     "_screen_buffer" to pvoidType("_screen_buffer"),
@@ -388,7 +417,7 @@ private val knownTypes = mapOf(
     "wl_output" to voidType.copy(cType = "wl_output"),
 
     // Windows
-    "DWORD" to uint32Type.copy(comment = "DWORD"),
+    "DWORD" to uint32Type.copyWithComment(comment = "DWORD"),
     "HANDLE" to pvoidType("HANDLE"),
     "HINSTANCE" to pvoidType("HINSTANCE"),
     "HMONITOR" to pvoidType("HMONITOR"),
@@ -406,9 +435,9 @@ private val knownTypes = mapOf(
     "GLXContext" to pvoidType("GLXContext"),
     "GLXWindow" to cLongType.copy(comment = "GLXWindow"),
     "xcb_connection_t" to voidType.copy(cType = "xcb_connection_t"),
-    "xcb_visualid_t" to uint32Type.copy(comment = "xcb_visualid_t"),
-    "xcb_window_t" to uint32Type.copy(comment = "xcb_window_t"),
-    "xcb_handle_t" to uint32Type.copy(comment = "xcb_handle_t"),
+    "xcb_visualid_t" to uint32Type.copyWithComment(comment = "xcb_visualid_t"),
+    "xcb_window_t" to uint32Type.copyWithComment(comment = "xcb_window_t"),
+    "xcb_handle_t" to uint32Type.copyWithComment(comment = "xcb_handle_t"),
 
     // EGL
     "EGLDisplay" to pvoidType("EGLDisplay"),
@@ -425,7 +454,7 @@ private val knownTypes = mapOf(
     "NvSciSyncObj" to pvoidType("NvSciSyncObj"),
 
     // FUCHSIA
-    "zx_handle_t" to uint32Type.copy(comment = "zx_handle_t"),
+    "zx_handle_t" to uint32Type.copyWithComment(comment = "zx_handle_t"),
 )
 
 fun lowerType(registry: RegistryBase, refRegistries: List<RegistryBase>, type: Type): CType {
@@ -528,7 +557,12 @@ fun identifierTypeLookup(registry: RegistryBase, refRegistries: List<RegistryBas
     }
     else if (registry.aliases.contains(type.ident)) {
         val alias = registry.aliases[type.ident]!!
-        lowerType(registry, refRegistries, alias.type)
+        val ret = lowerType(registry, refRegistries, alias.type)
+        if (ret is ICommentable<*>) {
+            ret.copyWithComment(type.ident.original)
+        } else {
+            ret
+        }
     }
     else if (knownTypes.containsKey(type.ident.value)) {
         knownTypes[type.ident.value]!!
