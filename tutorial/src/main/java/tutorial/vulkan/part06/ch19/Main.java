@@ -231,7 +231,6 @@ class Application {
         try (var arena = Arena.ofConfined()) {
             var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
             var pQueuePriorities = FloatPtr.allocateV(arena, 1.0f);
-            deviceCreateInfo.queueCreateInfoCount(1);
             if (indices.graphicsFamily == indices.presentFamily) {
                 var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena)
                         .queueCount(1)
