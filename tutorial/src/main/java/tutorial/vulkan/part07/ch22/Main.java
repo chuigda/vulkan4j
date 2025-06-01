@@ -442,15 +442,15 @@ class Application {
 
     private void createDescriptorSetLayout() {
         try (var arena = Arena.ofConfined()) {
-            var uboLayoutBinding = VkDescriptorSetLayoutBinding.allocate(arena);
-            uboLayoutBinding.binding(0);
-            uboLayoutBinding.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
-            uboLayoutBinding.descriptorCount(1);
-            uboLayoutBinding.stageFlags(VkShaderStageFlags.VERTEX);
+            var uboLayoutBinding = VkDescriptorSetLayoutBinding.allocate(arena)
+                    .binding(0)
+                    .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                    .descriptorCount(1)
+                    .stageFlags(VkShaderStageFlags.VERTEX);
 
-            var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena);
-            layoutInfo.bindingCount(1);
-            layoutInfo.pBindings(uboLayoutBinding);
+            var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena)
+                    .bindingCount(1)
+                    .pBindings(uboLayoutBinding);
 
             var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
             var result = deviceCommands.createDescriptorSetLayout(device, layoutInfo, null, pDescriptorSetLayout);
@@ -492,26 +492,26 @@ class Application {
                     .vertexAttributeDescriptionCount((int) attributeDescription.size())
                     .pVertexAttributeDescriptions(attributeDescription);
 
-            var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena);
-            inputAssembly.topology(VkPrimitiveTopology.TRIANGLE_LIST);
-            inputAssembly.primitiveRestartEnable(VkConstants.FALSE);
+            var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena)
+                    .topology(VkPrimitiveTopology.TRIANGLE_LIST)
+                    .primitiveRestartEnable(VkConstants.FALSE);
 
-            var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena);
-            viewportStateInfo.viewportCount(1);
-            viewportStateInfo.scissorCount(1);
+            var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena)
+                    .viewportCount(1)
+                    .scissorCount(1);
 
-            var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena);
-            rasterizer.depthClampEnable(VkConstants.FALSE);
-            rasterizer.rasterizerDiscardEnable(VkConstants.FALSE);
-            rasterizer.polygonMode(VkPolygonMode.FILL);
-            rasterizer.lineWidth(1.0f);
-            rasterizer.cullMode(VkCullModeFlags.BACK);
-            rasterizer.frontFace(VkFrontFace.COUNTER_CLOCKWISE);
-            rasterizer.depthBiasEnable(VkConstants.FALSE);
+            var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena)
+                    .depthClampEnable(VkConstants.FALSE)
+                    .rasterizerDiscardEnable(VkConstants.FALSE)
+                    .polygonMode(VkPolygonMode.FILL)
+                    .lineWidth(1.0f)
+                    .cullMode(VkCullModeFlags.BACK)
+                    .frontFace(VkFrontFace.COUNTER_CLOCKWISE)
+                    .depthBiasEnable(VkConstants.FALSE);
 
-            var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena);
-            multisampling.sampleShadingEnable(VkConstants.FALSE);
-            multisampling.rasterizationSamples(VkSampleCountFlags._1);
+            var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena)
+                    .sampleShadingEnable(VkConstants.FALSE)
+                    .rasterizationSamples(VkSampleCountFlags._1);
 
             var colorBlendAttachment = VkPipelineColorBlendAttachmentState.allocate(arena)
                     .colorWriteMask(
@@ -527,10 +527,8 @@ class Application {
                     .pAttachments(colorBlendAttachment);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
-            var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
-            pDescriptorSetLayout.write(descriptorSetLayout);
-            pipelineLayoutInfo.setLayoutCount(1);
-            pipelineLayoutInfo.pSetLayouts(pDescriptorSetLayout);
+            var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocateV(arena, descriptorSetLayout);
+            pipelineLayoutInfo.setLayoutCount(1).pSetLayouts(pDescriptorSetLayout);
             var pPipelineLayout = VkPipelineLayout.Ptr.allocate(arena);
             var result = deviceCommands.createPipelineLayout(device, pipelineLayoutInfo, null, pPipelineLayout);
             if (result != VkResult.SUCCESS) {
@@ -1340,28 +1338,24 @@ class Application {
     }
 
     private static VkVertexInputBindingDescription getBindingDescription(Arena arena) {
-        var description = VkVertexInputBindingDescription.allocate(arena);
-        description.binding(0);
-        description.stride(Float.BYTES * 5);
-        description.inputRate(VkVertexInputRate.VERTEX);
-        return description;
+        return VkVertexInputBindingDescription.allocate(arena)
+                .binding(0)
+                .stride(Float.BYTES * 5)
+                .inputRate(VkVertexInputRate.VERTEX);
     }
 
     private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
         var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 2);
-        var vertexAttribute = attributeDescriptions.at(0);
-        var colorAttribute = attributeDescriptions.at(1);
-
-        vertexAttribute.binding(0);
-        vertexAttribute.location(0);
-        vertexAttribute.format(VkFormat.R32G32_SFLOAT);
-        vertexAttribute.offset(0);
-
-        colorAttribute.binding(0);
-        colorAttribute.location(1);
-        colorAttribute.format(VkFormat.R32G32B32_SFLOAT);
-        colorAttribute.offset(Float.BYTES * 2);
-
+        attributeDescriptions.at(0)
+                .binding(0)
+                .location(0)
+                .format(VkFormat.R32G32_SFLOAT)
+                .offset(0);
+        attributeDescriptions.at(1)
+                .binding(0)
+                .location(1)
+                .format(VkFormat.R32G32B32_SFLOAT)
+                .offset(Float.BYTES * 2);
         return attributeDescriptions;
     }
 

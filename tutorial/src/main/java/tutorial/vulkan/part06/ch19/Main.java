@@ -1121,28 +1121,24 @@ class Application {
     }
 
     private static VkVertexInputBindingDescription getBindingDescription(Arena arena) {
-        var description = VkVertexInputBindingDescription.allocate(arena);
-        description.binding(0);
-        description.stride(Float.BYTES * 5);
-        description.inputRate(VkVertexInputRate.VERTEX);
-        return description;
+        return VkVertexInputBindingDescription.allocate(arena)
+                .binding(0)
+                .stride(Float.BYTES * 5)
+                .inputRate(VkVertexInputRate.VERTEX);
     }
 
     private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
         var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 2);
-        var vertexAttribute = attributeDescriptions.at(0);
-        var colorAttribute = attributeDescriptions.at(1);
-
-        vertexAttribute.binding(0);
-        vertexAttribute.location(0);
-        vertexAttribute.format(VkFormat.R32G32_SFLOAT);
-        vertexAttribute.offset(0);
-
-        colorAttribute.binding(0);
-        colorAttribute.location(1);
-        colorAttribute.format(VkFormat.R32G32B32_SFLOAT);
-        colorAttribute.offset(Float.BYTES * 2);
-
+        attributeDescriptions.at(0)
+                .binding(0)
+                .location(0)
+                .format(VkFormat.R32G32_SFLOAT)
+                .offset(0);
+        attributeDescriptions.at(1)
+                .binding(0)
+                .location(1)
+                .format(VkFormat.R32G32B32_SFLOAT)
+                .offset(Float.BYTES * 2);
         return attributeDescriptions;
     }
 

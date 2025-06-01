@@ -279,8 +279,8 @@ class Application {
                         .pQueuePriorities(pQueuePriorities);
                 deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
-            var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
-            deviceFeatures.samplerAnisotropy(VkConstants.TRUE);
+            var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena)
+                    .samplerAnisotropy(VkConstants.TRUE);
             deviceCreateInfo.pEnabledFeatures(deviceFeatures);
 
             if (ENABLE_VALIDATION_LAYERS) {
@@ -389,61 +389,57 @@ class Application {
     private void createRenderPass() {
         try (var arena = Arena.ofConfined()) {
             var attachments = VkAttachmentDescription.allocate(arena, 2);
-            var colorAttachment = attachments.at(0);
-            colorAttachment.format(swapChainImageFormat);
-            colorAttachment.samples(VkSampleCountFlags._1);
+            attachments.at(0)
+                    .format(swapChainImageFormat)
+                    .samples(VkSampleCountFlags._1)
+                    .loadOp(VkAttachmentLoadOp.CLEAR)
+                    .storeOp(VkAttachmentStoreOp.STORE)
+                    .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+                    .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+                    .initialLayout(VkImageLayout.UNDEFINED)
+                    .finalLayout(VkImageLayout.PRESENT_SRC_KHR);
+            attachments.at(1)
+                    .format(findDepthFormat())
+                    .samples(VkSampleCountFlags._1)
+                    .loadOp(VkAttachmentLoadOp.CLEAR)
+                    .storeOp(VkAttachmentStoreOp.DONT_CARE)
+                    .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+                    .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+                    .initialLayout(VkImageLayout.UNDEFINED)
+                    .finalLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
 
-            colorAttachment.loadOp(VkAttachmentLoadOp.CLEAR);
-            colorAttachment.storeOp(VkAttachmentStoreOp.STORE);
-            colorAttachment.stencilLoadOp(VkAttachmentLoadOp.DONT_CARE);
-            colorAttachment.stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
+            var colorAttachmentRef = VkAttachmentReference.allocate(arena)
+                    .attachment(0)
+                    .layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
 
-            colorAttachment.initialLayout(VkImageLayout.UNDEFINED);
-            colorAttachment.finalLayout(VkImageLayout.PRESENT_SRC_KHR);
+            var depthAttachmentRef = VkAttachmentReference.allocate(arena)
+                    .attachment(1)
+                    .layout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
 
-            var depthAttachment = attachments.at(1);
-            depthAttachment.format(findDepthFormat());
-            depthAttachment.samples(VkSampleCountFlags._1);
-            depthAttachment.loadOp(VkAttachmentLoadOp.CLEAR);
-            depthAttachment.storeOp(VkAttachmentStoreOp.DONT_CARE);
-            depthAttachment.stencilLoadOp(VkAttachmentLoadOp.DONT_CARE);
-            depthAttachment.stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
-            depthAttachment.initialLayout(VkImageLayout.UNDEFINED);
-            depthAttachment.finalLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
+            var subpass = VkSubpassDescription.allocate(arena)
+                    .pipelineBindPoint(VkPipelineBindPoint.GRAPHICS)
+                    .colorAttachmentCount(1)
+                    .pColorAttachments(colorAttachmentRef)
+                    .pDepthStencilAttachment(depthAttachmentRef);
 
-            var colorAttachmentRef = VkAttachmentReference.allocate(arena);
-            colorAttachmentRef.attachment(0);
-            colorAttachmentRef.layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
+            var dependency = VkSubpassDependency.allocate(arena)
+                    .srcSubpass(VkConstants.SUBPASS_EXTERNAL)
+                    .dstSubpass(0)
+                    .srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT
+                                  | VkPipelineStageFlags.EARLY_FRAGMENT_TESTS)
+                    .srcAccessMask(0)
+                    .dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT
+                                  | VkPipelineStageFlags.EARLY_FRAGMENT_TESTS)
+                    .dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE
+                                   | VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_WRITE);
 
-            var depthAttachmentRef = VkAttachmentReference.allocate(arena);
-            depthAttachmentRef.attachment(1);
-            depthAttachmentRef.layout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
-
-            var subpass = VkSubpassDescription.allocate(arena);
-            subpass.pipelineBindPoint(VkPipelineBindPoint.GRAPHICS);
-            subpass.colorAttachmentCount(1);
-            subpass.pColorAttachments(colorAttachmentRef);
-            subpass.pDepthStencilAttachment(depthAttachmentRef);
-
-            var dependency = VkSubpassDependency.allocate(arena);
-            dependency.srcSubpass(VkConstants.SUBPASS_EXTERNAL);
-            dependency.dstSubpass(0);
-            dependency.srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT
-                                    | VkPipelineStageFlags.EARLY_FRAGMENT_TESTS);
-            dependency.srcAccessMask(0);
-            dependency.dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT
-                                    | VkPipelineStageFlags.EARLY_FRAGMENT_TESTS);
-            dependency.dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE
-                                     | VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_WRITE);
-
-            var renderPassInfo = VkRenderPassCreateInfo.allocate(arena);
-            renderPassInfo.attachmentCount(2);
-            renderPassInfo.pAttachments(attachments);
-            renderPassInfo.subpassCount(1);
-            renderPassInfo.pSubpasses(subpass);
-
-            renderPassInfo.dependencyCount(1);
-            renderPassInfo.pDependencies(dependency);
+            var renderPassInfo = VkRenderPassCreateInfo.allocate(arena)
+                    .attachmentCount(2)
+                    .pAttachments(attachments)
+                    .subpassCount(1)
+                    .pSubpasses(subpass)
+                    .dependencyCount(1)
+                    .pDependencies(dependency);
 
             var pRenderPass = VkRenderPass.Ptr.allocate(arena);
             var result = deviceCommands.createRenderPass(device, renderPassInfo, null, pRenderPass);
@@ -457,20 +453,20 @@ class Application {
     private void createDescriptorSetLayout() {
         try (var arena = Arena.ofConfined()) {
             var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2);
-            var uboLayoutBinding = bindings.at(0);
-            uboLayoutBinding.binding(0);
-            uboLayoutBinding.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
-            uboLayoutBinding.descriptorCount(1);
-            uboLayoutBinding.stageFlags(VkShaderStageFlags.VERTEX);
-            var samplerLayoutBinding = bindings.at(1);
-            samplerLayoutBinding.binding(1);
-            samplerLayoutBinding.descriptorCount(1);
-            samplerLayoutBinding.descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
-            samplerLayoutBinding.stageFlags(VkShaderStageFlags.FRAGMENT);
+            bindings.at(0)
+                    .binding(0)
+                    .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                    .descriptorCount(1)
+                    .stageFlags(VkShaderStageFlags.VERTEX);
+            bindings.at(1)
+                    .binding(1)
+                    .descriptorCount(1)
+                    .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                    .stageFlags(VkShaderStageFlags.FRAGMENT);
 
-            var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena);
-            layoutInfo.bindingCount(2);
-            layoutInfo.pBindings(bindings);
+            var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena)
+                    .bindingCount(2)
+                    .pBindings(bindings);
 
             var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
             var result = deviceCommands.createDescriptorSetLayout(device, layoutInfo, null, pDescriptorSetLayout);
@@ -512,33 +508,33 @@ class Application {
                     .vertexAttributeDescriptionCount((int) attributeDescription.size())
                     .pVertexAttributeDescriptions(attributeDescription);
 
-            var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena);
-            inputAssembly.topology(VkPrimitiveTopology.TRIANGLE_LIST);
-            inputAssembly.primitiveRestartEnable(VkConstants.FALSE);
+            var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena)
+                    .topology(VkPrimitiveTopology.TRIANGLE_LIST)
+                    .primitiveRestartEnable(VkConstants.FALSE);
 
-            var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena);
-            viewportStateInfo.viewportCount(1);
-            viewportStateInfo.scissorCount(1);
+            var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena)
+                    .viewportCount(1)
+                    .scissorCount(1);
 
-            var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena);
-            rasterizer.depthClampEnable(VkConstants.FALSE);
-            rasterizer.rasterizerDiscardEnable(VkConstants.FALSE);
-            rasterizer.polygonMode(VkPolygonMode.FILL);
-            rasterizer.lineWidth(1.0f);
-            rasterizer.cullMode(VkCullModeFlags.BACK);
-            rasterizer.frontFace(VkFrontFace.COUNTER_CLOCKWISE);
-            rasterizer.depthBiasEnable(VkConstants.FALSE);
+            var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena)
+                    .depthClampEnable(VkConstants.FALSE)
+                    .rasterizerDiscardEnable(VkConstants.FALSE)
+                    .polygonMode(VkPolygonMode.FILL)
+                    .lineWidth(1.0f)
+                    .cullMode(VkCullModeFlags.BACK)
+                    .frontFace(VkFrontFace.COUNTER_CLOCKWISE)
+                    .depthBiasEnable(VkConstants.FALSE);
 
-            var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena);
-            multisampling.sampleShadingEnable(VkConstants.FALSE);
-            multisampling.rasterizationSamples(VkSampleCountFlags._1);
+            var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena)
+                    .sampleShadingEnable(VkConstants.FALSE)
+                    .rasterizationSamples(VkSampleCountFlags._1);
 
-            var depthStencil = VkPipelineDepthStencilStateCreateInfo.allocate(arena);
-            depthStencil.depthTestEnable(VkConstants.TRUE);
-            depthStencil.depthWriteEnable(VkConstants.TRUE);
-            depthStencil.depthCompareOp(VkCompareOp.LESS);
-            depthStencil.depthBoundsTestEnable(VkConstants.FALSE);
-            depthStencil.stencilTestEnable(VkConstants.FALSE);
+            var depthStencil = VkPipelineDepthStencilStateCreateInfo.allocate(arena)
+                    .depthTestEnable(VkConstants.TRUE)
+                    .depthWriteEnable(VkConstants.TRUE)
+                    .depthCompareOp(VkCompareOp.LESS)
+                    .depthBoundsTestEnable(VkConstants.FALSE)
+                    .stencilTestEnable(VkConstants.FALSE);
 
             var colorBlendAttachment = VkPipelineColorBlendAttachmentState.allocate(arena)
                     .colorWriteMask(
@@ -554,10 +550,8 @@ class Application {
                     .pAttachments(colorBlendAttachment);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
-            var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
-            pDescriptorSetLayout.write(descriptorSetLayout);
-            pipelineLayoutInfo.setLayoutCount(1);
-            pipelineLayoutInfo.pSetLayouts(pDescriptorSetLayout);
+            var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocateV(arena, descriptorSetLayout);
+            pipelineLayoutInfo.setLayoutCount(1).pSetLayouts(pDescriptorSetLayout);
             var pPipelineLayout = VkPipelineLayout.Ptr.allocate(arena);
             var result = deviceCommands.createPipelineLayout(device, pipelineLayoutInfo, null, pPipelineLayout);
             if (result != VkResult.SUCCESS) {
@@ -565,20 +559,20 @@ class Application {
             }
             pipelineLayout = Objects.requireNonNull(pPipelineLayout.read());
 
-            var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena);
-            pipelineInfo.stageCount(2);
-            pipelineInfo.pStages(shaderStages);
-            pipelineInfo.pVertexInputState(vertexInputInfo);
-            pipelineInfo.pInputAssemblyState(inputAssembly);
-            pipelineInfo.pViewportState(viewportStateInfo);
-            pipelineInfo.pRasterizationState(rasterizer);
-            pipelineInfo.pMultisampleState(multisampling);
-            pipelineInfo.pDepthStencilState(depthStencil);
-            pipelineInfo.pColorBlendState(colorBlending);
-            pipelineInfo.pDynamicState(dynamicStateInfo);
-            pipelineInfo.layout(pipelineLayout);
-            pipelineInfo.renderPass(renderPass);
-            pipelineInfo.subpass(0);
+            var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena)
+                    .stageCount(2)
+                    .pStages(shaderStages)
+                    .pVertexInputState(vertexInputInfo)
+                    .pInputAssemblyState(inputAssembly)
+                    .pViewportState(viewportStateInfo)
+                    .pRasterizationState(rasterizer)
+                    .pMultisampleState(multisampling)
+                    .pDepthStencilState(depthStencil)
+                    .pColorBlendState(colorBlending)
+                    .pDynamicState(dynamicStateInfo)
+                    .layout(pipelineLayout)
+                    .renderPass(renderPass)
+                    .subpass(0);
 
             var pGraphicsPipeline = VkPipeline.Ptr.allocate(arena);
             result = deviceCommands.createGraphicsPipelines(device, null, 1, pipelineInfo, null, pGraphicsPipeline);
@@ -769,15 +763,17 @@ class Application {
     private void createDescriptorPool() {
         try (var arena = Arena.ofConfined()) {
             var poolSizes = VkDescriptorPoolSize.allocate(arena, 2);
-            poolSizes.at(0).type(VkDescriptorType.UNIFORM_BUFFER);
-            poolSizes.at(0).descriptorCount(MAX_FRAMES_IN_FLIGHT);
-            poolSizes.at(1).type(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
-            poolSizes.at(1).descriptorCount(MAX_FRAMES_IN_FLIGHT);
+            poolSizes.at(0)
+                    .type(VkDescriptorType.UNIFORM_BUFFER)
+                    .descriptorCount(MAX_FRAMES_IN_FLIGHT);
+            poolSizes.at(1)
+                    .type(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                    .descriptorCount(MAX_FRAMES_IN_FLIGHT);
 
-            var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena);
-            poolInfo.poolSizeCount(2);
-            poolInfo.pPoolSizes(poolSizes);
-            poolInfo.maxSets(MAX_FRAMES_IN_FLIGHT);
+            var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena)
+                    .poolSizeCount(2)
+                    .pPoolSizes(poolSizes)
+                    .maxSets(MAX_FRAMES_IN_FLIGHT);
 
             var pDescriptorPool = VkDescriptorPool.Ptr.allocate(arena);
             var result = deviceCommands.createDescriptorPool(device, poolInfo, null, pDescriptorPool);
@@ -792,14 +788,12 @@ class Application {
         descriptorSets = VkDescriptorSet.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
 
         try (Arena arena = Arena.ofConfined()) {
-            var pLayouts = VkDescriptorSetLayout.Ptr.allocate(arena, MAX_FRAMES_IN_FLIGHT);
-            pLayouts.write(0, descriptorSetLayout);
-            pLayouts.write(1, descriptorSetLayout);
+            var pLayouts = VkDescriptorSetLayout.Ptr.allocateV(arena, descriptorSetLayout, descriptorSetLayout);
 
-            var allocInfo = VkDescriptorSetAllocateInfo.allocate(arena);
-            allocInfo.descriptorPool(descriptorPool);
-            allocInfo.descriptorSetCount(MAX_FRAMES_IN_FLIGHT);
-            allocInfo.pSetLayouts(pLayouts);
+            var allocInfo = VkDescriptorSetAllocateInfo.allocate(arena)
+                    .descriptorPool(descriptorPool)
+                    .descriptorSetCount(MAX_FRAMES_IN_FLIGHT)
+                    .pSetLayouts(pLayouts);
 
             var result = deviceCommands.allocateDescriptorSets(device, allocInfo, descriptorSets);
             if (result != VkResult.SUCCESS) {
@@ -807,32 +801,31 @@ class Application {
             }
 
             for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++){
-                var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
-                bufferInfo.buffer(uniformBuffers.read(i));
-                bufferInfo.offset(0);
-                bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
+                var bufferInfo = VkDescriptorBufferInfo.allocate(arena)
+                        .buffer(uniformBuffers.read(i))
+                        .offset(0)
+                        .range((long) UniformBufferObject.bufferSize() * Float.BYTES);
 
-                var imageInfo = VkDescriptorImageInfo.allocate(arena);
-                imageInfo.imageLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL);
-                imageInfo.imageView(textureImageView);
-                imageInfo.sampler(textureSampler);
+                var imageInfo = VkDescriptorImageInfo.allocate(arena)
+                        .imageLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL)
+                        .imageView(textureImageView)
+                        .sampler(textureSampler);
 
                 var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2);
-                var descriptorWrite0 = descriptorWrite.at(0);
-                descriptorWrite0.dstSet(descriptorSets.read(i));
-                descriptorWrite0.dstBinding(0);
-                descriptorWrite0.dstArrayElement(0);
-                descriptorWrite0.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
-                descriptorWrite0.descriptorCount(1);
-                descriptorWrite0.pBufferInfo(bufferInfo);
-
-                var descriptorWrite1 = descriptorWrite.at(1);
-                descriptorWrite1.dstSet(descriptorSets.read(i));
-                descriptorWrite1.dstBinding(1);
-                descriptorWrite1.dstArrayElement(0);
-                descriptorWrite1.descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
-                descriptorWrite1.descriptorCount(1);
-                descriptorWrite1.pImageInfo(imageInfo);
+                descriptorWrite.at(0)
+                        .dstSet(descriptorSets.read(i))
+                        .dstBinding(0)
+                        .dstArrayElement(0)
+                        .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+                        .descriptorCount(1)
+                        .pBufferInfo(bufferInfo);
+                descriptorWrite.at(1)
+                        .dstSet(descriptorSets.read(i))
+                        .dstBinding(1)
+                        .dstArrayElement(0)
+                        .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+                        .descriptorCount(1)
+                        .pImageInfo(imageInfo);
 
                 deviceCommands.updateDescriptorSets(device, 2, descriptorWrite, 0, null);
             }
@@ -945,22 +938,22 @@ class Application {
             var properties = VkPhysicalDeviceProperties.allocate(arena);
             instanceCommands.getPhysicalDeviceProperties(physicalDevice, properties);
 
-            var samplerInfo = VkSamplerCreateInfo.allocate(arena);
-            samplerInfo.magFilter(VkFilter.LINEAR);
-            samplerInfo.minFilter(VkFilter.LINEAR);
-            samplerInfo.addressModeU(VkSamplerAddressMode.REPEAT);
-            samplerInfo.addressModeV(VkSamplerAddressMode.REPEAT);
-            samplerInfo.addressModeW(VkSamplerAddressMode.REPEAT);
-            samplerInfo.anisotropyEnable(VkConstants.TRUE);
-            samplerInfo.maxAnisotropy(properties.limits().maxSamplerAnisotropy());
-            samplerInfo.borderColor(VkBorderColor.INT_OPAQUE_BLACK);
-            samplerInfo.unnormalizedCoordinates(VkConstants.FALSE);
-            samplerInfo.compareEnable(VkConstants.FALSE);
-            samplerInfo.compareOp(VkCompareOp.ALWAYS);
-            samplerInfo.mipmapMode(VkSamplerMipmapMode.LINEAR);
-            samplerInfo.mipLodBias(0.0f);
-            samplerInfo.minLod(0.0f);
-            samplerInfo.maxLod(0.0f);
+            var samplerInfo = VkSamplerCreateInfo.allocate(arena)
+                    .magFilter(VkFilter.LINEAR)
+                    .minFilter(VkFilter.LINEAR)
+                    .addressModeU(VkSamplerAddressMode.REPEAT)
+                    .addressModeV(VkSamplerAddressMode.REPEAT)
+                    .addressModeW(VkSamplerAddressMode.REPEAT)
+                    .anisotropyEnable(VkConstants.TRUE)
+                    .maxAnisotropy(properties.limits().maxSamplerAnisotropy())
+                    .borderColor(VkBorderColor.INT_OPAQUE_BLACK)
+                    .unnormalizedCoordinates(VkConstants.FALSE)
+                    .compareEnable(VkConstants.FALSE)
+                    .compareOp(VkCompareOp.ALWAYS)
+                    .mipmapMode(VkSamplerMipmapMode.LINEAR)
+                    .mipLodBias(0.0f)
+                    .minLod(0.0f)
+                    .maxLod(0.0f);
 
             var pSampler = VkSampler.Ptr.allocate(arena);
             var result = deviceCommands.createSampler(device, samplerInfo, null, pSampler);
@@ -1075,23 +1068,24 @@ class Application {
                 throw new RuntimeException("Failed to begin recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            var renderPassInfo = VkRenderPassBeginInfo.allocate(arena);
-            renderPassInfo.renderPass(renderPass);
-            renderPassInfo.framebuffer(swapChainFramebuffers.read(imageIndex));
-            renderPassInfo.renderArea().offset().x(0);
-            renderPassInfo.renderArea().offset().y(0);
-            renderPassInfo.renderArea().extent(swapChainExtent);
-            renderPassInfo.clearValueCount(2);
-            var pClearValue = VkClearValue.allocate(arena, 2);
-            var colorClearValue = pClearValue.at(0);
+            var pClearValues = VkClearValue.allocate(arena, 2);
+            var colorClearValue = pClearValues.at(0);
             colorClearValue.color().float32().write(0, 0.0f);
             colorClearValue.color().float32().write(1, 0.0f);
             colorClearValue.color().float32().write(2, 0.0f);
             colorClearValue.color().float32().write(3, 1.0f);
-            var depthClearValue = pClearValue.at(1);
+            var depthClearValue = pClearValues.at(1);
             depthClearValue.depthStencil().depth(1.0f);
             depthClearValue.depthStencil().stencil(0);
-            renderPassInfo.pClearValues(pClearValue);
+            var renderPassInfo = VkRenderPassBeginInfo.allocate(arena)
+                    .renderPass(renderPass)
+                    .framebuffer(swapChainFramebuffers.read(imageIndex))
+                    .clearValueCount(2)
+                    .pClearValues(pClearValues);
+            var renderArea = renderPassInfo.renderArea();
+            renderArea.offset().x(0);
+            renderArea.offset().y(0);
+            renderArea.extent(swapChainExtent);
 
             deviceCommands.cmdBeginRenderPass(commandBuffer, renderPassInfo, VkSubpassContents.INLINE);
             deviceCommands.cmdBindPipeline(commandBuffer, VkPipelineBindPoint.GRAPHICS, graphicsPipeline);
@@ -1539,19 +1533,20 @@ class Application {
             @EnumType(VkMemoryPropertyFlags.class) int properties
     ) {
         try (var arena = Arena.ofConfined()) {
-            var imageInfo = VkImageCreateInfo.allocate(arena);
-            imageInfo.imageType(VkImageType._2D);
-            imageInfo.extent().width(width);
-            imageInfo.extent().height(height);
-            imageInfo.extent().depth(1);
-            imageInfo.mipLevels(1);
-            imageInfo.arrayLayers(1);
-            imageInfo.format(format);
-            imageInfo.tiling(tiling);
-            imageInfo.initialLayout(VkImageLayout.UNDEFINED);
-            imageInfo.usage(usage);
-            imageInfo.samples(VkSampleCountFlags._1);
-            imageInfo.sharingMode(VkSharingMode.EXCLUSIVE);
+            var imageInfo = VkImageCreateInfo.allocate(arena)
+                    .imageType(VkImageType._2D)
+                    .mipLevels(1)
+                    .arrayLayers(1)
+                    .format(format)
+                    .tiling(tiling)
+                    .initialLayout(VkImageLayout.UNDEFINED)
+                    .usage(usage)
+                    .samples(VkSampleCountFlags._1)
+                    .sharingMode(VkSharingMode.EXCLUSIVE);
+            imageInfo.extent()
+                    .width(width)
+                    .height(height)
+                    .depth(1);
 
             var pImage = VkImage.Ptr.allocate(arena);
             var result = deviceCommands.createImage(device, imageInfo, null, pImage);
@@ -1588,18 +1583,18 @@ class Application {
         try (var arena = Arena.ofConfined()) {
             var commandBuffer = beginSingleTimeCommands();
 
-            var barrier = VkImageMemoryBarrier.allocate(arena);
-            barrier.oldLayout(oldLayout);
-            barrier.newLayout(newLayout);
-            barrier.srcQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
-            barrier.dstQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
-
-            barrier.image(image);
-            var subResourceRange = barrier.subresourceRange();
-            subResourceRange.baseMipLevel(0);
-            subResourceRange.levelCount(1);
-            subResourceRange.baseArrayLayer(0);
-            subResourceRange.layerCount(1);
+            var barrier = VkImageMemoryBarrier.allocate(arena)
+                    .oldLayout(oldLayout)
+                    .newLayout(newLayout)
+                    .srcQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED)
+                    .dstQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED)
+                    .image(image);
+            var subResourceRange = barrier.subresourceRange()
+                    .aspectMask(VkImageAspectFlags.COLOR)
+                    .baseMipLevel(0)
+                    .levelCount(1)
+                    .baseArrayLayer(0)
+                    .layerCount(1);
 
             if (newLayout == VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL) {
                 subResourceRange.aspectMask(VkImageAspectFlags.DEPTH);
@@ -1617,25 +1612,23 @@ class Application {
 
             if (oldLayout == VkImageLayout.UNDEFINED
                 && newLayout == VkImageLayout.TRANSFER_DST_OPTIMAL) {
-                barrier.srcAccessMask(0);
-                barrier.dstAccessMask(VkAccessFlags.TRANSFER_WRITE);
+                barrier.srcAccessMask(0).dstAccessMask(VkAccessFlags.TRANSFER_WRITE);
 
                 sourceStage = VkPipelineStageFlags.TOP_OF_PIPE;
                 destinationStage = VkPipelineStageFlags.TRANSFER;
             }
             else if (oldLayout == VkImageLayout.TRANSFER_DST_OPTIMAL
                      && newLayout == VkImageLayout.SHADER_READ_ONLY_OPTIMAL) {
-                barrier.srcAccessMask(VkAccessFlags.TRANSFER_WRITE);
-                barrier.dstAccessMask(VkAccessFlags.SHADER_READ);
+                barrier.srcAccessMask(VkAccessFlags.TRANSFER_WRITE).dstAccessMask(VkAccessFlags.SHADER_READ);
 
                 sourceStage = VkPipelineStageFlags.TRANSFER;
                 destinationStage = VkPipelineStageFlags.FRAGMENT_SHADER;
             }
             else if (oldLayout == VkImageLayout.UNDEFINED
                      && newLayout == VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL) {
-                barrier.srcAccessMask(0);
-                barrier.dstAccessMask(VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_READ
-                                      | VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_WRITE);
+                barrier.srcAccessMask(0)
+                        .dstAccessMask(VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_READ
+                                       | VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_WRITE);
 
                 sourceStage = VkPipelineStageFlags.TOP_OF_PIPE;
                 destinationStage = VkPipelineStageFlags.EARLY_FRAGMENT_TESTS;
@@ -1672,25 +1665,23 @@ class Application {
         try (var arena = Arena.ofConfined()) {
             var commandBuffer = beginSingleTimeCommands();
 
-            var region = VkBufferImageCopy.allocate(arena);
-            region.bufferOffset(0);
-            region.bufferRowLength(0);
-            region.bufferImageHeight(0);
-
-            var imageSubresource = region.imageSubresource();
-            imageSubresource.aspectMask(VkImageAspectFlags.COLOR);
-            imageSubresource.mipLevel(0);
-            imageSubresource.baseArrayLayer(0);
-            imageSubresource.layerCount(1);
-
-            var imageOffset = region.imageOffset();
-            imageOffset.x(0);
-            imageOffset.y(0);
-            imageOffset.z(0);
-            var imageExtent = region.imageExtent();
-            imageExtent.width(width);
-            imageExtent.height(height);
-            imageExtent.depth(1);
+            var region = VkBufferImageCopy.allocate(arena)
+                    .bufferOffset(0)
+                    .bufferRowLength(0)
+                    .bufferImageHeight(0);
+            region.imageSubresource()
+                    .aspectMask(VkImageAspectFlags.COLOR)
+                    .mipLevel(0)
+                    .baseArrayLayer(0)
+                    .layerCount(1);
+            region.imageOffset()
+                    .x(0)
+                    .y(0)
+                    .z(0);
+            region.imageExtent()
+                    .width(width)
+                    .height(height)
+                    .depth(1);
 
             deviceCommands.cmdCopyBufferToImage(
                     commandBuffer,
@@ -1734,16 +1725,14 @@ class Application {
         deviceCommands.endCommandBuffer(commandBuffer);
 
         try (var arena = Arena.ofConfined()) {
-            var submitInfo = VkSubmitInfo.allocate(arena);
-            submitInfo.commandBufferCount(1);
-            var pCommandBuffers = VkCommandBuffer.Ptr.allocate(arena);
-            pCommandBuffers.write(commandBuffer);
-            submitInfo.pCommandBuffers(pCommandBuffers);
+            var pCommandBuffer = VkCommandBuffer.Ptr.allocateV(arena, commandBuffer);
+            var submitInfo = VkSubmitInfo.allocate(arena)
+                    .commandBufferCount(1)
+                    .pCommandBuffers(pCommandBuffer);
 
             deviceCommands.queueSubmit(graphicsQueue, 1, submitInfo, null);
             deviceCommands.queueWaitIdle(graphicsQueue);
-
-            deviceCommands.freeCommandBuffers(device, commandPool, 1, pCommandBuffers);
+            deviceCommands.freeCommandBuffers(device, commandPool, 1, pCommandBuffer);
         }
     }
 
@@ -1753,17 +1742,16 @@ class Application {
             @EnumType(VkImageAspectFlags.class) int aspect
     ) {
         try (var arena = Arena.ofConfined()) {
-            var viewInfo = VkImageViewCreateInfo.allocate(arena);
-            viewInfo.image(image);
-            viewInfo.viewType(VkImageViewType._2D);
-            viewInfo.format(format);
-
-            var subresourceRange = viewInfo.subresourceRange();
-            subresourceRange.aspectMask(aspect);
-            subresourceRange.baseMipLevel(0);
-            subresourceRange.levelCount(1);
-            subresourceRange.baseArrayLayer(0);
-            subresourceRange.layerCount(1);
+            var viewInfo = VkImageViewCreateInfo.allocate(arena)
+                    .image(image)
+                    .viewType(VkImageViewType._2D)
+                    .format(format);
+            viewInfo.subresourceRange()
+                    .aspectMask(aspect)
+                    .baseMipLevel(0)
+                    .levelCount(1)
+                    .baseArrayLayer(0)
+                    .layerCount(1);
 
             var pImageView = VkImageView.Ptr.allocate(arena);
             var result = deviceCommands.createImageView(device, viewInfo, null, pImageView);
@@ -1851,34 +1839,29 @@ class Application {
     }
 
     private static VkVertexInputBindingDescription getBindingDescription(Arena arena) {
-        var description = VkVertexInputBindingDescription.allocate(arena);
-        description.binding(0);
-        description.stride(Float.BYTES * 8);
-        description.inputRate(VkVertexInputRate.VERTEX);
-        return description;
+        return VkVertexInputBindingDescription.allocate(arena)
+                .binding(0)
+                .stride(Float.BYTES * 8)
+                .inputRate(VkVertexInputRate.VERTEX);
     }
 
     private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
         var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 3);
-        var vertexAttribute = attributeDescriptions.at(0);
-        var colorAttribute = attributeDescriptions.at(1);
-        var texCoordAttribute = attributeDescriptions.at(2);
-
-        vertexAttribute.binding(0);
-        vertexAttribute.location(0);
-        vertexAttribute.format(VkFormat.R32G32B32_SFLOAT);
-        vertexAttribute.offset(0);
-
-        colorAttribute.binding(0);
-        colorAttribute.location(1);
-        colorAttribute.format(VkFormat.R32G32B32_SFLOAT);
-        colorAttribute.offset(Float.BYTES * 3);
-
-        texCoordAttribute.binding(0);
-        texCoordAttribute.location(2);
-        texCoordAttribute.format(VkFormat.R32G32_SFLOAT);
-        texCoordAttribute.offset(Float.BYTES * 6);
-
+        attributeDescriptions.at(0)
+                .binding(0)
+                .location(0)
+                .format(VkFormat.R32G32B32_SFLOAT)
+                .offset(0);
+        attributeDescriptions.at(1)
+                .binding(0)
+                .location(1)
+                .format(VkFormat.R32G32B32_SFLOAT)
+                .offset(Float.BYTES * 3);
+        attributeDescriptions.at(2)
+                .binding(0)
+                .location(2)
+                .format(VkFormat.R32G32_SFLOAT)
+                .offset(Float.BYTES * 6);
         return attributeDescriptions;
     }
 
