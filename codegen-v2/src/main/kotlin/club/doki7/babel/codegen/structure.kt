@@ -446,9 +446,9 @@ fun generateStructure(
 
         layouts.forEach {
             when (it) {
-                is LayoutField.Bitfields -> +generateBitfieldAccessor(it)
+                is LayoutField.Bitfields -> +generateBitfieldAccessor(className, it)
                 is LayoutField.Typed -> if (!it.name.isUnusedReservedField()) {
-                    +generateMemberAccessor(it)
+                    +generateMemberAccessor(className, it)
                 }
             }
             +""
@@ -672,13 +672,13 @@ private fun summarizeBitfieldStorageUnit(
     )
 }
 
-private fun generateMemberAccessor(layout: LayoutField.Typed): Doc {
+private fun generateMemberAccessor(className: String, layout: LayoutField.Typed): Doc {
     return when (val cType = layout.type) {
-        is CArrayType -> generateArrayAccessor(cType, layout)
-        is CHandleType -> generateHandleAccessor(cType, layout)
-        is CNonRefType -> generateNonRefAccessor(cType, layout)
-        is CPointerType -> generatePtrAccessor(cType, layout)
-        is CStructType -> generateStructureTypeAccessor(cType, layout)
+        is CArrayType -> generateArrayAccessor(className, cType, layout)
+        is CHandleType -> generateHandleAccessor(className, cType, layout)
+        is CNonRefType -> generateNonRefAccessor(className, cType, layout)
+        is CPointerType -> generatePtrAccessor(className, cType, layout)
+        is CStructType -> generateStructureTypeAccessor(className, cType, layout)
         is CVoidType -> throw Exception("void type not allowed in struct")
     }
 }

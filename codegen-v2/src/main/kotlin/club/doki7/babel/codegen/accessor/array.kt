@@ -9,19 +9,19 @@ import club.doki7.babel.ctype.CStructType
 import club.doki7.babel.util.Doc
 import club.doki7.babel.util.buildDoc
 
-fun generateArrayAccessor(type: CArrayType, member: LayoutField.Typed): Doc {
+fun generateArrayAccessor(className: String, type: CArrayType, member: LayoutField.Typed): Doc {
     val flattened = type.flattened
     val elementType = flattened.element
 
     return when(elementType) {
-        is CNonRefType -> generateNonRefArrayAccessor(elementType, member)
-        is CStructType -> generateStructureArrayAccessor(elementType, member)
-        is CHandleType -> generateHandleArrayAccessor(elementType, member)
+        is CNonRefType -> generateNonRefArrayAccessor(className, elementType, member)
+        is CStructType -> generateStructureArrayAccessor(className, elementType, member)
+        is CHandleType -> generateHandleArrayAccessor(className, elementType, member)
         else -> throw Exception("unsupported array element tye $elementType for member ${member.name}")
     }
 }
 
-private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: LayoutField.Typed) = buildDoc {
+private fun generateNonRefArrayAccessor(className: String, elementType: CNonRefType, member: LayoutField.Typed) = buildDoc {
     val rawName = "${member.name}Raw"
 
     defun("public", elementType.jPtrType, member.name) {
@@ -29,8 +29,9 @@ private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: Layout
     }
     +""
 
-    defun("public", "void", member.name, "${elementType.jPtrType} value") {
+    defun("public", className, member.name, "${elementType.jPtrType} value") {
         +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
+        +"return this;"
     }
     +""
 
@@ -39,7 +40,7 @@ private fun generateNonRefArrayAccessor(elementType: CNonRefType, member: Layout
     }
 }
 
-private fun generateStructureArrayAccessor(elementType: CStructType, member: LayoutField.Typed) = buildDoc {
+private fun generateStructureArrayAccessor(className: String, elementType: CStructType, member: LayoutField.Typed) = buildDoc {
     val rawName = "${member.name}Raw"
 
     defun("public", "${elementType.name}.Ptr", member.name) {
@@ -47,9 +48,10 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Lay
     }
     +""
 
-    defun("public", "void", member.name, "${elementType.name}.Ptr value") {
+    defun("public", className, member.name, "${elementType.name}.Ptr value") {
         +"MemorySegment s = $rawName();"
         +"s.copyFrom(value.segment());"
+        +"return this;"
     }
     +""
 
@@ -72,7 +74,7 @@ private fun generateStructureArrayAccessor(elementType: CStructType, member: Lay
     }
 }
 
-private fun generateHandleArrayAccessor(elementType: CHandleType, member: LayoutField.Typed) = buildDoc {
+private fun generateHandleArrayAccessor(className: String, elementType: CHandleType, member: LayoutField.Typed) = buildDoc {
     val rawName = "${member.name}Raw"
 
     defun("public", "MemorySegment", rawName) {
@@ -87,8 +89,9 @@ private fun generateHandleArrayAccessor(elementType: CHandleType, member: Layout
 
     +""
 
-    defun("public", "void", member.name, "${elementType.name}.Ptr value") {
+    defun("public", className, member.name, "${elementType.name}.Ptr value") {
         +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
+        +"return this;"
     }
 
     +""

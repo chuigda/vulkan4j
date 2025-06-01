@@ -5,17 +5,17 @@ import club.doki7.babel.codegen.defun
 import club.doki7.babel.ctype.*
 import club.doki7.babel.util.buildDoc
 
-fun generatePtrAccessor(type: CPointerType, member: LayoutField.Typed) = when (type.pointee) {
-    is CVoidType -> generatePVoidAccessor(type, member)
-    is CPointerType -> generatePPAccessor(type.pointee, member)
-    is CEnumType -> generatePEnumAccessor(type.pointee, member)
-    is CNonRefType -> generatePNonRefAccessor(type.pointee, member)
-    is CHandleType -> generatePHandleAccessor(type.pointee, member)
-    is CStructType -> generatePStructureAccessor(type.pointee, member)
+fun generatePtrAccessor(className: String, type: CPointerType, member: LayoutField.Typed) = when (type.pointee) {
+    is CVoidType -> generatePVoidAccessor(className, type, member)
+    is CPointerType -> generatePPAccessor(className, type.pointee, member)
+    is CEnumType -> generatePEnumAccessor(className, type.pointee, member)
+    is CNonRefType -> generatePNonRefAccessor(className, type.pointee, member)
+    is CHandleType -> generatePHandleAccessor(className, type.pointee, member)
+    is CStructType -> generatePStructureAccessor(className, type.pointee, member)
     is CArrayType -> TODO()
 }
 
-private fun generatePVoidAccessor(type: CPointerType, member: LayoutField.Typed) = buildDoc {
+private fun generatePVoidAccessor(className: String, type: CPointerType, member: LayoutField.Typed) = buildDoc {
     val comment = type.comment ?: "void*"
     val annotation = "@Pointer(comment=\"$comment\")"
 
@@ -29,12 +29,13 @@ private fun generatePVoidAccessor(type: CPointerType, member: LayoutField.Typed)
     }
     +""
 
-    defun("public", "void", member.name, "@Nullable IPointer pointer") {
+    defun("public", className, member.name, "@Nullable IPointer pointer") {
         +"${member.name}(pointer != null ? pointer.segment() : MemorySegment.NULL);"
+        +"return this;"
     }
 }
 
-private fun generatePPAccessor(pointee: CPointerType, member: LayoutField.Typed) = buildDoc {
+private fun generatePPAccessor(className: String, pointee: CPointerType, member: LayoutField.Typed) = buildDoc {
     val comment = (pointee.comment ?: "void*") + "*"
     val annotation = "@Pointer(comment=\"$comment\")"
     val rawName = "${member.name}Raw"
@@ -51,9 +52,10 @@ private fun generatePPAccessor(pointee: CPointerType, member: LayoutField.Typed)
     }
     +""
 
-    defun("public", "void", member.name, "@Nullable ${"PointerPtr"} value") {
+    defun("public", className, member.name, "@Nullable ${"PointerPtr"} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
+        +"return this;"
     }
     +""
 
@@ -67,7 +69,7 @@ private fun generatePPAccessor(pointee: CPointerType, member: LayoutField.Typed)
     }
 }
 
-private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Typed) = buildDoc {
+private fun generatePNonRefAccessor(className: String, pointee: CNonRefType, member: LayoutField.Typed) = buildDoc {
     val annotation = "@Pointer(comment=\"${pointee.cType}*\")"
     val rawName = "${member.name}Raw"
 
@@ -85,9 +87,10 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Ty
     }
     +""
 
-    defun("public", "void", member.name, "@Nullable ${pointee.jPtrType} value") {
+    defun("public", className, member.name, "@Nullable ${pointee.jPtrType} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
+        +"return this;"
     }
     +""
 
@@ -101,7 +104,7 @@ private fun generatePNonRefAccessor(pointee: CNonRefType, member: LayoutField.Ty
     }
 }
 
-private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Typed) = buildDoc {
+private fun generatePHandleAccessor(className: String, pointee: CHandleType, member: LayoutField.Typed) = buildDoc {
     val annotation = "@Pointer(target=${pointee.name}.class)"
     val rawName = "${member.name}Raw"
 
@@ -119,9 +122,10 @@ private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Ty
 
     +""
 
-    defun("public", "void", member.name, "@Nullable ${"${pointee.name}.Ptr"} value") {
+    defun("public", className, member.name, "@Nullable ${"${pointee.name}.Ptr"} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
+        +"return this;";
     }
     +""
 
@@ -135,13 +139,14 @@ private fun generatePHandleAccessor(pointee: CHandleType, member: LayoutField.Ty
     }
 }
 
-private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField.Typed) = buildDoc {
+private fun generatePStructureAccessor(className: String, pointee: CStructType, member: LayoutField.Typed) = buildDoc {
     val annotation = "@Pointer(target=${pointee.name}.class)"
     val rawName = "${member.name}Raw"
 
-    defun("public", "void", member.name, "@Nullable ${pointee.jType} value") {
+    defun("public", className, member.name, "@Nullable ${pointee.jType} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
+        +"return this;"
     }
     +""
 
@@ -176,7 +181,7 @@ private fun generatePStructureAccessor(pointee: CStructType, member: LayoutField
     }
 }
 
-private fun generatePEnumAccessor(pointee: CEnumType, member: LayoutField.Typed) = buildDoc {
+private fun generatePEnumAccessor(className: String, pointee: CEnumType, member: LayoutField.Typed) = buildDoc {
     val annotation = "@Pointer(target=${pointee.name}.class)"
     val rawName = "${member.name}Raw"
 
@@ -196,9 +201,10 @@ private fun generatePEnumAccessor(pointee: CEnumType, member: LayoutField.Typed)
     }
     +""
 
-    defun("public", "void", member.name, "@Nullable ${pointee.jPtrType} value") {
+    defun("public", className, member.name, "@Nullable ${pointee.jPtrType} value") {
         +"MemorySegment s = value == null ? MemorySegment.NULL : value.segment();"
         +"$rawName(s);"
+        +"return this;";
     }
     +""
 

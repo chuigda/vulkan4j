@@ -6,7 +6,7 @@ import club.doki7.babel.ctype.CStructType
 import club.doki7.babel.util.Doc
 import club.doki7.babel.util.buildDoc
 
-fun generateStructureTypeAccessor(type: CStructType, member: LayoutField.Typed): Doc {
+fun generateStructureTypeAccessor(className: String, type: CStructType, member: LayoutField.Typed): Doc {
     return buildDoc {
         defun("public", "@NotNull ${type.name}", member.name) {
             +"return new ${type.name}(segment.asSlice(${member.offsetName}, ${member.layoutName}));"
@@ -14,8 +14,9 @@ fun generateStructureTypeAccessor(type: CStructType, member: LayoutField.Typed):
 
         +""
 
-        defun("public", "void", member.name, "@NotNull ${type.name} value") {
+        defun("public", className, member.name, "@NotNull ${type.name} value") {
             +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
+            +"return this;"
         }
     }
 }
