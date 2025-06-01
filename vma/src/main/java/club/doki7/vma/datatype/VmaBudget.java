@@ -202,24 +202,27 @@ public record VmaBudget(@NotNull MemorySegment segment) implements IVmaBudget {
         return new VmaStatistics(segment.asSlice(OFFSET$statistics, LAYOUT$statistics));
     }
 
-    public void statistics(@NotNull VmaStatistics value) {
+    public VmaBudget statistics(@NotNull VmaStatistics value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$statistics, SIZE$statistics);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaBudget usage(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long budget() {
         return segment.get(LAYOUT$budget, OFFSET$budget);
     }
 
-    public void budget(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaBudget budget(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$budget, OFFSET$budget, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

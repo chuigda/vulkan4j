@@ -193,8 +193,9 @@ public record VkSysmemColorSpaceFUCHSIA(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSysmemColorSpaceFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSysmemColorSpaceFUCHSIA(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSysmemColorSpaceFUCHSIA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int colorSpace() {
         return segment.get(LAYOUT$colorSpace, OFFSET$colorSpace);
     }
 
-    public void colorSpace(@Unsigned int value) {
+    public VkSysmemColorSpaceFUCHSIA colorSpace(@Unsigned int value) {
         segment.set(LAYOUT$colorSpace, OFFSET$colorSpace, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

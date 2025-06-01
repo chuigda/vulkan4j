@@ -194,8 +194,9 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineShaderStageNodeCreateInfoAMDX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineShaderStageNodeCreateInfoAMDX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -222,9 +224,10 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
         return new BytePtr(s);
     }
 
-    public void pName(@Nullable BytePtr value) {
+    public VkPipelineShaderStageNodeCreateInfoAMDX pName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
@@ -239,8 +242,9 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
         return segment.get(LAYOUT$index, OFFSET$index);
     }
 
-    public void index(@Unsigned int value) {
+    public VkPipelineShaderStageNodeCreateInfoAMDX index(@Unsigned int value) {
         segment.set(LAYOUT$index, OFFSET$index, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

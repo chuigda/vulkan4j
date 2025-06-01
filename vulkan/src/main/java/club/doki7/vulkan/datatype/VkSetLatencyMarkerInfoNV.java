@@ -194,8 +194,9 @@ public record VkSetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSetLatencyMarkerInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkSetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSetLatencyMarkerInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long presentID() {
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }
 
-    public void presentID(@Unsigned long value) {
+    public VkSetLatencyMarkerInfoNV presentID(@Unsigned long value) {
         segment.set(LAYOUT$presentID, OFFSET$presentID, value);
+        return this;
     }
 
     public @EnumType(VkLatencyMarkerNV.class) int marker() {
         return segment.get(LAYOUT$marker, OFFSET$marker);
     }
 
-    public void marker(@EnumType(VkLatencyMarkerNV.class) int value) {
+    public VkSetLatencyMarkerInfoNV marker(@EnumType(VkLatencyMarkerNV.class) int value) {
         segment.set(LAYOUT$marker, OFFSET$marker, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -198,8 +198,9 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPresentInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,16 +211,18 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPresentInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@Unsigned int value) {
+    public VkPresentInfoKHR waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
@@ -234,9 +237,10 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return new VkSemaphore.Ptr(s);
     }
 
-    public void pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
+    public VkPresentInfoKHR pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoresRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
@@ -251,8 +255,9 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@Unsigned int value) {
+    public VkPresentInfoKHR swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkSwapchainKHR.Ptr} does not have correct {@link VkSwapchainKHR.Ptr#size}
@@ -267,9 +272,10 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return new VkSwapchainKHR.Ptr(s);
     }
 
-    public void pSwapchains(@Nullable VkSwapchainKHR.Ptr value) {
+    public VkPresentInfoKHR pSwapchains(@Nullable VkSwapchainKHR.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSwapchainsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSwapchainKHR.class) MemorySegment pSwapchainsRaw() {
@@ -292,9 +298,10 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return new IntPtr(s);
     }
 
-    public void pImageIndices(@Nullable @Unsigned IntPtr value) {
+    public VkPresentInfoKHR pImageIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pImageIndicesRaw() {
@@ -318,9 +325,10 @@ public record VkPresentInfoKHR(@NotNull MemorySegment segment) implements IVkPre
         return new IntPtr(s);
     }
 
-    public void pResults(@Nullable @EnumType(VkResult.class) IntPtr value) {
+    public VkPresentInfoKHR pResults(@Nullable @EnumType(VkResult.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkResult.class) MemorySegment pResultsRaw() {

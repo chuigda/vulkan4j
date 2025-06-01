@@ -176,40 +176,45 @@ public record VkImageResolve(@NotNull MemorySegment segment) implements IVkImage
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$srcSubresource, LAYOUT$srcSubresource));
     }
 
-    public void srcSubresource(@NotNull VkImageSubresourceLayers value) {
+    public VkImageResolve srcSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
+        return this;
     }
 
     public @NotNull VkOffset3D srcOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$srcOffset, LAYOUT$srcOffset));
     }
 
-    public void srcOffset(@NotNull VkOffset3D value) {
+    public VkImageResolve srcOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcOffset, SIZE$srcOffset);
+        return this;
     }
 
     public @NotNull VkImageSubresourceLayers dstSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$dstSubresource, LAYOUT$dstSubresource));
     }
 
-    public void dstSubresource(@NotNull VkImageSubresourceLayers value) {
+    public VkImageResolve dstSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
+        return this;
     }
 
     public @NotNull VkOffset3D dstOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$dstOffset, LAYOUT$dstOffset));
     }
 
-    public void dstOffset(@NotNull VkOffset3D value) {
+    public VkImageResolve dstOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstOffset, SIZE$dstOffset);
+        return this;
     }
 
     public @NotNull VkExtent3D extent() {
         return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(@NotNull VkExtent3D value) {
+    public VkImageResolve extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -196,8 +196,9 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkD3D12FenceSubmitInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,16 +209,18 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkD3D12FenceSubmitInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int waitSemaphoreValuesCount() {
         return segment.get(LAYOUT$waitSemaphoreValuesCount, OFFSET$waitSemaphoreValuesCount);
     }
 
-    public void waitSemaphoreValuesCount(@Unsigned int value) {
+    public VkD3D12FenceSubmitInfoKHR waitSemaphoreValuesCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreValuesCount, OFFSET$waitSemaphoreValuesCount, value);
+        return this;
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -232,9 +235,10 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         return new LongPtr(s);
     }
 
-    public void pWaitSemaphoreValues(@Nullable @Unsigned LongPtr value) {
+    public VkD3D12FenceSubmitInfoKHR pWaitSemaphoreValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreValuesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pWaitSemaphoreValuesRaw() {
@@ -249,8 +253,9 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$signalSemaphoreValuesCount, OFFSET$signalSemaphoreValuesCount);
     }
 
-    public void signalSemaphoreValuesCount(@Unsigned int value) {
+    public VkD3D12FenceSubmitInfoKHR signalSemaphoreValuesCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreValuesCount, OFFSET$signalSemaphoreValuesCount, value);
+        return this;
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -265,9 +270,10 @@ public record VkD3D12FenceSubmitInfoKHR(@NotNull MemorySegment segment) implemen
         return new LongPtr(s);
     }
 
-    public void pSignalSemaphoreValues(@Nullable @Unsigned LongPtr value) {
+    public VkD3D12FenceSubmitInfoKHR pSignalSemaphoreValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreValuesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pSignalSemaphoreValuesRaw() {

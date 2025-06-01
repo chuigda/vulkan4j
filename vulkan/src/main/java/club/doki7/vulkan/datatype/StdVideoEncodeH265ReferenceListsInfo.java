@@ -176,32 +176,36 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return new StdVideoEncodeH265ReferenceListsInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeH265ReferenceListsInfoFlags value) {
+    public StdVideoEncodeH265ReferenceListsInfo flags(@NotNull StdVideoEncodeH265ReferenceListsInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte num_ref_idx_l0_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l0_active_minus1, OFFSET$num_ref_idx_l0_active_minus1);
     }
 
-    public void num_ref_idx_l0_active_minus1(@Unsigned byte value) {
+    public StdVideoEncodeH265ReferenceListsInfo num_ref_idx_l0_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l0_active_minus1, OFFSET$num_ref_idx_l0_active_minus1, value);
+        return this;
     }
 
     public @Unsigned byte num_ref_idx_l1_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l1_active_minus1, OFFSET$num_ref_idx_l1_active_minus1);
     }
 
-    public void num_ref_idx_l1_active_minus1(@Unsigned byte value) {
+    public StdVideoEncodeH265ReferenceListsInfo num_ref_idx_l1_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l1_active_minus1, OFFSET$num_ref_idx_l1_active_minus1, value);
+        return this;
     }
 
     public @Unsigned BytePtr RefPicList0() {
         return new BytePtr(RefPicList0Raw());
     }
 
-    public void RefPicList0(@Unsigned BytePtr value) {
+    public StdVideoEncodeH265ReferenceListsInfo RefPicList0(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList0, SIZE$RefPicList0);
+        return this;
     }
 
     public MemorySegment RefPicList0Raw() {
@@ -212,8 +216,9 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return new BytePtr(RefPicList1Raw());
     }
 
-    public void RefPicList1(@Unsigned BytePtr value) {
+    public StdVideoEncodeH265ReferenceListsInfo RefPicList1(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicList1, SIZE$RefPicList1);
+        return this;
     }
 
     public MemorySegment RefPicList1Raw() {
@@ -224,8 +229,9 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return new BytePtr(list_entry_l0Raw());
     }
 
-    public void list_entry_l0(@Unsigned BytePtr value) {
+    public StdVideoEncodeH265ReferenceListsInfo list_entry_l0(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$list_entry_l0, SIZE$list_entry_l0);
+        return this;
     }
 
     public MemorySegment list_entry_l0Raw() {
@@ -236,8 +242,9 @@ public record StdVideoEncodeH265ReferenceListsInfo(@NotNull MemorySegment segmen
         return new BytePtr(list_entry_l1Raw());
     }
 
-    public void list_entry_l1(@Unsigned BytePtr value) {
+    public StdVideoEncodeH265ReferenceListsInfo list_entry_l1(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$list_entry_l1, SIZE$list_entry_l1);
+        return this;
     }
 
     public MemorySegment list_entry_l1Raw() {

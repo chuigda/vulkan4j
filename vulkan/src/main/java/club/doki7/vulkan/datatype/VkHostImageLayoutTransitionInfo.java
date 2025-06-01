@@ -196,8 +196,9 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkHostImageLayoutTransitionInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,8 +209,9 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkHostImageLayoutTransitionInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImage image() {
@@ -220,32 +222,36 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
         return new VkImage(s);
     }
 
-    public void image(@Nullable VkImage value) {
+    public VkHostImageLayoutTransitionInfo image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int oldLayout() {
         return segment.get(LAYOUT$oldLayout, OFFSET$oldLayout);
     }
 
-    public void oldLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkHostImageLayoutTransitionInfo oldLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$oldLayout, OFFSET$oldLayout, value);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int newLayout() {
         return segment.get(LAYOUT$newLayout, OFFSET$newLayout);
     }
 
-    public void newLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkHostImageLayoutTransitionInfo newLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$newLayout, OFFSET$newLayout, value);
+        return this;
     }
 
     public @NotNull VkImageSubresourceRange subresourceRange() {
         return new VkImageSubresourceRange(segment.asSlice(OFFSET$subresourceRange, LAYOUT$subresourceRange));
     }
 
-    public void subresourceRange(@NotNull VkImageSubresourceRange value) {
+    public VkHostImageLayoutTransitionInfo subresourceRange(@NotNull VkImageSubresourceRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

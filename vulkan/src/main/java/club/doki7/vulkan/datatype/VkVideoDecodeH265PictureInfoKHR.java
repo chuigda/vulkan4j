@@ -195,8 +195,9 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeH265PictureInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,13 +208,15 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoDecodeH265PictureInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pStdPictureInfo(@Nullable IStdVideoDecodeH265PictureInfo value) {
+    public VkVideoDecodeH265PictureInfoKHR pStdPictureInfo(@Nullable IStdVideoDecodeH265PictureInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPictureInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoDecodeH265PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
@@ -246,8 +249,9 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sliceSegmentCount, OFFSET$sliceSegmentCount);
     }
 
-    public void sliceSegmentCount(@Unsigned int value) {
+    public VkVideoDecodeH265PictureInfoKHR sliceSegmentCount(@Unsigned int value) {
         segment.set(LAYOUT$sliceSegmentCount, OFFSET$sliceSegmentCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -262,9 +266,10 @@ public record VkVideoDecodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pSliceSegmentOffsets(@Nullable @Unsigned IntPtr value) {
+    public VkVideoDecodeH265PictureInfoKHR pSliceSegmentOffsets(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSliceSegmentOffsetsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pSliceSegmentOffsetsRaw() {

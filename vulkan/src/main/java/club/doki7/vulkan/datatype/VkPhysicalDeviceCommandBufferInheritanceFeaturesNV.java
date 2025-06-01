@@ -193,8 +193,9 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int commandBufferInheritance() {
         return segment.get(LAYOUT$commandBufferInheritance, OFFSET$commandBufferInheritance);
     }
 
-    public void commandBufferInheritance(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV commandBufferInheritance(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$commandBufferInheritance, OFFSET$commandBufferInheritance, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

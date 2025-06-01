@@ -177,16 +177,18 @@ public record VkIndirectCommandsStreamNV(@NotNull MemorySegment segment) impleme
         return new VkBuffer(s);
     }
 
-    public void buffer(@Nullable VkBuffer value) {
+    public VkIndirectCommandsStreamNV buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkIndirectCommandsStreamNV offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

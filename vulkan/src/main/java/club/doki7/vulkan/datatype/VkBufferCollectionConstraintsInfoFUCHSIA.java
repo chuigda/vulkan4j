@@ -197,8 +197,9 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferCollectionConstraintsInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBufferCollectionConstraintsInfoFUCHSIA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int minBufferCount() {
         return segment.get(LAYOUT$minBufferCount, OFFSET$minBufferCount);
     }
 
-    public void minBufferCount(@Unsigned int value) {
+    public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$minBufferCount, OFFSET$minBufferCount, value);
+        return this;
     }
 
     public @Unsigned int maxBufferCount() {
         return segment.get(LAYOUT$maxBufferCount, OFFSET$maxBufferCount);
     }
 
-    public void maxBufferCount(@Unsigned int value) {
+    public VkBufferCollectionConstraintsInfoFUCHSIA maxBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBufferCount, OFFSET$maxBufferCount, value);
+        return this;
     }
 
     public @Unsigned int minBufferCountForCamping() {
         return segment.get(LAYOUT$minBufferCountForCamping, OFFSET$minBufferCountForCamping);
     }
 
-    public void minBufferCountForCamping(@Unsigned int value) {
+    public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCountForCamping(@Unsigned int value) {
         segment.set(LAYOUT$minBufferCountForCamping, OFFSET$minBufferCountForCamping, value);
+        return this;
     }
 
     public @Unsigned int minBufferCountForDedicatedSlack() {
         return segment.get(LAYOUT$minBufferCountForDedicatedSlack, OFFSET$minBufferCountForDedicatedSlack);
     }
 
-    public void minBufferCountForDedicatedSlack(@Unsigned int value) {
+    public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCountForDedicatedSlack(@Unsigned int value) {
         segment.set(LAYOUT$minBufferCountForDedicatedSlack, OFFSET$minBufferCountForDedicatedSlack, value);
+        return this;
     }
 
     public @Unsigned int minBufferCountForSharedSlack() {
         return segment.get(LAYOUT$minBufferCountForSharedSlack, OFFSET$minBufferCountForSharedSlack);
     }
 
-    public void minBufferCountForSharedSlack(@Unsigned int value) {
+    public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCountForSharedSlack(@Unsigned int value) {
         segment.set(LAYOUT$minBufferCountForSharedSlack, OFFSET$minBufferCountForSharedSlack, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

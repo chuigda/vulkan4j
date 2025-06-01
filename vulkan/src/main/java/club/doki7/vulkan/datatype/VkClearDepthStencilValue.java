@@ -173,16 +173,18 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$depth, OFFSET$depth);
     }
 
-    public void depth(float value) {
+    public VkClearDepthStencilValue depth(float value) {
         segment.set(LAYOUT$depth, OFFSET$depth, value);
+        return this;
     }
 
     public @Unsigned int stencil() {
         return segment.get(LAYOUT$stencil, OFFSET$stencil);
     }
 
-    public void stencil(@Unsigned int value) {
+    public VkClearDepthStencilValue stencil(@Unsigned int value) {
         segment.set(LAYOUT$stencil, OFFSET$stencil, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

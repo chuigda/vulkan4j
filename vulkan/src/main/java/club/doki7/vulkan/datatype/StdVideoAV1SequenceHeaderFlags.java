@@ -191,9 +191,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void still_picture(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags still_picture(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean reduced_still_picture_header() {
@@ -201,9 +202,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void reduced_still_picture_header(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags reduced_still_picture_header(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean use_128x128_superblock() {
@@ -211,9 +213,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void use_128x128_superblock(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags use_128x128_superblock(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean enable_filter_intra() {
@@ -221,9 +224,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void enable_filter_intra(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_filter_intra(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean enable_intra_edge_filter() {
@@ -231,9 +235,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void enable_intra_edge_filter(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_intra_edge_filter(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean enable_interintra_compound() {
@@ -241,9 +246,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void enable_interintra_compound(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_interintra_compound(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public boolean enable_masked_compound() {
@@ -251,9 +257,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 6);
     }
 
-    public void enable_masked_compound(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_masked_compound(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 6, value);
+        return this;
     }
 
     public boolean enable_warped_motion() {
@@ -261,9 +268,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 7);
     }
 
-    public void enable_warped_motion(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_warped_motion(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 7, value);
+        return this;
     }
 
     public boolean enable_dual_filter() {
@@ -271,9 +279,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 8);
     }
 
-    public void enable_dual_filter(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_dual_filter(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 8, value);
+        return this;
     }
 
     public boolean enable_order_hint() {
@@ -281,9 +290,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 9);
     }
 
-    public void enable_order_hint(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_order_hint(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 9, value);
+        return this;
     }
 
     public boolean enable_jnt_comp() {
@@ -291,9 +301,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 10);
     }
 
-    public void enable_jnt_comp(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_jnt_comp(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 10, value);
+        return this;
     }
 
     public boolean enable_ref_frame_mvs() {
@@ -301,9 +312,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 11);
     }
 
-    public void enable_ref_frame_mvs(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_ref_frame_mvs(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 11, value);
+        return this;
     }
 
     public boolean frame_id_numbers_present_flag() {
@@ -311,9 +323,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 12);
     }
 
-    public void frame_id_numbers_present_flag(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags frame_id_numbers_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 12, value);
+        return this;
     }
 
     public boolean enable_superres() {
@@ -321,9 +334,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 13);
     }
 
-    public void enable_superres(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_superres(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 13, value);
+        return this;
     }
 
     public boolean enable_cdef() {
@@ -331,9 +345,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 14);
     }
 
-    public void enable_cdef(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_cdef(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 14, value);
+        return this;
     }
 
     public boolean enable_restoration() {
@@ -341,9 +356,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 15);
     }
 
-    public void enable_restoration(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags enable_restoration(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 15, value);
+        return this;
     }
 
     public boolean film_grain_params_present() {
@@ -351,9 +367,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 16);
     }
 
-    public void film_grain_params_present(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags film_grain_params_present(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 16, value);
+        return this;
     }
 
     public boolean timing_info_present_flag() {
@@ -361,9 +378,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 17);
     }
 
-    public void timing_info_present_flag(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags timing_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 17, value);
+        return this;
     }
 
     public boolean initial_display_delay_present_flag() {
@@ -371,9 +389,10 @@ public record StdVideoAV1SequenceHeaderFlags(@NotNull MemorySegment segment) imp
         return BitfieldUtil.readBit(s, 18);
     }
 
-    public void initial_display_delay_present_flag(boolean value) {
+    public StdVideoAV1SequenceHeaderFlags initial_display_delay_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$still_picture$reserved, LAYOUT$bitfield$still_picture$reserved);
         BitfieldUtil.writeBit(s, 18, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

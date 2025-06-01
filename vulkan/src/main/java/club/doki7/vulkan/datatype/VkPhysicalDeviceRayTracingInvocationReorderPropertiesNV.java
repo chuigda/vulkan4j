@@ -193,8 +193,9 @@ public record VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(@NotNull M
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(@NotNull M
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkRayTracingInvocationReorderModeNV.class) int rayTracingInvocationReorderReorderingHint() {
         return segment.get(LAYOUT$rayTracingInvocationReorderReorderingHint, OFFSET$rayTracingInvocationReorderReorderingHint);
     }
 
-    public void rayTracingInvocationReorderReorderingHint(@EnumType(VkRayTracingInvocationReorderModeNV.class) int value) {
+    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV rayTracingInvocationReorderReorderingHint(@EnumType(VkRayTracingInvocationReorderModeNV.class) int value) {
         segment.set(LAYOUT$rayTracingInvocationReorderReorderingHint, OFFSET$rayTracingInvocationReorderReorderingHint, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

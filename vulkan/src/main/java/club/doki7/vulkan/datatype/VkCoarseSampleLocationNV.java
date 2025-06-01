@@ -174,24 +174,27 @@ public record VkCoarseSampleLocationNV(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$pixelX, OFFSET$pixelX);
     }
 
-    public void pixelX(@Unsigned int value) {
+    public VkCoarseSampleLocationNV pixelX(@Unsigned int value) {
         segment.set(LAYOUT$pixelX, OFFSET$pixelX, value);
+        return this;
     }
 
     public @Unsigned int pixelY() {
         return segment.get(LAYOUT$pixelY, OFFSET$pixelY);
     }
 
-    public void pixelY(@Unsigned int value) {
+    public VkCoarseSampleLocationNV pixelY(@Unsigned int value) {
         segment.set(LAYOUT$pixelY, OFFSET$pixelY, value);
+        return this;
     }
 
     public @Unsigned int sample() {
         return segment.get(LAYOUT$sample, OFFSET$sample);
     }
 
-    public void sample(@Unsigned int value) {
+    public VkCoarseSampleLocationNV sample(@Unsigned int value) {
         segment.set(LAYOUT$sample, OFFSET$sample, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

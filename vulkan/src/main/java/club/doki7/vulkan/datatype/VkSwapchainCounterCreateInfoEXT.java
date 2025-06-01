@@ -193,8 +193,9 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainCounterCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSwapchainCounterCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSurfaceCounterFlagsEXT.class) int surfaceCounters() {
         return segment.get(LAYOUT$surfaceCounters, OFFSET$surfaceCounters);
     }
 
-    public void surfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
+    public VkSwapchainCounterCreateInfoEXT surfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
         segment.set(LAYOUT$surfaceCounters, OFFSET$surfaceCounters, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

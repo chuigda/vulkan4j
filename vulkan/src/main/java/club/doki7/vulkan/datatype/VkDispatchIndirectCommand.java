@@ -174,24 +174,27 @@ public record VkDispatchIndirectCommand(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(@Unsigned int value) {
+    public VkDispatchIndirectCommand x(@Unsigned int value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
+        return this;
     }
 
     public @Unsigned int y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(@Unsigned int value) {
+    public VkDispatchIndirectCommand y(@Unsigned int value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
+        return this;
     }
 
     public @Unsigned int z() {
         return segment.get(LAYOUT$z, OFFSET$z);
     }
 
-    public void z(@Unsigned int value) {
+    public VkDispatchIndirectCommand z(@Unsigned int value) {
         segment.set(LAYOUT$z, OFFSET$z, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

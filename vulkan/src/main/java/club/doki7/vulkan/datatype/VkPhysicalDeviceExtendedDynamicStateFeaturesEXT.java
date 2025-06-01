@@ -193,8 +193,9 @@ public record VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int extendedDynamicState() {
         return segment.get(LAYOUT$extendedDynamicState, OFFSET$extendedDynamicState);
     }
 
-    public void extendedDynamicState(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT extendedDynamicState(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState, OFFSET$extendedDynamicState, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

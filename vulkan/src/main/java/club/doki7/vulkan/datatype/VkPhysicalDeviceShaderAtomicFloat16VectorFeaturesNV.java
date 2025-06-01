@@ -193,8 +193,9 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderFloat16VectorAtomics() {
         return segment.get(LAYOUT$shaderFloat16VectorAtomics, OFFSET$shaderFloat16VectorAtomics);
     }
 
-    public void shaderFloat16VectorAtomics(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV shaderFloat16VectorAtomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderFloat16VectorAtomics, OFFSET$shaderFloat16VectorAtomics, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

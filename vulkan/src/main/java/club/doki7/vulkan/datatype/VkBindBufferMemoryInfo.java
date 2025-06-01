@@ -195,8 +195,9 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindBufferMemoryInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindBufferMemoryInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkBuffer buffer() {
@@ -219,8 +221,9 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
         return new VkBuffer(s);
     }
 
-    public void buffer(@Nullable VkBuffer value) {
+    public VkBindBufferMemoryInfo buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDeviceMemory memory() {
@@ -231,16 +234,18 @@ public record VkBindBufferMemoryInfo(@NotNull MemorySegment segment) implements 
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@Nullable VkDeviceMemory value) {
+    public VkBindBufferMemoryInfo memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBindBufferMemoryInfo memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

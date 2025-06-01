@@ -185,6 +185,22 @@ fun generateHandle(
             }
             +""
 
+            defun("public static", "Ptr", "allocate", "Arena arena", "@Nullable $className[] values") {
+                +"Ptr ret = allocate(arena, values.length);"
+                +"for (int i = 0; i < values.length; i++) {"
+                indent {
+                    +"ret.write(i, values[i]);"
+                }
+                +"}"
+                +"return ret;"
+            }
+            +""
+
+            defun("public static", "Ptr", "allocateV", "Arena arena", "@Nullable $className ...values") {
+                +"return allocate(arena, values);";
+            }
+            +""
+
             +"@Override"
             defun("public", "@NotNull Iter", "iterator") {
                 +"return new Iter(this.segment());"

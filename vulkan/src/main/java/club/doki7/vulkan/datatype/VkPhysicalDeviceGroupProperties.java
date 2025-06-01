@@ -195,8 +195,9 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceGroupProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceGroupProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int physicalDeviceCount() {
         return segment.get(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount);
     }
 
-    public void physicalDeviceCount(@Unsigned int value) {
+    public VkPhysicalDeviceGroupProperties physicalDeviceCount(@Unsigned int value) {
         segment.set(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount, value);
+        return this;
     }
 
     public MemorySegment physicalDevicesRaw() {
@@ -227,8 +230,9 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         return new VkPhysicalDevice.Ptr(physicalDevicesRaw());
     }
 
-    public void physicalDevices(VkPhysicalDevice.Ptr value) {
+    public VkPhysicalDeviceGroupProperties physicalDevices(VkPhysicalDevice.Ptr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDevices, SIZE$physicalDevices);
+        return this;
     }
 
     public VkPhysicalDevice physicalDevicesAt(int index) {
@@ -246,8 +250,9 @@ public record VkPhysicalDeviceGroupProperties(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$subsetAllocation, OFFSET$subsetAllocation);
     }
 
-    public void subsetAllocation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceGroupProperties subsetAllocation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subsetAllocation, OFFSET$subsetAllocation, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

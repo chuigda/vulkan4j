@@ -194,8 +194,9 @@ public record VkPipelineExecutableInfoKHR(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineExecutableInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkPipelineExecutableInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineExecutableInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkPipeline pipeline() {
@@ -218,16 +220,18 @@ public record VkPipelineExecutableInfoKHR(@NotNull MemorySegment segment) implem
         return new VkPipeline(s);
     }
 
-    public void pipeline(@Nullable VkPipeline value) {
+    public VkPipelineExecutableInfoKHR pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int executableIndex() {
         return segment.get(LAYOUT$executableIndex, OFFSET$executableIndex);
     }
 
-    public void executableIndex(@Unsigned int value) {
+    public VkPipelineExecutableInfoKHR executableIndex(@Unsigned int value) {
         segment.set(LAYOUT$executableIndex, OFFSET$executableIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

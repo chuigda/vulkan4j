@@ -197,8 +197,9 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,32 +210,36 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int sampleLocationSampleCounts() {
         return segment.get(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts);
     }
 
-    public void sampleLocationSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationSampleCounts, OFFSET$sampleLocationSampleCounts, value);
+        return this;
     }
 
     public @NotNull VkExtent2D maxSampleLocationGridSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxSampleLocationGridSize, LAYOUT$maxSampleLocationGridSize));
     }
 
-    public void maxSampleLocationGridSize(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT maxSampleLocationGridSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSampleLocationGridSize, SIZE$maxSampleLocationGridSize);
+        return this;
     }
 
     public FloatPtr sampleLocationCoordinateRange() {
         return new FloatPtr(sampleLocationCoordinateRangeRaw());
     }
 
-    public void sampleLocationCoordinateRange(FloatPtr value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRange(FloatPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationCoordinateRange, SIZE$sampleLocationCoordinateRange);
+        return this;
     }
 
     public MemorySegment sampleLocationCoordinateRangeRaw() {
@@ -245,16 +250,18 @@ public record VkPhysicalDeviceSampleLocationsPropertiesEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$sampleLocationSubPixelBits, OFFSET$sampleLocationSubPixelBits);
     }
 
-    public void sampleLocationSubPixelBits(@Unsigned int value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSubPixelBits(@Unsigned int value) {
         segment.set(LAYOUT$sampleLocationSubPixelBits, OFFSET$sampleLocationSubPixelBits, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int variableSampleLocations() {
         return segment.get(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations);
     }
 
-    public void variableSampleLocations(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT variableSampleLocations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$variableSampleLocations, OFFSET$variableSampleLocations, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

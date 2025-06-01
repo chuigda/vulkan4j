@@ -196,8 +196,9 @@ public record VkPhysicalDeviceDescriptorBufferFeaturesEXT(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDescriptorBufferFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceDescriptorBufferFeaturesEXT(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDescriptorBufferFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int descriptorBuffer() {
         return segment.get(LAYOUT$descriptorBuffer, OFFSET$descriptorBuffer);
     }
 
-    public void descriptorBuffer(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDescriptorBufferFeaturesEXT descriptorBuffer(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBuffer, OFFSET$descriptorBuffer, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int descriptorBufferCaptureReplay() {
         return segment.get(LAYOUT$descriptorBufferCaptureReplay, OFFSET$descriptorBufferCaptureReplay);
     }
 
-    public void descriptorBufferCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDescriptorBufferFeaturesEXT descriptorBufferCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBufferCaptureReplay, OFFSET$descriptorBufferCaptureReplay, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int descriptorBufferImageLayoutIgnored() {
         return segment.get(LAYOUT$descriptorBufferImageLayoutIgnored, OFFSET$descriptorBufferImageLayoutIgnored);
     }
 
-    public void descriptorBufferImageLayoutIgnored(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDescriptorBufferFeaturesEXT descriptorBufferImageLayoutIgnored(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBufferImageLayoutIgnored, OFFSET$descriptorBufferImageLayoutIgnored, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int descriptorBufferPushDescriptors() {
         return segment.get(LAYOUT$descriptorBufferPushDescriptors, OFFSET$descriptorBufferPushDescriptors);
     }
 
-    public void descriptorBufferPushDescriptors(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDescriptorBufferFeaturesEXT descriptorBufferPushDescriptors(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBufferPushDescriptors, OFFSET$descriptorBufferPushDescriptors, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

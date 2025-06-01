@@ -174,24 +174,27 @@ public record VkDeviceFaultAddressInfoEXT(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$addressType, OFFSET$addressType);
     }
 
-    public void addressType(@EnumType(VkDeviceFaultAddressTypeEXT.class) int value) {
+    public VkDeviceFaultAddressInfoEXT addressType(@EnumType(VkDeviceFaultAddressTypeEXT.class) int value) {
         segment.set(LAYOUT$addressType, OFFSET$addressType, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long reportedAddress() {
         return segment.get(LAYOUT$reportedAddress, OFFSET$reportedAddress);
     }
 
-    public void reportedAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkDeviceFaultAddressInfoEXT reportedAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$reportedAddress, OFFSET$reportedAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long addressPrecision() {
         return segment.get(LAYOUT$addressPrecision, OFFSET$addressPrecision);
     }
 
-    public void addressPrecision(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkDeviceFaultAddressInfoEXT addressPrecision(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$addressPrecision, OFFSET$addressPrecision, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

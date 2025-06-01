@@ -174,24 +174,27 @@ public record VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(@NotN
         return segment.get(LAYOUT$clusterReferencesCount, OFFSET$clusterReferencesCount);
     }
 
-    public void clusterReferencesCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV clusterReferencesCount(@Unsigned int value) {
         segment.set(LAYOUT$clusterReferencesCount, OFFSET$clusterReferencesCount, value);
+        return this;
     }
 
     public @Unsigned int clusterReferencesStride() {
         return segment.get(LAYOUT$clusterReferencesStride, OFFSET$clusterReferencesStride);
     }
 
-    public void clusterReferencesStride(@Unsigned int value) {
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV clusterReferencesStride(@Unsigned int value) {
         segment.set(LAYOUT$clusterReferencesStride, OFFSET$clusterReferencesStride, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long clusterReferences() {
         return segment.get(LAYOUT$clusterReferences, OFFSET$clusterReferences);
     }
 
-    public void clusterReferences(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV clusterReferences(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$clusterReferences, OFFSET$clusterReferences, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -174,8 +174,9 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
         return new BytePtr(descriptionRaw());
     }
 
-    public void description(BytePtr value) {
+    public VkDeviceFaultVendorInfoEXT description(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        return this;
     }
 
     public MemorySegment descriptionRaw() {
@@ -186,16 +187,18 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$vendorFaultCode, OFFSET$vendorFaultCode);
     }
 
-    public void vendorFaultCode(@Unsigned long value) {
+    public VkDeviceFaultVendorInfoEXT vendorFaultCode(@Unsigned long value) {
         segment.set(LAYOUT$vendorFaultCode, OFFSET$vendorFaultCode, value);
+        return this;
     }
 
     public @Unsigned long vendorFaultData() {
         return segment.get(LAYOUT$vendorFaultData, OFFSET$vendorFaultData);
     }
 
-    public void vendorFaultData(@Unsigned long value) {
+    public VkDeviceFaultVendorInfoEXT vendorFaultData(@Unsigned long value) {
         segment.set(LAYOUT$vendorFaultData, OFFSET$vendorFaultData, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShadingRateImageFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceShadingRateImageFeaturesNV(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShadingRateImageFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shadingRateImage() {
         return segment.get(LAYOUT$shadingRateImage, OFFSET$shadingRateImage);
     }
 
-    public void shadingRateImage(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShadingRateImageFeaturesNV shadingRateImage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shadingRateImage, OFFSET$shadingRateImage, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shadingRateCoarseSampleOrder() {
         return segment.get(LAYOUT$shadingRateCoarseSampleOrder, OFFSET$shadingRateCoarseSampleOrder);
     }
 
-    public void shadingRateCoarseSampleOrder(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShadingRateImageFeaturesNV shadingRateCoarseSampleOrder(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shadingRateCoarseSampleOrder, OFFSET$shadingRateCoarseSampleOrder, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

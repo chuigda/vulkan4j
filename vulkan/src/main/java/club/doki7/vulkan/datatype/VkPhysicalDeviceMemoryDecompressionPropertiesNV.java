@@ -194,8 +194,9 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceMemoryDecompressionPropertiesNV(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethods() {
         return segment.get(LAYOUT$decompressionMethods, OFFSET$decompressionMethods);
     }
 
-    public void decompressionMethods(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV decompressionMethods(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethods, OFFSET$decompressionMethods, value);
+        return this;
     }
 
     public @Unsigned long maxDecompressionIndirectCount() {
         return segment.get(LAYOUT$maxDecompressionIndirectCount, OFFSET$maxDecompressionIndirectCount);
     }
 
-    public void maxDecompressionIndirectCount(@Unsigned long value) {
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV maxDecompressionIndirectCount(@Unsigned long value) {
         segment.set(LAYOUT$maxDecompressionIndirectCount, OFFSET$maxDecompressionIndirectCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

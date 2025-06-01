@@ -197,8 +197,9 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugUtilsMessengerCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,32 +210,36 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDebugUtilsMessengerCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDebugUtilsMessengerCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDebugUtilsMessengerCreateFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCreateInfoEXT flags(@EnumType(VkDebugUtilsMessengerCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int messageSeverity() {
         return segment.get(LAYOUT$messageSeverity, OFFSET$messageSeverity);
     }
 
-    public void messageSeverity(@EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCreateInfoEXT messageSeverity(@EnumType(VkDebugUtilsMessageSeverityFlagsEXT.class) int value) {
         segment.set(LAYOUT$messageSeverity, OFFSET$messageSeverity, value);
+        return this;
     }
 
     public @EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int messageType() {
         return segment.get(LAYOUT$messageType, OFFSET$messageType);
     }
 
-    public void messageType(@EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCreateInfoEXT messageType(@EnumType(VkDebugUtilsMessageTypeFlagsEXT.class) int value) {
         segment.set(LAYOUT$messageType, OFFSET$messageType, value);
+        return this;
     }
 
     public @Pointer(comment="PFN_vkDebugUtilsMessengerCallbackEXT") MemorySegment pfnUserCallback() {
@@ -245,8 +250,9 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pfnUserCallback, OFFSET$pfnUserCallback, value);
     }
 
-    public void pfnUserCallback(@Nullable IPointer pointer) {
+    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallback(@Nullable IPointer pointer) {
         pfnUserCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pUserData() {
@@ -257,8 +263,9 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(@Nullable IPointer pointer) {
+    public VkDebugUtilsMessengerCreateInfoEXT pUserData(@Nullable IPointer pointer) {
         pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

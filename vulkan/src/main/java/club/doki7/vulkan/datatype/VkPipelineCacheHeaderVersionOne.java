@@ -176,40 +176,45 @@ public record VkPipelineCacheHeaderVersionOne(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$headerSize, OFFSET$headerSize);
     }
 
-    public void headerSize(@Unsigned int value) {
+    public VkPipelineCacheHeaderVersionOne headerSize(@Unsigned int value) {
         segment.set(LAYOUT$headerSize, OFFSET$headerSize, value);
+        return this;
     }
 
     public @EnumType(VkPipelineCacheHeaderVersion.class) int headerVersion() {
         return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
     }
 
-    public void headerVersion(@EnumType(VkPipelineCacheHeaderVersion.class) int value) {
+    public VkPipelineCacheHeaderVersionOne headerVersion(@EnumType(VkPipelineCacheHeaderVersion.class) int value) {
         segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
+        return this;
     }
 
     public @Unsigned int vendorID() {
         return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
     }
 
-    public void vendorID(@Unsigned int value) {
+    public VkPipelineCacheHeaderVersionOne vendorID(@Unsigned int value) {
         segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
+        return this;
     }
 
     public @Unsigned int deviceID() {
         return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
     }
 
-    public void deviceID(@Unsigned int value) {
+    public VkPipelineCacheHeaderVersionOne deviceID(@Unsigned int value) {
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
+        return this;
     }
 
     public @Unsigned BytePtr pipelineCacheUUID() {
         return new BytePtr(pipelineCacheUUIDRaw());
     }
 
-    public void pipelineCacheUUID(@Unsigned BytePtr value) {
+    public VkPipelineCacheHeaderVersionOne pipelineCacheUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+        return this;
     }
 
     public MemorySegment pipelineCacheUUIDRaw() {

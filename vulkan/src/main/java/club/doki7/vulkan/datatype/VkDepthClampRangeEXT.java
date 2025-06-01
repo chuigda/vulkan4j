@@ -173,16 +173,18 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$minDepthClamp, OFFSET$minDepthClamp);
     }
 
-    public void minDepthClamp(float value) {
+    public VkDepthClampRangeEXT minDepthClamp(float value) {
         segment.set(LAYOUT$minDepthClamp, OFFSET$minDepthClamp, value);
+        return this;
     }
 
     public float maxDepthClamp() {
         return segment.get(LAYOUT$maxDepthClamp, OFFSET$maxDepthClamp);
     }
 
-    public void maxDepthClamp(float value) {
+    public VkDepthClampRangeEXT maxDepthClamp(float value) {
         segment.set(LAYOUT$maxDepthClamp, OFFSET$maxDepthClamp, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -199,8 +199,9 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,40 +212,45 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineMultisampleStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineMultisampleStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineMultisampleStateCreateFlags.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo flags(@EnumType(VkPipelineMultisampleStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public void rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPipelineMultisampleStateCreateInfo rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int sampleShadingEnable() {
         return segment.get(LAYOUT$sampleShadingEnable, OFFSET$sampleShadingEnable);
     }
 
-    public void sampleShadingEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineMultisampleStateCreateInfo sampleShadingEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sampleShadingEnable, OFFSET$sampleShadingEnable, value);
+        return this;
     }
 
     public float minSampleShading() {
         return segment.get(LAYOUT$minSampleShading, OFFSET$minSampleShading);
     }
 
-    public void minSampleShading(float value) {
+    public VkPipelineMultisampleStateCreateInfo minSampleShading(float value) {
         segment.set(LAYOUT$minSampleShading, OFFSET$minSampleShading, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -259,9 +265,10 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return new IntPtr(s);
     }
 
-    public void pSampleMask(@Nullable @Pointer(comment="VkSampleMask") @Unsigned IntPtr value) {
+    public VkPipelineMultisampleStateCreateInfo pSampleMask(@Nullable @Pointer(comment="VkSampleMask") @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleMaskRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pSampleMaskRaw() {
@@ -276,16 +283,18 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$alphaToCoverageEnable, OFFSET$alphaToCoverageEnable);
     }
 
-    public void alphaToCoverageEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineMultisampleStateCreateInfo alphaToCoverageEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$alphaToCoverageEnable, OFFSET$alphaToCoverageEnable, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int alphaToOneEnable() {
         return segment.get(LAYOUT$alphaToOneEnable, OFFSET$alphaToOneEnable);
     }
 
-    public void alphaToOneEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineMultisampleStateCreateInfo alphaToOneEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$alphaToOneEnable, OFFSET$alphaToOneEnable, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineInputAssemblyStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineInputAssemblyStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int value) {
+    public VkPipelineInputAssemblyStateCreateInfo flags(@EnumType(VkPipelineInputAssemblyStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkPrimitiveTopology.class) int topology() {
         return segment.get(LAYOUT$topology, OFFSET$topology);
     }
 
-    public void topology(@EnumType(VkPrimitiveTopology.class) int value) {
+    public VkPipelineInputAssemblyStateCreateInfo topology(@EnumType(VkPrimitiveTopology.class) int value) {
         segment.set(LAYOUT$topology, OFFSET$topology, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int primitiveRestartEnable() {
         return segment.get(LAYOUT$primitiveRestartEnable, OFFSET$primitiveRestartEnable);
     }
 
-    public void primitiveRestartEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineInputAssemblyStateCreateInfo primitiveRestartEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveRestartEnable, OFFSET$primitiveRestartEnable, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkPhysicalDeviceVariablePointersFeatures(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVariablePointersFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceVariablePointersFeatures(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVariablePointersFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int variablePointersStorageBuffer() {
         return segment.get(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer);
     }
 
-    public void variablePointersStorageBuffer(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVariablePointersFeatures variablePointersStorageBuffer(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int variablePointers() {
         return segment.get(LAYOUT$variablePointers, OFFSET$variablePointers);
     }
 
-    public void variablePointers(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVariablePointersFeatures variablePointers(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$variablePointers, OFFSET$variablePointers, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

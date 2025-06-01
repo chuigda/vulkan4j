@@ -194,8 +194,9 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupPresentCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceGroupPresentCapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned IntPtr presentMask() {
         return new IntPtr(presentMaskRaw());
     }
 
-    public void presentMask(@Unsigned IntPtr value) {
+    public VkDeviceGroupPresentCapabilitiesKHR presentMask(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$presentMask, SIZE$presentMask);
+        return this;
     }
 
     public MemorySegment presentMaskRaw() {
@@ -226,8 +229,9 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$modes, OFFSET$modes);
     }
 
-    public void modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupPresentCapabilitiesKHR modes(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$modes, OFFSET$modes, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

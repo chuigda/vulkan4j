@@ -194,8 +194,9 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDirectDriverLoadingInfoLUNARG sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDirectDriverLoadingInfoLUNARG pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int value) {
+    public VkDirectDriverLoadingInfoLUNARG flags(@EnumType(VkDirectDriverLoadingFlagsLUNARG.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Pointer(comment="PFN_vkGetInstanceProcAddrLUNARG") MemorySegment pfnGetInstanceProcAddr() {
@@ -226,8 +229,9 @@ public record VkDirectDriverLoadingInfoLUNARG(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pfnGetInstanceProcAddr, OFFSET$pfnGetInstanceProcAddr, value);
     }
 
-    public void pfnGetInstanceProcAddr(@Nullable IPointer pointer) {
+    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@Nullable IPointer pointer) {
         pfnGetInstanceProcAddr(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

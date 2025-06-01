@@ -194,8 +194,9 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryAllocateFlagsInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkMemoryAllocateFlagsInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMemoryAllocateFlagsInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkMemoryAllocateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkMemoryAllocateFlags.class) int value) {
+    public VkMemoryAllocateFlagsInfo flags(@EnumType(VkMemoryAllocateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int deviceMask() {
         return segment.get(LAYOUT$deviceMask, OFFSET$deviceMask);
     }
 
-    public void deviceMask(@Unsigned int value) {
+    public VkMemoryAllocateFlagsInfo deviceMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceMask, OFFSET$deviceMask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -200,8 +200,9 @@ public record VkCooperativeMatrixPropertiesNV(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCooperativeMatrixPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkCooperativeMatrixPropertiesNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCooperativeMatrixPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int MSize() {
         return segment.get(LAYOUT$MSize, OFFSET$MSize);
     }
 
-    public void MSize(@Unsigned int value) {
+    public VkCooperativeMatrixPropertiesNV MSize(@Unsigned int value) {
         segment.set(LAYOUT$MSize, OFFSET$MSize, value);
+        return this;
     }
 
     public @Unsigned int NSize() {
         return segment.get(LAYOUT$NSize, OFFSET$NSize);
     }
 
-    public void NSize(@Unsigned int value) {
+    public VkCooperativeMatrixPropertiesNV NSize(@Unsigned int value) {
         segment.set(LAYOUT$NSize, OFFSET$NSize, value);
+        return this;
     }
 
     public @Unsigned int KSize() {
         return segment.get(LAYOUT$KSize, OFFSET$KSize);
     }
 
-    public void KSize(@Unsigned int value) {
+    public VkCooperativeMatrixPropertiesNV KSize(@Unsigned int value) {
         segment.set(LAYOUT$KSize, OFFSET$KSize, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int AType() {
         return segment.get(LAYOUT$AType, OFFSET$AType);
     }
 
-    public void AType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV AType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$AType, OFFSET$AType, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int BType() {
         return segment.get(LAYOUT$BType, OFFSET$BType);
     }
 
-    public void BType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV BType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$BType, OFFSET$BType, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int CType() {
         return segment.get(LAYOUT$CType, OFFSET$CType);
     }
 
-    public void CType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV CType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$CType, OFFSET$CType, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int DType() {
         return segment.get(LAYOUT$DType, OFFSET$DType);
     }
 
-    public void DType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV DType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$DType, OFFSET$DType, value);
+        return this;
     }
 
     public @EnumType(VkScopeKHR.class) int scope() {
         return segment.get(LAYOUT$scope, OFFSET$scope);
     }
 
-    public void scope(@EnumType(VkScopeKHR.class) int value) {
+    public VkCooperativeMatrixPropertiesNV scope(@EnumType(VkScopeKHR.class) int value) {
         segment.set(LAYOUT$scope, OFFSET$scope, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

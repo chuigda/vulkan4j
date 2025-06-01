@@ -200,8 +200,9 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteDescriptorSet sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,8 +213,9 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWriteDescriptorSet pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDescriptorSet dstSet() {
@@ -224,45 +226,51 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return new VkDescriptorSet(s);
     }
 
-    public void dstSet(@Nullable VkDescriptorSet value) {
+    public VkWriteDescriptorSet dstSet(@Nullable VkDescriptorSet value) {
         segment.set(LAYOUT$dstSet, OFFSET$dstSet, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int dstBinding() {
         return segment.get(LAYOUT$dstBinding, OFFSET$dstBinding);
     }
 
-    public void dstBinding(@Unsigned int value) {
+    public VkWriteDescriptorSet dstBinding(@Unsigned int value) {
         segment.set(LAYOUT$dstBinding, OFFSET$dstBinding, value);
+        return this;
     }
 
     public @Unsigned int dstArrayElement() {
         return segment.get(LAYOUT$dstArrayElement, OFFSET$dstArrayElement);
     }
 
-    public void dstArrayElement(@Unsigned int value) {
+    public VkWriteDescriptorSet dstArrayElement(@Unsigned int value) {
         segment.set(LAYOUT$dstArrayElement, OFFSET$dstArrayElement, value);
+        return this;
     }
 
     public @Unsigned int descriptorCount() {
         return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
     }
 
-    public void descriptorCount(@Unsigned int value) {
+    public VkWriteDescriptorSet descriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
+        return this;
     }
 
     public @EnumType(VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public void descriptorType(@EnumType(VkDescriptorType.class) int value) {
+    public VkWriteDescriptorSet descriptorType(@EnumType(VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
+        return this;
     }
 
-    public void pImageInfo(@Nullable IVkDescriptorImageInfo value) {
+    public VkWriteDescriptorSet pImageInfo(@Nullable IVkDescriptorImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDescriptorImageInfo.Ptr pImageInfo(int assumedCount) {
@@ -291,9 +299,10 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pImageInfo, OFFSET$pImageInfo, value);
     }
 
-    public void pBufferInfo(@Nullable IVkDescriptorBufferInfo value) {
+    public VkWriteDescriptorSet pBufferInfo(@Nullable IVkDescriptorBufferInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDescriptorBufferInfo.Ptr pBufferInfo(int assumedCount) {
@@ -334,9 +343,10 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         return new VkBufferView.Ptr(s);
     }
 
-    public void pTexelBufferView(@Nullable VkBufferView.Ptr value) {
+    public VkWriteDescriptorSet pTexelBufferView(@Nullable VkBufferView.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTexelBufferViewRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkBufferView.class) MemorySegment pTexelBufferViewRaw() {

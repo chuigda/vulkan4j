@@ -196,8 +196,9 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkTimelineSemaphoreSubmitInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,16 +209,18 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkTimelineSemaphoreSubmitInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int waitSemaphoreValueCount() {
         return segment.get(LAYOUT$waitSemaphoreValueCount, OFFSET$waitSemaphoreValueCount);
     }
 
-    public void waitSemaphoreValueCount(@Unsigned int value) {
+    public VkTimelineSemaphoreSubmitInfo waitSemaphoreValueCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreValueCount, OFFSET$waitSemaphoreValueCount, value);
+        return this;
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -232,9 +235,10 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return new LongPtr(s);
     }
 
-    public void pWaitSemaphoreValues(@Nullable @Unsigned LongPtr value) {
+    public VkTimelineSemaphoreSubmitInfo pWaitSemaphoreValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreValuesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pWaitSemaphoreValuesRaw() {
@@ -249,8 +253,9 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$signalSemaphoreValueCount, OFFSET$signalSemaphoreValueCount);
     }
 
-    public void signalSemaphoreValueCount(@Unsigned int value) {
+    public VkTimelineSemaphoreSubmitInfo signalSemaphoreValueCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreValueCount, OFFSET$signalSemaphoreValueCount, value);
+        return this;
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -265,9 +270,10 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         return new LongPtr(s);
     }
 
-    public void pSignalSemaphoreValues(@Nullable @Unsigned LongPtr value) {
+    public VkTimelineSemaphoreSubmitInfo pSignalSemaphoreValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreValuesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pSignalSemaphoreValuesRaw() {

@@ -193,8 +193,9 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewUsageCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkImageViewUsageCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageViewUsageCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageViewUsageCreateInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

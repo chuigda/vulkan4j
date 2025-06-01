@@ -175,32 +175,36 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$major, OFFSET$major);
     }
 
-    public void major(@Unsigned byte value) {
+    public VkConformanceVersion major(@Unsigned byte value) {
         segment.set(LAYOUT$major, OFFSET$major, value);
+        return this;
     }
 
     public @Unsigned byte minor() {
         return segment.get(LAYOUT$minor, OFFSET$minor);
     }
 
-    public void minor(@Unsigned byte value) {
+    public VkConformanceVersion minor(@Unsigned byte value) {
         segment.set(LAYOUT$minor, OFFSET$minor, value);
+        return this;
     }
 
     public @Unsigned byte subminor() {
         return segment.get(LAYOUT$subminor, OFFSET$subminor);
     }
 
-    public void subminor(@Unsigned byte value) {
+    public VkConformanceVersion subminor(@Unsigned byte value) {
         segment.set(LAYOUT$subminor, OFFSET$subminor, value);
+        return this;
     }
 
     public @Unsigned byte patch() {
         return segment.get(LAYOUT$patch, OFFSET$patch);
     }
 
-    public void patch(@Unsigned byte value) {
+    public VkConformanceVersion patch(@Unsigned byte value) {
         segment.set(LAYOUT$patch, OFFSET$patch, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

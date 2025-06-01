@@ -194,8 +194,9 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCustomBorderColorFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceCustomBorderColorFeaturesEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCustomBorderColorFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int customBorderColors() {
         return segment.get(LAYOUT$customBorderColors, OFFSET$customBorderColors);
     }
 
-    public void customBorderColors(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCustomBorderColorFeaturesEXT customBorderColors(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$customBorderColors, OFFSET$customBorderColors, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int customBorderColorWithoutFormat() {
         return segment.get(LAYOUT$customBorderColorWithoutFormat, OFFSET$customBorderColorWithoutFormat);
     }
 
-    public void customBorderColorWithoutFormat(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCustomBorderColorFeaturesEXT customBorderColorWithoutFormat(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$customBorderColorWithoutFormat, OFFSET$customBorderColorWithoutFormat, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

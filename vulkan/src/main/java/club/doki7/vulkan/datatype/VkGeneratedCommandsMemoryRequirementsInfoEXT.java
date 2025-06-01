@@ -196,8 +196,9 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,8 +209,9 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkIndirectExecutionSetEXT indirectExecutionSet() {
@@ -220,8 +222,9 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         return new VkIndirectExecutionSetEXT(s);
     }
 
-    public void indirectExecutionSet(@Nullable VkIndirectExecutionSetEXT value) {
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT indirectExecutionSet(@Nullable VkIndirectExecutionSetEXT value) {
         segment.set(LAYOUT$indirectExecutionSet, OFFSET$indirectExecutionSet, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkIndirectCommandsLayoutEXT indirectCommandsLayout() {
@@ -232,24 +235,27 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         return new VkIndirectCommandsLayoutEXT(s);
     }
 
-    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutEXT value) {
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutEXT value) {
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxSequenceCount() {
         return segment.get(LAYOUT$maxSequenceCount, OFFSET$maxSequenceCount);
     }
 
-    public void maxSequenceCount(@Unsigned int value) {
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT maxSequenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSequenceCount, OFFSET$maxSequenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxDrawCount() {
         return segment.get(LAYOUT$maxDrawCount, OFFSET$maxDrawCount);
     }
 
-    public void maxDrawCount(@Unsigned int value) {
+    public VkGeneratedCommandsMemoryRequirementsInfoEXT maxDrawCount(@Unsigned int value) {
         segment.set(LAYOUT$maxDrawCount, OFFSET$maxDrawCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

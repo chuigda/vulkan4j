@@ -194,8 +194,9 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMemoryMetalHandleInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportMemoryMetalHandleInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemoryMetalHandleInfoEXT handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment handle() {
@@ -226,8 +229,9 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-    public void handle(@Nullable IPointer pointer) {
+    public VkImportMemoryMetalHandleInfoEXT handle(@Nullable IPointer pointer) {
         handle(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

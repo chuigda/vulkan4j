@@ -174,24 +174,27 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$groupCountX, OFFSET$groupCountX);
     }
 
-    public void groupCountX(@Unsigned int value) {
+    public VkDrawMeshTasksIndirectCommandEXT groupCountX(@Unsigned int value) {
         segment.set(LAYOUT$groupCountX, OFFSET$groupCountX, value);
+        return this;
     }
 
     public @Unsigned int groupCountY() {
         return segment.get(LAYOUT$groupCountY, OFFSET$groupCountY);
     }
 
-    public void groupCountY(@Unsigned int value) {
+    public VkDrawMeshTasksIndirectCommandEXT groupCountY(@Unsigned int value) {
         segment.set(LAYOUT$groupCountY, OFFSET$groupCountY, value);
+        return this;
     }
 
     public @Unsigned int groupCountZ() {
         return segment.get(LAYOUT$groupCountZ, OFFSET$groupCountZ);
     }
 
-    public void groupCountZ(@Unsigned int value) {
+    public VkDrawMeshTasksIndirectCommandEXT groupCountZ(@Unsigned int value) {
         segment.set(LAYOUT$groupCountZ, OFFSET$groupCountZ, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

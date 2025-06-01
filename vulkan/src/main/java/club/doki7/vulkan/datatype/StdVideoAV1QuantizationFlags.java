@@ -174,9 +174,10 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void using_qmatrix(boolean value) {
+    public StdVideoAV1QuantizationFlags using_qmatrix(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix$reserved, LAYOUT$bitfield$using_qmatrix$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean diff_uv_delta() {
@@ -184,9 +185,10 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void diff_uv_delta(boolean value) {
+    public StdVideoAV1QuantizationFlags diff_uv_delta(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$using_qmatrix$reserved, LAYOUT$bitfield$using_qmatrix$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

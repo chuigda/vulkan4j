@@ -196,8 +196,9 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkGraphicsPipelineShaderGroupsCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,21 +209,24 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkGraphicsPipelineShaderGroupsCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int groupCount() {
         return segment.get(LAYOUT$groupCount, OFFSET$groupCount);
     }
 
-    public void groupCount(@Unsigned int value) {
+    public VkGraphicsPipelineShaderGroupsCreateInfoNV groupCount(@Unsigned int value) {
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
+        return this;
     }
 
-    public void pGroups(@Nullable IVkGraphicsShaderGroupCreateInfoNV value) {
+    public VkGraphicsPipelineShaderGroupsCreateInfoNV pGroups(@Nullable IVkGraphicsShaderGroupCreateInfoNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkGraphicsShaderGroupCreateInfoNV.Ptr pGroups(int assumedCount) {
@@ -255,8 +259,9 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return segment.get(LAYOUT$pipelineCount, OFFSET$pipelineCount);
     }
 
-    public void pipelineCount(@Unsigned int value) {
+    public VkGraphicsPipelineShaderGroupsCreateInfoNV pipelineCount(@Unsigned int value) {
         segment.set(LAYOUT$pipelineCount, OFFSET$pipelineCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkPipeline.Ptr} does not have correct {@link VkPipeline.Ptr#size}
@@ -271,9 +276,10 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         return new VkPipeline.Ptr(s);
     }
 
-    public void pPipelines(@Nullable VkPipeline.Ptr value) {
+    public VkGraphicsPipelineShaderGroupsCreateInfoNV pPipelines(@Nullable VkPipeline.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelinesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkPipeline.class) MemorySegment pPipelinesRaw() {

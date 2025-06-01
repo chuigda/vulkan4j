@@ -194,8 +194,9 @@ public record VkCommandBufferSubmitInfo(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferSubmitInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkCommandBufferSubmitInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCommandBufferSubmitInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkCommandBuffer commandBuffer() {
@@ -218,16 +220,18 @@ public record VkCommandBufferSubmitInfo(@NotNull MemorySegment segment) implemen
         return new VkCommandBuffer(s);
     }
 
-    public void commandBuffer(@Nullable VkCommandBuffer value) {
+    public VkCommandBufferSubmitInfo commandBuffer(@Nullable VkCommandBuffer value) {
         segment.set(LAYOUT$commandBuffer, OFFSET$commandBuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int deviceMask() {
         return segment.get(LAYOUT$deviceMask, OFFSET$deviceMask);
     }
 
-    public void deviceMask(@Unsigned int value) {
+    public VkCommandBufferSubmitInfo deviceMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceMask, OFFSET$deviceMask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

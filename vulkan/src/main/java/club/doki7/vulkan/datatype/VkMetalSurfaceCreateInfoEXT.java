@@ -194,8 +194,9 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMetalSurfaceCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMetalSurfaceCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkMetalSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkMetalSurfaceCreateFlagsEXT.class) int value) {
+    public VkMetalSurfaceCreateInfoEXT flags(@EnumType(VkMetalSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -229,9 +232,10 @@ public record VkMetalSurfaceCreateInfoEXT(@NotNull MemorySegment segment) implem
         return new PointerPtr(s);
     }
 
-    public void pLayer(@Nullable PointerPtr value) {
+    public VkMetalSurfaceCreateInfoEXT pLayer(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayerRaw(s);
+        return this;
     }
 
     public @Pointer(comment="CAMetalLayer*") MemorySegment pLayerRaw() {

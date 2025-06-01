@@ -196,8 +196,9 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,13 +209,15 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pStdSequenceHeader(@Nullable IStdVideoAV1SequenceHeader value) {
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdSequenceHeader(@Nullable IStdVideoAV1SequenceHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSequenceHeaderRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1SequenceHeader.Ptr pStdSequenceHeader(int assumedCount) {
@@ -243,9 +246,10 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         segment.set(LAYOUT$pStdSequenceHeader, OFFSET$pStdSequenceHeader, value);
     }
 
-    public void pStdDecoderModelInfo(@Nullable IStdVideoEncodeAV1DecoderModelInfo value) {
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdDecoderModelInfo(@Nullable IStdVideoEncodeAV1DecoderModelInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdDecoderModelInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeAV1DecoderModelInfo.Ptr pStdDecoderModelInfo(int assumedCount) {
@@ -278,13 +282,15 @@ public record VkVideoEncodeAV1SessionParametersCreateInfoKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount);
     }
 
-    public void stdOperatingPointCount(@Unsigned int value) {
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR stdOperatingPointCount(@Unsigned int value) {
         segment.set(LAYOUT$stdOperatingPointCount, OFFSET$stdOperatingPointCount, value);
+        return this;
     }
 
-    public void pStdOperatingPoints(@Nullable IStdVideoEncodeAV1OperatingPointInfo value) {
+    public VkVideoEncodeAV1SessionParametersCreateInfoKHR pStdOperatingPoints(@Nullable IStdVideoEncodeAV1OperatingPointInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdOperatingPointsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeAV1OperatingPointInfo.Ptr pStdOperatingPoints(int assumedCount) {

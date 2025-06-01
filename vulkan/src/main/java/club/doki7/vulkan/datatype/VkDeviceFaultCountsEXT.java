@@ -195,8 +195,9 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceFaultCountsEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceFaultCountsEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int addressInfoCount() {
         return segment.get(LAYOUT$addressInfoCount, OFFSET$addressInfoCount);
     }
 
-    public void addressInfoCount(@Unsigned int value) {
+    public VkDeviceFaultCountsEXT addressInfoCount(@Unsigned int value) {
         segment.set(LAYOUT$addressInfoCount, OFFSET$addressInfoCount, value);
+        return this;
     }
 
     public @Unsigned int vendorInfoCount() {
         return segment.get(LAYOUT$vendorInfoCount, OFFSET$vendorInfoCount);
     }
 
-    public void vendorInfoCount(@Unsigned int value) {
+    public VkDeviceFaultCountsEXT vendorInfoCount(@Unsigned int value) {
         segment.set(LAYOUT$vendorInfoCount, OFFSET$vendorInfoCount, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long vendorBinarySize() {
         return segment.get(LAYOUT$vendorBinarySize, OFFSET$vendorBinarySize);
     }
 
-    public void vendorBinarySize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkDeviceFaultCountsEXT vendorBinarySize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$vendorBinarySize, OFFSET$vendorBinarySize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

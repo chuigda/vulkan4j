@@ -175,38 +175,43 @@ public record StdVideoEncodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return new StdVideoEncodeAV1ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeAV1ReferenceInfoFlags value) {
+    public StdVideoEncodeAV1ReferenceInfo flags(@NotNull StdVideoEncodeAV1ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned int RefFrameId() {
         return segment.get(LAYOUT$RefFrameId, OFFSET$RefFrameId);
     }
 
-    public void RefFrameId(@Unsigned int value) {
+    public StdVideoEncodeAV1ReferenceInfo RefFrameId(@Unsigned int value) {
         segment.set(LAYOUT$RefFrameId, OFFSET$RefFrameId, value);
+        return this;
     }
 
     public @EnumType(StdVideoAV1FrameType.class) int frame_type() {
         return segment.get(LAYOUT$frame_type, OFFSET$frame_type);
     }
 
-    public void frame_type(@EnumType(StdVideoAV1FrameType.class) int value) {
+    public StdVideoEncodeAV1ReferenceInfo frame_type(@EnumType(StdVideoAV1FrameType.class) int value) {
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
+        return this;
     }
 
     public @Unsigned byte OrderHint() {
         return segment.get(LAYOUT$OrderHint, OFFSET$OrderHint);
     }
 
-    public void OrderHint(@Unsigned byte value) {
+    public StdVideoEncodeAV1ReferenceInfo OrderHint(@Unsigned byte value) {
         segment.set(LAYOUT$OrderHint, OFFSET$OrderHint, value);
+        return this;
     }
 
 
-    public void pExtensionHeader(@Nullable IStdVideoEncodeAV1ExtensionHeader value) {
+    public StdVideoEncodeAV1ReferenceInfo pExtensionHeader(@Nullable IStdVideoEncodeAV1ExtensionHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExtensionHeaderRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader.Ptr pExtensionHeader(int assumedCount) {

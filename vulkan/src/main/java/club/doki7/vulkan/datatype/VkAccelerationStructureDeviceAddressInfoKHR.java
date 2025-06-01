@@ -193,8 +193,9 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureDeviceAddressInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureDeviceAddressInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkAccelerationStructureKHR accelerationStructure() {
@@ -217,8 +219,9 @@ public record VkAccelerationStructureDeviceAddressInfoKHR(@NotNull MemorySegment
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void accelerationStructure(@Nullable VkAccelerationStructureKHR value) {
+    public VkAccelerationStructureDeviceAddressInfoKHR accelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

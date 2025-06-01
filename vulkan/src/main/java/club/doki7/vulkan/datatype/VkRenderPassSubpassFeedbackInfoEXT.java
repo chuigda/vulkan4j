@@ -174,16 +174,18 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$subpassMergeStatus, OFFSET$subpassMergeStatus);
     }
 
-    public void subpassMergeStatus(@EnumType(VkSubpassMergeStatusEXT.class) int value) {
+    public VkRenderPassSubpassFeedbackInfoEXT subpassMergeStatus(@EnumType(VkSubpassMergeStatusEXT.class) int value) {
         segment.set(LAYOUT$subpassMergeStatus, OFFSET$subpassMergeStatus, value);
+        return this;
     }
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
     }
 
-    public void description(BytePtr value) {
+    public VkRenderPassSubpassFeedbackInfoEXT description(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        return this;
     }
 
     public MemorySegment descriptionRaw() {
@@ -194,8 +196,9 @@ public record VkRenderPassSubpassFeedbackInfoEXT(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$postMergeIndex, OFFSET$postMergeIndex);
     }
 
-    public void postMergeIndex(@Unsigned int value) {
+    public VkRenderPassSubpassFeedbackInfoEXT postMergeIndex(@Unsigned int value) {
         segment.set(LAYOUT$postMergeIndex, OFFSET$postMergeIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

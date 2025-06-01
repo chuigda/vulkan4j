@@ -193,8 +193,9 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorPoolInlineUniformBlockCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorPoolInlineUniformBlockCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxInlineUniformBlockBindings() {
         return segment.get(LAYOUT$maxInlineUniformBlockBindings, OFFSET$maxInlineUniformBlockBindings);
     }
 
-    public void maxInlineUniformBlockBindings(@Unsigned int value) {
+    public VkDescriptorPoolInlineUniformBlockCreateInfo maxInlineUniformBlockBindings(@Unsigned int value) {
         segment.set(LAYOUT$maxInlineUniformBlockBindings, OFFSET$maxInlineUniformBlockBindings, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

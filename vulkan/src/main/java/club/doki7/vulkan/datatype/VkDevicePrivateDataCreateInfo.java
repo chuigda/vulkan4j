@@ -193,8 +193,9 @@ public record VkDevicePrivateDataCreateInfo(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDevicePrivateDataCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDevicePrivateDataCreateInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDevicePrivateDataCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int privateDataSlotRequestCount() {
         return segment.get(LAYOUT$privateDataSlotRequestCount, OFFSET$privateDataSlotRequestCount);
     }
 
-    public void privateDataSlotRequestCount(@Unsigned int value) {
+    public VkDevicePrivateDataCreateInfo privateDataSlotRequestCount(@Unsigned int value) {
         segment.set(LAYOUT$privateDataSlotRequestCount, OFFSET$privateDataSlotRequestCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

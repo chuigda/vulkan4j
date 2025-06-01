@@ -194,8 +194,9 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportExclusiveScissorStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkPipelineViewportExclusiveScissorStateCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineViewportExclusiveScissorStateCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int exclusiveScissorCount() {
         return segment.get(LAYOUT$exclusiveScissorCount, OFFSET$exclusiveScissorCount);
     }
 
-    public void exclusiveScissorCount(@Unsigned int value) {
+    public VkPipelineViewportExclusiveScissorStateCreateInfoNV exclusiveScissorCount(@Unsigned int value) {
         segment.set(LAYOUT$exclusiveScissorCount, OFFSET$exclusiveScissorCount, value);
+        return this;
     }
 
-    public void pExclusiveScissors(@Nullable IVkRect2D value) {
+    public VkPipelineViewportExclusiveScissorStateCreateInfoNV pExclusiveScissors(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExclusiveScissorsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRect2D.Ptr pExclusiveScissors(int assumedCount) {

@@ -193,8 +193,9 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceTextureCompressionASTCHDRFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceTextureCompressionASTCHDRFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int textureCompressionASTC_HDR() {
         return segment.get(LAYOUT$textureCompressionASTC_HDR, OFFSET$textureCompressionASTC_HDR);
     }
 
-    public void textureCompressionASTC_HDR(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTextureCompressionASTCHDRFeatures textureCompressionASTC_HDR(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$textureCompressionASTC_HDR, OFFSET$textureCompressionASTC_HDR, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

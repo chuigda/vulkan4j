@@ -207,8 +207,9 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -219,16 +220,18 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVulkan11Properties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned BytePtr deviceUUID() {
         return new BytePtr(deviceUUIDRaw());
     }
 
-    public void deviceUUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceVulkan11Properties deviceUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
+        return this;
     }
 
     public MemorySegment deviceUUIDRaw() {
@@ -239,8 +242,9 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return new BytePtr(driverUUIDRaw());
     }
 
-    public void driverUUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceVulkan11Properties driverUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
+        return this;
     }
 
     public MemorySegment driverUUIDRaw() {
@@ -251,8 +255,9 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return new BytePtr(deviceLUIDRaw());
     }
 
-    public void deviceLUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceVulkan11Properties deviceLUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
+        return this;
     }
 
     public MemorySegment deviceLUIDRaw() {
@@ -263,96 +268,108 @@ public record VkPhysicalDeviceVulkan11Properties(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask);
     }
 
-    public void deviceNodeMask(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Properties deviceNodeMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceLUIDValid() {
         return segment.get(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid);
     }
 
-    public void deviceLUIDValid(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Properties deviceLUIDValid(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid, value);
+        return this;
     }
 
     public @Unsigned int subgroupSize() {
         return segment.get(LAYOUT$subgroupSize, OFFSET$subgroupSize);
     }
 
-    public void subgroupSize(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$subgroupSize, OFFSET$subgroupSize, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int subgroupSupportedStages() {
         return segment.get(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages);
     }
 
-    public void subgroupSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedStages, OFFSET$subgroupSupportedStages, value);
+        return this;
     }
 
     public @EnumType(VkSubgroupFeatureFlags.class) int subgroupSupportedOperations() {
         return segment.get(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations);
     }
 
-    public void subgroupSupportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupSupportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$subgroupSupportedOperations, OFFSET$subgroupSupportedOperations, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int subgroupQuadOperationsInAllStages() {
         return segment.get(LAYOUT$subgroupQuadOperationsInAllStages, OFFSET$subgroupQuadOperationsInAllStages);
     }
 
-    public void subgroupQuadOperationsInAllStages(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Properties subgroupQuadOperationsInAllStages(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subgroupQuadOperationsInAllStages, OFFSET$subgroupQuadOperationsInAllStages, value);
+        return this;
     }
 
     public @EnumType(VkPointClippingBehavior.class) int pointClippingBehavior() {
         return segment.get(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior);
     }
 
-    public void pointClippingBehavior(@EnumType(VkPointClippingBehavior.class) int value) {
+    public VkPhysicalDeviceVulkan11Properties pointClippingBehavior(@EnumType(VkPointClippingBehavior.class) int value) {
         segment.set(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior, value);
+        return this;
     }
 
     public @Unsigned int maxMultiviewViewCount() {
         return segment.get(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount);
     }
 
-    public void maxMultiviewViewCount(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Properties maxMultiviewViewCount(@Unsigned int value) {
         segment.set(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount, value);
+        return this;
     }
 
     public @Unsigned int maxMultiviewInstanceIndex() {
         return segment.get(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex);
     }
 
-    public void maxMultiviewInstanceIndex(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Properties maxMultiviewInstanceIndex(@Unsigned int value) {
         segment.set(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int protectedNoFault() {
         return segment.get(LAYOUT$protectedNoFault, OFFSET$protectedNoFault);
     }
 
-    public void protectedNoFault(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Properties protectedNoFault(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$protectedNoFault, OFFSET$protectedNoFault, value);
+        return this;
     }
 
     public @Unsigned int maxPerSetDescriptors() {
         return segment.get(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors);
     }
 
-    public void maxPerSetDescriptors(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Properties maxPerSetDescriptors(@Unsigned int value) {
         segment.set(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long maxMemoryAllocationSize() {
         return segment.get(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize);
     }
 
-    public void maxMemoryAllocationSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceVulkan11Properties maxMemoryAllocationSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

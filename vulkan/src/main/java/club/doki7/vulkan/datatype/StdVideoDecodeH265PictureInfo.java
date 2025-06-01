@@ -180,56 +180,63 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoDecodeH265PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoDecodeH265PictureInfoFlags value) {
+    public StdVideoDecodeH265PictureInfo flags(@NotNull StdVideoDecodeH265PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte sps_video_parameter_set_id() {
         return segment.get(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id);
     }
 
-    public void sps_video_parameter_set_id(@Unsigned byte value) {
+    public StdVideoDecodeH265PictureInfo sps_video_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte pps_seq_parameter_set_id() {
         return segment.get(LAYOUT$pps_seq_parameter_set_id, OFFSET$pps_seq_parameter_set_id);
     }
 
-    public void pps_seq_parameter_set_id(@Unsigned byte value) {
+    public StdVideoDecodeH265PictureInfo pps_seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pps_seq_parameter_set_id, OFFSET$pps_seq_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte pps_pic_parameter_set_id() {
         return segment.get(LAYOUT$pps_pic_parameter_set_id, OFFSET$pps_pic_parameter_set_id);
     }
 
-    public void pps_pic_parameter_set_id(@Unsigned byte value) {
+    public StdVideoDecodeH265PictureInfo pps_pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pps_pic_parameter_set_id, OFFSET$pps_pic_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte NumDeltaPocsOfRefRpsIdx() {
         return segment.get(LAYOUT$NumDeltaPocsOfRefRpsIdx, OFFSET$NumDeltaPocsOfRefRpsIdx);
     }
 
-    public void NumDeltaPocsOfRefRpsIdx(@Unsigned byte value) {
+    public StdVideoDecodeH265PictureInfo NumDeltaPocsOfRefRpsIdx(@Unsigned byte value) {
         segment.set(LAYOUT$NumDeltaPocsOfRefRpsIdx, OFFSET$NumDeltaPocsOfRefRpsIdx, value);
+        return this;
     }
 
     public int PicOrderCntVal() {
         return segment.get(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal);
     }
 
-    public void PicOrderCntVal(int value) {
+    public StdVideoDecodeH265PictureInfo PicOrderCntVal(int value) {
         segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
+        return this;
     }
 
     public @Unsigned short NumBitsForSTRefPicSetInSlice() {
         return segment.get(LAYOUT$NumBitsForSTRefPicSetInSlice, OFFSET$NumBitsForSTRefPicSetInSlice);
     }
 
-    public void NumBitsForSTRefPicSetInSlice(@Unsigned short value) {
+    public StdVideoDecodeH265PictureInfo NumBitsForSTRefPicSetInSlice(@Unsigned short value) {
         segment.set(LAYOUT$NumBitsForSTRefPicSetInSlice, OFFSET$NumBitsForSTRefPicSetInSlice, value);
+        return this;
     }
 
 
@@ -237,8 +244,9 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new BytePtr(RefPicSetStCurrBeforeRaw());
     }
 
-    public void RefPicSetStCurrBefore(@Unsigned BytePtr value) {
+    public StdVideoDecodeH265PictureInfo RefPicSetStCurrBefore(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicSetStCurrBefore, SIZE$RefPicSetStCurrBefore);
+        return this;
     }
 
     public MemorySegment RefPicSetStCurrBeforeRaw() {
@@ -249,8 +257,9 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new BytePtr(RefPicSetStCurrAfterRaw());
     }
 
-    public void RefPicSetStCurrAfter(@Unsigned BytePtr value) {
+    public StdVideoDecodeH265PictureInfo RefPicSetStCurrAfter(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicSetStCurrAfter, SIZE$RefPicSetStCurrAfter);
+        return this;
     }
 
     public MemorySegment RefPicSetStCurrAfterRaw() {
@@ -261,8 +270,9 @@ public record StdVideoDecodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new BytePtr(RefPicSetLtCurrRaw());
     }
 
-    public void RefPicSetLtCurr(@Unsigned BytePtr value) {
+    public StdVideoDecodeH265PictureInfo RefPicSetLtCurr(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$RefPicSetLtCurr, SIZE$RefPicSetLtCurr);
+        return this;
     }
 
     public MemorySegment RefPicSetLtCurrRaw() {

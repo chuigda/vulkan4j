@@ -193,8 +193,9 @@ public record VkBufferDeviceAddressCreateInfoEXT(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferDeviceAddressCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkBufferDeviceAddressCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBufferDeviceAddressCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkBufferDeviceAddressCreateInfoEXT deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

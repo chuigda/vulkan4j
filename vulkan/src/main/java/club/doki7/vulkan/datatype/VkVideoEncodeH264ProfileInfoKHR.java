@@ -193,8 +193,9 @@ public record VkVideoEncodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264ProfileInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkVideoEncodeH264ProfileInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH264ProfileInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(StdVideoH264ProfileIdc.class) int stdProfileIdc() {
         return segment.get(LAYOUT$stdProfileIdc, OFFSET$stdProfileIdc);
     }
 
-    public void stdProfileIdc(@EnumType(StdVideoH264ProfileIdc.class) int value) {
+    public VkVideoEncodeH264ProfileInfoKHR stdProfileIdc(@EnumType(StdVideoH264ProfileIdc.class) int value) {
         segment.set(LAYOUT$stdProfileIdc, OFFSET$stdProfileIdc, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

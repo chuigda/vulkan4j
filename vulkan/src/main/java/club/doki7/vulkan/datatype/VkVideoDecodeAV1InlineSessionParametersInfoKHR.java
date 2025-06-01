@@ -193,8 +193,9 @@ public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeAV1InlineSessionParametersInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,13 +206,15 @@ public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoDecodeAV1InlineSessionParametersInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pStdSequenceHeader(@Nullable IStdVideoAV1SequenceHeader value) {
+    public VkVideoDecodeAV1InlineSessionParametersInfoKHR pStdSequenceHeader(@Nullable IStdVideoAV1SequenceHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSequenceHeaderRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1SequenceHeader.Ptr pStdSequenceHeader(int assumedCount) {

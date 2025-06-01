@@ -194,8 +194,9 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="VkDeviceSize") @Unsigned LongPtr heapBudget() {
         return new LongPtr(heapBudgetRaw());
     }
 
-    public void heapBudget(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapBudget(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapBudget, SIZE$heapBudget);
+        return this;
     }
 
     public MemorySegment heapBudgetRaw() {
@@ -226,8 +229,9 @@ public record VkPhysicalDeviceMemoryBudgetPropertiesEXT(@NotNull MemorySegment s
         return new LongPtr(heapUsageRaw());
     }
 
-    public void heapUsage(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapUsage(@Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$heapUsage, SIZE$heapUsage);
+        return this;
     }
 
     public MemorySegment heapUsageRaw() {

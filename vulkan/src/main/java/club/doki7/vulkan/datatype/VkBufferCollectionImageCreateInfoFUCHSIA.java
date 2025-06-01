@@ -194,8 +194,9 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferCollectionImageCreateInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBufferCollectionImageCreateInfoFUCHSIA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkBufferCollectionFUCHSIA collection() {
@@ -218,16 +220,18 @@ public record VkBufferCollectionImageCreateInfoFUCHSIA(@NotNull MemorySegment se
         return new VkBufferCollectionFUCHSIA(s);
     }
 
-    public void collection(@Nullable VkBufferCollectionFUCHSIA value) {
+    public VkBufferCollectionImageCreateInfoFUCHSIA collection(@Nullable VkBufferCollectionFUCHSIA value) {
         segment.set(LAYOUT$collection, OFFSET$collection, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int index() {
         return segment.get(LAYOUT$index, OFFSET$index);
     }
 
-    public void index(@Unsigned int value) {
+    public VkBufferCollectionImageCreateInfoFUCHSIA index(@Unsigned int value) {
         segment.set(LAYOUT$index, OFFSET$index, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

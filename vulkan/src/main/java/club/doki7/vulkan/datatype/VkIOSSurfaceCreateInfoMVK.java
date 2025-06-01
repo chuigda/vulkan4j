@@ -194,8 +194,9 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkIOSSurfaceCreateInfoMVK sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkIOSSurfaceCreateInfoMVK pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkIOSSurfaceCreateFlagsMVK.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkIOSSurfaceCreateFlagsMVK.class) int value) {
+    public VkIOSSurfaceCreateInfoMVK flags(@EnumType(VkIOSSurfaceCreateFlagsMVK.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pView() {
@@ -226,8 +229,9 @@ public record VkIOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pView, OFFSET$pView, value);
     }
 
-    public void pView(@Nullable IPointer pointer) {
+    public VkIOSSurfaceCreateInfoMVK pView(@Nullable IPointer pointer) {
         pView(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

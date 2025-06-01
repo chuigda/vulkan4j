@@ -194,8 +194,9 @@ public record VkImageCompressionPropertiesEXT(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageCompressionPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkImageCompressionPropertiesEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageCompressionPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageCompressionFlagsEXT.class) int imageCompressionFlags() {
         return segment.get(LAYOUT$imageCompressionFlags, OFFSET$imageCompressionFlags);
     }
 
-    public void imageCompressionFlags(@EnumType(VkImageCompressionFlagsEXT.class) int value) {
+    public VkImageCompressionPropertiesEXT imageCompressionFlags(@EnumType(VkImageCompressionFlagsEXT.class) int value) {
         segment.set(LAYOUT$imageCompressionFlags, OFFSET$imageCompressionFlags, value);
+        return this;
     }
 
     public @EnumType(VkImageCompressionFixedRateFlagsEXT.class) int imageCompressionFixedRateFlags() {
         return segment.get(LAYOUT$imageCompressionFixedRateFlags, OFFSET$imageCompressionFixedRateFlags);
     }
 
-    public void imageCompressionFixedRateFlags(@EnumType(VkImageCompressionFixedRateFlagsEXT.class) int value) {
+    public VkImageCompressionPropertiesEXT imageCompressionFixedRateFlags(@EnumType(VkImageCompressionFixedRateFlagsEXT.class) int value) {
         segment.set(LAYOUT$imageCompressionFixedRateFlags, OFFSET$imageCompressionFixedRateFlags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

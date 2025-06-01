@@ -173,32 +173,36 @@ public record StdVideoEncodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         return new StdVideoEncodeH265ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeH265ReferenceInfoFlags value) {
+    public StdVideoEncodeH265ReferenceInfo flags(@NotNull StdVideoEncodeH265ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @EnumType(StdVideoH265PictureType.class) int pic_type() {
         return segment.get(LAYOUT$pic_type, OFFSET$pic_type);
     }
 
-    public void pic_type(@EnumType(StdVideoH265PictureType.class) int value) {
+    public StdVideoEncodeH265ReferenceInfo pic_type(@EnumType(StdVideoH265PictureType.class) int value) {
         segment.set(LAYOUT$pic_type, OFFSET$pic_type, value);
+        return this;
     }
 
     public int PicOrderCntVal() {
         return segment.get(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal);
     }
 
-    public void PicOrderCntVal(int value) {
+    public StdVideoEncodeH265ReferenceInfo PicOrderCntVal(int value) {
         segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
+        return this;
     }
 
     public @Unsigned byte TemporalId() {
         return segment.get(LAYOUT$TemporalId, OFFSET$TemporalId);
     }
 
-    public void TemporalId(@Unsigned byte value) {
+    public StdVideoEncodeH265ReferenceInfo TemporalId(@Unsigned byte value) {
         segment.set(LAYOUT$TemporalId, OFFSET$TemporalId, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

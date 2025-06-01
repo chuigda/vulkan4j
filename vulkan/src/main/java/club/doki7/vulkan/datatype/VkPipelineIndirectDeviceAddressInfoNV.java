@@ -194,8 +194,9 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineIndirectDeviceAddressInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineIndirectDeviceAddressInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkPipelineIndirectDeviceAddressInfoNV pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+        return this;
     }
 
     public @Nullable VkPipeline pipeline() {
@@ -226,8 +229,9 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
         return new VkPipeline(s);
     }
 
-    public void pipeline(@Nullable VkPipeline value) {
+    public VkPipelineIndirectDeviceAddressInfoNV pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

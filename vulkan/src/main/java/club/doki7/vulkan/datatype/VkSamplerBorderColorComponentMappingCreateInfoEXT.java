@@ -194,8 +194,9 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkComponentMapping components() {
         return new VkComponentMapping(segment.asSlice(OFFSET$components, LAYOUT$components));
     }
 
-    public void components(@NotNull VkComponentMapping value) {
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT components(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int srgb() {
         return segment.get(LAYOUT$srgb, OFFSET$srgb);
     }
 
-    public void srgb(@NativeType("VkBool32") @Unsigned int value) {
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT srgb(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$srgb, OFFSET$srgb, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -203,8 +203,9 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMicromapBuildInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -215,32 +216,36 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMicromapBuildInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkMicromapTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkMicromapTypeEXT.class) int value) {
+    public VkMicromapBuildInfoEXT type(@EnumType(VkMicromapTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @EnumType(VkBuildMicromapFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkBuildMicromapFlagsEXT.class) int value) {
+    public VkMicromapBuildInfoEXT flags(@EnumType(VkBuildMicromapFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkBuildMicromapModeEXT.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@EnumType(VkBuildMicromapModeEXT.class) int value) {
+    public VkMicromapBuildInfoEXT mode(@EnumType(VkBuildMicromapModeEXT.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
+        return this;
     }
 
     public @Nullable VkMicromapEXT dstMicromap() {
@@ -251,21 +256,24 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return new VkMicromapEXT(s);
     }
 
-    public void dstMicromap(@Nullable VkMicromapEXT value) {
+    public VkMicromapBuildInfoEXT dstMicromap(@Nullable VkMicromapEXT value) {
         segment.set(LAYOUT$dstMicromap, OFFSET$dstMicromap, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int usageCountsCount() {
         return segment.get(LAYOUT$usageCountsCount, OFFSET$usageCountsCount);
     }
 
-    public void usageCountsCount(@Unsigned int value) {
+    public VkMicromapBuildInfoEXT usageCountsCount(@Unsigned int value) {
         segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
+        return this;
     }
 
-    public void pUsageCounts(@Nullable IVkMicromapUsageEXT value) {
+    public VkMicromapBuildInfoEXT pUsageCounts(@Nullable IVkMicromapUsageEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUsageCountsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
@@ -305,9 +313,10 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return new PointerPtr(s);
     }
 
-    public void ppUsageCounts(@Nullable PointerPtr value) {
+    public VkMicromapBuildInfoEXT ppUsageCounts(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         ppUsageCountsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
@@ -322,32 +331,36 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkMicromapBuildInfoEXT data(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressKHR scratchData() {
         return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$scratchData, LAYOUT$scratchData));
     }
 
-    public void scratchData(@NotNull VkDeviceOrHostAddressKHR value) {
+    public VkMicromapBuildInfoEXT scratchData(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, SIZE$scratchData);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR triangleArray() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$triangleArray, LAYOUT$triangleArray));
     }
 
-    public void triangleArray(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkMicromapBuildInfoEXT triangleArray(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangleArray, SIZE$triangleArray);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long triangleArrayStride() {
         return segment.get(LAYOUT$triangleArrayStride, OFFSET$triangleArrayStride);
     }
 
-    public void triangleArrayStride(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMicromapBuildInfoEXT triangleArrayStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$triangleArrayStride, OFFSET$triangleArrayStride, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

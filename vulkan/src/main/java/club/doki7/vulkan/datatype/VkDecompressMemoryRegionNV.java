@@ -176,40 +176,45 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$srcAddress, OFFSET$srcAddress);
     }
 
-    public void srcAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkDecompressMemoryRegionNV srcAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$srcAddress, OFFSET$srcAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long dstAddress() {
         return segment.get(LAYOUT$dstAddress, OFFSET$dstAddress);
     }
 
-    public void dstAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkDecompressMemoryRegionNV dstAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$dstAddress, OFFSET$dstAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long compressedSize() {
         return segment.get(LAYOUT$compressedSize, OFFSET$compressedSize);
     }
 
-    public void compressedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkDecompressMemoryRegionNV compressedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$compressedSize, OFFSET$compressedSize, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long decompressedSize() {
         return segment.get(LAYOUT$decompressedSize, OFFSET$decompressedSize);
     }
 
-    public void decompressedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkDecompressMemoryRegionNV decompressedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$decompressedSize, OFFSET$decompressedSize, value);
+        return this;
     }
 
     public @EnumType(VkMemoryDecompressionMethodFlagsNV.class) long decompressionMethod() {
         return segment.get(LAYOUT$decompressionMethod, OFFSET$decompressionMethod);
     }
 
-    public void decompressionMethod(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
+    public VkDecompressMemoryRegionNV decompressionMethod(@EnumType(VkMemoryDecompressionMethodFlagsNV.class) long value) {
         segment.set(LAYOUT$decompressionMethod, OFFSET$decompressionMethod, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteDescriptorSetInlineUniformBlock sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWriteDescriptorSetInlineUniformBlock pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int dataSize() {
         return segment.get(LAYOUT$dataSize, OFFSET$dataSize);
     }
 
-    public void dataSize(@Unsigned int value) {
+    public VkWriteDescriptorSetInlineUniformBlock dataSize(@Unsigned int value) {
         segment.set(LAYOUT$dataSize, OFFSET$dataSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pData() {
@@ -226,8 +229,9 @@ public record VkWriteDescriptorSetInlineUniformBlock(@NotNull MemorySegment segm
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(@Nullable IPointer pointer) {
+    public VkWriteDescriptorSetInlineUniformBlock pData(@Nullable IPointer pointer) {
         pData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

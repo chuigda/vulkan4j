@@ -196,8 +196,9 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVertexInputAttributeDescription2EXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkVertexInputAttributeDescription2EXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVertexInputAttributeDescription2EXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int location() {
         return segment.get(LAYOUT$location, OFFSET$location);
     }
 
-    public void location(@Unsigned int value) {
+    public VkVertexInputAttributeDescription2EXT location(@Unsigned int value) {
         segment.set(LAYOUT$location, OFFSET$location, value);
+        return this;
     }
 
     public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@Unsigned int value) {
+    public VkVertexInputAttributeDescription2EXT binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkFormat.class) int value) {
+    public VkVertexInputAttributeDescription2EXT format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned int value) {
+    public VkVertexInputAttributeDescription2EXT offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

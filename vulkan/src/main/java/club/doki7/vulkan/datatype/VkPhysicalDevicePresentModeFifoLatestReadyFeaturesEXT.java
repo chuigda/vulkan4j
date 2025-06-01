@@ -193,8 +193,9 @@ public record VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(@NotNull Mem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(@NotNull Mem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int presentModeFifoLatestReady() {
         return segment.get(LAYOUT$presentModeFifoLatestReady, OFFSET$presentModeFifoLatestReady);
     }
 
-    public void presentModeFifoLatestReady(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT presentModeFifoLatestReady(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$presentModeFifoLatestReady, OFFSET$presentModeFifoLatestReady, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

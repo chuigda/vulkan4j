@@ -194,8 +194,9 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int identifierSize() {
         return segment.get(LAYOUT$identifierSize, OFFSET$identifierSize);
     }
 
-    public void identifierSize(@Unsigned int value) {
+    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT identifierSize(@Unsigned int value) {
         segment.set(LAYOUT$identifierSize, OFFSET$identifierSize, value);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -230,9 +233,10 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         return new BytePtr(s);
     }
 
-    public void pIdentifier(@Nullable @Unsigned BytePtr value) {
+    public VkPipelineShaderStageModuleIdentifierCreateInfoEXT pIdentifier(@Nullable @Unsigned BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIdentifierRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint8_t*") MemorySegment pIdentifierRaw() {

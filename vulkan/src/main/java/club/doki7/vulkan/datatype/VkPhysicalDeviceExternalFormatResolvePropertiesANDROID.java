@@ -195,8 +195,9 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(@NotNull Me
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int nullColorAttachmentWithExternalFormatResolve() {
         return segment.get(LAYOUT$nullColorAttachmentWithExternalFormatResolve, OFFSET$nullColorAttachmentWithExternalFormatResolve);
     }
 
-    public void nullColorAttachmentWithExternalFormatResolve(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID nullColorAttachmentWithExternalFormatResolve(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nullColorAttachmentWithExternalFormatResolve, OFFSET$nullColorAttachmentWithExternalFormatResolve, value);
+        return this;
     }
 
     public @EnumType(VkChromaLocation.class) int externalFormatResolveChromaOffsetX() {
         return segment.get(LAYOUT$externalFormatResolveChromaOffsetX, OFFSET$externalFormatResolveChromaOffsetX);
     }
 
-    public void externalFormatResolveChromaOffsetX(@EnumType(VkChromaLocation.class) int value) {
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetX(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$externalFormatResolveChromaOffsetX, OFFSET$externalFormatResolveChromaOffsetX, value);
+        return this;
     }
 
     public @EnumType(VkChromaLocation.class) int externalFormatResolveChromaOffsetY() {
         return segment.get(LAYOUT$externalFormatResolveChromaOffsetY, OFFSET$externalFormatResolveChromaOffsetY);
     }
 
-    public void externalFormatResolveChromaOffsetY(@EnumType(VkChromaLocation.class) int value) {
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetY(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$externalFormatResolveChromaOffsetY, OFFSET$externalFormatResolveChromaOffsetY, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

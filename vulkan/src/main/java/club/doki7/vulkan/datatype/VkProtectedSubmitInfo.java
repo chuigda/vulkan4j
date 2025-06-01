@@ -193,8 +193,9 @@ public record VkProtectedSubmitInfo(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkProtectedSubmitInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkProtectedSubmitInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkProtectedSubmitInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int protectedSubmit() {
         return segment.get(LAYOUT$protectedSubmit, OFFSET$protectedSubmit);
     }
 
-    public void protectedSubmit(@NativeType("VkBool32") @Unsigned int value) {
+    public VkProtectedSubmitInfo protectedSubmit(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$protectedSubmit, OFFSET$protectedSubmit, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

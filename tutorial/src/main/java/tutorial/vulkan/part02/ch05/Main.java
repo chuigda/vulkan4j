@@ -89,21 +89,19 @@ class Application {
                 throw new RuntimeException("Validation layers requested, but not available");
             }
 
-            var appInfo = VkApplicationInfo.allocate(arena);
-            appInfo.pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"));
-            appInfo.applicationVersion(new Version(0, 1, 0, 0).encode());
-            appInfo.pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"));
-            appInfo.engineVersion(new Version(0, 1, 0, 0).encode());
-            appInfo.apiVersion(Version.VK_API_VERSION_1_0.encode());
+            var appInfo = VkApplicationInfo.allocate(arena)
+                    .pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"))
+                    .applicationVersion(new Version(0, 1, 0, 0).encode())
+                    .pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"))
+                    .engineVersion(new Version(0, 1, 0, 0).encode())
+                    .apiVersion(Version.VK_API_VERSION_1_0.encode());
 
-            var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena);
-            instanceCreateInfo.pApplicationInfo(appInfo);
+            var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena)
+                    .pApplicationInfo(appInfo);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                instanceCreateInfo.enabledLayerCount(1);
-                PointerPtr ppEnabledLayerNames = PointerPtr.allocate(arena);
-                ppEnabledLayerNames.write(BytePtr.allocateString(arena, VALIDATION_LAYER_NAME));
-                instanceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
+                instanceCreateInfo.enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
 
                 var debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
                 populateDebugMessengerCreateInfo(debugCreateInfo);
@@ -111,8 +109,8 @@ class Application {
             }
 
             var extensions = getRequiredExtensions(arena);
-            instanceCreateInfo.enabledExtensionCount((int) extensions.size());
-            instanceCreateInfo.ppEnabledExtensionNames(extensions);
+            instanceCreateInfo.enabledExtensionCount((int) extensions.size())
+                    .ppEnabledExtensionNames(extensions);
 
             var pInstance = VkInstance.Ptr.allocate(arena);
             var result = entryCommands.createInstance(instanceCreateInfo, null, pInstance);
@@ -196,38 +194,33 @@ class Application {
 
         try (var arena = Arena.ofConfined()) {
             var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
-            var pQueuePriorities = FloatPtr.allocate(arena);
-            pQueuePriorities.write(1.0f);
+            var pQueuePriorities = FloatPtr.allocateV(arena, 1.0f);
             deviceCreateInfo.queueCreateInfoCount(1);
             if (indices.graphicsFamily == indices.presentFamily) {
-                var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena);
-                queueCreateInfo.queueCount(1);
-                queueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
-                queueCreateInfo.pQueuePriorities(pQueuePriorities);
-                deviceCreateInfo.queueCreateInfoCount(1);
-                deviceCreateInfo.pQueueCreateInfos(queueCreateInfo);
+                var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena)
+                        .queueCount(1)
+                        .queueFamilyIndex(indices.graphicsFamily())
+                        .pQueuePriorities(pQueuePriorities);
+                deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
             }
             else {
                 var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-                var graphicsQueueCreateInfo = queueCreateInfos.at(0);
-                var presentQueueCreateInfo = queueCreateInfos.at(1);
-                graphicsQueueCreateInfo.queueCount(1);
-                graphicsQueueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
-                graphicsQueueCreateInfo.pQueuePriorities(pQueuePriorities);
-                presentQueueCreateInfo.queueCount(1);
-                presentQueueCreateInfo.queueFamilyIndex(indices.presentFamily());
-                presentQueueCreateInfo.pQueuePriorities(pQueuePriorities);
-                deviceCreateInfo.queueCreateInfoCount(2);
-                deviceCreateInfo.pQueueCreateInfos(queueCreateInfos);
+                queueCreateInfos.at(0)
+                        .queueCount(1)
+                        .queueFamilyIndex(indices.graphicsFamily())
+                        .pQueuePriorities(pQueuePriorities);
+                queueCreateInfos.at(1)
+                        .queueCount(1)
+                        .queueFamilyIndex(indices.presentFamily())
+                        .pQueuePriorities(pQueuePriorities);
+                deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
             }
             var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
             deviceCreateInfo.pEnabledFeatures(deviceFeatures);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                deviceCreateInfo.enabledLayerCount(1);
-                PointerPtr ppEnabledLayerNames = PointerPtr.allocate(arena);
-                ppEnabledLayerNames.write(BytePtr.allocateString(arena, VALIDATION_LAYER_NAME));
-                deviceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
+                deviceCreateInfo.enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
             }
 
             var pDevice = VkDevice.Ptr.allocate(arena);
@@ -355,13 +348,11 @@ class Application {
                 VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
                 | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
                 | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
-        );
-        debugUtilsMessengerCreateInfo.messageType(
+        ).messageType(
                 VkDebugUtilsMessageTypeFlagsEXT.GENERAL
                 | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
                 | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
-        );
-        debugUtilsMessengerCreateInfo.pfnUserCallback(UPCALL_debugCallback);
+        ).pfnUserCallback(UPCALL_debugCallback);
     }
 
     private GLFW glfw;

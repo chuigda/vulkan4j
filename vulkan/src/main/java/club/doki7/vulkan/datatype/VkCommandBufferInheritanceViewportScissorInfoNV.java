@@ -195,8 +195,9 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferInheritanceViewportScissorInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkCommandBufferInheritanceViewportScissorInfoNV(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCommandBufferInheritanceViewportScissorInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int viewportScissor2D() {
         return segment.get(LAYOUT$viewportScissor2D, OFFSET$viewportScissor2D);
     }
 
-    public void viewportScissor2D(@NativeType("VkBool32") @Unsigned int value) {
+    public VkCommandBufferInheritanceViewportScissorInfoNV viewportScissor2D(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$viewportScissor2D, OFFSET$viewportScissor2D, value);
+        return this;
     }
 
     public @Unsigned int viewportDepthCount() {
         return segment.get(LAYOUT$viewportDepthCount, OFFSET$viewportDepthCount);
     }
 
-    public void viewportDepthCount(@Unsigned int value) {
+    public VkCommandBufferInheritanceViewportScissorInfoNV viewportDepthCount(@Unsigned int value) {
         segment.set(LAYOUT$viewportDepthCount, OFFSET$viewportDepthCount, value);
+        return this;
     }
 
-    public void pViewportDepths(@Nullable IVkViewport value) {
+    public VkCommandBufferInheritanceViewportScissorInfoNV pViewportDepths(@Nullable IVkViewport value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportDepthsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkViewport.Ptr pViewportDepths(int assumedCount) {

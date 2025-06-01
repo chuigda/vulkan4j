@@ -193,8 +193,9 @@ public record VkPhysicalDevicePortabilitySubsetPropertiesKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePortabilitySubsetPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDevicePortabilitySubsetPropertiesKHR(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePortabilitySubsetPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int minVertexInputBindingStrideAlignment() {
         return segment.get(LAYOUT$minVertexInputBindingStrideAlignment, OFFSET$minVertexInputBindingStrideAlignment);
     }
 
-    public void minVertexInputBindingStrideAlignment(@Unsigned int value) {
+    public VkPhysicalDevicePortabilitySubsetPropertiesKHR minVertexInputBindingStrideAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minVertexInputBindingStrideAlignment, OFFSET$minVertexInputBindingStrideAlignment, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkSemaphoreGetSciSyncInfoNV(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSemaphoreGetSciSyncInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkSemaphoreGetSciSyncInfoNV(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSemaphoreGetSciSyncInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSemaphore semaphore() {
@@ -218,16 +220,18 @@ public record VkSemaphoreGetSciSyncInfoNV(@NotNull MemorySegment segment) implem
         return new VkSemaphore(s);
     }
 
-    public void semaphore(@Nullable VkSemaphore value) {
+    public VkSemaphoreGetSciSyncInfoNV semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkSemaphoreGetSciSyncInfoNV handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

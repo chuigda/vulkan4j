@@ -196,8 +196,9 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceTileShadingPropertiesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceTileShadingPropertiesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxApronSize() {
         return segment.get(LAYOUT$maxApronSize, OFFSET$maxApronSize);
     }
 
-    public void maxApronSize(@Unsigned int value) {
+    public VkPhysicalDeviceTileShadingPropertiesQCOM maxApronSize(@Unsigned int value) {
         segment.set(LAYOUT$maxApronSize, OFFSET$maxApronSize, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int preferNonCoherent() {
         return segment.get(LAYOUT$preferNonCoherent, OFFSET$preferNonCoherent);
     }
 
-    public void preferNonCoherent(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTileShadingPropertiesQCOM preferNonCoherent(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$preferNonCoherent, OFFSET$preferNonCoherent, value);
+        return this;
     }
 
     public @NotNull VkExtent2D tileGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$tileGranularity, LAYOUT$tileGranularity));
     }
 
-    public void tileGranularity(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceTileShadingPropertiesQCOM tileGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileGranularity, SIZE$tileGranularity);
+        return this;
     }
 
     public @NotNull VkExtent2D maxTileShadingRate() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTileShadingRate, LAYOUT$maxTileShadingRate));
     }
 
-    public void maxTileShadingRate(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceTileShadingPropertiesQCOM maxTileShadingRate(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTileShadingRate, SIZE$maxTileShadingRate);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

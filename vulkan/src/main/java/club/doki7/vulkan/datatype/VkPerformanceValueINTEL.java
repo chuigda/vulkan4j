@@ -173,16 +173,18 @@ public record VkPerformanceValueINTEL(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkPerformanceValueTypeINTEL.class) int value) {
+    public VkPerformanceValueINTEL type(@EnumType(VkPerformanceValueTypeINTEL.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @NotNull VkPerformanceValueDataINTEL data() {
         return new VkPerformanceValueDataINTEL(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(@NotNull VkPerformanceValueDataINTEL value) {
+    public VkPerformanceValueINTEL data(@NotNull VkPerformanceValueDataINTEL value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassFragmentDensityMapOffsetEndInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkRenderPassFragmentDensityMapOffsetEndInfoEXT(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassFragmentDensityMapOffsetEndInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int fragmentDensityOffsetCount() {
         return segment.get(LAYOUT$fragmentDensityOffsetCount, OFFSET$fragmentDensityOffsetCount);
     }
 
-    public void fragmentDensityOffsetCount(@Unsigned int value) {
+    public VkRenderPassFragmentDensityMapOffsetEndInfoEXT fragmentDensityOffsetCount(@Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityOffsetCount, OFFSET$fragmentDensityOffsetCount, value);
+        return this;
     }
 
-    public void pFragmentDensityOffsets(@Nullable IVkOffset2D value) {
+    public VkRenderPassFragmentDensityMapOffsetEndInfoEXT pFragmentDensityOffsets(@Nullable IVkOffset2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFragmentDensityOffsetsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkOffset2D.Ptr pFragmentDensityOffsets(int assumedCount) {

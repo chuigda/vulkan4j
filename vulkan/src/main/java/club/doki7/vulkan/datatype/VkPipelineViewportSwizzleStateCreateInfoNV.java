@@ -195,8 +195,9 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkPipelineViewportSwizzleStateCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int value) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV flags(@EnumType(VkPipelineViewportSwizzleStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int viewportCount() {
         return segment.get(LAYOUT$viewportCount, OFFSET$viewportCount);
     }
 
-    public void viewportCount(@Unsigned int value) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV viewportCount(@Unsigned int value) {
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
+        return this;
     }
 
-    public void pViewportSwizzles(@Nullable IVkViewportSwizzleNV value) {
+    public VkPipelineViewportSwizzleStateCreateInfoNV pViewportSwizzles(@Nullable IVkViewportSwizzleNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportSwizzlesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkViewportSwizzleNV.Ptr pViewportSwizzles(int assumedCount) {

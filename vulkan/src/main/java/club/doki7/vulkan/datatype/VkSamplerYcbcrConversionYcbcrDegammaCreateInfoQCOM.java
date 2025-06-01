@@ -194,8 +194,9 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int enableYDegamma() {
         return segment.get(LAYOUT$enableYDegamma, OFFSET$enableYDegamma);
     }
 
-    public void enableYDegamma(@NativeType("VkBool32") @Unsigned int value) {
+    public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM enableYDegamma(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$enableYDegamma, OFFSET$enableYDegamma, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int enableCbCrDegamma() {
         return segment.get(LAYOUT$enableCbCrDegamma, OFFSET$enableCbCrDegamma);
     }
 
-    public void enableCbCrDegamma(@NativeType("VkBool32") @Unsigned int value) {
+    public VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM enableCbCrDegamma(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$enableCbCrDegamma, OFFSET$enableCbCrDegamma, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

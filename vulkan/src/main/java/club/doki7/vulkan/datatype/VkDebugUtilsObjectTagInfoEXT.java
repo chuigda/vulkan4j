@@ -197,8 +197,9 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugUtilsObjectTagInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,40 +210,45 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDebugUtilsObjectTagInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public void objectType(@EnumType(VkObjectType.class) int value) {
+    public VkDebugUtilsObjectTagInfoEXT objectType(@EnumType(VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
+        return this;
     }
 
     public @Unsigned long objectHandle() {
         return segment.get(LAYOUT$objectHandle, OFFSET$objectHandle);
     }
 
-    public void objectHandle(@Unsigned long value) {
+    public VkDebugUtilsObjectTagInfoEXT objectHandle(@Unsigned long value) {
         segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
+        return this;
     }
 
     public @Unsigned long tagName() {
         return segment.get(LAYOUT$tagName, OFFSET$tagName);
     }
 
-    public void tagName(@Unsigned long value) {
+    public VkDebugUtilsObjectTagInfoEXT tagName(@Unsigned long value) {
         segment.set(LAYOUT$tagName, OFFSET$tagName, value);
+        return this;
     }
 
     public @Unsigned long tagSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
     }
 
-    public void tagSize(@Unsigned long value) {
+    public VkDebugUtilsObjectTagInfoEXT tagSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pTag() {
@@ -253,8 +259,9 @@ public record VkDebugUtilsObjectTagInfoEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 
-    public void pTag(@Nullable IPointer pointer) {
+    public VkDebugUtilsObjectTagInfoEXT pTag(@Nullable IPointer pointer) {
         pTag(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

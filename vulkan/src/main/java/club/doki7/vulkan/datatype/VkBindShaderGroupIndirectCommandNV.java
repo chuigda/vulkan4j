@@ -172,8 +172,9 @@ public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$groupIndex, OFFSET$groupIndex);
     }
 
-    public void groupIndex(@Unsigned int value) {
+    public VkBindShaderGroupIndirectCommandNV groupIndex(@Unsigned int value) {
         segment.set(LAYOUT$groupIndex, OFFSET$groupIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

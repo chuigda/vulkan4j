@@ -197,8 +197,9 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoBeginCodingInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,16 +210,18 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoBeginCodingInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoBeginCodingFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoBeginCodingFlagsKHR.class) int value) {
+    public VkVideoBeginCodingInfoKHR flags(@EnumType(VkVideoBeginCodingFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkVideoSessionKHR videoSession() {
@@ -229,8 +232,9 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkVideoSessionKHR(s);
     }
 
-    public void videoSession(@Nullable VkVideoSessionKHR value) {
+    public VkVideoBeginCodingInfoKHR videoSession(@Nullable VkVideoSessionKHR value) {
         segment.set(LAYOUT$videoSession, OFFSET$videoSession, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkVideoSessionParametersKHR videoSessionParameters() {
@@ -241,21 +245,24 @@ public record VkVideoBeginCodingInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkVideoSessionParametersKHR(s);
     }
 
-    public void videoSessionParameters(@Nullable VkVideoSessionParametersKHR value) {
+    public VkVideoBeginCodingInfoKHR videoSessionParameters(@Nullable VkVideoSessionParametersKHR value) {
         segment.set(LAYOUT$videoSessionParameters, OFFSET$videoSessionParameters, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int referenceSlotCount() {
         return segment.get(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount);
     }
 
-    public void referenceSlotCount(@Unsigned int value) {
+    public VkVideoBeginCodingInfoKHR referenceSlotCount(@Unsigned int value) {
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
+        return this;
     }
 
-    public void pReferenceSlots(@Nullable IVkVideoReferenceSlotInfoKHR value) {
+    public VkVideoBeginCodingInfoKHR pReferenceSlots(@Nullable IVkVideoReferenceSlotInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReferenceSlotsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoReferenceSlotInfoKHR.Ptr pReferenceSlots(int assumedCount) {

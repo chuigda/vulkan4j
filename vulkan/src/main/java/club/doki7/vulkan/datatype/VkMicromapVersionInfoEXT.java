@@ -193,8 +193,9 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMicromapVersionInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMicromapVersionInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -221,9 +223,10 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         return new BytePtr(s);
     }
 
-    public void pVersionData(@Nullable @Unsigned BytePtr value) {
+    public VkMicromapVersionInfoEXT pVersionData(@Nullable @Unsigned BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVersionDataRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint8_t*") MemorySegment pVersionDataRaw() {

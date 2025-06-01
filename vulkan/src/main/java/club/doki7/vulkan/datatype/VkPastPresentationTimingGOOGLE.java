@@ -176,40 +176,45 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }
 
-    public void presentID(@Unsigned int value) {
+    public VkPastPresentationTimingGOOGLE presentID(@Unsigned int value) {
         segment.set(LAYOUT$presentID, OFFSET$presentID, value);
+        return this;
     }
 
     public @Unsigned long desiredPresentTime() {
         return segment.get(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime);
     }
 
-    public void desiredPresentTime(@Unsigned long value) {
+    public VkPastPresentationTimingGOOGLE desiredPresentTime(@Unsigned long value) {
         segment.set(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime, value);
+        return this;
     }
 
     public @Unsigned long actualPresentTime() {
         return segment.get(LAYOUT$actualPresentTime, OFFSET$actualPresentTime);
     }
 
-    public void actualPresentTime(@Unsigned long value) {
+    public VkPastPresentationTimingGOOGLE actualPresentTime(@Unsigned long value) {
         segment.set(LAYOUT$actualPresentTime, OFFSET$actualPresentTime, value);
+        return this;
     }
 
     public @Unsigned long earliestPresentTime() {
         return segment.get(LAYOUT$earliestPresentTime, OFFSET$earliestPresentTime);
     }
 
-    public void earliestPresentTime(@Unsigned long value) {
+    public VkPastPresentationTimingGOOGLE earliestPresentTime(@Unsigned long value) {
         segment.set(LAYOUT$earliestPresentTime, OFFSET$earliestPresentTime, value);
+        return this;
     }
 
     public @Unsigned long presentMargin() {
         return segment.get(LAYOUT$presentMargin, OFFSET$presentMargin);
     }
 
-    public void presentMargin(@Unsigned long value) {
+    public VkPastPresentationTimingGOOGLE presentMargin(@Unsigned long value) {
         segment.set(LAYOUT$presentMargin, OFFSET$presentMargin, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

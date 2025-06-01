@@ -174,24 +174,27 @@ public record VkMemoryRequirements(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMemoryRequirements size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long alignment() {
         return segment.get(LAYOUT$alignment, OFFSET$alignment);
     }
 
-    public void alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMemoryRequirements alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$alignment, OFFSET$alignment, value);
+        return this;
     }
 
     public @Unsigned int memoryTypeBits() {
         return segment.get(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits);
     }
 
-    public void memoryTypeBits(@Unsigned int value) {
+    public VkMemoryRequirements memoryTypeBits(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

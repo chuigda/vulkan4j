@@ -194,8 +194,9 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkLayerSettingsCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkLayerSettingsCreateInfoEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkLayerSettingsCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int settingCount() {
         return segment.get(LAYOUT$settingCount, OFFSET$settingCount);
     }
 
-    public void settingCount(@Unsigned int value) {
+    public VkLayerSettingsCreateInfoEXT settingCount(@Unsigned int value) {
         segment.set(LAYOUT$settingCount, OFFSET$settingCount, value);
+        return this;
     }
 
-    public void pSettings(@Nullable IVkLayerSettingEXT value) {
+    public VkLayerSettingsCreateInfoEXT pSettings(@Nullable IVkLayerSettingEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSettingsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkLayerSettingEXT.Ptr pSettings(int assumedCount) {

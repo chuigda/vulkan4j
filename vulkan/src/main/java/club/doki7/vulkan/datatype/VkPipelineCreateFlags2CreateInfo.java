@@ -193,8 +193,9 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCreateFlags2CreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineCreateFlags2CreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineCreateFlags2.class) long flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineCreateFlags2.class) long value) {
+    public VkPipelineCreateFlags2CreateInfo flags(@EnumType(VkPipelineCreateFlags2.class) long value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

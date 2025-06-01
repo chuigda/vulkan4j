@@ -199,8 +199,9 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyDescriptorSet sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,8 +212,9 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCopyDescriptorSet pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDescriptorSet srcSet() {
@@ -223,24 +225,27 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorSet(s);
     }
 
-    public void srcSet(@Nullable VkDescriptorSet value) {
+    public VkCopyDescriptorSet srcSet(@Nullable VkDescriptorSet value) {
         segment.set(LAYOUT$srcSet, OFFSET$srcSet, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int srcBinding() {
         return segment.get(LAYOUT$srcBinding, OFFSET$srcBinding);
     }
 
-    public void srcBinding(@Unsigned int value) {
+    public VkCopyDescriptorSet srcBinding(@Unsigned int value) {
         segment.set(LAYOUT$srcBinding, OFFSET$srcBinding, value);
+        return this;
     }
 
     public @Unsigned int srcArrayElement() {
         return segment.get(LAYOUT$srcArrayElement, OFFSET$srcArrayElement);
     }
 
-    public void srcArrayElement(@Unsigned int value) {
+    public VkCopyDescriptorSet srcArrayElement(@Unsigned int value) {
         segment.set(LAYOUT$srcArrayElement, OFFSET$srcArrayElement, value);
+        return this;
     }
 
     public @Nullable VkDescriptorSet dstSet() {
@@ -251,32 +256,36 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
         return new VkDescriptorSet(s);
     }
 
-    public void dstSet(@Nullable VkDescriptorSet value) {
+    public VkCopyDescriptorSet dstSet(@Nullable VkDescriptorSet value) {
         segment.set(LAYOUT$dstSet, OFFSET$dstSet, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int dstBinding() {
         return segment.get(LAYOUT$dstBinding, OFFSET$dstBinding);
     }
 
-    public void dstBinding(@Unsigned int value) {
+    public VkCopyDescriptorSet dstBinding(@Unsigned int value) {
         segment.set(LAYOUT$dstBinding, OFFSET$dstBinding, value);
+        return this;
     }
 
     public @Unsigned int dstArrayElement() {
         return segment.get(LAYOUT$dstArrayElement, OFFSET$dstArrayElement);
     }
 
-    public void dstArrayElement(@Unsigned int value) {
+    public VkCopyDescriptorSet dstArrayElement(@Unsigned int value) {
         segment.set(LAYOUT$dstArrayElement, OFFSET$dstArrayElement, value);
+        return this;
     }
 
     public @Unsigned int descriptorCount() {
         return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
     }
 
-    public void descriptorCount(@Unsigned int value) {
+    public VkCopyDescriptorSet descriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

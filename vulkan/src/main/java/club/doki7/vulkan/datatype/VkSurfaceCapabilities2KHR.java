@@ -193,8 +193,9 @@ public record VkSurfaceCapabilities2KHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceCapabilities2KHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSurfaceCapabilities2KHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSurfaceCapabilities2KHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkSurfaceCapabilitiesKHR surfaceCapabilities() {
         return new VkSurfaceCapabilitiesKHR(segment.asSlice(OFFSET$surfaceCapabilities, LAYOUT$surfaceCapabilities));
     }
 
-    public void surfaceCapabilities(@NotNull VkSurfaceCapabilitiesKHR value) {
+    public VkSurfaceCapabilities2KHR surfaceCapabilities(@NotNull VkSurfaceCapabilitiesKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceCapabilities, SIZE$surfaceCapabilities);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

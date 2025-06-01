@@ -198,8 +198,9 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupSubmitInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,16 +211,18 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceGroupSubmitInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@Unsigned int value) {
+    public VkDeviceGroupSubmitInfo waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -234,9 +237,10 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pWaitSemaphoreDeviceIndices(@Nullable @Unsigned IntPtr value) {
+    public VkDeviceGroupSubmitInfo pWaitSemaphoreDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoreDeviceIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pWaitSemaphoreDeviceIndicesRaw() {
@@ -251,8 +255,9 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
-    public void commandBufferCount(@Unsigned int value) {
+    public VkDeviceGroupSubmitInfo commandBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -267,9 +272,10 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pCommandBufferDeviceMasks(@Nullable @Unsigned IntPtr value) {
+    public VkDeviceGroupSubmitInfo pCommandBufferDeviceMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBufferDeviceMasksRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pCommandBufferDeviceMasksRaw() {
@@ -284,8 +290,9 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
-    public void signalSemaphoreCount(@Unsigned int value) {
+    public VkDeviceGroupSubmitInfo signalSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -300,9 +307,10 @@ public record VkDeviceGroupSubmitInfo(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pSignalSemaphoreDeviceIndices(@Nullable @Unsigned IntPtr value) {
+    public VkDeviceGroupSubmitInfo pSignalSemaphoreDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoreDeviceIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pSignalSemaphoreDeviceIndicesRaw() {

@@ -194,8 +194,9 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeatures(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceVertexAttributeDivisorFeatures(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int vertexAttributeInstanceRateDivisor() {
         return segment.get(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor);
     }
 
-    public void vertexAttributeInstanceRateDivisor(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures vertexAttributeInstanceRateDivisor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeInstanceRateDivisor, OFFSET$vertexAttributeInstanceRateDivisor, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int vertexAttributeInstanceRateZeroDivisor() {
         return segment.get(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor);
     }
 
-    public void vertexAttributeInstanceRateZeroDivisor(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures vertexAttributeInstanceRateZeroDivisor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeInstanceRateZeroDivisor, OFFSET$vertexAttributeInstanceRateZeroDivisor, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

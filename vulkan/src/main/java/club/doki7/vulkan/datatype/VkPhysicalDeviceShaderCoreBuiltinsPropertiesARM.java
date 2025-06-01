@@ -195,8 +195,9 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long shaderCoreMask() {
         return segment.get(LAYOUT$shaderCoreMask, OFFSET$shaderCoreMask);
     }
 
-    public void shaderCoreMask(@Unsigned long value) {
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderCoreMask(@Unsigned long value) {
         segment.set(LAYOUT$shaderCoreMask, OFFSET$shaderCoreMask, value);
+        return this;
     }
 
     public @Unsigned int shaderCoreCount() {
         return segment.get(LAYOUT$shaderCoreCount, OFFSET$shaderCoreCount);
     }
 
-    public void shaderCoreCount(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderCoreCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderCoreCount, OFFSET$shaderCoreCount, value);
+        return this;
     }
 
     public @Unsigned int shaderWarpsPerCore() {
         return segment.get(LAYOUT$shaderWarpsPerCore, OFFSET$shaderWarpsPerCore);
     }
 
-    public void shaderWarpsPerCore(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderWarpsPerCore(@Unsigned int value) {
         segment.set(LAYOUT$shaderWarpsPerCore, OFFSET$shaderWarpsPerCore, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

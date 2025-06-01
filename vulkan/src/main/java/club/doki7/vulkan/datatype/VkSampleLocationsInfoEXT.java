@@ -196,8 +196,9 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSampleLocationsInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,37 +209,42 @@ public record VkSampleLocationsInfoEXT(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSampleLocationsInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int sampleLocationsPerPixel() {
         return segment.get(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel);
     }
 
-    public void sampleLocationsPerPixel(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkSampleLocationsInfoEXT sampleLocationsPerPixel(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleLocationsPerPixel, OFFSET$sampleLocationsPerPixel, value);
+        return this;
     }
 
     public @NotNull VkExtent2D sampleLocationGridSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$sampleLocationGridSize, LAYOUT$sampleLocationGridSize));
     }
 
-    public void sampleLocationGridSize(@NotNull VkExtent2D value) {
+    public VkSampleLocationsInfoEXT sampleLocationGridSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationGridSize, SIZE$sampleLocationGridSize);
+        return this;
     }
 
     public @Unsigned int sampleLocationsCount() {
         return segment.get(LAYOUT$sampleLocationsCount, OFFSET$sampleLocationsCount);
     }
 
-    public void sampleLocationsCount(@Unsigned int value) {
+    public VkSampleLocationsInfoEXT sampleLocationsCount(@Unsigned int value) {
         segment.set(LAYOUT$sampleLocationsCount, OFFSET$sampleLocationsCount, value);
+        return this;
     }
 
-    public void pSampleLocations(@Nullable IVkSampleLocationEXT value) {
+    public VkSampleLocationsInfoEXT pSampleLocations(@Nullable IVkSampleLocationEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSampleLocationEXT.Ptr pSampleLocations(int assumedCount) {

@@ -194,8 +194,9 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public void transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
+        return this;
     }
 
     public @NotNull VkRect2D renderArea() {
         return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
     }
 
-    public void renderArea(@NotNull VkRect2D value) {
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM renderArea(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

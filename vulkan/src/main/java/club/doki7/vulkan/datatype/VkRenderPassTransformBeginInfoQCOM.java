@@ -193,8 +193,9 @@ public record VkRenderPassTransformBeginInfoQCOM(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassTransformBeginInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkRenderPassTransformBeginInfoQCOM(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassTransformBeginInfoQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public void transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkRenderPassTransformBeginInfoQCOM transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

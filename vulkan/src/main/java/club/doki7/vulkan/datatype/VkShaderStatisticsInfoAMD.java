@@ -178,56 +178,63 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$shaderStageMask, OFFSET$shaderStageMask);
     }
 
-    public void shaderStageMask(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderStatisticsInfoAMD shaderStageMask(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStageMask, OFFSET$shaderStageMask, value);
+        return this;
     }
 
     public @NotNull VkShaderResourceUsageAMD resourceUsage() {
         return new VkShaderResourceUsageAMD(segment.asSlice(OFFSET$resourceUsage, LAYOUT$resourceUsage));
     }
 
-    public void resourceUsage(@NotNull VkShaderResourceUsageAMD value) {
+    public VkShaderStatisticsInfoAMD resourceUsage(@NotNull VkShaderResourceUsageAMD value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$resourceUsage, SIZE$resourceUsage);
+        return this;
     }
 
     public @Unsigned int numPhysicalVgprs() {
         return segment.get(LAYOUT$numPhysicalVgprs, OFFSET$numPhysicalVgprs);
     }
 
-    public void numPhysicalVgprs(@Unsigned int value) {
+    public VkShaderStatisticsInfoAMD numPhysicalVgprs(@Unsigned int value) {
         segment.set(LAYOUT$numPhysicalVgprs, OFFSET$numPhysicalVgprs, value);
+        return this;
     }
 
     public @Unsigned int numPhysicalSgprs() {
         return segment.get(LAYOUT$numPhysicalSgprs, OFFSET$numPhysicalSgprs);
     }
 
-    public void numPhysicalSgprs(@Unsigned int value) {
+    public VkShaderStatisticsInfoAMD numPhysicalSgprs(@Unsigned int value) {
         segment.set(LAYOUT$numPhysicalSgprs, OFFSET$numPhysicalSgprs, value);
+        return this;
     }
 
     public @Unsigned int numAvailableVgprs() {
         return segment.get(LAYOUT$numAvailableVgprs, OFFSET$numAvailableVgprs);
     }
 
-    public void numAvailableVgprs(@Unsigned int value) {
+    public VkShaderStatisticsInfoAMD numAvailableVgprs(@Unsigned int value) {
         segment.set(LAYOUT$numAvailableVgprs, OFFSET$numAvailableVgprs, value);
+        return this;
     }
 
     public @Unsigned int numAvailableSgprs() {
         return segment.get(LAYOUT$numAvailableSgprs, OFFSET$numAvailableSgprs);
     }
 
-    public void numAvailableSgprs(@Unsigned int value) {
+    public VkShaderStatisticsInfoAMD numAvailableSgprs(@Unsigned int value) {
         segment.set(LAYOUT$numAvailableSgprs, OFFSET$numAvailableSgprs, value);
+        return this;
     }
 
     public @Unsigned IntPtr computeWorkGroupSize() {
         return new IntPtr(computeWorkGroupSizeRaw());
     }
 
-    public void computeWorkGroupSize(@Unsigned IntPtr value) {
+    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$computeWorkGroupSize, SIZE$computeWorkGroupSize);
+        return this;
     }
 
     public MemorySegment computeWorkGroupSizeRaw() {

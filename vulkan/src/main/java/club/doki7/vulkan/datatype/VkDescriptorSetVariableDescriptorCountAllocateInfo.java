@@ -194,8 +194,9 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int descriptorSetCount() {
         return segment.get(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount);
     }
 
-    public void descriptorSetCount(@Unsigned int value) {
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo descriptorSetCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -230,9 +233,10 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         return new IntPtr(s);
     }
 
-    public void pDescriptorCounts(@Nullable @Unsigned IntPtr value) {
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo pDescriptorCounts(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorCountsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pDescriptorCountsRaw() {

@@ -175,32 +175,36 @@ public record VkDispatchGraphInfoAMDX(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$nodeIndex, OFFSET$nodeIndex);
     }
 
-    public void nodeIndex(@Unsigned int value) {
+    public VkDispatchGraphInfoAMDX nodeIndex(@Unsigned int value) {
         segment.set(LAYOUT$nodeIndex, OFFSET$nodeIndex, value);
+        return this;
     }
 
     public @Unsigned int payloadCount() {
         return segment.get(LAYOUT$payloadCount, OFFSET$payloadCount);
     }
 
-    public void payloadCount(@Unsigned int value) {
+    public VkDispatchGraphInfoAMDX payloadCount(@Unsigned int value) {
         segment.set(LAYOUT$payloadCount, OFFSET$payloadCount, value);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstAMDX payloads() {
         return new VkDeviceOrHostAddressConstAMDX(segment.asSlice(OFFSET$payloads, LAYOUT$payloads));
     }
 
-    public void payloads(@NotNull VkDeviceOrHostAddressConstAMDX value) {
+    public VkDispatchGraphInfoAMDX payloads(@NotNull VkDeviceOrHostAddressConstAMDX value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$payloads, SIZE$payloads);
+        return this;
     }
 
     public @Unsigned long payloadStride() {
         return segment.get(LAYOUT$payloadStride, OFFSET$payloadStride);
     }
 
-    public void payloadStride(@Unsigned long value) {
+    public VkDispatchGraphInfoAMDX payloadStride(@Unsigned long value) {
         segment.set(LAYOUT$payloadStride, OFFSET$payloadStride, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -196,8 +196,9 @@ public record VkPipelineRobustnessCreateInfo(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRobustnessCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPipelineRobustnessCreateInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineRobustnessCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineRobustnessBufferBehavior.class) int storageBuffers() {
         return segment.get(LAYOUT$storageBuffers, OFFSET$storageBuffers);
     }
 
-    public void storageBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPipelineRobustnessCreateInfo storageBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$storageBuffers, OFFSET$storageBuffers, value);
+        return this;
     }
 
     public @EnumType(VkPipelineRobustnessBufferBehavior.class) int uniformBuffers() {
         return segment.get(LAYOUT$uniformBuffers, OFFSET$uniformBuffers);
     }
 
-    public void uniformBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPipelineRobustnessCreateInfo uniformBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$uniformBuffers, OFFSET$uniformBuffers, value);
+        return this;
     }
 
     public @EnumType(VkPipelineRobustnessBufferBehavior.class) int vertexInputs() {
         return segment.get(LAYOUT$vertexInputs, OFFSET$vertexInputs);
     }
 
-    public void vertexInputs(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPipelineRobustnessCreateInfo vertexInputs(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$vertexInputs, OFFSET$vertexInputs, value);
+        return this;
     }
 
     public @EnumType(VkPipelineRobustnessImageBehavior.class) int images() {
         return segment.get(LAYOUT$images, OFFSET$images);
     }
 
-    public void images(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
+    public VkPipelineRobustnessCreateInfo images(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
         segment.set(LAYOUT$images, OFFSET$images, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

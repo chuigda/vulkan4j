@@ -173,16 +173,18 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         return segment.get(LAYOUT$partitionIndex, OFFSET$partitionIndex);
     }
 
-    public void partitionIndex(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionIndex(@Unsigned int value) {
         segment.set(LAYOUT$partitionIndex, OFFSET$partitionIndex, value);
+        return this;
     }
 
     public FloatPtr partitionTranslation() {
         return new FloatPtr(partitionTranslationRaw());
     }
 
-    public void partitionTranslation(FloatPtr value) {
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslation(FloatPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$partitionTranslation, SIZE$partitionTranslation);
+        return this;
     }
 
     public MemorySegment partitionTranslationRaw() {

@@ -173,8 +173,9 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         return new BytePtr(extensionNameRaw());
     }
 
-    public void extensionName(BytePtr value) {
+    public VkExtensionProperties extensionName(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extensionName, SIZE$extensionName);
+        return this;
     }
 
     public MemorySegment extensionNameRaw() {
@@ -185,8 +186,9 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$specVersion, OFFSET$specVersion);
     }
 
-    public void specVersion(@Unsigned int value) {
+    public VkExtensionProperties specVersion(@Unsigned int value) {
         segment.set(LAYOUT$specVersion, OFFSET$specVersion, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

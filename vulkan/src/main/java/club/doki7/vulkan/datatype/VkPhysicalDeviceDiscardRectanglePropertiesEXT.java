@@ -193,8 +193,9 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDiscardRectanglePropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceDiscardRectanglePropertiesEXT(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDiscardRectanglePropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxDiscardRectangles() {
         return segment.get(LAYOUT$maxDiscardRectangles, OFFSET$maxDiscardRectangles);
     }
 
-    public void maxDiscardRectangles(@Unsigned int value) {
+    public VkPhysicalDeviceDiscardRectanglePropertiesEXT maxDiscardRectangles(@Unsigned int value) {
         segment.set(LAYOUT$maxDiscardRectangles, OFFSET$maxDiscardRectangles, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

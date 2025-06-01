@@ -173,16 +173,18 @@ public record VkMultiDrawInfoEXT(@NotNull MemorySegment segment) implements IVkM
         return segment.get(LAYOUT$firstVertex, OFFSET$firstVertex);
     }
 
-    public void firstVertex(@Unsigned int value) {
+    public VkMultiDrawInfoEXT firstVertex(@Unsigned int value) {
         segment.set(LAYOUT$firstVertex, OFFSET$firstVertex, value);
+        return this;
     }
 
     public @Unsigned int vertexCount() {
         return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
     }
 
-    public void vertexCount(@Unsigned int value) {
+    public VkMultiDrawInfoEXT vertexCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

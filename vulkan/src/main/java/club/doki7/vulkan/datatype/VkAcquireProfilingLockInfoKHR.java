@@ -194,8 +194,9 @@ public record VkAcquireProfilingLockInfoKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAcquireProfilingLockInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkAcquireProfilingLockInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAcquireProfilingLockInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkAcquireProfilingLockFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkAcquireProfilingLockFlagsKHR.class) int value) {
+    public VkAcquireProfilingLockInfoKHR flags(@EnumType(VkAcquireProfilingLockFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned long timeout() {
         return segment.get(LAYOUT$timeout, OFFSET$timeout);
     }
 
-    public void timeout(@Unsigned long value) {
+    public VkAcquireProfilingLockInfoKHR timeout(@Unsigned long value) {
         segment.set(LAYOUT$timeout, OFFSET$timeout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

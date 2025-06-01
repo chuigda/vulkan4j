@@ -200,8 +200,9 @@ public record VkSubpassDependency2(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassDependency2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkSubpassDependency2(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSubpassDependency2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int srcSubpass() {
         return segment.get(LAYOUT$srcSubpass, OFFSET$srcSubpass);
     }
 
-    public void srcSubpass(@Unsigned int value) {
+    public VkSubpassDependency2 srcSubpass(@Unsigned int value) {
         segment.set(LAYOUT$srcSubpass, OFFSET$srcSubpass, value);
+        return this;
     }
 
     public @Unsigned int dstSubpass() {
         return segment.get(LAYOUT$dstSubpass, OFFSET$dstSubpass);
     }
 
-    public void dstSubpass(@Unsigned int value) {
+    public VkSubpassDependency2 dstSubpass(@Unsigned int value) {
         segment.set(LAYOUT$dstSubpass, OFFSET$dstSubpass, value);
+        return this;
     }
 
     public @EnumType(VkPipelineStageFlags.class) int srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public void srcStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkSubpassDependency2 srcStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
+        return this;
     }
 
     public @EnumType(VkPipelineStageFlags.class) int dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public void dstStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkSubpassDependency2 dstStageMask(@EnumType(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
+        return this;
     }
 
     public @EnumType(VkAccessFlags.class) int srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public void srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkSubpassDependency2 srcAccessMask(@EnumType(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
+        return this;
     }
 
     public @EnumType(VkAccessFlags.class) int dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public void dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
+    public VkSubpassDependency2 dstAccessMask(@EnumType(VkAccessFlags.class) int value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
+        return this;
     }
 
     public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public void dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
+    public VkSubpassDependency2 dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
+        return this;
     }
 
     public int viewOffset() {
         return segment.get(LAYOUT$viewOffset, OFFSET$viewOffset);
     }
 
-    public void viewOffset(int value) {
+    public VkSubpassDependency2 viewOffset(int value) {
         segment.set(LAYOUT$viewOffset, OFFSET$viewOffset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

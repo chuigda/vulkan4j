@@ -198,8 +198,9 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineColorBlendStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,45 +211,51 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineColorBlendStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineColorBlendStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineColorBlendStateCreateFlags.class) int value) {
+    public VkPipelineColorBlendStateCreateInfo flags(@EnumType(VkPipelineColorBlendStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int logicOpEnable() {
         return segment.get(LAYOUT$logicOpEnable, OFFSET$logicOpEnable);
     }
 
-    public void logicOpEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineColorBlendStateCreateInfo logicOpEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$logicOpEnable, OFFSET$logicOpEnable, value);
+        return this;
     }
 
     public @EnumType(VkLogicOp.class) int logicOp() {
         return segment.get(LAYOUT$logicOp, OFFSET$logicOp);
     }
 
-    public void logicOp(@EnumType(VkLogicOp.class) int value) {
+    public VkPipelineColorBlendStateCreateInfo logicOp(@EnumType(VkLogicOp.class) int value) {
         segment.set(LAYOUT$logicOp, OFFSET$logicOp, value);
+        return this;
     }
 
     public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@Unsigned int value) {
+    public VkPipelineColorBlendStateCreateInfo attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
+        return this;
     }
 
-    public void pAttachments(@Nullable IVkPipelineColorBlendAttachmentState value) {
+    public VkPipelineColorBlendStateCreateInfo pAttachments(@Nullable IVkPipelineColorBlendAttachmentState value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineColorBlendAttachmentState.Ptr pAttachments(int assumedCount) {
@@ -281,8 +288,9 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         return new FloatPtr(blendConstantsRaw());
     }
 
-    public void blendConstants(FloatPtr value) {
+    public VkPipelineColorBlendStateCreateInfo blendConstants(FloatPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$blendConstants, SIZE$blendConstants);
+        return this;
     }
 
     public MemorySegment blendConstantsRaw() {

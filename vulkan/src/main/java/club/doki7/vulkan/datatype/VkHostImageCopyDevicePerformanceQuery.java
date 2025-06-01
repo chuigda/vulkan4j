@@ -194,8 +194,9 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkHostImageCopyDevicePerformanceQuery sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkHostImageCopyDevicePerformanceQuery pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int optimalDeviceAccess() {
         return segment.get(LAYOUT$optimalDeviceAccess, OFFSET$optimalDeviceAccess);
     }
 
-    public void optimalDeviceAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkHostImageCopyDevicePerformanceQuery optimalDeviceAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$optimalDeviceAccess, OFFSET$optimalDeviceAccess, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int identicalMemoryLayout() {
         return segment.get(LAYOUT$identicalMemoryLayout, OFFSET$identicalMemoryLayout);
     }
 
-    public void identicalMemoryLayout(@NativeType("VkBool32") @Unsigned int value) {
+    public VkHostImageCopyDevicePerformanceQuery identicalMemoryLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$identicalMemoryLayout, OFFSET$identicalMemoryLayout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

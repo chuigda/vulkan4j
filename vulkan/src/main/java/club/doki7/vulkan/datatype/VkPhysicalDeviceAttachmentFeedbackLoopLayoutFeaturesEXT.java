@@ -193,8 +193,9 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(@NotNull M
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(@NotNull M
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int attachmentFeedbackLoopLayout() {
         return segment.get(LAYOUT$attachmentFeedbackLoopLayout, OFFSET$attachmentFeedbackLoopLayout);
     }
 
-    public void attachmentFeedbackLoopLayout(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT attachmentFeedbackLoopLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$attachmentFeedbackLoopLayout, OFFSET$attachmentFeedbackLoopLayout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -174,24 +174,27 @@ public record VkOffset3D(@NotNull MemorySegment segment) implements IVkOffset3D 
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(int value) {
+    public VkOffset3D x(int value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
+        return this;
     }
 
     public int y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(int value) {
+    public VkOffset3D y(int value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
+        return this;
     }
 
     public int z() {
         return segment.get(LAYOUT$z, OFFSET$z);
     }
 
-    public void z(int value) {
+    public VkOffset3D z(int value) {
         segment.set(LAYOUT$z, OFFSET$z, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

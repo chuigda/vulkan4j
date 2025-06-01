@@ -195,8 +195,9 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWaylandSurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWaylandSurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int value) {
+    public VkWaylandSurfaceCreateInfoKHR flags(@EnumType(VkWaylandSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -230,9 +233,10 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new PointerPtr(s);
     }
 
-    public void display(@Nullable PointerPtr value) {
+    public VkWaylandSurfaceCreateInfoKHR display(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         displayRaw(s);
+        return this;
     }
 
     public @Pointer(comment="wl_display*") MemorySegment displayRaw() {
@@ -254,9 +258,10 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new PointerPtr(s);
     }
 
-    public void surface(@Nullable PointerPtr value) {
+    public VkWaylandSurfaceCreateInfoKHR surface(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         surfaceRaw(s);
+        return this;
     }
 
     public @Pointer(comment="wl_surface*") MemorySegment surfaceRaw() {

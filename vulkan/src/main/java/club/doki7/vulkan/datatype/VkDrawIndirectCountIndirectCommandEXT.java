@@ -174,24 +174,27 @@ public record VkDrawIndirectCountIndirectCommandEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$bufferAddress, OFFSET$bufferAddress);
     }
 
-    public void bufferAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkDrawIndirectCountIndirectCommandEXT bufferAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$bufferAddress, OFFSET$bufferAddress, value);
+        return this;
     }
 
     public @Unsigned int stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@Unsigned int value) {
+    public VkDrawIndirectCountIndirectCommandEXT stride(@Unsigned int value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
+        return this;
     }
 
     public @Unsigned int commandCount() {
         return segment.get(LAYOUT$commandCount, OFFSET$commandCount);
     }
 
-    public void commandCount(@Unsigned int value) {
+    public VkDrawIndirectCountIndirectCommandEXT commandCount(@Unsigned int value) {
         segment.set(LAYOUT$commandCount, OFFSET$commandCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

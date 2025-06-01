@@ -195,8 +195,9 @@ public record VkVideoDecodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeH264SessionParametersCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkVideoDecodeH264SessionParametersCreateInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoDecodeH264SessionParametersCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxStdSPSCount() {
         return segment.get(LAYOUT$maxStdSPSCount, OFFSET$maxStdSPSCount);
     }
 
-    public void maxStdSPSCount(@Unsigned int value) {
+    public VkVideoDecodeH264SessionParametersCreateInfoKHR maxStdSPSCount(@Unsigned int value) {
         segment.set(LAYOUT$maxStdSPSCount, OFFSET$maxStdSPSCount, value);
+        return this;
     }
 
     public @Unsigned int maxStdPPSCount() {
         return segment.get(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount);
     }
 
-    public void maxStdPPSCount(@Unsigned int value) {
+    public VkVideoDecodeH264SessionParametersCreateInfoKHR maxStdPPSCount(@Unsigned int value) {
         segment.set(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount, value);
+        return this;
     }
 
-    public void pParametersAddInfo(@Nullable IVkVideoDecodeH264SessionParametersAddInfoKHR value) {
+    public VkVideoDecodeH264SessionParametersCreateInfoKHR pParametersAddInfo(@Nullable IVkVideoDecodeH264SessionParametersAddInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pParametersAddInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoDecodeH264SessionParametersAddInfoKHR.Ptr pParametersAddInfo(int assumedCount) {

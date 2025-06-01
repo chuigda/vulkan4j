@@ -174,24 +174,27 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
         return new VkAccelerationStructureGeometryTrianglesDataKHR(segment.asSlice(OFFSET$triangles, LAYOUT$triangles));
     }
 
-    public void triangles(@NotNull VkAccelerationStructureGeometryTrianglesDataKHR value) {
+    public VkAccelerationStructureGeometryDataKHR triangles(@NotNull VkAccelerationStructureGeometryTrianglesDataKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangles, SIZE$triangles);
+        return this;
     }
 
     public @NotNull VkAccelerationStructureGeometryAabbsDataKHR aabbs() {
         return new VkAccelerationStructureGeometryAabbsDataKHR(segment.asSlice(OFFSET$aabbs, LAYOUT$aabbs));
     }
 
-    public void aabbs(@NotNull VkAccelerationStructureGeometryAabbsDataKHR value) {
+    public VkAccelerationStructureGeometryDataKHR aabbs(@NotNull VkAccelerationStructureGeometryAabbsDataKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbs, SIZE$aabbs);
+        return this;
     }
 
     public @NotNull VkAccelerationStructureGeometryInstancesDataKHR instances() {
         return new VkAccelerationStructureGeometryInstancesDataKHR(segment.asSlice(OFFSET$instances, LAYOUT$instances));
     }
 
-    public void instances(@NotNull VkAccelerationStructureGeometryInstancesDataKHR value) {
+    public VkAccelerationStructureGeometryDataKHR instances(@NotNull VkAccelerationStructureGeometryInstancesDataKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$instances, SIZE$instances);
+        return this;
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

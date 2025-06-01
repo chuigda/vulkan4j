@@ -126,6 +126,18 @@ public record VkSamplerYcbcrConversion(@NotNull MemorySegment segment) implement
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
 
+        public static Ptr allocate(Arena arena, @Nullable VkSamplerYcbcrConversion[] values) {
+            Ptr ret = allocate(arena, values.length);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i, values[i]);
+            }
+            return ret;
+        }
+
+        public static Ptr allocateV(Arena arena, @Nullable VkSamplerYcbcrConversion ...values) {
+            return allocate(arena, values);
+        }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

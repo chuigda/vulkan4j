@@ -195,24 +195,27 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaVirtualAllocationCreateInfo size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long alignment() {
         return segment.get(LAYOUT$alignment, OFFSET$alignment);
     }
 
-    public void alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaVirtualAllocationCreateInfo alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$alignment, OFFSET$alignment, value);
+        return this;
     }
 
     public @EnumType(VmaVirtualAllocationCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VmaVirtualAllocationCreateFlags.class) int value) {
+    public VmaVirtualAllocationCreateInfo flags(@EnumType(VmaVirtualAllocationCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pUserData() {
@@ -223,8 +226,9 @@ public record VmaVirtualAllocationCreateInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(@Nullable IPointer pointer) {
+    public VmaVirtualAllocationCreateInfo pUserData(@Nullable IPointer pointer) {
         pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

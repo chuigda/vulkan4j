@@ -196,8 +196,9 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkValidationFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,16 +209,18 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkValidationFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int enabledValidationFeatureCount() {
         return segment.get(LAYOUT$enabledValidationFeatureCount, OFFSET$enabledValidationFeatureCount);
     }
 
-    public void enabledValidationFeatureCount(@Unsigned int value) {
+    public VkValidationFeaturesEXT enabledValidationFeatureCount(@Unsigned int value) {
         segment.set(LAYOUT$enabledValidationFeatureCount, OFFSET$enabledValidationFeatureCount, value);
+        return this;
     }
 
 
@@ -233,9 +236,10 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pEnabledValidationFeatures(@Nullable @EnumType(VkValidationFeatureEnableEXT.class) IntPtr value) {
+    public VkValidationFeaturesEXT pEnabledValidationFeatures(@Nullable @EnumType(VkValidationFeatureEnableEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEnabledValidationFeaturesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkValidationFeatureEnableEXT.class) MemorySegment pEnabledValidationFeaturesRaw() {
@@ -250,8 +254,9 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$disabledValidationFeatureCount, OFFSET$disabledValidationFeatureCount);
     }
 
-    public void disabledValidationFeatureCount(@Unsigned int value) {
+    public VkValidationFeaturesEXT disabledValidationFeatureCount(@Unsigned int value) {
         segment.set(LAYOUT$disabledValidationFeatureCount, OFFSET$disabledValidationFeatureCount, value);
+        return this;
     }
 
 
@@ -267,9 +272,10 @@ public record VkValidationFeaturesEXT(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pDisabledValidationFeatures(@Nullable @EnumType(VkValidationFeatureDisableEXT.class) IntPtr value) {
+    public VkValidationFeaturesEXT pDisabledValidationFeatures(@Nullable @EnumType(VkValidationFeatureDisableEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDisabledValidationFeaturesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkValidationFeatureDisableEXT.class) MemorySegment pDisabledValidationFeaturesRaw() {

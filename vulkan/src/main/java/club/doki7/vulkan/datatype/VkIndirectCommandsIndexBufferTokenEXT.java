@@ -172,8 +172,9 @@ public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+    public VkIndirectCommandsIndexBufferTokenEXT mode(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

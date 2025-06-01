@@ -194,8 +194,9 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassInputAttachmentAspectCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassInputAttachmentAspectCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int aspectReferenceCount() {
         return segment.get(LAYOUT$aspectReferenceCount, OFFSET$aspectReferenceCount);
     }
 
-    public void aspectReferenceCount(@Unsigned int value) {
+    public VkRenderPassInputAttachmentAspectCreateInfo aspectReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$aspectReferenceCount, OFFSET$aspectReferenceCount, value);
+        return this;
     }
 
-    public void pAspectReferences(@Nullable IVkInputAttachmentAspectReference value) {
+    public VkRenderPassInputAttachmentAspectCreateInfo pAspectReferences(@Nullable IVkInputAttachmentAspectReference value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAspectReferencesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkInputAttachmentAspectReference.Ptr pAspectReferences(int assumedCount) {

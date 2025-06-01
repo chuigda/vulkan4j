@@ -193,8 +193,9 @@ public record VkImageDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageDrmFormatModifierPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkImageDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageDrmFormatModifierPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long drmFormatModifier() {
         return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
     }
 
-    public void drmFormatModifier(@Unsigned long value) {
+    public VkImageDrmFormatModifierPropertiesEXT drmFormatModifier(@Unsigned long value) {
         segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

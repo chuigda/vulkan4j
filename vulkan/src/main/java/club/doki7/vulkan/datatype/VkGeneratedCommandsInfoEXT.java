@@ -202,8 +202,9 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeneratedCommandsInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -214,16 +215,18 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkGeneratedCommandsInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public void shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkGeneratedCommandsInfoEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
+        return this;
     }
 
     public @Nullable VkIndirectExecutionSetEXT indirectExecutionSet() {
@@ -234,8 +237,9 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         return new VkIndirectExecutionSetEXT(s);
     }
 
-    public void indirectExecutionSet(@Nullable VkIndirectExecutionSetEXT value) {
+    public VkGeneratedCommandsInfoEXT indirectExecutionSet(@Nullable VkIndirectExecutionSetEXT value) {
         segment.set(LAYOUT$indirectExecutionSet, OFFSET$indirectExecutionSet, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkIndirectCommandsLayoutEXT indirectCommandsLayout() {
@@ -246,64 +250,72 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         return new VkIndirectCommandsLayoutEXT(s);
     }
 
-    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutEXT value) {
+    public VkGeneratedCommandsInfoEXT indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutEXT value) {
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long indirectAddress() {
         return segment.get(LAYOUT$indirectAddress, OFFSET$indirectAddress);
     }
 
-    public void indirectAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkGeneratedCommandsInfoEXT indirectAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$indirectAddress, OFFSET$indirectAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long indirectAddressSize() {
         return segment.get(LAYOUT$indirectAddressSize, OFFSET$indirectAddressSize);
     }
 
-    public void indirectAddressSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeneratedCommandsInfoEXT indirectAddressSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$indirectAddressSize, OFFSET$indirectAddressSize, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long preprocessAddress() {
         return segment.get(LAYOUT$preprocessAddress, OFFSET$preprocessAddress);
     }
 
-    public void preprocessAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkGeneratedCommandsInfoEXT preprocessAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$preprocessAddress, OFFSET$preprocessAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long preprocessSize() {
         return segment.get(LAYOUT$preprocessSize, OFFSET$preprocessSize);
     }
 
-    public void preprocessSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeneratedCommandsInfoEXT preprocessSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
+        return this;
     }
 
     public @Unsigned int maxSequenceCount() {
         return segment.get(LAYOUT$maxSequenceCount, OFFSET$maxSequenceCount);
     }
 
-    public void maxSequenceCount(@Unsigned int value) {
+    public VkGeneratedCommandsInfoEXT maxSequenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSequenceCount, OFFSET$maxSequenceCount, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long sequenceCountAddress() {
         return segment.get(LAYOUT$sequenceCountAddress, OFFSET$sequenceCountAddress);
     }
 
-    public void sequenceCountAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkGeneratedCommandsInfoEXT sequenceCountAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$sequenceCountAddress, OFFSET$sequenceCountAddress, value);
+        return this;
     }
 
     public @Unsigned int maxDrawCount() {
         return segment.get(LAYOUT$maxDrawCount, OFFSET$maxDrawCount);
     }
 
-    public void maxDrawCount(@Unsigned int value) {
+    public VkGeneratedCommandsInfoEXT maxDrawCount(@Unsigned int value) {
         segment.set(LAYOUT$maxDrawCount, OFFSET$maxDrawCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

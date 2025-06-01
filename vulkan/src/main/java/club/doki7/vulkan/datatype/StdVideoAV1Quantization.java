@@ -179,80 +179,90 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         return new StdVideoAV1QuantizationFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoAV1QuantizationFlags value) {
+    public StdVideoAV1Quantization flags(@NotNull StdVideoAV1QuantizationFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte base_q_idx() {
         return segment.get(LAYOUT$base_q_idx, OFFSET$base_q_idx);
     }
 
-    public void base_q_idx(@Unsigned byte value) {
+    public StdVideoAV1Quantization base_q_idx(@Unsigned byte value) {
         segment.set(LAYOUT$base_q_idx, OFFSET$base_q_idx, value);
+        return this;
     }
 
     public byte DeltaQYDc() {
         return segment.get(LAYOUT$DeltaQYDc, OFFSET$DeltaQYDc);
     }
 
-    public void DeltaQYDc(byte value) {
+    public StdVideoAV1Quantization DeltaQYDc(byte value) {
         segment.set(LAYOUT$DeltaQYDc, OFFSET$DeltaQYDc, value);
+        return this;
     }
 
     public byte DeltaQUDc() {
         return segment.get(LAYOUT$DeltaQUDc, OFFSET$DeltaQUDc);
     }
 
-    public void DeltaQUDc(byte value) {
+    public StdVideoAV1Quantization DeltaQUDc(byte value) {
         segment.set(LAYOUT$DeltaQUDc, OFFSET$DeltaQUDc, value);
+        return this;
     }
 
     public byte DeltaQUAc() {
         return segment.get(LAYOUT$DeltaQUAc, OFFSET$DeltaQUAc);
     }
 
-    public void DeltaQUAc(byte value) {
+    public StdVideoAV1Quantization DeltaQUAc(byte value) {
         segment.set(LAYOUT$DeltaQUAc, OFFSET$DeltaQUAc, value);
+        return this;
     }
 
     public byte DeltaQVDc() {
         return segment.get(LAYOUT$DeltaQVDc, OFFSET$DeltaQVDc);
     }
 
-    public void DeltaQVDc(byte value) {
+    public StdVideoAV1Quantization DeltaQVDc(byte value) {
         segment.set(LAYOUT$DeltaQVDc, OFFSET$DeltaQVDc, value);
+        return this;
     }
 
     public byte DeltaQVAc() {
         return segment.get(LAYOUT$DeltaQVAc, OFFSET$DeltaQVAc);
     }
 
-    public void DeltaQVAc(byte value) {
+    public StdVideoAV1Quantization DeltaQVAc(byte value) {
         segment.set(LAYOUT$DeltaQVAc, OFFSET$DeltaQVAc, value);
+        return this;
     }
 
     public @Unsigned byte qm_y() {
         return segment.get(LAYOUT$qm_y, OFFSET$qm_y);
     }
 
-    public void qm_y(@Unsigned byte value) {
+    public StdVideoAV1Quantization qm_y(@Unsigned byte value) {
         segment.set(LAYOUT$qm_y, OFFSET$qm_y, value);
+        return this;
     }
 
     public @Unsigned byte qm_u() {
         return segment.get(LAYOUT$qm_u, OFFSET$qm_u);
     }
 
-    public void qm_u(@Unsigned byte value) {
+    public StdVideoAV1Quantization qm_u(@Unsigned byte value) {
         segment.set(LAYOUT$qm_u, OFFSET$qm_u, value);
+        return this;
     }
 
     public @Unsigned byte qm_v() {
         return segment.get(LAYOUT$qm_v, OFFSET$qm_v);
     }
 
-    public void qm_v(@Unsigned byte value) {
+    public StdVideoAV1Quantization qm_v(@Unsigned byte value) {
         segment.set(LAYOUT$qm_v, OFFSET$qm_v, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

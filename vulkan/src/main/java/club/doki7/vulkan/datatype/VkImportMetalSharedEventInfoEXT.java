@@ -193,8 +193,9 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMetalSharedEventInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportMetalSharedEventInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="MTLSharedEvent_id") MemorySegment mtlSharedEvent() {
@@ -217,8 +219,9 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
     }
 
-    public void mtlSharedEvent(@Nullable IPointer pointer) {
+    public VkImportMetalSharedEventInfoEXT mtlSharedEvent(@Nullable IPointer pointer) {
         mtlSharedEvent(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

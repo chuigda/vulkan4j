@@ -171,16 +171,18 @@ public record StdVideoH265LongTermRefPicsSps(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag);
     }
 
-    public void used_by_curr_pic_lt_sps_flag(@Unsigned int value) {
+    public StdVideoH265LongTermRefPicsSps used_by_curr_pic_lt_sps_flag(@Unsigned int value) {
         segment.set(LAYOUT$used_by_curr_pic_lt_sps_flag, OFFSET$used_by_curr_pic_lt_sps_flag, value);
+        return this;
     }
 
     public @Unsigned IntPtr lt_ref_pic_poc_lsb_sps() {
         return new IntPtr(lt_ref_pic_poc_lsb_spsRaw());
     }
 
-    public void lt_ref_pic_poc_lsb_sps(@Unsigned IntPtr value) {
+    public StdVideoH265LongTermRefPicsSps lt_ref_pic_poc_lsb_sps(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$lt_ref_pic_poc_lsb_sps, SIZE$lt_ref_pic_poc_lsb_sps);
+        return this;
     }
 
     public MemorySegment lt_ref_pic_poc_lsb_spsRaw() {

@@ -201,8 +201,9 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,32 +214,36 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureBuildGeometryInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkAccelerationStructureTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR type(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkBuildAccelerationStructureModeKHR.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@EnumType(VkBuildAccelerationStructureModeKHR.class) int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR mode(@EnumType(VkBuildAccelerationStructureModeKHR.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
+        return this;
     }
 
     public @Nullable VkAccelerationStructureKHR srcAccelerationStructure() {
@@ -249,8 +254,9 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void srcAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR srcAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkAccelerationStructureKHR dstAccelerationStructure() {
@@ -261,21 +267,24 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void dstAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR dstAccelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$dstAccelerationStructure, OFFSET$dstAccelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int geometryCount() {
         return segment.get(LAYOUT$geometryCount, OFFSET$geometryCount);
     }
 
-    public void geometryCount(@Unsigned int value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR geometryCount(@Unsigned int value) {
         segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
+        return this;
     }
 
-    public void pGeometries(@Nullable IVkAccelerationStructureGeometryKHR value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR pGeometries(@Nullable IVkAccelerationStructureGeometryKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGeometriesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAccelerationStructureGeometryKHR.Ptr pGeometries(int assumedCount) {
@@ -315,9 +324,10 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return new PointerPtr(s);
     }
 
-    public void ppGeometries(@Nullable PointerPtr value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR ppGeometries(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         ppGeometriesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="void**") MemorySegment ppGeometriesRaw() {
@@ -332,8 +342,9 @@ public record VkAccelerationStructureBuildGeometryInfoKHR(@NotNull MemorySegment
         return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$scratchData, LAYOUT$scratchData));
     }
 
-    public void scratchData(@NotNull VkDeviceOrHostAddressKHR value) {
+    public VkAccelerationStructureBuildGeometryInfoKHR scratchData(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$scratchData, SIZE$scratchData);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

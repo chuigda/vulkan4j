@@ -197,8 +197,9 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkApplicationInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkApplicationInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -225,9 +227,10 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         return new BytePtr(s);
     }
 
-    public void pApplicationName(@Nullable BytePtr value) {
+    public VkApplicationInfo pApplicationName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pApplicationNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pApplicationNameRaw() {
@@ -242,8 +245,9 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
     }
 
-    public void applicationVersion(@Unsigned int value) {
+    public VkApplicationInfo applicationVersion(@Unsigned int value) {
         segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -258,9 +262,10 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         return new BytePtr(s);
     }
 
-    public void pEngineName(@Nullable BytePtr value) {
+    public VkApplicationInfo pEngineName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pEngineNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pEngineNameRaw() {
@@ -275,16 +280,18 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
     }
 
-    public void engineVersion(@Unsigned int value) {
+    public VkApplicationInfo engineVersion(@Unsigned int value) {
         segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
+        return this;
     }
 
     public @Unsigned int apiVersion() {
         return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
     }
 
-    public void apiVersion(@Unsigned int value) {
+    public VkApplicationInfo apiVersion(@Unsigned int value) {
         segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

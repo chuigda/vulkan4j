@@ -194,8 +194,9 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int externalDataSize() {
         return segment.get(LAYOUT$externalDataSize, OFFSET$externalDataSize);
     }
 
-    public void externalDataSize(@Unsigned int value) {
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV externalDataSize(@Unsigned int value) {
         segment.set(LAYOUT$externalDataSize, OFFSET$externalDataSize, value);
+        return this;
     }
 
     public @Unsigned int maxExternalQueues() {
         return segment.get(LAYOUT$maxExternalQueues, OFFSET$maxExternalQueues);
     }
 
-    public void maxExternalQueues(@Unsigned int value) {
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV maxExternalQueues(@Unsigned int value) {
         segment.set(LAYOUT$maxExternalQueues, OFFSET$maxExternalQueues, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

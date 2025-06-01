@@ -193,8 +193,9 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(@NotNull Mem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(@NotNull Mem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent2D fragmentDensityOffsetGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$fragmentDensityOffsetGranularity, LAYOUT$fragmentDensityOffsetGranularity));
     }
 
-    public void fragmentDensityOffsetGranularity(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT fragmentDensityOffsetGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentDensityOffsetGranularity, SIZE$fragmentDensityOffsetGranularity);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -189,8 +189,9 @@ public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$operation, OFFSET$operation);
     }
 
-    public void operation(@EnumType(VmaDefragmentationMoveOperation.class) int value) {
+    public VmaDefragmentationMove operation(@EnumType(VmaDefragmentationMoveOperation.class) int value) {
         segment.set(LAYOUT$operation, OFFSET$operation, value);
+        return this;
     }
 
     public @Nullable VmaAllocation srcAllocation() {
@@ -201,8 +202,9 @@ public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements 
         return new VmaAllocation(s);
     }
 
-    public void srcAllocation(@Nullable VmaAllocation value) {
+    public VmaDefragmentationMove srcAllocation(@Nullable VmaAllocation value) {
         segment.set(LAYOUT$srcAllocation, OFFSET$srcAllocation, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VmaAllocation dstTmpAllocation() {
@@ -213,8 +215,9 @@ public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements 
         return new VmaAllocation(s);
     }
 
-    public void dstTmpAllocation(@Nullable VmaAllocation value) {
+    public VmaDefragmentationMove dstTmpAllocation(@Nullable VmaAllocation value) {
         segment.set(LAYOUT$dstTmpAllocation, OFFSET$dstTmpAllocation, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

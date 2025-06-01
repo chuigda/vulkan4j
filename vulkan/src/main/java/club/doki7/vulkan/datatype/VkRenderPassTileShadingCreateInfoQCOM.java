@@ -194,8 +194,9 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassTileShadingCreateInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassTileShadingCreateInfoQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkTileShadingRenderPassFlagsQCOM.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkTileShadingRenderPassFlagsQCOM.class) int value) {
+    public VkRenderPassTileShadingCreateInfoQCOM flags(@EnumType(VkTileShadingRenderPassFlagsQCOM.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NotNull VkExtent2D tileApronSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$tileApronSize, LAYOUT$tileApronSize));
     }
 
-    public void tileApronSize(@NotNull VkExtent2D value) {
+    public VkRenderPassTileShadingCreateInfoQCOM tileApronSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileApronSize, SIZE$tileApronSize);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

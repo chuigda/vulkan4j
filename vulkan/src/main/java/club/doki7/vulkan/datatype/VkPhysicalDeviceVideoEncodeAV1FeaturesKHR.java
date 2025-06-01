@@ -193,8 +193,9 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVideoEncodeAV1FeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceVideoEncodeAV1FeaturesKHR(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVideoEncodeAV1FeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int videoEncodeAV1() {
         return segment.get(LAYOUT$videoEncodeAV1, OFFSET$videoEncodeAV1);
     }
 
-    public void videoEncodeAV1(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVideoEncodeAV1FeaturesKHR videoEncodeAV1(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$videoEncodeAV1, OFFSET$videoEncodeAV1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

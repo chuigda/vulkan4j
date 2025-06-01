@@ -194,8 +194,9 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int graphicsPipelineLibraryFastLinking() {
         return segment.get(LAYOUT$graphicsPipelineLibraryFastLinking, OFFSET$graphicsPipelineLibraryFastLinking);
     }
 
-    public void graphicsPipelineLibraryFastLinking(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT graphicsPipelineLibraryFastLinking(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$graphicsPipelineLibraryFastLinking, OFFSET$graphicsPipelineLibraryFastLinking, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int graphicsPipelineLibraryIndependentInterpolationDecoration() {
         return segment.get(LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration, OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration);
     }
 
-    public void graphicsPipelineLibraryIndependentInterpolationDecoration(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT graphicsPipelineLibraryIndependentInterpolationDecoration(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$graphicsPipelineLibraryIndependentInterpolationDecoration, OFFSET$graphicsPipelineLibraryIndependentInterpolationDecoration, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

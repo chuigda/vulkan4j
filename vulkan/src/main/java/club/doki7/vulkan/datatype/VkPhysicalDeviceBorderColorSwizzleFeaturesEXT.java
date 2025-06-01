@@ -194,8 +194,9 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int borderColorSwizzle() {
         return segment.get(LAYOUT$borderColorSwizzle, OFFSET$borderColorSwizzle);
     }
 
-    public void borderColorSwizzle(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT borderColorSwizzle(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$borderColorSwizzle, OFFSET$borderColorSwizzle, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int borderColorSwizzleFromImage() {
         return segment.get(LAYOUT$borderColorSwizzleFromImage, OFFSET$borderColorSwizzleFromImage);
     }
 
-    public void borderColorSwizzleFromImage(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT borderColorSwizzleFromImage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$borderColorSwizzleFromImage, OFFSET$borderColorSwizzleFromImage, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

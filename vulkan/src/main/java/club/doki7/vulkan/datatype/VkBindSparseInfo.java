@@ -202,8 +202,9 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindSparseInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -214,16 +215,18 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindSparseInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@Unsigned int value) {
+    public VkBindSparseInfo waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
@@ -238,9 +241,10 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return new VkSemaphore.Ptr(s);
     }
 
-    public void pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
+    public VkBindSparseInfo pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoresRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
@@ -255,13 +259,15 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return segment.get(LAYOUT$bufferBindCount, OFFSET$bufferBindCount);
     }
 
-    public void bufferBindCount(@Unsigned int value) {
+    public VkBindSparseInfo bufferBindCount(@Unsigned int value) {
         segment.set(LAYOUT$bufferBindCount, OFFSET$bufferBindCount, value);
+        return this;
     }
 
-    public void pBufferBinds(@Nullable IVkSparseBufferMemoryBindInfo value) {
+    public VkBindSparseInfo pBufferBinds(@Nullable IVkSparseBufferMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferBindsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSparseBufferMemoryBindInfo.Ptr pBufferBinds(int assumedCount) {
@@ -294,13 +300,15 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return segment.get(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount);
     }
 
-    public void imageOpaqueBindCount(@Unsigned int value) {
+    public VkBindSparseInfo imageOpaqueBindCount(@Unsigned int value) {
         segment.set(LAYOUT$imageOpaqueBindCount, OFFSET$imageOpaqueBindCount, value);
+        return this;
     }
 
-    public void pImageOpaqueBinds(@Nullable IVkSparseImageOpaqueMemoryBindInfo value) {
+    public VkBindSparseInfo pImageOpaqueBinds(@Nullable IVkSparseImageOpaqueMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageOpaqueBindsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSparseImageOpaqueMemoryBindInfo.Ptr pImageOpaqueBinds(int assumedCount) {
@@ -333,13 +341,15 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return segment.get(LAYOUT$imageBindCount, OFFSET$imageBindCount);
     }
 
-    public void imageBindCount(@Unsigned int value) {
+    public VkBindSparseInfo imageBindCount(@Unsigned int value) {
         segment.set(LAYOUT$imageBindCount, OFFSET$imageBindCount, value);
+        return this;
     }
 
-    public void pImageBinds(@Nullable IVkSparseImageMemoryBindInfo value) {
+    public VkBindSparseInfo pImageBinds(@Nullable IVkSparseImageMemoryBindInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageBindsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSparseImageMemoryBindInfo.Ptr pImageBinds(int assumedCount) {
@@ -372,8 +382,9 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
-    public void signalSemaphoreCount(@Unsigned int value) {
+    public VkBindSparseInfo signalSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
@@ -388,9 +399,10 @@ public record VkBindSparseInfo(@NotNull MemorySegment segment) implements IVkBin
         return new VkSemaphore.Ptr(s);
     }
 
-    public void pSignalSemaphores(@Nullable VkSemaphore.Ptr value) {
+    public VkBindSparseInfo pSignalSemaphores(@Nullable VkSemaphore.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoresRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {

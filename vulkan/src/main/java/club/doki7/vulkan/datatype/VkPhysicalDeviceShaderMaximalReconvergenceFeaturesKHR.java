@@ -193,8 +193,9 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(@NotNull Mem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(@NotNull Mem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderMaximalReconvergence() {
         return segment.get(LAYOUT$shaderMaximalReconvergence, OFFSET$shaderMaximalReconvergence);
     }
 
-    public void shaderMaximalReconvergence(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR shaderMaximalReconvergence(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderMaximalReconvergence, OFFSET$shaderMaximalReconvergence, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

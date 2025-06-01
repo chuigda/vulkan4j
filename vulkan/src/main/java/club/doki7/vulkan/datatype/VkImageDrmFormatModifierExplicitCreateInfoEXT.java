@@ -195,8 +195,9 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageDrmFormatModifierExplicitCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkImageDrmFormatModifierExplicitCreateInfoEXT(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageDrmFormatModifierExplicitCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long drmFormatModifier() {
         return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
     }
 
-    public void drmFormatModifier(@Unsigned long value) {
+    public VkImageDrmFormatModifierExplicitCreateInfoEXT drmFormatModifier(@Unsigned long value) {
         segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
+        return this;
     }
 
     public @Unsigned int drmFormatModifierPlaneCount() {
         return segment.get(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount);
     }
 
-    public void drmFormatModifierPlaneCount(@Unsigned int value) {
+    public VkImageDrmFormatModifierExplicitCreateInfoEXT drmFormatModifierPlaneCount(@Unsigned int value) {
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
+        return this;
     }
 
-    public void pPlaneLayouts(@Nullable IVkSubresourceLayout value) {
+    public VkImageDrmFormatModifierExplicitCreateInfoEXT pPlaneLayouts(@Nullable IVkSubresourceLayout value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPlaneLayoutsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSubresourceLayout.Ptr pPlaneLayouts(int assumedCount) {

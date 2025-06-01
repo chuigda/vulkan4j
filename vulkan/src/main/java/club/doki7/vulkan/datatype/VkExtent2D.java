@@ -173,16 +173,18 @@ public record VkExtent2D(@NotNull MemorySegment segment) implements IVkExtent2D 
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@Unsigned int value) {
+    public VkExtent2D width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
+        return this;
     }
 
     public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@Unsigned int value) {
+    public VkExtent2D height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkBindImagePlaneMemoryInfo(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindImagePlaneMemoryInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkBindImagePlaneMemoryInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindImagePlaneMemoryInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageAspectFlags.class) int planeAspect() {
         return segment.get(LAYOUT$planeAspect, OFFSET$planeAspect);
     }
 
-    public void planeAspect(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkBindImagePlaneMemoryInfo planeAspect(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$planeAspect, OFFSET$planeAspect, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

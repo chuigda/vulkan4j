@@ -198,8 +198,9 @@ public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDrmPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,56 +211,63 @@ public record VkPhysicalDeviceDrmPropertiesEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDrmPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int hasPrimary() {
         return segment.get(LAYOUT$hasPrimary, OFFSET$hasPrimary);
     }
 
-    public void hasPrimary(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDrmPropertiesEXT hasPrimary(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hasPrimary, OFFSET$hasPrimary, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int hasRender() {
         return segment.get(LAYOUT$hasRender, OFFSET$hasRender);
     }
 
-    public void hasRender(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDrmPropertiesEXT hasRender(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hasRender, OFFSET$hasRender, value);
+        return this;
     }
 
     public long primaryMajor() {
         return segment.get(LAYOUT$primaryMajor, OFFSET$primaryMajor);
     }
 
-    public void primaryMajor(long value) {
+    public VkPhysicalDeviceDrmPropertiesEXT primaryMajor(long value) {
         segment.set(LAYOUT$primaryMajor, OFFSET$primaryMajor, value);
+        return this;
     }
 
     public long primaryMinor() {
         return segment.get(LAYOUT$primaryMinor, OFFSET$primaryMinor);
     }
 
-    public void primaryMinor(long value) {
+    public VkPhysicalDeviceDrmPropertiesEXT primaryMinor(long value) {
         segment.set(LAYOUT$primaryMinor, OFFSET$primaryMinor, value);
+        return this;
     }
 
     public long renderMajor() {
         return segment.get(LAYOUT$renderMajor, OFFSET$renderMajor);
     }
 
-    public void renderMajor(long value) {
+    public VkPhysicalDeviceDrmPropertiesEXT renderMajor(long value) {
         segment.set(LAYOUT$renderMajor, OFFSET$renderMajor, value);
+        return this;
     }
 
     public long renderMinor() {
         return segment.get(LAYOUT$renderMinor, OFFSET$renderMinor);
     }
 
-    public void renderMinor(long value) {
+    public VkPhysicalDeviceDrmPropertiesEXT renderMinor(long value) {
         segment.set(LAYOUT$renderMinor, OFFSET$renderMinor, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

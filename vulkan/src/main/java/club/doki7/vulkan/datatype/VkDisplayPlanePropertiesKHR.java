@@ -177,16 +177,18 @@ public record VkDisplayPlanePropertiesKHR(@NotNull MemorySegment segment) implem
         return new VkDisplayKHR(s);
     }
 
-    public void currentDisplay(@Nullable VkDisplayKHR value) {
+    public VkDisplayPlanePropertiesKHR currentDisplay(@Nullable VkDisplayKHR value) {
         segment.set(LAYOUT$currentDisplay, OFFSET$currentDisplay, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int currentStackIndex() {
         return segment.get(LAYOUT$currentStackIndex, OFFSET$currentStackIndex);
     }
 
-    public void currentStackIndex(@Unsigned int value) {
+    public VkDisplayPlanePropertiesKHR currentStackIndex(@Unsigned int value) {
         segment.set(LAYOUT$currentStackIndex, OFFSET$currentStackIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

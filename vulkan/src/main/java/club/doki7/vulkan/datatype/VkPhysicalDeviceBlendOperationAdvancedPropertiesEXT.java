@@ -198,8 +198,9 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,56 +211,63 @@ public record VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int advancedBlendMaxColorAttachments() {
         return segment.get(LAYOUT$advancedBlendMaxColorAttachments, OFFSET$advancedBlendMaxColorAttachments);
     }
 
-    public void advancedBlendMaxColorAttachments(@Unsigned int value) {
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendMaxColorAttachments(@Unsigned int value) {
         segment.set(LAYOUT$advancedBlendMaxColorAttachments, OFFSET$advancedBlendMaxColorAttachments, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int advancedBlendIndependentBlend() {
         return segment.get(LAYOUT$advancedBlendIndependentBlend, OFFSET$advancedBlendIndependentBlend);
     }
 
-    public void advancedBlendIndependentBlend(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendIndependentBlend(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$advancedBlendIndependentBlend, OFFSET$advancedBlendIndependentBlend, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int advancedBlendNonPremultipliedSrcColor() {
         return segment.get(LAYOUT$advancedBlendNonPremultipliedSrcColor, OFFSET$advancedBlendNonPremultipliedSrcColor);
     }
 
-    public void advancedBlendNonPremultipliedSrcColor(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendNonPremultipliedSrcColor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$advancedBlendNonPremultipliedSrcColor, OFFSET$advancedBlendNonPremultipliedSrcColor, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int advancedBlendNonPremultipliedDstColor() {
         return segment.get(LAYOUT$advancedBlendNonPremultipliedDstColor, OFFSET$advancedBlendNonPremultipliedDstColor);
     }
 
-    public void advancedBlendNonPremultipliedDstColor(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendNonPremultipliedDstColor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$advancedBlendNonPremultipliedDstColor, OFFSET$advancedBlendNonPremultipliedDstColor, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int advancedBlendCorrelatedOverlap() {
         return segment.get(LAYOUT$advancedBlendCorrelatedOverlap, OFFSET$advancedBlendCorrelatedOverlap);
     }
 
-    public void advancedBlendCorrelatedOverlap(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendCorrelatedOverlap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$advancedBlendCorrelatedOverlap, OFFSET$advancedBlendCorrelatedOverlap, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int advancedBlendAllOperations() {
         return segment.get(LAYOUT$advancedBlendAllOperations, OFFSET$advancedBlendAllOperations);
     }
 
-    public void advancedBlendAllOperations(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendAllOperations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$advancedBlendAllOperations, OFFSET$advancedBlendAllOperations, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

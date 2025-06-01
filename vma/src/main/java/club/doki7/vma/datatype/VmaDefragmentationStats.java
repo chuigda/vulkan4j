@@ -186,32 +186,36 @@ public record VmaDefragmentationStats(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$bytesMoved, OFFSET$bytesMoved);
     }
 
-    public void bytesMoved(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaDefragmentationStats bytesMoved(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$bytesMoved, OFFSET$bytesMoved, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long bytesFreed() {
         return segment.get(LAYOUT$bytesFreed, OFFSET$bytesFreed);
     }
 
-    public void bytesFreed(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaDefragmentationStats bytesFreed(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$bytesFreed, OFFSET$bytesFreed, value);
+        return this;
     }
 
     public @Unsigned int allocationsMoved() {
         return segment.get(LAYOUT$allocationsMoved, OFFSET$allocationsMoved);
     }
 
-    public void allocationsMoved(@Unsigned int value) {
+    public VmaDefragmentationStats allocationsMoved(@Unsigned int value) {
         segment.set(LAYOUT$allocationsMoved, OFFSET$allocationsMoved, value);
+        return this;
     }
 
     public @Unsigned int deviceMemoryBlocksFreed() {
         return segment.get(LAYOUT$deviceMemoryBlocksFreed, OFFSET$deviceMemoryBlocksFreed);
     }
 
-    public void deviceMemoryBlocksFreed(@Unsigned int value) {
+    public VmaDefragmentationStats deviceMemoryBlocksFreed(@Unsigned int value) {
         segment.set(LAYOUT$deviceMemoryBlocksFreed, OFFSET$deviceMemoryBlocksFreed, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkBufferCopy2(@NotNull MemorySegment segment) implements IVkBuffer
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferCopy2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkBufferCopy2(@NotNull MemorySegment segment) implements IVkBuffer
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBufferCopy2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long srcOffset() {
         return segment.get(LAYOUT$srcOffset, OFFSET$srcOffset);
     }
 
-    public void srcOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBufferCopy2 srcOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$srcOffset, OFFSET$srcOffset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long dstOffset() {
         return segment.get(LAYOUT$dstOffset, OFFSET$dstOffset);
     }
 
-    public void dstOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBufferCopy2 dstOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$dstOffset, OFFSET$dstOffset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBufferCopy2 size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewASTCDecodeModeEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkImageViewASTCDecodeModeEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageViewASTCDecodeModeEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int decodeMode() {
         return segment.get(LAYOUT$decodeMode, OFFSET$decodeMode);
     }
 
-    public void decodeMode(@EnumType(VkFormat.class) int value) {
+    public VkImageViewASTCDecodeModeEXT decodeMode(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$decodeMode, OFFSET$decodeMode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

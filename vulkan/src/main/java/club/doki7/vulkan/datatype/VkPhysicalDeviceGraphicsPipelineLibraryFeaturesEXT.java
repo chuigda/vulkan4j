@@ -193,8 +193,9 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int graphicsPipelineLibrary() {
         return segment.get(LAYOUT$graphicsPipelineLibrary, OFFSET$graphicsPipelineLibrary);
     }
 
-    public void graphicsPipelineLibrary(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT graphicsPipelineLibrary(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$graphicsPipelineLibrary, OFFSET$graphicsPipelineLibrary, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

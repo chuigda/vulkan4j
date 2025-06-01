@@ -201,8 +201,9 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,80 +214,90 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxGraphicsShaderGroupCount() {
         return segment.get(LAYOUT$maxGraphicsShaderGroupCount, OFFSET$maxGraphicsShaderGroupCount);
     }
 
-    public void maxGraphicsShaderGroupCount(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV maxGraphicsShaderGroupCount(@Unsigned int value) {
         segment.set(LAYOUT$maxGraphicsShaderGroupCount, OFFSET$maxGraphicsShaderGroupCount, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectSequenceCount() {
         return segment.get(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount);
     }
 
-    public void maxIndirectSequenceCount(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV maxIndirectSequenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectCommandsTokenCount() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount);
     }
 
-    public void maxIndirectCommandsTokenCount(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV maxIndirectCommandsTokenCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectCommandsStreamCount() {
         return segment.get(LAYOUT$maxIndirectCommandsStreamCount, OFFSET$maxIndirectCommandsStreamCount);
     }
 
-    public void maxIndirectCommandsStreamCount(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV maxIndirectCommandsStreamCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsStreamCount, OFFSET$maxIndirectCommandsStreamCount, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectCommandsTokenOffset() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset);
     }
 
-    public void maxIndirectCommandsTokenOffset(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV maxIndirectCommandsTokenOffset(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectCommandsStreamStride() {
         return segment.get(LAYOUT$maxIndirectCommandsStreamStride, OFFSET$maxIndirectCommandsStreamStride);
     }
 
-    public void maxIndirectCommandsStreamStride(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV maxIndirectCommandsStreamStride(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsStreamStride, OFFSET$maxIndirectCommandsStreamStride, value);
+        return this;
     }
 
     public @Unsigned int minSequencesCountBufferOffsetAlignment() {
         return segment.get(LAYOUT$minSequencesCountBufferOffsetAlignment, OFFSET$minSequencesCountBufferOffsetAlignment);
     }
 
-    public void minSequencesCountBufferOffsetAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV minSequencesCountBufferOffsetAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minSequencesCountBufferOffsetAlignment, OFFSET$minSequencesCountBufferOffsetAlignment, value);
+        return this;
     }
 
     public @Unsigned int minSequencesIndexBufferOffsetAlignment() {
         return segment.get(LAYOUT$minSequencesIndexBufferOffsetAlignment, OFFSET$minSequencesIndexBufferOffsetAlignment);
     }
 
-    public void minSequencesIndexBufferOffsetAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV minSequencesIndexBufferOffsetAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minSequencesIndexBufferOffsetAlignment, OFFSET$minSequencesIndexBufferOffsetAlignment, value);
+        return this;
     }
 
     public @Unsigned int minIndirectCommandsBufferOffsetAlignment() {
         return segment.get(LAYOUT$minIndirectCommandsBufferOffsetAlignment, OFFSET$minIndirectCommandsBufferOffsetAlignment);
     }
 
-    public void minIndirectCommandsBufferOffsetAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV minIndirectCommandsBufferOffsetAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minIndirectCommandsBufferOffsetAlignment, OFFSET$minIndirectCommandsBufferOffsetAlignment, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

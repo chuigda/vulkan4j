@@ -195,8 +195,9 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMemoryWin32HandleInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportMemoryWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
+    public VkImportMemoryWin32HandleInfoKHR handleType(@EnumType(VkExternalMemoryHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+        return this;
     }
 
     public @Pointer(comment="HANDLE") MemorySegment handle() {
@@ -227,8 +230,9 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-    public void handle(@Nullable IPointer pointer) {
+    public VkImportMemoryWin32HandleInfoKHR handle(@Nullable IPointer pointer) {
         handle(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link ShortPtr} does not have correct
@@ -243,9 +247,10 @@ public record VkImportMemoryWin32HandleInfoKHR(@NotNull MemorySegment segment) i
         return new ShortPtr(s);
     }
 
-    public void name(@Nullable @Unsigned ShortPtr value) {
+    public VkImportMemoryWin32HandleInfoKHR name(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {

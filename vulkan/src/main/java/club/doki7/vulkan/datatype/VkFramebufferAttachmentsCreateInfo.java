@@ -194,8 +194,9 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkFramebufferAttachmentsCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkFramebufferAttachmentsCreateInfo(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkFramebufferAttachmentsCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int attachmentImageInfoCount() {
         return segment.get(LAYOUT$attachmentImageInfoCount, OFFSET$attachmentImageInfoCount);
     }
 
-    public void attachmentImageInfoCount(@Unsigned int value) {
+    public VkFramebufferAttachmentsCreateInfo attachmentImageInfoCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentImageInfoCount, OFFSET$attachmentImageInfoCount, value);
+        return this;
     }
 
-    public void pAttachmentImageInfos(@Nullable IVkFramebufferAttachmentImageInfo value) {
+    public VkFramebufferAttachmentsCreateInfo pAttachmentImageInfos(@Nullable IVkFramebufferAttachmentImageInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentImageInfosRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkFramebufferAttachmentImageInfo.Ptr pAttachmentImageInfos(int assumedCount) {

@@ -197,8 +197,9 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructure(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int accelerationStructureCaptureReplay() {
         return segment.get(LAYOUT$accelerationStructureCaptureReplay, OFFSET$accelerationStructureCaptureReplay);
     }
 
-    public void accelerationStructureCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureCaptureReplay, OFFSET$accelerationStructureCaptureReplay, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int accelerationStructureIndirectBuild() {
         return segment.get(LAYOUT$accelerationStructureIndirectBuild, OFFSET$accelerationStructureIndirectBuild);
     }
 
-    public void accelerationStructureIndirectBuild(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureIndirectBuild(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureIndirectBuild, OFFSET$accelerationStructureIndirectBuild, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int accelerationStructureHostCommands() {
         return segment.get(LAYOUT$accelerationStructureHostCommands, OFFSET$accelerationStructureHostCommands);
     }
 
-    public void accelerationStructureHostCommands(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureHostCommands(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureHostCommands, OFFSET$accelerationStructureHostCommands, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int descriptorBindingAccelerationStructureUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind, OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind);
     }
 
-    public void descriptorBindingAccelerationStructureUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR descriptorBindingAccelerationStructureUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingAccelerationStructureUpdateAfterBind, OFFSET$descriptorBindingAccelerationStructureUpdateAfterBind, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

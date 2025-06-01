@@ -193,8 +193,9 @@ public record VkQueueFamilyProperties2(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueueFamilyProperties2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkQueueFamilyProperties2(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkQueueFamilyProperties2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkQueueFamilyProperties queueFamilyProperties() {
         return new VkQueueFamilyProperties(segment.asSlice(OFFSET$queueFamilyProperties, LAYOUT$queueFamilyProperties));
     }
 
-    public void queueFamilyProperties(@NotNull VkQueueFamilyProperties value) {
+    public VkQueueFamilyProperties2 queueFamilyProperties(@NotNull VkQueueFamilyProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$queueFamilyProperties, SIZE$queueFamilyProperties);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

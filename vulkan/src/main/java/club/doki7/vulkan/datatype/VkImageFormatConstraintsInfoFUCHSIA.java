@@ -198,8 +198,9 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,53 +211,60 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageFormatConstraintsInfoFUCHSIA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkImageCreateInfo imageCreateInfo() {
         return new VkImageCreateInfo(segment.asSlice(OFFSET$imageCreateInfo, LAYOUT$imageCreateInfo));
     }
 
-    public void imageCreateInfo(@NotNull VkImageCreateInfo value) {
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(@NotNull VkImageCreateInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageCreateInfo, SIZE$imageCreateInfo);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
         return segment.get(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures);
     }
 
-    public void requiredFormatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures, value);
+        return this;
     }
 
     public @EnumType(VkImageFormatConstraintsFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkImageFormatConstraintsFlagsFUCHSIA.class) int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA flags(@EnumType(VkImageFormatConstraintsFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned long sysmemPixelFormat() {
         return segment.get(LAYOUT$sysmemPixelFormat, OFFSET$sysmemPixelFormat);
     }
 
-    public void sysmemPixelFormat(@Unsigned long value) {
+    public VkImageFormatConstraintsInfoFUCHSIA sysmemPixelFormat(@Unsigned long value) {
         segment.set(LAYOUT$sysmemPixelFormat, OFFSET$sysmemPixelFormat, value);
+        return this;
     }
 
     public @Unsigned int colorSpaceCount() {
         return segment.get(LAYOUT$colorSpaceCount, OFFSET$colorSpaceCount);
     }
 
-    public void colorSpaceCount(@Unsigned int value) {
+    public VkImageFormatConstraintsInfoFUCHSIA colorSpaceCount(@Unsigned int value) {
         segment.set(LAYOUT$colorSpaceCount, OFFSET$colorSpaceCount, value);
+        return this;
     }
 
-    public void pColorSpaces(@Nullable IVkSysmemColorSpaceFUCHSIA value) {
+    public VkImageFormatConstraintsInfoFUCHSIA pColorSpaces(@Nullable IVkSysmemColorSpaceFUCHSIA value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorSpacesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSysmemColorSpaceFUCHSIA.Ptr pColorSpaces(int assumedCount) {

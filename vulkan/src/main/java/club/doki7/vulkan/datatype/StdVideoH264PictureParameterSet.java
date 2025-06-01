@@ -180,85 +180,96 @@ public record StdVideoH264PictureParameterSet(@NotNull MemorySegment segment) im
         return new StdVideoH264PpsFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoH264PpsFlags value) {
+    public StdVideoH264PictureParameterSet flags(@NotNull StdVideoH264PpsFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte seq_parameter_set_id() {
         return segment.get(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id);
     }
 
-    public void seq_parameter_set_id(@Unsigned byte value) {
+    public StdVideoH264PictureParameterSet seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte pic_parameter_set_id() {
         return segment.get(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id);
     }
 
-    public void pic_parameter_set_id(@Unsigned byte value) {
+    public StdVideoH264PictureParameterSet pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte num_ref_idx_l0_default_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l0_default_active_minus1, OFFSET$num_ref_idx_l0_default_active_minus1);
     }
 
-    public void num_ref_idx_l0_default_active_minus1(@Unsigned byte value) {
+    public StdVideoH264PictureParameterSet num_ref_idx_l0_default_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l0_default_active_minus1, OFFSET$num_ref_idx_l0_default_active_minus1, value);
+        return this;
     }
 
     public @Unsigned byte num_ref_idx_l1_default_active_minus1() {
         return segment.get(LAYOUT$num_ref_idx_l1_default_active_minus1, OFFSET$num_ref_idx_l1_default_active_minus1);
     }
 
-    public void num_ref_idx_l1_default_active_minus1(@Unsigned byte value) {
+    public StdVideoH264PictureParameterSet num_ref_idx_l1_default_active_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$num_ref_idx_l1_default_active_minus1, OFFSET$num_ref_idx_l1_default_active_minus1, value);
+        return this;
     }
 
     public @EnumType(StdVideoH264WeightedBipredIdc.class) int weighted_bipred_idc() {
         return segment.get(LAYOUT$weighted_bipred_idc, OFFSET$weighted_bipred_idc);
     }
 
-    public void weighted_bipred_idc(@EnumType(StdVideoH264WeightedBipredIdc.class) int value) {
+    public StdVideoH264PictureParameterSet weighted_bipred_idc(@EnumType(StdVideoH264WeightedBipredIdc.class) int value) {
         segment.set(LAYOUT$weighted_bipred_idc, OFFSET$weighted_bipred_idc, value);
+        return this;
     }
 
     public byte pic_init_qp_minus26() {
         return segment.get(LAYOUT$pic_init_qp_minus26, OFFSET$pic_init_qp_minus26);
     }
 
-    public void pic_init_qp_minus26(byte value) {
+    public StdVideoH264PictureParameterSet pic_init_qp_minus26(byte value) {
         segment.set(LAYOUT$pic_init_qp_minus26, OFFSET$pic_init_qp_minus26, value);
+        return this;
     }
 
     public byte pic_init_qs_minus26() {
         return segment.get(LAYOUT$pic_init_qs_minus26, OFFSET$pic_init_qs_minus26);
     }
 
-    public void pic_init_qs_minus26(byte value) {
+    public StdVideoH264PictureParameterSet pic_init_qs_minus26(byte value) {
         segment.set(LAYOUT$pic_init_qs_minus26, OFFSET$pic_init_qs_minus26, value);
+        return this;
     }
 
     public byte chroma_qp_index_offset() {
         return segment.get(LAYOUT$chroma_qp_index_offset, OFFSET$chroma_qp_index_offset);
     }
 
-    public void chroma_qp_index_offset(byte value) {
+    public StdVideoH264PictureParameterSet chroma_qp_index_offset(byte value) {
         segment.set(LAYOUT$chroma_qp_index_offset, OFFSET$chroma_qp_index_offset, value);
+        return this;
     }
 
     public byte second_chroma_qp_index_offset() {
         return segment.get(LAYOUT$second_chroma_qp_index_offset, OFFSET$second_chroma_qp_index_offset);
     }
 
-    public void second_chroma_qp_index_offset(byte value) {
+    public StdVideoH264PictureParameterSet second_chroma_qp_index_offset(byte value) {
         segment.set(LAYOUT$second_chroma_qp_index_offset, OFFSET$second_chroma_qp_index_offset, value);
+        return this;
     }
 
-    public void pScalingLists(@Nullable IStdVideoH264ScalingLists value) {
+    public StdVideoH264PictureParameterSet pScalingLists(@Nullable IStdVideoH264ScalingLists value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pScalingListsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH264ScalingLists.Ptr pScalingLists(int assumedCount) {

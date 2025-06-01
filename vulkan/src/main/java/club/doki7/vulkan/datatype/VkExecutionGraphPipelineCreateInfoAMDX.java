@@ -199,8 +199,9 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,29 +212,33 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExecutionGraphPipelineCreateInfoAMDX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX flags(@EnumType(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int stageCount() {
         return segment.get(LAYOUT$stageCount, OFFSET$stageCount);
     }
 
-    public void stageCount(@Unsigned int value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX stageCount(@Unsigned int value) {
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
+        return this;
     }
 
-    public void pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
@@ -262,9 +267,10 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
-    public void pLibraryInfo(@Nullable IVkPipelineLibraryCreateInfoKHR value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX pLibraryInfo(@Nullable IVkPipelineLibraryCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibraryInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineLibraryCreateInfoKHR.Ptr pLibraryInfo(int assumedCount) {
@@ -301,8 +307,9 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkPipeline basePipelineHandle() {
@@ -313,16 +320,18 @@ public record VkExecutionGraphPipelineCreateInfoAMDX(@NotNull MemorySegment segm
         return new VkPipeline(s);
     }
 
-    public void basePipelineHandle(@Nullable VkPipeline value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX basePipelineHandle(@Nullable VkPipeline value) {
         segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public int basePipelineIndex() {
         return segment.get(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex);
     }
 
-    public void basePipelineIndex(int value) {
+    public VkExecutionGraphPipelineCreateInfoAMDX basePipelineIndex(int value) {
         segment.set(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

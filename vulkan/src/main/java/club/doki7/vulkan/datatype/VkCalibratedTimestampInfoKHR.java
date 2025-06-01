@@ -193,8 +193,9 @@ public record VkCalibratedTimestampInfoKHR(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCalibratedTimestampInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkCalibratedTimestampInfoKHR(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCalibratedTimestampInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkTimeDomainKHR.class) int timeDomain() {
         return segment.get(LAYOUT$timeDomain, OFFSET$timeDomain);
     }
 
-    public void timeDomain(@EnumType(VkTimeDomainKHR.class) int value) {
+    public VkCalibratedTimestampInfoKHR timeDomain(@EnumType(VkTimeDomainKHR.class) int value) {
         segment.set(LAYOUT$timeDomain, OFFSET$timeDomain, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

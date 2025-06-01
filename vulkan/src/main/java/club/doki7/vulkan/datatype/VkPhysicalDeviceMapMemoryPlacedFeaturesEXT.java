@@ -195,8 +195,9 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int memoryMapPlaced() {
         return segment.get(LAYOUT$memoryMapPlaced, OFFSET$memoryMapPlaced);
     }
 
-    public void memoryMapPlaced(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryMapPlaced(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$memoryMapPlaced, OFFSET$memoryMapPlaced, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int memoryMapRangePlaced() {
         return segment.get(LAYOUT$memoryMapRangePlaced, OFFSET$memoryMapRangePlaced);
     }
 
-    public void memoryMapRangePlaced(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryMapRangePlaced(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$memoryMapRangePlaced, OFFSET$memoryMapRangePlaced, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int memoryUnmapReserve() {
         return segment.get(LAYOUT$memoryUnmapReserve, OFFSET$memoryUnmapReserve);
     }
 
-    public void memoryUnmapReserve(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryUnmapReserve(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$memoryUnmapReserve, OFFSET$memoryUnmapReserve, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

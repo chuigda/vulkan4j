@@ -205,8 +205,9 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeneratedCommandsInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -217,16 +218,18 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkGeneratedCommandsInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkGeneratedCommandsInfoNV pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+        return this;
     }
 
     public @Nullable VkPipeline pipeline() {
@@ -237,8 +240,9 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkPipeline(s);
     }
 
-    public void pipeline(@Nullable VkPipeline value) {
+    public VkGeneratedCommandsInfoNV pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkIndirectCommandsLayoutNV indirectCommandsLayout() {
@@ -249,21 +253,24 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkIndirectCommandsLayoutNV(s);
     }
 
-    public void indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutNV value) {
+    public VkGeneratedCommandsInfoNV indirectCommandsLayout(@Nullable VkIndirectCommandsLayoutNV value) {
         segment.set(LAYOUT$indirectCommandsLayout, OFFSET$indirectCommandsLayout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int streamCount() {
         return segment.get(LAYOUT$streamCount, OFFSET$streamCount);
     }
 
-    public void streamCount(@Unsigned int value) {
+    public VkGeneratedCommandsInfoNV streamCount(@Unsigned int value) {
         segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
+        return this;
     }
 
-    public void pStreams(@Nullable IVkIndirectCommandsStreamNV value) {
+    public VkGeneratedCommandsInfoNV pStreams(@Nullable IVkIndirectCommandsStreamNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectCommandsStreamNV.Ptr pStreams(int assumedCount) {
@@ -296,8 +303,9 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sequencesCount, OFFSET$sequencesCount);
     }
 
-    public void sequencesCount(@Unsigned int value) {
+    public VkGeneratedCommandsInfoNV sequencesCount(@Unsigned int value) {
         segment.set(LAYOUT$sequencesCount, OFFSET$sequencesCount, value);
+        return this;
     }
 
     public @Nullable VkBuffer preprocessBuffer() {
@@ -308,24 +316,27 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkBuffer(s);
     }
 
-    public void preprocessBuffer(@Nullable VkBuffer value) {
+    public VkGeneratedCommandsInfoNV preprocessBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$preprocessBuffer, OFFSET$preprocessBuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long preprocessOffset() {
         return segment.get(LAYOUT$preprocessOffset, OFFSET$preprocessOffset);
     }
 
-    public void preprocessOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeneratedCommandsInfoNV preprocessOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$preprocessOffset, OFFSET$preprocessOffset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long preprocessSize() {
         return segment.get(LAYOUT$preprocessSize, OFFSET$preprocessSize);
     }
 
-    public void preprocessSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeneratedCommandsInfoNV preprocessSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$preprocessSize, OFFSET$preprocessSize, value);
+        return this;
     }
 
     public @Nullable VkBuffer sequencesCountBuffer() {
@@ -336,16 +347,18 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkBuffer(s);
     }
 
-    public void sequencesCountBuffer(@Nullable VkBuffer value) {
+    public VkGeneratedCommandsInfoNV sequencesCountBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$sequencesCountBuffer, OFFSET$sequencesCountBuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long sequencesCountOffset() {
         return segment.get(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset);
     }
 
-    public void sequencesCountOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeneratedCommandsInfoNV sequencesCountOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$sequencesCountOffset, OFFSET$sequencesCountOffset, value);
+        return this;
     }
 
     public @Nullable VkBuffer sequencesIndexBuffer() {
@@ -356,16 +369,18 @@ public record VkGeneratedCommandsInfoNV(@NotNull MemorySegment segment) implemen
         return new VkBuffer(s);
     }
 
-    public void sequencesIndexBuffer(@Nullable VkBuffer value) {
+    public VkGeneratedCommandsInfoNV sequencesIndexBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$sequencesIndexBuffer, OFFSET$sequencesIndexBuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long sequencesIndexOffset() {
         return segment.get(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset);
     }
 
-    public void sequencesIndexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeneratedCommandsInfoNV sequencesIndexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$sequencesIndexOffset, OFFSET$sequencesIndexOffset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

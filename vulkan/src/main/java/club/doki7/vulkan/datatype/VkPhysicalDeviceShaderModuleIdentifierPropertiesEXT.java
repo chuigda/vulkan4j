@@ -193,8 +193,9 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned BytePtr shaderModuleIdentifierAlgorithmUUID() {
         return new BytePtr(shaderModuleIdentifierAlgorithmUUIDRaw());
     }
 
-    public void shaderModuleIdentifierAlgorithmUUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderModuleIdentifierAlgorithmUUID, SIZE$shaderModuleIdentifierAlgorithmUUID);
+        return this;
     }
 
     public MemorySegment shaderModuleIdentifierAlgorithmUUIDRaw() {

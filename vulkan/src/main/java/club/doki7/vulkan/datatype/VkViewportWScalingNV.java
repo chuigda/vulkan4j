@@ -173,16 +173,18 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$xcoeff, OFFSET$xcoeff);
     }
 
-    public void xcoeff(float value) {
+    public VkViewportWScalingNV xcoeff(float value) {
         segment.set(LAYOUT$xcoeff, OFFSET$xcoeff, value);
+        return this;
     }
 
     public float ycoeff() {
         return segment.get(LAYOUT$ycoeff, OFFSET$ycoeff);
     }
 
-    public void ycoeff(float value) {
+    public VkViewportWScalingNV ycoeff(float value) {
         segment.set(LAYOUT$ycoeff, OFFSET$ycoeff, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

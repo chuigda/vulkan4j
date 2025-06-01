@@ -176,40 +176,45 @@ public record VkSubresourceLayout(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSubresourceLayout offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSubresourceLayout size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long rowPitch() {
         return segment.get(LAYOUT$rowPitch, OFFSET$rowPitch);
     }
 
-    public void rowPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSubresourceLayout rowPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$rowPitch, OFFSET$rowPitch, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long arrayPitch() {
         return segment.get(LAYOUT$arrayPitch, OFFSET$arrayPitch);
     }
 
-    public void arrayPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSubresourceLayout arrayPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$arrayPitch, OFFSET$arrayPitch, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long depthPitch() {
         return segment.get(LAYOUT$depthPitch, OFFSET$depthPitch);
     }
 
-    public void depthPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSubresourceLayout depthPitch(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$depthPitch, OFFSET$depthPitch, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

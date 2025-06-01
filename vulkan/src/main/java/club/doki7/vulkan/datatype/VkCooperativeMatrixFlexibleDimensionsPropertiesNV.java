@@ -202,8 +202,9 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -214,88 +215,99 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int MGranularity() {
         return segment.get(LAYOUT$MGranularity, OFFSET$MGranularity);
     }
 
-    public void MGranularity(@Unsigned int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV MGranularity(@Unsigned int value) {
         segment.set(LAYOUT$MGranularity, OFFSET$MGranularity, value);
+        return this;
     }
 
     public @Unsigned int NGranularity() {
         return segment.get(LAYOUT$NGranularity, OFFSET$NGranularity);
     }
 
-    public void NGranularity(@Unsigned int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV NGranularity(@Unsigned int value) {
         segment.set(LAYOUT$NGranularity, OFFSET$NGranularity, value);
+        return this;
     }
 
     public @Unsigned int KGranularity() {
         return segment.get(LAYOUT$KGranularity, OFFSET$KGranularity);
     }
 
-    public void KGranularity(@Unsigned int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV KGranularity(@Unsigned int value) {
         segment.set(LAYOUT$KGranularity, OFFSET$KGranularity, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int AType() {
         return segment.get(LAYOUT$AType, OFFSET$AType);
     }
 
-    public void AType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV AType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$AType, OFFSET$AType, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int BType() {
         return segment.get(LAYOUT$BType, OFFSET$BType);
     }
 
-    public void BType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV BType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$BType, OFFSET$BType, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int CType() {
         return segment.get(LAYOUT$CType, OFFSET$CType);
     }
 
-    public void CType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV CType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$CType, OFFSET$CType, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int ResultType() {
         return segment.get(LAYOUT$ResultType, OFFSET$ResultType);
     }
 
-    public void ResultType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV ResultType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$ResultType, OFFSET$ResultType, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int saturatingAccumulation() {
         return segment.get(LAYOUT$saturatingAccumulation, OFFSET$saturatingAccumulation);
     }
 
-    public void saturatingAccumulation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV saturatingAccumulation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$saturatingAccumulation, OFFSET$saturatingAccumulation, value);
+        return this;
     }
 
     public @EnumType(VkScopeKHR.class) int scope() {
         return segment.get(LAYOUT$scope, OFFSET$scope);
     }
 
-    public void scope(@EnumType(VkScopeKHR.class) int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV scope(@EnumType(VkScopeKHR.class) int value) {
         segment.set(LAYOUT$scope, OFFSET$scope, value);
+        return this;
     }
 
     public @Unsigned int workgroupInvocations() {
         return segment.get(LAYOUT$workgroupInvocations, OFFSET$workgroupInvocations);
     }
 
-    public void workgroupInvocations(@Unsigned int value) {
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV workgroupInvocations(@Unsigned int value) {
         segment.set(LAYOUT$workgroupInvocations, OFFSET$workgroupInvocations, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

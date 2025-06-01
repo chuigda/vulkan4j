@@ -195,8 +195,9 @@ public record VkConditionalRenderingBeginInfoEXT(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkConditionalRenderingBeginInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkConditionalRenderingBeginInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkConditionalRenderingBeginInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkBuffer buffer() {
@@ -219,24 +221,27 @@ public record VkConditionalRenderingBeginInfoEXT(@NotNull MemorySegment segment)
         return new VkBuffer(s);
     }
 
-    public void buffer(@Nullable VkBuffer value) {
+    public VkConditionalRenderingBeginInfoEXT buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkConditionalRenderingBeginInfoEXT offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @EnumType(VkConditionalRenderingFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkConditionalRenderingFlagsEXT.class) int value) {
+    public VkConditionalRenderingBeginInfoEXT flags(@EnumType(VkConditionalRenderingFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

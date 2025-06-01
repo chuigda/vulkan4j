@@ -193,8 +193,9 @@ public record VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int vertexAttributeRobustness() {
         return segment.get(LAYOUT$vertexAttributeRobustness, OFFSET$vertexAttributeRobustness);
     }
 
-    public void vertexAttributeRobustness(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT vertexAttributeRobustness(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeRobustness, OFFSET$vertexAttributeRobustness, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

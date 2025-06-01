@@ -204,8 +204,9 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VmaDefragmentationFlags.class) int value) {
+    public VmaDefragmentationInfo flags(@EnumType(VmaDefragmentationFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VmaPool pool() {
@@ -216,24 +217,27 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         return new VmaPool(s);
     }
 
-    public void pool(@Nullable VmaPool value) {
+    public VmaDefragmentationInfo pool(@Nullable VmaPool value) {
         segment.set(LAYOUT$pool, OFFSET$pool, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long maxBytesPerPass() {
         return segment.get(LAYOUT$maxBytesPerPass, OFFSET$maxBytesPerPass);
     }
 
-    public void maxBytesPerPass(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaDefragmentationInfo maxBytesPerPass(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxBytesPerPass, OFFSET$maxBytesPerPass, value);
+        return this;
     }
 
     public @Unsigned int maxAllocationsPerPass() {
         return segment.get(LAYOUT$maxAllocationsPerPass, OFFSET$maxAllocationsPerPass);
     }
 
-    public void maxAllocationsPerPass(@Unsigned int value) {
+    public VmaDefragmentationInfo maxAllocationsPerPass(@Unsigned int value) {
         segment.set(LAYOUT$maxAllocationsPerPass, OFFSET$maxAllocationsPerPass, value);
+        return this;
     }
 
     public @Pointer(comment="PFN_vmaCheckDefragmentationBreakFunction") MemorySegment pfnBreakCallback() {
@@ -244,8 +248,9 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pfnBreakCallback, OFFSET$pfnBreakCallback, value);
     }
 
-    public void pfnBreakCallback(@Nullable IPointer pointer) {
+    public VmaDefragmentationInfo pfnBreakCallback(@Nullable IPointer pointer) {
         pfnBreakCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pBreakCallbackUserData() {
@@ -256,8 +261,9 @@ public record VmaDefragmentationInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pBreakCallbackUserData, OFFSET$pBreakCallbackUserData, value);
     }
 
-    public void pBreakCallbackUserData(@Nullable IPointer pointer) {
+    public VmaDefragmentationInfo pBreakCallbackUserData(@Nullable IPointer pointer) {
         pBreakCallbackUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

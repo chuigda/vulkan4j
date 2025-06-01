@@ -195,8 +195,9 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(@NotNull 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceGeneratedCompute() {
         return segment.get(LAYOUT$deviceGeneratedCompute, OFFSET$deviceGeneratedCompute);
     }
 
-    public void deviceGeneratedCompute(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV deviceGeneratedCompute(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCompute, OFFSET$deviceGeneratedCompute, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceGeneratedComputePipelines() {
         return segment.get(LAYOUT$deviceGeneratedComputePipelines, OFFSET$deviceGeneratedComputePipelines);
     }
 
-    public void deviceGeneratedComputePipelines(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV deviceGeneratedComputePipelines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedComputePipelines, OFFSET$deviceGeneratedComputePipelines, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceGeneratedComputeCaptureReplay() {
         return segment.get(LAYOUT$deviceGeneratedComputeCaptureReplay, OFFSET$deviceGeneratedComputeCaptureReplay);
     }
 
-    public void deviceGeneratedComputeCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV deviceGeneratedComputeCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedComputeCaptureReplay, OFFSET$deviceGeneratedComputeCaptureReplay, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

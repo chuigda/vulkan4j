@@ -197,8 +197,9 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPushDescriptorSetInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,16 +210,18 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPushDescriptorSetInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushDescriptorSetInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+        return this;
     }
 
     public @Nullable VkPipelineLayout layout() {
@@ -229,29 +232,33 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkPushDescriptorSetInfo layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int set() {
         return segment.get(LAYOUT$set, OFFSET$set);
     }
 
-    public void set(@Unsigned int value) {
+    public VkPushDescriptorSetInfo set(@Unsigned int value) {
         segment.set(LAYOUT$set, OFFSET$set, value);
+        return this;
     }
 
     public @Unsigned int descriptorWriteCount() {
         return segment.get(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount);
     }
 
-    public void descriptorWriteCount(@Unsigned int value) {
+    public VkPushDescriptorSetInfo descriptorWriteCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorWriteCount, OFFSET$descriptorWriteCount, value);
+        return this;
     }
 
-    public void pDescriptorWrites(@Nullable IVkWriteDescriptorSet value) {
+    public VkPushDescriptorSetInfo pDescriptorWrites(@Nullable IVkWriteDescriptorSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorWritesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkWriteDescriptorSet.Ptr pDescriptorWrites(int assumedCount) {

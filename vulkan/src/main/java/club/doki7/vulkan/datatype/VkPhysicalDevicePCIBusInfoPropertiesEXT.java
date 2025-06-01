@@ -196,8 +196,9 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int pciDomain() {
         return segment.get(LAYOUT$pciDomain, OFFSET$pciDomain);
     }
 
-    public void pciDomain(@Unsigned int value) {
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDomain(@Unsigned int value) {
         segment.set(LAYOUT$pciDomain, OFFSET$pciDomain, value);
+        return this;
     }
 
     public @Unsigned int pciBus() {
         return segment.get(LAYOUT$pciBus, OFFSET$pciBus);
     }
 
-    public void pciBus(@Unsigned int value) {
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciBus(@Unsigned int value) {
         segment.set(LAYOUT$pciBus, OFFSET$pciBus, value);
+        return this;
     }
 
     public @Unsigned int pciDevice() {
         return segment.get(LAYOUT$pciDevice, OFFSET$pciDevice);
     }
 
-    public void pciDevice(@Unsigned int value) {
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDevice(@Unsigned int value) {
         segment.set(LAYOUT$pciDevice, OFFSET$pciDevice, value);
+        return this;
     }
 
     public @Unsigned int pciFunction() {
         return segment.get(LAYOUT$pciFunction, OFFSET$pciFunction);
     }
 
-    public void pciFunction(@Unsigned int value) {
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciFunction(@Unsigned int value) {
         segment.set(LAYOUT$pciFunction, OFFSET$pciFunction, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -196,8 +196,9 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSemaphoreSubmitInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,8 +209,9 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSemaphoreSubmitInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSemaphore semaphore() {
@@ -220,32 +222,36 @@ public record VkSemaphoreSubmitInfo(@NotNull MemorySegment segment) implements I
         return new VkSemaphore(s);
     }
 
-    public void semaphore(@Nullable VkSemaphore value) {
+    public VkSemaphoreSubmitInfo semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long value() {
         return segment.get(LAYOUT$value, OFFSET$value);
     }
 
-    public void value(@Unsigned long value) {
+    public VkSemaphoreSubmitInfo value(@Unsigned long value) {
         segment.set(LAYOUT$value, OFFSET$value, value);
+        return this;
     }
 
     public @EnumType(VkPipelineStageFlags2.class) long stageMask() {
         return segment.get(LAYOUT$stageMask, OFFSET$stageMask);
     }
 
-    public void stageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkSemaphoreSubmitInfo stageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$stageMask, OFFSET$stageMask, value);
+        return this;
     }
 
     public @Unsigned int deviceIndex() {
         return segment.get(LAYOUT$deviceIndex, OFFSET$deviceIndex);
     }
 
-    public void deviceIndex(@Unsigned int value) {
+    public VkSemaphoreSubmitInfo deviceIndex(@Unsigned int value) {
         segment.set(LAYOUT$deviceIndex, OFFSET$deviceIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

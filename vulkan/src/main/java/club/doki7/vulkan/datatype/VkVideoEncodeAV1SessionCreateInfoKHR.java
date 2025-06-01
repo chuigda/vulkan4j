@@ -194,8 +194,9 @@ public record VkVideoEncodeAV1SessionCreateInfoKHR(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1SessionCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoEncodeAV1SessionCreateInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeAV1SessionCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useMaxLevel() {
         return segment.get(LAYOUT$useMaxLevel, OFFSET$useMaxLevel);
     }
 
-    public void useMaxLevel(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeAV1SessionCreateInfoKHR useMaxLevel(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMaxLevel, OFFSET$useMaxLevel, value);
+        return this;
     }
 
     public @EnumType(StdVideoAV1Level.class) int maxLevel() {
         return segment.get(LAYOUT$maxLevel, OFFSET$maxLevel);
     }
 
-    public void maxLevel(@EnumType(StdVideoAV1Level.class) int value) {
+    public VkVideoEncodeAV1SessionCreateInfoKHR maxLevel(@EnumType(StdVideoAV1Level.class) int value) {
         segment.set(LAYOUT$maxLevel, OFFSET$maxLevel, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -173,16 +173,18 @@ public record VkXYColorEXT(@NotNull MemorySegment segment) implements IVkXYColor
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(float value) {
+    public VkXYColorEXT x(float value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
+        return this;
     }
 
     public float y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(float value) {
+    public VkXYColorEXT y(float value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

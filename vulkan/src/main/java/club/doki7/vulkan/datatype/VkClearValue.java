@@ -173,16 +173,18 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IVkClearVa
         return new VkClearColorValue(segment.asSlice(OFFSET$color, LAYOUT$color));
     }
 
-    public void color(@NotNull VkClearColorValue value) {
+    public VkClearValue color(@NotNull VkClearColorValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
+        return this;
     }
 
     public @NotNull VkClearDepthStencilValue depthStencil() {
         return new VkClearDepthStencilValue(segment.asSlice(OFFSET$depthStencil, LAYOUT$depthStencil));
     }
 
-    public void depthStencil(@NotNull VkClearDepthStencilValue value) {
+    public VkClearValue depthStencil(@NotNull VkClearDepthStencilValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$depthStencil, SIZE$depthStencil);
+        return this;
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

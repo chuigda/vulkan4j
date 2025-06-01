@@ -173,16 +173,18 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IVkGeo
         return new VkGeometryTrianglesNV(segment.asSlice(OFFSET$triangles, LAYOUT$triangles));
     }
 
-    public void triangles(@NotNull VkGeometryTrianglesNV value) {
+    public VkGeometryDataNV triangles(@NotNull VkGeometryTrianglesNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangles, SIZE$triangles);
+        return this;
     }
 
     public @NotNull VkGeometryAABBNV aabbs() {
         return new VkGeometryAABBNV(segment.asSlice(OFFSET$aabbs, LAYOUT$aabbs));
     }
 
-    public void aabbs(@NotNull VkGeometryAABBNV value) {
+    public VkGeometryDataNV aabbs(@NotNull VkGeometryAABBNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$aabbs, SIZE$aabbs);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

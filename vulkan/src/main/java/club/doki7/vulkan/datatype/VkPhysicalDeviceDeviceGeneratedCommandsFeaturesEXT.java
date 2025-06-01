@@ -194,8 +194,9 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceGeneratedCommands() {
         return segment.get(LAYOUT$deviceGeneratedCommands, OFFSET$deviceGeneratedCommands);
     }
 
-    public void deviceGeneratedCommands(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT deviceGeneratedCommands(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCommands, OFFSET$deviceGeneratedCommands, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int dynamicGeneratedPipelineLayout() {
         return segment.get(LAYOUT$dynamicGeneratedPipelineLayout, OFFSET$dynamicGeneratedPipelineLayout);
     }
 
-    public void dynamicGeneratedPipelineLayout(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT dynamicGeneratedPipelineLayout(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicGeneratedPipelineLayout, OFFSET$dynamicGeneratedPipelineLayout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

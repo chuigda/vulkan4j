@@ -194,8 +194,9 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetLayoutHostMappingInfoVALVE sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkDescriptorSetLayoutHostMappingInfoVALVE(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorSetLayoutHostMappingInfoVALVE pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long descriptorOffset() {
         return NativeLayout.readCSizeT(segment, OFFSET$descriptorOffset);
     }
 
-    public void descriptorOffset(@Unsigned long value) {
+    public VkDescriptorSetLayoutHostMappingInfoVALVE descriptorOffset(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$descriptorOffset, value);
+        return this;
     }
 
     public @Unsigned int descriptorSize() {
         return segment.get(LAYOUT$descriptorSize, OFFSET$descriptorSize);
     }
 
-    public void descriptorSize(@Unsigned int value) {
+    public VkDescriptorSetLayoutHostMappingInfoVALVE descriptorSize(@Unsigned int value) {
         segment.set(LAYOUT$descriptorSize, OFFSET$descriptorSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

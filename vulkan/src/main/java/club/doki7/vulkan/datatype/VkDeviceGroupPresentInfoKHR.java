@@ -195,8 +195,9 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupPresentInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceGroupPresentInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@Unsigned int value) {
+    public VkDeviceGroupPresentInfoKHR swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -231,9 +234,10 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         return new IntPtr(s);
     }
 
-    public void pDeviceMasks(@Nullable @Unsigned IntPtr value) {
+    public VkDeviceGroupPresentInfoKHR pDeviceMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceMasksRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pDeviceMasksRaw() {
@@ -248,8 +252,9 @@ public record VkDeviceGroupPresentInfoKHR(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
+    public VkDeviceGroupPresentInfoKHR mode(@EnumType(VkDeviceGroupPresentModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

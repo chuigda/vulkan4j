@@ -194,8 +194,9 @@ public record VkVideoEncodeAV1QuantizationMapCapabilitiesKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1QuantizationMapCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoEncodeAV1QuantizationMapCapabilitiesKHR(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeAV1QuantizationMapCapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public int minQIndexDelta() {
         return segment.get(LAYOUT$minQIndexDelta, OFFSET$minQIndexDelta);
     }
 
-    public void minQIndexDelta(int value) {
+    public VkVideoEncodeAV1QuantizationMapCapabilitiesKHR minQIndexDelta(int value) {
         segment.set(LAYOUT$minQIndexDelta, OFFSET$minQIndexDelta, value);
+        return this;
     }
 
     public int maxQIndexDelta() {
         return segment.get(LAYOUT$maxQIndexDelta, OFFSET$maxQIndexDelta);
     }
 
-    public void maxQIndexDelta(int value) {
+    public VkVideoEncodeAV1QuantizationMapCapabilitiesKHR maxQIndexDelta(int value) {
         segment.set(LAYOUT$maxQIndexDelta, OFFSET$maxQIndexDelta, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

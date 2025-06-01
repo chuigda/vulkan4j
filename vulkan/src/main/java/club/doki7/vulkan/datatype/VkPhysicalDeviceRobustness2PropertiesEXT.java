@@ -194,8 +194,9 @@ public record VkPhysicalDeviceRobustness2PropertiesEXT(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRobustness2PropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceRobustness2PropertiesEXT(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRobustness2PropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long robustStorageBufferAccessSizeAlignment() {
         return segment.get(LAYOUT$robustStorageBufferAccessSizeAlignment, OFFSET$robustStorageBufferAccessSizeAlignment);
     }
 
-    public void robustStorageBufferAccessSizeAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceRobustness2PropertiesEXT robustStorageBufferAccessSizeAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$robustStorageBufferAccessSizeAlignment, OFFSET$robustStorageBufferAccessSizeAlignment, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long robustUniformBufferAccessSizeAlignment() {
         return segment.get(LAYOUT$robustUniformBufferAccessSizeAlignment, OFFSET$robustUniformBufferAccessSizeAlignment);
     }
 
-    public void robustUniformBufferAccessSizeAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceRobustness2PropertiesEXT robustUniformBufferAccessSizeAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$robustUniformBufferAccessSizeAlignment, OFFSET$robustUniformBufferAccessSizeAlignment, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

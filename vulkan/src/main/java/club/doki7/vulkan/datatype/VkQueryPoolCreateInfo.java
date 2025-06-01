@@ -196,8 +196,9 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueryPoolCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkQueryPoolCreateInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkQueryPoolCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkQueryPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkQueryPoolCreateFlags.class) int value) {
+    public VkQueryPoolCreateInfo flags(@EnumType(VkQueryPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkQueryType.class) int queryType() {
         return segment.get(LAYOUT$queryType, OFFSET$queryType);
     }
 
-    public void queryType(@EnumType(VkQueryType.class) int value) {
+    public VkQueryPoolCreateInfo queryType(@EnumType(VkQueryType.class) int value) {
         segment.set(LAYOUT$queryType, OFFSET$queryType, value);
+        return this;
     }
 
     public @Unsigned int queryCount() {
         return segment.get(LAYOUT$queryCount, OFFSET$queryCount);
     }
 
-    public void queryCount(@Unsigned int value) {
+    public VkQueryPoolCreateInfo queryCount(@Unsigned int value) {
         segment.set(LAYOUT$queryCount, OFFSET$queryCount, value);
+        return this;
     }
 
     public @EnumType(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
         return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
     }
 
-    public void pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
+    public VkQueryPoolCreateInfo pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

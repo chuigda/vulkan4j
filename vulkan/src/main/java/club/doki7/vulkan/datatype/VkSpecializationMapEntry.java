@@ -174,24 +174,27 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$constantID, OFFSET$constantID);
     }
 
-    public void constantID(@Unsigned int value) {
+    public VkSpecializationMapEntry constantID(@Unsigned int value) {
         segment.set(LAYOUT$constantID, OFFSET$constantID, value);
+        return this;
     }
 
     public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned int value) {
+    public VkSpecializationMapEntry offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @Unsigned long size() {
         return NativeLayout.readCSizeT(segment, OFFSET$size);
     }
 
-    public void size(@Unsigned long value) {
+    public VkSpecializationMapEntry size(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$size, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

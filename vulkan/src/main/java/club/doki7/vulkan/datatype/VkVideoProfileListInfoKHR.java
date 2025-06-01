@@ -194,8 +194,9 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoProfileListInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkVideoProfileListInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoProfileListInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int profileCount() {
         return segment.get(LAYOUT$profileCount, OFFSET$profileCount);
     }
 
-    public void profileCount(@Unsigned int value) {
+    public VkVideoProfileListInfoKHR profileCount(@Unsigned int value) {
         segment.set(LAYOUT$profileCount, OFFSET$profileCount, value);
+        return this;
     }
 
-    public void pProfiles(@Nullable IVkVideoProfileInfoKHR value) {
+    public VkVideoProfileListInfoKHR pProfiles(@Nullable IVkVideoProfileInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pProfilesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pProfiles(int assumedCount) {

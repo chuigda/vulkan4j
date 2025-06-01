@@ -195,8 +195,9 @@ public record VkPhysicalDeviceMaintenance6Properties(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMaintenance6Properties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceMaintenance6Properties(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMaintenance6Properties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int blockTexelViewCompatibleMultipleLayers() {
         return segment.get(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers);
     }
 
-    public void blockTexelViewCompatibleMultipleLayers(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance6Properties blockTexelViewCompatibleMultipleLayers(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$blockTexelViewCompatibleMultipleLayers, OFFSET$blockTexelViewCompatibleMultipleLayers, value);
+        return this;
     }
 
     public @Unsigned int maxCombinedImageSamplerDescriptorCount() {
         return segment.get(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount);
     }
 
-    public void maxCombinedImageSamplerDescriptorCount(@Unsigned int value) {
+    public VkPhysicalDeviceMaintenance6Properties maxCombinedImageSamplerDescriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$maxCombinedImageSamplerDescriptorCount, OFFSET$maxCombinedImageSamplerDescriptorCount, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int fragmentShadingRateClampCombinerInputs() {
         return segment.get(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs);
     }
 
-    public void fragmentShadingRateClampCombinerInputs(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance6Properties fragmentShadingRateClampCombinerInputs(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShadingRateClampCombinerInputs, OFFSET$fragmentShadingRateClampCombinerInputs, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

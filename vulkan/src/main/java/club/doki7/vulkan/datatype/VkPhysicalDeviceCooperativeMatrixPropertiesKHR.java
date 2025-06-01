@@ -193,8 +193,9 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCooperativeMatrixPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceCooperativeMatrixPropertiesKHR(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCooperativeMatrixPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int cooperativeMatrixSupportedStages() {
         return segment.get(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages);
     }
 
-    public void cooperativeMatrixSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceCooperativeMatrixPropertiesKHR cooperativeMatrixSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$cooperativeMatrixSupportedStages, OFFSET$cooperativeMatrixSupportedStages, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

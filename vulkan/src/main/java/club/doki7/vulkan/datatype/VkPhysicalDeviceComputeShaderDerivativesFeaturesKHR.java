@@ -194,8 +194,9 @@ public record VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int computeDerivativeGroupQuads() {
         return segment.get(LAYOUT$computeDerivativeGroupQuads, OFFSET$computeDerivativeGroupQuads);
     }
 
-    public void computeDerivativeGroupQuads(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR computeDerivativeGroupQuads(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$computeDerivativeGroupQuads, OFFSET$computeDerivativeGroupQuads, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int computeDerivativeGroupLinear() {
         return segment.get(LAYOUT$computeDerivativeGroupLinear, OFFSET$computeDerivativeGroupLinear);
     }
 
-    public void computeDerivativeGroupLinear(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR computeDerivativeGroupLinear(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$computeDerivativeGroupLinear, OFFSET$computeDerivativeGroupLinear, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

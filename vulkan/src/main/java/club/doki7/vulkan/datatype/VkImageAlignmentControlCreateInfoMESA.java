@@ -193,8 +193,9 @@ public record VkImageAlignmentControlCreateInfoMESA(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageAlignmentControlCreateInfoMESA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkImageAlignmentControlCreateInfoMESA(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageAlignmentControlCreateInfoMESA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maximumRequestedAlignment() {
         return segment.get(LAYOUT$maximumRequestedAlignment, OFFSET$maximumRequestedAlignment);
     }
 
-    public void maximumRequestedAlignment(@Unsigned int value) {
+    public VkImageAlignmentControlCreateInfoMESA maximumRequestedAlignment(@Unsigned int value) {
         segment.set(LAYOUT$maximumRequestedAlignment, OFFSET$maximumRequestedAlignment, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

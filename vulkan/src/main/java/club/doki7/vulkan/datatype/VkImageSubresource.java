@@ -174,24 +174,27 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImageSubresource aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
+        return this;
     }
 
     public @Unsigned int mipLevel() {
         return segment.get(LAYOUT$mipLevel, OFFSET$mipLevel);
     }
 
-    public void mipLevel(@Unsigned int value) {
+    public VkImageSubresource mipLevel(@Unsigned int value) {
         segment.set(LAYOUT$mipLevel, OFFSET$mipLevel, value);
+        return this;
     }
 
     public @Unsigned int arrayLayer() {
         return segment.get(LAYOUT$arrayLayer, OFFSET$arrayLayer);
     }
 
-    public void arrayLayer(@Unsigned int value) {
+    public VkImageSubresource arrayLayer(@Unsigned int value) {
         segment.set(LAYOUT$arrayLayer, OFFSET$arrayLayer, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

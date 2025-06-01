@@ -165,6 +165,10 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
         return new DoublePtr(arena.allocateFrom(ValueLayout.JAVA_DOUBLE, array));
     }
 
+    public static @NotNull DoublePtr allocateV(@NotNull Arena arena, double ...array) {
+        return allocate(arena, array);
+    }
+
     /// Allocate a new {@link DoublePtr} in {@code arena} and copy the contents of {@code buffer} into
     /// the newly allocated {@link DoublePtr}.
     ///

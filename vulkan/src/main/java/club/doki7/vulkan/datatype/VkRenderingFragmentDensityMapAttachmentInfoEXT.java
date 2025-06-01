@@ -194,8 +194,9 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingFragmentDensityMapAttachmentInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderingFragmentDensityMapAttachmentInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImageView imageView() {
@@ -218,16 +220,18 @@ public record VkRenderingFragmentDensityMapAttachmentInfoEXT(@NotNull MemorySegm
         return new VkImageView(s);
     }
 
-    public void imageView(@Nullable VkImageView value) {
+    public VkRenderingFragmentDensityMapAttachmentInfoEXT imageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public void imageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkRenderingFragmentDensityMapAttachmentInfoEXT imageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

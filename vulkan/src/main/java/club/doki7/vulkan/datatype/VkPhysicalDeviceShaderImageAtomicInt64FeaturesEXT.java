@@ -194,8 +194,9 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderImageInt64Atomics() {
         return segment.get(LAYOUT$shaderImageInt64Atomics, OFFSET$shaderImageInt64Atomics);
     }
 
-    public void shaderImageInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT shaderImageInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderImageInt64Atomics, OFFSET$shaderImageInt64Atomics, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int sparseImageInt64Atomics() {
         return segment.get(LAYOUT$sparseImageInt64Atomics, OFFSET$sparseImageInt64Atomics);
     }
 
-    public void sparseImageInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT sparseImageInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sparseImageInt64Atomics, OFFSET$sparseImageInt64Atomics, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

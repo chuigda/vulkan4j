@@ -174,24 +174,27 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$count, OFFSET$count);
     }
 
-    public void count(@Unsigned int value) {
+    public VkDispatchGraphCountInfoAMDX count(@Unsigned int value) {
         segment.set(LAYOUT$count, OFFSET$count, value);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstAMDX infos() {
         return new VkDeviceOrHostAddressConstAMDX(segment.asSlice(OFFSET$infos, LAYOUT$infos));
     }
 
-    public void infos(@NotNull VkDeviceOrHostAddressConstAMDX value) {
+    public VkDispatchGraphCountInfoAMDX infos(@NotNull VkDeviceOrHostAddressConstAMDX value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$infos, SIZE$infos);
+        return this;
     }
 
     public @Unsigned long stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@Unsigned long value) {
+    public VkDispatchGraphCountInfoAMDX stride(@Unsigned long value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

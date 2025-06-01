@@ -194,8 +194,9 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMetalTextureInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportMetalTextureInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageAspectFlags.class) int plane() {
         return segment.get(LAYOUT$plane, OFFSET$plane);
     }
 
-    public void plane(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImportMetalTextureInfoEXT plane(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$plane, OFFSET$plane, value);
+        return this;
     }
 
     public @Pointer(comment="MTLTexture_id") MemorySegment mtlTexture() {
@@ -226,8 +229,9 @@ public record VkImportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$mtlTexture, OFFSET$mtlTexture, value);
     }
 
-    public void mtlTexture(@Nullable IPointer pointer) {
+    public VkImportMetalTextureInfoEXT mtlTexture(@Nullable IPointer pointer) {
         mtlTexture(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

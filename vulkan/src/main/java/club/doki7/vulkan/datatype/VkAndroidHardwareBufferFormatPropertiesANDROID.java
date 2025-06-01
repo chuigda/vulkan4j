@@ -200,8 +200,9 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkFormat.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public @Unsigned long externalFormat() {
         return segment.get(LAYOUT$externalFormat, OFFSET$externalFormat);
     }
 
-    public void externalFormat(@Unsigned long value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID externalFormat(@Unsigned long value) {
         segment.set(LAYOUT$externalFormat, OFFSET$externalFormat, value);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags.class) int formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public void formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
+        return this;
     }
 
     public @NotNull VkComponentMapping samplerYcbcrConversionComponents() {
         return new VkComponentMapping(segment.asSlice(OFFSET$samplerYcbcrConversionComponents, LAYOUT$samplerYcbcrConversionComponents));
     }
 
-    public void samplerYcbcrConversionComponents(@NotNull VkComponentMapping value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID samplerYcbcrConversionComponents(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
+        return this;
     }
 
     public @EnumType(VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
         return segment.get(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel);
     }
 
-    public void suggestedYcbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedYcbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel, value);
+        return this;
     }
 
     public @EnumType(VkSamplerYcbcrRange.class) int suggestedYcbcrRange() {
         return segment.get(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange);
     }
 
-    public void suggestedYcbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedYcbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange, value);
+        return this;
     }
 
     public @EnumType(VkChromaLocation.class) int suggestedXChromaOffset() {
         return segment.get(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset);
     }
 
-    public void suggestedXChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedXChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset, value);
+        return this;
     }
 
     public @EnumType(VkChromaLocation.class) int suggestedYChromaOffset() {
         return segment.get(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset);
     }
 
-    public void suggestedYChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedYChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -203,8 +203,9 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -215,96 +216,108 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineRasterizationStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineRasterizationStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineRasterizationStateCreateFlags.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo flags(@EnumType(VkPipelineRasterizationStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthClampEnable() {
         return segment.get(LAYOUT$depthClampEnable, OFFSET$depthClampEnable);
     }
 
-    public void depthClampEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineRasterizationStateCreateInfo depthClampEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthClampEnable, OFFSET$depthClampEnable, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rasterizerDiscardEnable() {
         return segment.get(LAYOUT$rasterizerDiscardEnable, OFFSET$rasterizerDiscardEnable);
     }
 
-    public void rasterizerDiscardEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineRasterizationStateCreateInfo rasterizerDiscardEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rasterizerDiscardEnable, OFFSET$rasterizerDiscardEnable, value);
+        return this;
     }
 
     public @EnumType(VkPolygonMode.class) int polygonMode() {
         return segment.get(LAYOUT$polygonMode, OFFSET$polygonMode);
     }
 
-    public void polygonMode(@EnumType(VkPolygonMode.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo polygonMode(@EnumType(VkPolygonMode.class) int value) {
         segment.set(LAYOUT$polygonMode, OFFSET$polygonMode, value);
+        return this;
     }
 
     public @EnumType(VkCullModeFlags.class) int cullMode() {
         return segment.get(LAYOUT$cullMode, OFFSET$cullMode);
     }
 
-    public void cullMode(@EnumType(VkCullModeFlags.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo cullMode(@EnumType(VkCullModeFlags.class) int value) {
         segment.set(LAYOUT$cullMode, OFFSET$cullMode, value);
+        return this;
     }
 
     public @EnumType(VkFrontFace.class) int frontFace() {
         return segment.get(LAYOUT$frontFace, OFFSET$frontFace);
     }
 
-    public void frontFace(@EnumType(VkFrontFace.class) int value) {
+    public VkPipelineRasterizationStateCreateInfo frontFace(@EnumType(VkFrontFace.class) int value) {
         segment.set(LAYOUT$frontFace, OFFSET$frontFace, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthBiasEnable() {
         return segment.get(LAYOUT$depthBiasEnable, OFFSET$depthBiasEnable);
     }
 
-    public void depthBiasEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineRasterizationStateCreateInfo depthBiasEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthBiasEnable, OFFSET$depthBiasEnable, value);
+        return this;
     }
 
     public float depthBiasConstantFactor() {
         return segment.get(LAYOUT$depthBiasConstantFactor, OFFSET$depthBiasConstantFactor);
     }
 
-    public void depthBiasConstantFactor(float value) {
+    public VkPipelineRasterizationStateCreateInfo depthBiasConstantFactor(float value) {
         segment.set(LAYOUT$depthBiasConstantFactor, OFFSET$depthBiasConstantFactor, value);
+        return this;
     }
 
     public float depthBiasClamp() {
         return segment.get(LAYOUT$depthBiasClamp, OFFSET$depthBiasClamp);
     }
 
-    public void depthBiasClamp(float value) {
+    public VkPipelineRasterizationStateCreateInfo depthBiasClamp(float value) {
         segment.set(LAYOUT$depthBiasClamp, OFFSET$depthBiasClamp, value);
+        return this;
     }
 
     public float depthBiasSlopeFactor() {
         return segment.get(LAYOUT$depthBiasSlopeFactor, OFFSET$depthBiasSlopeFactor);
     }
 
-    public void depthBiasSlopeFactor(float value) {
+    public VkPipelineRasterizationStateCreateInfo depthBiasSlopeFactor(float value) {
         segment.set(LAYOUT$depthBiasSlopeFactor, OFFSET$depthBiasSlopeFactor, value);
+        return this;
     }
 
     public float lineWidth() {
         return segment.get(LAYOUT$lineWidth, OFFSET$lineWidth);
     }
 
-    public void lineWidth(float value) {
+    public VkPipelineRasterizationStateCreateInfo lineWidth(float value) {
         segment.set(LAYOUT$lineWidth, OFFSET$lineWidth, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

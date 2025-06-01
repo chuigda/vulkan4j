@@ -246,8 +246,9 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VmaAllocatorCreateFlags.class) int value) {
+    public VmaAllocatorCreateInfo flags(@EnumType(VmaAllocatorCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkPhysicalDevice physicalDevice() {
@@ -258,8 +259,9 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new VkPhysicalDevice(s);
     }
 
-    public void physicalDevice(@Nullable VkPhysicalDevice value) {
+    public VmaAllocatorCreateInfo physicalDevice(@Nullable VkPhysicalDevice value) {
         segment.set(LAYOUT$physicalDevice, OFFSET$physicalDevice, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDevice device() {
@@ -270,21 +272,24 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new VkDevice(s);
     }
 
-    public void device(@Nullable VkDevice value) {
+    public VmaAllocatorCreateInfo device(@Nullable VkDevice value) {
         segment.set(LAYOUT$device, OFFSET$device, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long preferredLargeHeapBlockSize() {
         return segment.get(LAYOUT$preferredLargeHeapBlockSize, OFFSET$preferredLargeHeapBlockSize);
     }
 
-    public void preferredLargeHeapBlockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaAllocatorCreateInfo preferredLargeHeapBlockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$preferredLargeHeapBlockSize, OFFSET$preferredLargeHeapBlockSize, value);
+        return this;
     }
 
-    public void pAllocationCallbacks(@Nullable IVkAllocationCallbacks value) {
+    public VmaAllocatorCreateInfo pAllocationCallbacks(@Nullable IVkAllocationCallbacks value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAllocationCallbacksRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAllocationCallbacks.Ptr pAllocationCallbacks(int assumedCount) {
@@ -313,9 +318,10 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pAllocationCallbacks, OFFSET$pAllocationCallbacks, value);
     }
 
-    public void pDeviceMemoryCallbacks(@Nullable IVmaDeviceMemoryCallbacks value) {
+    public VmaAllocatorCreateInfo pDeviceMemoryCallbacks(@Nullable IVmaDeviceMemoryCallbacks value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceMemoryCallbacksRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VmaDeviceMemoryCallbacks.Ptr pDeviceMemoryCallbacks(int assumedCount) {
@@ -356,9 +362,10 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new LongPtr(s);
     }
 
-    public void pHeapSizeLimit(@Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
+    public VmaAllocatorCreateInfo pHeapSizeLimit(@Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHeapSizeLimitRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pHeapSizeLimitRaw() {
@@ -369,9 +376,10 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pHeapSizeLimit, OFFSET$pHeapSizeLimit, value);
     }
 
-    public void pVulkanFunctions(@Nullable IVmaVulkanFunctions value) {
+    public VmaAllocatorCreateInfo pVulkanFunctions(@Nullable IVmaVulkanFunctions value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVulkanFunctionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VmaVulkanFunctions.Ptr pVulkanFunctions(int assumedCount) {
@@ -408,16 +416,18 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new VkInstance(s);
     }
 
-    public void instance(@Nullable VkInstance value) {
+    public VmaAllocatorCreateInfo instance(@Nullable VkInstance value) {
         segment.set(LAYOUT$instance, OFFSET$instance, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int vulkanApiVersion() {
         return segment.get(LAYOUT$vulkanApiVersion, OFFSET$vulkanApiVersion);
     }
 
-    public void vulkanApiVersion(@Unsigned int value) {
+    public VmaAllocatorCreateInfo vulkanApiVersion(@Unsigned int value) {
         segment.set(LAYOUT$vulkanApiVersion, OFFSET$vulkanApiVersion, value);
+        return this;
     }
 
 
@@ -433,9 +443,10 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         return new IntPtr(s);
     }
 
-    public void pTypeExternalMemoryHandleTypes(@Nullable @EnumType(VkExternalMemoryHandleTypeFlags.class) IntPtr value) {
+    public VmaAllocatorCreateInfo pTypeExternalMemoryHandleTypes(@Nullable @EnumType(VkExternalMemoryHandleTypeFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTypeExternalMemoryHandleTypesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkExternalMemoryHandleTypeFlags.class) MemorySegment pTypeExternalMemoryHandleTypesRaw() {

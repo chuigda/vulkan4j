@@ -194,8 +194,9 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineTessellationStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineTessellationStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineTessellationStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineTessellationStateCreateFlags.class) int value) {
+    public VkPipelineTessellationStateCreateInfo flags(@EnumType(VkPipelineTessellationStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int patchControlPoints() {
         return segment.get(LAYOUT$patchControlPoints, OFFSET$patchControlPoints);
     }
 
-    public void patchControlPoints(@Unsigned int value) {
+    public VkPipelineTessellationStateCreateInfo patchControlPoints(@Unsigned int value) {
         segment.set(LAYOUT$patchControlPoints, OFFSET$patchControlPoints, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

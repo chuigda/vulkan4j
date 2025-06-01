@@ -193,8 +193,9 @@ public record VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxSubpassShadingWorkgroupSizeAspectRatio() {
         return segment.get(LAYOUT$maxSubpassShadingWorkgroupSizeAspectRatio, OFFSET$maxSubpassShadingWorkgroupSizeAspectRatio);
     }
 
-    public void maxSubpassShadingWorkgroupSizeAspectRatio(@Unsigned int value) {
+    public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI maxSubpassShadingWorkgroupSizeAspectRatio(@Unsigned int value) {
         segment.set(LAYOUT$maxSubpassShadingWorkgroupSizeAspectRatio, OFFSET$maxSubpassShadingWorkgroupSizeAspectRatio, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

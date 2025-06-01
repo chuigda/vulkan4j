@@ -204,8 +204,9 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkShaderCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -216,48 +217,54 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkShaderCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkShaderCreateFlagsEXT.class) int value) {
+    public VkShaderCreateInfoEXT flags(@EnumType(VkShaderCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public void stage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderCreateInfoEXT stage(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int nextStage() {
         return segment.get(LAYOUT$nextStage, OFFSET$nextStage);
     }
 
-    public void nextStage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkShaderCreateInfoEXT nextStage(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$nextStage, OFFSET$nextStage, value);
+        return this;
     }
 
     public @EnumType(VkShaderCodeTypeEXT.class) int codeType() {
         return segment.get(LAYOUT$codeType, OFFSET$codeType);
     }
 
-    public void codeType(@EnumType(VkShaderCodeTypeEXT.class) int value) {
+    public VkShaderCreateInfoEXT codeType(@EnumType(VkShaderCodeTypeEXT.class) int value) {
         segment.set(LAYOUT$codeType, OFFSET$codeType, value);
+        return this;
     }
 
     public @Unsigned long codeSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$codeSize);
     }
 
-    public void codeSize(@Unsigned long value) {
+    public VkShaderCreateInfoEXT codeSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$codeSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pCode() {
@@ -268,8 +275,9 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pCode, OFFSET$pCode, value);
     }
 
-    public void pCode(@Nullable IPointer pointer) {
+    public VkShaderCreateInfoEXT pCode(@Nullable IPointer pointer) {
         pCode(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -284,9 +292,10 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return new BytePtr(s);
     }
 
-    public void pName(@Nullable BytePtr value) {
+    public VkShaderCreateInfoEXT pName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
@@ -301,8 +310,9 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$setLayoutCount, OFFSET$setLayoutCount);
     }
 
-    public void setLayoutCount(@Unsigned int value) {
+    public VkShaderCreateInfoEXT setLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$setLayoutCount, OFFSET$setLayoutCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkDescriptorSetLayout.Ptr} does not have correct {@link VkDescriptorSetLayout.Ptr#size}
@@ -317,9 +327,10 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return new VkDescriptorSetLayout.Ptr(s);
     }
 
-    public void pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
+    public VkShaderCreateInfoEXT pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
@@ -334,13 +345,15 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
     }
 
-    public void pushConstantRangeCount(@Unsigned int value) {
+    public VkShaderCreateInfoEXT pushConstantRangeCount(@Unsigned int value) {
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
+        return this;
     }
 
-    public void pPushConstantRanges(@Nullable IVkPushConstantRange value) {
+    public VkShaderCreateInfoEXT pPushConstantRanges(@Nullable IVkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPushConstantRange.Ptr pPushConstantRanges(int assumedCount) {
@@ -369,9 +382,10 @@ public record VkShaderCreateInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pPushConstantRanges, OFFSET$pPushConstantRanges, value);
     }
 
-    public void pSpecializationInfo(@Nullable IVkSpecializationInfo value) {
+    public VkShaderCreateInfoEXT pSpecializationInfo(@Nullable IVkSpecializationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSpecializationInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSpecializationInfo.Ptr pSpecializationInfo(int assumedCount) {

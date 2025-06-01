@@ -173,9 +173,10 @@ public record StdVideoEncodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void used_for_long_term_reference(boolean value) {
+    public StdVideoEncodeH264ReferenceInfoFlags used_for_long_term_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$used_for_long_term_reference$reserved, LAYOUT$bitfield$used_for_long_term_reference$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

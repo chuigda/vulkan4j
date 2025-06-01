@@ -173,9 +173,10 @@ public record StdVideoAV1TileInfoFlags(@NotNull MemorySegment segment) implement
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void uniform_tile_spacing_flag(boolean value) {
+    public StdVideoAV1TileInfoFlags uniform_tile_spacing_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$uniform_tile_spacing_flag$reserved, LAYOUT$bitfield$uniform_tile_spacing_flag$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

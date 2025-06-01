@@ -193,8 +193,9 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageViewImageFormatInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceImageViewImageFormatInfoEXT(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageViewImageFormatInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageViewType.class) int imageViewType() {
         return segment.get(LAYOUT$imageViewType, OFFSET$imageViewType);
     }
 
-    public void imageViewType(@EnumType(VkImageViewType.class) int value) {
+    public VkPhysicalDeviceImageViewImageFormatInfoEXT imageViewType(@EnumType(VkImageViewType.class) int value) {
         segment.set(LAYOUT$imageViewType, OFFSET$imageViewType, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectCommandsLayoutTokenEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkIndirectCommandsLayoutTokenEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkIndirectCommandsTokenTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkIndirectCommandsTokenTypeEXT.class) int value) {
+    public VkIndirectCommandsLayoutTokenEXT type(@EnumType(VkIndirectCommandsTokenTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @NotNull VkIndirectCommandsTokenDataEXT data() {
         return new VkIndirectCommandsTokenDataEXT(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(@NotNull VkIndirectCommandsTokenDataEXT value) {
+    public VkIndirectCommandsLayoutTokenEXT data(@NotNull VkIndirectCommandsTokenDataEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
     }
 
     public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned int value) {
+    public VkIndirectCommandsLayoutTokenEXT offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

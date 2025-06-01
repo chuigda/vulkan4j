@@ -176,40 +176,45 @@ public record VkImageSubresourceRange(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImageSubresourceRange aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
+        return this;
     }
 
     public @Unsigned int baseMipLevel() {
         return segment.get(LAYOUT$baseMipLevel, OFFSET$baseMipLevel);
     }
 
-    public void baseMipLevel(@Unsigned int value) {
+    public VkImageSubresourceRange baseMipLevel(@Unsigned int value) {
         segment.set(LAYOUT$baseMipLevel, OFFSET$baseMipLevel, value);
+        return this;
     }
 
     public @Unsigned int levelCount() {
         return segment.get(LAYOUT$levelCount, OFFSET$levelCount);
     }
 
-    public void levelCount(@Unsigned int value) {
+    public VkImageSubresourceRange levelCount(@Unsigned int value) {
         segment.set(LAYOUT$levelCount, OFFSET$levelCount, value);
+        return this;
     }
 
     public @Unsigned int baseArrayLayer() {
         return segment.get(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer);
     }
 
-    public void baseArrayLayer(@Unsigned int value) {
+    public VkImageSubresourceRange baseArrayLayer(@Unsigned int value) {
         segment.set(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer, value);
+        return this;
     }
 
     public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@Unsigned int value) {
+    public VkImageSubresourceRange layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerCustomBorderColorCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerCustomBorderColorCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkClearColorValue customBorderColor() {
         return new VkClearColorValue(segment.asSlice(OFFSET$customBorderColor, LAYOUT$customBorderColor));
     }
 
-    public void customBorderColor(@NotNull VkClearColorValue value) {
+    public VkSamplerCustomBorderColorCreateInfoEXT customBorderColor(@NotNull VkClearColorValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$customBorderColor, SIZE$customBorderColor);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkFormat.class) int value) {
+    public VkSamplerCustomBorderColorCreateInfoEXT format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

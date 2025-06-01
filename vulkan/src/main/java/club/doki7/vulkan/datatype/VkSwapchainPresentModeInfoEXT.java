@@ -194,8 +194,9 @@ public record VkSwapchainPresentModeInfoEXT(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainPresentModeInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkSwapchainPresentModeInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSwapchainPresentModeInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@Unsigned int value) {
+    public VkSwapchainPresentModeInfoEXT swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
+        return this;
     }
 
 
@@ -231,9 +234,10 @@ public record VkSwapchainPresentModeInfoEXT(@NotNull MemorySegment segment) impl
         return new IntPtr(s);
     }
 
-    public void pPresentModes(@Nullable @EnumType(VkPresentModeKHR.class) IntPtr value) {
+    public VkSwapchainPresentModeInfoEXT pPresentModes(@Nullable @EnumType(VkPresentModeKHR.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentModesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkPresentModeKHR.class) MemorySegment pPresentModesRaw() {

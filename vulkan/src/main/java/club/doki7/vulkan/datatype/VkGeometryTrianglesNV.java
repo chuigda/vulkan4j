@@ -203,8 +203,9 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeometryTrianglesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -215,8 +216,9 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkGeometryTrianglesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkBuffer vertexData() {
@@ -227,40 +229,45 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return new VkBuffer(s);
     }
 
-    public void vertexData(@Nullable VkBuffer value) {
+    public VkGeometryTrianglesNV vertexData(@Nullable VkBuffer value) {
         segment.set(LAYOUT$vertexData, OFFSET$vertexData, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long vertexOffset() {
         return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
     }
 
-    public void vertexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeometryTrianglesNV vertexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
+        return this;
     }
 
     public @Unsigned int vertexCount() {
         return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
     }
 
-    public void vertexCount(@Unsigned int value) {
+    public VkGeometryTrianglesNV vertexCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
 
-    public void vertexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeometryTrianglesNV vertexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public void vertexFormat(@EnumType(VkFormat.class) int value) {
+    public VkGeometryTrianglesNV vertexFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
+        return this;
     }
 
     public @Nullable VkBuffer indexData() {
@@ -271,32 +278,36 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return new VkBuffer(s);
     }
 
-    public void indexData(@Nullable VkBuffer value) {
+    public VkGeometryTrianglesNV indexData(@Nullable VkBuffer value) {
         segment.set(LAYOUT$indexData, OFFSET$indexData, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long indexOffset() {
         return segment.get(LAYOUT$indexOffset, OFFSET$indexOffset);
     }
 
-    public void indexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeometryTrianglesNV indexOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$indexOffset, OFFSET$indexOffset, value);
+        return this;
     }
 
     public @Unsigned int indexCount() {
         return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
     }
 
-    public void indexCount(@Unsigned int value) {
+    public VkGeometryTrianglesNV indexCount(@Unsigned int value) {
         segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
+        return this;
     }
 
     public @EnumType(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public void indexType(@EnumType(VkIndexType.class) int value) {
+    public VkGeometryTrianglesNV indexType(@EnumType(VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
+        return this;
     }
 
     public @Nullable VkBuffer transformData() {
@@ -307,16 +318,18 @@ public record VkGeometryTrianglesNV(@NotNull MemorySegment segment) implements I
         return new VkBuffer(s);
     }
 
-    public void transformData(@Nullable VkBuffer value) {
+    public VkGeometryTrianglesNV transformData(@Nullable VkBuffer value) {
         segment.set(LAYOUT$transformData, OFFSET$transformData, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long transformOffset() {
         return segment.get(LAYOUT$transformOffset, OFFSET$transformOffset);
     }
 
-    public void transformOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeometryTrianglesNV transformOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$transformOffset, OFFSET$transformOffset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

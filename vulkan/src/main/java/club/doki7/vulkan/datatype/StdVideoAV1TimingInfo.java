@@ -173,32 +173,36 @@ public record StdVideoAV1TimingInfo(@NotNull MemorySegment segment) implements I
         return new StdVideoAV1TimingInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoAV1TimingInfoFlags value) {
+    public StdVideoAV1TimingInfo flags(@NotNull StdVideoAV1TimingInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned int num_units_in_display_tick() {
         return segment.get(LAYOUT$num_units_in_display_tick, OFFSET$num_units_in_display_tick);
     }
 
-    public void num_units_in_display_tick(@Unsigned int value) {
+    public StdVideoAV1TimingInfo num_units_in_display_tick(@Unsigned int value) {
         segment.set(LAYOUT$num_units_in_display_tick, OFFSET$num_units_in_display_tick, value);
+        return this;
     }
 
     public @Unsigned int time_scale() {
         return segment.get(LAYOUT$time_scale, OFFSET$time_scale);
     }
 
-    public void time_scale(@Unsigned int value) {
+    public StdVideoAV1TimingInfo time_scale(@Unsigned int value) {
         segment.set(LAYOUT$time_scale, OFFSET$time_scale, value);
+        return this;
     }
 
     public @Unsigned int num_ticks_per_picture_minus_1() {
         return segment.get(LAYOUT$num_ticks_per_picture_minus_1, OFFSET$num_ticks_per_picture_minus_1);
     }
 
-    public void num_ticks_per_picture_minus_1(@Unsigned int value) {
+    public StdVideoAV1TimingInfo num_ticks_per_picture_minus_1(@Unsigned int value) {
         segment.set(LAYOUT$num_ticks_per_picture_minus_1, OFFSET$num_ticks_per_picture_minus_1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

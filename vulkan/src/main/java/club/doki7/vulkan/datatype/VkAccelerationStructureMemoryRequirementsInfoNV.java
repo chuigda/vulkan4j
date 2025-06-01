@@ -194,8 +194,9 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureMemoryRequirementsInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureMemoryRequirementsInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkAccelerationStructureMemoryRequirementsTypeNV.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
+    public VkAccelerationStructureMemoryRequirementsInfoNV type(@EnumType(VkAccelerationStructureMemoryRequirementsTypeNV.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @Nullable VkAccelerationStructureNV accelerationStructure() {
@@ -226,8 +229,9 @@ public record VkAccelerationStructureMemoryRequirementsInfoNV(@NotNull MemorySeg
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructure(@Nullable VkAccelerationStructureNV value) {
+    public VkAccelerationStructureMemoryRequirementsInfoNV accelerationStructure(@Nullable VkAccelerationStructureNV value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

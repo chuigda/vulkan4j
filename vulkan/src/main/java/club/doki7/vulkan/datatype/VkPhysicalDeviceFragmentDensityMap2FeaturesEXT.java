@@ -193,8 +193,9 @@ public record VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentDensityMap2FeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceFragmentDensityMap2FeaturesEXT(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceFragmentDensityMap2FeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int fragmentDensityMapDeferred() {
         return segment.get(LAYOUT$fragmentDensityMapDeferred, OFFSET$fragmentDensityMapDeferred);
     }
 
-    public void fragmentDensityMapDeferred(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMap2FeaturesEXT fragmentDensityMapDeferred(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityMapDeferred, OFFSET$fragmentDensityMapDeferred, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkPhysicalDeviceFaultFeaturesEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFaultFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceFaultFeaturesEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceFaultFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceFault() {
         return segment.get(LAYOUT$deviceFault, OFFSET$deviceFault);
     }
 
-    public void deviceFault(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFaultFeaturesEXT deviceFault(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceFault, OFFSET$deviceFault, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceFaultVendorBinary() {
         return segment.get(LAYOUT$deviceFaultVendorBinary, OFFSET$deviceFaultVendorBinary);
     }
 
-    public void deviceFaultVendorBinary(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFaultFeaturesEXT deviceFaultVendorBinary(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceFaultVendorBinary, OFFSET$deviceFaultVendorBinary, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

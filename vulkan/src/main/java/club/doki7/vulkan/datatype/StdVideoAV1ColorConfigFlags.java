@@ -176,9 +176,10 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void mono_chrome(boolean value) {
+    public StdVideoAV1ColorConfigFlags mono_chrome(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean color_range() {
@@ -186,9 +187,10 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void color_range(boolean value) {
+    public StdVideoAV1ColorConfigFlags color_range(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean separate_uv_delta_q() {
@@ -196,9 +198,10 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void separate_uv_delta_q(boolean value) {
+    public StdVideoAV1ColorConfigFlags separate_uv_delta_q(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean color_description_present_flag() {
@@ -206,9 +209,10 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void color_description_present_flag(boolean value) {
+    public StdVideoAV1ColorConfigFlags color_description_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$mono_chrome$reserved, LAYOUT$bitfield$mono_chrome$reserved);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

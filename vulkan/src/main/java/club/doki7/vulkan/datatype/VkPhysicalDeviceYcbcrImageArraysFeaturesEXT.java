@@ -193,8 +193,9 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int ycbcrImageArrays() {
         return segment.get(LAYOUT$ycbcrImageArrays, OFFSET$ycbcrImageArrays);
     }
 
-    public void ycbcrImageArrays(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT ycbcrImageArrays(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$ycbcrImageArrays, OFFSET$ycbcrImageArrays, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

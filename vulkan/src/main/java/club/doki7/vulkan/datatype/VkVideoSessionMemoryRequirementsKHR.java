@@ -194,8 +194,9 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoSessionMemoryRequirementsKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoSessionMemoryRequirementsKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int memoryBindIndex() {
         return segment.get(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex);
     }
 
-    public void memoryBindIndex(@Unsigned int value) {
+    public VkVideoSessionMemoryRequirementsKHR memoryBindIndex(@Unsigned int value) {
         segment.set(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex, value);
+        return this;
     }
 
     public @NotNull VkMemoryRequirements memoryRequirements() {
         return new VkMemoryRequirements(segment.asSlice(OFFSET$memoryRequirements, LAYOUT$memoryRequirements));
     }
 
-    public void memoryRequirements(@NotNull VkMemoryRequirements value) {
+    public VkVideoSessionMemoryRequirementsKHR memoryRequirements(@NotNull VkMemoryRequirements value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

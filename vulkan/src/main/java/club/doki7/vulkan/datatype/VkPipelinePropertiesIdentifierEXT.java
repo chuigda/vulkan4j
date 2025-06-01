@@ -193,8 +193,9 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelinePropertiesIdentifierEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelinePropertiesIdentifierEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned BytePtr pipelineIdentifier() {
         return new BytePtr(pipelineIdentifierRaw());
     }
 
-    public void pipelineIdentifier(@Unsigned BytePtr value) {
+    public VkPipelinePropertiesIdentifierEXT pipelineIdentifier(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineIdentifier, SIZE$pipelineIdentifier);
+        return this;
     }
 
     public MemorySegment pipelineIdentifierRaw() {

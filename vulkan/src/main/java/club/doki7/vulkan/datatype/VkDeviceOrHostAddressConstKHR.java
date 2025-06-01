@@ -173,8 +173,9 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkDeviceOrHostAddressConstKHR deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment hostAddress() {
@@ -185,8 +186,9 @@ public record VkDeviceOrHostAddressConstKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$hostAddress, OFFSET$hostAddress, value);
     }
 
-    public void hostAddress(@Nullable IPointer pointer) {
+    public VkDeviceOrHostAddressConstKHR hostAddress(@Nullable IPointer pointer) {
         hostAddress(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

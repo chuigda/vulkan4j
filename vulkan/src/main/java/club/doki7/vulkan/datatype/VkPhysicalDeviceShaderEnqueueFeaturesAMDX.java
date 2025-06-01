@@ -194,8 +194,9 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceShaderEnqueueFeaturesAMDX(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderEnqueue() {
         return segment.get(LAYOUT$shaderEnqueue, OFFSET$shaderEnqueue);
     }
 
-    public void shaderEnqueue(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderEnqueue(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderEnqueue, OFFSET$shaderEnqueue, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderMeshEnqueue() {
         return segment.get(LAYOUT$shaderMeshEnqueue, OFFSET$shaderMeshEnqueue);
     }
 
-    public void shaderMeshEnqueue(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderEnqueueFeaturesAMDX shaderMeshEnqueue(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderMeshEnqueue, OFFSET$shaderMeshEnqueue, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

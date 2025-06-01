@@ -206,13 +206,15 @@ public record VmaDefragmentationPassMoveInfo(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$moveCount, OFFSET$moveCount);
     }
 
-    public void moveCount(@Unsigned int value) {
+    public VmaDefragmentationPassMoveInfo moveCount(@Unsigned int value) {
         segment.set(LAYOUT$moveCount, OFFSET$moveCount, value);
+        return this;
     }
 
-    public void pMoves(@Nullable IVmaDefragmentationMove value) {
+    public VmaDefragmentationPassMoveInfo pMoves(@Nullable IVmaDefragmentationMove value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMovesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VmaDefragmentationMove.Ptr pMoves(int assumedCount) {

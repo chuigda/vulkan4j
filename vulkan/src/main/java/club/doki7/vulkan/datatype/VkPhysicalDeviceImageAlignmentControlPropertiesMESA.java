@@ -193,8 +193,9 @@ public record VkPhysicalDeviceImageAlignmentControlPropertiesMESA(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageAlignmentControlPropertiesMESA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceImageAlignmentControlPropertiesMESA(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageAlignmentControlPropertiesMESA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int supportedImageAlignmentMask() {
         return segment.get(LAYOUT$supportedImageAlignmentMask, OFFSET$supportedImageAlignmentMask);
     }
 
-    public void supportedImageAlignmentMask(@Unsigned int value) {
+    public VkPhysicalDeviceImageAlignmentControlPropertiesMESA supportedImageAlignmentMask(@Unsigned int value) {
         segment.set(LAYOUT$supportedImageAlignmentMask, OFFSET$supportedImageAlignmentMask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

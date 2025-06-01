@@ -207,8 +207,9 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -219,128 +220,144 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int preferredRateControlFlags() {
         return segment.get(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags);
     }
 
-    public void preferredRateControlFlags(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredRateControlFlags(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags, value);
+        return this;
     }
 
     public @Unsigned int preferredGopFrameCount() {
         return segment.get(LAYOUT$preferredGopFrameCount, OFFSET$preferredGopFrameCount);
     }
 
-    public void preferredGopFrameCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredGopFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredGopFrameCount, OFFSET$preferredGopFrameCount, value);
+        return this;
     }
 
     public @Unsigned int preferredKeyFramePeriod() {
         return segment.get(LAYOUT$preferredKeyFramePeriod, OFFSET$preferredKeyFramePeriod);
     }
 
-    public void preferredKeyFramePeriod(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredKeyFramePeriod(@Unsigned int value) {
         segment.set(LAYOUT$preferredKeyFramePeriod, OFFSET$preferredKeyFramePeriod, value);
+        return this;
     }
 
     public @Unsigned int preferredConsecutiveBipredictiveFrameCount() {
         return segment.get(LAYOUT$preferredConsecutiveBipredictiveFrameCount, OFFSET$preferredConsecutiveBipredictiveFrameCount);
     }
 
-    public void preferredConsecutiveBipredictiveFrameCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConsecutiveBipredictiveFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredConsecutiveBipredictiveFrameCount, OFFSET$preferredConsecutiveBipredictiveFrameCount, value);
+        return this;
     }
 
     public @Unsigned int preferredTemporalLayerCount() {
         return segment.get(LAYOUT$preferredTemporalLayerCount, OFFSET$preferredTemporalLayerCount);
     }
 
-    public void preferredTemporalLayerCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredTemporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredTemporalLayerCount, OFFSET$preferredTemporalLayerCount, value);
+        return this;
     }
 
     public @NotNull VkVideoEncodeAV1QIndexKHR preferredConstantQIndex() {
         return new VkVideoEncodeAV1QIndexKHR(segment.asSlice(OFFSET$preferredConstantQIndex, LAYOUT$preferredConstantQIndex));
     }
 
-    public void preferredConstantQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConstantQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$preferredConstantQIndex, SIZE$preferredConstantQIndex);
+        return this;
     }
 
     public @Unsigned int preferredMaxSingleReferenceCount() {
         return segment.get(LAYOUT$preferredMaxSingleReferenceCount, OFFSET$preferredMaxSingleReferenceCount);
     }
 
-    public void preferredMaxSingleReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxSingleReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxSingleReferenceCount, OFFSET$preferredMaxSingleReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int preferredSingleReferenceNameMask() {
         return segment.get(LAYOUT$preferredSingleReferenceNameMask, OFFSET$preferredSingleReferenceNameMask);
     }
 
-    public void preferredSingleReferenceNameMask(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredSingleReferenceNameMask(@Unsigned int value) {
         segment.set(LAYOUT$preferredSingleReferenceNameMask, OFFSET$preferredSingleReferenceNameMask, value);
+        return this;
     }
 
     public @Unsigned int preferredMaxUnidirectionalCompoundReferenceCount() {
         return segment.get(LAYOUT$preferredMaxUnidirectionalCompoundReferenceCount, OFFSET$preferredMaxUnidirectionalCompoundReferenceCount);
     }
 
-    public void preferredMaxUnidirectionalCompoundReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxUnidirectionalCompoundReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxUnidirectionalCompoundReferenceCount, OFFSET$preferredMaxUnidirectionalCompoundReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int preferredMaxUnidirectionalCompoundGroup1ReferenceCount() {
         return segment.get(LAYOUT$preferredMaxUnidirectionalCompoundGroup1ReferenceCount, OFFSET$preferredMaxUnidirectionalCompoundGroup1ReferenceCount);
     }
 
-    public void preferredMaxUnidirectionalCompoundGroup1ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxUnidirectionalCompoundGroup1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxUnidirectionalCompoundGroup1ReferenceCount, OFFSET$preferredMaxUnidirectionalCompoundGroup1ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int preferredUnidirectionalCompoundReferenceNameMask() {
         return segment.get(LAYOUT$preferredUnidirectionalCompoundReferenceNameMask, OFFSET$preferredUnidirectionalCompoundReferenceNameMask);
     }
 
-    public void preferredUnidirectionalCompoundReferenceNameMask(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredUnidirectionalCompoundReferenceNameMask(@Unsigned int value) {
         segment.set(LAYOUT$preferredUnidirectionalCompoundReferenceNameMask, OFFSET$preferredUnidirectionalCompoundReferenceNameMask, value);
+        return this;
     }
 
     public @Unsigned int preferredMaxBidirectionalCompoundReferenceCount() {
         return segment.get(LAYOUT$preferredMaxBidirectionalCompoundReferenceCount, OFFSET$preferredMaxBidirectionalCompoundReferenceCount);
     }
 
-    public void preferredMaxBidirectionalCompoundReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxBidirectionalCompoundReferenceCount, OFFSET$preferredMaxBidirectionalCompoundReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int preferredMaxBidirectionalCompoundGroup1ReferenceCount() {
         return segment.get(LAYOUT$preferredMaxBidirectionalCompoundGroup1ReferenceCount, OFFSET$preferredMaxBidirectionalCompoundGroup1ReferenceCount);
     }
 
-    public void preferredMaxBidirectionalCompoundGroup1ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundGroup1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxBidirectionalCompoundGroup1ReferenceCount, OFFSET$preferredMaxBidirectionalCompoundGroup1ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int preferredMaxBidirectionalCompoundGroup2ReferenceCount() {
         return segment.get(LAYOUT$preferredMaxBidirectionalCompoundGroup2ReferenceCount, OFFSET$preferredMaxBidirectionalCompoundGroup2ReferenceCount);
     }
 
-    public void preferredMaxBidirectionalCompoundGroup2ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundGroup2ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxBidirectionalCompoundGroup2ReferenceCount, OFFSET$preferredMaxBidirectionalCompoundGroup2ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int preferredBidirectionalCompoundReferenceNameMask() {
         return segment.get(LAYOUT$preferredBidirectionalCompoundReferenceNameMask, OFFSET$preferredBidirectionalCompoundReferenceNameMask);
     }
 
-    public void preferredBidirectionalCompoundReferenceNameMask(@Unsigned int value) {
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredBidirectionalCompoundReferenceNameMask(@Unsigned int value) {
         segment.set(LAYOUT$preferredBidirectionalCompoundReferenceNameMask, OFFSET$preferredBidirectionalCompoundReferenceNameMask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

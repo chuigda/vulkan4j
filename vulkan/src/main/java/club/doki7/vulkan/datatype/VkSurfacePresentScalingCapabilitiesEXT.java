@@ -197,8 +197,9 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSurfacePresentScalingCapabilitiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPresentScalingFlagsEXT.class) int supportedPresentScaling() {
         return segment.get(LAYOUT$supportedPresentScaling, OFFSET$supportedPresentScaling);
     }
 
-    public void supportedPresentScaling(@EnumType(VkPresentScalingFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentScaling(@EnumType(VkPresentScalingFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentScaling, OFFSET$supportedPresentScaling, value);
+        return this;
     }
 
     public @EnumType(VkPresentGravityFlagsEXT.class) int supportedPresentGravityX() {
         return segment.get(LAYOUT$supportedPresentGravityX, OFFSET$supportedPresentGravityX);
     }
 
-    public void supportedPresentGravityX(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityX(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentGravityX, OFFSET$supportedPresentGravityX, value);
+        return this;
     }
 
     public @EnumType(VkPresentGravityFlagsEXT.class) int supportedPresentGravityY() {
         return segment.get(LAYOUT$supportedPresentGravityY, OFFSET$supportedPresentGravityY);
     }
 
-    public void supportedPresentGravityY(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityY(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedPresentGravityY, OFFSET$supportedPresentGravityY, value);
+        return this;
     }
 
     public @NotNull VkExtent2D minScaledImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minScaledImageExtent, LAYOUT$minScaledImageExtent));
     }
 
-    public void minScaledImageExtent(@NotNull VkExtent2D value) {
+    public VkSurfacePresentScalingCapabilitiesEXT minScaledImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minScaledImageExtent, SIZE$minScaledImageExtent);
+        return this;
     }
 
     public @NotNull VkExtent2D maxScaledImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxScaledImageExtent, LAYOUT$maxScaledImageExtent));
     }
 
-    public void maxScaledImageExtent(@NotNull VkExtent2D value) {
+    public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxScaledImageExtent, SIZE$maxScaledImageExtent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

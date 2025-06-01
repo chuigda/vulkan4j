@@ -194,8 +194,9 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkFenceGetFdInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkFenceGetFdInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkFence fence() {
@@ -218,16 +220,18 @@ public record VkFenceGetFdInfoKHR(@NotNull MemorySegment segment) implements IVk
         return new VkFence(s);
     }
 
-    public void fence(@Nullable VkFence value) {
+    public VkFenceGetFdInfoKHR fence(@Nullable VkFence value) {
         segment.set(LAYOUT$fence, OFFSET$fence, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkFenceGetFdInfoKHR handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

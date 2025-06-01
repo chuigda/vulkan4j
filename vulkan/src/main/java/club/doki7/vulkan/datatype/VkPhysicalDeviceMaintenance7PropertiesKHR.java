@@ -200,8 +200,9 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkPhysicalDeviceMaintenance7PropertiesKHR(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int robustFragmentShadingRateAttachmentAccess() {
         return segment.get(LAYOUT$robustFragmentShadingRateAttachmentAccess, OFFSET$robustFragmentShadingRateAttachmentAccess);
     }
 
-    public void robustFragmentShadingRateAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR robustFragmentShadingRateAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$robustFragmentShadingRateAttachmentAccess, OFFSET$robustFragmentShadingRateAttachmentAccess, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int separateDepthStencilAttachmentAccess() {
         return segment.get(LAYOUT$separateDepthStencilAttachmentAccess, OFFSET$separateDepthStencilAttachmentAccess);
     }
 
-    public void separateDepthStencilAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR separateDepthStencilAttachmentAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$separateDepthStencilAttachmentAccess, OFFSET$separateDepthStencilAttachmentAccess, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetTotalUniformBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetTotalUniformBuffersDynamic, OFFSET$maxDescriptorSetTotalUniformBuffersDynamic);
     }
 
-    public void maxDescriptorSetTotalUniformBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetTotalUniformBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetTotalUniformBuffersDynamic, OFFSET$maxDescriptorSetTotalUniformBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetTotalStorageBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetTotalStorageBuffersDynamic, OFFSET$maxDescriptorSetTotalStorageBuffersDynamic);
     }
 
-    public void maxDescriptorSetTotalStorageBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetTotalStorageBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetTotalStorageBuffersDynamic, OFFSET$maxDescriptorSetTotalStorageBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetTotalBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetTotalBuffersDynamic, OFFSET$maxDescriptorSetTotalBuffersDynamic);
     }
 
-    public void maxDescriptorSetTotalBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetTotalBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetTotalBuffersDynamic, OFFSET$maxDescriptorSetTotalBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindTotalBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindTotalBuffersDynamic, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

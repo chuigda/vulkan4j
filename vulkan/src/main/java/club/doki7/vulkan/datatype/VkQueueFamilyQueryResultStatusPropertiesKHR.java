@@ -193,8 +193,9 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueueFamilyQueryResultStatusPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkQueueFamilyQueryResultStatusPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int queryResultStatusSupport() {
         return segment.get(LAYOUT$queryResultStatusSupport, OFFSET$queryResultStatusSupport);
     }
 
-    public void queryResultStatusSupport(@NativeType("VkBool32") @Unsigned int value) {
+    public VkQueueFamilyQueryResultStatusPropertiesKHR queryResultStatusSupport(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$queryResultStatusSupport, OFFSET$queryResultStatusSupport, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

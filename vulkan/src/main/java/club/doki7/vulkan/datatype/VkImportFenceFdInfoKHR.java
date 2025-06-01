@@ -196,8 +196,9 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportFenceFdInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,8 +209,9 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportFenceFdInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkFence fence() {
@@ -220,32 +222,36 @@ public record VkImportFenceFdInfoKHR(@NotNull MemorySegment segment) implements 
         return new VkFence(s);
     }
 
-    public void fence(@Nullable VkFence value) {
+    public VkImportFenceFdInfoKHR fence(@Nullable VkFence value) {
         segment.set(LAYOUT$fence, OFFSET$fence, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFenceImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkFenceImportFlags.class) int value) {
+    public VkImportFenceFdInfoKHR flags(@EnumType(VkFenceImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkImportFenceFdInfoKHR handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+        return this;
     }
 
     public int fd() {
         return segment.get(LAYOUT$fd, OFFSET$fd);
     }
 
-    public void fd(int value) {
+    public VkImportFenceFdInfoKHR fd(int value) {
         segment.set(LAYOUT$fd, OFFSET$fd, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

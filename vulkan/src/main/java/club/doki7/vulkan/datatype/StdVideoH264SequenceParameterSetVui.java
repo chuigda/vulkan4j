@@ -185,118 +185,133 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         return new StdVideoH264SpsVuiFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoH264SpsVuiFlags value) {
+    public StdVideoH264SequenceParameterSetVui flags(@NotNull StdVideoH264SpsVuiFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @EnumType(StdVideoH264AspectRatioIdc.class) int aspect_ratio_idc() {
         return segment.get(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc);
     }
 
-    public void aspect_ratio_idc(@EnumType(StdVideoH264AspectRatioIdc.class) int value) {
+    public StdVideoH264SequenceParameterSetVui aspect_ratio_idc(@EnumType(StdVideoH264AspectRatioIdc.class) int value) {
         segment.set(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc, value);
+        return this;
     }
 
     public @Unsigned short sar_width() {
         return segment.get(LAYOUT$sar_width, OFFSET$sar_width);
     }
 
-    public void sar_width(@Unsigned short value) {
+    public StdVideoH264SequenceParameterSetVui sar_width(@Unsigned short value) {
         segment.set(LAYOUT$sar_width, OFFSET$sar_width, value);
+        return this;
     }
 
     public @Unsigned short sar_height() {
         return segment.get(LAYOUT$sar_height, OFFSET$sar_height);
     }
 
-    public void sar_height(@Unsigned short value) {
+    public StdVideoH264SequenceParameterSetVui sar_height(@Unsigned short value) {
         segment.set(LAYOUT$sar_height, OFFSET$sar_height, value);
+        return this;
     }
 
     public @Unsigned byte video_format() {
         return segment.get(LAYOUT$video_format, OFFSET$video_format);
     }
 
-    public void video_format(@Unsigned byte value) {
+    public StdVideoH264SequenceParameterSetVui video_format(@Unsigned byte value) {
         segment.set(LAYOUT$video_format, OFFSET$video_format, value);
+        return this;
     }
 
     public @Unsigned byte colour_primaries() {
         return segment.get(LAYOUT$colour_primaries, OFFSET$colour_primaries);
     }
 
-    public void colour_primaries(@Unsigned byte value) {
+    public StdVideoH264SequenceParameterSetVui colour_primaries(@Unsigned byte value) {
         segment.set(LAYOUT$colour_primaries, OFFSET$colour_primaries, value);
+        return this;
     }
 
     public @Unsigned byte transfer_characteristics() {
         return segment.get(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics);
     }
 
-    public void transfer_characteristics(@Unsigned byte value) {
+    public StdVideoH264SequenceParameterSetVui transfer_characteristics(@Unsigned byte value) {
         segment.set(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics, value);
+        return this;
     }
 
     public @Unsigned byte matrix_coefficients() {
         return segment.get(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients);
     }
 
-    public void matrix_coefficients(@Unsigned byte value) {
+    public StdVideoH264SequenceParameterSetVui matrix_coefficients(@Unsigned byte value) {
         segment.set(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients, value);
+        return this;
     }
 
     public @Unsigned int num_units_in_tick() {
         return segment.get(LAYOUT$num_units_in_tick, OFFSET$num_units_in_tick);
     }
 
-    public void num_units_in_tick(@Unsigned int value) {
+    public StdVideoH264SequenceParameterSetVui num_units_in_tick(@Unsigned int value) {
         segment.set(LAYOUT$num_units_in_tick, OFFSET$num_units_in_tick, value);
+        return this;
     }
 
     public @Unsigned int time_scale() {
         return segment.get(LAYOUT$time_scale, OFFSET$time_scale);
     }
 
-    public void time_scale(@Unsigned int value) {
+    public StdVideoH264SequenceParameterSetVui time_scale(@Unsigned int value) {
         segment.set(LAYOUT$time_scale, OFFSET$time_scale, value);
+        return this;
     }
 
     public @Unsigned byte max_num_reorder_frames() {
         return segment.get(LAYOUT$max_num_reorder_frames, OFFSET$max_num_reorder_frames);
     }
 
-    public void max_num_reorder_frames(@Unsigned byte value) {
+    public StdVideoH264SequenceParameterSetVui max_num_reorder_frames(@Unsigned byte value) {
         segment.set(LAYOUT$max_num_reorder_frames, OFFSET$max_num_reorder_frames, value);
+        return this;
     }
 
     public @Unsigned byte max_dec_frame_buffering() {
         return segment.get(LAYOUT$max_dec_frame_buffering, OFFSET$max_dec_frame_buffering);
     }
 
-    public void max_dec_frame_buffering(@Unsigned byte value) {
+    public StdVideoH264SequenceParameterSetVui max_dec_frame_buffering(@Unsigned byte value) {
         segment.set(LAYOUT$max_dec_frame_buffering, OFFSET$max_dec_frame_buffering, value);
+        return this;
     }
 
     public @Unsigned byte chroma_sample_loc_type_top_field() {
         return segment.get(LAYOUT$chroma_sample_loc_type_top_field, OFFSET$chroma_sample_loc_type_top_field);
     }
 
-    public void chroma_sample_loc_type_top_field(@Unsigned byte value) {
+    public StdVideoH264SequenceParameterSetVui chroma_sample_loc_type_top_field(@Unsigned byte value) {
         segment.set(LAYOUT$chroma_sample_loc_type_top_field, OFFSET$chroma_sample_loc_type_top_field, value);
+        return this;
     }
 
     public @Unsigned byte chroma_sample_loc_type_bottom_field() {
         return segment.get(LAYOUT$chroma_sample_loc_type_bottom_field, OFFSET$chroma_sample_loc_type_bottom_field);
     }
 
-    public void chroma_sample_loc_type_bottom_field(@Unsigned byte value) {
+    public StdVideoH264SequenceParameterSetVui chroma_sample_loc_type_bottom_field(@Unsigned byte value) {
         segment.set(LAYOUT$chroma_sample_loc_type_bottom_field, OFFSET$chroma_sample_loc_type_bottom_field, value);
+        return this;
     }
 
 
-    public void pHrdParameters(@Nullable IStdVideoH264HrdParameters value) {
+    public StdVideoH264SequenceParameterSetVui pHrdParameters(@Nullable IStdVideoH264HrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHrdParametersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH264HrdParameters.Ptr pHrdParameters(int assumedCount) {

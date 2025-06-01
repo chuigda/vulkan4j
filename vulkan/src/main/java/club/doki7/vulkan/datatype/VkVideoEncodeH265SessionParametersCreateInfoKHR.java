@@ -196,8 +196,9 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265SessionParametersCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,37 +209,42 @@ public record VkVideoEncodeH265SessionParametersCreateInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265SessionParametersCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxStdVPSCount() {
         return segment.get(LAYOUT$maxStdVPSCount, OFFSET$maxStdVPSCount);
     }
 
-    public void maxStdVPSCount(@Unsigned int value) {
+    public VkVideoEncodeH265SessionParametersCreateInfoKHR maxStdVPSCount(@Unsigned int value) {
         segment.set(LAYOUT$maxStdVPSCount, OFFSET$maxStdVPSCount, value);
+        return this;
     }
 
     public @Unsigned int maxStdSPSCount() {
         return segment.get(LAYOUT$maxStdSPSCount, OFFSET$maxStdSPSCount);
     }
 
-    public void maxStdSPSCount(@Unsigned int value) {
+    public VkVideoEncodeH265SessionParametersCreateInfoKHR maxStdSPSCount(@Unsigned int value) {
         segment.set(LAYOUT$maxStdSPSCount, OFFSET$maxStdSPSCount, value);
+        return this;
     }
 
     public @Unsigned int maxStdPPSCount() {
         return segment.get(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount);
     }
 
-    public void maxStdPPSCount(@Unsigned int value) {
+    public VkVideoEncodeH265SessionParametersCreateInfoKHR maxStdPPSCount(@Unsigned int value) {
         segment.set(LAYOUT$maxStdPPSCount, OFFSET$maxStdPPSCount, value);
+        return this;
     }
 
-    public void pParametersAddInfo(@Nullable IVkVideoEncodeH265SessionParametersAddInfoKHR value) {
+    public VkVideoEncodeH265SessionParametersCreateInfoKHR pParametersAddInfo(@Nullable IVkVideoEncodeH265SessionParametersAddInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pParametersAddInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoEncodeH265SessionParametersAddInfoKHR.Ptr pParametersAddInfo(int assumedCount) {

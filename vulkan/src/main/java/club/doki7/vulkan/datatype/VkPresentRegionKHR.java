@@ -173,13 +173,15 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         return segment.get(LAYOUT$rectangleCount, OFFSET$rectangleCount);
     }
 
-    public void rectangleCount(@Unsigned int value) {
+    public VkPresentRegionKHR rectangleCount(@Unsigned int value) {
         segment.set(LAYOUT$rectangleCount, OFFSET$rectangleCount, value);
+        return this;
     }
 
-    public void pRectangles(@Nullable IVkRectLayerKHR value) {
+    public VkPresentRegionKHR pRectangles(@Nullable IVkRectLayerKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRectanglesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRectLayerKHR.Ptr pRectangles(int assumedCount) {

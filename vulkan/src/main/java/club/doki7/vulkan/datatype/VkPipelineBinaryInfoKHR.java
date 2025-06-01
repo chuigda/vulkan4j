@@ -194,8 +194,9 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineBinaryInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineBinaryInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int binaryCount() {
         return segment.get(LAYOUT$binaryCount, OFFSET$binaryCount);
     }
 
-    public void binaryCount(@Unsigned int value) {
+    public VkPipelineBinaryInfoKHR binaryCount(@Unsigned int value) {
         segment.set(LAYOUT$binaryCount, OFFSET$binaryCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkPipelineBinaryKHR.Ptr} does not have correct {@link VkPipelineBinaryKHR.Ptr#size}
@@ -230,9 +233,10 @@ public record VkPipelineBinaryInfoKHR(@NotNull MemorySegment segment) implements
         return new VkPipelineBinaryKHR.Ptr(s);
     }
 
-    public void pPipelineBinaries(@Nullable VkPipelineBinaryKHR.Ptr value) {
+    public VkPipelineBinaryInfoKHR pPipelineBinaries(@Nullable VkPipelineBinaryKHR.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinariesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkPipelineBinaryKHR.class) MemorySegment pPipelineBinariesRaw() {

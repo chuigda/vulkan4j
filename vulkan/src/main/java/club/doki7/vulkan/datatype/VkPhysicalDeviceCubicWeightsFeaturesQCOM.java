@@ -193,8 +193,9 @@ public record VkPhysicalDeviceCubicWeightsFeaturesQCOM(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCubicWeightsFeaturesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceCubicWeightsFeaturesQCOM(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCubicWeightsFeaturesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int selectableCubicWeights() {
         return segment.get(LAYOUT$selectableCubicWeights, OFFSET$selectableCubicWeights);
     }
 
-    public void selectableCubicWeights(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCubicWeightsFeaturesQCOM selectableCubicWeights(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$selectableCubicWeights, OFFSET$selectableCubicWeights, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

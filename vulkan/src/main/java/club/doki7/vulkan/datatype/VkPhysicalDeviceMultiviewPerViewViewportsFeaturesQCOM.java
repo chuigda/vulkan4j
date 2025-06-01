@@ -193,8 +193,9 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(@NotNull Mem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(@NotNull Mem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiviewPerViewViewports() {
         return segment.get(LAYOUT$multiviewPerViewViewports, OFFSET$multiviewPerViewViewports);
     }
 
-    public void multiviewPerViewViewports(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM multiviewPerViewViewports(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewPerViewViewports, OFFSET$multiviewPerViewViewports, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

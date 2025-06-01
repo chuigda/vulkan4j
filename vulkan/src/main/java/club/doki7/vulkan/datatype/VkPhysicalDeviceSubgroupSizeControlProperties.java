@@ -196,8 +196,9 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int minSubgroupSize() {
         return segment.get(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize);
     }
 
-    public void minSubgroupSize(@Unsigned int value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties minSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$minSubgroupSize, OFFSET$minSubgroupSize, value);
+        return this;
     }
 
     public @Unsigned int maxSubgroupSize() {
         return segment.get(LAYOUT$maxSubgroupSize, OFFSET$maxSubgroupSize);
     }
 
-    public void maxSubgroupSize(@Unsigned int value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties maxSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$maxSubgroupSize, OFFSET$maxSubgroupSize, value);
+        return this;
     }
 
     public @Unsigned int maxComputeWorkgroupSubgroups() {
         return segment.get(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups);
     }
 
-    public void maxComputeWorkgroupSubgroups(@Unsigned int value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties maxComputeWorkgroupSubgroups(@Unsigned int value) {
         segment.set(LAYOUT$maxComputeWorkgroupSubgroups, OFFSET$maxComputeWorkgroupSubgroups, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int requiredSubgroupSizeStages() {
         return segment.get(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages);
     }
 
-    public void requiredSubgroupSizeStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupSizeControlProperties requiredSubgroupSizeStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$requiredSubgroupSizeStages, OFFSET$requiredSubgroupSizeStages, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

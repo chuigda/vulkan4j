@@ -206,8 +206,9 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -218,120 +219,135 @@ public record VkPhysicalDeviceShaderCorePropertiesAMD(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int shaderEngineCount() {
         return segment.get(LAYOUT$shaderEngineCount, OFFSET$shaderEngineCount);
     }
 
-    public void shaderEngineCount(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD shaderEngineCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderEngineCount, OFFSET$shaderEngineCount, value);
+        return this;
     }
 
     public @Unsigned int shaderArraysPerEngineCount() {
         return segment.get(LAYOUT$shaderArraysPerEngineCount, OFFSET$shaderArraysPerEngineCount);
     }
 
-    public void shaderArraysPerEngineCount(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD shaderArraysPerEngineCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderArraysPerEngineCount, OFFSET$shaderArraysPerEngineCount, value);
+        return this;
     }
 
     public @Unsigned int computeUnitsPerShaderArray() {
         return segment.get(LAYOUT$computeUnitsPerShaderArray, OFFSET$computeUnitsPerShaderArray);
     }
 
-    public void computeUnitsPerShaderArray(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD computeUnitsPerShaderArray(@Unsigned int value) {
         segment.set(LAYOUT$computeUnitsPerShaderArray, OFFSET$computeUnitsPerShaderArray, value);
+        return this;
     }
 
     public @Unsigned int simdPerComputeUnit() {
         return segment.get(LAYOUT$simdPerComputeUnit, OFFSET$simdPerComputeUnit);
     }
 
-    public void simdPerComputeUnit(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD simdPerComputeUnit(@Unsigned int value) {
         segment.set(LAYOUT$simdPerComputeUnit, OFFSET$simdPerComputeUnit, value);
+        return this;
     }
 
     public @Unsigned int wavefrontsPerSimd() {
         return segment.get(LAYOUT$wavefrontsPerSimd, OFFSET$wavefrontsPerSimd);
     }
 
-    public void wavefrontsPerSimd(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD wavefrontsPerSimd(@Unsigned int value) {
         segment.set(LAYOUT$wavefrontsPerSimd, OFFSET$wavefrontsPerSimd, value);
+        return this;
     }
 
     public @Unsigned int wavefrontSize() {
         return segment.get(LAYOUT$wavefrontSize, OFFSET$wavefrontSize);
     }
 
-    public void wavefrontSize(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD wavefrontSize(@Unsigned int value) {
         segment.set(LAYOUT$wavefrontSize, OFFSET$wavefrontSize, value);
+        return this;
     }
 
     public @Unsigned int sgprsPerSimd() {
         return segment.get(LAYOUT$sgprsPerSimd, OFFSET$sgprsPerSimd);
     }
 
-    public void sgprsPerSimd(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD sgprsPerSimd(@Unsigned int value) {
         segment.set(LAYOUT$sgprsPerSimd, OFFSET$sgprsPerSimd, value);
+        return this;
     }
 
     public @Unsigned int minSgprAllocation() {
         return segment.get(LAYOUT$minSgprAllocation, OFFSET$minSgprAllocation);
     }
 
-    public void minSgprAllocation(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD minSgprAllocation(@Unsigned int value) {
         segment.set(LAYOUT$minSgprAllocation, OFFSET$minSgprAllocation, value);
+        return this;
     }
 
     public @Unsigned int maxSgprAllocation() {
         return segment.get(LAYOUT$maxSgprAllocation, OFFSET$maxSgprAllocation);
     }
 
-    public void maxSgprAllocation(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD maxSgprAllocation(@Unsigned int value) {
         segment.set(LAYOUT$maxSgprAllocation, OFFSET$maxSgprAllocation, value);
+        return this;
     }
 
     public @Unsigned int sgprAllocationGranularity() {
         return segment.get(LAYOUT$sgprAllocationGranularity, OFFSET$sgprAllocationGranularity);
     }
 
-    public void sgprAllocationGranularity(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD sgprAllocationGranularity(@Unsigned int value) {
         segment.set(LAYOUT$sgprAllocationGranularity, OFFSET$sgprAllocationGranularity, value);
+        return this;
     }
 
     public @Unsigned int vgprsPerSimd() {
         return segment.get(LAYOUT$vgprsPerSimd, OFFSET$vgprsPerSimd);
     }
 
-    public void vgprsPerSimd(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD vgprsPerSimd(@Unsigned int value) {
         segment.set(LAYOUT$vgprsPerSimd, OFFSET$vgprsPerSimd, value);
+        return this;
     }
 
     public @Unsigned int minVgprAllocation() {
         return segment.get(LAYOUT$minVgprAllocation, OFFSET$minVgprAllocation);
     }
 
-    public void minVgprAllocation(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD minVgprAllocation(@Unsigned int value) {
         segment.set(LAYOUT$minVgprAllocation, OFFSET$minVgprAllocation, value);
+        return this;
     }
 
     public @Unsigned int maxVgprAllocation() {
         return segment.get(LAYOUT$maxVgprAllocation, OFFSET$maxVgprAllocation);
     }
 
-    public void maxVgprAllocation(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD maxVgprAllocation(@Unsigned int value) {
         segment.set(LAYOUT$maxVgprAllocation, OFFSET$maxVgprAllocation, value);
+        return this;
     }
 
     public @Unsigned int vgprAllocationGranularity() {
         return segment.get(LAYOUT$vgprAllocationGranularity, OFFSET$vgprAllocationGranularity);
     }
 
-    public void vgprAllocationGranularity(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesAMD vgprAllocationGranularity(@Unsigned int value) {
         segment.set(LAYOUT$vgprAllocationGranularity, OFFSET$vgprAllocationGranularity, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkPhysicalDeviceTileMemoryHeapFeaturesQCOM(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceTileMemoryHeapFeaturesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceTileMemoryHeapFeaturesQCOM(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceTileMemoryHeapFeaturesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int tileMemoryHeap() {
         return segment.get(LAYOUT$tileMemoryHeap, OFFSET$tileMemoryHeap);
     }
 
-    public void tileMemoryHeap(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTileMemoryHeapFeaturesQCOM tileMemoryHeap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$tileMemoryHeap, OFFSET$tileMemoryHeap, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

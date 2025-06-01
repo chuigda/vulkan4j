@@ -193,8 +193,9 @@ public record VkPerformanceQueryReservationInfoKHR(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceQueryReservationInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPerformanceQueryReservationInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPerformanceQueryReservationInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxPerformanceQueriesPerPool() {
         return segment.get(LAYOUT$maxPerformanceQueriesPerPool, OFFSET$maxPerformanceQueriesPerPool);
     }
 
-    public void maxPerformanceQueriesPerPool(@Unsigned int value) {
+    public VkPerformanceQueryReservationInfoKHR maxPerformanceQueriesPerPool(@Unsigned int value) {
         segment.set(LAYOUT$maxPerformanceQueriesPerPool, OFFSET$maxPerformanceQueriesPerPool, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

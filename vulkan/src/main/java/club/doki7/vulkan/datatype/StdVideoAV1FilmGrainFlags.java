@@ -176,9 +176,10 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void chroma_scaling_from_luma(boolean value) {
+    public StdVideoAV1FilmGrainFlags chroma_scaling_from_luma(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean overlap_flag() {
@@ -186,9 +187,10 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void overlap_flag(boolean value) {
+    public StdVideoAV1FilmGrainFlags overlap_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean clip_to_restricted_range() {
@@ -196,9 +198,10 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void clip_to_restricted_range(boolean value) {
+    public StdVideoAV1FilmGrainFlags clip_to_restricted_range(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean update_grain() {
@@ -206,9 +209,10 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void update_grain(boolean value) {
+    public StdVideoAV1FilmGrainFlags update_grain(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$chroma_scaling_from_luma$reserved, LAYOUT$bitfield$chroma_scaling_from_luma$reserved);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -178,32 +178,36 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         return new StdVideoAV1ColorConfigFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoAV1ColorConfigFlags value) {
+    public StdVideoAV1ColorConfig flags(@NotNull StdVideoAV1ColorConfigFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte BitDepth() {
         return segment.get(LAYOUT$BitDepth, OFFSET$BitDepth);
     }
 
-    public void BitDepth(@Unsigned byte value) {
+    public StdVideoAV1ColorConfig BitDepth(@Unsigned byte value) {
         segment.set(LAYOUT$BitDepth, OFFSET$BitDepth, value);
+        return this;
     }
 
     public @Unsigned byte subsampling_x() {
         return segment.get(LAYOUT$subsampling_x, OFFSET$subsampling_x);
     }
 
-    public void subsampling_x(@Unsigned byte value) {
+    public StdVideoAV1ColorConfig subsampling_x(@Unsigned byte value) {
         segment.set(LAYOUT$subsampling_x, OFFSET$subsampling_x, value);
+        return this;
     }
 
     public @Unsigned byte subsampling_y() {
         return segment.get(LAYOUT$subsampling_y, OFFSET$subsampling_y);
     }
 
-    public void subsampling_y(@Unsigned byte value) {
+    public StdVideoAV1ColorConfig subsampling_y(@Unsigned byte value) {
         segment.set(LAYOUT$subsampling_y, OFFSET$subsampling_y, value);
+        return this;
     }
 
 
@@ -211,32 +215,36 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$color_primaries, OFFSET$color_primaries);
     }
 
-    public void color_primaries(@EnumType(StdVideoAV1ColorPrimaries.class) int value) {
+    public StdVideoAV1ColorConfig color_primaries(@EnumType(StdVideoAV1ColorPrimaries.class) int value) {
         segment.set(LAYOUT$color_primaries, OFFSET$color_primaries, value);
+        return this;
     }
 
     public @EnumType(StdVideoAV1TransferCharacteristics.class) int transfer_characteristics() {
         return segment.get(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics);
     }
 
-    public void transfer_characteristics(@EnumType(StdVideoAV1TransferCharacteristics.class) int value) {
+    public StdVideoAV1ColorConfig transfer_characteristics(@EnumType(StdVideoAV1TransferCharacteristics.class) int value) {
         segment.set(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics, value);
+        return this;
     }
 
     public @EnumType(StdVideoAV1MatrixCoefficients.class) int matrix_coefficients() {
         return segment.get(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients);
     }
 
-    public void matrix_coefficients(@EnumType(StdVideoAV1MatrixCoefficients.class) int value) {
+    public StdVideoAV1ColorConfig matrix_coefficients(@EnumType(StdVideoAV1MatrixCoefficients.class) int value) {
         segment.set(LAYOUT$matrix_coefficients, OFFSET$matrix_coefficients, value);
+        return this;
     }
 
     public @EnumType(StdVideoAV1ChromaSamplePosition.class) int chroma_sample_position() {
         return segment.get(LAYOUT$chroma_sample_position, OFFSET$chroma_sample_position);
     }
 
-    public void chroma_sample_position(@EnumType(StdVideoAV1ChromaSamplePosition.class) int value) {
+    public StdVideoAV1ColorConfig chroma_sample_position(@EnumType(StdVideoAV1ChromaSamplePosition.class) int value) {
         segment.set(LAYOUT$chroma_sample_position, OFFSET$chroma_sample_position, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

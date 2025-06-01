@@ -174,24 +174,27 @@ public record VkVideoEncodeH264QpKHR(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$qpI, OFFSET$qpI);
     }
 
-    public void qpI(int value) {
+    public VkVideoEncodeH264QpKHR qpI(int value) {
         segment.set(LAYOUT$qpI, OFFSET$qpI, value);
+        return this;
     }
 
     public int qpP() {
         return segment.get(LAYOUT$qpP, OFFSET$qpP);
     }
 
-    public void qpP(int value) {
+    public VkVideoEncodeH264QpKHR qpP(int value) {
         segment.set(LAYOUT$qpP, OFFSET$qpP, value);
+        return this;
     }
 
     public int qpB() {
         return segment.get(LAYOUT$qpB, OFFSET$qpB);
     }
 
-    public void qpB(int value) {
+    public VkVideoEncodeH264QpKHR qpB(int value) {
         segment.set(LAYOUT$qpB, OFFSET$qpB, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

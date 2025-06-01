@@ -193,8 +193,9 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int requiredSubgroupSize() {
         return segment.get(LAYOUT$requiredSubgroupSize, OFFSET$requiredSubgroupSize);
     }
 
-    public void requiredSubgroupSize(@Unsigned int value) {
+    public VkPipelineShaderStageRequiredSubgroupSizeCreateInfo requiredSubgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$requiredSubgroupSize, OFFSET$requiredSubgroupSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

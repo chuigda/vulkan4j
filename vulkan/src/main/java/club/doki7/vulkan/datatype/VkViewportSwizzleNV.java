@@ -175,32 +175,36 @@ public record VkViewportSwizzleNV(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public VkViewportSwizzleNV x(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
+        return this;
     }
 
     public @EnumType(VkViewportCoordinateSwizzleNV.class) int y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public VkViewportSwizzleNV y(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
+        return this;
     }
 
     public @EnumType(VkViewportCoordinateSwizzleNV.class) int z() {
         return segment.get(LAYOUT$z, OFFSET$z);
     }
 
-    public void z(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public VkViewportSwizzleNV z(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$z, OFFSET$z, value);
+        return this;
     }
 
     public @EnumType(VkViewportCoordinateSwizzleNV.class) int w() {
         return segment.get(LAYOUT$w, OFFSET$w);
     }
 
-    public void w(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
+    public VkViewportSwizzleNV w(@EnumType(VkViewportCoordinateSwizzleNV.class) int value) {
         segment.set(LAYOUT$w, OFFSET$w, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

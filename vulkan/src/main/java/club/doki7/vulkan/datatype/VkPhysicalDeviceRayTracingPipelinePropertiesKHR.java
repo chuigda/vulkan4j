@@ -200,8 +200,9 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkPhysicalDeviceRayTracingPipelinePropertiesKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int shaderGroupHandleSize() {
         return segment.get(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize);
     }
 
-    public void shaderGroupHandleSize(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleSize(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize, value);
+        return this;
     }
 
     public @Unsigned int maxRayRecursionDepth() {
         return segment.get(LAYOUT$maxRayRecursionDepth, OFFSET$maxRayRecursionDepth);
     }
 
-    public void maxRayRecursionDepth(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayRecursionDepth(@Unsigned int value) {
         segment.set(LAYOUT$maxRayRecursionDepth, OFFSET$maxRayRecursionDepth, value);
+        return this;
     }
 
     public @Unsigned int maxShaderGroupStride() {
         return segment.get(LAYOUT$maxShaderGroupStride, OFFSET$maxShaderGroupStride);
     }
 
-    public void maxShaderGroupStride(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxShaderGroupStride(@Unsigned int value) {
         segment.set(LAYOUT$maxShaderGroupStride, OFFSET$maxShaderGroupStride, value);
+        return this;
     }
 
     public @Unsigned int shaderGroupBaseAlignment() {
         return segment.get(LAYOUT$shaderGroupBaseAlignment, OFFSET$shaderGroupBaseAlignment);
     }
 
-    public void shaderGroupBaseAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupBaseAlignment(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupBaseAlignment, OFFSET$shaderGroupBaseAlignment, value);
+        return this;
     }
 
     public @Unsigned int shaderGroupHandleCaptureReplaySize() {
         return segment.get(LAYOUT$shaderGroupHandleCaptureReplaySize, OFFSET$shaderGroupHandleCaptureReplaySize);
     }
 
-    public void shaderGroupHandleCaptureReplaySize(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleCaptureReplaySize(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupHandleCaptureReplaySize, OFFSET$shaderGroupHandleCaptureReplaySize, value);
+        return this;
     }
 
     public @Unsigned int maxRayDispatchInvocationCount() {
         return segment.get(LAYOUT$maxRayDispatchInvocationCount, OFFSET$maxRayDispatchInvocationCount);
     }
 
-    public void maxRayDispatchInvocationCount(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayDispatchInvocationCount(@Unsigned int value) {
         segment.set(LAYOUT$maxRayDispatchInvocationCount, OFFSET$maxRayDispatchInvocationCount, value);
+        return this;
     }
 
     public @Unsigned int shaderGroupHandleAlignment() {
         return segment.get(LAYOUT$shaderGroupHandleAlignment, OFFSET$shaderGroupHandleAlignment);
     }
 
-    public void shaderGroupHandleAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleAlignment(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupHandleAlignment, OFFSET$shaderGroupHandleAlignment, value);
+        return this;
     }
 
     public @Unsigned int maxRayHitAttributeSize() {
         return segment.get(LAYOUT$maxRayHitAttributeSize, OFFSET$maxRayHitAttributeSize);
     }
 
-    public void maxRayHitAttributeSize(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayHitAttributeSize(@Unsigned int value) {
         segment.set(LAYOUT$maxRayHitAttributeSize, OFFSET$maxRayHitAttributeSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

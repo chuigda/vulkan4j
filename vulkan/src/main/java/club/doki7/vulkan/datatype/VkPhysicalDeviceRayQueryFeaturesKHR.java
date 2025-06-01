@@ -193,8 +193,9 @@ public record VkPhysicalDeviceRayQueryFeaturesKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayQueryFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceRayQueryFeaturesKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRayQueryFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayQuery() {
         return segment.get(LAYOUT$rayQuery, OFFSET$rayQuery);
     }
 
-    public void rayQuery(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayQueryFeaturesKHR rayQuery(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayQuery, OFFSET$rayQuery, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

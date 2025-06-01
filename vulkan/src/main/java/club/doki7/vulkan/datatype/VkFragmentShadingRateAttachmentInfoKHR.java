@@ -194,8 +194,9 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkFragmentShadingRateAttachmentInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,13 +207,15 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkFragmentShadingRateAttachmentInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pFragmentShadingRateAttachment(@Nullable IVkAttachmentReference2 value) {
+    public VkFragmentShadingRateAttachmentInfoKHR pFragmentShadingRateAttachment(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFragmentShadingRateAttachmentRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentReference2.Ptr pFragmentShadingRateAttachment(int assumedCount) {
@@ -245,8 +248,9 @@ public record VkFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySegment segm
         return new VkExtent2D(segment.asSlice(OFFSET$shadingRateAttachmentTexelSize, LAYOUT$shadingRateAttachmentTexelSize));
     }
 
-    public void shadingRateAttachmentTexelSize(@NotNull VkExtent2D value) {
+    public VkFragmentShadingRateAttachmentInfoKHR shadingRateAttachmentTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, SIZE$shadingRateAttachmentTexelSize);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

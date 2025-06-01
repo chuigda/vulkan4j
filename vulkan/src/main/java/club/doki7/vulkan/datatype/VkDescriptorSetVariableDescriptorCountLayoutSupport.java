@@ -193,8 +193,9 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetVariableDescriptorCountLayoutSupport sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorSetVariableDescriptorCountLayoutSupport pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxVariableDescriptorCount() {
         return segment.get(LAYOUT$maxVariableDescriptorCount, OFFSET$maxVariableDescriptorCount);
     }
 
-    public void maxVariableDescriptorCount(@Unsigned int value) {
+    public VkDescriptorSetVariableDescriptorCountLayoutSupport maxVariableDescriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$maxVariableDescriptorCount, OFFSET$maxVariableDescriptorCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

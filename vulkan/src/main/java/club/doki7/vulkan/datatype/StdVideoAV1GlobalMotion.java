@@ -171,8 +171,9 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         return new BytePtr(GmTypeRaw());
     }
 
-    public void GmType(@Unsigned BytePtr value) {
+    public StdVideoAV1GlobalMotion GmType(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$GmType, SIZE$GmType);
+        return this;
     }
 
     public MemorySegment GmTypeRaw() {
@@ -183,8 +184,9 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         return new IntPtr(gm_paramsRaw());
     }
 
-    public void gm_params(IntPtr value) {
+    public StdVideoAV1GlobalMotion gm_params(IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$gm_params, SIZE$gm_params);
+        return this;
     }
 
     public MemorySegment gm_paramsRaw() {

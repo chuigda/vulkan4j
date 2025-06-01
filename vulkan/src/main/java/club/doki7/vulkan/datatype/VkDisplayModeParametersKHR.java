@@ -173,16 +173,18 @@ public record VkDisplayModeParametersKHR(@NotNull MemorySegment segment) impleme
         return new VkExtent2D(segment.asSlice(OFFSET$visibleRegion, LAYOUT$visibleRegion));
     }
 
-    public void visibleRegion(@NotNull VkExtent2D value) {
+    public VkDisplayModeParametersKHR visibleRegion(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$visibleRegion, SIZE$visibleRegion);
+        return this;
     }
 
     public @Unsigned int refreshRate() {
         return segment.get(LAYOUT$refreshRate, OFFSET$refreshRate);
     }
 
-    public void refreshRate(@Unsigned int value) {
+    public VkDisplayModeParametersKHR refreshRate(@Unsigned int value) {
         segment.set(LAYOUT$refreshRate, OFFSET$refreshRate, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

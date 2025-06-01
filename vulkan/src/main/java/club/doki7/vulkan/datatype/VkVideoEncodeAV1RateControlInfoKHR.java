@@ -197,8 +197,9 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkVideoEncodeAV1RateControlInfoKHR(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeAV1RateControlInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR flags(@EnumType(VkVideoEncodeAV1RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int gopFrameCount() {
         return segment.get(LAYOUT$gopFrameCount, OFFSET$gopFrameCount);
     }
 
-    public void gopFrameCount(@Unsigned int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR gopFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$gopFrameCount, OFFSET$gopFrameCount, value);
+        return this;
     }
 
     public @Unsigned int keyFramePeriod() {
         return segment.get(LAYOUT$keyFramePeriod, OFFSET$keyFramePeriod);
     }
 
-    public void keyFramePeriod(@Unsigned int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR keyFramePeriod(@Unsigned int value) {
         segment.set(LAYOUT$keyFramePeriod, OFFSET$keyFramePeriod, value);
+        return this;
     }
 
     public @Unsigned int consecutiveBipredictiveFrameCount() {
         return segment.get(LAYOUT$consecutiveBipredictiveFrameCount, OFFSET$consecutiveBipredictiveFrameCount);
     }
 
-    public void consecutiveBipredictiveFrameCount(@Unsigned int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR consecutiveBipredictiveFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$consecutiveBipredictiveFrameCount, OFFSET$consecutiveBipredictiveFrameCount, value);
+        return this;
     }
 
     public @Unsigned int temporalLayerCount() {
         return segment.get(LAYOUT$temporalLayerCount, OFFSET$temporalLayerCount);
     }
 
-    public void temporalLayerCount(@Unsigned int value) {
+    public VkVideoEncodeAV1RateControlInfoKHR temporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$temporalLayerCount, OFFSET$temporalLayerCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMappedMemoryRange sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMappedMemoryRange pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDeviceMemory memory() {
@@ -219,24 +221,27 @@ public record VkMappedMemoryRange(@NotNull MemorySegment segment) implements IVk
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@Nullable VkDeviceMemory value) {
+    public VkMappedMemoryRange memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMappedMemoryRange offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMappedMemoryRange size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

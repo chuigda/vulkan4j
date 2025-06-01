@@ -126,6 +126,18 @@ public record VkPrivateDataSlot(@NotNull MemorySegment segment) implements IPoin
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
 
+        public static Ptr allocate(Arena arena, @Nullable VkPrivateDataSlot[] values) {
+            Ptr ret = allocate(arena, values.length);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i, values[i]);
+            }
+            return ret;
+        }
+
+        public static Ptr allocateV(Arena arena, @Nullable VkPrivateDataSlot ...values) {
+            return allocate(arena, values);
+        }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

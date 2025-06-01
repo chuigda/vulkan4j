@@ -205,8 +205,9 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectCommandsLayoutTokenNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -217,48 +218,54 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkIndirectCommandsLayoutTokenNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkIndirectCommandsTokenTypeNV.class) int tokenType() {
         return segment.get(LAYOUT$tokenType, OFFSET$tokenType);
     }
 
-    public void tokenType(@EnumType(VkIndirectCommandsTokenTypeNV.class) int value) {
+    public VkIndirectCommandsLayoutTokenNV tokenType(@EnumType(VkIndirectCommandsTokenTypeNV.class) int value) {
         segment.set(LAYOUT$tokenType, OFFSET$tokenType, value);
+        return this;
     }
 
     public @Unsigned int stream() {
         return segment.get(LAYOUT$stream, OFFSET$stream);
     }
 
-    public void stream(@Unsigned int value) {
+    public VkIndirectCommandsLayoutTokenNV stream(@Unsigned int value) {
         segment.set(LAYOUT$stream, OFFSET$stream, value);
+        return this;
     }
 
     public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned int value) {
+    public VkIndirectCommandsLayoutTokenNV offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @Unsigned int vertexBindingUnit() {
         return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
     }
 
-    public void vertexBindingUnit(@Unsigned int value) {
+    public VkIndirectCommandsLayoutTokenNV vertexBindingUnit(@Unsigned int value) {
         segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int vertexDynamicStride() {
         return segment.get(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride);
     }
 
-    public void vertexDynamicStride(@NativeType("VkBool32") @Unsigned int value) {
+    public VkIndirectCommandsLayoutTokenNV vertexDynamicStride(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vertexDynamicStride, OFFSET$vertexDynamicStride, value);
+        return this;
     }
 
     public @Nullable VkPipelineLayout pushconstantPipelineLayout() {
@@ -269,48 +276,54 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return new VkPipelineLayout(s);
     }
 
-    public void pushconstantPipelineLayout(@Nullable VkPipelineLayout value) {
+    public VkIndirectCommandsLayoutTokenNV pushconstantPipelineLayout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$pushconstantPipelineLayout, OFFSET$pushconstantPipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int pushconstantShaderStageFlags() {
         return segment.get(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags);
     }
 
-    public void pushconstantShaderStageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$pushconstantShaderStageFlags, OFFSET$pushconstantShaderStageFlags, value);
+        return this;
     }
 
     public @Unsigned int pushconstantOffset() {
         return segment.get(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset);
     }
 
-    public void pushconstantOffset(@Unsigned int value) {
+    public VkIndirectCommandsLayoutTokenNV pushconstantOffset(@Unsigned int value) {
         segment.set(LAYOUT$pushconstantOffset, OFFSET$pushconstantOffset, value);
+        return this;
     }
 
     public @Unsigned int pushconstantSize() {
         return segment.get(LAYOUT$pushconstantSize, OFFSET$pushconstantSize);
     }
 
-    public void pushconstantSize(@Unsigned int value) {
+    public VkIndirectCommandsLayoutTokenNV pushconstantSize(@Unsigned int value) {
         segment.set(LAYOUT$pushconstantSize, OFFSET$pushconstantSize, value);
+        return this;
     }
 
     public @EnumType(VkIndirectStateFlagsNV.class) int indirectStateFlags() {
         return segment.get(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags);
     }
 
-    public void indirectStateFlags(@EnumType(VkIndirectStateFlagsNV.class) int value) {
+    public VkIndirectCommandsLayoutTokenNV indirectStateFlags(@EnumType(VkIndirectStateFlagsNV.class) int value) {
         segment.set(LAYOUT$indirectStateFlags, OFFSET$indirectStateFlags, value);
+        return this;
     }
 
     public @Unsigned int indexTypeCount() {
         return segment.get(LAYOUT$indexTypeCount, OFFSET$indexTypeCount);
     }
 
-    public void indexTypeCount(@Unsigned int value) {
+    public VkIndirectCommandsLayoutTokenNV indexTypeCount(@Unsigned int value) {
         segment.set(LAYOUT$indexTypeCount, OFFSET$indexTypeCount, value);
+        return this;
     }
 
 
@@ -326,9 +339,10 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pIndexTypes(@Nullable @EnumType(VkIndexType.class) IntPtr value) {
+    public VkIndirectCommandsLayoutTokenNV pIndexTypes(@Nullable @EnumType(VkIndexType.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkIndexType.class) MemorySegment pIndexTypesRaw() {
@@ -351,9 +365,10 @@ public record VkIndirectCommandsLayoutTokenNV(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pIndexTypeValues(@Nullable @Unsigned IntPtr value) {
+    public VkIndirectCommandsLayoutTokenNV pIndexTypeValues(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexTypeValuesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pIndexTypeValuesRaw() {

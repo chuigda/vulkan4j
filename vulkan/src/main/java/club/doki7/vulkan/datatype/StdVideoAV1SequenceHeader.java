@@ -183,94 +183,106 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         return new StdVideoAV1SequenceHeaderFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoAV1SequenceHeaderFlags value) {
+    public StdVideoAV1SequenceHeader flags(@NotNull StdVideoAV1SequenceHeaderFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @EnumType(StdVideoAV1Profile.class) int seq_profile() {
         return segment.get(LAYOUT$seq_profile, OFFSET$seq_profile);
     }
 
-    public void seq_profile(@EnumType(StdVideoAV1Profile.class) int value) {
+    public StdVideoAV1SequenceHeader seq_profile(@EnumType(StdVideoAV1Profile.class) int value) {
         segment.set(LAYOUT$seq_profile, OFFSET$seq_profile, value);
+        return this;
     }
 
     public @Unsigned byte frame_width_bits_minus_1() {
         return segment.get(LAYOUT$frame_width_bits_minus_1, OFFSET$frame_width_bits_minus_1);
     }
 
-    public void frame_width_bits_minus_1(@Unsigned byte value) {
+    public StdVideoAV1SequenceHeader frame_width_bits_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$frame_width_bits_minus_1, OFFSET$frame_width_bits_minus_1, value);
+        return this;
     }
 
     public @Unsigned byte frame_height_bits_minus_1() {
         return segment.get(LAYOUT$frame_height_bits_minus_1, OFFSET$frame_height_bits_minus_1);
     }
 
-    public void frame_height_bits_minus_1(@Unsigned byte value) {
+    public StdVideoAV1SequenceHeader frame_height_bits_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$frame_height_bits_minus_1, OFFSET$frame_height_bits_minus_1, value);
+        return this;
     }
 
     public @Unsigned short max_frame_width_minus_1() {
         return segment.get(LAYOUT$max_frame_width_minus_1, OFFSET$max_frame_width_minus_1);
     }
 
-    public void max_frame_width_minus_1(@Unsigned short value) {
+    public StdVideoAV1SequenceHeader max_frame_width_minus_1(@Unsigned short value) {
         segment.set(LAYOUT$max_frame_width_minus_1, OFFSET$max_frame_width_minus_1, value);
+        return this;
     }
 
     public @Unsigned short max_frame_height_minus_1() {
         return segment.get(LAYOUT$max_frame_height_minus_1, OFFSET$max_frame_height_minus_1);
     }
 
-    public void max_frame_height_minus_1(@Unsigned short value) {
+    public StdVideoAV1SequenceHeader max_frame_height_minus_1(@Unsigned short value) {
         segment.set(LAYOUT$max_frame_height_minus_1, OFFSET$max_frame_height_minus_1, value);
+        return this;
     }
 
     public @Unsigned byte delta_frame_id_length_minus_2() {
         return segment.get(LAYOUT$delta_frame_id_length_minus_2, OFFSET$delta_frame_id_length_minus_2);
     }
 
-    public void delta_frame_id_length_minus_2(@Unsigned byte value) {
+    public StdVideoAV1SequenceHeader delta_frame_id_length_minus_2(@Unsigned byte value) {
         segment.set(LAYOUT$delta_frame_id_length_minus_2, OFFSET$delta_frame_id_length_minus_2, value);
+        return this;
     }
 
     public @Unsigned byte additional_frame_id_length_minus_1() {
         return segment.get(LAYOUT$additional_frame_id_length_minus_1, OFFSET$additional_frame_id_length_minus_1);
     }
 
-    public void additional_frame_id_length_minus_1(@Unsigned byte value) {
+    public StdVideoAV1SequenceHeader additional_frame_id_length_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$additional_frame_id_length_minus_1, OFFSET$additional_frame_id_length_minus_1, value);
+        return this;
     }
 
     public @Unsigned byte order_hint_bits_minus_1() {
         return segment.get(LAYOUT$order_hint_bits_minus_1, OFFSET$order_hint_bits_minus_1);
     }
 
-    public void order_hint_bits_minus_1(@Unsigned byte value) {
+    public StdVideoAV1SequenceHeader order_hint_bits_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$order_hint_bits_minus_1, OFFSET$order_hint_bits_minus_1, value);
+        return this;
     }
 
     public @Unsigned byte seq_force_integer_mv() {
         return segment.get(LAYOUT$seq_force_integer_mv, OFFSET$seq_force_integer_mv);
     }
 
-    public void seq_force_integer_mv(@Unsigned byte value) {
+    public StdVideoAV1SequenceHeader seq_force_integer_mv(@Unsigned byte value) {
         segment.set(LAYOUT$seq_force_integer_mv, OFFSET$seq_force_integer_mv, value);
+        return this;
     }
 
     public @Unsigned byte seq_force_screen_content_tools() {
         return segment.get(LAYOUT$seq_force_screen_content_tools, OFFSET$seq_force_screen_content_tools);
     }
 
-    public void seq_force_screen_content_tools(@Unsigned byte value) {
+    public StdVideoAV1SequenceHeader seq_force_screen_content_tools(@Unsigned byte value) {
         segment.set(LAYOUT$seq_force_screen_content_tools, OFFSET$seq_force_screen_content_tools, value);
+        return this;
     }
 
 
-    public void pColorConfig(@Nullable IStdVideoAV1ColorConfig value) {
+    public StdVideoAV1SequenceHeader pColorConfig(@Nullable IStdVideoAV1ColorConfig value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorConfigRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1ColorConfig.Ptr pColorConfig(int assumedCount) {
@@ -299,9 +311,10 @@ public record StdVideoAV1SequenceHeader(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pColorConfig, OFFSET$pColorConfig, value);
     }
 
-    public void pTimingInfo(@Nullable IStdVideoAV1TimingInfo value) {
+    public StdVideoAV1SequenceHeader pTimingInfo(@Nullable IStdVideoAV1TimingInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimingInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1TimingInfo.Ptr pTimingInfo(int assumedCount) {

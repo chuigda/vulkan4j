@@ -196,8 +196,9 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxWeightFilterPhases() {
         return segment.get(LAYOUT$maxWeightFilterPhases, OFFSET$maxWeightFilterPhases);
     }
 
-    public void maxWeightFilterPhases(@Unsigned int value) {
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxWeightFilterPhases(@Unsigned int value) {
         segment.set(LAYOUT$maxWeightFilterPhases, OFFSET$maxWeightFilterPhases, value);
+        return this;
     }
 
     public @NotNull VkExtent2D maxWeightFilterDimension() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxWeightFilterDimension, LAYOUT$maxWeightFilterDimension));
     }
 
-    public void maxWeightFilterDimension(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxWeightFilterDimension(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWeightFilterDimension, SIZE$maxWeightFilterDimension);
+        return this;
     }
 
     public @NotNull VkExtent2D maxBlockMatchRegion() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBlockMatchRegion, LAYOUT$maxBlockMatchRegion));
     }
 
-    public void maxBlockMatchRegion(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBlockMatchRegion(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBlockMatchRegion, SIZE$maxBlockMatchRegion);
+        return this;
     }
 
     public @NotNull VkExtent2D maxBoxFilterBlockSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBoxFilterBlockSize, LAYOUT$maxBoxFilterBlockSize));
     }
 
-    public void maxBoxFilterBlockSize(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBoxFilterBlockSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBoxFilterBlockSize, SIZE$maxBoxFilterBlockSize);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

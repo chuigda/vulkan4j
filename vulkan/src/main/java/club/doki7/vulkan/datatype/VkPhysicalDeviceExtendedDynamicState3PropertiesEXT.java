@@ -193,8 +193,9 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int dynamicPrimitiveTopologyUnrestricted() {
         return segment.get(LAYOUT$dynamicPrimitiveTopologyUnrestricted, OFFSET$dynamicPrimitiveTopologyUnrestricted);
     }
 
-    public void dynamicPrimitiveTopologyUnrestricted(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT dynamicPrimitiveTopologyUnrestricted(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicPrimitiveTopologyUnrestricted, OFFSET$dynamicPrimitiveTopologyUnrestricted, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

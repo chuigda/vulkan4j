@@ -194,8 +194,9 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectExecutionSetPipelineInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkIndirectExecutionSetPipelineInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkPipeline initialPipeline() {
@@ -218,16 +220,18 @@ public record VkIndirectExecutionSetPipelineInfoEXT(@NotNull MemorySegment segme
         return new VkPipeline(s);
     }
 
-    public void initialPipeline(@Nullable VkPipeline value) {
+    public VkIndirectExecutionSetPipelineInfoEXT initialPipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$initialPipeline, OFFSET$initialPipeline, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxPipelineCount() {
         return segment.get(LAYOUT$maxPipelineCount, OFFSET$maxPipelineCount);
     }
 
-    public void maxPipelineCount(@Unsigned int value) {
+    public VkIndirectExecutionSetPipelineInfoEXT maxPipelineCount(@Unsigned int value) {
         segment.set(LAYOUT$maxPipelineCount, OFFSET$maxPipelineCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

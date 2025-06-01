@@ -200,8 +200,9 @@ public record VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(@NotNull 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(@NotNull 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxVerticesPerCluster() {
         return segment.get(LAYOUT$maxVerticesPerCluster, OFFSET$maxVerticesPerCluster);
     }
 
-    public void maxVerticesPerCluster(@Unsigned int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV maxVerticesPerCluster(@Unsigned int value) {
         segment.set(LAYOUT$maxVerticesPerCluster, OFFSET$maxVerticesPerCluster, value);
+        return this;
     }
 
     public @Unsigned int maxTrianglesPerCluster() {
         return segment.get(LAYOUT$maxTrianglesPerCluster, OFFSET$maxTrianglesPerCluster);
     }
 
-    public void maxTrianglesPerCluster(@Unsigned int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV maxTrianglesPerCluster(@Unsigned int value) {
         segment.set(LAYOUT$maxTrianglesPerCluster, OFFSET$maxTrianglesPerCluster, value);
+        return this;
     }
 
     public @Unsigned int clusterScratchByteAlignment() {
         return segment.get(LAYOUT$clusterScratchByteAlignment, OFFSET$clusterScratchByteAlignment);
     }
 
-    public void clusterScratchByteAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterScratchByteAlignment(@Unsigned int value) {
         segment.set(LAYOUT$clusterScratchByteAlignment, OFFSET$clusterScratchByteAlignment, value);
+        return this;
     }
 
     public @Unsigned int clusterByteAlignment() {
         return segment.get(LAYOUT$clusterByteAlignment, OFFSET$clusterByteAlignment);
     }
 
-    public void clusterByteAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterByteAlignment(@Unsigned int value) {
         segment.set(LAYOUT$clusterByteAlignment, OFFSET$clusterByteAlignment, value);
+        return this;
     }
 
     public @Unsigned int clusterTemplateByteAlignment() {
         return segment.get(LAYOUT$clusterTemplateByteAlignment, OFFSET$clusterTemplateByteAlignment);
     }
 
-    public void clusterTemplateByteAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterTemplateByteAlignment(@Unsigned int value) {
         segment.set(LAYOUT$clusterTemplateByteAlignment, OFFSET$clusterTemplateByteAlignment, value);
+        return this;
     }
 
     public @Unsigned int clusterBottomLevelByteAlignment() {
         return segment.get(LAYOUT$clusterBottomLevelByteAlignment, OFFSET$clusterBottomLevelByteAlignment);
     }
 
-    public void clusterBottomLevelByteAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterBottomLevelByteAlignment(@Unsigned int value) {
         segment.set(LAYOUT$clusterBottomLevelByteAlignment, OFFSET$clusterBottomLevelByteAlignment, value);
+        return this;
     }
 
     public @Unsigned int clusterTemplateBoundsByteAlignment() {
         return segment.get(LAYOUT$clusterTemplateBoundsByteAlignment, OFFSET$clusterTemplateBoundsByteAlignment);
     }
 
-    public void clusterTemplateBoundsByteAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterTemplateBoundsByteAlignment(@Unsigned int value) {
         segment.set(LAYOUT$clusterTemplateBoundsByteAlignment, OFFSET$clusterTemplateBoundsByteAlignment, value);
+        return this;
     }
 
     public @Unsigned int maxClusterGeometryIndex() {
         return segment.get(LAYOUT$maxClusterGeometryIndex, OFFSET$maxClusterGeometryIndex);
     }
 
-    public void maxClusterGeometryIndex(@Unsigned int value) {
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV maxClusterGeometryIndex(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterGeometryIndex, OFFSET$maxClusterGeometryIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

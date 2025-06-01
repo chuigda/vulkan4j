@@ -174,24 +174,27 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IVkRectL
         return new VkOffset2D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
     }
 
-    public void offset(@NotNull VkOffset2D value) {
+    public VkRectLayerKHR offset(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
+        return this;
     }
 
     public @NotNull VkExtent2D extent() {
         return new VkExtent2D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(@NotNull VkExtent2D value) {
+    public VkRectLayerKHR extent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+        return this;
     }
 
     public @Unsigned int layer() {
         return segment.get(LAYOUT$layer, OFFSET$layer);
     }
 
-    public void layer(@Unsigned int value) {
+    public VkRectLayerKHR layer(@Unsigned int value) {
         segment.set(LAYOUT$layer, OFFSET$layer, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

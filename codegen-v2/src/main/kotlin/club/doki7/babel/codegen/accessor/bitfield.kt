@@ -5,7 +5,7 @@ import club.doki7.babel.codegen.defun
 import club.doki7.babel.codegen.isUnusedReservedField
 import club.doki7.babel.util.buildDoc
 
-fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields) = buildDoc {
+fun generateBitfieldAccessor(className: String, bitfields: LayoutField.Bitfields) = buildDoc {
     for (i in bitfields.bitfields.indices) {
         val member = bitfields.bitfields[i]
         val memberName = member.bitfieldName
@@ -30,9 +30,10 @@ fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields) = buildDoc {
 
             + ""
 
-            defun("public", "void", memberName, "boolean value") {
+            defun("public", className, memberName, "boolean value") {
                 +sliceSegment
                 +"BitfieldUtil.writeBit($s, $from, value);"
+                +"return this;"
             }
         } else {
             defun("public", "@Unsigned int", memberName) {
@@ -42,9 +43,10 @@ fun generateBitfieldAccessor(bitfields: LayoutField.Bitfields) = buildDoc {
 
             +""
 
-            defun("public", "void", memberName, "@Unsigned int value") {
+            defun("public", className, memberName, "@Unsigned int value") {
                 +sliceSegment
                 +"BitfieldUtil.writeBits($s, $from, $until, value);"
+                +"return this;"
             }
         }
 

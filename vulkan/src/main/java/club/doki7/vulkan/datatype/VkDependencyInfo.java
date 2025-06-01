@@ -199,8 +199,9 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDependencyInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,29 +212,33 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDependencyInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDependencyFlags.class) int dependencyFlags() {
         return segment.get(LAYOUT$dependencyFlags, OFFSET$dependencyFlags);
     }
 
-    public void dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
+    public VkDependencyInfo dependencyFlags(@EnumType(VkDependencyFlags.class) int value) {
         segment.set(LAYOUT$dependencyFlags, OFFSET$dependencyFlags, value);
+        return this;
     }
 
     public @Unsigned int memoryBarrierCount() {
         return segment.get(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount);
     }
 
-    public void memoryBarrierCount(@Unsigned int value) {
+    public VkDependencyInfo memoryBarrierCount(@Unsigned int value) {
         segment.set(LAYOUT$memoryBarrierCount, OFFSET$memoryBarrierCount, value);
+        return this;
     }
 
-    public void pMemoryBarriers(@Nullable IVkMemoryBarrier2 value) {
+    public VkDependencyInfo pMemoryBarriers(@Nullable IVkMemoryBarrier2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMemoryBarriersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkMemoryBarrier2.Ptr pMemoryBarriers(int assumedCount) {
@@ -266,13 +271,15 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return segment.get(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount);
     }
 
-    public void bufferMemoryBarrierCount(@Unsigned int value) {
+    public VkDependencyInfo bufferMemoryBarrierCount(@Unsigned int value) {
         segment.set(LAYOUT$bufferMemoryBarrierCount, OFFSET$bufferMemoryBarrierCount, value);
+        return this;
     }
 
-    public void pBufferMemoryBarriers(@Nullable IVkBufferMemoryBarrier2 value) {
+    public VkDependencyInfo pBufferMemoryBarriers(@Nullable IVkBufferMemoryBarrier2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferMemoryBarriersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkBufferMemoryBarrier2.Ptr pBufferMemoryBarriers(int assumedCount) {
@@ -305,13 +312,15 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         return segment.get(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount);
     }
 
-    public void imageMemoryBarrierCount(@Unsigned int value) {
+    public VkDependencyInfo imageMemoryBarrierCount(@Unsigned int value) {
         segment.set(LAYOUT$imageMemoryBarrierCount, OFFSET$imageMemoryBarrierCount, value);
+        return this;
     }
 
-    public void pImageMemoryBarriers(@Nullable IVkImageMemoryBarrier2 value) {
+    public VkDependencyInfo pImageMemoryBarriers(@Nullable IVkImageMemoryBarrier2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageMemoryBarriersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkImageMemoryBarrier2.Ptr pImageMemoryBarriers(int assumedCount) {

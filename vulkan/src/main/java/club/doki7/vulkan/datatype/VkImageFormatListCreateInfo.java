@@ -194,8 +194,9 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageFormatListCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageFormatListCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int viewFormatCount() {
         return segment.get(LAYOUT$viewFormatCount, OFFSET$viewFormatCount);
     }
 
-    public void viewFormatCount(@Unsigned int value) {
+    public VkImageFormatListCreateInfo viewFormatCount(@Unsigned int value) {
         segment.set(LAYOUT$viewFormatCount, OFFSET$viewFormatCount, value);
+        return this;
     }
 
 
@@ -231,9 +234,10 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         return new IntPtr(s);
     }
 
-    public void pViewFormats(@Nullable @EnumType(VkFormat.class) IntPtr value) {
+    public VkImageFormatListCreateInfo pViewFormats(@Nullable @EnumType(VkFormat.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewFormatsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {

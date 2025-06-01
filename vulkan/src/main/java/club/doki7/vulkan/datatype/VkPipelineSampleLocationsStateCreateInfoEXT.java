@@ -194,8 +194,9 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineSampleLocationsStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPipelineSampleLocationsStateCreateInfoEXT(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineSampleLocationsStateCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int sampleLocationsEnable() {
         return segment.get(LAYOUT$sampleLocationsEnable, OFFSET$sampleLocationsEnable);
     }
 
-    public void sampleLocationsEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineSampleLocationsStateCreateInfoEXT sampleLocationsEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sampleLocationsEnable, OFFSET$sampleLocationsEnable, value);
+        return this;
     }
 
     public @NotNull VkSampleLocationsInfoEXT sampleLocationsInfo() {
         return new VkSampleLocationsInfoEXT(segment.asSlice(OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo));
     }
 
-    public void sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
+    public VkPipelineSampleLocationsStateCreateInfoEXT sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

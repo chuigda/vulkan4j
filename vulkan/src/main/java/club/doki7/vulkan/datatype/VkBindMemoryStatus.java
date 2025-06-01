@@ -193,8 +193,9 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindMemoryStatus sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindMemoryStatus pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
 
@@ -222,9 +224,10 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         return new IntPtr(s);
     }
 
-    public void pResult(@Nullable @EnumType(VkResult.class) IntPtr value) {
+    public VkBindMemoryStatus pResult(@Nullable @EnumType(VkResult.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResultRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkResult.class) MemorySegment pResultRaw() {

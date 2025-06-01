@@ -193,8 +193,9 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassCreationFeedbackCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,13 +206,15 @@ public record VkRenderPassCreationFeedbackCreateInfoEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassCreationFeedbackCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pRenderPassFeedback(@Nullable IVkRenderPassCreationFeedbackInfoEXT value) {
+    public VkRenderPassCreationFeedbackCreateInfoEXT pRenderPassFeedback(@Nullable IVkRenderPassCreationFeedbackInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRenderPassFeedbackRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRenderPassCreationFeedbackInfoEXT.Ptr pRenderPassFeedback(int assumedCount) {

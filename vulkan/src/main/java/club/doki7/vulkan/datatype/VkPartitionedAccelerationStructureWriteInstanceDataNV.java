@@ -180,16 +180,18 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return new VkTransformMatrixKHR(segment.asSlice(OFFSET$transform, LAYOUT$transform));
     }
 
-    public void transform(@NotNull VkTransformMatrixKHR value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV transform(@NotNull VkTransformMatrixKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, SIZE$transform);
+        return this;
     }
 
     public FloatPtr explicitAABB() {
         return new FloatPtr(explicitAABBRaw());
     }
 
-    public void explicitAABB(FloatPtr value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV explicitAABB(FloatPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$explicitAABB, SIZE$explicitAABB);
+        return this;
     }
 
     public MemorySegment explicitAABBRaw() {
@@ -200,56 +202,63 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         return segment.get(LAYOUT$instanceID, OFFSET$instanceID);
     }
 
-    public void instanceID(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceID(@Unsigned int value) {
         segment.set(LAYOUT$instanceID, OFFSET$instanceID, value);
+        return this;
     }
 
     public @Unsigned int instanceMask() {
         return segment.get(LAYOUT$instanceMask, OFFSET$instanceMask);
     }
 
-    public void instanceMask(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceMask(@Unsigned int value) {
         segment.set(LAYOUT$instanceMask, OFFSET$instanceMask, value);
+        return this;
     }
 
     public @Unsigned int instanceContributionToHitGroupIndex() {
         return segment.get(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex);
     }
 
-    public void instanceContributionToHitGroupIndex(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceContributionToHitGroupIndex(@Unsigned int value) {
         segment.set(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex, value);
+        return this;
     }
 
     public @EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int instanceFlags() {
         return segment.get(LAYOUT$instanceFlags, OFFSET$instanceFlags);
     }
 
-    public void instanceFlags(@EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceFlags(@EnumType(VkPartitionedAccelerationStructureInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$instanceFlags, OFFSET$instanceFlags, value);
+        return this;
     }
 
     public @Unsigned int instanceIndex() {
         return segment.get(LAYOUT$instanceIndex, OFFSET$instanceIndex);
     }
 
-    public void instanceIndex(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV instanceIndex(@Unsigned int value) {
         segment.set(LAYOUT$instanceIndex, OFFSET$instanceIndex, value);
+        return this;
     }
 
     public @Unsigned int partitionIndex() {
         return segment.get(LAYOUT$partitionIndex, OFFSET$partitionIndex);
     }
 
-    public void partitionIndex(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV partitionIndex(@Unsigned int value) {
         segment.set(LAYOUT$partitionIndex, OFFSET$partitionIndex, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV accelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

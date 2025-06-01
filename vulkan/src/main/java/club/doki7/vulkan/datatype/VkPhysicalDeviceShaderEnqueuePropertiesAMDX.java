@@ -199,8 +199,9 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,56 +212,63 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxExecutionGraphDepth() {
         return segment.get(LAYOUT$maxExecutionGraphDepth, OFFSET$maxExecutionGraphDepth);
     }
 
-    public void maxExecutionGraphDepth(@Unsigned int value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphDepth(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphDepth, OFFSET$maxExecutionGraphDepth, value);
+        return this;
     }
 
     public @Unsigned int maxExecutionGraphShaderOutputNodes() {
         return segment.get(LAYOUT$maxExecutionGraphShaderOutputNodes, OFFSET$maxExecutionGraphShaderOutputNodes);
     }
 
-    public void maxExecutionGraphShaderOutputNodes(@Unsigned int value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderOutputNodes(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphShaderOutputNodes, OFFSET$maxExecutionGraphShaderOutputNodes, value);
+        return this;
     }
 
     public @Unsigned int maxExecutionGraphShaderPayloadSize() {
         return segment.get(LAYOUT$maxExecutionGraphShaderPayloadSize, OFFSET$maxExecutionGraphShaderPayloadSize);
     }
 
-    public void maxExecutionGraphShaderPayloadSize(@Unsigned int value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderPayloadSize(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphShaderPayloadSize, OFFSET$maxExecutionGraphShaderPayloadSize, value);
+        return this;
     }
 
     public @Unsigned int maxExecutionGraphShaderPayloadCount() {
         return segment.get(LAYOUT$maxExecutionGraphShaderPayloadCount, OFFSET$maxExecutionGraphShaderPayloadCount);
     }
 
-    public void maxExecutionGraphShaderPayloadCount(@Unsigned int value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderPayloadCount(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphShaderPayloadCount, OFFSET$maxExecutionGraphShaderPayloadCount, value);
+        return this;
     }
 
     public @Unsigned int executionGraphDispatchAddressAlignment() {
         return segment.get(LAYOUT$executionGraphDispatchAddressAlignment, OFFSET$executionGraphDispatchAddressAlignment);
     }
 
-    public void executionGraphDispatchAddressAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX executionGraphDispatchAddressAlignment(@Unsigned int value) {
         segment.set(LAYOUT$executionGraphDispatchAddressAlignment, OFFSET$executionGraphDispatchAddressAlignment, value);
+        return this;
     }
 
     public @Unsigned IntPtr maxExecutionGraphWorkgroupCount() {
         return new IntPtr(maxExecutionGraphWorkgroupCountRaw());
     }
 
-    public void maxExecutionGraphWorkgroupCount(@Unsigned IntPtr value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCount(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxExecutionGraphWorkgroupCount, SIZE$maxExecutionGraphWorkgroupCount);
+        return this;
     }
 
     public MemorySegment maxExecutionGraphWorkgroupCountRaw() {
@@ -271,8 +279,9 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         return segment.get(LAYOUT$maxExecutionGraphWorkgroups, OFFSET$maxExecutionGraphWorkgroups);
     }
 
-    public void maxExecutionGraphWorkgroups(@Unsigned int value) {
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroups(@Unsigned int value) {
         segment.set(LAYOUT$maxExecutionGraphWorkgroups, OFFSET$maxExecutionGraphWorkgroups, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

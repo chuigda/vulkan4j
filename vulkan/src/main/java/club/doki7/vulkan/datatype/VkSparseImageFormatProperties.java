@@ -174,24 +174,27 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkSparseImageFormatProperties aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
+        return this;
     }
 
     public @NotNull VkExtent3D imageGranularity() {
         return new VkExtent3D(segment.asSlice(OFFSET$imageGranularity, LAYOUT$imageGranularity));
     }
 
-    public void imageGranularity(@NotNull VkExtent3D value) {
+    public VkSparseImageFormatProperties imageGranularity(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageGranularity, SIZE$imageGranularity);
+        return this;
     }
 
     public @EnumType(VkSparseImageFormatFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkSparseImageFormatFlags.class) int value) {
+    public VkSparseImageFormatProperties flags(@EnumType(VkSparseImageFormatFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

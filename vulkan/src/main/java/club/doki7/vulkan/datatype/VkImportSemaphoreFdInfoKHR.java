@@ -196,8 +196,9 @@ public record VkImportSemaphoreFdInfoKHR(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportSemaphoreFdInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,8 +209,9 @@ public record VkImportSemaphoreFdInfoKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportSemaphoreFdInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSemaphore semaphore() {
@@ -220,32 +222,36 @@ public record VkImportSemaphoreFdInfoKHR(@NotNull MemorySegment segment) impleme
         return new VkSemaphore(s);
     }
 
-    public void semaphore(@Nullable VkSemaphore value) {
+    public VkImportSemaphoreFdInfoKHR semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSemaphoreImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkSemaphoreImportFlags.class) int value) {
+    public VkImportSemaphoreFdInfoKHR flags(@EnumType(VkSemaphoreImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkImportSemaphoreFdInfoKHR handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+        return this;
     }
 
     public int fd() {
         return segment.get(LAYOUT$fd, OFFSET$fd);
     }
 
-    public void fd(int value) {
+    public VkImportSemaphoreFdInfoKHR fd(int value) {
         segment.set(LAYOUT$fd, OFFSET$fd, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

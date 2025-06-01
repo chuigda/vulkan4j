@@ -194,8 +194,9 @@ public record VkVideoEncodeH264SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoEncodeH264SessionParametersFeedbackInfoKHR(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int hasStdSPSOverrides() {
         return segment.get(LAYOUT$hasStdSPSOverrides, OFFSET$hasStdSPSOverrides);
     }
 
-    public void hasStdSPSOverrides(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR hasStdSPSOverrides(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hasStdSPSOverrides, OFFSET$hasStdSPSOverrides, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int hasStdPPSOverrides() {
         return segment.get(LAYOUT$hasStdPPSOverrides, OFFSET$hasStdPPSOverrides);
     }
 
-    public void hasStdPPSOverrides(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR hasStdPPSOverrides(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hasStdPPSOverrides, OFFSET$hasStdPPSOverrides, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

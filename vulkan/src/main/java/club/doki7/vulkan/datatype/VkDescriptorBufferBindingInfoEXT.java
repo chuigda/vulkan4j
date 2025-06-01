@@ -194,8 +194,9 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorBufferBindingInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkDescriptorBufferBindingInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorBufferBindingInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long address() {
         return segment.get(LAYOUT$address, OFFSET$address);
     }
 
-    public void address(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkDescriptorBufferBindingInfoEXT address(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$address, OFFSET$address, value);
+        return this;
     }
 
     public @EnumType(VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkDescriptorBufferBindingInfoEXT usage(@EnumType(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

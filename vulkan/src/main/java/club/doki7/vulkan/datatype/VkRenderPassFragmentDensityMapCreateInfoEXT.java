@@ -193,8 +193,9 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassFragmentDensityMapCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassFragmentDensityMapCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkAttachmentReference fragmentDensityMapAttachment() {
         return new VkAttachmentReference(segment.asSlice(OFFSET$fragmentDensityMapAttachment, LAYOUT$fragmentDensityMapAttachment));
     }
 
-    public void fragmentDensityMapAttachment(@NotNull VkAttachmentReference value) {
+    public VkRenderPassFragmentDensityMapCreateInfoEXT fragmentDensityMapAttachment(@NotNull VkAttachmentReference value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentDensityMapAttachment, SIZE$fragmentDensityMapAttachment);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

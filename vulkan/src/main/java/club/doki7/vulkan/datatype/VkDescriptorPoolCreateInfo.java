@@ -196,8 +196,9 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorPoolCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,37 +209,42 @@ public record VkDescriptorPoolCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorPoolCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDescriptorPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDescriptorPoolCreateFlags.class) int value) {
+    public VkDescriptorPoolCreateInfo flags(@EnumType(VkDescriptorPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int maxSets() {
         return segment.get(LAYOUT$maxSets, OFFSET$maxSets);
     }
 
-    public void maxSets(@Unsigned int value) {
+    public VkDescriptorPoolCreateInfo maxSets(@Unsigned int value) {
         segment.set(LAYOUT$maxSets, OFFSET$maxSets, value);
+        return this;
     }
 
     public @Unsigned int poolSizeCount() {
         return segment.get(LAYOUT$poolSizeCount, OFFSET$poolSizeCount);
     }
 
-    public void poolSizeCount(@Unsigned int value) {
+    public VkDescriptorPoolCreateInfo poolSizeCount(@Unsigned int value) {
         segment.set(LAYOUT$poolSizeCount, OFFSET$poolSizeCount, value);
+        return this;
     }
 
-    public void pPoolSizes(@Nullable IVkDescriptorPoolSize value) {
+    public VkDescriptorPoolCreateInfo pPoolSizes(@Nullable IVkDescriptorPoolSize value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPoolSizesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDescriptorPoolSize.Ptr pPoolSizes(int assumedCount) {

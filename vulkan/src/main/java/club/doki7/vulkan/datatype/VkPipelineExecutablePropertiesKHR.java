@@ -196,8 +196,9 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineExecutablePropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,24 +209,27 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineExecutablePropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stages() {
         return segment.get(LAYOUT$stages, OFFSET$stages);
     }
 
-    public void stages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPipelineExecutablePropertiesKHR stages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stages, OFFSET$stages, value);
+        return this;
     }
 
     public BytePtr name() {
         return new BytePtr(nameRaw());
     }
 
-    public void name(BytePtr value) {
+    public VkPipelineExecutablePropertiesKHR name(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        return this;
     }
 
     public MemorySegment nameRaw() {
@@ -236,8 +240,9 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return new BytePtr(descriptionRaw());
     }
 
-    public void description(BytePtr value) {
+    public VkPipelineExecutablePropertiesKHR description(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        return this;
     }
 
     public MemorySegment descriptionRaw() {
@@ -248,8 +253,9 @@ public record VkPipelineExecutablePropertiesKHR(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$subgroupSize, OFFSET$subgroupSize);
     }
 
-    public void subgroupSize(@Unsigned int value) {
+    public VkPipelineExecutablePropertiesKHR subgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$subgroupSize, OFFSET$subgroupSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

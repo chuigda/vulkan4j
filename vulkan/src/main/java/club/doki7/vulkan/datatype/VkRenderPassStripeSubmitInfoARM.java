@@ -194,8 +194,9 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassStripeSubmitInfoARM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkRenderPassStripeSubmitInfoARM(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassStripeSubmitInfoARM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int stripeSemaphoreInfoCount() {
         return segment.get(LAYOUT$stripeSemaphoreInfoCount, OFFSET$stripeSemaphoreInfoCount);
     }
 
-    public void stripeSemaphoreInfoCount(@Unsigned int value) {
+    public VkRenderPassStripeSubmitInfoARM stripeSemaphoreInfoCount(@Unsigned int value) {
         segment.set(LAYOUT$stripeSemaphoreInfoCount, OFFSET$stripeSemaphoreInfoCount, value);
+        return this;
     }
 
-    public void pStripeSemaphoreInfos(@Nullable IVkSemaphoreSubmitInfo value) {
+    public VkRenderPassStripeSubmitInfoARM pStripeSemaphoreInfos(@Nullable IVkSemaphoreSubmitInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStripeSemaphoreInfosRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSemaphoreSubmitInfo.Ptr pStripeSemaphoreInfos(int assumedCount) {

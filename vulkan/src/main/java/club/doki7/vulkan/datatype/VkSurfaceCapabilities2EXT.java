@@ -203,8 +203,9 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceCapabilities2EXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -215,96 +216,108 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSurfaceCapabilities2EXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int minImageCount() {
         return segment.get(LAYOUT$minImageCount, OFFSET$minImageCount);
     }
 
-    public void minImageCount(@Unsigned int value) {
+    public VkSurfaceCapabilities2EXT minImageCount(@Unsigned int value) {
         segment.set(LAYOUT$minImageCount, OFFSET$minImageCount, value);
+        return this;
     }
 
     public @Unsigned int maxImageCount() {
         return segment.get(LAYOUT$maxImageCount, OFFSET$maxImageCount);
     }
 
-    public void maxImageCount(@Unsigned int value) {
+    public VkSurfaceCapabilities2EXT maxImageCount(@Unsigned int value) {
         segment.set(LAYOUT$maxImageCount, OFFSET$maxImageCount, value);
+        return this;
     }
 
     public @NotNull VkExtent2D currentExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$currentExtent, LAYOUT$currentExtent));
     }
 
-    public void currentExtent(@NotNull VkExtent2D value) {
+    public VkSurfaceCapabilities2EXT currentExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$currentExtent, SIZE$currentExtent);
+        return this;
     }
 
     public @NotNull VkExtent2D minImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minImageExtent, LAYOUT$minImageExtent));
     }
 
-    public void minImageExtent(@NotNull VkExtent2D value) {
+    public VkSurfaceCapabilities2EXT minImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageExtent, SIZE$minImageExtent);
+        return this;
     }
 
     public @NotNull VkExtent2D maxImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxImageExtent, LAYOUT$maxImageExtent));
     }
 
-    public void maxImageExtent(@NotNull VkExtent2D value) {
+    public VkSurfaceCapabilities2EXT maxImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxImageExtent, SIZE$maxImageExtent);
+        return this;
     }
 
     public @Unsigned int maxImageArrayLayers() {
         return segment.get(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers);
     }
 
-    public void maxImageArrayLayers(@Unsigned int value) {
+    public VkSurfaceCapabilities2EXT maxImageArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers, value);
+        return this;
     }
 
     public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public void supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSurfaceCapabilities2EXT supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
+        return this;
     }
 
     public @EnumType(VkSurfaceTransformFlagsKHR.class) int currentTransform() {
         return segment.get(LAYOUT$currentTransform, OFFSET$currentTransform);
     }
 
-    public void currentTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSurfaceCapabilities2EXT currentTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$currentTransform, OFFSET$currentTransform, value);
+        return this;
     }
 
     public @EnumType(VkCompositeAlphaFlagsKHR.class) int supportedCompositeAlpha() {
         return segment.get(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha);
     }
 
-    public void supportedCompositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
+    public VkSurfaceCapabilities2EXT supportedCompositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedCompositeAlpha, OFFSET$supportedCompositeAlpha, value);
+        return this;
     }
 
     public @EnumType(VkImageUsageFlags.class) int supportedUsageFlags() {
         return segment.get(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags);
     }
 
-    public void supportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSurfaceCapabilities2EXT supportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$supportedUsageFlags, OFFSET$supportedUsageFlags, value);
+        return this;
     }
 
     public @EnumType(VkSurfaceCounterFlagsEXT.class) int supportedSurfaceCounters() {
         return segment.get(LAYOUT$supportedSurfaceCounters, OFFSET$supportedSurfaceCounters);
     }
 
-    public void supportedSurfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
+    public VkSurfaceCapabilities2EXT supportedSurfaceCounters(@EnumType(VkSurfaceCounterFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedSurfaceCounters, OFFSET$supportedSurfaceCounters, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

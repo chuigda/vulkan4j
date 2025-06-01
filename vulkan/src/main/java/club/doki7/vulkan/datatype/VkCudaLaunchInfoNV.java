@@ -204,8 +204,9 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCudaLaunchInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -216,8 +217,9 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCudaLaunchInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkCudaFunctionNV function() {
@@ -228,72 +230,81 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         return new VkCudaFunctionNV(s);
     }
 
-    public void function(@Nullable VkCudaFunctionNV value) {
+    public VkCudaLaunchInfoNV function(@Nullable VkCudaFunctionNV value) {
         segment.set(LAYOUT$function, OFFSET$function, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int gridDimX() {
         return segment.get(LAYOUT$gridDimX, OFFSET$gridDimX);
     }
 
-    public void gridDimX(@Unsigned int value) {
+    public VkCudaLaunchInfoNV gridDimX(@Unsigned int value) {
         segment.set(LAYOUT$gridDimX, OFFSET$gridDimX, value);
+        return this;
     }
 
     public @Unsigned int gridDimY() {
         return segment.get(LAYOUT$gridDimY, OFFSET$gridDimY);
     }
 
-    public void gridDimY(@Unsigned int value) {
+    public VkCudaLaunchInfoNV gridDimY(@Unsigned int value) {
         segment.set(LAYOUT$gridDimY, OFFSET$gridDimY, value);
+        return this;
     }
 
     public @Unsigned int gridDimZ() {
         return segment.get(LAYOUT$gridDimZ, OFFSET$gridDimZ);
     }
 
-    public void gridDimZ(@Unsigned int value) {
+    public VkCudaLaunchInfoNV gridDimZ(@Unsigned int value) {
         segment.set(LAYOUT$gridDimZ, OFFSET$gridDimZ, value);
+        return this;
     }
 
     public @Unsigned int blockDimX() {
         return segment.get(LAYOUT$blockDimX, OFFSET$blockDimX);
     }
 
-    public void blockDimX(@Unsigned int value) {
+    public VkCudaLaunchInfoNV blockDimX(@Unsigned int value) {
         segment.set(LAYOUT$blockDimX, OFFSET$blockDimX, value);
+        return this;
     }
 
     public @Unsigned int blockDimY() {
         return segment.get(LAYOUT$blockDimY, OFFSET$blockDimY);
     }
 
-    public void blockDimY(@Unsigned int value) {
+    public VkCudaLaunchInfoNV blockDimY(@Unsigned int value) {
         segment.set(LAYOUT$blockDimY, OFFSET$blockDimY, value);
+        return this;
     }
 
     public @Unsigned int blockDimZ() {
         return segment.get(LAYOUT$blockDimZ, OFFSET$blockDimZ);
     }
 
-    public void blockDimZ(@Unsigned int value) {
+    public VkCudaLaunchInfoNV blockDimZ(@Unsigned int value) {
         segment.set(LAYOUT$blockDimZ, OFFSET$blockDimZ, value);
+        return this;
     }
 
     public @Unsigned int sharedMemBytes() {
         return segment.get(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes);
     }
 
-    public void sharedMemBytes(@Unsigned int value) {
+    public VkCudaLaunchInfoNV sharedMemBytes(@Unsigned int value) {
         segment.set(LAYOUT$sharedMemBytes, OFFSET$sharedMemBytes, value);
+        return this;
     }
 
     public @Unsigned long paramCount() {
         return NativeLayout.readCSizeT(segment, OFFSET$paramCount);
     }
 
-    public void paramCount(@Unsigned long value) {
+    public VkCudaLaunchInfoNV paramCount(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$paramCount, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pParams() {
@@ -304,16 +315,18 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         segment.set(LAYOUT$pParams, OFFSET$pParams, value);
     }
 
-    public void pParams(@Nullable IPointer pointer) {
+    public VkCudaLaunchInfoNV pParams(@Nullable IPointer pointer) {
         pParams(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long extraCount() {
         return NativeLayout.readCSizeT(segment, OFFSET$extraCount);
     }
 
-    public void extraCount(@Unsigned long value) {
+    public VkCudaLaunchInfoNV extraCount(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$extraCount, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pExtras() {
@@ -324,8 +337,9 @@ public record VkCudaLaunchInfoNV(@NotNull MemorySegment segment) implements IVkC
         segment.set(LAYOUT$pExtras, OFFSET$pExtras, value);
     }
 
-    public void pExtras(@Nullable IPointer pointer) {
+    public VkCudaLaunchInfoNV pExtras(@Nullable IPointer pointer) {
         pExtras(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

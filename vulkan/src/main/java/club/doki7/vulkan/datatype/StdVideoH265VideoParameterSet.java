@@ -181,24 +181,27 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return new StdVideoH265VpsFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoH265VpsFlags value) {
+    public StdVideoH265VideoParameterSet flags(@NotNull StdVideoH265VpsFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte vps_video_parameter_set_id() {
         return segment.get(LAYOUT$vps_video_parameter_set_id, OFFSET$vps_video_parameter_set_id);
     }
 
-    public void vps_video_parameter_set_id(@Unsigned byte value) {
+    public StdVideoH265VideoParameterSet vps_video_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$vps_video_parameter_set_id, OFFSET$vps_video_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte vps_max_sub_layers_minus1() {
         return segment.get(LAYOUT$vps_max_sub_layers_minus1, OFFSET$vps_max_sub_layers_minus1);
     }
 
-    public void vps_max_sub_layers_minus1(@Unsigned byte value) {
+    public StdVideoH265VideoParameterSet vps_max_sub_layers_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$vps_max_sub_layers_minus1, OFFSET$vps_max_sub_layers_minus1, value);
+        return this;
     }
 
 
@@ -207,30 +210,34 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$vps_num_units_in_tick, OFFSET$vps_num_units_in_tick);
     }
 
-    public void vps_num_units_in_tick(@Unsigned int value) {
+    public StdVideoH265VideoParameterSet vps_num_units_in_tick(@Unsigned int value) {
         segment.set(LAYOUT$vps_num_units_in_tick, OFFSET$vps_num_units_in_tick, value);
+        return this;
     }
 
     public @Unsigned int vps_time_scale() {
         return segment.get(LAYOUT$vps_time_scale, OFFSET$vps_time_scale);
     }
 
-    public void vps_time_scale(@Unsigned int value) {
+    public StdVideoH265VideoParameterSet vps_time_scale(@Unsigned int value) {
         segment.set(LAYOUT$vps_time_scale, OFFSET$vps_time_scale, value);
+        return this;
     }
 
     public @Unsigned int vps_num_ticks_poc_diff_one_minus1() {
         return segment.get(LAYOUT$vps_num_ticks_poc_diff_one_minus1, OFFSET$vps_num_ticks_poc_diff_one_minus1);
     }
 
-    public void vps_num_ticks_poc_diff_one_minus1(@Unsigned int value) {
+    public StdVideoH265VideoParameterSet vps_num_ticks_poc_diff_one_minus1(@Unsigned int value) {
         segment.set(LAYOUT$vps_num_ticks_poc_diff_one_minus1, OFFSET$vps_num_ticks_poc_diff_one_minus1, value);
+        return this;
     }
 
 
-    public void pDecPicBufMgr(@Nullable IStdVideoH265DecPicBufMgr value) {
+    public StdVideoH265VideoParameterSet pDecPicBufMgr(@Nullable IStdVideoH265DecPicBufMgr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDecPicBufMgrRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265DecPicBufMgr.Ptr pDecPicBufMgr(int assumedCount) {
@@ -259,9 +266,10 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pDecPicBufMgr, OFFSET$pDecPicBufMgr, value);
     }
 
-    public void pHrdParameters(@Nullable IStdVideoH265HrdParameters value) {
+    public StdVideoH265VideoParameterSet pHrdParameters(@Nullable IStdVideoH265HrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHrdParametersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265HrdParameters.Ptr pHrdParameters(int assumedCount) {
@@ -290,9 +298,10 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pHrdParameters, OFFSET$pHrdParameters, value);
     }
 
-    public void pProfileTierLevel(@Nullable IStdVideoH265ProfileTierLevel value) {
+    public StdVideoH265VideoParameterSet pProfileTierLevel(@Nullable IStdVideoH265ProfileTierLevel value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pProfileTierLevelRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265ProfileTierLevel.Ptr pProfileTierLevel(int assumedCount) {

@@ -193,8 +193,9 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePointClippingProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePointClippingProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPointClippingBehavior.class) int pointClippingBehavior() {
         return segment.get(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior);
     }
 
-    public void pointClippingBehavior(@EnumType(VkPointClippingBehavior.class) int value) {
+    public VkPhysicalDevicePointClippingProperties pointClippingBehavior(@EnumType(VkPointClippingBehavior.class) int value) {
         segment.set(LAYOUT$pointClippingBehavior, OFFSET$pointClippingBehavior, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

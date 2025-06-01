@@ -194,8 +194,9 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugMarkerMarkerInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDebugMarkerMarkerInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -222,9 +224,10 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         return new BytePtr(s);
     }
 
-    public void pMarkerName(@Nullable BytePtr value) {
+    public VkDebugMarkerMarkerInfoEXT pMarkerName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMarkerNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pMarkerNameRaw() {
@@ -239,8 +242,9 @@ public record VkDebugMarkerMarkerInfoEXT(@NotNull MemorySegment segment) impleme
         return new FloatPtr(colorRaw());
     }
 
-    public void color(FloatPtr value) {
+    public VkDebugMarkerMarkerInfoEXT color(FloatPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$color, SIZE$color);
+        return this;
     }
 
     public MemorySegment colorRaw() {

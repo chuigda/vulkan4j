@@ -193,8 +193,9 @@ public record VkSubresourceLayout2(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubresourceLayout2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSubresourceLayout2(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSubresourceLayout2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkSubresourceLayout subresourceLayout() {
         return new VkSubresourceLayout(segment.asSlice(OFFSET$subresourceLayout, LAYOUT$subresourceLayout));
     }
 
-    public void subresourceLayout(@NotNull VkSubresourceLayout value) {
+    public VkSubresourceLayout2 subresourceLayout(@NotNull VkSubresourceLayout value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceLayout, SIZE$subresourceLayout);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

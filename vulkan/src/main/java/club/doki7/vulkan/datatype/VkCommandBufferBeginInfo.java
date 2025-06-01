@@ -194,8 +194,9 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferBeginInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkCommandBufferBeginInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCommandBufferBeginInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkCommandBufferUsageFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkCommandBufferUsageFlags.class) int value) {
+    public VkCommandBufferBeginInfo flags(@EnumType(VkCommandBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
-    public void pInheritanceInfo(@Nullable IVkCommandBufferInheritanceInfo value) {
+    public VkCommandBufferBeginInfo pInheritanceInfo(@Nullable IVkCommandBufferInheritanceInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInheritanceInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkCommandBufferInheritanceInfo.Ptr pInheritanceInfo(int assumedCount) {

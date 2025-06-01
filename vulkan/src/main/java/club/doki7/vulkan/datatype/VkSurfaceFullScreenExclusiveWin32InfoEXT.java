@@ -193,8 +193,9 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceFullScreenExclusiveWin32InfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSurfaceFullScreenExclusiveWin32InfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="HMONITOR") MemorySegment hmonitor() {
@@ -217,8 +219,9 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
         segment.set(LAYOUT$hmonitor, OFFSET$hmonitor, value);
     }
 
-    public void hmonitor(@Nullable IPointer pointer) {
+    public VkSurfaceFullScreenExclusiveWin32InfoEXT hmonitor(@Nullable IPointer pointer) {
         hmonitor(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -198,8 +198,9 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1RateControlLayerInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,56 +211,63 @@ public record VkVideoEncodeAV1RateControlLayerInfoKHR(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeAV1RateControlLayerInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useMinQIndex() {
         return segment.get(LAYOUT$useMinQIndex, OFFSET$useMinQIndex);
     }
 
-    public void useMinQIndex(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeAV1RateControlLayerInfoKHR useMinQIndex(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMinQIndex, OFFSET$useMinQIndex, value);
+        return this;
     }
 
     public @NotNull VkVideoEncodeAV1QIndexKHR minQIndex() {
         return new VkVideoEncodeAV1QIndexKHR(segment.asSlice(OFFSET$minQIndex, LAYOUT$minQIndex));
     }
 
-    public void minQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
+    public VkVideoEncodeAV1RateControlLayerInfoKHR minQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minQIndex, SIZE$minQIndex);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useMaxQIndex() {
         return segment.get(LAYOUT$useMaxQIndex, OFFSET$useMaxQIndex);
     }
 
-    public void useMaxQIndex(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeAV1RateControlLayerInfoKHR useMaxQIndex(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMaxQIndex, OFFSET$useMaxQIndex, value);
+        return this;
     }
 
     public @NotNull VkVideoEncodeAV1QIndexKHR maxQIndex() {
         return new VkVideoEncodeAV1QIndexKHR(segment.asSlice(OFFSET$maxQIndex, LAYOUT$maxQIndex));
     }
 
-    public void maxQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
+    public VkVideoEncodeAV1RateControlLayerInfoKHR maxQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxQIndex, SIZE$maxQIndex);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useMaxFrameSize() {
         return segment.get(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize);
     }
 
-    public void useMaxFrameSize(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeAV1RateControlLayerInfoKHR useMaxFrameSize(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize, value);
+        return this;
     }
 
     public @NotNull VkVideoEncodeAV1FrameSizeKHR maxFrameSize() {
         return new VkVideoEncodeAV1FrameSizeKHR(segment.asSlice(OFFSET$maxFrameSize, LAYOUT$maxFrameSize));
     }
 
-    public void maxFrameSize(@NotNull VkVideoEncodeAV1FrameSizeKHR value) {
+    public VkVideoEncodeAV1RateControlLayerInfoKHR maxFrameSize(@NotNull VkVideoEncodeAV1FrameSizeKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFrameSize, SIZE$maxFrameSize);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

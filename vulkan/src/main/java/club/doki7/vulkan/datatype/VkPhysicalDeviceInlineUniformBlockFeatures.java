@@ -194,8 +194,9 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceInlineUniformBlockFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceInlineUniformBlockFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int inlineUniformBlock() {
         return segment.get(LAYOUT$inlineUniformBlock, OFFSET$inlineUniformBlock);
     }
 
-    public void inlineUniformBlock(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceInlineUniformBlockFeatures inlineUniformBlock(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$inlineUniformBlock, OFFSET$inlineUniformBlock, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int descriptorBindingInlineUniformBlockUpdateAfterBind() {
         return segment.get(LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind, OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind);
     }
 
-    public void descriptorBindingInlineUniformBlockUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceInlineUniformBlockFeatures descriptorBindingInlineUniformBlockUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$descriptorBindingInlineUniformBlockUpdateAfterBind, OFFSET$descriptorBindingInlineUniformBlockUpdateAfterBind, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

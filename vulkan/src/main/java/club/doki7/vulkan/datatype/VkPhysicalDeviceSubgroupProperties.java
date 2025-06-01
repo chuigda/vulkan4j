@@ -196,8 +196,9 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceSubgroupProperties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceSubgroupProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int subgroupSize() {
         return segment.get(LAYOUT$subgroupSize, OFFSET$subgroupSize);
     }
 
-    public void subgroupSize(@Unsigned int value) {
+    public VkPhysicalDeviceSubgroupProperties subgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$subgroupSize, OFFSET$subgroupSize, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int supportedStages() {
         return segment.get(LAYOUT$supportedStages, OFFSET$supportedStages);
     }
 
-    public void supportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties supportedStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedStages, OFFSET$supportedStages, value);
+        return this;
     }
 
     public @EnumType(VkSubgroupFeatureFlags.class) int supportedOperations() {
         return segment.get(LAYOUT$supportedOperations, OFFSET$supportedOperations);
     }
 
-    public void supportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
+    public VkPhysicalDeviceSubgroupProperties supportedOperations(@EnumType(VkSubgroupFeatureFlags.class) int value) {
         segment.set(LAYOUT$supportedOperations, OFFSET$supportedOperations, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int quadOperationsInAllStages() {
         return segment.get(LAYOUT$quadOperationsInAllStages, OFFSET$quadOperationsInAllStages);
     }
 
-    public void quadOperationsInAllStages(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSubgroupProperties quadOperationsInAllStages(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$quadOperationsInAllStages, OFFSET$quadOperationsInAllStages, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

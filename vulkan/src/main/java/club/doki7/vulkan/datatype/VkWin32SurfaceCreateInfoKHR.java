@@ -195,8 +195,9 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWin32SurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWin32SurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkWin32SurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkWin32SurfaceCreateFlagsKHR.class) int value) {
+    public VkWin32SurfaceCreateInfoKHR flags(@EnumType(VkWin32SurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Pointer(comment="HINSTANCE") MemorySegment hinstance() {
@@ -227,8 +230,9 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$hinstance, OFFSET$hinstance, value);
     }
 
-    public void hinstance(@Nullable IPointer pointer) {
+    public VkWin32SurfaceCreateInfoKHR hinstance(@Nullable IPointer pointer) {
         hinstance(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="HWND") MemorySegment hwnd() {
@@ -239,8 +243,9 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$hwnd, OFFSET$hwnd, value);
     }
 
-    public void hwnd(@Nullable IPointer pointer) {
+    public VkWin32SurfaceCreateInfoKHR hwnd(@Nullable IPointer pointer) {
         hwnd(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

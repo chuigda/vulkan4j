@@ -175,9 +175,10 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void vps_temporal_id_nesting_flag(boolean value) {
+    public StdVideoH265VpsFlags vps_temporal_id_nesting_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag, LAYOUT$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean vps_sub_layer_ordering_info_present_flag() {
@@ -185,9 +186,10 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void vps_sub_layer_ordering_info_present_flag(boolean value) {
+    public StdVideoH265VpsFlags vps_sub_layer_ordering_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag, LAYOUT$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean vps_timing_info_present_flag() {
@@ -195,9 +197,10 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void vps_timing_info_present_flag(boolean value) {
+    public StdVideoH265VpsFlags vps_timing_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag, LAYOUT$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean vps_poc_proportional_to_timing_flag() {
@@ -205,9 +208,10 @@ public record StdVideoH265VpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void vps_poc_proportional_to_timing_flag(boolean value) {
+    public StdVideoH265VpsFlags vps_poc_proportional_to_timing_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag, LAYOUT$bitfield$vps_temporal_id_nesting_flag$vps_poc_proportional_to_timing_flag);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

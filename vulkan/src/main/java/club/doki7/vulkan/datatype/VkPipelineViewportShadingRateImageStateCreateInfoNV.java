@@ -195,8 +195,9 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkPipelineViewportShadingRateImageStateCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shadingRateImageEnable() {
         return segment.get(LAYOUT$shadingRateImageEnable, OFFSET$shadingRateImageEnable);
     }
 
-    public void shadingRateImageEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV shadingRateImageEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shadingRateImageEnable, OFFSET$shadingRateImageEnable, value);
+        return this;
     }
 
     public @Unsigned int viewportCount() {
         return segment.get(LAYOUT$viewportCount, OFFSET$viewportCount);
     }
 
-    public void viewportCount(@Unsigned int value) {
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV viewportCount(@Unsigned int value) {
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
+        return this;
     }
 
-    public void pShadingRatePalettes(@Nullable IVkShadingRatePaletteNV value) {
+    public VkPipelineViewportShadingRateImageStateCreateInfoNV pShadingRatePalettes(@Nullable IVkShadingRatePaletteNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePalettesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkShadingRatePaletteNV.Ptr pShadingRatePalettes(int assumedCount) {

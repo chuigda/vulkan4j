@@ -194,8 +194,9 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteDescriptorSetPartitionedAccelerationStructureNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWriteDescriptorSetPartitionedAccelerationStructureNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int accelerationStructureCount() {
         return segment.get(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount);
     }
 
-    public void accelerationStructureCount(@Unsigned int value) {
+    public VkWriteDescriptorSetPartitionedAccelerationStructureNV accelerationStructureCount(@Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount, value);
+        return this;
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -230,9 +233,10 @@ public record VkWriteDescriptorSetPartitionedAccelerationStructureNV(@NotNull Me
         return new LongPtr(s);
     }
 
-    public void pAccelerationStructures(@Nullable @Pointer(comment="VkDeviceAddress") @Unsigned LongPtr value) {
+    public VkWriteDescriptorSetPartitionedAccelerationStructureNV pAccelerationStructures(@Nullable @Pointer(comment="VkDeviceAddress") @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAccelerationStructuresRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pAccelerationStructuresRaw() {

@@ -194,8 +194,9 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderAtomicInt64Features sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceShaderAtomicInt64Features(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderAtomicInt64Features pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderBufferInt64Atomics() {
         return segment.get(LAYOUT$shaderBufferInt64Atomics, OFFSET$shaderBufferInt64Atomics);
     }
 
-    public void shaderBufferInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderAtomicInt64Features shaderBufferInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBufferInt64Atomics, OFFSET$shaderBufferInt64Atomics, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderSharedInt64Atomics() {
         return segment.get(LAYOUT$shaderSharedInt64Atomics, OFFSET$shaderSharedInt64Atomics);
     }
 
-    public void shaderSharedInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderAtomicInt64Features shaderSharedInt64Atomics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSharedInt64Atomics, OFFSET$shaderSharedInt64Atomics, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

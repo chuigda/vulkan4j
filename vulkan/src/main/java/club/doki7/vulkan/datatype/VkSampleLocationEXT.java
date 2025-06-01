@@ -173,16 +173,18 @@ public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(float value) {
+    public VkSampleLocationEXT x(float value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
+        return this;
     }
 
     public float y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(float value) {
+    public VkSampleLocationEXT y(float value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

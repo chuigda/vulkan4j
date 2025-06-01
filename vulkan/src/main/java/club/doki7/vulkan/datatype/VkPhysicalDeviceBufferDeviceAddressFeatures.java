@@ -195,8 +195,9 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceBufferDeviceAddressFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceBufferDeviceAddressFeatures(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceBufferDeviceAddressFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int bufferDeviceAddress() {
         return segment.get(LAYOUT$bufferDeviceAddress, OFFSET$bufferDeviceAddress);
     }
 
-    public void bufferDeviceAddress(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBufferDeviceAddressFeatures bufferDeviceAddress(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddress, OFFSET$bufferDeviceAddress, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int bufferDeviceAddressCaptureReplay() {
         return segment.get(LAYOUT$bufferDeviceAddressCaptureReplay, OFFSET$bufferDeviceAddressCaptureReplay);
     }
 
-    public void bufferDeviceAddressCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBufferDeviceAddressFeatures bufferDeviceAddressCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddressCaptureReplay, OFFSET$bufferDeviceAddressCaptureReplay, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int bufferDeviceAddressMultiDevice() {
         return segment.get(LAYOUT$bufferDeviceAddressMultiDevice, OFFSET$bufferDeviceAddressMultiDevice);
     }
 
-    public void bufferDeviceAddressMultiDevice(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceBufferDeviceAddressFeatures bufferDeviceAddressMultiDevice(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bufferDeviceAddressMultiDevice, OFFSET$bufferDeviceAddressMultiDevice, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

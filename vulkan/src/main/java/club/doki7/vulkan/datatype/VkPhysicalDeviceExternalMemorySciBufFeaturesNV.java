@@ -194,8 +194,9 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceExternalMemorySciBufFeaturesNV(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int sciBufImport() {
         return segment.get(LAYOUT$sciBufImport, OFFSET$sciBufImport);
     }
 
-    public void sciBufImport(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sciBufImport(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sciBufImport, OFFSET$sciBufImport, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int sciBufExport() {
         return segment.get(LAYOUT$sciBufExport, OFFSET$sciBufExport);
     }
 
-    public void sciBufExport(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sciBufExport(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sciBufExport, OFFSET$sciBufExport, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

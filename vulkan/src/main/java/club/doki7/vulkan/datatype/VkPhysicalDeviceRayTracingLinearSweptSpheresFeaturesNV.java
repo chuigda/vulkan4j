@@ -194,8 +194,9 @@ public record VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(@NotNull Me
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(@NotNull Me
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int spheres() {
         return segment.get(LAYOUT$spheres, OFFSET$spheres);
     }
 
-    public void spheres(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV spheres(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$spheres, OFFSET$spheres, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int linearSweptSpheres() {
         return segment.get(LAYOUT$linearSweptSpheres, OFFSET$linearSweptSpheres);
     }
 
-    public void linearSweptSpheres(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV linearSweptSpheres(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$linearSweptSpheres, OFFSET$linearSweptSpheres, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

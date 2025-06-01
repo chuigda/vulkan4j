@@ -187,128 +187,144 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IVkSRTDataN
         return segment.get(LAYOUT$sx, OFFSET$sx);
     }
 
-    public void sx(float value) {
+    public VkSRTDataNV sx(float value) {
         segment.set(LAYOUT$sx, OFFSET$sx, value);
+        return this;
     }
 
     public float a() {
         return segment.get(LAYOUT$a, OFFSET$a);
     }
 
-    public void a(float value) {
+    public VkSRTDataNV a(float value) {
         segment.set(LAYOUT$a, OFFSET$a, value);
+        return this;
     }
 
     public float b() {
         return segment.get(LAYOUT$b, OFFSET$b);
     }
 
-    public void b(float value) {
+    public VkSRTDataNV b(float value) {
         segment.set(LAYOUT$b, OFFSET$b, value);
+        return this;
     }
 
     public float pvx() {
         return segment.get(LAYOUT$pvx, OFFSET$pvx);
     }
 
-    public void pvx(float value) {
+    public VkSRTDataNV pvx(float value) {
         segment.set(LAYOUT$pvx, OFFSET$pvx, value);
+        return this;
     }
 
     public float sy() {
         return segment.get(LAYOUT$sy, OFFSET$sy);
     }
 
-    public void sy(float value) {
+    public VkSRTDataNV sy(float value) {
         segment.set(LAYOUT$sy, OFFSET$sy, value);
+        return this;
     }
 
     public float c() {
         return segment.get(LAYOUT$c, OFFSET$c);
     }
 
-    public void c(float value) {
+    public VkSRTDataNV c(float value) {
         segment.set(LAYOUT$c, OFFSET$c, value);
+        return this;
     }
 
     public float pvy() {
         return segment.get(LAYOUT$pvy, OFFSET$pvy);
     }
 
-    public void pvy(float value) {
+    public VkSRTDataNV pvy(float value) {
         segment.set(LAYOUT$pvy, OFFSET$pvy, value);
+        return this;
     }
 
     public float sz() {
         return segment.get(LAYOUT$sz, OFFSET$sz);
     }
 
-    public void sz(float value) {
+    public VkSRTDataNV sz(float value) {
         segment.set(LAYOUT$sz, OFFSET$sz, value);
+        return this;
     }
 
     public float pvz() {
         return segment.get(LAYOUT$pvz, OFFSET$pvz);
     }
 
-    public void pvz(float value) {
+    public VkSRTDataNV pvz(float value) {
         segment.set(LAYOUT$pvz, OFFSET$pvz, value);
+        return this;
     }
 
     public float qx() {
         return segment.get(LAYOUT$qx, OFFSET$qx);
     }
 
-    public void qx(float value) {
+    public VkSRTDataNV qx(float value) {
         segment.set(LAYOUT$qx, OFFSET$qx, value);
+        return this;
     }
 
     public float qy() {
         return segment.get(LAYOUT$qy, OFFSET$qy);
     }
 
-    public void qy(float value) {
+    public VkSRTDataNV qy(float value) {
         segment.set(LAYOUT$qy, OFFSET$qy, value);
+        return this;
     }
 
     public float qz() {
         return segment.get(LAYOUT$qz, OFFSET$qz);
     }
 
-    public void qz(float value) {
+    public VkSRTDataNV qz(float value) {
         segment.set(LAYOUT$qz, OFFSET$qz, value);
+        return this;
     }
 
     public float qw() {
         return segment.get(LAYOUT$qw, OFFSET$qw);
     }
 
-    public void qw(float value) {
+    public VkSRTDataNV qw(float value) {
         segment.set(LAYOUT$qw, OFFSET$qw, value);
+        return this;
     }
 
     public float tx() {
         return segment.get(LAYOUT$tx, OFFSET$tx);
     }
 
-    public void tx(float value) {
+    public VkSRTDataNV tx(float value) {
         segment.set(LAYOUT$tx, OFFSET$tx, value);
+        return this;
     }
 
     public float ty() {
         return segment.get(LAYOUT$ty, OFFSET$ty);
     }
 
-    public void ty(float value) {
+    public VkSRTDataNV ty(float value) {
         segment.set(LAYOUT$ty, OFFSET$ty, value);
+        return this;
     }
 
     public float tz() {
         return segment.get(LAYOUT$tz, OFFSET$tz);
     }
 
-    public void tz(float value) {
+    public VkSRTDataNV tz(float value) {
         segment.set(LAYOUT$tz, OFFSET$tz, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

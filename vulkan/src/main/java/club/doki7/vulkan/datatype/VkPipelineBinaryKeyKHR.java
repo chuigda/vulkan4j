@@ -194,8 +194,9 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineBinaryKeyKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPipelineBinaryKeyKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineBinaryKeyKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int keySize() {
         return segment.get(LAYOUT$keySize, OFFSET$keySize);
     }
 
-    public void keySize(@Unsigned int value) {
+    public VkPipelineBinaryKeyKHR keySize(@Unsigned int value) {
         segment.set(LAYOUT$keySize, OFFSET$keySize, value);
+        return this;
     }
 
     public @Unsigned BytePtr key() {
         return new BytePtr(keyRaw());
     }
 
-    public void key(@Unsigned BytePtr value) {
+    public VkPipelineBinaryKeyKHR key(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$key, SIZE$key);
+        return this;
     }
 
     public MemorySegment keyRaw() {

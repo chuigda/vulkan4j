@@ -198,8 +198,9 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryToImageCopy sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,8 +211,9 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMemoryToImageCopy pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pHostPointer() {
@@ -222,48 +224,54 @@ public record VkMemoryToImageCopy(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pHostPointer, OFFSET$pHostPointer, value);
     }
 
-    public void pHostPointer(@Nullable IPointer pointer) {
+    public VkMemoryToImageCopy pHostPointer(@Nullable IPointer pointer) {
         pHostPointer(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int memoryRowLength() {
         return segment.get(LAYOUT$memoryRowLength, OFFSET$memoryRowLength);
     }
 
-    public void memoryRowLength(@Unsigned int value) {
+    public VkMemoryToImageCopy memoryRowLength(@Unsigned int value) {
         segment.set(LAYOUT$memoryRowLength, OFFSET$memoryRowLength, value);
+        return this;
     }
 
     public @Unsigned int memoryImageHeight() {
         return segment.get(LAYOUT$memoryImageHeight, OFFSET$memoryImageHeight);
     }
 
-    public void memoryImageHeight(@Unsigned int value) {
+    public VkMemoryToImageCopy memoryImageHeight(@Unsigned int value) {
         segment.set(LAYOUT$memoryImageHeight, OFFSET$memoryImageHeight, value);
+        return this;
     }
 
     public @NotNull VkImageSubresourceLayers imageSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$imageSubresource, LAYOUT$imageSubresource));
     }
 
-    public void imageSubresource(@NotNull VkImageSubresourceLayers value) {
+    public VkMemoryToImageCopy imageSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageSubresource, SIZE$imageSubresource);
+        return this;
     }
 
     public @NotNull VkOffset3D imageOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$imageOffset, LAYOUT$imageOffset));
     }
 
-    public void imageOffset(@NotNull VkOffset3D value) {
+    public VkMemoryToImageCopy imageOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageOffset, SIZE$imageOffset);
+        return this;
     }
 
     public @NotNull VkExtent3D imageExtent() {
         return new VkExtent3D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
     }
 
-    public void imageExtent(@NotNull VkExtent3D value) {
+    public VkMemoryToImageCopy imageExtent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

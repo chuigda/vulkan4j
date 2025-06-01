@@ -195,8 +195,9 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMultiviewFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceMultiviewFeatures(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMultiviewFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiview() {
         return segment.get(LAYOUT$multiview, OFFSET$multiview);
     }
 
-    public void multiview(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMultiviewFeatures multiview(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiview, OFFSET$multiview, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiviewGeometryShader() {
         return segment.get(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader);
     }
 
-    public void multiviewGeometryShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMultiviewFeatures multiviewGeometryShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiviewTessellationShader() {
         return segment.get(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader);
     }
 
-    public void multiviewTessellationShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMultiviewFeatures multiviewTessellationShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

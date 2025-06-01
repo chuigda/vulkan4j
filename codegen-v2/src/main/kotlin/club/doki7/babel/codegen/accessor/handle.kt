@@ -5,7 +5,7 @@ import club.doki7.babel.codegen.defun
 import club.doki7.babel.ctype.CHandleType
 import club.doki7.babel.util.buildDoc
 
-fun generateHandleAccessor(type: CHandleType, member: LayoutField.Typed) = buildDoc {
+fun generateHandleAccessor(className: String, type: CHandleType, member: LayoutField.Typed) = buildDoc {
     defun("public", "@Nullable ${type.name}", member.name) {
         +"MemorySegment s = segment.asSlice(${member.offsetName}, ${member.sizeName});"
         "if (s.equals(MemorySegment.NULL))" {
@@ -16,7 +16,8 @@ fun generateHandleAccessor(type: CHandleType, member: LayoutField.Typed) = build
 
     +""
 
-    defun("public", "void", member.name, "@Nullable ${type.name} value") {
+    defun("public", className, member.name, "@Nullable ${type.name} value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value != null ? value.segment() : MemorySegment.NULL);"
+        +"return this;"
     }
 }

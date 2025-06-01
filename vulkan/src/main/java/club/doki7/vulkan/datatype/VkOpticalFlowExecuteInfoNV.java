@@ -195,8 +195,9 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkOpticalFlowExecuteInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkOpticalFlowExecuteInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkOpticalFlowExecuteFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkOpticalFlowExecuteFlagsNV.class) int value) {
+    public VkOpticalFlowExecuteInfoNV flags(@EnumType(VkOpticalFlowExecuteFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int regionCount() {
         return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
     }
 
-    public void regionCount(@Unsigned int value) {
+    public VkOpticalFlowExecuteInfoNV regionCount(@Unsigned int value) {
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
+        return this;
     }
 
-    public void pRegions(@Nullable IVkRect2D value) {
+    public VkOpticalFlowExecuteInfoNV pRegions(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRect2D.Ptr pRegions(int assumedCount) {

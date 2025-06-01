@@ -176,40 +176,45 @@ public record VkPhysicalDeviceSparseProperties(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$residencyStandard2DBlockShape, OFFSET$residencyStandard2DBlockShape);
     }
 
-    public void residencyStandard2DBlockShape(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSparseProperties residencyStandard2DBlockShape(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$residencyStandard2DBlockShape, OFFSET$residencyStandard2DBlockShape, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int residencyStandard2DMultisampleBlockShape() {
         return segment.get(LAYOUT$residencyStandard2DMultisampleBlockShape, OFFSET$residencyStandard2DMultisampleBlockShape);
     }
 
-    public void residencyStandard2DMultisampleBlockShape(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSparseProperties residencyStandard2DMultisampleBlockShape(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$residencyStandard2DMultisampleBlockShape, OFFSET$residencyStandard2DMultisampleBlockShape, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int residencyStandard3DBlockShape() {
         return segment.get(LAYOUT$residencyStandard3DBlockShape, OFFSET$residencyStandard3DBlockShape);
     }
 
-    public void residencyStandard3DBlockShape(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSparseProperties residencyStandard3DBlockShape(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$residencyStandard3DBlockShape, OFFSET$residencyStandard3DBlockShape, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int residencyAlignedMipSize() {
         return segment.get(LAYOUT$residencyAlignedMipSize, OFFSET$residencyAlignedMipSize);
     }
 
-    public void residencyAlignedMipSize(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSparseProperties residencyAlignedMipSize(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$residencyAlignedMipSize, OFFSET$residencyAlignedMipSize, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int residencyNonResidentStrict() {
         return segment.get(LAYOUT$residencyNonResidentStrict, OFFSET$residencyNonResidentStrict);
     }
 
-    public void residencyNonResidentStrict(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSparseProperties residencyNonResidentStrict(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$residencyNonResidentStrict, OFFSET$residencyNonResidentStrict, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

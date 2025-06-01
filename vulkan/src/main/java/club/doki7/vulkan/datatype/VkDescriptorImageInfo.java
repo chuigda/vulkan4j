@@ -178,8 +178,9 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         return new VkSampler(s);
     }
 
-    public void sampler(@Nullable VkSampler value) {
+    public VkDescriptorImageInfo sampler(@Nullable VkSampler value) {
         segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImageView imageView() {
@@ -190,16 +191,18 @@ public record VkDescriptorImageInfo(@NotNull MemorySegment segment) implements I
         return new VkImageView(s);
     }
 
-    public void imageView(@Nullable VkImageView value) {
+    public VkDescriptorImageInfo imageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public void imageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkDescriptorImageInfo imageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

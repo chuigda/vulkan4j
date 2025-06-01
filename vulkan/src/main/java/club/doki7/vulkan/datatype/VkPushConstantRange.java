@@ -174,24 +174,27 @@ public record VkPushConstantRange(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushConstantRange stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+        return this;
     }
 
     public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned int value) {
+    public VkPushConstantRange offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @Unsigned int size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned int value) {
+    public VkPushConstantRange size(@Unsigned int value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

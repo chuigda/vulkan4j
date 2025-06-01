@@ -194,8 +194,9 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingAttachmentLocationInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderingAttachmentLocationInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@Unsigned int value) {
+    public VkRenderingAttachmentLocationInfo colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -230,9 +233,10 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         return new IntPtr(s);
     }
 
-    public void pColorAttachmentLocations(@Nullable @Unsigned IntPtr value) {
+    public VkRenderingAttachmentLocationInfo pColorAttachmentLocations(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentLocationsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pColorAttachmentLocationsRaw() {

@@ -194,8 +194,9 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteDescriptorSetAccelerationStructureKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWriteDescriptorSetAccelerationStructureKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int accelerationStructureCount() {
         return segment.get(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount);
     }
 
-    public void accelerationStructureCount(@Unsigned int value) {
+    public VkWriteDescriptorSetAccelerationStructureKHR accelerationStructureCount(@Unsigned int value) {
         segment.set(LAYOUT$accelerationStructureCount, OFFSET$accelerationStructureCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkAccelerationStructureKHR.Ptr} does not have correct {@link VkAccelerationStructureKHR.Ptr#size}
@@ -230,9 +233,10 @@ public record VkWriteDescriptorSetAccelerationStructureKHR(@NotNull MemorySegmen
         return new VkAccelerationStructureKHR.Ptr(s);
     }
 
-    public void pAccelerationStructures(@Nullable VkAccelerationStructureKHR.Ptr value) {
+    public VkWriteDescriptorSetAccelerationStructureKHR pAccelerationStructures(@Nullable VkAccelerationStructureKHR.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAccelerationStructuresRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkAccelerationStructureKHR.class) MemorySegment pAccelerationStructuresRaw() {

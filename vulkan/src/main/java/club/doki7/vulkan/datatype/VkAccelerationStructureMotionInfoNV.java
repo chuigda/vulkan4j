@@ -194,8 +194,9 @@ public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureMotionInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkAccelerationStructureMotionInfoNV(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureMotionInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxInstances() {
         return segment.get(LAYOUT$maxInstances, OFFSET$maxInstances);
     }
 
-    public void maxInstances(@Unsigned int value) {
+    public VkAccelerationStructureMotionInfoNV maxInstances(@Unsigned int value) {
         segment.set(LAYOUT$maxInstances, OFFSET$maxInstances, value);
+        return this;
     }
 
     public @EnumType(VkAccelerationStructureMotionInfoFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkAccelerationStructureMotionInfoFlagsNV.class) int value) {
+    public VkAccelerationStructureMotionInfoNV flags(@EnumType(VkAccelerationStructureMotionInfoFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

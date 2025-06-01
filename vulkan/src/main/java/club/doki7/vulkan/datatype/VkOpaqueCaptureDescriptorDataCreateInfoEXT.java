@@ -193,8 +193,9 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment opaqueCaptureDescriptorData() {
@@ -217,8 +219,9 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$opaqueCaptureDescriptorData, OFFSET$opaqueCaptureDescriptorData, value);
     }
 
-    public void opaqueCaptureDescriptorData(@Nullable IPointer pointer) {
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT opaqueCaptureDescriptorData(@Nullable IPointer pointer) {
         opaqueCaptureDescriptorData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

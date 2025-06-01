@@ -194,8 +194,9 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkShaderModuleIdentifierEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkShaderModuleIdentifierEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int identifierSize() {
         return segment.get(LAYOUT$identifierSize, OFFSET$identifierSize);
     }
 
-    public void identifierSize(@Unsigned int value) {
+    public VkShaderModuleIdentifierEXT identifierSize(@Unsigned int value) {
         segment.set(LAYOUT$identifierSize, OFFSET$identifierSize, value);
+        return this;
     }
 
     public @Unsigned BytePtr identifier() {
         return new BytePtr(identifierRaw());
     }
 
-    public void identifier(@Unsigned BytePtr value) {
+    public VkShaderModuleIdentifierEXT identifier(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$identifier, SIZE$identifier);
+        return this;
     }
 
     public MemorySegment identifierRaw() {

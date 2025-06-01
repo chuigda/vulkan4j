@@ -195,8 +195,9 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int primitivesGeneratedQuery() {
         return segment.get(LAYOUT$primitivesGeneratedQuery, OFFSET$primitivesGeneratedQuery);
     }
 
-    public void primitivesGeneratedQuery(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQuery(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitivesGeneratedQuery, OFFSET$primitivesGeneratedQuery, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int primitivesGeneratedQueryWithRasterizerDiscard() {
         return segment.get(LAYOUT$primitivesGeneratedQueryWithRasterizerDiscard, OFFSET$primitivesGeneratedQueryWithRasterizerDiscard);
     }
 
-    public void primitivesGeneratedQueryWithRasterizerDiscard(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQueryWithRasterizerDiscard(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitivesGeneratedQueryWithRasterizerDiscard, OFFSET$primitivesGeneratedQueryWithRasterizerDiscard, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int primitivesGeneratedQueryWithNonZeroStreams() {
         return segment.get(LAYOUT$primitivesGeneratedQueryWithNonZeroStreams, OFFSET$primitivesGeneratedQueryWithNonZeroStreams);
     }
 
-    public void primitivesGeneratedQueryWithNonZeroStreams(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQueryWithNonZeroStreams(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitivesGeneratedQueryWithNonZeroStreams, OFFSET$primitivesGeneratedQueryWithNonZeroStreams, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

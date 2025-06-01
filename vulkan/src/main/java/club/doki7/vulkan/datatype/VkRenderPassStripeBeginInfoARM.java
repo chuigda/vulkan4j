@@ -194,8 +194,9 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassStripeBeginInfoARM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkRenderPassStripeBeginInfoARM(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassStripeBeginInfoARM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int stripeInfoCount() {
         return segment.get(LAYOUT$stripeInfoCount, OFFSET$stripeInfoCount);
     }
 
-    public void stripeInfoCount(@Unsigned int value) {
+    public VkRenderPassStripeBeginInfoARM stripeInfoCount(@Unsigned int value) {
         segment.set(LAYOUT$stripeInfoCount, OFFSET$stripeInfoCount, value);
+        return this;
     }
 
-    public void pStripeInfos(@Nullable IVkRenderPassStripeInfoARM value) {
+    public VkRenderPassStripeBeginInfoARM pStripeInfos(@Nullable IVkRenderPassStripeInfoARM value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStripeInfosRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRenderPassStripeInfoARM.Ptr pStripeInfos(int assumedCount) {

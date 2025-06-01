@@ -193,8 +193,9 @@ public record VkSamplerReductionModeCreateInfo(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerReductionModeCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSamplerReductionModeCreateInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerReductionModeCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSamplerReductionMode.class) int reductionMode() {
         return segment.get(LAYOUT$reductionMode, OFFSET$reductionMode);
     }
 
-    public void reductionMode(@EnumType(VkSamplerReductionMode.class) int value) {
+    public VkSamplerReductionModeCreateInfo reductionMode(@EnumType(VkSamplerReductionMode.class) int value) {
         segment.set(LAYOUT$reductionMode, OFFSET$reductionMode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

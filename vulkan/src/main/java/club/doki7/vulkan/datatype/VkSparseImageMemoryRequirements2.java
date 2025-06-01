@@ -193,8 +193,9 @@ public record VkSparseImageMemoryRequirements2(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSparseImageMemoryRequirements2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSparseImageMemoryRequirements2(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSparseImageMemoryRequirements2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkSparseImageMemoryRequirements memoryRequirements() {
         return new VkSparseImageMemoryRequirements(segment.asSlice(OFFSET$memoryRequirements, LAYOUT$memoryRequirements));
     }
 
-    public void memoryRequirements(@NotNull VkSparseImageMemoryRequirements value) {
+    public VkSparseImageMemoryRequirements2 memoryRequirements(@NotNull VkSparseImageMemoryRequirements value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineLibraryCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineLibraryCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int libraryCount() {
         return segment.get(LAYOUT$libraryCount, OFFSET$libraryCount);
     }
 
-    public void libraryCount(@Unsigned int value) {
+    public VkPipelineLibraryCreateInfoKHR libraryCount(@Unsigned int value) {
         segment.set(LAYOUT$libraryCount, OFFSET$libraryCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkPipeline.Ptr} does not have correct {@link VkPipeline.Ptr#size}
@@ -230,9 +233,10 @@ public record VkPipelineLibraryCreateInfoKHR(@NotNull MemorySegment segment) imp
         return new VkPipeline.Ptr(s);
     }
 
-    public void pLibraries(@Nullable VkPipeline.Ptr value) {
+    public VkPipelineLibraryCreateInfoKHR pLibraries(@Nullable VkPipeline.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLibrariesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkPipeline.class) MemorySegment pLibrariesRaw() {

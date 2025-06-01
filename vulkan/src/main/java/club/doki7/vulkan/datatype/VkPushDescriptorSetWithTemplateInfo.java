@@ -196,8 +196,9 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPushDescriptorSetWithTemplateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,8 +209,9 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPushDescriptorSetWithTemplateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDescriptorUpdateTemplate descriptorUpdateTemplate() {
@@ -220,8 +222,9 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         return new VkDescriptorUpdateTemplate(s);
     }
 
-    public void descriptorUpdateTemplate(@Nullable VkDescriptorUpdateTemplate value) {
+    public VkPushDescriptorSetWithTemplateInfo descriptorUpdateTemplate(@Nullable VkDescriptorUpdateTemplate value) {
         segment.set(LAYOUT$descriptorUpdateTemplate, OFFSET$descriptorUpdateTemplate, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkPipelineLayout layout() {
@@ -232,16 +235,18 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkPushDescriptorSetWithTemplateInfo layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int set() {
         return segment.get(LAYOUT$set, OFFSET$set);
     }
 
-    public void set(@Unsigned int value) {
+    public VkPushDescriptorSetWithTemplateInfo set(@Unsigned int value) {
         segment.set(LAYOUT$set, OFFSET$set, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pData() {
@@ -252,8 +257,9 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(@Nullable IPointer pointer) {
+    public VkPushDescriptorSetWithTemplateInfo pData(@Nullable IPointer pointer) {
         pData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

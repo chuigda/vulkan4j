@@ -199,8 +199,9 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,29 +212,33 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkRenderPassCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkRenderPassCreateFlags.class) int value) {
+    public VkRenderPassCreateInfo flags(@EnumType(VkRenderPassCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@Unsigned int value) {
+    public VkRenderPassCreateInfo attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
+        return this;
     }
 
-    public void pAttachments(@Nullable IVkAttachmentDescription value) {
+    public VkRenderPassCreateInfo pAttachments(@Nullable IVkAttachmentDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentDescription.Ptr pAttachments(int assumedCount) {
@@ -266,13 +271,15 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
     }
 
-    public void subpassCount(@Unsigned int value) {
+    public VkRenderPassCreateInfo subpassCount(@Unsigned int value) {
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
+        return this;
     }
 
-    public void pSubpasses(@Nullable IVkSubpassDescription value) {
+    public VkRenderPassCreateInfo pSubpasses(@Nullable IVkSubpassDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubpassesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSubpassDescription.Ptr pSubpasses(int assumedCount) {
@@ -305,13 +312,15 @@ public record VkRenderPassCreateInfo(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
     }
 
-    public void dependencyCount(@Unsigned int value) {
+    public VkRenderPassCreateInfo dependencyCount(@Unsigned int value) {
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
+        return this;
     }
 
-    public void pDependencies(@Nullable IVkSubpassDependency value) {
+    public VkRenderPassCreateInfo pDependencies(@Nullable IVkSubpassDependency value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDependenciesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSubpassDependency.Ptr pDependencies(int assumedCount) {

@@ -184,9 +184,10 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         return new BytePtr(s);
     }
 
-    public void pLayerName(@Nullable BytePtr value) {
+    public VkLayerSettingEXT pLayerName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayerNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pLayerNameRaw() {
@@ -209,9 +210,10 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         return new BytePtr(s);
     }
 
-    public void pSettingName(@Nullable BytePtr value) {
+    public VkLayerSettingEXT pSettingName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSettingNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pSettingNameRaw() {
@@ -226,16 +228,18 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkLayerSettingTypeEXT.class) int value) {
+    public VkLayerSettingEXT type(@EnumType(VkLayerSettingTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @Unsigned int valueCount() {
         return segment.get(LAYOUT$valueCount, OFFSET$valueCount);
     }
 
-    public void valueCount(@Unsigned int value) {
+    public VkLayerSettingEXT valueCount(@Unsigned int value) {
         segment.set(LAYOUT$valueCount, OFFSET$valueCount, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pValues() {
@@ -246,8 +250,9 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
-    public void pValues(@Nullable IPointer pointer) {
+    public VkLayerSettingEXT pValues(@Nullable IPointer pointer) {
         pValues(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -199,8 +199,9 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,64 +212,72 @@ public record VkDeviceMemoryReportCallbackDataEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceMemoryReportCallbackDataEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDeviceMemoryReportFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDeviceMemoryReportFlagsEXT.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT flags(@EnumType(VkDeviceMemoryReportFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkDeviceMemoryReportEventTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkDeviceMemoryReportEventTypeEXT.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT type(@EnumType(VkDeviceMemoryReportEventTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @Unsigned long memoryObjectId() {
         return segment.get(LAYOUT$memoryObjectId, OFFSET$memoryObjectId);
     }
 
-    public void memoryObjectId(@Unsigned long value) {
+    public VkDeviceMemoryReportCallbackDataEXT memoryObjectId(@Unsigned long value) {
         segment.set(LAYOUT$memoryObjectId, OFFSET$memoryObjectId, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkDeviceMemoryReportCallbackDataEXT size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @EnumType(VkObjectType.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public void objectType(@EnumType(VkObjectType.class) int value) {
+    public VkDeviceMemoryReportCallbackDataEXT objectType(@EnumType(VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
+        return this;
     }
 
     public @Unsigned long objectHandle() {
         return segment.get(LAYOUT$objectHandle, OFFSET$objectHandle);
     }
 
-    public void objectHandle(@Unsigned long value) {
+    public VkDeviceMemoryReportCallbackDataEXT objectHandle(@Unsigned long value) {
         segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
+        return this;
     }
 
     public @Unsigned int heapIndex() {
         return segment.get(LAYOUT$heapIndex, OFFSET$heapIndex);
     }
 
-    public void heapIndex(@Unsigned int value) {
+    public VkDeviceMemoryReportCallbackDataEXT heapIndex(@Unsigned int value) {
         segment.set(LAYOUT$heapIndex, OFFSET$heapIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

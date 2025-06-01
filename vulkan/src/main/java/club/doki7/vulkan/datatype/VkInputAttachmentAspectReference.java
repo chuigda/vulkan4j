@@ -174,24 +174,27 @@ public record VkInputAttachmentAspectReference(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$subpass, OFFSET$subpass);
     }
 
-    public void subpass(@Unsigned int value) {
+    public VkInputAttachmentAspectReference subpass(@Unsigned int value) {
         segment.set(LAYOUT$subpass, OFFSET$subpass, value);
+        return this;
     }
 
     public @Unsigned int inputAttachmentIndex() {
         return segment.get(LAYOUT$inputAttachmentIndex, OFFSET$inputAttachmentIndex);
     }
 
-    public void inputAttachmentIndex(@Unsigned int value) {
+    public VkInputAttachmentAspectReference inputAttachmentIndex(@Unsigned int value) {
         segment.set(LAYOUT$inputAttachmentIndex, OFFSET$inputAttachmentIndex, value);
+        return this;
     }
 
     public @EnumType(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkInputAttachmentAspectReference aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

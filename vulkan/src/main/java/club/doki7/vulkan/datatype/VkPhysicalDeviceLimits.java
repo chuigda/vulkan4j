@@ -277,424 +277,477 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$maxImageDimension1D, OFFSET$maxImageDimension1D);
     }
 
-    public void maxImageDimension1D(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxImageDimension1D(@Unsigned int value) {
         segment.set(LAYOUT$maxImageDimension1D, OFFSET$maxImageDimension1D, value);
+        return this;
     }
 
     public @Unsigned int maxImageDimension2D() {
         return segment.get(LAYOUT$maxImageDimension2D, OFFSET$maxImageDimension2D);
     }
 
-    public void maxImageDimension2D(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxImageDimension2D(@Unsigned int value) {
         segment.set(LAYOUT$maxImageDimension2D, OFFSET$maxImageDimension2D, value);
+        return this;
     }
 
     public @Unsigned int maxImageDimension3D() {
         return segment.get(LAYOUT$maxImageDimension3D, OFFSET$maxImageDimension3D);
     }
 
-    public void maxImageDimension3D(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxImageDimension3D(@Unsigned int value) {
         segment.set(LAYOUT$maxImageDimension3D, OFFSET$maxImageDimension3D, value);
+        return this;
     }
 
     public @Unsigned int maxImageDimensionCube() {
         return segment.get(LAYOUT$maxImageDimensionCube, OFFSET$maxImageDimensionCube);
     }
 
-    public void maxImageDimensionCube(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxImageDimensionCube(@Unsigned int value) {
         segment.set(LAYOUT$maxImageDimensionCube, OFFSET$maxImageDimensionCube, value);
+        return this;
     }
 
     public @Unsigned int maxImageArrayLayers() {
         return segment.get(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers);
     }
 
-    public void maxImageArrayLayers(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxImageArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxImageArrayLayers, OFFSET$maxImageArrayLayers, value);
+        return this;
     }
 
     public @Unsigned int maxTexelBufferElements() {
         return segment.get(LAYOUT$maxTexelBufferElements, OFFSET$maxTexelBufferElements);
     }
 
-    public void maxTexelBufferElements(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTexelBufferElements(@Unsigned int value) {
         segment.set(LAYOUT$maxTexelBufferElements, OFFSET$maxTexelBufferElements, value);
+        return this;
     }
 
     public @Unsigned int maxUniformBufferRange() {
         return segment.get(LAYOUT$maxUniformBufferRange, OFFSET$maxUniformBufferRange);
     }
 
-    public void maxUniformBufferRange(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxUniformBufferRange(@Unsigned int value) {
         segment.set(LAYOUT$maxUniformBufferRange, OFFSET$maxUniformBufferRange, value);
+        return this;
     }
 
     public @Unsigned int maxStorageBufferRange() {
         return segment.get(LAYOUT$maxStorageBufferRange, OFFSET$maxStorageBufferRange);
     }
 
-    public void maxStorageBufferRange(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxStorageBufferRange(@Unsigned int value) {
         segment.set(LAYOUT$maxStorageBufferRange, OFFSET$maxStorageBufferRange, value);
+        return this;
     }
 
     public @Unsigned int maxPushConstantsSize() {
         return segment.get(LAYOUT$maxPushConstantsSize, OFFSET$maxPushConstantsSize);
     }
 
-    public void maxPushConstantsSize(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxPushConstantsSize(@Unsigned int value) {
         segment.set(LAYOUT$maxPushConstantsSize, OFFSET$maxPushConstantsSize, value);
+        return this;
     }
 
     public @Unsigned int maxMemoryAllocationCount() {
         return segment.get(LAYOUT$maxMemoryAllocationCount, OFFSET$maxMemoryAllocationCount);
     }
 
-    public void maxMemoryAllocationCount(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxMemoryAllocationCount(@Unsigned int value) {
         segment.set(LAYOUT$maxMemoryAllocationCount, OFFSET$maxMemoryAllocationCount, value);
+        return this;
     }
 
     public @Unsigned int maxSamplerAllocationCount() {
         return segment.get(LAYOUT$maxSamplerAllocationCount, OFFSET$maxSamplerAllocationCount);
     }
 
-    public void maxSamplerAllocationCount(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxSamplerAllocationCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSamplerAllocationCount, OFFSET$maxSamplerAllocationCount, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long bufferImageGranularity() {
         return segment.get(LAYOUT$bufferImageGranularity, OFFSET$bufferImageGranularity);
     }
 
-    public void bufferImageGranularity(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceLimits bufferImageGranularity(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$bufferImageGranularity, OFFSET$bufferImageGranularity, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long sparseAddressSpaceSize() {
         return segment.get(LAYOUT$sparseAddressSpaceSize, OFFSET$sparseAddressSpaceSize);
     }
 
-    public void sparseAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceLimits sparseAddressSpaceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$sparseAddressSpaceSize, OFFSET$sparseAddressSpaceSize, value);
+        return this;
     }
 
     public @Unsigned int maxBoundDescriptorSets() {
         return segment.get(LAYOUT$maxBoundDescriptorSets, OFFSET$maxBoundDescriptorSets);
     }
 
-    public void maxBoundDescriptorSets(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxBoundDescriptorSets(@Unsigned int value) {
         segment.set(LAYOUT$maxBoundDescriptorSets, OFFSET$maxBoundDescriptorSets, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorSamplers() {
         return segment.get(LAYOUT$maxPerStageDescriptorSamplers, OFFSET$maxPerStageDescriptorSamplers);
     }
 
-    public void maxPerStageDescriptorSamplers(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxPerStageDescriptorSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorSamplers, OFFSET$maxPerStageDescriptorSamplers, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUniformBuffers() {
         return segment.get(LAYOUT$maxPerStageDescriptorUniformBuffers, OFFSET$maxPerStageDescriptorUniformBuffers);
     }
 
-    public void maxPerStageDescriptorUniformBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxPerStageDescriptorUniformBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUniformBuffers, OFFSET$maxPerStageDescriptorUniformBuffers, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorStorageBuffers() {
         return segment.get(LAYOUT$maxPerStageDescriptorStorageBuffers, OFFSET$maxPerStageDescriptorStorageBuffers);
     }
 
-    public void maxPerStageDescriptorStorageBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxPerStageDescriptorStorageBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorStorageBuffers, OFFSET$maxPerStageDescriptorStorageBuffers, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorSampledImages() {
         return segment.get(LAYOUT$maxPerStageDescriptorSampledImages, OFFSET$maxPerStageDescriptorSampledImages);
     }
 
-    public void maxPerStageDescriptorSampledImages(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxPerStageDescriptorSampledImages(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorSampledImages, OFFSET$maxPerStageDescriptorSampledImages, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorStorageImages() {
         return segment.get(LAYOUT$maxPerStageDescriptorStorageImages, OFFSET$maxPerStageDescriptorStorageImages);
     }
 
-    public void maxPerStageDescriptorStorageImages(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxPerStageDescriptorStorageImages(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorStorageImages, OFFSET$maxPerStageDescriptorStorageImages, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorInputAttachments() {
         return segment.get(LAYOUT$maxPerStageDescriptorInputAttachments, OFFSET$maxPerStageDescriptorInputAttachments);
     }
 
-    public void maxPerStageDescriptorInputAttachments(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxPerStageDescriptorInputAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorInputAttachments, OFFSET$maxPerStageDescriptorInputAttachments, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageResources() {
         return segment.get(LAYOUT$maxPerStageResources, OFFSET$maxPerStageResources);
     }
 
-    public void maxPerStageResources(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxPerStageResources(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageResources, OFFSET$maxPerStageResources, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetSamplers() {
         return segment.get(LAYOUT$maxDescriptorSetSamplers, OFFSET$maxDescriptorSetSamplers);
     }
 
-    public void maxDescriptorSetSamplers(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDescriptorSetSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetSamplers, OFFSET$maxDescriptorSetSamplers, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUniformBuffers() {
         return segment.get(LAYOUT$maxDescriptorSetUniformBuffers, OFFSET$maxDescriptorSetUniformBuffers);
     }
 
-    public void maxDescriptorSetUniformBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDescriptorSetUniformBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUniformBuffers, OFFSET$maxDescriptorSetUniformBuffers, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUniformBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUniformBuffersDynamic, OFFSET$maxDescriptorSetUniformBuffersDynamic);
     }
 
-    public void maxDescriptorSetUniformBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDescriptorSetUniformBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUniformBuffersDynamic, OFFSET$maxDescriptorSetUniformBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetStorageBuffers() {
         return segment.get(LAYOUT$maxDescriptorSetStorageBuffers, OFFSET$maxDescriptorSetStorageBuffers);
     }
 
-    public void maxDescriptorSetStorageBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDescriptorSetStorageBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetStorageBuffers, OFFSET$maxDescriptorSetStorageBuffers, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetStorageBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetStorageBuffersDynamic, OFFSET$maxDescriptorSetStorageBuffersDynamic);
     }
 
-    public void maxDescriptorSetStorageBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDescriptorSetStorageBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetStorageBuffersDynamic, OFFSET$maxDescriptorSetStorageBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetSampledImages() {
         return segment.get(LAYOUT$maxDescriptorSetSampledImages, OFFSET$maxDescriptorSetSampledImages);
     }
 
-    public void maxDescriptorSetSampledImages(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDescriptorSetSampledImages(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetSampledImages, OFFSET$maxDescriptorSetSampledImages, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetStorageImages() {
         return segment.get(LAYOUT$maxDescriptorSetStorageImages, OFFSET$maxDescriptorSetStorageImages);
     }
 
-    public void maxDescriptorSetStorageImages(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDescriptorSetStorageImages(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetStorageImages, OFFSET$maxDescriptorSetStorageImages, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetInputAttachments() {
         return segment.get(LAYOUT$maxDescriptorSetInputAttachments, OFFSET$maxDescriptorSetInputAttachments);
     }
 
-    public void maxDescriptorSetInputAttachments(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDescriptorSetInputAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetInputAttachments, OFFSET$maxDescriptorSetInputAttachments, value);
+        return this;
     }
 
     public @Unsigned int maxVertexInputAttributes() {
         return segment.get(LAYOUT$maxVertexInputAttributes, OFFSET$maxVertexInputAttributes);
     }
 
-    public void maxVertexInputAttributes(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxVertexInputAttributes(@Unsigned int value) {
         segment.set(LAYOUT$maxVertexInputAttributes, OFFSET$maxVertexInputAttributes, value);
+        return this;
     }
 
     public @Unsigned int maxVertexInputBindings() {
         return segment.get(LAYOUT$maxVertexInputBindings, OFFSET$maxVertexInputBindings);
     }
 
-    public void maxVertexInputBindings(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxVertexInputBindings(@Unsigned int value) {
         segment.set(LAYOUT$maxVertexInputBindings, OFFSET$maxVertexInputBindings, value);
+        return this;
     }
 
     public @Unsigned int maxVertexInputAttributeOffset() {
         return segment.get(LAYOUT$maxVertexInputAttributeOffset, OFFSET$maxVertexInputAttributeOffset);
     }
 
-    public void maxVertexInputAttributeOffset(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxVertexInputAttributeOffset(@Unsigned int value) {
         segment.set(LAYOUT$maxVertexInputAttributeOffset, OFFSET$maxVertexInputAttributeOffset, value);
+        return this;
     }
 
     public @Unsigned int maxVertexInputBindingStride() {
         return segment.get(LAYOUT$maxVertexInputBindingStride, OFFSET$maxVertexInputBindingStride);
     }
 
-    public void maxVertexInputBindingStride(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxVertexInputBindingStride(@Unsigned int value) {
         segment.set(LAYOUT$maxVertexInputBindingStride, OFFSET$maxVertexInputBindingStride, value);
+        return this;
     }
 
     public @Unsigned int maxVertexOutputComponents() {
         return segment.get(LAYOUT$maxVertexOutputComponents, OFFSET$maxVertexOutputComponents);
     }
 
-    public void maxVertexOutputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxVertexOutputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxVertexOutputComponents, OFFSET$maxVertexOutputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxTessellationGenerationLevel() {
         return segment.get(LAYOUT$maxTessellationGenerationLevel, OFFSET$maxTessellationGenerationLevel);
     }
 
-    public void maxTessellationGenerationLevel(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTessellationGenerationLevel(@Unsigned int value) {
         segment.set(LAYOUT$maxTessellationGenerationLevel, OFFSET$maxTessellationGenerationLevel, value);
+        return this;
     }
 
     public @Unsigned int maxTessellationPatchSize() {
         return segment.get(LAYOUT$maxTessellationPatchSize, OFFSET$maxTessellationPatchSize);
     }
 
-    public void maxTessellationPatchSize(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTessellationPatchSize(@Unsigned int value) {
         segment.set(LAYOUT$maxTessellationPatchSize, OFFSET$maxTessellationPatchSize, value);
+        return this;
     }
 
     public @Unsigned int maxTessellationControlPerVertexInputComponents() {
         return segment.get(LAYOUT$maxTessellationControlPerVertexInputComponents, OFFSET$maxTessellationControlPerVertexInputComponents);
     }
 
-    public void maxTessellationControlPerVertexInputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTessellationControlPerVertexInputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxTessellationControlPerVertexInputComponents, OFFSET$maxTessellationControlPerVertexInputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxTessellationControlPerVertexOutputComponents() {
         return segment.get(LAYOUT$maxTessellationControlPerVertexOutputComponents, OFFSET$maxTessellationControlPerVertexOutputComponents);
     }
 
-    public void maxTessellationControlPerVertexOutputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTessellationControlPerVertexOutputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxTessellationControlPerVertexOutputComponents, OFFSET$maxTessellationControlPerVertexOutputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxTessellationControlPerPatchOutputComponents() {
         return segment.get(LAYOUT$maxTessellationControlPerPatchOutputComponents, OFFSET$maxTessellationControlPerPatchOutputComponents);
     }
 
-    public void maxTessellationControlPerPatchOutputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTessellationControlPerPatchOutputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxTessellationControlPerPatchOutputComponents, OFFSET$maxTessellationControlPerPatchOutputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxTessellationControlTotalOutputComponents() {
         return segment.get(LAYOUT$maxTessellationControlTotalOutputComponents, OFFSET$maxTessellationControlTotalOutputComponents);
     }
 
-    public void maxTessellationControlTotalOutputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTessellationControlTotalOutputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxTessellationControlTotalOutputComponents, OFFSET$maxTessellationControlTotalOutputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxTessellationEvaluationInputComponents() {
         return segment.get(LAYOUT$maxTessellationEvaluationInputComponents, OFFSET$maxTessellationEvaluationInputComponents);
     }
 
-    public void maxTessellationEvaluationInputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTessellationEvaluationInputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxTessellationEvaluationInputComponents, OFFSET$maxTessellationEvaluationInputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxTessellationEvaluationOutputComponents() {
         return segment.get(LAYOUT$maxTessellationEvaluationOutputComponents, OFFSET$maxTessellationEvaluationOutputComponents);
     }
 
-    public void maxTessellationEvaluationOutputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTessellationEvaluationOutputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxTessellationEvaluationOutputComponents, OFFSET$maxTessellationEvaluationOutputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxGeometryShaderInvocations() {
         return segment.get(LAYOUT$maxGeometryShaderInvocations, OFFSET$maxGeometryShaderInvocations);
     }
 
-    public void maxGeometryShaderInvocations(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxGeometryShaderInvocations(@Unsigned int value) {
         segment.set(LAYOUT$maxGeometryShaderInvocations, OFFSET$maxGeometryShaderInvocations, value);
+        return this;
     }
 
     public @Unsigned int maxGeometryInputComponents() {
         return segment.get(LAYOUT$maxGeometryInputComponents, OFFSET$maxGeometryInputComponents);
     }
 
-    public void maxGeometryInputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxGeometryInputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxGeometryInputComponents, OFFSET$maxGeometryInputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxGeometryOutputComponents() {
         return segment.get(LAYOUT$maxGeometryOutputComponents, OFFSET$maxGeometryOutputComponents);
     }
 
-    public void maxGeometryOutputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxGeometryOutputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxGeometryOutputComponents, OFFSET$maxGeometryOutputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxGeometryOutputVertices() {
         return segment.get(LAYOUT$maxGeometryOutputVertices, OFFSET$maxGeometryOutputVertices);
     }
 
-    public void maxGeometryOutputVertices(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxGeometryOutputVertices(@Unsigned int value) {
         segment.set(LAYOUT$maxGeometryOutputVertices, OFFSET$maxGeometryOutputVertices, value);
+        return this;
     }
 
     public @Unsigned int maxGeometryTotalOutputComponents() {
         return segment.get(LAYOUT$maxGeometryTotalOutputComponents, OFFSET$maxGeometryTotalOutputComponents);
     }
 
-    public void maxGeometryTotalOutputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxGeometryTotalOutputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxGeometryTotalOutputComponents, OFFSET$maxGeometryTotalOutputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxFragmentInputComponents() {
         return segment.get(LAYOUT$maxFragmentInputComponents, OFFSET$maxFragmentInputComponents);
     }
 
-    public void maxFragmentInputComponents(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxFragmentInputComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxFragmentInputComponents, OFFSET$maxFragmentInputComponents, value);
+        return this;
     }
 
     public @Unsigned int maxFragmentOutputAttachments() {
         return segment.get(LAYOUT$maxFragmentOutputAttachments, OFFSET$maxFragmentOutputAttachments);
     }
 
-    public void maxFragmentOutputAttachments(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxFragmentOutputAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxFragmentOutputAttachments, OFFSET$maxFragmentOutputAttachments, value);
+        return this;
     }
 
     public @Unsigned int maxFragmentDualSrcAttachments() {
         return segment.get(LAYOUT$maxFragmentDualSrcAttachments, OFFSET$maxFragmentDualSrcAttachments);
     }
 
-    public void maxFragmentDualSrcAttachments(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxFragmentDualSrcAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxFragmentDualSrcAttachments, OFFSET$maxFragmentDualSrcAttachments, value);
+        return this;
     }
 
     public @Unsigned int maxFragmentCombinedOutputResources() {
         return segment.get(LAYOUT$maxFragmentCombinedOutputResources, OFFSET$maxFragmentCombinedOutputResources);
     }
 
-    public void maxFragmentCombinedOutputResources(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxFragmentCombinedOutputResources(@Unsigned int value) {
         segment.set(LAYOUT$maxFragmentCombinedOutputResources, OFFSET$maxFragmentCombinedOutputResources, value);
+        return this;
     }
 
     public @Unsigned int maxComputeSharedMemorySize() {
         return segment.get(LAYOUT$maxComputeSharedMemorySize, OFFSET$maxComputeSharedMemorySize);
     }
 
-    public void maxComputeSharedMemorySize(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxComputeSharedMemorySize(@Unsigned int value) {
         segment.set(LAYOUT$maxComputeSharedMemorySize, OFFSET$maxComputeSharedMemorySize, value);
+        return this;
     }
 
     public @Unsigned IntPtr maxComputeWorkGroupCount() {
         return new IntPtr(maxComputeWorkGroupCountRaw());
     }
 
-    public void maxComputeWorkGroupCount(@Unsigned IntPtr value) {
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupCount, SIZE$maxComputeWorkGroupCount);
+        return this;
     }
 
     public MemorySegment maxComputeWorkGroupCountRaw() {
@@ -705,16 +758,18 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$maxComputeWorkGroupInvocations, OFFSET$maxComputeWorkGroupInvocations);
     }
 
-    public void maxComputeWorkGroupInvocations(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxComputeWorkGroupInvocations(@Unsigned int value) {
         segment.set(LAYOUT$maxComputeWorkGroupInvocations, OFFSET$maxComputeWorkGroupInvocations, value);
+        return this;
     }
 
     public @Unsigned IntPtr maxComputeWorkGroupSize() {
         return new IntPtr(maxComputeWorkGroupSizeRaw());
     }
 
-    public void maxComputeWorkGroupSize(@Unsigned IntPtr value) {
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxComputeWorkGroupSize, SIZE$maxComputeWorkGroupSize);
+        return this;
     }
 
     public MemorySegment maxComputeWorkGroupSizeRaw() {
@@ -725,72 +780,81 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$subPixelPrecisionBits, OFFSET$subPixelPrecisionBits);
     }
 
-    public void subPixelPrecisionBits(@Unsigned int value) {
+    public VkPhysicalDeviceLimits subPixelPrecisionBits(@Unsigned int value) {
         segment.set(LAYOUT$subPixelPrecisionBits, OFFSET$subPixelPrecisionBits, value);
+        return this;
     }
 
     public @Unsigned int subTexelPrecisionBits() {
         return segment.get(LAYOUT$subTexelPrecisionBits, OFFSET$subTexelPrecisionBits);
     }
 
-    public void subTexelPrecisionBits(@Unsigned int value) {
+    public VkPhysicalDeviceLimits subTexelPrecisionBits(@Unsigned int value) {
         segment.set(LAYOUT$subTexelPrecisionBits, OFFSET$subTexelPrecisionBits, value);
+        return this;
     }
 
     public @Unsigned int mipmapPrecisionBits() {
         return segment.get(LAYOUT$mipmapPrecisionBits, OFFSET$mipmapPrecisionBits);
     }
 
-    public void mipmapPrecisionBits(@Unsigned int value) {
+    public VkPhysicalDeviceLimits mipmapPrecisionBits(@Unsigned int value) {
         segment.set(LAYOUT$mipmapPrecisionBits, OFFSET$mipmapPrecisionBits, value);
+        return this;
     }
 
     public @Unsigned int maxDrawIndexedIndexValue() {
         return segment.get(LAYOUT$maxDrawIndexedIndexValue, OFFSET$maxDrawIndexedIndexValue);
     }
 
-    public void maxDrawIndexedIndexValue(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDrawIndexedIndexValue(@Unsigned int value) {
         segment.set(LAYOUT$maxDrawIndexedIndexValue, OFFSET$maxDrawIndexedIndexValue, value);
+        return this;
     }
 
     public @Unsigned int maxDrawIndirectCount() {
         return segment.get(LAYOUT$maxDrawIndirectCount, OFFSET$maxDrawIndirectCount);
     }
 
-    public void maxDrawIndirectCount(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxDrawIndirectCount(@Unsigned int value) {
         segment.set(LAYOUT$maxDrawIndirectCount, OFFSET$maxDrawIndirectCount, value);
+        return this;
     }
 
     public float maxSamplerLodBias() {
         return segment.get(LAYOUT$maxSamplerLodBias, OFFSET$maxSamplerLodBias);
     }
 
-    public void maxSamplerLodBias(float value) {
+    public VkPhysicalDeviceLimits maxSamplerLodBias(float value) {
         segment.set(LAYOUT$maxSamplerLodBias, OFFSET$maxSamplerLodBias, value);
+        return this;
     }
 
     public float maxSamplerAnisotropy() {
         return segment.get(LAYOUT$maxSamplerAnisotropy, OFFSET$maxSamplerAnisotropy);
     }
 
-    public void maxSamplerAnisotropy(float value) {
+    public VkPhysicalDeviceLimits maxSamplerAnisotropy(float value) {
         segment.set(LAYOUT$maxSamplerAnisotropy, OFFSET$maxSamplerAnisotropy, value);
+        return this;
     }
 
     public @Unsigned int maxViewports() {
         return segment.get(LAYOUT$maxViewports, OFFSET$maxViewports);
     }
 
-    public void maxViewports(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxViewports(@Unsigned int value) {
         segment.set(LAYOUT$maxViewports, OFFSET$maxViewports, value);
+        return this;
     }
 
     public @Unsigned IntPtr maxViewportDimensions() {
         return new IntPtr(maxViewportDimensionsRaw());
     }
 
-    public void maxViewportDimensions(@Unsigned IntPtr value) {
+    public VkPhysicalDeviceLimits maxViewportDimensions(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxViewportDimensions, SIZE$maxViewportDimensions);
+        return this;
     }
 
     public MemorySegment maxViewportDimensionsRaw() {
@@ -801,8 +865,9 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new FloatPtr(viewportBoundsRangeRaw());
     }
 
-    public void viewportBoundsRange(FloatPtr value) {
+    public VkPhysicalDeviceLimits viewportBoundsRange(FloatPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$viewportBoundsRange, SIZE$viewportBoundsRange);
+        return this;
     }
 
     public MemorySegment viewportBoundsRangeRaw() {
@@ -813,264 +878,297 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$viewportSubPixelBits, OFFSET$viewportSubPixelBits);
     }
 
-    public void viewportSubPixelBits(@Unsigned int value) {
+    public VkPhysicalDeviceLimits viewportSubPixelBits(@Unsigned int value) {
         segment.set(LAYOUT$viewportSubPixelBits, OFFSET$viewportSubPixelBits, value);
+        return this;
     }
 
     public @Unsigned long minMemoryMapAlignment() {
         return NativeLayout.readCSizeT(segment, OFFSET$minMemoryMapAlignment);
     }
 
-    public void minMemoryMapAlignment(@Unsigned long value) {
+    public VkPhysicalDeviceLimits minMemoryMapAlignment(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$minMemoryMapAlignment, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long minTexelBufferOffsetAlignment() {
         return segment.get(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment);
     }
 
-    public void minTexelBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceLimits minTexelBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minTexelBufferOffsetAlignment, OFFSET$minTexelBufferOffsetAlignment, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long minUniformBufferOffsetAlignment() {
         return segment.get(LAYOUT$minUniformBufferOffsetAlignment, OFFSET$minUniformBufferOffsetAlignment);
     }
 
-    public void minUniformBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceLimits minUniformBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minUniformBufferOffsetAlignment, OFFSET$minUniformBufferOffsetAlignment, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long minStorageBufferOffsetAlignment() {
         return segment.get(LAYOUT$minStorageBufferOffsetAlignment, OFFSET$minStorageBufferOffsetAlignment);
     }
 
-    public void minStorageBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceLimits minStorageBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minStorageBufferOffsetAlignment, OFFSET$minStorageBufferOffsetAlignment, value);
+        return this;
     }
 
     public int minTexelOffset() {
         return segment.get(LAYOUT$minTexelOffset, OFFSET$minTexelOffset);
     }
 
-    public void minTexelOffset(int value) {
+    public VkPhysicalDeviceLimits minTexelOffset(int value) {
         segment.set(LAYOUT$minTexelOffset, OFFSET$minTexelOffset, value);
+        return this;
     }
 
     public @Unsigned int maxTexelOffset() {
         return segment.get(LAYOUT$maxTexelOffset, OFFSET$maxTexelOffset);
     }
 
-    public void maxTexelOffset(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTexelOffset(@Unsigned int value) {
         segment.set(LAYOUT$maxTexelOffset, OFFSET$maxTexelOffset, value);
+        return this;
     }
 
     public int minTexelGatherOffset() {
         return segment.get(LAYOUT$minTexelGatherOffset, OFFSET$minTexelGatherOffset);
     }
 
-    public void minTexelGatherOffset(int value) {
+    public VkPhysicalDeviceLimits minTexelGatherOffset(int value) {
         segment.set(LAYOUT$minTexelGatherOffset, OFFSET$minTexelGatherOffset, value);
+        return this;
     }
 
     public @Unsigned int maxTexelGatherOffset() {
         return segment.get(LAYOUT$maxTexelGatherOffset, OFFSET$maxTexelGatherOffset);
     }
 
-    public void maxTexelGatherOffset(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxTexelGatherOffset(@Unsigned int value) {
         segment.set(LAYOUT$maxTexelGatherOffset, OFFSET$maxTexelGatherOffset, value);
+        return this;
     }
 
     public float minInterpolationOffset() {
         return segment.get(LAYOUT$minInterpolationOffset, OFFSET$minInterpolationOffset);
     }
 
-    public void minInterpolationOffset(float value) {
+    public VkPhysicalDeviceLimits minInterpolationOffset(float value) {
         segment.set(LAYOUT$minInterpolationOffset, OFFSET$minInterpolationOffset, value);
+        return this;
     }
 
     public float maxInterpolationOffset() {
         return segment.get(LAYOUT$maxInterpolationOffset, OFFSET$maxInterpolationOffset);
     }
 
-    public void maxInterpolationOffset(float value) {
+    public VkPhysicalDeviceLimits maxInterpolationOffset(float value) {
         segment.set(LAYOUT$maxInterpolationOffset, OFFSET$maxInterpolationOffset, value);
+        return this;
     }
 
     public @Unsigned int subPixelInterpolationOffsetBits() {
         return segment.get(LAYOUT$subPixelInterpolationOffsetBits, OFFSET$subPixelInterpolationOffsetBits);
     }
 
-    public void subPixelInterpolationOffsetBits(@Unsigned int value) {
+    public VkPhysicalDeviceLimits subPixelInterpolationOffsetBits(@Unsigned int value) {
         segment.set(LAYOUT$subPixelInterpolationOffsetBits, OFFSET$subPixelInterpolationOffsetBits, value);
+        return this;
     }
 
     public @Unsigned int maxFramebufferWidth() {
         return segment.get(LAYOUT$maxFramebufferWidth, OFFSET$maxFramebufferWidth);
     }
 
-    public void maxFramebufferWidth(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxFramebufferWidth(@Unsigned int value) {
         segment.set(LAYOUT$maxFramebufferWidth, OFFSET$maxFramebufferWidth, value);
+        return this;
     }
 
     public @Unsigned int maxFramebufferHeight() {
         return segment.get(LAYOUT$maxFramebufferHeight, OFFSET$maxFramebufferHeight);
     }
 
-    public void maxFramebufferHeight(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxFramebufferHeight(@Unsigned int value) {
         segment.set(LAYOUT$maxFramebufferHeight, OFFSET$maxFramebufferHeight, value);
+        return this;
     }
 
     public @Unsigned int maxFramebufferLayers() {
         return segment.get(LAYOUT$maxFramebufferLayers, OFFSET$maxFramebufferLayers);
     }
 
-    public void maxFramebufferLayers(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxFramebufferLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxFramebufferLayers, OFFSET$maxFramebufferLayers, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int framebufferColorSampleCounts() {
         return segment.get(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts);
     }
 
-    public void framebufferColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferColorSampleCounts, OFFSET$framebufferColorSampleCounts, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int framebufferDepthSampleCounts() {
         return segment.get(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts);
     }
 
-    public void framebufferDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferDepthSampleCounts, OFFSET$framebufferDepthSampleCounts, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int framebufferStencilSampleCounts() {
         return segment.get(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts);
     }
 
-    public void framebufferStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferStencilSampleCounts, OFFSET$framebufferStencilSampleCounts, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int framebufferNoAttachmentsSampleCounts() {
         return segment.get(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts);
     }
 
-    public void framebufferNoAttachmentsSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits framebufferNoAttachmentsSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferNoAttachmentsSampleCounts, OFFSET$framebufferNoAttachmentsSampleCounts, value);
+        return this;
     }
 
     public @Unsigned int maxColorAttachments() {
         return segment.get(LAYOUT$maxColorAttachments, OFFSET$maxColorAttachments);
     }
 
-    public void maxColorAttachments(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxColorAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxColorAttachments, OFFSET$maxColorAttachments, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int sampledImageColorSampleCounts() {
         return segment.get(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts);
     }
 
-    public void sampledImageColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageColorSampleCounts, OFFSET$sampledImageColorSampleCounts, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int sampledImageIntegerSampleCounts() {
         return segment.get(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts);
     }
 
-    public void sampledImageIntegerSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageIntegerSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageIntegerSampleCounts, OFFSET$sampledImageIntegerSampleCounts, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int sampledImageDepthSampleCounts() {
         return segment.get(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts);
     }
 
-    public void sampledImageDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageDepthSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageDepthSampleCounts, OFFSET$sampledImageDepthSampleCounts, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int sampledImageStencilSampleCounts() {
         return segment.get(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts);
     }
 
-    public void sampledImageStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits sampledImageStencilSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampledImageStencilSampleCounts, OFFSET$sampledImageStencilSampleCounts, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int storageImageSampleCounts() {
         return segment.get(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts);
     }
 
-    public void storageImageSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceLimits storageImageSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$storageImageSampleCounts, OFFSET$storageImageSampleCounts, value);
+        return this;
     }
 
     public @Unsigned int maxSampleMaskWords() {
         return segment.get(LAYOUT$maxSampleMaskWords, OFFSET$maxSampleMaskWords);
     }
 
-    public void maxSampleMaskWords(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxSampleMaskWords(@Unsigned int value) {
         segment.set(LAYOUT$maxSampleMaskWords, OFFSET$maxSampleMaskWords, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int timestampComputeAndGraphics() {
         return segment.get(LAYOUT$timestampComputeAndGraphics, OFFSET$timestampComputeAndGraphics);
     }
 
-    public void timestampComputeAndGraphics(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLimits timestampComputeAndGraphics(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$timestampComputeAndGraphics, OFFSET$timestampComputeAndGraphics, value);
+        return this;
     }
 
     public float timestampPeriod() {
         return segment.get(LAYOUT$timestampPeriod, OFFSET$timestampPeriod);
     }
 
-    public void timestampPeriod(float value) {
+    public VkPhysicalDeviceLimits timestampPeriod(float value) {
         segment.set(LAYOUT$timestampPeriod, OFFSET$timestampPeriod, value);
+        return this;
     }
 
     public @Unsigned int maxClipDistances() {
         return segment.get(LAYOUT$maxClipDistances, OFFSET$maxClipDistances);
     }
 
-    public void maxClipDistances(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxClipDistances(@Unsigned int value) {
         segment.set(LAYOUT$maxClipDistances, OFFSET$maxClipDistances, value);
+        return this;
     }
 
     public @Unsigned int maxCullDistances() {
         return segment.get(LAYOUT$maxCullDistances, OFFSET$maxCullDistances);
     }
 
-    public void maxCullDistances(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxCullDistances(@Unsigned int value) {
         segment.set(LAYOUT$maxCullDistances, OFFSET$maxCullDistances, value);
+        return this;
     }
 
     public @Unsigned int maxCombinedClipAndCullDistances() {
         return segment.get(LAYOUT$maxCombinedClipAndCullDistances, OFFSET$maxCombinedClipAndCullDistances);
     }
 
-    public void maxCombinedClipAndCullDistances(@Unsigned int value) {
+    public VkPhysicalDeviceLimits maxCombinedClipAndCullDistances(@Unsigned int value) {
         segment.set(LAYOUT$maxCombinedClipAndCullDistances, OFFSET$maxCombinedClipAndCullDistances, value);
+        return this;
     }
 
     public @Unsigned int discreteQueuePriorities() {
         return segment.get(LAYOUT$discreteQueuePriorities, OFFSET$discreteQueuePriorities);
     }
 
-    public void discreteQueuePriorities(@Unsigned int value) {
+    public VkPhysicalDeviceLimits discreteQueuePriorities(@Unsigned int value) {
         segment.set(LAYOUT$discreteQueuePriorities, OFFSET$discreteQueuePriorities, value);
+        return this;
     }
 
     public FloatPtr pointSizeRange() {
         return new FloatPtr(pointSizeRangeRaw());
     }
 
-    public void pointSizeRange(FloatPtr value) {
+    public VkPhysicalDeviceLimits pointSizeRange(FloatPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pointSizeRange, SIZE$pointSizeRange);
+        return this;
     }
 
     public MemorySegment pointSizeRangeRaw() {
@@ -1081,8 +1179,9 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return new FloatPtr(lineWidthRangeRaw());
     }
 
-    public void lineWidthRange(FloatPtr value) {
+    public VkPhysicalDeviceLimits lineWidthRange(FloatPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$lineWidthRange, SIZE$lineWidthRange);
+        return this;
     }
 
     public MemorySegment lineWidthRangeRaw() {
@@ -1093,56 +1192,63 @@ public record VkPhysicalDeviceLimits(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$pointSizeGranularity, OFFSET$pointSizeGranularity);
     }
 
-    public void pointSizeGranularity(float value) {
+    public VkPhysicalDeviceLimits pointSizeGranularity(float value) {
         segment.set(LAYOUT$pointSizeGranularity, OFFSET$pointSizeGranularity, value);
+        return this;
     }
 
     public float lineWidthGranularity() {
         return segment.get(LAYOUT$lineWidthGranularity, OFFSET$lineWidthGranularity);
     }
 
-    public void lineWidthGranularity(float value) {
+    public VkPhysicalDeviceLimits lineWidthGranularity(float value) {
         segment.set(LAYOUT$lineWidthGranularity, OFFSET$lineWidthGranularity, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int strictLines() {
         return segment.get(LAYOUT$strictLines, OFFSET$strictLines);
     }
 
-    public void strictLines(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLimits strictLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$strictLines, OFFSET$strictLines, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int standardSampleLocations() {
         return segment.get(LAYOUT$standardSampleLocations, OFFSET$standardSampleLocations);
     }
 
-    public void standardSampleLocations(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLimits standardSampleLocations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$standardSampleLocations, OFFSET$standardSampleLocations, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long optimalBufferCopyOffsetAlignment() {
         return segment.get(LAYOUT$optimalBufferCopyOffsetAlignment, OFFSET$optimalBufferCopyOffsetAlignment);
     }
 
-    public void optimalBufferCopyOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceLimits optimalBufferCopyOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$optimalBufferCopyOffsetAlignment, OFFSET$optimalBufferCopyOffsetAlignment, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long optimalBufferCopyRowPitchAlignment() {
         return segment.get(LAYOUT$optimalBufferCopyRowPitchAlignment, OFFSET$optimalBufferCopyRowPitchAlignment);
     }
 
-    public void optimalBufferCopyRowPitchAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceLimits optimalBufferCopyRowPitchAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$optimalBufferCopyRowPitchAlignment, OFFSET$optimalBufferCopyRowPitchAlignment, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long nonCoherentAtomSize() {
         return segment.get(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize);
     }
 
-    public void nonCoherentAtomSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceLimits nonCoherentAtomSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$nonCoherentAtomSize, OFFSET$nonCoherentAtomSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

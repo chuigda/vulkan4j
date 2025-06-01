@@ -174,24 +174,27 @@ public record VkVertexInputBindingDescription(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@Unsigned int value) {
+    public VkVertexInputBindingDescription binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
+        return this;
     }
 
     public @Unsigned int stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@Unsigned int value) {
+    public VkVertexInputBindingDescription stride(@Unsigned int value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
+        return this;
     }
 
     public @EnumType(VkVertexInputRate.class) int inputRate() {
         return segment.get(LAYOUT$inputRate, OFFSET$inputRate);
     }
 
-    public void inputRate(@EnumType(VkVertexInputRate.class) int value) {
+    public VkVertexInputBindingDescription inputRate(@EnumType(VkVertexInputRate.class) int value) {
         segment.set(LAYOUT$inputRate, OFFSET$inputRate, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

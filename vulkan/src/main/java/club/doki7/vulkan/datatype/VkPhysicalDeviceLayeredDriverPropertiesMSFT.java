@@ -193,8 +193,9 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLayeredDriverPropertiesMSFT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceLayeredDriverPropertiesMSFT(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceLayeredDriverPropertiesMSFT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkLayeredDriverUnderlyingApiMSFT.class) int underlyingAPI() {
         return segment.get(LAYOUT$underlyingAPI, OFFSET$underlyingAPI);
     }
 
-    public void underlyingAPI(@EnumType(VkLayeredDriverUnderlyingApiMSFT.class) int value) {
+    public VkPhysicalDeviceLayeredDriverPropertiesMSFT underlyingAPI(@EnumType(VkLayeredDriverUnderlyingApiMSFT.class) int value) {
         segment.set(LAYOUT$underlyingAPI, OFFSET$underlyingAPI, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

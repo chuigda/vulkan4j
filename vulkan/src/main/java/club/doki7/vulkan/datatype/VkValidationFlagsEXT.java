@@ -194,8 +194,9 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkValidationFlagsEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkValidationFlagsEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int disabledValidationCheckCount() {
         return segment.get(LAYOUT$disabledValidationCheckCount, OFFSET$disabledValidationCheckCount);
     }
 
-    public void disabledValidationCheckCount(@Unsigned int value) {
+    public VkValidationFlagsEXT disabledValidationCheckCount(@Unsigned int value) {
         segment.set(LAYOUT$disabledValidationCheckCount, OFFSET$disabledValidationCheckCount, value);
+        return this;
     }
 
 
@@ -231,9 +234,10 @@ public record VkValidationFlagsEXT(@NotNull MemorySegment segment) implements IV
         return new IntPtr(s);
     }
 
-    public void pDisabledValidationChecks(@Nullable @EnumType(VkValidationCheckEXT.class) IntPtr value) {
+    public VkValidationFlagsEXT pDisabledValidationChecks(@Nullable @EnumType(VkValidationCheckEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDisabledValidationChecksRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkValidationCheckEXT.class) MemorySegment pDisabledValidationChecksRaw() {

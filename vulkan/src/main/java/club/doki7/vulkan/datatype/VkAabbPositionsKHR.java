@@ -177,48 +177,54 @@ public record VkAabbPositionsKHR(@NotNull MemorySegment segment) implements IVkA
         return segment.get(LAYOUT$minX, OFFSET$minX);
     }
 
-    public void minX(float value) {
+    public VkAabbPositionsKHR minX(float value) {
         segment.set(LAYOUT$minX, OFFSET$minX, value);
+        return this;
     }
 
     public float minY() {
         return segment.get(LAYOUT$minY, OFFSET$minY);
     }
 
-    public void minY(float value) {
+    public VkAabbPositionsKHR minY(float value) {
         segment.set(LAYOUT$minY, OFFSET$minY, value);
+        return this;
     }
 
     public float minZ() {
         return segment.get(LAYOUT$minZ, OFFSET$minZ);
     }
 
-    public void minZ(float value) {
+    public VkAabbPositionsKHR minZ(float value) {
         segment.set(LAYOUT$minZ, OFFSET$minZ, value);
+        return this;
     }
 
     public float maxX() {
         return segment.get(LAYOUT$maxX, OFFSET$maxX);
     }
 
-    public void maxX(float value) {
+    public VkAabbPositionsKHR maxX(float value) {
         segment.set(LAYOUT$maxX, OFFSET$maxX, value);
+        return this;
     }
 
     public float maxY() {
         return segment.get(LAYOUT$maxY, OFFSET$maxY);
     }
 
-    public void maxY(float value) {
+    public VkAabbPositionsKHR maxY(float value) {
         segment.set(LAYOUT$maxY, OFFSET$maxY, value);
+        return this;
     }
 
     public float maxZ() {
         return segment.get(LAYOUT$maxZ, OFFSET$maxZ);
     }
 
-    public void maxZ(float value) {
+    public VkAabbPositionsKHR maxZ(float value) {
         segment.set(LAYOUT$maxZ, OFFSET$maxZ, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

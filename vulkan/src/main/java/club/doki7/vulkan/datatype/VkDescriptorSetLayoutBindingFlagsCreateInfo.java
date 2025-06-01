@@ -194,8 +194,9 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int bindingCount() {
         return segment.get(LAYOUT$bindingCount, OFFSET$bindingCount);
     }
 
-    public void bindingCount(@Unsigned int value) {
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo bindingCount(@Unsigned int value) {
         segment.set(LAYOUT$bindingCount, OFFSET$bindingCount, value);
+        return this;
     }
 
 
@@ -231,9 +234,10 @@ public record VkDescriptorSetLayoutBindingFlagsCreateInfo(@NotNull MemorySegment
         return new IntPtr(s);
     }
 
-    public void pBindingFlags(@Nullable @EnumType(VkDescriptorBindingFlags.class) IntPtr value) {
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo pBindingFlags(@Nullable @EnumType(VkDescriptorBindingFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindingFlagsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDescriptorBindingFlags.class) MemorySegment pBindingFlagsRaw() {

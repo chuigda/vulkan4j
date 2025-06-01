@@ -195,8 +195,9 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRobustness2FeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceRobustness2FeaturesEXT(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRobustness2FeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int robustBufferAccess2() {
         return segment.get(LAYOUT$robustBufferAccess2, OFFSET$robustBufferAccess2);
     }
 
-    public void robustBufferAccess2(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRobustness2FeaturesEXT robustBufferAccess2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$robustBufferAccess2, OFFSET$robustBufferAccess2, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int robustImageAccess2() {
         return segment.get(LAYOUT$robustImageAccess2, OFFSET$robustImageAccess2);
     }
 
-    public void robustImageAccess2(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRobustness2FeaturesEXT robustImageAccess2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$robustImageAccess2, OFFSET$robustImageAccess2, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int nullDescriptor() {
         return segment.get(LAYOUT$nullDescriptor, OFFSET$nullDescriptor);
     }
 
-    public void nullDescriptor(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRobustness2FeaturesEXT nullDescriptor(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nullDescriptor, OFFSET$nullDescriptor, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageCompressionControlEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,24 +208,27 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageCompressionControlEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageCompressionFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkImageCompressionFlagsEXT.class) int value) {
+    public VkImageCompressionControlEXT flags(@EnumType(VkImageCompressionFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int compressionControlPlaneCount() {
         return segment.get(LAYOUT$compressionControlPlaneCount, OFFSET$compressionControlPlaneCount);
     }
 
-    public void compressionControlPlaneCount(@Unsigned int value) {
+    public VkImageCompressionControlEXT compressionControlPlaneCount(@Unsigned int value) {
         segment.set(LAYOUT$compressionControlPlaneCount, OFFSET$compressionControlPlaneCount, value);
+        return this;
     }
 
 
@@ -240,9 +244,10 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         return new IntPtr(s);
     }
 
-    public void pFixedRateFlags(@Nullable @EnumType(VkImageCompressionFixedRateFlagsEXT.class) IntPtr value) {
+    public VkImageCompressionControlEXT pFixedRateFlags(@Nullable @EnumType(VkImageCompressionFixedRateFlagsEXT.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFixedRateFlagsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkImageCompressionFixedRateFlagsEXT.class) MemorySegment pFixedRateFlagsRaw() {

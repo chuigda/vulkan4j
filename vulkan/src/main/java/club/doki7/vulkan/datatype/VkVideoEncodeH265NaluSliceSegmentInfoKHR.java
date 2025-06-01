@@ -194,8 +194,9 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265NaluSliceSegmentInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkVideoEncodeH265NaluSliceSegmentInfoKHR(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265NaluSliceSegmentInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public int constantQp() {
         return segment.get(LAYOUT$constantQp, OFFSET$constantQp);
     }
 
-    public void constantQp(int value) {
+    public VkVideoEncodeH265NaluSliceSegmentInfoKHR constantQp(int value) {
         segment.set(LAYOUT$constantQp, OFFSET$constantQp, value);
+        return this;
     }
 
-    public void pStdSliceSegmentHeader(@Nullable IStdVideoEncodeH265SliceSegmentHeader value) {
+    public VkVideoEncodeH265NaluSliceSegmentInfoKHR pStdSliceSegmentHeader(@Nullable IStdVideoEncodeH265SliceSegmentHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSliceSegmentHeaderRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeH265SliceSegmentHeader.Ptr pStdSliceSegmentHeader(int assumedCount) {

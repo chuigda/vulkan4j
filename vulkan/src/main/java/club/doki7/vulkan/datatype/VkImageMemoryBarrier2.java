@@ -202,8 +202,9 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageMemoryBarrier2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -214,72 +215,81 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageMemoryBarrier2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineStageFlags2.class) long srcStageMask() {
         return segment.get(LAYOUT$srcStageMask, OFFSET$srcStageMask);
     }
 
-    public void srcStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkImageMemoryBarrier2 srcStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$srcStageMask, OFFSET$srcStageMask, value);
+        return this;
     }
 
     public @EnumType(VkAccessFlags2.class) long srcAccessMask() {
         return segment.get(LAYOUT$srcAccessMask, OFFSET$srcAccessMask);
     }
 
-    public void srcAccessMask(@EnumType(VkAccessFlags2.class) long value) {
+    public VkImageMemoryBarrier2 srcAccessMask(@EnumType(VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$srcAccessMask, OFFSET$srcAccessMask, value);
+        return this;
     }
 
     public @EnumType(VkPipelineStageFlags2.class) long dstStageMask() {
         return segment.get(LAYOUT$dstStageMask, OFFSET$dstStageMask);
     }
 
-    public void dstStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
+    public VkImageMemoryBarrier2 dstStageMask(@EnumType(VkPipelineStageFlags2.class) long value) {
         segment.set(LAYOUT$dstStageMask, OFFSET$dstStageMask, value);
+        return this;
     }
 
     public @EnumType(VkAccessFlags2.class) long dstAccessMask() {
         return segment.get(LAYOUT$dstAccessMask, OFFSET$dstAccessMask);
     }
 
-    public void dstAccessMask(@EnumType(VkAccessFlags2.class) long value) {
+    public VkImageMemoryBarrier2 dstAccessMask(@EnumType(VkAccessFlags2.class) long value) {
         segment.set(LAYOUT$dstAccessMask, OFFSET$dstAccessMask, value);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int oldLayout() {
         return segment.get(LAYOUT$oldLayout, OFFSET$oldLayout);
     }
 
-    public void oldLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkImageMemoryBarrier2 oldLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$oldLayout, OFFSET$oldLayout, value);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int newLayout() {
         return segment.get(LAYOUT$newLayout, OFFSET$newLayout);
     }
 
-    public void newLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkImageMemoryBarrier2 newLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$newLayout, OFFSET$newLayout, value);
+        return this;
     }
 
     public @Unsigned int srcQueueFamilyIndex() {
         return segment.get(LAYOUT$srcQueueFamilyIndex, OFFSET$srcQueueFamilyIndex);
     }
 
-    public void srcQueueFamilyIndex(@Unsigned int value) {
+    public VkImageMemoryBarrier2 srcQueueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$srcQueueFamilyIndex, OFFSET$srcQueueFamilyIndex, value);
+        return this;
     }
 
     public @Unsigned int dstQueueFamilyIndex() {
         return segment.get(LAYOUT$dstQueueFamilyIndex, OFFSET$dstQueueFamilyIndex);
     }
 
-    public void dstQueueFamilyIndex(@Unsigned int value) {
+    public VkImageMemoryBarrier2 dstQueueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$dstQueueFamilyIndex, OFFSET$dstQueueFamilyIndex, value);
+        return this;
     }
 
     public @Nullable VkImage image() {
@@ -290,16 +300,18 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
         return new VkImage(s);
     }
 
-    public void image(@Nullable VkImage value) {
+    public VkImageMemoryBarrier2 image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkImageSubresourceRange subresourceRange() {
         return new VkImageSubresourceRange(segment.asSlice(OFFSET$subresourceRange, LAYOUT$subresourceRange));
     }
 
-    public void subresourceRange(@NotNull VkImageSubresourceRange value) {
+    public VkImageMemoryBarrier2 subresourceRange(@NotNull VkImageSubresourceRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

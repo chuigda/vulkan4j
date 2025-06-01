@@ -199,8 +199,9 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1PictureInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,37 +212,42 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeAV1PictureInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeAV1PredictionModeKHR.class) int predictionMode() {
         return segment.get(LAYOUT$predictionMode, OFFSET$predictionMode);
     }
 
-    public void predictionMode(@EnumType(VkVideoEncodeAV1PredictionModeKHR.class) int value) {
+    public VkVideoEncodeAV1PictureInfoKHR predictionMode(@EnumType(VkVideoEncodeAV1PredictionModeKHR.class) int value) {
         segment.set(LAYOUT$predictionMode, OFFSET$predictionMode, value);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeAV1RateControlGroupKHR.class) int rateControlGroup() {
         return segment.get(LAYOUT$rateControlGroup, OFFSET$rateControlGroup);
     }
 
-    public void rateControlGroup(@EnumType(VkVideoEncodeAV1RateControlGroupKHR.class) int value) {
+    public VkVideoEncodeAV1PictureInfoKHR rateControlGroup(@EnumType(VkVideoEncodeAV1RateControlGroupKHR.class) int value) {
         segment.set(LAYOUT$rateControlGroup, OFFSET$rateControlGroup, value);
+        return this;
     }
 
     public @Unsigned int constantQIndex() {
         return segment.get(LAYOUT$constantQIndex, OFFSET$constantQIndex);
     }
 
-    public void constantQIndex(@Unsigned int value) {
+    public VkVideoEncodeAV1PictureInfoKHR constantQIndex(@Unsigned int value) {
         segment.set(LAYOUT$constantQIndex, OFFSET$constantQIndex, value);
+        return this;
     }
 
-    public void pStdPictureInfo(@Nullable IStdVideoEncodeAV1PictureInfo value) {
+    public VkVideoEncodeAV1PictureInfoKHR pStdPictureInfo(@Nullable IStdVideoEncodeAV1PictureInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPictureInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeAV1PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
@@ -274,8 +280,9 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return new IntPtr(referenceNameSlotIndicesRaw());
     }
 
-    public void referenceNameSlotIndices(IntPtr value) {
+    public VkVideoEncodeAV1PictureInfoKHR referenceNameSlotIndices(IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
+        return this;
     }
 
     public MemorySegment referenceNameSlotIndicesRaw() {
@@ -286,16 +293,18 @@ public record VkVideoEncodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$primaryReferenceCdfOnly, OFFSET$primaryReferenceCdfOnly);
     }
 
-    public void primaryReferenceCdfOnly(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeAV1PictureInfoKHR primaryReferenceCdfOnly(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primaryReferenceCdfOnly, OFFSET$primaryReferenceCdfOnly, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int generateObuExtensionHeader() {
         return segment.get(LAYOUT$generateObuExtensionHeader, OFFSET$generateObuExtensionHeader);
     }
 
-    public void generateObuExtensionHeader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeAV1PictureInfoKHR generateObuExtensionHeader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$generateObuExtensionHeader, OFFSET$generateObuExtensionHeader, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

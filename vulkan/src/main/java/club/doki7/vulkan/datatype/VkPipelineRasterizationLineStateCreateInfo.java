@@ -196,8 +196,9 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationLineStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPipelineRasterizationLineStateCreateInfo(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineRasterizationLineStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkLineRasterizationMode.class) int lineRasterizationMode() {
         return segment.get(LAYOUT$lineRasterizationMode, OFFSET$lineRasterizationMode);
     }
 
-    public void lineRasterizationMode(@EnumType(VkLineRasterizationMode.class) int value) {
+    public VkPipelineRasterizationLineStateCreateInfo lineRasterizationMode(@EnumType(VkLineRasterizationMode.class) int value) {
         segment.set(LAYOUT$lineRasterizationMode, OFFSET$lineRasterizationMode, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int stippledLineEnable() {
         return segment.get(LAYOUT$stippledLineEnable, OFFSET$stippledLineEnable);
     }
 
-    public void stippledLineEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineRasterizationLineStateCreateInfo stippledLineEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledLineEnable, OFFSET$stippledLineEnable, value);
+        return this;
     }
 
     public @Unsigned int lineStippleFactor() {
         return segment.get(LAYOUT$lineStippleFactor, OFFSET$lineStippleFactor);
     }
 
-    public void lineStippleFactor(@Unsigned int value) {
+    public VkPipelineRasterizationLineStateCreateInfo lineStippleFactor(@Unsigned int value) {
         segment.set(LAYOUT$lineStippleFactor, OFFSET$lineStippleFactor, value);
+        return this;
     }
 
     public @Unsigned short lineStipplePattern() {
         return segment.get(LAYOUT$lineStipplePattern, OFFSET$lineStipplePattern);
     }
 
-    public void lineStipplePattern(@Unsigned short value) {
+    public VkPipelineRasterizationLineStateCreateInfo lineStipplePattern(@Unsigned short value) {
         segment.set(LAYOUT$lineStipplePattern, OFFSET$lineStipplePattern, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

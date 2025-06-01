@@ -232,40 +232,45 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VmaAllocationCreateFlags.class) int value) {
+    public VmaAllocationCreateInfo flags(@EnumType(VmaAllocationCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VmaMemoryUsage.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@EnumType(VmaMemoryUsage.class) int value) {
+    public VmaAllocationCreateInfo usage(@EnumType(VmaMemoryUsage.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
+        return this;
     }
 
     public @EnumType(VkMemoryPropertyFlags.class) int requiredFlags() {
         return segment.get(LAYOUT$requiredFlags, OFFSET$requiredFlags);
     }
 
-    public void requiredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VmaAllocationCreateInfo requiredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$requiredFlags, OFFSET$requiredFlags, value);
+        return this;
     }
 
     public @EnumType(VkMemoryPropertyFlags.class) int preferredFlags() {
         return segment.get(LAYOUT$preferredFlags, OFFSET$preferredFlags);
     }
 
-    public void preferredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VmaAllocationCreateInfo preferredFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$preferredFlags, OFFSET$preferredFlags, value);
+        return this;
     }
 
     public @Unsigned int memoryTypeBits() {
         return segment.get(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits);
     }
 
-    public void memoryTypeBits(@Unsigned int value) {
+    public VmaAllocationCreateInfo memoryTypeBits(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
+        return this;
     }
 
     public @Nullable VmaPool pool() {
@@ -276,8 +281,9 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
         return new VmaPool(s);
     }
 
-    public void pool(@Nullable VmaPool value) {
+    public VmaAllocationCreateInfo pool(@Nullable VmaPool value) {
         segment.set(LAYOUT$pool, OFFSET$pool, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pUserData() {
@@ -288,16 +294,18 @@ public record VmaAllocationCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(@Nullable IPointer pointer) {
+    public VmaAllocationCreateInfo pUserData(@Nullable IPointer pointer) {
         pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public float priority() {
         return segment.get(LAYOUT$priority, OFFSET$priority);
     }
 
-    public void priority(float value) {
+    public VmaAllocationCreateInfo priority(float value) {
         segment.set(LAYOUT$priority, OFFSET$priority, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

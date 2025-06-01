@@ -193,8 +193,9 @@ public record VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(@NotN
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(@NotN
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int allowClusterAccelerationStructure() {
         return segment.get(LAYOUT$allowClusterAccelerationStructure, OFFSET$allowClusterAccelerationStructure);
     }
 
-    public void allowClusterAccelerationStructure(@NativeType("VkBool32") @Unsigned int value) {
+    public VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV allowClusterAccelerationStructure(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$allowClusterAccelerationStructure, OFFSET$allowClusterAccelerationStructure, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

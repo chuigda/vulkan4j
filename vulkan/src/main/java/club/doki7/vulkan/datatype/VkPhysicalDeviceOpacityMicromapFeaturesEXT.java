@@ -195,8 +195,9 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceOpacityMicromapFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceOpacityMicromapFeaturesEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceOpacityMicromapFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int micromap() {
         return segment.get(LAYOUT$micromap, OFFSET$micromap);
     }
 
-    public void micromap(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceOpacityMicromapFeaturesEXT micromap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$micromap, OFFSET$micromap, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int micromapCaptureReplay() {
         return segment.get(LAYOUT$micromapCaptureReplay, OFFSET$micromapCaptureReplay);
     }
 
-    public void micromapCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceOpacityMicromapFeaturesEXT micromapCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$micromapCaptureReplay, OFFSET$micromapCaptureReplay, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int micromapHostCommands() {
         return segment.get(LAYOUT$micromapHostCommands, OFFSET$micromapHostCommands);
     }
 
-    public void micromapHostCommands(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceOpacityMicromapFeaturesEXT micromapHostCommands(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$micromapHostCommands, OFFSET$micromapHostCommands, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

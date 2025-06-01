@@ -199,8 +199,9 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkFramebufferAttachmentImageInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,56 +212,63 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkFramebufferAttachmentImageInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkFramebufferAttachmentImageInfo flags(@EnumType(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkFramebufferAttachmentImageInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
+        return this;
     }
 
     public @Unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@Unsigned int value) {
+    public VkFramebufferAttachmentImageInfo width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
+        return this;
     }
 
     public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@Unsigned int value) {
+    public VkFramebufferAttachmentImageInfo height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
+        return this;
     }
 
     public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@Unsigned int value) {
+    public VkFramebufferAttachmentImageInfo layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
+        return this;
     }
 
     public @Unsigned int viewFormatCount() {
         return segment.get(LAYOUT$viewFormatCount, OFFSET$viewFormatCount);
     }
 
-    public void viewFormatCount(@Unsigned int value) {
+    public VkFramebufferAttachmentImageInfo viewFormatCount(@Unsigned int value) {
         segment.set(LAYOUT$viewFormatCount, OFFSET$viewFormatCount, value);
+        return this;
     }
 
 
@@ -276,9 +284,10 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         return new IntPtr(s);
     }
 
-    public void pViewFormats(@Nullable @EnumType(VkFormat.class) IntPtr value) {
+    public VkFramebufferAttachmentImageInfo pViewFormats(@Nullable @EnumType(VkFormat.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewFormatsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkFormat.class) MemorySegment pViewFormatsRaw() {

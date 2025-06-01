@@ -195,8 +195,9 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevice8BitStorageFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDevice8BitStorageFeatures(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevice8BitStorageFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int storageBuffer8BitAccess() {
         return segment.get(LAYOUT$storageBuffer8BitAccess, OFFSET$storageBuffer8BitAccess);
     }
 
-    public void storageBuffer8BitAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice8BitStorageFeatures storageBuffer8BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storageBuffer8BitAccess, OFFSET$storageBuffer8BitAccess, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int uniformAndStorageBuffer8BitAccess() {
         return segment.get(LAYOUT$uniformAndStorageBuffer8BitAccess, OFFSET$uniformAndStorageBuffer8BitAccess);
     }
 
-    public void uniformAndStorageBuffer8BitAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice8BitStorageFeatures uniformAndStorageBuffer8BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$uniformAndStorageBuffer8BitAccess, OFFSET$uniformAndStorageBuffer8BitAccess, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int storagePushConstant8() {
         return segment.get(LAYOUT$storagePushConstant8, OFFSET$storagePushConstant8);
     }
 
-    public void storagePushConstant8(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice8BitStorageFeatures storagePushConstant8(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storagePushConstant8, OFFSET$storagePushConstant8, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(@NotNull Mem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(@NotNull Mem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderReplicatedComposites() {
         return segment.get(LAYOUT$shaderReplicatedComposites, OFFSET$shaderReplicatedComposites);
     }
 
-    public void shaderReplicatedComposites(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT shaderReplicatedComposites(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderReplicatedComposites, OFFSET$shaderReplicatedComposites, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

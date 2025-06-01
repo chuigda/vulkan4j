@@ -193,8 +193,9 @@ public record VkPerformanceQuerySubmitInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceQuerySubmitInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPerformanceQuerySubmitInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPerformanceQuerySubmitInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int counterPassIndex() {
         return segment.get(LAYOUT$counterPassIndex, OFFSET$counterPassIndex);
     }
 
-    public void counterPassIndex(@Unsigned int value) {
+    public VkPerformanceQuerySubmitInfoKHR counterPassIndex(@Unsigned int value) {
         segment.set(LAYOUT$counterPassIndex, OFFSET$counterPassIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

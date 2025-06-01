@@ -175,9 +175,10 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void IrapPicFlag(boolean value) {
+    public StdVideoDecodeH265PictureInfoFlags IrapPicFlag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean IdrPicFlag() {
@@ -185,9 +186,10 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void IdrPicFlag(boolean value) {
+    public StdVideoDecodeH265PictureInfoFlags IdrPicFlag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean IsReference() {
@@ -195,9 +197,10 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void IsReference(boolean value) {
+    public StdVideoDecodeH265PictureInfoFlags IsReference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean short_term_ref_pic_set_sps_flag() {
@@ -205,9 +208,10 @@ public record StdVideoDecodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void short_term_ref_pic_set_sps_flag(boolean value) {
+    public StdVideoDecodeH265PictureInfoFlags short_term_ref_pic_set_sps_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag, LAYOUT$bitfield$IrapPicFlag$short_term_ref_pic_set_sps_flag);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

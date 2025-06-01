@@ -174,24 +174,27 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IVkExtent3D 
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@Unsigned int value) {
+    public VkExtent3D width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
+        return this;
     }
 
     public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@Unsigned int value) {
+    public VkExtent3D height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
+        return this;
     }
 
     public @Unsigned int depth() {
         return segment.get(LAYOUT$depth, OFFSET$depth);
     }
 
-    public void depth(@Unsigned int value) {
+    public VkExtent3D depth(@Unsigned int value) {
         segment.set(LAYOUT$depth, OFFSET$depth, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

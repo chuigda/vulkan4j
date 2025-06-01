@@ -194,8 +194,9 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineFragmentShadingRateStateCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineFragmentShadingRateStateCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent2D fragmentSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$fragmentSize, LAYOUT$fragmentSize));
     }
 
-    public void fragmentSize(@NotNull VkExtent2D value) {
+    public VkPipelineFragmentShadingRateStateCreateInfoKHR fragmentSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentSize, SIZE$fragmentSize);
+        return this;
     }
 
     public @EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr combinerOps() {
         return new IntPtr(combinerOpsRaw());
     }
 
-    public void combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr value) {
+    public VkPipelineFragmentShadingRateStateCreateInfoKHR combinerOps(@EnumType(VkFragmentShadingRateCombinerOpKHR.class) IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$combinerOps, SIZE$combinerOps);
+        return this;
     }
 
     public MemorySegment combinerOpsRaw() {

@@ -194,8 +194,9 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureClustersBottomLevelInputNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkClusterAccelerationStructureClustersBottomLevelInputNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxTotalClusterCount() {
         return segment.get(LAYOUT$maxTotalClusterCount, OFFSET$maxTotalClusterCount);
     }
 
-    public void maxTotalClusterCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureClustersBottomLevelInputNV maxTotalClusterCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTotalClusterCount, OFFSET$maxTotalClusterCount, value);
+        return this;
     }
 
     public @Unsigned int maxClusterCountPerAccelerationStructure() {
         return segment.get(LAYOUT$maxClusterCountPerAccelerationStructure, OFFSET$maxClusterCountPerAccelerationStructure);
     }
 
-    public void maxClusterCountPerAccelerationStructure(@Unsigned int value) {
+    public VkClusterAccelerationStructureClustersBottomLevelInputNV maxClusterCountPerAccelerationStructure(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterCountPerAccelerationStructure, OFFSET$maxClusterCountPerAccelerationStructure, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

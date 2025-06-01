@@ -172,8 +172,9 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
         return new VkPushConstantRange(segment.asSlice(OFFSET$updateRange, LAYOUT$updateRange));
     }
 
-    public void updateRange(@NotNull VkPushConstantRange value) {
+    public VkIndirectCommandsPushConstantTokenEXT updateRange(@NotNull VkPushConstantRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$updateRange, SIZE$updateRange);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

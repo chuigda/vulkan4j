@@ -195,8 +195,9 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyMemoryToAccelerationStructureInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCopyMemoryToAccelerationStructureInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR src() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$src, LAYOUT$src));
     }
 
-    public void src(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkCopyMemoryToAccelerationStructureInfoKHR src(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
+        return this;
     }
 
     public @Nullable VkAccelerationStructureKHR dst() {
@@ -227,16 +230,18 @@ public record VkCopyMemoryToAccelerationStructureInfoKHR(@NotNull MemorySegment 
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void dst(@Nullable VkAccelerationStructureKHR value) {
+    public VkCopyMemoryToAccelerationStructureInfoKHR dst(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$dst, OFFSET$dst, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkCopyAccelerationStructureModeKHR.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@EnumType(VkCopyAccelerationStructureModeKHR.class) int value) {
+    public VkCopyMemoryToAccelerationStructureInfoKHR mode(@EnumType(VkCopyAccelerationStructureModeKHR.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

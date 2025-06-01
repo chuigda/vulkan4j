@@ -176,40 +176,45 @@ public record VkDrawIndexedIndirectCommand(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
     }
 
-    public void indexCount(@Unsigned int value) {
+    public VkDrawIndexedIndirectCommand indexCount(@Unsigned int value) {
         segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
+        return this;
     }
 
     public @Unsigned int instanceCount() {
         return segment.get(LAYOUT$instanceCount, OFFSET$instanceCount);
     }
 
-    public void instanceCount(@Unsigned int value) {
+    public VkDrawIndexedIndirectCommand instanceCount(@Unsigned int value) {
         segment.set(LAYOUT$instanceCount, OFFSET$instanceCount, value);
+        return this;
     }
 
     public @Unsigned int firstIndex() {
         return segment.get(LAYOUT$firstIndex, OFFSET$firstIndex);
     }
 
-    public void firstIndex(@Unsigned int value) {
+    public VkDrawIndexedIndirectCommand firstIndex(@Unsigned int value) {
         segment.set(LAYOUT$firstIndex, OFFSET$firstIndex, value);
+        return this;
     }
 
     public int vertexOffset() {
         return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
     }
 
-    public void vertexOffset(int value) {
+    public VkDrawIndexedIndirectCommand vertexOffset(int value) {
         segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
+        return this;
     }
 
     public @Unsigned int firstInstance() {
         return segment.get(LAYOUT$firstInstance, OFFSET$firstInstance);
     }
 
-    public void firstInstance(@Unsigned int value) {
+    public VkDrawIndexedIndirectCommand firstInstance(@Unsigned int value) {
         segment.set(LAYOUT$firstInstance, OFFSET$firstInstance, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

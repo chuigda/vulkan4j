@@ -244,8 +244,9 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -256,24 +257,27 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVulkan12Properties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDriverId.class) int driverID() {
         return segment.get(LAYOUT$driverID, OFFSET$driverID);
     }
 
-    public void driverID(@EnumType(VkDriverId.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties driverID(@EnumType(VkDriverId.class) int value) {
         segment.set(LAYOUT$driverID, OFFSET$driverID, value);
+        return this;
     }
 
     public BytePtr driverName() {
         return new BytePtr(driverNameRaw());
     }
 
-    public void driverName(BytePtr value) {
+    public VkPhysicalDeviceVulkan12Properties driverName(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverName, SIZE$driverName);
+        return this;
     }
 
     public MemorySegment driverNameRaw() {
@@ -284,8 +288,9 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return new BytePtr(driverInfoRaw());
     }
 
-    public void driverInfo(BytePtr value) {
+    public VkPhysicalDeviceVulkan12Properties driverInfo(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverInfo, SIZE$driverInfo);
+        return this;
     }
 
     public MemorySegment driverInfoRaw() {
@@ -296,392 +301,441 @@ public record VkPhysicalDeviceVulkan12Properties(@NotNull MemorySegment segment)
         return new VkConformanceVersion(segment.asSlice(OFFSET$conformanceVersion, LAYOUT$conformanceVersion));
     }
 
-    public void conformanceVersion(@NotNull VkConformanceVersion value) {
+    public VkPhysicalDeviceVulkan12Properties conformanceVersion(@NotNull VkConformanceVersion value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, SIZE$conformanceVersion);
+        return this;
     }
 
     public @EnumType(VkShaderFloatControlsIndependence.class) int denormBehaviorIndependence() {
         return segment.get(LAYOUT$denormBehaviorIndependence, OFFSET$denormBehaviorIndependence);
     }
 
-    public void denormBehaviorIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties denormBehaviorIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
         segment.set(LAYOUT$denormBehaviorIndependence, OFFSET$denormBehaviorIndependence, value);
+        return this;
     }
 
     public @EnumType(VkShaderFloatControlsIndependence.class) int roundingModeIndependence() {
         return segment.get(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence);
     }
 
-    public void roundingModeIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties roundingModeIndependence(@EnumType(VkShaderFloatControlsIndependence.class) int value) {
         segment.set(LAYOUT$roundingModeIndependence, OFFSET$roundingModeIndependence, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderSignedZeroInfNanPreserveFloat16() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat16, OFFSET$shaderSignedZeroInfNanPreserveFloat16);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderSignedZeroInfNanPreserveFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat16, OFFSET$shaderSignedZeroInfNanPreserveFloat16, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderSignedZeroInfNanPreserveFloat32() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat32, OFFSET$shaderSignedZeroInfNanPreserveFloat32);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat32(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderSignedZeroInfNanPreserveFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat32, OFFSET$shaderSignedZeroInfNanPreserveFloat32, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderSignedZeroInfNanPreserveFloat64() {
         return segment.get(LAYOUT$shaderSignedZeroInfNanPreserveFloat64, OFFSET$shaderSignedZeroInfNanPreserveFloat64);
     }
 
-    public void shaderSignedZeroInfNanPreserveFloat64(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderSignedZeroInfNanPreserveFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSignedZeroInfNanPreserveFloat64, OFFSET$shaderSignedZeroInfNanPreserveFloat64, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderDenormPreserveFloat16() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat16, OFFSET$shaderDenormPreserveFloat16);
     }
 
-    public void shaderDenormPreserveFloat16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderDenormPreserveFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat16, OFFSET$shaderDenormPreserveFloat16, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderDenormPreserveFloat32() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat32, OFFSET$shaderDenormPreserveFloat32);
     }
 
-    public void shaderDenormPreserveFloat32(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderDenormPreserveFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat32, OFFSET$shaderDenormPreserveFloat32, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderDenormPreserveFloat64() {
         return segment.get(LAYOUT$shaderDenormPreserveFloat64, OFFSET$shaderDenormPreserveFloat64);
     }
 
-    public void shaderDenormPreserveFloat64(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderDenormPreserveFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormPreserveFloat64, OFFSET$shaderDenormPreserveFloat64, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderDenormFlushToZeroFloat16() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat16, OFFSET$shaderDenormFlushToZeroFloat16);
     }
 
-    public void shaderDenormFlushToZeroFloat16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderDenormFlushToZeroFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat16, OFFSET$shaderDenormFlushToZeroFloat16, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderDenormFlushToZeroFloat32() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat32, OFFSET$shaderDenormFlushToZeroFloat32);
     }
 
-    public void shaderDenormFlushToZeroFloat32(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderDenormFlushToZeroFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat32, OFFSET$shaderDenormFlushToZeroFloat32, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderDenormFlushToZeroFloat64() {
         return segment.get(LAYOUT$shaderDenormFlushToZeroFloat64, OFFSET$shaderDenormFlushToZeroFloat64);
     }
 
-    public void shaderDenormFlushToZeroFloat64(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderDenormFlushToZeroFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDenormFlushToZeroFloat64, OFFSET$shaderDenormFlushToZeroFloat64, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTEFloat16() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat16, OFFSET$shaderRoundingModeRTEFloat16);
     }
 
-    public void shaderRoundingModeRTEFloat16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTEFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat16, OFFSET$shaderRoundingModeRTEFloat16, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTEFloat32() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat32, OFFSET$shaderRoundingModeRTEFloat32);
     }
 
-    public void shaderRoundingModeRTEFloat32(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTEFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat32, OFFSET$shaderRoundingModeRTEFloat32, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTEFloat64() {
         return segment.get(LAYOUT$shaderRoundingModeRTEFloat64, OFFSET$shaderRoundingModeRTEFloat64);
     }
 
-    public void shaderRoundingModeRTEFloat64(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTEFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTEFloat64, OFFSET$shaderRoundingModeRTEFloat64, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTZFloat16() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat16, OFFSET$shaderRoundingModeRTZFloat16);
     }
 
-    public void shaderRoundingModeRTZFloat16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTZFloat16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat16, OFFSET$shaderRoundingModeRTZFloat16, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTZFloat32() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat32, OFFSET$shaderRoundingModeRTZFloat32);
     }
 
-    public void shaderRoundingModeRTZFloat32(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTZFloat32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat32, OFFSET$shaderRoundingModeRTZFloat32, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderRoundingModeRTZFloat64() {
         return segment.get(LAYOUT$shaderRoundingModeRTZFloat64, OFFSET$shaderRoundingModeRTZFloat64);
     }
 
-    public void shaderRoundingModeRTZFloat64(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTZFloat64(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRoundingModeRTZFloat64, OFFSET$shaderRoundingModeRTZFloat64, value);
+        return this;
     }
 
     public @Unsigned int maxUpdateAfterBindDescriptorsInAllPools() {
         return segment.get(LAYOUT$maxUpdateAfterBindDescriptorsInAllPools, OFFSET$maxUpdateAfterBindDescriptorsInAllPools);
     }
 
-    public void maxUpdateAfterBindDescriptorsInAllPools(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxUpdateAfterBindDescriptorsInAllPools(@Unsigned int value) {
         segment.set(LAYOUT$maxUpdateAfterBindDescriptorsInAllPools, OFFSET$maxUpdateAfterBindDescriptorsInAllPools, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderUniformBufferArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative, OFFSET$shaderUniformBufferArrayNonUniformIndexingNative);
     }
 
-    public void shaderUniformBufferArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderUniformBufferArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderUniformBufferArrayNonUniformIndexingNative, OFFSET$shaderUniformBufferArrayNonUniformIndexingNative, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderSampledImageArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderSampledImageArrayNonUniformIndexingNative, OFFSET$shaderSampledImageArrayNonUniformIndexingNative);
     }
 
-    public void shaderSampledImageArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderSampledImageArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSampledImageArrayNonUniformIndexingNative, OFFSET$shaderSampledImageArrayNonUniformIndexingNative, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderStorageBufferArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative, OFFSET$shaderStorageBufferArrayNonUniformIndexingNative);
     }
 
-    public void shaderStorageBufferArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderStorageBufferArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderStorageBufferArrayNonUniformIndexingNative, OFFSET$shaderStorageBufferArrayNonUniformIndexingNative, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderStorageImageArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderStorageImageArrayNonUniformIndexingNative, OFFSET$shaderStorageImageArrayNonUniformIndexingNative);
     }
 
-    public void shaderStorageImageArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderStorageImageArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderStorageImageArrayNonUniformIndexingNative, OFFSET$shaderStorageImageArrayNonUniformIndexingNative, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderInputAttachmentArrayNonUniformIndexingNative() {
         return segment.get(LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative, OFFSET$shaderInputAttachmentArrayNonUniformIndexingNative);
     }
 
-    public void shaderInputAttachmentArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties shaderInputAttachmentArrayNonUniformIndexingNative(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderInputAttachmentArrayNonUniformIndexingNative, OFFSET$shaderInputAttachmentArrayNonUniformIndexingNative, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int robustBufferAccessUpdateAfterBind() {
         return segment.get(LAYOUT$robustBufferAccessUpdateAfterBind, OFFSET$robustBufferAccessUpdateAfterBind);
     }
 
-    public void robustBufferAccessUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties robustBufferAccessUpdateAfterBind(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$robustBufferAccessUpdateAfterBind, OFFSET$robustBufferAccessUpdateAfterBind, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int quadDivergentImplicitLod() {
         return segment.get(LAYOUT$quadDivergentImplicitLod, OFFSET$quadDivergentImplicitLod);
     }
 
-    public void quadDivergentImplicitLod(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties quadDivergentImplicitLod(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$quadDivergentImplicitLod, OFFSET$quadDivergentImplicitLod, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUpdateAfterBindSamplers() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindSamplers, OFFSET$maxPerStageDescriptorUpdateAfterBindSamplers);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindSamplers(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindSamplers, OFFSET$maxPerStageDescriptorUpdateAfterBindSamplers, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUpdateAfterBindUniformBuffers() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindUniformBuffers, OFFSET$maxPerStageDescriptorUpdateAfterBindUniformBuffers);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindUniformBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindUniformBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindUniformBuffers, OFFSET$maxPerStageDescriptorUpdateAfterBindUniformBuffers, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUpdateAfterBindStorageBuffers() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageBuffers, OFFSET$maxPerStageDescriptorUpdateAfterBindStorageBuffers);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindStorageBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindStorageBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageBuffers, OFFSET$maxPerStageDescriptorUpdateAfterBindStorageBuffers, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUpdateAfterBindSampledImages() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindSampledImages, OFFSET$maxPerStageDescriptorUpdateAfterBindSampledImages);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindSampledImages(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindSampledImages(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindSampledImages, OFFSET$maxPerStageDescriptorUpdateAfterBindSampledImages, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUpdateAfterBindStorageImages() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageImages, OFFSET$maxPerStageDescriptorUpdateAfterBindStorageImages);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindStorageImages(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindStorageImages(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindStorageImages, OFFSET$maxPerStageDescriptorUpdateAfterBindStorageImages, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUpdateAfterBindInputAttachments() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindInputAttachments, OFFSET$maxPerStageDescriptorUpdateAfterBindInputAttachments);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindInputAttachments(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindInputAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindInputAttachments, OFFSET$maxPerStageDescriptorUpdateAfterBindInputAttachments, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageUpdateAfterBindResources() {
         return segment.get(LAYOUT$maxPerStageUpdateAfterBindResources, OFFSET$maxPerStageUpdateAfterBindResources);
     }
 
-    public void maxPerStageUpdateAfterBindResources(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxPerStageUpdateAfterBindResources(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageUpdateAfterBindResources, OFFSET$maxPerStageUpdateAfterBindResources, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindSamplers() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindSamplers, OFFSET$maxDescriptorSetUpdateAfterBindSamplers);
     }
 
-    public void maxDescriptorSetUpdateAfterBindSamplers(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindSamplers, OFFSET$maxDescriptorSetUpdateAfterBindSamplers, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindUniformBuffers() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffers, OFFSET$maxDescriptorSetUpdateAfterBindUniformBuffers);
     }
 
-    public void maxDescriptorSetUpdateAfterBindUniformBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindUniformBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffers, OFFSET$maxDescriptorSetUpdateAfterBindUniformBuffers, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindUniformBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindUniformBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindStorageBuffers() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffers, OFFSET$maxDescriptorSetUpdateAfterBindStorageBuffers);
     }
 
-    public void maxDescriptorSetUpdateAfterBindStorageBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindStorageBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffers, OFFSET$maxDescriptorSetUpdateAfterBindStorageBuffers, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindStorageBuffersDynamic() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic);
     }
 
-    public void maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, OFFSET$maxDescriptorSetUpdateAfterBindStorageBuffersDynamic, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindSampledImages() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindSampledImages, OFFSET$maxDescriptorSetUpdateAfterBindSampledImages);
     }
 
-    public void maxDescriptorSetUpdateAfterBindSampledImages(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindSampledImages(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindSampledImages, OFFSET$maxDescriptorSetUpdateAfterBindSampledImages, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindStorageImages() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindStorageImages, OFFSET$maxDescriptorSetUpdateAfterBindStorageImages);
     }
 
-    public void maxDescriptorSetUpdateAfterBindStorageImages(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindStorageImages(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindStorageImages, OFFSET$maxDescriptorSetUpdateAfterBindStorageImages, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindInputAttachments() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments, OFFSET$maxDescriptorSetUpdateAfterBindInputAttachments);
     }
 
-    public void maxDescriptorSetUpdateAfterBindInputAttachments(@Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindInputAttachments(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindInputAttachments, OFFSET$maxDescriptorSetUpdateAfterBindInputAttachments, value);
+        return this;
     }
 
     public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public void supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
+        return this;
     }
 
     public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public void supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int independentResolveNone() {
         return segment.get(LAYOUT$independentResolveNone, OFFSET$independentResolveNone);
     }
 
-    public void independentResolveNone(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties independentResolveNone(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$independentResolveNone, OFFSET$independentResolveNone, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int independentResolve() {
         return segment.get(LAYOUT$independentResolve, OFFSET$independentResolve);
     }
 
-    public void independentResolve(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties independentResolve(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$independentResolve, OFFSET$independentResolve, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int filterMinmaxSingleComponentFormats() {
         return segment.get(LAYOUT$filterMinmaxSingleComponentFormats, OFFSET$filterMinmaxSingleComponentFormats);
     }
 
-    public void filterMinmaxSingleComponentFormats(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties filterMinmaxSingleComponentFormats(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$filterMinmaxSingleComponentFormats, OFFSET$filterMinmaxSingleComponentFormats, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int filterMinmaxImageComponentMapping() {
         return segment.get(LAYOUT$filterMinmaxImageComponentMapping, OFFSET$filterMinmaxImageComponentMapping);
     }
 
-    public void filterMinmaxImageComponentMapping(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan12Properties filterMinmaxImageComponentMapping(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$filterMinmaxImageComponentMapping, OFFSET$filterMinmaxImageComponentMapping, value);
+        return this;
     }
 
     public @Unsigned long maxTimelineSemaphoreValueDifference() {
         return segment.get(LAYOUT$maxTimelineSemaphoreValueDifference, OFFSET$maxTimelineSemaphoreValueDifference);
     }
 
-    public void maxTimelineSemaphoreValueDifference(@Unsigned long value) {
+    public VkPhysicalDeviceVulkan12Properties maxTimelineSemaphoreValueDifference(@Unsigned long value) {
         segment.set(LAYOUT$maxTimelineSemaphoreValueDifference, OFFSET$maxTimelineSemaphoreValueDifference, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int framebufferIntegerColorSampleCounts() {
         return segment.get(LAYOUT$framebufferIntegerColorSampleCounts, OFFSET$framebufferIntegerColorSampleCounts);
     }
 
-    public void framebufferIntegerColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkPhysicalDeviceVulkan12Properties framebufferIntegerColorSampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$framebufferIntegerColorSampleCounts, OFFSET$framebufferIntegerColorSampleCounts, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -197,8 +197,9 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkPhysicalDeviceMeshShaderFeaturesEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMeshShaderFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int taskShader() {
         return segment.get(LAYOUT$taskShader, OFFSET$taskShader);
     }
 
-    public void taskShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesEXT taskShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$taskShader, OFFSET$taskShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int meshShader() {
         return segment.get(LAYOUT$meshShader, OFFSET$meshShader);
     }
 
-    public void meshShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesEXT meshShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$meshShader, OFFSET$meshShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiviewMeshShader() {
         return segment.get(LAYOUT$multiviewMeshShader, OFFSET$multiviewMeshShader);
     }
 
-    public void multiviewMeshShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesEXT multiviewMeshShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewMeshShader, OFFSET$multiviewMeshShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int primitiveFragmentShadingRateMeshShader() {
         return segment.get(LAYOUT$primitiveFragmentShadingRateMeshShader, OFFSET$primitiveFragmentShadingRateMeshShader);
     }
 
-    public void primitiveFragmentShadingRateMeshShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesEXT primitiveFragmentShadingRateMeshShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveFragmentShadingRateMeshShader, OFFSET$primitiveFragmentShadingRateMeshShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int meshShaderQueries() {
         return segment.get(LAYOUT$meshShaderQueries, OFFSET$meshShaderQueries);
     }
 
-    public void meshShaderQueries(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesEXT meshShaderQueries(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$meshShaderQueries, OFFSET$meshShaderQueries, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

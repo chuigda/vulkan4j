@@ -173,9 +173,10 @@ public record StdVideoAV1TimingInfoFlags(@NotNull MemorySegment segment) impleme
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void equal_picture_interval(boolean value) {
+    public StdVideoAV1TimingInfoFlags equal_picture_interval(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$equal_picture_interval$reserved, LAYOUT$bitfield$equal_picture_interval$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

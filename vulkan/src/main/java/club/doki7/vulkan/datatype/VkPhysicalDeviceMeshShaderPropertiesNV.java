@@ -205,8 +205,9 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -217,32 +218,36 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxDrawMeshTasksCount() {
         return segment.get(LAYOUT$maxDrawMeshTasksCount, OFFSET$maxDrawMeshTasksCount);
     }
 
-    public void maxDrawMeshTasksCount(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxDrawMeshTasksCount(@Unsigned int value) {
         segment.set(LAYOUT$maxDrawMeshTasksCount, OFFSET$maxDrawMeshTasksCount, value);
+        return this;
     }
 
     public @Unsigned int maxTaskWorkGroupInvocations() {
         return segment.get(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations);
     }
 
-    public void maxTaskWorkGroupInvocations(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskWorkGroupInvocations(@Unsigned int value) {
         segment.set(LAYOUT$maxTaskWorkGroupInvocations, OFFSET$maxTaskWorkGroupInvocations, value);
+        return this;
     }
 
     public @Unsigned IntPtr maxTaskWorkGroupSize() {
         return new IntPtr(maxTaskWorkGroupSizeRaw());
     }
 
-    public void maxTaskWorkGroupSize(@Unsigned IntPtr value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskWorkGroupSize(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTaskWorkGroupSize, SIZE$maxTaskWorkGroupSize);
+        return this;
     }
 
     public MemorySegment maxTaskWorkGroupSizeRaw() {
@@ -253,32 +258,36 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         return segment.get(LAYOUT$maxTaskTotalMemorySize, OFFSET$maxTaskTotalMemorySize);
     }
 
-    public void maxTaskTotalMemorySize(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskTotalMemorySize(@Unsigned int value) {
         segment.set(LAYOUT$maxTaskTotalMemorySize, OFFSET$maxTaskTotalMemorySize, value);
+        return this;
     }
 
     public @Unsigned int maxTaskOutputCount() {
         return segment.get(LAYOUT$maxTaskOutputCount, OFFSET$maxTaskOutputCount);
     }
 
-    public void maxTaskOutputCount(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskOutputCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTaskOutputCount, OFFSET$maxTaskOutputCount, value);
+        return this;
     }
 
     public @Unsigned int maxMeshWorkGroupInvocations() {
         return segment.get(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations);
     }
 
-    public void maxMeshWorkGroupInvocations(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshWorkGroupInvocations(@Unsigned int value) {
         segment.set(LAYOUT$maxMeshWorkGroupInvocations, OFFSET$maxMeshWorkGroupInvocations, value);
+        return this;
     }
 
     public @Unsigned IntPtr maxMeshWorkGroupSize() {
         return new IntPtr(maxMeshWorkGroupSizeRaw());
     }
 
-    public void maxMeshWorkGroupSize(@Unsigned IntPtr value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshWorkGroupSize(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxMeshWorkGroupSize, SIZE$maxMeshWorkGroupSize);
+        return this;
     }
 
     public MemorySegment maxMeshWorkGroupSizeRaw() {
@@ -289,48 +298,54 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         return segment.get(LAYOUT$maxMeshTotalMemorySize, OFFSET$maxMeshTotalMemorySize);
     }
 
-    public void maxMeshTotalMemorySize(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshTotalMemorySize(@Unsigned int value) {
         segment.set(LAYOUT$maxMeshTotalMemorySize, OFFSET$maxMeshTotalMemorySize, value);
+        return this;
     }
 
     public @Unsigned int maxMeshOutputVertices() {
         return segment.get(LAYOUT$maxMeshOutputVertices, OFFSET$maxMeshOutputVertices);
     }
 
-    public void maxMeshOutputVertices(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshOutputVertices(@Unsigned int value) {
         segment.set(LAYOUT$maxMeshOutputVertices, OFFSET$maxMeshOutputVertices, value);
+        return this;
     }
 
     public @Unsigned int maxMeshOutputPrimitives() {
         return segment.get(LAYOUT$maxMeshOutputPrimitives, OFFSET$maxMeshOutputPrimitives);
     }
 
-    public void maxMeshOutputPrimitives(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshOutputPrimitives(@Unsigned int value) {
         segment.set(LAYOUT$maxMeshOutputPrimitives, OFFSET$maxMeshOutputPrimitives, value);
+        return this;
     }
 
     public @Unsigned int maxMeshMultiviewViewCount() {
         return segment.get(LAYOUT$maxMeshMultiviewViewCount, OFFSET$maxMeshMultiviewViewCount);
     }
 
-    public void maxMeshMultiviewViewCount(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshMultiviewViewCount(@Unsigned int value) {
         segment.set(LAYOUT$maxMeshMultiviewViewCount, OFFSET$maxMeshMultiviewViewCount, value);
+        return this;
     }
 
     public @Unsigned int meshOutputPerVertexGranularity() {
         return segment.get(LAYOUT$meshOutputPerVertexGranularity, OFFSET$meshOutputPerVertexGranularity);
     }
 
-    public void meshOutputPerVertexGranularity(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV meshOutputPerVertexGranularity(@Unsigned int value) {
         segment.set(LAYOUT$meshOutputPerVertexGranularity, OFFSET$meshOutputPerVertexGranularity, value);
+        return this;
     }
 
     public @Unsigned int meshOutputPerPrimitiveGranularity() {
         return segment.get(LAYOUT$meshOutputPerPrimitiveGranularity, OFFSET$meshOutputPerPrimitiveGranularity);
     }
 
-    public void meshOutputPerPrimitiveGranularity(@Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderPropertiesNV meshOutputPerPrimitiveGranularity(@Unsigned int value) {
         segment.set(LAYOUT$meshOutputPerPrimitiveGranularity, OFFSET$meshOutputPerPrimitiveGranularity, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

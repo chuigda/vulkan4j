@@ -193,8 +193,9 @@ public record VkLatencySubmissionPresentIdNV(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkLatencySubmissionPresentIdNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkLatencySubmissionPresentIdNV(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkLatencySubmissionPresentIdNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long presentID() {
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }
 
-    public void presentID(@Unsigned long value) {
+    public VkLatencySubmissionPresentIdNV presentID(@Unsigned long value) {
         segment.set(LAYOUT$presentID, OFFSET$presentID, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

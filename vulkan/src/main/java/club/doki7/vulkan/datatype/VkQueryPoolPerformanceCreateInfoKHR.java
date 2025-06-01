@@ -195,8 +195,9 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueryPoolPerformanceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,24 +208,27 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkQueryPoolPerformanceCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndex() {
         return segment.get(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex);
     }
 
-    public void queueFamilyIndex(@Unsigned int value) {
+    public VkQueryPoolPerformanceCreateInfoKHR queueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex, value);
+        return this;
     }
 
     public @Unsigned int counterIndexCount() {
         return segment.get(LAYOUT$counterIndexCount, OFFSET$counterIndexCount);
     }
 
-    public void counterIndexCount(@Unsigned int value) {
+    public VkQueryPoolPerformanceCreateInfoKHR counterIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$counterIndexCount, OFFSET$counterIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -239,9 +243,10 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         return new IntPtr(s);
     }
 
-    public void pCounterIndices(@Nullable @Unsigned IntPtr value) {
+    public VkQueryPoolPerformanceCreateInfoKHR pCounterIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCounterIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pCounterIndicesRaw() {

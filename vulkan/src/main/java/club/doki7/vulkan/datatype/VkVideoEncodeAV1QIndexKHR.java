@@ -174,24 +174,27 @@ public record VkVideoEncodeAV1QIndexKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$intraQIndex, OFFSET$intraQIndex);
     }
 
-    public void intraQIndex(@Unsigned int value) {
+    public VkVideoEncodeAV1QIndexKHR intraQIndex(@Unsigned int value) {
         segment.set(LAYOUT$intraQIndex, OFFSET$intraQIndex, value);
+        return this;
     }
 
     public @Unsigned int predictiveQIndex() {
         return segment.get(LAYOUT$predictiveQIndex, OFFSET$predictiveQIndex);
     }
 
-    public void predictiveQIndex(@Unsigned int value) {
+    public VkVideoEncodeAV1QIndexKHR predictiveQIndex(@Unsigned int value) {
         segment.set(LAYOUT$predictiveQIndex, OFFSET$predictiveQIndex, value);
+        return this;
     }
 
     public @Unsigned int bipredictiveQIndex() {
         return segment.get(LAYOUT$bipredictiveQIndex, OFFSET$bipredictiveQIndex);
     }
 
-    public void bipredictiveQIndex(@Unsigned int value) {
+    public VkVideoEncodeAV1QIndexKHR bipredictiveQIndex(@Unsigned int value) {
         segment.set(LAYOUT$bipredictiveQIndex, OFFSET$bipredictiveQIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

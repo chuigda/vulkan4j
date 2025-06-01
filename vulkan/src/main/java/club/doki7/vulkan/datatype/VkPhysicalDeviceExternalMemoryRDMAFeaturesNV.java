@@ -193,8 +193,9 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int externalMemoryRDMA() {
         return segment.get(LAYOUT$externalMemoryRDMA, OFFSET$externalMemoryRDMA);
     }
 
-    public void externalMemoryRDMA(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExternalMemoryRDMAFeaturesNV externalMemoryRDMA(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$externalMemoryRDMA, OFFSET$externalMemoryRDMA, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -183,56 +183,63 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         return new StdVideoH265ShortTermRefPicSetFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoH265ShortTermRefPicSetFlags value) {
+    public StdVideoH265ShortTermRefPicSet flags(@NotNull StdVideoH265ShortTermRefPicSetFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned int delta_idx_minus1() {
         return segment.get(LAYOUT$delta_idx_minus1, OFFSET$delta_idx_minus1);
     }
 
-    public void delta_idx_minus1(@Unsigned int value) {
+    public StdVideoH265ShortTermRefPicSet delta_idx_minus1(@Unsigned int value) {
         segment.set(LAYOUT$delta_idx_minus1, OFFSET$delta_idx_minus1, value);
+        return this;
     }
 
     public @Unsigned short use_delta_flag() {
         return segment.get(LAYOUT$use_delta_flag, OFFSET$use_delta_flag);
     }
 
-    public void use_delta_flag(@Unsigned short value) {
+    public StdVideoH265ShortTermRefPicSet use_delta_flag(@Unsigned short value) {
         segment.set(LAYOUT$use_delta_flag, OFFSET$use_delta_flag, value);
+        return this;
     }
 
     public @Unsigned short abs_delta_rps_minus1() {
         return segment.get(LAYOUT$abs_delta_rps_minus1, OFFSET$abs_delta_rps_minus1);
     }
 
-    public void abs_delta_rps_minus1(@Unsigned short value) {
+    public StdVideoH265ShortTermRefPicSet abs_delta_rps_minus1(@Unsigned short value) {
         segment.set(LAYOUT$abs_delta_rps_minus1, OFFSET$abs_delta_rps_minus1, value);
+        return this;
     }
 
     public @Unsigned short used_by_curr_pic_flag() {
         return segment.get(LAYOUT$used_by_curr_pic_flag, OFFSET$used_by_curr_pic_flag);
     }
 
-    public void used_by_curr_pic_flag(@Unsigned short value) {
+    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_flag(@Unsigned short value) {
         segment.set(LAYOUT$used_by_curr_pic_flag, OFFSET$used_by_curr_pic_flag, value);
+        return this;
     }
 
     public @Unsigned short used_by_curr_pic_s0_flag() {
         return segment.get(LAYOUT$used_by_curr_pic_s0_flag, OFFSET$used_by_curr_pic_s0_flag);
     }
 
-    public void used_by_curr_pic_s0_flag(@Unsigned short value) {
+    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_s0_flag(@Unsigned short value) {
         segment.set(LAYOUT$used_by_curr_pic_s0_flag, OFFSET$used_by_curr_pic_s0_flag, value);
+        return this;
     }
 
     public @Unsigned short used_by_curr_pic_s1_flag() {
         return segment.get(LAYOUT$used_by_curr_pic_s1_flag, OFFSET$used_by_curr_pic_s1_flag);
     }
 
-    public void used_by_curr_pic_s1_flag(@Unsigned short value) {
+    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_s1_flag(@Unsigned short value) {
         segment.set(LAYOUT$used_by_curr_pic_s1_flag, OFFSET$used_by_curr_pic_s1_flag, value);
+        return this;
     }
 
 
@@ -242,24 +249,27 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$num_negative_pics, OFFSET$num_negative_pics);
     }
 
-    public void num_negative_pics(@Unsigned byte value) {
+    public StdVideoH265ShortTermRefPicSet num_negative_pics(@Unsigned byte value) {
         segment.set(LAYOUT$num_negative_pics, OFFSET$num_negative_pics, value);
+        return this;
     }
 
     public @Unsigned byte num_positive_pics() {
         return segment.get(LAYOUT$num_positive_pics, OFFSET$num_positive_pics);
     }
 
-    public void num_positive_pics(@Unsigned byte value) {
+    public StdVideoH265ShortTermRefPicSet num_positive_pics(@Unsigned byte value) {
         segment.set(LAYOUT$num_positive_pics, OFFSET$num_positive_pics, value);
+        return this;
     }
 
     public @Unsigned ShortPtr delta_poc_s0_minus1() {
         return new ShortPtr(delta_poc_s0_minus1Raw());
     }
 
-    public void delta_poc_s0_minus1(@Unsigned ShortPtr value) {
+    public StdVideoH265ShortTermRefPicSet delta_poc_s0_minus1(@Unsigned ShortPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_s0_minus1, SIZE$delta_poc_s0_minus1);
+        return this;
     }
 
     public MemorySegment delta_poc_s0_minus1Raw() {
@@ -270,8 +280,9 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         return new ShortPtr(delta_poc_s1_minus1Raw());
     }
 
-    public void delta_poc_s1_minus1(@Unsigned ShortPtr value) {
+    public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1(@Unsigned ShortPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_s1_minus1, SIZE$delta_poc_s1_minus1);
+        return this;
     }
 
     public MemorySegment delta_poc_s1_minus1Raw() {

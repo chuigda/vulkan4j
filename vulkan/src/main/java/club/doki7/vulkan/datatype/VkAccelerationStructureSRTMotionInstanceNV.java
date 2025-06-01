@@ -179,16 +179,18 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         return new VkSRTDataNV(segment.asSlice(OFFSET$transformT0, LAYOUT$transformT0));
     }
 
-    public void transformT0(@NotNull VkSRTDataNV value) {
+    public VkAccelerationStructureSRTMotionInstanceNV transformT0(@NotNull VkSRTDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT0, SIZE$transformT0);
+        return this;
     }
 
     public @NotNull VkSRTDataNV transformT1() {
         return new VkSRTDataNV(segment.asSlice(OFFSET$transformT1, LAYOUT$transformT1));
     }
 
-    public void transformT1(@NotNull VkSRTDataNV value) {
+    public VkAccelerationStructureSRTMotionInstanceNV transformT1(@NotNull VkSRTDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT1, SIZE$transformT1);
+        return this;
     }
 
     public @Unsigned int instanceCustomIndex() {
@@ -196,9 +198,10 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void instanceCustomIndex(@Unsigned int value) {
+    public VkAccelerationStructureSRTMotionInstanceNV instanceCustomIndex(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         BitfieldUtil.writeBits(s, 0, 24, value);
+        return this;
     }
 
     public @Unsigned int mask() {
@@ -206,9 +209,10 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
-    public void mask(@Unsigned int value) {
+    public VkAccelerationStructureSRTMotionInstanceNV mask(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceCustomIndex$mask, LAYOUT$bitfield$instanceCustomIndex$mask);
         BitfieldUtil.writeBits(s, 24, 32, value);
+        return this;
     }
 
     public @Unsigned int instanceShaderBindingTableRecordOffset() {
@@ -216,9 +220,10 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void instanceShaderBindingTableRecordOffset(@Unsigned int value) {
+    public VkAccelerationStructureSRTMotionInstanceNV instanceShaderBindingTableRecordOffset(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         BitfieldUtil.writeBits(s, 0, 24, value);
+        return this;
     }
 
     public @Unsigned int flags() {
@@ -226,17 +231,19 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         return BitfieldUtil.readBits(s, 24, 32);
     }
 
-    public void flags(@Unsigned int value) {
+    public VkAccelerationStructureSRTMotionInstanceNV flags(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$instanceShaderBindingTableRecordOffset$flags, LAYOUT$bitfield$instanceShaderBindingTableRecordOffset$flags);
         BitfieldUtil.writeBits(s, 24, 32, value);
+        return this;
     }
 
     public @Unsigned long accelerationStructureReference() {
         return segment.get(LAYOUT$accelerationStructureReference, OFFSET$accelerationStructureReference);
     }
 
-    public void accelerationStructureReference(@Unsigned long value) {
+    public VkAccelerationStructureSRTMotionInstanceNV accelerationStructureReference(@Unsigned long value) {
         segment.set(LAYOUT$accelerationStructureReference, OFFSET$accelerationStructureReference, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

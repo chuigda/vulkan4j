@@ -174,24 +174,27 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$buffer_delay_length_minus_1, OFFSET$buffer_delay_length_minus_1);
     }
 
-    public void buffer_delay_length_minus_1(@Unsigned byte value) {
+    public StdVideoEncodeAV1DecoderModelInfo buffer_delay_length_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$buffer_delay_length_minus_1, OFFSET$buffer_delay_length_minus_1, value);
+        return this;
     }
 
     public @Unsigned byte buffer_removal_time_length_minus_1() {
         return segment.get(LAYOUT$buffer_removal_time_length_minus_1, OFFSET$buffer_removal_time_length_minus_1);
     }
 
-    public void buffer_removal_time_length_minus_1(@Unsigned byte value) {
+    public StdVideoEncodeAV1DecoderModelInfo buffer_removal_time_length_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$buffer_removal_time_length_minus_1, OFFSET$buffer_removal_time_length_minus_1, value);
+        return this;
     }
 
     public @Unsigned byte frame_presentation_time_length_minus_1() {
         return segment.get(LAYOUT$frame_presentation_time_length_minus_1, OFFSET$frame_presentation_time_length_minus_1);
     }
 
-    public void frame_presentation_time_length_minus_1(@Unsigned byte value) {
+    public StdVideoEncodeAV1DecoderModelInfo frame_presentation_time_length_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$frame_presentation_time_length_minus_1, OFFSET$frame_presentation_time_length_minus_1, value);
+        return this;
     }
 
 
@@ -199,8 +202,9 @@ public record StdVideoEncodeAV1DecoderModelInfo(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$num_units_in_decoding_tick, OFFSET$num_units_in_decoding_tick);
     }
 
-    public void num_units_in_decoding_tick(@Unsigned int value) {
+    public StdVideoEncodeAV1DecoderModelInfo num_units_in_decoding_tick(@Unsigned int value) {
         segment.set(LAYOUT$num_units_in_decoding_tick, OFFSET$num_units_in_decoding_tick, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

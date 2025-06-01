@@ -177,48 +177,54 @@ public record VkViewport(@NotNull MemorySegment segment) implements IVkViewport 
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(float value) {
+    public VkViewport x(float value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
+        return this;
     }
 
     public float y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(float value) {
+    public VkViewport y(float value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
+        return this;
     }
 
     public float width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(float value) {
+    public VkViewport width(float value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
+        return this;
     }
 
     public float height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(float value) {
+    public VkViewport height(float value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
+        return this;
     }
 
     public float minDepth() {
         return segment.get(LAYOUT$minDepth, OFFSET$minDepth);
     }
 
-    public void minDepth(float value) {
+    public VkViewport minDepth(float value) {
         segment.set(LAYOUT$minDepth, OFFSET$minDepth, value);
+        return this;
     }
 
     public float maxDepth() {
         return segment.get(LAYOUT$maxDepth, OFFSET$maxDepth);
     }
 
-    public void maxDepth(float value) {
+    public VkViewport maxDepth(float value) {
         segment.set(LAYOUT$maxDepth, OFFSET$maxDepth, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

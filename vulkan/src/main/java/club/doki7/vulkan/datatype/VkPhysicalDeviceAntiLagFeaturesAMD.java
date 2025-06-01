@@ -193,8 +193,9 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceAntiLagFeaturesAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceAntiLagFeaturesAMD(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceAntiLagFeaturesAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int antiLag() {
         return segment.get(LAYOUT$antiLag, OFFSET$antiLag);
     }
 
-    public void antiLag(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceAntiLagFeaturesAMD antiLag(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$antiLag, OFFSET$antiLag, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

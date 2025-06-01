@@ -176,56 +176,63 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         return new StdVideoEncodeAV1OperatingPointInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeAV1OperatingPointInfoFlags value) {
+    public StdVideoEncodeAV1OperatingPointInfo flags(@NotNull StdVideoEncodeAV1OperatingPointInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned short operating_point_idc() {
         return segment.get(LAYOUT$operating_point_idc, OFFSET$operating_point_idc);
     }
 
-    public void operating_point_idc(@Unsigned short value) {
+    public StdVideoEncodeAV1OperatingPointInfo operating_point_idc(@Unsigned short value) {
         segment.set(LAYOUT$operating_point_idc, OFFSET$operating_point_idc, value);
+        return this;
     }
 
     public @Unsigned byte seq_level_idx() {
         return segment.get(LAYOUT$seq_level_idx, OFFSET$seq_level_idx);
     }
 
-    public void seq_level_idx(@Unsigned byte value) {
+    public StdVideoEncodeAV1OperatingPointInfo seq_level_idx(@Unsigned byte value) {
         segment.set(LAYOUT$seq_level_idx, OFFSET$seq_level_idx, value);
+        return this;
     }
 
     public @Unsigned byte seq_tier() {
         return segment.get(LAYOUT$seq_tier, OFFSET$seq_tier);
     }
 
-    public void seq_tier(@Unsigned byte value) {
+    public StdVideoEncodeAV1OperatingPointInfo seq_tier(@Unsigned byte value) {
         segment.set(LAYOUT$seq_tier, OFFSET$seq_tier, value);
+        return this;
     }
 
     public @Unsigned int decoder_buffer_delay() {
         return segment.get(LAYOUT$decoder_buffer_delay, OFFSET$decoder_buffer_delay);
     }
 
-    public void decoder_buffer_delay(@Unsigned int value) {
+    public StdVideoEncodeAV1OperatingPointInfo decoder_buffer_delay(@Unsigned int value) {
         segment.set(LAYOUT$decoder_buffer_delay, OFFSET$decoder_buffer_delay, value);
+        return this;
     }
 
     public @Unsigned int encoder_buffer_delay() {
         return segment.get(LAYOUT$encoder_buffer_delay, OFFSET$encoder_buffer_delay);
     }
 
-    public void encoder_buffer_delay(@Unsigned int value) {
+    public StdVideoEncodeAV1OperatingPointInfo encoder_buffer_delay(@Unsigned int value) {
         segment.set(LAYOUT$encoder_buffer_delay, OFFSET$encoder_buffer_delay, value);
+        return this;
     }
 
     public @Unsigned byte initial_display_delay_minus_1() {
         return segment.get(LAYOUT$initial_display_delay_minus_1, OFFSET$initial_display_delay_minus_1);
     }
 
-    public void initial_display_delay_minus_1(@Unsigned byte value) {
+    public StdVideoEncodeAV1OperatingPointInfo initial_display_delay_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$initial_display_delay_minus_1, OFFSET$initial_display_delay_minus_1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

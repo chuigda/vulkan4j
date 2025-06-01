@@ -194,8 +194,9 @@ public record VkLatencySurfaceCapabilitiesNV(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkLatencySurfaceCapabilitiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkLatencySurfaceCapabilitiesNV(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkLatencySurfaceCapabilitiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int presentModeCount() {
         return segment.get(LAYOUT$presentModeCount, OFFSET$presentModeCount);
     }
 
-    public void presentModeCount(@Unsigned int value) {
+    public VkLatencySurfaceCapabilitiesNV presentModeCount(@Unsigned int value) {
         segment.set(LAYOUT$presentModeCount, OFFSET$presentModeCount, value);
+        return this;
     }
 
 
@@ -231,9 +234,10 @@ public record VkLatencySurfaceCapabilitiesNV(@NotNull MemorySegment segment) imp
         return new IntPtr(s);
     }
 
-    public void pPresentModes(@Nullable @EnumType(VkPresentModeKHR.class) IntPtr value) {
+    public VkLatencySurfaceCapabilitiesNV pPresentModes(@Nullable @EnumType(VkPresentModeKHR.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentModesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkPresentModeKHR.class) MemorySegment pPresentModesRaw() {

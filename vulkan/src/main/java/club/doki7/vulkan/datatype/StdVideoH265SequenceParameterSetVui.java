@@ -195,80 +195,90 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         return new StdVideoH265SpsVuiFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoH265SpsVuiFlags value) {
+    public StdVideoH265SequenceParameterSetVui flags(@NotNull StdVideoH265SpsVuiFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @EnumType(StdVideoH265AspectRatioIdc.class) int aspect_ratio_idc() {
         return segment.get(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc);
     }
 
-    public void aspect_ratio_idc(@EnumType(StdVideoH265AspectRatioIdc.class) int value) {
+    public StdVideoH265SequenceParameterSetVui aspect_ratio_idc(@EnumType(StdVideoH265AspectRatioIdc.class) int value) {
         segment.set(LAYOUT$aspect_ratio_idc, OFFSET$aspect_ratio_idc, value);
+        return this;
     }
 
     public @Unsigned short sar_width() {
         return segment.get(LAYOUT$sar_width, OFFSET$sar_width);
     }
 
-    public void sar_width(@Unsigned short value) {
+    public StdVideoH265SequenceParameterSetVui sar_width(@Unsigned short value) {
         segment.set(LAYOUT$sar_width, OFFSET$sar_width, value);
+        return this;
     }
 
     public @Unsigned short sar_height() {
         return segment.get(LAYOUT$sar_height, OFFSET$sar_height);
     }
 
-    public void sar_height(@Unsigned short value) {
+    public StdVideoH265SequenceParameterSetVui sar_height(@Unsigned short value) {
         segment.set(LAYOUT$sar_height, OFFSET$sar_height, value);
+        return this;
     }
 
     public @Unsigned byte video_format() {
         return segment.get(LAYOUT$video_format, OFFSET$video_format);
     }
 
-    public void video_format(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui video_format(@Unsigned byte value) {
         segment.set(LAYOUT$video_format, OFFSET$video_format, value);
+        return this;
     }
 
     public @Unsigned byte colour_primaries() {
         return segment.get(LAYOUT$colour_primaries, OFFSET$colour_primaries);
     }
 
-    public void colour_primaries(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui colour_primaries(@Unsigned byte value) {
         segment.set(LAYOUT$colour_primaries, OFFSET$colour_primaries, value);
+        return this;
     }
 
     public @Unsigned byte transfer_characteristics() {
         return segment.get(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics);
     }
 
-    public void transfer_characteristics(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui transfer_characteristics(@Unsigned byte value) {
         segment.set(LAYOUT$transfer_characteristics, OFFSET$transfer_characteristics, value);
+        return this;
     }
 
     public @Unsigned byte matrix_coeffs() {
         return segment.get(LAYOUT$matrix_coeffs, OFFSET$matrix_coeffs);
     }
 
-    public void matrix_coeffs(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui matrix_coeffs(@Unsigned byte value) {
         segment.set(LAYOUT$matrix_coeffs, OFFSET$matrix_coeffs, value);
+        return this;
     }
 
     public @Unsigned byte chroma_sample_loc_type_top_field() {
         return segment.get(LAYOUT$chroma_sample_loc_type_top_field, OFFSET$chroma_sample_loc_type_top_field);
     }
 
-    public void chroma_sample_loc_type_top_field(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui chroma_sample_loc_type_top_field(@Unsigned byte value) {
         segment.set(LAYOUT$chroma_sample_loc_type_top_field, OFFSET$chroma_sample_loc_type_top_field, value);
+        return this;
     }
 
     public @Unsigned byte chroma_sample_loc_type_bottom_field() {
         return segment.get(LAYOUT$chroma_sample_loc_type_bottom_field, OFFSET$chroma_sample_loc_type_bottom_field);
     }
 
-    public void chroma_sample_loc_type_bottom_field(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui chroma_sample_loc_type_bottom_field(@Unsigned byte value) {
         segment.set(LAYOUT$chroma_sample_loc_type_bottom_field, OFFSET$chroma_sample_loc_type_bottom_field, value);
+        return this;
     }
 
 
@@ -277,64 +287,72 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         return segment.get(LAYOUT$def_disp_win_left_offset, OFFSET$def_disp_win_left_offset);
     }
 
-    public void def_disp_win_left_offset(@Unsigned short value) {
+    public StdVideoH265SequenceParameterSetVui def_disp_win_left_offset(@Unsigned short value) {
         segment.set(LAYOUT$def_disp_win_left_offset, OFFSET$def_disp_win_left_offset, value);
+        return this;
     }
 
     public @Unsigned short def_disp_win_right_offset() {
         return segment.get(LAYOUT$def_disp_win_right_offset, OFFSET$def_disp_win_right_offset);
     }
 
-    public void def_disp_win_right_offset(@Unsigned short value) {
+    public StdVideoH265SequenceParameterSetVui def_disp_win_right_offset(@Unsigned short value) {
         segment.set(LAYOUT$def_disp_win_right_offset, OFFSET$def_disp_win_right_offset, value);
+        return this;
     }
 
     public @Unsigned short def_disp_win_top_offset() {
         return segment.get(LAYOUT$def_disp_win_top_offset, OFFSET$def_disp_win_top_offset);
     }
 
-    public void def_disp_win_top_offset(@Unsigned short value) {
+    public StdVideoH265SequenceParameterSetVui def_disp_win_top_offset(@Unsigned short value) {
         segment.set(LAYOUT$def_disp_win_top_offset, OFFSET$def_disp_win_top_offset, value);
+        return this;
     }
 
     public @Unsigned short def_disp_win_bottom_offset() {
         return segment.get(LAYOUT$def_disp_win_bottom_offset, OFFSET$def_disp_win_bottom_offset);
     }
 
-    public void def_disp_win_bottom_offset(@Unsigned short value) {
+    public StdVideoH265SequenceParameterSetVui def_disp_win_bottom_offset(@Unsigned short value) {
         segment.set(LAYOUT$def_disp_win_bottom_offset, OFFSET$def_disp_win_bottom_offset, value);
+        return this;
     }
 
     public @Unsigned int vui_num_units_in_tick() {
         return segment.get(LAYOUT$vui_num_units_in_tick, OFFSET$vui_num_units_in_tick);
     }
 
-    public void vui_num_units_in_tick(@Unsigned int value) {
+    public StdVideoH265SequenceParameterSetVui vui_num_units_in_tick(@Unsigned int value) {
         segment.set(LAYOUT$vui_num_units_in_tick, OFFSET$vui_num_units_in_tick, value);
+        return this;
     }
 
     public @Unsigned int vui_time_scale() {
         return segment.get(LAYOUT$vui_time_scale, OFFSET$vui_time_scale);
     }
 
-    public void vui_time_scale(@Unsigned int value) {
+    public StdVideoH265SequenceParameterSetVui vui_time_scale(@Unsigned int value) {
         segment.set(LAYOUT$vui_time_scale, OFFSET$vui_time_scale, value);
+        return this;
     }
 
     public @Unsigned int vui_num_ticks_poc_diff_one_minus1() {
         return segment.get(LAYOUT$vui_num_ticks_poc_diff_one_minus1, OFFSET$vui_num_ticks_poc_diff_one_minus1);
     }
 
-    public void vui_num_ticks_poc_diff_one_minus1(@Unsigned int value) {
+    public StdVideoH265SequenceParameterSetVui vui_num_ticks_poc_diff_one_minus1(@Unsigned int value) {
         segment.set(LAYOUT$vui_num_ticks_poc_diff_one_minus1, OFFSET$vui_num_ticks_poc_diff_one_minus1, value);
+        return this;
     }
 
     public @Unsigned short min_spatial_segmentation_idc() {
         return segment.get(LAYOUT$min_spatial_segmentation_idc, OFFSET$min_spatial_segmentation_idc);
     }
 
-    public void min_spatial_segmentation_idc(@Unsigned short value) {
+    public StdVideoH265SequenceParameterSetVui min_spatial_segmentation_idc(@Unsigned short value) {
         segment.set(LAYOUT$min_spatial_segmentation_idc, OFFSET$min_spatial_segmentation_idc, value);
+        return this;
     }
 
 
@@ -342,37 +360,42 @@ public record StdVideoH265SequenceParameterSetVui(@NotNull MemorySegment segment
         return segment.get(LAYOUT$max_bytes_per_pic_denom, OFFSET$max_bytes_per_pic_denom);
     }
 
-    public void max_bytes_per_pic_denom(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui max_bytes_per_pic_denom(@Unsigned byte value) {
         segment.set(LAYOUT$max_bytes_per_pic_denom, OFFSET$max_bytes_per_pic_denom, value);
+        return this;
     }
 
     public @Unsigned byte max_bits_per_min_cu_denom() {
         return segment.get(LAYOUT$max_bits_per_min_cu_denom, OFFSET$max_bits_per_min_cu_denom);
     }
 
-    public void max_bits_per_min_cu_denom(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui max_bits_per_min_cu_denom(@Unsigned byte value) {
         segment.set(LAYOUT$max_bits_per_min_cu_denom, OFFSET$max_bits_per_min_cu_denom, value);
+        return this;
     }
 
     public @Unsigned byte log2_max_mv_length_horizontal() {
         return segment.get(LAYOUT$log2_max_mv_length_horizontal, OFFSET$log2_max_mv_length_horizontal);
     }
 
-    public void log2_max_mv_length_horizontal(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui log2_max_mv_length_horizontal(@Unsigned byte value) {
         segment.set(LAYOUT$log2_max_mv_length_horizontal, OFFSET$log2_max_mv_length_horizontal, value);
+        return this;
     }
 
     public @Unsigned byte log2_max_mv_length_vertical() {
         return segment.get(LAYOUT$log2_max_mv_length_vertical, OFFSET$log2_max_mv_length_vertical);
     }
 
-    public void log2_max_mv_length_vertical(@Unsigned byte value) {
+    public StdVideoH265SequenceParameterSetVui log2_max_mv_length_vertical(@Unsigned byte value) {
         segment.set(LAYOUT$log2_max_mv_length_vertical, OFFSET$log2_max_mv_length_vertical, value);
+        return this;
     }
 
-    public void pHrdParameters(@Nullable IStdVideoH265HrdParameters value) {
+    public StdVideoH265SequenceParameterSetVui pHrdParameters(@Nullable IStdVideoH265HrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHrdParametersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265HrdParameters.Ptr pHrdParameters(int assumedCount) {

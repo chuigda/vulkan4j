@@ -194,8 +194,9 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevice4444FormatsFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDevice4444FormatsFeaturesEXT(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevice4444FormatsFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int formatA4R4G4B4() {
         return segment.get(LAYOUT$formatA4R4G4B4, OFFSET$formatA4R4G4B4);
     }
 
-    public void formatA4R4G4B4(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice4444FormatsFeaturesEXT formatA4R4G4B4(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$formatA4R4G4B4, OFFSET$formatA4R4G4B4, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int formatA4B4G4R4() {
         return segment.get(LAYOUT$formatA4B4G4R4, OFFSET$formatA4B4G4R4);
     }
 
-    public void formatA4B4G4R4(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice4444FormatsFeaturesEXT formatA4B4G4R4(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$formatA4B4G4R4, OFFSET$formatA4B4G4R4, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -201,8 +201,9 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,80 +214,90 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoCapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoCapabilityFlagsKHR.class) int value) {
+    public VkVideoCapabilitiesKHR flags(@EnumType(VkVideoCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long minBitstreamBufferOffsetAlignment() {
         return segment.get(LAYOUT$minBitstreamBufferOffsetAlignment, OFFSET$minBitstreamBufferOffsetAlignment);
     }
 
-    public void minBitstreamBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkVideoCapabilitiesKHR minBitstreamBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minBitstreamBufferOffsetAlignment, OFFSET$minBitstreamBufferOffsetAlignment, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long minBitstreamBufferSizeAlignment() {
         return segment.get(LAYOUT$minBitstreamBufferSizeAlignment, OFFSET$minBitstreamBufferSizeAlignment);
     }
 
-    public void minBitstreamBufferSizeAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkVideoCapabilitiesKHR minBitstreamBufferSizeAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minBitstreamBufferSizeAlignment, OFFSET$minBitstreamBufferSizeAlignment, value);
+        return this;
     }
 
     public @NotNull VkExtent2D pictureAccessGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$pictureAccessGranularity, LAYOUT$pictureAccessGranularity));
     }
 
-    public void pictureAccessGranularity(@NotNull VkExtent2D value) {
+    public VkVideoCapabilitiesKHR pictureAccessGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pictureAccessGranularity, SIZE$pictureAccessGranularity);
+        return this;
     }
 
     public @NotNull VkExtent2D minCodedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minCodedExtent, LAYOUT$minCodedExtent));
     }
 
-    public void minCodedExtent(@NotNull VkExtent2D value) {
+    public VkVideoCapabilitiesKHR minCodedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minCodedExtent, SIZE$minCodedExtent);
+        return this;
     }
 
     public @NotNull VkExtent2D maxCodedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxCodedExtent, LAYOUT$maxCodedExtent));
     }
 
-    public void maxCodedExtent(@NotNull VkExtent2D value) {
+    public VkVideoCapabilitiesKHR maxCodedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxCodedExtent, SIZE$maxCodedExtent);
+        return this;
     }
 
     public @Unsigned int maxDpbSlots() {
         return segment.get(LAYOUT$maxDpbSlots, OFFSET$maxDpbSlots);
     }
 
-    public void maxDpbSlots(@Unsigned int value) {
+    public VkVideoCapabilitiesKHR maxDpbSlots(@Unsigned int value) {
         segment.set(LAYOUT$maxDpbSlots, OFFSET$maxDpbSlots, value);
+        return this;
     }
 
     public @Unsigned int maxActiveReferencePictures() {
         return segment.get(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures);
     }
 
-    public void maxActiveReferencePictures(@Unsigned int value) {
+    public VkVideoCapabilitiesKHR maxActiveReferencePictures(@Unsigned int value) {
         segment.set(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures, value);
+        return this;
     }
 
     public @NotNull VkExtensionProperties stdHeaderVersion() {
         return new VkExtensionProperties(segment.asSlice(OFFSET$stdHeaderVersion, LAYOUT$stdHeaderVersion));
     }
 
-    public void stdHeaderVersion(@NotNull VkExtensionProperties value) {
+    public VkVideoCapabilitiesKHR stdHeaderVersion(@NotNull VkExtensionProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stdHeaderVersion, SIZE$stdHeaderVersion);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

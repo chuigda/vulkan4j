@@ -194,8 +194,9 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesListKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkPhysicalDeviceLayeredApiPropertiesListKHR(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceLayeredApiPropertiesListKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int layeredApiCount() {
         return segment.get(LAYOUT$layeredApiCount, OFFSET$layeredApiCount);
     }
 
-    public void layeredApiCount(@Unsigned int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesListKHR layeredApiCount(@Unsigned int value) {
         segment.set(LAYOUT$layeredApiCount, OFFSET$layeredApiCount, value);
+        return this;
     }
 
-    public void pLayeredApis(@Nullable IVkPhysicalDeviceLayeredApiPropertiesKHR value) {
+    public VkPhysicalDeviceLayeredApiPropertiesListKHR pLayeredApis(@Nullable IVkPhysicalDeviceLayeredApiPropertiesKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayeredApisRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPhysicalDeviceLayeredApiPropertiesKHR.Ptr pLayeredApis(int assumedCount) {

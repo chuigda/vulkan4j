@@ -194,8 +194,9 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureCaptureDescriptorDataInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureCaptureDescriptorDataInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkAccelerationStructureKHR accelerationStructure() {
@@ -218,8 +220,9 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
         return new VkAccelerationStructureKHR(s);
     }
 
-    public void accelerationStructure(@Nullable VkAccelerationStructureKHR value) {
+    public VkAccelerationStructureCaptureDescriptorDataInfoEXT accelerationStructure(@Nullable VkAccelerationStructureKHR value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkAccelerationStructureNV accelerationStructureNV() {
@@ -230,8 +233,9 @@ public record VkAccelerationStructureCaptureDescriptorDataInfoEXT(@NotNull Memor
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructureNV(@Nullable VkAccelerationStructureNV value) {
+    public VkAccelerationStructureCaptureDescriptorDataInfoEXT accelerationStructureNV(@Nullable VkAccelerationStructureNV value) {
         segment.set(LAYOUT$accelerationStructureNV, OFFSET$accelerationStructureNV, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

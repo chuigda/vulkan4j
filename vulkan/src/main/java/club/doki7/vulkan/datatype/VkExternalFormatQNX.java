@@ -193,8 +193,9 @@ public record VkExternalFormatQNX(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalFormatQNX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkExternalFormatQNX(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExternalFormatQNX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long externalFormat() {
         return segment.get(LAYOUT$externalFormat, OFFSET$externalFormat);
     }
 
-    public void externalFormat(@Unsigned long value) {
+    public VkExternalFormatQNX externalFormat(@Unsigned long value) {
         segment.set(LAYOUT$externalFormat, OFFSET$externalFormat, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

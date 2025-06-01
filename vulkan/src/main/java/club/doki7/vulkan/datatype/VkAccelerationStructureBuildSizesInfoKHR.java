@@ -195,8 +195,9 @@ public record VkAccelerationStructureBuildSizesInfoKHR(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureBuildSizesInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkAccelerationStructureBuildSizesInfoKHR(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureBuildSizesInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long accelerationStructureSize() {
         return segment.get(LAYOUT$accelerationStructureSize, OFFSET$accelerationStructureSize);
     }
 
-    public void accelerationStructureSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkAccelerationStructureBuildSizesInfoKHR accelerationStructureSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$accelerationStructureSize, OFFSET$accelerationStructureSize, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long updateScratchSize() {
         return segment.get(LAYOUT$updateScratchSize, OFFSET$updateScratchSize);
     }
 
-    public void updateScratchSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkAccelerationStructureBuildSizesInfoKHR updateScratchSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$updateScratchSize, OFFSET$updateScratchSize, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long buildScratchSize() {
         return segment.get(LAYOUT$buildScratchSize, OFFSET$buildScratchSize);
     }
 
-    public void buildScratchSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkAccelerationStructureBuildSizesInfoKHR buildScratchSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$buildScratchSize, OFFSET$buildScratchSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

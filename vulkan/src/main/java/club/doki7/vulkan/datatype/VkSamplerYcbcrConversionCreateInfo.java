@@ -200,8 +200,9 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerYcbcrConversionCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkFormat.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public @EnumType(VkSamplerYcbcrModelConversion.class) int ycbcrModel() {
         return segment.get(LAYOUT$ycbcrModel, OFFSET$ycbcrModel);
     }
 
-    public void ycbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo ycbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
         segment.set(LAYOUT$ycbcrModel, OFFSET$ycbcrModel, value);
+        return this;
     }
 
     public @EnumType(VkSamplerYcbcrRange.class) int ycbcrRange() {
         return segment.get(LAYOUT$ycbcrRange, OFFSET$ycbcrRange);
     }
 
-    public void ycbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo ycbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
         segment.set(LAYOUT$ycbcrRange, OFFSET$ycbcrRange, value);
+        return this;
     }
 
     public @NotNull VkComponentMapping components() {
         return new VkComponentMapping(segment.asSlice(OFFSET$components, LAYOUT$components));
     }
 
-    public void components(@NotNull VkComponentMapping value) {
+    public VkSamplerYcbcrConversionCreateInfo components(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
+        return this;
     }
 
     public @EnumType(VkChromaLocation.class) int xChromaOffset() {
         return segment.get(LAYOUT$xChromaOffset, OFFSET$xChromaOffset);
     }
 
-    public void xChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo xChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$xChromaOffset, OFFSET$xChromaOffset, value);
+        return this;
     }
 
     public @EnumType(VkChromaLocation.class) int yChromaOffset() {
         return segment.get(LAYOUT$yChromaOffset, OFFSET$yChromaOffset);
     }
 
-    public void yChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo yChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$yChromaOffset, OFFSET$yChromaOffset, value);
+        return this;
     }
 
     public @EnumType(VkFilter.class) int chromaFilter() {
         return segment.get(LAYOUT$chromaFilter, OFFSET$chromaFilter);
     }
 
-    public void chromaFilter(@EnumType(VkFilter.class) int value) {
+    public VkSamplerYcbcrConversionCreateInfo chromaFilter(@EnumType(VkFilter.class) int value) {
         segment.set(LAYOUT$chromaFilter, OFFSET$chromaFilter, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int forceExplicitReconstruction() {
         return segment.get(LAYOUT$forceExplicitReconstruction, OFFSET$forceExplicitReconstruction);
     }
 
-    public void forceExplicitReconstruction(@NativeType("VkBool32") @Unsigned int value) {
+    public VkSamplerYcbcrConversionCreateInfo forceExplicitReconstruction(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$forceExplicitReconstruction, OFFSET$forceExplicitReconstruction, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

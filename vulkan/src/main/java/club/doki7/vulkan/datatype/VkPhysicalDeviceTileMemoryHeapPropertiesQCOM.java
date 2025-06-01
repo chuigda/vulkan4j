@@ -194,8 +194,9 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceTileMemoryHeapPropertiesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceTileMemoryHeapPropertiesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int queueSubmitBoundary() {
         return segment.get(LAYOUT$queueSubmitBoundary, OFFSET$queueSubmitBoundary);
     }
 
-    public void queueSubmitBoundary(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTileMemoryHeapPropertiesQCOM queueSubmitBoundary(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$queueSubmitBoundary, OFFSET$queueSubmitBoundary, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int tileBufferTransfers() {
         return segment.get(LAYOUT$tileBufferTransfers, OFFSET$tileBufferTransfers);
     }
 
-    public void tileBufferTransfers(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTileMemoryHeapPropertiesQCOM tileBufferTransfers(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$tileBufferTransfers, OFFSET$tileBufferTransfers, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

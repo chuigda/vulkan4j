@@ -194,8 +194,9 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeAV1ProfileInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoDecodeAV1ProfileInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoDecodeAV1ProfileInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(StdVideoAV1Profile.class) int stdProfile() {
         return segment.get(LAYOUT$stdProfile, OFFSET$stdProfile);
     }
 
-    public void stdProfile(@EnumType(StdVideoAV1Profile.class) int value) {
+    public VkVideoDecodeAV1ProfileInfoKHR stdProfile(@EnumType(StdVideoAV1Profile.class) int value) {
         segment.set(LAYOUT$stdProfile, OFFSET$stdProfile, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int filmGrainSupport() {
         return segment.get(LAYOUT$filmGrainSupport, OFFSET$filmGrainSupport);
     }
 
-    public void filmGrainSupport(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoDecodeAV1ProfileInfoKHR filmGrainSupport(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$filmGrainSupport, OFFSET$filmGrainSupport, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

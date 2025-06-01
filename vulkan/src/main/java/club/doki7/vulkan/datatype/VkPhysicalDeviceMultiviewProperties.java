@@ -194,8 +194,9 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMultiviewProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceMultiviewProperties(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMultiviewProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxMultiviewViewCount() {
         return segment.get(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount);
     }
 
-    public void maxMultiviewViewCount(@Unsigned int value) {
+    public VkPhysicalDeviceMultiviewProperties maxMultiviewViewCount(@Unsigned int value) {
         segment.set(LAYOUT$maxMultiviewViewCount, OFFSET$maxMultiviewViewCount, value);
+        return this;
     }
 
     public @Unsigned int maxMultiviewInstanceIndex() {
         return segment.get(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex);
     }
 
-    public void maxMultiviewInstanceIndex(@Unsigned int value) {
+    public VkPhysicalDeviceMultiviewProperties maxMultiviewInstanceIndex(@Unsigned int value) {
         segment.set(LAYOUT$maxMultiviewInstanceIndex, OFFSET$maxMultiviewInstanceIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

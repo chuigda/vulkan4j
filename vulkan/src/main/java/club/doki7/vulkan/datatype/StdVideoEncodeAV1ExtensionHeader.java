@@ -171,16 +171,18 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$temporal_id, OFFSET$temporal_id);
     }
 
-    public void temporal_id(@Unsigned byte value) {
+    public StdVideoEncodeAV1ExtensionHeader temporal_id(@Unsigned byte value) {
         segment.set(LAYOUT$temporal_id, OFFSET$temporal_id, value);
+        return this;
     }
 
     public @Unsigned byte spatial_id() {
         return segment.get(LAYOUT$spatial_id, OFFSET$spatial_id);
     }
 
-    public void spatial_id(@Unsigned byte value) {
+    public StdVideoEncodeAV1ExtensionHeader spatial_id(@Unsigned byte value) {
         segment.set(LAYOUT$spatial_id, OFFSET$spatial_id, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

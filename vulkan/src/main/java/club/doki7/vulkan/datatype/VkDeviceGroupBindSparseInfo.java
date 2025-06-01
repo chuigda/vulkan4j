@@ -194,8 +194,9 @@ public record VkDeviceGroupBindSparseInfo(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupBindSparseInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkDeviceGroupBindSparseInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceGroupBindSparseInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int resourceDeviceIndex() {
         return segment.get(LAYOUT$resourceDeviceIndex, OFFSET$resourceDeviceIndex);
     }
 
-    public void resourceDeviceIndex(@Unsigned int value) {
+    public VkDeviceGroupBindSparseInfo resourceDeviceIndex(@Unsigned int value) {
         segment.set(LAYOUT$resourceDeviceIndex, OFFSET$resourceDeviceIndex, value);
+        return this;
     }
 
     public @Unsigned int memoryDeviceIndex() {
         return segment.get(LAYOUT$memoryDeviceIndex, OFFSET$memoryDeviceIndex);
     }
 
-    public void memoryDeviceIndex(@Unsigned int value) {
+    public VkDeviceGroupBindSparseInfo memoryDeviceIndex(@Unsigned int value) {
         segment.set(LAYOUT$memoryDeviceIndex, OFFSET$memoryDeviceIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

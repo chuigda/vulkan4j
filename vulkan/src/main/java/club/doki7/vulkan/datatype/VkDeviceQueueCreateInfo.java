@@ -196,8 +196,9 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceQueueCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,32 +209,36 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceQueueCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
+    public VkDeviceQueueCreateInfo flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndex() {
         return segment.get(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex);
     }
 
-    public void queueFamilyIndex(@Unsigned int value) {
+    public VkDeviceQueueCreateInfo queueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex, value);
+        return this;
     }
 
     public @Unsigned int queueCount() {
         return segment.get(LAYOUT$queueCount, OFFSET$queueCount);
     }
 
-    public void queueCount(@Unsigned int value) {
+    public VkDeviceQueueCreateInfo queueCount(@Unsigned int value) {
         segment.set(LAYOUT$queueCount, OFFSET$queueCount, value);
+        return this;
     }
 
     /// Note: the returned {@link FloatPtr} does not have correct
@@ -248,9 +253,10 @@ public record VkDeviceQueueCreateInfo(@NotNull MemorySegment segment) implements
         return new FloatPtr(s);
     }
 
-    public void pQueuePriorities(@Nullable FloatPtr value) {
+    public VkDeviceQueueCreateInfo pQueuePriorities(@Nullable FloatPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueuePrioritiesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="float*") MemorySegment pQueuePrioritiesRaw() {

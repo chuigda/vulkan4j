@@ -196,8 +196,9 @@ public record VkApplicationParametersEXT(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkApplicationParametersEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkApplicationParametersEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkApplicationParametersEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int vendorID() {
         return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
     }
 
-    public void vendorID(@Unsigned int value) {
+    public VkApplicationParametersEXT vendorID(@Unsigned int value) {
         segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
+        return this;
     }
 
     public @Unsigned int deviceID() {
         return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
     }
 
-    public void deviceID(@Unsigned int value) {
+    public VkApplicationParametersEXT deviceID(@Unsigned int value) {
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
+        return this;
     }
 
     public @Unsigned int key() {
         return segment.get(LAYOUT$key, OFFSET$key);
     }
 
-    public void key(@Unsigned int value) {
+    public VkApplicationParametersEXT key(@Unsigned int value) {
         segment.set(LAYOUT$key, OFFSET$key, value);
+        return this;
     }
 
     public @Unsigned long value() {
         return segment.get(LAYOUT$value, OFFSET$value);
     }
 
-    public void value(@Unsigned long value) {
+    public VkApplicationParametersEXT value(@Unsigned long value) {
         segment.set(LAYOUT$value, OFFSET$value, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

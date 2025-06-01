@@ -201,8 +201,9 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,80 +214,90 @@ public record VkVideoEncodeH264QualityLevelPropertiesKHR(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeH264RateControlFlagsKHR.class) int preferredRateControlFlags() {
         return segment.get(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags);
     }
 
-    public void preferredRateControlFlags(@EnumType(VkVideoEncodeH264RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredRateControlFlags(@EnumType(VkVideoEncodeH264RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlFlags, OFFSET$preferredRateControlFlags, value);
+        return this;
     }
 
     public @Unsigned int preferredGopFrameCount() {
         return segment.get(LAYOUT$preferredGopFrameCount, OFFSET$preferredGopFrameCount);
     }
 
-    public void preferredGopFrameCount(@Unsigned int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredGopFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredGopFrameCount, OFFSET$preferredGopFrameCount, value);
+        return this;
     }
 
     public @Unsigned int preferredIdrPeriod() {
         return segment.get(LAYOUT$preferredIdrPeriod, OFFSET$preferredIdrPeriod);
     }
 
-    public void preferredIdrPeriod(@Unsigned int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredIdrPeriod(@Unsigned int value) {
         segment.set(LAYOUT$preferredIdrPeriod, OFFSET$preferredIdrPeriod, value);
+        return this;
     }
 
     public @Unsigned int preferredConsecutiveBFrameCount() {
         return segment.get(LAYOUT$preferredConsecutiveBFrameCount, OFFSET$preferredConsecutiveBFrameCount);
     }
 
-    public void preferredConsecutiveBFrameCount(@Unsigned int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredConsecutiveBFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredConsecutiveBFrameCount, OFFSET$preferredConsecutiveBFrameCount, value);
+        return this;
     }
 
     public @Unsigned int preferredTemporalLayerCount() {
         return segment.get(LAYOUT$preferredTemporalLayerCount, OFFSET$preferredTemporalLayerCount);
     }
 
-    public void preferredTemporalLayerCount(@Unsigned int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredTemporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredTemporalLayerCount, OFFSET$preferredTemporalLayerCount, value);
+        return this;
     }
 
     public @NotNull VkVideoEncodeH264QpKHR preferredConstantQp() {
         return new VkVideoEncodeH264QpKHR(segment.asSlice(OFFSET$preferredConstantQp, LAYOUT$preferredConstantQp));
     }
 
-    public void preferredConstantQp(@NotNull VkVideoEncodeH264QpKHR value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredConstantQp(@NotNull VkVideoEncodeH264QpKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$preferredConstantQp, SIZE$preferredConstantQp);
+        return this;
     }
 
     public @Unsigned int preferredMaxL0ReferenceCount() {
         return segment.get(LAYOUT$preferredMaxL0ReferenceCount, OFFSET$preferredMaxL0ReferenceCount);
     }
 
-    public void preferredMaxL0ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredMaxL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxL0ReferenceCount, OFFSET$preferredMaxL0ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int preferredMaxL1ReferenceCount() {
         return segment.get(LAYOUT$preferredMaxL1ReferenceCount, OFFSET$preferredMaxL1ReferenceCount);
     }
 
-    public void preferredMaxL1ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredMaxL1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredMaxL1ReferenceCount, OFFSET$preferredMaxL1ReferenceCount, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int preferredStdEntropyCodingModeFlag() {
         return segment.get(LAYOUT$preferredStdEntropyCodingModeFlag, OFFSET$preferredStdEntropyCodingModeFlag);
     }
 
-    public void preferredStdEntropyCodingModeFlag(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH264QualityLevelPropertiesKHR preferredStdEntropyCodingModeFlag(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$preferredStdEntropyCodingModeFlag, OFFSET$preferredStdEntropyCodingModeFlag, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

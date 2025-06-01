@@ -195,8 +195,9 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMetalSharedEventInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExportMetalSharedEventInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSemaphore semaphore() {
@@ -219,8 +221,9 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return new VkSemaphore(s);
     }
 
-    public void semaphore(@Nullable VkSemaphore value) {
+    public VkExportMetalSharedEventInfoEXT semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkEvent event() {
@@ -231,8 +234,9 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         return new VkEvent(s);
     }
 
-    public void event(@Nullable VkEvent value) {
+    public VkExportMetalSharedEventInfoEXT event(@Nullable VkEvent value) {
         segment.set(LAYOUT$event, OFFSET$event, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="MTLSharedEvent_id") MemorySegment mtlSharedEvent() {
@@ -243,8 +247,9 @@ public record VkExportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$mtlSharedEvent, OFFSET$mtlSharedEvent, value);
     }
 
-    public void mtlSharedEvent(@Nullable IPointer pointer) {
+    public VkExportMetalSharedEventInfoEXT mtlSharedEvent(@Nullable IPointer pointer) {
         mtlSharedEvent(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

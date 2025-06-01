@@ -193,8 +193,9 @@ public record VkPhysicalDeviceImageProcessing2FeaturesQCOM(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageProcessing2FeaturesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceImageProcessing2FeaturesQCOM(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageProcessing2FeaturesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int textureBlockMatch2() {
         return segment.get(LAYOUT$textureBlockMatch2, OFFSET$textureBlockMatch2);
     }
 
-    public void textureBlockMatch2(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceImageProcessing2FeaturesQCOM textureBlockMatch2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$textureBlockMatch2, OFFSET$textureBlockMatch2, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

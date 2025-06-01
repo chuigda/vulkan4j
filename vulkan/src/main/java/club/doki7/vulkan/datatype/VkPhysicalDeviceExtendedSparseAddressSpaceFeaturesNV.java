@@ -193,8 +193,9 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int extendedSparseAddressSpace() {
         return segment.get(LAYOUT$extendedSparseAddressSpace, OFFSET$extendedSparseAddressSpace);
     }
 
-    public void extendedSparseAddressSpace(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV extendedSparseAddressSpace(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedSparseAddressSpace, OFFSET$extendedSparseAddressSpace, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

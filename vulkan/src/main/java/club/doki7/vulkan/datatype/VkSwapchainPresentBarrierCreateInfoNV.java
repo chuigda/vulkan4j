@@ -193,8 +193,9 @@ public record VkSwapchainPresentBarrierCreateInfoNV(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainPresentBarrierCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSwapchainPresentBarrierCreateInfoNV(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSwapchainPresentBarrierCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int presentBarrierEnable() {
         return segment.get(LAYOUT$presentBarrierEnable, OFFSET$presentBarrierEnable);
     }
 
-    public void presentBarrierEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkSwapchainPresentBarrierCreateInfoNV presentBarrierEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$presentBarrierEnable, OFFSET$presentBarrierEnable, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

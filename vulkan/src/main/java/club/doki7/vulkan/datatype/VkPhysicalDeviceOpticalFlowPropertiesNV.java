@@ -203,8 +203,9 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -215,96 +216,108 @@ public record VkPhysicalDeviceOpticalFlowPropertiesNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int supportedOutputGridSizes() {
         return segment.get(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes);
     }
 
-    public void supportedOutputGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedOutputGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$supportedOutputGridSizes, OFFSET$supportedOutputGridSizes, value);
+        return this;
     }
 
     public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int supportedHintGridSizes() {
         return segment.get(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes);
     }
 
-    public void supportedHintGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedHintGridSizes(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$supportedHintGridSizes, OFFSET$supportedHintGridSizes, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int hintSupported() {
         return segment.get(LAYOUT$hintSupported, OFFSET$hintSupported);
     }
 
-    public void hintSupported(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV hintSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hintSupported, OFFSET$hintSupported, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int costSupported() {
         return segment.get(LAYOUT$costSupported, OFFSET$costSupported);
     }
 
-    public void costSupported(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV costSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$costSupported, OFFSET$costSupported, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int bidirectionalFlowSupported() {
         return segment.get(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported);
     }
 
-    public void bidirectionalFlowSupported(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV bidirectionalFlowSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bidirectionalFlowSupported, OFFSET$bidirectionalFlowSupported, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int globalFlowSupported() {
         return segment.get(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported);
     }
 
-    public void globalFlowSupported(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV globalFlowSupported(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$globalFlowSupported, OFFSET$globalFlowSupported, value);
+        return this;
     }
 
     public @Unsigned int minWidth() {
         return segment.get(LAYOUT$minWidth, OFFSET$minWidth);
     }
 
-    public void minWidth(@Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV minWidth(@Unsigned int value) {
         segment.set(LAYOUT$minWidth, OFFSET$minWidth, value);
+        return this;
     }
 
     public @Unsigned int minHeight() {
         return segment.get(LAYOUT$minHeight, OFFSET$minHeight);
     }
 
-    public void minHeight(@Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV minHeight(@Unsigned int value) {
         segment.set(LAYOUT$minHeight, OFFSET$minHeight, value);
+        return this;
     }
 
     public @Unsigned int maxWidth() {
         return segment.get(LAYOUT$maxWidth, OFFSET$maxWidth);
     }
 
-    public void maxWidth(@Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxWidth(@Unsigned int value) {
         segment.set(LAYOUT$maxWidth, OFFSET$maxWidth, value);
+        return this;
     }
 
     public @Unsigned int maxHeight() {
         return segment.get(LAYOUT$maxHeight, OFFSET$maxHeight);
     }
 
-    public void maxHeight(@Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxHeight(@Unsigned int value) {
         segment.set(LAYOUT$maxHeight, OFFSET$maxHeight, value);
+        return this;
     }
 
     public @Unsigned int maxNumRegionsOfInterest() {
         return segment.get(LAYOUT$maxNumRegionsOfInterest, OFFSET$maxNumRegionsOfInterest);
     }
 
-    public void maxNumRegionsOfInterest(@Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxNumRegionsOfInterest(@Unsigned int value) {
         segment.set(LAYOUT$maxNumRegionsOfInterest, OFFSET$maxNumRegionsOfInterest, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

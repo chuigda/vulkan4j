@@ -197,8 +197,9 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkComputePipelineCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,24 +210,27 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkComputePipelineCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkComputePipelineCreateInfo flags(@EnumType(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NotNull VkPipelineShaderStageCreateInfo stage() {
         return new VkPipelineShaderStageCreateInfo(segment.asSlice(OFFSET$stage, LAYOUT$stage));
     }
 
-    public void stage(@NotNull VkPipelineShaderStageCreateInfo value) {
+    public VkComputePipelineCreateInfo stage(@NotNull VkPipelineShaderStageCreateInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, SIZE$stage);
+        return this;
     }
 
     public @Nullable VkPipelineLayout layout() {
@@ -237,8 +241,9 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkComputePipelineCreateInfo layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkPipeline basePipelineHandle() {
@@ -249,16 +254,18 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         return new VkPipeline(s);
     }
 
-    public void basePipelineHandle(@Nullable VkPipeline value) {
+    public VkComputePipelineCreateInfo basePipelineHandle(@Nullable VkPipeline value) {
         segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public int basePipelineIndex() {
         return segment.get(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex);
     }
 
-    public void basePipelineIndex(int value) {
+    public VkComputePipelineCreateInfo basePipelineIndex(int value) {
         segment.set(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -196,8 +196,9 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeAV1GopRemainingFrameInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkVideoEncodeAV1GopRemainingFrameInfoKHR(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeAV1GopRemainingFrameInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useGopRemainingFrames() {
         return segment.get(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames);
     }
 
-    public void useGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeAV1GopRemainingFrameInfoKHR useGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames, value);
+        return this;
     }
 
     public @Unsigned int gopRemainingIntra() {
         return segment.get(LAYOUT$gopRemainingIntra, OFFSET$gopRemainingIntra);
     }
 
-    public void gopRemainingIntra(@Unsigned int value) {
+    public VkVideoEncodeAV1GopRemainingFrameInfoKHR gopRemainingIntra(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingIntra, OFFSET$gopRemainingIntra, value);
+        return this;
     }
 
     public @Unsigned int gopRemainingPredictive() {
         return segment.get(LAYOUT$gopRemainingPredictive, OFFSET$gopRemainingPredictive);
     }
 
-    public void gopRemainingPredictive(@Unsigned int value) {
+    public VkVideoEncodeAV1GopRemainingFrameInfoKHR gopRemainingPredictive(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingPredictive, OFFSET$gopRemainingPredictive, value);
+        return this;
     }
 
     public @Unsigned int gopRemainingBipredictive() {
         return segment.get(LAYOUT$gopRemainingBipredictive, OFFSET$gopRemainingBipredictive);
     }
 
-    public void gopRemainingBipredictive(@Unsigned int value) {
+    public VkVideoEncodeAV1GopRemainingFrameInfoKHR gopRemainingBipredictive(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingBipredictive, OFFSET$gopRemainingBipredictive, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

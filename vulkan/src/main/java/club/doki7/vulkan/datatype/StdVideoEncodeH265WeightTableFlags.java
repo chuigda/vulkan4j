@@ -173,32 +173,36 @@ public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$luma_weight_l0_flag, OFFSET$luma_weight_l0_flag);
     }
 
-    public void luma_weight_l0_flag(@Unsigned short value) {
+    public StdVideoEncodeH265WeightTableFlags luma_weight_l0_flag(@Unsigned short value) {
         segment.set(LAYOUT$luma_weight_l0_flag, OFFSET$luma_weight_l0_flag, value);
+        return this;
     }
 
     public @Unsigned short chroma_weight_l0_flag() {
         return segment.get(LAYOUT$chroma_weight_l0_flag, OFFSET$chroma_weight_l0_flag);
     }
 
-    public void chroma_weight_l0_flag(@Unsigned short value) {
+    public StdVideoEncodeH265WeightTableFlags chroma_weight_l0_flag(@Unsigned short value) {
         segment.set(LAYOUT$chroma_weight_l0_flag, OFFSET$chroma_weight_l0_flag, value);
+        return this;
     }
 
     public @Unsigned short luma_weight_l1_flag() {
         return segment.get(LAYOUT$luma_weight_l1_flag, OFFSET$luma_weight_l1_flag);
     }
 
-    public void luma_weight_l1_flag(@Unsigned short value) {
+    public StdVideoEncodeH265WeightTableFlags luma_weight_l1_flag(@Unsigned short value) {
         segment.set(LAYOUT$luma_weight_l1_flag, OFFSET$luma_weight_l1_flag, value);
+        return this;
     }
 
     public @Unsigned short chroma_weight_l1_flag() {
         return segment.get(LAYOUT$chroma_weight_l1_flag, OFFSET$chroma_weight_l1_flag);
     }
 
-    public void chroma_weight_l1_flag(@Unsigned short value) {
+    public StdVideoEncodeH265WeightTableFlags chroma_weight_l1_flag(@Unsigned short value) {
         segment.set(LAYOUT$chroma_weight_l1_flag, OFFSET$chroma_weight_l1_flag, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

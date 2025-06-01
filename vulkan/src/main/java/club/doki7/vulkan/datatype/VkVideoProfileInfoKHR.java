@@ -196,8 +196,9 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoProfileInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkVideoProfileInfoKHR(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoProfileInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperation() {
         return segment.get(LAYOUT$videoCodecOperation, OFFSET$videoCodecOperation);
     }
 
-    public void videoCodecOperation(@EnumType(VkVideoCodecOperationFlagsKHR.class) int value) {
+    public VkVideoProfileInfoKHR videoCodecOperation(@EnumType(VkVideoCodecOperationFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoCodecOperation, OFFSET$videoCodecOperation, value);
+        return this;
     }
 
     public @EnumType(VkVideoChromaSubsamplingFlagsKHR.class) int chromaSubsampling() {
         return segment.get(LAYOUT$chromaSubsampling, OFFSET$chromaSubsampling);
     }
 
-    public void chromaSubsampling(@EnumType(VkVideoChromaSubsamplingFlagsKHR.class) int value) {
+    public VkVideoProfileInfoKHR chromaSubsampling(@EnumType(VkVideoChromaSubsamplingFlagsKHR.class) int value) {
         segment.set(LAYOUT$chromaSubsampling, OFFSET$chromaSubsampling, value);
+        return this;
     }
 
     public @EnumType(VkVideoComponentBitDepthFlagsKHR.class) int lumaBitDepth() {
         return segment.get(LAYOUT$lumaBitDepth, OFFSET$lumaBitDepth);
     }
 
-    public void lumaBitDepth(@EnumType(VkVideoComponentBitDepthFlagsKHR.class) int value) {
+    public VkVideoProfileInfoKHR lumaBitDepth(@EnumType(VkVideoComponentBitDepthFlagsKHR.class) int value) {
         segment.set(LAYOUT$lumaBitDepth, OFFSET$lumaBitDepth, value);
+        return this;
     }
 
     public @EnumType(VkVideoComponentBitDepthFlagsKHR.class) int chromaBitDepth() {
         return segment.get(LAYOUT$chromaBitDepth, OFFSET$chromaBitDepth);
     }
 
-    public void chromaBitDepth(@EnumType(VkVideoComponentBitDepthFlagsKHR.class) int value) {
+    public VkVideoProfileInfoKHR chromaBitDepth(@EnumType(VkVideoComponentBitDepthFlagsKHR.class) int value) {
         segment.set(LAYOUT$chromaBitDepth, OFFSET$chromaBitDepth, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

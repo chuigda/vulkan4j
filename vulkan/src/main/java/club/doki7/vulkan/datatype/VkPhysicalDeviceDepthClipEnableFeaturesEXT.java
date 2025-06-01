@@ -193,8 +193,9 @@ public record VkPhysicalDeviceDepthClipEnableFeaturesEXT(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDepthClipEnableFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceDepthClipEnableFeaturesEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDepthClipEnableFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthClipEnable() {
         return segment.get(LAYOUT$depthClipEnable, OFFSET$depthClipEnable);
     }
 
-    public void depthClipEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDepthClipEnableFeaturesEXT depthClipEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthClipEnable, OFFSET$depthClipEnable, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

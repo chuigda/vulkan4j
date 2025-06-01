@@ -202,8 +202,9 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -214,88 +215,99 @@ public record VkPhysicalDeviceTransformFeedbackPropertiesEXT(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxTransformFeedbackStreams() {
         return segment.get(LAYOUT$maxTransformFeedbackStreams, OFFSET$maxTransformFeedbackStreams);
     }
 
-    public void maxTransformFeedbackStreams(@Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackStreams(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackStreams, OFFSET$maxTransformFeedbackStreams, value);
+        return this;
     }
 
     public @Unsigned int maxTransformFeedbackBuffers() {
         return segment.get(LAYOUT$maxTransformFeedbackBuffers, OFFSET$maxTransformFeedbackBuffers);
     }
 
-    public void maxTransformFeedbackBuffers(@Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackBuffers(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackBuffers, OFFSET$maxTransformFeedbackBuffers, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long maxTransformFeedbackBufferSize() {
         return segment.get(LAYOUT$maxTransformFeedbackBufferSize, OFFSET$maxTransformFeedbackBufferSize);
     }
 
-    public void maxTransformFeedbackBufferSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackBufferSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxTransformFeedbackBufferSize, OFFSET$maxTransformFeedbackBufferSize, value);
+        return this;
     }
 
     public @Unsigned int maxTransformFeedbackStreamDataSize() {
         return segment.get(LAYOUT$maxTransformFeedbackStreamDataSize, OFFSET$maxTransformFeedbackStreamDataSize);
     }
 
-    public void maxTransformFeedbackStreamDataSize(@Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackStreamDataSize(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackStreamDataSize, OFFSET$maxTransformFeedbackStreamDataSize, value);
+        return this;
     }
 
     public @Unsigned int maxTransformFeedbackBufferDataSize() {
         return segment.get(LAYOUT$maxTransformFeedbackBufferDataSize, OFFSET$maxTransformFeedbackBufferDataSize);
     }
 
-    public void maxTransformFeedbackBufferDataSize(@Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackBufferDataSize(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackBufferDataSize, OFFSET$maxTransformFeedbackBufferDataSize, value);
+        return this;
     }
 
     public @Unsigned int maxTransformFeedbackBufferDataStride() {
         return segment.get(LAYOUT$maxTransformFeedbackBufferDataStride, OFFSET$maxTransformFeedbackBufferDataStride);
     }
 
-    public void maxTransformFeedbackBufferDataStride(@Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackBufferDataStride(@Unsigned int value) {
         segment.set(LAYOUT$maxTransformFeedbackBufferDataStride, OFFSET$maxTransformFeedbackBufferDataStride, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int transformFeedbackQueries() {
         return segment.get(LAYOUT$transformFeedbackQueries, OFFSET$transformFeedbackQueries);
     }
 
-    public void transformFeedbackQueries(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackQueries(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackQueries, OFFSET$transformFeedbackQueries, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int transformFeedbackStreamsLinesTriangles() {
         return segment.get(LAYOUT$transformFeedbackStreamsLinesTriangles, OFFSET$transformFeedbackStreamsLinesTriangles);
     }
 
-    public void transformFeedbackStreamsLinesTriangles(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackStreamsLinesTriangles(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackStreamsLinesTriangles, OFFSET$transformFeedbackStreamsLinesTriangles, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int transformFeedbackRasterizationStreamSelect() {
         return segment.get(LAYOUT$transformFeedbackRasterizationStreamSelect, OFFSET$transformFeedbackRasterizationStreamSelect);
     }
 
-    public void transformFeedbackRasterizationStreamSelect(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackRasterizationStreamSelect(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackRasterizationStreamSelect, OFFSET$transformFeedbackRasterizationStreamSelect, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int transformFeedbackDraw() {
         return segment.get(LAYOUT$transformFeedbackDraw, OFFSET$transformFeedbackDraw);
     }
 
-    public void transformFeedbackDraw(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackDraw(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackDraw, OFFSET$transformFeedbackDraw, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

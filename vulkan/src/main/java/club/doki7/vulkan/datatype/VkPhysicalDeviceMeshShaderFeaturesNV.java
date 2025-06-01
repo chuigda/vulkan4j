@@ -194,8 +194,9 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceMeshShaderFeaturesNV(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMeshShaderFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int taskShader() {
         return segment.get(LAYOUT$taskShader, OFFSET$taskShader);
     }
 
-    public void taskShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesNV taskShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$taskShader, OFFSET$taskShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int meshShader() {
         return segment.get(LAYOUT$meshShader, OFFSET$meshShader);
     }
 
-    public void meshShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMeshShaderFeaturesNV meshShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$meshShader, OFFSET$meshShader, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

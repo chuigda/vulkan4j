@@ -173,8 +173,9 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
         return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
     }
 
-    public void dataSize(@Unsigned long value) {
+    public VkPipelineBinaryDataKHR dataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pData() {
@@ -185,8 +186,9 @@ public record VkPipelineBinaryDataKHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(@Nullable IPointer pointer) {
+    public VkPipelineBinaryDataKHR pData(@Nullable IPointer pointer) {
         pData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

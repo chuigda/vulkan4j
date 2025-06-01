@@ -196,8 +196,9 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineExecutableStatisticKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,16 +209,18 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineExecutableStatisticKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public BytePtr name() {
         return new BytePtr(nameRaw());
     }
 
-    public void name(BytePtr value) {
+    public VkPipelineExecutableStatisticKHR name(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        return this;
     }
 
     public MemorySegment nameRaw() {
@@ -228,8 +231,9 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return new BytePtr(descriptionRaw());
     }
 
-    public void description(BytePtr value) {
+    public VkPipelineExecutableStatisticKHR description(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        return this;
     }
 
     public MemorySegment descriptionRaw() {
@@ -240,16 +244,18 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkPipelineExecutableStatisticFormatKHR.class) int value) {
+    public VkPipelineExecutableStatisticKHR format(@EnumType(VkPipelineExecutableStatisticFormatKHR.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public @NotNull VkPipelineExecutableStatisticValueKHR value() {
         return new VkPipelineExecutableStatisticValueKHR(segment.asSlice(OFFSET$value, LAYOUT$value));
     }
 
-    public void value(@NotNull VkPipelineExecutableStatisticValueKHR value) {
+    public VkPipelineExecutableStatisticKHR value(@NotNull VkPipelineExecutableStatisticValueKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$value, SIZE$value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

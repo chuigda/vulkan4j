@@ -194,8 +194,9 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerBlockMatchWindowCreateInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerBlockMatchWindowCreateInfoQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent2D windowExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$windowExtent, LAYOUT$windowExtent));
     }
 
-    public void windowExtent(@NotNull VkExtent2D value) {
+    public VkSamplerBlockMatchWindowCreateInfoQCOM windowExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$windowExtent, SIZE$windowExtent);
+        return this;
     }
 
     public @EnumType(VkBlockMatchWindowCompareModeQCOM.class) int windowCompareMode() {
         return segment.get(LAYOUT$windowCompareMode, OFFSET$windowCompareMode);
     }
 
-    public void windowCompareMode(@EnumType(VkBlockMatchWindowCompareModeQCOM.class) int value) {
+    public VkSamplerBlockMatchWindowCreateInfoQCOM windowCompareMode(@EnumType(VkBlockMatchWindowCompareModeQCOM.class) int value) {
         segment.set(LAYOUT$windowCompareMode, OFFSET$windowCompareMode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

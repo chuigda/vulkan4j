@@ -193,8 +193,9 @@ public record VkPhysicalDeviceMultiDrawFeaturesEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMultiDrawFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceMultiDrawFeaturesEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMultiDrawFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiDraw() {
         return segment.get(LAYOUT$multiDraw, OFFSET$multiDraw);
     }
 
-    public void multiDraw(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMultiDrawFeaturesEXT multiDraw(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiDraw, OFFSET$multiDraw, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

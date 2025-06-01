@@ -193,8 +193,9 @@ public record VkPerformanceStreamMarkerInfoINTEL(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceStreamMarkerInfoINTEL sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPerformanceStreamMarkerInfoINTEL(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPerformanceStreamMarkerInfoINTEL pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int marker() {
         return segment.get(LAYOUT$marker, OFFSET$marker);
     }
 
-    public void marker(@Unsigned int value) {
+    public VkPerformanceStreamMarkerInfoINTEL marker(@Unsigned int value) {
         segment.set(LAYOUT$marker, OFFSET$marker, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

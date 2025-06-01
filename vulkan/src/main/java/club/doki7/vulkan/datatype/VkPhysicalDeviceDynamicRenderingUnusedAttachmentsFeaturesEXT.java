@@ -193,8 +193,9 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(@NotN
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int dynamicRenderingUnusedAttachments() {
         return segment.get(LAYOUT$dynamicRenderingUnusedAttachments, OFFSET$dynamicRenderingUnusedAttachments);
     }
 
-    public void dynamicRenderingUnusedAttachments(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT dynamicRenderingUnusedAttachments(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dynamicRenderingUnusedAttachments, OFFSET$dynamicRenderingUnusedAttachments, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

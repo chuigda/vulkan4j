@@ -195,8 +195,9 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAttachmentReference2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAttachmentReference2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int attachment() {
         return segment.get(LAYOUT$attachment, OFFSET$attachment);
     }
 
-    public void attachment(@Unsigned int value) {
+    public VkAttachmentReference2 attachment(@Unsigned int value) {
         segment.set(LAYOUT$attachment, OFFSET$attachment, value);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int layout() {
         return segment.get(LAYOUT$layout, OFFSET$layout);
     }
 
-    public void layout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentReference2 layout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value);
+        return this;
     }
 
     public @EnumType(VkImageAspectFlags.class) int aspectMask() {
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkAttachmentReference2 aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

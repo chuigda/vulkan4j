@@ -194,8 +194,9 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkFilterCubicImageViewImageFormatPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkFilterCubicImageViewImageFormatPropertiesEXT(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkFilterCubicImageViewImageFormatPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int filterCubic() {
         return segment.get(LAYOUT$filterCubic, OFFSET$filterCubic);
     }
 
-    public void filterCubic(@NativeType("VkBool32") @Unsigned int value) {
+    public VkFilterCubicImageViewImageFormatPropertiesEXT filterCubic(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$filterCubic, OFFSET$filterCubic, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int filterCubicMinmax() {
         return segment.get(LAYOUT$filterCubicMinmax, OFFSET$filterCubicMinmax);
     }
 
-    public void filterCubicMinmax(@NativeType("VkBool32") @Unsigned int value) {
+    public VkFilterCubicImageViewImageFormatPropertiesEXT filterCubicMinmax(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$filterCubicMinmax, OFFSET$filterCubicMinmax, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

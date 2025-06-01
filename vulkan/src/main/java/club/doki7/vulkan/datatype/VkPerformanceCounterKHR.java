@@ -196,8 +196,9 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceCounterKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPerformanceCounterKHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPerformanceCounterKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPerformanceCounterUnitKHR.class) int unit() {
         return segment.get(LAYOUT$unit, OFFSET$unit);
     }
 
-    public void unit(@EnumType(VkPerformanceCounterUnitKHR.class) int value) {
+    public VkPerformanceCounterKHR unit(@EnumType(VkPerformanceCounterUnitKHR.class) int value) {
         segment.set(LAYOUT$unit, OFFSET$unit, value);
+        return this;
     }
 
     public @EnumType(VkPerformanceCounterScopeKHR.class) int scope() {
         return segment.get(LAYOUT$scope, OFFSET$scope);
     }
 
-    public void scope(@EnumType(VkPerformanceCounterScopeKHR.class) int value) {
+    public VkPerformanceCounterKHR scope(@EnumType(VkPerformanceCounterScopeKHR.class) int value) {
         segment.set(LAYOUT$scope, OFFSET$scope, value);
+        return this;
     }
 
     public @EnumType(VkPerformanceCounterStorageKHR.class) int storage() {
         return segment.get(LAYOUT$storage, OFFSET$storage);
     }
 
-    public void storage(@EnumType(VkPerformanceCounterStorageKHR.class) int value) {
+    public VkPerformanceCounterKHR storage(@EnumType(VkPerformanceCounterStorageKHR.class) int value) {
         segment.set(LAYOUT$storage, OFFSET$storage, value);
+        return this;
     }
 
     public @Unsigned BytePtr uuid() {
         return new BytePtr(uuidRaw());
     }
 
-    public void uuid(@Unsigned BytePtr value) {
+    public VkPerformanceCounterKHR uuid(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$uuid, SIZE$uuid);
+        return this;
     }
 
     public MemorySegment uuidRaw() {

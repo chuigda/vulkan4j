@@ -197,8 +197,9 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingAreaInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,24 +210,27 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderingAreaInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int viewMask() {
         return segment.get(LAYOUT$viewMask, OFFSET$viewMask);
     }
 
-    public void viewMask(@Unsigned int value) {
+    public VkRenderingAreaInfo viewMask(@Unsigned int value) {
         segment.set(LAYOUT$viewMask, OFFSET$viewMask, value);
+        return this;
     }
 
     public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@Unsigned int value) {
+    public VkRenderingAreaInfo colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
+        return this;
     }
 
 
@@ -242,9 +246,10 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         return new IntPtr(s);
     }
 
-    public void pColorAttachmentFormats(@Nullable @EnumType(VkFormat.class) IntPtr value) {
+    public VkRenderingAreaInfo pColorAttachmentFormats(@Nullable @EnumType(VkFormat.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentFormatsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkFormat.class) MemorySegment pColorAttachmentFormatsRaw() {
@@ -259,16 +264,18 @@ public record VkRenderingAreaInfo(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$depthAttachmentFormat, OFFSET$depthAttachmentFormat);
     }
 
-    public void depthAttachmentFormat(@EnumType(VkFormat.class) int value) {
+    public VkRenderingAreaInfo depthAttachmentFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$depthAttachmentFormat, OFFSET$depthAttachmentFormat, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int stencilAttachmentFormat() {
         return segment.get(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat);
     }
 
-    public void stencilAttachmentFormat(@EnumType(VkFormat.class) int value) {
+    public VkRenderingAreaInfo stencilAttachmentFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$stencilAttachmentFormat, OFFSET$stencilAttachmentFormat, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

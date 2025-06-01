@@ -198,8 +198,9 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassMultiviewCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,16 +211,18 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassMultiviewCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int subpassCount() {
         return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
     }
 
-    public void subpassCount(@Unsigned int value) {
+    public VkRenderPassMultiviewCreateInfo subpassCount(@Unsigned int value) {
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -234,9 +237,10 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pViewMasks(@Nullable @Unsigned IntPtr value) {
+    public VkRenderPassMultiviewCreateInfo pViewMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewMasksRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pViewMasksRaw() {
@@ -251,8 +255,9 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
     }
 
-    public void dependencyCount(@Unsigned int value) {
+    public VkRenderPassMultiviewCreateInfo dependencyCount(@Unsigned int value) {
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -267,9 +272,10 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pViewOffsets(@Nullable IntPtr value) {
+    public VkRenderPassMultiviewCreateInfo pViewOffsets(@Nullable IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewOffsetsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int32_t*") MemorySegment pViewOffsetsRaw() {
@@ -284,8 +290,9 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount);
     }
 
-    public void correlationMaskCount(@Unsigned int value) {
+    public VkRenderPassMultiviewCreateInfo correlationMaskCount(@Unsigned int value) {
         segment.set(LAYOUT$correlationMaskCount, OFFSET$correlationMaskCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -300,9 +307,10 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pCorrelationMasks(@Nullable @Unsigned IntPtr value) {
+    public VkRenderPassMultiviewCreateInfo pCorrelationMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCorrelationMasksRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pCorrelationMasksRaw() {

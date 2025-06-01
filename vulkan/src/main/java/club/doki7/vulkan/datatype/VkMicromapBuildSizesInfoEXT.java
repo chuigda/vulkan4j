@@ -195,8 +195,9 @@ public record VkMicromapBuildSizesInfoEXT(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMicromapBuildSizesInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkMicromapBuildSizesInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMicromapBuildSizesInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long micromapSize() {
         return segment.get(LAYOUT$micromapSize, OFFSET$micromapSize);
     }
 
-    public void micromapSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMicromapBuildSizesInfoEXT micromapSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$micromapSize, OFFSET$micromapSize, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long buildScratchSize() {
         return segment.get(LAYOUT$buildScratchSize, OFFSET$buildScratchSize);
     }
 
-    public void buildScratchSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMicromapBuildSizesInfoEXT buildScratchSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$buildScratchSize, OFFSET$buildScratchSize, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int discardable() {
         return segment.get(LAYOUT$discardable, OFFSET$discardable);
     }
 
-    public void discardable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkMicromapBuildSizesInfoEXT discardable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$discardable, OFFSET$discardable, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRayTracingPipelineInterfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkRayTracingPipelineInterfaceCreateInfoKHR(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRayTracingPipelineInterfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxPipelineRayPayloadSize() {
         return segment.get(LAYOUT$maxPipelineRayPayloadSize, OFFSET$maxPipelineRayPayloadSize);
     }
 
-    public void maxPipelineRayPayloadSize(@Unsigned int value) {
+    public VkRayTracingPipelineInterfaceCreateInfoKHR maxPipelineRayPayloadSize(@Unsigned int value) {
         segment.set(LAYOUT$maxPipelineRayPayloadSize, OFFSET$maxPipelineRayPayloadSize, value);
+        return this;
     }
 
     public @Unsigned int maxPipelineRayHitAttributeSize() {
         return segment.get(LAYOUT$maxPipelineRayHitAttributeSize, OFFSET$maxPipelineRayHitAttributeSize);
     }
 
-    public void maxPipelineRayHitAttributeSize(@Unsigned int value) {
+    public VkRayTracingPipelineInterfaceCreateInfoKHR maxPipelineRayHitAttributeSize(@Unsigned int value) {
         segment.set(LAYOUT$maxPipelineRayHitAttributeSize, OFFSET$maxPipelineRayHitAttributeSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

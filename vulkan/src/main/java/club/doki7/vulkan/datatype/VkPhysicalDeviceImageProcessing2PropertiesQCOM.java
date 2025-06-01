@@ -193,8 +193,9 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent2D maxBlockMatchWindow() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBlockMatchWindow, LAYOUT$maxBlockMatchWindow));
     }
 
-    public void maxBlockMatchWindow(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM maxBlockMatchWindow(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBlockMatchWindow, SIZE$maxBlockMatchWindow);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

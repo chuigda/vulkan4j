@@ -206,8 +206,9 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkLatencyTimingsFrameReportNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -218,120 +219,135 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkLatencyTimingsFrameReportNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long presentID() {
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }
 
-    public void presentID(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV presentID(@Unsigned long value) {
         segment.set(LAYOUT$presentID, OFFSET$presentID, value);
+        return this;
     }
 
     public @Unsigned long inputSampleTimeUs() {
         return segment.get(LAYOUT$inputSampleTimeUs, OFFSET$inputSampleTimeUs);
     }
 
-    public void inputSampleTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV inputSampleTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$inputSampleTimeUs, OFFSET$inputSampleTimeUs, value);
+        return this;
     }
 
     public @Unsigned long simStartTimeUs() {
         return segment.get(LAYOUT$simStartTimeUs, OFFSET$simStartTimeUs);
     }
 
-    public void simStartTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV simStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$simStartTimeUs, OFFSET$simStartTimeUs, value);
+        return this;
     }
 
     public @Unsigned long simEndTimeUs() {
         return segment.get(LAYOUT$simEndTimeUs, OFFSET$simEndTimeUs);
     }
 
-    public void simEndTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV simEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$simEndTimeUs, OFFSET$simEndTimeUs, value);
+        return this;
     }
 
     public @Unsigned long renderSubmitStartTimeUs() {
         return segment.get(LAYOUT$renderSubmitStartTimeUs, OFFSET$renderSubmitStartTimeUs);
     }
 
-    public void renderSubmitStartTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV renderSubmitStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$renderSubmitStartTimeUs, OFFSET$renderSubmitStartTimeUs, value);
+        return this;
     }
 
     public @Unsigned long renderSubmitEndTimeUs() {
         return segment.get(LAYOUT$renderSubmitEndTimeUs, OFFSET$renderSubmitEndTimeUs);
     }
 
-    public void renderSubmitEndTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV renderSubmitEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$renderSubmitEndTimeUs, OFFSET$renderSubmitEndTimeUs, value);
+        return this;
     }
 
     public @Unsigned long presentStartTimeUs() {
         return segment.get(LAYOUT$presentStartTimeUs, OFFSET$presentStartTimeUs);
     }
 
-    public void presentStartTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV presentStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$presentStartTimeUs, OFFSET$presentStartTimeUs, value);
+        return this;
     }
 
     public @Unsigned long presentEndTimeUs() {
         return segment.get(LAYOUT$presentEndTimeUs, OFFSET$presentEndTimeUs);
     }
 
-    public void presentEndTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV presentEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$presentEndTimeUs, OFFSET$presentEndTimeUs, value);
+        return this;
     }
 
     public @Unsigned long driverStartTimeUs() {
         return segment.get(LAYOUT$driverStartTimeUs, OFFSET$driverStartTimeUs);
     }
 
-    public void driverStartTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV driverStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$driverStartTimeUs, OFFSET$driverStartTimeUs, value);
+        return this;
     }
 
     public @Unsigned long driverEndTimeUs() {
         return segment.get(LAYOUT$driverEndTimeUs, OFFSET$driverEndTimeUs);
     }
 
-    public void driverEndTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV driverEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$driverEndTimeUs, OFFSET$driverEndTimeUs, value);
+        return this;
     }
 
     public @Unsigned long osRenderQueueStartTimeUs() {
         return segment.get(LAYOUT$osRenderQueueStartTimeUs, OFFSET$osRenderQueueStartTimeUs);
     }
 
-    public void osRenderQueueStartTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV osRenderQueueStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$osRenderQueueStartTimeUs, OFFSET$osRenderQueueStartTimeUs, value);
+        return this;
     }
 
     public @Unsigned long osRenderQueueEndTimeUs() {
         return segment.get(LAYOUT$osRenderQueueEndTimeUs, OFFSET$osRenderQueueEndTimeUs);
     }
 
-    public void osRenderQueueEndTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV osRenderQueueEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$osRenderQueueEndTimeUs, OFFSET$osRenderQueueEndTimeUs, value);
+        return this;
     }
 
     public @Unsigned long gpuRenderStartTimeUs() {
         return segment.get(LAYOUT$gpuRenderStartTimeUs, OFFSET$gpuRenderStartTimeUs);
     }
 
-    public void gpuRenderStartTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV gpuRenderStartTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$gpuRenderStartTimeUs, OFFSET$gpuRenderStartTimeUs, value);
+        return this;
     }
 
     public @Unsigned long gpuRenderEndTimeUs() {
         return segment.get(LAYOUT$gpuRenderEndTimeUs, OFFSET$gpuRenderEndTimeUs);
     }
 
-    public void gpuRenderEndTimeUs(@Unsigned long value) {
+    public VkLatencyTimingsFrameReportNV gpuRenderEndTimeUs(@Unsigned long value) {
         segment.set(LAYOUT$gpuRenderEndTimeUs, OFFSET$gpuRenderEndTimeUs, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

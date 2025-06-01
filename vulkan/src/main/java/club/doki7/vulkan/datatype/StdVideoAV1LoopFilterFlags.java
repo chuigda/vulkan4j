@@ -174,9 +174,10 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void loop_filter_delta_enabled(boolean value) {
+    public StdVideoAV1LoopFilterFlags loop_filter_delta_enabled(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled$reserved, LAYOUT$bitfield$loop_filter_delta_enabled$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean loop_filter_delta_update() {
@@ -184,9 +185,10 @@ public record StdVideoAV1LoopFilterFlags(@NotNull MemorySegment segment) impleme
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void loop_filter_delta_update(boolean value) {
+    public StdVideoAV1LoopFilterFlags loop_filter_delta_update(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$loop_filter_delta_enabled$reserved, LAYOUT$bitfield$loop_filter_delta_enabled$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

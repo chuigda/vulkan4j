@@ -196,8 +196,9 @@ public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePipelineRobustnessProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDevicePipelineRobustnessProperties(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePipelineRobustnessProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessStorageBuffers() {
         return segment.get(LAYOUT$defaultRobustnessStorageBuffers, OFFSET$defaultRobustnessStorageBuffers);
     }
 
-    public void defaultRobustnessStorageBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessStorageBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessStorageBuffers, OFFSET$defaultRobustnessStorageBuffers, value);
+        return this;
     }
 
     public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessUniformBuffers() {
         return segment.get(LAYOUT$defaultRobustnessUniformBuffers, OFFSET$defaultRobustnessUniformBuffers);
     }
 
-    public void defaultRobustnessUniformBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessUniformBuffers(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessUniformBuffers, OFFSET$defaultRobustnessUniformBuffers, value);
+        return this;
     }
 
     public @EnumType(VkPipelineRobustnessBufferBehavior.class) int defaultRobustnessVertexInputs() {
         return segment.get(LAYOUT$defaultRobustnessVertexInputs, OFFSET$defaultRobustnessVertexInputs);
     }
 
-    public void defaultRobustnessVertexInputs(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
+    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessVertexInputs(@EnumType(VkPipelineRobustnessBufferBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessVertexInputs, OFFSET$defaultRobustnessVertexInputs, value);
+        return this;
     }
 
     public @EnumType(VkPipelineRobustnessImageBehavior.class) int defaultRobustnessImages() {
         return segment.get(LAYOUT$defaultRobustnessImages, OFFSET$defaultRobustnessImages);
     }
 
-    public void defaultRobustnessImages(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
+    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessImages(@EnumType(VkPipelineRobustnessImageBehavior.class) int value) {
         segment.set(LAYOUT$defaultRobustnessImages, OFFSET$defaultRobustnessImages, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

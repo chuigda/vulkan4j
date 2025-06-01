@@ -86,21 +86,19 @@ class Application {
                 throw new RuntimeException("Validation layers requested, but not available");
             }
 
-            var appInfo = VkApplicationInfo.allocate(arena);
-            appInfo.pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"));
-            appInfo.applicationVersion(new Version(0, 1, 0, 0).encode());
-            appInfo.pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"));
-            appInfo.engineVersion(new Version(0, 1, 0, 0).encode());
-            appInfo.apiVersion(Version.VK_API_VERSION_1_0.encode());
+            var appInfo = VkApplicationInfo.allocate(arena)
+                    .pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"))
+                    .applicationVersion(new Version(0, 1, 0, 0).encode())
+                    .pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"))
+                    .engineVersion(new Version(0, 1, 0, 0).encode())
+                    .apiVersion(Version.VK_API_VERSION_1_0.encode());
 
-            var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena);
-            instanceCreateInfo.pApplicationInfo(appInfo);
+            var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena)
+                    .pApplicationInfo(appInfo);
 
             if (ENABLE_VALIDATION_LAYERS) {
-                instanceCreateInfo.enabledLayerCount(1);
-                PointerPtr ppEnabledLayerNames = PointerPtr.allocate(arena);
-                ppEnabledLayerNames.write(BytePtr.allocateString(arena, VALIDATION_LAYER_NAME));
-                instanceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
+                instanceCreateInfo.enabledLayerCount(1)
+                        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
 
                 var debugCreateInfo = VkDebugUtilsMessengerCreateInfoEXT.allocate(arena);
                 populateDebugMessengerCreateInfo(debugCreateInfo);
@@ -108,8 +106,8 @@ class Application {
             }
 
             var extensions = getRequiredExtensions(arena);
-            instanceCreateInfo.enabledExtensionCount((int) extensions.size());
-            instanceCreateInfo.ppEnabledExtensionNames(extensions);
+            instanceCreateInfo.enabledExtensionCount((int) extensions.size())
+                    .ppEnabledExtensionNames(extensions);
 
             var pInstance = VkInstance.Ptr.allocate(arena);
             var result = entryCommands.createInstance(instanceCreateInfo, null, pInstance);
@@ -210,13 +208,11 @@ class Application {
                 VkDebugUtilsMessageSeverityFlagsEXT.VERBOSE
                 | VkDebugUtilsMessageSeverityFlagsEXT.WARNING
                 | VkDebugUtilsMessageSeverityFlagsEXT.ERROR
-        );
-        debugUtilsMessengerCreateInfo.messageType(
+        ).messageType(
                 VkDebugUtilsMessageTypeFlagsEXT.GENERAL
                 | VkDebugUtilsMessageTypeFlagsEXT.VALIDATION
                 | VkDebugUtilsMessageTypeFlagsEXT.PERFORMANCE
-        );
-        debugUtilsMessengerCreateInfo.pfnUserCallback(UPCALL_debugCallback);
+        ).pfnUserCallback(UPCALL_debugCallback);
     }
 
     private GLFW glfw;

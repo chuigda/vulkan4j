@@ -177,48 +177,54 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
         return segment.get(LAYOUT$bufferOffset, OFFSET$bufferOffset);
     }
 
-    public void bufferOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBufferImageCopy bufferOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$bufferOffset, OFFSET$bufferOffset, value);
+        return this;
     }
 
     public @Unsigned int bufferRowLength() {
         return segment.get(LAYOUT$bufferRowLength, OFFSET$bufferRowLength);
     }
 
-    public void bufferRowLength(@Unsigned int value) {
+    public VkBufferImageCopy bufferRowLength(@Unsigned int value) {
         segment.set(LAYOUT$bufferRowLength, OFFSET$bufferRowLength, value);
+        return this;
     }
 
     public @Unsigned int bufferImageHeight() {
         return segment.get(LAYOUT$bufferImageHeight, OFFSET$bufferImageHeight);
     }
 
-    public void bufferImageHeight(@Unsigned int value) {
+    public VkBufferImageCopy bufferImageHeight(@Unsigned int value) {
         segment.set(LAYOUT$bufferImageHeight, OFFSET$bufferImageHeight, value);
+        return this;
     }
 
     public @NotNull VkImageSubresourceLayers imageSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$imageSubresource, LAYOUT$imageSubresource));
     }
 
-    public void imageSubresource(@NotNull VkImageSubresourceLayers value) {
+    public VkBufferImageCopy imageSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageSubresource, SIZE$imageSubresource);
+        return this;
     }
 
     public @NotNull VkOffset3D imageOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$imageOffset, LAYOUT$imageOffset));
     }
 
-    public void imageOffset(@NotNull VkOffset3D value) {
+    public VkBufferImageCopy imageOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageOffset, SIZE$imageOffset);
+        return this;
     }
 
     public @NotNull VkExtent3D imageExtent() {
         return new VkExtent3D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
     }
 
-    public void imageExtent(@NotNull VkExtent3D value) {
+    public VkBufferImageCopy imageExtent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

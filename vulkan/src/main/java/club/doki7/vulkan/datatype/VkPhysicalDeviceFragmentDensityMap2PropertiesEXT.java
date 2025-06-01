@@ -196,8 +196,9 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int subsampledLoads() {
         return segment.get(LAYOUT$subsampledLoads, OFFSET$subsampledLoads);
     }
 
-    public void subsampledLoads(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT subsampledLoads(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subsampledLoads, OFFSET$subsampledLoads, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int subsampledCoarseReconstructionEarlyAccess() {
         return segment.get(LAYOUT$subsampledCoarseReconstructionEarlyAccess, OFFSET$subsampledCoarseReconstructionEarlyAccess);
     }
 
-    public void subsampledCoarseReconstructionEarlyAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT subsampledCoarseReconstructionEarlyAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subsampledCoarseReconstructionEarlyAccess, OFFSET$subsampledCoarseReconstructionEarlyAccess, value);
+        return this;
     }
 
     public @Unsigned int maxSubsampledArrayLayers() {
         return segment.get(LAYOUT$maxSubsampledArrayLayers, OFFSET$maxSubsampledArrayLayers);
     }
 
-    public void maxSubsampledArrayLayers(@Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT maxSubsampledArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxSubsampledArrayLayers, OFFSET$maxSubsampledArrayLayers, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetSubsampledSamplers() {
         return segment.get(LAYOUT$maxDescriptorSetSubsampledSamplers, OFFSET$maxDescriptorSetSubsampledSamplers);
     }
 
-    public void maxDescriptorSetSubsampledSamplers(@Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT maxDescriptorSetSubsampledSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetSubsampledSamplers, OFFSET$maxDescriptorSetSubsampledSamplers, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

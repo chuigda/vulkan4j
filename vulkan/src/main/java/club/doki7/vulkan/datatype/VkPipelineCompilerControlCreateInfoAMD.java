@@ -193,8 +193,9 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCompilerControlCreateInfoAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineCompilerControlCreateInfoAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineCompilerControlFlagsAMD.class) int compilerControlFlags() {
         return segment.get(LAYOUT$compilerControlFlags, OFFSET$compilerControlFlags);
     }
 
-    public void compilerControlFlags(@EnumType(VkPipelineCompilerControlFlagsAMD.class) int value) {
+    public VkPipelineCompilerControlCreateInfoAMD compilerControlFlags(@EnumType(VkPipelineCompilerControlFlagsAMD.class) int value) {
         segment.set(LAYOUT$compilerControlFlags, OFFSET$compilerControlFlags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

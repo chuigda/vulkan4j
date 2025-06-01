@@ -196,8 +196,9 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevice16BitStorageFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDevice16BitStorageFeatures(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevice16BitStorageFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int storageBuffer16BitAccess() {
         return segment.get(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess);
     }
 
-    public void storageBuffer16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice16BitStorageFeatures storageBuffer16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int uniformAndStorageBuffer16BitAccess() {
         return segment.get(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess);
     }
 
-    public void uniformAndStorageBuffer16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice16BitStorageFeatures uniformAndStorageBuffer16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int storagePushConstant16() {
         return segment.get(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16);
     }
 
-    public void storagePushConstant16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice16BitStorageFeatures storagePushConstant16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int storageInputOutput16() {
         return segment.get(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16);
     }
 
-    public void storageInputOutput16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevice16BitStorageFeatures storageInputOutput16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -175,32 +175,36 @@ public record VkAccelerationStructureBuildRangeInfoKHR(@NotNull MemorySegment se
         return segment.get(LAYOUT$primitiveCount, OFFSET$primitiveCount);
     }
 
-    public void primitiveCount(@Unsigned int value) {
+    public VkAccelerationStructureBuildRangeInfoKHR primitiveCount(@Unsigned int value) {
         segment.set(LAYOUT$primitiveCount, OFFSET$primitiveCount, value);
+        return this;
     }
 
     public @Unsigned int primitiveOffset() {
         return segment.get(LAYOUT$primitiveOffset, OFFSET$primitiveOffset);
     }
 
-    public void primitiveOffset(@Unsigned int value) {
+    public VkAccelerationStructureBuildRangeInfoKHR primitiveOffset(@Unsigned int value) {
         segment.set(LAYOUT$primitiveOffset, OFFSET$primitiveOffset, value);
+        return this;
     }
 
     public @Unsigned int firstVertex() {
         return segment.get(LAYOUT$firstVertex, OFFSET$firstVertex);
     }
 
-    public void firstVertex(@Unsigned int value) {
+    public VkAccelerationStructureBuildRangeInfoKHR firstVertex(@Unsigned int value) {
         segment.set(LAYOUT$firstVertex, OFFSET$firstVertex, value);
+        return this;
     }
 
     public @Unsigned int transformOffset() {
         return segment.get(LAYOUT$transformOffset, OFFSET$transformOffset);
     }
 
-    public void transformOffset(@Unsigned int value) {
+    public VkAccelerationStructureBuildRangeInfoKHR transformOffset(@Unsigned int value) {
         segment.set(LAYOUT$transformOffset, OFFSET$transformOffset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

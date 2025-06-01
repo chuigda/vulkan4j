@@ -172,24 +172,27 @@ public record StdVideoEncodeH264RefListModEntry(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$modification_of_pic_nums_idc, OFFSET$modification_of_pic_nums_idc);
     }
 
-    public void modification_of_pic_nums_idc(@EnumType(StdVideoH264ModificationOfPicNumsIdc.class) int value) {
+    public StdVideoEncodeH264RefListModEntry modification_of_pic_nums_idc(@EnumType(StdVideoH264ModificationOfPicNumsIdc.class) int value) {
         segment.set(LAYOUT$modification_of_pic_nums_idc, OFFSET$modification_of_pic_nums_idc, value);
+        return this;
     }
 
     public @Unsigned short abs_diff_pic_num_minus1() {
         return segment.get(LAYOUT$abs_diff_pic_num_minus1, OFFSET$abs_diff_pic_num_minus1);
     }
 
-    public void abs_diff_pic_num_minus1(@Unsigned short value) {
+    public StdVideoEncodeH264RefListModEntry abs_diff_pic_num_minus1(@Unsigned short value) {
         segment.set(LAYOUT$abs_diff_pic_num_minus1, OFFSET$abs_diff_pic_num_minus1, value);
+        return this;
     }
 
     public @Unsigned short long_term_pic_num() {
         return segment.get(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num);
     }
 
-    public void long_term_pic_num(@Unsigned short value) {
+    public StdVideoEncodeH264RefListModEntry long_term_pic_num(@Unsigned short value) {
         segment.set(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

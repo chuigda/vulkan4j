@@ -194,8 +194,9 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkImagePipeSurfaceCreateInfoFUCHSIA(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int value) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(@EnumType(VkImagePipeSurfaceCreateFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("zx_handle_t") @Unsigned int imagePipeHandle() {
         return segment.get(LAYOUT$imagePipeHandle, OFFSET$imagePipeHandle);
     }
 
-    public void imagePipeHandle(@NativeType("zx_handle_t") @Unsigned int value) {
+    public VkImagePipeSurfaceCreateInfoFUCHSIA imagePipeHandle(@NativeType("zx_handle_t") @Unsigned int value) {
         segment.set(LAYOUT$imagePipeHandle, OFFSET$imagePipeHandle, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

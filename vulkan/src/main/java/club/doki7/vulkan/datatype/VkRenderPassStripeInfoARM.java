@@ -193,8 +193,9 @@ public record VkRenderPassStripeInfoARM(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassStripeInfoARM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkRenderPassStripeInfoARM(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassStripeInfoARM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkRect2D stripeArea() {
         return new VkRect2D(segment.asSlice(OFFSET$stripeArea, LAYOUT$stripeArea));
     }
 
-    public void stripeArea(@NotNull VkRect2D value) {
+    public VkRenderPassStripeInfoARM stripeArea(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stripeArea, SIZE$stripeArea);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

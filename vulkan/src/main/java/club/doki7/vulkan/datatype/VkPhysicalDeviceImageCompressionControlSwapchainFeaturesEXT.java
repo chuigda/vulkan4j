@@ -193,8 +193,9 @@ public record VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(@NotNu
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT(@NotNu
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int imageCompressionControlSwapchain() {
         return segment.get(LAYOUT$imageCompressionControlSwapchain, OFFSET$imageCompressionControlSwapchain);
     }
 
-    public void imageCompressionControlSwapchain(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT imageCompressionControlSwapchain(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageCompressionControlSwapchain, OFFSET$imageCompressionControlSwapchain, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

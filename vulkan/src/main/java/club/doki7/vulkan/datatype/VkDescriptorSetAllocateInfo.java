@@ -195,8 +195,9 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetAllocateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorSetAllocateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDescriptorPool descriptorPool() {
@@ -219,16 +221,18 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         return new VkDescriptorPool(s);
     }
 
-    public void descriptorPool(@Nullable VkDescriptorPool value) {
+    public VkDescriptorSetAllocateInfo descriptorPool(@Nullable VkDescriptorPool value) {
         segment.set(LAYOUT$descriptorPool, OFFSET$descriptorPool, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int descriptorSetCount() {
         return segment.get(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount);
     }
 
-    public void descriptorSetCount(@Unsigned int value) {
+    public VkDescriptorSetAllocateInfo descriptorSetCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkDescriptorSetLayout.Ptr} does not have correct {@link VkDescriptorSetLayout.Ptr#size}
@@ -243,9 +247,10 @@ public record VkDescriptorSetAllocateInfo(@NotNull MemorySegment segment) implem
         return new VkDescriptorSetLayout.Ptr(s);
     }
 
-    public void pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
+    public VkDescriptorSetAllocateInfo pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {

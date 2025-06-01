@@ -201,9 +201,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void error_resilient_mode(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags error_resilient_mode(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean disable_cdf_update() {
@@ -211,9 +212,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void disable_cdf_update(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags disable_cdf_update(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean use_superres() {
@@ -221,9 +223,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void use_superres(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags use_superres(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean render_and_frame_size_different() {
@@ -231,9 +234,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void render_and_frame_size_different(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags render_and_frame_size_different(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean allow_screen_content_tools() {
@@ -241,9 +245,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void allow_screen_content_tools(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags allow_screen_content_tools(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean is_filter_switchable() {
@@ -251,9 +256,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void is_filter_switchable(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags is_filter_switchable(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public boolean force_integer_mv() {
@@ -261,9 +267,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 6);
     }
 
-    public void force_integer_mv(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags force_integer_mv(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 6, value);
+        return this;
     }
 
     public boolean frame_size_override_flag() {
@@ -271,9 +278,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 7);
     }
 
-    public void frame_size_override_flag(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags frame_size_override_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 7, value);
+        return this;
     }
 
     public boolean buffer_removal_time_present_flag() {
@@ -281,9 +289,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 8);
     }
 
-    public void buffer_removal_time_present_flag(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags buffer_removal_time_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 8, value);
+        return this;
     }
 
     public boolean allow_intrabc() {
@@ -291,9 +300,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 9);
     }
 
-    public void allow_intrabc(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags allow_intrabc(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 9, value);
+        return this;
     }
 
     public boolean frame_refs_short_signaling() {
@@ -301,9 +311,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 10);
     }
 
-    public void frame_refs_short_signaling(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags frame_refs_short_signaling(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 10, value);
+        return this;
     }
 
     public boolean allow_high_precision_mv() {
@@ -311,9 +322,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 11);
     }
 
-    public void allow_high_precision_mv(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags allow_high_precision_mv(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 11, value);
+        return this;
     }
 
     public boolean is_motion_mode_switchable() {
@@ -321,9 +333,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 12);
     }
 
-    public void is_motion_mode_switchable(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags is_motion_mode_switchable(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 12, value);
+        return this;
     }
 
     public boolean use_ref_frame_mvs() {
@@ -331,9 +344,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 13);
     }
 
-    public void use_ref_frame_mvs(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags use_ref_frame_mvs(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 13, value);
+        return this;
     }
 
     public boolean disable_frame_end_update_cdf() {
@@ -341,9 +355,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 14);
     }
 
-    public void disable_frame_end_update_cdf(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags disable_frame_end_update_cdf(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 14, value);
+        return this;
     }
 
     public boolean allow_warped_motion() {
@@ -351,9 +366,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 15);
     }
 
-    public void allow_warped_motion(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags allow_warped_motion(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 15, value);
+        return this;
     }
 
     public boolean reduced_tx_set() {
@@ -361,9 +377,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 16);
     }
 
-    public void reduced_tx_set(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags reduced_tx_set(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 16, value);
+        return this;
     }
 
     public boolean reference_select() {
@@ -371,9 +388,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 17);
     }
 
-    public void reference_select(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags reference_select(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 17, value);
+        return this;
     }
 
     public boolean skip_mode_present() {
@@ -381,9 +399,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 18);
     }
 
-    public void skip_mode_present(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags skip_mode_present(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 18, value);
+        return this;
     }
 
     public boolean delta_q_present() {
@@ -391,9 +410,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 19);
     }
 
-    public void delta_q_present(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags delta_q_present(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 19, value);
+        return this;
     }
 
     public boolean delta_lf_present() {
@@ -401,9 +421,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 20);
     }
 
-    public void delta_lf_present(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags delta_lf_present(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 20, value);
+        return this;
     }
 
     public boolean delta_lf_multi() {
@@ -411,9 +432,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 21);
     }
 
-    public void delta_lf_multi(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags delta_lf_multi(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 21, value);
+        return this;
     }
 
     public boolean segmentation_enabled() {
@@ -421,9 +443,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 22);
     }
 
-    public void segmentation_enabled(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags segmentation_enabled(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 22, value);
+        return this;
     }
 
     public boolean segmentation_update_map() {
@@ -431,9 +454,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 23);
     }
 
-    public void segmentation_update_map(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags segmentation_update_map(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 23, value);
+        return this;
     }
 
     public boolean segmentation_temporal_update() {
@@ -441,9 +465,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 24);
     }
 
-    public void segmentation_temporal_update(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags segmentation_temporal_update(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 24, value);
+        return this;
     }
 
     public boolean segmentation_update_data() {
@@ -451,9 +476,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 25);
     }
 
-    public void segmentation_update_data(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags segmentation_update_data(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 25, value);
+        return this;
     }
 
     public boolean UsesLr() {
@@ -461,9 +487,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 26);
     }
 
-    public void UsesLr(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags UsesLr(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 26, value);
+        return this;
     }
 
     public boolean usesChromaLr() {
@@ -471,9 +498,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 27);
     }
 
-    public void usesChromaLr(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags usesChromaLr(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 27, value);
+        return this;
     }
 
     public boolean apply_grain() {
@@ -481,9 +509,10 @@ public record StdVideoDecodeAV1PictureInfoFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 28);
     }
 
-    public void apply_grain(boolean value) {
+    public StdVideoDecodeAV1PictureInfoFlags apply_grain(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$error_resilient_mode$reserved, LAYOUT$bitfield$error_resilient_mode$reserved);
         BitfieldUtil.writeBit(s, 28, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

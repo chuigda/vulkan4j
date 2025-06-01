@@ -195,8 +195,9 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewHandleInfoNVX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageViewHandleInfoNVX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImageView imageView() {
@@ -219,16 +221,18 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         return new VkImageView(s);
     }
 
-    public void imageView(@Nullable VkImageView value) {
+    public VkImageViewHandleInfoNVX imageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public void descriptorType(@EnumType(VkDescriptorType.class) int value) {
+    public VkImageViewHandleInfoNVX descriptorType(@EnumType(VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
+        return this;
     }
 
     public @Nullable VkSampler sampler() {
@@ -239,8 +243,9 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         return new VkSampler(s);
     }
 
-    public void sampler(@Nullable VkSampler value) {
+    public VkImageViewHandleInfoNVX sampler(@Nullable VkSampler value) {
         segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -197,8 +197,9 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassBeginInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassBeginInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkRenderPass renderPass() {
@@ -221,8 +223,9 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         return new VkRenderPass(s);
     }
 
-    public void renderPass(@Nullable VkRenderPass value) {
+    public VkRenderPassBeginInfo renderPass(@Nullable VkRenderPass value) {
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkFramebuffer framebuffer() {
@@ -233,29 +236,33 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         return new VkFramebuffer(s);
     }
 
-    public void framebuffer(@Nullable VkFramebuffer value) {
+    public VkRenderPassBeginInfo framebuffer(@Nullable VkFramebuffer value) {
         segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkRect2D renderArea() {
         return new VkRect2D(segment.asSlice(OFFSET$renderArea, LAYOUT$renderArea));
     }
 
-    public void renderArea(@NotNull VkRect2D value) {
+    public VkRenderPassBeginInfo renderArea(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderArea, SIZE$renderArea);
+        return this;
     }
 
     public @Unsigned int clearValueCount() {
         return segment.get(LAYOUT$clearValueCount, OFFSET$clearValueCount);
     }
 
-    public void clearValueCount(@Unsigned int value) {
+    public VkRenderPassBeginInfo clearValueCount(@Unsigned int value) {
         segment.set(LAYOUT$clearValueCount, OFFSET$clearValueCount, value);
+        return this;
     }
 
-    public void pClearValues(@Nullable IVkClearValue value) {
+    public VkRenderPassBeginInfo pClearValues(@Nullable IVkClearValue value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pClearValuesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkClearValue.Ptr pClearValues(int assumedCount) {

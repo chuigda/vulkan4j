@@ -184,88 +184,99 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return new StdVideoH265HrdFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoH265HrdFlags value) {
+    public StdVideoH265HrdParameters flags(@NotNull StdVideoH265HrdFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte tick_divisor_minus2() {
         return segment.get(LAYOUT$tick_divisor_minus2, OFFSET$tick_divisor_minus2);
     }
 
-    public void tick_divisor_minus2(@Unsigned byte value) {
+    public StdVideoH265HrdParameters tick_divisor_minus2(@Unsigned byte value) {
         segment.set(LAYOUT$tick_divisor_minus2, OFFSET$tick_divisor_minus2, value);
+        return this;
     }
 
     public @Unsigned byte du_cpb_removal_delay_increment_length_minus1() {
         return segment.get(LAYOUT$du_cpb_removal_delay_increment_length_minus1, OFFSET$du_cpb_removal_delay_increment_length_minus1);
     }
 
-    public void du_cpb_removal_delay_increment_length_minus1(@Unsigned byte value) {
+    public StdVideoH265HrdParameters du_cpb_removal_delay_increment_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$du_cpb_removal_delay_increment_length_minus1, OFFSET$du_cpb_removal_delay_increment_length_minus1, value);
+        return this;
     }
 
     public @Unsigned byte dpb_output_delay_du_length_minus1() {
         return segment.get(LAYOUT$dpb_output_delay_du_length_minus1, OFFSET$dpb_output_delay_du_length_minus1);
     }
 
-    public void dpb_output_delay_du_length_minus1(@Unsigned byte value) {
+    public StdVideoH265HrdParameters dpb_output_delay_du_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$dpb_output_delay_du_length_minus1, OFFSET$dpb_output_delay_du_length_minus1, value);
+        return this;
     }
 
     public @Unsigned byte bit_rate_scale() {
         return segment.get(LAYOUT$bit_rate_scale, OFFSET$bit_rate_scale);
     }
 
-    public void bit_rate_scale(@Unsigned byte value) {
+    public StdVideoH265HrdParameters bit_rate_scale(@Unsigned byte value) {
         segment.set(LAYOUT$bit_rate_scale, OFFSET$bit_rate_scale, value);
+        return this;
     }
 
     public @Unsigned byte cpb_size_scale() {
         return segment.get(LAYOUT$cpb_size_scale, OFFSET$cpb_size_scale);
     }
 
-    public void cpb_size_scale(@Unsigned byte value) {
+    public StdVideoH265HrdParameters cpb_size_scale(@Unsigned byte value) {
         segment.set(LAYOUT$cpb_size_scale, OFFSET$cpb_size_scale, value);
+        return this;
     }
 
     public @Unsigned byte cpb_size_du_scale() {
         return segment.get(LAYOUT$cpb_size_du_scale, OFFSET$cpb_size_du_scale);
     }
 
-    public void cpb_size_du_scale(@Unsigned byte value) {
+    public StdVideoH265HrdParameters cpb_size_du_scale(@Unsigned byte value) {
         segment.set(LAYOUT$cpb_size_du_scale, OFFSET$cpb_size_du_scale, value);
+        return this;
     }
 
     public @Unsigned byte initial_cpb_removal_delay_length_minus1() {
         return segment.get(LAYOUT$initial_cpb_removal_delay_length_minus1, OFFSET$initial_cpb_removal_delay_length_minus1);
     }
 
-    public void initial_cpb_removal_delay_length_minus1(@Unsigned byte value) {
+    public StdVideoH265HrdParameters initial_cpb_removal_delay_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$initial_cpb_removal_delay_length_minus1, OFFSET$initial_cpb_removal_delay_length_minus1, value);
+        return this;
     }
 
     public @Unsigned byte au_cpb_removal_delay_length_minus1() {
         return segment.get(LAYOUT$au_cpb_removal_delay_length_minus1, OFFSET$au_cpb_removal_delay_length_minus1);
     }
 
-    public void au_cpb_removal_delay_length_minus1(@Unsigned byte value) {
+    public StdVideoH265HrdParameters au_cpb_removal_delay_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$au_cpb_removal_delay_length_minus1, OFFSET$au_cpb_removal_delay_length_minus1, value);
+        return this;
     }
 
     public @Unsigned byte dpb_output_delay_length_minus1() {
         return segment.get(LAYOUT$dpb_output_delay_length_minus1, OFFSET$dpb_output_delay_length_minus1);
     }
 
-    public void dpb_output_delay_length_minus1(@Unsigned byte value) {
+    public StdVideoH265HrdParameters dpb_output_delay_length_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$dpb_output_delay_length_minus1, OFFSET$dpb_output_delay_length_minus1, value);
+        return this;
     }
 
     public @Unsigned BytePtr cpb_cnt_minus1() {
         return new BytePtr(cpb_cnt_minus1Raw());
     }
 
-    public void cpb_cnt_minus1(@Unsigned BytePtr value) {
+    public StdVideoH265HrdParameters cpb_cnt_minus1(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_cnt_minus1, SIZE$cpb_cnt_minus1);
+        return this;
     }
 
     public MemorySegment cpb_cnt_minus1Raw() {
@@ -276,8 +287,9 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         return new ShortPtr(elemental_duration_in_tc_minus1Raw());
     }
 
-    public void elemental_duration_in_tc_minus1(@Unsigned ShortPtr value) {
+    public StdVideoH265HrdParameters elemental_duration_in_tc_minus1(@Unsigned ShortPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$elemental_duration_in_tc_minus1, SIZE$elemental_duration_in_tc_minus1);
+        return this;
     }
 
     public MemorySegment elemental_duration_in_tc_minus1Raw() {
@@ -285,9 +297,10 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
     }
 
 
-    public void pSubLayerHrdParametersNal(@Nullable IStdVideoH265SubLayerHrdParameters value) {
+    public StdVideoH265HrdParameters pSubLayerHrdParametersNal(@Nullable IStdVideoH265SubLayerHrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubLayerHrdParametersNalRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265SubLayerHrdParameters.Ptr pSubLayerHrdParametersNal(int assumedCount) {
@@ -316,9 +329,10 @@ public record StdVideoH265HrdParameters(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pSubLayerHrdParametersNal, OFFSET$pSubLayerHrdParametersNal, value);
     }
 
-    public void pSubLayerHrdParametersVcl(@Nullable IStdVideoH265SubLayerHrdParameters value) {
+    public StdVideoH265HrdParameters pSubLayerHrdParametersVcl(@Nullable IStdVideoH265SubLayerHrdParameters value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubLayerHrdParametersVclRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265SubLayerHrdParameters.Ptr pSubLayerHrdParametersVcl(int assumedCount) {

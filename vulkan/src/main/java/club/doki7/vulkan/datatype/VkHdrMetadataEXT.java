@@ -200,8 +200,9 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkHdrMetadataEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkHdrMetadataEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkXYColorEXT displayPrimaryRed() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$displayPrimaryRed, LAYOUT$displayPrimaryRed));
     }
 
-    public void displayPrimaryRed(@NotNull VkXYColorEXT value) {
+    public VkHdrMetadataEXT displayPrimaryRed(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryRed, SIZE$displayPrimaryRed);
+        return this;
     }
 
     public @NotNull VkXYColorEXT displayPrimaryGreen() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$displayPrimaryGreen, LAYOUT$displayPrimaryGreen));
     }
 
-    public void displayPrimaryGreen(@NotNull VkXYColorEXT value) {
+    public VkHdrMetadataEXT displayPrimaryGreen(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryGreen, SIZE$displayPrimaryGreen);
+        return this;
     }
 
     public @NotNull VkXYColorEXT displayPrimaryBlue() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$displayPrimaryBlue, LAYOUT$displayPrimaryBlue));
     }
 
-    public void displayPrimaryBlue(@NotNull VkXYColorEXT value) {
+    public VkHdrMetadataEXT displayPrimaryBlue(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryBlue, SIZE$displayPrimaryBlue);
+        return this;
     }
 
     public @NotNull VkXYColorEXT whitePoint() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$whitePoint, LAYOUT$whitePoint));
     }
 
-    public void whitePoint(@NotNull VkXYColorEXT value) {
+    public VkHdrMetadataEXT whitePoint(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$whitePoint, SIZE$whitePoint);
+        return this;
     }
 
     public float maxLuminance() {
         return segment.get(LAYOUT$maxLuminance, OFFSET$maxLuminance);
     }
 
-    public void maxLuminance(float value) {
+    public VkHdrMetadataEXT maxLuminance(float value) {
         segment.set(LAYOUT$maxLuminance, OFFSET$maxLuminance, value);
+        return this;
     }
 
     public float minLuminance() {
         return segment.get(LAYOUT$minLuminance, OFFSET$minLuminance);
     }
 
-    public void minLuminance(float value) {
+    public VkHdrMetadataEXT minLuminance(float value) {
         segment.set(LAYOUT$minLuminance, OFFSET$minLuminance, value);
+        return this;
     }
 
     public float maxContentLightLevel() {
         return segment.get(LAYOUT$maxContentLightLevel, OFFSET$maxContentLightLevel);
     }
 
-    public void maxContentLightLevel(float value) {
+    public VkHdrMetadataEXT maxContentLightLevel(float value) {
         segment.set(LAYOUT$maxContentLightLevel, OFFSET$maxContentLightLevel, value);
+        return this;
     }
 
     public float maxFrameAverageLightLevel() {
         return segment.get(LAYOUT$maxFrameAverageLightLevel, OFFSET$maxFrameAverageLightLevel);
     }
 
-    public void maxFrameAverageLightLevel(float value) {
+    public VkHdrMetadataEXT maxFrameAverageLightLevel(float value) {
         segment.set(LAYOUT$maxFrameAverageLightLevel, OFFSET$maxFrameAverageLightLevel, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

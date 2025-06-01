@@ -195,8 +195,9 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalSemaphoreProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkExternalSemaphoreProperties(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExternalSemaphoreProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public void exportFromImportedHandleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkExternalSemaphoreProperties exportFromImportedHandleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
+        return this;
     }
 
     public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public void compatibleHandleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkExternalSemaphoreProperties compatibleHandleTypes(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
+        return this;
     }
 
     public @EnumType(VkExternalSemaphoreFeatureFlags.class) int externalSemaphoreFeatures() {
         return segment.get(LAYOUT$externalSemaphoreFeatures, OFFSET$externalSemaphoreFeatures);
     }
 
-    public void externalSemaphoreFeatures(@EnumType(VkExternalSemaphoreFeatureFlags.class) int value) {
+    public VkExternalSemaphoreProperties externalSemaphoreFeatures(@EnumType(VkExternalSemaphoreFeatureFlags.class) int value) {
         segment.set(LAYOUT$externalSemaphoreFeatures, OFFSET$externalSemaphoreFeatures, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

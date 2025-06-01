@@ -193,8 +193,9 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMetalDeviceInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExportMetalDeviceInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="MTLDevice_id") MemorySegment mtlDevice() {
@@ -217,8 +219,9 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$mtlDevice, OFFSET$mtlDevice, value);
     }
 
-    public void mtlDevice(@Nullable IPointer pointer) {
+    public VkExportMetalDeviceInfoEXT mtlDevice(@Nullable IPointer pointer) {
         mtlDevice(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

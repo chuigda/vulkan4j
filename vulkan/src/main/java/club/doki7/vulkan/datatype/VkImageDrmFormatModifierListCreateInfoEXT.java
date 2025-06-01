@@ -194,8 +194,9 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageDrmFormatModifierListCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageDrmFormatModifierListCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int drmFormatModifierCount() {
         return segment.get(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount);
     }
 
-    public void drmFormatModifierCount(@Unsigned int value) {
+    public VkImageDrmFormatModifierListCreateInfoEXT drmFormatModifierCount(@Unsigned int value) {
         segment.set(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount, value);
+        return this;
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -230,9 +233,10 @@ public record VkImageDrmFormatModifierListCreateInfoEXT(@NotNull MemorySegment s
         return new LongPtr(s);
     }
 
-    public void pDrmFormatModifiers(@Nullable @Unsigned LongPtr value) {
+    public VkImageDrmFormatModifierListCreateInfoEXT pDrmFormatModifiers(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDrmFormatModifiersRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pDrmFormatModifiersRaw() {

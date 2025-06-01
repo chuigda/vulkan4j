@@ -195,8 +195,9 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkScreenSurfaceCreateInfoQNX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkScreenSurfaceCreateInfoQNX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkScreenSurfaceCreateFlagsQNX.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkScreenSurfaceCreateFlagsQNX.class) int value) {
+    public VkScreenSurfaceCreateInfoQNX flags(@EnumType(VkScreenSurfaceCreateFlagsQNX.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -230,9 +233,10 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         return new PointerPtr(s);
     }
 
-    public void context(@Nullable PointerPtr value) {
+    public VkScreenSurfaceCreateInfoQNX context(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         contextRaw(s);
+        return this;
     }
 
     public @Pointer(comment="_screen_context*") MemorySegment contextRaw() {
@@ -254,9 +258,10 @@ public record VkScreenSurfaceCreateInfoQNX(@NotNull MemorySegment segment) imple
         return new PointerPtr(s);
     }
 
-    public void window(@Nullable PointerPtr value) {
+    public VkScreenSurfaceCreateInfoQNX window(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         windowRaw(s);
+        return this;
     }
 
     public @Pointer(comment="_screen_window*") MemorySegment windowRaw() {

@@ -196,8 +196,9 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceCounterDescriptionKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,24 +209,27 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPerformanceCounterDescriptionKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPerformanceCounterDescriptionFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPerformanceCounterDescriptionFlagsKHR.class) int value) {
+    public VkPerformanceCounterDescriptionKHR flags(@EnumType(VkPerformanceCounterDescriptionFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public BytePtr name() {
         return new BytePtr(nameRaw());
     }
 
-    public void name(BytePtr value) {
+    public VkPerformanceCounterDescriptionKHR name(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        return this;
     }
 
     public MemorySegment nameRaw() {
@@ -236,8 +240,9 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return new BytePtr(categoryRaw());
     }
 
-    public void category(BytePtr value) {
+    public VkPerformanceCounterDescriptionKHR category(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$category, SIZE$category);
+        return this;
     }
 
     public MemorySegment categoryRaw() {
@@ -248,8 +253,9 @@ public record VkPerformanceCounterDescriptionKHR(@NotNull MemorySegment segment)
         return new BytePtr(descriptionRaw());
     }
 
-    public void description(BytePtr value) {
+    public VkPerformanceCounterDescriptionKHR description(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        return this;
     }
 
     public MemorySegment descriptionRaw() {

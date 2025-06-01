@@ -177,24 +177,27 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         return new VkImageSubresource(segment.asSlice(OFFSET$subresource, LAYOUT$subresource));
     }
 
-    public void subresource(@NotNull VkImageSubresource value) {
+    public VkSparseImageMemoryBind subresource(@NotNull VkImageSubresource value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresource, SIZE$subresource);
+        return this;
     }
 
     public @NotNull VkOffset3D offset() {
         return new VkOffset3D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
     }
 
-    public void offset(@NotNull VkOffset3D value) {
+    public VkSparseImageMemoryBind offset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
+        return this;
     }
 
     public @NotNull VkExtent3D extent() {
         return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(@NotNull VkExtent3D value) {
+    public VkSparseImageMemoryBind extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+        return this;
     }
 
     public @Nullable VkDeviceMemory memory() {
@@ -205,24 +208,27 @@ public record VkSparseImageMemoryBind(@NotNull MemorySegment segment) implements
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@Nullable VkDeviceMemory value) {
+    public VkSparseImageMemoryBind memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSparseImageMemoryBind memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+        return this;
     }
 
     public @EnumType(VkSparseMemoryBindFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
+    public VkSparseImageMemoryBind flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

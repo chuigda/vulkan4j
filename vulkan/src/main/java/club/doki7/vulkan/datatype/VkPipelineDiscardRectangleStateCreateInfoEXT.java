@@ -196,8 +196,9 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,37 +209,42 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT flags(@EnumType(VkPipelineDiscardRectangleStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkDiscardRectangleModeEXT.class) int discardRectangleMode() {
         return segment.get(LAYOUT$discardRectangleMode, OFFSET$discardRectangleMode);
     }
 
-    public void discardRectangleMode(@EnumType(VkDiscardRectangleModeEXT.class) int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT discardRectangleMode(@EnumType(VkDiscardRectangleModeEXT.class) int value) {
         segment.set(LAYOUT$discardRectangleMode, OFFSET$discardRectangleMode, value);
+        return this;
     }
 
     public @Unsigned int discardRectangleCount() {
         return segment.get(LAYOUT$discardRectangleCount, OFFSET$discardRectangleCount);
     }
 
-    public void discardRectangleCount(@Unsigned int value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT discardRectangleCount(@Unsigned int value) {
         segment.set(LAYOUT$discardRectangleCount, OFFSET$discardRectangleCount, value);
+        return this;
     }
 
-    public void pDiscardRectangles(@Nullable IVkRect2D value) {
+    public VkPipelineDiscardRectangleStateCreateInfoEXT pDiscardRectangles(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDiscardRectanglesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRect2D.Ptr pDiscardRectangles(int assumedCount) {

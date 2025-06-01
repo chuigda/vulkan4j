@@ -199,8 +199,9 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindDescriptorSetsInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,16 +212,18 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindDescriptorSetsInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkBindDescriptorSetsInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+        return this;
     }
 
     public @Nullable VkPipelineLayout layout() {
@@ -231,24 +234,27 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkBindDescriptorSetsInfo layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int firstSet() {
         return segment.get(LAYOUT$firstSet, OFFSET$firstSet);
     }
 
-    public void firstSet(@Unsigned int value) {
+    public VkBindDescriptorSetsInfo firstSet(@Unsigned int value) {
         segment.set(LAYOUT$firstSet, OFFSET$firstSet, value);
+        return this;
     }
 
     public @Unsigned int descriptorSetCount() {
         return segment.get(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount);
     }
 
-    public void descriptorSetCount(@Unsigned int value) {
+    public VkBindDescriptorSetsInfo descriptorSetCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorSetCount, OFFSET$descriptorSetCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkDescriptorSet.Ptr} does not have correct {@link VkDescriptorSet.Ptr#size}
@@ -263,9 +269,10 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return new VkDescriptorSet.Ptr(s);
     }
 
-    public void pDescriptorSets(@Nullable VkDescriptorSet.Ptr value) {
+    public VkBindDescriptorSetsInfo pDescriptorSets(@Nullable VkDescriptorSet.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorSetsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDescriptorSet.class) MemorySegment pDescriptorSetsRaw() {
@@ -280,8 +287,9 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount);
     }
 
-    public void dynamicOffsetCount(@Unsigned int value) {
+    public VkBindDescriptorSetsInfo dynamicOffsetCount(@Unsigned int value) {
         segment.set(LAYOUT$dynamicOffsetCount, OFFSET$dynamicOffsetCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -296,9 +304,10 @@ public record VkBindDescriptorSetsInfo(@NotNull MemorySegment segment) implement
         return new IntPtr(s);
     }
 
-    public void pDynamicOffsets(@Nullable @Unsigned IntPtr value) {
+    public VkBindDescriptorSetsInfo pDynamicOffsets(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDynamicOffsetsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pDynamicOffsetsRaw() {
