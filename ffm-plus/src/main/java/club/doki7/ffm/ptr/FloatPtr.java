@@ -165,7 +165,7 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     public static @NotNull FloatPtr allocateV(@NotNull Arena arena, float ...array) {
-        return new allocate(arena, array);
+        return allocate(arena, array);
     }
 
     /// Allocate a new {@link FloatPtr} in {@code arena} and copy the contents of {@code buffer} into
