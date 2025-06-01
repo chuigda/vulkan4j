@@ -601,13 +601,13 @@ class Application {
                 pAttachments.write(0, swapChainImageViews.read(i));
                 pAttachments.write(1, depthImageView);
 
-                var framebufferInfo = VkFramebufferCreateInfo.allocate(arena);
-                framebufferInfo.renderPass(renderPass);
-                framebufferInfo.attachmentCount(2);
-                framebufferInfo.pAttachments(pAttachments);
-                framebufferInfo.width(swapChainExtent.width());
-                framebufferInfo.height(swapChainExtent.height());
-                framebufferInfo.layers(1);
+                var framebufferInfo = VkFramebufferCreateInfo.allocate(arena)
+                        .renderPass(renderPass)
+                        .attachmentCount(2)
+                        .pAttachments(pAttachments)
+                        .width(swapChainExtent.width())
+                        .height(swapChainExtent.height())
+                        .layers(1);
 
                 var pFramebuffer = swapChainFramebuffers.offset(i);
                 var result = deviceCommands.createFramebuffer(device, framebufferInfo, null, pFramebuffer);
@@ -1425,10 +1425,9 @@ class Application {
                 var width = pWidth.read();
                 var height = pHeight.read();
 
-                var actualExtent = VkExtent2D.allocate(arena);
-                actualExtent.width(Math.clamp(width, capabilities.minImageExtent().width(), capabilities.maxImageExtent().width()));
-                actualExtent.height(Math.clamp(height, capabilities.minImageExtent().height(), capabilities.maxImageExtent().height()));
-                return actualExtent;
+                return VkExtent2D.allocate(arena)
+                        .width(Math.clamp(width, capabilities.minImageExtent().width(), capabilities.maxImageExtent().width()))
+                        .height(Math.clamp(height, capabilities.minImageExtent().height(), capabilities.maxImageExtent().height()));
             }
         }
     }
@@ -1437,7 +1436,7 @@ class Application {
         try (var arena = Arena.ofConfined()) {
             var createInfo = VkShaderModuleCreateInfo.allocate(arena)
                     .codeSize(code.size() * Integer.BYTES)
-                    .pCode(code);;
+                    .pCode(code);
 
             var pShaderModule = VkShaderModule.Ptr.allocate(arena);
             var result = deviceCommands.createShaderModule(device, createInfo, null, pShaderModule);
@@ -1913,7 +1912,7 @@ class Application {
                         .x(mipWidth > 1 ? mipWidth / 2 : 1)
                         .y(mipHeight > 1 ? mipHeight / 2 : 1)
                         .z(1);
-                var dstSubresource = blit.dstSubresource()
+                blit.dstSubresource()
                         .aspectMask(VkImageAspectFlags.COLOR)
                         .mipLevel(i)
                         .baseArrayLayer(0)

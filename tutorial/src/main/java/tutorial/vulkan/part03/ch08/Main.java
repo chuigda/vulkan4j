@@ -557,10 +557,9 @@ class Application {
                 var width = pWidth.read();
                 var height = pHeight.read();
 
-                var actualExtent = VkExtent2D.allocate(arena);
-                actualExtent.width(Math.clamp(width, capabilities.minImageExtent().width(), capabilities.maxImageExtent().width()));
-                actualExtent.height(Math.clamp(height, capabilities.minImageExtent().height(), capabilities.maxImageExtent().height()));
-                return actualExtent;
+                return VkExtent2D.allocate(arena)
+                        .width(Math.clamp(width, capabilities.minImageExtent().width(), capabilities.maxImageExtent().width()))
+                        .height(Math.clamp(height, capabilities.minImageExtent().height(), capabilities.maxImageExtent().height()));
             }
         }
     }
