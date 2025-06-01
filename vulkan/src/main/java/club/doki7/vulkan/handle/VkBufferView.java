@@ -126,6 +126,17 @@ public record VkBufferView(@NotNull MemorySegment segment) implements IPointer {
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
 
+        public static Ptr allocate(Arena arena, VkBufferView @Nullable values[]) {
+            Ptr ret = allocate(arena, values.length);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i, values[i] != null ? values[i].segment() : MemorySegment.NULL);
+            }
+            return ret;
+        }
+
+        public static Ptr allocateV(Arena arena, @Nullable VkBufferView ...values) {
+            return allocate(arena, values);
+        }
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());
