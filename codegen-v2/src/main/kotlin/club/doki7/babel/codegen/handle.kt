@@ -199,6 +199,7 @@ fun generateHandle(
             defun("public static", "Ptr", "allocateV", "Arena arena", "@Nullable $className ...values") {
                 +"return allocate(arena, values);";
             }
+            +""
 
             +"@Override"
             defun("public", "@NotNull Iter", "iterator") {
