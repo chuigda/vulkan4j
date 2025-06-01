@@ -144,6 +144,22 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
         return new PointerPtr(arena.allocate(ValueLayout.ADDRESS, size));
     }
 
+    public static @NotNull PointerPtr allocateV(@NotNull Arena arena, @NotNull IPointer ...pointers) {
+        PointerPtr ret = allocate(arena, pointers.length);
+        for (int i = 0; i < pointers.length; i++) {
+            ret.write(i, pointers[i].segment());
+        }
+        return ret;
+    }
+
+    public static @NotNull PointerPtr allocateV(@NotNull Arena arena, MemorySegment ...segments) {
+        PointerPtr ret = allocate(arena, segments.length);
+        for (int i = 0; i < segments.length; i++) {
+            ret.write(i, segments[i]);
+        }
+        return ret;
+    }
+
     /// An iterator over the pointers.
     public static final class Iter implements Iterator<MemorySegment> {
         Iter(@NotNull MemorySegment segment) {

@@ -165,6 +165,10 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
         return new LongPtr(arena.allocateFrom(ValueLayout.JAVA_LONG, array));
     }
 
+    public static @NotNull LongPtr allocateV(@NotNull Arena arena, long ...array) {
+        return allocate(arena, array);
+    }
+
     /// Allocate a new {@link LongPtr} in {@code arena} and copy the contents of {@code buffer} into
     /// the newly allocated {@link LongPtr}.
     ///
