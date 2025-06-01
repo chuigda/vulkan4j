@@ -176,8 +176,11 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
         return new BytePtr(arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes));
     }
 
-    public static @NotNull BytePtr allocateV(@NotNull Arena arena, byte ...bytes) {
-        return allocate(arena, bytes);
+    public static @NotNull BytePtr allocateV(@NotNull Arena arena, byte ...values) {
+        if (values.length == 0) {
+            throw new IllegalArgumentException("allocateV: bytes must not be empty");
+        }
+        return allocate(arena, values);
     }
 
     /// Allocate a new {@link BytePtr} in {@code arena} and copy the contents of {@code buffer} into

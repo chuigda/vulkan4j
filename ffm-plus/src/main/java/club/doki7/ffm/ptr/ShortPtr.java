@@ -166,8 +166,11 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
         return new ShortPtr(arena.allocateFrom(ValueLayout.JAVA_SHORT, array));
     }
 
-    public static @NotNull ShortPtr allocateV(@NotNull Arena arena, short ...array) {
-        return allocate(arena, array);
+    public static @NotNull ShortPtr allocateV(@NotNull Arena arena, short ...values) {
+        if (values.length == 0) {
+            throw new IllegalArgumentException("allocateV: values must not be empty");
+        }
+        return allocate(arena, values);
     }
 
     /// Allocate a new {@link ShortPtr} in {@code arena} and copy the contents of {@code buffer} into

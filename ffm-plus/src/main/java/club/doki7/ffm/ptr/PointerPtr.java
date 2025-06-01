@@ -145,6 +145,10 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
     }
 
     public static @NotNull PointerPtr allocateV(@NotNull Arena arena, @NotNull IPointer ...pointers) {
+        if (pointers.length == 0) {
+            throw new IllegalArgumentException("allocateV: pointers must not be empty");
+        }
+
         PointerPtr ret = allocate(arena, pointers.length);
         for (int i = 0; i < pointers.length; i++) {
             ret.write(i, pointers[i].segment());
@@ -153,6 +157,10 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
     }
 
     public static @NotNull PointerPtr allocateV(@NotNull Arena arena, MemorySegment ...segments) {
+        if (segments.length == 0) {
+            throw new IllegalArgumentException("allocateV: segments must not be empty");
+        }
+
         PointerPtr ret = allocate(arena, segments.length);
         for (int i = 0; i < segments.length; i++) {
             ret.write(i, segments[i]);

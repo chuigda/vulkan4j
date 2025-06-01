@@ -197,7 +197,12 @@ fun generateHandle(
             +""
 
             defun("public static", "Ptr", "allocateV", "Arena arena", "@Nullable $className ...values") {
-                +"return allocate(arena, values);";
+                +"if (values.length == 0) {"
+                indent {
+                    +"throw new IllegalArgumentException(\"allocateV: values must not be empty\");"
+                }
+                +"}"
+                +"return allocate(arena, values);"
             }
             +""
 
