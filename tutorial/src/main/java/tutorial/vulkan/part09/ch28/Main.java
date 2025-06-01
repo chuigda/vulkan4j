@@ -1035,7 +1035,8 @@ class Application {
         var pImageAvailableSemaphore = pImageAvailableSemaphores.offset(currentFrame);
         var inFlightFence = pInFlightFence.read();
         var imageAvailableSemaphore = pImageAvailableSemaphore.read();
-        var commandBuffer = pCommandBuffers.read(currentFrame);
+        var pCommandBuffer = pCommandBuffers.offset(currentFrame);
+        var commandBuffer = pCommandBuffer.read(currentFrame);
 
         try (var arena = Arena.ofConfined()) {
             deviceCommands.waitForFences(device, 1, pInFlightFence, VkConstants.TRUE, NativeLayout.UINT64_MAX);
@@ -1071,7 +1072,7 @@ class Application {
                     .pWaitSemaphores(pImageAvailableSemaphore)
                     .pWaitDstStageMask(IntPtr.allocateV(arena, VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT))
                     .commandBufferCount(1)
-                    .pCommandBuffers(VkCommandBuffer.Ptr.allocateV(arena, commandBuffer))
+                    .pCommandBuffers(pCommandBuffer)
                     .signalSemaphoreCount(1)
                     .pSignalSemaphores(pRenderFinishedSemaphore);
 

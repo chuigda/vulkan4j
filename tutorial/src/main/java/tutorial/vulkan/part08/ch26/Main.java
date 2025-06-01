@@ -383,43 +383,40 @@ class Application {
 
     private void createRenderPass() {
         try (var arena = Arena.ofConfined()) {
-            var colorAttachment = VkAttachmentDescription.allocate(arena);
-            colorAttachment.format(swapChainImageFormat);
-            colorAttachment.samples(VkSampleCountFlags._1);
+            var colorAttachment = VkAttachmentDescription.allocate(arena)
+                    .format(swapChainImageFormat)
+                    .samples(VkSampleCountFlags._1)
+                    .loadOp(VkAttachmentLoadOp.CLEAR)
+                    .storeOp(VkAttachmentStoreOp.STORE)
+                    .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+                    .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+                    .initialLayout(VkImageLayout.UNDEFINED)
+                    .finalLayout(VkImageLayout.PRESENT_SRC_KHR);
 
-            colorAttachment.loadOp(VkAttachmentLoadOp.CLEAR);
-            colorAttachment.storeOp(VkAttachmentStoreOp.STORE);
-            colorAttachment.stencilLoadOp(VkAttachmentLoadOp.DONT_CARE);
-            colorAttachment.stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
+            var colorAttachmentRef = VkAttachmentReference.allocate(arena)
+                    .attachment(0)
+                    .layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
 
-            colorAttachment.initialLayout(VkImageLayout.UNDEFINED);
-            colorAttachment.finalLayout(VkImageLayout.PRESENT_SRC_KHR);
+            var subpass = VkSubpassDescription.allocate(arena)
+                    .pipelineBindPoint(VkPipelineBindPoint.GRAPHICS)
+                    .colorAttachmentCount(1)
+                    .pColorAttachments(colorAttachmentRef);
 
-            var colorAttachmentRef = VkAttachmentReference.allocate(arena);
-            colorAttachmentRef.attachment(0);
-            colorAttachmentRef.layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
+            var dependency = VkSubpassDependency.allocate(arena)
+                    .srcSubpass(VkConstants.SUBPASS_EXTERNAL)
+                    .dstSubpass(0)
+                    .srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT)
+                    .srcAccessMask(0)
+                    .dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT)
+                    .dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE);
 
-            var subpass = VkSubpassDescription.allocate(arena);
-            subpass.pipelineBindPoint(VkPipelineBindPoint.GRAPHICS);
-            subpass.colorAttachmentCount(1);
-            subpass.pColorAttachments(colorAttachmentRef);
-
-            var dependency = VkSubpassDependency.allocate(arena);
-            dependency.srcSubpass(VkConstants.SUBPASS_EXTERNAL);
-            dependency.dstSubpass(0);
-            dependency.srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
-            dependency.srcAccessMask(0);
-            dependency.dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
-            dependency.dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE);
-
-            var renderPassInfo = VkRenderPassCreateInfo.allocate(arena);
-            renderPassInfo.attachmentCount(1);
-            renderPassInfo.pAttachments(colorAttachment);
-            renderPassInfo.subpassCount(1);
-            renderPassInfo.pSubpasses(subpass);
-
-            renderPassInfo.dependencyCount(1);
-            renderPassInfo.pDependencies(dependency);
+            var renderPassInfo = VkRenderPassCreateInfo.allocate(arena)
+                    .attachmentCount(1)
+                    .pAttachments(colorAttachment)
+                    .subpassCount(1)
+                    .pSubpasses(subpass)
+                    .dependencyCount(1)
+                    .pDependencies(dependency);
 
             var pRenderPass = VkRenderPass.Ptr.allocate(arena);
             var result = deviceCommands.createRenderPass(device, renderPassInfo, null, pRenderPass);
@@ -939,7 +936,8 @@ class Application {
         var pImageAvailableSemaphore = pImageAvailableSemaphores.offset(currentFrame);
         var inFlightFence = pInFlightFence.read();
         var imageAvailableSemaphore = pImageAvailableSemaphore.read();
-        var commandBuffer = pCommandBuffers.read(currentFrame);
+        var pCommandBuffer = pCommandBuffers.offset(currentFrame);
+        var commandBuffer = pCommandBuffer.read(currentFrame);
 
         try (var arena = Arena.ofConfined()) {
             deviceCommands.waitForFences(device, 1, pInFlightFence, VkConstants.TRUE, NativeLayout.UINT64_MAX);
@@ -975,7 +973,7 @@ class Application {
                     .pWaitSemaphores(pImageAvailableSemaphore)
                     .pWaitDstStageMask(IntPtr.allocateV(arena, VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT))
                     .commandBufferCount(1)
-                    .pCommandBuffers(VkCommandBuffer.Ptr.allocateV(arena, commandBuffer))
+                    .pCommandBuffers(pCommandBuffer)
                     .signalSemaphoreCount(1)
                     .pSignalSemaphores(pRenderFinishedSemaphore);
 
