@@ -195,8 +195,9 @@ public record VkPhysicalDeviceFragmentShadingRateFeaturesKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceFragmentShadingRateFeaturesKHR(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int pipelineFragmentShadingRate() {
         return segment.get(LAYOUT$pipelineFragmentShadingRate, OFFSET$pipelineFragmentShadingRate);
     }
 
-    public void pipelineFragmentShadingRate(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR pipelineFragmentShadingRate(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineFragmentShadingRate, OFFSET$pipelineFragmentShadingRate, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int primitiveFragmentShadingRate() {
         return segment.get(LAYOUT$primitiveFragmentShadingRate, OFFSET$primitiveFragmentShadingRate);
     }
 
-    public void primitiveFragmentShadingRate(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR primitiveFragmentShadingRate(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveFragmentShadingRate, OFFSET$primitiveFragmentShadingRate, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int attachmentFragmentShadingRate() {
         return segment.get(LAYOUT$attachmentFragmentShadingRate, OFFSET$attachmentFragmentShadingRate);
     }
 
-    public void attachmentFragmentShadingRate(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR attachmentFragmentShadingRate(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$attachmentFragmentShadingRate, OFFSET$attachmentFragmentShadingRate, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

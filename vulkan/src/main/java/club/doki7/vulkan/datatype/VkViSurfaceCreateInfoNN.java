@@ -194,8 +194,9 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkViSurfaceCreateInfoNN sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkViSurfaceCreateInfoNN pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkViSurfaceCreateFlagsNN.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkViSurfaceCreateFlagsNN.class) int value) {
+    public VkViSurfaceCreateInfoNN flags(@EnumType(VkViSurfaceCreateFlagsNN.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment window() {
@@ -226,8 +229,9 @@ public record VkViSurfaceCreateInfoNN(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$window, OFFSET$window, value);
     }
 
-    public void window(@Nullable IPointer pointer) {
+    public VkViSurfaceCreateInfoNN window(@Nullable IPointer pointer) {
         window(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueueFamilyGlobalPriorityProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkQueueFamilyGlobalPriorityProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int priorityCount() {
         return segment.get(LAYOUT$priorityCount, OFFSET$priorityCount);
     }
 
-    public void priorityCount(@Unsigned int value) {
+    public VkQueueFamilyGlobalPriorityProperties priorityCount(@Unsigned int value) {
         segment.set(LAYOUT$priorityCount, OFFSET$priorityCount, value);
+        return this;
     }
 
     public @EnumType(VkQueueGlobalPriority.class) IntPtr priorities() {
         return new IntPtr(prioritiesRaw());
     }
 
-    public void priorities(@EnumType(VkQueueGlobalPriority.class) IntPtr value) {
+    public VkQueueFamilyGlobalPriorityProperties priorities(@EnumType(VkQueueGlobalPriority.class) IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$priorities, SIZE$priorities);
+        return this;
     }
 
     public MemorySegment prioritiesRaw() {

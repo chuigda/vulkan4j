@@ -194,8 +194,9 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryUnmapInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMemoryUnmapInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkMemoryUnmapFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkMemoryUnmapFlags.class) int value) {
+    public VkMemoryUnmapInfo flags(@EnumType(VkMemoryUnmapFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkDeviceMemory memory() {
@@ -226,8 +229,9 @@ public record VkMemoryUnmapInfo(@NotNull MemorySegment segment) implements IVkMe
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@Nullable VkDeviceMemory value) {
+    public VkMemoryUnmapInfo memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

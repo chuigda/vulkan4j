@@ -194,8 +194,9 @@ public record VkPhysicalDeviceCooperativeVectorFeaturesNV(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCooperativeVectorFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceCooperativeVectorFeaturesNV(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCooperativeVectorFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int cooperativeVector() {
         return segment.get(LAYOUT$cooperativeVector, OFFSET$cooperativeVector);
     }
 
-    public void cooperativeVector(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCooperativeVectorFeaturesNV cooperativeVector(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeVector, OFFSET$cooperativeVector, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int cooperativeVectorTraining() {
         return segment.get(LAYOUT$cooperativeVectorTraining, OFFSET$cooperativeVectorTraining);
     }
 
-    public void cooperativeVectorTraining(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCooperativeVectorFeaturesNV cooperativeVectorTraining(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTraining, OFFSET$cooperativeVectorTraining, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

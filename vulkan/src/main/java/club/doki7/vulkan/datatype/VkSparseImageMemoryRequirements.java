@@ -176,40 +176,45 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         return new VkSparseImageFormatProperties(segment.asSlice(OFFSET$formatProperties, LAYOUT$formatProperties));
     }
 
-    public void formatProperties(@NotNull VkSparseImageFormatProperties value) {
+    public VkSparseImageMemoryRequirements formatProperties(@NotNull VkSparseImageFormatProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$formatProperties, SIZE$formatProperties);
+        return this;
     }
 
     public @Unsigned int imageMipTailFirstLod() {
         return segment.get(LAYOUT$imageMipTailFirstLod, OFFSET$imageMipTailFirstLod);
     }
 
-    public void imageMipTailFirstLod(@Unsigned int value) {
+    public VkSparseImageMemoryRequirements imageMipTailFirstLod(@Unsigned int value) {
         segment.set(LAYOUT$imageMipTailFirstLod, OFFSET$imageMipTailFirstLod, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long imageMipTailSize() {
         return segment.get(LAYOUT$imageMipTailSize, OFFSET$imageMipTailSize);
     }
 
-    public void imageMipTailSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSparseImageMemoryRequirements imageMipTailSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$imageMipTailSize, OFFSET$imageMipTailSize, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long imageMipTailOffset() {
         return segment.get(LAYOUT$imageMipTailOffset, OFFSET$imageMipTailOffset);
     }
 
-    public void imageMipTailOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSparseImageMemoryRequirements imageMipTailOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$imageMipTailOffset, OFFSET$imageMipTailOffset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long imageMipTailStride() {
         return segment.get(LAYOUT$imageMipTailStride, OFFSET$imageMipTailStride);
     }
 
-    public void imageMipTailStride(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSparseImageMemoryRequirements imageMipTailStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$imageMipTailStride, OFFSET$imageMipTailStride, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -197,8 +197,9 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineShaderStageCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,24 +210,27 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineShaderStageCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineShaderStageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineShaderStageCreateFlags.class) int value) {
+    public VkPipelineShaderStageCreateInfo flags(@EnumType(VkPipelineShaderStageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public void stage(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPipelineShaderStageCreateInfo stage(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
+        return this;
     }
 
     public @Nullable VkShaderModule module() {
@@ -237,8 +241,9 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return new VkShaderModule(s);
     }
 
-    public void module(@Nullable VkShaderModule value) {
+    public VkPipelineShaderStageCreateInfo module(@Nullable VkShaderModule value) {
         segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -253,9 +258,10 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         return new BytePtr(s);
     }
 
-    public void pName(@Nullable BytePtr value) {
+    public VkPipelineShaderStageCreateInfo pName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {
@@ -266,9 +272,10 @@ public record VkPipelineShaderStageCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pName, OFFSET$pName, value);
     }
 
-    public void pSpecializationInfo(@Nullable IVkSpecializationInfo value) {
+    public VkPipelineShaderStageCreateInfo pSpecializationInfo(@Nullable IVkSpecializationInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSpecializationInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSpecializationInfo.Ptr pSpecializationInfo(int assumedCount) {

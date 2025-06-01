@@ -193,8 +193,9 @@ public record VkPhysicalDevicePushDescriptorProperties(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePushDescriptorProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDevicePushDescriptorProperties(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePushDescriptorProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxPushDescriptors() {
         return segment.get(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors);
     }
 
-    public void maxPushDescriptors(@Unsigned int value) {
+    public VkPhysicalDevicePushDescriptorProperties maxPushDescriptors(@Unsigned int value) {
         segment.set(LAYOUT$maxPushDescriptors, OFFSET$maxPushDescriptors, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkDisplayModeCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayModeCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkDisplayModeCreateInfoKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDisplayModeCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDisplayModeCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDisplayModeCreateFlagsKHR.class) int value) {
+    public VkDisplayModeCreateInfoKHR flags(@EnumType(VkDisplayModeCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NotNull VkDisplayModeParametersKHR parameters() {
         return new VkDisplayModeParametersKHR(segment.asSlice(OFFSET$parameters, LAYOUT$parameters));
     }
 
-    public void parameters(@NotNull VkDisplayModeParametersKHR value) {
+    public VkDisplayModeCreateInfoKHR parameters(@NotNull VkDisplayModeParametersKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

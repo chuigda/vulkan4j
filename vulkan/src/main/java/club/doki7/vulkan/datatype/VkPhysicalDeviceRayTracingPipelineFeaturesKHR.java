@@ -197,8 +197,9 @@ public record VkPhysicalDeviceRayTracingPipelineFeaturesKHR(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingPipelineFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkPhysicalDeviceRayTracingPipelineFeaturesKHR(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRayTracingPipelineFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayTracingPipeline() {
         return segment.get(LAYOUT$rayTracingPipeline, OFFSET$rayTracingPipeline);
     }
 
-    public void rayTracingPipeline(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelineFeaturesKHR rayTracingPipeline(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingPipeline, OFFSET$rayTracingPipeline, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayTracingPipelineShaderGroupHandleCaptureReplay() {
         return segment.get(LAYOUT$rayTracingPipelineShaderGroupHandleCaptureReplay, OFFSET$rayTracingPipelineShaderGroupHandleCaptureReplay);
     }
 
-    public void rayTracingPipelineShaderGroupHandleCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelineFeaturesKHR rayTracingPipelineShaderGroupHandleCaptureReplay(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingPipelineShaderGroupHandleCaptureReplay, OFFSET$rayTracingPipelineShaderGroupHandleCaptureReplay, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayTracingPipelineShaderGroupHandleCaptureReplayMixed() {
         return segment.get(LAYOUT$rayTracingPipelineShaderGroupHandleCaptureReplayMixed, OFFSET$rayTracingPipelineShaderGroupHandleCaptureReplayMixed);
     }
 
-    public void rayTracingPipelineShaderGroupHandleCaptureReplayMixed(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelineFeaturesKHR rayTracingPipelineShaderGroupHandleCaptureReplayMixed(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingPipelineShaderGroupHandleCaptureReplayMixed, OFFSET$rayTracingPipelineShaderGroupHandleCaptureReplayMixed, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayTracingPipelineTraceRaysIndirect() {
         return segment.get(LAYOUT$rayTracingPipelineTraceRaysIndirect, OFFSET$rayTracingPipelineTraceRaysIndirect);
     }
 
-    public void rayTracingPipelineTraceRaysIndirect(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelineFeaturesKHR rayTracingPipelineTraceRaysIndirect(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingPipelineTraceRaysIndirect, OFFSET$rayTracingPipelineTraceRaysIndirect, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayTraversalPrimitiveCulling() {
         return segment.get(LAYOUT$rayTraversalPrimitiveCulling, OFFSET$rayTraversalPrimitiveCulling);
     }
 
-    public void rayTraversalPrimitiveCulling(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPipelineFeaturesKHR rayTraversalPrimitiveCulling(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTraversalPrimitiveCulling, OFFSET$rayTraversalPrimitiveCulling, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineVertexInputDivisorStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkPipelineVertexInputDivisorStateCreateInfo(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineVertexInputDivisorStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int vertexBindingDivisorCount() {
         return segment.get(LAYOUT$vertexBindingDivisorCount, OFFSET$vertexBindingDivisorCount);
     }
 
-    public void vertexBindingDivisorCount(@Unsigned int value) {
+    public VkPipelineVertexInputDivisorStateCreateInfo vertexBindingDivisorCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexBindingDivisorCount, OFFSET$vertexBindingDivisorCount, value);
+        return this;
     }
 
-    public void pVertexBindingDivisors(@Nullable IVkVertexInputBindingDivisorDescription value) {
+    public VkPipelineVertexInputDivisorStateCreateInfo pVertexBindingDivisors(@Nullable IVkVertexInputBindingDivisorDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDivisorsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVertexInputBindingDivisorDescription.Ptr pVertexBindingDivisors(int assumedCount) {

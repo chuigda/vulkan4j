@@ -194,8 +194,9 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMultisampledRenderToSingleSampledInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkMultisampledRenderToSingleSampledInfoEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMultisampledRenderToSingleSampledInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multisampledRenderToSingleSampledEnable() {
         return segment.get(LAYOUT$multisampledRenderToSingleSampledEnable, OFFSET$multisampledRenderToSingleSampledEnable);
     }
 
-    public void multisampledRenderToSingleSampledEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkMultisampledRenderToSingleSampledInfoEXT multisampledRenderToSingleSampledEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multisampledRenderToSingleSampledEnable, OFFSET$multisampledRenderToSingleSampledEnable, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public void rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

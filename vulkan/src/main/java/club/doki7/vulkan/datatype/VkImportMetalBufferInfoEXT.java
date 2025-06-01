@@ -193,8 +193,9 @@ public record VkImportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportMetalBufferInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkImportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportMetalBufferInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="MTLBuffer_id") MemorySegment mtlBuffer() {
@@ -217,8 +219,9 @@ public record VkImportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$mtlBuffer, OFFSET$mtlBuffer, value);
     }
 
-    public void mtlBuffer(@Nullable IPointer pointer) {
+    public VkImportMetalBufferInfoEXT mtlBuffer(@Nullable IPointer pointer) {
         mtlBuffer(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

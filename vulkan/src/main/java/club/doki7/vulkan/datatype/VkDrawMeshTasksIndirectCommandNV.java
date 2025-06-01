@@ -173,16 +173,18 @@ public record VkDrawMeshTasksIndirectCommandNV(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$taskCount, OFFSET$taskCount);
     }
 
-    public void taskCount(@Unsigned int value) {
+    public VkDrawMeshTasksIndirectCommandNV taskCount(@Unsigned int value) {
         segment.set(LAYOUT$taskCount, OFFSET$taskCount, value);
+        return this;
     }
 
     public @Unsigned int firstTask() {
         return segment.get(LAYOUT$firstTask, OFFSET$firstTask);
     }
 
-    public void firstTask(@Unsigned int value) {
+    public VkDrawMeshTasksIndirectCommandNV firstTask(@Unsigned int value) {
         segment.set(LAYOUT$firstTask, OFFSET$firstTask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

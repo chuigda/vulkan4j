@@ -194,8 +194,9 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCooperativeMatrixFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceCooperativeMatrixFeaturesNV(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCooperativeMatrixFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int cooperativeMatrix() {
         return segment.get(LAYOUT$cooperativeMatrix, OFFSET$cooperativeMatrix);
     }
 
-    public void cooperativeMatrix(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCooperativeMatrixFeaturesNV cooperativeMatrix(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrix, OFFSET$cooperativeMatrix, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int cooperativeMatrixRobustBufferAccess() {
         return segment.get(LAYOUT$cooperativeMatrixRobustBufferAccess, OFFSET$cooperativeMatrixRobustBufferAccess);
     }
 
-    public void cooperativeMatrixRobustBufferAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCooperativeMatrixFeaturesNV cooperativeMatrixRobustBufferAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixRobustBufferAccess, OFFSET$cooperativeMatrixRobustBufferAccess, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

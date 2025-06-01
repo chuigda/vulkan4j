@@ -194,8 +194,9 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPresentRegionsKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkPresentRegionsKHR(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPresentRegionsKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@Unsigned int value) {
+    public VkPresentRegionsKHR swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
+        return this;
     }
 
-    public void pRegions(@Nullable IVkPresentRegionKHR value) {
+    public VkPresentRegionsKHR pRegions(@Nullable IVkPresentRegionKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPresentRegionKHR.Ptr pRegions(int assumedCount) {

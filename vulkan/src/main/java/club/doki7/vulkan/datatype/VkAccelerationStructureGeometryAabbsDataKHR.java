@@ -194,8 +194,9 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureGeometryAabbsDataKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureGeometryAabbsDataKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR data() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkAccelerationStructureGeometryAabbsDataKHR data(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkAccelerationStructureGeometryAabbsDataKHR stride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

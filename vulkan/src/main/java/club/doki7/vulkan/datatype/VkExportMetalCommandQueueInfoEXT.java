@@ -194,8 +194,9 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMetalCommandQueueInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExportMetalCommandQueueInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkQueue queue() {
@@ -218,8 +220,9 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         return new VkQueue(s);
     }
 
-    public void queue(@Nullable VkQueue value) {
+    public VkExportMetalCommandQueueInfoEXT queue(@Nullable VkQueue value) {
         segment.set(LAYOUT$queue, OFFSET$queue, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="MTLCommandQueue_id") MemorySegment mtlCommandQueue() {
@@ -230,8 +233,9 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$mtlCommandQueue, OFFSET$mtlCommandQueue, value);
     }
 
-    public void mtlCommandQueue(@Nullable IPointer pointer) {
+    public VkExportMetalCommandQueueInfoEXT mtlCommandQueue(@Nullable IPointer pointer) {
         mtlCommandQueue(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -171,9 +171,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         return ret;
     }
 
-    public void pPushConstant(@Nullable IVkIndirectCommandsPushConstantTokenEXT value) {
+    public VkIndirectCommandsTokenDataEXT pPushConstant(@Nullable IVkIndirectCommandsPushConstantTokenEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectCommandsPushConstantTokenEXT.Ptr pPushConstant(int assumedCount) {
@@ -202,9 +203,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pPushConstant, OFFSET$pPushConstant, value);
     }
 
-    public void pVertexBuffer(@Nullable IVkIndirectCommandsVertexBufferTokenEXT value) {
+    public VkIndirectCommandsTokenDataEXT pVertexBuffer(@Nullable IVkIndirectCommandsVertexBufferTokenEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBufferRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectCommandsVertexBufferTokenEXT.Ptr pVertexBuffer(int assumedCount) {
@@ -233,9 +235,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pVertexBuffer, OFFSET$pVertexBuffer, value);
     }
 
-    public void pIndexBuffer(@Nullable IVkIndirectCommandsIndexBufferTokenEXT value) {
+    public VkIndirectCommandsTokenDataEXT pIndexBuffer(@Nullable IVkIndirectCommandsIndexBufferTokenEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pIndexBufferRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectCommandsIndexBufferTokenEXT.Ptr pIndexBuffer(int assumedCount) {
@@ -264,9 +267,10 @@ public record VkIndirectCommandsTokenDataEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pIndexBuffer, OFFSET$pIndexBuffer, value);
     }
 
-    public void pExecutionSet(@Nullable IVkIndirectCommandsExecutionSetTokenEXT value) {
+    public VkIndirectCommandsTokenDataEXT pExecutionSet(@Nullable IVkIndirectCommandsExecutionSetTokenEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExecutionSetRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectCommandsExecutionSetTokenEXT.Ptr pExecutionSet(int assumedCount) {

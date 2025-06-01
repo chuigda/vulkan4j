@@ -194,8 +194,9 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDrmFormatModifierPropertiesListEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkDrmFormatModifierPropertiesListEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDrmFormatModifierPropertiesListEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int drmFormatModifierCount() {
         return segment.get(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount);
     }
 
-    public void drmFormatModifierCount(@Unsigned int value) {
+    public VkDrmFormatModifierPropertiesListEXT drmFormatModifierCount(@Unsigned int value) {
         segment.set(LAYOUT$drmFormatModifierCount, OFFSET$drmFormatModifierCount, value);
+        return this;
     }
 
-    public void pDrmFormatModifierProperties(@Nullable IVkDrmFormatModifierPropertiesEXT value) {
+    public VkDrmFormatModifierPropertiesListEXT pDrmFormatModifierProperties(@Nullable IVkDrmFormatModifierPropertiesEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDrmFormatModifierPropertiesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDrmFormatModifierPropertiesEXT.Ptr pDrmFormatModifierProperties(int assumedCount) {

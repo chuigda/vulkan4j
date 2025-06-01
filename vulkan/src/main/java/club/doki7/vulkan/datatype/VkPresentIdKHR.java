@@ -194,8 +194,9 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPresentIdKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPresentIdKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@Unsigned int value) {
+    public VkPresentIdKHR swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
+        return this;
     }
 
     /// Note: the returned {@link LongPtr} does not have correct
@@ -230,9 +233,10 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         return new LongPtr(s);
     }
 
-    public void pPresentIds(@Nullable @Unsigned LongPtr value) {
+    public VkPresentIdKHR pPresentIds(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentIdsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pPresentIdsRaw() {

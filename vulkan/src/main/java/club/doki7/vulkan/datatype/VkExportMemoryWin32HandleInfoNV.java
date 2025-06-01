@@ -194,8 +194,9 @@ public record VkExportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMemoryWin32HandleInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkExportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExportMemoryWin32HandleInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pAttributes() {
@@ -218,16 +220,18 @@ public record VkExportMemoryWin32HandleInfoNV(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
     }
 
-    public void pAttributes(@Nullable IPointer pointer) {
+    public VkExportMemoryWin32HandleInfoNV pAttributes(@Nullable IPointer pointer) {
         pAttributes(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("DWORD") @Unsigned int dwAccess() {
         return segment.get(LAYOUT$dwAccess, OFFSET$dwAccess);
     }
 
-    public void dwAccess(@NativeType("DWORD") @Unsigned int value) {
+    public VkExportMemoryWin32HandleInfoNV dwAccess(@NativeType("DWORD") @Unsigned int value) {
         segment.set(LAYOUT$dwAccess, OFFSET$dwAccess, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

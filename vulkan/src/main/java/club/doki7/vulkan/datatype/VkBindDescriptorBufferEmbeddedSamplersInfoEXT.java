@@ -195,8 +195,9 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+        return this;
     }
 
     public @Nullable VkPipelineLayout layout() {
@@ -227,16 +230,18 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int set() {
         return segment.get(LAYOUT$set, OFFSET$set);
     }
 
-    public void set(@Unsigned int value) {
+    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT set(@Unsigned int value) {
         segment.set(LAYOUT$set, OFFSET$set, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

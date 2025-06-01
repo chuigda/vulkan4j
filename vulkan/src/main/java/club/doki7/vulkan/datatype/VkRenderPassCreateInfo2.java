@@ -201,8 +201,9 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassCreateInfo2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,29 +214,33 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassCreateInfo2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkRenderPassCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkRenderPassCreateFlags.class) int value) {
+    public VkRenderPassCreateInfo2 flags(@EnumType(VkRenderPassCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@Unsigned int value) {
+    public VkRenderPassCreateInfo2 attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
+        return this;
     }
 
-    public void pAttachments(@Nullable IVkAttachmentDescription2 value) {
+    public VkRenderPassCreateInfo2 pAttachments(@Nullable IVkAttachmentDescription2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentDescription2.Ptr pAttachments(int assumedCount) {
@@ -268,13 +273,15 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$subpassCount, OFFSET$subpassCount);
     }
 
-    public void subpassCount(@Unsigned int value) {
+    public VkRenderPassCreateInfo2 subpassCount(@Unsigned int value) {
         segment.set(LAYOUT$subpassCount, OFFSET$subpassCount, value);
+        return this;
     }
 
-    public void pSubpasses(@Nullable IVkSubpassDescription2 value) {
+    public VkRenderPassCreateInfo2 pSubpasses(@Nullable IVkSubpassDescription2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubpassesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSubpassDescription2.Ptr pSubpasses(int assumedCount) {
@@ -307,13 +314,15 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$dependencyCount, OFFSET$dependencyCount);
     }
 
-    public void dependencyCount(@Unsigned int value) {
+    public VkRenderPassCreateInfo2 dependencyCount(@Unsigned int value) {
         segment.set(LAYOUT$dependencyCount, OFFSET$dependencyCount, value);
+        return this;
     }
 
-    public void pDependencies(@Nullable IVkSubpassDependency2 value) {
+    public VkRenderPassCreateInfo2 pDependencies(@Nullable IVkSubpassDependency2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDependenciesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSubpassDependency2.Ptr pDependencies(int assumedCount) {
@@ -346,8 +355,9 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$correlatedViewMaskCount, OFFSET$correlatedViewMaskCount);
     }
 
-    public void correlatedViewMaskCount(@Unsigned int value) {
+    public VkRenderPassCreateInfo2 correlatedViewMaskCount(@Unsigned int value) {
         segment.set(LAYOUT$correlatedViewMaskCount, OFFSET$correlatedViewMaskCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -362,9 +372,10 @@ public record VkRenderPassCreateInfo2(@NotNull MemorySegment segment) implements
         return new IntPtr(s);
     }
 
-    public void pCorrelatedViewMasks(@Nullable @Unsigned IntPtr value) {
+    public VkRenderPassCreateInfo2 pCorrelatedViewMasks(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCorrelatedViewMasksRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pCorrelatedViewMasksRaw() {

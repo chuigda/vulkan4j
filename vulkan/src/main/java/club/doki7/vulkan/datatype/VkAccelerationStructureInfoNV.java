@@ -197,8 +197,9 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,45 +210,51 @@ public record VkAccelerationStructureInfoNV(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkAccelerationStructureTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
+    public VkAccelerationStructureInfoNV type(@EnumType(VkAccelerationStructureTypeKHR.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkAccelerationStructureInfoNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int instanceCount() {
         return segment.get(LAYOUT$instanceCount, OFFSET$instanceCount);
     }
 
-    public void instanceCount(@Unsigned int value) {
+    public VkAccelerationStructureInfoNV instanceCount(@Unsigned int value) {
         segment.set(LAYOUT$instanceCount, OFFSET$instanceCount, value);
+        return this;
     }
 
     public @Unsigned int geometryCount() {
         return segment.get(LAYOUT$geometryCount, OFFSET$geometryCount);
     }
 
-    public void geometryCount(@Unsigned int value) {
+    public VkAccelerationStructureInfoNV geometryCount(@Unsigned int value) {
         segment.set(LAYOUT$geometryCount, OFFSET$geometryCount, value);
+        return this;
     }
 
-    public void pGeometries(@Nullable IVkGeometryNV value) {
+    public VkAccelerationStructureInfoNV pGeometries(@Nullable IVkGeometryNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGeometriesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkGeometryNV.Ptr pGeometries(int assumedCount) {

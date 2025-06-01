@@ -184,110 +184,124 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
         return new StdVideoEncodeH265SliceSegmentHeaderFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeH265SliceSegmentHeaderFlags value) {
+    public StdVideoEncodeH265SliceSegmentHeader flags(@NotNull StdVideoEncodeH265SliceSegmentHeaderFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @EnumType(StdVideoH265SliceType.class) int slice_type() {
         return segment.get(LAYOUT$slice_type, OFFSET$slice_type);
     }
 
-    public void slice_type(@EnumType(StdVideoH265SliceType.class) int value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_type(@EnumType(StdVideoH265SliceType.class) int value) {
         segment.set(LAYOUT$slice_type, OFFSET$slice_type, value);
+        return this;
     }
 
     public @Unsigned int slice_segment_address() {
         return segment.get(LAYOUT$slice_segment_address, OFFSET$slice_segment_address);
     }
 
-    public void slice_segment_address(@Unsigned int value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_segment_address(@Unsigned int value) {
         segment.set(LAYOUT$slice_segment_address, OFFSET$slice_segment_address, value);
+        return this;
     }
 
     public @Unsigned byte collocated_ref_idx() {
         return segment.get(LAYOUT$collocated_ref_idx, OFFSET$collocated_ref_idx);
     }
 
-    public void collocated_ref_idx(@Unsigned byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader collocated_ref_idx(@Unsigned byte value) {
         segment.set(LAYOUT$collocated_ref_idx, OFFSET$collocated_ref_idx, value);
+        return this;
     }
 
     public @Unsigned byte MaxNumMergeCand() {
         return segment.get(LAYOUT$MaxNumMergeCand, OFFSET$MaxNumMergeCand);
     }
 
-    public void MaxNumMergeCand(@Unsigned byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader MaxNumMergeCand(@Unsigned byte value) {
         segment.set(LAYOUT$MaxNumMergeCand, OFFSET$MaxNumMergeCand, value);
+        return this;
     }
 
     public byte slice_cb_qp_offset() {
         return segment.get(LAYOUT$slice_cb_qp_offset, OFFSET$slice_cb_qp_offset);
     }
 
-    public void slice_cb_qp_offset(byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_cb_qp_offset(byte value) {
         segment.set(LAYOUT$slice_cb_qp_offset, OFFSET$slice_cb_qp_offset, value);
+        return this;
     }
 
     public byte slice_cr_qp_offset() {
         return segment.get(LAYOUT$slice_cr_qp_offset, OFFSET$slice_cr_qp_offset);
     }
 
-    public void slice_cr_qp_offset(byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_cr_qp_offset(byte value) {
         segment.set(LAYOUT$slice_cr_qp_offset, OFFSET$slice_cr_qp_offset, value);
+        return this;
     }
 
     public byte slice_beta_offset_div2() {
         return segment.get(LAYOUT$slice_beta_offset_div2, OFFSET$slice_beta_offset_div2);
     }
 
-    public void slice_beta_offset_div2(byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_beta_offset_div2(byte value) {
         segment.set(LAYOUT$slice_beta_offset_div2, OFFSET$slice_beta_offset_div2, value);
+        return this;
     }
 
     public byte slice_tc_offset_div2() {
         return segment.get(LAYOUT$slice_tc_offset_div2, OFFSET$slice_tc_offset_div2);
     }
 
-    public void slice_tc_offset_div2(byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_tc_offset_div2(byte value) {
         segment.set(LAYOUT$slice_tc_offset_div2, OFFSET$slice_tc_offset_div2, value);
+        return this;
     }
 
     public byte slice_act_y_qp_offset() {
         return segment.get(LAYOUT$slice_act_y_qp_offset, OFFSET$slice_act_y_qp_offset);
     }
 
-    public void slice_act_y_qp_offset(byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_act_y_qp_offset(byte value) {
         segment.set(LAYOUT$slice_act_y_qp_offset, OFFSET$slice_act_y_qp_offset, value);
+        return this;
     }
 
     public byte slice_act_cb_qp_offset() {
         return segment.get(LAYOUT$slice_act_cb_qp_offset, OFFSET$slice_act_cb_qp_offset);
     }
 
-    public void slice_act_cb_qp_offset(byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_act_cb_qp_offset(byte value) {
         segment.set(LAYOUT$slice_act_cb_qp_offset, OFFSET$slice_act_cb_qp_offset, value);
+        return this;
     }
 
     public byte slice_act_cr_qp_offset() {
         return segment.get(LAYOUT$slice_act_cr_qp_offset, OFFSET$slice_act_cr_qp_offset);
     }
 
-    public void slice_act_cr_qp_offset(byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_act_cr_qp_offset(byte value) {
         segment.set(LAYOUT$slice_act_cr_qp_offset, OFFSET$slice_act_cr_qp_offset, value);
+        return this;
     }
 
     public byte slice_qp_delta() {
         return segment.get(LAYOUT$slice_qp_delta, OFFSET$slice_qp_delta);
     }
 
-    public void slice_qp_delta(byte value) {
+    public StdVideoEncodeH265SliceSegmentHeader slice_qp_delta(byte value) {
         segment.set(LAYOUT$slice_qp_delta, OFFSET$slice_qp_delta, value);
+        return this;
     }
 
 
-    public void pWeightTable(@Nullable IStdVideoEncodeH265WeightTable value) {
+    public StdVideoEncodeH265SliceSegmentHeader pWeightTable(@Nullable IStdVideoEncodeH265WeightTable value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWeightTableRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeH265WeightTable.Ptr pWeightTable(int assumedCount) {

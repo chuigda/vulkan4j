@@ -199,8 +199,9 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkFramebufferCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,16 +212,18 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkFramebufferCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFramebufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkFramebufferCreateFlags.class) int value) {
+    public VkFramebufferCreateInfo flags(@EnumType(VkFramebufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkRenderPass renderPass() {
@@ -231,16 +234,18 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return new VkRenderPass(s);
     }
 
-    public void renderPass(@Nullable VkRenderPass value) {
+    public VkFramebufferCreateInfo renderPass(@Nullable VkRenderPass value) {
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@Unsigned int value) {
+    public VkFramebufferCreateInfo attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkImageView.Ptr} does not have correct {@link VkImageView.Ptr#size}
@@ -255,9 +260,10 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return new VkImageView.Ptr(s);
     }
 
-    public void pAttachments(@Nullable VkImageView.Ptr value) {
+    public VkFramebufferCreateInfo pAttachments(@Nullable VkImageView.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {
@@ -272,24 +278,27 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@Unsigned int value) {
+    public VkFramebufferCreateInfo width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
+        return this;
     }
 
     public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@Unsigned int value) {
+    public VkFramebufferCreateInfo height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
+        return this;
     }
 
     public @Unsigned int layers() {
         return segment.get(LAYOUT$layers, OFFSET$layers);
     }
 
-    public void layers(@Unsigned int value) {
+    public VkFramebufferCreateInfo layers(@Unsigned int value) {
         segment.set(LAYOUT$layers, OFFSET$layers, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

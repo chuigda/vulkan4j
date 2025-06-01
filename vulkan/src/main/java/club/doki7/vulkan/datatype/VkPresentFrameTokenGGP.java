@@ -193,8 +193,9 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPresentFrameTokenGGP sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPresentFrameTokenGGP pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("GgpFrameToken") @Unsigned int frameToken() {
         return segment.get(LAYOUT$frameToken, OFFSET$frameToken);
     }
 
-    public void frameToken(@NativeType("GgpFrameToken") @Unsigned int value) {
+    public VkPresentFrameTokenGGP frameToken(@NativeType("GgpFrameToken") @Unsigned int value) {
         segment.set(LAYOUT$frameToken, OFFSET$frameToken, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

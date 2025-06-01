@@ -196,8 +196,9 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceAddressBindingCallbackDataEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkDeviceAddressBindingCallbackDataEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceAddressBindingCallbackDataEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDeviceAddressBindingFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDeviceAddressBindingFlagsEXT.class) int value) {
+    public VkDeviceAddressBindingCallbackDataEXT flags(@EnumType(VkDeviceAddressBindingFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long baseAddress() {
         return segment.get(LAYOUT$baseAddress, OFFSET$baseAddress);
     }
 
-    public void baseAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkDeviceAddressBindingCallbackDataEXT baseAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$baseAddress, OFFSET$baseAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkDeviceAddressBindingCallbackDataEXT size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @EnumType(VkDeviceAddressBindingTypeEXT.class) int bindingType() {
         return segment.get(LAYOUT$bindingType, OFFSET$bindingType);
     }
 
-    public void bindingType(@EnumType(VkDeviceAddressBindingTypeEXT.class) int value) {
+    public VkDeviceAddressBindingCallbackDataEXT bindingType(@EnumType(VkDeviceAddressBindingTypeEXT.class) int value) {
         segment.set(LAYOUT$bindingType, OFFSET$bindingType, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

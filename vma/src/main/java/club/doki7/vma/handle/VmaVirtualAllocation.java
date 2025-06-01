@@ -139,6 +139,7 @@ public record VmaVirtualAllocation(@NotNull MemorySegment segment) implements IP
         public static Ptr allocateV(Arena arena, @Nullable VmaVirtualAllocation ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

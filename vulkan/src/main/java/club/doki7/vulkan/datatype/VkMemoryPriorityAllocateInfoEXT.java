@@ -193,8 +193,9 @@ public record VkMemoryPriorityAllocateInfoEXT(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryPriorityAllocateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkMemoryPriorityAllocateInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMemoryPriorityAllocateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public float priority() {
         return segment.get(LAYOUT$priority, OFFSET$priority);
     }
 
-    public void priority(float value) {
+    public VkMemoryPriorityAllocateInfoEXT priority(float value) {
         segment.set(LAYOUT$priority, OFFSET$priority, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

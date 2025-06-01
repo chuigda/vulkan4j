@@ -194,8 +194,9 @@ public record VkDescriptorSetBindingReferenceVALVE(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetBindingReferenceVALVE sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkDescriptorSetBindingReferenceVALVE(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorSetBindingReferenceVALVE pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDescriptorSetLayout descriptorSetLayout() {
@@ -218,16 +220,18 @@ public record VkDescriptorSetBindingReferenceVALVE(@NotNull MemorySegment segmen
         return new VkDescriptorSetLayout(s);
     }
 
-    public void descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
+    public VkDescriptorSetBindingReferenceVALVE descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
         segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@Unsigned int value) {
+    public VkDescriptorSetBindingReferenceVALVE binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

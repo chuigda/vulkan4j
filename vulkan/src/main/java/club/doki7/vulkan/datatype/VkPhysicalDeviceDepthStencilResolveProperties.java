@@ -196,8 +196,9 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDepthStencilResolveProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkResolveModeFlags.class) int supportedDepthResolveModes() {
         return segment.get(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes);
     }
 
-    public void supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedDepthResolveModes, OFFSET$supportedDepthResolveModes, value);
+        return this;
     }
 
     public @EnumType(VkResolveModeFlags.class) int supportedStencilResolveModes() {
         return segment.get(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes);
     }
 
-    public void supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$supportedStencilResolveModes, OFFSET$supportedStencilResolveModes, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int independentResolveNone() {
         return segment.get(LAYOUT$independentResolveNone, OFFSET$independentResolveNone);
     }
 
-    public void independentResolveNone(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties independentResolveNone(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$independentResolveNone, OFFSET$independentResolveNone, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int independentResolve() {
         return segment.get(LAYOUT$independentResolve, OFFSET$independentResolve);
     }
 
-    public void independentResolve(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDepthStencilResolveProperties independentResolve(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$independentResolve, OFFSET$independentResolve, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

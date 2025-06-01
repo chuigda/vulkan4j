@@ -193,8 +193,9 @@ public record VkPhysicalDeviceShaderFloatControls2Features(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderFloatControls2Features sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceShaderFloatControls2Features(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderFloatControls2Features pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderFloatControls2() {
         return segment.get(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2);
     }
 
-    public void shaderFloatControls2(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderFloatControls2Features shaderFloatControls2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderFloatControls2, OFFSET$shaderFloatControls2, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

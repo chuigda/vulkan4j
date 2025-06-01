@@ -199,8 +199,9 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyImageToImageInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,16 +212,18 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCopyImageToImageInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkHostImageCopyFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkHostImageCopyFlags.class) int value) {
+    public VkCopyImageToImageInfo flags(@EnumType(VkHostImageCopyFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkImage srcImage() {
@@ -231,16 +234,18 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return new VkImage(s);
     }
 
-    public void srcImage(@Nullable VkImage value) {
+    public VkCopyImageToImageInfo srcImage(@Nullable VkImage value) {
         segment.set(LAYOUT$srcImage, OFFSET$srcImage, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int srcImageLayout() {
         return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
     }
 
-    public void srcImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkCopyImageToImageInfo srcImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
+        return this;
     }
 
     public @Nullable VkImage dstImage() {
@@ -251,29 +256,33 @@ public record VkCopyImageToImageInfo(@NotNull MemorySegment segment) implements 
         return new VkImage(s);
     }
 
-    public void dstImage(@Nullable VkImage value) {
+    public VkCopyImageToImageInfo dstImage(@Nullable VkImage value) {
         segment.set(LAYOUT$dstImage, OFFSET$dstImage, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int dstImageLayout() {
         return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
     }
 
-    public void dstImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkCopyImageToImageInfo dstImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
+        return this;
     }
 
     public @Unsigned int regionCount() {
         return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
     }
 
-    public void regionCount(@Unsigned int value) {
+    public VkCopyImageToImageInfo regionCount(@Unsigned int value) {
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
+        return this;
     }
 
-    public void pRegions(@Nullable IVkImageCopy2 value) {
+    public VkCopyImageToImageInfo pRegions(@Nullable IVkImageCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkImageCopy2.Ptr pRegions(int assumedCount) {

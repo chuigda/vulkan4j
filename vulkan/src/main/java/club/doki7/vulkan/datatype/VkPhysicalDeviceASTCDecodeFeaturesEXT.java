@@ -193,8 +193,9 @@ public record VkPhysicalDeviceASTCDecodeFeaturesEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceASTCDecodeFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceASTCDecodeFeaturesEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceASTCDecodeFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int decodeModeSharedExponent() {
         return segment.get(LAYOUT$decodeModeSharedExponent, OFFSET$decodeModeSharedExponent);
     }
 
-    public void decodeModeSharedExponent(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceASTCDecodeFeaturesEXT decodeModeSharedExponent(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$decodeModeSharedExponent, OFFSET$decodeModeSharedExponent, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

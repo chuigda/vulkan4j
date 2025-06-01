@@ -194,8 +194,9 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCudaKernelLaunchPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCudaKernelLaunchPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int computeCapabilityMinor() {
         return segment.get(LAYOUT$computeCapabilityMinor, OFFSET$computeCapabilityMinor);
     }
 
-    public void computeCapabilityMinor(@Unsigned int value) {
+    public VkPhysicalDeviceCudaKernelLaunchPropertiesNV computeCapabilityMinor(@Unsigned int value) {
         segment.set(LAYOUT$computeCapabilityMinor, OFFSET$computeCapabilityMinor, value);
+        return this;
     }
 
     public @Unsigned int computeCapabilityMajor() {
         return segment.get(LAYOUT$computeCapabilityMajor, OFFSET$computeCapabilityMajor);
     }
 
-    public void computeCapabilityMajor(@Unsigned int value) {
+    public VkPhysicalDeviceCudaKernelLaunchPropertiesNV computeCapabilityMajor(@Unsigned int value) {
         segment.set(LAYOUT$computeCapabilityMajor, OFFSET$computeCapabilityMajor, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

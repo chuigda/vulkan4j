@@ -194,8 +194,9 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRefreshObjectListKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkRefreshObjectListKHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRefreshObjectListKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int objectCount() {
         return segment.get(LAYOUT$objectCount, OFFSET$objectCount);
     }
 
-    public void objectCount(@Unsigned int value) {
+    public VkRefreshObjectListKHR objectCount(@Unsigned int value) {
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
+        return this;
     }
 
-    public void pObjects(@Nullable IVkRefreshObjectKHR value) {
+    public VkRefreshObjectListKHR pObjects(@Nullable IVkRefreshObjectKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRefreshObjectKHR.Ptr pObjects(int assumedCount) {

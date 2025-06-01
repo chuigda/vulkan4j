@@ -173,16 +173,18 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         return new StdVideoDecodeH264ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoDecodeH264ReferenceInfoFlags value) {
+    public StdVideoDecodeH264ReferenceInfo flags(@NotNull StdVideoDecodeH264ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned short FrameNum() {
         return segment.get(LAYOUT$FrameNum, OFFSET$FrameNum);
     }
 
-    public void FrameNum(@Unsigned short value) {
+    public StdVideoDecodeH264ReferenceInfo FrameNum(@Unsigned short value) {
         segment.set(LAYOUT$FrameNum, OFFSET$FrameNum, value);
+        return this;
     }
 
 
@@ -190,8 +192,9 @@ public record StdVideoDecodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         return new IntPtr(PicOrderCntRaw());
     }
 
-    public void PicOrderCnt(IntPtr value) {
+    public StdVideoDecodeH264ReferenceInfo PicOrderCnt(IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
+        return this;
     }
 
     public MemorySegment PicOrderCntRaw() {

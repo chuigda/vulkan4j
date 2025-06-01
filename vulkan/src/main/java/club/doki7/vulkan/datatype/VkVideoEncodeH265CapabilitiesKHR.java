@@ -208,8 +208,9 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -220,136 +221,153 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265CapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeH265CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoEncodeH265CapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR flags(@EnumType(VkVideoEncodeH265CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(StdVideoH265LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public void maxLevelIdc(@EnumType(StdVideoH265LevelIdc.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxLevelIdc(@EnumType(StdVideoH265LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
+        return this;
     }
 
     public @Unsigned int maxSliceSegmentCount() {
         return segment.get(LAYOUT$maxSliceSegmentCount, OFFSET$maxSliceSegmentCount);
     }
 
-    public void maxSliceSegmentCount(@Unsigned int value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxSliceSegmentCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSliceSegmentCount, OFFSET$maxSliceSegmentCount, value);
+        return this;
     }
 
     public @NotNull VkExtent2D maxTiles() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTiles, LAYOUT$maxTiles));
     }
 
-    public void maxTiles(@NotNull VkExtent2D value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxTiles(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTiles, SIZE$maxTiles);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int ctbSizes() {
         return segment.get(LAYOUT$ctbSizes, OFFSET$ctbSizes);
     }
 
-    public void ctbSizes(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR ctbSizes(@EnumType(VkVideoEncodeH265CtbSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$ctbSizes, OFFSET$ctbSizes, value);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int transformBlockSizes() {
         return segment.get(LAYOUT$transformBlockSizes, OFFSET$transformBlockSizes);
     }
 
-    public void transformBlockSizes(@EnumType(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR transformBlockSizes(@EnumType(VkVideoEncodeH265TransformBlockSizeFlagsKHR.class) int value) {
         segment.set(LAYOUT$transformBlockSizes, OFFSET$transformBlockSizes, value);
+        return this;
     }
 
     public @Unsigned int maxPPictureL0ReferenceCount() {
         return segment.get(LAYOUT$maxPPictureL0ReferenceCount, OFFSET$maxPPictureL0ReferenceCount);
     }
 
-    public void maxPPictureL0ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxPPictureL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxPPictureL0ReferenceCount, OFFSET$maxPPictureL0ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxBPictureL0ReferenceCount() {
         return segment.get(LAYOUT$maxBPictureL0ReferenceCount, OFFSET$maxBPictureL0ReferenceCount);
     }
 
-    public void maxBPictureL0ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxBPictureL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBPictureL0ReferenceCount, OFFSET$maxBPictureL0ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxL1ReferenceCount() {
         return segment.get(LAYOUT$maxL1ReferenceCount, OFFSET$maxL1ReferenceCount);
     }
 
-    public void maxL1ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxL1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxL1ReferenceCount, OFFSET$maxL1ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxSubLayerCount() {
         return segment.get(LAYOUT$maxSubLayerCount, OFFSET$maxSubLayerCount);
     }
 
-    public void maxSubLayerCount(@Unsigned int value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxSubLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSubLayerCount, OFFSET$maxSubLayerCount, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int expectDyadicTemporalSubLayerPattern() {
         return segment.get(LAYOUT$expectDyadicTemporalSubLayerPattern, OFFSET$expectDyadicTemporalSubLayerPattern);
     }
 
-    public void expectDyadicTemporalSubLayerPattern(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH265CapabilitiesKHR expectDyadicTemporalSubLayerPattern(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$expectDyadicTemporalSubLayerPattern, OFFSET$expectDyadicTemporalSubLayerPattern, value);
+        return this;
     }
 
     public int minQp() {
         return segment.get(LAYOUT$minQp, OFFSET$minQp);
     }
 
-    public void minQp(int value) {
+    public VkVideoEncodeH265CapabilitiesKHR minQp(int value) {
         segment.set(LAYOUT$minQp, OFFSET$minQp, value);
+        return this;
     }
 
     public int maxQp() {
         return segment.get(LAYOUT$maxQp, OFFSET$maxQp);
     }
 
-    public void maxQp(int value) {
+    public VkVideoEncodeH265CapabilitiesKHR maxQp(int value) {
         segment.set(LAYOUT$maxQp, OFFSET$maxQp, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int prefersGopRemainingFrames() {
         return segment.get(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames);
     }
 
-    public void prefersGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH265CapabilitiesKHR prefersGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int requiresGopRemainingFrames() {
         return segment.get(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames);
     }
 
-    public void requiresGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH265CapabilitiesKHR requiresGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeH265StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public void stdSyntaxFlags(@EnumType(VkVideoEncodeH265StdFlagsKHR.class) int value) {
+    public VkVideoEncodeH265CapabilitiesKHR stdSyntaxFlags(@EnumType(VkVideoEncodeH265StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

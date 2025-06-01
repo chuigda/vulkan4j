@@ -194,24 +194,27 @@ public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVma
         return new VmaAllocationInfo(segment.asSlice(OFFSET$allocationInfo, LAYOUT$allocationInfo));
     }
 
-    public void allocationInfo(@NotNull VmaAllocationInfo value) {
+    public VmaAllocationInfo2 allocationInfo(@NotNull VmaAllocationInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$allocationInfo, SIZE$allocationInfo);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long blockSize() {
         return segment.get(LAYOUT$blockSize, OFFSET$blockSize);
     }
 
-    public void blockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaAllocationInfo2 blockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$blockSize, OFFSET$blockSize, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int dedicatedMemory() {
         return segment.get(LAYOUT$dedicatedMemory, OFFSET$dedicatedMemory);
     }
 
-    public void dedicatedMemory(@NativeType("VkBool32") @Unsigned int value) {
+    public VmaAllocationInfo2 dedicatedMemory(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dedicatedMemory, OFFSET$dedicatedMemory, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

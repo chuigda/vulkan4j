@@ -195,8 +195,9 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoSessionParametersCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoSessionParametersCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
+    public VkVideoSessionParametersCreateInfoKHR flags(@EnumType(VkVideoSessionParametersCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkVideoSessionParametersKHR videoSessionParametersTemplate() {
@@ -227,8 +230,9 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return new VkVideoSessionParametersKHR(s);
     }
 
-    public void videoSessionParametersTemplate(@Nullable VkVideoSessionParametersKHR value) {
+    public VkVideoSessionParametersCreateInfoKHR videoSessionParametersTemplate(@Nullable VkVideoSessionParametersKHR value) {
         segment.set(LAYOUT$videoSessionParametersTemplate, OFFSET$videoSessionParametersTemplate, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkVideoSessionKHR videoSession() {
@@ -239,8 +243,9 @@ public record VkVideoSessionParametersCreateInfoKHR(@NotNull MemorySegment segme
         return new VkVideoSessionKHR(s);
     }
 
-    public void videoSession(@Nullable VkVideoSessionKHR value) {
+    public VkVideoSessionParametersCreateInfoKHR videoSession(@Nullable VkVideoSessionKHR value) {
         segment.set(LAYOUT$videoSession, OFFSET$videoSession, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

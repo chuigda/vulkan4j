@@ -173,16 +173,18 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         return segment.get(LAYOUT$propertyFlags, OFFSET$propertyFlags);
     }
 
-    public void propertyFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
+    public VkMemoryType propertyFlags(@EnumType(VkMemoryPropertyFlags.class) int value) {
         segment.set(LAYOUT$propertyFlags, OFFSET$propertyFlags, value);
+        return this;
     }
 
     public @Unsigned int heapIndex() {
         return segment.get(LAYOUT$heapIndex, OFFSET$heapIndex);
     }
 
-    public void heapIndex(@Unsigned int value) {
+    public VkMemoryType heapIndex(@Unsigned int value) {
         segment.set(LAYOUT$heapIndex, OFFSET$heapIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

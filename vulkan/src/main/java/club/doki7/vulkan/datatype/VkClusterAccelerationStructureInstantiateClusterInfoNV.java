@@ -177,8 +177,9 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         return segment.get(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset);
     }
 
-    public void clusterIdOffset(@Unsigned int value) {
+    public VkClusterAccelerationStructureInstantiateClusterInfoNV clusterIdOffset(@Unsigned int value) {
         segment.set(LAYOUT$clusterIdOffset, OFFSET$clusterIdOffset, value);
+        return this;
     }
 
     public @Unsigned int geometryIndexOffset() {
@@ -186,25 +187,28 @@ public record VkClusterAccelerationStructureInstantiateClusterInfoNV(@NotNull Me
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void geometryIndexOffset(@Unsigned int value) {
+    public VkClusterAccelerationStructureInstantiateClusterInfoNV geometryIndexOffset(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndexOffset$reserved, LAYOUT$bitfield$geometryIndexOffset$reserved);
         BitfieldUtil.writeBits(s, 0, 24, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long clusterTemplateAddress() {
         return segment.get(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress);
     }
 
-    public void clusterTemplateAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkClusterAccelerationStructureInstantiateClusterInfoNV clusterTemplateAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$clusterTemplateAddress, OFFSET$clusterTemplateAddress, value);
+        return this;
     }
 
     public @NotNull VkStridedDeviceAddressNV vertexBuffer() {
         return new VkStridedDeviceAddressNV(segment.asSlice(OFFSET$vertexBuffer, LAYOUT$vertexBuffer));
     }
 
-    public void vertexBuffer(@NotNull VkStridedDeviceAddressNV value) {
+    public VkClusterAccelerationStructureInstantiateClusterInfoNV vertexBuffer(@NotNull VkStridedDeviceAddressNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexBuffer, SIZE$vertexBuffer);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

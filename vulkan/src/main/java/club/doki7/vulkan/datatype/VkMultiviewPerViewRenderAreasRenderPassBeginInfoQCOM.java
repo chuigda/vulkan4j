@@ -194,8 +194,9 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int perViewRenderAreaCount() {
         return segment.get(LAYOUT$perViewRenderAreaCount, OFFSET$perViewRenderAreaCount);
     }
 
-    public void perViewRenderAreaCount(@Unsigned int value) {
+    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM perViewRenderAreaCount(@Unsigned int value) {
         segment.set(LAYOUT$perViewRenderAreaCount, OFFSET$perViewRenderAreaCount, value);
+        return this;
     }
 
-    public void pPerViewRenderAreas(@Nullable IVkRect2D value) {
+    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM pPerViewRenderAreas(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPerViewRenderAreasRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRect2D.Ptr pPerViewRenderAreas(int assumedCount) {

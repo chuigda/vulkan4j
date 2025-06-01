@@ -174,24 +174,27 @@ public record VkBuildPartitionedAccelerationStructureIndirectCommandNV(@NotNull 
         return segment.get(LAYOUT$opType, OFFSET$opType);
     }
 
-    public void opType(@EnumType(VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
+    public VkBuildPartitionedAccelerationStructureIndirectCommandNV opType(@EnumType(VkPartitionedAccelerationStructureOpTypeNV.class) int value) {
         segment.set(LAYOUT$opType, OFFSET$opType, value);
+        return this;
     }
 
     public @Unsigned int argCount() {
         return segment.get(LAYOUT$argCount, OFFSET$argCount);
     }
 
-    public void argCount(@Unsigned int value) {
+    public VkBuildPartitionedAccelerationStructureIndirectCommandNV argCount(@Unsigned int value) {
         segment.set(LAYOUT$argCount, OFFSET$argCount, value);
+        return this;
     }
 
     public @NotNull VkStridedDeviceAddressNV argData() {
         return new VkStridedDeviceAddressNV(segment.asSlice(OFFSET$argData, LAYOUT$argData));
     }
 
-    public void argData(@NotNull VkStridedDeviceAddressNV value) {
+    public VkBuildPartitionedAccelerationStructureIndirectCommandNV argData(@NotNull VkStridedDeviceAddressNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$argData, SIZE$argData);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

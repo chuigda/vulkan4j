@@ -200,8 +200,9 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingAttachmentInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,8 +213,9 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderingAttachmentInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImageView imageView() {
@@ -224,24 +226,27 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return new VkImageView(s);
     }
 
-    public void imageView(@Nullable VkImageView value) {
+    public VkRenderingAttachmentInfo imageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int imageLayout() {
         return segment.get(LAYOUT$imageLayout, OFFSET$imageLayout);
     }
 
-    public void imageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkRenderingAttachmentInfo imageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$imageLayout, OFFSET$imageLayout, value);
+        return this;
     }
 
     public @EnumType(VkResolveModeFlags.class) int resolveMode() {
         return segment.get(LAYOUT$resolveMode, OFFSET$resolveMode);
     }
 
-    public void resolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkRenderingAttachmentInfo resolveMode(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$resolveMode, OFFSET$resolveMode, value);
+        return this;
     }
 
     public @Nullable VkImageView resolveImageView() {
@@ -252,40 +257,45 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         return new VkImageView(s);
     }
 
-    public void resolveImageView(@Nullable VkImageView value) {
+    public VkRenderingAttachmentInfo resolveImageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$resolveImageView, OFFSET$resolveImageView, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int resolveImageLayout() {
         return segment.get(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout);
     }
 
-    public void resolveImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkRenderingAttachmentInfo resolveImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$resolveImageLayout, OFFSET$resolveImageLayout, value);
+        return this;
     }
 
     public @EnumType(VkAttachmentLoadOp.class) int loadOp() {
         return segment.get(LAYOUT$loadOp, OFFSET$loadOp);
     }
 
-    public void loadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
+    public VkRenderingAttachmentInfo loadOp(@EnumType(VkAttachmentLoadOp.class) int value) {
         segment.set(LAYOUT$loadOp, OFFSET$loadOp, value);
+        return this;
     }
 
     public @EnumType(VkAttachmentStoreOp.class) int storeOp() {
         return segment.get(LAYOUT$storeOp, OFFSET$storeOp);
     }
 
-    public void storeOp(@EnumType(VkAttachmentStoreOp.class) int value) {
+    public VkRenderingAttachmentInfo storeOp(@EnumType(VkAttachmentStoreOp.class) int value) {
         segment.set(LAYOUT$storeOp, OFFSET$storeOp, value);
+        return this;
     }
 
     public @NotNull VkClearValue clearValue() {
         return new VkClearValue(segment.asSlice(OFFSET$clearValue, LAYOUT$clearValue));
     }
 
-    public void clearValue(@NotNull VkClearValue value) {
+    public VkRenderingAttachmentInfo clearValue(@NotNull VkClearValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

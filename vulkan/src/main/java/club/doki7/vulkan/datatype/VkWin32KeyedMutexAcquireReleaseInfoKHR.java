@@ -199,8 +199,9 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,16 +212,18 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int acquireCount() {
         return segment.get(LAYOUT$acquireCount, OFFSET$acquireCount);
     }
 
-    public void acquireCount(@Unsigned int value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR acquireCount(@Unsigned int value) {
         segment.set(LAYOUT$acquireCount, OFFSET$acquireCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkDeviceMemory.Ptr} does not have correct {@link VkDeviceMemory.Ptr#size}
@@ -235,9 +238,10 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return new VkDeviceMemory.Ptr(s);
     }
 
-    public void pAcquireSyncs(@Nullable VkDeviceMemory.Ptr value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR pAcquireSyncs(@Nullable VkDeviceMemory.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireSyncsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDeviceMemory.class) MemorySegment pAcquireSyncsRaw() {
@@ -260,9 +264,10 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return new LongPtr(s);
     }
 
-    public void pAcquireKeys(@Nullable @Unsigned LongPtr value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR pAcquireKeys(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireKeysRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pAcquireKeysRaw() {
@@ -285,9 +290,10 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return new IntPtr(s);
     }
 
-    public void pAcquireTimeouts(@Nullable @Unsigned IntPtr value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR pAcquireTimeouts(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAcquireTimeoutsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pAcquireTimeoutsRaw() {
@@ -302,8 +308,9 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return segment.get(LAYOUT$releaseCount, OFFSET$releaseCount);
     }
 
-    public void releaseCount(@Unsigned int value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR releaseCount(@Unsigned int value) {
         segment.set(LAYOUT$releaseCount, OFFSET$releaseCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkDeviceMemory.Ptr} does not have correct {@link VkDeviceMemory.Ptr#size}
@@ -318,9 +325,10 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return new VkDeviceMemory.Ptr(s);
     }
 
-    public void pReleaseSyncs(@Nullable VkDeviceMemory.Ptr value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR pReleaseSyncs(@Nullable VkDeviceMemory.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReleaseSyncsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDeviceMemory.class) MemorySegment pReleaseSyncsRaw() {
@@ -343,9 +351,10 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         return new LongPtr(s);
     }
 
-    public void pReleaseKeys(@Nullable @Unsigned LongPtr value) {
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR pReleaseKeys(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReleaseKeysRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pReleaseKeysRaw() {

@@ -197,8 +197,9 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportSemaphoreWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSemaphore semaphore() {
@@ -221,24 +223,27 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return new VkSemaphore(s);
     }
 
-    public void semaphore(@Nullable VkSemaphore value) {
+    public VkImportSemaphoreWin32HandleInfoKHR semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSemaphoreImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkSemaphoreImportFlags.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR flags(@EnumType(VkSemaphoreImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkExternalSemaphoreHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
+    public VkImportSemaphoreWin32HandleInfoKHR handleType(@EnumType(VkExternalSemaphoreHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+        return this;
     }
 
     public @Pointer(comment="HANDLE") MemorySegment handle() {
@@ -249,8 +254,9 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-    public void handle(@Nullable IPointer pointer) {
+    public VkImportSemaphoreWin32HandleInfoKHR handle(@Nullable IPointer pointer) {
         handle(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link ShortPtr} does not have correct
@@ -265,9 +271,10 @@ public record VkImportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return new ShortPtr(s);
     }
 
-    public void name(@Nullable @Unsigned ShortPtr value) {
+    public VkImportSemaphoreWin32HandleInfoKHR name(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {

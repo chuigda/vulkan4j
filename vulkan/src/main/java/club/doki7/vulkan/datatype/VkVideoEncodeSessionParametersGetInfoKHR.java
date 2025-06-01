@@ -193,8 +193,9 @@ public record VkVideoEncodeSessionParametersGetInfoKHR(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeSessionParametersGetInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkVideoEncodeSessionParametersGetInfoKHR(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeSessionParametersGetInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkVideoSessionParametersKHR videoSessionParameters() {
@@ -217,8 +219,9 @@ public record VkVideoEncodeSessionParametersGetInfoKHR(@NotNull MemorySegment se
         return new VkVideoSessionParametersKHR(s);
     }
 
-    public void videoSessionParameters(@Nullable VkVideoSessionParametersKHR value) {
+    public VkVideoEncodeSessionParametersGetInfoKHR videoSessionParameters(@Nullable VkVideoSessionParametersKHR value) {
         segment.set(LAYOUT$videoSessionParameters, OFFSET$videoSessionParameters, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

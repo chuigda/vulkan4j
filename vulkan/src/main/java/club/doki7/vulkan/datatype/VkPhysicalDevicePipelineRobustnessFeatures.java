@@ -193,8 +193,9 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePipelineRobustnessFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDevicePipelineRobustnessFeatures(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePipelineRobustnessFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int pipelineRobustness() {
         return segment.get(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness);
     }
 
-    public void pipelineRobustness(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevicePipelineRobustnessFeatures pipelineRobustness(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineRobustness, OFFSET$pipelineRobustness, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

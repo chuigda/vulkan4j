@@ -137,6 +137,7 @@ public record VkIndirectExecutionSetEXT(@NotNull MemorySegment segment) implemen
         public static Ptr allocateV(Arena arena, @Nullable VkIndirectExecutionSetEXT ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

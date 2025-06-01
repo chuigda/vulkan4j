@@ -174,40 +174,45 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         return new StdVideoDecodeAV1ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoDecodeAV1ReferenceInfoFlags value) {
+    public StdVideoDecodeAV1ReferenceInfo flags(@NotNull StdVideoDecodeAV1ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte frame_type() {
         return segment.get(LAYOUT$frame_type, OFFSET$frame_type);
     }
 
-    public void frame_type(@Unsigned byte value) {
+    public StdVideoDecodeAV1ReferenceInfo frame_type(@Unsigned byte value) {
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
+        return this;
     }
 
     public @Unsigned byte RefFrameSignBias() {
         return segment.get(LAYOUT$RefFrameSignBias, OFFSET$RefFrameSignBias);
     }
 
-    public void RefFrameSignBias(@Unsigned byte value) {
+    public StdVideoDecodeAV1ReferenceInfo RefFrameSignBias(@Unsigned byte value) {
         segment.set(LAYOUT$RefFrameSignBias, OFFSET$RefFrameSignBias, value);
+        return this;
     }
 
     public @Unsigned byte OrderHint() {
         return segment.get(LAYOUT$OrderHint, OFFSET$OrderHint);
     }
 
-    public void OrderHint(@Unsigned byte value) {
+    public StdVideoDecodeAV1ReferenceInfo OrderHint(@Unsigned byte value) {
         segment.set(LAYOUT$OrderHint, OFFSET$OrderHint, value);
+        return this;
     }
 
     public @Unsigned BytePtr SavedOrderHints() {
         return new BytePtr(SavedOrderHintsRaw());
     }
 
-    public void SavedOrderHints(@Unsigned BytePtr value) {
+    public StdVideoDecodeAV1ReferenceInfo SavedOrderHints(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$SavedOrderHints, SIZE$SavedOrderHints);
+        return this;
     }
 
     public MemorySegment SavedOrderHintsRaw() {

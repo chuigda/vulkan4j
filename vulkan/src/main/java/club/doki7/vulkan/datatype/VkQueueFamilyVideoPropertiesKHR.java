@@ -193,8 +193,9 @@ public record VkQueueFamilyVideoPropertiesKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueueFamilyVideoPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkQueueFamilyVideoPropertiesKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkQueueFamilyVideoPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoCodecOperationFlagsKHR.class) int videoCodecOperations() {
         return segment.get(LAYOUT$videoCodecOperations, OFFSET$videoCodecOperations);
     }
 
-    public void videoCodecOperations(@EnumType(VkVideoCodecOperationFlagsKHR.class) int value) {
+    public VkQueueFamilyVideoPropertiesKHR videoCodecOperations(@EnumType(VkVideoCodecOperationFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoCodecOperations, OFFSET$videoCodecOperations, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

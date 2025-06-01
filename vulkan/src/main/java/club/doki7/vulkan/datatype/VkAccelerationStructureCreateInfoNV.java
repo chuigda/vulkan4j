@@ -194,8 +194,9 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkAccelerationStructureCreateInfoNV(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long compactedSize() {
         return segment.get(LAYOUT$compactedSize, OFFSET$compactedSize);
     }
 
-    public void compactedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkAccelerationStructureCreateInfoNV compactedSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$compactedSize, OFFSET$compactedSize, value);
+        return this;
     }
 
     public @NotNull VkAccelerationStructureInfoNV info() {
         return new VkAccelerationStructureInfoNV(segment.asSlice(OFFSET$info, LAYOUT$info));
     }
 
-    public void info(@NotNull VkAccelerationStructureInfoNV value) {
+    public VkAccelerationStructureCreateInfoNV info(@NotNull VkAccelerationStructureInfoNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$info, SIZE$info);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

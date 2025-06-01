@@ -177,24 +177,27 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoDecodeH264PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoDecodeH264PictureInfoFlags value) {
+    public StdVideoDecodeH264PictureInfo flags(@NotNull StdVideoDecodeH264PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte seq_parameter_set_id() {
         return segment.get(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id);
     }
 
-    public void seq_parameter_set_id(@Unsigned byte value) {
+    public StdVideoDecodeH264PictureInfo seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte pic_parameter_set_id() {
         return segment.get(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id);
     }
 
-    public void pic_parameter_set_id(@Unsigned byte value) {
+    public StdVideoDecodeH264PictureInfo pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id, value);
+        return this;
     }
 
 
@@ -203,24 +206,27 @@ public record StdVideoDecodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$frame_num, OFFSET$frame_num);
     }
 
-    public void frame_num(@Unsigned short value) {
+    public StdVideoDecodeH264PictureInfo frame_num(@Unsigned short value) {
         segment.set(LAYOUT$frame_num, OFFSET$frame_num, value);
+        return this;
     }
 
     public @Unsigned short idr_pic_id() {
         return segment.get(LAYOUT$idr_pic_id, OFFSET$idr_pic_id);
     }
 
-    public void idr_pic_id(@Unsigned short value) {
+    public StdVideoDecodeH264PictureInfo idr_pic_id(@Unsigned short value) {
         segment.set(LAYOUT$idr_pic_id, OFFSET$idr_pic_id, value);
+        return this;
     }
 
     public IntPtr PicOrderCnt() {
         return new IntPtr(PicOrderCntRaw());
     }
 
-    public void PicOrderCnt(IntPtr value) {
+    public StdVideoDecodeH264PictureInfo PicOrderCnt(IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$PicOrderCnt, SIZE$PicOrderCnt);
+        return this;
     }
 
     public MemorySegment PicOrderCntRaw() {

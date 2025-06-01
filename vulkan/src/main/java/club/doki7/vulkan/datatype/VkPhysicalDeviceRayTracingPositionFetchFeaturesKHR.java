@@ -193,8 +193,9 @@ public record VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayTracingPositionFetch() {
         return segment.get(LAYOUT$rayTracingPositionFetch, OFFSET$rayTracingPositionFetch);
     }
 
-    public void rayTracingPositionFetch(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR rayTracingPositionFetch(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingPositionFetch, OFFSET$rayTracingPositionFetch, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

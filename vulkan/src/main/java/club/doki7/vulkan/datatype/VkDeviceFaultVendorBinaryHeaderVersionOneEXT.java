@@ -182,48 +182,54 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$headerSize, OFFSET$headerSize);
     }
 
-    public void headerSize(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT headerSize(@Unsigned int value) {
         segment.set(LAYOUT$headerSize, OFFSET$headerSize, value);
+        return this;
     }
 
     public @EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int headerVersion() {
         return segment.get(LAYOUT$headerVersion, OFFSET$headerVersion);
     }
 
-    public void headerVersion(@EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT headerVersion(@EnumType(VkDeviceFaultVendorBinaryHeaderVersionEXT.class) int value) {
         segment.set(LAYOUT$headerVersion, OFFSET$headerVersion, value);
+        return this;
     }
 
     public @Unsigned int vendorID() {
         return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
     }
 
-    public void vendorID(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT vendorID(@Unsigned int value) {
         segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
+        return this;
     }
 
     public @Unsigned int deviceID() {
         return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
     }
 
-    public void deviceID(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT deviceID(@Unsigned int value) {
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
+        return this;
     }
 
     public @Unsigned int driverVersion() {
         return segment.get(LAYOUT$driverVersion, OFFSET$driverVersion);
     }
 
-    public void driverVersion(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT driverVersion(@Unsigned int value) {
         segment.set(LAYOUT$driverVersion, OFFSET$driverVersion, value);
+        return this;
     }
 
     public @Unsigned BytePtr pipelineCacheUUID() {
         return new BytePtr(pipelineCacheUUIDRaw());
     }
 
-    public void pipelineCacheUUID(@Unsigned BytePtr value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT pipelineCacheUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+        return this;
     }
 
     public MemorySegment pipelineCacheUUIDRaw() {
@@ -234,40 +240,45 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$applicationNameOffset, OFFSET$applicationNameOffset);
     }
 
-    public void applicationNameOffset(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT applicationNameOffset(@Unsigned int value) {
         segment.set(LAYOUT$applicationNameOffset, OFFSET$applicationNameOffset, value);
+        return this;
     }
 
     public @Unsigned int applicationVersion() {
         return segment.get(LAYOUT$applicationVersion, OFFSET$applicationVersion);
     }
 
-    public void applicationVersion(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT applicationVersion(@Unsigned int value) {
         segment.set(LAYOUT$applicationVersion, OFFSET$applicationVersion, value);
+        return this;
     }
 
     public @Unsigned int engineNameOffset() {
         return segment.get(LAYOUT$engineNameOffset, OFFSET$engineNameOffset);
     }
 
-    public void engineNameOffset(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT engineNameOffset(@Unsigned int value) {
         segment.set(LAYOUT$engineNameOffset, OFFSET$engineNameOffset, value);
+        return this;
     }
 
     public @Unsigned int engineVersion() {
         return segment.get(LAYOUT$engineVersion, OFFSET$engineVersion);
     }
 
-    public void engineVersion(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT engineVersion(@Unsigned int value) {
         segment.set(LAYOUT$engineVersion, OFFSET$engineVersion, value);
+        return this;
     }
 
     public @Unsigned int apiVersion() {
         return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
     }
 
-    public void apiVersion(@Unsigned int value) {
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT apiVersion(@Unsigned int value) {
         segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

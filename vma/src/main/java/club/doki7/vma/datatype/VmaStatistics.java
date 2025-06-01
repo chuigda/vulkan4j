@@ -203,32 +203,36 @@ public record VmaStatistics(@NotNull MemorySegment segment) implements IVmaStati
         return segment.get(LAYOUT$blockCount, OFFSET$blockCount);
     }
 
-    public void blockCount(@Unsigned int value) {
+    public VmaStatistics blockCount(@Unsigned int value) {
         segment.set(LAYOUT$blockCount, OFFSET$blockCount, value);
+        return this;
     }
 
     public @Unsigned int allocationCount() {
         return segment.get(LAYOUT$allocationCount, OFFSET$allocationCount);
     }
 
-    public void allocationCount(@Unsigned int value) {
+    public VmaStatistics allocationCount(@Unsigned int value) {
         segment.set(LAYOUT$allocationCount, OFFSET$allocationCount, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long blockBytes() {
         return segment.get(LAYOUT$blockBytes, OFFSET$blockBytes);
     }
 
-    public void blockBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaStatistics blockBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$blockBytes, OFFSET$blockBytes, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long allocationBytes() {
         return segment.get(LAYOUT$allocationBytes, OFFSET$allocationBytes);
     }
 
-    public void allocationBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaStatistics allocationBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$allocationBytes, OFFSET$allocationBytes, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

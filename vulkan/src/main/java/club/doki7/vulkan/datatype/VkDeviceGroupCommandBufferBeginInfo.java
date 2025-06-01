@@ -193,8 +193,9 @@ public record VkDeviceGroupCommandBufferBeginInfo(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupCommandBufferBeginInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDeviceGroupCommandBufferBeginInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceGroupCommandBufferBeginInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int deviceMask() {
         return segment.get(LAYOUT$deviceMask, OFFSET$deviceMask);
     }
 
-    public void deviceMask(@Unsigned int value) {
+    public VkDeviceGroupCommandBufferBeginInfo deviceMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceMask, OFFSET$deviceMask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

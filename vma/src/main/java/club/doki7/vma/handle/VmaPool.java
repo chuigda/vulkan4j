@@ -140,6 +140,7 @@ public record VmaPool(@NotNull MemorySegment segment) implements IPointer {
         public static Ptr allocateV(Arena arena, @Nullable VmaPool ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

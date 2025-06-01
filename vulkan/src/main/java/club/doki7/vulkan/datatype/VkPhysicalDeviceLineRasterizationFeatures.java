@@ -198,8 +198,9 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLineRasterizationFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,56 +211,63 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceLineRasterizationFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rectangularLines() {
         return segment.get(LAYOUT$rectangularLines, OFFSET$rectangularLines);
     }
 
-    public void rectangularLines(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLineRasterizationFeatures rectangularLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rectangularLines, OFFSET$rectangularLines, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int bresenhamLines() {
         return segment.get(LAYOUT$bresenhamLines, OFFSET$bresenhamLines);
     }
 
-    public void bresenhamLines(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLineRasterizationFeatures bresenhamLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$bresenhamLines, OFFSET$bresenhamLines, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int smoothLines() {
         return segment.get(LAYOUT$smoothLines, OFFSET$smoothLines);
     }
 
-    public void smoothLines(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLineRasterizationFeatures smoothLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$smoothLines, OFFSET$smoothLines, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int stippledRectangularLines() {
         return segment.get(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines);
     }
 
-    public void stippledRectangularLines(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLineRasterizationFeatures stippledRectangularLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledRectangularLines, OFFSET$stippledRectangularLines, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int stippledBresenhamLines() {
         return segment.get(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines);
     }
 
-    public void stippledBresenhamLines(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLineRasterizationFeatures stippledBresenhamLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledBresenhamLines, OFFSET$stippledBresenhamLines, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int stippledSmoothLines() {
         return segment.get(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines);
     }
 
-    public void stippledSmoothLines(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLineRasterizationFeatures stippledSmoothLines(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stippledSmoothLines, OFFSET$stippledSmoothLines, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

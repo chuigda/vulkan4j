@@ -137,6 +137,7 @@ public record VkPhysicalDevice(@NotNull MemorySegment segment) implements IPoint
         public static Ptr allocateV(Arena arena, @Nullable VkPhysicalDevice ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

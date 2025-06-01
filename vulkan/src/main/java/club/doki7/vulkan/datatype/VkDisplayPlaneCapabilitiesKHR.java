@@ -180,72 +180,81 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$supportedAlpha, OFFSET$supportedAlpha);
     }
 
-    public void supportedAlpha(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+    public VkDisplayPlaneCapabilitiesKHR supportedAlpha(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedAlpha, OFFSET$supportedAlpha, value);
+        return this;
     }
 
     public @NotNull VkOffset2D minSrcPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$minSrcPosition, LAYOUT$minSrcPosition));
     }
 
-    public void minSrcPosition(@NotNull VkOffset2D value) {
+    public VkDisplayPlaneCapabilitiesKHR minSrcPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minSrcPosition, SIZE$minSrcPosition);
+        return this;
     }
 
     public @NotNull VkOffset2D maxSrcPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$maxSrcPosition, LAYOUT$maxSrcPosition));
     }
 
-    public void maxSrcPosition(@NotNull VkOffset2D value) {
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcPosition, SIZE$maxSrcPosition);
+        return this;
     }
 
     public @NotNull VkExtent2D minSrcExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minSrcExtent, LAYOUT$minSrcExtent));
     }
 
-    public void minSrcExtent(@NotNull VkExtent2D value) {
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minSrcExtent, SIZE$minSrcExtent);
+        return this;
     }
 
     public @NotNull VkExtent2D maxSrcExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxSrcExtent, LAYOUT$maxSrcExtent));
     }
 
-    public void maxSrcExtent(@NotNull VkExtent2D value) {
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcExtent, SIZE$maxSrcExtent);
+        return this;
     }
 
     public @NotNull VkOffset2D minDstPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$minDstPosition, LAYOUT$minDstPosition));
     }
 
-    public void minDstPosition(@NotNull VkOffset2D value) {
+    public VkDisplayPlaneCapabilitiesKHR minDstPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minDstPosition, SIZE$minDstPosition);
+        return this;
     }
 
     public @NotNull VkOffset2D maxDstPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$maxDstPosition, LAYOUT$maxDstPosition));
     }
 
-    public void maxDstPosition(@NotNull VkOffset2D value) {
+    public VkDisplayPlaneCapabilitiesKHR maxDstPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstPosition, SIZE$maxDstPosition);
+        return this;
     }
 
     public @NotNull VkExtent2D minDstExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minDstExtent, LAYOUT$minDstExtent));
     }
 
-    public void minDstExtent(@NotNull VkExtent2D value) {
+    public VkDisplayPlaneCapabilitiesKHR minDstExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minDstExtent, SIZE$minDstExtent);
+        return this;
     }
 
     public @NotNull VkExtent2D maxDstExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxDstExtent, LAYOUT$maxDstExtent));
     }
 
-    public void maxDstExtent(@NotNull VkExtent2D value) {
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstExtent, SIZE$maxDstExtent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

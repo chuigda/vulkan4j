@@ -174,24 +174,27 @@ public record VkFormatProperties(@NotNull MemorySegment segment) implements IVkF
         return segment.get(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures);
     }
 
-    public void linearTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkFormatProperties linearTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures, value);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags.class) int optimalTilingFeatures() {
         return segment.get(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures);
     }
 
-    public void optimalTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkFormatProperties optimalTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures, value);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags.class) int bufferFeatures() {
         return segment.get(LAYOUT$bufferFeatures, OFFSET$bufferFeatures);
     }
 
-    public void bufferFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkFormatProperties bufferFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$bufferFeatures, OFFSET$bufferFeatures, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

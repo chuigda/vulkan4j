@@ -175,32 +175,36 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$queueFlags, OFFSET$queueFlags);
     }
 
-    public void queueFlags(@EnumType(VkQueueFlags.class) int value) {
+    public VkQueueFamilyProperties queueFlags(@EnumType(VkQueueFlags.class) int value) {
         segment.set(LAYOUT$queueFlags, OFFSET$queueFlags, value);
+        return this;
     }
 
     public @Unsigned int queueCount() {
         return segment.get(LAYOUT$queueCount, OFFSET$queueCount);
     }
 
-    public void queueCount(@Unsigned int value) {
+    public VkQueueFamilyProperties queueCount(@Unsigned int value) {
         segment.set(LAYOUT$queueCount, OFFSET$queueCount, value);
+        return this;
     }
 
     public @Unsigned int timestampValidBits() {
         return segment.get(LAYOUT$timestampValidBits, OFFSET$timestampValidBits);
     }
 
-    public void timestampValidBits(@Unsigned int value) {
+    public VkQueueFamilyProperties timestampValidBits(@Unsigned int value) {
         segment.set(LAYOUT$timestampValidBits, OFFSET$timestampValidBits, value);
+        return this;
     }
 
     public @NotNull VkExtent3D minImageTransferGranularity() {
         return new VkExtent3D(segment.asSlice(OFFSET$minImageTransferGranularity, LAYOUT$minImageTransferGranularity));
     }
 
-    public void minImageTransferGranularity(@NotNull VkExtent3D value) {
+    public VkQueueFamilyProperties minImageTransferGranularity(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageTransferGranularity, SIZE$minImageTransferGranularity);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkQueryPoolPerformanceQueryCreateInfoINTEL sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkQueryPoolPerformanceQueryCreateInfoINTEL(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkQueryPoolPerformanceQueryCreateInfoINTEL pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkQueryPoolSamplingModeINTEL.class) int performanceCountersSampling() {
         return segment.get(LAYOUT$performanceCountersSampling, OFFSET$performanceCountersSampling);
     }
 
-    public void performanceCountersSampling(@EnumType(VkQueryPoolSamplingModeINTEL.class) int value) {
+    public VkQueryPoolPerformanceQueryCreateInfoINTEL performanceCountersSampling(@EnumType(VkQueryPoolSamplingModeINTEL.class) int value) {
         segment.set(LAYOUT$performanceCountersSampling, OFFSET$performanceCountersSampling, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

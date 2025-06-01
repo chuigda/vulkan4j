@@ -202,8 +202,9 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -214,16 +215,18 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDebugUtilsMessengerCallbackDataEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT flags(@EnumType(VkDebugUtilsMessengerCallbackDataFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -238,9 +241,10 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new BytePtr(s);
     }
 
-    public void pMessageIdName(@Nullable BytePtr value) {
+    public VkDebugUtilsMessengerCallbackDataEXT pMessageIdName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMessageIdNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pMessageIdNameRaw() {
@@ -255,8 +259,9 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$messageIdNumber, OFFSET$messageIdNumber);
     }
 
-    public void messageIdNumber(int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT messageIdNumber(int value) {
         segment.set(LAYOUT$messageIdNumber, OFFSET$messageIdNumber, value);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -271,9 +276,10 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return new BytePtr(s);
     }
 
-    public void pMessage(@Nullable BytePtr value) {
+    public VkDebugUtilsMessengerCallbackDataEXT pMessage(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMessageRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pMessageRaw() {
@@ -288,13 +294,15 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$queueLabelCount, OFFSET$queueLabelCount);
     }
 
-    public void queueLabelCount(@Unsigned int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT queueLabelCount(@Unsigned int value) {
         segment.set(LAYOUT$queueLabelCount, OFFSET$queueLabelCount, value);
+        return this;
     }
 
-    public void pQueueLabels(@Nullable IVkDebugUtilsLabelEXT value) {
+    public VkDebugUtilsMessengerCallbackDataEXT pQueueLabels(@Nullable IVkDebugUtilsLabelEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueLabelsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDebugUtilsLabelEXT.Ptr pQueueLabels(int assumedCount) {
@@ -327,13 +335,15 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount);
     }
 
-    public void cmdBufLabelCount(@Unsigned int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT cmdBufLabelCount(@Unsigned int value) {
         segment.set(LAYOUT$cmdBufLabelCount, OFFSET$cmdBufLabelCount, value);
+        return this;
     }
 
-    public void pCmdBufLabels(@Nullable IVkDebugUtilsLabelEXT value) {
+    public VkDebugUtilsMessengerCallbackDataEXT pCmdBufLabels(@Nullable IVkDebugUtilsLabelEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCmdBufLabelsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDebugUtilsLabelEXT.Ptr pCmdBufLabels(int assumedCount) {
@@ -366,13 +376,15 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$objectCount, OFFSET$objectCount);
     }
 
-    public void objectCount(@Unsigned int value) {
+    public VkDebugUtilsMessengerCallbackDataEXT objectCount(@Unsigned int value) {
         segment.set(LAYOUT$objectCount, OFFSET$objectCount, value);
+        return this;
     }
 
-    public void pObjects(@Nullable IVkDebugUtilsObjectNameInfoEXT value) {
+    public VkDebugUtilsMessengerCallbackDataEXT pObjects(@Nullable IVkDebugUtilsObjectNameInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDebugUtilsObjectNameInfoEXT.Ptr pObjects(int assumedCount) {

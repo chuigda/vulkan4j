@@ -196,8 +196,9 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindVideoSessionMemoryInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,16 +209,18 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindVideoSessionMemoryInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int memoryBindIndex() {
         return segment.get(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex);
     }
 
-    public void memoryBindIndex(@Unsigned int value) {
+    public VkBindVideoSessionMemoryInfoKHR memoryBindIndex(@Unsigned int value) {
         segment.set(LAYOUT$memoryBindIndex, OFFSET$memoryBindIndex, value);
+        return this;
     }
 
     public @Nullable VkDeviceMemory memory() {
@@ -228,24 +231,27 @@ public record VkBindVideoSessionMemoryInfoKHR(@NotNull MemorySegment segment) im
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@Nullable VkDeviceMemory value) {
+    public VkBindVideoSessionMemoryInfoKHR memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBindVideoSessionMemoryInfoKHR memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long memorySize() {
         return segment.get(LAYOUT$memorySize, OFFSET$memorySize);
     }
 
-    public void memorySize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBindVideoSessionMemoryInfoKHR memorySize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memorySize, OFFSET$memorySize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

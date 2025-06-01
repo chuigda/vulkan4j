@@ -196,8 +196,9 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkGraphicsShaderGroupCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,21 +209,24 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkGraphicsShaderGroupCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int stageCount() {
         return segment.get(LAYOUT$stageCount, OFFSET$stageCount);
     }
 
-    public void stageCount(@Unsigned int value) {
+    public VkGraphicsShaderGroupCreateInfoNV stageCount(@Unsigned int value) {
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
+        return this;
     }
 
-    public void pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
+    public VkGraphicsShaderGroupCreateInfoNV pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
@@ -251,9 +255,10 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pStages, OFFSET$pStages, value);
     }
 
-    public void pVertexInputState(@Nullable IVkPipelineVertexInputStateCreateInfo value) {
+    public VkGraphicsShaderGroupCreateInfoNV pVertexInputState(@Nullable IVkPipelineVertexInputStateCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexInputStateRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineVertexInputStateCreateInfo.Ptr pVertexInputState(int assumedCount) {
@@ -282,9 +287,10 @@ public record VkGraphicsShaderGroupCreateInfoNV(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pVertexInputState, OFFSET$pVertexInputState, value);
     }
 
-    public void pTessellationState(@Nullable IVkPipelineTessellationStateCreateInfo value) {
+    public VkGraphicsShaderGroupCreateInfoNV pTessellationState(@Nullable IVkPipelineTessellationStateCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTessellationStateRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineTessellationStateCreateInfo.Ptr pTessellationState(int assumedCount) {

@@ -195,8 +195,9 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkLatencySleepModeInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkLatencySleepModeInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int lowLatencyMode() {
         return segment.get(LAYOUT$lowLatencyMode, OFFSET$lowLatencyMode);
     }
 
-    public void lowLatencyMode(@NativeType("VkBool32") @Unsigned int value) {
+    public VkLatencySleepModeInfoNV lowLatencyMode(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$lowLatencyMode, OFFSET$lowLatencyMode, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int lowLatencyBoost() {
         return segment.get(LAYOUT$lowLatencyBoost, OFFSET$lowLatencyBoost);
     }
 
-    public void lowLatencyBoost(@NativeType("VkBool32") @Unsigned int value) {
+    public VkLatencySleepModeInfoNV lowLatencyBoost(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$lowLatencyBoost, OFFSET$lowLatencyBoost, value);
+        return this;
     }
 
     public @Unsigned int minimumIntervalUs() {
         return segment.get(LAYOUT$minimumIntervalUs, OFFSET$minimumIntervalUs);
     }
 
-    public void minimumIntervalUs(@Unsigned int value) {
+    public VkLatencySleepModeInfoNV minimumIntervalUs(@Unsigned int value) {
         segment.set(LAYOUT$minimumIntervalUs, OFFSET$minimumIntervalUs, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

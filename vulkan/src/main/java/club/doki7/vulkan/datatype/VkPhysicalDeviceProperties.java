@@ -180,48 +180,54 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$apiVersion, OFFSET$apiVersion);
     }
 
-    public void apiVersion(@Unsigned int value) {
+    public VkPhysicalDeviceProperties apiVersion(@Unsigned int value) {
         segment.set(LAYOUT$apiVersion, OFFSET$apiVersion, value);
+        return this;
     }
 
     public @Unsigned int driverVersion() {
         return segment.get(LAYOUT$driverVersion, OFFSET$driverVersion);
     }
 
-    public void driverVersion(@Unsigned int value) {
+    public VkPhysicalDeviceProperties driverVersion(@Unsigned int value) {
         segment.set(LAYOUT$driverVersion, OFFSET$driverVersion, value);
+        return this;
     }
 
     public @Unsigned int vendorID() {
         return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
     }
 
-    public void vendorID(@Unsigned int value) {
+    public VkPhysicalDeviceProperties vendorID(@Unsigned int value) {
         segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
+        return this;
     }
 
     public @Unsigned int deviceID() {
         return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
     }
 
-    public void deviceID(@Unsigned int value) {
+    public VkPhysicalDeviceProperties deviceID(@Unsigned int value) {
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
+        return this;
     }
 
     public @EnumType(VkPhysicalDeviceType.class) int deviceType() {
         return segment.get(LAYOUT$deviceType, OFFSET$deviceType);
     }
 
-    public void deviceType(@EnumType(VkPhysicalDeviceType.class) int value) {
+    public VkPhysicalDeviceProperties deviceType(@EnumType(VkPhysicalDeviceType.class) int value) {
         segment.set(LAYOUT$deviceType, OFFSET$deviceType, value);
+        return this;
     }
 
     public BytePtr deviceName() {
         return new BytePtr(deviceNameRaw());
     }
 
-    public void deviceName(BytePtr value) {
+    public VkPhysicalDeviceProperties deviceName(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
+        return this;
     }
 
     public MemorySegment deviceNameRaw() {
@@ -232,8 +238,9 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return new BytePtr(pipelineCacheUUIDRaw());
     }
 
-    public void pipelineCacheUUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceProperties pipelineCacheUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$pipelineCacheUUID, SIZE$pipelineCacheUUID);
+        return this;
     }
 
     public MemorySegment pipelineCacheUUIDRaw() {
@@ -244,16 +251,18 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return new VkPhysicalDeviceLimits(segment.asSlice(OFFSET$limits, LAYOUT$limits));
     }
 
-    public void limits(@NotNull VkPhysicalDeviceLimits value) {
+    public VkPhysicalDeviceProperties limits(@NotNull VkPhysicalDeviceLimits value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$limits, SIZE$limits);
+        return this;
     }
 
     public @NotNull VkPhysicalDeviceSparseProperties sparseProperties() {
         return new VkPhysicalDeviceSparseProperties(segment.asSlice(OFFSET$sparseProperties, LAYOUT$sparseProperties));
     }
 
-    public void sparseProperties(@NotNull VkPhysicalDeviceSparseProperties value) {
+    public VkPhysicalDeviceProperties sparseProperties(@NotNull VkPhysicalDeviceSparseProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, SIZE$sparseProperties);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

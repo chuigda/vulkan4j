@@ -193,8 +193,9 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderSubgroupUniformControlFlow() {
         return segment.get(LAYOUT$shaderSubgroupUniformControlFlow, OFFSET$shaderSubgroupUniformControlFlow);
     }
 
-    public void shaderSubgroupUniformControlFlow(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR shaderSubgroupUniformControlFlow(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupUniformControlFlow, OFFSET$shaderSubgroupUniformControlFlow, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

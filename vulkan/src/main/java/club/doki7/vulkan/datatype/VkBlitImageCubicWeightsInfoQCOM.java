@@ -193,8 +193,9 @@ public record VkBlitImageCubicWeightsInfoQCOM(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBlitImageCubicWeightsInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkBlitImageCubicWeightsInfoQCOM(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBlitImageCubicWeightsInfoQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkCubicFilterWeightsQCOM.class) int cubicWeights() {
         return segment.get(LAYOUT$cubicWeights, OFFSET$cubicWeights);
     }
 
-    public void cubicWeights(@EnumType(VkCubicFilterWeightsQCOM.class) int value) {
+    public VkBlitImageCubicWeightsInfoQCOM cubicWeights(@EnumType(VkCubicFilterWeightsQCOM.class) int value) {
         segment.set(LAYOUT$cubicWeights, OFFSET$cubicWeights, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

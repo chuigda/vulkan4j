@@ -173,13 +173,15 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBaseOutStructure sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
-    public void pNext(@Nullable IVkBaseOutStructure value) {
+    public VkBaseOutStructure pNext(@Nullable IVkBaseOutStructure value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNextRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkBaseOutStructure.Ptr pNext(int assumedCount) {

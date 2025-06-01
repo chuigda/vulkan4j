@@ -203,8 +203,9 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassDescription2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -215,45 +216,51 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSubpassDescription2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSubpassDescriptionFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkSubpassDescriptionFlags.class) int value) {
+    public VkSubpassDescription2 flags(@EnumType(VkSubpassDescriptionFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkSubpassDescription2 pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+        return this;
     }
 
     public @Unsigned int viewMask() {
         return segment.get(LAYOUT$viewMask, OFFSET$viewMask);
     }
 
-    public void viewMask(@Unsigned int value) {
+    public VkSubpassDescription2 viewMask(@Unsigned int value) {
         segment.set(LAYOUT$viewMask, OFFSET$viewMask, value);
+        return this;
     }
 
     public @Unsigned int inputAttachmentCount() {
         return segment.get(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount);
     }
 
-    public void inputAttachmentCount(@Unsigned int value) {
+    public VkSubpassDescription2 inputAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$inputAttachmentCount, OFFSET$inputAttachmentCount, value);
+        return this;
     }
 
-    public void pInputAttachments(@Nullable IVkAttachmentReference2 value) {
+    public VkSubpassDescription2 pInputAttachments(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pInputAttachmentsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentReference2.Ptr pInputAttachments(int assumedCount) {
@@ -286,13 +293,15 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@Unsigned int value) {
+    public VkSubpassDescription2 colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
+        return this;
     }
 
-    public void pColorAttachments(@Nullable IVkAttachmentReference2 value) {
+    public VkSubpassDescription2 pColorAttachments(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentReference2.Ptr pColorAttachments(int assumedCount) {
@@ -321,9 +330,10 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pColorAttachments, OFFSET$pColorAttachments, value);
     }
 
-    public void pResolveAttachments(@Nullable IVkAttachmentReference2 value) {
+    public VkSubpassDescription2 pResolveAttachments(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pResolveAttachmentsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentReference2.Ptr pResolveAttachments(int assumedCount) {
@@ -352,9 +362,10 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pResolveAttachments, OFFSET$pResolveAttachments, value);
     }
 
-    public void pDepthStencilAttachment(@Nullable IVkAttachmentReference2 value) {
+    public VkSubpassDescription2 pDepthStencilAttachment(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthStencilAttachmentRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentReference2.Ptr pDepthStencilAttachment(int assumedCount) {
@@ -387,8 +398,9 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount);
     }
 
-    public void preserveAttachmentCount(@Unsigned int value) {
+    public VkSubpassDescription2 preserveAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$preserveAttachmentCount, OFFSET$preserveAttachmentCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -403,9 +415,10 @@ public record VkSubpassDescription2(@NotNull MemorySegment segment) implements I
         return new IntPtr(s);
     }
 
-    public void pPreserveAttachments(@Nullable @Unsigned IntPtr value) {
+    public VkSubpassDescription2 pPreserveAttachments(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPreserveAttachmentsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pPreserveAttachmentsRaw() {

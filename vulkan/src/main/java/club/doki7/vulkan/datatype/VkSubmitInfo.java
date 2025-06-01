@@ -199,8 +199,9 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubmitInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,16 +212,18 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSubmitInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int waitSemaphoreCount() {
         return segment.get(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount);
     }
 
-    public void waitSemaphoreCount(@Unsigned int value) {
+    public VkSubmitInfo waitSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$waitSemaphoreCount, OFFSET$waitSemaphoreCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
@@ -235,9 +238,10 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return new VkSemaphore.Ptr(s);
     }
 
-    public void pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
+    public VkSubmitInfo pWaitSemaphores(@Nullable VkSemaphore.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitSemaphoresRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSemaphore.class) MemorySegment pWaitSemaphoresRaw() {
@@ -261,9 +265,10 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return new IntPtr(s);
     }
 
-    public void pWaitDstStageMask(@Nullable @EnumType(VkPipelineStageFlags.class) IntPtr value) {
+    public VkSubmitInfo pWaitDstStageMask(@Nullable @EnumType(VkPipelineStageFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWaitDstStageMaskRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkPipelineStageFlags.class) MemorySegment pWaitDstStageMaskRaw() {
@@ -278,8 +283,9 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
-    public void commandBufferCount(@Unsigned int value) {
+    public VkSubmitInfo commandBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkCommandBuffer.Ptr} does not have correct {@link VkCommandBuffer.Ptr#size}
@@ -294,9 +300,10 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return new VkCommandBuffer.Ptr(s);
     }
 
-    public void pCommandBuffers(@Nullable VkCommandBuffer.Ptr value) {
+    public VkSubmitInfo pCommandBuffers(@Nullable VkCommandBuffer.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCommandBuffersRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkCommandBuffer.class) MemorySegment pCommandBuffersRaw() {
@@ -311,8 +318,9 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return segment.get(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount);
     }
 
-    public void signalSemaphoreCount(@Unsigned int value) {
+    public VkSubmitInfo signalSemaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$signalSemaphoreCount, OFFSET$signalSemaphoreCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
@@ -327,9 +335,10 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         return new VkSemaphore.Ptr(s);
     }
 
-    public void pSignalSemaphores(@Nullable VkSemaphore.Ptr value) {
+    public VkSubmitInfo pSignalSemaphores(@Nullable VkSemaphore.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSignalSemaphoresRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSemaphore.class) MemorySegment pSignalSemaphoresRaw() {

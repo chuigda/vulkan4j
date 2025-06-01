@@ -194,8 +194,9 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkHdrVividDynamicMetadataHUAWEI sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkHdrVividDynamicMetadataHUAWEI pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long dynamicMetadataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$dynamicMetadataSize);
     }
 
-    public void dynamicMetadataSize(@Unsigned long value) {
+    public VkHdrVividDynamicMetadataHUAWEI dynamicMetadataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dynamicMetadataSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pDynamicMetadata() {
@@ -226,8 +229,9 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pDynamicMetadata, OFFSET$pDynamicMetadata, value);
     }
 
-    public void pDynamicMetadata(@Nullable IPointer pointer) {
+    public VkHdrVividDynamicMetadataHUAWEI pDynamicMetadata(@Nullable IPointer pointer) {
         pDynamicMetadata(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

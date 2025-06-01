@@ -176,40 +176,45 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$advancedBlendOp, OFFSET$advancedBlendOp);
     }
 
-    public void advancedBlendOp(@EnumType(VkBlendOp.class) int value) {
+    public VkColorBlendAdvancedEXT advancedBlendOp(@EnumType(VkBlendOp.class) int value) {
         segment.set(LAYOUT$advancedBlendOp, OFFSET$advancedBlendOp, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int srcPremultiplied() {
         return segment.get(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied);
     }
 
-    public void srcPremultiplied(@NativeType("VkBool32") @Unsigned int value) {
+    public VkColorBlendAdvancedEXT srcPremultiplied(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$srcPremultiplied, OFFSET$srcPremultiplied, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int dstPremultiplied() {
         return segment.get(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied);
     }
 
-    public void dstPremultiplied(@NativeType("VkBool32") @Unsigned int value) {
+    public VkColorBlendAdvancedEXT dstPremultiplied(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$dstPremultiplied, OFFSET$dstPremultiplied, value);
+        return this;
     }
 
     public @EnumType(VkBlendOverlapEXT.class) int blendOverlap() {
         return segment.get(LAYOUT$blendOverlap, OFFSET$blendOverlap);
     }
 
-    public void blendOverlap(@EnumType(VkBlendOverlapEXT.class) int value) {
+    public VkColorBlendAdvancedEXT blendOverlap(@EnumType(VkBlendOverlapEXT.class) int value) {
         segment.set(LAYOUT$blendOverlap, OFFSET$blendOverlap, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int clampResults() {
         return segment.get(LAYOUT$clampResults, OFFSET$clampResults);
     }
 
-    public void clampResults(@NativeType("VkBool32") @Unsigned int value) {
+    public VkColorBlendAdvancedEXT clampResults(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clampResults, OFFSET$clampResults, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

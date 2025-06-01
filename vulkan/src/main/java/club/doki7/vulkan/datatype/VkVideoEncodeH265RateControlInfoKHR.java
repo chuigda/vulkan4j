@@ -197,8 +197,9 @@ public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265RateControlInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkVideoEncodeH265RateControlInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265RateControlInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeH265RateControlInfoKHR flags(@EnumType(VkVideoEncodeH265RateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int gopFrameCount() {
         return segment.get(LAYOUT$gopFrameCount, OFFSET$gopFrameCount);
     }
 
-    public void gopFrameCount(@Unsigned int value) {
+    public VkVideoEncodeH265RateControlInfoKHR gopFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$gopFrameCount, OFFSET$gopFrameCount, value);
+        return this;
     }
 
     public @Unsigned int idrPeriod() {
         return segment.get(LAYOUT$idrPeriod, OFFSET$idrPeriod);
     }
 
-    public void idrPeriod(@Unsigned int value) {
+    public VkVideoEncodeH265RateControlInfoKHR idrPeriod(@Unsigned int value) {
         segment.set(LAYOUT$idrPeriod, OFFSET$idrPeriod, value);
+        return this;
     }
 
     public @Unsigned int consecutiveBFrameCount() {
         return segment.get(LAYOUT$consecutiveBFrameCount, OFFSET$consecutiveBFrameCount);
     }
 
-    public void consecutiveBFrameCount(@Unsigned int value) {
+    public VkVideoEncodeH265RateControlInfoKHR consecutiveBFrameCount(@Unsigned int value) {
         segment.set(LAYOUT$consecutiveBFrameCount, OFFSET$consecutiveBFrameCount, value);
+        return this;
     }
 
     public @Unsigned int subLayerCount() {
         return segment.get(LAYOUT$subLayerCount, OFFSET$subLayerCount);
     }
 
-    public void subLayerCount(@Unsigned int value) {
+    public VkVideoEncodeH265RateControlInfoKHR subLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$subLayerCount, OFFSET$subLayerCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

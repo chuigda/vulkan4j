@@ -194,8 +194,9 @@ public record VkPhysicalDeviceVertexAttributeDivisorProperties(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVertexAttributeDivisorProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceVertexAttributeDivisorProperties(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVertexAttributeDivisorProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxVertexAttribDivisor() {
         return segment.get(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor);
     }
 
-    public void maxVertexAttribDivisor(@Unsigned int value) {
+    public VkPhysicalDeviceVertexAttributeDivisorProperties maxVertexAttribDivisor(@Unsigned int value) {
         segment.set(LAYOUT$maxVertexAttribDivisor, OFFSET$maxVertexAttribDivisor, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int supportsNonZeroFirstInstance() {
         return segment.get(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance);
     }
 
-    public void supportsNonZeroFirstInstance(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVertexAttributeDivisorProperties supportsNonZeroFirstInstance(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$supportsNonZeroFirstInstance, OFFSET$supportsNonZeroFirstInstance, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -172,8 +172,9 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         return new IntPtr(max_latency_increase_plus1Raw());
     }
 
-    public void max_latency_increase_plus1(@Unsigned IntPtr value) {
+    public StdVideoH265DecPicBufMgr max_latency_increase_plus1(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_latency_increase_plus1, SIZE$max_latency_increase_plus1);
+        return this;
     }
 
     public MemorySegment max_latency_increase_plus1Raw() {
@@ -184,8 +185,9 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         return new BytePtr(max_dec_pic_buffering_minus1Raw());
     }
 
-    public void max_dec_pic_buffering_minus1(@Unsigned BytePtr value) {
+    public StdVideoH265DecPicBufMgr max_dec_pic_buffering_minus1(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_dec_pic_buffering_minus1, SIZE$max_dec_pic_buffering_minus1);
+        return this;
     }
 
     public MemorySegment max_dec_pic_buffering_minus1Raw() {
@@ -196,8 +198,9 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         return new BytePtr(max_num_reorder_picsRaw());
     }
 
-    public void max_num_reorder_pics(@Unsigned BytePtr value) {
+    public StdVideoH265DecPicBufMgr max_num_reorder_pics(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$max_num_reorder_pics, SIZE$max_num_reorder_pics);
+        return this;
     }
 
     public MemorySegment max_num_reorder_picsRaw() {

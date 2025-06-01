@@ -199,8 +199,9 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,64 +212,72 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeCapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR flags(@EnumType(VkVideoEncodeCapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlModes() {
         return segment.get(LAYOUT$rateControlModes, OFFSET$rateControlModes);
     }
 
-    public void rateControlModes(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR rateControlModes(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$rateControlModes, OFFSET$rateControlModes, value);
+        return this;
     }
 
     public @Unsigned int maxRateControlLayers() {
         return segment.get(LAYOUT$maxRateControlLayers, OFFSET$maxRateControlLayers);
     }
 
-    public void maxRateControlLayers(@Unsigned int value) {
+    public VkVideoEncodeCapabilitiesKHR maxRateControlLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxRateControlLayers, OFFSET$maxRateControlLayers, value);
+        return this;
     }
 
     public @Unsigned long maxBitrate() {
         return segment.get(LAYOUT$maxBitrate, OFFSET$maxBitrate);
     }
 
-    public void maxBitrate(@Unsigned long value) {
+    public VkVideoEncodeCapabilitiesKHR maxBitrate(@Unsigned long value) {
         segment.set(LAYOUT$maxBitrate, OFFSET$maxBitrate, value);
+        return this;
     }
 
     public @Unsigned int maxQualityLevels() {
         return segment.get(LAYOUT$maxQualityLevels, OFFSET$maxQualityLevels);
     }
 
-    public void maxQualityLevels(@Unsigned int value) {
+    public VkVideoEncodeCapabilitiesKHR maxQualityLevels(@Unsigned int value) {
         segment.set(LAYOUT$maxQualityLevels, OFFSET$maxQualityLevels, value);
+        return this;
     }
 
     public @NotNull VkExtent2D encodeInputPictureGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$encodeInputPictureGranularity, LAYOUT$encodeInputPictureGranularity));
     }
 
-    public void encodeInputPictureGranularity(@NotNull VkExtent2D value) {
+    public VkVideoEncodeCapabilitiesKHR encodeInputPictureGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$encodeInputPictureGranularity, SIZE$encodeInputPictureGranularity);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int supportedEncodeFeedbackFlags() {
         return segment.get(LAYOUT$supportedEncodeFeedbackFlags, OFFSET$supportedEncodeFeedbackFlags);
     }
 
-    public void supportedEncodeFeedbackFlags(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
+    public VkVideoEncodeCapabilitiesKHR supportedEncodeFeedbackFlags(@EnumType(VkVideoEncodeFeedbackFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedEncodeFeedbackFlags, OFFSET$supportedEncodeFeedbackFlags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

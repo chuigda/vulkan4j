@@ -194,8 +194,9 @@ public record VkImageViewSlicedCreateInfoEXT(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewSlicedCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkImageViewSlicedCreateInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageViewSlicedCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int sliceOffset() {
         return segment.get(LAYOUT$sliceOffset, OFFSET$sliceOffset);
     }
 
-    public void sliceOffset(@Unsigned int value) {
+    public VkImageViewSlicedCreateInfoEXT sliceOffset(@Unsigned int value) {
         segment.set(LAYOUT$sliceOffset, OFFSET$sliceOffset, value);
+        return this;
     }
 
     public @Unsigned int sliceCount() {
         return segment.get(LAYOUT$sliceCount, OFFSET$sliceCount);
     }
 
-    public void sliceCount(@Unsigned int value) {
+    public VkImageViewSlicedCreateInfoEXT sliceCount(@Unsigned int value) {
         segment.set(LAYOUT$sliceCount, OFFSET$sliceCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

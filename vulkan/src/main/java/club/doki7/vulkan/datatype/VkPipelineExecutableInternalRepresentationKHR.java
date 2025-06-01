@@ -197,8 +197,9 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineExecutableInternalRepresentationKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,16 +210,18 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineExecutableInternalRepresentationKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public BytePtr name() {
         return new BytePtr(nameRaw());
     }
 
-    public void name(BytePtr value) {
+    public VkPipelineExecutableInternalRepresentationKHR name(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$name, SIZE$name);
+        return this;
     }
 
     public MemorySegment nameRaw() {
@@ -229,8 +232,9 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return new BytePtr(descriptionRaw());
     }
 
-    public void description(BytePtr value) {
+    public VkPipelineExecutableInternalRepresentationKHR description(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        return this;
     }
 
     public MemorySegment descriptionRaw() {
@@ -241,16 +245,18 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         return segment.get(LAYOUT$isText, OFFSET$isText);
     }
 
-    public void isText(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineExecutableInternalRepresentationKHR isText(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$isText, OFFSET$isText, value);
+        return this;
     }
 
     public @Unsigned long dataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
     }
 
-    public void dataSize(@Unsigned long value) {
+    public VkPipelineExecutableInternalRepresentationKHR dataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pData() {
@@ -261,8 +267,9 @@ public record VkPipelineExecutableInternalRepresentationKHR(@NotNull MemorySegme
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(@Nullable IPointer pointer) {
+    public VkPipelineExecutableInternalRepresentationKHR pData(@Nullable IPointer pointer) {
         pData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

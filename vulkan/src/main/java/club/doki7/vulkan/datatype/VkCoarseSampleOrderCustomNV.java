@@ -175,29 +175,33 @@ public record VkCoarseSampleOrderCustomNV(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$shadingRate, OFFSET$shadingRate);
     }
 
-    public void shadingRate(@EnumType(VkShadingRatePaletteEntryNV.class) int value) {
+    public VkCoarseSampleOrderCustomNV shadingRate(@EnumType(VkShadingRatePaletteEntryNV.class) int value) {
         segment.set(LAYOUT$shadingRate, OFFSET$shadingRate, value);
+        return this;
     }
 
     public @Unsigned int sampleCount() {
         return segment.get(LAYOUT$sampleCount, OFFSET$sampleCount);
     }
 
-    public void sampleCount(@Unsigned int value) {
+    public VkCoarseSampleOrderCustomNV sampleCount(@Unsigned int value) {
         segment.set(LAYOUT$sampleCount, OFFSET$sampleCount, value);
+        return this;
     }
 
     public @Unsigned int sampleLocationCount() {
         return segment.get(LAYOUT$sampleLocationCount, OFFSET$sampleLocationCount);
     }
 
-    public void sampleLocationCount(@Unsigned int value) {
+    public VkCoarseSampleOrderCustomNV sampleLocationCount(@Unsigned int value) {
         segment.set(LAYOUT$sampleLocationCount, OFFSET$sampleLocationCount, value);
+        return this;
     }
 
-    public void pSampleLocations(@Nullable IVkCoarseSampleLocationNV value) {
+    public VkCoarseSampleOrderCustomNV pSampleLocations(@Nullable IVkCoarseSampleLocationNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSampleLocationsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkCoarseSampleLocationNV.Ptr pSampleLocations(int assumedCount) {

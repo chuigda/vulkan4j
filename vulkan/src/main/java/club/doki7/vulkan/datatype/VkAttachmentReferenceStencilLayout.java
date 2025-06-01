@@ -193,8 +193,9 @@ public record VkAttachmentReferenceStencilLayout(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAttachmentReferenceStencilLayout sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkAttachmentReferenceStencilLayout(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAttachmentReferenceStencilLayout pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int stencilLayout() {
         return segment.get(LAYOUT$stencilLayout, OFFSET$stencilLayout);
     }
 
-    public void stencilLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentReferenceStencilLayout stencilLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$stencilLayout, OFFSET$stencilLayout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

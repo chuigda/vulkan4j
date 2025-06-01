@@ -194,8 +194,9 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupDeviceCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceGroupDeviceCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int physicalDeviceCount() {
         return segment.get(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount);
     }
 
-    public void physicalDeviceCount(@Unsigned int value) {
+    public VkDeviceGroupDeviceCreateInfo physicalDeviceCount(@Unsigned int value) {
         segment.set(LAYOUT$physicalDeviceCount, OFFSET$physicalDeviceCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkPhysicalDevice.Ptr} does not have correct {@link VkPhysicalDevice.Ptr#size}
@@ -230,9 +233,10 @@ public record VkDeviceGroupDeviceCreateInfo(@NotNull MemorySegment segment) impl
         return new VkPhysicalDevice.Ptr(s);
     }
 
-    public void pPhysicalDevices(@Nullable VkPhysicalDevice.Ptr value) {
+    public VkDeviceGroupDeviceCreateInfo pPhysicalDevices(@Nullable VkPhysicalDevice.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPhysicalDevicesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkPhysicalDevice.class) MemorySegment pPhysicalDevicesRaw() {

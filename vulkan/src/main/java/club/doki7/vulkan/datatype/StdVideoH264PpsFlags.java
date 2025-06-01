@@ -179,9 +179,10 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void transform_8x8_mode_flag(boolean value) {
+    public StdVideoH264PpsFlags transform_8x8_mode_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag, LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean redundant_pic_cnt_present_flag() {
@@ -189,9 +190,10 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void redundant_pic_cnt_present_flag(boolean value) {
+    public StdVideoH264PpsFlags redundant_pic_cnt_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag, LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean constrained_intra_pred_flag() {
@@ -199,9 +201,10 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void constrained_intra_pred_flag(boolean value) {
+    public StdVideoH264PpsFlags constrained_intra_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag, LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean deblocking_filter_control_present_flag() {
@@ -209,9 +212,10 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void deblocking_filter_control_present_flag(boolean value) {
+    public StdVideoH264PpsFlags deblocking_filter_control_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag, LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean weighted_pred_flag() {
@@ -219,9 +223,10 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void weighted_pred_flag(boolean value) {
+    public StdVideoH264PpsFlags weighted_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag, LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean bottom_field_pic_order_in_frame_present_flag() {
@@ -229,9 +234,10 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void bottom_field_pic_order_in_frame_present_flag(boolean value) {
+    public StdVideoH264PpsFlags bottom_field_pic_order_in_frame_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag, LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public boolean entropy_coding_mode_flag() {
@@ -239,9 +245,10 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 6);
     }
 
-    public void entropy_coding_mode_flag(boolean value) {
+    public StdVideoH264PpsFlags entropy_coding_mode_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag, LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
         BitfieldUtil.writeBit(s, 6, value);
+        return this;
     }
 
     public boolean pic_scaling_matrix_present_flag() {
@@ -249,9 +256,10 @@ public record StdVideoH264PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 7);
     }
 
-    public void pic_scaling_matrix_present_flag(boolean value) {
+    public StdVideoH264PpsFlags pic_scaling_matrix_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag, LAYOUT$bitfield$transform_8x8_mode_flag$pic_scaling_matrix_present_flag);
         BitfieldUtil.writeBit(s, 7, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

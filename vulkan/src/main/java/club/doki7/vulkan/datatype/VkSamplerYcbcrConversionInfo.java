@@ -193,8 +193,9 @@ public record VkSamplerYcbcrConversionInfo(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerYcbcrConversionInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkSamplerYcbcrConversionInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerYcbcrConversionInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSamplerYcbcrConversion conversion() {
@@ -217,8 +219,9 @@ public record VkSamplerYcbcrConversionInfo(@NotNull MemorySegment segment) imple
         return new VkSamplerYcbcrConversion(s);
     }
 
-    public void conversion(@Nullable VkSamplerYcbcrConversion value) {
+    public VkSamplerYcbcrConversionInfo conversion(@Nullable VkSamplerYcbcrConversion value) {
         segment.set(LAYOUT$conversion, OFFSET$conversion, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

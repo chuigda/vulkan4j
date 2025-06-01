@@ -195,8 +195,9 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalFenceProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkExternalFenceProperties(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExternalFenceProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkExternalFenceHandleTypeFlags.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public void exportFromImportedHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExternalFenceProperties exportFromImportedHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
+        return this;
     }
 
     public @EnumType(VkExternalFenceHandleTypeFlags.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public void compatibleHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkExternalFenceProperties compatibleHandleTypes(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
+        return this;
     }
 
     public @EnumType(VkExternalFenceFeatureFlags.class) int externalFenceFeatures() {
         return segment.get(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures);
     }
 
-    public void externalFenceFeatures(@EnumType(VkExternalFenceFeatureFlags.class) int value) {
+    public VkExternalFenceProperties externalFenceFeatures(@EnumType(VkExternalFenceFeatureFlags.class) int value) {
         segment.set(LAYOUT$externalFenceFeatures, OFFSET$externalFenceFeatures, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

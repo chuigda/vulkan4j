@@ -202,9 +202,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void dependent_slice_segments_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags dependent_slice_segments_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean output_flag_present_flag() {
@@ -212,9 +213,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void output_flag_present_flag(boolean value) {
+    public StdVideoH265PpsFlags output_flag_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean sign_data_hiding_enabled_flag() {
@@ -222,9 +224,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void sign_data_hiding_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags sign_data_hiding_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean cabac_init_present_flag() {
@@ -232,9 +235,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void cabac_init_present_flag(boolean value) {
+    public StdVideoH265PpsFlags cabac_init_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean constrained_intra_pred_flag() {
@@ -242,9 +246,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void constrained_intra_pred_flag(boolean value) {
+    public StdVideoH265PpsFlags constrained_intra_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean transform_skip_enabled_flag() {
@@ -252,9 +257,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void transform_skip_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags transform_skip_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public boolean cu_qp_delta_enabled_flag() {
@@ -262,9 +268,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 6);
     }
 
-    public void cu_qp_delta_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags cu_qp_delta_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 6, value);
+        return this;
     }
 
     public boolean pps_slice_chroma_qp_offsets_present_flag() {
@@ -272,9 +279,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 7);
     }
 
-    public void pps_slice_chroma_qp_offsets_present_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_slice_chroma_qp_offsets_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 7, value);
+        return this;
     }
 
     public boolean weighted_pred_flag() {
@@ -282,9 +290,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 8);
     }
 
-    public void weighted_pred_flag(boolean value) {
+    public StdVideoH265PpsFlags weighted_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 8, value);
+        return this;
     }
 
     public boolean weighted_bipred_flag() {
@@ -292,9 +301,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 9);
     }
 
-    public void weighted_bipred_flag(boolean value) {
+    public StdVideoH265PpsFlags weighted_bipred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 9, value);
+        return this;
     }
 
     public boolean transquant_bypass_enabled_flag() {
@@ -302,9 +312,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 10);
     }
 
-    public void transquant_bypass_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags transquant_bypass_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 10, value);
+        return this;
     }
 
     public boolean tiles_enabled_flag() {
@@ -312,9 +323,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 11);
     }
 
-    public void tiles_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags tiles_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 11, value);
+        return this;
     }
 
     public boolean entropy_coding_sync_enabled_flag() {
@@ -322,9 +334,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 12);
     }
 
-    public void entropy_coding_sync_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags entropy_coding_sync_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 12, value);
+        return this;
     }
 
     public boolean uniform_spacing_flag() {
@@ -332,9 +345,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 13);
     }
 
-    public void uniform_spacing_flag(boolean value) {
+    public StdVideoH265PpsFlags uniform_spacing_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 13, value);
+        return this;
     }
 
     public boolean loop_filter_across_tiles_enabled_flag() {
@@ -342,9 +356,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 14);
     }
 
-    public void loop_filter_across_tiles_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags loop_filter_across_tiles_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 14, value);
+        return this;
     }
 
     public boolean pps_loop_filter_across_slices_enabled_flag() {
@@ -352,9 +367,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 15);
     }
 
-    public void pps_loop_filter_across_slices_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_loop_filter_across_slices_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 15, value);
+        return this;
     }
 
     public boolean deblocking_filter_control_present_flag() {
@@ -362,9 +378,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 16);
     }
 
-    public void deblocking_filter_control_present_flag(boolean value) {
+    public StdVideoH265PpsFlags deblocking_filter_control_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 16, value);
+        return this;
     }
 
     public boolean deblocking_filter_override_enabled_flag() {
@@ -372,9 +389,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 17);
     }
 
-    public void deblocking_filter_override_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags deblocking_filter_override_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 17, value);
+        return this;
     }
 
     public boolean pps_deblocking_filter_disabled_flag() {
@@ -382,9 +400,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 18);
     }
 
-    public void pps_deblocking_filter_disabled_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_deblocking_filter_disabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 18, value);
+        return this;
     }
 
     public boolean pps_scaling_list_data_present_flag() {
@@ -392,9 +411,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 19);
     }
 
-    public void pps_scaling_list_data_present_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_scaling_list_data_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 19, value);
+        return this;
     }
 
     public boolean lists_modification_present_flag() {
@@ -402,9 +422,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 20);
     }
 
-    public void lists_modification_present_flag(boolean value) {
+    public StdVideoH265PpsFlags lists_modification_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 20, value);
+        return this;
     }
 
     public boolean slice_segment_header_extension_present_flag() {
@@ -412,9 +433,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 21);
     }
 
-    public void slice_segment_header_extension_present_flag(boolean value) {
+    public StdVideoH265PpsFlags slice_segment_header_extension_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 21, value);
+        return this;
     }
 
     public boolean pps_extension_present_flag() {
@@ -422,9 +444,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 22);
     }
 
-    public void pps_extension_present_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_extension_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 22, value);
+        return this;
     }
 
     public boolean cross_component_prediction_enabled_flag() {
@@ -432,9 +455,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 23);
     }
 
-    public void cross_component_prediction_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags cross_component_prediction_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 23, value);
+        return this;
     }
 
     public boolean chroma_qp_offset_list_enabled_flag() {
@@ -442,9 +466,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 24);
     }
 
-    public void chroma_qp_offset_list_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags chroma_qp_offset_list_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 24, value);
+        return this;
     }
 
     public boolean pps_curr_pic_ref_enabled_flag() {
@@ -452,9 +477,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 25);
     }
 
-    public void pps_curr_pic_ref_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_curr_pic_ref_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 25, value);
+        return this;
     }
 
     public boolean residual_adaptive_colour_transform_enabled_flag() {
@@ -462,9 +488,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 26);
     }
 
-    public void residual_adaptive_colour_transform_enabled_flag(boolean value) {
+    public StdVideoH265PpsFlags residual_adaptive_colour_transform_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 26, value);
+        return this;
     }
 
     public boolean pps_slice_act_qp_offsets_present_flag() {
@@ -472,9 +499,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 27);
     }
 
-    public void pps_slice_act_qp_offsets_present_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_slice_act_qp_offsets_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 27, value);
+        return this;
     }
 
     public boolean pps_palette_predictor_initializers_present_flag() {
@@ -482,9 +510,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 28);
     }
 
-    public void pps_palette_predictor_initializers_present_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_palette_predictor_initializers_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 28, value);
+        return this;
     }
 
     public boolean monochrome_palette_flag() {
@@ -492,9 +521,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 29);
     }
 
-    public void monochrome_palette_flag(boolean value) {
+    public StdVideoH265PpsFlags monochrome_palette_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 29, value);
+        return this;
     }
 
     public boolean pps_range_extension_flag() {
@@ -502,9 +532,10 @@ public record StdVideoH265PpsFlags(@NotNull MemorySegment segment) implements IS
         return BitfieldUtil.readBit(s, 30);
     }
 
-    public void pps_range_extension_flag(boolean value) {
+    public StdVideoH265PpsFlags pps_range_extension_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag, LAYOUT$bitfield$dependent_slice_segments_enabled_flag$pps_range_extension_flag);
         BitfieldUtil.writeBit(s, 30, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineBinaryCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,13 +208,15 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineBinaryCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pKeysAndDataInfo(@Nullable IVkPipelineBinaryKeysAndDataKHR value) {
+    public VkPipelineBinaryCreateInfoKHR pKeysAndDataInfo(@Nullable IVkPipelineBinaryKeysAndDataKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pKeysAndDataInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineBinaryKeysAndDataKHR.Ptr pKeysAndDataInfo(int assumedCount) {
@@ -250,13 +253,15 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new VkPipeline(s);
     }
 
-    public void pipeline(@Nullable VkPipeline value) {
+    public VkPipelineBinaryCreateInfoKHR pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pPipelineCreateInfo(@Nullable IVkPipelineCreateInfoKHR value) {
+    public VkPipelineBinaryCreateInfoKHR pPipelineCreateInfo(@Nullable IVkPipelineCreateInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineCreateInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineCreateInfoKHR.Ptr pPipelineCreateInfo(int assumedCount) {

@@ -137,6 +137,7 @@ public record VkDebugUtilsMessengerEXT(@NotNull MemorySegment segment) implement
         public static Ptr allocateV(Arena arena, @Nullable VkDebugUtilsMessengerEXT ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

@@ -174,8 +174,9 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return new IntPtr(bit_rate_value_minus1Raw());
     }
 
-    public void bit_rate_value_minus1(@Unsigned IntPtr value) {
+    public StdVideoH265SubLayerHrdParameters bit_rate_value_minus1(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
+        return this;
     }
 
     public MemorySegment bit_rate_value_minus1Raw() {
@@ -186,8 +187,9 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return new IntPtr(cpb_size_value_minus1Raw());
     }
 
-    public void cpb_size_value_minus1(@Unsigned IntPtr value) {
+    public StdVideoH265SubLayerHrdParameters cpb_size_value_minus1(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
+        return this;
     }
 
     public MemorySegment cpb_size_value_minus1Raw() {
@@ -198,8 +200,9 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return new IntPtr(cpb_size_du_value_minus1Raw());
     }
 
-    public void cpb_size_du_value_minus1(@Unsigned IntPtr value) {
+    public StdVideoH265SubLayerHrdParameters cpb_size_du_value_minus1(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_du_value_minus1, SIZE$cpb_size_du_value_minus1);
+        return this;
     }
 
     public MemorySegment cpb_size_du_value_minus1Raw() {
@@ -210,8 +213,9 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return new IntPtr(bit_rate_du_value_minus1Raw());
     }
 
-    public void bit_rate_du_value_minus1(@Unsigned IntPtr value) {
+    public StdVideoH265SubLayerHrdParameters bit_rate_du_value_minus1(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_du_value_minus1, SIZE$bit_rate_du_value_minus1);
+        return this;
     }
 
     public MemorySegment bit_rate_du_value_minus1Raw() {
@@ -222,8 +226,9 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$cbr_flag, OFFSET$cbr_flag);
     }
 
-    public void cbr_flag(@Unsigned int value) {
+    public StdVideoH265SubLayerHrdParameters cbr_flag(@Unsigned int value) {
         segment.set(LAYOUT$cbr_flag, OFFSET$cbr_flag, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

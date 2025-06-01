@@ -194,8 +194,9 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSemaphoreSciSyncCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSemaphoreSciSyncCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSemaphoreSciSyncPoolNV semaphorePool() {
@@ -218,13 +220,15 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         return new VkSemaphoreSciSyncPoolNV(s);
     }
 
-    public void semaphorePool(@Nullable VkSemaphoreSciSyncPoolNV value) {
+    public VkSemaphoreSciSyncCreateInfoNV semaphorePool(@Nullable VkSemaphoreSciSyncPoolNV value) {
         segment.set(LAYOUT$semaphorePool, OFFSET$semaphorePool, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pFence(@Nullable INvSciSyncFenceVKREF value) {
+    public VkSemaphoreSciSyncCreateInfoNV pFence(@Nullable INvSciSyncFenceVKREF value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFenceRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable NvSciSyncFenceVKREF.Ptr pFence(int assumedCount) {

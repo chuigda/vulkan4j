@@ -200,8 +200,9 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkPhysicalDeviceAccelerationStructurePropertiesKHR(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long maxGeometryCount() {
         return segment.get(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount);
     }
 
-    public void maxGeometryCount(@Unsigned long value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxGeometryCount(@Unsigned long value) {
         segment.set(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount, value);
+        return this;
     }
 
     public @Unsigned long maxInstanceCount() {
         return segment.get(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount);
     }
 
-    public void maxInstanceCount(@Unsigned long value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxInstanceCount(@Unsigned long value) {
         segment.set(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount, value);
+        return this;
     }
 
     public @Unsigned long maxPrimitiveCount() {
         return segment.get(LAYOUT$maxPrimitiveCount, OFFSET$maxPrimitiveCount);
     }
 
-    public void maxPrimitiveCount(@Unsigned long value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPrimitiveCount(@Unsigned long value) {
         segment.set(LAYOUT$maxPrimitiveCount, OFFSET$maxPrimitiveCount, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorAccelerationStructures() {
         return segment.get(LAYOUT$maxPerStageDescriptorAccelerationStructures, OFFSET$maxPerStageDescriptorAccelerationStructures);
     }
 
-    public void maxPerStageDescriptorAccelerationStructures(@Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorAccelerationStructures, OFFSET$maxPerStageDescriptorAccelerationStructures, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUpdateAfterBindAccelerationStructures() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindAccelerationStructures(@Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxPerStageDescriptorUpdateAfterBindAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, OFFSET$maxPerStageDescriptorUpdateAfterBindAccelerationStructures, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetAccelerationStructures() {
         return segment.get(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures);
     }
 
-    public void maxDescriptorSetAccelerationStructures(@Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindAccelerationStructures() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures, OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures);
     }
 
-    public void maxDescriptorSetUpdateAfterBindAccelerationStructures(@Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR maxDescriptorSetUpdateAfterBindAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindAccelerationStructures, OFFSET$maxDescriptorSetUpdateAfterBindAccelerationStructures, value);
+        return this;
     }
 
     public @Unsigned int minAccelerationStructureScratchOffsetAlignment() {
         return segment.get(LAYOUT$minAccelerationStructureScratchOffsetAlignment, OFFSET$minAccelerationStructureScratchOffsetAlignment);
     }
 
-    public void minAccelerationStructureScratchOffsetAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceAccelerationStructurePropertiesKHR minAccelerationStructureScratchOffsetAlignment(@Unsigned int value) {
         segment.set(LAYOUT$minAccelerationStructureScratchOffsetAlignment, OFFSET$minAccelerationStructureScratchOffsetAlignment, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

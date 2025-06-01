@@ -174,24 +174,27 @@ public record VkVideoEncodeH264FrameSizeKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$frameISize, OFFSET$frameISize);
     }
 
-    public void frameISize(@Unsigned int value) {
+    public VkVideoEncodeH264FrameSizeKHR frameISize(@Unsigned int value) {
         segment.set(LAYOUT$frameISize, OFFSET$frameISize, value);
+        return this;
     }
 
     public @Unsigned int framePSize() {
         return segment.get(LAYOUT$framePSize, OFFSET$framePSize);
     }
 
-    public void framePSize(@Unsigned int value) {
+    public VkVideoEncodeH264FrameSizeKHR framePSize(@Unsigned int value) {
         segment.set(LAYOUT$framePSize, OFFSET$framePSize, value);
+        return this;
     }
 
     public @Unsigned int frameBSize() {
         return segment.get(LAYOUT$frameBSize, OFFSET$frameBSize);
     }
 
-    public void frameBSize(@Unsigned int value) {
+    public VkVideoEncodeH264FrameSizeKHR frameBSize(@Unsigned int value) {
         segment.set(LAYOUT$frameBSize, OFFSET$frameBSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

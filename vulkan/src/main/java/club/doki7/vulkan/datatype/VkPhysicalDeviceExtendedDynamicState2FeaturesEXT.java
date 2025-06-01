@@ -195,8 +195,9 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int extendedDynamicState2() {
         return segment.get(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2);
     }
 
-    public void extendedDynamicState2(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extendedDynamicState2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2, OFFSET$extendedDynamicState2, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int extendedDynamicState2LogicOp() {
         return segment.get(LAYOUT$extendedDynamicState2LogicOp, OFFSET$extendedDynamicState2LogicOp);
     }
 
-    public void extendedDynamicState2LogicOp(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extendedDynamicState2LogicOp(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2LogicOp, OFFSET$extendedDynamicState2LogicOp, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int extendedDynamicState2PatchControlPoints() {
         return segment.get(LAYOUT$extendedDynamicState2PatchControlPoints, OFFSET$extendedDynamicState2PatchControlPoints);
     }
 
-    public void extendedDynamicState2PatchControlPoints(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extendedDynamicState2PatchControlPoints(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$extendedDynamicState2PatchControlPoints, OFFSET$extendedDynamicState2PatchControlPoints, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

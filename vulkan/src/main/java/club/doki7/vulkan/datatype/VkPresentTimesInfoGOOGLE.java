@@ -194,8 +194,9 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPresentTimesInfoGOOGLE sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPresentTimesInfoGOOGLE pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@Unsigned int value) {
+    public VkPresentTimesInfoGOOGLE swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
+        return this;
     }
 
-    public void pTimes(@Nullable IVkPresentTimeGOOGLE value) {
+    public VkPresentTimesInfoGOOGLE pTimes(@Nullable IVkPresentTimeGOOGLE value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPresentTimeGOOGLE.Ptr pTimes(int assumedCount) {

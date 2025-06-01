@@ -58,6 +58,6 @@ private fun generateFixedTypeAccessor(className: String, type: CType, member: La
 
     defun("public", className, member.name, "${type.jType} value") {
         +"segment.set(${member.layoutName}, ${member.offsetName}, value);"
-        +"return this";
+        +"return this;"
     }
 }

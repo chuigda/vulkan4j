@@ -172,8 +172,9 @@ public record VkRenderPassCreationFeedbackInfoEXT(@NotNull MemorySegment segment
         return segment.get(LAYOUT$postMergeSubpassCount, OFFSET$postMergeSubpassCount);
     }
 
-    public void postMergeSubpassCount(@Unsigned int value) {
+    public VkRenderPassCreationFeedbackInfoEXT postMergeSubpassCount(@Unsigned int value) {
         segment.set(LAYOUT$postMergeSubpassCount, OFFSET$postMergeSubpassCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

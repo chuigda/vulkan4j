@@ -198,8 +198,9 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeAV1PictureInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,13 +211,15 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoDecodeAV1PictureInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pStdPictureInfo(@Nullable IStdVideoDecodeAV1PictureInfo value) {
+    public VkVideoDecodeAV1PictureInfoKHR pStdPictureInfo(@Nullable IStdVideoDecodeAV1PictureInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPictureInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoDecodeAV1PictureInfo.Ptr pStdPictureInfo(int assumedCount) {
@@ -249,8 +252,9 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return new IntPtr(referenceNameSlotIndicesRaw());
     }
 
-    public void referenceNameSlotIndices(IntPtr value) {
+    public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndices(IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$referenceNameSlotIndices, SIZE$referenceNameSlotIndices);
+        return this;
     }
 
     public MemorySegment referenceNameSlotIndicesRaw() {
@@ -261,16 +265,18 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$frameHeaderOffset, OFFSET$frameHeaderOffset);
     }
 
-    public void frameHeaderOffset(@Unsigned int value) {
+    public VkVideoDecodeAV1PictureInfoKHR frameHeaderOffset(@Unsigned int value) {
         segment.set(LAYOUT$frameHeaderOffset, OFFSET$frameHeaderOffset, value);
+        return this;
     }
 
     public @Unsigned int tileCount() {
         return segment.get(LAYOUT$tileCount, OFFSET$tileCount);
     }
 
-    public void tileCount(@Unsigned int value) {
+    public VkVideoDecodeAV1PictureInfoKHR tileCount(@Unsigned int value) {
         segment.set(LAYOUT$tileCount, OFFSET$tileCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -285,9 +291,10 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return new IntPtr(s);
     }
 
-    public void pTileOffsets(@Nullable @Unsigned IntPtr value) {
+    public VkVideoDecodeAV1PictureInfoKHR pTileOffsets(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTileOffsetsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pTileOffsetsRaw() {
@@ -310,9 +317,10 @@ public record VkVideoDecodeAV1PictureInfoKHR(@NotNull MemorySegment segment) imp
         return new IntPtr(s);
     }
 
-    public void pTileSizes(@Nullable @Unsigned IntPtr value) {
+    public VkVideoDecodeAV1PictureInfoKHR pTileSizes(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTileSizesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pTileSizesRaw() {

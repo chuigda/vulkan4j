@@ -196,8 +196,9 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCooperativeVectorPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCooperativeVectorPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int cooperativeVectorSupportedStages() {
         return segment.get(LAYOUT$cooperativeVectorSupportedStages, OFFSET$cooperativeVectorSupportedStages);
     }
 
-    public void cooperativeVectorSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceCooperativeVectorPropertiesNV cooperativeVectorSupportedStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$cooperativeVectorSupportedStages, OFFSET$cooperativeVectorSupportedStages, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int cooperativeVectorTrainingFloat16Accumulation() {
         return segment.get(LAYOUT$cooperativeVectorTrainingFloat16Accumulation, OFFSET$cooperativeVectorTrainingFloat16Accumulation);
     }
 
-    public void cooperativeVectorTrainingFloat16Accumulation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCooperativeVectorPropertiesNV cooperativeVectorTrainingFloat16Accumulation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTrainingFloat16Accumulation, OFFSET$cooperativeVectorTrainingFloat16Accumulation, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int cooperativeVectorTrainingFloat32Accumulation() {
         return segment.get(LAYOUT$cooperativeVectorTrainingFloat32Accumulation, OFFSET$cooperativeVectorTrainingFloat32Accumulation);
     }
 
-    public void cooperativeVectorTrainingFloat32Accumulation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCooperativeVectorPropertiesNV cooperativeVectorTrainingFloat32Accumulation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$cooperativeVectorTrainingFloat32Accumulation, OFFSET$cooperativeVectorTrainingFloat32Accumulation, value);
+        return this;
     }
 
     public @Unsigned int maxCooperativeVectorComponents() {
         return segment.get(LAYOUT$maxCooperativeVectorComponents, OFFSET$maxCooperativeVectorComponents);
     }
 
-    public void maxCooperativeVectorComponents(@Unsigned int value) {
+    public VkPhysicalDeviceCooperativeVectorPropertiesNV maxCooperativeVectorComponents(@Unsigned int value) {
         segment.set(LAYOUT$maxCooperativeVectorComponents, OFFSET$maxCooperativeVectorComponents, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

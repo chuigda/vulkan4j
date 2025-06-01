@@ -203,8 +203,9 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferCollectionPropertiesFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -215,96 +216,108 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBufferCollectionPropertiesFUCHSIA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int memoryTypeBits() {
         return segment.get(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits);
     }
 
-    public void memoryTypeBits(@Unsigned int value) {
+    public VkBufferCollectionPropertiesFUCHSIA memoryTypeBits(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
+        return this;
     }
 
     public @Unsigned int bufferCount() {
         return segment.get(LAYOUT$bufferCount, OFFSET$bufferCount);
     }
 
-    public void bufferCount(@Unsigned int value) {
+    public VkBufferCollectionPropertiesFUCHSIA bufferCount(@Unsigned int value) {
         segment.set(LAYOUT$bufferCount, OFFSET$bufferCount, value);
+        return this;
     }
 
     public @Unsigned int createInfoIndex() {
         return segment.get(LAYOUT$createInfoIndex, OFFSET$createInfoIndex);
     }
 
-    public void createInfoIndex(@Unsigned int value) {
+    public VkBufferCollectionPropertiesFUCHSIA createInfoIndex(@Unsigned int value) {
         segment.set(LAYOUT$createInfoIndex, OFFSET$createInfoIndex, value);
+        return this;
     }
 
     public @Unsigned long sysmemPixelFormat() {
         return segment.get(LAYOUT$sysmemPixelFormat, OFFSET$sysmemPixelFormat);
     }
 
-    public void sysmemPixelFormat(@Unsigned long value) {
+    public VkBufferCollectionPropertiesFUCHSIA sysmemPixelFormat(@Unsigned long value) {
         segment.set(LAYOUT$sysmemPixelFormat, OFFSET$sysmemPixelFormat, value);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags.class) int formatFeatures() {
         return segment.get(LAYOUT$formatFeatures, OFFSET$formatFeatures);
     }
 
-    public void formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkBufferCollectionPropertiesFUCHSIA formatFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$formatFeatures, OFFSET$formatFeatures, value);
+        return this;
     }
 
     public @NotNull VkSysmemColorSpaceFUCHSIA sysmemColorSpaceIndex() {
         return new VkSysmemColorSpaceFUCHSIA(segment.asSlice(OFFSET$sysmemColorSpaceIndex, LAYOUT$sysmemColorSpaceIndex));
     }
 
-    public void sysmemColorSpaceIndex(@NotNull VkSysmemColorSpaceFUCHSIA value) {
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex(@NotNull VkSysmemColorSpaceFUCHSIA value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sysmemColorSpaceIndex, SIZE$sysmemColorSpaceIndex);
+        return this;
     }
 
     public @NotNull VkComponentMapping samplerYcbcrConversionComponents() {
         return new VkComponentMapping(segment.asSlice(OFFSET$samplerYcbcrConversionComponents, LAYOUT$samplerYcbcrConversionComponents));
     }
 
-    public void samplerYcbcrConversionComponents(@NotNull VkComponentMapping value) {
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
+        return this;
     }
 
     public @EnumType(VkSamplerYcbcrModelConversion.class) int suggestedYcbcrModel() {
         return segment.get(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel);
     }
 
-    public void suggestedYcbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrModel(@EnumType(VkSamplerYcbcrModelConversion.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrModel, OFFSET$suggestedYcbcrModel, value);
+        return this;
     }
 
     public @EnumType(VkSamplerYcbcrRange.class) int suggestedYcbcrRange() {
         return segment.get(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange);
     }
 
-    public void suggestedYcbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrRange(@EnumType(VkSamplerYcbcrRange.class) int value) {
         segment.set(LAYOUT$suggestedYcbcrRange, OFFSET$suggestedYcbcrRange, value);
+        return this;
     }
 
     public @EnumType(VkChromaLocation.class) int suggestedXChromaOffset() {
         return segment.get(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset);
     }
 
-    public void suggestedXChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkBufferCollectionPropertiesFUCHSIA suggestedXChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedXChromaOffset, OFFSET$suggestedXChromaOffset, value);
+        return this;
     }
 
     public @EnumType(VkChromaLocation.class) int suggestedYChromaOffset() {
         return segment.get(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset);
     }
 
-    public void suggestedYChromaOffset(@EnumType(VkChromaLocation.class) int value) {
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffset(@EnumType(VkChromaLocation.class) int value) {
         segment.set(LAYOUT$suggestedYChromaOffset, OFFSET$suggestedYChromaOffset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

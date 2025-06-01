@@ -194,8 +194,9 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeQualityLevelPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeQualityLevelPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int preferredRateControlMode() {
         return segment.get(LAYOUT$preferredRateControlMode, OFFSET$preferredRateControlMode);
     }
 
-    public void preferredRateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeQualityLevelPropertiesKHR preferredRateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$preferredRateControlMode, OFFSET$preferredRateControlMode, value);
+        return this;
     }
 
     public @Unsigned int preferredRateControlLayerCount() {
         return segment.get(LAYOUT$preferredRateControlLayerCount, OFFSET$preferredRateControlLayerCount);
     }
 
-    public void preferredRateControlLayerCount(@Unsigned int value) {
+    public VkVideoEncodeQualityLevelPropertiesKHR preferredRateControlLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$preferredRateControlLayerCount, OFFSET$preferredRateControlLayerCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

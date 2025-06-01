@@ -180,24 +180,27 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$cpb_cnt_minus1, OFFSET$cpb_cnt_minus1);
     }
 
-    public void cpb_cnt_minus1(@Unsigned byte value) {
+    public StdVideoH264HrdParameters cpb_cnt_minus1(@Unsigned byte value) {
         segment.set(LAYOUT$cpb_cnt_minus1, OFFSET$cpb_cnt_minus1, value);
+        return this;
     }
 
     public @Unsigned byte bit_rate_scale() {
         return segment.get(LAYOUT$bit_rate_scale, OFFSET$bit_rate_scale);
     }
 
-    public void bit_rate_scale(@Unsigned byte value) {
+    public StdVideoH264HrdParameters bit_rate_scale(@Unsigned byte value) {
         segment.set(LAYOUT$bit_rate_scale, OFFSET$bit_rate_scale, value);
+        return this;
     }
 
     public @Unsigned byte cpb_size_scale() {
         return segment.get(LAYOUT$cpb_size_scale, OFFSET$cpb_size_scale);
     }
 
-    public void cpb_size_scale(@Unsigned byte value) {
+    public StdVideoH264HrdParameters cpb_size_scale(@Unsigned byte value) {
         segment.set(LAYOUT$cpb_size_scale, OFFSET$cpb_size_scale, value);
+        return this;
     }
 
 
@@ -205,8 +208,9 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return new IntPtr(bit_rate_value_minus1Raw());
     }
 
-    public void bit_rate_value_minus1(@Unsigned IntPtr value) {
+    public StdVideoH264HrdParameters bit_rate_value_minus1(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bit_rate_value_minus1, SIZE$bit_rate_value_minus1);
+        return this;
     }
 
     public MemorySegment bit_rate_value_minus1Raw() {
@@ -217,8 +221,9 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return new IntPtr(cpb_size_value_minus1Raw());
     }
 
-    public void cpb_size_value_minus1(@Unsigned IntPtr value) {
+    public StdVideoH264HrdParameters cpb_size_value_minus1(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$cpb_size_value_minus1, SIZE$cpb_size_value_minus1);
+        return this;
     }
 
     public MemorySegment cpb_size_value_minus1Raw() {
@@ -229,8 +234,9 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return new BytePtr(cbr_flagRaw());
     }
 
-    public void cbr_flag(@Unsigned BytePtr value) {
+    public StdVideoH264HrdParameters cbr_flag(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$cbr_flag, SIZE$cbr_flag);
+        return this;
     }
 
     public MemorySegment cbr_flagRaw() {
@@ -241,32 +247,36 @@ public record StdVideoH264HrdParameters(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$initial_cpb_removal_delay_length_minus1, OFFSET$initial_cpb_removal_delay_length_minus1);
     }
 
-    public void initial_cpb_removal_delay_length_minus1(@Unsigned int value) {
+    public StdVideoH264HrdParameters initial_cpb_removal_delay_length_minus1(@Unsigned int value) {
         segment.set(LAYOUT$initial_cpb_removal_delay_length_minus1, OFFSET$initial_cpb_removal_delay_length_minus1, value);
+        return this;
     }
 
     public @Unsigned int cpb_removal_delay_length_minus1() {
         return segment.get(LAYOUT$cpb_removal_delay_length_minus1, OFFSET$cpb_removal_delay_length_minus1);
     }
 
-    public void cpb_removal_delay_length_minus1(@Unsigned int value) {
+    public StdVideoH264HrdParameters cpb_removal_delay_length_minus1(@Unsigned int value) {
         segment.set(LAYOUT$cpb_removal_delay_length_minus1, OFFSET$cpb_removal_delay_length_minus1, value);
+        return this;
     }
 
     public @Unsigned int dpb_output_delay_length_minus1() {
         return segment.get(LAYOUT$dpb_output_delay_length_minus1, OFFSET$dpb_output_delay_length_minus1);
     }
 
-    public void dpb_output_delay_length_minus1(@Unsigned int value) {
+    public StdVideoH264HrdParameters dpb_output_delay_length_minus1(@Unsigned int value) {
         segment.set(LAYOUT$dpb_output_delay_length_minus1, OFFSET$dpb_output_delay_length_minus1, value);
+        return this;
     }
 
     public @Unsigned int time_offset_length() {
         return segment.get(LAYOUT$time_offset_length, OFFSET$time_offset_length);
     }
 
-    public void time_offset_length(@Unsigned int value) {
+    public StdVideoH264HrdParameters time_offset_length(@Unsigned int value) {
         segment.set(LAYOUT$time_offset_length, OFFSET$time_offset_length, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

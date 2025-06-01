@@ -198,8 +198,9 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,37 +211,42 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeRateControlInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeRateControlFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoEncodeRateControlFlagsKHR.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR flags(@EnumType(VkVideoEncodeRateControlFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int rateControlMode() {
         return segment.get(LAYOUT$rateControlMode, OFFSET$rateControlMode);
     }
 
-    public void rateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
+    public VkVideoEncodeRateControlInfoKHR rateControlMode(@EnumType(VkVideoEncodeRateControlModeFlagsKHR.class) int value) {
         segment.set(LAYOUT$rateControlMode, OFFSET$rateControlMode, value);
+        return this;
     }
 
     public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@Unsigned int value) {
+    public VkVideoEncodeRateControlInfoKHR layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
+        return this;
     }
 
-    public void pLayers(@Nullable IVkVideoEncodeRateControlLayerInfoKHR value) {
+    public VkVideoEncodeRateControlInfoKHR pLayers(@Nullable IVkVideoEncodeRateControlLayerInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLayersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoEncodeRateControlLayerInfoKHR.Ptr pLayers(int assumedCount) {
@@ -273,16 +279,18 @@ public record VkVideoEncodeRateControlInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$virtualBufferSizeInMs, OFFSET$virtualBufferSizeInMs);
     }
 
-    public void virtualBufferSizeInMs(@Unsigned int value) {
+    public VkVideoEncodeRateControlInfoKHR virtualBufferSizeInMs(@Unsigned int value) {
         segment.set(LAYOUT$virtualBufferSizeInMs, OFFSET$virtualBufferSizeInMs, value);
+        return this;
     }
 
     public @Unsigned int initialVirtualBufferSizeInMs() {
         return segment.get(LAYOUT$initialVirtualBufferSizeInMs, OFFSET$initialVirtualBufferSizeInMs);
     }
 
-    public void initialVirtualBufferSizeInMs(@Unsigned int value) {
+    public VkVideoEncodeRateControlInfoKHR initialVirtualBufferSizeInMs(@Unsigned int value) {
         segment.set(LAYOUT$initialVirtualBufferSizeInMs, OFFSET$initialVirtualBufferSizeInMs, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

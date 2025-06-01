@@ -173,16 +173,18 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkDescriptorType.class) int value) {
+    public VkDescriptorPoolSize type(@EnumType(VkDescriptorType.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @Unsigned int descriptorCount() {
         return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
     }
 
-    public void descriptorCount(@Unsigned int value) {
+    public VkDescriptorPoolSize descriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

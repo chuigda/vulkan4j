@@ -193,8 +193,9 @@ public record VkPhysicalDeviceVideoMaintenance2FeaturesKHR(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVideoMaintenance2FeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceVideoMaintenance2FeaturesKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVideoMaintenance2FeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int videoMaintenance2() {
         return segment.get(LAYOUT$videoMaintenance2, OFFSET$videoMaintenance2);
     }
 
-    public void videoMaintenance2(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVideoMaintenance2FeaturesKHR videoMaintenance2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$videoMaintenance2, OFFSET$videoMaintenance2, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

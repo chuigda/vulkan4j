@@ -195,8 +195,9 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAttachmentSampleCountInfoAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAttachmentSampleCountInfoAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@Unsigned int value) {
+    public VkAttachmentSampleCountInfoAMD colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
+        return this;
     }
 
 
@@ -232,9 +235,10 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return new IntPtr(s);
     }
 
-    public void pColorAttachmentSamples(@Nullable @EnumType(VkSampleCountFlags.class) IntPtr value) {
+    public VkAttachmentSampleCountInfoAMD pColorAttachmentSamples(@Nullable @EnumType(VkSampleCountFlags.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentSamplesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSampleCountFlags.class) MemorySegment pColorAttachmentSamplesRaw() {
@@ -249,8 +253,9 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples);
     }
 
-    public void depthStencilAttachmentSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkAttachmentSampleCountInfoAMD depthStencilAttachmentSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$depthStencilAttachmentSamples, OFFSET$depthStencilAttachmentSamples, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

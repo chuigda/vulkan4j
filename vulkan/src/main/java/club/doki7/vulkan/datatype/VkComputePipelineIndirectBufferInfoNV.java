@@ -195,8 +195,9 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkComputePipelineIndirectBufferInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkComputePipelineIndirectBufferInfoNV(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkComputePipelineIndirectBufferInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkComputePipelineIndirectBufferInfoNV deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkComputePipelineIndirectBufferInfoNV size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long pipelineDeviceAddressCaptureReplay() {
         return segment.get(LAYOUT$pipelineDeviceAddressCaptureReplay, OFFSET$pipelineDeviceAddressCaptureReplay);
     }
 
-    public void pipelineDeviceAddressCaptureReplay(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkComputePipelineIndirectBufferInfoNV pipelineDeviceAddressCaptureReplay(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$pipelineDeviceAddressCaptureReplay, OFFSET$pipelineDeviceAddressCaptureReplay, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

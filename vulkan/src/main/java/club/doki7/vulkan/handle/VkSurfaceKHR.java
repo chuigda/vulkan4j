@@ -137,6 +137,7 @@ public record VkSurfaceKHR(@NotNull MemorySegment segment) implements IPointer {
         public static Ptr allocateV(Arena arena, @Nullable VkSurfaceKHR ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

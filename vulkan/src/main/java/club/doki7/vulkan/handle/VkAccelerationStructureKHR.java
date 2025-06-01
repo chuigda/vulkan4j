@@ -137,6 +137,7 @@ public record VkAccelerationStructureKHR(@NotNull MemorySegment segment) impleme
         public static Ptr allocateV(Arena arena, @Nullable VkAccelerationStructureKHR ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

@@ -195,8 +195,9 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceFragmentDensityMapFeaturesEXT(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int fragmentDensityMap() {
         return segment.get(LAYOUT$fragmentDensityMap, OFFSET$fragmentDensityMap);
     }
 
-    public void fragmentDensityMap(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityMap, OFFSET$fragmentDensityMap, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int fragmentDensityMapDynamic() {
         return segment.get(LAYOUT$fragmentDensityMapDynamic, OFFSET$fragmentDensityMapDynamic);
     }
 
-    public void fragmentDensityMapDynamic(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMapDynamic(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityMapDynamic, OFFSET$fragmentDensityMapDynamic, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int fragmentDensityMapNonSubsampledImages() {
         return segment.get(LAYOUT$fragmentDensityMapNonSubsampledImages, OFFSET$fragmentDensityMapNonSubsampledImages);
     }
 
-    public void fragmentDensityMapNonSubsampledImages(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMapNonSubsampledImages(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityMapNonSubsampledImages, OFFSET$fragmentDensityMapNonSubsampledImages, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

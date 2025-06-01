@@ -193,8 +193,9 @@ public record VkPhysicalDeviceSynchronization2Features(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSynchronization2Features sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceSynchronization2Features(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceSynchronization2Features pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int synchronization2() {
         return segment.get(LAYOUT$synchronization2, OFFSET$synchronization2);
     }
 
-    public void synchronization2(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSynchronization2Features synchronization2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$synchronization2, OFFSET$synchronization2, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -173,16 +173,18 @@ public record VkStridedDeviceAddressNV(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$startAddress, OFFSET$startAddress);
     }
 
-    public void startAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkStridedDeviceAddressNV startAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$startAddress, OFFSET$startAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long strideInBytes() {
         return segment.get(LAYOUT$strideInBytes, OFFSET$strideInBytes);
     }
 
-    public void strideInBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkStridedDeviceAddressNV strideInBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$strideInBytes, OFFSET$strideInBytes, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

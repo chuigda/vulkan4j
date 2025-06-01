@@ -197,8 +197,9 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyImageToBufferInfo2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCopyImageToBufferInfo2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImage srcImage() {
@@ -221,16 +223,18 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         return new VkImage(s);
     }
 
-    public void srcImage(@Nullable VkImage value) {
+    public VkCopyImageToBufferInfo2 srcImage(@Nullable VkImage value) {
         segment.set(LAYOUT$srcImage, OFFSET$srcImage, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int srcImageLayout() {
         return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
     }
 
-    public void srcImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkCopyImageToBufferInfo2 srcImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
+        return this;
     }
 
     public @Nullable VkBuffer dstBuffer() {
@@ -241,21 +245,24 @@ public record VkCopyImageToBufferInfo2(@NotNull MemorySegment segment) implement
         return new VkBuffer(s);
     }
 
-    public void dstBuffer(@Nullable VkBuffer value) {
+    public VkCopyImageToBufferInfo2 dstBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int regionCount() {
         return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
     }
 
-    public void regionCount(@Unsigned int value) {
+    public VkCopyImageToBufferInfo2 regionCount(@Unsigned int value) {
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
+        return this;
     }
 
-    public void pRegions(@Nullable IVkBufferImageCopy2 value) {
+    public VkCopyImageToBufferInfo2 pRegions(@Nullable IVkBufferImageCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkBufferImageCopy2.Ptr pRegions(int assumedCount) {

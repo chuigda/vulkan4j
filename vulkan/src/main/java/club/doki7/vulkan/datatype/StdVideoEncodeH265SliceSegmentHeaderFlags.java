@@ -184,9 +184,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void first_slice_segment_in_pic_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags first_slice_segment_in_pic_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean dependent_slice_segment_flag() {
@@ -194,9 +195,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void dependent_slice_segment_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags dependent_slice_segment_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean slice_sao_luma_flag() {
@@ -204,9 +206,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void slice_sao_luma_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags slice_sao_luma_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean slice_sao_chroma_flag() {
@@ -214,9 +217,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void slice_sao_chroma_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags slice_sao_chroma_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean num_ref_idx_active_override_flag() {
@@ -224,9 +228,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void num_ref_idx_active_override_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags num_ref_idx_active_override_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean mvd_l1_zero_flag() {
@@ -234,9 +239,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void mvd_l1_zero_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags mvd_l1_zero_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public boolean cabac_init_flag() {
@@ -244,9 +250,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 6);
     }
 
-    public void cabac_init_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags cabac_init_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 6, value);
+        return this;
     }
 
     public boolean cu_chroma_qp_offset_enabled_flag() {
@@ -254,9 +261,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 7);
     }
 
-    public void cu_chroma_qp_offset_enabled_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags cu_chroma_qp_offset_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 7, value);
+        return this;
     }
 
     public boolean deblocking_filter_override_flag() {
@@ -264,9 +272,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 8);
     }
 
-    public void deblocking_filter_override_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags deblocking_filter_override_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 8, value);
+        return this;
     }
 
     public boolean slice_deblocking_filter_disabled_flag() {
@@ -274,9 +283,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 9);
     }
 
-    public void slice_deblocking_filter_disabled_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags slice_deblocking_filter_disabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 9, value);
+        return this;
     }
 
     public boolean collocated_from_l0_flag() {
@@ -284,9 +294,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 10);
     }
 
-    public void collocated_from_l0_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags collocated_from_l0_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 10, value);
+        return this;
     }
 
     public boolean slice_loop_filter_across_slices_enabled_flag() {
@@ -294,9 +305,10 @@ public record StdVideoEncodeH265SliceSegmentHeaderFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 11);
     }
 
-    public void slice_loop_filter_across_slices_enabled_flag(boolean value) {
+    public StdVideoEncodeH265SliceSegmentHeaderFlags slice_loop_filter_across_slices_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$first_slice_segment_in_pic_flag$reserved, LAYOUT$bitfield$first_slice_segment_in_pic_flag$reserved);
         BitfieldUtil.writeBit(s, 11, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

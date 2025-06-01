@@ -194,8 +194,9 @@ public record VkPhysicalDeviceShaderSMBuiltinsPropertiesNV(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderSMBuiltinsPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceShaderSMBuiltinsPropertiesNV(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderSMBuiltinsPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int shaderSMCount() {
         return segment.get(LAYOUT$shaderSMCount, OFFSET$shaderSMCount);
     }
 
-    public void shaderSMCount(@Unsigned int value) {
+    public VkPhysicalDeviceShaderSMBuiltinsPropertiesNV shaderSMCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderSMCount, OFFSET$shaderSMCount, value);
+        return this;
     }
 
     public @Unsigned int shaderWarpsPerSM() {
         return segment.get(LAYOUT$shaderWarpsPerSM, OFFSET$shaderWarpsPerSM);
     }
 
-    public void shaderWarpsPerSM(@Unsigned int value) {
+    public VkPhysicalDeviceShaderSMBuiltinsPropertiesNV shaderWarpsPerSM(@Unsigned int value) {
         segment.set(LAYOUT$shaderWarpsPerSM, OFFSET$shaderWarpsPerSM, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -196,8 +196,9 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IVkGeo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkGeometryAABBNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,8 +209,9 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IVkGeo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkGeometryAABBNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkBuffer aabbData() {
@@ -220,32 +222,36 @@ public record VkGeometryAABBNV(@NotNull MemorySegment segment) implements IVkGeo
         return new VkBuffer(s);
     }
 
-    public void aabbData(@Nullable VkBuffer value) {
+    public VkGeometryAABBNV aabbData(@Nullable VkBuffer value) {
         segment.set(LAYOUT$aabbData, OFFSET$aabbData, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int numAABBs() {
         return segment.get(LAYOUT$numAABBs, OFFSET$numAABBs);
     }
 
-    public void numAABBs(@Unsigned int value) {
+    public VkGeometryAABBNV numAABBs(@Unsigned int value) {
         segment.set(LAYOUT$numAABBs, OFFSET$numAABBs, value);
+        return this;
     }
 
     public @Unsigned int stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@Unsigned int value) {
+    public VkGeometryAABBNV stride(@Unsigned int value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkGeometryAABBNV offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

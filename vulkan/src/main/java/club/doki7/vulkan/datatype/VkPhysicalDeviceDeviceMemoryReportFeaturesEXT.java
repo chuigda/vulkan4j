@@ -193,8 +193,9 @@ public record VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceMemoryReport() {
         return segment.get(LAYOUT$deviceMemoryReport, OFFSET$deviceMemoryReport);
     }
 
-    public void deviceMemoryReport(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT deviceMemoryReport(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceMemoryReport, OFFSET$deviceMemoryReport, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

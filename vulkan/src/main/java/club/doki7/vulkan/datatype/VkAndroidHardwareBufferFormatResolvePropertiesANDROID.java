@@ -193,8 +193,9 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(@NotNull Mem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAndroidHardwareBufferFormatResolvePropertiesANDROID sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(@NotNull Mem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAndroidHardwareBufferFormatResolvePropertiesANDROID pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int colorAttachmentFormat() {
         return segment.get(LAYOUT$colorAttachmentFormat, OFFSET$colorAttachmentFormat);
     }
 
-    public void colorAttachmentFormat(@EnumType(VkFormat.class) int value) {
+    public VkAndroidHardwareBufferFormatResolvePropertiesANDROID colorAttachmentFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$colorAttachmentFormat, OFFSET$colorAttachmentFormat, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeQuantizationMapInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeQuantizationMapInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImageView quantizationMap() {
@@ -218,16 +220,18 @@ public record VkVideoEncodeQuantizationMapInfoKHR(@NotNull MemorySegment segment
         return new VkImageView(s);
     }
 
-    public void quantizationMap(@Nullable VkImageView value) {
+    public VkVideoEncodeQuantizationMapInfoKHR quantizationMap(@Nullable VkImageView value) {
         segment.set(LAYOUT$quantizationMap, OFFSET$quantizationMap, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent2D quantizationMapExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$quantizationMapExtent, LAYOUT$quantizationMapExtent));
     }
 
-    public void quantizationMapExtent(@NotNull VkExtent2D value) {
+    public VkVideoEncodeQuantizationMapInfoKHR quantizationMapExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$quantizationMapExtent, SIZE$quantizationMapExtent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

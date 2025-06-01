@@ -173,8 +173,9 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$descriptorTypeCount, OFFSET$descriptorTypeCount);
     }
 
-    public void descriptorTypeCount(@Unsigned int value) {
+    public VkMutableDescriptorTypeListEXT descriptorTypeCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorTypeCount, OFFSET$descriptorTypeCount, value);
+        return this;
     }
 
 
@@ -190,9 +191,10 @@ public record VkMutableDescriptorTypeListEXT(@NotNull MemorySegment segment) imp
         return new IntPtr(s);
     }
 
-    public void pDescriptorTypes(@Nullable @EnumType(VkDescriptorType.class) IntPtr value) {
+    public VkMutableDescriptorTypeListEXT pDescriptorTypes(@Nullable @EnumType(VkDescriptorType.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorTypesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDescriptorType.class) MemorySegment pDescriptorTypesRaw() {

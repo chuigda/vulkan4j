@@ -195,8 +195,9 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkShaderModuleCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,24 +208,27 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkShaderModuleCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderModuleCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkShaderModuleCreateFlags.class) int value) {
+    public VkShaderModuleCreateInfo flags(@EnumType(VkShaderModuleCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned long codeSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$codeSize);
     }
 
-    public void codeSize(@Unsigned long value) {
+    public VkShaderModuleCreateInfo codeSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$codeSize, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -239,9 +243,10 @@ public record VkShaderModuleCreateInfo(@NotNull MemorySegment segment) implement
         return new IntPtr(s);
     }
 
-    public void pCode(@Nullable @Unsigned IntPtr value) {
+    public VkShaderModuleCreateInfo pCode(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCodeRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pCodeRaw() {

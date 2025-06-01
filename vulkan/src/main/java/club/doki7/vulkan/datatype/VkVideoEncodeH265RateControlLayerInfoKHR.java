@@ -198,8 +198,9 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265RateControlLayerInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,56 +211,63 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265RateControlLayerInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useMinQp() {
         return segment.get(LAYOUT$useMinQp, OFFSET$useMinQp);
     }
 
-    public void useMinQp(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH265RateControlLayerInfoKHR useMinQp(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMinQp, OFFSET$useMinQp, value);
+        return this;
     }
 
     public @NotNull VkVideoEncodeH265QpKHR minQp() {
         return new VkVideoEncodeH265QpKHR(segment.asSlice(OFFSET$minQp, LAYOUT$minQp));
     }
 
-    public void minQp(@NotNull VkVideoEncodeH265QpKHR value) {
+    public VkVideoEncodeH265RateControlLayerInfoKHR minQp(@NotNull VkVideoEncodeH265QpKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minQp, SIZE$minQp);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useMaxQp() {
         return segment.get(LAYOUT$useMaxQp, OFFSET$useMaxQp);
     }
 
-    public void useMaxQp(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH265RateControlLayerInfoKHR useMaxQp(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMaxQp, OFFSET$useMaxQp, value);
+        return this;
     }
 
     public @NotNull VkVideoEncodeH265QpKHR maxQp() {
         return new VkVideoEncodeH265QpKHR(segment.asSlice(OFFSET$maxQp, LAYOUT$maxQp));
     }
 
-    public void maxQp(@NotNull VkVideoEncodeH265QpKHR value) {
+    public VkVideoEncodeH265RateControlLayerInfoKHR maxQp(@NotNull VkVideoEncodeH265QpKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxQp, SIZE$maxQp);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useMaxFrameSize() {
         return segment.get(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize);
     }
 
-    public void useMaxFrameSize(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH265RateControlLayerInfoKHR useMaxFrameSize(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize, value);
+        return this;
     }
 
     public @NotNull VkVideoEncodeH265FrameSizeKHR maxFrameSize() {
         return new VkVideoEncodeH265FrameSizeKHR(segment.asSlice(OFFSET$maxFrameSize, LAYOUT$maxFrameSize));
     }
 
-    public void maxFrameSize(@NotNull VkVideoEncodeH265FrameSizeKHR value) {
+    public VkVideoEncodeH265RateControlLayerInfoKHR maxFrameSize(@NotNull VkVideoEncodeH265FrameSizeKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFrameSize, SIZE$maxFrameSize);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -198,8 +198,9 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,37 +211,42 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkIndirectCommandsLayoutCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+        return this;
     }
 
     public @Unsigned int tokenCount() {
         return segment.get(LAYOUT$tokenCount, OFFSET$tokenCount);
     }
 
-    public void tokenCount(@Unsigned int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV tokenCount(@Unsigned int value) {
         segment.set(LAYOUT$tokenCount, OFFSET$tokenCount, value);
+        return this;
     }
 
-    public void pTokens(@Nullable IVkIndirectCommandsLayoutTokenNV value) {
+    public VkIndirectCommandsLayoutCreateInfoNV pTokens(@Nullable IVkIndirectCommandsLayoutTokenNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTokensRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectCommandsLayoutTokenNV.Ptr pTokens(int assumedCount) {
@@ -273,8 +279,9 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$streamCount, OFFSET$streamCount);
     }
 
-    public void streamCount(@Unsigned int value) {
+    public VkIndirectCommandsLayoutCreateInfoNV streamCount(@Unsigned int value) {
         segment.set(LAYOUT$streamCount, OFFSET$streamCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -289,9 +296,10 @@ public record VkIndirectCommandsLayoutCreateInfoNV(@NotNull MemorySegment segmen
         return new IntPtr(s);
     }
 
-    public void pStreamStrides(@Nullable @Unsigned IntPtr value) {
+    public VkIndirectCommandsLayoutCreateInfoNV pStreamStrides(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStreamStridesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pStreamStridesRaw() {

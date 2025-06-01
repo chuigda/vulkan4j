@@ -171,16 +171,18 @@ public record StdVideoDecodeH265ReferenceInfo(@NotNull MemorySegment segment) im
         return new StdVideoDecodeH265ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoDecodeH265ReferenceInfoFlags value) {
+    public StdVideoDecodeH265ReferenceInfo flags(@NotNull StdVideoDecodeH265ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public int PicOrderCntVal() {
         return segment.get(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal);
     }
 
-    public void PicOrderCntVal(int value) {
+    public StdVideoDecodeH265ReferenceInfo PicOrderCntVal(int value) {
         segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

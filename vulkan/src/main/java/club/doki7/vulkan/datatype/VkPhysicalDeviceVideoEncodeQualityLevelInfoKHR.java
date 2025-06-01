@@ -194,8 +194,9 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,13 +207,15 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pVideoProfile(@Nullable IVkVideoProfileInfoKHR value) {
+    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pVideoProfile(@Nullable IVkVideoProfileInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVideoProfileRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pVideoProfile(int assumedCount) {
@@ -245,8 +248,9 @@ public record VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegm
         return segment.get(LAYOUT$qualityLevel, OFFSET$qualityLevel);
     }
 
-    public void qualityLevel(@Unsigned int value) {
+    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR qualityLevel(@Unsigned int value) {
         segment.set(LAYOUT$qualityLevel, OFFSET$qualityLevel, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

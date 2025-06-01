@@ -228,56 +228,63 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
         return segment.get(LAYOUT$memoryTypeIndex, OFFSET$memoryTypeIndex);
     }
 
-    public void memoryTypeIndex(@Unsigned int value) {
+    public VmaPoolCreateInfo memoryTypeIndex(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeIndex, OFFSET$memoryTypeIndex, value);
+        return this;
     }
 
     public @EnumType(VmaPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VmaPoolCreateFlags.class) int value) {
+    public VmaPoolCreateInfo flags(@EnumType(VmaPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long blockSize() {
         return segment.get(LAYOUT$blockSize, OFFSET$blockSize);
     }
 
-    public void blockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaPoolCreateInfo blockSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$blockSize, OFFSET$blockSize, value);
+        return this;
     }
 
     public @Unsigned long minBlockCount() {
         return NativeLayout.readCSizeT(segment, OFFSET$minBlockCount);
     }
 
-    public void minBlockCount(@Unsigned long value) {
+    public VmaPoolCreateInfo minBlockCount(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$minBlockCount, value);
+        return this;
     }
 
     public @Unsigned long maxBlockCount() {
         return NativeLayout.readCSizeT(segment, OFFSET$maxBlockCount);
     }
 
-    public void maxBlockCount(@Unsigned long value) {
+    public VmaPoolCreateInfo maxBlockCount(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$maxBlockCount, value);
+        return this;
     }
 
     public float priority() {
         return segment.get(LAYOUT$priority, OFFSET$priority);
     }
 
-    public void priority(float value) {
+    public VmaPoolCreateInfo priority(float value) {
         segment.set(LAYOUT$priority, OFFSET$priority, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long minAllocationAlignment() {
         return segment.get(LAYOUT$minAllocationAlignment, OFFSET$minAllocationAlignment);
     }
 
-    public void minAllocationAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaPoolCreateInfo minAllocationAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$minAllocationAlignment, OFFSET$minAllocationAlignment, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pMemoryAllocateNext() {
@@ -288,8 +295,9 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
         segment.set(LAYOUT$pMemoryAllocateNext, OFFSET$pMemoryAllocateNext, value);
     }
 
-    public void pMemoryAllocateNext(@Nullable IPointer pointer) {
+    public VmaPoolCreateInfo pMemoryAllocateNext(@Nullable IPointer pointer) {
         pMemoryAllocateNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

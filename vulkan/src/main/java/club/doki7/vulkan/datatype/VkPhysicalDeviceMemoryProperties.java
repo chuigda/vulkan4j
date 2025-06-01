@@ -175,17 +175,19 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$memoryTypeCount, OFFSET$memoryTypeCount);
     }
 
-    public void memoryTypeCount(@Unsigned int value) {
+    public VkPhysicalDeviceMemoryProperties memoryTypeCount(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeCount, OFFSET$memoryTypeCount, value);
+        return this;
     }
 
     public VkMemoryType.Ptr memoryTypes() {
         return new VkMemoryType.Ptr(memoryTypesRaw());
     }
 
-    public void memoryTypes(VkMemoryType.Ptr value) {
+    public VkPhysicalDeviceMemoryProperties memoryTypes(VkMemoryType.Ptr value) {
         MemorySegment s = memoryTypesRaw();
         s.copyFrom(value.segment());
+        return this;
     }
 
     public VkMemoryType memoryTypesAt(int index) {
@@ -206,17 +208,19 @@ public record VkPhysicalDeviceMemoryProperties(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$memoryHeapCount, OFFSET$memoryHeapCount);
     }
 
-    public void memoryHeapCount(@Unsigned int value) {
+    public VkPhysicalDeviceMemoryProperties memoryHeapCount(@Unsigned int value) {
         segment.set(LAYOUT$memoryHeapCount, OFFSET$memoryHeapCount, value);
+        return this;
     }
 
     public VkMemoryHeap.Ptr memoryHeaps() {
         return new VkMemoryHeap.Ptr(memoryHeapsRaw());
     }
 
-    public void memoryHeaps(VkMemoryHeap.Ptr value) {
+    public VkPhysicalDeviceMemoryProperties memoryHeaps(VkMemoryHeap.Ptr value) {
         MemorySegment s = memoryHeapsRaw();
         s.copyFrom(value.segment());
+        return this;
     }
 
     public VkMemoryHeap memoryHeapsAt(int index) {

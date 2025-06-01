@@ -195,8 +195,9 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkSubpassDescriptionDepthStencilResolve(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSubpassDescriptionDepthStencilResolve pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkResolveModeFlags.class) int depthResolveMode() {
         return segment.get(LAYOUT$depthResolveMode, OFFSET$depthResolveMode);
     }
 
-    public void depthResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$depthResolveMode, OFFSET$depthResolveMode, value);
+        return this;
     }
 
     public @EnumType(VkResolveModeFlags.class) int stencilResolveMode() {
         return segment.get(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode);
     }
 
-    public void stencilResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
+    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(@EnumType(VkResolveModeFlags.class) int value) {
         segment.set(LAYOUT$stencilResolveMode, OFFSET$stencilResolveMode, value);
+        return this;
     }
 
-    public void pDepthStencilResolveAttachment(@Nullable IVkAttachmentReference2 value) {
+    public VkSubpassDescriptionDepthStencilResolve pDepthStencilResolveAttachment(@Nullable IVkAttachmentReference2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthStencilResolveAttachmentRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentReference2.Ptr pDepthStencilResolveAttachment(int assumedCount) {

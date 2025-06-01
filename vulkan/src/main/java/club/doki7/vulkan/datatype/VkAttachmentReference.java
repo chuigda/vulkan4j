@@ -173,16 +173,18 @@ public record VkAttachmentReference(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$attachment, OFFSET$attachment);
     }
 
-    public void attachment(@Unsigned int value) {
+    public VkAttachmentReference attachment(@Unsigned int value) {
         segment.set(LAYOUT$attachment, OFFSET$attachment, value);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int layout() {
         return segment.get(LAYOUT$layout, OFFSET$layout);
     }
 
-    public void layout(@EnumType(VkImageLayout.class) int value) {
+    public VkAttachmentReference layout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -175,9 +175,10 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void decoder_model_present_for_this_op(boolean value) {
+    public StdVideoEncodeAV1OperatingPointInfoFlags decoder_model_present_for_this_op(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean low_delay_mode_flag() {
@@ -185,9 +186,10 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void low_delay_mode_flag(boolean value) {
+    public StdVideoEncodeAV1OperatingPointInfoFlags low_delay_mode_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean initial_display_delay_present_for_this_op() {
@@ -195,9 +197,10 @@ public record StdVideoEncodeAV1OperatingPointInfoFlags(@NotNull MemorySegment se
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void initial_display_delay_present_for_this_op(boolean value) {
+    public StdVideoEncodeAV1OperatingPointInfoFlags initial_display_delay_present_for_this_op(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$decoder_model_present_for_this_op$reserved, LAYOUT$bitfield$decoder_model_present_for_this_op$reserved);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

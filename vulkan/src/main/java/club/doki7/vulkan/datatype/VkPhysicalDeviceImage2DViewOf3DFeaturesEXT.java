@@ -194,8 +194,9 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int image2DViewOf3D() {
         return segment.get(LAYOUT$image2DViewOf3D, OFFSET$image2DViewOf3D);
     }
 
-    public void image2DViewOf3D(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT image2DViewOf3D(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$image2DViewOf3D, OFFSET$image2DViewOf3D, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int sampler2DViewOf3D() {
         return segment.get(LAYOUT$sampler2DViewOf3D, OFFSET$sampler2DViewOf3D);
     }
 
-    public void sampler2DViewOf3D(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT sampler2DViewOf3D(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$sampler2DViewOf3D, OFFSET$sampler2DViewOf3D, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -197,8 +197,9 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPushConstantsInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPushConstantsInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkPipelineLayout layout() {
@@ -221,32 +223,36 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkPushConstantsInfo layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPushConstantsInfo stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+        return this;
     }
 
     public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned int value) {
+    public VkPushConstantsInfo offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @Unsigned int size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned int value) {
+    public VkPushConstantsInfo size(@Unsigned int value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pValues() {
@@ -257,8 +263,9 @@ public record VkPushConstantsInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pValues, OFFSET$pValues, value);
     }
 
-    public void pValues(@Nullable IPointer pointer) {
+    public VkPushConstantsInfo pValues(@Nullable IPointer pointer) {
         pValues(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -176,32 +176,36 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$value32, OFFSET$value32);
     }
 
-    public void value32(@Unsigned int value) {
+    public VkPerformanceValueDataINTEL value32(@Unsigned int value) {
         segment.set(LAYOUT$value32, OFFSET$value32, value);
+        return this;
     }
 
     public @Unsigned long value64() {
         return segment.get(LAYOUT$value64, OFFSET$value64);
     }
 
-    public void value64(@Unsigned long value) {
+    public VkPerformanceValueDataINTEL value64(@Unsigned long value) {
         segment.set(LAYOUT$value64, OFFSET$value64, value);
+        return this;
     }
 
     public float valueFloat() {
         return segment.get(LAYOUT$valueFloat, OFFSET$valueFloat);
     }
 
-    public void valueFloat(float value) {
+    public VkPerformanceValueDataINTEL valueFloat(float value) {
         segment.set(LAYOUT$valueFloat, OFFSET$valueFloat, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int valueBool() {
         return segment.get(LAYOUT$valueBool, OFFSET$valueBool);
     }
 
-    public void valueBool(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPerformanceValueDataINTEL valueBool(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$valueBool, OFFSET$valueBool, value);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -216,9 +220,10 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         return new BytePtr(s);
     }
 
-    public void valueString(@Nullable BytePtr value) {
+    public VkPerformanceValueDataINTEL valueString(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         valueStringRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment valueStringRaw() {

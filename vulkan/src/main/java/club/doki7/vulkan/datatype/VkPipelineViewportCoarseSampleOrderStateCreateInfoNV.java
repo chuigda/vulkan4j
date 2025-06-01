@@ -195,8 +195,9 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkCoarseSampleOrderTypeNV.class) int sampleOrderType() {
         return segment.get(LAYOUT$sampleOrderType, OFFSET$sampleOrderType);
     }
 
-    public void sampleOrderType(@EnumType(VkCoarseSampleOrderTypeNV.class) int value) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV sampleOrderType(@EnumType(VkCoarseSampleOrderTypeNV.class) int value) {
         segment.set(LAYOUT$sampleOrderType, OFFSET$sampleOrderType, value);
+        return this;
     }
 
     public @Unsigned int customSampleOrderCount() {
         return segment.get(LAYOUT$customSampleOrderCount, OFFSET$customSampleOrderCount);
     }
 
-    public void customSampleOrderCount(@Unsigned int value) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV customSampleOrderCount(@Unsigned int value) {
         segment.set(LAYOUT$customSampleOrderCount, OFFSET$customSampleOrderCount, value);
+        return this;
     }
 
-    public void pCustomSampleOrders(@Nullable IVkCoarseSampleOrderCustomNV value) {
+    public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV pCustomSampleOrders(@Nullable IVkCoarseSampleOrderCustomNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCustomSampleOrdersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkCoarseSampleOrderCustomNV.Ptr pCustomSampleOrders(int assumedCount) {

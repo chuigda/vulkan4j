@@ -174,24 +174,27 @@ public record VkBindIndexBufferIndirectCommandEXT(@NotNull MemorySegment segment
         return segment.get(LAYOUT$bufferAddress, OFFSET$bufferAddress);
     }
 
-    public void bufferAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkBindIndexBufferIndirectCommandEXT bufferAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$bufferAddress, OFFSET$bufferAddress, value);
+        return this;
     }
 
     public @Unsigned int size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned int value) {
+    public VkBindIndexBufferIndirectCommandEXT size(@Unsigned int value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @EnumType(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public void indexType(@EnumType(VkIndexType.class) int value) {
+    public VkBindIndexBufferIndirectCommandEXT indexType(@EnumType(VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

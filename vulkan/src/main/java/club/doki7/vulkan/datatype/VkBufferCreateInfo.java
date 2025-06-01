@@ -198,8 +198,9 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,48 +211,54 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBufferCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkBufferCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkBufferCreateFlags.class) int value) {
+    public VkBufferCreateInfo flags(@EnumType(VkBufferCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBufferCreateInfo size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @EnumType(VkBufferUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@EnumType(VkBufferUsageFlags.class) int value) {
+    public VkBufferCreateInfo usage(@EnumType(VkBufferUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
+        return this;
     }
 
     public @EnumType(VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public void sharingMode(@EnumType(VkSharingMode.class) int value) {
+    public VkBufferCreateInfo sharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@Unsigned int value) {
+    public VkBufferCreateInfo queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -266,9 +273,10 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
+    public VkBufferCreateInfo pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {

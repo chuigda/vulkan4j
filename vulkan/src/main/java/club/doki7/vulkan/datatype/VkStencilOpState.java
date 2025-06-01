@@ -178,56 +178,63 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
         return segment.get(LAYOUT$failOp, OFFSET$failOp);
     }
 
-    public void failOp(@EnumType(VkStencilOp.class) int value) {
+    public VkStencilOpState failOp(@EnumType(VkStencilOp.class) int value) {
         segment.set(LAYOUT$failOp, OFFSET$failOp, value);
+        return this;
     }
 
     public @EnumType(VkStencilOp.class) int passOp() {
         return segment.get(LAYOUT$passOp, OFFSET$passOp);
     }
 
-    public void passOp(@EnumType(VkStencilOp.class) int value) {
+    public VkStencilOpState passOp(@EnumType(VkStencilOp.class) int value) {
         segment.set(LAYOUT$passOp, OFFSET$passOp, value);
+        return this;
     }
 
     public @EnumType(VkStencilOp.class) int depthFailOp() {
         return segment.get(LAYOUT$depthFailOp, OFFSET$depthFailOp);
     }
 
-    public void depthFailOp(@EnumType(VkStencilOp.class) int value) {
+    public VkStencilOpState depthFailOp(@EnumType(VkStencilOp.class) int value) {
         segment.set(LAYOUT$depthFailOp, OFFSET$depthFailOp, value);
+        return this;
     }
 
     public @EnumType(VkCompareOp.class) int compareOp() {
         return segment.get(LAYOUT$compareOp, OFFSET$compareOp);
     }
 
-    public void compareOp(@EnumType(VkCompareOp.class) int value) {
+    public VkStencilOpState compareOp(@EnumType(VkCompareOp.class) int value) {
         segment.set(LAYOUT$compareOp, OFFSET$compareOp, value);
+        return this;
     }
 
     public @Unsigned int compareMask() {
         return segment.get(LAYOUT$compareMask, OFFSET$compareMask);
     }
 
-    public void compareMask(@Unsigned int value) {
+    public VkStencilOpState compareMask(@Unsigned int value) {
         segment.set(LAYOUT$compareMask, OFFSET$compareMask, value);
+        return this;
     }
 
     public @Unsigned int writeMask() {
         return segment.get(LAYOUT$writeMask, OFFSET$writeMask);
     }
 
-    public void writeMask(@Unsigned int value) {
+    public VkStencilOpState writeMask(@Unsigned int value) {
         segment.set(LAYOUT$writeMask, OFFSET$writeMask, value);
+        return this;
     }
 
     public @Unsigned int reference() {
         return segment.get(LAYOUT$reference, OFFSET$reference);
     }
 
-    public void reference(@Unsigned int value) {
+    public VkStencilOpState reference(@Unsigned int value) {
         segment.set(LAYOUT$reference, OFFSET$reference, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

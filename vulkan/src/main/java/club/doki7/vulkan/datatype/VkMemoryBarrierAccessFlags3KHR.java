@@ -194,8 +194,9 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryBarrierAccessFlags3KHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMemoryBarrierAccessFlags3KHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkAccessFlags3KHR.class) long srcAccessMask3() {
         return segment.get(LAYOUT$srcAccessMask3, OFFSET$srcAccessMask3);
     }
 
-    public void srcAccessMask3(@EnumType(VkAccessFlags3KHR.class) long value) {
+    public VkMemoryBarrierAccessFlags3KHR srcAccessMask3(@EnumType(VkAccessFlags3KHR.class) long value) {
         segment.set(LAYOUT$srcAccessMask3, OFFSET$srcAccessMask3, value);
+        return this;
     }
 
     public @EnumType(VkAccessFlags3KHR.class) long dstAccessMask3() {
         return segment.get(LAYOUT$dstAccessMask3, OFFSET$dstAccessMask3);
     }
 
-    public void dstAccessMask3(@EnumType(VkAccessFlags3KHR.class) long value) {
+    public VkMemoryBarrierAccessFlags3KHR dstAccessMask3(@EnumType(VkAccessFlags3KHR.class) long value) {
         segment.set(LAYOUT$dstAccessMask3, OFFSET$dstAccessMask3, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

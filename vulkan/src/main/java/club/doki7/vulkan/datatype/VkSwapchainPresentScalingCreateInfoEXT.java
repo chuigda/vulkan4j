@@ -195,8 +195,9 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkSwapchainPresentScalingCreateInfoEXT(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSwapchainPresentScalingCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPresentScalingFlagsEXT.class) int scalingBehavior() {
         return segment.get(LAYOUT$scalingBehavior, OFFSET$scalingBehavior);
     }
 
-    public void scalingBehavior(@EnumType(VkPresentScalingFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT scalingBehavior(@EnumType(VkPresentScalingFlagsEXT.class) int value) {
         segment.set(LAYOUT$scalingBehavior, OFFSET$scalingBehavior, value);
+        return this;
     }
 
     public @EnumType(VkPresentGravityFlagsEXT.class) int presentGravityX() {
         return segment.get(LAYOUT$presentGravityX, OFFSET$presentGravityX);
     }
 
-    public void presentGravityX(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT presentGravityX(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$presentGravityX, OFFSET$presentGravityX, value);
+        return this;
     }
 
     public @EnumType(VkPresentGravityFlagsEXT.class) int presentGravityY() {
         return segment.get(LAYOUT$presentGravityY, OFFSET$presentGravityY);
     }
 
-    public void presentGravityY(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
+    public VkSwapchainPresentScalingCreateInfoEXT presentGravityY(@EnumType(VkPresentGravityFlagsEXT.class) int value) {
         segment.set(LAYOUT$presentGravityY, OFFSET$presentGravityY, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

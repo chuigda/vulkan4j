@@ -176,9 +176,10 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void general_tier_flag(boolean value) {
+    public StdVideoH265ProfileTierLevelFlags general_tier_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean general_progressive_source_flag() {
@@ -186,9 +187,10 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void general_progressive_source_flag(boolean value) {
+    public StdVideoH265ProfileTierLevelFlags general_progressive_source_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean general_interlaced_source_flag() {
@@ -196,9 +198,10 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void general_interlaced_source_flag(boolean value) {
+    public StdVideoH265ProfileTierLevelFlags general_interlaced_source_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean general_non_packed_constraint_flag() {
@@ -206,9 +209,10 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void general_non_packed_constraint_flag(boolean value) {
+    public StdVideoH265ProfileTierLevelFlags general_non_packed_constraint_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean general_frame_only_constraint_flag() {
@@ -216,9 +220,10 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void general_frame_only_constraint_flag(boolean value) {
+    public StdVideoH265ProfileTierLevelFlags general_frame_only_constraint_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$general_tier_flag$general_frame_only_constraint_flag, LAYOUT$bitfield$general_tier_flag$general_frame_only_constraint_flag);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

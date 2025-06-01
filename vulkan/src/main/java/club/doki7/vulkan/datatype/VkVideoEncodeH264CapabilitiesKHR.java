@@ -205,8 +205,9 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -217,112 +218,126 @@ public record VkVideoEncodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH264CapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR flags(@EnumType(VkVideoEncodeH264CapabilityFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(StdVideoH264LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public void maxLevelIdc(@EnumType(StdVideoH264LevelIdc.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR maxLevelIdc(@EnumType(StdVideoH264LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
+        return this;
     }
 
     public @Unsigned int maxSliceCount() {
         return segment.get(LAYOUT$maxSliceCount, OFFSET$maxSliceCount);
     }
 
-    public void maxSliceCount(@Unsigned int value) {
+    public VkVideoEncodeH264CapabilitiesKHR maxSliceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxSliceCount, OFFSET$maxSliceCount, value);
+        return this;
     }
 
     public @Unsigned int maxPPictureL0ReferenceCount() {
         return segment.get(LAYOUT$maxPPictureL0ReferenceCount, OFFSET$maxPPictureL0ReferenceCount);
     }
 
-    public void maxPPictureL0ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeH264CapabilitiesKHR maxPPictureL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxPPictureL0ReferenceCount, OFFSET$maxPPictureL0ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxBPictureL0ReferenceCount() {
         return segment.get(LAYOUT$maxBPictureL0ReferenceCount, OFFSET$maxBPictureL0ReferenceCount);
     }
 
-    public void maxBPictureL0ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeH264CapabilitiesKHR maxBPictureL0ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxBPictureL0ReferenceCount, OFFSET$maxBPictureL0ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxL1ReferenceCount() {
         return segment.get(LAYOUT$maxL1ReferenceCount, OFFSET$maxL1ReferenceCount);
     }
 
-    public void maxL1ReferenceCount(@Unsigned int value) {
+    public VkVideoEncodeH264CapabilitiesKHR maxL1ReferenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxL1ReferenceCount, OFFSET$maxL1ReferenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxTemporalLayerCount() {
         return segment.get(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount);
     }
 
-    public void maxTemporalLayerCount(@Unsigned int value) {
+    public VkVideoEncodeH264CapabilitiesKHR maxTemporalLayerCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTemporalLayerCount, OFFSET$maxTemporalLayerCount, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int expectDyadicTemporalLayerPattern() {
         return segment.get(LAYOUT$expectDyadicTemporalLayerPattern, OFFSET$expectDyadicTemporalLayerPattern);
     }
 
-    public void expectDyadicTemporalLayerPattern(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH264CapabilitiesKHR expectDyadicTemporalLayerPattern(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$expectDyadicTemporalLayerPattern, OFFSET$expectDyadicTemporalLayerPattern, value);
+        return this;
     }
 
     public int minQp() {
         return segment.get(LAYOUT$minQp, OFFSET$minQp);
     }
 
-    public void minQp(int value) {
+    public VkVideoEncodeH264CapabilitiesKHR minQp(int value) {
         segment.set(LAYOUT$minQp, OFFSET$minQp, value);
+        return this;
     }
 
     public int maxQp() {
         return segment.get(LAYOUT$maxQp, OFFSET$maxQp);
     }
 
-    public void maxQp(int value) {
+    public VkVideoEncodeH264CapabilitiesKHR maxQp(int value) {
         segment.set(LAYOUT$maxQp, OFFSET$maxQp, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int prefersGopRemainingFrames() {
         return segment.get(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames);
     }
 
-    public void prefersGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH264CapabilitiesKHR prefersGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersGopRemainingFrames, OFFSET$prefersGopRemainingFrames, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int requiresGopRemainingFrames() {
         return segment.get(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames);
     }
 
-    public void requiresGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH264CapabilitiesKHR requiresGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$requiresGopRemainingFrames, OFFSET$requiresGopRemainingFrames, value);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeH264StdFlagsKHR.class) int stdSyntaxFlags() {
         return segment.get(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags);
     }
 
-    public void stdSyntaxFlags(@EnumType(VkVideoEncodeH264StdFlagsKHR.class) int value) {
+    public VkVideoEncodeH264CapabilitiesKHR stdSyntaxFlags(@EnumType(VkVideoEncodeH264StdFlagsKHR.class) int value) {
         segment.set(LAYOUT$stdSyntaxFlags, OFFSET$stdSyntaxFlags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -198,8 +198,9 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRayTracingShaderGroupCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,48 +211,54 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRayTracingShaderGroupCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkRayTracingShaderGroupTypeKHR.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkRayTracingShaderGroupTypeKHR.class) int value) {
+    public VkRayTracingShaderGroupCreateInfoKHR type(@EnumType(VkRayTracingShaderGroupTypeKHR.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @Unsigned int generalShader() {
         return segment.get(LAYOUT$generalShader, OFFSET$generalShader);
     }
 
-    public void generalShader(@Unsigned int value) {
+    public VkRayTracingShaderGroupCreateInfoKHR generalShader(@Unsigned int value) {
         segment.set(LAYOUT$generalShader, OFFSET$generalShader, value);
+        return this;
     }
 
     public @Unsigned int closestHitShader() {
         return segment.get(LAYOUT$closestHitShader, OFFSET$closestHitShader);
     }
 
-    public void closestHitShader(@Unsigned int value) {
+    public VkRayTracingShaderGroupCreateInfoKHR closestHitShader(@Unsigned int value) {
         segment.set(LAYOUT$closestHitShader, OFFSET$closestHitShader, value);
+        return this;
     }
 
     public @Unsigned int anyHitShader() {
         return segment.get(LAYOUT$anyHitShader, OFFSET$anyHitShader);
     }
 
-    public void anyHitShader(@Unsigned int value) {
+    public VkRayTracingShaderGroupCreateInfoKHR anyHitShader(@Unsigned int value) {
         segment.set(LAYOUT$anyHitShader, OFFSET$anyHitShader, value);
+        return this;
     }
 
     public @Unsigned int intersectionShader() {
         return segment.get(LAYOUT$intersectionShader, OFFSET$intersectionShader);
     }
 
-    public void intersectionShader(@Unsigned int value) {
+    public VkRayTracingShaderGroupCreateInfoKHR intersectionShader(@Unsigned int value) {
         segment.set(LAYOUT$intersectionShader, OFFSET$intersectionShader, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pShaderGroupCaptureReplayHandle() {
@@ -262,8 +269,9 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pShaderGroupCaptureReplayHandle, OFFSET$pShaderGroupCaptureReplayHandle, value);
     }
 
-    public void pShaderGroupCaptureReplayHandle(@Nullable IPointer pointer) {
+    public VkRayTracingShaderGroupCreateInfoKHR pShaderGroupCaptureReplayHandle(@Nullable IPointer pointer) {
         pShaderGroupCaptureReplayHandle(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

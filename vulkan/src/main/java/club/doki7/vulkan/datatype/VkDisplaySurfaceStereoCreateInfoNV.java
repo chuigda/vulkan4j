@@ -193,8 +193,9 @@ public record VkDisplaySurfaceStereoCreateInfoNV(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplaySurfaceStereoCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDisplaySurfaceStereoCreateInfoNV(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDisplaySurfaceStereoCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDisplaySurfaceStereoTypeNV.class) int stereoType() {
         return segment.get(LAYOUT$stereoType, OFFSET$stereoType);
     }
 
-    public void stereoType(@EnumType(VkDisplaySurfaceStereoTypeNV.class) int value) {
+    public VkDisplaySurfaceStereoCreateInfoNV stereoType(@EnumType(VkDisplaySurfaceStereoTypeNV.class) int value) {
         segment.set(LAYOUT$stereoType, OFFSET$stereoType, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

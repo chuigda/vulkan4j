@@ -194,8 +194,9 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderCorePropertiesFlagsAMD.class) int shaderCoreFeatures() {
         return segment.get(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures);
     }
 
-    public void shaderCoreFeatures(@EnumType(VkShaderCorePropertiesFlagsAMD.class) int value) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD shaderCoreFeatures(@EnumType(VkShaderCorePropertiesFlagsAMD.class) int value) {
         segment.set(LAYOUT$shaderCoreFeatures, OFFSET$shaderCoreFeatures, value);
+        return this;
     }
 
     public @Unsigned int activeComputeUnitCount() {
         return segment.get(LAYOUT$activeComputeUnitCount, OFFSET$activeComputeUnitCount);
     }
 
-    public void activeComputeUnitCount(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCoreProperties2AMD activeComputeUnitCount(@Unsigned int value) {
         segment.set(LAYOUT$activeComputeUnitCount, OFFSET$activeComputeUnitCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

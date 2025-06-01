@@ -194,8 +194,9 @@ public record VkAntiLagPresentationInfoAMD(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAntiLagPresentationInfoAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkAntiLagPresentationInfoAMD(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAntiLagPresentationInfoAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkAntiLagStageAMD.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public void stage(@EnumType(VkAntiLagStageAMD.class) int value) {
+    public VkAntiLagPresentationInfoAMD stage(@EnumType(VkAntiLagStageAMD.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
+        return this;
     }
 
     public @Unsigned long frameIndex() {
         return segment.get(LAYOUT$frameIndex, OFFSET$frameIndex);
     }
 
-    public void frameIndex(@Unsigned long value) {
+    public VkAntiLagPresentationInfoAMD frameIndex(@Unsigned long value) {
         segment.set(LAYOUT$frameIndex, OFFSET$frameIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

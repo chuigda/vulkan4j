@@ -194,8 +194,9 @@ public record VkCommandPoolCreateInfo(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandPoolCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkCommandPoolCreateInfo(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCommandPoolCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkCommandPoolCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkCommandPoolCreateFlags.class) int value) {
+    public VkCommandPoolCreateInfo flags(@EnumType(VkCommandPoolCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndex() {
         return segment.get(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex);
     }
 
-    public void queueFamilyIndex(@Unsigned int value) {
+    public VkCommandPoolCreateInfo queueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

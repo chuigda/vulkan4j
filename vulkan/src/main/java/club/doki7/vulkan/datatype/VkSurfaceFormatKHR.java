@@ -173,16 +173,18 @@ public record VkSurfaceFormatKHR(@NotNull MemorySegment segment) implements IVkS
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkFormat.class) int value) {
+    public VkSurfaceFormatKHR format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public @EnumType(VkColorSpaceKHR.class) int colorSpace() {
         return segment.get(LAYOUT$colorSpace, OFFSET$colorSpace);
     }
 
-    public void colorSpace(@EnumType(VkColorSpaceKHR.class) int value) {
+    public VkSurfaceFormatKHR colorSpace(@EnumType(VkColorSpaceKHR.class) int value) {
         segment.set(LAYOUT$colorSpace, OFFSET$colorSpace, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

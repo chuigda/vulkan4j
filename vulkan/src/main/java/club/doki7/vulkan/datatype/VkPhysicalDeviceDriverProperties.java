@@ -196,8 +196,9 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDriverProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,24 +209,27 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDriverProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDriverId.class) int driverID() {
         return segment.get(LAYOUT$driverID, OFFSET$driverID);
     }
 
-    public void driverID(@EnumType(VkDriverId.class) int value) {
+    public VkPhysicalDeviceDriverProperties driverID(@EnumType(VkDriverId.class) int value) {
         segment.set(LAYOUT$driverID, OFFSET$driverID, value);
+        return this;
     }
 
     public BytePtr driverName() {
         return new BytePtr(driverNameRaw());
     }
 
-    public void driverName(BytePtr value) {
+    public VkPhysicalDeviceDriverProperties driverName(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverName, SIZE$driverName);
+        return this;
     }
 
     public MemorySegment driverNameRaw() {
@@ -236,8 +240,9 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         return new BytePtr(driverInfoRaw());
     }
 
-    public void driverInfo(BytePtr value) {
+    public VkPhysicalDeviceDriverProperties driverInfo(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverInfo, SIZE$driverInfo);
+        return this;
     }
 
     public MemorySegment driverInfoRaw() {
@@ -248,8 +253,9 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
         return new VkConformanceVersion(segment.asSlice(OFFSET$conformanceVersion, LAYOUT$conformanceVersion));
     }
 
-    public void conformanceVersion(@NotNull VkConformanceVersion value) {
+    public VkPhysicalDeviceDriverProperties conformanceVersion(@NotNull VkConformanceVersion value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, SIZE$conformanceVersion);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

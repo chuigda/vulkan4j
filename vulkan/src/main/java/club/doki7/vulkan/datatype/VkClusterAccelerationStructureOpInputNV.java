@@ -170,9 +170,10 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         return ret;
     }
 
-    public void pClustersBottomLevel(@Nullable IVkClusterAccelerationStructureClustersBottomLevelInputNV value) {
+    public VkClusterAccelerationStructureOpInputNV pClustersBottomLevel(@Nullable IVkClusterAccelerationStructureClustersBottomLevelInputNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pClustersBottomLevelRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkClusterAccelerationStructureClustersBottomLevelInputNV.Ptr pClustersBottomLevel(int assumedCount) {
@@ -201,9 +202,10 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$pClustersBottomLevel, OFFSET$pClustersBottomLevel, value);
     }
 
-    public void pTriangleClusters(@Nullable IVkClusterAccelerationStructureTriangleClusterInputNV value) {
+    public VkClusterAccelerationStructureOpInputNV pTriangleClusters(@Nullable IVkClusterAccelerationStructureTriangleClusterInputNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTriangleClustersRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkClusterAccelerationStructureTriangleClusterInputNV.Ptr pTriangleClusters(int assumedCount) {
@@ -232,9 +234,10 @@ public record VkClusterAccelerationStructureOpInputNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$pTriangleClusters, OFFSET$pTriangleClusters, value);
     }
 
-    public void pMoveObjects(@Nullable IVkClusterAccelerationStructureMoveObjectsInputNV value) {
+    public VkClusterAccelerationStructureOpInputNV pMoveObjects(@Nullable IVkClusterAccelerationStructureMoveObjectsInputNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMoveObjectsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkClusterAccelerationStructureMoveObjectsInputNV.Ptr pMoveObjects(int assumedCount) {

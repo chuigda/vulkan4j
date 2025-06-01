@@ -193,8 +193,9 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMetalObjectCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExportMetalObjectCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkExportMetalObjectTypeFlagsEXT.class) int exportObjectType() {
         return segment.get(LAYOUT$exportObjectType, OFFSET$exportObjectType);
     }
 
-    public void exportObjectType(@EnumType(VkExportMetalObjectTypeFlagsEXT.class) int value) {
+    public VkExportMetalObjectCreateInfoEXT exportObjectType(@EnumType(VkExportMetalObjectTypeFlagsEXT.class) int value) {
         segment.set(LAYOUT$exportObjectType, OFFSET$exportObjectType, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -176,18 +176,20 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
         return BitfieldUtil.readBits(s, 0, 24);
     }
 
-    public void geometryIndex(@Unsigned int value) {
+    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV geometryIndex(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex$geometryFlags, LAYOUT$bitfield$geometryIndex$geometryFlags);
         BitfieldUtil.writeBits(s, 0, 24, value);
+        return this;
     }
     public @Unsigned int geometryFlags() {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex$geometryFlags, LAYOUT$bitfield$geometryIndex$geometryFlags);
         return BitfieldUtil.readBits(s, 29, 32);
     }
 
-    public void geometryFlags(@Unsigned int value) {
+    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV geometryFlags(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$geometryIndex$geometryFlags, LAYOUT$bitfield$geometryIndex$geometryFlags);
         BitfieldUtil.writeBits(s, 29, 32, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

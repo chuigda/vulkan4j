@@ -137,6 +137,7 @@ public record VkSemaphoreSciSyncPoolNV(@NotNull MemorySegment segment) implement
         public static Ptr allocateV(Arena arena, @Nullable VkSemaphoreSciSyncPoolNV ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

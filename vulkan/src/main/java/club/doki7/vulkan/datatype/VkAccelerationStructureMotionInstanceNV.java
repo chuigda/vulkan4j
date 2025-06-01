@@ -174,24 +174,27 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
+    public VkAccelerationStructureMotionInstanceNV type(@EnumType(VkAccelerationStructureMotionInstanceTypeNV.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int value) {
+    public VkAccelerationStructureMotionInstanceNV flags(@EnumType(VkAccelerationStructureMotionInstanceFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NotNull VkAccelerationStructureMotionInstanceDataNV data() {
         return new VkAccelerationStructureMotionInstanceDataNV(segment.asSlice(OFFSET$data, LAYOUT$data));
     }
 
-    public void data(@NotNull VkAccelerationStructureMotionInstanceDataNV value) {
+    public VkAccelerationStructureMotionInstanceNV data(@NotNull VkAccelerationStructureMotionInstanceDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

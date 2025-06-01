@@ -193,8 +193,9 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(@NotNull 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkProvokingVertexModeEXT.class) int provokingVertexMode() {
         return segment.get(LAYOUT$provokingVertexMode, OFFSET$provokingVertexMode);
     }
 
-    public void provokingVertexMode(@EnumType(VkProvokingVertexModeEXT.class) int value) {
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT provokingVertexMode(@EnumType(VkProvokingVertexModeEXT.class) int value) {
         segment.set(LAYOUT$provokingVertexMode, OFFSET$provokingVertexMode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

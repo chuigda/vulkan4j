@@ -181,9 +181,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void is_reference(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags is_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean IrapPicFlag() {
@@ -191,9 +192,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void IrapPicFlag(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags IrapPicFlag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean used_for_long_term_reference() {
@@ -201,9 +203,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void used_for_long_term_reference(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags used_for_long_term_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean discardable_flag() {
@@ -211,9 +214,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void discardable_flag(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags discardable_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean cross_layer_bla_flag() {
@@ -221,9 +225,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void cross_layer_bla_flag(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags cross_layer_bla_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean pic_output_flag() {
@@ -231,9 +236,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void pic_output_flag(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags pic_output_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public boolean no_output_of_prior_pics_flag() {
@@ -241,9 +247,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 6);
     }
 
-    public void no_output_of_prior_pics_flag(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags no_output_of_prior_pics_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 6, value);
+        return this;
     }
 
     public boolean short_term_ref_pic_set_sps_flag() {
@@ -251,9 +258,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 7);
     }
 
-    public void short_term_ref_pic_set_sps_flag(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags short_term_ref_pic_set_sps_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 7, value);
+        return this;
     }
 
     public boolean slice_temporal_mvp_enabled_flag() {
@@ -261,9 +269,10 @@ public record StdVideoEncodeH265PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 8);
     }
 
-    public void slice_temporal_mvp_enabled_flag(boolean value) {
+    public StdVideoEncodeH265PictureInfoFlags slice_temporal_mvp_enabled_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$is_reference$reserved, LAYOUT$bitfield$is_reference$reserved);
         BitfieldUtil.writeBit(s, 8, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

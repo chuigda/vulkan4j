@@ -193,8 +193,9 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceNestedCommandBufferPropertiesEXT(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxCommandBufferNestingLevel() {
         return segment.get(LAYOUT$maxCommandBufferNestingLevel, OFFSET$maxCommandBufferNestingLevel);
     }
 
-    public void maxCommandBufferNestingLevel(@Unsigned int value) {
+    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT maxCommandBufferNestingLevel(@Unsigned int value) {
         segment.set(LAYOUT$maxCommandBufferNestingLevel, OFFSET$maxCommandBufferNestingLevel, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

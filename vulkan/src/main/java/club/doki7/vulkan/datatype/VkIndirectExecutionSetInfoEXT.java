@@ -169,9 +169,10 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         return ret;
     }
 
-    public void pPipelineInfo(@Nullable IVkIndirectExecutionSetPipelineInfoEXT value) {
+    public VkIndirectExecutionSetInfoEXT pPipelineInfo(@Nullable IVkIndirectExecutionSetPipelineInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectExecutionSetPipelineInfoEXT.Ptr pPipelineInfo(int assumedCount) {
@@ -200,9 +201,10 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pPipelineInfo, OFFSET$pPipelineInfo, value);
     }
 
-    public void pShaderInfo(@Nullable IVkIndirectExecutionSetShaderInfoEXT value) {
+    public VkIndirectExecutionSetInfoEXT pShaderInfo(@Nullable IVkIndirectExecutionSetShaderInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShaderInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectExecutionSetShaderInfoEXT.Ptr pShaderInfo(int assumedCount) {

@@ -194,8 +194,9 @@ public record VkVideoEncodeH265SessionCreateInfoKHR(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265SessionCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoEncodeH265SessionCreateInfoKHR(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265SessionCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useMaxLevelIdc() {
         return segment.get(LAYOUT$useMaxLevelIdc, OFFSET$useMaxLevelIdc);
     }
 
-    public void useMaxLevelIdc(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH265SessionCreateInfoKHR useMaxLevelIdc(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useMaxLevelIdc, OFFSET$useMaxLevelIdc, value);
+        return this;
     }
 
     public @EnumType(StdVideoH265LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public void maxLevelIdc(@EnumType(StdVideoH265LevelIdc.class) int value) {
+    public VkVideoEncodeH265SessionCreateInfoKHR maxLevelIdc(@EnumType(StdVideoH265LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

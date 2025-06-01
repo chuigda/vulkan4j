@@ -173,16 +173,18 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$attachmentIndex, OFFSET$attachmentIndex);
     }
 
-    public void attachmentIndex(@Unsigned int value) {
+    public VkAttachmentSampleLocationsEXT attachmentIndex(@Unsigned int value) {
         segment.set(LAYOUT$attachmentIndex, OFFSET$attachmentIndex, value);
+        return this;
     }
 
     public @NotNull VkSampleLocationsInfoEXT sampleLocationsInfo() {
         return new VkSampleLocationsInfoEXT(segment.asSlice(OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo));
     }
 
-    public void sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
+    public VkAttachmentSampleLocationsEXT sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

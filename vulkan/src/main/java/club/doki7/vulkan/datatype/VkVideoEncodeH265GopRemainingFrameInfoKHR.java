@@ -196,8 +196,9 @@ public record VkVideoEncodeH265GopRemainingFrameInfoKHR(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265GopRemainingFrameInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkVideoEncodeH265GopRemainingFrameInfoKHR(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265GopRemainingFrameInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int useGopRemainingFrames() {
         return segment.get(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames);
     }
 
-    public void useGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH265GopRemainingFrameInfoKHR useGopRemainingFrames(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$useGopRemainingFrames, OFFSET$useGopRemainingFrames, value);
+        return this;
     }
 
     public @Unsigned int gopRemainingI() {
         return segment.get(LAYOUT$gopRemainingI, OFFSET$gopRemainingI);
     }
 
-    public void gopRemainingI(@Unsigned int value) {
+    public VkVideoEncodeH265GopRemainingFrameInfoKHR gopRemainingI(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingI, OFFSET$gopRemainingI, value);
+        return this;
     }
 
     public @Unsigned int gopRemainingP() {
         return segment.get(LAYOUT$gopRemainingP, OFFSET$gopRemainingP);
     }
 
-    public void gopRemainingP(@Unsigned int value) {
+    public VkVideoEncodeH265GopRemainingFrameInfoKHR gopRemainingP(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingP, OFFSET$gopRemainingP, value);
+        return this;
     }
 
     public @Unsigned int gopRemainingB() {
         return segment.get(LAYOUT$gopRemainingB, OFFSET$gopRemainingB);
     }
 
-    public void gopRemainingB(@Unsigned int value) {
+    public VkVideoEncodeH265GopRemainingFrameInfoKHR gopRemainingB(@Unsigned int value) {
         segment.set(LAYOUT$gopRemainingB, OFFSET$gopRemainingB, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

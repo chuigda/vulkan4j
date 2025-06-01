@@ -195,8 +195,9 @@ public record VkPhysicalDeviceCooperativeMatrix2PropertiesNV(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceCooperativeMatrix2PropertiesNV(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int cooperativeMatrixWorkgroupScopeMaxWorkgroupSize() {
         return segment.get(LAYOUT$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize, OFFSET$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize);
     }
 
-    public void cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(@Unsigned int value) {
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize, OFFSET$cooperativeMatrixWorkgroupScopeMaxWorkgroupSize, value);
+        return this;
     }
 
     public @Unsigned int cooperativeMatrixFlexibleDimensionsMaxDimension() {
         return segment.get(LAYOUT$cooperativeMatrixFlexibleDimensionsMaxDimension, OFFSET$cooperativeMatrixFlexibleDimensionsMaxDimension);
     }
 
-    public void cooperativeMatrixFlexibleDimensionsMaxDimension(@Unsigned int value) {
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixFlexibleDimensionsMaxDimension(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixFlexibleDimensionsMaxDimension, OFFSET$cooperativeMatrixFlexibleDimensionsMaxDimension, value);
+        return this;
     }
 
     public @Unsigned int cooperativeMatrixWorkgroupScopeReservedSharedMemory() {
         return segment.get(LAYOUT$cooperativeMatrixWorkgroupScopeReservedSharedMemory, OFFSET$cooperativeMatrixWorkgroupScopeReservedSharedMemory);
     }
 
-    public void cooperativeMatrixWorkgroupScopeReservedSharedMemory(@Unsigned int value) {
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeReservedSharedMemory(@Unsigned int value) {
         segment.set(LAYOUT$cooperativeMatrixWorkgroupScopeReservedSharedMemory, OFFSET$cooperativeMatrixWorkgroupScopeReservedSharedMemory, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

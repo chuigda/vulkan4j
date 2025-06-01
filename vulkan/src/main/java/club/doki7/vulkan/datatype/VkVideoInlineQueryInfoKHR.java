@@ -195,8 +195,9 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoInlineQueryInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoInlineQueryInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkQueryPool queryPool() {
@@ -219,24 +221,27 @@ public record VkVideoInlineQueryInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkQueryPool(s);
     }
 
-    public void queryPool(@Nullable VkQueryPool value) {
+    public VkVideoInlineQueryInfoKHR queryPool(@Nullable VkQueryPool value) {
         segment.set(LAYOUT$queryPool, OFFSET$queryPool, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int firstQuery() {
         return segment.get(LAYOUT$firstQuery, OFFSET$firstQuery);
     }
 
-    public void firstQuery(@Unsigned int value) {
+    public VkVideoInlineQueryInfoKHR firstQuery(@Unsigned int value) {
         segment.set(LAYOUT$firstQuery, OFFSET$firstQuery, value);
+        return this;
     }
 
     public @Unsigned int queryCount() {
         return segment.get(LAYOUT$queryCount, OFFSET$queryCount);
     }
 
-    public void queryCount(@Unsigned int value) {
+    public VkVideoInlineQueryInfoKHR queryCount(@Unsigned int value) {
         segment.set(LAYOUT$queryCount, OFFSET$queryCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

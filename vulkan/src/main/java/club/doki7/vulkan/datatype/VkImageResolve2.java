@@ -197,8 +197,9 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageResolve2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkImageResolve2(@NotNull MemorySegment segment) implements IVkImag
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageResolve2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkImageSubresourceLayers srcSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$srcSubresource, LAYOUT$srcSubresource));
     }
 
-    public void srcSubresource(@NotNull VkImageSubresourceLayers value) {
+    public VkImageResolve2 srcSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
+        return this;
     }
 
     public @NotNull VkOffset3D srcOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$srcOffset, LAYOUT$srcOffset));
     }
 
-    public void srcOffset(@NotNull VkOffset3D value) {
+    public VkImageResolve2 srcOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcOffset, SIZE$srcOffset);
+        return this;
     }
 
     public @NotNull VkImageSubresourceLayers dstSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$dstSubresource, LAYOUT$dstSubresource));
     }
 
-    public void dstSubresource(@NotNull VkImageSubresourceLayers value) {
+    public VkImageResolve2 dstSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
+        return this;
     }
 
     public @NotNull VkOffset3D dstOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$dstOffset, LAYOUT$dstOffset));
     }
 
-    public void dstOffset(@NotNull VkOffset3D value) {
+    public VkImageResolve2 dstOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstOffset, SIZE$dstOffset);
+        return this;
     }
 
     public @NotNull VkExtent3D extent() {
         return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(@NotNull VkExtent3D value) {
+    public VkImageResolve2 extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

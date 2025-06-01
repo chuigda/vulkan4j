@@ -178,21 +178,24 @@ public record VkSparseImageMemoryBindInfo(@NotNull MemorySegment segment) implem
         return new VkImage(s);
     }
 
-    public void image(@Nullable VkImage value) {
+    public VkSparseImageMemoryBindInfo image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int bindCount() {
         return segment.get(LAYOUT$bindCount, OFFSET$bindCount);
     }
 
-    public void bindCount(@Unsigned int value) {
+    public VkSparseImageMemoryBindInfo bindCount(@Unsigned int value) {
         segment.set(LAYOUT$bindCount, OFFSET$bindCount, value);
+        return this;
     }
 
-    public void pBinds(@Nullable IVkSparseImageMemoryBind value) {
+    public VkSparseImageMemoryBindInfo pBinds(@Nullable IVkSparseImageMemoryBind value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSparseImageMemoryBind.Ptr pBinds(int assumedCount) {

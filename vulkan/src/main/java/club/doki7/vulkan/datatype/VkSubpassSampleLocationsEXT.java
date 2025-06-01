@@ -173,16 +173,18 @@ public record VkSubpassSampleLocationsEXT(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$subpassIndex, OFFSET$subpassIndex);
     }
 
-    public void subpassIndex(@Unsigned int value) {
+    public VkSubpassSampleLocationsEXT subpassIndex(@Unsigned int value) {
         segment.set(LAYOUT$subpassIndex, OFFSET$subpassIndex, value);
+        return this;
     }
 
     public @NotNull VkSampleLocationsInfoEXT sampleLocationsInfo() {
         return new VkSampleLocationsInfoEXT(segment.asSlice(OFFSET$sampleLocationsInfo, LAYOUT$sampleLocationsInfo));
     }
 
-    public void sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
+    public VkSubpassSampleLocationsEXT sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

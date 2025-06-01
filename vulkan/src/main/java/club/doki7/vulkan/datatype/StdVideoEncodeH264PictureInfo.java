@@ -179,70 +179,79 @@ public record StdVideoEncodeH264PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH264PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeH264PictureInfoFlags value) {
+    public StdVideoEncodeH264PictureInfo flags(@NotNull StdVideoEncodeH264PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte seq_parameter_set_id() {
         return segment.get(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id);
     }
 
-    public void seq_parameter_set_id(@Unsigned byte value) {
+    public StdVideoEncodeH264PictureInfo seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$seq_parameter_set_id, OFFSET$seq_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte pic_parameter_set_id() {
         return segment.get(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id);
     }
 
-    public void pic_parameter_set_id(@Unsigned byte value) {
+    public StdVideoEncodeH264PictureInfo pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pic_parameter_set_id, OFFSET$pic_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned short idr_pic_id() {
         return segment.get(LAYOUT$idr_pic_id, OFFSET$idr_pic_id);
     }
 
-    public void idr_pic_id(@Unsigned short value) {
+    public StdVideoEncodeH264PictureInfo idr_pic_id(@Unsigned short value) {
         segment.set(LAYOUT$idr_pic_id, OFFSET$idr_pic_id, value);
+        return this;
     }
 
     public @EnumType(StdVideoH264PictureType.class) int primary_pic_type() {
         return segment.get(LAYOUT$primary_pic_type, OFFSET$primary_pic_type);
     }
 
-    public void primary_pic_type(@EnumType(StdVideoH264PictureType.class) int value) {
+    public StdVideoEncodeH264PictureInfo primary_pic_type(@EnumType(StdVideoH264PictureType.class) int value) {
         segment.set(LAYOUT$primary_pic_type, OFFSET$primary_pic_type, value);
+        return this;
     }
 
     public @Unsigned int frame_num() {
         return segment.get(LAYOUT$frame_num, OFFSET$frame_num);
     }
 
-    public void frame_num(@Unsigned int value) {
+    public StdVideoEncodeH264PictureInfo frame_num(@Unsigned int value) {
         segment.set(LAYOUT$frame_num, OFFSET$frame_num, value);
+        return this;
     }
 
     public int PicOrderCnt() {
         return segment.get(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt);
     }
 
-    public void PicOrderCnt(int value) {
+    public StdVideoEncodeH264PictureInfo PicOrderCnt(int value) {
         segment.set(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt, value);
+        return this;
     }
 
     public @Unsigned byte temporal_id() {
         return segment.get(LAYOUT$temporal_id, OFFSET$temporal_id);
     }
 
-    public void temporal_id(@Unsigned byte value) {
+    public StdVideoEncodeH264PictureInfo temporal_id(@Unsigned byte value) {
         segment.set(LAYOUT$temporal_id, OFFSET$temporal_id, value);
+        return this;
     }
 
 
-    public void pRefLists(@Nullable IStdVideoEncodeH264ReferenceListsInfo value) {
+    public StdVideoEncodeH264PictureInfo pRefLists(@Nullable IStdVideoEncodeH264ReferenceListsInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefListsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeH264ReferenceListsInfo.Ptr pRefLists(int assumedCount) {

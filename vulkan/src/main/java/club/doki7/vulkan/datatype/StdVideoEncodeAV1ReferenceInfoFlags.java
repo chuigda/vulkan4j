@@ -174,9 +174,10 @@ public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void disable_frame_end_update_cdf(boolean value) {
+    public StdVideoEncodeAV1ReferenceInfoFlags disable_frame_end_update_cdf(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf$reserved, LAYOUT$bitfield$disable_frame_end_update_cdf$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean segmentation_enabled() {
@@ -184,9 +185,10 @@ public record StdVideoEncodeAV1ReferenceInfoFlags(@NotNull MemorySegment segment
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void segmentation_enabled(boolean value) {
+    public StdVideoEncodeAV1ReferenceInfoFlags segmentation_enabled(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$disable_frame_end_update_cdf$reserved, LAYOUT$bitfield$disable_frame_end_update_cdf$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportScreenBufferInfoQNX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportScreenBufferInfoQNX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -220,9 +222,10 @@ public record VkImportScreenBufferInfoQNX(@NotNull MemorySegment segment) implem
         return new PointerPtr(s);
     }
 
-    public void buffer(@Nullable PointerPtr value) {
+    public VkImportScreenBufferInfoQNX buffer(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         bufferRaw(s);
+        return this;
     }
 
     public @Pointer(comment="_screen_buffer*") MemorySegment bufferRaw() {

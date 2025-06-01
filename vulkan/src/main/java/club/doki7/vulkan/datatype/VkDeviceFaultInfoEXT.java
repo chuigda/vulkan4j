@@ -196,8 +196,9 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceFaultInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,25 +209,28 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceFaultInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
     }
 
-    public void description(BytePtr value) {
+    public VkDeviceFaultInfoEXT description(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        return this;
     }
 
     public MemorySegment descriptionRaw() {
         return segment.asSlice(OFFSET$description, SIZE$description);
     }
 
-    public void pAddressInfos(@Nullable IVkDeviceFaultAddressInfoEXT value) {
+    public VkDeviceFaultInfoEXT pAddressInfos(@Nullable IVkDeviceFaultAddressInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAddressInfosRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDeviceFaultAddressInfoEXT.Ptr pAddressInfos(int assumedCount) {
@@ -255,9 +259,10 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pAddressInfos, OFFSET$pAddressInfos, value);
     }
 
-    public void pVendorInfos(@Nullable IVkDeviceFaultVendorInfoEXT value) {
+    public VkDeviceFaultInfoEXT pVendorInfos(@Nullable IVkDeviceFaultVendorInfoEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVendorInfosRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDeviceFaultVendorInfoEXT.Ptr pVendorInfos(int assumedCount) {
@@ -294,8 +299,9 @@ public record VkDeviceFaultInfoEXT(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pVendorBinaryData, OFFSET$pVendorBinaryData, value);
     }
 
-    public void pVendorBinaryData(@Nullable IPointer pointer) {
+    public VkDeviceFaultInfoEXT pVendorBinaryData(@Nullable IPointer pointer) {
         pVendorBinaryData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

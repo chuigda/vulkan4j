@@ -195,8 +195,9 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageProcessingFeaturesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceImageProcessingFeaturesQCOM(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageProcessingFeaturesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int textureSampleWeighted() {
         return segment.get(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted);
     }
 
-    public void textureSampleWeighted(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceImageProcessingFeaturesQCOM textureSampleWeighted(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$textureSampleWeighted, OFFSET$textureSampleWeighted, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int textureBoxFilter() {
         return segment.get(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter);
     }
 
-    public void textureBoxFilter(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceImageProcessingFeaturesQCOM textureBoxFilter(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$textureBoxFilter, OFFSET$textureBoxFilter, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int textureBlockMatch() {
         return segment.get(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch);
     }
 
-    public void textureBlockMatch(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceImageProcessingFeaturesQCOM textureBlockMatch(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$textureBlockMatch, OFFSET$textureBlockMatch, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

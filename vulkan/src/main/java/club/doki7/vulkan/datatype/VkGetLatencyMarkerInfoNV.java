@@ -194,8 +194,9 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkGetLatencyMarkerInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkGetLatencyMarkerInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int timingCount() {
         return segment.get(LAYOUT$timingCount, OFFSET$timingCount);
     }
 
-    public void timingCount(@Unsigned int value) {
+    public VkGetLatencyMarkerInfoNV timingCount(@Unsigned int value) {
         segment.set(LAYOUT$timingCount, OFFSET$timingCount, value);
+        return this;
     }
 
-    public void pTimings(@Nullable IVkLatencyTimingsFrameReportNV value) {
+    public VkGetLatencyMarkerInfoNV pTimings(@Nullable IVkLatencyTimingsFrameReportNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTimingsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkLatencyTimingsFrameReportNV.Ptr pTimings(int assumedCount) {

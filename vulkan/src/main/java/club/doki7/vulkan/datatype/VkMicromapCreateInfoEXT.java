@@ -198,8 +198,9 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMicromapCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,16 +211,18 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMicromapCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkMicromapCreateFlagsEXT.class) int createFlags() {
         return segment.get(LAYOUT$createFlags, OFFSET$createFlags);
     }
 
-    public void createFlags(@EnumType(VkMicromapCreateFlagsEXT.class) int value) {
+    public VkMicromapCreateInfoEXT createFlags(@EnumType(VkMicromapCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$createFlags, OFFSET$createFlags, value);
+        return this;
     }
 
     public @Nullable VkBuffer buffer() {
@@ -230,40 +233,45 @@ public record VkMicromapCreateInfoEXT(@NotNull MemorySegment segment) implements
         return new VkBuffer(s);
     }
 
-    public void buffer(@Nullable VkBuffer value) {
+    public VkMicromapCreateInfoEXT buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMicromapCreateInfoEXT offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkMicromapCreateInfoEXT size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @EnumType(VkMicromapTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkMicromapTypeEXT.class) int value) {
+    public VkMicromapCreateInfoEXT type(@EnumType(VkMicromapTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long deviceAddress() {
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkMicromapCreateInfoEXT deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

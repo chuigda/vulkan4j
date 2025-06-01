@@ -176,56 +176,63 @@ public record StdVideoEncodeH264ReferenceInfo(@NotNull MemorySegment segment) im
         return new StdVideoEncodeH264ReferenceInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeH264ReferenceInfoFlags value) {
+    public StdVideoEncodeH264ReferenceInfo flags(@NotNull StdVideoEncodeH264ReferenceInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @EnumType(StdVideoH264PictureType.class) int primary_pic_type() {
         return segment.get(LAYOUT$primary_pic_type, OFFSET$primary_pic_type);
     }
 
-    public void primary_pic_type(@EnumType(StdVideoH264PictureType.class) int value) {
+    public StdVideoEncodeH264ReferenceInfo primary_pic_type(@EnumType(StdVideoH264PictureType.class) int value) {
         segment.set(LAYOUT$primary_pic_type, OFFSET$primary_pic_type, value);
+        return this;
     }
 
     public @Unsigned int FrameNum() {
         return segment.get(LAYOUT$FrameNum, OFFSET$FrameNum);
     }
 
-    public void FrameNum(@Unsigned int value) {
+    public StdVideoEncodeH264ReferenceInfo FrameNum(@Unsigned int value) {
         segment.set(LAYOUT$FrameNum, OFFSET$FrameNum, value);
+        return this;
     }
 
     public int PicOrderCnt() {
         return segment.get(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt);
     }
 
-    public void PicOrderCnt(int value) {
+    public StdVideoEncodeH264ReferenceInfo PicOrderCnt(int value) {
         segment.set(LAYOUT$PicOrderCnt, OFFSET$PicOrderCnt, value);
+        return this;
     }
 
     public @Unsigned short long_term_pic_num() {
         return segment.get(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num);
     }
 
-    public void long_term_pic_num(@Unsigned short value) {
+    public StdVideoEncodeH264ReferenceInfo long_term_pic_num(@Unsigned short value) {
         segment.set(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num, value);
+        return this;
     }
 
     public @Unsigned short long_term_frame_idx() {
         return segment.get(LAYOUT$long_term_frame_idx, OFFSET$long_term_frame_idx);
     }
 
-    public void long_term_frame_idx(@Unsigned short value) {
+    public StdVideoEncodeH264ReferenceInfo long_term_frame_idx(@Unsigned short value) {
         segment.set(LAYOUT$long_term_frame_idx, OFFSET$long_term_frame_idx, value);
+        return this;
     }
 
     public @Unsigned byte temporal_id() {
         return segment.get(LAYOUT$temporal_id, OFFSET$temporal_id);
     }
 
-    public void temporal_id(@Unsigned byte value) {
+    public StdVideoEncodeH264ReferenceInfo temporal_id(@Unsigned byte value) {
         segment.set(LAYOUT$temporal_id, OFFSET$temporal_id, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

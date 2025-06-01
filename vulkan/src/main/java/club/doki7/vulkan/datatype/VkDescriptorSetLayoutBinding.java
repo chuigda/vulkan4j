@@ -176,32 +176,36 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@Unsigned int value) {
+    public VkDescriptorSetLayoutBinding binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
+        return this;
     }
 
     public @EnumType(VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public void descriptorType(@EnumType(VkDescriptorType.class) int value) {
+    public VkDescriptorSetLayoutBinding descriptorType(@EnumType(VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
+        return this;
     }
 
     public @Unsigned int descriptorCount() {
         return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
     }
 
-    public void descriptorCount(@Unsigned int value) {
+    public VkDescriptorSetLayoutBinding descriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkDescriptorSetLayoutBinding stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+        return this;
     }
 
     /// Note: the returned {@link VkSampler.Ptr} does not have correct {@link VkSampler.Ptr#size}
@@ -216,9 +220,10 @@ public record VkDescriptorSetLayoutBinding(@NotNull MemorySegment segment) imple
         return new VkSampler.Ptr(s);
     }
 
-    public void pImmutableSamplers(@Nullable VkSampler.Ptr value) {
+    public VkDescriptorSetLayoutBinding pImmutableSamplers(@Nullable VkSampler.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImmutableSamplersRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSampler.class) MemorySegment pImmutableSamplersRaw() {

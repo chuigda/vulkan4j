@@ -196,8 +196,9 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthBiasControl() {
         return segment.get(LAYOUT$depthBiasControl, OFFSET$depthBiasControl);
     }
 
-    public void depthBiasControl(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT depthBiasControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthBiasControl, OFFSET$depthBiasControl, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int leastRepresentableValueForceUnormRepresentation() {
         return segment.get(LAYOUT$leastRepresentableValueForceUnormRepresentation, OFFSET$leastRepresentableValueForceUnormRepresentation);
     }
 
-    public void leastRepresentableValueForceUnormRepresentation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT leastRepresentableValueForceUnormRepresentation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$leastRepresentableValueForceUnormRepresentation, OFFSET$leastRepresentableValueForceUnormRepresentation, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int floatRepresentation() {
         return segment.get(LAYOUT$floatRepresentation, OFFSET$floatRepresentation);
     }
 
-    public void floatRepresentation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT floatRepresentation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$floatRepresentation, OFFSET$floatRepresentation, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthBiasExact() {
         return segment.get(LAYOUT$depthBiasExact, OFFSET$depthBiasExact);
     }
 
-    public void depthBiasExact(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT depthBiasExact(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthBiasExact, OFFSET$depthBiasExact, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

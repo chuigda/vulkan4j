@@ -193,8 +193,9 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceQueueGlobalPriorityCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceQueueGlobalPriorityCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkQueueGlobalPriority.class) int globalPriority() {
         return segment.get(LAYOUT$globalPriority, OFFSET$globalPriority);
     }
 
-    public void globalPriority(@EnumType(VkQueueGlobalPriority.class) int value) {
+    public VkDeviceQueueGlobalPriorityCreateInfo globalPriority(@EnumType(VkQueueGlobalPriority.class) int value) {
         segment.set(LAYOUT$globalPriority, OFFSET$globalPriority, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

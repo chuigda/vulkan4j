@@ -193,8 +193,9 @@ public record VkPhysicalDeviceImageRobustnessFeatures(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageRobustnessFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceImageRobustnessFeatures(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageRobustnessFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int robustImageAccess() {
         return segment.get(LAYOUT$robustImageAccess, OFFSET$robustImageAccess);
     }
 
-    public void robustImageAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceImageRobustnessFeatures robustImageAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$robustImageAccess, OFFSET$robustImageAccess, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

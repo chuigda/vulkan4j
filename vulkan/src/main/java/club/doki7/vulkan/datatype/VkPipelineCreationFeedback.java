@@ -173,16 +173,18 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineCreationFeedbackFlags.class) int value) {
+    public VkPipelineCreationFeedback flags(@EnumType(VkPipelineCreationFeedbackFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned long duration() {
         return segment.get(LAYOUT$duration, OFFSET$duration);
     }
 
-    public void duration(@Unsigned long value) {
+    public VkPipelineCreationFeedback duration(@Unsigned long value) {
         segment.set(LAYOUT$duration, OFFSET$duration, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

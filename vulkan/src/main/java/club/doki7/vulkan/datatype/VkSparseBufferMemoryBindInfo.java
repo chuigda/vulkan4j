@@ -178,21 +178,24 @@ public record VkSparseBufferMemoryBindInfo(@NotNull MemorySegment segment) imple
         return new VkBuffer(s);
     }
 
-    public void buffer(@Nullable VkBuffer value) {
+    public VkSparseBufferMemoryBindInfo buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int bindCount() {
         return segment.get(LAYOUT$bindCount, OFFSET$bindCount);
     }
 
-    public void bindCount(@Unsigned int value) {
+    public VkSparseBufferMemoryBindInfo bindCount(@Unsigned int value) {
         segment.set(LAYOUT$bindCount, OFFSET$bindCount, value);
+        return this;
     }
 
-    public void pBinds(@Nullable IVkSparseMemoryBind value) {
+    public VkSparseBufferMemoryBindInfo pBinds(@Nullable IVkSparseMemoryBind value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSparseMemoryBind.Ptr pBinds(int assumedCount) {

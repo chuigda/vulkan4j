@@ -196,8 +196,9 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkFramebufferMixedSamplesCombinationNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkFramebufferMixedSamplesCombinationNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkCoverageReductionModeNV.class) int coverageReductionMode() {
         return segment.get(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode);
     }
 
-    public void coverageReductionMode(@EnumType(VkCoverageReductionModeNV.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV coverageReductionMode(@EnumType(VkCoverageReductionModeNV.class) int value) {
         segment.set(LAYOUT$coverageReductionMode, OFFSET$coverageReductionMode, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int rasterizationSamples() {
         return segment.get(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples);
     }
 
-    public void rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV rasterizationSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$rasterizationSamples, OFFSET$rasterizationSamples, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int depthStencilSamples() {
         return segment.get(LAYOUT$depthStencilSamples, OFFSET$depthStencilSamples);
     }
 
-    public void depthStencilSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV depthStencilSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$depthStencilSamples, OFFSET$depthStencilSamples, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int colorSamples() {
         return segment.get(LAYOUT$colorSamples, OFFSET$colorSamples);
     }
 
-    public void colorSamples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkFramebufferMixedSamplesCombinationNV colorSamples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$colorSamples, OFFSET$colorSamples, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

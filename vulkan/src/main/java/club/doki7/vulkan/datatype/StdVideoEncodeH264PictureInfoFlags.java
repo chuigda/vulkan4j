@@ -177,9 +177,10 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void IdrPicFlag(boolean value) {
+    public StdVideoEncodeH264PictureInfoFlags IdrPicFlag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag$reserved, LAYOUT$bitfield$IdrPicFlag$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean is_reference() {
@@ -187,9 +188,10 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void is_reference(boolean value) {
+    public StdVideoEncodeH264PictureInfoFlags is_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag$reserved, LAYOUT$bitfield$IdrPicFlag$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean no_output_of_prior_pics_flag() {
@@ -197,9 +199,10 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void no_output_of_prior_pics_flag(boolean value) {
+    public StdVideoEncodeH264PictureInfoFlags no_output_of_prior_pics_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag$reserved, LAYOUT$bitfield$IdrPicFlag$reserved);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean long_term_reference_flag() {
@@ -207,9 +210,10 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void long_term_reference_flag(boolean value) {
+    public StdVideoEncodeH264PictureInfoFlags long_term_reference_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag$reserved, LAYOUT$bitfield$IdrPicFlag$reserved);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean adaptive_ref_pic_marking_mode_flag() {
@@ -217,9 +221,10 @@ public record StdVideoEncodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void adaptive_ref_pic_marking_mode_flag(boolean value) {
+    public StdVideoEncodeH264PictureInfoFlags adaptive_ref_pic_marking_mode_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$IdrPicFlag$reserved, LAYOUT$bitfield$IdrPicFlag$reserved);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

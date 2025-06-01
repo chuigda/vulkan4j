@@ -194,8 +194,9 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassAttachmentBeginInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassAttachmentBeginInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@Unsigned int value) {
+    public VkRenderPassAttachmentBeginInfo attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkImageView.Ptr} does not have correct {@link VkImageView.Ptr#size}
@@ -230,9 +233,10 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         return new VkImageView.Ptr(s);
     }
 
-    public void pAttachments(@Nullable VkImageView.Ptr value) {
+    public VkRenderPassAttachmentBeginInfo pAttachments(@Nullable VkImageView.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkImageView.class) MemorySegment pAttachmentsRaw() {

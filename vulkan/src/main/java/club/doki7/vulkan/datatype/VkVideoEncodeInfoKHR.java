@@ -201,8 +201,9 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,16 +214,18 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoEncodeFlagsKHR.class) int value) {
+    public VkVideoEncodeInfoKHR flags(@EnumType(VkVideoEncodeFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkBuffer dstBuffer() {
@@ -233,37 +236,42 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return new VkBuffer(s);
     }
 
-    public void dstBuffer(@Nullable VkBuffer value) {
+    public VkVideoEncodeInfoKHR dstBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long dstBufferOffset() {
         return segment.get(LAYOUT$dstBufferOffset, OFFSET$dstBufferOffset);
     }
 
-    public void dstBufferOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkVideoEncodeInfoKHR dstBufferOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$dstBufferOffset, OFFSET$dstBufferOffset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long dstBufferRange() {
         return segment.get(LAYOUT$dstBufferRange, OFFSET$dstBufferRange);
     }
 
-    public void dstBufferRange(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkVideoEncodeInfoKHR dstBufferRange(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$dstBufferRange, OFFSET$dstBufferRange, value);
+        return this;
     }
 
     public @NotNull VkVideoPictureResourceInfoKHR srcPictureResource() {
         return new VkVideoPictureResourceInfoKHR(segment.asSlice(OFFSET$srcPictureResource, LAYOUT$srcPictureResource));
     }
 
-    public void srcPictureResource(@NotNull VkVideoPictureResourceInfoKHR value) {
+    public VkVideoEncodeInfoKHR srcPictureResource(@NotNull VkVideoPictureResourceInfoKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcPictureResource, SIZE$srcPictureResource);
+        return this;
     }
 
-    public void pSetupReferenceSlot(@Nullable IVkVideoReferenceSlotInfoKHR value) {
+    public VkVideoEncodeInfoKHR pSetupReferenceSlot(@Nullable IVkVideoReferenceSlotInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetupReferenceSlotRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoReferenceSlotInfoKHR.Ptr pSetupReferenceSlot(int assumedCount) {
@@ -296,13 +304,15 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount);
     }
 
-    public void referenceSlotCount(@Unsigned int value) {
+    public VkVideoEncodeInfoKHR referenceSlotCount(@Unsigned int value) {
         segment.set(LAYOUT$referenceSlotCount, OFFSET$referenceSlotCount, value);
+        return this;
     }
 
-    public void pReferenceSlots(@Nullable IVkVideoReferenceSlotInfoKHR value) {
+    public VkVideoEncodeInfoKHR pReferenceSlots(@Nullable IVkVideoReferenceSlotInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pReferenceSlotsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoReferenceSlotInfoKHR.Ptr pReferenceSlots(int assumedCount) {
@@ -335,8 +345,9 @@ public record VkVideoEncodeInfoKHR(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$precedingExternallyEncodedBytes, OFFSET$precedingExternallyEncodedBytes);
     }
 
-    public void precedingExternallyEncodedBytes(@Unsigned int value) {
+    public VkVideoEncodeInfoKHR precedingExternallyEncodedBytes(@Unsigned int value) {
         segment.set(LAYOUT$precedingExternallyEncodedBytes, OFFSET$precedingExternallyEncodedBytes, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

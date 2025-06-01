@@ -193,8 +193,9 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerCaptureDescriptorDataInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerCaptureDescriptorDataInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSampler sampler() {
@@ -217,8 +219,9 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
         return new VkSampler(s);
     }
 
-    public void sampler(@Nullable VkSampler value) {
+    public VkSamplerCaptureDescriptorDataInfoEXT sampler(@Nullable VkSampler value) {
         segment.set(LAYOUT$sampler, OFFSET$sampler, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

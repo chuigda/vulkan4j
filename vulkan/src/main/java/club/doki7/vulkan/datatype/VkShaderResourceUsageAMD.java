@@ -176,40 +176,45 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$numUsedVgprs, OFFSET$numUsedVgprs);
     }
 
-    public void numUsedVgprs(@Unsigned int value) {
+    public VkShaderResourceUsageAMD numUsedVgprs(@Unsigned int value) {
         segment.set(LAYOUT$numUsedVgprs, OFFSET$numUsedVgprs, value);
+        return this;
     }
 
     public @Unsigned int numUsedSgprs() {
         return segment.get(LAYOUT$numUsedSgprs, OFFSET$numUsedSgprs);
     }
 
-    public void numUsedSgprs(@Unsigned int value) {
+    public VkShaderResourceUsageAMD numUsedSgprs(@Unsigned int value) {
         segment.set(LAYOUT$numUsedSgprs, OFFSET$numUsedSgprs, value);
+        return this;
     }
 
     public @Unsigned int ldsSizePerLocalWorkGroup() {
         return segment.get(LAYOUT$ldsSizePerLocalWorkGroup, OFFSET$ldsSizePerLocalWorkGroup);
     }
 
-    public void ldsSizePerLocalWorkGroup(@Unsigned int value) {
+    public VkShaderResourceUsageAMD ldsSizePerLocalWorkGroup(@Unsigned int value) {
         segment.set(LAYOUT$ldsSizePerLocalWorkGroup, OFFSET$ldsSizePerLocalWorkGroup, value);
+        return this;
     }
 
     public @Unsigned long ldsUsageSizeInBytes() {
         return NativeLayout.readCSizeT(segment, OFFSET$ldsUsageSizeInBytes);
     }
 
-    public void ldsUsageSizeInBytes(@Unsigned long value) {
+    public VkShaderResourceUsageAMD ldsUsageSizeInBytes(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$ldsUsageSizeInBytes, value);
+        return this;
     }
 
     public @Unsigned long scratchMemUsageInBytes() {
         return NativeLayout.readCSizeT(segment, OFFSET$scratchMemUsageInBytes);
     }
 
-    public void scratchMemUsageInBytes(@Unsigned long value) {
+    public VkShaderResourceUsageAMD scratchMemUsageInBytes(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$scratchMemUsageInBytes, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

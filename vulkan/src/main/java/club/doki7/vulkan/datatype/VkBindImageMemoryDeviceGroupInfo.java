@@ -196,8 +196,9 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindImageMemoryDeviceGroupInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,16 +209,18 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindImageMemoryDeviceGroupInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int deviceIndexCount() {
         return segment.get(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount);
     }
 
-    public void deviceIndexCount(@Unsigned int value) {
+    public VkBindImageMemoryDeviceGroupInfo deviceIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -232,9 +235,10 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         return new IntPtr(s);
     }
 
-    public void pDeviceIndices(@Nullable @Unsigned IntPtr value) {
+    public VkBindImageMemoryDeviceGroupInfo pDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {
@@ -249,13 +253,15 @@ public record VkBindImageMemoryDeviceGroupInfo(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount);
     }
 
-    public void splitInstanceBindRegionCount(@Unsigned int value) {
+    public VkBindImageMemoryDeviceGroupInfo splitInstanceBindRegionCount(@Unsigned int value) {
         segment.set(LAYOUT$splitInstanceBindRegionCount, OFFSET$splitInstanceBindRegionCount, value);
+        return this;
     }
 
-    public void pSplitInstanceBindRegions(@Nullable IVkRect2D value) {
+    public VkBindImageMemoryDeviceGroupInfo pSplitInstanceBindRegions(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSplitInstanceBindRegionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRect2D.Ptr pSplitInstanceBindRegions(int assumedCount) {

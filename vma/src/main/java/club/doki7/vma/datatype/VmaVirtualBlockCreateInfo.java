@@ -191,21 +191,24 @@ public record VmaVirtualBlockCreateInfo(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaVirtualBlockCreateInfo size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @EnumType(VmaVirtualBlockCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VmaVirtualBlockCreateFlags.class) int value) {
+    public VmaVirtualBlockCreateInfo flags(@EnumType(VmaVirtualBlockCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
-    public void pAllocationCallbacks(@Nullable IVkAllocationCallbacks value) {
+    public VmaVirtualBlockCreateInfo pAllocationCallbacks(@Nullable IVkAllocationCallbacks value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAllocationCallbacksRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAllocationCallbacks.Ptr pAllocationCallbacks(int assumedCount) {

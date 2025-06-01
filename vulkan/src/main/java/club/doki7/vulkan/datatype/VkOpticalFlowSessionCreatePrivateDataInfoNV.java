@@ -195,8 +195,9 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,24 +208,27 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int id() {
         return segment.get(LAYOUT$id, OFFSET$id);
     }
 
-    public void id(@Unsigned int value) {
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV id(@Unsigned int value) {
         segment.set(LAYOUT$id, OFFSET$id, value);
+        return this;
     }
 
     public @Unsigned int size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@Unsigned int value) {
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV size(@Unsigned int value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pPrivateData() {
@@ -235,8 +239,9 @@ public record VkOpticalFlowSessionCreatePrivateDataInfoNV(@NotNull MemorySegment
         segment.set(LAYOUT$pPrivateData, OFFSET$pPrivateData, value);
     }
 
-    public void pPrivateData(@Nullable IPointer pointer) {
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV pPrivateData(@Nullable IPointer pointer) {
         pPrivateData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -198,8 +198,9 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,32 +211,36 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkIndirectCommandsLayoutCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT flags(@EnumType(VkIndirectCommandsLayoutUsageFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public void shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
+        return this;
     }
 
     public @Unsigned int indirectStride() {
         return segment.get(LAYOUT$indirectStride, OFFSET$indirectStride);
     }
 
-    public void indirectStride(@Unsigned int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT indirectStride(@Unsigned int value) {
         segment.set(LAYOUT$indirectStride, OFFSET$indirectStride, value);
+        return this;
     }
 
     public @Nullable VkPipelineLayout pipelineLayout() {
@@ -246,21 +251,24 @@ public record VkIndirectCommandsLayoutCreateInfoEXT(@NotNull MemorySegment segme
         return new VkPipelineLayout(s);
     }
 
-    public void pipelineLayout(@Nullable VkPipelineLayout value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT pipelineLayout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int tokenCount() {
         return segment.get(LAYOUT$tokenCount, OFFSET$tokenCount);
     }
 
-    public void tokenCount(@Unsigned int value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT tokenCount(@Unsigned int value) {
         segment.set(LAYOUT$tokenCount, OFFSET$tokenCount, value);
+        return this;
     }
 
-    public void pTokens(@Nullable IVkIndirectCommandsLayoutTokenEXT value) {
+    public VkIndirectCommandsLayoutCreateInfoEXT pTokens(@Nullable IVkIndirectCommandsLayoutTokenEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTokensRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkIndirectCommandsLayoutTokenEXT.Ptr pTokens(int assumedCount) {

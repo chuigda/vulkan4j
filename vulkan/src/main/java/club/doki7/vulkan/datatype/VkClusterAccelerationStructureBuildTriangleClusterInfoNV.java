@@ -189,16 +189,18 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         return segment.get(LAYOUT$clusterID, OFFSET$clusterID);
     }
 
-    public void clusterID(@Unsigned int value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV clusterID(@Unsigned int value) {
         segment.set(LAYOUT$clusterID, OFFSET$clusterID, value);
+        return this;
     }
 
     public @EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int clusterFlags() {
         return segment.get(LAYOUT$clusterFlags, OFFSET$clusterFlags);
     }
 
-    public void clusterFlags(@EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV clusterFlags(@EnumType(VkClusterAccelerationStructureClusterFlagsNV.class) int value) {
         segment.set(LAYOUT$clusterFlags, OFFSET$clusterFlags, value);
+        return this;
     }
 
     public @Unsigned int triangleCount() {
@@ -206,9 +208,10 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         return BitfieldUtil.readBits(s, 0, 9);
     }
 
-    public void triangleCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV triangleCount(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount$opacityMicromapIndexType, LAYOUT$bitfield$triangleCount$opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 0, 9, value);
+        return this;
     }
 
     public @Unsigned int vertexCount() {
@@ -216,9 +219,10 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         return BitfieldUtil.readBits(s, 9, 18);
     }
 
-    public void vertexCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV vertexCount(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount$opacityMicromapIndexType, LAYOUT$bitfield$triangleCount$opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 9, 18, value);
+        return this;
     }
 
     public @Unsigned int positionTruncateBitCount() {
@@ -226,9 +230,10 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         return BitfieldUtil.readBits(s, 18, 24);
     }
 
-    public void positionTruncateBitCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV positionTruncateBitCount(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount$opacityMicromapIndexType, LAYOUT$bitfield$triangleCount$opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 18, 24, value);
+        return this;
     }
 
     public @Unsigned int indexType() {
@@ -236,9 +241,10 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         return BitfieldUtil.readBits(s, 24, 28);
     }
 
-    public void indexType(@Unsigned int value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV indexType(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount$opacityMicromapIndexType, LAYOUT$bitfield$triangleCount$opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 24, 28, value);
+        return this;
     }
 
     public @Unsigned int opacityMicromapIndexType() {
@@ -246,89 +252,100 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         return BitfieldUtil.readBits(s, 28, 32);
     }
 
-    public void opacityMicromapIndexType(@Unsigned int value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV opacityMicromapIndexType(@Unsigned int value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$triangleCount$opacityMicromapIndexType, LAYOUT$bitfield$triangleCount$opacityMicromapIndexType);
         BitfieldUtil.writeBits(s, 28, 32, value);
+        return this;
     }
 
     public @NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV baseGeometryIndexAndGeometryFlags() {
         return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.asSlice(OFFSET$baseGeometryIndexAndGeometryFlags, LAYOUT$baseGeometryIndexAndGeometryFlags));
     }
 
-    public void baseGeometryIndexAndGeometryFlags(@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlags(@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$baseGeometryIndexAndGeometryFlags, SIZE$baseGeometryIndexAndGeometryFlags);
+        return this;
     }
 
     public @Unsigned short indexBufferStride() {
         return segment.get(LAYOUT$indexBufferStride, OFFSET$indexBufferStride);
     }
 
-    public void indexBufferStride(@Unsigned short value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV indexBufferStride(@Unsigned short value) {
         segment.set(LAYOUT$indexBufferStride, OFFSET$indexBufferStride, value);
+        return this;
     }
 
     public @Unsigned short vertexBufferStride() {
         return segment.get(LAYOUT$vertexBufferStride, OFFSET$vertexBufferStride);
     }
 
-    public void vertexBufferStride(@Unsigned short value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV vertexBufferStride(@Unsigned short value) {
         segment.set(LAYOUT$vertexBufferStride, OFFSET$vertexBufferStride, value);
+        return this;
     }
 
     public @Unsigned short geometryIndexAndFlagsBufferStride() {
         return segment.get(LAYOUT$geometryIndexAndFlagsBufferStride, OFFSET$geometryIndexAndFlagsBufferStride);
     }
 
-    public void geometryIndexAndFlagsBufferStride(@Unsigned short value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV geometryIndexAndFlagsBufferStride(@Unsigned short value) {
         segment.set(LAYOUT$geometryIndexAndFlagsBufferStride, OFFSET$geometryIndexAndFlagsBufferStride, value);
+        return this;
     }
 
     public @Unsigned short opacityMicromapIndexBufferStride() {
         return segment.get(LAYOUT$opacityMicromapIndexBufferStride, OFFSET$opacityMicromapIndexBufferStride);
     }
 
-    public void opacityMicromapIndexBufferStride(@Unsigned short value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV opacityMicromapIndexBufferStride(@Unsigned short value) {
         segment.set(LAYOUT$opacityMicromapIndexBufferStride, OFFSET$opacityMicromapIndexBufferStride, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long indexBuffer() {
         return segment.get(LAYOUT$indexBuffer, OFFSET$indexBuffer);
     }
 
-    public void indexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV indexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$indexBuffer, OFFSET$indexBuffer, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long vertexBuffer() {
         return segment.get(LAYOUT$vertexBuffer, OFFSET$vertexBuffer);
     }
 
-    public void vertexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV vertexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$vertexBuffer, OFFSET$vertexBuffer, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long geometryIndexAndFlagsBuffer() {
         return segment.get(LAYOUT$geometryIndexAndFlagsBuffer, OFFSET$geometryIndexAndFlagsBuffer);
     }
 
-    public void geometryIndexAndFlagsBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV geometryIndexAndFlagsBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$geometryIndexAndFlagsBuffer, OFFSET$geometryIndexAndFlagsBuffer, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long opacityMicromapArray() {
         return segment.get(LAYOUT$opacityMicromapArray, OFFSET$opacityMicromapArray);
     }
 
-    public void opacityMicromapArray(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV opacityMicromapArray(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$opacityMicromapArray, OFFSET$opacityMicromapArray, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long opacityMicromapIndexBuffer() {
         return segment.get(LAYOUT$opacityMicromapIndexBuffer, OFFSET$opacityMicromapIndexBuffer);
     }
 
-    public void opacityMicromapIndexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV opacityMicromapIndexBuffer(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$opacityMicromapIndexBuffer, OFFSET$opacityMicromapIndexBuffer, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

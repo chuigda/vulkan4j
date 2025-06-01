@@ -202,48 +202,54 @@ public record VmaDetailedStatistics(@NotNull MemorySegment segment) implements I
         return new VmaStatistics(segment.asSlice(OFFSET$statistics, LAYOUT$statistics));
     }
 
-    public void statistics(@NotNull VmaStatistics value) {
+    public VmaDetailedStatistics statistics(@NotNull VmaStatistics value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$statistics, SIZE$statistics);
+        return this;
     }
 
     public @Unsigned int unusedRangeCount() {
         return segment.get(LAYOUT$unusedRangeCount, OFFSET$unusedRangeCount);
     }
 
-    public void unusedRangeCount(@Unsigned int value) {
+    public VmaDetailedStatistics unusedRangeCount(@Unsigned int value) {
         segment.set(LAYOUT$unusedRangeCount, OFFSET$unusedRangeCount, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long allocationSizeMin() {
         return segment.get(LAYOUT$allocationSizeMin, OFFSET$allocationSizeMin);
     }
 
-    public void allocationSizeMin(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaDetailedStatistics allocationSizeMin(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$allocationSizeMin, OFFSET$allocationSizeMin, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long allocationSizeMax() {
         return segment.get(LAYOUT$allocationSizeMax, OFFSET$allocationSizeMax);
     }
 
-    public void allocationSizeMax(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaDetailedStatistics allocationSizeMax(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$allocationSizeMax, OFFSET$allocationSizeMax, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long unusedRangeSizeMin() {
         return segment.get(LAYOUT$unusedRangeSizeMin, OFFSET$unusedRangeSizeMin);
     }
 
-    public void unusedRangeSizeMin(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaDetailedStatistics unusedRangeSizeMin(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$unusedRangeSizeMin, OFFSET$unusedRangeSizeMin, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long unusedRangeSizeMax() {
         return segment.get(LAYOUT$unusedRangeSizeMax, OFFSET$unusedRangeSizeMax);
     }
 
-    public void unusedRangeSizeMax(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaDetailedStatistics unusedRangeSizeMax(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$unusedRangeSizeMax, OFFSET$unusedRangeSizeMax, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineTessellationDomainOriginStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPipelineTessellationDomainOriginStateCreateInfo(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineTessellationDomainOriginStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkTessellationDomainOrigin.class) int domainOrigin() {
         return segment.get(LAYOUT$domainOrigin, OFFSET$domainOrigin);
     }
 
-    public void domainOrigin(@EnumType(VkTessellationDomainOrigin.class) int value) {
+    public VkPipelineTessellationDomainOriginStateCreateInfo domainOrigin(@EnumType(VkTessellationDomainOrigin.class) int value) {
         segment.set(LAYOUT$domainOrigin, OFFSET$domainOrigin, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

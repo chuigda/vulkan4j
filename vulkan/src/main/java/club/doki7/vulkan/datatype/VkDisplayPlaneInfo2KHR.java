@@ -194,8 +194,9 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayPlaneInfo2KHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDisplayPlaneInfo2KHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDisplayModeKHR mode() {
@@ -218,16 +220,18 @@ public record VkDisplayPlaneInfo2KHR(@NotNull MemorySegment segment) implements 
         return new VkDisplayModeKHR(s);
     }
 
-    public void mode(@Nullable VkDisplayModeKHR value) {
+    public VkDisplayPlaneInfo2KHR mode(@Nullable VkDisplayModeKHR value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int planeIndex() {
         return segment.get(LAYOUT$planeIndex, OFFSET$planeIndex);
     }
 
-    public void planeIndex(@Unsigned int value) {
+    public VkDisplayPlaneInfo2KHR planeIndex(@Unsigned int value) {
         segment.set(LAYOUT$planeIndex, OFFSET$planeIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

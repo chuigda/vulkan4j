@@ -195,8 +195,9 @@ public record VkTilePropertiesQCOM(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkTilePropertiesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkTilePropertiesQCOM(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkTilePropertiesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent3D tileSize() {
         return new VkExtent3D(segment.asSlice(OFFSET$tileSize, LAYOUT$tileSize));
     }
 
-    public void tileSize(@NotNull VkExtent3D value) {
+    public VkTilePropertiesQCOM tileSize(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$tileSize, SIZE$tileSize);
+        return this;
     }
 
     public @NotNull VkExtent2D apronSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$apronSize, LAYOUT$apronSize));
     }
 
-    public void apronSize(@NotNull VkExtent2D value) {
+    public VkTilePropertiesQCOM apronSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$apronSize, SIZE$apronSize);
+        return this;
     }
 
     public @NotNull VkOffset2D origin() {
         return new VkOffset2D(segment.asSlice(OFFSET$origin, LAYOUT$origin));
     }
 
-    public void origin(@NotNull VkOffset2D value) {
+    public VkTilePropertiesQCOM origin(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$origin, SIZE$origin);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(@NotNul
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(@NotNul
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int partitionedAccelerationStructure() {
         return segment.get(LAYOUT$partitionedAccelerationStructure, OFFSET$partitionedAccelerationStructure);
     }
 
-    public void partitionedAccelerationStructure(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV partitionedAccelerationStructure(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$partitionedAccelerationStructure, OFFSET$partitionedAccelerationStructure, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAmigoProfilingSubmitInfoSEC sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAmigoProfilingSubmitInfoSEC pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long firstDrawTimestamp() {
         return segment.get(LAYOUT$firstDrawTimestamp, OFFSET$firstDrawTimestamp);
     }
 
-    public void firstDrawTimestamp(@Unsigned long value) {
+    public VkAmigoProfilingSubmitInfoSEC firstDrawTimestamp(@Unsigned long value) {
         segment.set(LAYOUT$firstDrawTimestamp, OFFSET$firstDrawTimestamp, value);
+        return this;
     }
 
     public @Unsigned long swapBufferTimestamp() {
         return segment.get(LAYOUT$swapBufferTimestamp, OFFSET$swapBufferTimestamp);
     }
 
-    public void swapBufferTimestamp(@Unsigned long value) {
+    public VkAmigoProfilingSubmitInfoSEC swapBufferTimestamp(@Unsigned long value) {
         segment.set(LAYOUT$swapBufferTimestamp, OFFSET$swapBufferTimestamp, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

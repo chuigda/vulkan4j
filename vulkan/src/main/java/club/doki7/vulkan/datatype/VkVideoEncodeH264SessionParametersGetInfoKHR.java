@@ -196,8 +196,9 @@ public record VkVideoEncodeH264SessionParametersGetInfoKHR(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH264SessionParametersGetInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkVideoEncodeH264SessionParametersGetInfoKHR(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH264SessionParametersGetInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int writeStdSPS() {
         return segment.get(LAYOUT$writeStdSPS, OFFSET$writeStdSPS);
     }
 
-    public void writeStdSPS(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH264SessionParametersGetInfoKHR writeStdSPS(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$writeStdSPS, OFFSET$writeStdSPS, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int writeStdPPS() {
         return segment.get(LAYOUT$writeStdPPS, OFFSET$writeStdPPS);
     }
 
-    public void writeStdPPS(@NativeType("VkBool32") @Unsigned int value) {
+    public VkVideoEncodeH264SessionParametersGetInfoKHR writeStdPPS(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$writeStdPPS, OFFSET$writeStdPPS, value);
+        return this;
     }
 
     public @Unsigned int stdSPSId() {
         return segment.get(LAYOUT$stdSPSId, OFFSET$stdSPSId);
     }
 
-    public void stdSPSId(@Unsigned int value) {
+    public VkVideoEncodeH264SessionParametersGetInfoKHR stdSPSId(@Unsigned int value) {
         segment.set(LAYOUT$stdSPSId, OFFSET$stdSPSId, value);
+        return this;
     }
 
     public @Unsigned int stdPPSId() {
         return segment.get(LAYOUT$stdPPSId, OFFSET$stdPPSId);
     }
 
-    public void stdPPSId(@Unsigned int value) {
+    public VkVideoEncodeH264SessionParametersGetInfoKHR stdPPSId(@Unsigned int value) {
         segment.set(LAYOUT$stdPPSId, OFFSET$stdPPSId, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

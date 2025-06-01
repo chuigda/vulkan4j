@@ -193,8 +193,9 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int ycbcrDegamma() {
         return segment.get(LAYOUT$ycbcrDegamma, OFFSET$ycbcrDegamma);
     }
 
-    public void ycbcrDegamma(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceYcbcrDegammaFeaturesQCOM ycbcrDegamma(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$ycbcrDegamma, OFFSET$ycbcrDegamma, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

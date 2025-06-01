@@ -174,24 +174,27 @@ public record VkStridedDeviceAddressRegionKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$deviceAddress, OFFSET$deviceAddress);
     }
 
-    public void deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkStridedDeviceAddressRegionKHR deviceAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$deviceAddress, OFFSET$deviceAddress, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkStridedDeviceAddressRegionKHR stride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkStridedDeviceAddressRegionKHR size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

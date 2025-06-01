@@ -195,8 +195,9 @@ public record VkVideoDecodeH265InlineSessionParametersInfoKHR(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeH265InlineSessionParametersInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,13 +208,15 @@ public record VkVideoDecodeH265InlineSessionParametersInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoDecodeH265InlineSessionParametersInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pStdVPS(@Nullable IStdVideoH265VideoParameterSet value) {
+    public VkVideoDecodeH265InlineSessionParametersInfoKHR pStdVPS(@Nullable IStdVideoH265VideoParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdVPSRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265VideoParameterSet.Ptr pStdVPS(int assumedCount) {
@@ -242,9 +245,10 @@ public record VkVideoDecodeH265InlineSessionParametersInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pStdVPS, OFFSET$pStdVPS, value);
     }
 
-    public void pStdSPS(@Nullable IStdVideoH265SequenceParameterSet value) {
+    public VkVideoDecodeH265InlineSessionParametersInfoKHR pStdSPS(@Nullable IStdVideoH265SequenceParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdSPSRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265SequenceParameterSet.Ptr pStdSPS(int assumedCount) {
@@ -273,9 +277,10 @@ public record VkVideoDecodeH265InlineSessionParametersInfoKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pStdSPS, OFFSET$pStdSPS, value);
     }
 
-    public void pStdPPS(@Nullable IStdVideoH265PictureParameterSet value) {
+    public VkVideoDecodeH265InlineSessionParametersInfoKHR pStdPPS(@Nullable IStdVideoH265PictureParameterSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPPSRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265PictureParameterSet.Ptr pStdPPS(int assumedCount) {

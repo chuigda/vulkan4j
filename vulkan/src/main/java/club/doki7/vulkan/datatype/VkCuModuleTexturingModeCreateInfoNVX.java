@@ -193,8 +193,9 @@ public record VkCuModuleTexturingModeCreateInfoNVX(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCuModuleTexturingModeCreateInfoNVX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkCuModuleTexturingModeCreateInfoNVX(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCuModuleTexturingModeCreateInfoNVX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int use64bitTexturing() {
         return segment.get(LAYOUT$use64bitTexturing, OFFSET$use64bitTexturing);
     }
 
-    public void use64bitTexturing(@NativeType("VkBool32") @Unsigned int value) {
+    public VkCuModuleTexturingModeCreateInfoNVX use64bitTexturing(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$use64bitTexturing, OFFSET$use64bitTexturing, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

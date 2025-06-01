@@ -175,32 +175,36 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$location, OFFSET$location);
     }
 
-    public void location(@Unsigned int value) {
+    public VkVertexInputAttributeDescription location(@Unsigned int value) {
         segment.set(LAYOUT$location, OFFSET$location, value);
+        return this;
     }
 
     public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@Unsigned int value) {
+    public VkVertexInputAttributeDescription binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkFormat.class) int value) {
+    public VkVertexInputAttributeDescription format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public @Unsigned int offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@Unsigned int value) {
+    public VkVertexInputAttributeDescription offset(@Unsigned int value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

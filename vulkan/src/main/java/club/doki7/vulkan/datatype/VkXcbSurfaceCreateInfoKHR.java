@@ -195,8 +195,9 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkXcbSurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkXcbSurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkXcbSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkXcbSurfaceCreateFlagsKHR.class) int value) {
+    public VkXcbSurfaceCreateInfoKHR flags(@EnumType(VkXcbSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment connection() {
@@ -227,16 +230,18 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$connection, OFFSET$connection, value);
     }
 
-    public void connection(@Nullable IPointer pointer) {
+    public VkXcbSurfaceCreateInfoKHR connection(@Nullable IPointer pointer) {
         connection(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("xcb_window_t") @Unsigned int window() {
         return segment.get(LAYOUT$window, OFFSET$window);
     }
 
-    public void window(@NativeType("xcb_window_t") @Unsigned int value) {
+    public VkXcbSurfaceCreateInfoKHR window(@NativeType("xcb_window_t") @Unsigned int value) {
         segment.set(LAYOUT$window, OFFSET$window, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

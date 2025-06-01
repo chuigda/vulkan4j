@@ -195,8 +195,9 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVulkanMemoryModelFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceVulkanMemoryModelFeatures(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVulkanMemoryModelFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int vulkanMemoryModel() {
         return segment.get(LAYOUT$vulkanMemoryModel, OFFSET$vulkanMemoryModel);
     }
 
-    public void vulkanMemoryModel(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkanMemoryModelFeatures vulkanMemoryModel(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vulkanMemoryModel, OFFSET$vulkanMemoryModel, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int vulkanMemoryModelDeviceScope() {
         return segment.get(LAYOUT$vulkanMemoryModelDeviceScope, OFFSET$vulkanMemoryModelDeviceScope);
     }
 
-    public void vulkanMemoryModelDeviceScope(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkanMemoryModelFeatures vulkanMemoryModelDeviceScope(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vulkanMemoryModelDeviceScope, OFFSET$vulkanMemoryModelDeviceScope, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int vulkanMemoryModelAvailabilityVisibilityChains() {
         return segment.get(LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains, OFFSET$vulkanMemoryModelAvailabilityVisibilityChains);
     }
 
-    public void vulkanMemoryModelAvailabilityVisibilityChains(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkanMemoryModelFeatures vulkanMemoryModelAvailabilityVisibilityChains(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$vulkanMemoryModelAvailabilityVisibilityChains, OFFSET$vulkanMemoryModelAvailabilityVisibilityChains, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

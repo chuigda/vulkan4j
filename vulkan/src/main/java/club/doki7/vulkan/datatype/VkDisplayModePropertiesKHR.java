@@ -177,16 +177,18 @@ public record VkDisplayModePropertiesKHR(@NotNull MemorySegment segment) impleme
         return new VkDisplayModeKHR(s);
     }
 
-    public void displayMode(@Nullable VkDisplayModeKHR value) {
+    public VkDisplayModePropertiesKHR displayMode(@Nullable VkDisplayModeKHR value) {
         segment.set(LAYOUT$displayMode, OFFSET$displayMode, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkDisplayModeParametersKHR parameters() {
         return new VkDisplayModeParametersKHR(segment.asSlice(OFFSET$parameters, LAYOUT$parameters));
     }
 
-    public void parameters(@NotNull VkDisplayModeParametersKHR value) {
+    public VkDisplayModePropertiesKHR parameters(@NotNull VkDisplayModeParametersKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

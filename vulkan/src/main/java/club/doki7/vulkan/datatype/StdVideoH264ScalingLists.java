@@ -173,24 +173,27 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$scaling_list_present_mask, OFFSET$scaling_list_present_mask);
     }
 
-    public void scaling_list_present_mask(@Unsigned short value) {
+    public StdVideoH264ScalingLists scaling_list_present_mask(@Unsigned short value) {
         segment.set(LAYOUT$scaling_list_present_mask, OFFSET$scaling_list_present_mask, value);
+        return this;
     }
 
     public @Unsigned short use_default_scaling_matrix_mask() {
         return segment.get(LAYOUT$use_default_scaling_matrix_mask, OFFSET$use_default_scaling_matrix_mask);
     }
 
-    public void use_default_scaling_matrix_mask(@Unsigned short value) {
+    public StdVideoH264ScalingLists use_default_scaling_matrix_mask(@Unsigned short value) {
         segment.set(LAYOUT$use_default_scaling_matrix_mask, OFFSET$use_default_scaling_matrix_mask, value);
+        return this;
     }
 
     public @Unsigned BytePtr ScalingList4x4() {
         return new BytePtr(ScalingList4x4Raw());
     }
 
-    public void ScalingList4x4(@Unsigned BytePtr value) {
+    public StdVideoH264ScalingLists ScalingList4x4(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList4x4, SIZE$ScalingList4x4);
+        return this;
     }
 
     public MemorySegment ScalingList4x4Raw() {
@@ -201,8 +204,9 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         return new BytePtr(ScalingList8x8Raw());
     }
 
-    public void ScalingList8x8(@Unsigned BytePtr value) {
+    public StdVideoH264ScalingLists ScalingList8x8(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$ScalingList8x8, SIZE$ScalingList8x8);
+        return this;
     }
 
     public MemorySegment ScalingList8x8Raw() {

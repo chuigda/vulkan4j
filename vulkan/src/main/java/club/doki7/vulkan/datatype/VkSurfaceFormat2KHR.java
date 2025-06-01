@@ -193,8 +193,9 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSurfaceFormat2KHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSurfaceFormat2KHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkSurfaceFormatKHR surfaceFormat() {
         return new VkSurfaceFormatKHR(segment.asSlice(OFFSET$surfaceFormat, LAYOUT$surfaceFormat));
     }
 
-    public void surfaceFormat(@NotNull VkSurfaceFormatKHR value) {
+    public VkSurfaceFormat2KHR surfaceFormat(@NotNull VkSurfaceFormatKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceFormat, SIZE$surfaceFormat);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkXlibSurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkXlibSurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkXlibSurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkXlibSurfaceCreateFlagsKHR.class) int value) {
+    public VkXlibSurfaceCreateInfoKHR flags(@EnumType(VkXlibSurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -230,9 +233,10 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return new PointerPtr(s);
     }
 
-    public void dpy(@Nullable PointerPtr value) {
+    public VkXlibSurfaceCreateInfoKHR dpy(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         dpyRaw(s);
+        return this;
     }
 
     public @Pointer(comment="Display*") MemorySegment dpyRaw() {
@@ -247,8 +251,9 @@ public record VkXlibSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impleme
         return NativeLayout.readCLong(segment, OFFSET$window);
     }
 
-    public void window(long value) {
+    public VkXlibSurfaceCreateInfoKHR window(long value) {
         NativeLayout.writeCLong(segment, OFFSET$window, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -197,8 +197,9 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportMetalTextureInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExportMetalTextureInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImage image() {
@@ -221,8 +223,9 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return new VkImage(s);
     }
 
-    public void image(@Nullable VkImage value) {
+    public VkExportMetalTextureInfoEXT image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImageView imageView() {
@@ -233,8 +236,9 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return new VkImageView(s);
     }
 
-    public void imageView(@Nullable VkImageView value) {
+    public VkExportMetalTextureInfoEXT imageView(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageView, OFFSET$imageView, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkBufferView bufferView() {
@@ -245,16 +249,18 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         return new VkBufferView(s);
     }
 
-    public void bufferView(@Nullable VkBufferView value) {
+    public VkExportMetalTextureInfoEXT bufferView(@Nullable VkBufferView value) {
         segment.set(LAYOUT$bufferView, OFFSET$bufferView, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageAspectFlags.class) int plane() {
         return segment.get(LAYOUT$plane, OFFSET$plane);
     }
 
-    public void plane(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkExportMetalTextureInfoEXT plane(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$plane, OFFSET$plane, value);
+        return this;
     }
 
     public @Pointer(comment="MTLTexture_id") MemorySegment mtlTexture() {
@@ -265,8 +271,9 @@ public record VkExportMetalTextureInfoEXT(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$mtlTexture, OFFSET$mtlTexture, value);
     }
 
-    public void mtlTexture(@Nullable IPointer pointer) {
+    public VkExportMetalTextureInfoEXT mtlTexture(@Nullable IPointer pointer) {
         mtlTexture(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportDepthClampControlCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineViewportDepthClampControlCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDepthClampModeEXT.class) int depthClampMode() {
         return segment.get(LAYOUT$depthClampMode, OFFSET$depthClampMode);
     }
 
-    public void depthClampMode(@EnumType(VkDepthClampModeEXT.class) int value) {
+    public VkPipelineViewportDepthClampControlCreateInfoEXT depthClampMode(@EnumType(VkDepthClampModeEXT.class) int value) {
         segment.set(LAYOUT$depthClampMode, OFFSET$depthClampMode, value);
+        return this;
     }
 
-    public void pDepthClampRange(@Nullable IVkDepthClampRangeEXT value) {
+    public VkPipelineViewportDepthClampControlCreateInfoEXT pDepthClampRange(@Nullable IVkDepthClampRangeEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthClampRangeRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDepthClampRangeEXT.Ptr pDepthClampRange(int assumedCount) {

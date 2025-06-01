@@ -194,8 +194,9 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoReferenceSlotInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkVideoReferenceSlotInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoReferenceSlotInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public int slotIndex() {
         return segment.get(LAYOUT$slotIndex, OFFSET$slotIndex);
     }
 
-    public void slotIndex(int value) {
+    public VkVideoReferenceSlotInfoKHR slotIndex(int value) {
         segment.set(LAYOUT$slotIndex, OFFSET$slotIndex, value);
+        return this;
     }
 
-    public void pPictureResource(@Nullable IVkVideoPictureResourceInfoKHR value) {
+    public VkVideoReferenceSlotInfoKHR pPictureResource(@Nullable IVkVideoPictureResourceInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPictureResourceRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoPictureResourceInfoKHR.Ptr pPictureResource(int assumedCount) {

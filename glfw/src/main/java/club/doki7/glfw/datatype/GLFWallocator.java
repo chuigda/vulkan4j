@@ -202,8 +202,9 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         segment.set(LAYOUT$allocate, OFFSET$allocate, value);
     }
 
-    public void allocate(@Nullable IPointer pointer) {
+    public GLFWallocator allocate(@Nullable IPointer pointer) {
         allocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="GLFWreallocatefun") MemorySegment reallocate() {
@@ -214,8 +215,9 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         segment.set(LAYOUT$reallocate, OFFSET$reallocate, value);
     }
 
-    public void reallocate(@Nullable IPointer pointer) {
+    public GLFWallocator reallocate(@Nullable IPointer pointer) {
         reallocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="GLFWdeallocatefun") MemorySegment deallocate() {
@@ -226,8 +228,9 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         segment.set(LAYOUT$deallocate, OFFSET$deallocate, value);
     }
 
-    public void deallocate(@Nullable IPointer pointer) {
+    public GLFWallocator deallocate(@Nullable IPointer pointer) {
         deallocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment user() {
@@ -238,8 +241,9 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         segment.set(LAYOUT$user, OFFSET$user, value);
     }
 
-    public void user(@Nullable IPointer pointer) {
+    public GLFWallocator user(@Nullable IPointer pointer) {
         user(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

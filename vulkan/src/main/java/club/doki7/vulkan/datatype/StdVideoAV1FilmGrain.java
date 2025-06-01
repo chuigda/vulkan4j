@@ -194,72 +194,81 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new StdVideoAV1FilmGrainFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoAV1FilmGrainFlags value) {
+    public StdVideoAV1FilmGrain flags(@NotNull StdVideoAV1FilmGrainFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte grain_scaling_minus_8() {
         return segment.get(LAYOUT$grain_scaling_minus_8, OFFSET$grain_scaling_minus_8);
     }
 
-    public void grain_scaling_minus_8(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain grain_scaling_minus_8(@Unsigned byte value) {
         segment.set(LAYOUT$grain_scaling_minus_8, OFFSET$grain_scaling_minus_8, value);
+        return this;
     }
 
     public @Unsigned byte ar_coeff_lag() {
         return segment.get(LAYOUT$ar_coeff_lag, OFFSET$ar_coeff_lag);
     }
 
-    public void ar_coeff_lag(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain ar_coeff_lag(@Unsigned byte value) {
         segment.set(LAYOUT$ar_coeff_lag, OFFSET$ar_coeff_lag, value);
+        return this;
     }
 
     public @Unsigned byte ar_coeff_shift_minus_6() {
         return segment.get(LAYOUT$ar_coeff_shift_minus_6, OFFSET$ar_coeff_shift_minus_6);
     }
 
-    public void ar_coeff_shift_minus_6(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain ar_coeff_shift_minus_6(@Unsigned byte value) {
         segment.set(LAYOUT$ar_coeff_shift_minus_6, OFFSET$ar_coeff_shift_minus_6, value);
+        return this;
     }
 
     public @Unsigned byte grain_scale_shift() {
         return segment.get(LAYOUT$grain_scale_shift, OFFSET$grain_scale_shift);
     }
 
-    public void grain_scale_shift(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain grain_scale_shift(@Unsigned byte value) {
         segment.set(LAYOUT$grain_scale_shift, OFFSET$grain_scale_shift, value);
+        return this;
     }
 
     public @Unsigned short grain_seed() {
         return segment.get(LAYOUT$grain_seed, OFFSET$grain_seed);
     }
 
-    public void grain_seed(@Unsigned short value) {
+    public StdVideoAV1FilmGrain grain_seed(@Unsigned short value) {
         segment.set(LAYOUT$grain_seed, OFFSET$grain_seed, value);
+        return this;
     }
 
     public @Unsigned byte film_grain_params_ref_idx() {
         return segment.get(LAYOUT$film_grain_params_ref_idx, OFFSET$film_grain_params_ref_idx);
     }
 
-    public void film_grain_params_ref_idx(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain film_grain_params_ref_idx(@Unsigned byte value) {
         segment.set(LAYOUT$film_grain_params_ref_idx, OFFSET$film_grain_params_ref_idx, value);
+        return this;
     }
 
     public @Unsigned byte num_y_points() {
         return segment.get(LAYOUT$num_y_points, OFFSET$num_y_points);
     }
 
-    public void num_y_points(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain num_y_points(@Unsigned byte value) {
         segment.set(LAYOUT$num_y_points, OFFSET$num_y_points, value);
+        return this;
     }
 
     public @Unsigned BytePtr point_y_value() {
         return new BytePtr(point_y_valueRaw());
     }
 
-    public void point_y_value(@Unsigned BytePtr value) {
+    public StdVideoAV1FilmGrain point_y_value(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_y_value, SIZE$point_y_value);
+        return this;
     }
 
     public MemorySegment point_y_valueRaw() {
@@ -270,8 +279,9 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(point_y_scalingRaw());
     }
 
-    public void point_y_scaling(@Unsigned BytePtr value) {
+    public StdVideoAV1FilmGrain point_y_scaling(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_y_scaling, SIZE$point_y_scaling);
+        return this;
     }
 
     public MemorySegment point_y_scalingRaw() {
@@ -282,16 +292,18 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return segment.get(LAYOUT$num_cb_points, OFFSET$num_cb_points);
     }
 
-    public void num_cb_points(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain num_cb_points(@Unsigned byte value) {
         segment.set(LAYOUT$num_cb_points, OFFSET$num_cb_points, value);
+        return this;
     }
 
     public @Unsigned BytePtr point_cb_value() {
         return new BytePtr(point_cb_valueRaw());
     }
 
-    public void point_cb_value(@Unsigned BytePtr value) {
+    public StdVideoAV1FilmGrain point_cb_value(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cb_value, SIZE$point_cb_value);
+        return this;
     }
 
     public MemorySegment point_cb_valueRaw() {
@@ -302,8 +314,9 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(point_cb_scalingRaw());
     }
 
-    public void point_cb_scaling(@Unsigned BytePtr value) {
+    public StdVideoAV1FilmGrain point_cb_scaling(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cb_scaling, SIZE$point_cb_scaling);
+        return this;
     }
 
     public MemorySegment point_cb_scalingRaw() {
@@ -314,16 +327,18 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return segment.get(LAYOUT$num_cr_points, OFFSET$num_cr_points);
     }
 
-    public void num_cr_points(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain num_cr_points(@Unsigned byte value) {
         segment.set(LAYOUT$num_cr_points, OFFSET$num_cr_points, value);
+        return this;
     }
 
     public @Unsigned BytePtr point_cr_value() {
         return new BytePtr(point_cr_valueRaw());
     }
 
-    public void point_cr_value(@Unsigned BytePtr value) {
+    public StdVideoAV1FilmGrain point_cr_value(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cr_value, SIZE$point_cr_value);
+        return this;
     }
 
     public MemorySegment point_cr_valueRaw() {
@@ -334,8 +349,9 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(point_cr_scalingRaw());
     }
 
-    public void point_cr_scaling(@Unsigned BytePtr value) {
+    public StdVideoAV1FilmGrain point_cr_scaling(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$point_cr_scaling, SIZE$point_cr_scaling);
+        return this;
     }
 
     public MemorySegment point_cr_scalingRaw() {
@@ -346,8 +362,9 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(ar_coeffs_y_plus_128Raw());
     }
 
-    public void ar_coeffs_y_plus_128(BytePtr value) {
+    public StdVideoAV1FilmGrain ar_coeffs_y_plus_128(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_y_plus_128, SIZE$ar_coeffs_y_plus_128);
+        return this;
     }
 
     public MemorySegment ar_coeffs_y_plus_128Raw() {
@@ -358,8 +375,9 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(ar_coeffs_cb_plus_128Raw());
     }
 
-    public void ar_coeffs_cb_plus_128(BytePtr value) {
+    public StdVideoAV1FilmGrain ar_coeffs_cb_plus_128(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_cb_plus_128, SIZE$ar_coeffs_cb_plus_128);
+        return this;
     }
 
     public MemorySegment ar_coeffs_cb_plus_128Raw() {
@@ -370,8 +388,9 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return new BytePtr(ar_coeffs_cr_plus_128Raw());
     }
 
-    public void ar_coeffs_cr_plus_128(BytePtr value) {
+    public StdVideoAV1FilmGrain ar_coeffs_cr_plus_128(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$ar_coeffs_cr_plus_128, SIZE$ar_coeffs_cr_plus_128);
+        return this;
     }
 
     public MemorySegment ar_coeffs_cr_plus_128Raw() {
@@ -382,48 +401,54 @@ public record StdVideoAV1FilmGrain(@NotNull MemorySegment segment) implements IS
         return segment.get(LAYOUT$cb_mult, OFFSET$cb_mult);
     }
 
-    public void cb_mult(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain cb_mult(@Unsigned byte value) {
         segment.set(LAYOUT$cb_mult, OFFSET$cb_mult, value);
+        return this;
     }
 
     public @Unsigned byte cb_luma_mult() {
         return segment.get(LAYOUT$cb_luma_mult, OFFSET$cb_luma_mult);
     }
 
-    public void cb_luma_mult(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain cb_luma_mult(@Unsigned byte value) {
         segment.set(LAYOUT$cb_luma_mult, OFFSET$cb_luma_mult, value);
+        return this;
     }
 
     public @Unsigned short cb_offset() {
         return segment.get(LAYOUT$cb_offset, OFFSET$cb_offset);
     }
 
-    public void cb_offset(@Unsigned short value) {
+    public StdVideoAV1FilmGrain cb_offset(@Unsigned short value) {
         segment.set(LAYOUT$cb_offset, OFFSET$cb_offset, value);
+        return this;
     }
 
     public @Unsigned byte cr_mult() {
         return segment.get(LAYOUT$cr_mult, OFFSET$cr_mult);
     }
 
-    public void cr_mult(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain cr_mult(@Unsigned byte value) {
         segment.set(LAYOUT$cr_mult, OFFSET$cr_mult, value);
+        return this;
     }
 
     public @Unsigned byte cr_luma_mult() {
         return segment.get(LAYOUT$cr_luma_mult, OFFSET$cr_luma_mult);
     }
 
-    public void cr_luma_mult(@Unsigned byte value) {
+    public StdVideoAV1FilmGrain cr_luma_mult(@Unsigned byte value) {
         segment.set(LAYOUT$cr_luma_mult, OFFSET$cr_luma_mult, value);
+        return this;
     }
 
     public @Unsigned short cr_offset() {
         return segment.get(LAYOUT$cr_offset, OFFSET$cr_offset);
     }
 
-    public void cr_offset(@Unsigned short value) {
+    public StdVideoAV1FilmGrain cr_offset(@Unsigned short value) {
         segment.set(LAYOUT$cr_offset, OFFSET$cr_offset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

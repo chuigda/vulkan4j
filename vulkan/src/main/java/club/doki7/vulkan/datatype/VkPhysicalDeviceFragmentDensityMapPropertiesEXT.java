@@ -195,8 +195,9 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceFragmentDensityMapPropertiesEXT(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent2D minFragmentDensityTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$minFragmentDensityTexelSize, LAYOUT$minFragmentDensityTexelSize));
     }
 
-    public void minFragmentDensityTexelSize(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minFragmentDensityTexelSize, SIZE$minFragmentDensityTexelSize);
+        return this;
     }
 
     public @NotNull VkExtent2D maxFragmentDensityTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxFragmentDensityTexelSize, LAYOUT$maxFragmentDensityTexelSize));
     }
 
-    public void maxFragmentDensityTexelSize(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentDensityTexelSize, SIZE$maxFragmentDensityTexelSize);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int fragmentDensityInvocations() {
         return segment.get(LAYOUT$fragmentDensityInvocations, OFFSET$fragmentDensityInvocations);
     }
 
-    public void fragmentDensityInvocations(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT fragmentDensityInvocations(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentDensityInvocations, OFFSET$fragmentDensityInvocations, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

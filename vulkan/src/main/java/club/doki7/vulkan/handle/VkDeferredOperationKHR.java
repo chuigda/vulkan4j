@@ -137,6 +137,7 @@ public record VkDeferredOperationKHR(@NotNull MemorySegment segment) implements 
         public static Ptr allocateV(Arena arena, @Nullable VkDeferredOperationKHR ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

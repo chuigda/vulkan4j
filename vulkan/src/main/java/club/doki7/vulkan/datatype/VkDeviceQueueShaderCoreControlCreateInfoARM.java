@@ -193,8 +193,9 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceQueueShaderCoreControlCreateInfoARM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceQueueShaderCoreControlCreateInfoARM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int shaderCoreCount() {
         return segment.get(LAYOUT$shaderCoreCount, OFFSET$shaderCoreCount);
     }
 
-    public void shaderCoreCount(@Unsigned int value) {
+    public VkDeviceQueueShaderCoreControlCreateInfoARM shaderCoreCount(@Unsigned int value) {
         segment.set(LAYOUT$shaderCoreCount, OFFSET$shaderCoreCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

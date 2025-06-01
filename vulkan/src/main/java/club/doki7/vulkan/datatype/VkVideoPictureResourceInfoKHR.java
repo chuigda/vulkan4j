@@ -196,8 +196,9 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoPictureResourceInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,32 +209,36 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoPictureResourceInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkOffset2D codedOffset() {
         return new VkOffset2D(segment.asSlice(OFFSET$codedOffset, LAYOUT$codedOffset));
     }
 
-    public void codedOffset(@NotNull VkOffset2D value) {
+    public VkVideoPictureResourceInfoKHR codedOffset(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$codedOffset, SIZE$codedOffset);
+        return this;
     }
 
     public @NotNull VkExtent2D codedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$codedExtent, LAYOUT$codedExtent));
     }
 
-    public void codedExtent(@NotNull VkExtent2D value) {
+    public VkVideoPictureResourceInfoKHR codedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$codedExtent, SIZE$codedExtent);
+        return this;
     }
 
     public @Unsigned int baseArrayLayer() {
         return segment.get(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer);
     }
 
-    public void baseArrayLayer(@Unsigned int value) {
+    public VkVideoPictureResourceInfoKHR baseArrayLayer(@Unsigned int value) {
         segment.set(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer, value);
+        return this;
     }
 
     public @Nullable VkImageView imageViewBinding() {
@@ -244,8 +249,9 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         return new VkImageView(s);
     }
 
-    public void imageViewBinding(@Nullable VkImageView value) {
+    public VkVideoPictureResourceInfoKHR imageViewBinding(@Nullable VkImageView value) {
         segment.set(LAYOUT$imageViewBinding, OFFSET$imageViewBinding, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

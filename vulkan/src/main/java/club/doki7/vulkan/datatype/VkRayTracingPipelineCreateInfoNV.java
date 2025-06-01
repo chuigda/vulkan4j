@@ -201,8 +201,9 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRayTracingPipelineCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,29 +214,33 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRayTracingPipelineCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineCreateFlags.class) int value) {
+    public VkRayTracingPipelineCreateInfoNV flags(@EnumType(VkPipelineCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int stageCount() {
         return segment.get(LAYOUT$stageCount, OFFSET$stageCount);
     }
 
-    public void stageCount(@Unsigned int value) {
+    public VkRayTracingPipelineCreateInfoNV stageCount(@Unsigned int value) {
         segment.set(LAYOUT$stageCount, OFFSET$stageCount, value);
+        return this;
     }
 
-    public void pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
+    public VkRayTracingPipelineCreateInfoNV pStages(@Nullable IVkPipelineShaderStageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStagesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineShaderStageCreateInfo.Ptr pStages(int assumedCount) {
@@ -268,13 +273,15 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$groupCount, OFFSET$groupCount);
     }
 
-    public void groupCount(@Unsigned int value) {
+    public VkRayTracingPipelineCreateInfoNV groupCount(@Unsigned int value) {
         segment.set(LAYOUT$groupCount, OFFSET$groupCount, value);
+        return this;
     }
 
-    public void pGroups(@Nullable IVkRayTracingShaderGroupCreateInfoNV value) {
+    public VkRayTracingPipelineCreateInfoNV pGroups(@Nullable IVkRayTracingShaderGroupCreateInfoNV value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGroupsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRayTracingShaderGroupCreateInfoNV.Ptr pGroups(int assumedCount) {
@@ -307,8 +314,9 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth);
     }
 
-    public void maxRecursionDepth(@Unsigned int value) {
+    public VkRayTracingPipelineCreateInfoNV maxRecursionDepth(@Unsigned int value) {
         segment.set(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth, value);
+        return this;
     }
 
     public @Nullable VkPipelineLayout layout() {
@@ -319,8 +327,9 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkRayTracingPipelineCreateInfoNV layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkPipeline basePipelineHandle() {
@@ -331,16 +340,18 @@ public record VkRayTracingPipelineCreateInfoNV(@NotNull MemorySegment segment) i
         return new VkPipeline(s);
     }
 
-    public void basePipelineHandle(@Nullable VkPipeline value) {
+    public VkRayTracingPipelineCreateInfoNV basePipelineHandle(@Nullable VkPipeline value) {
         segment.set(LAYOUT$basePipelineHandle, OFFSET$basePipelineHandle, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public int basePipelineIndex() {
         return segment.get(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex);
     }
 
-    public void basePipelineIndex(int value) {
+    public VkRayTracingPipelineCreateInfoNV basePipelineIndex(int value) {
         segment.set(LAYOUT$basePipelineIndex, OFFSET$basePipelineIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

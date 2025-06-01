@@ -194,8 +194,9 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderObjectPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderObjectPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned BytePtr shaderBinaryUUID() {
         return new BytePtr(shaderBinaryUUIDRaw());
     }
 
-    public void shaderBinaryUUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shaderBinaryUUID, SIZE$shaderBinaryUUID);
+        return this;
     }
 
     public MemorySegment shaderBinaryUUIDRaw() {
@@ -226,8 +229,9 @@ public record VkPhysicalDeviceShaderObjectPropertiesEXT(@NotNull MemorySegment s
         return segment.get(LAYOUT$shaderBinaryVersion, OFFSET$shaderBinaryVersion);
     }
 
-    public void shaderBinaryVersion(@Unsigned int value) {
+    public VkPhysicalDeviceShaderObjectPropertiesEXT shaderBinaryVersion(@Unsigned int value) {
         segment.set(LAYOUT$shaderBinaryVersion, OFFSET$shaderBinaryVersion, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

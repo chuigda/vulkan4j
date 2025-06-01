@@ -196,8 +196,9 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVertexInputBindingDescription2EXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVertexInputBindingDescription2EXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int binding() {
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@Unsigned int value) {
+    public VkVertexInputBindingDescription2EXT binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
+        return this;
     }
 
     public @Unsigned int stride() {
         return segment.get(LAYOUT$stride, OFFSET$stride);
     }
 
-    public void stride(@Unsigned int value) {
+    public VkVertexInputBindingDescription2EXT stride(@Unsigned int value) {
         segment.set(LAYOUT$stride, OFFSET$stride, value);
+        return this;
     }
 
     public @EnumType(VkVertexInputRate.class) int inputRate() {
         return segment.get(LAYOUT$inputRate, OFFSET$inputRate);
     }
 
-    public void inputRate(@EnumType(VkVertexInputRate.class) int value) {
+    public VkVertexInputBindingDescription2EXT inputRate(@EnumType(VkVertexInputRate.class) int value) {
         segment.set(LAYOUT$inputRate, OFFSET$inputRate, value);
+        return this;
     }
 
     public @Unsigned int divisor() {
         return segment.get(LAYOUT$divisor, OFFSET$divisor);
     }
 
-    public void divisor(@Unsigned int value) {
+    public VkVertexInputBindingDescription2EXT divisor(@Unsigned int value) {
         segment.set(LAYOUT$divisor, OFFSET$divisor, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

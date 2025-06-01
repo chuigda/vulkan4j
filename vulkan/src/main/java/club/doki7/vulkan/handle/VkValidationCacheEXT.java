@@ -137,6 +137,7 @@ public record VkValidationCacheEXT(@NotNull MemorySegment segment) implements IP
         public static Ptr allocateV(Arena arena, @Nullable VkValidationCacheEXT ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

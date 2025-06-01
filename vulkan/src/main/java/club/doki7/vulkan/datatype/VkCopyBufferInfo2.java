@@ -196,8 +196,9 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyBufferInfo2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,8 +209,9 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCopyBufferInfo2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkBuffer srcBuffer() {
@@ -220,8 +222,9 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
         return new VkBuffer(s);
     }
 
-    public void srcBuffer(@Nullable VkBuffer value) {
+    public VkCopyBufferInfo2 srcBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$srcBuffer, OFFSET$srcBuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkBuffer dstBuffer() {
@@ -232,21 +235,24 @@ public record VkCopyBufferInfo2(@NotNull MemorySegment segment) implements IVkCo
         return new VkBuffer(s);
     }
 
-    public void dstBuffer(@Nullable VkBuffer value) {
+    public VkCopyBufferInfo2 dstBuffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$dstBuffer, OFFSET$dstBuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int regionCount() {
         return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
     }
 
-    public void regionCount(@Unsigned int value) {
+    public VkCopyBufferInfo2 regionCount(@Unsigned int value) {
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
+        return this;
     }
 
-    public void pRegions(@Nullable IVkBufferCopy2 value) {
+    public VkCopyBufferInfo2 pRegions(@Nullable IVkBufferCopy2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkBufferCopy2.Ptr pRegions(int assumedCount) {

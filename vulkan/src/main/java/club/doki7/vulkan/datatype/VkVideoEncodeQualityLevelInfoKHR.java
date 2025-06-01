@@ -193,8 +193,9 @@ public record VkVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeQualityLevelInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkVideoEncodeQualityLevelInfoKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeQualityLevelInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int qualityLevel() {
         return segment.get(LAYOUT$qualityLevel, OFFSET$qualityLevel);
     }
 
-    public void qualityLevel(@Unsigned int value) {
+    public VkVideoEncodeQualityLevelInfoKHR qualityLevel(@Unsigned int value) {
         segment.set(LAYOUT$qualityLevel, OFFSET$qualityLevel, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

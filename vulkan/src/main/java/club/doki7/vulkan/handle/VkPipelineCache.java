@@ -137,6 +137,7 @@ public record VkPipelineCache(@NotNull MemorySegment segment) implements IPointe
         public static Ptr allocateV(Arena arena, @Nullable VkPipelineCache ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

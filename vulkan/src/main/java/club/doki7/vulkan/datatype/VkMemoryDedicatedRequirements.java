@@ -194,8 +194,9 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryDedicatedRequirements sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkMemoryDedicatedRequirements(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMemoryDedicatedRequirements pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int prefersDedicatedAllocation() {
         return segment.get(LAYOUT$prefersDedicatedAllocation, OFFSET$prefersDedicatedAllocation);
     }
 
-    public void prefersDedicatedAllocation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkMemoryDedicatedRequirements prefersDedicatedAllocation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$prefersDedicatedAllocation, OFFSET$prefersDedicatedAllocation, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int requiresDedicatedAllocation() {
         return segment.get(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation);
     }
 
-    public void requiresDedicatedAllocation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkMemoryDedicatedRequirements requiresDedicatedAllocation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$requiresDedicatedAllocation, OFFSET$requiresDedicatedAllocation, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

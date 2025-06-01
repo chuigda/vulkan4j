@@ -183,9 +183,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void aspect_ratio_info_present_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags aspect_ratio_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean overscan_info_present_flag() {
@@ -193,9 +194,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void overscan_info_present_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags overscan_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean overscan_appropriate_flag() {
@@ -203,9 +205,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void overscan_appropriate_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags overscan_appropriate_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean video_signal_type_present_flag() {
@@ -213,9 +216,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void video_signal_type_present_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags video_signal_type_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean video_full_range_flag() {
@@ -223,9 +227,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void video_full_range_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags video_full_range_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean color_description_present_flag() {
@@ -233,9 +238,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void color_description_present_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags color_description_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public boolean chroma_loc_info_present_flag() {
@@ -243,9 +249,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 6);
     }
 
-    public void chroma_loc_info_present_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags chroma_loc_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 6, value);
+        return this;
     }
 
     public boolean timing_info_present_flag() {
@@ -253,9 +260,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 7);
     }
 
-    public void timing_info_present_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags timing_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 7, value);
+        return this;
     }
 
     public boolean fixed_frame_rate_flag() {
@@ -263,9 +271,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 8);
     }
 
-    public void fixed_frame_rate_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags fixed_frame_rate_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 8, value);
+        return this;
     }
 
     public boolean bitstream_restriction_flag() {
@@ -273,9 +282,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 9);
     }
 
-    public void bitstream_restriction_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags bitstream_restriction_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 9, value);
+        return this;
     }
 
     public boolean nal_hrd_parameters_present_flag() {
@@ -283,9 +293,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 10);
     }
 
-    public void nal_hrd_parameters_present_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags nal_hrd_parameters_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 10, value);
+        return this;
     }
 
     public boolean vcl_hrd_parameters_present_flag() {
@@ -293,9 +304,10 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 11);
     }
 
-    public void vcl_hrd_parameters_present_flag(boolean value) {
+    public StdVideoH264SpsVuiFlags vcl_hrd_parameters_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$vcl_hrd_parameters_present_flag);
         BitfieldUtil.writeBit(s, 11, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

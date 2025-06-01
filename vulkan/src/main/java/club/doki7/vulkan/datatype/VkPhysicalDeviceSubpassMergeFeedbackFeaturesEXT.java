@@ -193,8 +193,9 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int subpassMergeFeedback() {
         return segment.get(LAYOUT$subpassMergeFeedback, OFFSET$subpassMergeFeedback);
     }
 
-    public void subpassMergeFeedback(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT subpassMergeFeedback(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subpassMergeFeedback, OFFSET$subpassMergeFeedback, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

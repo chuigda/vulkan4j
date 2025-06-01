@@ -194,8 +194,9 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainPresentFenceInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSwapchainPresentFenceInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int swapchainCount() {
         return segment.get(LAYOUT$swapchainCount, OFFSET$swapchainCount);
     }
 
-    public void swapchainCount(@Unsigned int value) {
+    public VkSwapchainPresentFenceInfoEXT swapchainCount(@Unsigned int value) {
         segment.set(LAYOUT$swapchainCount, OFFSET$swapchainCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkFence.Ptr} does not have correct {@link VkFence.Ptr#size}
@@ -230,9 +233,10 @@ public record VkSwapchainPresentFenceInfoEXT(@NotNull MemorySegment segment) imp
         return new VkFence.Ptr(s);
     }
 
-    public void pFences(@Nullable VkFence.Ptr value) {
+    public VkSwapchainPresentFenceInfoEXT pFences(@Nullable VkFence.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFencesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkFence.class) MemorySegment pFencesRaw() {

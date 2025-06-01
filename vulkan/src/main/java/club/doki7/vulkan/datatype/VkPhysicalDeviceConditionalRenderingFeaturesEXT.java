@@ -194,8 +194,9 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceConditionalRenderingFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceConditionalRenderingFeaturesEXT(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceConditionalRenderingFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int conditionalRendering() {
         return segment.get(LAYOUT$conditionalRendering, OFFSET$conditionalRendering);
     }
 
-    public void conditionalRendering(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceConditionalRenderingFeaturesEXT conditionalRendering(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$conditionalRendering, OFFSET$conditionalRendering, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int inheritedConditionalRendering() {
         return segment.get(LAYOUT$inheritedConditionalRendering, OFFSET$inheritedConditionalRendering);
     }
 
-    public void inheritedConditionalRendering(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceConditionalRenderingFeaturesEXT inheritedConditionalRendering(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$inheritedConditionalRendering, OFFSET$inheritedConditionalRendering, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

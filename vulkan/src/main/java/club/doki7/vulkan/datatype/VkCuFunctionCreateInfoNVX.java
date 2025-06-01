@@ -194,8 +194,9 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCuFunctionCreateInfoNVX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCuFunctionCreateInfoNVX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkCuModuleNVX module() {
@@ -218,8 +220,9 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         return new VkCuModuleNVX(s);
     }
 
-    public void module(@Nullable VkCuModuleNVX value) {
+    public VkCuFunctionCreateInfoNVX module(@Nullable VkCuModuleNVX value) {
         segment.set(LAYOUT$module, OFFSET$module, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -234,9 +237,10 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         return new BytePtr(s);
     }
 
-    public void pName(@Nullable BytePtr value) {
+    public VkCuFunctionCreateInfoNVX pName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {

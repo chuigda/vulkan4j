@@ -175,13 +175,15 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$mapEntryCount, OFFSET$mapEntryCount);
     }
 
-    public void mapEntryCount(@Unsigned int value) {
+    public VkSpecializationInfo mapEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$mapEntryCount, OFFSET$mapEntryCount, value);
+        return this;
     }
 
-    public void pMapEntries(@Nullable IVkSpecializationMapEntry value) {
+    public VkSpecializationInfo pMapEntries(@Nullable IVkSpecializationMapEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMapEntriesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSpecializationMapEntry.Ptr pMapEntries(int assumedCount) {
@@ -214,8 +216,9 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
     }
 
-    public void dataSize(@Unsigned long value) {
+    public VkSpecializationInfo dataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pData() {
@@ -226,8 +229,9 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(@Nullable IPointer pointer) {
+    public VkSpecializationInfo pData(@Nullable IPointer pointer) {
         pData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

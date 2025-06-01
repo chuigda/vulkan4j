@@ -201,8 +201,9 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,80 +214,90 @@ public record VkPhysicalDeviceConservativeRasterizationPropertiesEXT(@NotNull Me
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public float primitiveOverestimationSize() {
         return segment.get(LAYOUT$primitiveOverestimationSize, OFFSET$primitiveOverestimationSize);
     }
 
-    public void primitiveOverestimationSize(float value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT primitiveOverestimationSize(float value) {
         segment.set(LAYOUT$primitiveOverestimationSize, OFFSET$primitiveOverestimationSize, value);
+        return this;
     }
 
     public float maxExtraPrimitiveOverestimationSize() {
         return segment.get(LAYOUT$maxExtraPrimitiveOverestimationSize, OFFSET$maxExtraPrimitiveOverestimationSize);
     }
 
-    public void maxExtraPrimitiveOverestimationSize(float value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT maxExtraPrimitiveOverestimationSize(float value) {
         segment.set(LAYOUT$maxExtraPrimitiveOverestimationSize, OFFSET$maxExtraPrimitiveOverestimationSize, value);
+        return this;
     }
 
     public float extraPrimitiveOverestimationSizeGranularity() {
         return segment.get(LAYOUT$extraPrimitiveOverestimationSizeGranularity, OFFSET$extraPrimitiveOverestimationSizeGranularity);
     }
 
-    public void extraPrimitiveOverestimationSizeGranularity(float value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT extraPrimitiveOverestimationSizeGranularity(float value) {
         segment.set(LAYOUT$extraPrimitiveOverestimationSizeGranularity, OFFSET$extraPrimitiveOverestimationSizeGranularity, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int primitiveUnderestimation() {
         return segment.get(LAYOUT$primitiveUnderestimation, OFFSET$primitiveUnderestimation);
     }
 
-    public void primitiveUnderestimation(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT primitiveUnderestimation(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$primitiveUnderestimation, OFFSET$primitiveUnderestimation, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int conservativePointAndLineRasterization() {
         return segment.get(LAYOUT$conservativePointAndLineRasterization, OFFSET$conservativePointAndLineRasterization);
     }
 
-    public void conservativePointAndLineRasterization(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT conservativePointAndLineRasterization(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$conservativePointAndLineRasterization, OFFSET$conservativePointAndLineRasterization, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int degenerateTrianglesRasterized() {
         return segment.get(LAYOUT$degenerateTrianglesRasterized, OFFSET$degenerateTrianglesRasterized);
     }
 
-    public void degenerateTrianglesRasterized(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT degenerateTrianglesRasterized(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$degenerateTrianglesRasterized, OFFSET$degenerateTrianglesRasterized, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int degenerateLinesRasterized() {
         return segment.get(LAYOUT$degenerateLinesRasterized, OFFSET$degenerateLinesRasterized);
     }
 
-    public void degenerateLinesRasterized(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT degenerateLinesRasterized(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$degenerateLinesRasterized, OFFSET$degenerateLinesRasterized, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int fullyCoveredFragmentShaderInputVariable() {
         return segment.get(LAYOUT$fullyCoveredFragmentShaderInputVariable, OFFSET$fullyCoveredFragmentShaderInputVariable);
     }
 
-    public void fullyCoveredFragmentShaderInputVariable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT fullyCoveredFragmentShaderInputVariable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fullyCoveredFragmentShaderInputVariable, OFFSET$fullyCoveredFragmentShaderInputVariable, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int conservativeRasterizationPostDepthCoverage() {
         return segment.get(LAYOUT$conservativeRasterizationPostDepthCoverage, OFFSET$conservativeRasterizationPostDepthCoverage);
     }
 
-    public void conservativeRasterizationPostDepthCoverage(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT conservativeRasterizationPostDepthCoverage(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$conservativeRasterizationPostDepthCoverage, OFFSET$conservativeRasterizationPostDepthCoverage, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -196,120 +196,135 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new StdVideoEncodeAV1PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeAV1PictureInfoFlags value) {
+    public StdVideoEncodeAV1PictureInfo flags(@NotNull StdVideoEncodeAV1PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @EnumType(StdVideoAV1FrameType.class) int frame_type() {
         return segment.get(LAYOUT$frame_type, OFFSET$frame_type);
     }
 
-    public void frame_type(@EnumType(StdVideoAV1FrameType.class) int value) {
+    public StdVideoEncodeAV1PictureInfo frame_type(@EnumType(StdVideoAV1FrameType.class) int value) {
         segment.set(LAYOUT$frame_type, OFFSET$frame_type, value);
+        return this;
     }
 
     public @Unsigned int frame_presentation_time() {
         return segment.get(LAYOUT$frame_presentation_time, OFFSET$frame_presentation_time);
     }
 
-    public void frame_presentation_time(@Unsigned int value) {
+    public StdVideoEncodeAV1PictureInfo frame_presentation_time(@Unsigned int value) {
         segment.set(LAYOUT$frame_presentation_time, OFFSET$frame_presentation_time, value);
+        return this;
     }
 
     public @Unsigned int current_frame_id() {
         return segment.get(LAYOUT$current_frame_id, OFFSET$current_frame_id);
     }
 
-    public void current_frame_id(@Unsigned int value) {
+    public StdVideoEncodeAV1PictureInfo current_frame_id(@Unsigned int value) {
         segment.set(LAYOUT$current_frame_id, OFFSET$current_frame_id, value);
+        return this;
     }
 
     public @Unsigned byte order_hint() {
         return segment.get(LAYOUT$order_hint, OFFSET$order_hint);
     }
 
-    public void order_hint(@Unsigned byte value) {
+    public StdVideoEncodeAV1PictureInfo order_hint(@Unsigned byte value) {
         segment.set(LAYOUT$order_hint, OFFSET$order_hint, value);
+        return this;
     }
 
     public @Unsigned byte primary_ref_frame() {
         return segment.get(LAYOUT$primary_ref_frame, OFFSET$primary_ref_frame);
     }
 
-    public void primary_ref_frame(@Unsigned byte value) {
+    public StdVideoEncodeAV1PictureInfo primary_ref_frame(@Unsigned byte value) {
         segment.set(LAYOUT$primary_ref_frame, OFFSET$primary_ref_frame, value);
+        return this;
     }
 
     public @Unsigned byte refresh_frame_flags() {
         return segment.get(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags);
     }
 
-    public void refresh_frame_flags(@Unsigned byte value) {
+    public StdVideoEncodeAV1PictureInfo refresh_frame_flags(@Unsigned byte value) {
         segment.set(LAYOUT$refresh_frame_flags, OFFSET$refresh_frame_flags, value);
+        return this;
     }
 
     public @Unsigned byte coded_denom() {
         return segment.get(LAYOUT$coded_denom, OFFSET$coded_denom);
     }
 
-    public void coded_denom(@Unsigned byte value) {
+    public StdVideoEncodeAV1PictureInfo coded_denom(@Unsigned byte value) {
         segment.set(LAYOUT$coded_denom, OFFSET$coded_denom, value);
+        return this;
     }
 
     public @Unsigned short render_width_minus_1() {
         return segment.get(LAYOUT$render_width_minus_1, OFFSET$render_width_minus_1);
     }
 
-    public void render_width_minus_1(@Unsigned short value) {
+    public StdVideoEncodeAV1PictureInfo render_width_minus_1(@Unsigned short value) {
         segment.set(LAYOUT$render_width_minus_1, OFFSET$render_width_minus_1, value);
+        return this;
     }
 
     public @Unsigned short render_height_minus_1() {
         return segment.get(LAYOUT$render_height_minus_1, OFFSET$render_height_minus_1);
     }
 
-    public void render_height_minus_1(@Unsigned short value) {
+    public StdVideoEncodeAV1PictureInfo render_height_minus_1(@Unsigned short value) {
         segment.set(LAYOUT$render_height_minus_1, OFFSET$render_height_minus_1, value);
+        return this;
     }
 
     public @EnumType(StdVideoAV1InterpolationFilter.class) int interpolation_filter() {
         return segment.get(LAYOUT$interpolation_filter, OFFSET$interpolation_filter);
     }
 
-    public void interpolation_filter(@EnumType(StdVideoAV1InterpolationFilter.class) int value) {
+    public StdVideoEncodeAV1PictureInfo interpolation_filter(@EnumType(StdVideoAV1InterpolationFilter.class) int value) {
         segment.set(LAYOUT$interpolation_filter, OFFSET$interpolation_filter, value);
+        return this;
     }
 
     public @EnumType(StdVideoAV1TxMode.class) int TxMode() {
         return segment.get(LAYOUT$TxMode, OFFSET$TxMode);
     }
 
-    public void TxMode(@EnumType(StdVideoAV1TxMode.class) int value) {
+    public StdVideoEncodeAV1PictureInfo TxMode(@EnumType(StdVideoAV1TxMode.class) int value) {
         segment.set(LAYOUT$TxMode, OFFSET$TxMode, value);
+        return this;
     }
 
     public @Unsigned byte delta_q_res() {
         return segment.get(LAYOUT$delta_q_res, OFFSET$delta_q_res);
     }
 
-    public void delta_q_res(@Unsigned byte value) {
+    public StdVideoEncodeAV1PictureInfo delta_q_res(@Unsigned byte value) {
         segment.set(LAYOUT$delta_q_res, OFFSET$delta_q_res, value);
+        return this;
     }
 
     public @Unsigned byte delta_lf_res() {
         return segment.get(LAYOUT$delta_lf_res, OFFSET$delta_lf_res);
     }
 
-    public void delta_lf_res(@Unsigned byte value) {
+    public StdVideoEncodeAV1PictureInfo delta_lf_res(@Unsigned byte value) {
         segment.set(LAYOUT$delta_lf_res, OFFSET$delta_lf_res, value);
+        return this;
     }
 
     public @Unsigned BytePtr ref_order_hint() {
         return new BytePtr(ref_order_hintRaw());
     }
 
-    public void ref_order_hint(@Unsigned BytePtr value) {
+    public StdVideoEncodeAV1PictureInfo ref_order_hint(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$ref_order_hint, SIZE$ref_order_hint);
+        return this;
     }
 
     public MemorySegment ref_order_hintRaw() {
@@ -320,8 +335,9 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new BytePtr(ref_frame_idxRaw());
     }
 
-    public void ref_frame_idx(BytePtr value) {
+    public StdVideoEncodeAV1PictureInfo ref_frame_idx(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$ref_frame_idx, SIZE$ref_frame_idx);
+        return this;
     }
 
     public MemorySegment ref_frame_idxRaw() {
@@ -333,17 +349,19 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new IntPtr(delta_frame_id_minus_1Raw());
     }
 
-    public void delta_frame_id_minus_1(@Unsigned IntPtr value) {
+    public StdVideoEncodeAV1PictureInfo delta_frame_id_minus_1(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_frame_id_minus_1, SIZE$delta_frame_id_minus_1);
+        return this;
     }
 
     public MemorySegment delta_frame_id_minus_1Raw() {
         return segment.asSlice(OFFSET$delta_frame_id_minus_1, SIZE$delta_frame_id_minus_1);
     }
 
-    public void pTileInfo(@Nullable IStdVideoAV1TileInfo value) {
+    public StdVideoEncodeAV1PictureInfo pTileInfo(@Nullable IStdVideoAV1TileInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pTileInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1TileInfo.Ptr pTileInfo(int assumedCount) {
@@ -372,9 +390,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pTileInfo, OFFSET$pTileInfo, value);
     }
 
-    public void pQuantization(@Nullable IStdVideoAV1Quantization value) {
+    public StdVideoEncodeAV1PictureInfo pQuantization(@Nullable IStdVideoAV1Quantization value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQuantizationRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1Quantization.Ptr pQuantization(int assumedCount) {
@@ -403,9 +422,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pQuantization, OFFSET$pQuantization, value);
     }
 
-    public void pSegmentation(@Nullable IStdVideoAV1Segmentation value) {
+    public StdVideoEncodeAV1PictureInfo pSegmentation(@Nullable IStdVideoAV1Segmentation value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSegmentationRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1Segmentation.Ptr pSegmentation(int assumedCount) {
@@ -434,9 +454,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pSegmentation, OFFSET$pSegmentation, value);
     }
 
-    public void pLoopFilter(@Nullable IStdVideoAV1LoopFilter value) {
+    public StdVideoEncodeAV1PictureInfo pLoopFilter(@Nullable IStdVideoAV1LoopFilter value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLoopFilterRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1LoopFilter.Ptr pLoopFilter(int assumedCount) {
@@ -465,9 +486,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pLoopFilter, OFFSET$pLoopFilter, value);
     }
 
-    public void pCDEF(@Nullable IStdVideoAV1CDEF value) {
+    public StdVideoEncodeAV1PictureInfo pCDEF(@Nullable IStdVideoAV1CDEF value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCDEFRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1CDEF.Ptr pCDEF(int assumedCount) {
@@ -496,9 +518,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pCDEF, OFFSET$pCDEF, value);
     }
 
-    public void pLoopRestoration(@Nullable IStdVideoAV1LoopRestoration value) {
+    public StdVideoEncodeAV1PictureInfo pLoopRestoration(@Nullable IStdVideoAV1LoopRestoration value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLoopRestorationRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1LoopRestoration.Ptr pLoopRestoration(int assumedCount) {
@@ -527,9 +550,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pLoopRestoration, OFFSET$pLoopRestoration, value);
     }
 
-    public void pGlobalMotion(@Nullable IStdVideoAV1GlobalMotion value) {
+    public StdVideoEncodeAV1PictureInfo pGlobalMotion(@Nullable IStdVideoAV1GlobalMotion value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pGlobalMotionRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoAV1GlobalMotion.Ptr pGlobalMotion(int assumedCount) {
@@ -558,9 +582,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pGlobalMotion, OFFSET$pGlobalMotion, value);
     }
 
-    public void pExtensionHeader(@Nullable IStdVideoEncodeAV1ExtensionHeader value) {
+    public StdVideoEncodeAV1PictureInfo pExtensionHeader(@Nullable IStdVideoEncodeAV1ExtensionHeader value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pExtensionHeaderRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeAV1ExtensionHeader.Ptr pExtensionHeader(int assumedCount) {
@@ -601,9 +626,10 @@ public record StdVideoEncodeAV1PictureInfo(@NotNull MemorySegment segment) imple
         return new IntPtr(s);
     }
 
-    public void pBufferRemovalTimes(@Nullable @Unsigned IntPtr value) {
+    public StdVideoEncodeAV1PictureInfo pBufferRemovalTimes(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferRemovalTimesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pBufferRemovalTimesRaw() {

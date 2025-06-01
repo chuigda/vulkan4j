@@ -197,8 +197,9 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAcquireNextImageInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAcquireNextImageInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSwapchainKHR swapchain() {
@@ -221,16 +223,18 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkSwapchainKHR(s);
     }
 
-    public void swapchain(@Nullable VkSwapchainKHR value) {
+    public VkAcquireNextImageInfoKHR swapchain(@Nullable VkSwapchainKHR value) {
         segment.set(LAYOUT$swapchain, OFFSET$swapchain, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long timeout() {
         return segment.get(LAYOUT$timeout, OFFSET$timeout);
     }
 
-    public void timeout(@Unsigned long value) {
+    public VkAcquireNextImageInfoKHR timeout(@Unsigned long value) {
         segment.set(LAYOUT$timeout, OFFSET$timeout, value);
+        return this;
     }
 
     public @Nullable VkSemaphore semaphore() {
@@ -241,8 +245,9 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkSemaphore(s);
     }
 
-    public void semaphore(@Nullable VkSemaphore value) {
+    public VkAcquireNextImageInfoKHR semaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$semaphore, OFFSET$semaphore, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkFence fence() {
@@ -253,16 +258,18 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         return new VkFence(s);
     }
 
-    public void fence(@Nullable VkFence value) {
+    public VkAcquireNextImageInfoKHR fence(@Nullable VkFence value) {
         segment.set(LAYOUT$fence, OFFSET$fence, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int deviceMask() {
         return segment.get(LAYOUT$deviceMask, OFFSET$deviceMask);
     }
 
-    public void deviceMask(@Unsigned int value) {
+    public VkAcquireNextImageInfoKHR deviceMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceMask, OFFSET$deviceMask, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

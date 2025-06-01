@@ -194,8 +194,9 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindBufferMemoryDeviceGroupInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindBufferMemoryDeviceGroupInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int deviceIndexCount() {
         return segment.get(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount);
     }
 
-    public void deviceIndexCount(@Unsigned int value) {
+    public VkBindBufferMemoryDeviceGroupInfo deviceIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -230,9 +233,10 @@ public record VkBindBufferMemoryDeviceGroupInfo(@NotNull MemorySegment segment) 
         return new IntPtr(s);
     }
 
-    public void pDeviceIndices(@Nullable @Unsigned IntPtr value) {
+    public VkBindBufferMemoryDeviceGroupInfo pDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {

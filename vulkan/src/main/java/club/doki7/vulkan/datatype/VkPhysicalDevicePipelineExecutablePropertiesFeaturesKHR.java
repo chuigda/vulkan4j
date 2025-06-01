@@ -193,8 +193,9 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(@NotNull M
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(@NotNull M
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int pipelineExecutableInfo() {
         return segment.get(LAYOUT$pipelineExecutableInfo, OFFSET$pipelineExecutableInfo);
     }
 
-    public void pipelineExecutableInfo(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR pipelineExecutableInfo(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$pipelineExecutableInfo, OFFSET$pipelineExecutableInfo, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

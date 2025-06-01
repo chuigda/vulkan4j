@@ -195,8 +195,9 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCreationFeedbackCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,13 +208,15 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineCreationFeedbackCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pPipelineCreationFeedback(@Nullable IVkPipelineCreationFeedback value) {
+    public VkPipelineCreationFeedbackCreateInfo pPipelineCreationFeedback(@Nullable IVkPipelineCreationFeedback value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineCreationFeedbackRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineCreationFeedback.Ptr pPipelineCreationFeedback(int assumedCount) {
@@ -246,13 +249,15 @@ public record VkPipelineCreationFeedbackCreateInfo(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$pipelineStageCreationFeedbackCount, OFFSET$pipelineStageCreationFeedbackCount);
     }
 
-    public void pipelineStageCreationFeedbackCount(@Unsigned int value) {
+    public VkPipelineCreationFeedbackCreateInfo pipelineStageCreationFeedbackCount(@Unsigned int value) {
         segment.set(LAYOUT$pipelineStageCreationFeedbackCount, OFFSET$pipelineStageCreationFeedbackCount, value);
+        return this;
     }
 
-    public void pPipelineStageCreationFeedbacks(@Nullable IVkPipelineCreationFeedback value) {
+    public VkPipelineCreationFeedbackCreateInfo pPipelineStageCreationFeedbacks(@Nullable IVkPipelineCreationFeedback value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineStageCreationFeedbacksRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineCreationFeedback.Ptr pPipelineStageCreationFeedbacks(int assumedCount) {

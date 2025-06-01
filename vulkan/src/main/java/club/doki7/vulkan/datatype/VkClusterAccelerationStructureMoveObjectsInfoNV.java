@@ -172,8 +172,9 @@ public record VkClusterAccelerationStructureMoveObjectsInfoNV(@NotNull MemorySeg
         return segment.get(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure);
     }
 
-    public void srcAccelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkClusterAccelerationStructureMoveObjectsInfoNV srcAccelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$srcAccelerationStructure, OFFSET$srcAccelerationStructure, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

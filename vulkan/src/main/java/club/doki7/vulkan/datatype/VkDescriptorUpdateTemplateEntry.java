@@ -177,48 +177,54 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$dstBinding, OFFSET$dstBinding);
     }
 
-    public void dstBinding(@Unsigned int value) {
+    public VkDescriptorUpdateTemplateEntry dstBinding(@Unsigned int value) {
         segment.set(LAYOUT$dstBinding, OFFSET$dstBinding, value);
+        return this;
     }
 
     public @Unsigned int dstArrayElement() {
         return segment.get(LAYOUT$dstArrayElement, OFFSET$dstArrayElement);
     }
 
-    public void dstArrayElement(@Unsigned int value) {
+    public VkDescriptorUpdateTemplateEntry dstArrayElement(@Unsigned int value) {
         segment.set(LAYOUT$dstArrayElement, OFFSET$dstArrayElement, value);
+        return this;
     }
 
     public @Unsigned int descriptorCount() {
         return segment.get(LAYOUT$descriptorCount, OFFSET$descriptorCount);
     }
 
-    public void descriptorCount(@Unsigned int value) {
+    public VkDescriptorUpdateTemplateEntry descriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorCount, OFFSET$descriptorCount, value);
+        return this;
     }
 
     public @EnumType(VkDescriptorType.class) int descriptorType() {
         return segment.get(LAYOUT$descriptorType, OFFSET$descriptorType);
     }
 
-    public void descriptorType(@EnumType(VkDescriptorType.class) int value) {
+    public VkDescriptorUpdateTemplateEntry descriptorType(@EnumType(VkDescriptorType.class) int value) {
         segment.set(LAYOUT$descriptorType, OFFSET$descriptorType, value);
+        return this;
     }
 
     public @Unsigned long offset() {
         return NativeLayout.readCSizeT(segment, OFFSET$offset);
     }
 
-    public void offset(@Unsigned long value) {
+    public VkDescriptorUpdateTemplateEntry offset(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$offset, value);
+        return this;
     }
 
     public @Unsigned long stride() {
         return NativeLayout.readCSizeT(segment, OFFSET$stride);
     }
 
-    public void stride(@Unsigned long value) {
+    public VkDescriptorUpdateTemplateEntry stride(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$stride, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

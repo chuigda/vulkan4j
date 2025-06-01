@@ -193,8 +193,9 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pfnAllocate, OFFSET$pfnAllocate, value);
     }
 
-    public void pfnAllocate(@Nullable IPointer pointer) {
+    public VmaDeviceMemoryCallbacks pfnAllocate(@Nullable IPointer pointer) {
         pfnAllocate(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="PFN_vmaFreeDeviceMemoryFunction") MemorySegment pfnFree() {
@@ -205,8 +206,9 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pfnFree, OFFSET$pfnFree, value);
     }
 
-    public void pfnFree(@Nullable IPointer pointer) {
+    public VmaDeviceMemoryCallbacks pfnFree(@Nullable IPointer pointer) {
         pfnFree(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pUserData() {
@@ -217,8 +219,9 @@ public record VmaDeviceMemoryCallbacks(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(@Nullable IPointer pointer) {
+    public VmaDeviceMemoryCallbacks pUserData(@Nullable IPointer pointer) {
         pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

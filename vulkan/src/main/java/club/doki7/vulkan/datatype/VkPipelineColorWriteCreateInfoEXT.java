@@ -194,8 +194,9 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineColorWriteCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineColorWriteCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int attachmentCount() {
         return segment.get(LAYOUT$attachmentCount, OFFSET$attachmentCount);
     }
 
-    public void attachmentCount(@Unsigned int value) {
+    public VkPipelineColorWriteCreateInfoEXT attachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentCount, OFFSET$attachmentCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -230,9 +233,10 @@ public record VkPipelineColorWriteCreateInfoEXT(@NotNull MemorySegment segment) 
         return new IntPtr(s);
     }
 
-    public void pColorWriteEnables(@Nullable @Pointer(comment="VkBool32") @Unsigned IntPtr value) {
+    public VkPipelineColorWriteCreateInfoEXT pColorWriteEnables(@Nullable @Pointer(comment="VkBool32") @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorWriteEnablesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pColorWriteEnablesRaw() {

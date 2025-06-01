@@ -204,8 +204,9 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceVulkan11Features sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -216,104 +217,117 @@ public record VkPhysicalDeviceVulkan11Features(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceVulkan11Features pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int storageBuffer16BitAccess() {
         return segment.get(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess);
     }
 
-    public void storageBuffer16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features storageBuffer16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storageBuffer16BitAccess, OFFSET$storageBuffer16BitAccess, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int uniformAndStorageBuffer16BitAccess() {
         return segment.get(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess);
     }
 
-    public void uniformAndStorageBuffer16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features uniformAndStorageBuffer16BitAccess(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$uniformAndStorageBuffer16BitAccess, OFFSET$uniformAndStorageBuffer16BitAccess, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int storagePushConstant16() {
         return segment.get(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16);
     }
 
-    public void storagePushConstant16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features storagePushConstant16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storagePushConstant16, OFFSET$storagePushConstant16, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int storageInputOutput16() {
         return segment.get(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16);
     }
 
-    public void storageInputOutput16(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features storageInputOutput16(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$storageInputOutput16, OFFSET$storageInputOutput16, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiview() {
         return segment.get(LAYOUT$multiview, OFFSET$multiview);
     }
 
-    public void multiview(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features multiview(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiview, OFFSET$multiview, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiviewGeometryShader() {
         return segment.get(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader);
     }
 
-    public void multiviewGeometryShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features multiviewGeometryShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewGeometryShader, OFFSET$multiviewGeometryShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiviewTessellationShader() {
         return segment.get(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader);
     }
 
-    public void multiviewTessellationShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features multiviewTessellationShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewTessellationShader, OFFSET$multiviewTessellationShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int variablePointersStorageBuffer() {
         return segment.get(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer);
     }
 
-    public void variablePointersStorageBuffer(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features variablePointersStorageBuffer(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$variablePointersStorageBuffer, OFFSET$variablePointersStorageBuffer, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int variablePointers() {
         return segment.get(LAYOUT$variablePointers, OFFSET$variablePointers);
     }
 
-    public void variablePointers(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features variablePointers(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$variablePointers, OFFSET$variablePointers, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int protectedMemory() {
         return segment.get(LAYOUT$protectedMemory, OFFSET$protectedMemory);
     }
 
-    public void protectedMemory(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features protectedMemory(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$protectedMemory, OFFSET$protectedMemory, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int samplerYcbcrConversion() {
         return segment.get(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion);
     }
 
-    public void samplerYcbcrConversion(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features samplerYcbcrConversion(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$samplerYcbcrConversion, OFFSET$samplerYcbcrConversion, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderDrawParameters() {
         return segment.get(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters);
     }
 
-    public void shaderDrawParameters(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceVulkan11Features shaderDrawParameters(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDrawParameters, OFFSET$shaderDrawParameters, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

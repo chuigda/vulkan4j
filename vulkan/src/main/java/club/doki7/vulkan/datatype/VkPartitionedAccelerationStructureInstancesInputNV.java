@@ -197,8 +197,9 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkPartitionedAccelerationStructureInstancesInputNV(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPartitionedAccelerationStructureInstancesInputNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int instanceCount() {
         return segment.get(LAYOUT$instanceCount, OFFSET$instanceCount);
     }
 
-    public void instanceCount(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV instanceCount(@Unsigned int value) {
         segment.set(LAYOUT$instanceCount, OFFSET$instanceCount, value);
+        return this;
     }
 
     public @Unsigned int maxInstancePerPartitionCount() {
         return segment.get(LAYOUT$maxInstancePerPartitionCount, OFFSET$maxInstancePerPartitionCount);
     }
 
-    public void maxInstancePerPartitionCount(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV maxInstancePerPartitionCount(@Unsigned int value) {
         segment.set(LAYOUT$maxInstancePerPartitionCount, OFFSET$maxInstancePerPartitionCount, value);
+        return this;
     }
 
     public @Unsigned int partitionCount() {
         return segment.get(LAYOUT$partitionCount, OFFSET$partitionCount);
     }
 
-    public void partitionCount(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV partitionCount(@Unsigned int value) {
         segment.set(LAYOUT$partitionCount, OFFSET$partitionCount, value);
+        return this;
     }
 
     public @Unsigned int maxInstanceInGlobalPartitionCount() {
         return segment.get(LAYOUT$maxInstanceInGlobalPartitionCount, OFFSET$maxInstanceInGlobalPartitionCount);
     }
 
-    public void maxInstanceInGlobalPartitionCount(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureInstancesInputNV maxInstanceInGlobalPartitionCount(@Unsigned int value) {
         segment.set(LAYOUT$maxInstanceInGlobalPartitionCount, OFFSET$maxInstanceInGlobalPartitionCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

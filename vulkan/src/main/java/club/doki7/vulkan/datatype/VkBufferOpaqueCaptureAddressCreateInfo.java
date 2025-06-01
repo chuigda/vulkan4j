@@ -193,8 +193,9 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBufferOpaqueCaptureAddressCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBufferOpaqueCaptureAddressCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long opaqueCaptureAddress() {
         return segment.get(LAYOUT$opaqueCaptureAddress, OFFSET$opaqueCaptureAddress);
     }
 
-    public void opaqueCaptureAddress(@Unsigned long value) {
+    public VkBufferOpaqueCaptureAddressCreateInfo opaqueCaptureAddress(@Unsigned long value) {
         segment.set(LAYOUT$opaqueCaptureAddress, OFFSET$opaqueCaptureAddress, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

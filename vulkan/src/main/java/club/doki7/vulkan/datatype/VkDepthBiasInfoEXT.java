@@ -195,8 +195,9 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDepthBiasInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDepthBiasInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public float depthBiasConstantFactor() {
         return segment.get(LAYOUT$depthBiasConstantFactor, OFFSET$depthBiasConstantFactor);
     }
 
-    public void depthBiasConstantFactor(float value) {
+    public VkDepthBiasInfoEXT depthBiasConstantFactor(float value) {
         segment.set(LAYOUT$depthBiasConstantFactor, OFFSET$depthBiasConstantFactor, value);
+        return this;
     }
 
     public float depthBiasClamp() {
         return segment.get(LAYOUT$depthBiasClamp, OFFSET$depthBiasClamp);
     }
 
-    public void depthBiasClamp(float value) {
+    public VkDepthBiasInfoEXT depthBiasClamp(float value) {
         segment.set(LAYOUT$depthBiasClamp, OFFSET$depthBiasClamp, value);
+        return this;
     }
 
     public float depthBiasSlopeFactor() {
         return segment.get(LAYOUT$depthBiasSlopeFactor, OFFSET$depthBiasSlopeFactor);
     }
 
-    public void depthBiasSlopeFactor(float value) {
+    public VkDepthBiasInfoEXT depthBiasSlopeFactor(float value) {
         segment.set(LAYOUT$depthBiasSlopeFactor, OFFSET$depthBiasSlopeFactor, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

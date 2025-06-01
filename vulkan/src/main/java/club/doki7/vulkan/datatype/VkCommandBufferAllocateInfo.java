@@ -195,8 +195,9 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferAllocateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCommandBufferAllocateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkCommandPool commandPool() {
@@ -219,24 +221,27 @@ public record VkCommandBufferAllocateInfo(@NotNull MemorySegment segment) implem
         return new VkCommandPool(s);
     }
 
-    public void commandPool(@Nullable VkCommandPool value) {
+    public VkCommandBufferAllocateInfo commandPool(@Nullable VkCommandPool value) {
         segment.set(LAYOUT$commandPool, OFFSET$commandPool, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkCommandBufferLevel.class) int level() {
         return segment.get(LAYOUT$level, OFFSET$level);
     }
 
-    public void level(@EnumType(VkCommandBufferLevel.class) int value) {
+    public VkCommandBufferAllocateInfo level(@EnumType(VkCommandBufferLevel.class) int value) {
         segment.set(LAYOUT$level, OFFSET$level, value);
+        return this;
     }
 
     public @Unsigned int commandBufferCount() {
         return segment.get(LAYOUT$commandBufferCount, OFFSET$commandBufferCount);
     }
 
-    public void commandBufferCount(@Unsigned int value) {
+    public VkCommandBufferAllocateInfo commandBufferCount(@Unsigned int value) {
         segment.set(LAYOUT$commandBufferCount, OFFSET$commandBufferCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -172,8 +172,9 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$refreshDuration, OFFSET$refreshDuration);
     }
 
-    public void refreshDuration(@Unsigned long value) {
+    public VkRefreshCycleDurationGOOGLE refreshDuration(@Unsigned long value) {
         segment.set(LAYOUT$refreshDuration, OFFSET$refreshDuration, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

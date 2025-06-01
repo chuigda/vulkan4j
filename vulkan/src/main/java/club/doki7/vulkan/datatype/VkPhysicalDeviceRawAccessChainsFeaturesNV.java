@@ -193,8 +193,9 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRawAccessChainsFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceRawAccessChainsFeaturesNV(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRawAccessChainsFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderRawAccessChains() {
         return segment.get(LAYOUT$shaderRawAccessChains, OFFSET$shaderRawAccessChains);
     }
 
-    public void shaderRawAccessChains(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRawAccessChainsFeaturesNV shaderRawAccessChains(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderRawAccessChains, OFFSET$shaderRawAccessChains, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

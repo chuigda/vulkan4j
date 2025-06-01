@@ -193,8 +193,9 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewMinLodCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkImageViewMinLodCreateInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageViewMinLodCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public float minLod() {
         return segment.get(LAYOUT$minLod, OFFSET$minLod);
     }
 
-    public void minLod(float value) {
+    public VkImageViewMinLodCreateInfoEXT minLod(float value) {
         segment.set(LAYOUT$minLod, OFFSET$minLod, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

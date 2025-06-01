@@ -195,8 +195,9 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderCorePropertiesARM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceShaderCorePropertiesARM(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderCorePropertiesARM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int pixelRate() {
         return segment.get(LAYOUT$pixelRate, OFFSET$pixelRate);
     }
 
-    public void pixelRate(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesARM pixelRate(@Unsigned int value) {
         segment.set(LAYOUT$pixelRate, OFFSET$pixelRate, value);
+        return this;
     }
 
     public @Unsigned int texelRate() {
         return segment.get(LAYOUT$texelRate, OFFSET$texelRate);
     }
 
-    public void texelRate(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesARM texelRate(@Unsigned int value) {
         segment.set(LAYOUT$texelRate, OFFSET$texelRate, value);
+        return this;
     }
 
     public @Unsigned int fmaRate() {
         return segment.get(LAYOUT$fmaRate, OFFSET$fmaRate);
     }
 
-    public void fmaRate(@Unsigned int value) {
+    public VkPhysicalDeviceShaderCorePropertiesARM fmaRate(@Unsigned int value) {
         segment.set(LAYOUT$fmaRate, OFFSET$fmaRate, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

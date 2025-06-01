@@ -198,8 +198,9 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceHostImageCopyProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,16 +211,18 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceHostImageCopyProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int copySrcLayoutCount() {
         return segment.get(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount);
     }
 
-    public void copySrcLayoutCount(@Unsigned int value) {
+    public VkPhysicalDeviceHostImageCopyProperties copySrcLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$copySrcLayoutCount, OFFSET$copySrcLayoutCount, value);
+        return this;
     }
 
 
@@ -235,9 +238,10 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return new IntPtr(s);
     }
 
-    public void pCopySrcLayouts(@Nullable @EnumType(VkImageLayout.class) IntPtr value) {
+    public VkPhysicalDeviceHostImageCopyProperties pCopySrcLayouts(@Nullable @EnumType(VkImageLayout.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopySrcLayoutsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkImageLayout.class) MemorySegment pCopySrcLayoutsRaw() {
@@ -252,8 +256,9 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return segment.get(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount);
     }
 
-    public void copyDstLayoutCount(@Unsigned int value) {
+    public VkPhysicalDeviceHostImageCopyProperties copyDstLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$copyDstLayoutCount, OFFSET$copyDstLayoutCount, value);
+        return this;
     }
 
 
@@ -269,9 +274,10 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return new IntPtr(s);
     }
 
-    public void pCopyDstLayouts(@Nullable @EnumType(VkImageLayout.class) IntPtr value) {
+    public VkPhysicalDeviceHostImageCopyProperties pCopyDstLayouts(@Nullable @EnumType(VkImageLayout.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCopyDstLayoutsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkImageLayout.class) MemorySegment pCopyDstLayoutsRaw() {
@@ -286,8 +292,9 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return new BytePtr(optimalTilingLayoutUUIDRaw());
     }
 
-    public void optimalTilingLayoutUUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$optimalTilingLayoutUUID, SIZE$optimalTilingLayoutUUID);
+        return this;
     }
 
     public MemorySegment optimalTilingLayoutUUIDRaw() {
@@ -298,8 +305,9 @@ public record VkPhysicalDeviceHostImageCopyProperties(@NotNull MemorySegment seg
         return segment.get(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements);
     }
 
-    public void identicalMemoryTypeRequirements(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceHostImageCopyProperties identicalMemoryTypeRequirements(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$identicalMemoryTypeRequirements, OFFSET$identicalMemoryTypeRequirements, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

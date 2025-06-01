@@ -193,8 +193,9 @@ public record VkDisplayEventInfoEXT(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayEventInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDisplayEventInfoEXT(@NotNull MemorySegment segment) implements I
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDisplayEventInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDisplayEventTypeEXT.class) int displayEvent() {
         return segment.get(LAYOUT$displayEvent, OFFSET$displayEvent);
     }
 
-    public void displayEvent(@EnumType(VkDisplayEventTypeEXT.class) int value) {
+    public VkDisplayEventInfoEXT displayEvent(@EnumType(VkDisplayEventTypeEXT.class) int value) {
         segment.set(LAYOUT$displayEvent, OFFSET$displayEvent, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

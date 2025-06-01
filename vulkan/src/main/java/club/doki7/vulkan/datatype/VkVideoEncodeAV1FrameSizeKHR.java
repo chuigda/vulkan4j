@@ -174,24 +174,27 @@ public record VkVideoEncodeAV1FrameSizeKHR(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$intraFrameSize, OFFSET$intraFrameSize);
     }
 
-    public void intraFrameSize(@Unsigned int value) {
+    public VkVideoEncodeAV1FrameSizeKHR intraFrameSize(@Unsigned int value) {
         segment.set(LAYOUT$intraFrameSize, OFFSET$intraFrameSize, value);
+        return this;
     }
 
     public @Unsigned int predictiveFrameSize() {
         return segment.get(LAYOUT$predictiveFrameSize, OFFSET$predictiveFrameSize);
     }
 
-    public void predictiveFrameSize(@Unsigned int value) {
+    public VkVideoEncodeAV1FrameSizeKHR predictiveFrameSize(@Unsigned int value) {
         segment.set(LAYOUT$predictiveFrameSize, OFFSET$predictiveFrameSize, value);
+        return this;
     }
 
     public @Unsigned int bipredictiveFrameSize() {
         return segment.get(LAYOUT$bipredictiveFrameSize, OFFSET$bipredictiveFrameSize);
     }
 
-    public void bipredictiveFrameSize(@Unsigned int value) {
+    public VkVideoEncodeAV1FrameSizeKHR bipredictiveFrameSize(@Unsigned int value) {
         segment.set(LAYOUT$bipredictiveFrameSize, OFFSET$bipredictiveFrameSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

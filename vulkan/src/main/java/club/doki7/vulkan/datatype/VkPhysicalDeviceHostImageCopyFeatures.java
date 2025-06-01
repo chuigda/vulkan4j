@@ -193,8 +193,9 @@ public record VkPhysicalDeviceHostImageCopyFeatures(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceHostImageCopyFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceHostImageCopyFeatures(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceHostImageCopyFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int hostImageCopy() {
         return segment.get(LAYOUT$hostImageCopy, OFFSET$hostImageCopy);
     }
 
-    public void hostImageCopy(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceHostImageCopyFeatures hostImageCopy(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$hostImageCopy, OFFSET$hostImageCopy, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

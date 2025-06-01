@@ -193,8 +193,9 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderImageFootprintFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceShaderImageFootprintFeaturesNV(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderImageFootprintFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int imageFootprint() {
         return segment.get(LAYOUT$imageFootprint, OFFSET$imageFootprint);
     }
 
-    public void imageFootprint(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderImageFootprintFeaturesNV imageFootprint(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$imageFootprint, OFFSET$imageFootprint, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderBfloat16FeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceShaderBfloat16FeaturesKHR(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderBfloat16FeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderBFloat16Type() {
         return segment.get(LAYOUT$shaderBFloat16Type, OFFSET$shaderBFloat16Type);
     }
 
-    public void shaderBFloat16Type(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderBfloat16FeaturesKHR shaderBFloat16Type(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16Type, OFFSET$shaderBFloat16Type, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderBFloat16DotProduct() {
         return segment.get(LAYOUT$shaderBFloat16DotProduct, OFFSET$shaderBFloat16DotProduct);
     }
 
-    public void shaderBFloat16DotProduct(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderBfloat16FeaturesKHR shaderBFloat16DotProduct(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16DotProduct, OFFSET$shaderBFloat16DotProduct, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderBFloat16CooperativeMatrix() {
         return segment.get(LAYOUT$shaderBFloat16CooperativeMatrix, OFFSET$shaderBFloat16CooperativeMatrix);
     }
 
-    public void shaderBFloat16CooperativeMatrix(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderBfloat16FeaturesKHR shaderBFloat16CooperativeMatrix(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderBFloat16CooperativeMatrix, OFFSET$shaderBFloat16CooperativeMatrix, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -197,8 +197,9 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceInlineUniformBlockProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkPhysicalDeviceInlineUniformBlockProperties(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceInlineUniformBlockProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxInlineUniformBlockSize() {
         return segment.get(LAYOUT$maxInlineUniformBlockSize, OFFSET$maxInlineUniformBlockSize);
     }
 
-    public void maxInlineUniformBlockSize(@Unsigned int value) {
+    public VkPhysicalDeviceInlineUniformBlockProperties maxInlineUniformBlockSize(@Unsigned int value) {
         segment.set(LAYOUT$maxInlineUniformBlockSize, OFFSET$maxInlineUniformBlockSize, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorInlineUniformBlocks() {
         return segment.get(LAYOUT$maxPerStageDescriptorInlineUniformBlocks, OFFSET$maxPerStageDescriptorInlineUniformBlocks);
     }
 
-    public void maxPerStageDescriptorInlineUniformBlocks(@Unsigned int value) {
+    public VkPhysicalDeviceInlineUniformBlockProperties maxPerStageDescriptorInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorInlineUniformBlocks, OFFSET$maxPerStageDescriptorInlineUniformBlocks, value);
+        return this;
     }
 
     public @Unsigned int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() {
         return segment.get(LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, OFFSET$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks);
     }
 
-    public void maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(@Unsigned int value) {
+    public VkPhysicalDeviceInlineUniformBlockProperties maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, OFFSET$maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetInlineUniformBlocks() {
         return segment.get(LAYOUT$maxDescriptorSetInlineUniformBlocks, OFFSET$maxDescriptorSetInlineUniformBlocks);
     }
 
-    public void maxDescriptorSetInlineUniformBlocks(@Unsigned int value) {
+    public VkPhysicalDeviceInlineUniformBlockProperties maxDescriptorSetInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetInlineUniformBlocks, OFFSET$maxDescriptorSetInlineUniformBlocks, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() {
         return segment.get(LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, OFFSET$maxDescriptorSetUpdateAfterBindInlineUniformBlocks);
     }
 
-    public void maxDescriptorSetUpdateAfterBindInlineUniformBlocks(@Unsigned int value) {
+    public VkPhysicalDeviceInlineUniformBlockProperties maxDescriptorSetUpdateAfterBindInlineUniformBlocks(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, OFFSET$maxDescriptorSetUpdateAfterBindInlineUniformBlocks, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteIndirectExecutionSetPipelineEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWriteIndirectExecutionSetPipelineEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int index() {
         return segment.get(LAYOUT$index, OFFSET$index);
     }
 
-    public void index(@Unsigned int value) {
+    public VkWriteIndirectExecutionSetPipelineEXT index(@Unsigned int value) {
         segment.set(LAYOUT$index, OFFSET$index, value);
+        return this;
     }
 
     public @Nullable VkPipeline pipeline() {
@@ -226,8 +229,9 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
         return new VkPipeline(s);
     }
 
-    public void pipeline(@Nullable VkPipeline value) {
+    public VkWriteIndirectExecutionSetPipelineEXT pipeline(@Nullable VkPipeline value) {
         segment.set(LAYOUT$pipeline, OFFSET$pipeline, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

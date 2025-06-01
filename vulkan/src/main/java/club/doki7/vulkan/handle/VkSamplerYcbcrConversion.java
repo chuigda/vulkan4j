@@ -137,6 +137,7 @@ public record VkSamplerYcbcrConversion(@NotNull MemorySegment segment) implement
         public static Ptr allocateV(Arena arena, @Nullable VkSamplerYcbcrConversion ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

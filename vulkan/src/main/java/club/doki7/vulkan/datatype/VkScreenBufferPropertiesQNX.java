@@ -194,8 +194,9 @@ public record VkScreenBufferPropertiesQNX(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkScreenBufferPropertiesQNX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkScreenBufferPropertiesQNX(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkScreenBufferPropertiesQNX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long allocationSize() {
         return segment.get(LAYOUT$allocationSize, OFFSET$allocationSize);
     }
 
-    public void allocationSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkScreenBufferPropertiesQNX allocationSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$allocationSize, OFFSET$allocationSize, value);
+        return this;
     }
 
     public @Unsigned int memoryTypeBits() {
         return segment.get(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits);
     }
 
-    public void memoryTypeBits(@Unsigned int value) {
+    public VkScreenBufferPropertiesQNX memoryTypeBits(@Unsigned int value) {
         segment.set(LAYOUT$memoryTypeBits, OFFSET$memoryTypeBits, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

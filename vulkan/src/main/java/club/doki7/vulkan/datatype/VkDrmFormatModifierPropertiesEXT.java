@@ -174,24 +174,27 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
     }
 
-    public void drmFormatModifier(@Unsigned long value) {
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifier(@Unsigned long value) {
         segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
+        return this;
     }
 
     public @Unsigned int drmFormatModifierPlaneCount() {
         return segment.get(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount);
     }
 
-    public void drmFormatModifierPlaneCount(@Unsigned int value) {
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierPlaneCount(@Unsigned int value) {
         segment.set(LAYOUT$drmFormatModifierPlaneCount, OFFSET$drmFormatModifierPlaneCount, value);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags.class) int drmFormatModifierTilingFeatures() {
         return segment.get(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures);
     }
 
-    public void drmFormatModifierTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
+    public VkDrmFormatModifierPropertiesEXT drmFormatModifierTilingFeatures(@EnumType(VkFormatFeatureFlags.class) int value) {
         segment.set(LAYOUT$drmFormatModifierTilingFeatures, OFFSET$drmFormatModifierTilingFeatures, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

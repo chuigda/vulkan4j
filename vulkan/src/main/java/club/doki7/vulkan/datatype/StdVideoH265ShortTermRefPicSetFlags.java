@@ -173,9 +173,10 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void inter_ref_pic_set_prediction_flag(boolean value) {
+    public StdVideoH265ShortTermRefPicSetFlags inter_ref_pic_set_prediction_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign, LAYOUT$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean delta_rps_sign() {
@@ -183,9 +184,10 @@ public record StdVideoH265ShortTermRefPicSetFlags(@NotNull MemorySegment segment
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void delta_rps_sign(boolean value) {
+    public StdVideoH265ShortTermRefPicSetFlags delta_rps_sign(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign, LAYOUT$bitfield$inter_ref_pic_set_prediction_flag$delta_rps_sign);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

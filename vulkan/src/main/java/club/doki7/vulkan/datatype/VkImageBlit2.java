@@ -196,8 +196,9 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageBlit2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,25 +209,28 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageBlit2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkImageSubresourceLayers srcSubresource() {
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$srcSubresource, LAYOUT$srcSubresource));
     }
 
-    public void srcSubresource(@NotNull VkImageSubresourceLayers value) {
+    public VkImageBlit2 srcSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcSubresource, SIZE$srcSubresource);
+        return this;
     }
 
     public VkOffset3D.Ptr srcOffsets() {
         return new VkOffset3D.Ptr(srcOffsetsRaw());
     }
 
-    public void srcOffsets(VkOffset3D.Ptr value) {
+    public VkImageBlit2 srcOffsets(VkOffset3D.Ptr value) {
         MemorySegment s = srcOffsetsRaw();
         s.copyFrom(value.segment());
+        return this;
     }
 
     public VkOffset3D srcOffsetsAt(int index) {
@@ -247,17 +251,19 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         return new VkImageSubresourceLayers(segment.asSlice(OFFSET$dstSubresource, LAYOUT$dstSubresource));
     }
 
-    public void dstSubresource(@NotNull VkImageSubresourceLayers value) {
+    public VkImageBlit2 dstSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
+        return this;
     }
 
     public VkOffset3D.Ptr dstOffsets() {
         return new VkOffset3D.Ptr(dstOffsetsRaw());
     }
 
-    public void dstOffsets(VkOffset3D.Ptr value) {
+    public VkImageBlit2 dstOffsets(VkOffset3D.Ptr value) {
         MemorySegment s = dstOffsetsRaw();
         s.copyFrom(value.segment());
+        return this;
     }
 
     public VkOffset3D dstOffsetsAt(int index) {

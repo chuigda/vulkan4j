@@ -176,24 +176,27 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$num_long_term_sps, OFFSET$num_long_term_sps);
     }
 
-    public void num_long_term_sps(@Unsigned byte value) {
+    public StdVideoEncodeH265LongTermRefPics num_long_term_sps(@Unsigned byte value) {
         segment.set(LAYOUT$num_long_term_sps, OFFSET$num_long_term_sps, value);
+        return this;
     }
 
     public @Unsigned byte num_long_term_pics() {
         return segment.get(LAYOUT$num_long_term_pics, OFFSET$num_long_term_pics);
     }
 
-    public void num_long_term_pics(@Unsigned byte value) {
+    public StdVideoEncodeH265LongTermRefPics num_long_term_pics(@Unsigned byte value) {
         segment.set(LAYOUT$num_long_term_pics, OFFSET$num_long_term_pics, value);
+        return this;
     }
 
     public @Unsigned BytePtr lt_idx_sps() {
         return new BytePtr(lt_idx_spsRaw());
     }
 
-    public void lt_idx_sps(@Unsigned BytePtr value) {
+    public StdVideoEncodeH265LongTermRefPics lt_idx_sps(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$lt_idx_sps, SIZE$lt_idx_sps);
+        return this;
     }
 
     public MemorySegment lt_idx_spsRaw() {
@@ -204,8 +207,9 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return new BytePtr(poc_lsb_ltRaw());
     }
 
-    public void poc_lsb_lt(@Unsigned BytePtr value) {
+    public StdVideoEncodeH265LongTermRefPics poc_lsb_lt(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$poc_lsb_lt, SIZE$poc_lsb_lt);
+        return this;
     }
 
     public MemorySegment poc_lsb_ltRaw() {
@@ -216,16 +220,18 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$used_by_curr_pic_lt_flag, OFFSET$used_by_curr_pic_lt_flag);
     }
 
-    public void used_by_curr_pic_lt_flag(@Unsigned short value) {
+    public StdVideoEncodeH265LongTermRefPics used_by_curr_pic_lt_flag(@Unsigned short value) {
         segment.set(LAYOUT$used_by_curr_pic_lt_flag, OFFSET$used_by_curr_pic_lt_flag, value);
+        return this;
     }
 
     public @Unsigned BytePtr delta_poc_msb_present_flag() {
         return new BytePtr(delta_poc_msb_present_flagRaw());
     }
 
-    public void delta_poc_msb_present_flag(@Unsigned BytePtr value) {
+    public StdVideoEncodeH265LongTermRefPics delta_poc_msb_present_flag(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_msb_present_flag, SIZE$delta_poc_msb_present_flag);
+        return this;
     }
 
     public MemorySegment delta_poc_msb_present_flagRaw() {
@@ -236,8 +242,9 @@ public record StdVideoEncodeH265LongTermRefPics(@NotNull MemorySegment segment) 
         return new BytePtr(delta_poc_msb_cycle_ltRaw());
     }
 
-    public void delta_poc_msb_cycle_lt(@Unsigned BytePtr value) {
+    public StdVideoEncodeH265LongTermRefPics delta_poc_msb_cycle_lt(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$delta_poc_msb_cycle_lt, SIZE$delta_poc_msb_cycle_lt);
+        return this;
     }
 
     public MemorySegment delta_poc_msb_cycle_ltRaw() {

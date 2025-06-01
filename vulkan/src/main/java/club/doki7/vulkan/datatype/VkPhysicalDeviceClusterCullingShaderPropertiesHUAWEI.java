@@ -196,8 +196,9 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,16 +209,18 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned IntPtr maxWorkGroupCount() {
         return new IntPtr(maxWorkGroupCountRaw());
     }
 
-    public void maxWorkGroupCount(@Unsigned IntPtr value) {
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupCount(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupCount, SIZE$maxWorkGroupCount);
+        return this;
     }
 
     public MemorySegment maxWorkGroupCountRaw() {
@@ -228,8 +231,9 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
         return new IntPtr(maxWorkGroupSizeRaw());
     }
 
-    public void maxWorkGroupSize(@Unsigned IntPtr value) {
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupSize(@Unsigned IntPtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxWorkGroupSize, SIZE$maxWorkGroupSize);
+        return this;
     }
 
     public MemorySegment maxWorkGroupSizeRaw() {
@@ -240,16 +244,18 @@ public record VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(@NotNull Memo
         return segment.get(LAYOUT$maxOutputClusterCount, OFFSET$maxOutputClusterCount);
     }
 
-    public void maxOutputClusterCount(@Unsigned int value) {
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxOutputClusterCount(@Unsigned int value) {
         segment.set(LAYOUT$maxOutputClusterCount, OFFSET$maxOutputClusterCount, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long indirectBufferOffsetAlignment() {
         return segment.get(LAYOUT$indirectBufferOffsetAlignment, OFFSET$indirectBufferOffsetAlignment);
     }
 
-    public void indirectBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI indirectBufferOffsetAlignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$indirectBufferOffsetAlignment, OFFSET$indirectBufferOffsetAlignment, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

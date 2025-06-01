@@ -194,8 +194,9 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSetPresentConfigNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSetPresentConfigNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int numFramesPerBatch() {
         return segment.get(LAYOUT$numFramesPerBatch, OFFSET$numFramesPerBatch);
     }
 
-    public void numFramesPerBatch(@Unsigned int value) {
+    public VkSetPresentConfigNV numFramesPerBatch(@Unsigned int value) {
         segment.set(LAYOUT$numFramesPerBatch, OFFSET$numFramesPerBatch, value);
+        return this;
     }
 
     public @Unsigned int presentConfigFeedback() {
         return segment.get(LAYOUT$presentConfigFeedback, OFFSET$presentConfigFeedback);
     }
 
-    public void presentConfigFeedback(@Unsigned int value) {
+    public VkSetPresentConfigNV presentConfigFeedback(@Unsigned int value) {
         segment.set(LAYOUT$presentConfigFeedback, OFFSET$presentConfigFeedback, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

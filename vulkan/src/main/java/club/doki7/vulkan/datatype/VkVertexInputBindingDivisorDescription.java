@@ -173,16 +173,18 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
         return segment.get(LAYOUT$binding, OFFSET$binding);
     }
 
-    public void binding(@Unsigned int value) {
+    public VkVertexInputBindingDivisorDescription binding(@Unsigned int value) {
         segment.set(LAYOUT$binding, OFFSET$binding, value);
+        return this;
     }
 
     public @Unsigned int divisor() {
         return segment.get(LAYOUT$divisor, OFFSET$divisor);
     }
 
-    public void divisor(@Unsigned int value) {
+    public VkVertexInputBindingDivisorDescription divisor(@Unsigned int value) {
         segment.set(LAYOUT$divisor, OFFSET$divisor, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

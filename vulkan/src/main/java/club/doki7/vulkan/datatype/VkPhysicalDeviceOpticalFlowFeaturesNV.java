@@ -193,8 +193,9 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceOpticalFlowFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceOpticalFlowFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int opticalFlow() {
         return segment.get(LAYOUT$opticalFlow, OFFSET$opticalFlow);
     }
 
-    public void opticalFlow(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceOpticalFlowFeaturesNV opticalFlow(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$opticalFlow, OFFSET$opticalFlow, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkSwapchainLatencyCreateInfoNV(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainLatencyCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSwapchainLatencyCreateInfoNV(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSwapchainLatencyCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int latencyModeEnable() {
         return segment.get(LAYOUT$latencyModeEnable, OFFSET$latencyModeEnable);
     }
 
-    public void latencyModeEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkSwapchainLatencyCreateInfoNV latencyModeEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$latencyModeEnable, OFFSET$latencyModeEnable, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

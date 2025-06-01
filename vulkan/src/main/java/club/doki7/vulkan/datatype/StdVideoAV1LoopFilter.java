@@ -176,16 +176,18 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return new StdVideoAV1LoopFilterFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoAV1LoopFilterFlags value) {
+    public StdVideoAV1LoopFilter flags(@NotNull StdVideoAV1LoopFilterFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned BytePtr loop_filter_level() {
         return new BytePtr(loop_filter_levelRaw());
     }
 
-    public void loop_filter_level(@Unsigned BytePtr value) {
+    public StdVideoAV1LoopFilter loop_filter_level(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$loop_filter_level, SIZE$loop_filter_level);
+        return this;
     }
 
     public MemorySegment loop_filter_levelRaw() {
@@ -196,24 +198,27 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$loop_filter_sharpness, OFFSET$loop_filter_sharpness);
     }
 
-    public void loop_filter_sharpness(@Unsigned byte value) {
+    public StdVideoAV1LoopFilter loop_filter_sharpness(@Unsigned byte value) {
         segment.set(LAYOUT$loop_filter_sharpness, OFFSET$loop_filter_sharpness, value);
+        return this;
     }
 
     public @Unsigned byte update_ref_delta() {
         return segment.get(LAYOUT$update_ref_delta, OFFSET$update_ref_delta);
     }
 
-    public void update_ref_delta(@Unsigned byte value) {
+    public StdVideoAV1LoopFilter update_ref_delta(@Unsigned byte value) {
         segment.set(LAYOUT$update_ref_delta, OFFSET$update_ref_delta, value);
+        return this;
     }
 
     public BytePtr loop_filter_ref_deltas() {
         return new BytePtr(loop_filter_ref_deltasRaw());
     }
 
-    public void loop_filter_ref_deltas(BytePtr value) {
+    public StdVideoAV1LoopFilter loop_filter_ref_deltas(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$loop_filter_ref_deltas, SIZE$loop_filter_ref_deltas);
+        return this;
     }
 
     public MemorySegment loop_filter_ref_deltasRaw() {
@@ -224,16 +229,18 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$update_mode_delta, OFFSET$update_mode_delta);
     }
 
-    public void update_mode_delta(@Unsigned byte value) {
+    public StdVideoAV1LoopFilter update_mode_delta(@Unsigned byte value) {
         segment.set(LAYOUT$update_mode_delta, OFFSET$update_mode_delta, value);
+        return this;
     }
 
     public BytePtr loop_filter_mode_deltas() {
         return new BytePtr(loop_filter_mode_deltasRaw());
     }
 
-    public void loop_filter_mode_deltas(BytePtr value) {
+    public StdVideoAV1LoopFilter loop_filter_mode_deltas(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$loop_filter_mode_deltas, SIZE$loop_filter_mode_deltas);
+        return this;
     }
 
     public MemorySegment loop_filter_mode_deltasRaw() {

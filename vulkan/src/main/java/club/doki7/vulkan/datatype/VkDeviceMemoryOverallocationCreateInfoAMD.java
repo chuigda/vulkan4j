@@ -193,8 +193,9 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceMemoryOverallocationCreateInfoAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDeviceMemoryOverallocationCreateInfoAMD(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceMemoryOverallocationCreateInfoAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkMemoryOverallocationBehaviorAMD.class) int overallocationBehavior() {
         return segment.get(LAYOUT$overallocationBehavior, OFFSET$overallocationBehavior);
     }
 
-    public void overallocationBehavior(@EnumType(VkMemoryOverallocationBehaviorAMD.class) int value) {
+    public VkDeviceMemoryOverallocationCreateInfoAMD overallocationBehavior(@EnumType(VkMemoryOverallocationBehaviorAMD.class) int value) {
         segment.set(LAYOUT$overallocationBehavior, OFFSET$overallocationBehavior, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

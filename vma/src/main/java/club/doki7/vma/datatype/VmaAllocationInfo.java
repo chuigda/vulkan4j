@@ -236,8 +236,9 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         return segment.get(LAYOUT$memoryType, OFFSET$memoryType);
     }
 
-    public void memoryType(@Unsigned int value) {
+    public VmaAllocationInfo memoryType(@Unsigned int value) {
         segment.set(LAYOUT$memoryType, OFFSET$memoryType, value);
+        return this;
     }
 
     public @Nullable VkDeviceMemory deviceMemory() {
@@ -248,24 +249,27 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         return new VkDeviceMemory(s);
     }
 
-    public void deviceMemory(@Nullable VkDeviceMemory value) {
+    public VmaAllocationInfo deviceMemory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$deviceMemory, OFFSET$deviceMemory, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaAllocationInfo offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VmaAllocationInfo size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pMappedData() {
@@ -276,8 +280,9 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         segment.set(LAYOUT$pMappedData, OFFSET$pMappedData, value);
     }
 
-    public void pMappedData(@Nullable IPointer pointer) {
+    public VmaAllocationInfo pMappedData(@Nullable IPointer pointer) {
         pMappedData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pUserData() {
@@ -288,8 +293,9 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(@Nullable IPointer pointer) {
+    public VmaAllocationInfo pUserData(@Nullable IPointer pointer) {
         pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -304,9 +310,10 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         return new BytePtr(s);
     }
 
-    public void pName(@Nullable BytePtr value) {
+    public VmaAllocationInfo pName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pNameRaw() {

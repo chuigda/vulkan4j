@@ -194,8 +194,9 @@ public record VkMultiviewPerViewAttributesInfoNVX(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMultiviewPerViewAttributesInfoNVX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkMultiviewPerViewAttributesInfoNVX(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMultiviewPerViewAttributesInfoNVX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int perViewAttributes() {
         return segment.get(LAYOUT$perViewAttributes, OFFSET$perViewAttributes);
     }
 
-    public void perViewAttributes(@NativeType("VkBool32") @Unsigned int value) {
+    public VkMultiviewPerViewAttributesInfoNVX perViewAttributes(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$perViewAttributes, OFFSET$perViewAttributes, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int perViewAttributesPositionXOnly() {
         return segment.get(LAYOUT$perViewAttributesPositionXOnly, OFFSET$perViewAttributesPositionXOnly);
     }
 
-    public void perViewAttributesPositionXOnly(@NativeType("VkBool32") @Unsigned int value) {
+    public VkMultiviewPerViewAttributesInfoNVX perViewAttributesPositionXOnly(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$perViewAttributesPositionXOnly, OFFSET$perViewAttributesPositionXOnly, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

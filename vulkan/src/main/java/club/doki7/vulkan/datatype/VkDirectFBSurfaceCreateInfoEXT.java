@@ -195,8 +195,9 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDirectFBSurfaceCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDirectFBSurfaceCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
+    public VkDirectFBSurfaceCreateInfoEXT flags(@EnumType(VkDirectFBSurfaceCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct {@link PointerPtr#size} property. It's up
@@ -230,9 +233,10 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return new PointerPtr(s);
     }
 
-    public void dfb(@Nullable PointerPtr value) {
+    public VkDirectFBSurfaceCreateInfoEXT dfb(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         dfbRaw(s);
+        return this;
     }
 
     public @Pointer(comment="IDirectFB*") MemorySegment dfbRaw() {
@@ -254,9 +258,10 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         return new PointerPtr(s);
     }
 
-    public void surface(@Nullable PointerPtr value) {
+    public VkDirectFBSurfaceCreateInfoEXT surface(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         surfaceRaw(s);
+        return this;
     }
 
     public @Pointer(comment="IDirectFBSurface*") MemorySegment surfaceRaw() {

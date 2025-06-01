@@ -194,8 +194,9 @@ public record VkPhysicalDeviceMaintenance3Properties(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMaintenance3Properties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceMaintenance3Properties(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMaintenance3Properties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxPerSetDescriptors() {
         return segment.get(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors);
     }
 
-    public void maxPerSetDescriptors(@Unsigned int value) {
+    public VkPhysicalDeviceMaintenance3Properties maxPerSetDescriptors(@Unsigned int value) {
         segment.set(LAYOUT$maxPerSetDescriptors, OFFSET$maxPerSetDescriptors, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long maxMemoryAllocationSize() {
         return segment.get(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize);
     }
 
-    public void maxMemoryAllocationSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkPhysicalDeviceMaintenance3Properties maxMemoryAllocationSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxMemoryAllocationSize, OFFSET$maxMemoryAllocationSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

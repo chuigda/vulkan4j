@@ -177,9 +177,10 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void field_pic_flag(boolean value) {
+    public StdVideoDecodeH264PictureInfoFlags field_pic_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag$complementary_field_pair, LAYOUT$bitfield$field_pic_flag$complementary_field_pair);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean is_intra() {
@@ -187,9 +188,10 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void is_intra(boolean value) {
+    public StdVideoDecodeH264PictureInfoFlags is_intra(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag$complementary_field_pair, LAYOUT$bitfield$field_pic_flag$complementary_field_pair);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean IdrPicFlag() {
@@ -197,9 +199,10 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void IdrPicFlag(boolean value) {
+    public StdVideoDecodeH264PictureInfoFlags IdrPicFlag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag$complementary_field_pair, LAYOUT$bitfield$field_pic_flag$complementary_field_pair);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean bottom_field_flag() {
@@ -207,9 +210,10 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void bottom_field_flag(boolean value) {
+    public StdVideoDecodeH264PictureInfoFlags bottom_field_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag$complementary_field_pair, LAYOUT$bitfield$field_pic_flag$complementary_field_pair);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean is_reference() {
@@ -217,9 +221,10 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void is_reference(boolean value) {
+    public StdVideoDecodeH264PictureInfoFlags is_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag$complementary_field_pair, LAYOUT$bitfield$field_pic_flag$complementary_field_pair);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean complementary_field_pair() {
@@ -227,9 +232,10 @@ public record StdVideoDecodeH264PictureInfoFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void complementary_field_pair(boolean value) {
+    public StdVideoDecodeH264PictureInfoFlags complementary_field_pair(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$field_pic_flag$complementary_field_pair, LAYOUT$bitfield$field_pic_flag$complementary_field_pair);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -173,13 +173,15 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBaseInStructure sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
-    public void pNext(@Nullable IVkBaseInStructure value) {
+    public VkBaseInStructure pNext(@Nullable IVkBaseInStructure value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNextRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkBaseInStructure.Ptr pNext(int assumedCount) {

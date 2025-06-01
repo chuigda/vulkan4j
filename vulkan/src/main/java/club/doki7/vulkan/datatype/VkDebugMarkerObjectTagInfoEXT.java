@@ -197,8 +197,9 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugMarkerObjectTagInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,40 +210,45 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDebugMarkerObjectTagInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDebugReportObjectTypeEXT.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public void objectType(@EnumType(VkDebugReportObjectTypeEXT.class) int value) {
+    public VkDebugMarkerObjectTagInfoEXT objectType(@EnumType(VkDebugReportObjectTypeEXT.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
+        return this;
     }
 
     public @Unsigned long object() {
         return segment.get(LAYOUT$object, OFFSET$object);
     }
 
-    public void object(@Unsigned long value) {
+    public VkDebugMarkerObjectTagInfoEXT object(@Unsigned long value) {
         segment.set(LAYOUT$object, OFFSET$object, value);
+        return this;
     }
 
     public @Unsigned long tagName() {
         return segment.get(LAYOUT$tagName, OFFSET$tagName);
     }
 
-    public void tagName(@Unsigned long value) {
+    public VkDebugMarkerObjectTagInfoEXT tagName(@Unsigned long value) {
         segment.set(LAYOUT$tagName, OFFSET$tagName, value);
+        return this;
     }
 
     public @Unsigned long tagSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$tagSize);
     }
 
-    public void tagSize(@Unsigned long value) {
+    public VkDebugMarkerObjectTagInfoEXT tagSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$tagSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pTag() {
@@ -253,8 +259,9 @@ public record VkDebugMarkerObjectTagInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pTag, OFFSET$pTag, value);
     }
 
-    public void pTag(@Nullable IPointer pointer) {
+    public VkDebugMarkerObjectTagInfoEXT pTag(@Nullable IPointer pointer) {
         pTag(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

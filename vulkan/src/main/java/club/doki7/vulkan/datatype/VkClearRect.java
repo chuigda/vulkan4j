@@ -174,24 +174,27 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IVkClearRec
         return new VkRect2D(segment.asSlice(OFFSET$rect, LAYOUT$rect));
     }
 
-    public void rect(@NotNull VkRect2D value) {
+    public VkClearRect rect(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$rect, SIZE$rect);
+        return this;
     }
 
     public @Unsigned int baseArrayLayer() {
         return segment.get(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer);
     }
 
-    public void baseArrayLayer(@Unsigned int value) {
+    public VkClearRect baseArrayLayer(@Unsigned int value) {
         segment.set(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer, value);
+        return this;
     }
 
     public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@Unsigned int value) {
+    public VkClearRect layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

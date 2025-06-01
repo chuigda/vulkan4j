@@ -200,8 +200,9 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,16 +213,18 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDisplaySurfaceCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR flags(@EnumType(VkDisplaySurfaceCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkDisplayModeKHR displayMode() {
@@ -232,56 +235,63 @@ public record VkDisplaySurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new VkDisplayModeKHR(s);
     }
 
-    public void displayMode(@Nullable VkDisplayModeKHR value) {
+    public VkDisplaySurfaceCreateInfoKHR displayMode(@Nullable VkDisplayModeKHR value) {
         segment.set(LAYOUT$displayMode, OFFSET$displayMode, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int planeIndex() {
         return segment.get(LAYOUT$planeIndex, OFFSET$planeIndex);
     }
 
-    public void planeIndex(@Unsigned int value) {
+    public VkDisplaySurfaceCreateInfoKHR planeIndex(@Unsigned int value) {
         segment.set(LAYOUT$planeIndex, OFFSET$planeIndex, value);
+        return this;
     }
 
     public @Unsigned int planeStackIndex() {
         return segment.get(LAYOUT$planeStackIndex, OFFSET$planeStackIndex);
     }
 
-    public void planeStackIndex(@Unsigned int value) {
+    public VkDisplaySurfaceCreateInfoKHR planeStackIndex(@Unsigned int value) {
         segment.set(LAYOUT$planeStackIndex, OFFSET$planeStackIndex, value);
+        return this;
     }
 
     public @EnumType(VkSurfaceTransformFlagsKHR.class) int transform() {
         return segment.get(LAYOUT$transform, OFFSET$transform);
     }
 
-    public void transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR transform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$transform, OFFSET$transform, value);
+        return this;
     }
 
     public float globalAlpha() {
         return segment.get(LAYOUT$globalAlpha, OFFSET$globalAlpha);
     }
 
-    public void globalAlpha(float value) {
+    public VkDisplaySurfaceCreateInfoKHR globalAlpha(float value) {
         segment.set(LAYOUT$globalAlpha, OFFSET$globalAlpha, value);
+        return this;
     }
 
     public @EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int alphaMode() {
         return segment.get(LAYOUT$alphaMode, OFFSET$alphaMode);
     }
 
-    public void alphaMode(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
+    public VkDisplaySurfaceCreateInfoKHR alphaMode(@EnumType(VkDisplayPlaneAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$alphaMode, OFFSET$alphaMode, value);
+        return this;
     }
 
     public @NotNull VkExtent2D imageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
     }
 
-    public void imageExtent(@NotNull VkExtent2D value) {
+    public VkDisplaySurfaceCreateInfoKHR imageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

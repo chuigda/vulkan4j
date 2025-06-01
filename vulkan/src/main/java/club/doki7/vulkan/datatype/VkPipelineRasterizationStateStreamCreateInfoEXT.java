@@ -194,8 +194,9 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationStateStreamCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPipelineRasterizationStateStreamCreateInfoEXT(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineRasterizationStateStreamCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int value) {
+    public VkPipelineRasterizationStateStreamCreateInfoEXT flags(@EnumType(VkPipelineRasterizationStateStreamCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int rasterizationStream() {
         return segment.get(LAYOUT$rasterizationStream, OFFSET$rasterizationStream);
     }
 
-    public void rasterizationStream(@Unsigned int value) {
+    public VkPipelineRasterizationStateStreamCreateInfoEXT rasterizationStream(@Unsigned int value) {
         segment.set(LAYOUT$rasterizationStream, OFFSET$rasterizationStream, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

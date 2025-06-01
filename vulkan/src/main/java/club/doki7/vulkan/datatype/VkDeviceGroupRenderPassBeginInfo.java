@@ -195,8 +195,9 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceGroupRenderPassBeginInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceGroupRenderPassBeginInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int deviceMask() {
         return segment.get(LAYOUT$deviceMask, OFFSET$deviceMask);
     }
 
-    public void deviceMask(@Unsigned int value) {
+    public VkDeviceGroupRenderPassBeginInfo deviceMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceMask, OFFSET$deviceMask, value);
+        return this;
     }
 
     public @Unsigned int deviceRenderAreaCount() {
         return segment.get(LAYOUT$deviceRenderAreaCount, OFFSET$deviceRenderAreaCount);
     }
 
-    public void deviceRenderAreaCount(@Unsigned int value) {
+    public VkDeviceGroupRenderPassBeginInfo deviceRenderAreaCount(@Unsigned int value) {
         segment.set(LAYOUT$deviceRenderAreaCount, OFFSET$deviceRenderAreaCount, value);
+        return this;
     }
 
-    public void pDeviceRenderAreas(@Nullable IVkRect2D value) {
+    public VkDeviceGroupRenderPassBeginInfo pDeviceRenderAreas(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceRenderAreasRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRect2D.Ptr pDeviceRenderAreas(int assumedCount) {

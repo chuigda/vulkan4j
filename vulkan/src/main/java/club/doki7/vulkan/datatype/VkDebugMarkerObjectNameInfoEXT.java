@@ -195,8 +195,9 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugMarkerObjectNameInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,24 +208,27 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDebugMarkerObjectNameInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDebugReportObjectTypeEXT.class) int objectType() {
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public void objectType(@EnumType(VkDebugReportObjectTypeEXT.class) int value) {
+    public VkDebugMarkerObjectNameInfoEXT objectType(@EnumType(VkDebugReportObjectTypeEXT.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
+        return this;
     }
 
     public @Unsigned long object() {
         return segment.get(LAYOUT$object, OFFSET$object);
     }
 
-    public void object(@Unsigned long value) {
+    public VkDebugMarkerObjectNameInfoEXT object(@Unsigned long value) {
         segment.set(LAYOUT$object, OFFSET$object, value);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -239,9 +243,10 @@ public record VkDebugMarkerObjectNameInfoEXT(@NotNull MemorySegment segment) imp
         return new BytePtr(s);
     }
 
-    public void pObjectName(@Nullable BytePtr value) {
+    public VkDebugMarkerObjectNameInfoEXT pObjectName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pObjectNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pObjectNameRaw() {

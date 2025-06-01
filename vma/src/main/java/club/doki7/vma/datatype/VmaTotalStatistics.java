@@ -180,9 +180,10 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         return new VmaDetailedStatistics.Ptr(memoryTypeRaw());
     }
 
-    public void memoryType(VmaDetailedStatistics.Ptr value) {
+    public VmaTotalStatistics memoryType(VmaDetailedStatistics.Ptr value) {
         MemorySegment s = memoryTypeRaw();
         s.copyFrom(value.segment());
+        return this;
     }
 
     public VmaDetailedStatistics memoryTypeAt(int index) {
@@ -203,9 +204,10 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         return new VmaDetailedStatistics.Ptr(memoryHeapRaw());
     }
 
-    public void memoryHeap(VmaDetailedStatistics.Ptr value) {
+    public VmaTotalStatistics memoryHeap(VmaDetailedStatistics.Ptr value) {
         MemorySegment s = memoryHeapRaw();
         s.copyFrom(value.segment());
+        return this;
     }
 
     public VmaDetailedStatistics memoryHeapAt(int index) {
@@ -226,8 +228,9 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         return new VmaDetailedStatistics(segment.asSlice(OFFSET$total, LAYOUT$total));
     }
 
-    public void total(@NotNull VmaDetailedStatistics value) {
+    public VmaTotalStatistics total(@NotNull VmaDetailedStatistics value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$total, SIZE$total);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

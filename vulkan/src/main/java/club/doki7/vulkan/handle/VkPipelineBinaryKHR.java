@@ -137,6 +137,7 @@ public record VkPipelineBinaryKHR(@NotNull MemorySegment segment) implements IPo
         public static Ptr allocateV(Arena arena, @Nullable VkPipelineBinaryKHR ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

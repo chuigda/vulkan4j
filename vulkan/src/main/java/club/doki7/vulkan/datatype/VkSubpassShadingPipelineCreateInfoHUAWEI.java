@@ -194,8 +194,9 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassShadingPipelineCreateInfoHUAWEI sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSubpassShadingPipelineCreateInfoHUAWEI pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkRenderPass renderPass() {
@@ -218,16 +220,18 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
         return new VkRenderPass(s);
     }
 
-    public void renderPass(@Nullable VkRenderPass value) {
+    public VkSubpassShadingPipelineCreateInfoHUAWEI renderPass(@Nullable VkRenderPass value) {
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int subpass() {
         return segment.get(LAYOUT$subpass, OFFSET$subpass);
     }
 
-    public void subpass(@Unsigned int value) {
+    public VkSubpassShadingPipelineCreateInfoHUAWEI subpass(@Unsigned int value) {
         segment.set(LAYOUT$subpass, OFFSET$subpass, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMutableDescriptorTypeCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,21 +207,24 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMutableDescriptorTypeCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int mutableDescriptorTypeListCount() {
         return segment.get(LAYOUT$mutableDescriptorTypeListCount, OFFSET$mutableDescriptorTypeListCount);
     }
 
-    public void mutableDescriptorTypeListCount(@Unsigned int value) {
+    public VkMutableDescriptorTypeCreateInfoEXT mutableDescriptorTypeListCount(@Unsigned int value) {
         segment.set(LAYOUT$mutableDescriptorTypeListCount, OFFSET$mutableDescriptorTypeListCount, value);
+        return this;
     }
 
-    public void pMutableDescriptorTypeLists(@Nullable IVkMutableDescriptorTypeListEXT value) {
+    public VkMutableDescriptorTypeCreateInfoEXT pMutableDescriptorTypeLists(@Nullable IVkMutableDescriptorTypeListEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMutableDescriptorTypeListsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkMutableDescriptorTypeListEXT.Ptr pMutableDescriptorTypeLists(int assumedCount) {

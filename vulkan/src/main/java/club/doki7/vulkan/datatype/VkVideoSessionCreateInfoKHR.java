@@ -201,8 +201,9 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoSessionCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,29 +214,33 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoSessionCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndex() {
         return segment.get(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex);
     }
 
-    public void queueFamilyIndex(@Unsigned int value) {
+    public VkVideoSessionCreateInfoKHR queueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex, value);
+        return this;
     }
 
     public @EnumType(VkVideoSessionCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkVideoSessionCreateFlagsKHR.class) int value) {
+    public VkVideoSessionCreateInfoKHR flags(@EnumType(VkVideoSessionCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
-    public void pVideoProfile(@Nullable IVkVideoProfileInfoKHR value) {
+    public VkVideoSessionCreateInfoKHR pVideoProfile(@Nullable IVkVideoProfileInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVideoProfileRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoProfileInfoKHR.Ptr pVideoProfile(int assumedCount) {
@@ -268,45 +273,51 @@ public record VkVideoSessionCreateInfoKHR(@NotNull MemorySegment segment) implem
         return segment.get(LAYOUT$pictureFormat, OFFSET$pictureFormat);
     }
 
-    public void pictureFormat(@EnumType(VkFormat.class) int value) {
+    public VkVideoSessionCreateInfoKHR pictureFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$pictureFormat, OFFSET$pictureFormat, value);
+        return this;
     }
 
     public @NotNull VkExtent2D maxCodedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxCodedExtent, LAYOUT$maxCodedExtent));
     }
 
-    public void maxCodedExtent(@NotNull VkExtent2D value) {
+    public VkVideoSessionCreateInfoKHR maxCodedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxCodedExtent, SIZE$maxCodedExtent);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int referencePictureFormat() {
         return segment.get(LAYOUT$referencePictureFormat, OFFSET$referencePictureFormat);
     }
 
-    public void referencePictureFormat(@EnumType(VkFormat.class) int value) {
+    public VkVideoSessionCreateInfoKHR referencePictureFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$referencePictureFormat, OFFSET$referencePictureFormat, value);
+        return this;
     }
 
     public @Unsigned int maxDpbSlots() {
         return segment.get(LAYOUT$maxDpbSlots, OFFSET$maxDpbSlots);
     }
 
-    public void maxDpbSlots(@Unsigned int value) {
+    public VkVideoSessionCreateInfoKHR maxDpbSlots(@Unsigned int value) {
         segment.set(LAYOUT$maxDpbSlots, OFFSET$maxDpbSlots, value);
+        return this;
     }
 
     public @Unsigned int maxActiveReferencePictures() {
         return segment.get(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures);
     }
 
-    public void maxActiveReferencePictures(@Unsigned int value) {
+    public VkVideoSessionCreateInfoKHR maxActiveReferencePictures(@Unsigned int value) {
         segment.set(LAYOUT$maxActiveReferencePictures, OFFSET$maxActiveReferencePictures, value);
+        return this;
     }
 
-    public void pStdHeaderVersion(@Nullable IVkExtensionProperties value) {
+    public VkVideoSessionCreateInfoKHR pStdHeaderVersion(@Nullable IVkExtensionProperties value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdHeaderVersionRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkExtensionProperties.Ptr pStdHeaderVersion(int assumedCount) {

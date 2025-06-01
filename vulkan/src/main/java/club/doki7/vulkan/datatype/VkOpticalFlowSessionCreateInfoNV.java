@@ -201,8 +201,9 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -213,80 +214,90 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkOpticalFlowSessionCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int width() {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(@Unsigned int value) {
+    public VkOpticalFlowSessionCreateInfoNV width(@Unsigned int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
+        return this;
     }
 
     public @Unsigned int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(@Unsigned int value) {
+    public VkOpticalFlowSessionCreateInfoNV height(@Unsigned int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int imageFormat() {
         return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
     }
 
-    public void imageFormat(@EnumType(VkFormat.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV imageFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int flowVectorFormat() {
         return segment.get(LAYOUT$flowVectorFormat, OFFSET$flowVectorFormat);
     }
 
-    public void flowVectorFormat(@EnumType(VkFormat.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV flowVectorFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$flowVectorFormat, OFFSET$flowVectorFormat, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int costFormat() {
         return segment.get(LAYOUT$costFormat, OFFSET$costFormat);
     }
 
-    public void costFormat(@EnumType(VkFormat.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV costFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$costFormat, OFFSET$costFormat, value);
+        return this;
     }
 
     public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int outputGridSize() {
         return segment.get(LAYOUT$outputGridSize, OFFSET$outputGridSize);
     }
 
-    public void outputGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV outputGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$outputGridSize, OFFSET$outputGridSize, value);
+        return this;
     }
 
     public @EnumType(VkOpticalFlowGridSizeFlagsNV.class) int hintGridSize() {
         return segment.get(LAYOUT$hintGridSize, OFFSET$hintGridSize);
     }
 
-    public void hintGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV hintGridSize(@EnumType(VkOpticalFlowGridSizeFlagsNV.class) int value) {
         segment.set(LAYOUT$hintGridSize, OFFSET$hintGridSize, value);
+        return this;
     }
 
     public @EnumType(VkOpticalFlowPerformanceLevelNV.class) int performanceLevel() {
         return segment.get(LAYOUT$performanceLevel, OFFSET$performanceLevel);
     }
 
-    public void performanceLevel(@EnumType(VkOpticalFlowPerformanceLevelNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV performanceLevel(@EnumType(VkOpticalFlowPerformanceLevelNV.class) int value) {
         segment.set(LAYOUT$performanceLevel, OFFSET$performanceLevel, value);
+        return this;
     }
 
     public @EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int value) {
+    public VkOpticalFlowSessionCreateInfoNV flags(@EnumType(VkOpticalFlowSessionCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

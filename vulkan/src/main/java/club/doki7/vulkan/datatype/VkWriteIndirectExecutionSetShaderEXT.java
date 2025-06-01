@@ -194,8 +194,9 @@ public record VkWriteIndirectExecutionSetShaderEXT(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkWriteIndirectExecutionSetShaderEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkWriteIndirectExecutionSetShaderEXT(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkWriteIndirectExecutionSetShaderEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int index() {
         return segment.get(LAYOUT$index, OFFSET$index);
     }
 
-    public void index(@Unsigned int value) {
+    public VkWriteIndirectExecutionSetShaderEXT index(@Unsigned int value) {
         segment.set(LAYOUT$index, OFFSET$index, value);
+        return this;
     }
 
     public @Nullable VkShaderEXT shader() {
@@ -226,8 +229,9 @@ public record VkWriteIndirectExecutionSetShaderEXT(@NotNull MemorySegment segmen
         return new VkShaderEXT(s);
     }
 
-    public void shader(@Nullable VkShaderEXT value) {
+    public VkWriteIndirectExecutionSetShaderEXT shader(@Nullable VkShaderEXT value) {
         segment.set(LAYOUT$shader, OFFSET$shader, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

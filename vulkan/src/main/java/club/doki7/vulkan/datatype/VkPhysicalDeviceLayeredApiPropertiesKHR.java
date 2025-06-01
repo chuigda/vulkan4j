@@ -196,8 +196,9 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkPhysicalDeviceLayeredApiPropertiesKHR(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int vendorID() {
         return segment.get(LAYOUT$vendorID, OFFSET$vendorID);
     }
 
-    public void vendorID(@Unsigned int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR vendorID(@Unsigned int value) {
         segment.set(LAYOUT$vendorID, OFFSET$vendorID, value);
+        return this;
     }
 
     public @Unsigned int deviceID() {
         return segment.get(LAYOUT$deviceID, OFFSET$deviceID);
     }
 
-    public void deviceID(@Unsigned int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceID(@Unsigned int value) {
         segment.set(LAYOUT$deviceID, OFFSET$deviceID, value);
+        return this;
     }
 
     public @EnumType(VkPhysicalDeviceLayeredApiKHR.class) int layeredAPI() {
         return segment.get(LAYOUT$layeredAPI, OFFSET$layeredAPI);
     }
 
-    public void layeredAPI(@EnumType(VkPhysicalDeviceLayeredApiKHR.class) int value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR layeredAPI(@EnumType(VkPhysicalDeviceLayeredApiKHR.class) int value) {
         segment.set(LAYOUT$layeredAPI, OFFSET$layeredAPI, value);
+        return this;
     }
 
     public BytePtr deviceName() {
         return new BytePtr(deviceNameRaw());
     }
 
-    public void deviceName(BytePtr value) {
+    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceName, SIZE$deviceName);
+        return this;
     }
 
     public MemorySegment deviceNameRaw() {

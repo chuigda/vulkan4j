@@ -193,8 +193,9 @@ public record VkImageCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageCaptureDescriptorDataInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkImageCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageCaptureDescriptorDataInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImage image() {
@@ -217,8 +219,9 @@ public record VkImageCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segment
         return new VkImage(s);
     }
 
-    public void image(@Nullable VkImage value) {
+    public VkImageCaptureDescriptorDataInfoEXT image(@Nullable VkImage value) {
         segment.set(LAYOUT$image, OFFSET$image, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

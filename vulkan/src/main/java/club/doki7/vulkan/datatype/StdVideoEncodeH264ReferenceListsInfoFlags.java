@@ -174,9 +174,10 @@ public record StdVideoEncodeH264ReferenceListsInfoFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void ref_pic_list_modification_flag_l0(boolean value) {
+    public StdVideoEncodeH264ReferenceListsInfoFlags ref_pic_list_modification_flag_l0(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$ref_pic_list_modification_flag_l0$reserved, LAYOUT$bitfield$ref_pic_list_modification_flag_l0$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean ref_pic_list_modification_flag_l1() {
@@ -184,9 +185,10 @@ public record StdVideoEncodeH264ReferenceListsInfoFlags(@NotNull MemorySegment s
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void ref_pic_list_modification_flag_l1(boolean value) {
+    public StdVideoEncodeH264ReferenceListsInfoFlags ref_pic_list_modification_flag_l1(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$ref_pic_list_modification_flag_l0$reserved, LAYOUT$bitfield$ref_pic_list_modification_flag_l0$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

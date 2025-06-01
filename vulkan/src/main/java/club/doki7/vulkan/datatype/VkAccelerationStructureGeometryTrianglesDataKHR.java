@@ -199,8 +199,9 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,64 +212,72 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public void vertexFormat(@EnumType(VkFormat.class) int value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR vertexData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$vertexData, LAYOUT$vertexData));
     }
 
-    public void vertexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
 
-    public void vertexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$vertexStride, OFFSET$vertexStride, value);
+        return this;
     }
 
     public @Unsigned int maxVertex() {
         return segment.get(LAYOUT$maxVertex, OFFSET$maxVertex);
     }
 
-    public void maxVertex(@Unsigned int value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR maxVertex(@Unsigned int value) {
         segment.set(LAYOUT$maxVertex, OFFSET$maxVertex, value);
+        return this;
     }
 
     public @EnumType(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public void indexType(@EnumType(VkIndexType.class) int value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexType(@EnumType(VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR indexData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$indexData, LAYOUT$indexData));
     }
 
-    public void indexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexData, SIZE$indexData);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR transformData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$transformData, LAYOUT$transformData));
     }
 
-    public void transformData(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkAccelerationStructureGeometryTrianglesDataKHR transformData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformData, SIZE$transformData);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

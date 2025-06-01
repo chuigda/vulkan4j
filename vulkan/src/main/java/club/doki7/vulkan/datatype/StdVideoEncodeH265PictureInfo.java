@@ -181,70 +181,79 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         return new StdVideoEncodeH265PictureInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoEncodeH265PictureInfoFlags value) {
+    public StdVideoEncodeH265PictureInfo flags(@NotNull StdVideoEncodeH265PictureInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @EnumType(StdVideoH265PictureType.class) int pic_type() {
         return segment.get(LAYOUT$pic_type, OFFSET$pic_type);
     }
 
-    public void pic_type(@EnumType(StdVideoH265PictureType.class) int value) {
+    public StdVideoEncodeH265PictureInfo pic_type(@EnumType(StdVideoH265PictureType.class) int value) {
         segment.set(LAYOUT$pic_type, OFFSET$pic_type, value);
+        return this;
     }
 
     public @Unsigned byte sps_video_parameter_set_id() {
         return segment.get(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id);
     }
 
-    public void sps_video_parameter_set_id(@Unsigned byte value) {
+    public StdVideoEncodeH265PictureInfo sps_video_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$sps_video_parameter_set_id, OFFSET$sps_video_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte pps_seq_parameter_set_id() {
         return segment.get(LAYOUT$pps_seq_parameter_set_id, OFFSET$pps_seq_parameter_set_id);
     }
 
-    public void pps_seq_parameter_set_id(@Unsigned byte value) {
+    public StdVideoEncodeH265PictureInfo pps_seq_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pps_seq_parameter_set_id, OFFSET$pps_seq_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte pps_pic_parameter_set_id() {
         return segment.get(LAYOUT$pps_pic_parameter_set_id, OFFSET$pps_pic_parameter_set_id);
     }
 
-    public void pps_pic_parameter_set_id(@Unsigned byte value) {
+    public StdVideoEncodeH265PictureInfo pps_pic_parameter_set_id(@Unsigned byte value) {
         segment.set(LAYOUT$pps_pic_parameter_set_id, OFFSET$pps_pic_parameter_set_id, value);
+        return this;
     }
 
     public @Unsigned byte short_term_ref_pic_set_idx() {
         return segment.get(LAYOUT$short_term_ref_pic_set_idx, OFFSET$short_term_ref_pic_set_idx);
     }
 
-    public void short_term_ref_pic_set_idx(@Unsigned byte value) {
+    public StdVideoEncodeH265PictureInfo short_term_ref_pic_set_idx(@Unsigned byte value) {
         segment.set(LAYOUT$short_term_ref_pic_set_idx, OFFSET$short_term_ref_pic_set_idx, value);
+        return this;
     }
 
     public int PicOrderCntVal() {
         return segment.get(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal);
     }
 
-    public void PicOrderCntVal(int value) {
+    public StdVideoEncodeH265PictureInfo PicOrderCntVal(int value) {
         segment.set(LAYOUT$PicOrderCntVal, OFFSET$PicOrderCntVal, value);
+        return this;
     }
 
     public @Unsigned byte TemporalId() {
         return segment.get(LAYOUT$TemporalId, OFFSET$TemporalId);
     }
 
-    public void TemporalId(@Unsigned byte value) {
+    public StdVideoEncodeH265PictureInfo TemporalId(@Unsigned byte value) {
         segment.set(LAYOUT$TemporalId, OFFSET$TemporalId, value);
+        return this;
     }
 
 
-    public void pRefLists(@Nullable IStdVideoEncodeH265ReferenceListsInfo value) {
+    public StdVideoEncodeH265PictureInfo pRefLists(@Nullable IStdVideoEncodeH265ReferenceListsInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRefListsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeH265ReferenceListsInfo.Ptr pRefLists(int assumedCount) {
@@ -273,9 +282,10 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pRefLists, OFFSET$pRefLists, value);
     }
 
-    public void pShortTermRefPicSet(@Nullable IStdVideoH265ShortTermRefPicSet value) {
+    public StdVideoEncodeH265PictureInfo pShortTermRefPicSet(@Nullable IStdVideoH265ShortTermRefPicSet value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShortTermRefPicSetRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoH265ShortTermRefPicSet.Ptr pShortTermRefPicSet(int assumedCount) {
@@ -304,9 +314,10 @@ public record StdVideoEncodeH265PictureInfo(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pShortTermRefPicSet, OFFSET$pShortTermRefPicSet, value);
     }
 
-    public void pLongTermRefPics(@Nullable IStdVideoEncodeH265LongTermRefPics value) {
+    public StdVideoEncodeH265PictureInfo pLongTermRefPics(@Nullable IStdVideoEncodeH265LongTermRefPics value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pLongTermRefPicsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeH265LongTermRefPics.Ptr pLongTermRefPics(int assumedCount) {

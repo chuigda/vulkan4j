@@ -193,8 +193,9 @@ public record VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int fragmentShaderBarycentric() {
         return segment.get(LAYOUT$fragmentShaderBarycentric, OFFSET$fragmentShaderBarycentric);
     }
 
-    public void fragmentShaderBarycentric(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR fragmentShaderBarycentric(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$fragmentShaderBarycentric, OFFSET$fragmentShaderBarycentric, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

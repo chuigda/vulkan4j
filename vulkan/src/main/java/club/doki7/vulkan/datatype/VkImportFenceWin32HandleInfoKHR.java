@@ -197,8 +197,9 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImportFenceWin32HandleInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImportFenceWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkFence fence() {
@@ -221,24 +223,27 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         return new VkFence(s);
     }
 
-    public void fence(@Nullable VkFence value) {
+    public VkImportFenceWin32HandleInfoKHR fence(@Nullable VkFence value) {
         segment.set(LAYOUT$fence, OFFSET$fence, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFenceImportFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkFenceImportFlags.class) int value) {
+    public VkImportFenceWin32HandleInfoKHR flags(@EnumType(VkFenceImportFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkExternalFenceHandleTypeFlags.class) int handleType() {
         return segment.get(LAYOUT$handleType, OFFSET$handleType);
     }
 
-    public void handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
+    public VkImportFenceWin32HandleInfoKHR handleType(@EnumType(VkExternalFenceHandleTypeFlags.class) int value) {
         segment.set(LAYOUT$handleType, OFFSET$handleType, value);
+        return this;
     }
 
     public @Pointer(comment="HANDLE") MemorySegment handle() {
@@ -249,8 +254,9 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$handle, OFFSET$handle, value);
     }
 
-    public void handle(@Nullable IPointer pointer) {
+    public VkImportFenceWin32HandleInfoKHR handle(@Nullable IPointer pointer) {
         handle(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link ShortPtr} does not have correct
@@ -265,9 +271,10 @@ public record VkImportFenceWin32HandleInfoKHR(@NotNull MemorySegment segment) im
         return new ShortPtr(s);
     }
 
-    public void name(@Nullable @Unsigned ShortPtr value) {
+    public VkImportFenceWin32HandleInfoKHR name(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {

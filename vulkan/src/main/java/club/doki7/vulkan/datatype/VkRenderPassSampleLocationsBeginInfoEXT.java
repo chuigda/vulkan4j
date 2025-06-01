@@ -196,8 +196,9 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderPassSampleLocationsBeginInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,21 +209,24 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderPassSampleLocationsBeginInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int attachmentInitialSampleLocationsCount() {
         return segment.get(LAYOUT$attachmentInitialSampleLocationsCount, OFFSET$attachmentInitialSampleLocationsCount);
     }
 
-    public void attachmentInitialSampleLocationsCount(@Unsigned int value) {
+    public VkRenderPassSampleLocationsBeginInfoEXT attachmentInitialSampleLocationsCount(@Unsigned int value) {
         segment.set(LAYOUT$attachmentInitialSampleLocationsCount, OFFSET$attachmentInitialSampleLocationsCount, value);
+        return this;
     }
 
-    public void pAttachmentInitialSampleLocations(@Nullable IVkAttachmentSampleLocationsEXT value) {
+    public VkRenderPassSampleLocationsBeginInfoEXT pAttachmentInitialSampleLocations(@Nullable IVkAttachmentSampleLocationsEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pAttachmentInitialSampleLocationsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAttachmentSampleLocationsEXT.Ptr pAttachmentInitialSampleLocations(int assumedCount) {
@@ -255,13 +259,15 @@ public record VkRenderPassSampleLocationsBeginInfoEXT(@NotNull MemorySegment seg
         return segment.get(LAYOUT$postSubpassSampleLocationsCount, OFFSET$postSubpassSampleLocationsCount);
     }
 
-    public void postSubpassSampleLocationsCount(@Unsigned int value) {
+    public VkRenderPassSampleLocationsBeginInfoEXT postSubpassSampleLocationsCount(@Unsigned int value) {
         segment.set(LAYOUT$postSubpassSampleLocationsCount, OFFSET$postSubpassSampleLocationsCount, value);
+        return this;
     }
 
-    public void pPostSubpassSampleLocations(@Nullable IVkSubpassSampleLocationsEXT value) {
+    public VkRenderPassSampleLocationsBeginInfoEXT pPostSubpassSampleLocations(@Nullable IVkSubpassSampleLocationsEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPostSubpassSampleLocationsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkSubpassSampleLocationsEXT.Ptr pPostSubpassSampleLocations(int assumedCount) {

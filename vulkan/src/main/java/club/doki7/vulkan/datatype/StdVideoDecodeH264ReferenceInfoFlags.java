@@ -175,9 +175,10 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void top_field_flag(boolean value) {
+    public StdVideoDecodeH264ReferenceInfoFlags top_field_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean bottom_field_flag() {
@@ -185,9 +186,10 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void bottom_field_flag(boolean value) {
+    public StdVideoDecodeH264ReferenceInfoFlags bottom_field_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean used_for_long_term_reference() {
@@ -195,9 +197,10 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void used_for_long_term_reference(boolean value) {
+    public StdVideoDecodeH264ReferenceInfoFlags used_for_long_term_reference(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean is_non_existing() {
@@ -205,9 +208,10 @@ public record StdVideoDecodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void is_non_existing(boolean value) {
+    public StdVideoDecodeH264ReferenceInfoFlags is_non_existing(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$top_field_flag$is_non_existing, LAYOUT$bitfield$top_field_flag$is_non_existing);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderModuleIdentifier() {
         return segment.get(LAYOUT$shaderModuleIdentifier, OFFSET$shaderModuleIdentifier);
     }
 
-    public void shaderModuleIdentifier(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT shaderModuleIdentifier(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderModuleIdentifier, OFFSET$shaderModuleIdentifier, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

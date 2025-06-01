@@ -174,24 +174,27 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkClearAttachment aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
+        return this;
     }
 
     public @Unsigned int colorAttachment() {
         return segment.get(LAYOUT$colorAttachment, OFFSET$colorAttachment);
     }
 
-    public void colorAttachment(@Unsigned int value) {
+    public VkClearAttachment colorAttachment(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachment, OFFSET$colorAttachment, value);
+        return this;
     }
 
     public @NotNull VkClearValue clearValue() {
         return new VkClearValue(segment.asSlice(OFFSET$clearValue, LAYOUT$clearValue));
     }
 
-    public void clearValue(@NotNull VkClearValue value) {
+    public VkClearAttachment clearValue(@NotNull VkClearValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

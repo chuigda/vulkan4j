@@ -195,8 +195,9 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPipelineCoverageToColorStateCreateInfoNV(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineCoverageToColorStateCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV flags(@EnumType(VkPipelineCoverageToColorStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int coverageToColorEnable() {
         return segment.get(LAYOUT$coverageToColorEnable, OFFSET$coverageToColorEnable);
     }
 
-    public void coverageToColorEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV coverageToColorEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$coverageToColorEnable, OFFSET$coverageToColorEnable, value);
+        return this;
     }
 
     public @Unsigned int coverageToColorLocation() {
         return segment.get(LAYOUT$coverageToColorLocation, OFFSET$coverageToColorLocation);
     }
 
-    public void coverageToColorLocation(@Unsigned int value) {
+    public VkPipelineCoverageToColorStateCreateInfoNV coverageToColorLocation(@Unsigned int value) {
         segment.set(LAYOUT$coverageToColorLocation, OFFSET$coverageToColorLocation, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

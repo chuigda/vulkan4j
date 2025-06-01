@@ -179,40 +179,45 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new StdVideoAV1TileInfoFlags(segment.asSlice(OFFSET$flags, LAYOUT$flags));
     }
 
-    public void flags(@NotNull StdVideoAV1TileInfoFlags value) {
+    public StdVideoAV1TileInfo flags(@NotNull StdVideoAV1TileInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
     }
 
     public @Unsigned byte TileCols() {
         return segment.get(LAYOUT$TileCols, OFFSET$TileCols);
     }
 
-    public void TileCols(@Unsigned byte value) {
+    public StdVideoAV1TileInfo TileCols(@Unsigned byte value) {
         segment.set(LAYOUT$TileCols, OFFSET$TileCols, value);
+        return this;
     }
 
     public @Unsigned byte TileRows() {
         return segment.get(LAYOUT$TileRows, OFFSET$TileRows);
     }
 
-    public void TileRows(@Unsigned byte value) {
+    public StdVideoAV1TileInfo TileRows(@Unsigned byte value) {
         segment.set(LAYOUT$TileRows, OFFSET$TileRows, value);
+        return this;
     }
 
     public @Unsigned short context_update_tile_id() {
         return segment.get(LAYOUT$context_update_tile_id, OFFSET$context_update_tile_id);
     }
 
-    public void context_update_tile_id(@Unsigned short value) {
+    public StdVideoAV1TileInfo context_update_tile_id(@Unsigned short value) {
         segment.set(LAYOUT$context_update_tile_id, OFFSET$context_update_tile_id, value);
+        return this;
     }
 
     public @Unsigned byte tile_size_bytes_minus_1() {
         return segment.get(LAYOUT$tile_size_bytes_minus_1, OFFSET$tile_size_bytes_minus_1);
     }
 
-    public void tile_size_bytes_minus_1(@Unsigned byte value) {
+    public StdVideoAV1TileInfo tile_size_bytes_minus_1(@Unsigned byte value) {
         segment.set(LAYOUT$tile_size_bytes_minus_1, OFFSET$tile_size_bytes_minus_1, value);
+        return this;
     }
 
 
@@ -228,9 +233,10 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new ShortPtr(s);
     }
 
-    public void pMiColStarts(@Nullable @Unsigned ShortPtr value) {
+    public StdVideoAV1TileInfo pMiColStarts(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMiColStartsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint16_t*") MemorySegment pMiColStartsRaw() {
@@ -253,9 +259,10 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new ShortPtr(s);
     }
 
-    public void pMiRowStarts(@Nullable @Unsigned ShortPtr value) {
+    public StdVideoAV1TileInfo pMiRowStarts(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pMiRowStartsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint16_t*") MemorySegment pMiRowStartsRaw() {
@@ -278,9 +285,10 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new ShortPtr(s);
     }
 
-    public void pWidthInSbsMinus1(@Nullable @Unsigned ShortPtr value) {
+    public StdVideoAV1TileInfo pWidthInSbsMinus1(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pWidthInSbsMinus1Raw(s);
+        return this;
     }
 
     public @Pointer(comment="uint16_t*") MemorySegment pWidthInSbsMinus1Raw() {
@@ -303,9 +311,10 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         return new ShortPtr(s);
     }
 
-    public void pHeightInSbsMinus1(@Nullable @Unsigned ShortPtr value) {
+    public StdVideoAV1TileInfo pHeightInSbsMinus1(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pHeightInSbsMinus1Raw(s);
+        return this;
     }
 
     public @Pointer(comment="uint16_t*") MemorySegment pHeightInSbsMinus1Raw() {

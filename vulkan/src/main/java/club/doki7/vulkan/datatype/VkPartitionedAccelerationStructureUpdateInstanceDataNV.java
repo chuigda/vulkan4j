@@ -174,24 +174,27 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
         return segment.get(LAYOUT$instanceIndex, OFFSET$instanceIndex);
     }
 
-    public void instanceIndex(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV instanceIndex(@Unsigned int value) {
         segment.set(LAYOUT$instanceIndex, OFFSET$instanceIndex, value);
+        return this;
     }
 
     public @Unsigned int instanceContributionToHitGroupIndex() {
         return segment.get(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex);
     }
 
-    public void instanceContributionToHitGroupIndex(@Unsigned int value) {
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV instanceContributionToHitGroupIndex(@Unsigned int value) {
         segment.set(LAYOUT$instanceContributionToHitGroupIndex, OFFSET$instanceContributionToHitGroupIndex, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long accelerationStructure() {
         return segment.get(LAYOUT$accelerationStructure, OFFSET$accelerationStructure);
     }
 
-    public void accelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV accelerationStructure(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

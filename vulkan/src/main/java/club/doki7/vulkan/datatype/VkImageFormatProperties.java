@@ -176,40 +176,45 @@ public record VkImageFormatProperties(@NotNull MemorySegment segment) implements
         return new VkExtent3D(segment.asSlice(OFFSET$maxExtent, LAYOUT$maxExtent));
     }
 
-    public void maxExtent(@NotNull VkExtent3D value) {
+    public VkImageFormatProperties maxExtent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxExtent, SIZE$maxExtent);
+        return this;
     }
 
     public @Unsigned int maxMipLevels() {
         return segment.get(LAYOUT$maxMipLevels, OFFSET$maxMipLevels);
     }
 
-    public void maxMipLevels(@Unsigned int value) {
+    public VkImageFormatProperties maxMipLevels(@Unsigned int value) {
         segment.set(LAYOUT$maxMipLevels, OFFSET$maxMipLevels, value);
+        return this;
     }
 
     public @Unsigned int maxArrayLayers() {
         return segment.get(LAYOUT$maxArrayLayers, OFFSET$maxArrayLayers);
     }
 
-    public void maxArrayLayers(@Unsigned int value) {
+    public VkImageFormatProperties maxArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$maxArrayLayers, OFFSET$maxArrayLayers, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int sampleCounts() {
         return segment.get(LAYOUT$sampleCounts, OFFSET$sampleCounts);
     }
 
-    public void sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkImageFormatProperties sampleCounts(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$sampleCounts, OFFSET$sampleCounts, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long maxResourceSize() {
         return segment.get(LAYOUT$maxResourceSize, OFFSET$maxResourceSize);
     }
 
-    public void maxResourceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkImageFormatProperties maxResourceSize(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxResourceSize, OFFSET$maxResourceSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

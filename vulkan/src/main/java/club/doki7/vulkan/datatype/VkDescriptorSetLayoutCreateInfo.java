@@ -195,8 +195,9 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorSetLayoutCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkDescriptorSetLayoutCreateInfo(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorSetLayoutCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDescriptorSetLayoutCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDescriptorSetLayoutCreateFlags.class) int value) {
+    public VkDescriptorSetLayoutCreateInfo flags(@EnumType(VkDescriptorSetLayoutCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int bindingCount() {
         return segment.get(LAYOUT$bindingCount, OFFSET$bindingCount);
     }
 
-    public void bindingCount(@Unsigned int value) {
+    public VkDescriptorSetLayoutCreateInfo bindingCount(@Unsigned int value) {
         segment.set(LAYOUT$bindingCount, OFFSET$bindingCount, value);
+        return this;
     }
 
-    public void pBindings(@Nullable IVkDescriptorSetLayoutBinding value) {
+    public VkDescriptorSetLayoutCreateInfo pBindings(@Nullable IVkDescriptorSetLayoutBinding value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBindingsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDescriptorSetLayoutBinding.Ptr pBindings(int assumedCount) {

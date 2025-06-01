@@ -172,8 +172,9 @@ public record VkBindPipelineIndirectCommandNV(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$pipelineAddress, OFFSET$pipelineAddress);
     }
 
-    public void pipelineAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkBindPipelineIndirectCommandNV pipelineAddress(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$pipelineAddress, OFFSET$pipelineAddress, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

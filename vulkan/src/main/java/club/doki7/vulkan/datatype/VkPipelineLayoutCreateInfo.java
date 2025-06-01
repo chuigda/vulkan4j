@@ -197,8 +197,9 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineLayoutCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,24 +210,27 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineLayoutCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineLayoutCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineLayoutCreateFlags.class) int value) {
+    public VkPipelineLayoutCreateInfo flags(@EnumType(VkPipelineLayoutCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int setLayoutCount() {
         return segment.get(LAYOUT$setLayoutCount, OFFSET$setLayoutCount);
     }
 
-    public void setLayoutCount(@Unsigned int value) {
+    public VkPipelineLayoutCreateInfo setLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$setLayoutCount, OFFSET$setLayoutCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkDescriptorSetLayout.Ptr} does not have correct {@link VkDescriptorSetLayout.Ptr#size}
@@ -241,9 +245,10 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return new VkDescriptorSetLayout.Ptr(s);
     }
 
-    public void pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
+    public VkPipelineLayoutCreateInfo pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {
@@ -258,13 +263,15 @@ public record VkPipelineLayoutCreateInfo(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount);
     }
 
-    public void pushConstantRangeCount(@Unsigned int value) {
+    public VkPipelineLayoutCreateInfo pushConstantRangeCount(@Unsigned int value) {
         segment.set(LAYOUT$pushConstantRangeCount, OFFSET$pushConstantRangeCount, value);
+        return this;
     }
 
-    public void pPushConstantRanges(@Nullable IVkPushConstantRange value) {
+    public VkPipelineLayoutCreateInfo pPushConstantRanges(@Nullable IVkPushConstantRange value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPushConstantRangesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPushConstantRange.Ptr pPushConstantRanges(int assumedCount) {

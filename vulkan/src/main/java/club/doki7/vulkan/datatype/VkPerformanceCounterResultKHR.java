@@ -177,48 +177,54 @@ public record VkPerformanceCounterResultKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$int32, OFFSET$int32);
     }
 
-    public void int32(int value) {
+    public VkPerformanceCounterResultKHR int32(int value) {
         segment.set(LAYOUT$int32, OFFSET$int32, value);
+        return this;
     }
 
     public long int64() {
         return segment.get(LAYOUT$int64, OFFSET$int64);
     }
 
-    public void int64(long value) {
+    public VkPerformanceCounterResultKHR int64(long value) {
         segment.set(LAYOUT$int64, OFFSET$int64, value);
+        return this;
     }
 
     public @Unsigned int uint32() {
         return segment.get(LAYOUT$uint32, OFFSET$uint32);
     }
 
-    public void uint32(@Unsigned int value) {
+    public VkPerformanceCounterResultKHR uint32(@Unsigned int value) {
         segment.set(LAYOUT$uint32, OFFSET$uint32, value);
+        return this;
     }
 
     public @Unsigned long uint64() {
         return segment.get(LAYOUT$uint64, OFFSET$uint64);
     }
 
-    public void uint64(@Unsigned long value) {
+    public VkPerformanceCounterResultKHR uint64(@Unsigned long value) {
         segment.set(LAYOUT$uint64, OFFSET$uint64, value);
+        return this;
     }
 
     public float float32() {
         return segment.get(LAYOUT$float32, OFFSET$float32);
     }
 
-    public void float32(float value) {
+    public VkPerformanceCounterResultKHR float32(float value) {
         segment.set(LAYOUT$float32, OFFSET$float32, value);
+        return this;
     }
 
     public double float64() {
         return segment.get(LAYOUT$float64, OFFSET$float64);
     }
 
-    public void float64(double value) {
+    public VkPerformanceCounterResultKHR float64(double value) {
         segment.set(LAYOUT$float64, OFFSET$float64, value);
+        return this;
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

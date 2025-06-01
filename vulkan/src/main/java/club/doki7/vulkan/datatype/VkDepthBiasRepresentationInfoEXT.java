@@ -194,8 +194,9 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDepthBiasRepresentationInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkDepthBiasRepresentationInfoEXT(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDepthBiasRepresentationInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDepthBiasRepresentationEXT.class) int depthBiasRepresentation() {
         return segment.get(LAYOUT$depthBiasRepresentation, OFFSET$depthBiasRepresentation);
     }
 
-    public void depthBiasRepresentation(@EnumType(VkDepthBiasRepresentationEXT.class) int value) {
+    public VkDepthBiasRepresentationInfoEXT depthBiasRepresentation(@EnumType(VkDepthBiasRepresentationEXT.class) int value) {
         segment.set(LAYOUT$depthBiasRepresentation, OFFSET$depthBiasRepresentation, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthBiasExact() {
         return segment.get(LAYOUT$depthBiasExact, OFFSET$depthBiasExact);
     }
 
-    public void depthBiasExact(@NativeType("VkBool32") @Unsigned int value) {
+    public VkDepthBiasRepresentationInfoEXT depthBiasExact(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthBiasExact, OFFSET$depthBiasExact, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

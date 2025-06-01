@@ -137,6 +137,7 @@ public record VkDescriptorSetLayout(@NotNull MemorySegment segment) implements I
         public static Ptr allocateV(Arena arena, @Nullable VkDescriptorSetLayout ...values) {
             return allocate(arena, values);
         }
+
         @Override
         public @NotNull Iter iterator() {
             return new Iter(this.segment());

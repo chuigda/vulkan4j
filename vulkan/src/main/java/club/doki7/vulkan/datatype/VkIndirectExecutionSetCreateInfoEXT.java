@@ -194,8 +194,9 @@ public record VkIndirectExecutionSetCreateInfoEXT(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectExecutionSetCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkIndirectExecutionSetCreateInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkIndirectExecutionSetCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
+    public VkIndirectExecutionSetCreateInfoEXT type(@EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @NotNull VkIndirectExecutionSetInfoEXT info() {
         return new VkIndirectExecutionSetInfoEXT(segment.asSlice(OFFSET$info, LAYOUT$info));
     }
 
-    public void info(@NotNull VkIndirectExecutionSetInfoEXT value) {
+    public VkIndirectExecutionSetCreateInfoEXT info(@NotNull VkIndirectExecutionSetInfoEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$info, SIZE$info);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

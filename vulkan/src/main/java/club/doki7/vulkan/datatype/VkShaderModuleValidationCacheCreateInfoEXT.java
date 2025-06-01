@@ -193,8 +193,9 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkShaderModuleValidationCacheCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkShaderModuleValidationCacheCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkValidationCacheEXT validationCache() {
@@ -217,8 +219,9 @@ public record VkShaderModuleValidationCacheCreateInfoEXT(@NotNull MemorySegment 
         return new VkValidationCacheEXT(s);
     }
 
-    public void validationCache(@Nullable VkValidationCacheEXT value) {
+    public VkShaderModuleValidationCacheCreateInfoEXT validationCache(@Nullable VkValidationCacheEXT value) {
         segment.set(LAYOUT$validationCache, OFFSET$validationCache, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

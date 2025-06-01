@@ -194,8 +194,9 @@ public record VkVideoEncodeH265QuantizationMapCapabilitiesKHR(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoEncodeH265QuantizationMapCapabilitiesKHR(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public int minQpDelta() {
         return segment.get(LAYOUT$minQpDelta, OFFSET$minQpDelta);
     }
 
-    public void minQpDelta(int value) {
+    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR minQpDelta(int value) {
         segment.set(LAYOUT$minQpDelta, OFFSET$minQpDelta, value);
+        return this;
     }
 
     public int maxQpDelta() {
         return segment.get(LAYOUT$maxQpDelta, OFFSET$maxQpDelta);
     }
 
-    public void maxQpDelta(int value) {
+    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR maxQpDelta(int value) {
         segment.set(LAYOUT$maxQpDelta, OFFSET$maxQpDelta, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

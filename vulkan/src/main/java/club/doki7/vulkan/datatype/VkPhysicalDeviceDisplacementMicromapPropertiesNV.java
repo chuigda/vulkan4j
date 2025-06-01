@@ -193,8 +193,9 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDisplacementMicromapPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDisplacementMicromapPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxDisplacementMicromapSubdivisionLevel() {
         return segment.get(LAYOUT$maxDisplacementMicromapSubdivisionLevel, OFFSET$maxDisplacementMicromapSubdivisionLevel);
     }
 
-    public void maxDisplacementMicromapSubdivisionLevel(@Unsigned int value) {
+    public VkPhysicalDeviceDisplacementMicromapPropertiesNV maxDisplacementMicromapSubdivisionLevel(@Unsigned int value) {
         segment.set(LAYOUT$maxDisplacementMicromapSubdivisionLevel, OFFSET$maxDisplacementMicromapSubdivisionLevel, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

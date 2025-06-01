@@ -174,9 +174,10 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void direct_spatial_mv_pred_flag(boolean value) {
+    public StdVideoEncodeH264SliceHeaderFlags direct_spatial_mv_pred_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$direct_spatial_mv_pred_flag$reserved, LAYOUT$bitfield$direct_spatial_mv_pred_flag$reserved);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean num_ref_idx_active_override_flag() {
@@ -184,9 +185,10 @@ public record StdVideoEncodeH264SliceHeaderFlags(@NotNull MemorySegment segment)
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void num_ref_idx_active_override_flag(boolean value) {
+    public StdVideoEncodeH264SliceHeaderFlags num_ref_idx_active_override_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$direct_spatial_mv_pred_flag$reserved, LAYOUT$bitfield$direct_spatial_mv_pred_flag$reserved);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -195,8 +195,9 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkReleaseSwapchainImagesInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkReleaseSwapchainImagesInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSwapchainKHR swapchain() {
@@ -219,16 +221,18 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
         return new VkSwapchainKHR(s);
     }
 
-    public void swapchain(@Nullable VkSwapchainKHR value) {
+    public VkReleaseSwapchainImagesInfoEXT swapchain(@Nullable VkSwapchainKHR value) {
         segment.set(LAYOUT$swapchain, OFFSET$swapchain, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int imageIndexCount() {
         return segment.get(LAYOUT$imageIndexCount, OFFSET$imageIndexCount);
     }
 
-    public void imageIndexCount(@Unsigned int value) {
+    public VkReleaseSwapchainImagesInfoEXT imageIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$imageIndexCount, OFFSET$imageIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -243,9 +247,10 @@ public record VkReleaseSwapchainImagesInfoEXT(@NotNull MemorySegment segment) im
         return new IntPtr(s);
     }
 
-    public void pImageIndices(@Nullable @Unsigned IntPtr value) {
+    public VkReleaseSwapchainImagesInfoEXT pImageIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pImageIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pImageIndicesRaw() {

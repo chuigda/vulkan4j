@@ -205,8 +205,9 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -217,96 +218,108 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkImageCreateInfo flags(@EnumType(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkImageType.class) int imageType() {
         return segment.get(LAYOUT$imageType, OFFSET$imageType);
     }
 
-    public void imageType(@EnumType(VkImageType.class) int value) {
+    public VkImageCreateInfo imageType(@EnumType(VkImageType.class) int value) {
         segment.set(LAYOUT$imageType, OFFSET$imageType, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkFormat.class) int value) {
+    public VkImageCreateInfo format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public @NotNull VkExtent3D extent() {
         return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(@NotNull VkExtent3D value) {
+    public VkImageCreateInfo extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+        return this;
     }
 
     public @Unsigned int mipLevels() {
         return segment.get(LAYOUT$mipLevels, OFFSET$mipLevels);
     }
 
-    public void mipLevels(@Unsigned int value) {
+    public VkImageCreateInfo mipLevels(@Unsigned int value) {
         segment.set(LAYOUT$mipLevels, OFFSET$mipLevels, value);
+        return this;
     }
 
     public @Unsigned int arrayLayers() {
         return segment.get(LAYOUT$arrayLayers, OFFSET$arrayLayers);
     }
 
-    public void arrayLayers(@Unsigned int value) {
+    public VkImageCreateInfo arrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$arrayLayers, OFFSET$arrayLayers, value);
+        return this;
     }
 
     public @EnumType(VkSampleCountFlags.class) int samples() {
         return segment.get(LAYOUT$samples, OFFSET$samples);
     }
 
-    public void samples(@EnumType(VkSampleCountFlags.class) int value) {
+    public VkImageCreateInfo samples(@EnumType(VkSampleCountFlags.class) int value) {
         segment.set(LAYOUT$samples, OFFSET$samples, value);
+        return this;
     }
 
     public @EnumType(VkImageTiling.class) int tiling() {
         return segment.get(LAYOUT$tiling, OFFSET$tiling);
     }
 
-    public void tiling(@EnumType(VkImageTiling.class) int value) {
+    public VkImageCreateInfo tiling(@EnumType(VkImageTiling.class) int value) {
         segment.set(LAYOUT$tiling, OFFSET$tiling, value);
+        return this;
     }
 
     public @EnumType(VkImageUsageFlags.class) int usage() {
         return segment.get(LAYOUT$usage, OFFSET$usage);
     }
 
-    public void usage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkImageCreateInfo usage(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$usage, OFFSET$usage, value);
+        return this;
     }
 
     public @EnumType(VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public void sharingMode(@EnumType(VkSharingMode.class) int value) {
+    public VkImageCreateInfo sharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@Unsigned int value) {
+    public VkImageCreateInfo queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -321,9 +334,10 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
+    public VkImageCreateInfo pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
@@ -338,8 +352,9 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
         return segment.get(LAYOUT$initialLayout, OFFSET$initialLayout);
     }
 
-    public void initialLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkImageCreateInfo initialLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$initialLayout, OFFSET$initialLayout, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

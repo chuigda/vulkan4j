@@ -193,8 +193,9 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceColorWriteEnableFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceColorWriteEnableFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int colorWriteEnable() {
         return segment.get(LAYOUT$colorWriteEnable, OFFSET$colorWriteEnable);
     }
 
-    public void colorWriteEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceColorWriteEnableFeaturesEXT colorWriteEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$colorWriteEnable, OFFSET$colorWriteEnable, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

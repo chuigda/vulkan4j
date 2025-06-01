@@ -204,8 +204,9 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkConvertCooperativeVectorMatrixInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -216,24 +217,27 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkConvertCooperativeVectorMatrixInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long srcSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$srcSize);
     }
 
-    public void srcSize(@Unsigned long value) {
+    public VkConvertCooperativeVectorMatrixInfoNV srcSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$srcSize, value);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR srcData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$srcData, LAYOUT$srcData));
     }
 
-    public void srcData(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkConvertCooperativeVectorMatrixInfoNV srcData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcData, SIZE$srcData);
+        return this;
     }
 
     /// Note: the returned {@link PointerPtr} does not have correct
@@ -248,9 +252,10 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         return new PointerPtr(s);
     }
 
-    public void pDstSize(@Nullable PointerPtr value) {
+    public VkConvertCooperativeVectorMatrixInfoNV pDstSize(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDstSizeRaw(s);
+        return this;
     }
 
     public @Pointer(comment="size_t*") MemorySegment pDstSizeRaw() {
@@ -265,72 +270,81 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$dstData, LAYOUT$dstData));
     }
 
-    public void dstData(@NotNull VkDeviceOrHostAddressKHR value) {
+    public VkConvertCooperativeVectorMatrixInfoNV dstData(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstData, SIZE$dstData);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int srcComponentType() {
         return segment.get(LAYOUT$srcComponentType, OFFSET$srcComponentType);
     }
 
-    public void srcComponentType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkConvertCooperativeVectorMatrixInfoNV srcComponentType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$srcComponentType, OFFSET$srcComponentType, value);
+        return this;
     }
 
     public @EnumType(VkComponentTypeKHR.class) int dstComponentType() {
         return segment.get(LAYOUT$dstComponentType, OFFSET$dstComponentType);
     }
 
-    public void dstComponentType(@EnumType(VkComponentTypeKHR.class) int value) {
+    public VkConvertCooperativeVectorMatrixInfoNV dstComponentType(@EnumType(VkComponentTypeKHR.class) int value) {
         segment.set(LAYOUT$dstComponentType, OFFSET$dstComponentType, value);
+        return this;
     }
 
     public @Unsigned int numRows() {
         return segment.get(LAYOUT$numRows, OFFSET$numRows);
     }
 
-    public void numRows(@Unsigned int value) {
+    public VkConvertCooperativeVectorMatrixInfoNV numRows(@Unsigned int value) {
         segment.set(LAYOUT$numRows, OFFSET$numRows, value);
+        return this;
     }
 
     public @Unsigned int numColumns() {
         return segment.get(LAYOUT$numColumns, OFFSET$numColumns);
     }
 
-    public void numColumns(@Unsigned int value) {
+    public VkConvertCooperativeVectorMatrixInfoNV numColumns(@Unsigned int value) {
         segment.set(LAYOUT$numColumns, OFFSET$numColumns, value);
+        return this;
     }
 
     public @EnumType(VkCooperativeVectorMatrixLayoutNV.class) int srcLayout() {
         return segment.get(LAYOUT$srcLayout, OFFSET$srcLayout);
     }
 
-    public void srcLayout(@EnumType(VkCooperativeVectorMatrixLayoutNV.class) int value) {
+    public VkConvertCooperativeVectorMatrixInfoNV srcLayout(@EnumType(VkCooperativeVectorMatrixLayoutNV.class) int value) {
         segment.set(LAYOUT$srcLayout, OFFSET$srcLayout, value);
+        return this;
     }
 
     public @Unsigned long srcStride() {
         return NativeLayout.readCSizeT(segment, OFFSET$srcStride);
     }
 
-    public void srcStride(@Unsigned long value) {
+    public VkConvertCooperativeVectorMatrixInfoNV srcStride(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$srcStride, value);
+        return this;
     }
 
     public @EnumType(VkCooperativeVectorMatrixLayoutNV.class) int dstLayout() {
         return segment.get(LAYOUT$dstLayout, OFFSET$dstLayout);
     }
 
-    public void dstLayout(@EnumType(VkCooperativeVectorMatrixLayoutNV.class) int value) {
+    public VkConvertCooperativeVectorMatrixInfoNV dstLayout(@EnumType(VkCooperativeVectorMatrixLayoutNV.class) int value) {
         segment.set(LAYOUT$dstLayout, OFFSET$dstLayout, value);
+        return this;
     }
 
     public @Unsigned long dstStride() {
         return NativeLayout.readCSizeT(segment, OFFSET$dstStride);
     }
 
-    public void dstStride(@Unsigned long value) {
+    public VkConvertCooperativeVectorMatrixInfoNV dstStride(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dstStride, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

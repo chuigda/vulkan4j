@@ -193,8 +193,9 @@ public record VkSamplerYcbcrConversionImageFormatProperties(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSamplerYcbcrConversionImageFormatProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSamplerYcbcrConversionImageFormatProperties(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSamplerYcbcrConversionImageFormatProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int combinedImageSamplerDescriptorCount() {
         return segment.get(LAYOUT$combinedImageSamplerDescriptorCount, OFFSET$combinedImageSamplerDescriptorCount);
     }
 
-    public void combinedImageSamplerDescriptorCount(@Unsigned int value) {
+    public VkSamplerYcbcrConversionImageFormatProperties combinedImageSamplerDescriptorCount(@Unsigned int value) {
         segment.set(LAYOUT$combinedImageSamplerDescriptorCount, OFFSET$combinedImageSamplerDescriptorCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

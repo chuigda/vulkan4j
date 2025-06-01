@@ -193,8 +193,9 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationStateRasterizationOrderAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPipelineRasterizationStateRasterizationOrderAMD(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineRasterizationStateRasterizationOrderAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkRasterizationOrderAMD.class) int rasterizationOrder() {
         return segment.get(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder);
     }
 
-    public void rasterizationOrder(@EnumType(VkRasterizationOrderAMD.class) int value) {
+    public VkPipelineRasterizationStateRasterizationOrderAMD rasterizationOrder(@EnumType(VkRasterizationOrderAMD.class) int value) {
         segment.set(LAYOUT$rasterizationOrder, OFFSET$rasterizationOrder, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -174,24 +174,27 @@ public record VkMultiDrawIndexedInfoEXT(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$firstIndex, OFFSET$firstIndex);
     }
 
-    public void firstIndex(@Unsigned int value) {
+    public VkMultiDrawIndexedInfoEXT firstIndex(@Unsigned int value) {
         segment.set(LAYOUT$firstIndex, OFFSET$firstIndex, value);
+        return this;
     }
 
     public @Unsigned int indexCount() {
         return segment.get(LAYOUT$indexCount, OFFSET$indexCount);
     }
 
-    public void indexCount(@Unsigned int value) {
+    public VkMultiDrawIndexedInfoEXT indexCount(@Unsigned int value) {
         segment.set(LAYOUT$indexCount, OFFSET$indexCount, value);
+        return this;
     }
 
     public int vertexOffset() {
         return segment.get(LAYOUT$vertexOffset, OFFSET$vertexOffset);
     }
 
-    public void vertexOffset(int value) {
+    public VkMultiDrawIndexedInfoEXT vertexOffset(int value) {
         segment.set(LAYOUT$vertexOffset, OFFSET$vertexOffset, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

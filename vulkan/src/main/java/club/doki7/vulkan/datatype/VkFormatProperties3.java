@@ -195,8 +195,9 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkFormatProperties3 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkFormatProperties3(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkFormatProperties3 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags2.class) long linearTilingFeatures() {
         return segment.get(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures);
     }
 
-    public void linearTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 linearTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$linearTilingFeatures, OFFSET$linearTilingFeatures, value);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags2.class) long optimalTilingFeatures() {
         return segment.get(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures);
     }
 
-    public void optimalTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 optimalTilingFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$optimalTilingFeatures, OFFSET$optimalTilingFeatures, value);
+        return this;
     }
 
     public @EnumType(VkFormatFeatureFlags2.class) long bufferFeatures() {
         return segment.get(LAYOUT$bufferFeatures, OFFSET$bufferFeatures);
     }
 
-    public void bufferFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
+    public VkFormatProperties3 bufferFeatures(@EnumType(VkFormatFeatureFlags2.class) long value) {
         segment.set(LAYOUT$bufferFeatures, OFFSET$bufferFeatures, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

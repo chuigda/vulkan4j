@@ -174,24 +174,27 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         return segment.get(LAYOUT$objectType, OFFSET$objectType);
     }
 
-    public void objectType(@EnumType(VkObjectType.class) int value) {
+    public VkRefreshObjectKHR objectType(@EnumType(VkObjectType.class) int value) {
         segment.set(LAYOUT$objectType, OFFSET$objectType, value);
+        return this;
     }
 
     public @Unsigned long objectHandle() {
         return segment.get(LAYOUT$objectHandle, OFFSET$objectHandle);
     }
 
-    public void objectHandle(@Unsigned long value) {
+    public VkRefreshObjectKHR objectHandle(@Unsigned long value) {
         segment.set(LAYOUT$objectHandle, OFFSET$objectHandle, value);
+        return this;
     }
 
     public @EnumType(VkRefreshObjectFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkRefreshObjectFlagsKHR.class) int value) {
+    public VkRefreshObjectKHR flags(@EnumType(VkRefreshObjectFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

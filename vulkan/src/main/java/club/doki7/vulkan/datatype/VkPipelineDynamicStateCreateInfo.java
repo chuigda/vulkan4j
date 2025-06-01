@@ -195,8 +195,9 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineDynamicStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,24 +208,27 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineDynamicStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineDynamicStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineDynamicStateCreateFlags.class) int value) {
+    public VkPipelineDynamicStateCreateInfo flags(@EnumType(VkPipelineDynamicStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int dynamicStateCount() {
         return segment.get(LAYOUT$dynamicStateCount, OFFSET$dynamicStateCount);
     }
 
-    public void dynamicStateCount(@Unsigned int value) {
+    public VkPipelineDynamicStateCreateInfo dynamicStateCount(@Unsigned int value) {
         segment.set(LAYOUT$dynamicStateCount, OFFSET$dynamicStateCount, value);
+        return this;
     }
 
 
@@ -240,9 +244,10 @@ public record VkPipelineDynamicStateCreateInfo(@NotNull MemorySegment segment) i
         return new IntPtr(s);
     }
 
-    public void pDynamicStates(@Nullable @EnumType(VkDynamicState.class) IntPtr value) {
+    public VkPipelineDynamicStateCreateInfo pDynamicStates(@Nullable @EnumType(VkDynamicState.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDynamicStatesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDynamicState.class) MemorySegment pDynamicStatesRaw() {

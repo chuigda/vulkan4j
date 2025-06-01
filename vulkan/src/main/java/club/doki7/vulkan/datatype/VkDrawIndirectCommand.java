@@ -175,32 +175,36 @@ public record VkDrawIndirectCommand(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$vertexCount, OFFSET$vertexCount);
     }
 
-    public void vertexCount(@Unsigned int value) {
+    public VkDrawIndirectCommand vertexCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexCount, OFFSET$vertexCount, value);
+        return this;
     }
 
     public @Unsigned int instanceCount() {
         return segment.get(LAYOUT$instanceCount, OFFSET$instanceCount);
     }
 
-    public void instanceCount(@Unsigned int value) {
+    public VkDrawIndirectCommand instanceCount(@Unsigned int value) {
         segment.set(LAYOUT$instanceCount, OFFSET$instanceCount, value);
+        return this;
     }
 
     public @Unsigned int firstVertex() {
         return segment.get(LAYOUT$firstVertex, OFFSET$firstVertex);
     }
 
-    public void firstVertex(@Unsigned int value) {
+    public VkDrawIndirectCommand firstVertex(@Unsigned int value) {
         segment.set(LAYOUT$firstVertex, OFFSET$firstVertex, value);
+        return this;
     }
 
     public @Unsigned int firstInstance() {
         return segment.get(LAYOUT$firstInstance, OFFSET$firstInstance);
     }
 
-    public void firstInstance(@Unsigned int value) {
+    public VkDrawIndirectCommand firstInstance(@Unsigned int value) {
         segment.set(LAYOUT$firstInstance, OFFSET$firstInstance, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

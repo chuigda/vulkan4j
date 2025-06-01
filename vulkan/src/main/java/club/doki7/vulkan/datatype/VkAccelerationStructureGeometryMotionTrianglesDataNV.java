@@ -193,8 +193,9 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureGeometryMotionTrianglesDataNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureGeometryMotionTrianglesDataNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR vertexData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$vertexData, LAYOUT$vertexData));
     }
 
-    public void vertexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkAccelerationStructureGeometryMotionTrianglesDataNV vertexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$vertexData, SIZE$vertexData);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

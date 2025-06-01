@@ -175,32 +175,36 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$aspectMask, OFFSET$aspectMask);
     }
 
-    public void aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
+    public VkImageSubresourceLayers aspectMask(@EnumType(VkImageAspectFlags.class) int value) {
         segment.set(LAYOUT$aspectMask, OFFSET$aspectMask, value);
+        return this;
     }
 
     public @Unsigned int mipLevel() {
         return segment.get(LAYOUT$mipLevel, OFFSET$mipLevel);
     }
 
-    public void mipLevel(@Unsigned int value) {
+    public VkImageSubresourceLayers mipLevel(@Unsigned int value) {
         segment.set(LAYOUT$mipLevel, OFFSET$mipLevel, value);
+        return this;
     }
 
     public @Unsigned int baseArrayLayer() {
         return segment.get(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer);
     }
 
-    public void baseArrayLayer(@Unsigned int value) {
+    public VkImageSubresourceLayers baseArrayLayer(@Unsigned int value) {
         segment.set(LAYOUT$baseArrayLayer, OFFSET$baseArrayLayer, value);
+        return this;
     }
 
     public @Unsigned int layerCount() {
         return segment.get(LAYOUT$layerCount, OFFSET$layerCount);
     }
 
-    public void layerCount(@Unsigned int value) {
+    public VkImageSubresourceLayers layerCount(@Unsigned int value) {
         segment.set(LAYOUT$layerCount, OFFSET$layerCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

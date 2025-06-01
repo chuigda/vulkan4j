@@ -193,8 +193,9 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkPhysicalDeviceProperties2 properties() {
         return new VkPhysicalDeviceProperties2(segment.asSlice(OFFSET$properties, LAYOUT$properties));
     }
 
-    public void properties(@NotNull VkPhysicalDeviceProperties2 value) {
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties(@NotNull VkPhysicalDeviceProperties2 value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, SIZE$properties);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

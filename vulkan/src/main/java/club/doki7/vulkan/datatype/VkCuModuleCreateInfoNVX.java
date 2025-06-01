@@ -194,8 +194,9 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCuModuleCreateInfoNVX sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCuModuleCreateInfoNVX pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long dataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$dataSize);
     }
 
-    public void dataSize(@Unsigned long value) {
+    public VkCuModuleCreateInfoNVX dataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$dataSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pData() {
@@ -226,8 +229,9 @@ public record VkCuModuleCreateInfoNVX(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pData, OFFSET$pData, value);
     }
 
-    public void pData(@Nullable IPointer pointer) {
+    public VkCuModuleCreateInfoNVX pData(@Nullable IPointer pointer) {
         pData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

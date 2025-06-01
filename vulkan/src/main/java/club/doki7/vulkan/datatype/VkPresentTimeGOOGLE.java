@@ -173,16 +173,18 @@ public record VkPresentTimeGOOGLE(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$presentID, OFFSET$presentID);
     }
 
-    public void presentID(@Unsigned int value) {
+    public VkPresentTimeGOOGLE presentID(@Unsigned int value) {
         segment.set(LAYOUT$presentID, OFFSET$presentID, value);
+        return this;
     }
 
     public @Unsigned long desiredPresentTime() {
         return segment.get(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime);
     }
 
-    public void desiredPresentTime(@Unsigned long value) {
+    public VkPresentTimeGOOGLE desiredPresentTime(@Unsigned long value) {
         segment.set(LAYOUT$desiredPresentTime, OFFSET$desiredPresentTime, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

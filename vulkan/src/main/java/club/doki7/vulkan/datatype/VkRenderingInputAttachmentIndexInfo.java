@@ -196,8 +196,9 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkRenderingInputAttachmentIndexInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,16 +209,18 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkRenderingInputAttachmentIndexInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int colorAttachmentCount() {
         return segment.get(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount);
     }
 
-    public void colorAttachmentCount(@Unsigned int value) {
+    public VkRenderingInputAttachmentIndexInfo colorAttachmentCount(@Unsigned int value) {
         segment.set(LAYOUT$colorAttachmentCount, OFFSET$colorAttachmentCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -232,9 +235,10 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return new IntPtr(s);
     }
 
-    public void pColorAttachmentInputIndices(@Nullable @Unsigned IntPtr value) {
+    public VkRenderingInputAttachmentIndexInfo pColorAttachmentInputIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pColorAttachmentInputIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pColorAttachmentInputIndicesRaw() {
@@ -257,9 +261,10 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return new IntPtr(s);
     }
 
-    public void pDepthInputAttachmentIndex(@Nullable @Unsigned IntPtr value) {
+    public VkRenderingInputAttachmentIndexInfo pDepthInputAttachmentIndex(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDepthInputAttachmentIndexRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pDepthInputAttachmentIndexRaw() {
@@ -282,9 +287,10 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         return new IntPtr(s);
     }
 
-    public void pStencilInputAttachmentIndex(@Nullable @Unsigned IntPtr value) {
+    public VkRenderingInputAttachmentIndexInfo pStencilInputAttachmentIndex(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStencilInputAttachmentIndexRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pStencilInputAttachmentIndexRaw() {

@@ -197,8 +197,9 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,48 +210,54 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkClusterAccelerationStructureInputInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxAccelerationStructureCount() {
         return segment.get(LAYOUT$maxAccelerationStructureCount, OFFSET$maxAccelerationStructureCount);
     }
 
-    public void maxAccelerationStructureCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureInputInfoNV maxAccelerationStructureCount(@Unsigned int value) {
         segment.set(LAYOUT$maxAccelerationStructureCount, OFFSET$maxAccelerationStructureCount, value);
+        return this;
     }
 
     public @EnumType(VkBuildAccelerationStructureFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV flags(@EnumType(VkBuildAccelerationStructureFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkClusterAccelerationStructureOpTypeNV.class) int opType() {
         return segment.get(LAYOUT$opType, OFFSET$opType);
     }
 
-    public void opType(@EnumType(VkClusterAccelerationStructureOpTypeNV.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV opType(@EnumType(VkClusterAccelerationStructureOpTypeNV.class) int value) {
         segment.set(LAYOUT$opType, OFFSET$opType, value);
+        return this;
     }
 
     public @EnumType(VkClusterAccelerationStructureOpModeNV.class) int opMode() {
         return segment.get(LAYOUT$opMode, OFFSET$opMode);
     }
 
-    public void opMode(@EnumType(VkClusterAccelerationStructureOpModeNV.class) int value) {
+    public VkClusterAccelerationStructureInputInfoNV opMode(@EnumType(VkClusterAccelerationStructureOpModeNV.class) int value) {
         segment.set(LAYOUT$opMode, OFFSET$opMode, value);
+        return this;
     }
 
     public @NotNull VkClusterAccelerationStructureOpInputNV opInput() {
         return new VkClusterAccelerationStructureOpInputNV(segment.asSlice(OFFSET$opInput, LAYOUT$opInput));
     }
 
-    public void opInput(@NotNull VkClusterAccelerationStructureOpInputNV value) {
+    public VkClusterAccelerationStructureInputInfoNV opInput(@NotNull VkClusterAccelerationStructureOpInputNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$opInput, SIZE$opInput);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

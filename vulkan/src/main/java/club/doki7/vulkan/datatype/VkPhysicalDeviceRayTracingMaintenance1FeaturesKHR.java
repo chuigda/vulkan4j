@@ -194,8 +194,9 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(@NotNull MemoryS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayTracingMaintenance1() {
         return segment.get(LAYOUT$rayTracingMaintenance1, OFFSET$rayTracingMaintenance1);
     }
 
-    public void rayTracingMaintenance1(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR rayTracingMaintenance1(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingMaintenance1, OFFSET$rayTracingMaintenance1, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int rayTracingPipelineTraceRaysIndirect2() {
         return segment.get(LAYOUT$rayTracingPipelineTraceRaysIndirect2, OFFSET$rayTracingPipelineTraceRaysIndirect2);
     }
 
-    public void rayTracingPipelineTraceRaysIndirect2(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR rayTracingPipelineTraceRaysIndirect2(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$rayTracingPipelineTraceRaysIndirect2, OFFSET$rayTracingPipelineTraceRaysIndirect2, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

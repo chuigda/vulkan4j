@@ -173,16 +173,18 @@ public record VkRect2D(@NotNull MemorySegment segment) implements IVkRect2D {
         return new VkOffset2D(segment.asSlice(OFFSET$offset, LAYOUT$offset));
     }
 
-    public void offset(@NotNull VkOffset2D value) {
+    public VkRect2D offset(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$offset, SIZE$offset);
+        return this;
     }
 
     public @NotNull VkExtent2D extent() {
         return new VkExtent2D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
-    public void extent(@NotNull VkExtent2D value) {
+    public VkRect2D extent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

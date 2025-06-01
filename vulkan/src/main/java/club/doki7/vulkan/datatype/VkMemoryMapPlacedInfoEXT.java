@@ -193,8 +193,9 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkMemoryMapPlacedInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkMemoryMapPlacedInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pPlacedAddress() {
@@ -217,8 +219,9 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pPlacedAddress, OFFSET$pPlacedAddress, value);
     }
 
-    public void pPlacedAddress(@Nullable IPointer pointer) {
+    public VkMemoryMapPlacedInfoEXT pPlacedAddress(@Nullable IPointer pointer) {
         pPlacedAddress(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

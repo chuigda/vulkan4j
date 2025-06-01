@@ -172,8 +172,9 @@ public record VkIndirectCommandsVertexBufferTokenEXT(@NotNull MemorySegment segm
         return segment.get(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit);
     }
 
-    public void vertexBindingUnit(@Unsigned int value) {
+    public VkIndirectCommandsVertexBufferTokenEXT vertexBindingUnit(@Unsigned int value) {
         segment.set(LAYOUT$vertexBindingUnit, OFFSET$vertexBindingUnit, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

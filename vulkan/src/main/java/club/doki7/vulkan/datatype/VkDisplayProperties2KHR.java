@@ -193,8 +193,9 @@ public record VkDisplayProperties2KHR(@NotNull MemorySegment segment) implements
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDisplayProperties2KHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDisplayProperties2KHR(@NotNull MemorySegment segment) implements
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDisplayProperties2KHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkDisplayPropertiesKHR displayProperties() {
         return new VkDisplayPropertiesKHR(segment.asSlice(OFFSET$displayProperties, LAYOUT$displayProperties));
     }
 
-    public void displayProperties(@NotNull VkDisplayPropertiesKHR value) {
+    public VkDisplayProperties2KHR displayProperties(@NotNull VkDisplayPropertiesKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayProperties, SIZE$displayProperties);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

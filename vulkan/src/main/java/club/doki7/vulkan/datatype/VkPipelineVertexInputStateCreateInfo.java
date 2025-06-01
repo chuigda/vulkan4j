@@ -197,8 +197,9 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineVertexInputStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,29 +210,33 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineVertexInputStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineVertexInputStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineVertexInputStateCreateFlags.class) int value) {
+    public VkPipelineVertexInputStateCreateInfo flags(@EnumType(VkPipelineVertexInputStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int vertexBindingDescriptionCount() {
         return segment.get(LAYOUT$vertexBindingDescriptionCount, OFFSET$vertexBindingDescriptionCount);
     }
 
-    public void vertexBindingDescriptionCount(@Unsigned int value) {
+    public VkPipelineVertexInputStateCreateInfo vertexBindingDescriptionCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexBindingDescriptionCount, OFFSET$vertexBindingDescriptionCount, value);
+        return this;
     }
 
-    public void pVertexBindingDescriptions(@Nullable IVkVertexInputBindingDescription value) {
+    public VkPipelineVertexInputStateCreateInfo pVertexBindingDescriptions(@Nullable IVkVertexInputBindingDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexBindingDescriptionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVertexInputBindingDescription.Ptr pVertexBindingDescriptions(int assumedCount) {
@@ -264,13 +269,15 @@ public record VkPipelineVertexInputStateCreateInfo(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$vertexAttributeDescriptionCount, OFFSET$vertexAttributeDescriptionCount);
     }
 
-    public void vertexAttributeDescriptionCount(@Unsigned int value) {
+    public VkPipelineVertexInputStateCreateInfo vertexAttributeDescriptionCount(@Unsigned int value) {
         segment.set(LAYOUT$vertexAttributeDescriptionCount, OFFSET$vertexAttributeDescriptionCount, value);
+        return this;
     }
 
-    public void pVertexAttributeDescriptions(@Nullable IVkVertexInputAttributeDescription value) {
+    public VkPipelineVertexInputStateCreateInfo pVertexAttributeDescriptions(@Nullable IVkVertexInputAttributeDescription value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pVertexAttributeDescriptionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVertexInputAttributeDescription.Ptr pVertexAttributeDescriptions(int assumedCount) {

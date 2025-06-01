@@ -193,8 +193,9 @@ public record VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int representativeFragmentTest() {
         return segment.get(LAYOUT$representativeFragmentTest, OFFSET$representativeFragmentTest);
     }
 
-    public void representativeFragmentTest(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV representativeFragmentTest(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$representativeFragmentTest, OFFSET$representativeFragmentTest, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

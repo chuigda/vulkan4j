@@ -197,8 +197,9 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineViewportStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,29 +210,33 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineViewportStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineViewportStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineViewportStateCreateFlags.class) int value) {
+    public VkPipelineViewportStateCreateInfo flags(@EnumType(VkPipelineViewportStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int viewportCount() {
         return segment.get(LAYOUT$viewportCount, OFFSET$viewportCount);
     }
 
-    public void viewportCount(@Unsigned int value) {
+    public VkPipelineViewportStateCreateInfo viewportCount(@Unsigned int value) {
         segment.set(LAYOUT$viewportCount, OFFSET$viewportCount, value);
+        return this;
     }
 
-    public void pViewports(@Nullable IVkViewport value) {
+    public VkPipelineViewportStateCreateInfo pViewports(@Nullable IVkViewport value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pViewportsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkViewport.Ptr pViewports(int assumedCount) {
@@ -264,13 +269,15 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         return segment.get(LAYOUT$scissorCount, OFFSET$scissorCount);
     }
 
-    public void scissorCount(@Unsigned int value) {
+    public VkPipelineViewportStateCreateInfo scissorCount(@Unsigned int value) {
         segment.set(LAYOUT$scissorCount, OFFSET$scissorCount, value);
+        return this;
     }
 
-    public void pScissors(@Nullable IVkRect2D value) {
+    public VkPipelineViewportStateCreateInfo pScissors(@Nullable IVkRect2D value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pScissorsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkRect2D.Ptr pScissors(int assumedCount) {

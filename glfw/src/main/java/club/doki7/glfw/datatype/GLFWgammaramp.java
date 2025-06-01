@@ -198,9 +198,10 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
         return new ShortPtr(s);
     }
 
-    public void red(@Nullable ShortPtr value) {
+    public GLFWgammaramp red(@Nullable ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         redRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int16_t*") MemorySegment redRaw() {
@@ -223,9 +224,10 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
         return new ShortPtr(s);
     }
 
-    public void green(@Nullable ShortPtr value) {
+    public GLFWgammaramp green(@Nullable ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         greenRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int16_t*") MemorySegment greenRaw() {
@@ -248,9 +250,10 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
         return new ShortPtr(s);
     }
 
-    public void blue(@Nullable ShortPtr value) {
+    public GLFWgammaramp blue(@Nullable ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         blueRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int16_t*") MemorySegment blueRaw() {
@@ -265,8 +268,9 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(int value) {
+    public GLFWgammaramp size(int value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

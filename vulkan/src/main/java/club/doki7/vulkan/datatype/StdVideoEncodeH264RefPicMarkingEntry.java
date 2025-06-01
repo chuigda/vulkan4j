@@ -174,40 +174,45 @@ public record StdVideoEncodeH264RefPicMarkingEntry(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$memory_management_control_operation, OFFSET$memory_management_control_operation);
     }
 
-    public void memory_management_control_operation(@EnumType(StdVideoH264MemMgmtControlOp.class) int value) {
+    public StdVideoEncodeH264RefPicMarkingEntry memory_management_control_operation(@EnumType(StdVideoH264MemMgmtControlOp.class) int value) {
         segment.set(LAYOUT$memory_management_control_operation, OFFSET$memory_management_control_operation, value);
+        return this;
     }
 
     public @Unsigned short difference_of_pic_nums_minus1() {
         return segment.get(LAYOUT$difference_of_pic_nums_minus1, OFFSET$difference_of_pic_nums_minus1);
     }
 
-    public void difference_of_pic_nums_minus1(@Unsigned short value) {
+    public StdVideoEncodeH264RefPicMarkingEntry difference_of_pic_nums_minus1(@Unsigned short value) {
         segment.set(LAYOUT$difference_of_pic_nums_minus1, OFFSET$difference_of_pic_nums_minus1, value);
+        return this;
     }
 
     public @Unsigned short long_term_pic_num() {
         return segment.get(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num);
     }
 
-    public void long_term_pic_num(@Unsigned short value) {
+    public StdVideoEncodeH264RefPicMarkingEntry long_term_pic_num(@Unsigned short value) {
         segment.set(LAYOUT$long_term_pic_num, OFFSET$long_term_pic_num, value);
+        return this;
     }
 
     public @Unsigned short long_term_frame_idx() {
         return segment.get(LAYOUT$long_term_frame_idx, OFFSET$long_term_frame_idx);
     }
 
-    public void long_term_frame_idx(@Unsigned short value) {
+    public StdVideoEncodeH264RefPicMarkingEntry long_term_frame_idx(@Unsigned short value) {
         segment.set(LAYOUT$long_term_frame_idx, OFFSET$long_term_frame_idx, value);
+        return this;
     }
 
     public @Unsigned short max_long_term_frame_idx_plus1() {
         return segment.get(LAYOUT$max_long_term_frame_idx_plus1, OFFSET$max_long_term_frame_idx_plus1);
     }
 
-    public void max_long_term_frame_idx_plus1(@Unsigned short value) {
+    public StdVideoEncodeH264RefPicMarkingEntry max_long_term_frame_idx_plus1(@Unsigned short value) {
         segment.set(LAYOUT$max_long_term_frame_idx_plus1, OFFSET$max_long_term_frame_idx_plus1, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

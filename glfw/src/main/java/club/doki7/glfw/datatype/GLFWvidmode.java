@@ -195,48 +195,54 @@ public record GLFWvidmode(@NotNull MemorySegment segment) implements IGLFWvidmod
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(int value) {
+    public GLFWvidmode width(int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
+        return this;
     }
 
     public int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(int value) {
+    public GLFWvidmode height(int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
+        return this;
     }
 
     public int redBits() {
         return segment.get(LAYOUT$redBits, OFFSET$redBits);
     }
 
-    public void redBits(int value) {
+    public GLFWvidmode redBits(int value) {
         segment.set(LAYOUT$redBits, OFFSET$redBits, value);
+        return this;
     }
 
     public int greenBits() {
         return segment.get(LAYOUT$greenBits, OFFSET$greenBits);
     }
 
-    public void greenBits(int value) {
+    public GLFWvidmode greenBits(int value) {
         segment.set(LAYOUT$greenBits, OFFSET$greenBits, value);
+        return this;
     }
 
     public int blueBits() {
         return segment.get(LAYOUT$blueBits, OFFSET$blueBits);
     }
 
-    public void blueBits(int value) {
+    public GLFWvidmode blueBits(int value) {
         segment.set(LAYOUT$blueBits, OFFSET$blueBits, value);
+        return this;
     }
 
     public int refreshRate() {
         return segment.get(LAYOUT$refreshRate, OFFSET$refreshRate);
     }
 
-    public void refreshRate(int value) {
+    public GLFWvidmode refreshRate(int value) {
         segment.set(LAYOUT$refreshRate, OFFSET$refreshRate, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

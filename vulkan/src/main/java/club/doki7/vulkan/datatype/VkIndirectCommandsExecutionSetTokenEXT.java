@@ -173,16 +173,18 @@ public record VkIndirectCommandsExecutionSetTokenEXT(@NotNull MemorySegment segm
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
+    public VkIndirectCommandsExecutionSetTokenEXT type(@EnumType(VkIndirectExecutionSetInfoTypeEXT.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int shaderStages() {
         return segment.get(LAYOUT$shaderStages, OFFSET$shaderStages);
     }
 
-    public void shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkIndirectCommandsExecutionSetTokenEXT shaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$shaderStages, OFFSET$shaderStages, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

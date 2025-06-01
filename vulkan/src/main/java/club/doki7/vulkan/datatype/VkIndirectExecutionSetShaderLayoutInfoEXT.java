@@ -194,8 +194,9 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkIndirectExecutionSetShaderLayoutInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkIndirectExecutionSetShaderLayoutInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int setLayoutCount() {
         return segment.get(LAYOUT$setLayoutCount, OFFSET$setLayoutCount);
     }
 
-    public void setLayoutCount(@Unsigned int value) {
+    public VkIndirectExecutionSetShaderLayoutInfoEXT setLayoutCount(@Unsigned int value) {
         segment.set(LAYOUT$setLayoutCount, OFFSET$setLayoutCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkDescriptorSetLayout.Ptr} does not have correct {@link VkDescriptorSetLayout.Ptr#size}
@@ -230,9 +233,10 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         return new VkDescriptorSetLayout.Ptr(s);
     }
 
-    public void pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
+    public VkIndirectExecutionSetShaderLayoutInfoEXT pSetLayouts(@Nullable VkDescriptorSetLayout.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSetLayoutsRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkDescriptorSetLayout.class) MemorySegment pSetLayoutsRaw() {

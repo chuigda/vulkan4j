@@ -195,8 +195,9 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeH265PictureInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,21 +208,24 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeH265PictureInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int naluSliceSegmentEntryCount() {
         return segment.get(LAYOUT$naluSliceSegmentEntryCount, OFFSET$naluSliceSegmentEntryCount);
     }
 
-    public void naluSliceSegmentEntryCount(@Unsigned int value) {
+    public VkVideoEncodeH265PictureInfoKHR naluSliceSegmentEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$naluSliceSegmentEntryCount, OFFSET$naluSliceSegmentEntryCount, value);
+        return this;
     }
 
-    public void pNaluSliceSegmentEntries(@Nullable IVkVideoEncodeH265NaluSliceSegmentInfoKHR value) {
+    public VkVideoEncodeH265PictureInfoKHR pNaluSliceSegmentEntries(@Nullable IVkVideoEncodeH265NaluSliceSegmentInfoKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pNaluSliceSegmentEntriesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkVideoEncodeH265NaluSliceSegmentInfoKHR.Ptr pNaluSliceSegmentEntries(int assumedCount) {
@@ -250,9 +254,10 @@ public record VkVideoEncodeH265PictureInfoKHR(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNaluSliceSegmentEntries, OFFSET$pNaluSliceSegmentEntries, value);
     }
 
-    public void pStdPictureInfo(@Nullable IStdVideoEncodeH265PictureInfo value) {
+    public VkVideoEncodeH265PictureInfoKHR pStdPictureInfo(@Nullable IStdVideoEncodeH265PictureInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pStdPictureInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable StdVideoEncodeH265PictureInfo.Ptr pStdPictureInfo(int assumedCount) {

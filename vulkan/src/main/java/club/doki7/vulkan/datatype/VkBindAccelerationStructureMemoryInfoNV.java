@@ -197,8 +197,9 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBindAccelerationStructureMemoryInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,8 +210,9 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBindAccelerationStructureMemoryInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkAccelerationStructureNV accelerationStructure() {
@@ -221,8 +223,9 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return new VkAccelerationStructureNV(s);
     }
 
-    public void accelerationStructure(@Nullable VkAccelerationStructureNV value) {
+    public VkBindAccelerationStructureMemoryInfoNV accelerationStructure(@Nullable VkAccelerationStructureNV value) {
         segment.set(LAYOUT$accelerationStructure, OFFSET$accelerationStructure, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDeviceMemory memory() {
@@ -233,24 +236,27 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@Nullable VkDeviceMemory value) {
+    public VkBindAccelerationStructureMemoryInfoNV memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkBindAccelerationStructureMemoryInfoNV memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+        return this;
     }
 
     public @Unsigned int deviceIndexCount() {
         return segment.get(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount);
     }
 
-    public void deviceIndexCount(@Unsigned int value) {
+    public VkBindAccelerationStructureMemoryInfoNV deviceIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$deviceIndexCount, OFFSET$deviceIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -265,9 +271,10 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         return new IntPtr(s);
     }
 
-    public void pDeviceIndices(@Nullable @Unsigned IntPtr value) {
+    public VkBindAccelerationStructureMemoryInfoNV pDeviceIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDeviceIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pDeviceIndicesRaw() {

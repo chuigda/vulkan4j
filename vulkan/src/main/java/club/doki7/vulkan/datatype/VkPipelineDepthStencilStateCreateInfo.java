@@ -202,8 +202,9 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineDepthStencilStateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -214,88 +215,99 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineDepthStencilStateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineDepthStencilStateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineDepthStencilStateCreateFlags.class) int value) {
+    public VkPipelineDepthStencilStateCreateInfo flags(@EnumType(VkPipelineDepthStencilStateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthTestEnable() {
         return segment.get(LAYOUT$depthTestEnable, OFFSET$depthTestEnable);
     }
 
-    public void depthTestEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineDepthStencilStateCreateInfo depthTestEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthTestEnable, OFFSET$depthTestEnable, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthWriteEnable() {
         return segment.get(LAYOUT$depthWriteEnable, OFFSET$depthWriteEnable);
     }
 
-    public void depthWriteEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineDepthStencilStateCreateInfo depthWriteEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthWriteEnable, OFFSET$depthWriteEnable, value);
+        return this;
     }
 
     public @EnumType(VkCompareOp.class) int depthCompareOp() {
         return segment.get(LAYOUT$depthCompareOp, OFFSET$depthCompareOp);
     }
 
-    public void depthCompareOp(@EnumType(VkCompareOp.class) int value) {
+    public VkPipelineDepthStencilStateCreateInfo depthCompareOp(@EnumType(VkCompareOp.class) int value) {
         segment.set(LAYOUT$depthCompareOp, OFFSET$depthCompareOp, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthBoundsTestEnable() {
         return segment.get(LAYOUT$depthBoundsTestEnable, OFFSET$depthBoundsTestEnable);
     }
 
-    public void depthBoundsTestEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineDepthStencilStateCreateInfo depthBoundsTestEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthBoundsTestEnable, OFFSET$depthBoundsTestEnable, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int stencilTestEnable() {
         return segment.get(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable);
     }
 
-    public void stencilTestEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineDepthStencilStateCreateInfo stencilTestEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$stencilTestEnable, OFFSET$stencilTestEnable, value);
+        return this;
     }
 
     public @NotNull VkStencilOpState front() {
         return new VkStencilOpState(segment.asSlice(OFFSET$front, LAYOUT$front));
     }
 
-    public void front(@NotNull VkStencilOpState value) {
+    public VkPipelineDepthStencilStateCreateInfo front(@NotNull VkStencilOpState value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$front, SIZE$front);
+        return this;
     }
 
     public @NotNull VkStencilOpState back() {
         return new VkStencilOpState(segment.asSlice(OFFSET$back, LAYOUT$back));
     }
 
-    public void back(@NotNull VkStencilOpState value) {
+    public VkPipelineDepthStencilStateCreateInfo back(@NotNull VkStencilOpState value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$back, SIZE$back);
+        return this;
     }
 
     public float minDepthBounds() {
         return segment.get(LAYOUT$minDepthBounds, OFFSET$minDepthBounds);
     }
 
-    public void minDepthBounds(float value) {
+    public VkPipelineDepthStencilStateCreateInfo minDepthBounds(float value) {
         segment.set(LAYOUT$minDepthBounds, OFFSET$minDepthBounds, value);
+        return this;
     }
 
     public float maxDepthBounds() {
         return segment.get(LAYOUT$maxDepthBounds, OFFSET$maxDepthBounds);
     }
 
-    public void maxDepthBounds(float value) {
+    public VkPipelineDepthStencilStateCreateInfo maxDepthBounds(float value) {
         segment.set(LAYOUT$maxDepthBounds, OFFSET$maxDepthBounds, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

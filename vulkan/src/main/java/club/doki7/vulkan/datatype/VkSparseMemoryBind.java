@@ -176,16 +176,18 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
         return segment.get(LAYOUT$resourceOffset, OFFSET$resourceOffset);
     }
 
-    public void resourceOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSparseMemoryBind resourceOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$resourceOffset, OFFSET$resourceOffset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSparseMemoryBind size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @Nullable VkDeviceMemory memory() {
@@ -196,24 +198,27 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
         return new VkDeviceMemory(s);
     }
 
-    public void memory(@Nullable VkDeviceMemory value) {
+    public VkSparseMemoryBind memory(@Nullable VkDeviceMemory value) {
         segment.set(LAYOUT$memory, OFFSET$memory, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long memoryOffset() {
         return segment.get(LAYOUT$memoryOffset, OFFSET$memoryOffset);
     }
 
-    public void memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkSparseMemoryBind memoryOffset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$memoryOffset, OFFSET$memoryOffset, value);
+        return this;
     }
 
     public @EnumType(VkSparseMemoryBindFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
+    public VkSparseMemoryBind flags(@EnumType(VkSparseMemoryBindFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

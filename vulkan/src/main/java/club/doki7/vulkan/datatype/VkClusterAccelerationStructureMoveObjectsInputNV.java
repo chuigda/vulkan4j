@@ -195,8 +195,9 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureMoveObjectsInputNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkClusterAccelerationStructureMoveObjectsInputNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkClusterAccelerationStructureTypeNV.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkClusterAccelerationStructureTypeNV.class) int value) {
+    public VkClusterAccelerationStructureMoveObjectsInputNV type(@EnumType(VkClusterAccelerationStructureTypeNV.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int noMoveOverlap() {
         return segment.get(LAYOUT$noMoveOverlap, OFFSET$noMoveOverlap);
     }
 
-    public void noMoveOverlap(@NativeType("VkBool32") @Unsigned int value) {
+    public VkClusterAccelerationStructureMoveObjectsInputNV noMoveOverlap(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$noMoveOverlap, OFFSET$noMoveOverlap, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long maxMovedBytes() {
         return segment.get(LAYOUT$maxMovedBytes, OFFSET$maxMovedBytes);
     }
 
-    public void maxMovedBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkClusterAccelerationStructureMoveObjectsInputNV maxMovedBytes(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$maxMovedBytes, OFFSET$maxMovedBytes, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

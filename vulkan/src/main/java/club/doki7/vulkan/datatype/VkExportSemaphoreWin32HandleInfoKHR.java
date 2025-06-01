@@ -195,8 +195,9 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExportSemaphoreWin32HandleInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,8 +208,9 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExportSemaphoreWin32HandleInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pAttributes() {
@@ -219,16 +221,18 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         segment.set(LAYOUT$pAttributes, OFFSET$pAttributes, value);
     }
 
-    public void pAttributes(@Nullable IPointer pointer) {
+    public VkExportSemaphoreWin32HandleInfoKHR pAttributes(@Nullable IPointer pointer) {
         pAttributes(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("DWORD") @Unsigned int dwAccess() {
         return segment.get(LAYOUT$dwAccess, OFFSET$dwAccess);
     }
 
-    public void dwAccess(@NativeType("DWORD") @Unsigned int value) {
+    public VkExportSemaphoreWin32HandleInfoKHR dwAccess(@NativeType("DWORD") @Unsigned int value) {
         segment.set(LAYOUT$dwAccess, OFFSET$dwAccess, value);
+        return this;
     }
 
     /// Note: the returned {@link ShortPtr} does not have correct
@@ -243,9 +247,10 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         return new ShortPtr(s);
     }
 
-    public void name(@Nullable @Unsigned ShortPtr value) {
+    public VkExportSemaphoreWin32HandleInfoKHR name(@Nullable @Unsigned ShortPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         nameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint16_t*") MemorySegment nameRaw() {

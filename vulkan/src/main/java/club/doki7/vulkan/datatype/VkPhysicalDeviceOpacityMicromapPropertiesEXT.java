@@ -194,8 +194,9 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceOpacityMicromapPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceOpacityMicromapPropertiesEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceOpacityMicromapPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxOpacity2StateSubdivisionLevel() {
         return segment.get(LAYOUT$maxOpacity2StateSubdivisionLevel, OFFSET$maxOpacity2StateSubdivisionLevel);
     }
 
-    public void maxOpacity2StateSubdivisionLevel(@Unsigned int value) {
+    public VkPhysicalDeviceOpacityMicromapPropertiesEXT maxOpacity2StateSubdivisionLevel(@Unsigned int value) {
         segment.set(LAYOUT$maxOpacity2StateSubdivisionLevel, OFFSET$maxOpacity2StateSubdivisionLevel, value);
+        return this;
     }
 
     public @Unsigned int maxOpacity4StateSubdivisionLevel() {
         return segment.get(LAYOUT$maxOpacity4StateSubdivisionLevel, OFFSET$maxOpacity4StateSubdivisionLevel);
     }
 
-    public void maxOpacity4StateSubdivisionLevel(@Unsigned int value) {
+    public VkPhysicalDeviceOpacityMicromapPropertiesEXT maxOpacity4StateSubdivisionLevel(@Unsigned int value) {
         segment.set(LAYOUT$maxOpacity4StateSubdivisionLevel, OFFSET$maxOpacity4StateSubdivisionLevel, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

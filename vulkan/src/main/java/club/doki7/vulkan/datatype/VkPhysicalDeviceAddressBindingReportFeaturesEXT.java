@@ -193,8 +193,9 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(@NotNull MemorySeg
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceAddressBindingReportFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(@NotNull MemorySeg
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceAddressBindingReportFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int reportAddressBinding() {
         return segment.get(LAYOUT$reportAddressBinding, OFFSET$reportAddressBinding);
     }
 
-    public void reportAddressBinding(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceAddressBindingReportFeaturesEXT reportAddressBinding(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$reportAddressBinding, OFFSET$reportAddressBinding, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

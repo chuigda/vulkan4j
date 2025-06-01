@@ -197,8 +197,9 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,40 +210,45 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineCoverageModulationStateCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineCoverageModulationStateCreateFlagsNV.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineCoverageModulationStateCreateFlagsNV.class) int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV flags(@EnumType(VkPipelineCoverageModulationStateCreateFlagsNV.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkCoverageModulationModeNV.class) int coverageModulationMode() {
         return segment.get(LAYOUT$coverageModulationMode, OFFSET$coverageModulationMode);
     }
 
-    public void coverageModulationMode(@EnumType(VkCoverageModulationModeNV.class) int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV coverageModulationMode(@EnumType(VkCoverageModulationModeNV.class) int value) {
         segment.set(LAYOUT$coverageModulationMode, OFFSET$coverageModulationMode, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int coverageModulationTableEnable() {
         return segment.get(LAYOUT$coverageModulationTableEnable, OFFSET$coverageModulationTableEnable);
     }
 
-    public void coverageModulationTableEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV coverageModulationTableEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$coverageModulationTableEnable, OFFSET$coverageModulationTableEnable, value);
+        return this;
     }
 
     public @Unsigned int coverageModulationTableCount() {
         return segment.get(LAYOUT$coverageModulationTableCount, OFFSET$coverageModulationTableCount);
     }
 
-    public void coverageModulationTableCount(@Unsigned int value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV coverageModulationTableCount(@Unsigned int value) {
         segment.set(LAYOUT$coverageModulationTableCount, OFFSET$coverageModulationTableCount, value);
+        return this;
     }
 
     /// Note: the returned {@link FloatPtr} does not have correct
@@ -257,9 +263,10 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         return new FloatPtr(s);
     }
 
-    public void pCoverageModulationTable(@Nullable FloatPtr value) {
+    public VkPipelineCoverageModulationStateCreateInfoNV pCoverageModulationTable(@Nullable FloatPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCoverageModulationTableRaw(s);
+        return this;
     }
 
     public @Pointer(comment="float*") MemorySegment pCoverageModulationTableRaw() {

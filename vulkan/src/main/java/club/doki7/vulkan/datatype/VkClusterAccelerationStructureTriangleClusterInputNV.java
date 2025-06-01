@@ -200,8 +200,9 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int vertexFormat() {
         return segment.get(LAYOUT$vertexFormat, OFFSET$vertexFormat);
     }
 
-    public void vertexFormat(@EnumType(VkFormat.class) int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV vertexFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$vertexFormat, OFFSET$vertexFormat, value);
+        return this;
     }
 
     public @Unsigned int maxGeometryIndexValue() {
         return segment.get(LAYOUT$maxGeometryIndexValue, OFFSET$maxGeometryIndexValue);
     }
 
-    public void maxGeometryIndexValue(@Unsigned int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV maxGeometryIndexValue(@Unsigned int value) {
         segment.set(LAYOUT$maxGeometryIndexValue, OFFSET$maxGeometryIndexValue, value);
+        return this;
     }
 
     public @Unsigned int maxClusterUniqueGeometryCount() {
         return segment.get(LAYOUT$maxClusterUniqueGeometryCount, OFFSET$maxClusterUniqueGeometryCount);
     }
 
-    public void maxClusterUniqueGeometryCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV maxClusterUniqueGeometryCount(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterUniqueGeometryCount, OFFSET$maxClusterUniqueGeometryCount, value);
+        return this;
     }
 
     public @Unsigned int maxClusterTriangleCount() {
         return segment.get(LAYOUT$maxClusterTriangleCount, OFFSET$maxClusterTriangleCount);
     }
 
-    public void maxClusterTriangleCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV maxClusterTriangleCount(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterTriangleCount, OFFSET$maxClusterTriangleCount, value);
+        return this;
     }
 
     public @Unsigned int maxClusterVertexCount() {
         return segment.get(LAYOUT$maxClusterVertexCount, OFFSET$maxClusterVertexCount);
     }
 
-    public void maxClusterVertexCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV maxClusterVertexCount(@Unsigned int value) {
         segment.set(LAYOUT$maxClusterVertexCount, OFFSET$maxClusterVertexCount, value);
+        return this;
     }
 
     public @Unsigned int maxTotalTriangleCount() {
         return segment.get(LAYOUT$maxTotalTriangleCount, OFFSET$maxTotalTriangleCount);
     }
 
-    public void maxTotalTriangleCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV maxTotalTriangleCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTotalTriangleCount, OFFSET$maxTotalTriangleCount, value);
+        return this;
     }
 
     public @Unsigned int maxTotalVertexCount() {
         return segment.get(LAYOUT$maxTotalVertexCount, OFFSET$maxTotalVertexCount);
     }
 
-    public void maxTotalVertexCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV maxTotalVertexCount(@Unsigned int value) {
         segment.set(LAYOUT$maxTotalVertexCount, OFFSET$maxTotalVertexCount, value);
+        return this;
     }
 
     public @Unsigned int minPositionTruncateBitCount() {
         return segment.get(LAYOUT$minPositionTruncateBitCount, OFFSET$minPositionTruncateBitCount);
     }
 
-    public void minPositionTruncateBitCount(@Unsigned int value) {
+    public VkClusterAccelerationStructureTriangleClusterInputNV minPositionTruncateBitCount(@Unsigned int value) {
         segment.set(LAYOUT$minPositionTruncateBitCount, OFFSET$minPositionTruncateBitCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

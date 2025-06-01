@@ -175,8 +175,9 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         return new BytePtr(layerNameRaw());
     }
 
-    public void layerName(BytePtr value) {
+    public VkLayerProperties layerName(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$layerName, SIZE$layerName);
+        return this;
     }
 
     public MemorySegment layerNameRaw() {
@@ -187,24 +188,27 @@ public record VkLayerProperties(@NotNull MemorySegment segment) implements IVkLa
         return segment.get(LAYOUT$specVersion, OFFSET$specVersion);
     }
 
-    public void specVersion(@Unsigned int value) {
+    public VkLayerProperties specVersion(@Unsigned int value) {
         segment.set(LAYOUT$specVersion, OFFSET$specVersion, value);
+        return this;
     }
 
     public @Unsigned int implementationVersion() {
         return segment.get(LAYOUT$implementationVersion, OFFSET$implementationVersion);
     }
 
-    public void implementationVersion(@Unsigned int value) {
+    public VkLayerProperties implementationVersion(@Unsigned int value) {
         segment.set(LAYOUT$implementationVersion, OFFSET$implementationVersion, value);
+        return this;
     }
 
     public BytePtr description() {
         return new BytePtr(descriptionRaw());
     }
 
-    public void description(BytePtr value) {
+    public VkLayerProperties description(BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$description, SIZE$description);
+        return this;
     }
 
     public MemorySegment descriptionRaw() {

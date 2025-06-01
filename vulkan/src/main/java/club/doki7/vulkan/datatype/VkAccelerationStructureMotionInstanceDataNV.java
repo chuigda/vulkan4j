@@ -174,24 +174,27 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         return new VkAccelerationStructureInstanceKHR(segment.asSlice(OFFSET$staticInstance, LAYOUT$staticInstance));
     }
 
-    public void staticInstance(@NotNull VkAccelerationStructureInstanceKHR value) {
+    public VkAccelerationStructureMotionInstanceDataNV staticInstance(@NotNull VkAccelerationStructureInstanceKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$staticInstance, SIZE$staticInstance);
+        return this;
     }
 
     public @NotNull VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance() {
         return new VkAccelerationStructureMatrixMotionInstanceNV(segment.asSlice(OFFSET$matrixMotionInstance, LAYOUT$matrixMotionInstance));
     }
 
-    public void matrixMotionInstance(@NotNull VkAccelerationStructureMatrixMotionInstanceNV value) {
+    public VkAccelerationStructureMotionInstanceDataNV matrixMotionInstance(@NotNull VkAccelerationStructureMatrixMotionInstanceNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$matrixMotionInstance, SIZE$matrixMotionInstance);
+        return this;
     }
 
     public @NotNull VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance() {
         return new VkAccelerationStructureSRTMotionInstanceNV(segment.asSlice(OFFSET$srtMotionInstance, LAYOUT$srtMotionInstance));
     }
 
-    public void srtMotionInstance(@NotNull VkAccelerationStructureSRTMotionInstanceNV value) {
+    public VkAccelerationStructureMotionInstanceDataNV srtMotionInstance(@NotNull VkAccelerationStructureSRTMotionInstanceNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srtMotionInstance, SIZE$srtMotionInstance);
+        return this;
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

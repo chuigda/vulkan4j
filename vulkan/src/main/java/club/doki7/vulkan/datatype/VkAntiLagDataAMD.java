@@ -195,8 +195,9 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAntiLagDataAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkAntiLagDataAMD(@NotNull MemorySegment segment) implements IVkAnt
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAntiLagDataAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkAntiLagModeAMD.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@EnumType(VkAntiLagModeAMD.class) int value) {
+    public VkAntiLagDataAMD mode(@EnumType(VkAntiLagModeAMD.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
+        return this;
     }
 
     public @Unsigned int maxFPS() {
         return segment.get(LAYOUT$maxFPS, OFFSET$maxFPS);
     }
 
-    public void maxFPS(@Unsigned int value) {
+    public VkAntiLagDataAMD maxFPS(@Unsigned int value) {
         segment.set(LAYOUT$maxFPS, OFFSET$maxFPS, value);
+        return this;
     }
 
-    public void pPresentationInfo(@Nullable IVkAntiLagPresentationInfoAMD value) {
+    public VkAntiLagDataAMD pPresentationInfo(@Nullable IVkAntiLagPresentationInfoAMD value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPresentationInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkAntiLagPresentationInfoAMD.Ptr pPresentationInfo(int assumedCount) {

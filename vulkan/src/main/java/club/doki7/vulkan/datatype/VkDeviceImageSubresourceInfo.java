@@ -194,8 +194,9 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceImageSubresourceInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,13 +207,15 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceImageSubresourceInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pCreateInfo(@Nullable IVkImageCreateInfo value) {
+    public VkDeviceImageSubresourceInfo pCreateInfo(@Nullable IVkImageCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkImageCreateInfo.Ptr pCreateInfo(int assumedCount) {
@@ -241,9 +244,10 @@ public record VkDeviceImageSubresourceInfo(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pCreateInfo, OFFSET$pCreateInfo, value);
     }
 
-    public void pSubresource(@Nullable IVkImageSubresource2 value) {
+    public VkDeviceImageSubresourceInfo pSubresource(@Nullable IVkImageSubresource2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSubresourceRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkImageSubresource2.Ptr pSubresource(int assumedCount) {

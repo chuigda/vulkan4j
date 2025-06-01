@@ -174,13 +174,15 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$binaryCount, OFFSET$binaryCount);
     }
 
-    public void binaryCount(@Unsigned int value) {
+    public VkPipelineBinaryKeysAndDataKHR binaryCount(@Unsigned int value) {
         segment.set(LAYOUT$binaryCount, OFFSET$binaryCount, value);
+        return this;
     }
 
-    public void pPipelineBinaryKeys(@Nullable IVkPipelineBinaryKeyKHR value) {
+    public VkPipelineBinaryKeysAndDataKHR pPipelineBinaryKeys(@Nullable IVkPipelineBinaryKeyKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinaryKeysRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineBinaryKeyKHR.Ptr pPipelineBinaryKeys(int assumedCount) {
@@ -209,9 +211,10 @@ public record VkPipelineBinaryKeysAndDataKHR(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pPipelineBinaryKeys, OFFSET$pPipelineBinaryKeys, value);
     }
 
-    public void pPipelineBinaryData(@Nullable IVkPipelineBinaryDataKHR value) {
+    public VkPipelineBinaryKeysAndDataKHR pPipelineBinaryData(@Nullable IVkPipelineBinaryDataKHR value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pPipelineBinaryDataRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkPipelineBinaryDataKHR.Ptr pPipelineBinaryData(int assumedCount) {

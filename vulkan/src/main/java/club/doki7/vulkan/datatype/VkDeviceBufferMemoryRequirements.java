@@ -193,8 +193,9 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceBufferMemoryRequirements sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,13 +206,15 @@ public record VkDeviceBufferMemoryRequirements(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceBufferMemoryRequirements pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
-    public void pCreateInfo(@Nullable IVkBufferCreateInfo value) {
+    public VkDeviceBufferMemoryRequirements pCreateInfo(@Nullable IVkBufferCreateInfo value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pCreateInfoRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkBufferCreateInfo.Ptr pCreateInfo(int assumedCount) {

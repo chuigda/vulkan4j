@@ -197,8 +197,9 @@ public record VmaAllocatorInfo(@NotNull MemorySegment segment) implements IVmaAl
         return new VkInstance(s);
     }
 
-    public void instance(@Nullable VkInstance value) {
+    public VmaAllocatorInfo instance(@Nullable VkInstance value) {
         segment.set(LAYOUT$instance, OFFSET$instance, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkPhysicalDevice physicalDevice() {
@@ -209,8 +210,9 @@ public record VmaAllocatorInfo(@NotNull MemorySegment segment) implements IVmaAl
         return new VkPhysicalDevice(s);
     }
 
-    public void physicalDevice(@Nullable VkPhysicalDevice value) {
+    public VmaAllocatorInfo physicalDevice(@Nullable VkPhysicalDevice value) {
         segment.set(LAYOUT$physicalDevice, OFFSET$physicalDevice, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkDevice device() {
@@ -221,8 +223,9 @@ public record VmaAllocatorInfo(@NotNull MemorySegment segment) implements IVmaAl
         return new VkDevice(s);
     }
 
-    public void device(@Nullable VkDevice value) {
+    public VmaAllocatorInfo device(@Nullable VkDevice value) {
         segment.set(LAYOUT$device, OFFSET$device, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

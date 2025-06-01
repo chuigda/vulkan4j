@@ -189,16 +189,18 @@ public record GLFWimage(@NotNull MemorySegment segment) implements IGLFWimage {
         return segment.get(LAYOUT$width, OFFSET$width);
     }
 
-    public void width(int value) {
+    public GLFWimage width(int value) {
         segment.set(LAYOUT$width, OFFSET$width, value);
+        return this;
     }
 
     public int height() {
         return segment.get(LAYOUT$height, OFFSET$height);
     }
 
-    public void height(int value) {
+    public GLFWimage height(int value) {
         segment.set(LAYOUT$height, OFFSET$height, value);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -213,9 +215,10 @@ public record GLFWimage(@NotNull MemorySegment segment) implements IGLFWimage {
         return new BytePtr(s);
     }
 
-    public void pixels(@Nullable BytePtr value) {
+    public GLFWimage pixels(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pixelsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment pixelsRaw() {

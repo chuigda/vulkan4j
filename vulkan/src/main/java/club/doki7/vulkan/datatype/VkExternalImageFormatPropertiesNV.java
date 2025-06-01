@@ -175,32 +175,36 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
         return new VkImageFormatProperties(segment.asSlice(OFFSET$imageFormatProperties, LAYOUT$imageFormatProperties));
     }
 
-    public void imageFormatProperties(@NotNull VkImageFormatProperties value) {
+    public VkExternalImageFormatPropertiesNV imageFormatProperties(@NotNull VkImageFormatProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageFormatProperties, SIZE$imageFormatProperties);
+        return this;
     }
 
     public @EnumType(VkExternalMemoryFeatureFlagsNV.class) int externalMemoryFeatures() {
         return segment.get(LAYOUT$externalMemoryFeatures, OFFSET$externalMemoryFeatures);
     }
 
-    public void externalMemoryFeatures(@EnumType(VkExternalMemoryFeatureFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV externalMemoryFeatures(@EnumType(VkExternalMemoryFeatureFlagsNV.class) int value) {
         segment.set(LAYOUT$externalMemoryFeatures, OFFSET$externalMemoryFeatures, value);
+        return this;
     }
 
     public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int exportFromImportedHandleTypes() {
         return segment.get(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes);
     }
 
-    public void exportFromImportedHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV exportFromImportedHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$exportFromImportedHandleTypes, OFFSET$exportFromImportedHandleTypes, value);
+        return this;
     }
 
     public @EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int compatibleHandleTypes() {
         return segment.get(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes);
     }
 
-    public void compatibleHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
+    public VkExternalImageFormatPropertiesNV compatibleHandleTypes(@EnumType(VkExternalMemoryHandleTypeFlagsNV.class) int value) {
         segment.set(LAYOUT$compatibleHandleTypes, OFFSET$compatibleHandleTypes, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

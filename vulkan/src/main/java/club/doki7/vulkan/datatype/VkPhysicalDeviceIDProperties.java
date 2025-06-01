@@ -197,8 +197,9 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceIDProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -209,16 +210,18 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceIDProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned BytePtr deviceUUID() {
         return new BytePtr(deviceUUIDRaw());
     }
 
-    public void deviceUUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceIDProperties deviceUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceUUID, SIZE$deviceUUID);
+        return this;
     }
 
     public MemorySegment deviceUUIDRaw() {
@@ -229,8 +232,9 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return new BytePtr(driverUUIDRaw());
     }
 
-    public void driverUUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceIDProperties driverUUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$driverUUID, SIZE$driverUUID);
+        return this;
     }
 
     public MemorySegment driverUUIDRaw() {
@@ -241,8 +245,9 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return new BytePtr(deviceLUIDRaw());
     }
 
-    public void deviceLUID(@Unsigned BytePtr value) {
+    public VkPhysicalDeviceIDProperties deviceLUID(@Unsigned BytePtr value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$deviceLUID, SIZE$deviceLUID);
+        return this;
     }
 
     public MemorySegment deviceLUIDRaw() {
@@ -253,16 +258,18 @@ public record VkPhysicalDeviceIDProperties(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask);
     }
 
-    public void deviceNodeMask(@Unsigned int value) {
+    public VkPhysicalDeviceIDProperties deviceNodeMask(@Unsigned int value) {
         segment.set(LAYOUT$deviceNodeMask, OFFSET$deviceNodeMask, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceLUIDValid() {
         return segment.get(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid);
     }
 
-    public void deviceLUIDValid(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceIDProperties deviceLUIDValid(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceLUIDValid, OFFSET$deviceLUIDValid, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

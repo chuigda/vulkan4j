@@ -200,8 +200,9 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,53 +213,60 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkIndexType.class) int indexType() {
         return segment.get(LAYOUT$indexType, OFFSET$indexType);
     }
 
-    public void indexType(@EnumType(VkIndexType.class) int value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexType(@EnumType(VkIndexType.class) int value) {
         segment.set(LAYOUT$indexType, OFFSET$indexType, value);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR indexBuffer() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$indexBuffer, LAYOUT$indexBuffer));
     }
 
-    public void indexBuffer(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexBuffer(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long indexStride() {
         return segment.get(LAYOUT$indexStride, OFFSET$indexStride);
     }
 
-    public void indexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexStride(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$indexStride, OFFSET$indexStride, value);
+        return this;
     }
 
     public @Unsigned int baseTriangle() {
         return segment.get(LAYOUT$baseTriangle, OFFSET$baseTriangle);
     }
 
-    public void baseTriangle(@Unsigned int value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT baseTriangle(@Unsigned int value) {
         segment.set(LAYOUT$baseTriangle, OFFSET$baseTriangle, value);
+        return this;
     }
 
     public @Unsigned int usageCountsCount() {
         return segment.get(LAYOUT$usageCountsCount, OFFSET$usageCountsCount);
     }
 
-    public void usageCountsCount(@Unsigned int value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT usageCountsCount(@Unsigned int value) {
         segment.set(LAYOUT$usageCountsCount, OFFSET$usageCountsCount, value);
+        return this;
     }
 
-    public void pUsageCounts(@Nullable IVkMicromapUsageEXT value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT pUsageCounts(@Nullable IVkMicromapUsageEXT value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pUsageCountsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkMicromapUsageEXT.Ptr pUsageCounts(int assumedCount) {
@@ -298,9 +306,10 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return new PointerPtr(s);
     }
 
-    public void ppUsageCounts(@Nullable PointerPtr value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT ppUsageCounts(@Nullable PointerPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         ppUsageCountsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="void**") MemorySegment ppUsageCountsRaw() {
@@ -319,8 +328,9 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         return new VkMicromapEXT(s);
     }
 
-    public void micromap(@Nullable VkMicromapEXT value) {
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT micromap(@Nullable VkMicromapEXT value) {
         segment.set(LAYOUT$micromap, OFFSET$micromap, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

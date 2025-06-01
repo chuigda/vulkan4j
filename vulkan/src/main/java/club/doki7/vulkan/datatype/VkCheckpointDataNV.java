@@ -194,8 +194,9 @@ public record VkCheckpointDataNV(@NotNull MemorySegment segment) implements IVkC
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCheckpointDataNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,16 +207,18 @@ public record VkCheckpointDataNV(@NotNull MemorySegment segment) implements IVkC
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCheckpointDataNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineStageFlags.class) int stage() {
         return segment.get(LAYOUT$stage, OFFSET$stage);
     }
 
-    public void stage(@EnumType(VkPipelineStageFlags.class) int value) {
+    public VkCheckpointDataNV stage(@EnumType(VkPipelineStageFlags.class) int value) {
         segment.set(LAYOUT$stage, OFFSET$stage, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pCheckpointMarker() {
@@ -226,8 +229,9 @@ public record VkCheckpointDataNV(@NotNull MemorySegment segment) implements IVkC
         segment.set(LAYOUT$pCheckpointMarker, OFFSET$pCheckpointMarker, value);
     }
 
-    public void pCheckpointMarker(@Nullable IPointer pointer) {
+    public VkCheckpointDataNV pCheckpointMarker(@Nullable IPointer pointer) {
         pCheckpointMarker(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

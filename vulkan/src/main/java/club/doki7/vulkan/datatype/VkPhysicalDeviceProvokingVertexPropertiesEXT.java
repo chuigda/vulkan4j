@@ -194,8 +194,9 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceProvokingVertexPropertiesEXT(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int provokingVertexModePerPipeline() {
         return segment.get(LAYOUT$provokingVertexModePerPipeline, OFFSET$provokingVertexModePerPipeline);
     }
 
-    public void provokingVertexModePerPipeline(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT provokingVertexModePerPipeline(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$provokingVertexModePerPipeline, OFFSET$provokingVertexModePerPipeline, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int transformFeedbackPreservesTriangleFanProvokingVertex() {
         return segment.get(LAYOUT$transformFeedbackPreservesTriangleFanProvokingVertex, OFFSET$transformFeedbackPreservesTriangleFanProvokingVertex);
     }
 
-    public void transformFeedbackPreservesTriangleFanProvokingVertex(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT transformFeedbackPreservesTriangleFanProvokingVertex(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$transformFeedbackPreservesTriangleFanProvokingVertex, OFFSET$transformFeedbackPreservesTriangleFanProvokingVertex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

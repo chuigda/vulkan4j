@@ -194,8 +194,9 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShaderClockFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceShaderClockFeaturesKHR(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShaderClockFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderSubgroupClock() {
         return segment.get(LAYOUT$shaderSubgroupClock, OFFSET$shaderSubgroupClock);
     }
 
-    public void shaderSubgroupClock(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderClockFeaturesKHR shaderSubgroupClock(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderSubgroupClock, OFFSET$shaderSubgroupClock, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int shaderDeviceClock() {
         return segment.get(LAYOUT$shaderDeviceClock, OFFSET$shaderDeviceClock);
     }
 
-    public void shaderDeviceClock(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceShaderClockFeaturesKHR shaderDeviceClock(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$shaderDeviceClock, OFFSET$shaderDeviceClock, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

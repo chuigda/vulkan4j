@@ -193,8 +193,9 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSchedulingControlsFeaturesARM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceSchedulingControlsFeaturesARM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int schedulingControls() {
         return segment.get(LAYOUT$schedulingControls, OFFSET$schedulingControls);
     }
 
-    public void schedulingControls(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSchedulingControlsFeaturesARM schedulingControls(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$schedulingControls, OFFSET$schedulingControls, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

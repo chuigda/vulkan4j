@@ -194,8 +194,9 @@ public record VkTileMemoryRequirementsQCOM(@NotNull MemorySegment segment) imple
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkTileMemoryRequirementsQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkTileMemoryRequirementsQCOM(@NotNull MemorySegment segment) imple
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkTileMemoryRequirementsQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long size() {
         return segment.get(LAYOUT$size, OFFSET$size);
     }
 
-    public void size(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkTileMemoryRequirementsQCOM size(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$size, OFFSET$size, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long alignment() {
         return segment.get(LAYOUT$alignment, OFFSET$alignment);
     }
 
-    public void alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkTileMemoryRequirementsQCOM alignment(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$alignment, OFFSET$alignment, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

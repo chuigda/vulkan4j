@@ -193,8 +193,9 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageSwapchainCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageSwapchainCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSwapchainKHR swapchain() {
@@ -217,8 +219,9 @@ public record VkImageSwapchainCreateInfoKHR(@NotNull MemorySegment segment) impl
         return new VkSwapchainKHR(s);
     }
 
-    public void swapchain(@Nullable VkSwapchainKHR value) {
+    public VkImageSwapchainCreateInfoKHR swapchain(@Nullable VkSwapchainKHR value) {
         segment.set(LAYOUT$swapchain, OFFSET$swapchain, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

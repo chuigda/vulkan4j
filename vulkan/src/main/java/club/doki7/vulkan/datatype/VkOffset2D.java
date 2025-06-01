@@ -173,16 +173,18 @@ public record VkOffset2D(@NotNull MemorySegment segment) implements IVkOffset2D 
         return segment.get(LAYOUT$x, OFFSET$x);
     }
 
-    public void x(int value) {
+    public VkOffset2D x(int value) {
         segment.set(LAYOUT$x, OFFSET$x, value);
+        return this;
     }
 
     public int y() {
         return segment.get(LAYOUT$y, OFFSET$y);
     }
 
-    public void y(int value) {
+    public VkOffset2D y(int value) {
         segment.set(LAYOUT$y, OFFSET$y, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

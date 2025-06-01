@@ -195,8 +195,9 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDebugReportCallbackCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDebugReportCallbackCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDebugReportFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDebugReportFlagsEXT.class) int value) {
+    public VkDebugReportCallbackCreateInfoEXT flags(@EnumType(VkDebugReportFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Pointer(comment="PFN_vkDebugReportCallbackEXT") MemorySegment pfnCallback() {
@@ -227,8 +230,9 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pfnCallback, OFFSET$pfnCallback, value);
     }
 
-    public void pfnCallback(@Nullable IPointer pointer) {
+    public VkDebugReportCallbackCreateInfoEXT pfnCallback(@Nullable IPointer pointer) {
         pfnCallback(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pUserData() {
@@ -239,8 +243,9 @@ public record VkDebugReportCallbackCreateInfoEXT(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pUserData, OFFSET$pUserData, value);
     }
 
-    public void pUserData(@Nullable IPointer pointer) {
+    public VkDebugReportCallbackCreateInfoEXT pUserData(@Nullable IPointer pointer) {
         pUserData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

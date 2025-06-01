@@ -193,8 +193,9 @@ public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IVkS
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSubpassBeginInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSubpassBeginInfo(@NotNull MemorySegment segment) implements IVkS
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSubpassBeginInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSubpassContents.class) int contents() {
         return segment.get(LAYOUT$contents, OFFSET$contents);
     }
 
-    public void contents(@EnumType(VkSubpassContents.class) int value) {
+    public VkSubpassBeginInfo contents(@EnumType(VkSubpassContents.class) int value) {
         segment.set(LAYOUT$contents, OFFSET$contents, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -175,32 +175,36 @@ public record VkPipelineExecutableStatisticValueKHR(@NotNull MemorySegment segme
         return segment.get(LAYOUT$b32, OFFSET$b32);
     }
 
-    public void b32(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPipelineExecutableStatisticValueKHR b32(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$b32, OFFSET$b32, value);
+        return this;
     }
 
     public long i64() {
         return segment.get(LAYOUT$i64, OFFSET$i64);
     }
 
-    public void i64(long value) {
+    public VkPipelineExecutableStatisticValueKHR i64(long value) {
         segment.set(LAYOUT$i64, OFFSET$i64, value);
+        return this;
     }
 
     public @Unsigned long u64() {
         return segment.get(LAYOUT$u64, OFFSET$u64);
     }
 
-    public void u64(@Unsigned long value) {
+    public VkPipelineExecutableStatisticValueKHR u64(@Unsigned long value) {
         segment.set(LAYOUT$u64, OFFSET$u64, value);
+        return this;
     }
 
     public double f64() {
         return segment.get(LAYOUT$f64, OFFSET$f64);
     }
 
-    public void f64(double value) {
+    public VkPipelineExecutableStatisticValueKHR f64(double value) {
         segment.set(LAYOUT$f64, OFFSET$f64, value);
+        return this;
     }
 
     public static final UnionLayout LAYOUT = NativeLayout.unionLayout(

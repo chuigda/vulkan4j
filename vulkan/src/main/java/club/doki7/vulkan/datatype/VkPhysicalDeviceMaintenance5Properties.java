@@ -198,8 +198,9 @@ public record VkPhysicalDeviceMaintenance5Properties(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceMaintenance5Properties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,56 +211,63 @@ public record VkPhysicalDeviceMaintenance5Properties(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceMaintenance5Properties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int earlyFragmentMultisampleCoverageAfterSampleCounting() {
         return segment.get(LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting);
     }
 
-    public void earlyFragmentMultisampleCoverageAfterSampleCounting(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance5Properties earlyFragmentMultisampleCoverageAfterSampleCounting(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$earlyFragmentMultisampleCoverageAfterSampleCounting, OFFSET$earlyFragmentMultisampleCoverageAfterSampleCounting, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int earlyFragmentSampleMaskTestBeforeSampleCounting() {
         return segment.get(LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting);
     }
 
-    public void earlyFragmentSampleMaskTestBeforeSampleCounting(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance5Properties earlyFragmentSampleMaskTestBeforeSampleCounting(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$earlyFragmentSampleMaskTestBeforeSampleCounting, OFFSET$earlyFragmentSampleMaskTestBeforeSampleCounting, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int depthStencilSwizzleOneSupport() {
         return segment.get(LAYOUT$depthStencilSwizzleOneSupport, OFFSET$depthStencilSwizzleOneSupport);
     }
 
-    public void depthStencilSwizzleOneSupport(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance5Properties depthStencilSwizzleOneSupport(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$depthStencilSwizzleOneSupport, OFFSET$depthStencilSwizzleOneSupport, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int polygonModePointSize() {
         return segment.get(LAYOUT$polygonModePointSize, OFFSET$polygonModePointSize);
     }
 
-    public void polygonModePointSize(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance5Properties polygonModePointSize(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$polygonModePointSize, OFFSET$polygonModePointSize, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int nonStrictSinglePixelWideLinesUseParallelogram() {
         return segment.get(LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, OFFSET$nonStrictSinglePixelWideLinesUseParallelogram);
     }
 
-    public void nonStrictSinglePixelWideLinesUseParallelogram(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance5Properties nonStrictSinglePixelWideLinesUseParallelogram(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nonStrictSinglePixelWideLinesUseParallelogram, OFFSET$nonStrictSinglePixelWideLinesUseParallelogram, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int nonStrictWideLinesUseParallelogram() {
         return segment.get(LAYOUT$nonStrictWideLinesUseParallelogram, OFFSET$nonStrictWideLinesUseParallelogram);
     }
 
-    public void nonStrictWideLinesUseParallelogram(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceMaintenance5Properties nonStrictWideLinesUseParallelogram(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$nonStrictWideLinesUseParallelogram, OFFSET$nonStrictWideLinesUseParallelogram, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

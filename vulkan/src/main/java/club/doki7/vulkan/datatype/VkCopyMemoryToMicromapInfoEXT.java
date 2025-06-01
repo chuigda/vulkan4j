@@ -195,8 +195,9 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCopyMemoryToMicromapInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,16 +208,18 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCopyMemoryToMicromapInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkDeviceOrHostAddressConstKHR src() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$src, LAYOUT$src));
     }
 
-    public void src(@NotNull VkDeviceOrHostAddressConstKHR value) {
+    public VkCopyMemoryToMicromapInfoEXT src(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
+        return this;
     }
 
     public @Nullable VkMicromapEXT dst() {
@@ -227,16 +230,18 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
         return new VkMicromapEXT(s);
     }
 
-    public void dst(@Nullable VkMicromapEXT value) {
+    public VkCopyMemoryToMicromapInfoEXT dst(@Nullable VkMicromapEXT value) {
         segment.set(LAYOUT$dst, OFFSET$dst, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkCopyMicromapModeEXT.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@EnumType(VkCopyMicromapModeEXT.class) int value) {
+    public VkCopyMemoryToMicromapInfoEXT mode(@EnumType(VkCopyMicromapModeEXT.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

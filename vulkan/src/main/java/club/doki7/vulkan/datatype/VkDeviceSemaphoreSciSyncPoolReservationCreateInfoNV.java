@@ -193,8 +193,9 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(@NotNull Memor
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(@NotNull Memor
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int semaphoreSciSyncPoolRequestCount() {
         return segment.get(LAYOUT$semaphoreSciSyncPoolRequestCount, OFFSET$semaphoreSciSyncPoolRequestCount);
     }
 
-    public void semaphoreSciSyncPoolRequestCount(@Unsigned int value) {
+    public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV semaphoreSciSyncPoolRequestCount(@Unsigned int value) {
         segment.set(LAYOUT$semaphoreSciSyncPoolRequestCount, OFFSET$semaphoreSciSyncPoolRequestCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

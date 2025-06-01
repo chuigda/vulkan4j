@@ -195,8 +195,9 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineCacheCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,24 +208,27 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineCacheCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineCacheCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineCacheCreateFlags.class) int value) {
+    public VkPipelineCacheCreateInfo flags(@EnumType(VkPipelineCacheCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned long initialDataSize() {
         return NativeLayout.readCSizeT(segment, OFFSET$initialDataSize);
     }
 
-    public void initialDataSize(@Unsigned long value) {
+    public VkPipelineCacheCreateInfo initialDataSize(@Unsigned long value) {
         NativeLayout.writeCSizeT(segment, OFFSET$initialDataSize, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pInitialData() {
@@ -235,8 +239,9 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pInitialData, OFFSET$pInitialData, value);
     }
 
-    public void pInitialData(@Nullable IPointer pointer) {
+    public VkPipelineCacheCreateInfo pInitialData(@Nullable IPointer pointer) {
         pInitialData(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

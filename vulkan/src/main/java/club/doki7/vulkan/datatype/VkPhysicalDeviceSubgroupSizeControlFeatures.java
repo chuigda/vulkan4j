@@ -194,8 +194,9 @@ public record VkPhysicalDeviceSubgroupSizeControlFeatures(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceSubgroupSizeControlFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceSubgroupSizeControlFeatures(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceSubgroupSizeControlFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int subgroupSizeControl() {
         return segment.get(LAYOUT$subgroupSizeControl, OFFSET$subgroupSizeControl);
     }
 
-    public void subgroupSizeControl(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSubgroupSizeControlFeatures subgroupSizeControl(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$subgroupSizeControl, OFFSET$subgroupSizeControl, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int computeFullSubgroups() {
         return segment.get(LAYOUT$computeFullSubgroups, OFFSET$computeFullSubgroups);
     }
 
-    public void computeFullSubgroups(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceSubgroupSizeControlFeatures computeFullSubgroups(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$computeFullSubgroups, OFFSET$computeFullSubgroups, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

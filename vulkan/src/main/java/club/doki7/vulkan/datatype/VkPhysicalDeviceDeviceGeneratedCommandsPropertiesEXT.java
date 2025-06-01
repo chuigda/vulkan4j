@@ -204,8 +204,9 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -216,104 +217,117 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxIndirectPipelineCount() {
         return segment.get(LAYOUT$maxIndirectPipelineCount, OFFSET$maxIndirectPipelineCount);
     }
 
-    public void maxIndirectPipelineCount(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectPipelineCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectPipelineCount, OFFSET$maxIndirectPipelineCount, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectShaderObjectCount() {
         return segment.get(LAYOUT$maxIndirectShaderObjectCount, OFFSET$maxIndirectShaderObjectCount);
     }
 
-    public void maxIndirectShaderObjectCount(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectShaderObjectCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectShaderObjectCount, OFFSET$maxIndirectShaderObjectCount, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectSequenceCount() {
         return segment.get(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount);
     }
 
-    public void maxIndirectSequenceCount(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectSequenceCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectSequenceCount, OFFSET$maxIndirectSequenceCount, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectCommandsTokenCount() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount);
     }
 
-    public void maxIndirectCommandsTokenCount(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectCommandsTokenCount(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenCount, OFFSET$maxIndirectCommandsTokenCount, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectCommandsTokenOffset() {
         return segment.get(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset);
     }
 
-    public void maxIndirectCommandsTokenOffset(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectCommandsTokenOffset(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsTokenOffset, OFFSET$maxIndirectCommandsTokenOffset, value);
+        return this;
     }
 
     public @Unsigned int maxIndirectCommandsIndirectStride() {
         return segment.get(LAYOUT$maxIndirectCommandsIndirectStride, OFFSET$maxIndirectCommandsIndirectStride);
     }
 
-    public void maxIndirectCommandsIndirectStride(@Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectCommandsIndirectStride(@Unsigned int value) {
         segment.set(LAYOUT$maxIndirectCommandsIndirectStride, OFFSET$maxIndirectCommandsIndirectStride, value);
+        return this;
     }
 
     public @EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int supportedIndirectCommandsInputModes() {
         return segment.get(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes);
     }
 
-    public void supportedIndirectCommandsInputModes(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsInputModes(@EnumType(VkIndirectCommandsInputModeFlagsEXT.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsInputModes, OFFSET$supportedIndirectCommandsInputModes, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStages() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages);
     }
 
-    public void supportedIndirectCommandsShaderStages(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStages(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStages, OFFSET$supportedIndirectCommandsShaderStages, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesPipelineBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding);
     }
 
-    public void supportedIndirectCommandsShaderStagesPipelineBinding(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesPipelineBinding(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesPipelineBinding, OFFSET$supportedIndirectCommandsShaderStagesPipelineBinding, value);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int supportedIndirectCommandsShaderStagesShaderBinding() {
         return segment.get(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding);
     }
 
-    public void supportedIndirectCommandsShaderStagesShaderBinding(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesShaderBinding(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$supportedIndirectCommandsShaderStagesShaderBinding, OFFSET$supportedIndirectCommandsShaderStagesShaderBinding, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceGeneratedCommandsTransformFeedback() {
         return segment.get(LAYOUT$deviceGeneratedCommandsTransformFeedback, OFFSET$deviceGeneratedCommandsTransformFeedback);
     }
 
-    public void deviceGeneratedCommandsTransformFeedback(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT deviceGeneratedCommandsTransformFeedback(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCommandsTransformFeedback, OFFSET$deviceGeneratedCommandsTransformFeedback, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceGeneratedCommandsMultiDrawIndirectCount() {
         return segment.get(LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount, OFFSET$deviceGeneratedCommandsMultiDrawIndirectCount);
     }
 
-    public void deviceGeneratedCommandsMultiDrawIndirectCount(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT deviceGeneratedCommandsMultiDrawIndirectCount(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceGeneratedCommandsMultiDrawIndirectCount, OFFSET$deviceGeneratedCommandsMultiDrawIndirectCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

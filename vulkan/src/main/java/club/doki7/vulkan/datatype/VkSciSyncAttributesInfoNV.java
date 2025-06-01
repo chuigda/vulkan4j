@@ -194,8 +194,9 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSciSyncAttributesInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSciSyncAttributesInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSciSyncClientTypeNV.class) int clientType() {
         return segment.get(LAYOUT$clientType, OFFSET$clientType);
     }
 
-    public void clientType(@EnumType(VkSciSyncClientTypeNV.class) int value) {
+    public VkSciSyncAttributesInfoNV clientType(@EnumType(VkSciSyncClientTypeNV.class) int value) {
         segment.set(LAYOUT$clientType, OFFSET$clientType, value);
+        return this;
     }
 
     public @EnumType(VkSciSyncPrimitiveTypeNV.class) int primitiveType() {
         return segment.get(LAYOUT$primitiveType, OFFSET$primitiveType);
     }
 
-    public void primitiveType(@EnumType(VkSciSyncPrimitiveTypeNV.class) int value) {
+    public VkSciSyncAttributesInfoNV primitiveType(@EnumType(VkSciSyncPrimitiveTypeNV.class) int value) {
         segment.set(LAYOUT$primitiveType, OFFSET$primitiveType, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

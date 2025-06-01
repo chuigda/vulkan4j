@@ -174,24 +174,27 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
         return segment.get(LAYOUT$count, OFFSET$count);
     }
 
-    public void count(@Unsigned int value) {
+    public VkMicromapUsageEXT count(@Unsigned int value) {
         segment.set(LAYOUT$count, OFFSET$count, value);
+        return this;
     }
 
     public @Unsigned int subdivisionLevel() {
         return segment.get(LAYOUT$subdivisionLevel, OFFSET$subdivisionLevel);
     }
 
-    public void subdivisionLevel(@Unsigned int value) {
+    public VkMicromapUsageEXT subdivisionLevel(@Unsigned int value) {
         segment.set(LAYOUT$subdivisionLevel, OFFSET$subdivisionLevel, value);
+        return this;
     }
 
     public @Unsigned int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@Unsigned int value) {
+    public VkMicromapUsageEXT format(@Unsigned int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

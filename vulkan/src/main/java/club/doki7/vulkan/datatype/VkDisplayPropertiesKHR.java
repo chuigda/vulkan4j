@@ -182,8 +182,9 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return new VkDisplayKHR(s);
     }
 
-    public void display(@Nullable VkDisplayKHR value) {
+    public VkDisplayPropertiesKHR display(@Nullable VkDisplayKHR value) {
         segment.set(LAYOUT$display, OFFSET$display, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     /// Note: the returned {@link BytePtr} does not have correct
@@ -198,9 +199,10 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return new BytePtr(s);
     }
 
-    public void displayName(@Nullable BytePtr value) {
+    public VkDisplayPropertiesKHR displayName(@Nullable BytePtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         displayNameRaw(s);
+        return this;
     }
 
     public @Pointer(comment="int8_t*") MemorySegment displayNameRaw() {
@@ -215,40 +217,45 @@ public record VkDisplayPropertiesKHR(@NotNull MemorySegment segment) implements 
         return new VkExtent2D(segment.asSlice(OFFSET$physicalDimensions, LAYOUT$physicalDimensions));
     }
 
-    public void physicalDimensions(@NotNull VkExtent2D value) {
+    public VkDisplayPropertiesKHR physicalDimensions(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalDimensions, SIZE$physicalDimensions);
+        return this;
     }
 
     public @NotNull VkExtent2D physicalResolution() {
         return new VkExtent2D(segment.asSlice(OFFSET$physicalResolution, LAYOUT$physicalResolution));
     }
 
-    public void physicalResolution(@NotNull VkExtent2D value) {
+    public VkDisplayPropertiesKHR physicalResolution(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$physicalResolution, SIZE$physicalResolution);
+        return this;
     }
 
     public @EnumType(VkSurfaceTransformFlagsKHR.class) int supportedTransforms() {
         return segment.get(LAYOUT$supportedTransforms, OFFSET$supportedTransforms);
     }
 
-    public void supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkDisplayPropertiesKHR supportedTransforms(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$supportedTransforms, OFFSET$supportedTransforms, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int planeReorderPossible() {
         return segment.get(LAYOUT$planeReorderPossible, OFFSET$planeReorderPossible);
     }
 
-    public void planeReorderPossible(@NativeType("VkBool32") @Unsigned int value) {
+    public VkDisplayPropertiesKHR planeReorderPossible(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$planeReorderPossible, OFFSET$planeReorderPossible, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int persistentContent() {
         return segment.get(LAYOUT$persistentContent, OFFSET$persistentContent);
     }
 
-    public void persistentContent(@NativeType("VkBool32") @Unsigned int value) {
+    public VkDisplayPropertiesKHR persistentContent(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$persistentContent, OFFSET$persistentContent, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

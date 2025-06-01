@@ -198,8 +198,9 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkCommandBufferInheritanceInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,8 +211,9 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkCommandBufferInheritanceInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkRenderPass renderPass() {
@@ -222,16 +224,18 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         return new VkRenderPass(s);
     }
 
-    public void renderPass(@Nullable VkRenderPass value) {
+    public VkCommandBufferInheritanceInfo renderPass(@Nullable VkRenderPass value) {
         segment.set(LAYOUT$renderPass, OFFSET$renderPass, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int subpass() {
         return segment.get(LAYOUT$subpass, OFFSET$subpass);
     }
 
-    public void subpass(@Unsigned int value) {
+    public VkCommandBufferInheritanceInfo subpass(@Unsigned int value) {
         segment.set(LAYOUT$subpass, OFFSET$subpass, value);
+        return this;
     }
 
     public @Nullable VkFramebuffer framebuffer() {
@@ -242,32 +246,36 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         return new VkFramebuffer(s);
     }
 
-    public void framebuffer(@Nullable VkFramebuffer value) {
+    public VkCommandBufferInheritanceInfo framebuffer(@Nullable VkFramebuffer value) {
         segment.set(LAYOUT$framebuffer, OFFSET$framebuffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int occlusionQueryEnable() {
         return segment.get(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable);
     }
 
-    public void occlusionQueryEnable(@NativeType("VkBool32") @Unsigned int value) {
+    public VkCommandBufferInheritanceInfo occlusionQueryEnable(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$occlusionQueryEnable, OFFSET$occlusionQueryEnable, value);
+        return this;
     }
 
     public @EnumType(VkQueryControlFlags.class) int queryFlags() {
         return segment.get(LAYOUT$queryFlags, OFFSET$queryFlags);
     }
 
-    public void queryFlags(@EnumType(VkQueryControlFlags.class) int value) {
+    public VkCommandBufferInheritanceInfo queryFlags(@EnumType(VkQueryControlFlags.class) int value) {
         segment.set(LAYOUT$queryFlags, OFFSET$queryFlags, value);
+        return this;
     }
 
     public @EnumType(VkQueryPipelineStatisticFlags.class) int pipelineStatistics() {
         return segment.get(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics);
     }
 
-    public void pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
+    public VkCommandBufferInheritanceInfo pipelineStatistics(@EnumType(VkQueryPipelineStatisticFlags.class) int value) {
         segment.set(LAYOUT$pipelineStatistics, OFFSET$pipelineStatistics, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

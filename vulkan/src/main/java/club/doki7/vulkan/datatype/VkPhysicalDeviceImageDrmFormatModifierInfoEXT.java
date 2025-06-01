@@ -196,8 +196,9 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,32 +209,36 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long drmFormatModifier() {
         return segment.get(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier);
     }
 
-    public void drmFormatModifier(@Unsigned long value) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT drmFormatModifier(@Unsigned long value) {
         segment.set(LAYOUT$drmFormatModifier, OFFSET$drmFormatModifier, value);
+        return this;
     }
 
     public @EnumType(VkSharingMode.class) int sharingMode() {
         return segment.get(LAYOUT$sharingMode, OFFSET$sharingMode);
     }
 
-    public void sharingMode(@EnumType(VkSharingMode.class) int value) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT sharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$sharingMode, OFFSET$sharingMode, value);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@Unsigned int value) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -248,9 +253,10 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {

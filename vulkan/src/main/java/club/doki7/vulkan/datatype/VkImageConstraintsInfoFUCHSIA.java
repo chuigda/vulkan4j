@@ -196,8 +196,9 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageConstraintsInfoFUCHSIA sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,21 +209,24 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageConstraintsInfoFUCHSIA pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int formatConstraintsCount() {
         return segment.get(LAYOUT$formatConstraintsCount, OFFSET$formatConstraintsCount);
     }
 
-    public void formatConstraintsCount(@Unsigned int value) {
+    public VkImageConstraintsInfoFUCHSIA formatConstraintsCount(@Unsigned int value) {
         segment.set(LAYOUT$formatConstraintsCount, OFFSET$formatConstraintsCount, value);
+        return this;
     }
 
-    public void pFormatConstraints(@Nullable IVkImageFormatConstraintsInfoFUCHSIA value) {
+    public VkImageConstraintsInfoFUCHSIA pFormatConstraints(@Nullable IVkImageFormatConstraintsInfoFUCHSIA value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pFormatConstraintsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkImageFormatConstraintsInfoFUCHSIA.Ptr pFormatConstraints(int assumedCount) {
@@ -255,16 +259,18 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         return new VkBufferCollectionConstraintsInfoFUCHSIA(segment.asSlice(OFFSET$bufferCollectionConstraints, LAYOUT$bufferCollectionConstraints));
     }
 
-    public void bufferCollectionConstraints(@NotNull VkBufferCollectionConstraintsInfoFUCHSIA value) {
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints(@NotNull VkBufferCollectionConstraintsInfoFUCHSIA value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
+        return this;
     }
 
     public @EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
+    public VkImageConstraintsInfoFUCHSIA flags(@EnumType(VkImageConstraintsInfoFlagsFUCHSIA.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

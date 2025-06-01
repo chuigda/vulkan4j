@@ -196,8 +196,9 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSemaphoreWaitInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,24 +209,27 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSemaphoreWaitInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSemaphoreWaitFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkSemaphoreWaitFlags.class) int value) {
+    public VkSemaphoreWaitInfo flags(@EnumType(VkSemaphoreWaitFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int semaphoreCount() {
         return segment.get(LAYOUT$semaphoreCount, OFFSET$semaphoreCount);
     }
 
-    public void semaphoreCount(@Unsigned int value) {
+    public VkSemaphoreWaitInfo semaphoreCount(@Unsigned int value) {
         segment.set(LAYOUT$semaphoreCount, OFFSET$semaphoreCount, value);
+        return this;
     }
 
     /// Note: the returned {@link VkSemaphore.Ptr} does not have correct {@link VkSemaphore.Ptr#size}
@@ -240,9 +244,10 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return new VkSemaphore.Ptr(s);
     }
 
-    public void pSemaphores(@Nullable VkSemaphore.Ptr value) {
+    public VkSemaphoreWaitInfo pSemaphores(@Nullable VkSemaphore.Ptr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pSemaphoresRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkSemaphore.class) MemorySegment pSemaphoresRaw() {
@@ -265,9 +270,10 @@ public record VkSemaphoreWaitInfo(@NotNull MemorySegment segment) implements IVk
         return new LongPtr(s);
     }
 
-    public void pValues(@Nullable @Unsigned LongPtr value) {
+    public VkSemaphoreWaitInfo pValues(@Nullable @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pValuesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pValuesRaw() {

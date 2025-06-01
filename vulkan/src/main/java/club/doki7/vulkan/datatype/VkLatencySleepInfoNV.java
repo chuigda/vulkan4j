@@ -194,8 +194,9 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IV
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkLatencySleepInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,8 +207,9 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IV
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkLatencySleepInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkSemaphore signalSemaphore() {
@@ -218,16 +220,18 @@ public record VkLatencySleepInfoNV(@NotNull MemorySegment segment) implements IV
         return new VkSemaphore(s);
     }
 
-    public void signalSemaphore(@Nullable VkSemaphore value) {
+    public VkLatencySleepInfoNV signalSemaphore(@Nullable VkSemaphore value) {
         segment.set(LAYOUT$signalSemaphore, OFFSET$signalSemaphore, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long value() {
         return segment.get(LAYOUT$value, OFFSET$value);
     }
 
-    public void value(@Unsigned long value) {
+    public VkLatencySleepInfoNV value(@Unsigned long value) {
         segment.set(LAYOUT$value, OFFSET$value, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

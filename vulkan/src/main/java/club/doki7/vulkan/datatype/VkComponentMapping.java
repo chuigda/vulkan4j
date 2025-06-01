@@ -175,32 +175,36 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
         return segment.get(LAYOUT$r, OFFSET$r);
     }
 
-    public void r(@EnumType(VkComponentSwizzle.class) int value) {
+    public VkComponentMapping r(@EnumType(VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$r, OFFSET$r, value);
+        return this;
     }
 
     public @EnumType(VkComponentSwizzle.class) int g() {
         return segment.get(LAYOUT$g, OFFSET$g);
     }
 
-    public void g(@EnumType(VkComponentSwizzle.class) int value) {
+    public VkComponentMapping g(@EnumType(VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$g, OFFSET$g, value);
+        return this;
     }
 
     public @EnumType(VkComponentSwizzle.class) int b() {
         return segment.get(LAYOUT$b, OFFSET$b);
     }
 
-    public void b(@EnumType(VkComponentSwizzle.class) int value) {
+    public VkComponentMapping b(@EnumType(VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$b, OFFSET$b, value);
+        return this;
     }
 
     public @EnumType(VkComponentSwizzle.class) int a() {
         return segment.get(LAYOUT$a, OFFSET$a);
     }
 
-    public void a(@EnumType(VkComponentSwizzle.class) int value) {
+    public VkComponentMapping a(@EnumType(VkComponentSwizzle.class) int value) {
         segment.set(LAYOUT$a, OFFSET$a, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

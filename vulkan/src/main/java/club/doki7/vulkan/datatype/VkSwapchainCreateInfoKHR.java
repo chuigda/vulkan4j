@@ -208,8 +208,9 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSwapchainCreateInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -220,16 +221,18 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSwapchainCreateInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSwapchainCreateFlagsKHR.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkSwapchainCreateFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR flags(@EnumType(VkSwapchainCreateFlagsKHR.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Nullable VkSurfaceKHR surface() {
@@ -240,72 +243,81 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return new VkSurfaceKHR(s);
     }
 
-    public void surface(@Nullable VkSurfaceKHR value) {
+    public VkSwapchainCreateInfoKHR surface(@Nullable VkSurfaceKHR value) {
         segment.set(LAYOUT$surface, OFFSET$surface, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int minImageCount() {
         return segment.get(LAYOUT$minImageCount, OFFSET$minImageCount);
     }
 
-    public void minImageCount(@Unsigned int value) {
+    public VkSwapchainCreateInfoKHR minImageCount(@Unsigned int value) {
         segment.set(LAYOUT$minImageCount, OFFSET$minImageCount, value);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int imageFormat() {
         return segment.get(LAYOUT$imageFormat, OFFSET$imageFormat);
     }
 
-    public void imageFormat(@EnumType(VkFormat.class) int value) {
+    public VkSwapchainCreateInfoKHR imageFormat(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$imageFormat, OFFSET$imageFormat, value);
+        return this;
     }
 
     public @EnumType(VkColorSpaceKHR.class) int imageColorSpace() {
         return segment.get(LAYOUT$imageColorSpace, OFFSET$imageColorSpace);
     }
 
-    public void imageColorSpace(@EnumType(VkColorSpaceKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR imageColorSpace(@EnumType(VkColorSpaceKHR.class) int value) {
         segment.set(LAYOUT$imageColorSpace, OFFSET$imageColorSpace, value);
+        return this;
     }
 
     public @NotNull VkExtent2D imageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
     }
 
-    public void imageExtent(@NotNull VkExtent2D value) {
+    public VkSwapchainCreateInfoKHR imageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+        return this;
     }
 
     public @Unsigned int imageArrayLayers() {
         return segment.get(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers);
     }
 
-    public void imageArrayLayers(@Unsigned int value) {
+    public VkSwapchainCreateInfoKHR imageArrayLayers(@Unsigned int value) {
         segment.set(LAYOUT$imageArrayLayers, OFFSET$imageArrayLayers, value);
+        return this;
     }
 
     public @EnumType(VkImageUsageFlags.class) int imageUsage() {
         return segment.get(LAYOUT$imageUsage, OFFSET$imageUsage);
     }
 
-    public void imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSwapchainCreateInfoKHR imageUsage(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsage, OFFSET$imageUsage, value);
+        return this;
     }
 
     public @EnumType(VkSharingMode.class) int imageSharingMode() {
         return segment.get(LAYOUT$imageSharingMode, OFFSET$imageSharingMode);
     }
 
-    public void imageSharingMode(@EnumType(VkSharingMode.class) int value) {
+    public VkSwapchainCreateInfoKHR imageSharingMode(@EnumType(VkSharingMode.class) int value) {
         segment.set(LAYOUT$imageSharingMode, OFFSET$imageSharingMode, value);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndexCount() {
         return segment.get(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount);
     }
 
-    public void queueFamilyIndexCount(@Unsigned int value) {
+    public VkSwapchainCreateInfoKHR queueFamilyIndexCount(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndexCount, OFFSET$queueFamilyIndexCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -320,9 +332,10 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return new IntPtr(s);
     }
 
-    public void pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
+    public VkSwapchainCreateInfoKHR pQueueFamilyIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pQueueFamilyIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pQueueFamilyIndicesRaw() {
@@ -337,32 +350,36 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return segment.get(LAYOUT$preTransform, OFFSET$preTransform);
     }
 
-    public void preTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR preTransform(@EnumType(VkSurfaceTransformFlagsKHR.class) int value) {
         segment.set(LAYOUT$preTransform, OFFSET$preTransform, value);
+        return this;
     }
 
     public @EnumType(VkCompositeAlphaFlagsKHR.class) int compositeAlpha() {
         return segment.get(LAYOUT$compositeAlpha, OFFSET$compositeAlpha);
     }
 
-    public void compositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR compositeAlpha(@EnumType(VkCompositeAlphaFlagsKHR.class) int value) {
         segment.set(LAYOUT$compositeAlpha, OFFSET$compositeAlpha, value);
+        return this;
     }
 
     public @EnumType(VkPresentModeKHR.class) int presentMode() {
         return segment.get(LAYOUT$presentMode, OFFSET$presentMode);
     }
 
-    public void presentMode(@EnumType(VkPresentModeKHR.class) int value) {
+    public VkSwapchainCreateInfoKHR presentMode(@EnumType(VkPresentModeKHR.class) int value) {
         segment.set(LAYOUT$presentMode, OFFSET$presentMode, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int clipped() {
         return segment.get(LAYOUT$clipped, OFFSET$clipped);
     }
 
-    public void clipped(@NativeType("VkBool32") @Unsigned int value) {
+    public VkSwapchainCreateInfoKHR clipped(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clipped, OFFSET$clipped, value);
+        return this;
     }
 
     public @Nullable VkSwapchainKHR oldSwapchain() {
@@ -373,8 +390,9 @@ public record VkSwapchainCreateInfoKHR(@NotNull MemorySegment segment) implement
         return new VkSwapchainKHR(s);
     }
 
-    public void oldSwapchain(@Nullable VkSwapchainKHR value) {
+    public VkSwapchainCreateInfoKHR oldSwapchain(@Nullable VkSwapchainKHR value) {
         segment.set(LAYOUT$oldSwapchain, OFFSET$oldSwapchain, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

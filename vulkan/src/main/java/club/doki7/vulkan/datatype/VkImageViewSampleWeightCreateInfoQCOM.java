@@ -195,8 +195,9 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkImageViewSampleWeightCreateInfoQCOM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkImageViewSampleWeightCreateInfoQCOM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkOffset2D filterCenter() {
         return new VkOffset2D(segment.asSlice(OFFSET$filterCenter, LAYOUT$filterCenter));
     }
 
-    public void filterCenter(@NotNull VkOffset2D value) {
+    public VkImageViewSampleWeightCreateInfoQCOM filterCenter(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterCenter, SIZE$filterCenter);
+        return this;
     }
 
     public @NotNull VkExtent2D filterSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$filterSize, LAYOUT$filterSize));
     }
 
-    public void filterSize(@NotNull VkExtent2D value) {
+    public VkImageViewSampleWeightCreateInfoQCOM filterSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterSize, SIZE$filterSize);
+        return this;
     }
 
     public @Unsigned int numPhases() {
         return segment.get(LAYOUT$numPhases, OFFSET$numPhases);
     }
 
-    public void numPhases(@Unsigned int value) {
+    public VkImageViewSampleWeightCreateInfoQCOM numPhases(@Unsigned int value) {
         segment.set(LAYOUT$numPhases, OFFSET$numPhases, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

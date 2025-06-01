@@ -172,8 +172,9 @@ public record VkSetStateFlagsIndirectCommandNV(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$data, OFFSET$data);
     }
 
-    public void data(@Unsigned int value) {
+    public VkSetStateFlagsIndirectCommandNV data(@Unsigned int value) {
         segment.set(LAYOUT$data, OFFSET$data, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

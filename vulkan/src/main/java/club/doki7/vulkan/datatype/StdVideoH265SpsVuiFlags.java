@@ -189,9 +189,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 0);
     }
 
-    public void aspect_ratio_info_present_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags aspect_ratio_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 0, value);
+        return this;
     }
 
     public boolean overscan_info_present_flag() {
@@ -199,9 +200,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 1);
     }
 
-    public void overscan_info_present_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags overscan_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 1, value);
+        return this;
     }
 
     public boolean overscan_appropriate_flag() {
@@ -209,9 +211,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 2);
     }
 
-    public void overscan_appropriate_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags overscan_appropriate_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 2, value);
+        return this;
     }
 
     public boolean video_signal_type_present_flag() {
@@ -219,9 +222,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 3);
     }
 
-    public void video_signal_type_present_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags video_signal_type_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 3, value);
+        return this;
     }
 
     public boolean video_full_range_flag() {
@@ -229,9 +233,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 4);
     }
 
-    public void video_full_range_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags video_full_range_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 4, value);
+        return this;
     }
 
     public boolean colour_description_present_flag() {
@@ -239,9 +244,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 5);
     }
 
-    public void colour_description_present_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags colour_description_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 5, value);
+        return this;
     }
 
     public boolean chroma_loc_info_present_flag() {
@@ -249,9 +255,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 6);
     }
 
-    public void chroma_loc_info_present_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags chroma_loc_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 6, value);
+        return this;
     }
 
     public boolean neutral_chroma_indication_flag() {
@@ -259,9 +266,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 7);
     }
 
-    public void neutral_chroma_indication_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags neutral_chroma_indication_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 7, value);
+        return this;
     }
 
     public boolean field_seq_flag() {
@@ -269,9 +277,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 8);
     }
 
-    public void field_seq_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags field_seq_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 8, value);
+        return this;
     }
 
     public boolean frame_field_info_present_flag() {
@@ -279,9 +288,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 9);
     }
 
-    public void frame_field_info_present_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags frame_field_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 9, value);
+        return this;
     }
 
     public boolean default_display_window_flag() {
@@ -289,9 +299,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 10);
     }
 
-    public void default_display_window_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags default_display_window_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 10, value);
+        return this;
     }
 
     public boolean vui_timing_info_present_flag() {
@@ -299,9 +310,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 11);
     }
 
-    public void vui_timing_info_present_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags vui_timing_info_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 11, value);
+        return this;
     }
 
     public boolean vui_poc_proportional_to_timing_flag() {
@@ -309,9 +321,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 12);
     }
 
-    public void vui_poc_proportional_to_timing_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags vui_poc_proportional_to_timing_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 12, value);
+        return this;
     }
 
     public boolean vui_hrd_parameters_present_flag() {
@@ -319,9 +332,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 13);
     }
 
-    public void vui_hrd_parameters_present_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags vui_hrd_parameters_present_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 13, value);
+        return this;
     }
 
     public boolean bitstream_restriction_flag() {
@@ -329,9 +343,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 14);
     }
 
-    public void bitstream_restriction_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags bitstream_restriction_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 14, value);
+        return this;
     }
 
     public boolean tiles_fixed_structure_flag() {
@@ -339,9 +354,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 15);
     }
 
-    public void tiles_fixed_structure_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags tiles_fixed_structure_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 15, value);
+        return this;
     }
 
     public boolean motion_vectors_over_pic_boundaries_flag() {
@@ -349,9 +365,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 16);
     }
 
-    public void motion_vectors_over_pic_boundaries_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags motion_vectors_over_pic_boundaries_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 16, value);
+        return this;
     }
 
     public boolean restricted_ref_pic_lists_flag() {
@@ -359,9 +376,10 @@ public record StdVideoH265SpsVuiFlags(@NotNull MemorySegment segment) implements
         return BitfieldUtil.readBit(s, 17);
     }
 
-    public void restricted_ref_pic_lists_flag(boolean value) {
+    public StdVideoH265SpsVuiFlags restricted_ref_pic_lists_flag(boolean value) {
         MemorySegment s = segment.asSlice(OFFSET$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag, LAYOUT$bitfield$aspect_ratio_info_present_flag$restricted_ref_pic_lists_flag);
         BitfieldUtil.writeBit(s, 17, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

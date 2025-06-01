@@ -194,8 +194,9 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoDecodeH264CapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoDecodeH264CapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(StdVideoH264LevelIdc.class) int maxLevelIdc() {
         return segment.get(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc);
     }
 
-    public void maxLevelIdc(@EnumType(StdVideoH264LevelIdc.class) int value) {
+    public VkVideoDecodeH264CapabilitiesKHR maxLevelIdc(@EnumType(StdVideoH264LevelIdc.class) int value) {
         segment.set(LAYOUT$maxLevelIdc, OFFSET$maxLevelIdc, value);
+        return this;
     }
 
     public @NotNull VkOffset2D fieldOffsetGranularity() {
         return new VkOffset2D(segment.asSlice(OFFSET$fieldOffsetGranularity, LAYOUT$fieldOffsetGranularity));
     }
 
-    public void fieldOffsetGranularity(@NotNull VkOffset2D value) {
+    public VkVideoDecodeH264CapabilitiesKHR fieldOffsetGranularity(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fieldOffsetGranularity, SIZE$fieldOffsetGranularity);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

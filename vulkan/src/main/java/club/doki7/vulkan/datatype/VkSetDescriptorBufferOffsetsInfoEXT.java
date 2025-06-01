@@ -198,8 +198,9 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,16 +211,18 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSetDescriptorBufferOffsetsInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkShaderStageFlags.class) int stageFlags() {
         return segment.get(LAYOUT$stageFlags, OFFSET$stageFlags);
     }
 
-    public void stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT stageFlags(@EnumType(VkShaderStageFlags.class) int value) {
         segment.set(LAYOUT$stageFlags, OFFSET$stageFlags, value);
+        return this;
     }
 
     public @Nullable VkPipelineLayout layout() {
@@ -230,24 +233,27 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new VkPipelineLayout(s);
     }
 
-    public void layout(@Nullable VkPipelineLayout value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT layout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$layout, OFFSET$layout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int firstSet() {
         return segment.get(LAYOUT$firstSet, OFFSET$firstSet);
     }
 
-    public void firstSet(@Unsigned int value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT firstSet(@Unsigned int value) {
         segment.set(LAYOUT$firstSet, OFFSET$firstSet, value);
+        return this;
     }
 
     public @Unsigned int setCount() {
         return segment.get(LAYOUT$setCount, OFFSET$setCount);
     }
 
-    public void setCount(@Unsigned int value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT setCount(@Unsigned int value) {
         segment.set(LAYOUT$setCount, OFFSET$setCount, value);
+        return this;
     }
 
     /// Note: the returned {@link IntPtr} does not have correct
@@ -262,9 +268,10 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new IntPtr(s);
     }
 
-    public void pBufferIndices(@Nullable @Unsigned IntPtr value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT pBufferIndices(@Nullable @Unsigned IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pBufferIndicesRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint32_t*") MemorySegment pBufferIndicesRaw() {
@@ -287,9 +294,10 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         return new LongPtr(s);
     }
 
-    public void pOffsets(@Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
+    public VkSetDescriptorBufferOffsetsInfoEXT pOffsets(@Nullable @Pointer(comment="VkDeviceSize") @Unsigned LongPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pOffsetsRaw(s);
+        return this;
     }
 
     public @Pointer(comment="uint64_t*") MemorySegment pOffsetsRaw() {

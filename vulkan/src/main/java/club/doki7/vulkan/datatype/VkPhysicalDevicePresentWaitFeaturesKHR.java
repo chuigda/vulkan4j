@@ -193,8 +193,9 @@ public record VkPhysicalDevicePresentWaitFeaturesKHR(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDevicePresentWaitFeaturesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDevicePresentWaitFeaturesKHR(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDevicePresentWaitFeaturesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int presentWait() {
         return segment.get(LAYOUT$presentWait, OFFSET$presentWait);
     }
 
-    public void presentWait(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDevicePresentWaitFeaturesKHR presentWait(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$presentWait, OFFSET$presentWait, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

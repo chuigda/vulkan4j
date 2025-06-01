@@ -199,8 +199,9 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBlitImageInfo2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -211,8 +212,9 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBlitImageInfo2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkImage srcImage() {
@@ -223,16 +225,18 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return new VkImage(s);
     }
 
-    public void srcImage(@Nullable VkImage value) {
+    public VkBlitImageInfo2 srcImage(@Nullable VkImage value) {
         segment.set(LAYOUT$srcImage, OFFSET$srcImage, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int srcImageLayout() {
         return segment.get(LAYOUT$srcImageLayout, OFFSET$srcImageLayout);
     }
 
-    public void srcImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkBlitImageInfo2 srcImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$srcImageLayout, OFFSET$srcImageLayout, value);
+        return this;
     }
 
     public @Nullable VkImage dstImage() {
@@ -243,29 +247,33 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return new VkImage(s);
     }
 
-    public void dstImage(@Nullable VkImage value) {
+    public VkBlitImageInfo2 dstImage(@Nullable VkImage value) {
         segment.set(LAYOUT$dstImage, OFFSET$dstImage, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageLayout.class) int dstImageLayout() {
         return segment.get(LAYOUT$dstImageLayout, OFFSET$dstImageLayout);
     }
 
-    public void dstImageLayout(@EnumType(VkImageLayout.class) int value) {
+    public VkBlitImageInfo2 dstImageLayout(@EnumType(VkImageLayout.class) int value) {
         segment.set(LAYOUT$dstImageLayout, OFFSET$dstImageLayout, value);
+        return this;
     }
 
     public @Unsigned int regionCount() {
         return segment.get(LAYOUT$regionCount, OFFSET$regionCount);
     }
 
-    public void regionCount(@Unsigned int value) {
+    public VkBlitImageInfo2 regionCount(@Unsigned int value) {
         segment.set(LAYOUT$regionCount, OFFSET$regionCount, value);
+        return this;
     }
 
-    public void pRegions(@Nullable IVkImageBlit2 value) {
+    public VkBlitImageInfo2 pRegions(@Nullable IVkImageBlit2 value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pRegionsRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkImageBlit2.Ptr pRegions(int assumedCount) {
@@ -298,8 +306,9 @@ public record VkBlitImageInfo2(@NotNull MemorySegment segment) implements IVkBli
         return segment.get(LAYOUT$filter, OFFSET$filter);
     }
 
-    public void filter(@EnumType(VkFilter.class) int value) {
+    public VkBlitImageInfo2 filter(@EnumType(VkFilter.class) int value) {
         segment.set(LAYOUT$filter, OFFSET$filter, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -194,8 +194,9 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int clustercullingShader() {
         return segment.get(LAYOUT$clustercullingShader, OFFSET$clustercullingShader);
     }
 
-    public void clustercullingShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI clustercullingShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$clustercullingShader, OFFSET$clustercullingShader, value);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int multiviewClusterCullingShader() {
         return segment.get(LAYOUT$multiviewClusterCullingShader, OFFSET$multiviewClusterCullingShader);
     }
 
-    public void multiviewClusterCullingShader(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI multiviewClusterCullingShader(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$multiviewClusterCullingShader, OFFSET$multiviewClusterCullingShader, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

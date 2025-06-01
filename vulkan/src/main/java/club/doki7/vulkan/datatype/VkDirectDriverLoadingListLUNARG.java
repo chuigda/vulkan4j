@@ -195,8 +195,9 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDirectDriverLoadingListLUNARG sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,29 +208,33 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDirectDriverLoadingListLUNARG pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDirectDriverLoadingModeLUNARG.class) int mode() {
         return segment.get(LAYOUT$mode, OFFSET$mode);
     }
 
-    public void mode(@EnumType(VkDirectDriverLoadingModeLUNARG.class) int value) {
+    public VkDirectDriverLoadingListLUNARG mode(@EnumType(VkDirectDriverLoadingModeLUNARG.class) int value) {
         segment.set(LAYOUT$mode, OFFSET$mode, value);
+        return this;
     }
 
     public @Unsigned int driverCount() {
         return segment.get(LAYOUT$driverCount, OFFSET$driverCount);
     }
 
-    public void driverCount(@Unsigned int value) {
+    public VkDirectDriverLoadingListLUNARG driverCount(@Unsigned int value) {
         segment.set(LAYOUT$driverCount, OFFSET$driverCount, value);
+        return this;
     }
 
-    public void pDrivers(@Nullable IVkDirectDriverLoadingInfoLUNARG value) {
+    public VkDirectDriverLoadingListLUNARG pDrivers(@Nullable IVkDirectDriverLoadingInfoLUNARG value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDriversRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDirectDriverLoadingInfoLUNARG.Ptr pDrivers(int assumedCount) {

@@ -200,8 +200,9 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,72 +213,81 @@ public record VkPhysicalDeviceRayTracingPropertiesNV(@NotNull MemorySegment segm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRayTracingPropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int shaderGroupHandleSize() {
         return segment.get(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize);
     }
 
-    public void shaderGroupHandleSize(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV shaderGroupHandleSize(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupHandleSize, OFFSET$shaderGroupHandleSize, value);
+        return this;
     }
 
     public @Unsigned int maxRecursionDepth() {
         return segment.get(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth);
     }
 
-    public void maxRecursionDepth(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV maxRecursionDepth(@Unsigned int value) {
         segment.set(LAYOUT$maxRecursionDepth, OFFSET$maxRecursionDepth, value);
+        return this;
     }
 
     public @Unsigned int maxShaderGroupStride() {
         return segment.get(LAYOUT$maxShaderGroupStride, OFFSET$maxShaderGroupStride);
     }
 
-    public void maxShaderGroupStride(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV maxShaderGroupStride(@Unsigned int value) {
         segment.set(LAYOUT$maxShaderGroupStride, OFFSET$maxShaderGroupStride, value);
+        return this;
     }
 
     public @Unsigned int shaderGroupBaseAlignment() {
         return segment.get(LAYOUT$shaderGroupBaseAlignment, OFFSET$shaderGroupBaseAlignment);
     }
 
-    public void shaderGroupBaseAlignment(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV shaderGroupBaseAlignment(@Unsigned int value) {
         segment.set(LAYOUT$shaderGroupBaseAlignment, OFFSET$shaderGroupBaseAlignment, value);
+        return this;
     }
 
     public @Unsigned long maxGeometryCount() {
         return segment.get(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount);
     }
 
-    public void maxGeometryCount(@Unsigned long value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV maxGeometryCount(@Unsigned long value) {
         segment.set(LAYOUT$maxGeometryCount, OFFSET$maxGeometryCount, value);
+        return this;
     }
 
     public @Unsigned long maxInstanceCount() {
         return segment.get(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount);
     }
 
-    public void maxInstanceCount(@Unsigned long value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV maxInstanceCount(@Unsigned long value) {
         segment.set(LAYOUT$maxInstanceCount, OFFSET$maxInstanceCount, value);
+        return this;
     }
 
     public @Unsigned long maxTriangleCount() {
         return segment.get(LAYOUT$maxTriangleCount, OFFSET$maxTriangleCount);
     }
 
-    public void maxTriangleCount(@Unsigned long value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV maxTriangleCount(@Unsigned long value) {
         segment.set(LAYOUT$maxTriangleCount, OFFSET$maxTriangleCount, value);
+        return this;
     }
 
     public @Unsigned int maxDescriptorSetAccelerationStructures() {
         return segment.get(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures);
     }
 
-    public void maxDescriptorSetAccelerationStructures(@Unsigned int value) {
+    public VkPhysicalDeviceRayTracingPropertiesNV maxDescriptorSetAccelerationStructures(@Unsigned int value) {
         segment.set(LAYOUT$maxDescriptorSetAccelerationStructures, OFFSET$maxDescriptorSetAccelerationStructures, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

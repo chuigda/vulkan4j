@@ -178,24 +178,27 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
         return new VkBuffer(s);
     }
 
-    public void buffer(@Nullable VkBuffer value) {
+    public VkDescriptorBufferInfo buffer(@Nullable VkBuffer value) {
         segment.set(LAYOUT$buffer, OFFSET$buffer, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long offset() {
         return segment.get(LAYOUT$offset, OFFSET$offset);
     }
 
-    public void offset(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkDescriptorBufferInfo offset(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$offset, OFFSET$offset, value);
+        return this;
     }
 
     public @NativeType("VkDeviceSize") @Unsigned long range() {
         return segment.get(LAYOUT$range, OFFSET$range);
     }
 
-    public void range(@NativeType("VkDeviceSize") @Unsigned long value) {
+    public VkDescriptorBufferInfo range(@NativeType("VkDeviceSize") @Unsigned long value) {
         segment.set(LAYOUT$range, OFFSET$range, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

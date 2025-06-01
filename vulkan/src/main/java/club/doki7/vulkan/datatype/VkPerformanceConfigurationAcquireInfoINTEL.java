@@ -193,8 +193,9 @@ public record VkPerformanceConfigurationAcquireInfoINTEL(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPerformanceConfigurationAcquireInfoINTEL sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPerformanceConfigurationAcquireInfoINTEL(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPerformanceConfigurationAcquireInfoINTEL pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPerformanceConfigurationTypeINTEL.class) int type() {
         return segment.get(LAYOUT$type, OFFSET$type);
     }
 
-    public void type(@EnumType(VkPerformanceConfigurationTypeINTEL.class) int value) {
+    public VkPerformanceConfigurationAcquireInfoINTEL type(@EnumType(VkPerformanceConfigurationTypeINTEL.class) int value) {
         segment.set(LAYOUT$type, OFFSET$type, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

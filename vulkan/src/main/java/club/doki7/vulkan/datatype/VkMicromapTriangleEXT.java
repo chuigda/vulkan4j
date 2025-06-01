@@ -174,24 +174,27 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         return segment.get(LAYOUT$dataOffset, OFFSET$dataOffset);
     }
 
-    public void dataOffset(@Unsigned int value) {
+    public VkMicromapTriangleEXT dataOffset(@Unsigned int value) {
         segment.set(LAYOUT$dataOffset, OFFSET$dataOffset, value);
+        return this;
     }
 
     public @Unsigned short subdivisionLevel() {
         return segment.get(LAYOUT$subdivisionLevel, OFFSET$subdivisionLevel);
     }
 
-    public void subdivisionLevel(@Unsigned short value) {
+    public VkMicromapTriangleEXT subdivisionLevel(@Unsigned short value) {
         segment.set(LAYOUT$subdivisionLevel, OFFSET$subdivisionLevel, value);
+        return this;
     }
 
     public @Unsigned short format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@Unsigned short value) {
+    public VkMicromapTriangleEXT format(@Unsigned short value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

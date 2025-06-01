@@ -193,8 +193,9 @@ public record VkPhysicalDeviceLegacyDitheringFeaturesEXT(@NotNull MemorySegment 
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceLegacyDitheringFeaturesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceLegacyDitheringFeaturesEXT(@NotNull MemorySegment 
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceLegacyDitheringFeaturesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int legacyDithering() {
         return segment.get(LAYOUT$legacyDithering, OFFSET$legacyDithering);
     }
 
-    public void legacyDithering(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceLegacyDitheringFeaturesEXT legacyDithering(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$legacyDithering, OFFSET$legacyDithering, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

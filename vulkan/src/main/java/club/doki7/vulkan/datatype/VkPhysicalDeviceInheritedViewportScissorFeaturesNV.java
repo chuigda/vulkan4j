@@ -193,8 +193,9 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceInheritedViewportScissorFeaturesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceInheritedViewportScissorFeaturesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int inheritedViewportScissor2D() {
         return segment.get(LAYOUT$inheritedViewportScissor2D, OFFSET$inheritedViewportScissor2D);
     }
 
-    public void inheritedViewportScissor2D(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceInheritedViewportScissorFeaturesNV inheritedViewportScissor2D(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$inheritedViewportScissor2D, OFFSET$inheritedViewportScissor2D, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -198,8 +198,9 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkBuildPartitionedAccelerationStructureInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,56 +211,63 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkBuildPartitionedAccelerationStructureInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkPartitionedAccelerationStructureInstancesInputNV input() {
         return new VkPartitionedAccelerationStructureInstancesInputNV(segment.asSlice(OFFSET$input, LAYOUT$input));
     }
 
-    public void input(@NotNull VkPartitionedAccelerationStructureInstancesInputNV value) {
+    public VkBuildPartitionedAccelerationStructureInfoNV input(@NotNull VkPartitionedAccelerationStructureInstancesInputNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$input, SIZE$input);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long srcAccelerationStructureData() {
         return segment.get(LAYOUT$srcAccelerationStructureData, OFFSET$srcAccelerationStructureData);
     }
 
-    public void srcAccelerationStructureData(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkBuildPartitionedAccelerationStructureInfoNV srcAccelerationStructureData(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$srcAccelerationStructureData, OFFSET$srcAccelerationStructureData, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long dstAccelerationStructureData() {
         return segment.get(LAYOUT$dstAccelerationStructureData, OFFSET$dstAccelerationStructureData);
     }
 
-    public void dstAccelerationStructureData(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkBuildPartitionedAccelerationStructureInfoNV dstAccelerationStructureData(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$dstAccelerationStructureData, OFFSET$dstAccelerationStructureData, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long scratchData() {
         return segment.get(LAYOUT$scratchData, OFFSET$scratchData);
     }
 
-    public void scratchData(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkBuildPartitionedAccelerationStructureInfoNV scratchData(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$scratchData, OFFSET$scratchData, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long srcInfos() {
         return segment.get(LAYOUT$srcInfos, OFFSET$srcInfos);
     }
 
-    public void srcInfos(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkBuildPartitionedAccelerationStructureInfoNV srcInfos(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$srcInfos, OFFSET$srcInfos, value);
+        return this;
     }
 
     public @NativeType("VkDeviceAddress") @Unsigned long srcInfosCount() {
         return segment.get(LAYOUT$srcInfosCount, OFFSET$srcInfosCount);
     }
 
-    public void srcInfosCount(@NativeType("VkDeviceAddress") @Unsigned long value) {
+    public VkBuildPartitionedAccelerationStructureInfoNV srcInfosCount(@NativeType("VkDeviceAddress") @Unsigned long value) {
         segment.set(LAYOUT$srcInfosCount, OFFSET$srcInfosCount, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

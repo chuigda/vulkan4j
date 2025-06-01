@@ -195,8 +195,9 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDeviceQueueInfo2 sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkDeviceQueueInfo2(@NotNull MemorySegment segment) implements IVkD
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDeviceQueueInfo2 pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDeviceQueueCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
+    public VkDeviceQueueInfo2 flags(@EnumType(VkDeviceQueueCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int queueFamilyIndex() {
         return segment.get(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex);
     }
 
-    public void queueFamilyIndex(@Unsigned int value) {
+    public VkDeviceQueueInfo2 queueFamilyIndex(@Unsigned int value) {
         segment.set(LAYOUT$queueFamilyIndex, OFFSET$queueFamilyIndex, value);
+        return this;
     }
 
     public @Unsigned int queueIndex() {
         return segment.get(LAYOUT$queueIndex, OFFSET$queueIndex);
     }
 
-    public void queueIndex(@Unsigned int value) {
+    public VkDeviceQueueInfo2 queueIndex(@Unsigned int value) {
         segment.set(LAYOUT$queueIndex, OFFSET$queueIndex, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

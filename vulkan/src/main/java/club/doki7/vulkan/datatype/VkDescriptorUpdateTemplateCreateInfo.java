@@ -200,8 +200,9 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -212,29 +213,33 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkDescriptorUpdateTemplateCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo flags(@EnumType(VkDescriptorUpdateTemplateCreateFlags.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @Unsigned int descriptorUpdateEntryCount() {
         return segment.get(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount);
     }
 
-    public void descriptorUpdateEntryCount(@Unsigned int value) {
+    public VkDescriptorUpdateTemplateCreateInfo descriptorUpdateEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$descriptorUpdateEntryCount, OFFSET$descriptorUpdateEntryCount, value);
+        return this;
     }
 
-    public void pDescriptorUpdateEntries(@Nullable IVkDescriptorUpdateTemplateEntry value) {
+    public VkDescriptorUpdateTemplateCreateInfo pDescriptorUpdateEntries(@Nullable IVkDescriptorUpdateTemplateEntry value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pDescriptorUpdateEntriesRaw(s);
+        return this;
     }
 
     @Unsafe public @Nullable VkDescriptorUpdateTemplateEntry.Ptr pDescriptorUpdateEntries(int assumedCount) {
@@ -267,8 +272,9 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$templateType, OFFSET$templateType);
     }
 
-    public void templateType(@EnumType(VkDescriptorUpdateTemplateType.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo templateType(@EnumType(VkDescriptorUpdateTemplateType.class) int value) {
         segment.set(LAYOUT$templateType, OFFSET$templateType, value);
+        return this;
     }
 
     public @Nullable VkDescriptorSetLayout descriptorSetLayout() {
@@ -279,16 +285,18 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return new VkDescriptorSetLayout(s);
     }
 
-    public void descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
+    public VkDescriptorUpdateTemplateCreateInfo descriptorSetLayout(@Nullable VkDescriptorSetLayout value) {
         segment.set(LAYOUT$descriptorSetLayout, OFFSET$descriptorSetLayout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineBindPoint.class) int pipelineBindPoint() {
         return segment.get(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint);
     }
 
-    public void pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
+    public VkDescriptorUpdateTemplateCreateInfo pipelineBindPoint(@EnumType(VkPipelineBindPoint.class) int value) {
         segment.set(LAYOUT$pipelineBindPoint, OFFSET$pipelineBindPoint, value);
+        return this;
     }
 
     public @Nullable VkPipelineLayout pipelineLayout() {
@@ -299,16 +307,18 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         return new VkPipelineLayout(s);
     }
 
-    public void pipelineLayout(@Nullable VkPipelineLayout value) {
+    public VkDescriptorUpdateTemplateCreateInfo pipelineLayout(@Nullable VkPipelineLayout value) {
         segment.set(LAYOUT$pipelineLayout, OFFSET$pipelineLayout, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int set() {
         return segment.get(LAYOUT$set, OFFSET$set);
     }
 
-    public void set(@Unsigned int value) {
+    public VkDescriptorUpdateTemplateCreateInfo set(@Unsigned int value) {
         segment.set(LAYOUT$set, OFFSET$set, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkPhysicalDeviceCustomBorderColorPropertiesEXT(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCustomBorderColorPropertiesEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceCustomBorderColorPropertiesEXT(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCustomBorderColorPropertiesEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned int maxCustomBorderColorSamplers() {
         return segment.get(LAYOUT$maxCustomBorderColorSamplers, OFFSET$maxCustomBorderColorSamplers);
     }
 
-    public void maxCustomBorderColorSamplers(@Unsigned int value) {
+    public VkPhysicalDeviceCustomBorderColorPropertiesEXT maxCustomBorderColorSamplers(@Unsigned int value) {
         segment.set(LAYOUT$maxCustomBorderColorSamplers, OFFSET$maxCustomBorderColorSamplers, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

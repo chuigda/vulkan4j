@@ -193,8 +193,9 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkExternalComputeQueueCreateInfoNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,8 +206,9 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkExternalComputeQueueCreateInfoNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Nullable VkQueue preferredQueue() {
@@ -217,8 +219,9 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
         return new VkQueue(s);
     }
 
-    public void preferredQueue(@Nullable VkQueue value) {
+    public VkExternalComputeQueueCreateInfoNV preferredQueue(@Nullable VkQueue value) {
         segment.set(LAYOUT$preferredQueue, OFFSET$preferredQueue, value != null ? value.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

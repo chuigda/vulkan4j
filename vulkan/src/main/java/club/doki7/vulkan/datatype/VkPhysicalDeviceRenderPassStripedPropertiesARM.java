@@ -194,8 +194,9 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(@NotNull MemorySegm
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkPhysicalDeviceRenderPassStripedPropertiesARM(@NotNull MemorySegm
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent2D renderPassStripeGranularity() {
         return new VkExtent2D(segment.asSlice(OFFSET$renderPassStripeGranularity, LAYOUT$renderPassStripeGranularity));
     }
 
-    public void renderPassStripeGranularity(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM renderPassStripeGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$renderPassStripeGranularity, SIZE$renderPassStripeGranularity);
+        return this;
     }
 
     public @Unsigned int maxRenderPassStripes() {
         return segment.get(LAYOUT$maxRenderPassStripes, OFFSET$maxRenderPassStripes);
     }
 
-    public void maxRenderPassStripes(@Unsigned int value) {
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM maxRenderPassStripes(@Unsigned int value) {
         segment.set(LAYOUT$maxRenderPassStripes, OFFSET$maxRenderPassStripes, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

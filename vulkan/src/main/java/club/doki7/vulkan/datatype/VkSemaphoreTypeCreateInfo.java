@@ -194,8 +194,9 @@ public record VkSemaphoreTypeCreateInfo(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSemaphoreTypeCreateInfo sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -206,24 +207,27 @@ public record VkSemaphoreTypeCreateInfo(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSemaphoreTypeCreateInfo pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkSemaphoreType.class) int semaphoreType() {
         return segment.get(LAYOUT$semaphoreType, OFFSET$semaphoreType);
     }
 
-    public void semaphoreType(@EnumType(VkSemaphoreType.class) int value) {
+    public VkSemaphoreTypeCreateInfo semaphoreType(@EnumType(VkSemaphoreType.class) int value) {
         segment.set(LAYOUT$semaphoreType, OFFSET$semaphoreType, value);
+        return this;
     }
 
     public @Unsigned long initialValue() {
         return segment.get(LAYOUT$initialValue, OFFSET$initialValue);
     }
 
-    public void initialValue(@Unsigned long value) {
+    public VkSemaphoreTypeCreateInfo initialValue(@Unsigned long value) {
         segment.set(LAYOUT$initialValue, OFFSET$initialValue, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

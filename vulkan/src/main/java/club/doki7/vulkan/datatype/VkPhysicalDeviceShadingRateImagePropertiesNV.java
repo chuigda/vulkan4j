@@ -195,8 +195,9 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceShadingRateImagePropertiesNV sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceShadingRateImagePropertiesNV pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NotNull VkExtent2D shadingRateTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$shadingRateTexelSize, LAYOUT$shadingRateTexelSize));
     }
 
-    public void shadingRateTexelSize(@NotNull VkExtent2D value) {
+    public VkPhysicalDeviceShadingRateImagePropertiesNV shadingRateTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateTexelSize, SIZE$shadingRateTexelSize);
+        return this;
     }
 
     public @Unsigned int shadingRatePaletteSize() {
         return segment.get(LAYOUT$shadingRatePaletteSize, OFFSET$shadingRatePaletteSize);
     }
 
-    public void shadingRatePaletteSize(@Unsigned int value) {
+    public VkPhysicalDeviceShadingRateImagePropertiesNV shadingRatePaletteSize(@Unsigned int value) {
         segment.set(LAYOUT$shadingRatePaletteSize, OFFSET$shadingRatePaletteSize, value);
+        return this;
     }
 
     public @Unsigned int shadingRateMaxCoarseSamples() {
         return segment.get(LAYOUT$shadingRateMaxCoarseSamples, OFFSET$shadingRateMaxCoarseSamples);
     }
 
-    public void shadingRateMaxCoarseSamples(@Unsigned int value) {
+    public VkPhysicalDeviceShadingRateImagePropertiesNV shadingRateMaxCoarseSamples(@Unsigned int value) {
         segment.set(LAYOUT$shadingRateMaxCoarseSamples, OFFSET$shadingRateMaxCoarseSamples, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

@@ -193,8 +193,9 @@ public record VkPhysicalDeviceTimelineSemaphoreFeatures(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceTimelineSemaphoreFeatures sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceTimelineSemaphoreFeatures(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceTimelineSemaphoreFeatures pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int timelineSemaphore() {
         return segment.get(LAYOUT$timelineSemaphore, OFFSET$timelineSemaphore);
     }
 
-    public void timelineSemaphore(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceTimelineSemaphoreFeatures timelineSemaphore(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$timelineSemaphore, OFFSET$timelineSemaphore, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

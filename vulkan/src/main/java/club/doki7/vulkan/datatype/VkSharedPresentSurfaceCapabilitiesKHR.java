@@ -193,8 +193,9 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkSharedPresentSurfaceCapabilitiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkSharedPresentSurfaceCapabilitiesKHR(@NotNull MemorySegment segme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkSharedPresentSurfaceCapabilitiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkImageUsageFlags.class) int sharedPresentSupportedUsageFlags() {
         return segment.get(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags);
     }
 
-    public void sharedPresentSupportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkSharedPresentSurfaceCapabilitiesKHR sharedPresentSupportedUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$sharedPresentSupportedUsageFlags, OFFSET$sharedPresentSupportedUsageFlags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

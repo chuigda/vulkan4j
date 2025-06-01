@@ -193,8 +193,9 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(@NotNull MemorySegment s
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceCoherentMemoryFeaturesAMD sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceCoherentMemoryFeaturesAMD(@NotNull MemorySegment s
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceCoherentMemoryFeaturesAMD pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int deviceCoherentMemory() {
         return segment.get(LAYOUT$deviceCoherentMemory, OFFSET$deviceCoherentMemory);
     }
 
-    public void deviceCoherentMemory(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceCoherentMemoryFeaturesAMD deviceCoherentMemory(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$deviceCoherentMemory, OFFSET$deviceCoherentMemory, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

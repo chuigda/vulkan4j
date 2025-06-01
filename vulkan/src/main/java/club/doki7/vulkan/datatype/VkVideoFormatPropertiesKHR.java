@@ -198,8 +198,9 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoFormatPropertiesKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -210,56 +211,63 @@ public record VkVideoFormatPropertiesKHR(@NotNull MemorySegment segment) impleme
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoFormatPropertiesKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkFormat.class) int format() {
         return segment.get(LAYOUT$format, OFFSET$format);
     }
 
-    public void format(@EnumType(VkFormat.class) int value) {
+    public VkVideoFormatPropertiesKHR format(@EnumType(VkFormat.class) int value) {
         segment.set(LAYOUT$format, OFFSET$format, value);
+        return this;
     }
 
     public @NotNull VkComponentMapping componentMapping() {
         return new VkComponentMapping(segment.asSlice(OFFSET$componentMapping, LAYOUT$componentMapping));
     }
 
-    public void componentMapping(@NotNull VkComponentMapping value) {
+    public VkVideoFormatPropertiesKHR componentMapping(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$componentMapping, SIZE$componentMapping);
+        return this;
     }
 
     public @EnumType(VkImageCreateFlags.class) int imageCreateFlags() {
         return segment.get(LAYOUT$imageCreateFlags, OFFSET$imageCreateFlags);
     }
 
-    public void imageCreateFlags(@EnumType(VkImageCreateFlags.class) int value) {
+    public VkVideoFormatPropertiesKHR imageCreateFlags(@EnumType(VkImageCreateFlags.class) int value) {
         segment.set(LAYOUT$imageCreateFlags, OFFSET$imageCreateFlags, value);
+        return this;
     }
 
     public @EnumType(VkImageType.class) int imageType() {
         return segment.get(LAYOUT$imageType, OFFSET$imageType);
     }
 
-    public void imageType(@EnumType(VkImageType.class) int value) {
+    public VkVideoFormatPropertiesKHR imageType(@EnumType(VkImageType.class) int value) {
         segment.set(LAYOUT$imageType, OFFSET$imageType, value);
+        return this;
     }
 
     public @EnumType(VkImageTiling.class) int imageTiling() {
         return segment.get(LAYOUT$imageTiling, OFFSET$imageTiling);
     }
 
-    public void imageTiling(@EnumType(VkImageTiling.class) int value) {
+    public VkVideoFormatPropertiesKHR imageTiling(@EnumType(VkImageTiling.class) int value) {
         segment.set(LAYOUT$imageTiling, OFFSET$imageTiling, value);
+        return this;
     }
 
     public @EnumType(VkImageUsageFlags.class) int imageUsageFlags() {
         return segment.get(LAYOUT$imageUsageFlags, OFFSET$imageUsageFlags);
     }
 
-    public void imageUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
+    public VkVideoFormatPropertiesKHR imageUsageFlags(@EnumType(VkImageUsageFlags.class) int value) {
         segment.set(LAYOUT$imageUsageFlags, OFFSET$imageUsageFlags, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

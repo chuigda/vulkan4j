@@ -193,8 +193,9 @@ public record VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(@NotNull Memo
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(@NotNull Memo
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @NativeType("VkBool32") @Unsigned int externalFormatResolve() {
         return segment.get(LAYOUT$externalFormatResolve, OFFSET$externalFormatResolve);
     }
 
-    public void externalFormatResolve(@NativeType("VkBool32") @Unsigned int value) {
+    public VkPhysicalDeviceExternalFormatResolveFeaturesANDROID externalFormatResolve(@NativeType("VkBool32") @Unsigned int value) {
         segment.set(LAYOUT$externalFormatResolve, OFFSET$externalFormatResolve, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

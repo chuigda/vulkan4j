@@ -195,8 +195,9 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int flags() {
         return segment.get(LAYOUT$flags, OFFSET$flags);
     }
 
-    public void flags(@EnumType(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT flags(@EnumType(VkPipelineRasterizationConservativeStateCreateFlagsEXT.class) int value) {
         segment.set(LAYOUT$flags, OFFSET$flags, value);
+        return this;
     }
 
     public @EnumType(VkConservativeRasterizationModeEXT.class) int conservativeRasterizationMode() {
         return segment.get(LAYOUT$conservativeRasterizationMode, OFFSET$conservativeRasterizationMode);
     }
 
-    public void conservativeRasterizationMode(@EnumType(VkConservativeRasterizationModeEXT.class) int value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT conservativeRasterizationMode(@EnumType(VkConservativeRasterizationModeEXT.class) int value) {
         segment.set(LAYOUT$conservativeRasterizationMode, OFFSET$conservativeRasterizationMode, value);
+        return this;
     }
 
     public float extraPrimitiveOverestimationSize() {
         return segment.get(LAYOUT$extraPrimitiveOverestimationSize, OFFSET$extraPrimitiveOverestimationSize);
     }
 
-    public void extraPrimitiveOverestimationSize(float value) {
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT extraPrimitiveOverestimationSize(float value) {
         segment.set(LAYOUT$extraPrimitiveOverestimationSize, OFFSET$extraPrimitiveOverestimationSize, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

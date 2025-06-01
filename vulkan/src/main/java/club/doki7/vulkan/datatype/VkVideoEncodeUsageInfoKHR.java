@@ -195,8 +195,9 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeUsageInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -207,32 +208,36 @@ public record VkVideoEncodeUsageInfoKHR(@NotNull MemorySegment segment) implemen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeUsageInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeUsageFlagsKHR.class) int videoUsageHints() {
         return segment.get(LAYOUT$videoUsageHints, OFFSET$videoUsageHints);
     }
 
-    public void videoUsageHints(@EnumType(VkVideoEncodeUsageFlagsKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR videoUsageHints(@EnumType(VkVideoEncodeUsageFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoUsageHints, OFFSET$videoUsageHints, value);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeContentFlagsKHR.class) int videoContentHints() {
         return segment.get(LAYOUT$videoContentHints, OFFSET$videoContentHints);
     }
 
-    public void videoContentHints(@EnumType(VkVideoEncodeContentFlagsKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR videoContentHints(@EnumType(VkVideoEncodeContentFlagsKHR.class) int value) {
         segment.set(LAYOUT$videoContentHints, OFFSET$videoContentHints, value);
+        return this;
     }
 
     public @EnumType(VkVideoEncodeTuningModeKHR.class) int tuningMode() {
         return segment.get(LAYOUT$tuningMode, OFFSET$tuningMode);
     }
 
-    public void tuningMode(@EnumType(VkVideoEncodeTuningModeKHR.class) int value) {
+    public VkVideoEncodeUsageInfoKHR tuningMode(@EnumType(VkVideoEncodeTuningModeKHR.class) int value) {
         segment.set(LAYOUT$tuningMode, OFFSET$tuningMode, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

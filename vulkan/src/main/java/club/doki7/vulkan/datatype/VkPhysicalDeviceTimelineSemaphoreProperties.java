@@ -193,8 +193,9 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(@NotNull MemorySegment
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkPhysicalDeviceTimelineSemaphoreProperties sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -205,16 +206,18 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(@NotNull MemorySegment
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkPhysicalDeviceTimelineSemaphoreProperties pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long maxTimelineSemaphoreValueDifference() {
         return segment.get(LAYOUT$maxTimelineSemaphoreValueDifference, OFFSET$maxTimelineSemaphoreValueDifference);
     }
 
-    public void maxTimelineSemaphoreValueDifference(@Unsigned long value) {
+    public VkPhysicalDeviceTimelineSemaphoreProperties maxTimelineSemaphoreValueDifference(@Unsigned long value) {
         segment.set(LAYOUT$maxTimelineSemaphoreValueDifference, OFFSET$maxTimelineSemaphoreValueDifference, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

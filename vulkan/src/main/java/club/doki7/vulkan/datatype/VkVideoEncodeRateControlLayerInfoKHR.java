@@ -196,8 +196,9 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
         return segment.get(LAYOUT$sType, OFFSET$sType);
     }
 
-    public void sType(@EnumType(VkStructureType.class) int value) {
+    public VkVideoEncodeRateControlLayerInfoKHR sType(@EnumType(VkStructureType.class) int value) {
         segment.set(LAYOUT$sType, OFFSET$sType, value);
+        return this;
     }
 
     public @Pointer(comment="void*") MemorySegment pNext() {
@@ -208,40 +209,45 @@ public record VkVideoEncodeRateControlLayerInfoKHR(@NotNull MemorySegment segmen
         segment.set(LAYOUT$pNext, OFFSET$pNext, value);
     }
 
-    public void pNext(@Nullable IPointer pointer) {
+    public VkVideoEncodeRateControlLayerInfoKHR pNext(@Nullable IPointer pointer) {
         pNext(pointer != null ? pointer.segment() : MemorySegment.NULL);
+        return this;
     }
 
     public @Unsigned long averageBitrate() {
         return segment.get(LAYOUT$averageBitrate, OFFSET$averageBitrate);
     }
 
-    public void averageBitrate(@Unsigned long value) {
+    public VkVideoEncodeRateControlLayerInfoKHR averageBitrate(@Unsigned long value) {
         segment.set(LAYOUT$averageBitrate, OFFSET$averageBitrate, value);
+        return this;
     }
 
     public @Unsigned long maxBitrate() {
         return segment.get(LAYOUT$maxBitrate, OFFSET$maxBitrate);
     }
 
-    public void maxBitrate(@Unsigned long value) {
+    public VkVideoEncodeRateControlLayerInfoKHR maxBitrate(@Unsigned long value) {
         segment.set(LAYOUT$maxBitrate, OFFSET$maxBitrate, value);
+        return this;
     }
 
     public @Unsigned int frameRateNumerator() {
         return segment.get(LAYOUT$frameRateNumerator, OFFSET$frameRateNumerator);
     }
 
-    public void frameRateNumerator(@Unsigned int value) {
+    public VkVideoEncodeRateControlLayerInfoKHR frameRateNumerator(@Unsigned int value) {
         segment.set(LAYOUT$frameRateNumerator, OFFSET$frameRateNumerator, value);
+        return this;
     }
 
     public @Unsigned int frameRateDenominator() {
         return segment.get(LAYOUT$frameRateDenominator, OFFSET$frameRateDenominator);
     }
 
-    public void frameRateDenominator(@Unsigned int value) {
+    public VkVideoEncodeRateControlLayerInfoKHR frameRateDenominator(@Unsigned int value) {
         segment.set(LAYOUT$frameRateDenominator, OFFSET$frameRateDenominator, value);
+        return this;
     }
 
     public static final StructLayout LAYOUT = NativeLayout.structLayout(

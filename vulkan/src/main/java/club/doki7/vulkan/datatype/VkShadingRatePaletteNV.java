@@ -173,8 +173,9 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         return segment.get(LAYOUT$shadingRatePaletteEntryCount, OFFSET$shadingRatePaletteEntryCount);
     }
 
-    public void shadingRatePaletteEntryCount(@Unsigned int value) {
+    public VkShadingRatePaletteNV shadingRatePaletteEntryCount(@Unsigned int value) {
         segment.set(LAYOUT$shadingRatePaletteEntryCount, OFFSET$shadingRatePaletteEntryCount, value);
+        return this;
     }
 
 
@@ -190,9 +191,10 @@ public record VkShadingRatePaletteNV(@NotNull MemorySegment segment) implements 
         return new IntPtr(s);
     }
 
-    public void pShadingRatePaletteEntries(@Nullable @EnumType(VkShadingRatePaletteEntryNV.class) IntPtr value) {
+    public VkShadingRatePaletteNV pShadingRatePaletteEntries(@Nullable @EnumType(VkShadingRatePaletteEntryNV.class) IntPtr value) {
         MemorySegment s = value == null ? MemorySegment.NULL : value.segment();
         pShadingRatePaletteEntriesRaw(s);
+        return this;
     }
 
     public @Pointer(target=VkShadingRatePaletteEntryNV.class) MemorySegment pShadingRatePaletteEntriesRaw() {
