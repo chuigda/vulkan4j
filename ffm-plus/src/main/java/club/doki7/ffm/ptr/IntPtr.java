@@ -164,11 +164,11 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
     }
 
-    public static @NotNull IntPtr allocateV(@NotNull Arena arena, int ...values) {
-        if (values.length == 0) {
-            throw new IllegalArgumentException("allocateV: values must not be empty");
-        }
-        return allocate(arena, values);
+    public static @NotNull IntPtr allocateV(@NotNull Arena arena, int value0, int ...values) {
+        IntPtr ret = allocate(arena, values.length + 1);
+        ret.write(value0);
+        ret.offset(1).segment.copyFrom(MemorySegment.ofArray(values));
+        return ret;
     }
 
     /// Allocate a new {@link IntPtr} in {@code arena} and copy the contents of {@code array} into

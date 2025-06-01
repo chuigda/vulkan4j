@@ -144,26 +144,31 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
         return new PointerPtr(arena.allocate(ValueLayout.ADDRESS, size));
     }
 
-    public static @NotNull PointerPtr allocateV(@NotNull Arena arena, @NotNull IPointer ...pointers) {
-        if (pointers.length == 0) {
-            throw new IllegalArgumentException("allocateV: pointers must not be empty");
-        }
-
-        PointerPtr ret = allocate(arena, pointers.length);
+    public static @NotNull PointerPtr allocateV(
+            @NotNull Arena arena,
+            @Nullable IPointer pointer0,
+            @Nullable IPointer ...pointers
+    ) {
+        PointerPtr ret = allocate(arena, pointers.length + 1);
+        ret.write(pointer0 != null ? pointer0.segment() : MemorySegment.NULL);
         for (int i = 0; i < pointers.length; i++) {
-            ret.write(i, pointers[i].segment());
+            if (pointers[i] != null) {
+                //noinspection DataFlowIssue
+                ret.write(i + 1, pointers[i].segment());
+            }
         }
         return ret;
     }
 
-    public static @NotNull PointerPtr allocateV(@NotNull Arena arena, MemorySegment ...segments) {
-        if (segments.length == 0) {
-            throw new IllegalArgumentException("allocateV: segments must not be empty");
-        }
-
-        PointerPtr ret = allocate(arena, segments.length);
+    public static @NotNull PointerPtr allocateV(
+            @NotNull Arena arena,
+            MemorySegment segment0,
+            MemorySegment ...segments
+    ) {
+        PointerPtr ret = allocate(arena, segments.length + 1);
+        ret.write(segment0);
         for (int i = 0; i < segments.length; i++) {
-            ret.write(i, segments[i]);
+            ret.write(i + 1, segments[i]);
         }
         return ret;
     }
