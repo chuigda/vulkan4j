@@ -65,15 +65,15 @@ class Application {
 
     private void createInstance() {
         try (var arena = Arena.ofConfined()) {
-            var appInfo = VkApplicationInfo.allocate(arena);
-            appInfo.pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"));
-            appInfo.applicationVersion(new Version(0, 1, 0, 0).encode());
-            appInfo.pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"));
-            appInfo.engineVersion(new Version(0, 1, 0, 0).encode());
-            appInfo.apiVersion(Version.VK_API_VERSION_1_0.encode());
+            var appInfo = VkApplicationInfo.allocate(arena)
+                    .pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"))
+                    .applicationVersion(new Version(0, 1, 0, 0).encode())
+                    .pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"))
+                    .engineVersion(new Version(0, 1, 0, 0).encode())
+                    .apiVersion(Version.VK_API_VERSION_1_0.encode());
 
-            var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena);
-            instanceCreateInfo.pApplicationInfo(appInfo);
+            var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena)
+                    .pApplicationInfo(appInfo);
 
             var pGLFWExtensionCount = IntPtr.allocate(arena);
             var glfwExtensions = glfw.getRequiredInstanceExtensions(pGLFWExtensionCount);
@@ -83,8 +83,8 @@ class Application {
 
             var glfwExtensionCount = pGLFWExtensionCount.read();
             glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
-            instanceCreateInfo.enabledExtensionCount(pGLFWExtensionCount.read());
-            instanceCreateInfo.ppEnabledExtensionNames(glfwExtensions);
+            instanceCreateInfo.enabledExtensionCount(pGLFWExtensionCount.read())
+                    .ppEnabledExtensionNames(glfwExtensions);
 
             var pInstance = VkInstance.Ptr.allocate(arena);
             var result = entryCommands.createInstance(instanceCreateInfo, null, pInstance);
