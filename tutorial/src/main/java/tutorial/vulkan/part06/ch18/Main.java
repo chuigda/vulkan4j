@@ -449,13 +449,13 @@ class Application {
                     .dynamicStateCount((int) dynamicStates.size())
                     .pDynamicStates(dynamicStates);
 
-            var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena);
             var bindingDescription = getBindingDescription(arena);
             var attributeDescription = getAttributeDescriptions(arena);
-            vertexInputInfo.vertexBindingDescriptionCount(1);
-            vertexInputInfo.pVertexBindingDescriptions(bindingDescription);
-            vertexInputInfo.vertexAttributeDescriptionCount((int) attributeDescription.size());
-            vertexInputInfo.pVertexAttributeDescriptions(attributeDescription);
+            var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena)
+                    .vertexBindingDescriptionCount(1)
+                    .pVertexBindingDescriptions(bindingDescription)
+                    .vertexAttributeDescriptionCount((int) attributeDescription.size())
+                    .pVertexAttributeDescriptions(attributeDescription);
 
             var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena)
                     .topology(VkPrimitiveTopology.TRIANGLE_LIST)
@@ -592,8 +592,8 @@ class Application {
 
         try (var arena = Arena.ofConfined()) {
             var semaphoreInfo = VkSemaphoreCreateInfo.allocate(arena);
-            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena);
-            fenceCreateInfo.flags(VkFenceCreateFlags.SIGNALED);
+            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena)
+                    .flags(VkFenceCreateFlags.SIGNALED);
 
             for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
                 var pImageAvailableSemaphore = pImageAvailableSemaphores.offset(i);
@@ -615,7 +615,7 @@ class Application {
         var inFlightFence = pInFlightFence.read();
         var imageAvailableSemaphore = pImageAvailableSemaphore.read();
         var pCommandBuffer = pCommandBuffers.offset(currentFrame);
-        var commandBuffer = pCommandBuffer.read(currentFrame);
+        var commandBuffer = pCommandBuffer.read();
 
         try (var arena = Arena.ofConfined()) {
             deviceCommands.waitForFences(device, 1, pInFlightFence, VkConstants.TRUE, NativeLayout.UINT64_MAX);

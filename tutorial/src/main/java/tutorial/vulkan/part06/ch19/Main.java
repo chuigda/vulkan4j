@@ -449,13 +449,13 @@ class Application {
                     .dynamicStateCount((int) dynamicStates.size())
                     .pDynamicStates(dynamicStates);
 
-            var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena);
             var bindingDescription = getBindingDescription(arena);
             var attributeDescription = getAttributeDescriptions(arena);
-            vertexInputInfo.vertexBindingDescriptionCount(1);
-            vertexInputInfo.pVertexBindingDescriptions(bindingDescription);
-            vertexInputInfo.vertexAttributeDescriptionCount((int) attributeDescription.size());
-            vertexInputInfo.pVertexAttributeDescriptions(attributeDescription);
+            var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena)
+                    .vertexBindingDescriptionCount(1)
+                    .pVertexBindingDescriptions(bindingDescription)
+                    .vertexAttributeDescriptionCount((int) attributeDescription.size())
+                    .pVertexAttributeDescriptions(attributeDescription);
 
             var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena)
                     .topology(VkPrimitiveTopology.TRIANGLE_LIST)
@@ -569,10 +569,10 @@ class Application {
 
     private void createVertexBuffer() {
         try (var arena = Arena.ofConfined()) {
-            var bufferInfo = VkBufferCreateInfo.allocate(arena);
-            bufferInfo.size(VERTICES.length * Float.BYTES);
-            bufferInfo.usage(VkBufferUsageFlags.VERTEX_BUFFER);
-            bufferInfo.sharingMode(VkSharingMode.EXCLUSIVE);
+            var bufferInfo = VkBufferCreateInfo.allocate(arena)
+                    .size(VERTICES.length * Float.BYTES)
+                    .usage(VkBufferUsageFlags.VERTEX_BUFFER)
+                    .sharingMode(VkSharingMode.EXCLUSIVE);
 
             var pBuffer = VkBuffer.Ptr.allocate(arena);
             var result = deviceCommands.createBuffer(device, bufferInfo, null, pBuffer);
@@ -585,13 +585,13 @@ class Application {
             var memRequirements = VkMemoryRequirements.allocate(arena);
             deviceCommands.getBufferMemoryRequirements(device, vertexBuffer, memRequirements);
 
-            var allocInfo = VkMemoryAllocateInfo.allocate(arena);
-            allocInfo.allocationSize(memRequirements.size());
-            allocInfo.memoryTypeIndex(findMemoryType(
-                    memRequirements.memoryTypeBits(),
-                    VkMemoryPropertyFlags.HOST_VISIBLE
-                    | VkMemoryPropertyFlags.HOST_COHERENT
-            ));
+            var allocInfo = VkMemoryAllocateInfo.allocate(arena)
+                    .allocationSize(memRequirements.size())
+                    .memoryTypeIndex(findMemoryType(
+                            memRequirements.memoryTypeBits(),
+                            VkMemoryPropertyFlags.HOST_VISIBLE
+                            | VkMemoryPropertyFlags.HOST_COHERENT
+                    ));
 
             var pVertexBufferMemory = VkDeviceMemory.Ptr.allocate(arena);
             result = deviceCommands.allocateMemory(device, allocInfo, null, pVertexBufferMemory);
@@ -637,8 +637,8 @@ class Application {
 
         try (var arena = Arena.ofConfined()) {
             var semaphoreInfo = VkSemaphoreCreateInfo.allocate(arena);
-            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena);
-            fenceCreateInfo.flags(VkFenceCreateFlags.SIGNALED);
+            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena)
+                    .flags(VkFenceCreateFlags.SIGNALED);
 
             for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
                 var pImageAvailableSemaphore = pImageAvailableSemaphores.offset(i);
@@ -660,7 +660,7 @@ class Application {
         var inFlightFence = pInFlightFence.read();
         var imageAvailableSemaphore = pImageAvailableSemaphore.read();
         var pCommandBuffer = pCommandBuffers.offset(currentFrame);
-        var commandBuffer = pCommandBuffer.read(currentFrame);
+        var commandBuffer = pCommandBuffer.read();
 
         try (var arena = Arena.ofConfined()) {
             deviceCommands.waitForFences(device, 1, pInFlightFence, VkConstants.TRUE, NativeLayout.UINT64_MAX);

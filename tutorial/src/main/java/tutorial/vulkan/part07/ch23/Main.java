@@ -487,13 +487,13 @@ class Application {
                     .dynamicStateCount((int) dynamicStates.size())
                     .pDynamicStates(dynamicStates);
 
-            var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena);
             var bindingDescription = getBindingDescription(arena);
             var attributeDescription = getAttributeDescriptions(arena);
-            vertexInputInfo.vertexBindingDescriptionCount(1);
-            vertexInputInfo.pVertexBindingDescriptions(bindingDescription);
-            vertexInputInfo.vertexAttributeDescriptionCount((int) attributeDescription.size());
-            vertexInputInfo.pVertexAttributeDescriptions(attributeDescription);
+            var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena)
+                    .vertexBindingDescriptionCount(1)
+                    .pVertexBindingDescriptions(bindingDescription)
+                    .vertexAttributeDescriptionCount((int) attributeDescription.size())
+                    .pVertexAttributeDescriptions(attributeDescription);
 
             var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena);
             inputAssembly.topology(VkPrimitiveTopology.TRIANGLE_LIST);
@@ -799,8 +799,8 @@ class Application {
 
         try (var arena = Arena.ofConfined()) {
             var semaphoreInfo = VkSemaphoreCreateInfo.allocate(arena);
-            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena);
-            fenceCreateInfo.flags(VkFenceCreateFlags.SIGNALED);
+            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena)
+                    .flags(VkFenceCreateFlags.SIGNALED);
 
             for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
                 var pImageAvailableSemaphore = pImageAvailableSemaphores.offset(i);
@@ -822,7 +822,7 @@ class Application {
         var inFlightFence = pInFlightFence.read();
         var imageAvailableSemaphore = pImageAvailableSemaphore.read();
         var pCommandBuffer = pCommandBuffers.offset(currentFrame);
-        var commandBuffer = pCommandBuffer.read(currentFrame);
+        var commandBuffer = pCommandBuffer.read();
 
         try (var arena = Arena.ofConfined()) {
             deviceCommands.waitForFences(device, 1, pInFlightFence, VkConstants.TRUE, NativeLayout.UINT64_MAX);
@@ -1286,10 +1286,10 @@ class Application {
             @EnumType(VkMemoryPropertyFlags.class) int properties
     ) {
         try (var arena = Arena.ofConfined()) {
-            var bufferInfo = VkBufferCreateInfo.allocate(arena);
-            bufferInfo.size(size);
-            bufferInfo.usage(usage);
-            bufferInfo.sharingMode(VkSharingMode.EXCLUSIVE);
+            var bufferInfo = VkBufferCreateInfo.allocate(arena)
+                    .size(size)
+                    .usage(usage)
+                    .sharingMode(VkSharingMode.EXCLUSIVE);
 
             var pBuffer = VkBuffer.Ptr.allocate(arena);
             var result = deviceCommands.createBuffer(device, bufferInfo, null, pBuffer);
@@ -1301,9 +1301,9 @@ class Application {
             var memRequirements = VkMemoryRequirements.allocate(arena);
             deviceCommands.getBufferMemoryRequirements(device, buffer, memRequirements);
 
-            var allocInfo = VkMemoryAllocateInfo.allocate(arena);
-            allocInfo.allocationSize(memRequirements.size());
-            allocInfo.memoryTypeIndex(findMemoryType(memRequirements.memoryTypeBits(), properties));
+            var allocInfo = VkMemoryAllocateInfo.allocate(arena)
+                    .allocationSize(memRequirements.size())
+                    .memoryTypeIndex(findMemoryType(memRequirements.memoryTypeBits(), properties));
             var pMemory = VkDeviceMemory.Ptr.allocate(arena);
             result = deviceCommands.allocateMemory(device, allocInfo, null, pMemory);
             if (result != VkResult.SUCCESS) {
@@ -1332,10 +1332,10 @@ class Application {
 
     private void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, int size) {
         try (var arena = Arena.ofConfined()) {
-            var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
-            allocInfo.level(VkCommandBufferLevel.PRIMARY);
-            allocInfo.commandPool(commandPool);
-            allocInfo.commandBufferCount(1);
+            var allocInfo = VkCommandBufferAllocateInfo.allocate(arena)
+                    .level(VkCommandBufferLevel.PRIMARY)
+                    .commandPool(commandPool)
+                    .commandBufferCount(1);
 
             var pCommandBuffer = VkCommandBuffer.Ptr.allocate(arena);
             var result = deviceCommands.allocateCommandBuffers(device, allocInfo, pCommandBuffer);
@@ -1344,15 +1344,15 @@ class Application {
             }
             var commandBuffer = Objects.requireNonNull(pCommandBuffer.read());
 
-            var beginInfo = VkCommandBufferBeginInfo.allocate(arena);
-            beginInfo.flags(VkCommandBufferUsageFlags.ONE_TIME_SUBMIT);
+            var beginInfo = VkCommandBufferBeginInfo.allocate(arena)
+                    .flags(VkCommandBufferUsageFlags.ONE_TIME_SUBMIT);
             result = deviceCommands.beginCommandBuffer(commandBuffer, beginInfo);
             if (result != VkResult.SUCCESS) {
                 throw new RuntimeException("Failed to begin recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            var copyRegion = VkBufferCopy.allocate(arena);
-            copyRegion.size(size);
+            var copyRegion = VkBufferCopy.allocate(arena)
+                    .size(size);
             deviceCommands.cmdCopyBuffer(commandBuffer, srcBuffer, dstBuffer, 1, copyRegion);
 
             result = deviceCommands.endCommandBuffer(commandBuffer);
@@ -1360,9 +1360,9 @@ class Application {
                 throw new RuntimeException("Failed to end recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            var submitInfo = VkSubmitInfo.allocate(arena);
-            submitInfo.commandBufferCount(1);
-            submitInfo.pCommandBuffers(pCommandBuffer);
+            var submitInfo = VkSubmitInfo.allocate(arena)
+                    .commandBufferCount(1)
+                    .pCommandBuffers(pCommandBuffer);
 
             result = deviceCommands.queueSubmit(graphicsQueue, 1, submitInfo, null);
             if (result != VkResult.SUCCESS) {

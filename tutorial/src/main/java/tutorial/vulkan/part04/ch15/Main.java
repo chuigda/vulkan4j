@@ -569,8 +569,8 @@ class Application {
     private void createSyncObjects() {
         try (var arena = Arena.ofConfined()) {
             var semaphoreInfo = VkSemaphoreCreateInfo.allocate(arena);
-            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena);
-            fenceCreateInfo.flags(VkFenceCreateFlags.SIGNALED);
+            var fenceCreateInfo = VkFenceCreateInfo.allocate(arena)
+                    .flags(VkFenceCreateFlags.SIGNALED);
 
             var pImageAvailableSemaphore = VkSemaphore.Ptr.allocate(arena);
             var pRenderFinishedSemaphore = VkSemaphore.Ptr.allocate(arena);
