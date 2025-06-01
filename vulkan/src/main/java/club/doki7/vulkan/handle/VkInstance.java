@@ -126,10 +126,10 @@ public record VkInstance(@NotNull MemorySegment segment) implements IPointer {
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
 
-        public static Ptr allocate(Arena arena, VkInstance @Nullable values[]) {
+        public static Ptr allocate(Arena arena, @Nullable VkInstance[] values) {
             Ptr ret = allocate(arena, values.length);
             for (int i = 0; i < values.length; i++) {
-                ret.write(i, values[i] != null ? values[i].segment() : MemorySegment.NULL);
+                ret.write(i, values[i]);
             }
             return ret;
         }

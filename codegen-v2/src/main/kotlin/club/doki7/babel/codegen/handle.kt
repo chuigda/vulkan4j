@@ -185,11 +185,11 @@ fun generateHandle(
             }
             +""
 
-            defun("public static", "Ptr", "allocate", "Arena arena", "$className @Nullable values[]") {
+            defun("public static", "Ptr", "allocate", "Arena arena", "@Nullable $className[] values") {
                 +"Ptr ret = allocate(arena, values.length);"
                 +"for (int i = 0; i < values.length; i++) {"
                 indent {
-                    +"ret.write(i, values[i] != null ? values[i].segment() : MemorySegment.NULL);"
+                    +"ret.write(i, values[i]);"
                 }
                 +"}"
                 +"return ret;"

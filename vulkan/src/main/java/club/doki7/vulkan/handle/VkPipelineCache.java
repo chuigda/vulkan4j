@@ -126,10 +126,10 @@ public record VkPipelineCache(@NotNull MemorySegment segment) implements IPointe
             return new Ptr(arena.allocate(ValueLayout.ADDRESS, size));
         }
 
-        public static Ptr allocate(Arena arena, VkPipelineCache @Nullable values[]) {
+        public static Ptr allocate(Arena arena, @Nullable VkPipelineCache[] values) {
             Ptr ret = allocate(arena, values.length);
             for (int i = 0; i < values.length; i++) {
-                ret.write(i, values[i] != null ? values[i].segment() : MemorySegment.NULL);
+                ret.write(i, values[i]);
             }
             return ret;
         }
