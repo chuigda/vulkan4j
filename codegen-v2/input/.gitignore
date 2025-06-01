@@ -1,4 +1,6 @@
 *.xml
 *.h
 *.tar.gz
+*.tar.xz
 SDL3-3.2.14
+llvm-*.src
