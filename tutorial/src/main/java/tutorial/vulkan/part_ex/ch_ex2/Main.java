@@ -349,12 +349,12 @@ class Application {
                     deviceCommands
             );
 
-            var vmaCreateInfo = VmaAllocatorCreateInfo.allocate(arena);
-            vmaCreateInfo.instance(instance);
-            vmaCreateInfo.physicalDevice(physicalDevice);
-            vmaCreateInfo.device(device);
-            vmaCreateInfo.pVulkanFunctions(vmaVulkanFunctions);
-            vmaCreateInfo.vulkanApiVersion(Version.VK_API_VERSION_1_0.encode());
+            var vmaCreateInfo = VmaAllocatorCreateInfo.allocate(arena)
+                    .instance(instance)
+                    .physicalDevice(physicalDevice)
+                    .device(device)
+                    .pVulkanFunctions(vmaVulkanFunctions)
+                    .vulkanApiVersion(Version.VK_API_VERSION_1_0.encode());
 
             var pVmaAllocator = VmaAllocator.Ptr.allocate(arena);
             var result = vma.createAllocator(vmaCreateInfo, pVmaAllocator);
@@ -553,26 +553,24 @@ class Application {
             }
             pipelineLayout = Objects.requireNonNull(pPipelineLayout.read());
 
-            var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena);
-            pipelineInfo.stageCount(2);
-            pipelineInfo.pStages(shaderStages);
-            pipelineInfo.pVertexInputState(vertexInputInfo);
-            pipelineInfo.pInputAssemblyState(inputAssembly);
-            pipelineInfo.pViewportState(viewportStateInfo);
-            pipelineInfo.pRasterizationState(rasterizer);
-            pipelineInfo.pMultisampleState(multisampling);
-            pipelineInfo.pDepthStencilState(depthStencil);
-            pipelineInfo.pColorBlendState(colorBlending);
-            pipelineInfo.pDynamicState(dynamicStateInfo);
-            pipelineInfo.layout(pipelineLayout);
+            var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena)
+                    .stageCount(2)
+                    .pStages(shaderStages)
+                    .pVertexInputState(vertexInputInfo)
+                    .pInputAssemblyState(inputAssembly)
+                    .pViewportState(viewportStateInfo)
+                    .pRasterizationState(rasterizer)
+                    .pMultisampleState(multisampling)
+                    .pDepthStencilState(depthStencil)
+                    .pColorBlendState(colorBlending)
+                    .pDynamicState(dynamicStateInfo)
+                    .layout(pipelineLayout);
 
-            var pipelineRenderingCreateInfo = VkPipelineRenderingCreateInfo.allocate(arena);
-            pipelineRenderingCreateInfo.colorAttachmentCount(1);
-            var pColorAttachmentFormats = IntPtr.allocate(arena);
-            pColorAttachmentFormats.write(swapChainImageFormat);
-            pipelineRenderingCreateInfo.pColorAttachmentFormats(pColorAttachmentFormats);
             depthFormat = findDepthFormat();
-            pipelineRenderingCreateInfo.depthAttachmentFormat(depthFormat);
+            var pipelineRenderingCreateInfo = VkPipelineRenderingCreateInfo.allocate(arena)
+                    .colorAttachmentCount(1)
+                    .pColorAttachmentFormats(IntPtr.allocateV(arena, swapChainImageFormat))
+                    .depthAttachmentFormat(depthFormat);
             pipelineInfo.pNext(pipelineRenderingCreateInfo);
 
             var pGraphicsPipeline = VkPipeline.Ptr.allocate(arena);
@@ -1082,17 +1080,18 @@ class Application {
                 throw new RuntimeException("Failed to begin recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            var preImageMemoryBarrier = VkImageMemoryBarrier.allocate(arena);
-            preImageMemoryBarrier.srcAccessMask(0);
-            preImageMemoryBarrier.dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE);
-            preImageMemoryBarrier.oldLayout(VkImageLayout.UNDEFINED);
-            preImageMemoryBarrier.newLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
-            preImageMemoryBarrier.image(swapChainImages.read(imageIndex));
-            preImageMemoryBarrier.subresourceRange().aspectMask(VkImageAspectFlags.COLOR);
-            preImageMemoryBarrier.subresourceRange().baseMipLevel(0);
-            preImageMemoryBarrier.subresourceRange().levelCount(1);
-            preImageMemoryBarrier.subresourceRange().baseArrayLayer(0);
-            preImageMemoryBarrier.subresourceRange().layerCount(1);
+            var preImageMemoryBarrier = VkImageMemoryBarrier.allocate(arena)
+                    .srcAccessMask(0)
+                    .dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE)
+                    .oldLayout(VkImageLayout.UNDEFINED)
+                    .newLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL)
+                    .image(swapChainImages.read(imageIndex));
+            preImageMemoryBarrier.subresourceRange()
+                    .aspectMask(VkImageAspectFlags.COLOR)
+                    .baseMipLevel(0)
+                    .levelCount(1)
+                    .baseArrayLayer(0)
+                    .layerCount(1);
             deviceCommands.cmdPipelineBarrier(
                     commandBuffer,
                     VkPipelineStageFlags.TOP_OF_PIPE,
@@ -1108,25 +1107,26 @@ class Application {
             renderingInfo.renderArea().offset().y(0);
             renderingInfo.renderArea().extent(swapChainExtent);
             renderingInfo.layerCount(1);
+
             var renderingAttachmentInfos = VkRenderingAttachmentInfo.allocate(arena, 2);
             var colorAttachmentInfo = renderingAttachmentInfos.at(0);
-            colorAttachmentInfo.imageView(colorImageView);
-            colorAttachmentInfo.imageLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
-            colorAttachmentInfo.loadOp(VkAttachmentLoadOp.CLEAR);
-            colorAttachmentInfo.storeOp(VkAttachmentStoreOp.DONT_CARE);
-            colorAttachmentInfo.resolveMode(VkResolveModeFlags.AVERAGE);
-            colorAttachmentInfo.resolveImageView(swapChainImageViews.read(imageIndex));
-            colorAttachmentInfo.resolveImageLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
+            colorAttachmentInfo.imageView(colorImageView)
+                    .imageLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL)
+                    .loadOp(VkAttachmentLoadOp.CLEAR)
+                    .storeOp(VkAttachmentStoreOp.DONT_CARE)
+                    .resolveMode(VkResolveModeFlags.AVERAGE)
+                    .resolveImageView(swapChainImageViews.read(imageIndex))
+                    .resolveImageLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
             var depthAttachmentInfo = renderingAttachmentInfos.at(1);
-            depthAttachmentInfo.imageView(depthImageView);
-            depthAttachmentInfo.imageLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
-            depthAttachmentInfo.loadOp(VkAttachmentLoadOp.CLEAR);
-            depthAttachmentInfo.storeOp(VkAttachmentStoreOp.DONT_CARE);
+            depthAttachmentInfo.imageView(depthImageView)
+                    .imageLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL)
+                    .loadOp(VkAttachmentLoadOp.CLEAR)
+                    .storeOp(VkAttachmentStoreOp.DONT_CARE);
             depthAttachmentInfo.clearValue().depthStencil().depth(1.0f);
 
-            renderingInfo.colorAttachmentCount(1);
-            renderingInfo.pColorAttachments(colorAttachmentInfo);
-            renderingInfo.pDepthAttachment(depthAttachmentInfo);
+            renderingInfo.colorAttachmentCount(1)
+                    .pColorAttachments(colorAttachmentInfo)
+                    .pDepthAttachment(depthAttachmentInfo);
 
             deviceCommands.cmdBeginRenderingKHR(commandBuffer, renderingInfo);
             deviceCommands.cmdBindPipeline(commandBuffer, VkPipelineBindPoint.GRAPHICS, graphicsPipeline);
@@ -1169,17 +1169,18 @@ class Application {
 
             deviceCommands.cmdEndRenderingKHR(commandBuffer);
 
-            var postImageMemoryBarrier = VkImageMemoryBarrier.allocate(arena);
-            postImageMemoryBarrier.srcAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE);
-            postImageMemoryBarrier.dstAccessMask(0);
-            postImageMemoryBarrier.oldLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
-            postImageMemoryBarrier.newLayout(VkImageLayout.PRESENT_SRC_KHR);
-            postImageMemoryBarrier.image(swapChainImages.read(imageIndex));
-            postImageMemoryBarrier.subresourceRange().aspectMask(VkImageAspectFlags.COLOR);
-            postImageMemoryBarrier.subresourceRange().baseMipLevel(0);
-            postImageMemoryBarrier.subresourceRange().levelCount(1);
-            postImageMemoryBarrier.subresourceRange().baseArrayLayer(0);
-            postImageMemoryBarrier.subresourceRange().layerCount(1);
+            var postImageMemoryBarrier = VkImageMemoryBarrier.allocate(arena)
+                    .srcAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE)
+                    .dstAccessMask(0)
+                    .oldLayout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL)
+                    .newLayout(VkImageLayout.PRESENT_SRC_KHR)
+                    .image(swapChainImages.read(imageIndex));
+            postImageMemoryBarrier.subresourceRange()
+                    .aspectMask(VkImageAspectFlags.COLOR)
+                    .baseMipLevel(0)
+                    .levelCount(1)
+                    .baseArrayLayer(0)
+                    .layerCount(1);
             deviceCommands.cmdPipelineBarrier(
                     commandBuffer,
                     VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT,
@@ -1524,9 +1525,9 @@ class Application {
                     .usage(usage)
                     .sharingMode(VkSharingMode.EXCLUSIVE);
 
-            var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena);
-            allocationCreateInfo.usage(VmaMemoryUsage.AUTO);
-            allocationCreateInfo.flags(vmaAllocationCreationFlags);
+            var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena)
+                    .usage(VmaMemoryUsage.AUTO)
+                    .flags(vmaAllocationCreationFlags);
 
             var pBuffer = VkBuffer.Ptr.allocate(arena);
             var pAllocation = VmaAllocation.Ptr.allocate(arena);

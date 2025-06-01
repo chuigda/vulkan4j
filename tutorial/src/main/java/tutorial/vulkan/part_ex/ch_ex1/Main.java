@@ -343,12 +343,12 @@ class Application {
                     deviceCommands
             );
 
-            var vmaCreateInfo = VmaAllocatorCreateInfo.allocate(arena);
-            vmaCreateInfo.instance(instance);
-            vmaCreateInfo.physicalDevice(physicalDevice);
-            vmaCreateInfo.device(device);
-            vmaCreateInfo.pVulkanFunctions(vmaVulkanFunctions);
-            vmaCreateInfo.vulkanApiVersion(Version.VK_API_VERSION_1_0.encode());
+            var vmaCreateInfo = VmaAllocatorCreateInfo.allocate(arena)
+                    .instance(instance)
+                    .physicalDevice(physicalDevice)
+                    .device(device)
+                    .pVulkanFunctions(vmaVulkanFunctions)
+                    .vulkanApiVersion(Version.VK_API_VERSION_1_0.encode());
 
             var pVmaAllocator = VmaAllocator.Ptr.allocate(arena);
             var result = vma.createAllocator(vmaCreateInfo, pVmaAllocator);
@@ -1569,9 +1569,9 @@ class Application {
                     .usage(usage)
                     .sharingMode(VkSharingMode.EXCLUSIVE);
 
-            var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena);
-            allocationCreateInfo.usage(VmaMemoryUsage.AUTO);
-            allocationCreateInfo.flags(vmaAllocationCreationFlags);
+            var allocationCreateInfo = VmaAllocationCreateInfo.allocate(arena)
+                    .usage(VmaMemoryUsage.AUTO)
+                    .flags(vmaAllocationCreationFlags);
 
             var pBuffer = VkBuffer.Ptr.allocate(arena);
             var pAllocation = VmaAllocation.Ptr.allocate(arena);
