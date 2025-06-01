@@ -335,10 +335,10 @@ class Application {
                         .a(VkComponentSwizzle.IDENTITY);
 
                 createInfo.subresourceRange()
-                        .aspectMask(VkImageAspectFlags.COLOR);
-                        .baseMipLevel(0);
-                        .levelCount(1);
-                        .baseArrayLayer(0);
+                        .aspectMask(VkImageAspectFlags.COLOR)
+                        .baseMipLevel(0)
+                        .levelCount(1)
+                        .baseArrayLayer(0)
                         .layerCount(1);
 
                 var result = deviceCommands.createImageView(device, createInfo, null, pImageView);

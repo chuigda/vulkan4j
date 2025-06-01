@@ -347,10 +347,10 @@ class Application {
                         .a(VkComponentSwizzle.IDENTITY);
 
                 createInfo.subresourceRange()
-                        .aspectMask(VkImageAspectFlags.COLOR);
-                        .baseMipLevel(0);
-                        .levelCount(1);
-                        .baseArrayLayer(0);
+                        .aspectMask(VkImageAspectFlags.COLOR)
+                        .baseMipLevel(0)
+                        .levelCount(1)
+                        .baseArrayLayer(0)
                         .layerCount(1);
 
                 var result = deviceCommands.createImageView(device, createInfo, null, pImageView);
@@ -364,32 +364,30 @@ class Application {
 
     private void createRenderPass() {
         try (var arena = Arena.ofConfined()) {
-            var colorAttachment = VkAttachmentDescription.allocate(arena);
-            colorAttachment.format(swapChainImageFormat);
-            colorAttachment.samples(VkSampleCountFlags._1);
+            var colorAttachment = VkAttachmentDescription.allocate(arena)
+                    .format(swapChainImageFormat)
+                    .samples(VkSampleCountFlags._1)
+                    .loadOp(VkAttachmentLoadOp.CLEAR)
+                    .storeOp(VkAttachmentStoreOp.STORE)
+                    .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+                    .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+                    .initialLayout(VkImageLayout.UNDEFINED)
+                    .finalLayout(VkImageLayout.PRESENT_SRC_KHR);
 
-            colorAttachment.loadOp(VkAttachmentLoadOp.CLEAR);
-            colorAttachment.storeOp(VkAttachmentStoreOp.STORE);
-            colorAttachment.stencilLoadOp(VkAttachmentLoadOp.DONT_CARE);
-            colorAttachment.stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
+            var colorAttachmentRef = VkAttachmentReference.allocate(arena)
+                    .attachment(0)
+                    .layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
 
-            colorAttachment.initialLayout(VkImageLayout.UNDEFINED);
-            colorAttachment.finalLayout(VkImageLayout.PRESENT_SRC_KHR);
+            var subpass = VkSubpassDescription.allocate(arena)
+                    .pipelineBindPoint(VkPipelineBindPoint.GRAPHICS)
+                    .colorAttachmentCount(1)
+                    .pColorAttachments(colorAttachmentRef);
 
-            var colorAttachmentRef = VkAttachmentReference.allocate(arena);
-            colorAttachmentRef.attachment(0);
-            colorAttachmentRef.layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
-
-            var subpass = VkSubpassDescription.allocate(arena);
-            subpass.pipelineBindPoint(VkPipelineBindPoint.GRAPHICS);
-            subpass.colorAttachmentCount(1);
-            subpass.pColorAttachments(colorAttachmentRef);
-
-            var renderPassInfo = VkRenderPassCreateInfo.allocate(arena);
-            renderPassInfo.attachmentCount(1);
-            renderPassInfo.pAttachments(colorAttachment);
-            renderPassInfo.subpassCount(1);
-            renderPassInfo.pSubpasses(subpass);
+            var renderPassInfo = VkRenderPassCreateInfo.allocate(arena)
+                    .attachmentCount(1)
+                    .pAttachments(colorAttachment)
+                    .subpassCount(1)
+                    .pSubpasses(subpass);
 
             var pRenderPass = VkRenderPass.Ptr.allocate(arena);
             var result = deviceCommands.createRenderPass(device, renderPassInfo, null, pRenderPass);
@@ -408,59 +406,56 @@ class Application {
             var fragmentShaderModule = createShaderModule(fragShaderCode);
 
             var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
-            var vertShaderStageInfo = shaderStages.at(0);
-            vertShaderStageInfo.stage(VkShaderStageFlags.VERTEX);
-            vertShaderStageInfo.module(vertexShaderModule);
-            vertShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
-            var fragShaderStageInfo = shaderStages.at(1);
-            fragShaderStageInfo.stage(VkShaderStageFlags.FRAGMENT);
-            fragShaderStageInfo.module(fragmentShaderModule);
-            fragShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
+            shaderStages.at(0)
+                    .stage(VkShaderStageFlags.VERTEX)
+                    .module(vertexShaderModule)
+                    .pName(BytePtr.allocateString(arena, "main"));
+            shaderStages.at(1)
+                    .stage(VkShaderStageFlags.FRAGMENT)
+                    .module(fragmentShaderModule)
+                    .pName(BytePtr.allocateString(arena, "main"));
 
-            var dynamicStates = IntPtr.allocate(arena, 2);
-            dynamicStates.write(0, VkDynamicState.VIEWPORT);
-            dynamicStates.write(1, VkDynamicState.SCISSOR);
+            var dynamicStates = IntPtr.allocateV(arena, VkDynamicState.VIEWPORT, VkDynamicState.SCISSOR);
 
-            var dynamicStateInfo = VkPipelineDynamicStateCreateInfo.allocate(arena);
-            dynamicStateInfo.dynamicStateCount(2);
-            dynamicStateInfo.pDynamicStates(dynamicStates);
+            var dynamicStateInfo = VkPipelineDynamicStateCreateInfo.allocate(arena)
+                    .dynamicStateCount((int) dynamicStates.size())
+                    .pDynamicStates(dynamicStates);
 
             var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena);
 
-            var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena);
-            inputAssembly.topology(VkPrimitiveTopology.TRIANGLE_LIST);
-            inputAssembly.primitiveRestartEnable(VkConstants.FALSE);
+            var inputAssembly = VkPipelineInputAssemblyStateCreateInfo.allocate(arena)
+                    .topology(VkPrimitiveTopology.TRIANGLE_LIST)
+                    .primitiveRestartEnable(VkConstants.FALSE);
 
-            var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena);
-            viewportStateInfo.viewportCount(1);
-            viewportStateInfo.scissorCount(1);
+            var viewportStateInfo = VkPipelineViewportStateCreateInfo.allocate(arena)
+                    .viewportCount(1)
+                    .scissorCount(1);
 
-            var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena);
-            rasterizer.depthClampEnable(VkConstants.FALSE);
-            rasterizer.rasterizerDiscardEnable(VkConstants.FALSE);
-            rasterizer.polygonMode(VkPolygonMode.FILL);
-            rasterizer.lineWidth(1.0f);
-            rasterizer.cullMode(VkCullModeFlags.BACK);
-            rasterizer.frontFace(VkFrontFace.CLOCKWISE);
-            rasterizer.depthBiasEnable(VkConstants.FALSE);
+            var rasterizer = VkPipelineRasterizationStateCreateInfo.allocate(arena)
+                    .depthClampEnable(VkConstants.FALSE)
+                    .rasterizerDiscardEnable(VkConstants.FALSE)
+                    .polygonMode(VkPolygonMode.FILL)
+                    .lineWidth(1.0f)
+                    .cullMode(VkCullModeFlags.BACK)
+                    .frontFace(VkFrontFace.CLOCKWISE)
+                    .depthBiasEnable(VkConstants.FALSE);
 
-            var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena);
-            multisampling.sampleShadingEnable(VkConstants.FALSE);
-            multisampling.rasterizationSamples(VkSampleCountFlags._1);
+            var multisampling = VkPipelineMultisampleStateCreateInfo.allocate(arena)
+                    .sampleShadingEnable(VkConstants.FALSE)
+                    .rasterizationSamples(VkSampleCountFlags._1);
 
-            var colorBlendAttachment = VkPipelineColorBlendAttachmentState.allocate(arena);
-            colorBlendAttachment.colorWriteMask(
-                    VkColorComponentFlags.R
-                    | VkColorComponentFlags.G
-                    | VkColorComponentFlags.B
-                    | VkColorComponentFlags.A
-            );
-            colorBlendAttachment.blendEnable(VkConstants.FALSE);
+            var colorBlendAttachment = VkPipelineColorBlendAttachmentState.allocate(arena)
+                    .colorWriteMask(
+                            VkColorComponentFlags.R
+                            | VkColorComponentFlags.G
+                            | VkColorComponentFlags.B
+                            | VkColorComponentFlags.A
+                    ).blendEnable(VkConstants.FALSE);
 
-            var colorBlending = VkPipelineColorBlendStateCreateInfo.allocate(arena);
-            colorBlending.logicOpEnable(VkConstants.FALSE);
-            colorBlending.attachmentCount(1);
-            colorBlending.pAttachments(colorBlendAttachment);
+            var colorBlending = VkPipelineColorBlendStateCreateInfo.allocate(arena)
+                    .logicOpEnable(VkConstants.FALSE)
+                    .attachmentCount(1)
+                    .pAttachments(colorBlendAttachment);
 
             var pipelineLayoutInfo = VkPipelineLayoutCreateInfo.allocate(arena);
             var pPipelineLayout = VkPipelineLayout.Ptr.allocate(arena);
@@ -470,19 +465,19 @@ class Application {
             }
             pipelineLayout = Objects.requireNonNull(pPipelineLayout.read());
 
-            var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena);
-            pipelineInfo.stageCount(2);
-            pipelineInfo.pStages(shaderStages);
-            pipelineInfo.pVertexInputState(vertexInputInfo);
-            pipelineInfo.pInputAssemblyState(inputAssembly);
-            pipelineInfo.pViewportState(viewportStateInfo);
-            pipelineInfo.pRasterizationState(rasterizer);
-            pipelineInfo.pMultisampleState(multisampling);
-            pipelineInfo.pColorBlendState(colorBlending);
-            pipelineInfo.pDynamicState(dynamicStateInfo);
-            pipelineInfo.layout(pipelineLayout);
-            pipelineInfo.renderPass(renderPass);
-            pipelineInfo.subpass(0);
+            var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena)
+                    .stageCount(2)
+                    .pStages(shaderStages)
+                    .pVertexInputState(vertexInputInfo)
+                    .pInputAssemblyState(inputAssembly)
+                    .pViewportState(viewportStateInfo)
+                    .pRasterizationState(rasterizer)
+                    .pMultisampleState(multisampling)
+                    .pColorBlendState(colorBlending)
+                    .pDynamicState(dynamicStateInfo)
+                    .layout(pipelineLayout)
+                    .renderPass(renderPass)
+                    .subpass(0);
 
             var pGraphicsPipeline = VkPipeline.Ptr.allocate(arena);
             result = deviceCommands.createGraphicsPipelines(device, null, 1, pipelineInfo, null, pGraphicsPipeline);
@@ -501,16 +496,15 @@ class Application {
 
         for (int i = 0; i < swapChainImageViews.size(); i++) {
             try (var arena = Arena.ofConfined()) {
-                var pAttachments = VkImageView.Ptr.allocate(arena);
-                pAttachments.write(0, swapChainImageViews.read(i));
+                var pAttachments = VkImageView.Ptr.allocateV(arena, swapChainImageViews.read(i));
 
-                var framebufferInfo = VkFramebufferCreateInfo.allocate(arena);
-                framebufferInfo.renderPass(renderPass);
-                framebufferInfo.attachmentCount(1);
-                framebufferInfo.pAttachments(pAttachments);
-                framebufferInfo.width(swapChainExtent.width());
-                framebufferInfo.height(swapChainExtent.height());
-                framebufferInfo.layers(1);
+                var framebufferInfo = VkFramebufferCreateInfo.allocate(arena)
+                        .renderPass(renderPass)
+                        .attachmentCount(1)
+                        .pAttachments(pAttachments)
+                        .width(swapChainExtent.width())
+                        .height(swapChainExtent.height())
+                        .layers(1);
 
                 var pFramebuffer = swapChainFramebuffers.offset(i);
                 var result = deviceCommands.createFramebuffer(device, framebufferInfo, null, pFramebuffer);
@@ -526,9 +520,9 @@ class Application {
             var queueFamilyIndices = findQueueFamilies(physicalDevice);
             assert queueFamilyIndices != null;
 
-            var poolInfo = VkCommandPoolCreateInfo.allocate(arena);
-            poolInfo.flags(VkCommandPoolCreateFlags.RESET_COMMAND_BUFFER);
-            poolInfo.queueFamilyIndex(queueFamilyIndices.graphicsFamily());
+            var poolInfo = VkCommandPoolCreateInfo.allocate(arena)
+                    .flags(VkCommandPoolCreateFlags.RESET_COMMAND_BUFFER)
+                    .queueFamilyIndex(queueFamilyIndices.graphicsFamily());
 
             var pCommandPool = VkCommandPool.Ptr.allocate(arena);
             var result = deviceCommands.createCommandPool(device, poolInfo, null, pCommandPool);
@@ -541,10 +535,10 @@ class Application {
 
     private void createCommandBuffer() {
         try (var arena = Arena.ofConfined()) {
-            var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
-            allocInfo.commandPool(commandPool);
-            allocInfo.level(VkCommandBufferLevel.PRIMARY);
-            allocInfo.commandBufferCount(1);
+            var allocInfo = VkCommandBufferAllocateInfo.allocate(arena)
+                    .commandPool(commandPool)
+                    .level(VkCommandBufferLevel.PRIMARY)
+                    .commandBufferCount(1);
 
             var pCommandBuffer = VkCommandBuffer.Ptr.allocate(arena);
             var result = deviceCommands.allocateCommandBuffers(device, allocInfo, pCommandBuffer);
@@ -564,30 +558,31 @@ class Application {
                 throw new RuntimeException("Failed to begin recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            var renderPassInfo = VkRenderPassBeginInfo.allocate(arena);
-            renderPassInfo.renderPass(renderPass);
-            renderPassInfo.framebuffer(swapChainFramebuffers.read(imageIndex));
-            renderPassInfo.renderArea().offset().x(0);
-            renderPassInfo.renderArea().offset().y(0);
-            renderPassInfo.renderArea().extent(swapChainExtent);
-            renderPassInfo.clearValueCount(1);
             var pClearValue = VkClearValue.allocate(arena);
             pClearValue.color().float32().write(0, 0.0f);
             pClearValue.color().float32().write(1, 0.0f);
             pClearValue.color().float32().write(2, 0.0f);
             pClearValue.color().float32().write(3, 1.0f);
-            renderPassInfo.pClearValues(pClearValue);
+
+            var renderPassInfo = VkRenderPassBeginInfo.allocate(arena)
+                    .renderPass(renderPass)
+                    .framebuffer(swapChainFramebuffers.read(imageIndex))
+                    .renderArea().offset().x(0)
+                    .renderArea().offset().y(0)
+                    .renderArea().extent(swapChainExtent)
+                    .clearValueCount(1)
+                    .pClearValues(pClearValue);
 
             deviceCommands.cmdBeginRenderPass(commandBuffer, renderPassInfo, VkSubpassContents.INLINE);
             deviceCommands.cmdBindPipeline(commandBuffer, VkPipelineBindPoint.GRAPHICS, graphicsPipeline);
 
-            var viewport = VkViewport.allocate(arena);
-            viewport.x(0.0f);
-            viewport.y(0.0f);
-            viewport.width(swapChainExtent.width());
-            viewport.height(swapChainExtent.height());
-            viewport.minDepth(0.0f);
-            viewport.maxDepth(1.0f);
+            var viewport = VkViewport.allocate(arena)
+                    .x(0.0f)
+                    .y(0.0f)
+                    .width(swapChainExtent.width())
+                    .height(swapChainExtent.height())
+                    .minDepth(0.0f)
+                    .maxDepth(1.0f)
             deviceCommands.cmdSetViewport(commandBuffer, 0, 1, viewport);
 
             var scissor = VkRect2D.allocate(arena);
@@ -820,9 +815,9 @@ class Application {
 
     private VkShaderModule createShaderModule(IntPtr code) {
         try (var arena = Arena.ofConfined()) {
-            var createInfo = VkShaderModuleCreateInfo.allocate(arena);
-            createInfo.codeSize(code.size() * Integer.BYTES);
-            createInfo.pCode(code);
+            var createInfo = VkShaderModuleCreateInfo.allocate(arena)
+                    .codeSize(code.size() * Integer.BYTES)
+                    .pCode(code);;
 
             var pShaderModule = VkShaderModule.Ptr.allocate(arena);
             var result = deviceCommands.createShaderModule(device, createInfo, null, pShaderModule);

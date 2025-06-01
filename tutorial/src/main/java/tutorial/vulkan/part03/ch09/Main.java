@@ -336,10 +336,10 @@ class Application {
                         .a(VkComponentSwizzle.IDENTITY);
 
                 createInfo.subresourceRange()
-                        .aspectMask(VkImageAspectFlags.COLOR);
-                        .baseMipLevel(0);
-                        .levelCount(1);
-                        .baseArrayLayer(0);
+                        .aspectMask(VkImageAspectFlags.COLOR)
+                        .baseMipLevel(0)
+                        .levelCount(1)
+                        .baseArrayLayer(0)
                         .layerCount(1);
 
                 var result = deviceCommands.createImageView(device, createInfo, null, pImageView);
@@ -359,14 +359,14 @@ class Application {
             var fragmentShaderModule = createShaderModule(fragShaderCode);
 
             var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
-            var vertShaderStageInfo = shaderStages.at(0);
-            vertShaderStageInfo.stage(VkShaderStageFlags.VERTEX);
-            vertShaderStageInfo.module(vertexShaderModule);
-            vertShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
-            var fragShaderStageInfo = shaderStages.at(1);
-            fragShaderStageInfo.stage(VkShaderStageFlags.FRAGMENT);
-            fragShaderStageInfo.module(fragmentShaderModule);
-            fragShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
+            shaderStages.at(0)
+                    .stage(VkShaderStageFlags.VERTEX)
+                    .module(vertexShaderModule)
+                    .pName(BytePtr.allocateString(arena, "main"));
+            shaderStages.at(1)
+                    .stage(VkShaderStageFlags.FRAGMENT)
+                    .module(fragmentShaderModule)
+                    .pName(BytePtr.allocateString(arena, "main"));
 
             deviceCommands.destroyShaderModule(device, vertexShaderModule, null);
             deviceCommands.destroyShaderModule(device, fragmentShaderModule, null);
@@ -587,9 +587,9 @@ class Application {
 
     private VkShaderModule createShaderModule(IntPtr code) {
         try (var arena = Arena.ofConfined()) {
-            var createInfo = VkShaderModuleCreateInfo.allocate(arena);
-            createInfo.codeSize(code.size() * Integer.BYTES);
-            createInfo.pCode(code);
+            var createInfo = VkShaderModuleCreateInfo.allocate(arena)
+                    .codeSize(code.size() * Integer.BYTES)
+                    .pCode(code);
 
             var pShaderModule = VkShaderModule.Ptr.allocate(arena);
             var result = deviceCommands.createShaderModule(device, createInfo, null, pShaderModule);
