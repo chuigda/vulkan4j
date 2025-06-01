@@ -692,36 +692,27 @@ class Application {
             deviceCommands.resetCommandBuffer(commandBuffer, 0);
             recordCommandBuffer(commandBuffer, imageIndex);
 
-            var submitInfo = VkSubmitInfo.allocate(arena);
-            submitInfo.waitSemaphoreCount(1);
-            submitInfo.pWaitSemaphores(pImageAvailableSemaphore);
-            var pWaitStages = IntPtr.allocate(arena);
-            pWaitStages.write(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
-            submitInfo.pWaitDstStageMask(pWaitStages);
-
-            var pCommandBuffers = VkCommandBuffer.Ptr.allocate(arena);
-            pCommandBuffers.write(commandBuffer);
-            submitInfo.commandBufferCount(1);
-            submitInfo.pCommandBuffers(pCommandBuffers);
-
-            submitInfo.signalSemaphoreCount(1);
-            submitInfo.pSignalSemaphores(pRenderFinishedSemaphore);
+            var submitInfo = VkSubmitInfo.allocate(arena)
+                    .waitSemaphoreCount(1)
+                    .pWaitSemaphores(pImageAvailableSemaphore)
+                    .pWaitDstStageMask(IntPtr.allocateV(arena, VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT))
+                    .commandBufferCount(1)
+                    .pCommandBuffers(VkCommandBuffer.Ptr.allocateV(arena, commandBuffer))
+                    .signalSemaphoreCount(1)
+                    .pSignalSemaphores(pRenderFinishedSemaphore);
 
             result = deviceCommands.queueSubmit(graphicsQueue, 1, submitInfo, inFlightFence);
             if (result != VkResult.SUCCESS) {
                 throw new RuntimeException("Failed to submit draw command buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            var presentInfo = VkPresentInfoKHR.allocate(arena);
-            presentInfo.waitSemaphoreCount(1);
-            presentInfo.pWaitSemaphores(pRenderFinishedSemaphore);
-
-            var pSwapchain = VkSwapchainKHR.Ptr.allocate(arena);
-            pSwapchain.write(swapChain);
-            presentInfo.swapchainCount(1);
-            presentInfo.pSwapchains(pSwapchain);
-            presentInfo.pImageIndices(pImageIndex);
-            presentInfo.pResults(null);
+            var presentInfo = VkPresentInfoKHR.allocate(arena)
+                    .waitSemaphoreCount(1)
+                    .pWaitSemaphores(pRenderFinishedSemaphore)
+                    .swapchainCount(1)
+                    .pSwapchains(VkSwapchainKHR.Ptr.allocateV(arena, swapChain))
+                    .pImageIndices(pImageIndex)
+                    .pResults(null);
 
             result = deviceCommands.queuePresentKHR(presentQueue, presentInfo);
             if (result == VkResult.ERROR_OUT_OF_DATE_KHR || framebufferResized) {
@@ -754,11 +745,12 @@ class Application {
             var renderPassInfo = VkRenderPassBeginInfo.allocate(arena)
                     .renderPass(renderPass)
                     .framebuffer(swapChainFramebuffers.read(imageIndex))
-                    .renderArea().offset().x(0)
-                    .renderArea().offset().y(0)
-                    .renderArea().extent(swapChainExtent)
                     .clearValueCount(1)
                     .pClearValues(pClearValue);
+            var renderArea = renderPassInfo.renderArea();
+            renderArea.offset().x(0);
+            renderArea.offset().y(0);
+            renderArea.extent(swapChainExtent);
 
             deviceCommands.cmdBeginRenderPass(commandBuffer, renderPassInfo, VkSubpassContents.INLINE);
             deviceCommands.cmdBindPipeline(commandBuffer, VkPipelineBindPoint.GRAPHICS, graphicsPipeline);
@@ -769,7 +761,7 @@ class Application {
                     .width(swapChainExtent.width())
                     .height(swapChainExtent.height())
                     .minDepth(0.0f)
-                    .maxDepth(1.0f)
+                    .maxDepth(1.0f);
             deviceCommands.cmdSetViewport(commandBuffer, 0, 1, viewport);
 
             var scissor = VkRect2D.allocate(arena);

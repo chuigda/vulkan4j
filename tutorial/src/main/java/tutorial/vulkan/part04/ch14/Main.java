@@ -567,11 +567,12 @@ class Application {
             var renderPassInfo = VkRenderPassBeginInfo.allocate(arena)
                     .renderPass(renderPass)
                     .framebuffer(swapChainFramebuffers.read(imageIndex))
-                    .renderArea().offset().x(0)
-                    .renderArea().offset().y(0)
-                    .renderArea().extent(swapChainExtent)
                     .clearValueCount(1)
                     .pClearValues(pClearValue);
+            var renderArea = renderPassInfo.renderArea();
+            renderArea.offset().x(0);
+            renderArea.offset().y(0);
+            renderArea.extent(swapChainExtent);
 
             deviceCommands.cmdBeginRenderPass(commandBuffer, renderPassInfo, VkSubpassContents.INLINE);
             deviceCommands.cmdBindPipeline(commandBuffer, VkPipelineBindPoint.GRAPHICS, graphicsPipeline);
@@ -582,7 +583,7 @@ class Application {
                     .width(swapChainExtent.width())
                     .height(swapChainExtent.height())
                     .minDepth(0.0f)
-                    .maxDepth(1.0f)
+                    .maxDepth(1.0f);
             deviceCommands.cmdSetViewport(commandBuffer, 0, 1, viewport);
 
             var scissor = VkRect2D.allocate(arena);
