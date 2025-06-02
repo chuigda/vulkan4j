@@ -57,6 +57,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     PFN_vkGetDeviceBufferMemoryRequirementsKHR getDeviceBufferMemoryRequirements; // optional // @link substring="getDeviceBufferMemoryRequirements" target="#getDeviceBufferMemoryRequirements"
 ///     PFN_vkGetDeviceImageMemoryRequirementsKHR getDeviceImageMemoryRequirements; // optional // @link substring="getDeviceImageMemoryRequirements" target="#getDeviceImageMemoryRequirements"
 ///     PFN_vkGetMemoryWin32HandleKHR getMemoryWin32HandleKHR; // optional // @link substring="getMemoryWin32HandleKHR" target="#getMemoryWin32HandleKHR"
+///     void*[8] reserved;
 /// } VmaVulkanFunctions;
 /// }
 ///
@@ -564,6 +565,7 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         return this;
     }
 
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.ADDRESS.withName("getInstanceProcAddr"),
         ValueLayout.ADDRESS.withName("getDeviceProcAddr"),
@@ -591,7 +593,8 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         ValueLayout.ADDRESS.withName("getPhysicalDeviceMemoryProperties2KHR"),
         ValueLayout.ADDRESS.withName("getDeviceBufferMemoryRequirements"),
         ValueLayout.ADDRESS.withName("getDeviceImageMemoryRequirements"),
-        ValueLayout.ADDRESS.withName("getMemoryWin32HandleKHR")
+        ValueLayout.ADDRESS.withName("getMemoryWin32HandleKHR"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.ADDRESS).withName("reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 

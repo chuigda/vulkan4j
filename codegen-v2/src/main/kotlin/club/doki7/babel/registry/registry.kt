@@ -241,9 +241,9 @@ class OpaqueHandleTypedef(
 
 class Structure(
     name: Identifier,
-    val members: List<Member>
+    val members: MutableList<Member>
 ) : Entity(name) {
-    constructor(name: String, members: List<Member>) : this(name.intern(), members)
+    constructor(name: String, members: MutableList<Member>) : this(name.intern(), members)
 
     override fun toStringImpl() = "Structure(name=\"$name\", members=$members"
 }

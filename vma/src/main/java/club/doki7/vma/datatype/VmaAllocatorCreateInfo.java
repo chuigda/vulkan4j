@@ -39,6 +39,7 @@ import static club.doki7.vulkan.VkConstants.*;
 ///     VkInstance instance; // @link substring="VkInstance" target="VkInstance" @link substring="instance" target="#instance"
 ///     uint32_t vulkanApiVersion; // @link substring="vulkanApiVersion" target="#vulkanApiVersion"
 ///     VkExternalMemoryHandleTypeFlagsKHR const* pTypeExternalMemoryHandleTypes; // optional // @link substring="VkExternalMemoryHandleTypeFlags" target="VkExternalMemoryHandleTypeFlagsKHR" @link substring="pTypeExternalMemoryHandleTypes" target="#pTypeExternalMemoryHandleTypes"
+///     void*[8] reserved;
 /// } VmaAllocatorCreateInfo;
 /// }
 ///
@@ -458,6 +459,7 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         segment.set(LAYOUT$pTypeExternalMemoryHandleTypes, OFFSET$pTypeExternalMemoryHandleTypes, value);
     }
 
+
     public static final StructLayout LAYOUT = NativeLayout.structLayout(
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("physicalDevice"),
@@ -469,7 +471,8 @@ public record VmaAllocatorCreateInfo(@NotNull MemorySegment segment) implements 
         ValueLayout.ADDRESS.withTargetLayout(VmaVulkanFunctions.LAYOUT).withName("pVulkanFunctions"),
         ValueLayout.ADDRESS.withName("instance"),
         ValueLayout.JAVA_INT.withName("vulkanApiVersion"),
-        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTypeExternalMemoryHandleTypes")
+        ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT).withName("pTypeExternalMemoryHandleTypes"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.ADDRESS).withName("reserved")
     );
     public static final long BYTES = LAYOUT.byteSize();
 

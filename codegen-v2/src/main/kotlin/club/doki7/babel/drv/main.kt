@@ -37,8 +37,9 @@ internal val log = Logger.getLogger("c.d.b.drv")
 fun main() {
     setupLog()
 
-    val vulkanRegistry = vulkanMain()
     gles2Main()
+
+    val vulkanRegistry = vulkanMain()
 
     val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
     vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
