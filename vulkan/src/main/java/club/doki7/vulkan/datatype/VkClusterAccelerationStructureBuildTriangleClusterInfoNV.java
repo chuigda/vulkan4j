@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -141,12 +142,12 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClusterAccelerationStructureBuildTriangleClusterInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClusterAccelerationStructureBuildTriangleClusterInfoNV> {
+        private static final class Iter implements Iterator<VkClusterAccelerationStructureBuildTriangleClusterInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -264,6 +265,11 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
 
     public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlags(@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$baseGeometryIndexAndGeometryFlags, SIZE$baseGeometryIndexAndGeometryFlags);
+        return this;
+    }
+
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlags(Consumer<@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> consumer) {
+        consumer.accept(baseGeometryIndexAndGeometryFlags());
         return this;
     }
 

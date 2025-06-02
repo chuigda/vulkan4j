@@ -106,10 +106,10 @@ As an example, let's say we consider our application only usable for dedicated g
 private boolean isDeviceSuitable(VkPhysicalDevice device) {
     try (var arena = Arena.ofConfined()) {
         var properties = VkPhysicalDeviceProperties.allocate(arena);
-        instanceCommands.vkGetPhysicalDeviceProperties(device, properties);
+        instanceCommands.getPhysicalDeviceProperties(device, properties);
 
         var features = VkPhysicalDeviceFeatures.allocate(arena);
-        instanceCommands.vkGetPhysicalDeviceFeatures(device, features);
+        instanceCommands.getPhysicalDeviceFeatures(device, features);
 
         return properties.deviceType() == VkPhysicalDeviceType.DISCRETE_GPU
                && features.geometryShader() == VkConstants.TRUE;
@@ -187,7 +187,7 @@ if (graphicsFamily >= 0) {
 }
 ```
 
-> Using `at` for struct array, but `read` for integer pointer/array?
+> Q&A: Using `at` for struct array, but `read` for integer pointer/array?
 > 
 > When operating on an element of a struct/union array, the element you get is actually a view into the array, thus your modification on the element will be reflected in the original array. So we explicitly use `at` to distinguish it from `read`, which returns a copy of the value.
 

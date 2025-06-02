@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -135,12 +136,12 @@ public record VkImageStencilUsageCreateInfo(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageStencilUsageCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageStencilUsageCreateInfo> {
+        private static final class Iter implements Iterator<VkImageStencilUsageCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

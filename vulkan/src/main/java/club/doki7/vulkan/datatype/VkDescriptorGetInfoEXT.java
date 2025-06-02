@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -136,12 +137,12 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorGetInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorGetInfoEXT> {
+        private static final class Iter implements Iterator<VkDescriptorGetInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -227,6 +228,11 @@ public record VkDescriptorGetInfoEXT(@NotNull MemorySegment segment) implements 
 
     public VkDescriptorGetInfoEXT data(@NotNull VkDescriptorDataEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
+    }
+
+    public VkDescriptorGetInfoEXT data(Consumer<@NotNull VkDescriptorDataEXT> consumer) {
+        consumer.accept(data());
         return this;
     }
 

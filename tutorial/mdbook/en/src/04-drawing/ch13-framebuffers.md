@@ -42,13 +42,13 @@ for (int i = 0; i < swapChainImageViews.size(); i++) {
         var pAttachments = VkImageView.Ptr.allocate(arena);
         pAttachments.write(0, swapChainImageViews.read(i));
 
-        var framebufferInfo = VkFramebufferCreateInfo.allocate(arena);
-        framebufferInfo.renderPass(renderPass);
-        framebufferInfo.attachmentCount(1);
-        framebufferInfo.pAttachments(pAttachments);
-        framebufferInfo.width(swapChainExtent.width());
-        framebufferInfo.height(swapChainExtent.height());
-        framebufferInfo.layers(1);
+        var framebufferInfo = VkFramebufferCreateInfo.allocate(arena)
+                .renderPass(renderPass)
+                .attachmentCount(1)
+                .pAttachments(pAttachments)
+                .width(swapChainExtent.width())
+                .height(swapChainExtent.height())
+                .layers(1);
 
         var pFramebuffer = swapChainFramebuffers.offset(i);
         var result = deviceCommands.createFramebuffer(device, framebufferInfo, null, pFramebuffer);

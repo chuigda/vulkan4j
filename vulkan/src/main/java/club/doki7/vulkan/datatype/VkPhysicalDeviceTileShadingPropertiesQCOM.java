@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -138,12 +139,12 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceTileShadingPropertiesQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceTileShadingPropertiesQCOM> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceTileShadingPropertiesQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -241,12 +242,22 @@ public record VkPhysicalDeviceTileShadingPropertiesQCOM(@NotNull MemorySegment s
         return this;
     }
 
+    public VkPhysicalDeviceTileShadingPropertiesQCOM tileGranularity(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(tileGranularity());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxTileShadingRate() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTileShadingRate, LAYOUT$maxTileShadingRate));
     }
 
     public VkPhysicalDeviceTileShadingPropertiesQCOM maxTileShadingRate(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTileShadingRate, SIZE$maxTileShadingRate);
+        return this;
+    }
+
+    public VkPhysicalDeviceTileShadingPropertiesQCOM maxTileShadingRate(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxTileShadingRate());
         return this;
     }
 

@@ -110,10 +110,8 @@ Finally, modify the `VkInstanceCreateInfo` struct instantiation to include the v
 
 ```java
 if (ENABLE_VALIDATION_LAYERS) {
-    instanceCreateInfo.enabledLayerCount(1);
-PointerPtr ppEnabledLayerNames = PointerPtr.allocate(arena);
-    ppEnabledLayerNames.write(BytePtr.allocateString(arena, VALIDATION_LAYER_NAME));
-    instanceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
+    instanceCreateInfo.enabledLayerCount(1)
+        .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
 }
 ```
 
@@ -162,8 +160,8 @@ We can now use this function in `createInstance`:
 
 ```java
 var extensions = getRequiredExtensions(arena);
-instanceCreateInfo.enabledExtensionCount((int) extensions.size());
-instanceCreateInfo.ppEnabledExtensionNames(extensions);
+instanceCreateInfo.enabledExtensionCount((int) extensions.size())
+        .ppEnabledExtensionNames(extensions);
 ```
 
 Run the program to make sure you don't receive a `ERROR_EXTENSION_NOT_PRESENT` error. We don't really need to check for the existence of this extension, because it should be implied by the availability of the validation layers.

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -138,12 +139,12 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageConstraintsInfoFUCHSIA> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageConstraintsInfoFUCHSIA> {
+        private static final class Iter implements Iterator<VkImageConstraintsInfoFUCHSIA> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -261,6 +262,11 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
 
     public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints(@NotNull VkBufferCollectionConstraintsInfoFUCHSIA value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
+        return this;
+    }
+
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints(Consumer<@NotNull VkBufferCollectionConstraintsInfoFUCHSIA> consumer) {
+        consumer.accept(bufferCollectionConstraints());
         return this;
     }
 

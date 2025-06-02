@@ -27,9 +27,9 @@ In our case we'll have just a single color buffer attachment represented by one 
 ```java
 private void createRenderPass() {
     try (var arena = Arena.ofConfined()) {
-        var colorAttachment = VkAttachmentDescription.allocate(arena);
-        colorAttachment.format(swapChainImageFormat);
-        colorAttachment.samples(VkSampleCountFlags._1);
+        var colorAttachment = VkAttachmentDescription.allocate(arena)
+                .format(swapChainImageFormat)
+                .samples(VkSampleCountFlags._1);
     }
 }
 ```
@@ -37,8 +37,9 @@ private void createRenderPass() {
 The `format` of the color attachment should match the format of the swap chain images, and we're not doing anything with multisampling yet, so we'll stick to 1 sample.
 
 ```java
-colorAttachment.loadOp(VkAttachmentLoadOp.CLEAR);
-colorAttachment.storeOp(VkAttachmentStoreOp.STORE);
+colorAttachment
+        .loadOp(VkAttachmentLoadOp.CLEAR)
+        .storeOp(VkAttachmentStoreOp.STORE);
 ```
 
 The `loadOp` and `storeOp` determine what to do with the data in the attachment before rendering and after rendering. We have the following choices for `loadOp`:
@@ -55,15 +56,17 @@ In our case we're going to use the clear operation to clear the framebuffer to b
 We're interested in seeing the rendered triangle on the screen, so we're going with the store operation here.
 
 ```java
-colorAttachment.stencilLoadOp(VkAttachmentLoadOp.DONT_CARE);
-colorAttachment.stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
+colorAttachment
+        .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+        .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
 ```
 
 The `loadOp` and `storeOp` apply to color and depth data, and `stencilLoadOp` / `stencilStoreOp` apply to stencil data. Our application won't do anything with the stencil buffer, so the results of loading and storing are irrelevant.
 
 ```java
-colorAttachment.initialLayout(VkImageLayout.UNDEFINED);
-colorAttachment.finalLayout(VkImageLayout.PRESENT_SRC_KHR);
+colorAttachment
+        .initialLayout(VkImageLayout.UNDEFINED)
+        .finalLayout(VkImageLayout.PRESENT_SRC_KHR);
 ```
 
 Textures and framebuffers in Vulkan are represented by `VkImage` objects with a certain pixel format, however the layout of the pixels in memory can change based on what you're trying to do with an image.
@@ -85,9 +88,9 @@ A single render pass can consist of multiple subpasses. Subpasses are subsequent
 Every subpass references one or more of the attachments that we've described using the structure in the previous sections. These references are themselves `VkAttachmentReference` structs that look like this:
 
 ```java
-var colorAttachmentRef = VkAttachmentReference.allocate(arena);
-colorAttachmentRef.attachment(0);
-colorAttachmentRef.layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
+var colorAttachmentRef = VkAttachmentReference.allocate(arena)
+        .attachment(0)
+        .layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
 ```
 
 The `attachment` parameter specifies which attachment to reference by its index in the attachment descriptions array. Our array consists of a single `VkAttachmentDescription`, so its index is `0`. The `layout` specifies which layout we would like the attachment to have during a subpass that uses this reference. Vulkan will automatically transition the attachment to this layout when the subpass is started. We intend to use the attachment to function as a color buffer and the `VkImageLayout.COLOR_ATTACHMENT_OPTIMAL` layout will give us the best performance, as its name implies.
@@ -95,15 +98,16 @@ The `attachment` parameter specifies which attachment to reference by its index 
 The subpass is described using a `VkSubpassDescription` structure:
 
 ```java
-var subpass = VkSubpassDescription.allocate(arena);
-subpass.pipelineBindPoint(VkPipelineBindPoint.GRAPHICS);
+var subpass = VkSubpassDescription.allocate(arena)
+        .pipelineBindPoint(VkPipelineBindPoint.GRAPHICS);
 ```
 
 Vulkan may also support compute subpasses in the future, so we have to be explicit about this being a graphics subpass. Next, we specify the reference to the color attachment:
 
 ```java
-subpass.colorAttachmentCount(1);
-subpass.pColorAttachments(colorAttachmentRef);
+subpass
+        .colorAttachmentCount(1)
+        .pColorAttachments(colorAttachmentRef);
 ```
 
 The index of the attachment in this array is directly referenced from the fragment shader with the `layout(location = 0) out vec4 outColor` directive!
@@ -127,11 +131,11 @@ private VkPipelineLayout pipelineLayout;
 The render pass object can then be created by filling in the `VkRenderPassCreateInfo` structure with an array of attachments and subpasses. The `VkAttachmentReference` objects reference attachments using the indices of this array.
 
 ```java
-var renderPassInfo = VkRenderPassCreateInfo.allocate(arena);
-renderPassInfo.attachmentCount(1);
-renderPassInfo.pAttachments(colorAttachment);
-renderPassInfo.subpassCount(1);
-renderPassInfo.pSubpasses(subpass);
+var renderPassInfo = VkRenderPassCreateInfo.allocate(arena)
+        .attachmentCount(1)
+        .pAttachments(colorAttachment)
+        .subpassCount(1)
+        .pSubpasses(subpass);
 
 var pRenderPass = VkRenderPass.Ptr.allocate(arena);
 var result = deviceCommands.createRenderPass(device, renderPassInfo, null, pRenderPass);

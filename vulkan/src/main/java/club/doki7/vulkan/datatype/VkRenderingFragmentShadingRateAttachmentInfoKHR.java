@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -137,12 +138,12 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderingFragmentShadingRateAttachmentInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderingFragmentShadingRateAttachmentInfoKHR> {
+        private static final class Iter implements Iterator<VkRenderingFragmentShadingRateAttachmentInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -241,6 +242,11 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
 
     public VkRenderingFragmentShadingRateAttachmentInfoKHR shadingRateAttachmentTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateAttachmentTexelSize, SIZE$shadingRateAttachmentTexelSize);
+        return this;
+    }
+
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR shadingRateAttachmentTexelSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(shadingRateAttachmentTexelSize());
         return this;
     }
 

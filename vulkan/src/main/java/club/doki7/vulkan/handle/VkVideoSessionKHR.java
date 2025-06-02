@@ -31,7 +31,7 @@ public record VkVideoSessionKHR(@NotNull MemorySegment segment) implements IPoin
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
     /// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
@@ -68,6 +68,19 @@ public record VkVideoSessionKHR(@NotNull MemorySegment segment) implements IPoin
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VkVideoSessionKHR[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VkVideoSessionKHR value0, @Nullable VkVideoSessionKHR ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }
@@ -100,6 +113,7 @@ public record VkVideoSessionKHR(@NotNull MemorySegment segment) implements IPoin
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -134,17 +148,22 @@ public record VkVideoSessionKHR(@NotNull MemorySegment segment) implements IPoin
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable VkVideoSessionKHR ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable VkVideoSessionKHR value0, @Nullable VkVideoSessionKHR ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoSessionKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkVideoSessionKHR> {
+        private static class Iter implements Iterator<VkVideoSessionKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

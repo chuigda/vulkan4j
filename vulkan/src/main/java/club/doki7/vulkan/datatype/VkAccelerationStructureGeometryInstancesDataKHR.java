@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -136,12 +137,12 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(@NotNull MemorySeg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureGeometryInstancesDataKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureGeometryInstancesDataKHR> {
+        private static final class Iter implements Iterator<VkAccelerationStructureGeometryInstancesDataKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -227,6 +228,11 @@ public record VkAccelerationStructureGeometryInstancesDataKHR(@NotNull MemorySeg
 
     public VkAccelerationStructureGeometryInstancesDataKHR data(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
+    }
+
+    public VkAccelerationStructureGeometryInstancesDataKHR data(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(data());
         return this;
     }
 

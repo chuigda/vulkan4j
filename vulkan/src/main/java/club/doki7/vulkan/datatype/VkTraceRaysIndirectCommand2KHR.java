@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -137,12 +138,12 @@ public record VkTraceRaysIndirectCommand2KHR(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkTraceRaysIndirectCommand2KHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkTraceRaysIndirectCommand2KHR> {
+        private static final class Iter implements Iterator<VkTraceRaysIndirectCommand2KHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

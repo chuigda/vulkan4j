@@ -235,24 +235,24 @@ You'll notice that we have changed the finalLayout from `VkImageLayout.PRESENT_S
 ```java
 var attachments = VkAttachmentDescription.allocate(arena, 3);
 // ...
-var colorAttachmentResolve = attachments.at(2);
-colorAttachmentResolve.format(swapChainImageFormat);
-colorAttachmentResolve.samples(VkSampleCountFlags._1);
-colorAttachmentResolve.loadOp(VkAttachmentLoadOp.DONT_CARE);
-colorAttachmentResolve.storeOp(VkAttachmentStoreOp.STORE);
-colorAttachmentResolve.stencilLoadOp(VkAttachmentLoadOp.DONT_CARE);
-colorAttachmentResolve.stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
-colorAttachmentResolve.initialLayout(VkImageLayout.UNDEFINED);
-colorAttachmentResolve.finalLayout(VkImageLayout.PRESENT_SRC_KHR);
+attachments.at(2)
+        .format(swapChainImageFormat)
+        .samples(VkSampleCountFlags._1)
+        .loadOp(VkAttachmentLoadOp.DONT_CARE)
+        .storeOp(VkAttachmentStoreOp.STORE)
+        .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+        .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+        .initialLayout(VkImageLayout.UNDEFINED)
+        .finalLayout(VkImageLayout.PRESENT_SRC_KHR);
 ```
 
 The render pass now has to be instructed to resolve multisampled color image into regular attachment. Create a new attachment reference that will point to the color buffer which will serve as the resolve target:
 
 ```java
 // ...
-var colorAttachmentResolveRef = VkAttachmentReference.allocate(arena);
-colorAttachmentResolveRef.attachment(2);
-colorAttachmentResolveRef.layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
+var colorAttachmentResolveRef = VkAttachmentReference.allocate(arena)
+        .attachment(2)
+        .layout(VkImageLayout.COLOR_ATTACHMENT_OPTIMAL);
 // ...
 ```
 
@@ -276,10 +276,12 @@ With the render pass in place, modify `createFramebuffers` and add the new image
 ```java
 private void createFramebuffers() {
     // ...
-    var pAttachments = VkImageView.Buffer.allocate(arena, 3);
-    pAttachments.write(0, colorImageView);
-    pAttachments.write(1, depthImageView);
-    pAttachments.write(2, swapChainImageViews.read(i));
+    var pAttachments = VkImageView.Ptr.allocateV(
+            arena,
+            colorImageView,
+            depthImageView,
+            swapChainImageViews.read(i)
+    );
     // ...
     framebufferInfo.attachmentCount(3);
     // ...
@@ -321,8 +323,9 @@ private void createLogicalDevice() {
 
 private void createGraphicsPipeline() {
     // ...
-    multisampling.sampleShadingEnable(VkConstants.TRUE);
-    multisampling.minSampleShading(0.2f);
+    multisampling
+            .sampleShadingEnable(VkConstants.TRUE)
+            .minSampleShading(0.2f);
     // ...
 }
 ```

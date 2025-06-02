@@ -50,6 +50,15 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         segment.set(ValueLayout.JAVA_INT, index * Integer.BYTES, value);
     }
 
+    public void write(int @NotNull [] array) {
+        segment.copyFrom(MemorySegment.ofArray(array));
+    }
+
+    public void writeV(int value0, int @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link IntPtr} is capable of holding at least {@code newSize} integers, create
     /// a new view {@link IntPtr} that uses the same backing storage as this {@link IntPtr}, but
     /// with the new size. Since there is actually no way to really check whether the new size is
@@ -82,7 +91,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Integer> iterator() {
         return new Iter(segment);
     }
 
@@ -164,8 +173,11 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         return new IntPtr(arena.allocateFrom(ValueLayout.JAVA_INT, array));
     }
 
-    public static @NotNull IntPtr allocateV(@NotNull Arena arena, int ...array) {
-        return allocate(arena, array);
+    public static @NotNull IntPtr allocateV(@NotNull Arena arena, int value0, int ...values) {
+        IntPtr ret = allocate(arena, values.length + 1);
+        ret.write(value0);
+        ret.offset(1).segment.copyFrom(MemorySegment.ofArray(values));
+        return ret;
     }
 
     /// Allocate a new {@link IntPtr} in {@code arena} and copy the contents of {@code array} into
@@ -207,7 +219,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
     }
 
     /// An iterator over the integers.
-    public static final class Iter implements Iterator<Integer> {
+    private static final class Iter implements Iterator<Integer> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

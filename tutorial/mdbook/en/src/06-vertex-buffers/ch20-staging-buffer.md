@@ -33,10 +33,10 @@ private Pair<VkBuffer, VkDeviceMemory> createBuffer(
         @EnumType(VkMemoryPropertyFlags.class) int properties
 ) {
     try (var arena = Arena.ofConfined()) {
-        var bufferInfo = VkBufferCreateInfo.allocate(arena);
-        bufferInfo.size(size);
-        bufferInfo.usage(usage);
-        bufferInfo.sharingMode(VkSharingMode.EXCLUSIVE);
+        var bufferInfo = VkBufferCreateInfo.allocate(arena)
+                .size(size)
+                .usage(usage)
+                .sharingMode(VkSharingMode.EXCLUSIVE);
 
         var pBuffer = VkBuffer.Ptr.allocate(arena);
         var result = deviceCommands.createBuffer(device, bufferInfo, null, pBuffer);
@@ -48,9 +48,9 @@ private Pair<VkBuffer, VkDeviceMemory> createBuffer(
         var memRequirements = VkMemoryRequirements.allocate(arena);
         deviceCommands.getBufferMemoryRequirements(device, buffer, memRequirements);
 
-        var allocInfo = VkMemoryAllocateInfo.allocate(arena);
-        allocInfo.allocationSize(memRequirements.size());
-        allocInfo.memoryTypeIndex(findMemoryType(memRequirements.memoryTypeBits(), properties));
+        var allocInfo = VkMemoryAllocateInfo.allocate(arena)
+                .allocationSize(memRequirements.size())
+                .memoryTypeIndex(findMemoryType(memRequirements.memoryTypeBits(), properties));
         var pMemory = VkDeviceMemory.Ptr.allocate(arena);
         result = deviceCommands.allocateMemory(device, allocInfo, null, pMemory);
         if (result != VkResult.SUCCESS) {
@@ -151,10 +151,10 @@ Memory transfer operations are executed using command buffers, just like drawing
 ```java
 private void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, int size) {
     try (var arena = Arena.ofConfined()) {
-        var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
-        allocInfo.level(VkCommandBufferLevel.PRIMARY);
-        allocInfo.commandPool(commandPool);
-        allocInfo.commandBufferCount(1);
+        var allocInfo = VkCommandBufferAllocateInfo.allocate(arena)
+                .level(VkCommandBufferLevel.PRIMARY)
+                .commandPool(commandPool)
+                .commandBufferCount(1);
 
         var pCommandBuffer = VkCommandBuffer.Ptr.allocate(arena);
         var result = deviceCommands.allocateCommandBuffers(device, allocInfo, pCommandBuffer);
@@ -169,8 +169,8 @@ private void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, int size) {
 And immediately start recording the command buffer:
 
 ```java
-var beginInfo = VkCommandBufferBeginInfo.allocate(arena);
-beginInfo.flags(VkCommandBufferUsageFlags.ONE_TIME_SUBMIT);
+var beginInfo = VkCommandBufferBeginInfo.allocate(arena)
+        .flags(VkCommandBufferUsageFlags.ONE_TIME_SUBMIT);
 result = deviceCommands.beginCommandBuffer(commandBuffer, beginInfo);
 if (result != VkResult.SUCCESS) {
     throw new RuntimeException("Failed to begin recording command buffer, vulkan error code: " + VkResult.explain(result));
@@ -180,10 +180,10 @@ if (result != VkResult.SUCCESS) {
 We're only going to use the command buffer once and wait with returning from the function until the copy operation has finished executing. It's good practice to tell the driver about our intent using `VkCommandBufferUsageFlags.ONE_TIME_SUBMIT`.
 
 ```java
-var copyRegion = VkBufferCopy.allocate(arena);
-copyRegion.srcOffset(0); // Optional
-copyRegion.dstOffset(0); // Optional
-copyRegion.size(size);
+var copyRegion = VkBufferCopy.allocate(arena)
+        .srcOffset(0) // Optional
+        .dstOffset(0) // Optional
+        .size(size);
 deviceCommands.cmdCopyBuffer(commandBuffer, srcBuffer, dstBuffer, 1, copyRegion);
 ```
 
@@ -199,9 +199,9 @@ if (result != VkResult.VK_SUCCESS) {
 This command buffer only contains the copy command, so we can stop recording right after that. Now execute the command buffer to complete the transfer:
 
 ```java
-var submitInfo = VkSubmitInfo.allocate(arena);
-submitInfo.commandBufferCount(1);
-submitInfo.pCommandBuffers(pCommandBuffer);
+var submitInfo = VkSubmitInfo.allocate(arena)
+        .commandBufferCount(1)
+        .pCommandBuffers(pCommandBuffer);
 
 result = deviceCommands.queueSubmit(graphicsQueue, 1, submitInfo, null);
 if (result != VkResult.SUCCESS) {

@@ -24,34 +24,29 @@ Also change the `VkVertexInputBindingDescription` and `VkVertexInputAttributeDes
 
 ```java
 private static VkVertexInputBindingDescription getBindingDescription(Arena arena) {
-    var description = VkVertexInputBindingDescription.allocate(arena);
-    description.binding(0);
-    description.stride(Float.BYTES * 8);
-    description.inputRate(VkVertexInputRate.VERTEX);
-    return description;
+    return VkVertexInputBindingDescription.allocate(arena)
+            .binding(0)
+            .stride(Float.BYTES * 8)
+            .inputRate(VkVertexInputRate.VERTEX);
 }
 
 private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
     var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 3);
-    var vertexAttribute = attributeDescriptions.at(0);
-    var colorAttribute = attributeDescriptions.at(1);
-    var texCoordAttribute = attributeDescriptions.at(2);
-
-    vertexAttribute.binding(0);
-    vertexAttribute.location(0);
-    vertexAttribute.format(VkFormat.R32G32B32_SFLOAT);
-    vertexAttribute.offset(0);
-
-    colorAttribute.binding(0);
-    colorAttribute.location(1);
-    colorAttribute.format(VkFormat.R32G32B32_SFLOAT);
-    colorAttribute.offset(Float.BYTES * 3);
-
-    texCoordAttribute.binding(0);
-    texCoordAttribute.location(2);
-    texCoordAttribute.format(VkFormat.R32G32_SFLOAT);
-    texCoordAttribute.offset(Float.BYTES * 6);
-
+    attributeDescriptions.at(0)
+            .binding(0)
+            .location(0)
+            .format(VkFormat.R32G32B32_SFLOAT)
+            .offset(0);
+    attributeDescriptions.at(1)
+            .binding(0)
+            .location(1)
+            .format(VkFormat.R32G32B32_SFLOAT)
+            .offset(Float.BYTES * 3);
+    attributeDescriptions.at(2)
+            .binding(0)
+            .location(2)
+            .format(VkFormat.R32G32_SFLOAT)
+            .offset(Float.BYTES * 6);
     return attributeDescriptions;
 }
 ```
@@ -334,9 +329,9 @@ Finally, add the correct access masks and pipeline stages:
 // ...
 else if (oldLayout == VkImageLayout.UNDEFINED
          && newLayout == VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL) {
-    barrier.srcAccessMask(0);
-    barrier.dstAccessMask(VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_READ
-                          | VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_WRITE);
+        barrier.srcAccessMask(0)
+            .dstAccessMask(VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_READ
+                           | VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_WRITE);
 
     sourceStage = VkPipelineStageFlags.TOP_OF_PIPE;
     destinationStage = VkPipelineStageFlags.EARLY_FRAGMENT_TESTS;
@@ -352,63 +347,62 @@ We're now going to modify `createRenderPass` to include a depth attachment. Firs
 
 ```java
 var attachments = VkAttachmentDescription.allocate(arena, 2);
-var colorAttachment = attachments.at(0);
-// ...
-
-var depthAttachment = attachments.at(1);
-depthAttachment.format(findDepthFormat());
-depthAttachment.samples(VkSampleCountFlags._1);
-depthAttachment.loadOp(VkAttachmentLoadOp.CLEAR);
-depthAttachment.storeOp(VkAttachmentStoreOp.DONT_CARE);
-depthAttachment.stencilLoadOp(VkAttachmentLoadOp.DONT_CARE);
-depthAttachment.stencilStoreOp(VkAttachmentStoreOp.DONT_CARE);
-depthAttachment.initialLayout(VkImageLayout.UNDEFINED);
-depthAttachment.finalLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
+attachments.at(0)
+        // ...
+attachments.at(1)
+        .format(findDepthFormat())
+        .samples(VkSampleCountFlags._1)
+        .loadOp(VkAttachmentLoadOp.CLEAR)
+        .storeOp(VkAttachmentStoreOp.DONT_CARE)
+        .stencilLoadOp(VkAttachmentLoadOp.DONT_CARE)
+        .stencilStoreOp(VkAttachmentStoreOp.DONT_CARE)
+        .initialLayout(VkImageLayout.UNDEFINED)
+        .finalLayout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
 ```
 
 The `format` should be the same as the depth image itself. This time we don't care about storing the depth data (`storeOp`), because it will not be used after drawing has finished. This may allow the hardware to perform additional optimizations. Just like the color buffer, we don't care about the previous depth contents, so we can use `VkImageLayout.UNDEFINED` as `initialLayout`.
 
 ```java
-var depthAttachmentRef = VkAttachmentReference.allocate(arena);
-depthAttachmentRef.attachment(1);
-depthAttachmentRef.layout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
+var depthAttachmentRef = VkAttachmentReference.allocate(arena)
+        .attachment(1)
+        .layout(VkImageLayout.DEPTH_STENCIL_ATTACHMENT_OPTIMAL);
 ```
 
 Add a reference to the attachment for the first (and only) subpass:
 
 ```java
-var subpass = VkSubpassDescription.allocate(arena);
-subpass.pipelineBindPoint(VkPipelineBindPoint.GRAPHICS);
-subpass.colorAttachmentCount(1);
-subpass.pColorAttachments(colorAttachmentRef);
-subpass.pDepthStencilAttachment(depthAttachmentRef);
+var subpass = VkSubpassDescription.allocate(arena)
+        .pipelineBindPoint(VkPipelineBindPoint.GRAPHICS)
+        .colorAttachmentCount(1)
+        .pColorAttachments(colorAttachmentRef)
+        .pDepthStencilAttachment(depthAttachmentRef);
 ```
 
 Unlike color attachments, a subpass can only use a single depth (+stencil) attachment. It wouldn't really make any sense to do depth tests on multiple buffers.
 
 ```java
-var renderPassInfo = VkRenderPassCreateInfo.allocate(arena);
-renderPassInfo.attachmentCount(2);
-renderPassInfo.pAttachments(attachments);
-renderPassInfo.subpassCount(1);
-renderPassInfo.pSubpasses(subpass);
-renderPassInfo.dependencyCount(1);
-renderPassInfo.pDependencies(dependency);
+var renderPassInfo = VkRenderPassCreateInfo.allocate(arena)
+        .attachmentCount(2)
+        .pAttachments(attachments)
+        .subpassCount(1)
+        .pSubpasses(subpass)
+        .dependencyCount(1)
+        .pDependencies(dependency);
 ```
 
 Next, update the `VkSubpassDependency` struct to refer to both attachments.
 
 ```java
-var dependency = VkSubpassDependency.allocate(arena);
-dependency.srcSubpass(VkConstants.SUBPASS_EXTERNAL);
-dependency.dstSubpass(0);
-dependency.srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT
-                        | VkPipelineStageFlags.EARLY_FRAGMENT_TESTS);
-dependency.srcAccessMask(0);
-dependency.dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT
-                        | VkPipelineStageFlags.EARLY_FRAGMENT_TESTS);
-dependency.dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE
-                         | VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_WRITE
+var dependency = VkSubpassDependency.allocate(arena)
+        .srcSubpass(VkConstants.SUBPASS_EXTERNAL)
+        .dstSubpass(0)
+        .srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT
+                      | VkPipelineStageFlags.EARLY_FRAGMENT_TESTS)
+        .srcAccessMask(0)
+        .dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT
+                      | VkPipelineStageFlags.EARLY_FRAGMENT_TESTS)
+        .dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE
+                       | VkAccessFlags.DEPTH_STENCIL_ATTACHMENT_WRITE);
 ```
 
 Finally, we need to extend our subpass dependencies to make sure that there is no conflict between the transitioning of the depth image and it being cleared as part of its load operation. The depth image is first accessed in the early fragment test pipeline stage and because we have a load operation that *clears*, we should specify the access mask for writes.
@@ -418,17 +412,15 @@ Finally, we need to extend our subpass dependencies to make sure that there is n
 The next step is to modify the framebuffer creation to bind the depth image to the depth attachment. Go to `createFramebuffers` and specify the depth image view as second attachment:
 
 ```java
-var pAttachments = VkImageView.Ptr.allocate(arena, 2);
-pAttachments.write(0, swapChainImageViews.read(i));
-pAttachments.write(1, depthImageView);
+var pAttachments = VkImageView.Ptr.allocateV(arena, swapChainImageViews.read(i), depthImageView);
 
-var framebufferInfo = VkFramebufferCreateInfo.allocate(arena);
-framebufferInfo.renderPass(renderPass);
-framebufferInfo.attachmentCount(2);
-framebufferInfo.pAttachments(pAttachments);
-framebufferInfo.width(swapChainExtent.width());
-framebufferInfo.height(swapChainExtent.height());
-framebufferInfo.layers(1);
+var framebufferInfo = VkFramebufferCreateInfo.allocate(arena)
+        .renderPass(renderPass)
+        .attachmentCount(2)
+        .pAttachments(pAttachments)
+        .width(swapChainExtent.width())
+        .height(swapChainExtent.height())
+        .layers(1);
 ```
 
 The color attachment differs for every swap chain image, but the same depth image can be used by all of them because only a single subpass is running at the same time due to our semaphores.
@@ -449,17 +441,16 @@ private void initVulkan() {
 Because we now have multiple attachments with VK_ATTACHMENT_LOAD_OP_CLEAR, we also need to specify multiple clear values. Go to `recordCommandBuffer` and create an array of `VkClearValue` structs:
 
 ```java
-var pClearValue = VkClearValue.allocate(arena, 2);
-var colorClearValue = pClearValue.at(0);
-colorClearValue.color().float32().write(0, 0.0f);
-colorClearValue.color().float32().write(1, 0.0f);
-colorClearValue.color().float32().write(2, 0.0f);
-colorClearValue.color().float32().write(3, 1.0f);
-var depthClearValue = pClearValue.at(1);
-depthClearValue.depthStencil().depth(1.0f);
-depthClearValue.depthStencil().stencil(0);
-renderPassInfo.clearValueCount(2);
-renderPassInfo.pClearValues(pClearValue);
+var pClearValues = VkClearValue.allocate(arena, 2);
+pClearValues.at(0).color()
+        .float32()
+        .writeV(0.0f, 0.0f, 0.0f, 1.0f);
+pClearValues.at(1).depthStencil()
+        .depth(1.0f)
+        .stencil(0);
+renderPassInfo
+        .clearValueCount(2)
+        .pClearValues(pClearValue);
 ```
 
 The range of depths in the depth buffer is `0.0` to `1.0` in Vulkan, where `1.0` lies at the far view plane and `0.0` at the near view plane. The initial value at each point in the depth buffer should be the furthest possible depth, which is `1.0`.
@@ -471,9 +462,9 @@ Note that the order of `clearValues` should be identical to the order of your at
 The depth attachment is ready to be used now, but depth testing still needs to be enabled in the graphics pipeline. It is configured through the `VkPipelineDepthStencilStateCreateInfo` struct:
 
 ```java
-var depthStencil = VkPipelineDepthStencilStateCreateInfo.allocate(arena);
-depthStencil.depthTestEnable(VkConstants.TRUE);
-depthStencil.depthWriteEnable(VkConstants.TRUE);
+var depthStencil = VkPipelineDepthStencilStateCreateInfo.allocate(arena)
+        .depthTestEnable(VkConstants.TRUE)
+        .depthWriteEnable(VkConstants.TRUE);
 ```
 
 The `depthTestEnable` field specifies if the depth of new fragments should be compared to the depth buffer to see if they should be discarded. The `depthWriteEnable` field specifies if the new depth of fragments that pass the depth test should actually be written to the depth buffer.
@@ -485,9 +476,10 @@ depthStencil.depthCompareOp(VkCompareOp.LESS);
 The `depthCompareOp` field specifies the comparison that is performed to keep or discard fragments. We're sticking to the convention of lower depth = closer, so the depth of new fragments should be *less*.
 
 ```java
-depthStencil.depthBoundsTestEnable(VkConstants.FALSE);
-depthStencil.minDepthBounds(0.0f); // Optional
-depthStencil.maxDepthBounds(1.0f); // Optional
+depthStencil
+        .depthBoundsTestEnable(VkConstants.FALSE)
+        .minDepthBounds(0.0f) // Optional
+        .maxDepthBounds(1.0f); // Optional
 ```
 
 The `depthBoundsTestEnable`, `minDepthBounds` and `maxDepthBounds` fields are used for the optional depth bound test. Basically, this allows you to only keep fragments that fall within the specified depth range. We won't be using this functionality.

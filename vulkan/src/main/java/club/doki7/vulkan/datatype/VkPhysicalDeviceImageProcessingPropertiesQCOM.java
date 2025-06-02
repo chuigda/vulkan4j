@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -138,12 +139,12 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceImageProcessingPropertiesQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceImageProcessingPropertiesQCOM> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceImageProcessingPropertiesQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -232,6 +233,11 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         return this;
     }
 
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxWeightFilterDimension(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxWeightFilterDimension());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxBlockMatchRegion() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBlockMatchRegion, LAYOUT$maxBlockMatchRegion));
     }
@@ -241,12 +247,22 @@ public record VkPhysicalDeviceImageProcessingPropertiesQCOM(@NotNull MemorySegme
         return this;
     }
 
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBlockMatchRegion(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxBlockMatchRegion());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxBoxFilterBlockSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxBoxFilterBlockSize, LAYOUT$maxBoxFilterBlockSize));
     }
 
     public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBoxFilterBlockSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBoxFilterBlockSize, SIZE$maxBoxFilterBlockSize);
+        return this;
+    }
+
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBoxFilterBlockSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxBoxFilterBlockSize());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -127,12 +128,12 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExternalImageFormatPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExternalImageFormatPropertiesNV> {
+        private static final class Iter implements Iterator<VkExternalImageFormatPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -177,6 +178,11 @@ public record VkExternalImageFormatPropertiesNV(@NotNull MemorySegment segment) 
 
     public VkExternalImageFormatPropertiesNV imageFormatProperties(@NotNull VkImageFormatProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageFormatProperties, SIZE$imageFormatProperties);
+        return this;
+    }
+
+    public VkExternalImageFormatPropertiesNV imageFormatProperties(Consumer<@NotNull VkImageFormatProperties> consumer) {
+        consumer.accept(imageFormatProperties());
         return this;
     }
 

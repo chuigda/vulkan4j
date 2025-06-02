@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -137,12 +138,12 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkGeometryNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkGeometryNV> {
+        private static final class Iter implements Iterator<VkGeometryNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -228,6 +229,11 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
 
     public VkGeometryNV geometry(@NotNull VkGeometryDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$geometry, SIZE$geometry);
+        return this;
+    }
+
+    public VkGeometryNV geometry(Consumer<@NotNull VkGeometryDataNV> consumer) {
+        consumer.accept(geometry());
         return this;
     }
 

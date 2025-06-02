@@ -260,32 +260,28 @@ Queue submission and synchronization is configured through parameters in the `Vk
 ```java
 deviceCommands.resetCommandBuffer(commandBuffer, 0);
 recordCommandBuffer(commandBuffer, imageIndex);
-var submitInfo = VkSubmitInfo.allocate(arena);
-var pWaitSemaphores = VkSemaphore.Ptr.allocate(arena);
-pWaitSemaphores.write(imageAvailableSemaphore);
-var pWaitStages = IntPtr.allocate(arena);
-pWaitStages.write(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
-submitInfo.waitSemaphoreCount(1);
-submitInfo.pWaitSemaphores(pWaitSemaphores);
-submitInfo.pWaitDstStageMask(pWaitStages);
+
+var pRenderFinishedSemaphore = VkSemaphore.Ptr.allocateV(arena, renderFinishedSemaphore);
+var submitInfo = VkSubmitInfo.allocate(arena)
+        .waitSemaphoreCount(1)
+        .pWaitSemaphores(VkSemaphore.Ptr.allocateV(arena, imageAvailableSemaphore))
+        .pWaitDstStageMask(IntPtr.allocateV(arena, VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT));
 ```
 
 The first three fields specify which semaphores to wait on before execution begins and in which stage(s) of the pipeline to wait. We want to wait with writing colors to the image until it's available, so we're specifying the stage of the graphics pipeline that writes to the color attachment. That means that theoretically the implementation can already start executing our vertex shader and such while the image is not yet available. Each entry in the `waitStages` array corresponds to the semaphore with the same index in `pWaitSemaphores`.
 
 ```java
-var pCommandBuffers = VkCommandBuffer.Ptr.allocate(arena);
-pCommandBuffers.write(commandBuffer);
-submitInfo.commandBufferCount(1);
-submitInfo.pCommandBuffers(pCommandBuffers);
+submitInfo
+        .commandBufferCount(1)
+        .pCommandBuffers(VkCommandBuffer.Ptr.allocateV(arena, commandBuffer));
 ```
 
 The next two fields specify which command buffers to actually submit for execution. We simply submit the single command buffer we have.
 
 ```java
-var pSignalSemaphores = VkSemaphore.Ptr.allocate(arena);
-pSignalSemaphores.write(renderFinishedSemaphore);
-submitInfo.signalSemaphoreCount(1);
-submitInfo.pSignalSemaphores(pSignalSemaphores);
+submitInfo
+        .signalSemaphoreCount(1)
+        .pSignalSemaphores(pRenderFinishedSemaphore);
 ```
 
 The `signalSemaphoreCount` and `pSignalSemaphores` parameters specify which semaphores to signal once the command buffer(s) have finished execution. In our case we're using the `renderFinishedSemaphore` for that purpose.
@@ -308,30 +304,33 @@ There are two built-in dependencies that take care of the transition at the star
 Subpass dependencies are specified in `VkSubpassDependency` structs. Go to the `createRenderPass` function and add one:
 
 ```java
-var dependency = VkSubpassDependency.allocate(arena);
-dependency.srcSubpass(VkConstants.SUBPASS_EXTERNAL);
-dependency.dstSubpass(0);
+var dependency = VkSubpassDependency.allocate(arena)
+        .srcSubpass(VkConstants.SUBPASS_EXTERNAL)
+        .dstSubpass(0);
 ```
 
 The first two fields specify the indices of the dependency and the dependent subpass. The special value `VkConstants.SUBPASS_EXTERNAL` refers to the implicit subpass before or after the render pass depending on whether it is specified in `srcSubpass` or `dstSubpass`. The index `0` refers to our subpass, which is the first and only one. The `dstSubpass` must always be higher than `srcSubpass` to prevent cycles in the dependency graph, unless one of the subpasses is `VkConstants.SUBPASS_EXTERNAL`.
 
 ```java
-dependency.srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
-dependency.srcAccessMask(0);
+dependency
+        .srcStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT)
+        .srcAccessMask(0);
 ```
 
 The next two fields specify the operations to wait on and the stages in which these operations occur. We need to wait for the swap chain to finish reading from the image before we can access it. This can be accomplished by waiting on the color attachment output stage itself.
 
 ```java
-dependency.dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT);
-dependency.dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE);
+dependency
+        .dstStageMask(VkPipelineStageFlags.COLOR_ATTACHMENT_OUTPUT)
+        .dstAccessMask(VkAccessFlags.COLOR_ATTACHMENT_WRITE);
 ```
 
 The operations that should wait on this are in the color attachment stage and involve the writing of the color attachment. These settings will prevent the transition from happening until it's actually necessary (and allowed): when we want to start writing colors to it.
 
 ```java
-renderPassInfo.dependencyCount(1);
-renderPassInfo.pDependencies(dependency);
+renderPassInfo
+        .dependencyCount(1)
+        .pDependencies(dependency);
 ```
 
 The `VkRenderPassCreateInfo` struct has two fields to specify an array of dependencies.
@@ -341,19 +340,18 @@ The `VkRenderPassCreateInfo` struct has two fields to specify an array of depend
 The last step of drawing a frame is submitting the result back to the swap chain to have it eventually show up on the screen. Presentation is configured through a `VkPresentInfoKHR` structure at the end of the `drawFrame` function.
 
 ```java
-var presentInfo = VkPresentInfoKHR.allocate(arena);
-presentInfo.waitSemaphoreCount(1);
-presentInfo.pWaitSemaphores(pSignalSemaphores);
+var presentInfo = VkPresentInfoKHR.allocate(arena)
+        .waitSemaphoreCount(1)
+        .pWaitSemaphores(pRenderFinishedSemaphore);
 ```
 
 The first two fields specify which semaphores to wait on before presentation can happen, just like `VkSubmitInfo`. Since we want to wait on the command buffer to finish execution, thus our triangle being drawn, we take the semaphores which will be signalled and wait on them, thus we use `signalSemaphores`.
 
 ```java
-var pSwapchain = VkSwapchainKHR.Ptr.allocate(arena);
-pSwapchain.write(swapChain);
-presentInfo.swapchainCount(1);
-presentInfo.pSwapchains(pSwapchain);
-presentInfo.pImageIndices(pImageIndex);
+presentInfo
+        .swapchainCount(1)
+        .pSwapchains(VkSwapchainKHR.Ptr.allocateV(arena, swapChain))
+        .pImageIndices(pImageIndex);
 ```
 
 The next two fields specify the swap chains to present images to and the index of the image for each swap chain. This will almost always be a single one.
@@ -409,6 +407,8 @@ private void mainLoop() {
 
 You can also wait for operations in a specific command queue to be finished with `VkDeviceCommands::queueWaitIdle`. These functions can be used as a very rudimentary way to perform synchronization. You'll see that the program now exits without problems when closing the window.
 
+> Q&A: `VUID-vkQueueSubmit-pSignalSemaphores-00067`
+> 
 > If you're using a decent version (1.4.313+) of Vulkan and Vulkan SDK, you may also notice another validation layer warning:
 > 
 > ```asciidoc

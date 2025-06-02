@@ -31,7 +31,7 @@ public record VkAccelerationStructureNV(@NotNull MemorySegment segment) implemen
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
     /// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
@@ -68,6 +68,19 @@ public record VkAccelerationStructureNV(@NotNull MemorySegment segment) implemen
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VkAccelerationStructureNV[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VkAccelerationStructureNV value0, @Nullable VkAccelerationStructureNV ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }
@@ -100,6 +113,7 @@ public record VkAccelerationStructureNV(@NotNull MemorySegment segment) implemen
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -134,17 +148,22 @@ public record VkAccelerationStructureNV(@NotNull MemorySegment segment) implemen
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable VkAccelerationStructureNV ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable VkAccelerationStructureNV value0, @Nullable VkAccelerationStructureNV ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkAccelerationStructureNV> {
+        private static class Iter implements Iterator<VkAccelerationStructureNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

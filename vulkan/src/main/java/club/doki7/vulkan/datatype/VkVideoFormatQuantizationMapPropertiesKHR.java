@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -135,12 +136,12 @@ public record VkVideoFormatQuantizationMapPropertiesKHR(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoFormatQuantizationMapPropertiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoFormatQuantizationMapPropertiesKHR> {
+        private static final class Iter implements Iterator<VkVideoFormatQuantizationMapPropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -217,6 +218,11 @@ public record VkVideoFormatQuantizationMapPropertiesKHR(@NotNull MemorySegment s
 
     public VkVideoFormatQuantizationMapPropertiesKHR quantizationMapTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$quantizationMapTexelSize, SIZE$quantizationMapTexelSize);
+        return this;
+    }
+
+    public VkVideoFormatQuantizationMapPropertiesKHR quantizationMapTexelSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(quantizationMapTexelSize());
         return this;
     }
 

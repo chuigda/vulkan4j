@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -145,12 +146,12 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBufferCollectionPropertiesFUCHSIA> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBufferCollectionPropertiesFUCHSIA> {
+        private static final class Iter implements Iterator<VkBufferCollectionPropertiesFUCHSIA> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -275,12 +276,22 @@ public record VkBufferCollectionPropertiesFUCHSIA(@NotNull MemorySegment segment
         return this;
     }
 
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex(Consumer<@NotNull VkSysmemColorSpaceFUCHSIA> consumer) {
+        consumer.accept(sysmemColorSpaceIndex());
+        return this;
+    }
+
     public @NotNull VkComponentMapping samplerYcbcrConversionComponents() {
         return new VkComponentMapping(segment.asSlice(OFFSET$samplerYcbcrConversionComponents, LAYOUT$samplerYcbcrConversionComponents));
     }
 
     public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
+        return this;
+    }
+
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents(Consumer<@NotNull VkComponentMapping> consumer) {
+        consumer.accept(samplerYcbcrConversionComponents());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -132,12 +133,12 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDisplayPlaneCapabilitiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDisplayPlaneCapabilitiesKHR> {
+        private static final class Iter implements Iterator<VkDisplayPlaneCapabilitiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -194,12 +195,22 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
+    public VkDisplayPlaneCapabilitiesKHR minSrcPosition(Consumer<@NotNull VkOffset2D> consumer) {
+        consumer.accept(minSrcPosition());
+        return this;
+    }
+
     public @NotNull VkOffset2D maxSrcPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$maxSrcPosition, LAYOUT$maxSrcPosition));
     }
 
     public VkDisplayPlaneCapabilitiesKHR maxSrcPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcPosition, SIZE$maxSrcPosition);
+        return this;
+    }
+
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition(Consumer<@NotNull VkOffset2D> consumer) {
+        consumer.accept(maxSrcPosition());
         return this;
     }
 
@@ -212,12 +223,22 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(minSrcExtent());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxSrcExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxSrcExtent, LAYOUT$maxSrcExtent));
     }
 
     public VkDisplayPlaneCapabilitiesKHR maxSrcExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxSrcExtent, SIZE$maxSrcExtent);
+        return this;
+    }
+
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxSrcExtent());
         return this;
     }
 
@@ -230,12 +251,22 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
+    public VkDisplayPlaneCapabilitiesKHR minDstPosition(Consumer<@NotNull VkOffset2D> consumer) {
+        consumer.accept(minDstPosition());
+        return this;
+    }
+
     public @NotNull VkOffset2D maxDstPosition() {
         return new VkOffset2D(segment.asSlice(OFFSET$maxDstPosition, LAYOUT$maxDstPosition));
     }
 
     public VkDisplayPlaneCapabilitiesKHR maxDstPosition(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstPosition, SIZE$maxDstPosition);
+        return this;
+    }
+
+    public VkDisplayPlaneCapabilitiesKHR maxDstPosition(Consumer<@NotNull VkOffset2D> consumer) {
+        consumer.accept(maxDstPosition());
         return this;
     }
 
@@ -248,12 +279,22 @@ public record VkDisplayPlaneCapabilitiesKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
+    public VkDisplayPlaneCapabilitiesKHR minDstExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(minDstExtent());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxDstExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxDstExtent, LAYOUT$maxDstExtent));
     }
 
     public VkDisplayPlaneCapabilitiesKHR maxDstExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxDstExtent, SIZE$maxDstExtent);
+        return this;
+    }
+
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxDstExtent());
         return this;
     }
 

@@ -34,9 +34,9 @@ private void createCommandPool() {
         var queueFamilyIndices = findQueueFamilies(physicalDevice);
         assert queueFamilyIndices != null;
 
-        var poolInfo = VkCommandPoolCreateInfo.allocate(arena);
-        poolInfo.flags(VkCommandPoolCreateFlags.RESET_COMMAND_BUFFER);
-        poolInfo.queueFamilyIndex(queueFamilyIndices.graphicsFamily());
+        var poolInfo = VkCommandPoolCreateInfo.allocate(arena)
+                .flags(VkCommandPoolCreateFlags.RESET_COMMAND_BUFFER)
+                .queueFamilyIndex(queueFamilyIndices.graphicsFamily());
     }
 }
 ```
@@ -96,10 +96,10 @@ Command buffers are allocated with the `VkDeviceCommands::allocateCommandBuffers
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
-    allocInfo.commandPool(commandPool);
-    allocInfo.level(VkCommandBufferLevel.PRIMARY);
-    allocInfo.commandBufferCount(1);
+    var allocInfo = VkCommandBufferAllocateInfo.allocate(arena)
+            .commandPool(commandPool)
+            .level(VkCommandBufferLevel.PRIMARY)
+            .commandBufferCount(1);
 
     var pCommandBuffer = VkCommandBuffer.Ptr.allocate(arena);
     var result = deviceCommands.allocateCommandBuffers(device, allocInfo, pCommandBuffer);
@@ -132,9 +132,9 @@ We always begin recording a command buffer by calling `VkDeviceCommands::beginCo
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var beginInfo = VkCommandBufferBeginInfo.allocate(arena);
-    beginInfo.flags(0); // Optional
-    beginInfo.pInheritanceInfo(null); // Optional
+    var beginInfo = VkCommandBufferBeginInfo.allocate(arena)
+            .flags(0) // Optional
+            .pInheritanceInfo(null); // Optional
 
     var result = deviceCommands.beginCommandBuffer(commandBuffer, beginInfo);
     if (result != VkResult.SUCCESS) {
@@ -160,29 +160,26 @@ If the command buffer was already recorded once, then a call to `beginCommandBuf
 Drawing starts by beginning the render pass with `DeviceCommands::cmdBeginRenderPass`. The render pass is configured using some parameters in a `VkRenderPassBeginInfo` struct.
 
 ```java
-var renderPassInfo = VkRenderPassBeginInfo.allocate(arena);
-renderPassInfo.renderPass(renderPass);
-renderPassInfo.framebuffer(swapChainFramebuffers.read(imageIndex));
+var renderPassInfo = VkRenderPassBeginInfo.allocate(arena)
+        .renderPass(renderPass)
+        .framebuffer(swapChainFramebuffers.read(imageIndex));
 ```
 
 The first two fields are the render pass itself and the attachments to bind. We created a framebuffer for each swap chain image where it is specified as a color attachment. Thus we need to bind the framebuffer for the swapchain image we want to draw to. Using the `imageIndex` parameter which was passed in, we can pick the right framebuffer for the current swapchain image.
 
 ```java
-renderPassInfo.renderArea().offset().x(0);
-renderPassInfo.renderArea().offset().y(0);
-renderPassInfo.renderArea().extent(swapChainExtent);
+renderPassInfo.renderArea(it -> it
+        .offset(offset -> offset.x(0).y(0))
+        .extent(swapChainExtent));
 ```
 
-The next two fields define the size of the render area. The render area defines where shader loads and stores will take place. The pixels outside this region will have undefined values. It should match the size of the attachments for best performance.
+The next field defines the size of the render area. The render area defines where shader loads and stores will take place. The pixels outside this region will have undefined values. It should match the size of the attachments for best performance.
 
 ```java
-renderPassInfo.clearValueCount(1);
-var pClearValue = VkClearValue.allocate(arena);
-pClearValue.color().float32().write(0, 0.0f);
-pClearValue.color().float32().write(1, 0.0f);
-pClearValue.color().float32().write(2, 0.0f);
-pClearValue.color().float32().write(3, 1.0f);
-renderPassInfo.pClearValues(pClearValue);
+renderPassInfo
+        .clearValueCount(1)
+        .pClearValues(VkClearValue.allocate(arena)
+                .color(it -> it.float32().writeV(0.0f, 0.0f, 0.0f, 1.0f)))
 ```
 
 The last two parameters define the clear values to use for `VkAttachmentLoadOp.CLEAR`, which we used as load operation for the color attachment. I've defined the clear color to simply be black with 100% opacity.
@@ -213,19 +210,18 @@ The second parameter specifies if the pipeline object is a graphics or compute p
 As noted in the [fixed functions chapter](../pipeline/fixed-functions.md), we did specify viewport and scissor state for this pipeline to be dynamic. So we need to set them in the command buffer before issuing our draw command:
 
 ```java
-var viewport = VkViewport.allocate(arena);
-viewport.x(0.0f);
-viewport.y(0.0f);
-viewport.width(swapChainExtent.width());
-viewport.height(swapChainExtent.height());
-viewport.minDepth(0.0f);
-viewport.maxDepth(1.0f);
+var viewport = VkViewport.allocate(arena)
+        .x(0.0f)
+        .y(0.0f)
+        .width(swapChainExtent.width())
+        .height(swapChainExtent.height())
+        .minDepth(0.0f)
+        .maxDepth(1.0f);
 deviceCommands.cmdSetViewport(commandBuffer, 0, 1, viewport);
 
-var scissor = VkRect2D.allocate(arena);
-scissor.offset().x(0);
-scissor.offset().y(0);
-scissor.extent(swapChainExtent);
+var scissor = VkRect2D.allocate(arena)
+        .offset(it -> it.x(0).y(0))
+        .extent(swapChainExtent);
 deviceCommands.cmdSetScissor(commandBuffer, 0, 1, scissor);
 ```
 

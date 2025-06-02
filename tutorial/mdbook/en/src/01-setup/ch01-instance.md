@@ -45,16 +45,18 @@ Now, to create an instance we'll first have to fill in a struct with some inform
 ```java
 private void createInstance() {
     try (var arena = Arena.ofConfined()) {
-        var appInfo = VkApplicationInfo.allocate(arena);
-        appInfo.pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"));
-        appInfo.applicationVersion(new Version(0, 1, 0, 0).encode());
-        appInfo.pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"));
-        appInfo.engineVersion(new Version(0, 1, 0, 0).encode());
-        appInfo.apiVersion(Version.VK_API_VERSION_1_0.encode());
+        var appInfo = VkApplicationInfo.allocate(arena)
+                .pApplicationName(BytePtr.allocateString(arena, "Zdravstvuyte, Vulkan!"))
+                .applicationVersion(new Version(0, 1, 0, 0).encode())
+                .pEngineName(BytePtr.allocateString(arena, "Soloviev D-30"))
+                .engineVersion(new Version(0, 1, 0, 0).encode())
+                .apiVersion(Version.VK_API_VERSION_1_0.encode());
     }
 }
 ```
 
+> Note: `try` block
+>
 > If you're not familiar with the `try` block syntax, it's a feature of Java 9 called "try-with-resources". It's used to automatically close resources that implement the `AutoCloseable` interface. In this case, the `Arena` object is a resource that will be automatically closed when the block is exited.
 
 Vulkan C API requires you to explicitly specify the type in the `sType` member. However, `vulkan4j` has already taken care of this for you. The `VkApplicationInfo.allocate` method will fill in the `sType` field after allocating the struct. What's more, `Arena.ofConfined()` creates an arena whose `allocate` method will automatically fill allocated memory with zeros, so we don't need to zero-initialize the rest of the struct fields one by one.
@@ -62,8 +64,8 @@ Vulkan C API requires you to explicitly specify the type in the `sType` member. 
 A lot of information in Vulkan is passed through structs instead of function parameters, and we'll have to fill in one more struct to provide sufficient information for creating an instance. This next struct is not optional and tells the Vulkan driver which global extensions and validation layers we want to use. Global here means that they apply to the entire program and not a specific device, which will become clear in the next few chapters.
 
 ```java
-var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena);
-instanceCreateInfo.pApplicationInfo(appInfo);
+var instanceCreateInfo = VkInstanceCreateInfo.allocate(arena)
+        .pApplicationInfo(appInfo);
 ```
 
 The first field `pApplicationInfo` is straightforward. The next two fields specify the desired global extensions. As mentioned in the overview chapter, Vulkan is a platform-agnostic API, which means that you need an extension to interface with the window system. GLFW has a handy built-in function that returns the extension(s) it needs to do that which we can pass to the struct:
@@ -77,11 +79,13 @@ if (glfwExtensions == null) {
 
 var glfwExtensionCount = pGLFWExtensionCount.read();
 glfwExtensions = glfwExtensions.reinterpret(glfwExtensionCount);
-instanceCreateInfo.enabledExtensionCount(glfwExtensionCount);
-instanceCreateInfo.ppEnabledExtensionNames(glfwExtensions);
+instanceCreateInfo.enabledExtensionCount(pGLFWExtensionCount.read())
+        .ppEnabledExtensionNames(glfwExtensions);
 ```
 
-> Note: here we call `reinterpret` on the `glfwExtensions` to mark its size as `glfwExtensionCount`. We need to do this on ourselves because the auto-generated bindings don't know how to correctly set the size of the buffer when it's returned from a function. For now this step is not necessary yet, because `createInstance` doesn't need the size information of our `PointerPtr` -- it acquires the size from the `VkInstanceCreateInfo::enabledExtensionCount` field instead. However, in the following chapters we'll read `glfwExtensions` from Java code, and we'll need correct size information. 
+> Note: `reinterpret`ing returned value
+> 
+> Here we call `reinterpret` on the `glfwExtensions` to mark its size as `glfwExtensionCount`. We need to do this on ourselves because the auto-generated bindings don't know how to correctly set the size of the buffer when it's returned from a function. For now this step is not necessary yet, because `createInstance` doesn't need the size information of our `PointerPtr` -- it acquires the size from the `VkInstanceCreateInfo::enabledExtensionCount` field instead. However, in the following chapters we'll read `glfwExtensions` from Java code, and we'll need correct size information. 
 
 ```java
 instanceCreateInfo.enabledLayerCount(0);

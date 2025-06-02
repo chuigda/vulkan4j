@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -146,12 +147,12 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkConvertCooperativeVectorMatrixInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkConvertCooperativeVectorMatrixInfoNV> {
+        private static final class Iter implements Iterator<VkConvertCooperativeVectorMatrixInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -240,6 +241,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
         return this;
     }
 
+    public VkConvertCooperativeVectorMatrixInfoNV srcData(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(srcData());
+        return this;
+    }
+
     /// Note: the returned {@link PointerPtr} does not have correct
     /// {@link PointerPtr#size} property. It's up to user to track the size of the buffer,
     /// and use {@link PointerPtr#reinterpret} to set the size before actually reading from or
@@ -272,6 +278,11 @@ public record VkConvertCooperativeVectorMatrixInfoNV(@NotNull MemorySegment segm
 
     public VkConvertCooperativeVectorMatrixInfoNV dstData(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstData, SIZE$dstData);
+        return this;
+    }
+
+    public VkConvertCooperativeVectorMatrixInfoNV dstData(Consumer<@NotNull VkDeviceOrHostAddressKHR> consumer) {
+        consumer.accept(dstData());
         return this;
     }
 

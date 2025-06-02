@@ -183,9 +183,9 @@ private VkSurfaceFormatKHR chooseSwapSurfaceFormat(VkSurfaceFormatKHR[] formats)
 }
 ```
 
-Each `VkSurfaceFormatKHR` entry contains a `format` and a `colorSpace` member. The format member specifies the color channels and types. For example, `VK_FORMAT_B8G8R8A8_SRGB` means that we store the B, G, R and alpha channels in that order with an 8-bit unsigned integer for a total of 32 bits per pixel. The `colorSpace` member indicates if the SRGB color space is supported or not using the `VK_COLOR_SPACE_SRGB_NONLINEAR_KHR` flag. Note that this flag used to be called `VK_COLORSPACE_SRGB_NONLINEAR_KHR` in old versions of the specification.
+Each `VkSurfaceFormatKHR` entry contains a `format` and a `colorSpace` member. The format member specifies the color channels and types. For example, `VK_FORMAT_B8G8R8A8_SRGB` means that we store the B, G, R and alpha channels in that order with an 8-bit unsigned integer for a total of 32 bits per pixel. The `colorSpace` member indicates if the SRGB color space is supported or not using the `VkColorSpaceKHR.SRGB_NONLINEAR` flag. Note that this flag used to be called `VkColorSpaceKHR.SRGB_NONLINEAR` in old versions of the specification.
 
-For the color space we'll use SRGB if it is available, because it [results in more accurate perceived colors](http://stackoverflow.com/questions/12524623/). It is also pretty much the standard color space for images, like the textures we'll use later on. Because of that we should also use an SRGB color format, of which one of the most common ones is `VK_FORMAT_B8G8R8A8_SRGB`.
+For the color space we'll use SRGB if it is available, because it [results in more accurate perceived colors](http://stackoverflow.com/questions/12524623/). It is also pretty much the standard color space for images, like the textures we'll use later on. Because of that we should also use an SRGB color format, of which one of the most common ones is `VkFormat.B8G8R8A8_SRGB`.
 
 Let's go through the list and see if the preferred combination is available:
 
@@ -218,12 +218,12 @@ private VkSurfaceFormatKHR chooseSwapSurfaceFormat(VkSurfaceFormatKHR.Ptr format
 The presentation mode is arguably the most important setting for the swap chain, because it represents the actual conditions for showing images to the screen. There are four possible modes available in Vulkan:
 
 
-- `VK_PRESENT_MODE_IMMEDIATE_KHR`: Images submitted by your application are transferred to the screen right away, which may result in tearing.
-- `VK_PRESENT_MODE_FIFO_KHR`: The swap chain is a queue where the display takes an image from the front of the queue when the display is refreshed and the program inserts rendered images at the back of the queue. If the queue is full then the program has to wait. This is most similar to vertical sync as found in modern games. The moment that the display is refreshed is known as "vertical blank".
-- `VK_PRESENT_MODE_FIFO_RELAXED_KHR`: This mode only differs from the previous one if the application is late and the queue was empty at the last vertical blank. Instead of waiting for the next vertical blank, the image is transferred right away when it finally arrives. This may result in visible tearing.
-- `VK_PRESENT_MODE_MAILBOX_KHR`: This is another variation of the second mode. Instead of blocking the application when the queue is full, the images that are already queued are simply replaced with the newer ones. This mode can be used to render frames as fast as possible while still avoiding tearing, resulting in fewer latency issues than standard vertical sync. This is commonly known as "triple buffering", although the existence of three buffers alone does not necessarily mean that the framerate is unlocked.
+- `VkPresentMode.IMMEDIATE_KHR`: Images submitted by your application are transferred to the screen right away, which may result in tearing.
+- `VkPresentMode.FIFO_KHR`: The swap chain is a queue where the display takes an image from the front of the queue when the display is refreshed and the program inserts rendered images at the back of the queue. If the queue is full then the program has to wait. This is most similar to vertical sync as found in modern games. The moment that the display is refreshed is known as "vertical blank".
+- `VkPresentMode.FIFO_RELAXED_KHR`: This mode only differs from the previous one if the application is late and the queue was empty at the last vertical blank. Instead of waiting for the next vertical blank, the image is transferred right away when it finally arrives. This may result in visible tearing.
+- `VkPresentMode.MAILBOX_KHR`: This is another variation of the second mode. Instead of blocking the application when the queue is full, the images that are already queued are simply replaced with the newer ones. This mode can be used to render frames as fast as possible while still avoiding tearing, resulting in fewer latency issues than standard vertical sync. This is commonly known as "triple buffering", although the existence of three buffers alone does not necessarily mean that the frame rate is unlocked.
 
-Only the `VK_PRESENT_MODE_FIFO_KHR` mode is guaranteed to be available, so we'll again have to write a function that looks for the best mode that is available:
+Only the `VkPresentMode.FIFO_KHR` mode is guaranteed to be available, so we'll again have to write a function that looks for the best mode that is available:
 
 ```java
 private @EnumType(VkPresentModeKHR.class) int chooseSwapPresentMode(
@@ -233,7 +233,7 @@ private @EnumType(VkPresentModeKHR.class) int chooseSwapPresentMode(
 }
 ```
 
-I personally think that `VK_PRESENT_MODE_MAILBOX_KHR` is a very nice trade-off if energy usage is not a concern. It allows us to avoid tearing while still maintaining a fairly low latency by rendering new images that are as up-to-date as possible right until the vertical blank. On mobile devices, where energy usage is more important, you will probably want to use `VK_PRESENT_MODE_FIFO_KHR` instead. Now, let's look through the list to see if `VK_PRESENT_MODE_MAILBOX_KHR` is available:
+I personally think that `VkPresentMode.MAILBOX_KHR` is a very nice trade-off if energy usage is not a concern. It allows us to avoid tearing while still maintaining a fairly low latency by rendering new images that are as up-to-date as possible right until the vertical blank. On mobile devices, where energy usage is more important, you will probably want to use `VkPresentMode.FIFO_KHR` instead. Now, let's look through the list to see if `VkPresentMode.MAILBOX_KHR` is available:
 
 ```java
 private @EnumType(VkPresentModeKHR.class) int chooseSwapPresentMode(
@@ -274,10 +274,9 @@ private VkExtent2D chooseSwapExtent(VkSurfaceCapabilitiesKHR capabilities, Arena
             var width = pWidth.read();
             var height = pHeight.read();
 
-            var actualExtent = VkExtent2D.allocate(arena);
-            actualExtent.width(Math.clamp(width, capabilities.minImageExtent().width(), capabilities.maxImageExtent().width()));
-            actualExtent.height(Math.clamp(height, capabilities.minImageExtent().height(), capabilities.maxImageExtent().height()));
-            return actualExtent;
+            return VkExtent2D.allocate(arena)
+                    .width(Math.clamp(width, capabilities.minImageExtent().width(), capabilities.maxImageExtent().width()))
+                    .height(Math.clamp(height, capabilities.minImageExtent().height(), capabilities.maxImageExtent().height()));
         }
     }
 }
@@ -332,19 +331,22 @@ if (swapChainSupport.capabilities.maxImageCount() > 0
 As is tradition with Vulkan objects, creating the swap chain object requires filling in a large structure. It starts out very familiarly:
 
 ```java
-var createInfo = VkSwapchainCreateInfoKHR.allocate(arena);
-createInfo.surface(surface);
+var createInfo = VkSwapchainCreateInfoKHR.allocate(arena)
+        .surface(surface)
+        // ...
 ```
 
 After specifying which surface the swap chain should be tied to, the details of the swap chain images are specified:
 
 ```java
-createInfo.minImageCount(imageCount);
-createInfo.imageFormat(surfaceFormat.format());
-createInfo.imageColorSpace(surfaceFormat.colorSpace());
-createInfo.imageExtent(extent);
-createInfo.imageArrayLayers(1);
-createInfo.imageUsage(VkImageUsageFlags.COLOR_ATTACHMENT);
+var createInfo = // ...
+        // ...
+        .minImageCount(imageCount)
+        .imageFormat(surfaceFormat.format())
+        .imageColorSpace(surfaceFormat.colorSpace())
+        .imageExtent(extent)
+        .imageArrayLayers(1)
+        .imageUsage(VkImageUsageFlags.COLOR_ATTACHMENT);
 ```
 
 The `imageArrayLayers` specifies the amount of layers each image consists of. This is always `1` unless you are developing a stereoscopic 3D application. The `imageUsage` bit field specifies what kind of operations we'll use the images in the swap chain for. In this tutorial we're going to render directly to them, which means that they're used as color attachment. It is also possible that you'll render images to a separate image first to perform operations like post-processing. In that case you may use a value like `VK_IMAGE_USAGE_TRANSFER_DST_BIT` instead and use a memory operation to transfer the rendered image to a swap chain image.
@@ -353,12 +355,10 @@ The `imageArrayLayers` specifies the amount of layers each image consists of. Th
 var indices = findQueueFamilies(physicalDevice);
 assert indices != null : "Queue family indices should not be null";
 if (indices.graphicsFamily != indices.presentFamily) {
-    createInfo.imageSharingMode(VkSharingMode.CONCURRENT);
-    createInfo.queueFamilyIndexCount(2);
-    var pQueueFamilyIndices = IntPtr.allocate(arena, 2);
-    pQueueFamilyIndices.write(0, indices.graphicsFamily());
-    pQueueFamilyIndices.write(1, indices.presentFamily());
-    createInfo.pQueueFamilyIndices(pQueueFamilyIndices);
+    var pQueueFamilyIndices = IntPtr.allocateV(arena, indices.graphicsFamily(), indices.presentFamily());
+    createInfo.imageSharingMode(VkSharingMode.CONCURRENT)
+            .queueFamilyIndexCount(2)
+            .pQueueFamilyIndices(pQueueFamilyIndices);
 }
 else {
     createInfo.imageSharingMode(VkSharingMode.EXCLUSIVE);
@@ -385,8 +385,9 @@ createInfo.compositeAlpha(VkCompositeAlphaFlagsKHR.OPAQUE);
 The `compositeAlpha` field specifies if the alpha channel should be used for blending with other windows in the window system. You'll almost always want to simply ignore the alpha channel, hence `VkCompositeAlpha.OPAQUE`.
 
 ```java
-createInfo.presentMode(presentMode);
-createInfo.clipped(VkConstants.TRUE);
+createInfo
+        .presentMode(presentMode)
+        .clipped(VkConstants.TRUE);
 ```
 
 The `presentMode` member speaks for itself. If the clipped member is set to VK_TRUE then that means that we don't care about the color of pixels that are obscured, for example because another window is in front of them. Unless you really need to be able to read these pixels back and get predictable results, you'll get the best performance by enabling clipping.
@@ -394,6 +395,18 @@ The `presentMode` member speaks for itself. If the clipped member is set to VK_T
 ```java
 createInfo.oldSwapchain(null); // optional
 ```
+
+> Hint: chaining the API calls
+> 
+> *Just for clarity purpose*, this tutorial does not always use the chaining API calls in code snippets. But you can chain the API calls together in your code as usual. For example, you can actually write:
+> 
+> ```java
+> createInfo.preTransform(swapChainSupport.capabilities.currentTransform())
+>       .compositeAlpha(VkCompositeAlphaFlagsKHR.OPAQUE)
+>       .presentMode(presentMode)
+>       .clipped(VkConstants.TRUE)
+>       .oldSwapchain(null);
+> ```
 
 That leaves one last field, `oldSwapChain`. With Vulkan it's possible that your swap chain becomes invalid or suboptimal while your application is running, for example because the window was resized. In that case the swap chain actually needs to be recreated from scratch and a reference to the old one must be specified in this field. This is a complex topic that we'll learn more about in a future chapter. For now, we'll assume that we'll only ever create one swap chain.
 
@@ -459,6 +472,8 @@ if (result != VkResult.SUCCESS) {
 }
 ```
 
+> Note: auto arena
+> 
 > Here we are allocating the `swapChainImages` array in the auto arena instead of the confined, temporary arena. This is because the swap chain images will be used throughout the lifetime of the application, so we need to ensure that they are not deallocated after function returns.
 
 One last thing, store the format and extent we've chosen for the swap chain images in member variables. We'll need them in future chapters.

@@ -38,10 +38,10 @@ private void createCommandBuffers() {
     pCommandBuffers = VkCommandBuffer.Ptr.allocate(Arena.ofAuto(), MAX_FRAMES_IN_FLIGHT);
 
     try (var arena = Arena.ofConfined()) {
-        var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
-        allocInfo.commandPool(commandPool);
-        allocInfo.level(VkCommandBufferLevel.PRIMARY);
-        allocInfo.commandBufferCount(1);
+        var allocInfo = VkCommandBufferAllocateInfo.allocate(arena)
+                .commandPool(commandPool)
+                .level(VkCommandBufferLevel.PRIMARY)
+                .commandBufferCount(1);
 
         for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
             var pCommandBuffer = pCommandBuffers.offset(i);
@@ -144,7 +144,7 @@ private void drawFrame() {
 }
 ```
 
-By using the modulo (%) operator, we ensure that the frame index loops around after every MAX_FRAMES_IN_FLIGHT enqueued frames.
+By using the modulo (%) operator, we ensure that the frame index loops around after every `MAX_FRAMES_IN_FLIGHT` enqueued frames.
 
 We've now implemented all the needed synchronization to ensure that there are no more than `MAX_FRAMES_IN_FLIGHT` frames of work enqueued and that these frames are not stepping over each other. Note that it is fine for other parts of the code, like the final cleanup, to rely on more rough synchronization like `VkDeviceCommands::deviceWaitIdle`. You should decide on which approach to use based on performance requirements.
 

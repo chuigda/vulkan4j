@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -160,12 +161,12 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH265SequenceParameterSet> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH265SequenceParameterSet> {
+        private static final class Iter implements Iterator<StdVideoH265SequenceParameterSet> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -210,6 +211,11 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public StdVideoH265SequenceParameterSet flags(@NotNull StdVideoH265SpsFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
+    }
+
+    public StdVideoH265SequenceParameterSet flags(Consumer<@NotNull StdVideoH265SpsFlags> consumer) {
+        consumer.accept(flags());
         return this;
     }
 

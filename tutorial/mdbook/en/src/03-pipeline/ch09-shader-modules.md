@@ -225,13 +225,13 @@ Creating a shader module is simple, we only need to specify a pointer to the buf
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var createInfo = VkShaderModuleCreateInfo.allocate(arena);
-    createInfo.codeSize(code.size() * Integer.BYTES);
-    createInfo.pCode(code);
+    var createInfo = VkShaderModuleCreateInfo.allocate(arena)
+            .codeSize(code.size() * Integer.BYTES)
+            .pCode(code);
 }
 ```
 
-The `VkShaderModule` can then be created with a call to `DeviceCommands::createShaderModule`:
+The `VkShaderModule` can then be created with a call to `VkDeviceCommands::createShaderModule`:
 
 ```java
 var pShaderModule = VkShaderModule.Ptr.allocate(arena);
@@ -269,16 +269,13 @@ We'll start by filling in the structure for the vertex shader, again in the `cre
 ```java
 var shaderStages = VkPipelineShaderStageCreateInfo.allocate(arena, 2);
 
-var vertShaderStageInfo = shaderStages.at(0);
-vertShaderStageInfo.stage(VkShaderStageFlags.VERTEX);
+shaderStages.at(0)
+        .stage(VkShaderStageFlags.VERTEX)
+        .module(vertexShaderModule)
+        .pName(BytePtr.allocateString(arena, "main"));
 ```
 
 The first step, is telling Vulkan in which pipeline stage the shader is going to be used. There is an enum value for each of the programmable stages described in the previous chapter.
-
-```java
-vertShaderStageInfo.module(vertexShaderModule);
-vertShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
-```
 
 The next two members specify the shader module containing the code, and the function to invoke, known as the *entrypoint*. That means that it's possible to combine multiple fragment shaders into a single shader module and use different entry points to differentiate between their behaviors. In this case we'll stick to the standard main, however.
 
@@ -287,10 +284,10 @@ There is one more (optional) member, `pSpecializationInfo`, which we won't be us
 Modifying the structure to suit the fragment shader is easy:
 
 ```java
-var fragShaderStageInfo = shaderStages.at(1);
-fragShaderStageInfo.stage(VkShaderStageFlags.FRAGMENT);
-fragShaderStageInfo.module(fragmentShaderModule);
-fragShaderStageInfo.pName(BytePtr.allocateString(arena, "main"));
+shaderStages.at(1)
+        .stage(VkShaderStageFlags.FRAGMENT)
+        .module(fragmentShaderModule)
+        .pName(BytePtr.allocateString(arena, "main"));
 ```
 
 That's all there is describing the programmable stages of the pipeline. In the next chapter we'll look at the fixed-function stages.

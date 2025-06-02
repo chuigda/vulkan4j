@@ -205,14 +205,15 @@ private void generateMipmaps(VkImage image, int texWidth, int texHeight, int mip
     try (var arena = Arena.ofConfined()) {
         var commandBuffer = beginSingleTimeCommands();
 
-        var barrier = VkImageMemoryBarrier.allocate(arena);
-        barrier.image(image);
-        barrier.srcQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
-        barrier.dstQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
-        barrier.subresourceRange().aspectMask(VkImageAspectFlags.COLOR);
-        barrier.subresourceRange().baseArrayLayer(0);
-        barrier.subresourceRange().layerCount(1);
-        barrier.subresourceRange().levelCount(1);
+        var barrier = VkImageMemoryBarrier.allocate(arena)
+                .image(image)
+                .srcQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED)
+                .dstQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED)
+                .subresourceRange(it -> it
+                        .aspectMask(VkImageAspectFlags.COLOR)
+                        .baseArrayLayer(0)
+                        .layerCount(1)
+                        .levelCount(1));
 
         var blit = VkImageBlit.allocate(arena);
 
@@ -236,10 +237,10 @@ This loop will record each of the `VkDeviceCommands::cmdBlitImage` commands. Not
 
 ```java
 barrier.subresourceRange().baseMipLevel(i - 1);
-barrier.oldLayout(VkImageLayout.TRANSFER_DST_OPTIMAL);
-barrier.newLayout(VkImageLayout.TRANSFER_SRC_OPTIMAL);
-barrier.srcAccessMask(VkAccessFlags.TRANSFER_WRITE);
-barrier.dstAccessMask(VkAccessFlags.TRANSFER_READ);
+barrier.oldLayout(VkImageLayout.TRANSFER_DST_OPTIMAL)
+        .newLayout(VkImageLayout.TRANSFER_SRC_OPTIMAL)
+        .srcAccessMask(VkAccessFlags.TRANSFER_WRITE)
+        .dstAccessMask(VkAccessFlags.TRANSFER_READ);
 deviceCommands.cmdPipelineBarrier(
         commandBuffer,
         VkPipelineStageFlags.TRANSFER,
@@ -255,29 +256,33 @@ First, we transition level `i - 1` to `VkImageLayout.TRANSFER_SRC_OPTIMAL`. This
 
 ```java
 var srcOffsets = blit.srcOffsets();
-srcOffsets.at(0).x(0);
-srcOffsets.at(0).y(0);
-srcOffsets.at(0).z(0);
-srcOffsets.at(1).x(mipWidth);
-srcOffsets.at(1).y(mipHeight);
-srcOffsets.at(1).z(1);
-var srcSubresource = blit.srcSubresource();
-srcSubresource.aspectMask(VkImageAspectFlags.COLOR);
-srcSubresource.mipLevel(i - 1);
-srcSubresource.baseArrayLayer(0);
-srcSubresource.layerCount(1);
+srcOffsets.at(0)
+        .x(0)
+        .y(0)
+        .z(0);
+srcOffsets.at(1)
+        .x(mipWidth)
+        .y(mipHeight)
+        .z(1);
+blit.srcSubresource()
+        .aspectMask(VkImageAspectFlags.COLOR)
+        .mipLevel(i - 1)
+        .baseArrayLayer(0)
+        .layerCount(1);
 var dstOffsets = blit.dstOffsets();
-dstOffsets.at(0).x(0);
-dstOffsets.at(0).y(0);
-dstOffsets.at(0).z(0);
-dstOffsets.at(1).x(mipWidth > 1 ? mipWidth / 2 : 1);
-dstOffsets.at(1).y(mipHeight > 1 ? mipHeight / 2 : 1);
-dstOffsets.at(1).z(1);
-var dstSubresource = blit.dstSubresource();
-dstSubresource.aspectMask(VkImageAspectFlags.COLOR);
-dstSubresource.mipLevel(i);
-dstSubresource.baseArrayLayer(0);
-dstSubresource.layerCount(1);
+dstOffsets.at(0)
+        .x(0)
+        .y(0)
+        .z(0);
+dstOffsets.at(1)
+        .x(mipWidth > 1 ? mipWidth / 2 : 1)
+        .y(mipHeight > 1 ? mipHeight / 2 : 1)
+        .z(1);
+blit.dstSubresource()
+        .aspectMask(VkImageAspectFlags.COLOR)
+        .mipLevel(i)
+        .baseArrayLayer(0)
+        .layerCount(1);
 ```
 
 Next, we specify the regions that will be used in the blit operation. The source mip level is `i - 1` and the destination mip level is `i`. The two elements of the `srcOffsets` array determine the 3D region that data will be blitted from. `dstOffsets` determines the region that data will be blitted to. The X and Y dimensions of the `dstOffsets.at(1)` are divided by two since each mip level is half the size of the previous level. The Z dimension of `srcOffsets.at(1)` and `dstOffsets.at(1)` must be 1, since a 2D image has a depth of 1.
@@ -302,10 +307,10 @@ Beware if you are using a dedicated transfer queue (as suggested in [Vertex buff
 The last parameter allows us to specify a `VkFilter` to use in the blit. We have the same filtering options here that we had when making the `VkSampler`. We use the `VkFilter.LINEAR` to enable interpolation.
 
 ```java
-barrier.oldLayout(VkImageLayout.TRANSFER_SRC_OPTIMAL);
-barrier.newLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL);
-barrier.srcAccessMask(VkAccessFlags.TRANSFER_READ);
-barrier.dstAccessMask(VkAccessFlags.SHADER_READ);
+barrier.oldLayout(VkImageLayout.TRANSFER_SRC_OPTIMAL)
+        .newLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL)
+        .srcAccessMask(VkAccessFlags.TRANSFER_READ)
+        .dstAccessMask(VkAccessFlags.SHADER_READ);
 deviceCommands.cmdPipelineBarrier(
         commandBuffer,
         VkPipelineStageFlags.TRANSFER,
@@ -332,10 +337,10 @@ At the end of the loop, we divide the current mip dimensions by two. We check ea
 
 ```java
 barrier.subresourceRange().baseMipLevel(mipLevels - 1);
-barrier.oldLayout(VkImageLayout.TRANSFER_DST_OPTIMAL);
-barrier.newLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL);
-barrier.srcAccessMask(VkAccessFlags.TRANSFER_WRITE);
-barrier.dstAccessMask(VkAccessFlags.SHADER_READ);
+barrier.oldLayout(VkImageLayout.TRANSFER_DST_OPTIMAL)
+        .newLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL)
+        .srcAccessMask(VkAccessFlags.TRANSFER_WRITE)
+        .dstAccessMask(VkAccessFlags.SHADER_READ);
 
 deviceCommands.cmdPipelineBarrier(
         commandBuffer,
@@ -450,10 +455,11 @@ To see the results of this chapter, we need to choose values for our `textureSam
 private void createTextureSampler() {
     // ...
 
-    samplerInfo.mipmapMode(VkSamplerMipmapMode.VK_SAMPLER_MIPMAP_MODE_LINEAR);
-    samplerInfo.minLod(0.0f); // Optional
-    samplerInfo.maxLod((float) textureMipLevels);
-    samplerInfo.mipLodBias(0.0f); // Optional
+    samplerInfo
+            .mipmapMode(VkSamplerMipmapMode.VK_SAMPLER_MIPMAP_MODE_LINEAR)
+            .minLod(0.0f) // Optional
+            .maxLod((float) textureMipLevels)
+            .mipLodBias(0.0f); // Optional
 }
 ```
 

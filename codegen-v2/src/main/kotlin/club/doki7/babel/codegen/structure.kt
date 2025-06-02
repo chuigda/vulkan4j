@@ -109,6 +109,7 @@ fun generateStructure(
     imports("java.util.List")
     imports("java.util.Iterator")
     imports("java.util.NoSuchElementException")
+    imports("java.util.function.Consumer")
 
     +""
     imports("org.jetbrains.annotations.Nullable")
@@ -350,13 +351,13 @@ fun generateStructure(
             +""
 
             +"@Override"
-            defun("public", "@NotNull Iter", "iterator") {
+            defun("public", "@NotNull Iterator<$className>", "iterator") {
                 +"return new Iter(this.segment());"
             }
             +""
 
             +"/// An iterator over the structures."
-            +"public static final class Iter implements Iterator<$className> {"
+            +"private static final class Iter implements Iterator<$className> {"
             indent {
                 +"Iter(@NotNull MemorySegment segment) {"
                 indent {

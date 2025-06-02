@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -127,12 +128,12 @@ public record StdVideoAV1ColorConfigFlags(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoAV1ColorConfigFlags> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoAV1ColorConfigFlags> {
+        private static final class Iter implements Iterator<StdVideoAV1ColorConfigFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

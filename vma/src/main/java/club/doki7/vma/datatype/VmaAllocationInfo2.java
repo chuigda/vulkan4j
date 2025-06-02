@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -146,12 +147,12 @@ public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVma
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VmaAllocationInfo2> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VmaAllocationInfo2> {
+        private static final class Iter implements Iterator<VmaAllocationInfo2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -196,6 +197,11 @@ public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVma
 
     public VmaAllocationInfo2 allocationInfo(@NotNull VmaAllocationInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$allocationInfo, SIZE$allocationInfo);
+        return this;
+    }
+
+    public VmaAllocationInfo2 allocationInfo(Consumer<@NotNull VmaAllocationInfo> consumer) {
+        consumer.accept(allocationInfo());
         return this;
     }
 

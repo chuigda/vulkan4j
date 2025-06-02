@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -136,12 +137,12 @@ public record VkRenderPassInputAttachmentAspectCreateInfo(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderPassInputAttachmentAspectCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderPassInputAttachmentAspectCreateInfo> {
+        private static final class Iter implements Iterator<VkRenderPassInputAttachmentAspectCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

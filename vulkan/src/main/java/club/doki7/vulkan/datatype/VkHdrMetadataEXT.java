@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -142,12 +143,12 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkHdrMetadataEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkHdrMetadataEXT> {
+        private static final class Iter implements Iterator<VkHdrMetadataEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -227,12 +228,22 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         return this;
     }
 
+    public VkHdrMetadataEXT displayPrimaryRed(Consumer<@NotNull VkXYColorEXT> consumer) {
+        consumer.accept(displayPrimaryRed());
+        return this;
+    }
+
     public @NotNull VkXYColorEXT displayPrimaryGreen() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$displayPrimaryGreen, LAYOUT$displayPrimaryGreen));
     }
 
     public VkHdrMetadataEXT displayPrimaryGreen(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displayPrimaryGreen, SIZE$displayPrimaryGreen);
+        return this;
+    }
+
+    public VkHdrMetadataEXT displayPrimaryGreen(Consumer<@NotNull VkXYColorEXT> consumer) {
+        consumer.accept(displayPrimaryGreen());
         return this;
     }
 
@@ -245,12 +256,22 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         return this;
     }
 
+    public VkHdrMetadataEXT displayPrimaryBlue(Consumer<@NotNull VkXYColorEXT> consumer) {
+        consumer.accept(displayPrimaryBlue());
+        return this;
+    }
+
     public @NotNull VkXYColorEXT whitePoint() {
         return new VkXYColorEXT(segment.asSlice(OFFSET$whitePoint, LAYOUT$whitePoint));
     }
 
     public VkHdrMetadataEXT whitePoint(@NotNull VkXYColorEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$whitePoint, SIZE$whitePoint);
+        return this;
+    }
+
+    public VkHdrMetadataEXT whitePoint(Consumer<@NotNull VkXYColorEXT> consumer) {
+        consumer.accept(whitePoint());
         return this;
     }
 

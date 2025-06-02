@@ -50,6 +50,15 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
         segment.set(ValueLayout.JAVA_DOUBLE, index * Double.BYTES, value);
     }
 
+    public void write(double @NotNull [] array) {
+        segment.copyFrom(MemorySegment.ofArray(array));
+    }
+
+    public void writeV(double value0, double @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link DoublePtr} is capable of holding at least {@code newSize} doubles, create
     /// a new view {@link DoublePtr} that uses the same backing storage as this {@link DoublePtr},
     /// but with the new size. Since there is actually no way to really check whether the new size
@@ -113,7 +122,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Double> iterator() {
         return new Iter(segment);
     }
 
@@ -165,8 +174,11 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
         return new DoublePtr(arena.allocateFrom(ValueLayout.JAVA_DOUBLE, array));
     }
 
-    public static @NotNull DoublePtr allocateV(@NotNull Arena arena, double ...array) {
-        return allocate(arena, array);
+    public static @NotNull DoublePtr allocateV(@NotNull Arena arena, double value0, double ...values) {
+        DoublePtr ret = allocate(arena, values.length + 1);
+        ret.write(value0);
+        ret.offset(1).segment.copyFrom(MemorySegment.ofArray(values));
+        return ret;
     }
 
     /// Allocate a new {@link DoublePtr} in {@code arena} and copy the contents of {@code buffer} into
@@ -192,7 +204,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
     }
 
     /// An iterator over the double precision float numbers.
-    public static final class Iter implements Iterator<Double> {
+    private static final class Iter implements Iterator<Double> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

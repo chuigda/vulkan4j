@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -135,12 +136,12 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSurfaceFormat2KHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSurfaceFormat2KHR> {
+        private static final class Iter implements Iterator<VkSurfaceFormat2KHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -217,6 +218,11 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
 
     public VkSurfaceFormat2KHR surfaceFormat(@NotNull VkSurfaceFormatKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceFormat, SIZE$surfaceFormat);
+        return this;
+    }
+
+    public VkSurfaceFormat2KHR surfaceFormat(Consumer<@NotNull VkSurfaceFormatKHR> consumer) {
+        consumer.accept(surfaceFormat());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -137,12 +138,12 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDisplayPresentInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDisplayPresentInfoKHR> {
+        private static final class Iter implements Iterator<VkDisplayPresentInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -222,12 +223,22 @@ public record VkDisplayPresentInfoKHR(@NotNull MemorySegment segment) implements
         return this;
     }
 
+    public VkDisplayPresentInfoKHR srcRect(Consumer<@NotNull VkRect2D> consumer) {
+        consumer.accept(srcRect());
+        return this;
+    }
+
     public @NotNull VkRect2D dstRect() {
         return new VkRect2D(segment.asSlice(OFFSET$dstRect, LAYOUT$dstRect));
     }
 
     public VkDisplayPresentInfoKHR dstRect(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstRect, SIZE$dstRect);
+        return this;
+    }
+
+    public VkDisplayPresentInfoKHR dstRect(Consumer<@NotNull VkRect2D> consumer) {
+        consumer.accept(dstRect());
         return this;
     }
 

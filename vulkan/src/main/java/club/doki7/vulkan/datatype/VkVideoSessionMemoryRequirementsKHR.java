@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -136,12 +137,12 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoSessionMemoryRequirementsKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoSessionMemoryRequirementsKHR> {
+        private static final class Iter implements Iterator<VkVideoSessionMemoryRequirementsKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -227,6 +228,11 @@ public record VkVideoSessionMemoryRequirementsKHR(@NotNull MemorySegment segment
 
     public VkVideoSessionMemoryRequirementsKHR memoryRequirements(@NotNull VkMemoryRequirements value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
+        return this;
+    }
+
+    public VkVideoSessionMemoryRequirementsKHR memoryRequirements(Consumer<@NotNull VkMemoryRequirements> consumer) {
+        consumer.accept(memoryRequirements());
         return this;
     }
 

@@ -33,21 +33,16 @@ var indices = findQueueFamilies(physicalDevice);
 assert indices != null : "Queue family indices should not be null";
 
 try (var arena = Arena.ofConfined()) {
-    var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena);
-    queueCreateInfo.queueCount(1);
-    queueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
+    var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena)
+            .queueCount(1)
+            .queueFamilyIndex(indices.graphicsFamily())
+            .pQueuePriorities(FloatPtr.allocateV(arena, 1.0f));
 }
 ```
 
 The currently available drivers will only allow you to create a small number of queues for each queue family, and you don't really need more than one. That's because you can create all the command buffers on multiple threads and then submit them all at once on the main thread with a single low-overhead call.
 
-Vulkan lets you assign priorities to queues to influence the scheduling of command buffer execution using floating point numbers between `0.0` and `1.0`. This is required even if there is only a single queue:
-
-```java
-var pQueuePriorities = FloatPtr.allocate(arena);
-pQueuePriorities.write(1.0f);
-queueCreateInfo.pQueuePriorities(pQueuePriorities);
-```
+Vulkan lets you assign priorities to queues to influence the scheduling of command buffer execution using floating point numbers between `0.0` and `1.0`. This is required even if there is only a single queue.
 
 ## Specifying used device features
 
@@ -57,16 +52,18 @@ The next information to specify is the set of device features that we'll be usin
 var deviceFeatures = VkPhysicalDeviceFeatures.allocate(arena);
 ```
 
-> Note: all `MemorySegment`s allocated by for kinds of Java builtin arenas (`Arena.ofConfined`, `Arena.ofAuto`, `Arena.ofShared` and `Arena.global`) are automatically zero-initialized, and the `allocate` series methods will create structures with these zero-initialized segments.
+> Hint: make use of auto zero-init
+> 
+> All `MemorySegment`s allocated by for kinds of Java builtin arenas (`Arena.ofConfined`, `Arena.ofAuto`, `Arena.ofShared` and `Arena.global`) are automatically zero-initialized, thus the `allocate` series methods using these arenas will create structures with these zero-initialized segments.
 
 ## Creating the logical device
 
 With the previous two structures in place, we can start filling in the main `VkDeviceCreateInfo` structure. First add pointers to the queue creation info and the device features.
 ```java
-var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
-deviceCreateInfo.queueCreateInfoCount(1);
-deviceCreateInfo.pQueueCreateInfos(queueCreateInfo);
-deviceCreateInfo.pEnabledFeatures(deviceFeatures);
+var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena)
+        .queueCreateInfoCount(1)
+        .pQueueCreateInfos(queueCreateInfo)
+        .pEnabledFeatures(deviceFeatures);
 ```
 
 The remainder of the information bears a resemblance to the `VkInstanceCreateInfo` struct and requires you to specify extensions and validation layers. The difference is that these are device specific this time.
@@ -77,10 +74,8 @@ Previous implementations of Vulkan made a distinction between instance and devic
 
 ```java
 if (ENABLE_VALIDATION_LAYERS) {
-    deviceCreateInfo.enabledLayerCount(1);
-    PointerPtr ppEnabledLayerNames = PointerPtr.allocate(arena);
-    ppEnabledLayerNames.write(BytePtr.allocateString(arena, VALIDATION_LAYER_NAME));
-    deviceCreateInfo.ppEnabledLayerNames(ppEnabledLayerNames);
+    deviceCreateInfo.enabledLayerCount(1)
+            .ppEnabledLayerNames(PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VALIDATION_LAYER_NAME)));
 }
 ```
 

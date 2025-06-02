@@ -50,6 +50,15 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
         segment.set(ValueLayout.JAVA_LONG, index * Long.BYTES, value);
     }
 
+    public void write(long @NotNull [] array) {
+        segment.copyFrom(MemorySegment.ofArray(array));
+    }
+
+    public void writeV(long value0, long @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link LongPtr} is capable of holding at least {@code newSize} long integers,
     /// create a new view {@link LongPtr} that uses the same backing storage as this
     /// {@link LongPtr}, but with the new size. Since there is actually no way to really check
@@ -83,7 +92,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Long> iterator() {
         return new Iter(segment);
     }
 
@@ -165,8 +174,11 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
         return new LongPtr(arena.allocateFrom(ValueLayout.JAVA_LONG, array));
     }
 
-    public static @NotNull LongPtr allocateV(@NotNull Arena arena, long ...array) {
-        return allocate(arena, array);
+    public static @NotNull LongPtr allocateV(@NotNull Arena arena, long value0, long ...values) {
+        LongPtr ret = allocate(arena, values.length + 1);
+        ret.write(value0);
+        ret.offset(1).segment.copyFrom(MemorySegment.ofArray(values));
+        return ret;
     }
 
     /// Allocate a new {@link LongPtr} in {@code arena} and copy the contents of {@code buffer} into
@@ -196,7 +208,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     /// An iterator over the long integers.
-    public static final class Iter implements Iterator<Long> {
+    private static final class Iter implements Iterator<Long> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

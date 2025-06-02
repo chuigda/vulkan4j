@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -142,12 +143,12 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAndroidHardwareBufferFormatPropertiesANDROID> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAndroidHardwareBufferFormatPropertiesANDROID> {
+        private static final class Iter implements Iterator<VkAndroidHardwareBufferFormatPropertiesANDROID> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -251,6 +252,11 @@ public record VkAndroidHardwareBufferFormatPropertiesANDROID(@NotNull MemorySegm
 
     public VkAndroidHardwareBufferFormatPropertiesANDROID samplerYcbcrConversionComponents(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
+        return this;
+    }
+
+    public VkAndroidHardwareBufferFormatPropertiesANDROID samplerYcbcrConversionComponents(Consumer<@NotNull VkComponentMapping> consumer) {
+        consumer.accept(samplerYcbcrConversionComponents());
         return this;
     }
 

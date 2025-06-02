@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -142,12 +143,12 @@ public record VkClusterAccelerationStructureTriangleClusterInputNV(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClusterAccelerationStructureTriangleClusterInputNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClusterAccelerationStructureTriangleClusterInputNV> {
+        private static final class Iter implements Iterator<VkClusterAccelerationStructureTriangleClusterInputNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -138,12 +139,12 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkHostImageLayoutTransitionInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkHostImageLayoutTransitionInfo> {
+        private static final class Iter implements Iterator<VkHostImageLayoutTransitionInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -251,6 +252,11 @@ public record VkHostImageLayoutTransitionInfo(@NotNull MemorySegment segment) im
 
     public VkHostImageLayoutTransitionInfo subresourceRange(@NotNull VkImageSubresourceRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
+        return this;
+    }
+
+    public VkHostImageLayoutTransitionInfo subresourceRange(Consumer<@NotNull VkImageSubresourceRange> consumer) {
+        consumer.accept(subresourceRange());
         return this;
     }
 
