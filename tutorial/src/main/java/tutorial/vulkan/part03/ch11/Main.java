@@ -329,20 +329,18 @@ class Application {
             for (long i = 0; i < swapChainImages.size(); i++) {
                 createInfo.image(swapChainImages.read(i))
                         .viewType(VkImageViewType._2D)
-                        .format(swapChainImageFormat);
-
-                createInfo.components()
-                        .r(VkComponentSwizzle.IDENTITY)
-                        .g(VkComponentSwizzle.IDENTITY)
-                        .b(VkComponentSwizzle.IDENTITY)
-                        .a(VkComponentSwizzle.IDENTITY);
-
-                createInfo.subresourceRange()
-                        .aspectMask(VkImageAspectFlags.COLOR)
-                        .baseMipLevel(0)
-                        .levelCount(1)
-                        .baseArrayLayer(0)
-                        .layerCount(1);
+                        .format(swapChainImageFormat)
+                        .components(it -> it
+                                .r(VkComponentSwizzle.IDENTITY)
+                                .g(VkComponentSwizzle.IDENTITY)
+                                .b(VkComponentSwizzle.IDENTITY)
+                                .a(VkComponentSwizzle.IDENTITY))
+                        .subresourceRange(it -> it
+                                .aspectMask(VkImageAspectFlags.COLOR)
+                                .baseMipLevel(0)
+                                .levelCount(1)
+                                .baseArrayLayer(0)
+                                .layerCount(1));
 
                 var result = deviceCommands.createImageView(device, createInfo, null, pImageView);
                 if (result != VkResult.SUCCESS) {

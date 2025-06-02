@@ -995,11 +995,10 @@ class Application {
                     .renderPass(renderPass)
                     .framebuffer(swapChainFramebuffers.read(imageIndex))
                     .clearValueCount(1)
-                    .pClearValues(pClearValue);
-            var renderArea = renderPassInfo.renderArea();
-            renderArea.offset().x(0);
-            renderArea.offset().y(0);
-            renderArea.extent(swapChainExtent);
+                    .pClearValues(pClearValue)
+                    .renderArea(it -> it
+                            .offset(offset -> offset.x(0).y(0))
+                            .extent(swapChainExtent));
 
             deviceCommands.cmdBeginRenderPass(commandBuffer, renderPassInfo, VkSubpassContents.INLINE);
             deviceCommands.cmdBindPipeline(commandBuffer, VkPipelineBindPoint.GRAPHICS, graphicsPipeline);
@@ -1013,16 +1012,13 @@ class Application {
                     .maxDepth(1.0f);
             deviceCommands.cmdSetViewport(commandBuffer, 0, 1, viewport);
 
-            var scissor = VkRect2D.allocate(arena);
-            scissor.offset().x(0);
-            scissor.offset().y(0);
-            scissor.extent(swapChainExtent);
+            var scissor = VkRect2D.allocate(arena)
+                    .offset(it -> it.x(0).y(0))
+                    .extent(swapChainExtent);
             deviceCommands.cmdSetScissor(commandBuffer, 0, 1, scissor);
 
-            var vertexBuffers = VkBuffer.Ptr.allocate(arena);
-            vertexBuffers.write(vertexBuffer);
-            var offsets = LongPtr.allocate(arena);
-            offsets.write(0);
+            var vertexBuffers = VkBuffer.Ptr.allocateV(arena, vertexBuffer);
+            var offsets = LongPtr.allocateV(arena, 0L);
             deviceCommands.cmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
             deviceCommands.cmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VkIndexType.UINT16);
 
@@ -1451,11 +1447,8 @@ class Application {
                     .initialLayout(VkImageLayout.UNDEFINED)
                     .usage(usage)
                     .samples(VkSampleCountFlags._1)
-                    .sharingMode(VkSharingMode.EXCLUSIVE);
-            imageInfo.extent()
-                    .width(width)
-                    .height(height)
-                    .depth(1);
+                    .sharingMode(VkSharingMode.EXCLUSIVE)
+                    .extent(it -> it.width(width).height(height).depth(1));
 
             var pImage = VkImage.Ptr.allocate(arena);
             var result = deviceCommands.createImage(device, imageInfo, null, pImage);
@@ -1497,13 +1490,13 @@ class Application {
                     .newLayout(newLayout)
                     .srcQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED)
                     .dstQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED)
-                    .image(image);
-            barrier.subresourceRange()
-                    .aspectMask(VkImageAspectFlags.COLOR)
-                    .baseMipLevel(0)
-                    .levelCount(1)
-                    .baseArrayLayer(0)
-                    .layerCount(1);
+                    .image(image)
+                    .subresourceRange(it -> it
+                            .aspectMask(VkImageAspectFlags.COLOR)
+                            .baseMipLevel(0)
+                            .levelCount(1)
+                            .baseArrayLayer(0)
+                            .layerCount(1));
 
             @EnumType(VkPipelineStageFlags.class) int sourceStage;
             @EnumType(VkPipelineStageFlags.class) int destinationStage;
@@ -1557,20 +1550,17 @@ class Application {
             var region = VkBufferImageCopy.allocate(arena)
                     .bufferOffset(0)
                     .bufferRowLength(0)
-                    .bufferImageHeight(0);
-            region.imageSubresource()
-                    .aspectMask(VkImageAspectFlags.COLOR)
-                    .mipLevel(0)
-                    .baseArrayLayer(0)
-                    .layerCount(1);
-            region.imageOffset()
-                    .x(0)
-                    .y(0)
-                    .z(0);
-            region.imageExtent()
-                    .width(width)
-                    .height(height)
-                    .depth(1);
+                    .bufferImageHeight(0)
+                    .imageSubresource(it -> it
+                            .aspectMask(VkImageAspectFlags.COLOR)
+                            .mipLevel(0)
+                            .baseArrayLayer(0)
+                            .layerCount(1))
+                    .imageOffset(it -> it.x(0).y(0).z(0))
+                    .imageExtent(it -> it
+                        .width(width)
+                        .height(height)
+                        .depth(1));
 
             deviceCommands.cmdCopyBufferToImage(
                     commandBuffer,
@@ -1630,13 +1620,13 @@ class Application {
             var viewInfo = VkImageViewCreateInfo.allocate(arena)
                     .image(image)
                     .viewType(VkImageViewType._2D)
-                    .format(format);
-            viewInfo.subresourceRange()
-                    .aspectMask(VkImageAspectFlags.COLOR)
-                    .baseMipLevel(0)
-                    .levelCount(1)
-                    .baseArrayLayer(0)
-                    .layerCount(1);
+                    .format(format)
+                    .subresourceRange(it -> it
+                            .aspectMask(VkImageAspectFlags.COLOR)
+                            .baseMipLevel(0)
+                            .levelCount(1)
+                            .baseArrayLayer(0)
+                            .layerCount(1));
 
             var pImageView = VkImageView.Ptr.allocate(arena);
             var result = deviceCommands.createImageView(device, viewInfo, null, pImageView);

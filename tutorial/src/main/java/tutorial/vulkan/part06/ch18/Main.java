@@ -355,20 +355,18 @@ class Application {
             for (long i = 0; i < swapChainImages.size(); i++) {
                 createInfo.image(swapChainImages.read(i))
                         .viewType(VkImageViewType._2D)
-                        .format(swapChainImageFormat);
-
-                createInfo.components()
-                        .r(VkComponentSwizzle.IDENTITY)
-                        .g(VkComponentSwizzle.IDENTITY)
-                        .b(VkComponentSwizzle.IDENTITY)
-                        .a(VkComponentSwizzle.IDENTITY);
-
-                createInfo.subresourceRange()
-                        .aspectMask(VkImageAspectFlags.COLOR)
-                        .baseMipLevel(0)
-                        .levelCount(1)
-                        .baseArrayLayer(0)
-                        .layerCount(1);
+                        .format(swapChainImageFormat)
+                        .components(it -> it
+                                .r(VkComponentSwizzle.IDENTITY)
+                                .g(VkComponentSwizzle.IDENTITY)
+                                .b(VkComponentSwizzle.IDENTITY)
+                                .a(VkComponentSwizzle.IDENTITY))
+                        .subresourceRange(it -> it
+                                .aspectMask(VkImageAspectFlags.COLOR)
+                                .baseMipLevel(0)
+                                .levelCount(1)
+                                .baseArrayLayer(0)
+                                .layerCount(1));
 
                 var result = deviceCommands.createImageView(device, createInfo, null, pImageView);
                 if (result != VkResult.SUCCESS) {
@@ -698,11 +696,10 @@ class Application {
                     .renderPass(renderPass)
                     .framebuffer(swapChainFramebuffers.read(imageIndex))
                     .clearValueCount(1)
-                    .pClearValues(pClearValue);
-            var renderArea = renderPassInfo.renderArea();
-            renderArea.offset().x(0);
-            renderArea.offset().y(0);
-            renderArea.extent(swapChainExtent);
+                    .pClearValues(pClearValue)
+                    .renderArea(it -> it
+                            .offset(offset -> offset.x(0).y(0))
+                            .extent(swapChainExtent));
 
             deviceCommands.cmdBeginRenderPass(commandBuffer, renderPassInfo, VkSubpassContents.INLINE);
             deviceCommands.cmdBindPipeline(commandBuffer, VkPipelineBindPoint.GRAPHICS, graphicsPipeline);
@@ -716,10 +713,9 @@ class Application {
                     .maxDepth(1.0f);
             deviceCommands.cmdSetViewport(commandBuffer, 0, 1, viewport);
 
-            var scissor = VkRect2D.allocate(arena);
-            scissor.offset().x(0);
-            scissor.offset().y(0);
-            scissor.extent(swapChainExtent);
+            var scissor = VkRect2D.allocate(arena)
+                    .offset(it -> it.x(0).y(0))
+                    .extent(swapChainExtent);
             deviceCommands.cmdSetScissor(commandBuffer, 0, 1, scissor);
 
             deviceCommands.cmdDraw(commandBuffer, 3, 1, 0, 0);
