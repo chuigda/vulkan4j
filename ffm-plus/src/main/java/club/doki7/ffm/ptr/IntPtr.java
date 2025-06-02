@@ -50,6 +50,15 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
         segment.set(ValueLayout.JAVA_INT, index * Integer.BYTES, value);
     }
 
+    public void write(int @NotNull [] array) {
+        segment.copyFrom(MemorySegment.ofArray(array));
+    }
+
+    public void writeV(int value0, int @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link IntPtr} is capable of holding at least {@code newSize} integers, create
     /// a new view {@link IntPtr} that uses the same backing storage as this {@link IntPtr}, but
     /// with the new size. Since there is actually no way to really check whether the new size is

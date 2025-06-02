@@ -50,6 +50,15 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
         segment.set(ValueLayout.JAVA_LONG, index * Long.BYTES, value);
     }
 
+    public void write(long @NotNull [] array) {
+        segment.copyFrom(MemorySegment.ofArray(array));
+    }
+
+    public void writeV(long value0, long @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link LongPtr} is capable of holding at least {@code newSize} long integers,
     /// create a new view {@link LongPtr} that uses the same backing storage as this
     /// {@link LongPtr}, but with the new size. Since there is actually no way to really check

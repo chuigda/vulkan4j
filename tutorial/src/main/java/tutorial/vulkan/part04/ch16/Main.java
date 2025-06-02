@@ -669,17 +669,12 @@ class Application {
                 throw new RuntimeException("Failed to begin recording command buffer, vulkan error code: " + VkResult.explain(result));
             }
 
-            var pClearValue = VkClearValue.allocate(arena);
-            pClearValue.color().float32().write(0, 0.0f);
-            pClearValue.color().float32().write(1, 0.0f);
-            pClearValue.color().float32().write(2, 0.0f);
-            pClearValue.color().float32().write(3, 1.0f);
-
             var renderPassInfo = VkRenderPassBeginInfo.allocate(arena)
                     .renderPass(renderPass)
                     .framebuffer(swapChainFramebuffers.read(imageIndex))
                     .clearValueCount(1)
-                    .pClearValues(pClearValue)
+                    .pClearValues(VkClearValue.allocate(arena)
+                            .color(it -> it.float32().writeV(0.0f, 0.0f, 0.0f, 1.0f)))
                     .renderArea(it -> it
                             .offset(offset -> offset.x(0).y(0))
                             .extent(swapChainExtent));

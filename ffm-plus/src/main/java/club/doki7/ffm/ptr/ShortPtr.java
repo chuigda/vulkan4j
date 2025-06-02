@@ -50,6 +50,15 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
         segment.set(ValueLayout.JAVA_SHORT, index * Short.BYTES, value);
     }
 
+    public void write(short @NotNull [] values) {
+        segment.copyFrom(MemorySegment.ofArray(values));
+    }
+
+    public void writeV(short value0, short @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link ShortPtr} is capable of holding at least {@code newSize} short integers,
     /// create a new view {@link ShortPtr} that uses the same backing storage as this
     /// {@link ShortPtr}, but with the new size. Since there is actually no way to really check

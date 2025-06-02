@@ -1174,14 +1174,12 @@ class Application {
             }
 
             var pClearValues = VkClearValue.allocate(arena, 2);
-            var colorClearValue = pClearValues.at(0);
-            colorClearValue.color().float32().write(0, 0.0f);
-            colorClearValue.color().float32().write(1, 0.0f);
-            colorClearValue.color().float32().write(2, 0.0f);
-            colorClearValue.color().float32().write(3, 1.0f);
-            var depthClearValue = pClearValues.at(1);
-            depthClearValue.depthStencil().depth(1.0f);
-            depthClearValue.depthStencil().stencil(0);
+            pClearValues.at(0).color()
+                    .float32()
+                    .writeV(0.0f, 0.0f, 0.0f, 1.0f);
+            pClearValues.at(1).depthStencil()
+                    .depth(1.0f)
+                    .stencil(0);
             var renderPassInfo = VkRenderPassBeginInfo.allocate(arena)
                     .renderPass(renderPass)
                     .framebuffer(swapChainFramebuffers.read(imageIndex))

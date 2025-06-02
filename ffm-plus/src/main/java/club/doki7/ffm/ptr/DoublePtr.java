@@ -50,6 +50,15 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
         segment.set(ValueLayout.JAVA_DOUBLE, index * Double.BYTES, value);
     }
 
+    public void write(double @NotNull [] array) {
+        segment.copyFrom(MemorySegment.ofArray(array));
+    }
+
+    public void writeV(double value0, double @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link DoublePtr} is capable of holding at least {@code newSize} doubles, create
     /// a new view {@link DoublePtr} that uses the same backing storage as this {@link DoublePtr},
     /// but with the new size. Since there is actually no way to really check whether the new size

@@ -50,6 +50,15 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
         segment.set(ValueLayout.JAVA_BYTE, index, value);
     }
 
+    public void write(byte @NotNull [] bytes) {
+        segment.copyFrom(MemorySegment.ofArray(bytes));
+    }
+
+    public void writeV(byte value0, byte @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link BytePtr} is a null-terminated string, reads the string from the beginning
     /// of the underlying memory segment, until the first NUL byte is encountered or the end of the
     /// segment is reached.
