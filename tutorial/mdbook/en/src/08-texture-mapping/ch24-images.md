@@ -125,13 +125,11 @@ private VkDeviceMemory textureImageMemory;
 The parameters for an image are specified in a `VkImageCreateInfo` struct:
 
 ```java
-var imageInfo = VkImageCreateInfo.allocate(arena);
-imageInfo.imageType(VkImageType._2D);
-imageInfo.extent().width(width);
-imageInfo.extent().height(height);
-imageInfo.extent().depth(1);
-imageInfo.mipLevels(1);
-imageInfo.arrayLayers(1);
+var imageInfo = VkImageCreateInfo.allocate(arena)
+        .imageType(VkImageType._2D)
+        .extent(it -> it.width(width).height(height).depth(1))
+        .mipLevels(1)
+        .arrayLayers(1);
 ```
 
 The image type, specified in the `imageType` field, tells Vulkan with what kind of coordinate system the texels in the image are going to be addressed. It is possible to create 1D, 2D and 3D images. One dimensional images can be used to store an array of data or gradient, two-dimensional images are mainly used for textures, and three-dimensional images can be used to store voxel volumes, for example. The `extent` field specifies the dimensions of the image, basically how many texels there are on each axis. That's why `depth` must be `1` instead of `0`. Our texture will not be an array, and we won't be using mipmapping for now.
@@ -177,8 +175,9 @@ imageInfo.sharingMode(VkSharingMode.EXCLUSIVE);
 The image will only be used by one queue family: the one that supports graphics (and therefore also) transfer operations.
 
 ```java
-imageInfo.samples(VkSampleCountFlags._1);
-imageInfo.flags(0); // Optional
+imageInfo
+        .samples(VkSampleCountFlags._1)
+        .flags(0); // Optional
 ```
 
 The `samples` flag is related to multisampling. This is only relevant for images that will be used as attachments, so stick to one sample. There are some optional flags for images that are related to sparse images. Sparse images are images where only certain regions are actually backed by memory. If you were using a 3D texture for a voxel terrain, for example, then you could use this to avoid allocating memory to store large volumes of "air" values. We won't be using it in this tutorial, so leave it to its default value of `0`.
@@ -198,12 +197,9 @@ The image is created using `VkDeviceCommands.createImage`, which doesn't have an
 var memoryRequirements = VkMemoryRequirements.allocate(arena);
 deviceCommands.getImageMemoryRequirements(device, textureImage, memoryRequirements);
 
-var allocInfo = VkMemoryAllocateInfo.allocate(arena);
-allocInfo.allocationSize(memoryRequirements.size());
-allocInfo.memoryTypeIndex(findMemoryType(
-        memoryRequirements.memoryTypeBits(),
-        VkMemoryPropertyFlags.DEVICE_LOCAL
-));
+var allocInfo = VkMemoryAllocateInfo.allocate(arena)
+        .allocationSize(memRequirements.size())
+        .memoryTypeIndex(findMemoryType(memRequirements.memoryTypeBits(), properties));
 
 var pTextureImageMemory = VkDeviceMemory.Ptr.allocate(arena);
 result = deviceCommands.allocateMemory(device, allocInfo, null, pTextureImageMemory);
@@ -228,19 +224,17 @@ private Pair<VkImage, VkDeviceMemory> createImage(
         @EnumType(VkMemoryPropertyFlags.class) int properties
 ) {
     try (var arena = Arena.ofConfined()) {
-        var imageInfo = VkImageCreateInfo.allocate(arena);
-        imageInfo.imageType(VkImageType._2D);
-        imageInfo.extent().width(width);
-        imageInfo.extent().height(height);
-        imageInfo.extent().depth(1);
-        imageInfo.mipLevels(1);
-        imageInfo.arrayLayers(1);
-        imageInfo.format(format);
-        imageInfo.tiling(tiling);
-        imageInfo.initialLayout(VkImageLayout.UNDEFINED);
-        imageInfo.usage(usage);
-        imageInfo.samples(VkSampleCountFlags._1);
-        imageInfo.sharingMode(VkSharingMode.EXCLUSIVE);
+        var imageInfo = VkImageCreateInfo.allocate(arena)
+                .imageType(VkImageType._2D)
+                .mipLevels(1)
+                .arrayLayers(1)
+                .extent(it -> it.width(width).height(height).depth(1))
+                .format(format)
+                .tiling(tiling)
+                .initialLayout(VkImageLayout.UNDEFINED)
+                .usage(usage)
+                .samples(VkSampleCountFlags._1)
+                .sharingMode(VkSharingMode.EXCLUSIVE);
 
         var pImage = VkImage.Ptr.allocate(arena);
         var result = deviceCommands.createImage(device, imageInfo, null, pImage);
@@ -252,9 +246,9 @@ private Pair<VkImage, VkDeviceMemory> createImage(
         var memRequirements = VkMemoryRequirements.allocate(arena);
         deviceCommands.getImageMemoryRequirements(device, image, memRequirements);
 
-        var allocInfo = VkMemoryAllocateInfo.allocate(arena);
-        allocInfo.allocationSize(memRequirements.size());
-        allocInfo.memoryTypeIndex(findMemoryType(memRequirements.memoryTypeBits(), properties));
+        var allocInfo = VkMemoryAllocateInfo.allocate(arena)
+                .allocationSize(memRequirements.size())
+                .memoryTypeIndex(findMemoryType(memRequirements.memoryTypeBits(), properties));
 
         var pMemory = VkDeviceMemory.Ptr.allocate(arena);
         result = deviceCommands.allocateMemory(device, allocInfo, null, pMemory);
@@ -341,10 +335,10 @@ The function we're going to write now involves recording and executing a command
 ```java
 private VkCommandBuffer beginSingleTimeCommands() {
     try (var arena = Arena.ofConfined()) {
-        var allocInfo = VkCommandBufferAllocateInfo.allocate(arena);
-        allocInfo.level(VkCommandBufferLevel.PRIMARY);
-        allocInfo.commandPool(commandPool);
-        allocInfo.commandBufferCount(1);
+        var allocInfo = VkCommandBufferAllocateInfo.allocate(arena)
+                .level(VkCommandBufferLevel.PRIMARY)
+                .commandPool(commandPool)
+                .commandBufferCount(1);
 
         var pCommandBuffer = VkCommandBuffer.Ptr.allocate(arena);
         var result = deviceCommands.allocateCommandBuffers(device, allocInfo, pCommandBuffer);
@@ -353,8 +347,8 @@ private VkCommandBuffer beginSingleTimeCommands() {
         }
         var commandBuffer = Objects.requireNonNull(pCommandBuffer.read());
 
-        var beginInfo = VkCommandBufferBeginInfo.allocate(arena);
-        beginInfo.flags(VkCommandBufferUsageFlags.ONE_TIME_SUBMIT);
+        var beginInfo = VkCommandBufferBeginInfo.allocate(arena)
+                .flags(VkCommandBufferUsageFlags.ONE_TIME_SUBMIT);
         result = deviceCommands.beginCommandBuffer(commandBuffer, beginInfo);
         if (result != VkResult.SUCCESS) {
             throw new RuntimeException("Failed to begin recording command buffer, vulkan error code: " + VkResult.explain(result));
@@ -368,11 +362,10 @@ private void endSingleTimeCommands(VkCommandBuffer commandBuffer) {
     deviceCommands.endCommandBuffer(commandBuffer);
 
     try (var arena = Arena.ofConfined()) {
-        var submitInfo = VkSubmitInfo.allocate(arena);
-        submitInfo.commandBufferCount(1);
-        var pCommandBuffers = VkCommandBuffer.Ptr.allocate(arena);
-        pCommandBuffers.write(commandBuffer);
-        submitInfo.pCommandBuffers(pCommandBuffers);
+        var pCommandBuffer = VkCommandBuffer.Ptr.allocateV(arena, commandBuffer);
+        var submitInfo = VkSubmitInfo.allocate(arena)
+                .commandBufferCount(1)
+                .pCommandBuffers(pCommandBuffer);
 
         deviceCommands.queueSubmit(graphicsQueue, 1, submitInfo, null);
         deviceCommands.queueWaitIdle(graphicsQueue);
@@ -417,35 +410,38 @@ private void transitionImageLayout(
 One of the most common ways to perform layout transitions is using an *image memory barrier*. A pipeline barrier like that is generally used to synchronize access to resources, like ensuring that a write to a buffer completes before reading from it, but it can also be used to transition image layouts and transfer queue family ownership when `VkSharingMode.EXCLUSIVE` is used. There is an equivalent *buffer memory barrier* to do this for buffers.
 
 ```java
-var barrier = VkImageMemoryBarrier.allocate(arena);
-barrier.oldLayout(oldLayout);
-barrier.newLayout(newLayout);
+var barrier = VkImageMemoryBarrier.allocate(arena)
+        .oldLayout(oldLayout)
+        .newLayout(newLayout);
 ```
 
 The first two fields specify layout transition. It is possible to use `VkImageLayout.UNDEFINED` as `oldLayout` if you don't care about the existing contents of the image.
 
 ```java
-barrier.srcQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
-barrier.dstQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
+barrier
+        .srcQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED)
+        .dstQueueFamilyIndex(VkConstants.QUEUE_FAMILY_IGNORED);
 ```
 
 If you are using the barrier to transfer queue family ownership, then these two fields should be the indices of the queue families. They must be set to `VkConstants.QUEUE_FAMILY_IGNORED` if you don't want to do this (not the default value!).
 
 ```java
-barrier.image(image);
-var subResourceRange = barrier.subresourceRange();
-subResourceRange.aspectMask(VkImageAspectFlags.COLOR);
-subResourceRange.baseMipLevel(0);
-subResourceRange.levelCount(1);
-subResourceRange.baseArrayLayer(0);
-subResourceRange.layerCount(1);
+barrier
+        .image(image)
+        .subresourceRange(it -> it
+                .aspectMask(VkImageAspectFlags.COLOR)
+                                    .baseMipLevel(0)
+                                    .levelCount(1)
+                                    .baseArrayLayer(0)
+                                    .layerCount(1));
 ```
 
 The `image` and `subresourceRange` specify the image that is affected and the specific part of the image. Our image is not an array and does not have mipmapping levels, so only one level and layer are specified.
 
 ```java
-barrier.srcAccessMask(0); // TODO
-barrier.dstAccessMask(0); // TODO
+barrier
+        .srcAccessMask(0)  // TODO
+        .dstAccessMask(0); // TODO
 ```
 
 Barriers are primarily used for synchronization purposes, so you must specify which types of operations that involve the resource must happen before the barrier, and which operations that involve the resource must wait on the barrier. We need to do that despite already using `vkQueueWaitIdle` to manually synchronize. The right values depend on the old and new layout, so we'll get back to this once we've figured out which transitions we're going to use.
@@ -490,25 +486,20 @@ private void copyBufferToImage(
 Just like with buffer copies, you need to specify which part of the buffer is going to be copied to which part of the image. This happens through `VkBufferImageCopy` structs:
 
 ```java
-var region = VkBufferImageCopy.allocate(arena);
-region.bufferOffset(0);
-region.bufferRowLength(0);
-region.bufferImageHeight(0);
-
-var imageSubresource = region.imageSubresource();
-imageSubresource.aspectMask(VkImageAspectFlags.COLOR);
-imageSubresource.mipLevel(0);
-imageSubresource.baseArrayLayer(0);
-imageSubresource.layerCount(1);
-
-var imageOffset = region.imageOffset();
-imageOffset.x(0);
-imageOffset.y(0);
-imageOffset.z(0);
-var imageExtent = region.imageExtent();
-imageExtent.width(width);
-imageExtent.height(height);
-imageExtent.depth(1);
+var region = VkBufferImageCopy.allocate(arena)
+        .bufferOffset(0)
+        .bufferRowLength(0)
+        .bufferImageHeight(0)
+        .imageSubresource(it -> it
+                .aspectMask(VkImageAspectFlags.COLOR)
+                .mipLevel(0)
+                .baseArrayLayer(0)
+                .layerCount(1))
+        .imageOffset(it -> it.x(0).y(0).z(0))
+        .imageExtent(it -> it
+            .width(width)
+            .height(height)
+            .depth(1));
 ```
 
 Most of these fields are self-explanatory. The `bufferOffset` specifies the byte offset in the buffer at which the pixel values start. The `bufferRowLength` and `bufferImageHeight` fields specify how the pixels are laid out in memory. For example, you could have some padding bytes between rows of the image. Specifying `0` for both indicates that the pixels are simply tightly packed like they are in our case. The `imageSubresource`, `imageOffset` and `imageExtent` fields indicate to which part of the image we want to copy the pixels.
@@ -577,16 +568,14 @@ These rules are specified using the following access masks and pipeline stages:
 
 if (oldLayout == VkImageLayout.UNDEFINED
     && newLayout == VkImageLayout.TRANSFER_DST_OPTIMAL) {
-    barrier.srcAccessMask(0);
-    barrier.dstAccessMask(VkAccessFlags.TRANSFER_WRITE);
+    barrier.srcAccessMask(0).dstAccessMask(VkAccessFlags.TRANSFER_WRITE);
 
     sourceStage = VkPipelineStageFlags.TOP_OF_PIPE;
     destinationStage = VkPipelineStageFlags.TRANSFER;
 }
 else if (oldLayout == VkImageLayout.TRANSFER_DST_OPTIMAL
          && newLayout == VkImageLayout.SHADER_READ_ONLY_OPTIMAL) {
-    barrier.srcAccessMask(VkAccessFlags.TRANSFER_WRITE);
-    barrier.dstAccessMask(VkAccessFlags.SHADER_READ);
+    barrier.srcAccessMask(VkAccessFlags.TRANSFER_WRITE).dstAccessMask(VkAccessFlags.SHADER_READ);
 
     sourceStage = VkPipelineStageFlags.TRANSFER;
     destinationStage = VkPipelineStageFlags.FRAGMENT_SHADER;

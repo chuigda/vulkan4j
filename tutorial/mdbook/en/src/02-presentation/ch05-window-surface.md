@@ -139,29 +139,25 @@ Next, we need to have multiple `VkDeviceQueueCreateInfo` structs to create a que
 
 ```java
 var deviceCreateInfo = VkDeviceCreateInfo.allocate(arena);
-var pQueuePriorities = FloatPtr.allocate(arena);
-pQueuePriorities.write(1.0f);
-deviceCreateInfo.queueCreateInfoCount(1);
+var pQueuePriorities = FloatPtr.allocateV(arena, 1.0f);
 if (indices.graphicsFamily == indices.presentFamily) {
-    var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena);
-    queueCreateInfo.queueCount(1);
-    queueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
-    queueCreateInfo.pQueuePriorities(pQueuePriorities);
-    deviceCreateInfo.queueCreateInfoCount(1);
-    deviceCreateInfo.pQueueCreateInfos(queueCreateInfo);
+    var queueCreateInfo = VkDeviceQueueCreateInfo.allocate(arena)
+            .queueCount(1)
+            .queueFamilyIndex(indices.graphicsFamily())
+            .pQueuePriorities(pQueuePriorities);
+    deviceCreateInfo.queueCreateInfoCount(1).pQueueCreateInfos(queueCreateInfo);
 }
 else {
     var queueCreateInfos = VkDeviceQueueCreateInfo.allocate(arena, 2);
-    var graphicsQueueCreateInfo = queueCreateInfos.at(0);
-    var presentQueueCreateInfo = queueCreateInfos.at(1);
-    graphicsQueueCreateInfo.queueCount(1);
-    graphicsQueueCreateInfo.queueFamilyIndex(indices.graphicsFamily());
-    graphicsQueueCreateInfo.pQueuePriorities(pQueuePriorities);
-    presentQueueCreateInfo.queueCount(1);
-    presentQueueCreateInfo.queueFamilyIndex(indices.presentFamily());
-    presentQueueCreateInfo.pQueuePriorities(pQueuePriorities);
-    deviceCreateInfo.queueCreateInfoCount(2);
-    deviceCreateInfo.pQueueCreateInfos(queueCreateInfos);
+    queueCreateInfos.at(0)
+            .queueCount(1)
+            .queueFamilyIndex(indices.graphicsFamily())
+            .pQueuePriorities(pQueuePriorities);
+    queueCreateInfos.at(1)
+            .queueCount(1)
+            .queueFamilyIndex(indices.presentFamily())
+            .pQueuePriorities(pQueuePriorities);
+    deviceCreateInfo.queueCreateInfoCount(2).pQueueCreateInfos(queueCreateInfos);
 }
 ```
 

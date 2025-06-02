@@ -58,11 +58,10 @@ The first structure is `VkVertexInputBindingDescription` and we'll create a stat
 
 ```java
 private static VkVertexInputBindingDescription getBindingDescription(Arena arena) {
-    var description = VkVertexInputBindingDescription.allocate(arena);
-    description.binding(0);
-    description.stride(Float.BYTES * 5);
-    description.inputRate(VkVertexInputRate.VERTEX);
-    return description;
+    return VkVertexInputBindingDescription.allocate(arena)
+            .binding(0)
+            .stride(Float.BYTES * 5)
+            .inputRate(VkVertexInputRate.VERTEX);
 }
 ```
 
@@ -80,8 +79,6 @@ The second structure that describes how to handle vertex input is `VkVertexInput
 ```java
 private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
     var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 2);
-    var vertexAttribute = attributeDescriptions.at(0);
-    var colorAttribute = attributeDescriptions.at(1);
 
     return attributeDescriptions;
 }
@@ -90,10 +87,11 @@ private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Ar
 As the function prototype indicates, there are going to be two of these structures. An attribute description struct describes how to extract a vertex attribute from a chunk of vertex data originating from a binding description. We have two attributes, position and color, so we need two attribute description structs.
 
 ```java
-vertexAttribute.binding(0);
-vertexAttribute.location(0);
-vertexAttribute.format(VkFormat.R32G32_SFLOAT);
-vertexAttribute.offset(0);
+attributeDescriptions.at(0)
+        .binding(0)
+        .location(0)
+        .format(VkFormat.R32G32_SFLOAT)
+        .offset(0);
 ```
 
 The `binding` parameter tells Vulkan from which binding the per-vertex data comes. The `location` parameter references the location directive of the input in the vertex shader. The input in the vertex shader with location `0` is the position, which has two 32-bit float components.
@@ -114,10 +112,11 @@ As you can see, you should use the format where the amount of color channels mat
 The `format` parameter implicitly defines the byte size of attribute data and the `offset` parameter specifies the number of bytes since the start of the per-vertex data to read from. The binding is loading one vertex at a time and the position attribute (`pos`) is at an offset of `0` bytes from the beginning of this struct. here.
 
 ```java
-colorAttribute.binding(0);
-colorAttribute.location(1);
-colorAttribute.format(VkFormat.R32G32B32_SFLOAT);
-colorAttribute.offset(Float.BYTES * 2);
+attributeDescriptions.at(1)
+        .binding(0)
+        .location(1)
+        .format(VkFormat.R32G32B32_SFLOAT)
+        .offset(Float.BYTES * 2);
 ```
 
 The color attribute is described in much the same way.
@@ -129,11 +128,11 @@ We now need to set up the graphics pipeline to accept vertex data in this format
 ```java
 var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena);
 var bindingDescription = getBindingDescription(arena);
-var attributeDescription = getAttributeDescriptions(arena);
-vertexInputInfo.vertexBindingDescriptionCount(1);
-vertexInputInfo.pVertexBindingDescriptions(bindingDescription);
-vertexInputInfo.vertexAttributeDescriptionCount((int) attributeDescription.size());
-vertexInputInfo.pVertexAttributeDescriptions(attributeDescription);
+var vertexInputInfo = VkPipelineVertexInputStateCreateInfo.allocate(arena)
+        .vertexBindingDescriptionCount(1)
+        .pVertexBindingDescriptions(bindingDescription)
+        .vertexAttributeDescriptionCount((int) attributeDescription.size())
+        .pVertexAttributeDescriptions(attributeDescription);
 ```
 
 The pipeline is now ready to accept vertex data in the format of the `vertices` container and pass it on to our vertex shader. If you run the program now with validation layers enabled, you'll see that it complains that there is no vertex buffer bound to the binding. The next step is to create a vertex buffer and move the vertex data to it so the GPU is able to access it.

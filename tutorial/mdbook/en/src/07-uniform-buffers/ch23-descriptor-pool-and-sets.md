@@ -28,18 +28,18 @@ We first need to describe which descriptor types our descriptor sets are going t
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var poolSize = VkDescriptorPoolSize.allocate(arena);
-    poolSize.type(VkDescriptorType.UNIFORM_BUFFER);
-    poolSize.descriptorCount(MAX_FRAMES_IN_FLIGHT);
+    var poolSize = VkDescriptorPoolSize.allocate(arena)
+            .type(VkDescriptorType.UNIFORM_BUFFER)
+            .descriptorCount(MAX_FRAMES_IN_FLIGHT);
 }
 ```
 
 We will allocate one of these descriptors for every frame. This pool size structure is referenced by the main `VkDescriptorPoolCreateInfo`:
 
 ```java
-var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena);
-poolInfo.poolSizeCount(1);
-poolInfo.pPoolSizes(poolSize);
+var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena)
+        .poolSizeCount(1)
+        .pPoolSizes(poolSize);
 ```
 
 Aside from the maximum number of individual descriptors that are available, we also need to specify the maximum number of descriptor sets that may be allocated:
@@ -87,14 +87,12 @@ A descriptor set allocation is described with a `VkDescriptorSetAllocateInfo` st
 
 ```java
 try (Arena arena = Arena.ofConfined()) {
-    var pLayouts = VkDescriptorSetLayout.Ptr.allocate(arena, MAX_FRAMES_IN_FLIGHT);
-    pLayouts.write(0, descriptorSetLayout);
-    pLayouts.write(1, descriptorSetLayout);
+    var pLayouts = VkDescriptorSetLayout.Ptr.allocateV(arena, descriptorSetLayout, descriptorSetLayout);
 
-    var allocInfo = VkDescriptorSetAllocateInfo.allocate(arena);
-    allocInfo.descriptorPool(descriptorPool);
-    allocInfo.descriptorSetCount(MAX_FRAMES_IN_FLIGHT);
-    allocInfo.pSetLayouts(pLayouts);
+    var allocInfo = VkDescriptorSetAllocateInfo.allocate(arena)
+            .descriptorPool(descriptorPool)
+            .descriptorSetCount(MAX_FRAMES_IN_FLIGHT)
+            .pSetLayouts(pLayouts);
 }
 ```
 
@@ -141,35 +139,37 @@ Descriptors that refer to buffers, like our uniform buffer descriptor, are confi
 
 ```java
 for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++){
-    var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
-    bufferInfo.buffer(uniformBuffers.read(i));
-    bufferInfo.offset(0);
-    bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
+    var bufferInfo = VkDescriptorBufferInfo.allocate(arena)
+            .buffer(uniformBuffers.read(i))
+            .offset(0)
+            .range((long) UniformBufferObject.bufferSize() * Float.BYTES);
 }
 ```
 
 If you're overwriting the whole buffer, like we are in this case, then it is also possible to use the `VkConstants.WHOLE_SIZE` value for the range. The configuration of descriptors is updated using the `VkDeviceCommands::updateDescriptorSets` function, which takes an array of `VkWriteDescriptorSet` structs as parameter.
 
 ```java
-var descriptorWrite = VkWriteDescriptorSet.allocate(arena);
-descriptorWrite.dstSet(descriptorSets.read(i));
-descriptorWrite.dstBinding(0);
-descriptorWrite.dstArrayElement(0);
+var descriptorWrite = VkWriteDescriptorSet.allocate(arena)
+        .dstSet(descriptorSets.read(i))
+        .dstBinding(0)
+        .dstArrayElement(0);
 ```
 
 The first two fields specify the descriptor set to update and the binding. We gave our uniform buffer binding index `0`. Remember that descriptors can be arrays, so we also need to specify the first index in the array that we want to update. We're not using an array, so the index is simply `0`.
 
 ```java
-descriptorWrite.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
-descriptorWrite.descriptorCount(1);
+descriptorWrite
+        .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+        .descriptorCount(1);
 ```
 
 We need to specify the type of descriptor again. It's possible to update multiple descriptors at once in an array, starting at index `dstArrayElement`. The `descriptorCount` field specifies how many array elements you want to update.
 
 ```java
-descriptorWrite.pBufferInfo(bufferInfo);
-descriptorWrite.pImageInfo(null); // Optional
-descriptorWrite.pTexelBufferView(null); // Optional
+descriptorWrite
+        .pBufferInfo(bufferInfo)
+        .pImageInfo(null) // Optional
+        .pTexelBufferView(null); // Optional
 ```
 
 The last field references an array with `descriptorCount` structs that actually configure the descriptors. It depends on the type of descriptor which one of the three you actually need to use. The `pBufferInfo` field is used for descriptors that refer to buffer data, `pImageInfo` is used for descriptors that refer to image data, and `pTexelBufferView` is used for descriptors that refer to buffer views. Our descriptor is based on buffers, so we're using `pBufferInfo`.

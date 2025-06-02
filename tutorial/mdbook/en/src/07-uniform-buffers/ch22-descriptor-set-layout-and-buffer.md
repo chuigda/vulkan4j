@@ -113,10 +113,10 @@ Every binding needs to be described through a `VkDescriptorSetLayoutBinding` str
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var uboLayoutBinding = VkDescriptorSetLayoutBinding.allocate(arena);
-    uboLayoutBinding.binding(0);
-    uboLayoutBinding.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
-    uboLayoutBinding.descriptorCount(1);
+    var uboLayoutBinding = VkDescriptorSetLayoutBinding.allocate(arena)
+            .binding(0)
+            .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+            .descriptorCount(1);
 }
 ```
 
@@ -144,9 +144,9 @@ private VkPipelineLayout pipelineLayout;
 We can then create it using `vkCreateDescriptorSetLayout`. This function accepts a simple `VkDescriptorSetLayoutCreateInfo` with the array of bindings:
 
 ```java
-var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena);
-layoutInfo.bindingCount(1);
-layoutInfo.pBindings(uboLayoutBinding);
+var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena)
+        .bindingCount(1)
+        .pBindings(uboLayoutBinding);
 
 var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
 var result = deviceCommands.createDescriptorSetLayout(device, layoutInfo, null, pDescriptorSetLayout);
@@ -159,10 +159,10 @@ descriptorSetLayout = Objects.requireNonNull(pDescriptorSetLayout.read());
 We need to specify the descriptor set layout during pipeline creation to tell Vulkan which descriptors the shaders will be using. Descriptor set layouts are specified in the pipeline layout object. Modify the `VkPipelineLayoutCreateInfo` to reference the layout object:
 
 ```java
-var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocate(arena);
-pDescriptorSetLayout.write(descriptorSetLayout);
-pipelineLayoutInfo.setLayoutCount(1);
-pipelineLayoutInfo.pSetLayouts(pDescriptorSetLayout);
+var pDescriptorSetLayout = VkDescriptorSetLayout.Ptr.allocateV(arena, descriptorSetLayout);
+pipelineLayoutInfo
+        .setLayoutCount(1)
+        .pSetLayouts(pDescriptorSetLayout);
 ```
 
 You may be wondering why it's possible to specify multiple descriptor set layouts here, because a single one already includes all the bindings. We'll get back to that in the next chapter, where we'll look into descriptor pools and descriptor sets.

@@ -58,10 +58,10 @@ private VkBuffer vertexBuffer;
 
 private void createVertexBuffer() {
     try (var arena = Arena.ofConfined()) {
-        var bufferInfo = VkBufferCreateInfo.allocate(arena);
-        bufferInfo.size(VERTICES.length * Float.BYTES);
-        bufferInfo.usage(VkBufferUsageFlags.VERTEX_BUFFER);
-        bufferInfo.sharingMode(VkSharingMode.EXCLUSIVE);
+        var bufferInfo = VkBufferCreateInfo.allocate(arena)
+                .size(VERTICES.length * Float.BYTES)
+                .usage(VkBufferUsageFlags.VERTEX_BUFFER)
+                .sharingMode(VkSharingMode.EXCLUSIVE);
 
         var pBuffer = VkBuffer.Ptr.allocate(arena);
         var result = deviceCommands.createBuffer(device, bufferInfo, null, pBuffer);
@@ -112,7 +112,7 @@ First we need to query info about the available types of memory using `VkInstanc
 ```java
 try (var arena = Arena.ofConfined()) {
     var memProperties = VkPhysicalDeviceMemoryProperties.allocate(arena);
-    instanceCommands.vkGetPhysicalDeviceMemoryProperties(physicalDevice, memProperties);
+    instanceCommands.getPhysicalDeviceMemoryProperties(physicalDevice, memProperties);
 }
 ```
 
@@ -150,13 +150,12 @@ We may have more than one desirable property, so we should check if the result o
 We now have a way to determine the right memory type, so we can actually allocate the memory by filling in the `VkMemoryAllocateInfo` structure.
 
 ```java
-var allocInfo = VkMemoryAllocateInfo.allocate(arena);
-allocInfo.allocationSize(memRequirements.size());
-allocInfo.memoryTypeIndex(findMemoryType(
-        memRequirements.memoryTypeBits(),
-        VkMemoryPropertyFlags.HOST_VISIBLE
-        | VkMemoryPropertyFlags.HOST_COHERENT
-));
+var allocInfo = VkMemoryAllocateInfo.allocate(arena)
+        .allocationSize(memRequirements.size())
+        .memoryTypeIndex(findMemoryType(
+                memRequirements.memoryTypeBits(),
+                VkMemoryPropertyFlags.HOST_VISIBLE
+                | VkMemoryPropertyFlags.HOST_COHERENT));
 ```
 
 Memory allocation is now as simple as specifying the size and type, both of which are derived from the memory requirements of the vertex buffer and the desired property. Create a class member to store the handle to the memory and allocate it with `VkDeviceCommands::allocateMemory`.
@@ -227,10 +226,8 @@ All that remains now is binding the vertex buffer during rendering operations. W
 ```java
 // ...
 
-var vertexBuffers = VkBuffer.Ptr.allocate(arena);
-vertexBuffers.write(vertexBuffer);
-var offsets = LongPtr.allocate(arena);
-offsets.write(0);
+var vertexBuffers = VkBuffer.Ptr.allocateV(arena, vertexBuffer);
+var offsets = LongPtr.allocateV(arena, 0L);
 deviceCommands.cmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
 
 deviceCommands.cmdDraw(commandBuffer, 3, 1, 0, 0);

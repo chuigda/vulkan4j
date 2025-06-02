@@ -53,29 +53,35 @@ createInfo.image(swapChainImages.read(i));
 The `viewType` and format fields specify how the image data should be interpreted. The `viewType` parameter allows you to treat images as 1D textures, 2D textures, 3D textures and cube maps.
 
 ```java
-createInfo.viewType(VkImageViewType._2D);
-createInfo.format(swapChainImageFormat);
+createInfo
+        .viewType(VkImageViewType._2D)
+        .format(swapChainImageFormat);
 ```
 
 The `components` field allows you to swizzle the color channels around. For example, you can map all of the channels to the red channel for a monochrome texture. You can also map constant values of `0` and `1` to a channel. In our case we'll stick to the default mapping.
 
 ```java
-var components = createInfo.components();
-components.r(VkComponentSwizzle.IDENTITY);
-components.g(VkComponentSwizzle.IDENTITY);
-components.b(VkComponentSwizzle.IDENTITY);
-components.a(VkComponentSwizzle.IDENTITY);
+createInfo.components(it -> it
+        .r(VkComponentSwizzle.IDENTITY)
+        .g(VkComponentSwizzle.IDENTITY)
+        .b(VkComponentSwizzle.IDENTITY)
+        .a(VkComponentSwizzle.IDENTITY));
 ```
+
+> Note: closure syntax
+> 
+> In the above code, we use a closure to set the `components` field. This is a common pattern in `vulkan4j` where you can pass a lambda function to configure a nested structure. The lambda receives a mutable reference to the structure, allowing you to set its fields in a more readable way.
 
 The `subresourceRange` field describes what the image's purpose is and which part of the image should be accessed. Our images will be used as color targets without any mipmapping levels or multiple layers.
 
 ```java
-var subresourceRange = createInfo.subresourceRange();
-subresourceRange.aspectMask(VkImageAspectFlags.COLOR);
-subresourceRange.baseMipLevel(0);
-subresourceRange.levelCount(1);
-subresourceRange.baseArrayLayer(0);
-subresourceRange.layerCount(1);
+createInfo
+        .subresourceRange(it -> it
+        .aspectMask(VkImageAspectFlags.COLOR)
+        .baseMipLevel(0)
+        .levelCount(1)
+        .baseArrayLayer(0)
+        .layerCount(1));
 ```
 
 If you were working on a stereographic 3D application, then you would create a swap chain with multiple layers. You could then create multiple image views for each image representing the views for the left and right eyes by accessing different layers.

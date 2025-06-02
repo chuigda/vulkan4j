@@ -14,20 +14,20 @@ Browse to the `createDescriptorSetLayout` function and add a `VkDescriptorSetLay
 
 ```java
 var bindings = VkDescriptorSetLayoutBinding.allocate(arena, 2);
-var uboLayoutBinding = bindings.at(0);
-uboLayoutBinding.binding(0);
-uboLayoutBinding.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
-uboLayoutBinding.descriptorCount(1);
-uboLayoutBinding.stageFlags(VkShaderStageFlags.VERTEX);
-var samplerLayoutBinding = bindings.at(1);
-samplerLayoutBinding.binding(1);
-samplerLayoutBinding.descriptorCount(1);
-samplerLayoutBinding.descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
-samplerLayoutBinding.stageFlags(VkShaderStageFlags.FRAGMENT);
+bindings.at(0)
+        .binding(0)
+        .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+        .descriptorCount(1)
+        .stageFlags(VkShaderStageFlags.VERTEX);
+bindings.at(1)
+        .binding(1)
+        .descriptorCount(1)
+        .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+        .stageFlags(VkShaderStageFlags.FRAGMENT);
 
-var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena);
-layoutInfo.bindingCount(2);
-layoutInfo.pBindings(bindings);
+var layoutInfo = VkDescriptorSetLayoutCreateInfo.allocate(arena)
+        .bindingCount(2)
+        .pBindings(bindings);
 ```
 
 Make sure to set the `stageFlags` to indicate that we intend to use the combined image sampler descriptor in the fragment shader. That's where the color of the fragment is going to be determined. It is possible to use texture sampling in the vertex shader, for example to dynamically deform a grid of vertices by a [heightmap](https://en.wikipedia.org/wiki/Heightmap).
@@ -36,15 +36,17 @@ We must also create a larger descriptor pool to make room for the allocation of 
 
 ```java
 var poolSizes = VkDescriptorPoolSize.allocate(arena, 2);
-poolSizes.at(0).type(VkDescriptorType.UNIFORM_BUFFER);
-poolSizes.at(0).descriptorCount(MAX_FRAMES_IN_FLIGHT);
-poolSizes.at(1).type(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
-poolSizes.at(1).descriptorCount(MAX_FRAMES_IN_FLIGHT);
+poolSizes.at(0)
+        .type(VkDescriptorType.UNIFORM_BUFFER)
+        .descriptorCount(MAX_FRAMES_IN_FLIGHT);
+poolSizes.at(1)
+        .type(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+        .descriptorCount(MAX_FRAMES_IN_FLIGHT);
 
-var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena);
-poolInfo.poolSizeCount(2);
-poolInfo.pPoolSizes(poolSizes);
-poolInfo.maxSets(MAX_FRAMES_IN_FLIGHT);
+var poolInfo = VkDescriptorPoolCreateInfo.allocate(arena)
+        .poolSizeCount(2)
+        .pPoolSizes(poolSizes)
+        .maxSets(MAX_FRAMES_IN_FLIGHT);
 ```
 
 Inadequate descriptor pools are a good example of a problem that the validation layers will not catch: As of Vulkan 1.1, `VkDeviceComands::allocateDescriptorSets` may fail with the error code `VkResult.ERROR_POOL_OUT_OF_MEMORY` if the pool is not sufficiently large, but the driver may also try to solve the problem internally. This means that sometimes (depending on hardware, pool size and allocation size) the driver will let us get away with an allocation that exceeds the limits of our descriptor pool. Other times, `VkDeviceComands::allocateDescriptorSets` will fail and return `VkResult.ERROR_POOL_OUT_OF_MEMORY`. This can be particularly frustrating if the allocation succeeds on some machines, but fails on others.
@@ -55,16 +57,16 @@ The final step is to bind the actual image and sampler resources to the descript
 
 ```java
 for (int i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-    var bufferInfo = VkDescriptorBufferInfo.allocate(arena);
-    bufferInfo.buffer(uniformBuffers.read(i));
-    bufferInfo.offset(0);
-    bufferInfo.range((long) UniformBufferObject.bufferSize() * Float.BYTES);
-    
-    var imageInfo = VkDescriptorImageInfo.allocate(arena);
-    imageInfo.imageLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL);
-    imageInfo.imageView(textureImageView);
-    imageInfo.sampler(textureSampler);
-    
+    var bufferInfo = VkDescriptorBufferInfo.allocate(arena)
+            .buffer(uniformBuffers.read(i))
+            .offset(0)
+            .range((long) UniformBufferObject.bufferSize() * Float.BYTES);
+
+    var imageInfo = VkDescriptorImageInfo.allocate(arena)
+            .imageLayout(VkImageLayout.SHADER_READ_ONLY_OPTIMAL)
+            .imageView(textureImageView)
+            .sampler(textureSampler);
+
     // ...
 }
 ```
@@ -73,21 +75,20 @@ The resources for a combined image sampler structure must be specified in a `VkD
 
 ```java
 var descriptorWrite = VkWriteDescriptorSet.allocate(arena, 2);
-var descriptorWrite0 = descriptorWrite.at(0);
-descriptorWrite0.dstSet(descriptorSets.read(i));
-descriptorWrite0.dstBinding(0);
-descriptorWrite0.dstArrayElement(0);
-descriptorWrite0.descriptorType(VkDescriptorType.UNIFORM_BUFFER);
-descriptorWrite0.descriptorCount(1);
-descriptorWrite0.pBufferInfo(bufferInfo);
-
-var descriptorWrite1 = descriptorWrite.at(1);
-descriptorWrite1.dstSet(descriptorSets.read(i));
-descriptorWrite1.dstBinding(1);
-descriptorWrite1.dstArrayElement(0);
-descriptorWrite1.descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER);
-descriptorWrite1.descriptorCount(1);
-descriptorWrite1.pImageInfo(imageInfo);
+descriptorWrite.at(0)
+        .dstSet(descriptorSets.read(i))
+        .dstBinding(0)
+        .dstArrayElement(0)
+        .descriptorType(VkDescriptorType.UNIFORM_BUFFER)
+        .descriptorCount(1)
+        .pBufferInfo(bufferInfo);
+descriptorWrite.at(1)
+        .dstSet(descriptorSets.read(i))
+        .dstBinding(1)
+        .dstArrayElement(0)
+        .descriptorType(VkDescriptorType.COMBINED_IMAGE_SAMPLER)
+        .descriptorCount(1)
+        .pImageInfo(imageInfo);
 
 deviceCommands.updateDescriptorSets(device, 2, descriptorWrite, 0, null);
 ```
@@ -100,34 +101,29 @@ There is one important ingredient for texture mapping that is still missing, and
 
 ```java
 private static VkVertexInputBindingDescription getBindingDescription(Arena arena) {
-    var description = VkVertexInputBindingDescription.allocate(arena);
-    description.binding(0);
-    description.stride(Float.BYTES * 7); // 2 floats for position, 3 for color, 2 for texture coordinates
-    description.inputRate(VkVertexInputRate.VERTEX);
-    return description;
+    return VkVertexInputBindingDescription.allocate(arena)
+            .binding(0)
+            .stride(Float.BYTES * 7) // 2 floats for position, 3 for color, 2 for texture coordinates
+            .inputRate(VkVertexInputRate.VERTEX);
 }
 
 private static VkVertexInputAttributeDescription.Ptr getAttributeDescriptions(Arena arena) {
     var attributeDescriptions = VkVertexInputAttributeDescription.allocate(arena, 3);
-    var vertexAttribute = attributeDescriptions.at(0);
-    var colorAttribute = attributeDescriptions.at(1);
-    var texCoordAttribute = attributeDescriptions.at(2);
-
-    vertexAttribute.binding(0);
-    vertexAttribute.location(0);
-    vertexAttribute.format(VkFormat.R32G32_SFLOAT);
-    vertexAttribute.offset(0);
-
-    colorAttribute.binding(0);
-    colorAttribute.location(1);
-    colorAttribute.format(VkFormat.R32G32B32_SFLOAT);
-    colorAttribute.offset(Float.BYTES * 2);
-
-    texCoordAttribute.binding(0);
-    texCoordAttribute.location(2);
-    texCoordAttribute.format(VkFormat.R32G32_SFLOAT);
-    texCoordAttribute.offset(Float.BYTES * 5);
-
+    attributeDescriptions.at(0)
+            .binding(0)
+            .location(0)
+            .format(VkFormat.R32G32_SFLOAT)
+            .offset(0);
+    attributeDescriptions.at(1)
+            .binding(0)
+            .location(1)
+            .format(VkFormat.R32G32B32_SFLOAT)
+            .offset(Float.BYTES * 2);
+    attributeDescriptions.at(2)
+            .binding(0)
+            .location(2)
+            .format(VkFormat.R32G32_SFLOAT)
+            .offset(Float.BYTES * 5);
     return attributeDescriptions;
 }
 ```

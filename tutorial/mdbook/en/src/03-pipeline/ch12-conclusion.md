@@ -12,22 +12,23 @@ We can now combine all the structures and objects from the previous chapters to 
 All of these combined fully define the functionality of the graphics pipeline, so we can now begin filling in the `VkGraphicsPipelineCreateInfo` structure at the end of the `createGraphicsPipeline` function. But before the calls to `VKDeviceCommands::destroyShaderModule` because these are still to be used during the creation.
 
 ```java
-var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena);
-pipelineInfo.stageCount(2);
-pipelineInfo.pStages(shaderStages);
+var pipelineInfo = VkGraphicsPipelineCreateInfo.allocate(arena)
+        .stageCount(2)
+        .pStages(shaderStages);
 ```
 
 We start by referencing the array of `VkPipelineShaderStageCreateInfo` structs.
 
 ```java
-pipelineInfo.pVertexInputState(vertexInputInfo);
-pipelineInfo.pInputAssemblyState(inputAssembly);
-pipelineInfo.pViewportState(viewportStateInfo);
-pipelineInfo.pRasterizationState(rasterizer);
-pipelineInfo.pMultisampleState(multisampling);
-pipelineInfo.pDepthStencilState(null); // Optional
-pipelineInfo.pColorBlendState(colorBlending);
-pipelineInfo.pDynamicState(dynamicStateInfo);
+pipelineInfo
+        .pStages(shaderStages)
+        .pVertexInputState(vertexInputInfo)
+        .pInputAssemblyState(inputAssembly)
+        .pViewportState(viewportStateInfo)
+        .pRasterizationState(rasterizer)
+        .pMultisampleState(multisampling)
+        .pColorBlendState(colorBlending)
+        .pDynamicState(dynamicStateInfo)
 ```
 
 Then we reference all the structures describing the fixed-function stage.
@@ -39,8 +40,9 @@ pipelineInfo.layout(pipelineLayout);
 After that comes the pipeline layout, which is a Vulkan handle rather than a struct pointer.
 
 ```java
-pipelineInfo.renderPass(renderPass);
-pipelineInfo.subpass(0);
+pipelineInfo
+        .renderPass(renderPass)
+        .subpass(0);
 ```
 
 And finally we have the reference to the render pass and the index of the sub pass where this graphics pipeline will be used. It is also possible to use other render passes with this pipeline instead of this specific instance, but they have to be *compatible* with `renderPass`. The requirements for compatibility are described [here](https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/chap8.html#renderpass-compatibility), but we won't be using that feature in this tutorial.

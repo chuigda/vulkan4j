@@ -30,16 +30,16 @@ The code for this function can be based directly on `createImageViews`. The only
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var viewInfo = VkImageViewCreateInfo.allocate(arena);
-    viewInfo.image(textureImage);
-    viewInfo.viewType(VkImageViewType._2D);
-    viewInfo.format(VkFormat.R8G8B8A8_SRGB);
-    var subresourceRange = viewInfo.subresourceRange();
-    subresourceRange.aspectMask(VkImageAspectFlags.COLOR);
-    subresourceRange.baseMipLevel(0);
-    subresourceRange.levelCount(1);
-    subresourceRange.baseArrayLayer(0);
-    subresourceRange.layerCount(1);
+    var viewInfo = VkImageViewCreateInfo.allocate(arena)
+            .image(textureImage)
+            .viewType(VkImageViewType._2D)
+            .format(VkFormat.R8G8B8A8_SRGB)
+            .subresourceRange(it -> it
+                    .aspectMask(VkImageAspectFlags.COLOR)
+                    .baseMipLevel(0)
+                    .levelCount(1)
+                    .baseArrayLayer(0)
+                    .layerCount(1));
 }
 ```
 
@@ -59,17 +59,16 @@ Because so much of the logic is duplicated from `createImageViews`, you may wish
 ```java
 private VkImageView createImageView(VkImage image, @EnumType(VkFormat.class) int format) {
     try (var arena = Arena.ofConfined()) {
-        var viewInfo = VkImageViewCreateInfo.allocate(arena);
-        viewInfo.image(image);
-        viewInfo.viewType(VkImageViewType._2D);
-        viewInfo.format(format);
-
-        var subresourceRange = viewInfo.subresourceRange();
-        subresourceRange.aspectMask(VkImageAspectFlags.COLOR);
-        subresourceRange.baseMipLevel(0);
-        subresourceRange.levelCount(1);
-        subresourceRange.baseArrayLayer(0);
-        subresourceRange.layerCount(1);
+        var viewInfo = VkImageViewCreateInfo.allocate(arena)
+                .image(image)
+                .viewType(VkImageViewType._2D)
+                .format(format)
+                .subresourceRange(it -> it
+                        .aspectMask(VkImageAspectFlags.COLOR)
+                        .baseMipLevel(0)
+                        .levelCount(1)
+                        .baseArrayLayer(0)
+                        .layerCount(1));
 
         var pImageView = VkImageView.Ptr.allocate(arena);
         var result = deviceCommands.createImageView(device, viewInfo, null, pImageView);
@@ -152,18 +151,19 @@ Samplers are configured through a `VkSamplerCreateInfo` structure, which specifi
 
 ```java
 try (var arena = Arena.ofConfined()) {
-    var samplerInfo = VkSamplerCreateInfo.allocate(arena);
-    samplerInfo.magFilter(VkFilter.LINEAR);
-    samplerInfo.minFilter(VkFilter.LINEAR);
+    var samplerInfo = VkSamplerCreateInfo.allocate(arena)
+            .magFilter(VkFilter.LINEAR)
+            .minFilter(VkFilter.LINEAR);
 }
 ```
 
 The `magFilter` and `minFilter` fields specify how to interpolate texels that are magnified or minified. Magnification concerns the oversampling problem describes above, and minification concerns undersampling. The choices are `VkFilter.LINEAR` and `VkFilter.NEAREST`, corresponding to the modes demonstrated in the images above.
 
 ```java
-samplerInfo.addressModeU(VkSamplerAddressMode.REPEAT);
-samplerInfo.addressModeV(VkSamplerAddressMode.REPEAT);
-samplerInfo.addressModeW(VkSamplerAddressMode.REPEAT);
+samplerInfo
+        .addressModeU(VkSamplerAddressMode.REPEAT)
+        .addressModeV(VkSamplerAddressMode.REPEAT)
+        .addressModeW(VkSamplerAddressMode.REPEAT);
 ```
 
 The addressing mode can be specified per axis using the `addressMode` fields. The available values are listed below. Most of these are demonstrated in the image above. Note that the axes are called U, V and W instead of X, Y and Z. This is a convention for texture space coordinates.
@@ -177,8 +177,9 @@ The addressing mode can be specified per axis using the `addressMode` fields. Th
 It doesn't really matter which addressing mode we use here, because we're not going to sample outside of the image in this tutorial. However, the repeat mode is probably the most common mode, because it can be used to tile textures like floors and walls.
                                                                        
 ```java
-samplerInfo.anisotropyEnable(VkConstants.TRUE);
-samplerInfo.maxAnisotropy(/* ???*/);
+samplerInfo
+        .anisotropyEnable(VkConstants.TRUE)
+        .maxAnisotropy(/* ???*/);
 ```
 
 These two fields specify if anisotropic filtering should be used. There is no reason not to use this unless performance is a concern. The `maxAnisotropy` field limits the amount of texel samples that can be used to calculate the final color. A lower value results in better performance, but lower quality results. To figure out which value we can use, we need to retrieve the properties of the physical device like so:
@@ -209,17 +210,19 @@ samplerInfo.unnormalizedCoordinates(VkConstants.FALSE);
 The `unnormalizedCoordinates` field specifies which coordinate system you want to use to address texels in an image. If this field is `VkConstants.TRUE`, then you can simply use coordinates within the `[0, texWidth)` and `[0, texHeight)` range. If it is `VkConstants.FALSE`, then the texels are addressed using the `[0, 1)` range on all axes. Real-world applications almost always use normalized coordinates, because then it's possible to use textures of varying resolutions with the exact same coordinates.
 
 ```java
-samplerInfo.compareEnable(VkConstants.FALSE);
-samplerInfo.compareOp(VkCompareOp.ALWAYS);
+samplerInfo
+        .compareEnable(VkConstants.FALSE)
+        .compareOp(VkCompareOp.ALWAYS);
 ```
 
 If a comparison function is enabled, then texels will first be compared to a value, and the result of that comparison is used in filtering operations. This is mainly used for percentage-closer filtering on shadow maps. We'll look at this in a future chapter.
 
 ```java
-samplerInfo.mipmapMode(VkSamplerMipmapMode.LINEAR);
-samplerInfo.mipLodBias(0.0f);
-samplerInfo.minLod(0.0f);
-samplerInfo.maxLod(0.0f);
+samplerInfo
+        .mipmapMode(VkSamplerMipmapMode.LINEAR)
+        .mipLodBias(0.0f)
+        .minLod(0.0f)
+        .maxLod(0.0f);
 ```
 
 All of these fields apply to mipmapping. We will look at mipmapping in a later chapter, but basically it's another type of filter that can be applied.
@@ -284,8 +287,9 @@ The `VkInstanceCommands::getPhysicalDeviceFeatures` repurposes the `VkPhysicalDe
 Instead of enforcing the availability of anisotropic filtering, it's also possible to simply not use it by conditionally setting:
 
 ```java
-samplerInfo.anisotropyEnable(VkConstants.FALSE);
-samplerInfo.maxAnisotropy(1.0f);
+samplerInfo
+        .anisotropyEnable(VkConstants.FALSE)
+        .maxAnisotropy(1.0f);
 ```
 
 In the next chapter we will expose the image and sampler objects to the shaders to draw the texture onto the square.
