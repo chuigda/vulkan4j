@@ -21,6 +21,7 @@ import club.doki7.babel.registry.IdentifierType
 import club.doki7.babel.registry.OpaqueHandleTypedef
 import club.doki7.babel.registry.Registry
 import club.doki7.babel.registry.Structure
+import club.doki7.babel.registry.tryFindIdentifierType
 import club.doki7.babel.util.render
 import java.io.File
 
@@ -202,7 +203,16 @@ private fun detectCommandType(command: Command): CommandType {
     }
 
     if (command.name.original in extensionCommandTypes) {
-        return extensionCommandTypes[command.name.original]!!
+        val extensionCommandType = extensionCommandTypes[command.name.original]!!
+        if (extensionCommandType == CommandType.DEVICE
+            && command.params.isNotEmpty()
+            && tryFindIdentifierType(command.params[0].type) == "VkPhysicalDevice") {
+            // actually an instance level command, see
+            // - https://github.com/KyleMayes/vulkanalia/issues/281
+            // - https://github.com/KyleMayes/vulkanalia/commit/d2ea6d4850cfec542ec65e396e110def7c2b7a0b
+            return CommandType.INSTANCE
+        }
+        return extensionCommandType
     }
 
     if (command.params.isNotEmpty()) {

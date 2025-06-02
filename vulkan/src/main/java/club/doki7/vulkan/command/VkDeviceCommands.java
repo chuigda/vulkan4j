@@ -26,8 +26,6 @@ public final class VkDeviceCommands {
         HANDLE$vkAcquirePerformanceConfigurationINTEL = RawFunctionLoader.link(SEGMENT$vkAcquirePerformanceConfigurationINTEL, Descriptors.DESCRIPTOR$vkAcquirePerformanceConfigurationINTEL);
         SEGMENT$vkAcquireProfilingLockKHR = loader.apply("vkAcquireProfilingLockKHR");
         HANDLE$vkAcquireProfilingLockKHR = RawFunctionLoader.link(SEGMENT$vkAcquireProfilingLockKHR, Descriptors.DESCRIPTOR$vkAcquireProfilingLockKHR);
-        SEGMENT$vkAcquireWinrtDisplayNV = loader.apply("vkAcquireWinrtDisplayNV");
-        HANDLE$vkAcquireWinrtDisplayNV = RawFunctionLoader.link(SEGMENT$vkAcquireWinrtDisplayNV, Descriptors.DESCRIPTOR$vkAcquireWinrtDisplayNV);
         SEGMENT$vkAllocateCommandBuffers = loader.apply("vkAllocateCommandBuffers");
         HANDLE$vkAllocateCommandBuffers = RawFunctionLoader.link(SEGMENT$vkAllocateCommandBuffers, Descriptors.DESCRIPTOR$vkAllocateCommandBuffers);
         SEGMENT$vkAllocateDescriptorSets = loader.apply("vkAllocateDescriptorSets");
@@ -840,8 +838,6 @@ public final class VkDeviceCommands {
         HANDLE$vkDisplayPowerControlEXT = RawFunctionLoader.link(SEGMENT$vkDisplayPowerControlEXT, Descriptors.DESCRIPTOR$vkDisplayPowerControlEXT);
         SEGMENT$vkEndCommandBuffer = loader.apply("vkEndCommandBuffer");
         HANDLE$vkEndCommandBuffer = RawFunctionLoader.link(SEGMENT$vkEndCommandBuffer, Descriptors.DESCRIPTOR$vkEndCommandBuffer);
-        SEGMENT$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = loader.apply("vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR");
-        HANDLE$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = RawFunctionLoader.link(SEGMENT$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR, Descriptors.DESCRIPTOR$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR);
         SEGMENT$vkExportMetalObjectsEXT = loader.apply("vkExportMetalObjectsEXT");
         HANDLE$vkExportMetalObjectsEXT = RawFunctionLoader.link(SEGMENT$vkExportMetalObjectsEXT, Descriptors.DESCRIPTOR$vkExportMetalObjectsEXT);
         SEGMENT$vkFlushMappedMemoryRanges = loader.apply("vkFlushMappedMemoryRanges");
@@ -1050,48 +1046,6 @@ public final class VkDeviceCommands {
         HANDLE$vkGetPastPresentationTimingGOOGLE = RawFunctionLoader.link(SEGMENT$vkGetPastPresentationTimingGOOGLE, Descriptors.DESCRIPTOR$vkGetPastPresentationTimingGOOGLE);
         SEGMENT$vkGetPerformanceParameterINTEL = loader.apply("vkGetPerformanceParameterINTEL");
         HANDLE$vkGetPerformanceParameterINTEL = RawFunctionLoader.link(SEGMENT$vkGetPerformanceParameterINTEL, Descriptors.DESCRIPTOR$vkGetPerformanceParameterINTEL);
-        SEGMENT$vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = loader.apply("vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
-        HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceCalibrateableTimeDomainsEXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR);
-        SEGMENT$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = loader.apply("vkGetPhysicalDeviceCalibrateableTimeDomainsKHR");
-        HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR);
-        SEGMENT$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = loader.apply("vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
-        HANDLE$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV);
-        SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR = loader.apply("vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");
-        HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR);
-        SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = loader.apply("vkGetPhysicalDeviceCooperativeMatrixPropertiesNV");
-        HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
-        SEGMENT$vkGetPhysicalDeviceCooperativeVectorPropertiesNV = loader.apply("vkGetPhysicalDeviceCooperativeVectorPropertiesNV");
-        HANDLE$vkGetPhysicalDeviceCooperativeVectorPropertiesNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceCooperativeVectorPropertiesNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceCooperativeVectorPropertiesNV);
-        SEGMENT$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV = loader.apply("vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV");
-        HANDLE$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV);
-        SEGMENT$vkGetPhysicalDeviceFragmentShadingRatesKHR = loader.apply("vkGetPhysicalDeviceFragmentShadingRatesKHR");
-        HANDLE$vkGetPhysicalDeviceFragmentShadingRatesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceFragmentShadingRatesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceFragmentShadingRatesKHR);
-        SEGMENT$vkGetPhysicalDeviceMultisamplePropertiesEXT = loader.apply("vkGetPhysicalDeviceMultisamplePropertiesEXT");
-        HANDLE$vkGetPhysicalDeviceMultisamplePropertiesEXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceMultisamplePropertiesEXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceMultisamplePropertiesEXT);
-        SEGMENT$vkGetPhysicalDeviceOpticalFlowImageFormatsNV = loader.apply("vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
-        HANDLE$vkGetPhysicalDeviceOpticalFlowImageFormatsNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceOpticalFlowImageFormatsNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceOpticalFlowImageFormatsNV);
-        SEGMENT$vkGetPhysicalDevicePresentRectanglesKHR = loader.apply("vkGetPhysicalDevicePresentRectanglesKHR");
-        HANDLE$vkGetPhysicalDevicePresentRectanglesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDevicePresentRectanglesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDevicePresentRectanglesKHR);
-        SEGMENT$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = loader.apply("vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR");
-        HANDLE$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR);
-        SEGMENT$vkGetPhysicalDeviceRefreshableObjectTypesKHR = loader.apply("vkGetPhysicalDeviceRefreshableObjectTypesKHR");
-        HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceRefreshableObjectTypesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceRefreshableObjectTypesKHR);
-        SEGMENT$vkGetPhysicalDeviceSciBufAttributesNV = loader.apply("vkGetPhysicalDeviceSciBufAttributesNV");
-        HANDLE$vkGetPhysicalDeviceSciBufAttributesNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSciBufAttributesNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSciBufAttributesNV);
-        SEGMENT$vkGetPhysicalDeviceSciSyncAttributesNV = loader.apply("vkGetPhysicalDeviceSciSyncAttributesNV");
-        HANDLE$vkGetPhysicalDeviceSciSyncAttributesNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSciSyncAttributesNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSciSyncAttributesNV);
-        SEGMENT$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = loader.apply("vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
-        HANDLE$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV);
-        SEGMENT$vkGetPhysicalDeviceSurfacePresentModes2EXT = loader.apply("vkGetPhysicalDeviceSurfacePresentModes2EXT");
-        HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceSurfacePresentModes2EXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceSurfacePresentModes2EXT);
-        SEGMENT$vkGetPhysicalDeviceToolPropertiesEXT = loader.apply("vkGetPhysicalDeviceToolPropertiesEXT");
-        HANDLE$vkGetPhysicalDeviceToolPropertiesEXT = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceToolPropertiesEXT, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceToolPropertiesEXT);
-        SEGMENT$vkGetPhysicalDeviceVideoCapabilitiesKHR = loader.apply("vkGetPhysicalDeviceVideoCapabilitiesKHR");
-        HANDLE$vkGetPhysicalDeviceVideoCapabilitiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceVideoCapabilitiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceVideoCapabilitiesKHR);
-        SEGMENT$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = loader.apply("vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR");
-        HANDLE$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR);
-        SEGMENT$vkGetPhysicalDeviceVideoFormatPropertiesKHR = loader.apply("vkGetPhysicalDeviceVideoFormatPropertiesKHR");
-        HANDLE$vkGetPhysicalDeviceVideoFormatPropertiesKHR = RawFunctionLoader.link(SEGMENT$vkGetPhysicalDeviceVideoFormatPropertiesKHR, Descriptors.DESCRIPTOR$vkGetPhysicalDeviceVideoFormatPropertiesKHR);
         SEGMENT$vkGetPipelineBinaryDataKHR = loader.apply("vkGetPipelineBinaryDataKHR");
         HANDLE$vkGetPipelineBinaryDataKHR = RawFunctionLoader.link(SEGMENT$vkGetPipelineBinaryDataKHR, Descriptors.DESCRIPTOR$vkGetPipelineBinaryDataKHR);
         SEGMENT$vkGetPipelineCacheData = loader.apply("vkGetPipelineCacheData");
@@ -1170,8 +1124,6 @@ public final class VkDeviceCommands {
         HANDLE$vkGetValidationCacheDataEXT = RawFunctionLoader.link(SEGMENT$vkGetValidationCacheDataEXT, Descriptors.DESCRIPTOR$vkGetValidationCacheDataEXT);
         SEGMENT$vkGetVideoSessionMemoryRequirementsKHR = loader.apply("vkGetVideoSessionMemoryRequirementsKHR");
         HANDLE$vkGetVideoSessionMemoryRequirementsKHR = RawFunctionLoader.link(SEGMENT$vkGetVideoSessionMemoryRequirementsKHR, Descriptors.DESCRIPTOR$vkGetVideoSessionMemoryRequirementsKHR);
-        SEGMENT$vkGetWinrtDisplayNV = loader.apply("vkGetWinrtDisplayNV");
-        HANDLE$vkGetWinrtDisplayNV = RawFunctionLoader.link(SEGMENT$vkGetWinrtDisplayNV, Descriptors.DESCRIPTOR$vkGetWinrtDisplayNV);
         SEGMENT$vkImportFenceFdKHR = loader.apply("vkImportFenceFdKHR");
         HANDLE$vkImportFenceFdKHR = RawFunctionLoader.link(SEGMENT$vkImportFenceFdKHR, Descriptors.DESCRIPTOR$vkImportFenceFdKHR);
         SEGMENT$vkImportFenceSciSyncFenceNV = loader.apply("vkImportFenceSciSyncFenceNV");
@@ -1402,22 +1354,6 @@ public final class VkDeviceCommands {
             return (int) hFunction.invokeExact(
                 device.segment(),
                 pInfo.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkAcquireWinrtDisplayNV.html"><code>vkAcquireWinrtDisplayNV</code></a>
-    public @EnumType(VkResult.class) int acquireWinrtDisplayNV(
-        VkPhysicalDevice physicalDevice,
-        VkDisplayKHR display
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkAcquireWinrtDisplayNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                display.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -9082,28 +9018,6 @@ public final class VkDeviceCommands {
         }
     }
 
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR.html"><code>vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR</code></a>
-    public @EnumType(VkResult.class) int enumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned int queueFamilyIndex,
-        @Unsigned IntPtr pCounterCount,
-        @Nullable @Pointer IVkPerformanceCounterKHR pCounters,
-        @Nullable @Pointer IVkPerformanceCounterDescriptionKHR pCounterDescriptions
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                queueFamilyIndex,
-                pCounterCount.segment(),
-                (MemorySegment) (pCounters != null ? pCounters.segment() : MemorySegment.NULL),
-                (MemorySegment) (pCounterDescriptions != null ? pCounterDescriptions.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkExportMetalObjectsEXT.html"><code>vkExportMetalObjectsEXT</code></a>
     public void exportMetalObjectsEXT(
         VkDevice device,
@@ -11020,392 +10934,6 @@ public final class VkDeviceCommands {
         }
     }
 
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCalibrateableTimeDomainsEXT.html"><code>vkGetPhysicalDeviceCalibrateableTimeDomainsEXT</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceCalibrateableTimeDomainsEXT(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pTimeDomainCount,
-        @Nullable @EnumType(VkTimeDomainKHR.class) IntPtr pTimeDomains
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsEXT);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pTimeDomainCount.segment(),
-                (MemorySegment) (pTimeDomains != null ? pTimeDomains.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.html"><code>vkGetPhysicalDeviceCalibrateableTimeDomainsKHR</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceCalibrateableTimeDomainsKHR(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pTimeDomainCount,
-        @Nullable @EnumType(VkTimeDomainKHR.class) IntPtr pTimeDomains
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pTimeDomainCount.segment(),
-                (MemorySegment) (pTimeDomains != null ? pTimeDomains.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV.html"><code>vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pPropertyCount,
-        @Nullable @Pointer IVkCooperativeMatrixFlexibleDimensionsPropertiesNV pProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pPropertyCount.segment(),
-                (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR.html"><code>vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceCooperativeMatrixPropertiesKHR(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pPropertyCount,
-        @Nullable @Pointer IVkCooperativeMatrixPropertiesKHR pProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pPropertyCount.segment(),
-                (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.html"><code>vkGetPhysicalDeviceCooperativeMatrixPropertiesNV</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceCooperativeMatrixPropertiesNV(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pPropertyCount,
-        @Nullable @Pointer IVkCooperativeMatrixPropertiesNV pProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pPropertyCount.segment(),
-                (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeVectorPropertiesNV.html"><code>vkGetPhysicalDeviceCooperativeVectorPropertiesNV</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceCooperativeVectorPropertiesNV(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pPropertyCount,
-        @Nullable @Pointer IVkCooperativeVectorPropertiesNV pProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceCooperativeVectorPropertiesNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pPropertyCount.segment(),
-                (MemorySegment) (pProperties != null ? pProperties.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV.html"><code>vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceExternalMemorySciBufPropertiesNV(
-        VkPhysicalDevice physicalDevice,
-        @EnumType(VkExternalMemoryHandleTypeFlags.class) int handleType,
-        @Pointer(comment="NvSciBufObj") MemorySegment handle,
-        @Pointer VkMemorySciBufPropertiesNV pMemorySciBufProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                handleType,
-                handle,
-                pMemorySciBufProperties.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceFragmentShadingRatesKHR.html"><code>vkGetPhysicalDeviceFragmentShadingRatesKHR</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceFragmentShadingRatesKHR(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pFragmentShadingRateCount,
-        @Nullable @Pointer IVkPhysicalDeviceFragmentShadingRateKHR pFragmentShadingRates
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceFragmentShadingRatesKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pFragmentShadingRateCount.segment(),
-                (MemorySegment) (pFragmentShadingRates != null ? pFragmentShadingRates.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceMultisamplePropertiesEXT.html"><code>vkGetPhysicalDeviceMultisamplePropertiesEXT</code></a>
-    public void getPhysicalDeviceMultisamplePropertiesEXT(
-        VkPhysicalDevice physicalDevice,
-        @EnumType(VkSampleCountFlags.class) int samples,
-        @Pointer VkMultisamplePropertiesEXT pMultisampleProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceMultisamplePropertiesEXT);
-        try {
-            hFunction.invokeExact(
-                physicalDevice.segment(),
-                samples,
-                pMultisampleProperties.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceOpticalFlowImageFormatsNV.html"><code>vkGetPhysicalDeviceOpticalFlowImageFormatsNV</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceOpticalFlowImageFormatsNV(
-        VkPhysicalDevice physicalDevice,
-        @Pointer VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo,
-        @Unsigned IntPtr pFormatCount,
-        @Nullable @Pointer IVkOpticalFlowImageFormatPropertiesNV pImageFormatProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceOpticalFlowImageFormatsNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pOpticalFlowImageFormatInfo.segment(),
-                pFormatCount.segment(),
-                (MemorySegment) (pImageFormatProperties != null ? pImageFormatProperties.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDevicePresentRectanglesKHR.html"><code>vkGetPhysicalDevicePresentRectanglesKHR</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDevicePresentRectanglesKHR(
-        VkPhysicalDevice physicalDevice,
-        VkSurfaceKHR surface,
-        @Unsigned IntPtr pRectCount,
-        @Nullable @Pointer IVkRect2D pRects
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDevicePresentRectanglesKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                surface.segment(),
-                pRectCount.segment(),
-                (MemorySegment) (pRects != null ? pRects.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR.html"><code>vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR</code></a>
-    public void getPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
-        VkPhysicalDevice physicalDevice,
-        @Pointer VkQueryPoolPerformanceCreateInfoKHR pPerformanceQueryCreateInfo,
-        @Unsigned IntPtr pNumPasses
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR);
-        try {
-            hFunction.invokeExact(
-                physicalDevice.segment(),
-                pPerformanceQueryCreateInfo.segment(),
-                pNumPasses.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceRefreshableObjectTypesKHR.html"><code>vkGetPhysicalDeviceRefreshableObjectTypesKHR</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceRefreshableObjectTypesKHR(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pRefreshableObjectTypeCount,
-        @Nullable @EnumType(VkObjectType.class) IntPtr pRefreshableObjectTypes
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pRefreshableObjectTypeCount.segment(),
-                (MemorySegment) (pRefreshableObjectTypes != null ? pRefreshableObjectTypes.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceSciBufAttributesNV.html"><code>vkGetPhysicalDeviceSciBufAttributesNV</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceSciBufAttributesNV(
-        VkPhysicalDevice physicalDevice,
-        @Pointer(comment="NvSciBufAttrList") MemorySegment pAttributes
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSciBufAttributesNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pAttributes
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceSciSyncAttributesNV.html"><code>vkGetPhysicalDeviceSciSyncAttributesNV</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceSciSyncAttributesNV(
-        VkPhysicalDevice physicalDevice,
-        @Pointer VkSciSyncAttributesInfoNV pSciSyncAttributesInfo,
-        @Pointer(comment="NvSciSyncAttrList") MemorySegment pAttributes
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSciSyncAttributesNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pSciSyncAttributesInfo.segment(),
-                pAttributes
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV.html"><code>vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pCombinationCount,
-        @Nullable @Pointer IVkFramebufferMixedSamplesCombinationNV pCombinations
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pCombinationCount.segment(),
-                (MemorySegment) (pCombinations != null ? pCombinations.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceSurfacePresentModes2EXT.html"><code>vkGetPhysicalDeviceSurfacePresentModes2EXT</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceSurfacePresentModes2EXT(
-        VkPhysicalDevice physicalDevice,
-        @Pointer VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo,
-        @Unsigned IntPtr pPresentModeCount,
-        @Nullable @EnumType(VkPresentModeKHR.class) IntPtr pPresentModes
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pSurfaceInfo.segment(),
-                pPresentModeCount.segment(),
-                (MemorySegment) (pPresentModes != null ? pPresentModes.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceToolPropertiesEXT.html"><code>vkGetPhysicalDeviceToolPropertiesEXT</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceToolPropertiesEXT(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned IntPtr pToolCount,
-        @Nullable @Pointer IVkPhysicalDeviceToolProperties pToolProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceToolPropertiesEXT);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pToolCount.segment(),
-                (MemorySegment) (pToolProperties != null ? pToolProperties.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceVideoCapabilitiesKHR.html"><code>vkGetPhysicalDeviceVideoCapabilitiesKHR</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceVideoCapabilitiesKHR(
-        VkPhysicalDevice physicalDevice,
-        @Pointer VkVideoProfileInfoKHR pVideoProfile,
-        @Pointer VkVideoCapabilitiesKHR pCapabilities
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceVideoCapabilitiesKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pVideoProfile.segment(),
-                pCapabilities.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR.html"><code>vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(
-        VkPhysicalDevice physicalDevice,
-        @Pointer VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pQualityLevelInfo,
-        @Pointer VkVideoEncodeQualityLevelPropertiesKHR pQualityLevelProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pQualityLevelInfo.segment(),
-                pQualityLevelProperties.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceVideoFormatPropertiesKHR.html"><code>vkGetPhysicalDeviceVideoFormatPropertiesKHR</code></a>
-    public @EnumType(VkResult.class) int getPhysicalDeviceVideoFormatPropertiesKHR(
-        VkPhysicalDevice physicalDevice,
-        @Pointer VkPhysicalDeviceVideoFormatInfoKHR pVideoFormatInfo,
-        @Unsigned IntPtr pVideoFormatPropertyCount,
-        @Nullable @Pointer IVkVideoFormatPropertiesKHR pVideoFormatProperties
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetPhysicalDeviceVideoFormatPropertiesKHR);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                pVideoFormatInfo.segment(),
-                pVideoFormatPropertyCount.segment(),
-                (MemorySegment) (pVideoFormatProperties != null ? pVideoFormatProperties.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPipelineBinaryDataKHR.html"><code>vkGetPipelineBinaryDataKHR</code></a>
     public @EnumType(VkResult.class) int getPipelineBinaryDataKHR(
         VkDevice device,
@@ -12164,24 +11692,6 @@ public final class VkDeviceCommands {
                 videoSession.segment(),
                 pMemoryRequirementsCount.segment(),
                 (MemorySegment) (pMemoryRequirements != null ? pMemoryRequirements.segment() : MemorySegment.NULL)
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// @see <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetWinrtDisplayNV.html"><code>vkGetWinrtDisplayNV</code></a>
-    public @EnumType(VkResult.class) int getWinrtDisplayNV(
-        VkPhysicalDevice physicalDevice,
-        @Unsigned int deviceRelativeId,
-        @Pointer VkDisplayKHR.Ptr pDisplay
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$vkGetWinrtDisplayNV);
-        try {
-            return (int) hFunction.invokeExact(
-                physicalDevice.segment(),
-                deviceRelativeId,
-                pDisplay.segment()
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -13469,7 +12979,6 @@ public final class VkDeviceCommands {
     public final @Nullable MemorySegment SEGMENT$vkAcquireNextImageKHR;
     public final @Nullable MemorySegment SEGMENT$vkAcquirePerformanceConfigurationINTEL;
     public final @Nullable MemorySegment SEGMENT$vkAcquireProfilingLockKHR;
-    public final @Nullable MemorySegment SEGMENT$vkAcquireWinrtDisplayNV;
     public final @Nullable MemorySegment SEGMENT$vkAllocateCommandBuffers;
     public final @Nullable MemorySegment SEGMENT$vkAllocateDescriptorSets;
     public final @Nullable MemorySegment SEGMENT$vkAllocateMemory;
@@ -13876,7 +13385,6 @@ public final class VkDeviceCommands {
     public final @Nullable MemorySegment SEGMENT$vkDeviceWaitIdle;
     public final @Nullable MemorySegment SEGMENT$vkDisplayPowerControlEXT;
     public final @Nullable MemorySegment SEGMENT$vkEndCommandBuffer;
-    public final @Nullable MemorySegment SEGMENT$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
     public final @Nullable MemorySegment SEGMENT$vkExportMetalObjectsEXT;
     public final @Nullable MemorySegment SEGMENT$vkFlushMappedMemoryRanges;
     public final @Nullable MemorySegment SEGMENT$vkFreeCommandBuffers;
@@ -13981,27 +13489,6 @@ public final class VkDeviceCommands {
     public final @Nullable MemorySegment SEGMENT$vkGetPartitionedAccelerationStructuresBuildSizesNV;
     public final @Nullable MemorySegment SEGMENT$vkGetPastPresentationTimingGOOGLE;
     public final @Nullable MemorySegment SEGMENT$vkGetPerformanceParameterINTEL;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCalibrateableTimeDomainsEXT;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceCooperativeVectorPropertiesNV;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceFragmentShadingRatesKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceMultisamplePropertiesEXT;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDevicePresentRectanglesKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceRefreshableObjectTypesKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSciBufAttributesNV;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSciSyncAttributesNV;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceSurfacePresentModes2EXT;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceToolPropertiesEXT;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceVideoCapabilitiesKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetPhysicalDeviceVideoFormatPropertiesKHR;
     public final @Nullable MemorySegment SEGMENT$vkGetPipelineBinaryDataKHR;
     public final @Nullable MemorySegment SEGMENT$vkGetPipelineCacheData;
     public final @Nullable MemorySegment SEGMENT$vkGetPipelineExecutableInternalRepresentationsKHR;
@@ -14041,7 +13528,6 @@ public final class VkDeviceCommands {
     public final @Nullable MemorySegment SEGMENT$vkGetSwapchainStatusKHR;
     public final @Nullable MemorySegment SEGMENT$vkGetValidationCacheDataEXT;
     public final @Nullable MemorySegment SEGMENT$vkGetVideoSessionMemoryRequirementsKHR;
-    public final @Nullable MemorySegment SEGMENT$vkGetWinrtDisplayNV;
     public final @Nullable MemorySegment SEGMENT$vkImportFenceFdKHR;
     public final @Nullable MemorySegment SEGMENT$vkImportFenceSciSyncFenceNV;
     public final @Nullable MemorySegment SEGMENT$vkImportFenceSciSyncObjNV;
@@ -14117,7 +13603,6 @@ public final class VkDeviceCommands {
     public final @Nullable MethodHandle HANDLE$vkAcquireNextImageKHR;
     public final @Nullable MethodHandle HANDLE$vkAcquirePerformanceConfigurationINTEL;
     public final @Nullable MethodHandle HANDLE$vkAcquireProfilingLockKHR;
-    public final @Nullable MethodHandle HANDLE$vkAcquireWinrtDisplayNV;
     public final @Nullable MethodHandle HANDLE$vkAllocateCommandBuffers;
     public final @Nullable MethodHandle HANDLE$vkAllocateDescriptorSets;
     public final @Nullable MethodHandle HANDLE$vkAllocateMemory;
@@ -14524,7 +14009,6 @@ public final class VkDeviceCommands {
     public final @Nullable MethodHandle HANDLE$vkDeviceWaitIdle;
     public final @Nullable MethodHandle HANDLE$vkDisplayPowerControlEXT;
     public final @Nullable MethodHandle HANDLE$vkEndCommandBuffer;
-    public final @Nullable MethodHandle HANDLE$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR;
     public final @Nullable MethodHandle HANDLE$vkExportMetalObjectsEXT;
     public final @Nullable MethodHandle HANDLE$vkFlushMappedMemoryRanges;
     public final @Nullable MethodHandle HANDLE$vkFreeCommandBuffers;
@@ -14629,27 +14113,6 @@ public final class VkDeviceCommands {
     public final @Nullable MethodHandle HANDLE$vkGetPartitionedAccelerationStructuresBuildSizesNV;
     public final @Nullable MethodHandle HANDLE$vkGetPastPresentationTimingGOOGLE;
     public final @Nullable MethodHandle HANDLE$vkGetPerformanceParameterINTEL;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsEXT;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceCooperativeVectorPropertiesNV;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceFragmentShadingRatesKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceMultisamplePropertiesEXT;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDevicePresentRectanglesKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceRefreshableObjectTypesKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSciBufAttributesNV;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSciSyncAttributesNV;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceSurfacePresentModes2EXT;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceToolPropertiesEXT;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceVideoCapabilitiesKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetPhysicalDeviceVideoFormatPropertiesKHR;
     public final @Nullable MethodHandle HANDLE$vkGetPipelineBinaryDataKHR;
     public final @Nullable MethodHandle HANDLE$vkGetPipelineCacheData;
     public final @Nullable MethodHandle HANDLE$vkGetPipelineExecutableInternalRepresentationsKHR;
@@ -14689,7 +14152,6 @@ public final class VkDeviceCommands {
     public final @Nullable MethodHandle HANDLE$vkGetSwapchainStatusKHR;
     public final @Nullable MethodHandle HANDLE$vkGetValidationCacheDataEXT;
     public final @Nullable MethodHandle HANDLE$vkGetVideoSessionMemoryRequirementsKHR;
-    public final @Nullable MethodHandle HANDLE$vkGetWinrtDisplayNV;
     public final @Nullable MethodHandle HANDLE$vkImportFenceFdKHR;
     public final @Nullable MethodHandle HANDLE$vkImportFenceSciSyncFenceNV;
     public final @Nullable MethodHandle HANDLE$vkImportFenceSciSyncObjNV;
@@ -14797,12 +14259,6 @@ public final class VkDeviceCommands {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkAcquireProfilingLockInfoKHR.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkAcquireWinrtDisplayNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkAllocateCommandBuffers = FunctionDescriptor.of(
@@ -17129,15 +16585,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkPerformanceCounterKHR.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkPerformanceCounterDescriptionKHR.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkExportMetalObjectsEXT = FunctionDescriptor.ofVoid(
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(VkExportMetalObjectsInfoEXT.LAYOUT)
@@ -17736,148 +17183,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS.withTargetLayout(VkPerformanceValueINTEL.LAYOUT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkCooperativeMatrixFlexibleDimensionsPropertiesNV.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkCooperativeMatrixPropertiesKHR.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkCooperativeMatrixPropertiesNV.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceCooperativeVectorPropertiesNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkCooperativeVectorPropertiesNV.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceExternalMemorySciBufPropertiesNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkMemorySciBufPropertiesNV.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceFragmentShadingRatesKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceFragmentShadingRateKHR.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceMultisamplePropertiesEXT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(VkMultisamplePropertiesEXT.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceOpticalFlowImageFormatsNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkOpticalFlowImageFormatInfoNV.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkOpticalFlowImageFormatPropertiesNV.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDevicePresentRectanglesKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkRect2D.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkQueryPoolPerformanceCreateInfoKHR.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceRefreshableObjectTypesKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceSciBufAttributesNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceSciSyncAttributesNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkSciSyncAttributesInfoNV.LAYOUT),
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkFramebufferMixedSamplesCombinationNV.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceSurfacePresentModes2EXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceSurfaceInfo2KHR.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceToolPropertiesEXT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceToolProperties.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceVideoCapabilitiesKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkVideoProfileInfoKHR.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkVideoCapabilitiesKHR.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(VkVideoEncodeQualityLevelPropertiesKHR.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetPhysicalDeviceVideoFormatPropertiesKHR = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkPhysicalDeviceVideoFormatInfoKHR.LAYOUT),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.ADDRESS.withTargetLayout(VkVideoFormatPropertiesKHR.LAYOUT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$vkGetPipelineBinaryDataKHR = FunctionDescriptor.of(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
@@ -18139,13 +17444,6 @@ public final class VkDeviceCommands {
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
             ValueLayout.ADDRESS.withTargetLayout(VkVideoSessionMemoryRequirementsKHR.LAYOUT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$vkGetWinrtDisplayNV = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$vkImportFenceFdKHR = FunctionDescriptor.of(
