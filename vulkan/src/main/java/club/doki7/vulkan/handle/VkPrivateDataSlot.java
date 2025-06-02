@@ -68,6 +68,19 @@ public record VkPrivateDataSlot(@NotNull MemorySegment segment) implements IPoin
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VkPrivateDataSlot[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VkPrivateDataSlot value0, @Nullable VkPrivateDataSlot ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }

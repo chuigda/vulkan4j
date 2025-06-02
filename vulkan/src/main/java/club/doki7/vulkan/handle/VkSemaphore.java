@@ -68,6 +68,19 @@ public record VkSemaphore(@NotNull MemorySegment segment) implements IPointer {
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VkSemaphore[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VkSemaphore value0, @Nullable VkSemaphore ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }

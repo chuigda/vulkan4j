@@ -69,6 +69,19 @@ public record VmaDefragmentationContext(@NotNull MemorySegment segment) implemen
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VmaDefragmentationContext[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VmaDefragmentationContext value0, @Nullable VmaDefragmentationContext ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }

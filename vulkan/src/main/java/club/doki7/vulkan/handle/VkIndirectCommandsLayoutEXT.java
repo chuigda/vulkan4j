@@ -68,6 +68,19 @@ public record VkIndirectCommandsLayoutEXT(@NotNull MemorySegment segment) implem
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VkIndirectCommandsLayoutEXT[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VkIndirectCommandsLayoutEXT value0, @Nullable VkIndirectCommandsLayoutEXT ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }

@@ -68,6 +68,19 @@ public record VkDebugUtilsMessengerEXT(@NotNull MemorySegment segment) implement
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VkDebugUtilsMessengerEXT[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VkDebugUtilsMessengerEXT value0, @Nullable VkDebugUtilsMessengerEXT ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }

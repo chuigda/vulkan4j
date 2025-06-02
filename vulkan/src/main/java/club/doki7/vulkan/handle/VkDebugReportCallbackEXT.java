@@ -68,6 +68,19 @@ public record VkDebugReportCallbackEXT(@NotNull MemorySegment segment) implement
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VkDebugReportCallbackEXT[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VkDebugReportCallbackEXT value0, @Nullable VkDebugReportCallbackEXT ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }
