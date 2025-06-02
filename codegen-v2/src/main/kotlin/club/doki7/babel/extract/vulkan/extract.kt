@@ -285,7 +285,7 @@ private fun extractStructure(e: Element) =
         members = e.getElementSeq("member")
             .map(::extractMember)
             .filter { it.isVulkanAPI() }
-            .toList()
+            .toMutableList()
     ).apply {
         setExt(VkStructureMetadata(
             api = e.getAttributeText("api"),

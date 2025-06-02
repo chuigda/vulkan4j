@@ -30,7 +30,7 @@ fun extractVulkanRegistry(): Registry<VulkanRegistryExt> {
         renamedNvSciSyncFence,
         Structure(
             name = renamedNvSciSyncFence,
-            members = listOf(Member(
+            members = mutableListOf(Member(
                 name = "payload",
                 type = ArrayType(IdentifierType("uint64_t"), "6".intern()),
                 values = null,
