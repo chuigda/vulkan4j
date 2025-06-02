@@ -147,12 +147,12 @@ public record VkRayTracingPipelineCreateInfoKHR(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRayTracingPipelineCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRayTracingPipelineCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkRayTracingPipelineCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

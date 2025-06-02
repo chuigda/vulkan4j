@@ -136,12 +136,12 @@ public record VkPhysicalDeviceTextureCompressionASTCHDRFeatures(@NotNull MemoryS
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceTextureCompressionASTCHDRFeatures> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceTextureCompressionASTCHDRFeatures> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceTextureCompressionASTCHDRFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

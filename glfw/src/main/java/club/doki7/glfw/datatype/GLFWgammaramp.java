@@ -143,12 +143,12 @@ public record GLFWgammaramp(@NotNull MemorySegment segment) implements IGLFWgamm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<GLFWgammaramp> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<GLFWgammaramp> {
+        private static final class Iter implements Iterator<GLFWgammaramp> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

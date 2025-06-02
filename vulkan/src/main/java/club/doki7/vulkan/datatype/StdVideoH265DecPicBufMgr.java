@@ -125,12 +125,12 @@ public record StdVideoH265DecPicBufMgr(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH265DecPicBufMgr> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH265DecPicBufMgr> {
+        private static final class Iter implements Iterator<StdVideoH265DecPicBufMgr> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

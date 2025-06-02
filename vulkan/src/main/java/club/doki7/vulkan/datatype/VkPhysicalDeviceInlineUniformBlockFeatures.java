@@ -137,12 +137,12 @@ public record VkPhysicalDeviceInlineUniformBlockFeatures(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceInlineUniformBlockFeatures> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceInlineUniformBlockFeatures> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceInlineUniformBlockFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

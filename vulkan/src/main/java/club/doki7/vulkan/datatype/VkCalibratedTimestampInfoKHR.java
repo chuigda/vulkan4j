@@ -136,12 +136,12 @@ public record VkCalibratedTimestampInfoKHR(@NotNull MemorySegment segment) imple
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCalibratedTimestampInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCalibratedTimestampInfoKHR> {
+        private static final class Iter implements Iterator<VkCalibratedTimestampInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

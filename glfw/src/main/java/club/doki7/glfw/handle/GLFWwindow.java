@@ -119,6 +119,7 @@ public record GLFWwindow(@NotNull MemorySegment segment) implements IPointer {
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -163,12 +164,12 @@ public record GLFWwindow(@NotNull MemorySegment segment) implements IPointer {
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<GLFWwindow> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<GLFWwindow> {
+        private static class Iter implements Iterator<GLFWwindow> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

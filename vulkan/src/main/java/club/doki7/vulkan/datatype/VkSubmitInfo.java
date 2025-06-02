@@ -142,12 +142,12 @@ public record VkSubmitInfo(@NotNull MemorySegment segment) implements IVkSubmitI
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSubmitInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSubmitInfo> {
+        private static final class Iter implements Iterator<VkSubmitInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

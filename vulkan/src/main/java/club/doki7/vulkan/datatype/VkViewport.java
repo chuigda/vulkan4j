@@ -130,12 +130,12 @@ public record VkViewport(@NotNull MemorySegment segment) implements IVkViewport 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkViewport> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkViewport> {
+        private static final class Iter implements Iterator<VkViewport> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

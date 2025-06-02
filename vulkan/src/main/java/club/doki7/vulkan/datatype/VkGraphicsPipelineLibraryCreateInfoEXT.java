@@ -136,12 +136,12 @@ public record VkGraphicsPipelineLibraryCreateInfoEXT(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkGraphicsPipelineLibraryCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkGraphicsPipelineLibraryCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkGraphicsPipelineLibraryCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

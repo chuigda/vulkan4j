@@ -127,12 +127,12 @@ public record VkPartitionedAccelerationStructureUpdateInstanceDataNV(@NotNull Me
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPartitionedAccelerationStructureUpdateInstanceDataNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPartitionedAccelerationStructureUpdateInstanceDataNV> {
+        private static final class Iter implements Iterator<VkPartitionedAccelerationStructureUpdateInstanceDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

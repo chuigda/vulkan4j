@@ -137,12 +137,12 @@ public record VkQueueFamilyGlobalPriorityProperties(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkQueueFamilyGlobalPriorityProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkQueueFamilyGlobalPriorityProperties> {
+        private static final class Iter implements Iterator<VkQueueFamilyGlobalPriorityProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkPhysicalDeviceDisplacementMicromapPropertiesNV(@NotNull MemorySe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceDisplacementMicromapPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceDisplacementMicromapPropertiesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceDisplacementMicromapPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkShaderModuleIdentifierEXT(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkShaderModuleIdentifierEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkShaderModuleIdentifierEXT> {
+        private static final class Iter implements Iterator<VkShaderModuleIdentifierEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

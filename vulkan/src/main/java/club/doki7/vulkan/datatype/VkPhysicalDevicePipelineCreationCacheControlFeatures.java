@@ -136,12 +136,12 @@ public record VkPhysicalDevicePipelineCreationCacheControlFeatures(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePipelineCreationCacheControlFeatures> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePipelineCreationCacheControlFeatures> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePipelineCreationCacheControlFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -141,12 +141,12 @@ public record VkCommandBufferInheritanceInfo(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCommandBufferInheritanceInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCommandBufferInheritanceInfo> {
+        private static final class Iter implements Iterator<VkCommandBufferInheritanceInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

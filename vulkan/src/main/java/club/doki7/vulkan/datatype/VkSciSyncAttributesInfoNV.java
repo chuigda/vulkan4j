@@ -137,12 +137,12 @@ public record VkSciSyncAttributesInfoNV(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSciSyncAttributesInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSciSyncAttributesInfoNV> {
+        private static final class Iter implements Iterator<VkSciSyncAttributesInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -126,12 +126,12 @@ public record VkDepthClampRangeEXT(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDepthClampRangeEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDepthClampRangeEXT> {
+        private static final class Iter implements Iterator<VkDepthClampRangeEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

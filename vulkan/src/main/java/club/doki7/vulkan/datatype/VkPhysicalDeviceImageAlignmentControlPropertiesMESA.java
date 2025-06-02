@@ -136,12 +136,12 @@ public record VkPhysicalDeviceImageAlignmentControlPropertiesMESA(@NotNull Memor
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceImageAlignmentControlPropertiesMESA> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceImageAlignmentControlPropertiesMESA> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceImageAlignmentControlPropertiesMESA> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

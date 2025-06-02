@@ -140,12 +140,12 @@ public record VkBufferViewCreateInfo(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBufferViewCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBufferViewCreateInfo> {
+        private static final class Iter implements Iterator<VkBufferViewCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

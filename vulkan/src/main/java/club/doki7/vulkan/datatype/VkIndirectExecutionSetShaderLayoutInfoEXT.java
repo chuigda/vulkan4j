@@ -137,12 +137,12 @@ public record VkIndirectExecutionSetShaderLayoutInfoEXT(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkIndirectExecutionSetShaderLayoutInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkIndirectExecutionSetShaderLayoutInfoEXT> {
+        private static final class Iter implements Iterator<VkIndirectExecutionSetShaderLayoutInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

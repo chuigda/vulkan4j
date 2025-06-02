@@ -137,12 +137,12 @@ public record VkSubpassShadingPipelineCreateInfoHUAWEI(@NotNull MemorySegment se
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSubpassShadingPipelineCreateInfoHUAWEI> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSubpassShadingPipelineCreateInfoHUAWEI> {
+        private static final class Iter implements Iterator<VkSubpassShadingPipelineCreateInfoHUAWEI> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

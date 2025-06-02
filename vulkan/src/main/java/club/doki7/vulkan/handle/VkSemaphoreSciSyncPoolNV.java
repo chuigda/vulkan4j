@@ -113,6 +113,7 @@ public record VkSemaphoreSciSyncPoolNV(@NotNull MemorySegment segment) implement
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -157,12 +158,12 @@ public record VkSemaphoreSciSyncPoolNV(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSemaphoreSciSyncPoolNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkSemaphoreSciSyncPoolNV> {
+        private static class Iter implements Iterator<VkSemaphoreSciSyncPoolNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

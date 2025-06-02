@@ -125,12 +125,12 @@ public record VkRefreshCycleDurationGOOGLE(@NotNull MemorySegment segment) imple
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRefreshCycleDurationGOOGLE> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRefreshCycleDurationGOOGLE> {
+        private static final class Iter implements Iterator<VkRefreshCycleDurationGOOGLE> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

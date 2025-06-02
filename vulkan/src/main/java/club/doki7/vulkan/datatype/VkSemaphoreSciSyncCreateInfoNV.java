@@ -137,12 +137,12 @@ public record VkSemaphoreSciSyncCreateInfoNV(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSemaphoreSciSyncCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSemaphoreSciSyncCreateInfoNV> {
+        private static final class Iter implements Iterator<VkSemaphoreSciSyncCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

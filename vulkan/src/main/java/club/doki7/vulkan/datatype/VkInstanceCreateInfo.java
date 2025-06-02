@@ -141,12 +141,12 @@ public record VkInstanceCreateInfo(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkInstanceCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkInstanceCreateInfo> {
+        private static final class Iter implements Iterator<VkInstanceCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

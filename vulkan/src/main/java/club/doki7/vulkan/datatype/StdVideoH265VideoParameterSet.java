@@ -134,12 +134,12 @@ public record StdVideoH265VideoParameterSet(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH265VideoParameterSet> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH265VideoParameterSet> {
+        private static final class Iter implements Iterator<StdVideoH265VideoParameterSet> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

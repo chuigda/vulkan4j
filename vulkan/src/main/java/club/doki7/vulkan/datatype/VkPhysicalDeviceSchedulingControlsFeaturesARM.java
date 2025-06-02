@@ -136,12 +136,12 @@ public record VkPhysicalDeviceSchedulingControlsFeaturesARM(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceSchedulingControlsFeaturesARM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceSchedulingControlsFeaturesARM> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceSchedulingControlsFeaturesARM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

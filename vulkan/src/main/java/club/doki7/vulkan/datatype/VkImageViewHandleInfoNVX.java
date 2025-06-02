@@ -138,12 +138,12 @@ public record VkImageViewHandleInfoNVX(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageViewHandleInfoNVX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageViewHandleInfoNVX> {
+        private static final class Iter implements Iterator<VkImageViewHandleInfoNVX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

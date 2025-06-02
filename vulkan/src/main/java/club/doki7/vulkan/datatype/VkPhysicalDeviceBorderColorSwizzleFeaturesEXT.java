@@ -137,12 +137,12 @@ public record VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

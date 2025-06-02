@@ -141,12 +141,12 @@ public record VkRayTracingShaderGroupCreateInfoKHR(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRayTracingShaderGroupCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRayTracingShaderGroupCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkRayTracingShaderGroupCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

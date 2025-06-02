@@ -138,12 +138,12 @@ public record VkCopyMicromapInfoEXT(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCopyMicromapInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCopyMicromapInfoEXT> {
+        private static final class Iter implements Iterator<VkCopyMicromapInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

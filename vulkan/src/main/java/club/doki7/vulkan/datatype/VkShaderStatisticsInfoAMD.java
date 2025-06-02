@@ -131,12 +131,12 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkShaderStatisticsInfoAMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkShaderStatisticsInfoAMD> {
+        private static final class Iter implements Iterator<VkShaderStatisticsInfoAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

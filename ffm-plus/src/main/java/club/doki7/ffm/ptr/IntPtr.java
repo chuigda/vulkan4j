@@ -91,7 +91,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Integer> iterator() {
         return new Iter(segment);
     }
 
@@ -219,7 +219,7 @@ public record IntPtr(@NotNull MemorySegment segment) implements IPointer, Iterab
     }
 
     /// An iterator over the integers.
-    public static final class Iter implements Iterator<Integer> {
+    private static final class Iter implements Iterator<Integer> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

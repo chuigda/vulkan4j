@@ -136,12 +136,12 @@ public record VkMemoryOpaqueCaptureAddressAllocateInfo(@NotNull MemorySegment se
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryOpaqueCaptureAddressAllocateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryOpaqueCaptureAddressAllocateInfo> {
+        private static final class Iter implements Iterator<VkMemoryOpaqueCaptureAddressAllocateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -141,12 +141,12 @@ public record VkPipelineColorBlendStateCreateInfo(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineColorBlendStateCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineColorBlendStateCreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineColorBlendStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -141,12 +141,12 @@ public record VkAccelerationStructureCreateInfoKHR(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkAccelerationStructureCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

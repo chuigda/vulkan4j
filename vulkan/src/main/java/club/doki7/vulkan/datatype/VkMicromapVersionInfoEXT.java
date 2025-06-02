@@ -136,12 +136,12 @@ public record VkMicromapVersionInfoEXT(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMicromapVersionInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMicromapVersionInfoEXT> {
+        private static final class Iter implements Iterator<VkMicromapVersionInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

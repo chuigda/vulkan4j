@@ -136,12 +136,12 @@ public record VkExportMemorySciBufInfoNV(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExportMemorySciBufInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExportMemorySciBufInfoNV> {
+        private static final class Iter implements Iterator<VkExportMemorySciBufInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

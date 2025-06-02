@@ -137,12 +137,12 @@ public record VkAntiLagPresentationInfoAMD(@NotNull MemorySegment segment) imple
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAntiLagPresentationInfoAMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAntiLagPresentationInfoAMD> {
+        private static final class Iter implements Iterator<VkAntiLagPresentationInfoAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

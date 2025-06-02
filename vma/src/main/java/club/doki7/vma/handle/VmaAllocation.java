@@ -129,6 +129,7 @@ public record VmaAllocation(@NotNull MemorySegment segment) implements IPointer 
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -173,12 +174,12 @@ public record VmaAllocation(@NotNull MemorySegment segment) implements IPointer 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VmaAllocation> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VmaAllocation> {
+        private static class Iter implements Iterator<VmaAllocation> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -140,12 +140,12 @@ public record VkBindAccelerationStructureMemoryInfoNV(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBindAccelerationStructureMemoryInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBindAccelerationStructureMemoryInfoNV> {
+        private static final class Iter implements Iterator<VkBindAccelerationStructureMemoryInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

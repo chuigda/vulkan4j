@@ -138,12 +138,12 @@ public record VkPipelineRasterizationConservativeStateCreateInfoEXT(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineRasterizationConservativeStateCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineRasterizationConservativeStateCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkPipelineRasterizationConservativeStateCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

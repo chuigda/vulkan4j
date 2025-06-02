@@ -139,12 +139,12 @@ public record VkGeneratedCommandsMemoryRequirementsInfoEXT(@NotNull MemorySegmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkGeneratedCommandsMemoryRequirementsInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkGeneratedCommandsMemoryRequirementsInfoEXT> {
+        private static final class Iter implements Iterator<VkGeneratedCommandsMemoryRequirementsInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

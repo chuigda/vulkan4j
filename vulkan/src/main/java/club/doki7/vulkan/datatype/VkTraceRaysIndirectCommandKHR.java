@@ -127,12 +127,12 @@ public record VkTraceRaysIndirectCommandKHR(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkTraceRaysIndirectCommandKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkTraceRaysIndirectCommandKHR> {
+        private static final class Iter implements Iterator<VkTraceRaysIndirectCommandKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

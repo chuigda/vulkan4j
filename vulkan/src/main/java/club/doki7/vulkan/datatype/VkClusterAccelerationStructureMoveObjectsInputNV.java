@@ -138,12 +138,12 @@ public record VkClusterAccelerationStructureMoveObjectsInputNV(@NotNull MemorySe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClusterAccelerationStructureMoveObjectsInputNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClusterAccelerationStructureMoveObjectsInputNV> {
+        private static final class Iter implements Iterator<VkClusterAccelerationStructureMoveObjectsInputNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

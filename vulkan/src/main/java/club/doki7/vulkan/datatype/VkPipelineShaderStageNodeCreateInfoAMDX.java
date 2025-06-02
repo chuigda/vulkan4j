@@ -137,12 +137,12 @@ public record VkPipelineShaderStageNodeCreateInfoAMDX(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineShaderStageNodeCreateInfoAMDX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineShaderStageNodeCreateInfoAMDX> {
+        private static final class Iter implements Iterator<VkPipelineShaderStageNodeCreateInfoAMDX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

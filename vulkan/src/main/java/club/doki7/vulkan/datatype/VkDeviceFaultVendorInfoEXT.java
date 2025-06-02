@@ -127,12 +127,12 @@ public record VkDeviceFaultVendorInfoEXT(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceFaultVendorInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceFaultVendorInfoEXT> {
+        private static final class Iter implements Iterator<VkDeviceFaultVendorInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkPipelineCompilerControlCreateInfoAMD(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineCompilerControlCreateInfoAMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineCompilerControlCreateInfoAMD> {
+        private static final class Iter implements Iterator<VkPipelineCompilerControlCreateInfoAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

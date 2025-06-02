@@ -136,12 +136,12 @@ public record VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExternalFormatResolveFeaturesANDROID> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExternalFormatResolveFeaturesANDROID> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExternalFormatResolveFeaturesANDROID> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -126,12 +126,12 @@ public record VkBaseOutStructure(@NotNull MemorySegment segment) implements IVkB
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBaseOutStructure> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBaseOutStructure> {
+        private static final class Iter implements Iterator<VkBaseOutStructure> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

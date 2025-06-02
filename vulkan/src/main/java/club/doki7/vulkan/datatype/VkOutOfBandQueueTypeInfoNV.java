@@ -136,12 +136,12 @@ public record VkOutOfBandQueueTypeInfoNV(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkOutOfBandQueueTypeInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkOutOfBandQueueTypeInfoNV> {
+        private static final class Iter implements Iterator<VkOutOfBandQueueTypeInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

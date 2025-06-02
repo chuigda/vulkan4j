@@ -136,12 +136,12 @@ public record VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(@NotNu
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

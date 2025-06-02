@@ -144,12 +144,12 @@ public record VkFrameBoundaryEXT(@NotNull MemorySegment segment) implements IVkF
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkFrameBoundaryEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkFrameBoundaryEXT> {
+        private static final class Iter implements Iterator<VkFrameBoundaryEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

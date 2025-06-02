@@ -136,12 +136,12 @@ public record VkMultisamplePropertiesEXT(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMultisamplePropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMultisamplePropertiesEXT> {
+        private static final class Iter implements Iterator<VkMultisamplePropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

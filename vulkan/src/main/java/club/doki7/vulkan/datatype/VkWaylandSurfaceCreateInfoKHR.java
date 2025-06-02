@@ -138,12 +138,12 @@ public record VkWaylandSurfaceCreateInfoKHR(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkWaylandSurfaceCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkWaylandSurfaceCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkWaylandSurfaceCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

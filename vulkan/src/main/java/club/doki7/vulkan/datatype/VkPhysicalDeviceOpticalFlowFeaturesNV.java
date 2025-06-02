@@ -136,12 +136,12 @@ public record VkPhysicalDeviceOpticalFlowFeaturesNV(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceOpticalFlowFeaturesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceOpticalFlowFeaturesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceOpticalFlowFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

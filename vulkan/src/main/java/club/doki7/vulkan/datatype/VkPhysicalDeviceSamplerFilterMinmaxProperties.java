@@ -137,12 +137,12 @@ public record VkPhysicalDeviceSamplerFilterMinmaxProperties(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceSamplerFilterMinmaxProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceSamplerFilterMinmaxProperties> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceSamplerFilterMinmaxProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

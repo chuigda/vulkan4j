@@ -139,12 +139,12 @@ public record VkPipelineDiscardRectangleStateCreateInfoEXT(@NotNull MemorySegmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineDiscardRectangleStateCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineDiscardRectangleStateCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkPipelineDiscardRectangleStateCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

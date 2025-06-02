@@ -143,12 +143,12 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureTrianglesOpacityMicromapEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureTrianglesOpacityMicromapEXT> {
+        private static final class Iter implements Iterator<VkAccelerationStructureTrianglesOpacityMicromapEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

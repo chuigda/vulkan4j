@@ -138,12 +138,12 @@ public record VkAttachmentReference2(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAttachmentReference2> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAttachmentReference2> {
+        private static final class Iter implements Iterator<VkAttachmentReference2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

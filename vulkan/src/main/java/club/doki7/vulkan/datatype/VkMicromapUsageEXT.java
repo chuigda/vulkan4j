@@ -127,12 +127,12 @@ public record VkMicromapUsageEXT(@NotNull MemorySegment segment) implements IVkM
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMicromapUsageEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMicromapUsageEXT> {
+        private static final class Iter implements Iterator<VkMicromapUsageEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(@NotNull Memor
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

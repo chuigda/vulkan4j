@@ -136,12 +136,12 @@ public record VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(@NotNul
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

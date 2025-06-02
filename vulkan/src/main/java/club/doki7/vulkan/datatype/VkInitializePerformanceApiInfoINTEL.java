@@ -136,12 +136,12 @@ public record VkInitializePerformanceApiInfoINTEL(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkInitializePerformanceApiInfoINTEL> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkInitializePerformanceApiInfoINTEL> {
+        private static final class Iter implements Iterator<VkInitializePerformanceApiInfoINTEL> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

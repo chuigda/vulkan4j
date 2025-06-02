@@ -122,7 +122,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Double> iterator() {
         return new Iter(segment);
     }
 
@@ -204,7 +204,7 @@ public record DoublePtr(@NotNull MemorySegment segment) implements IPointer, Ite
     }
 
     /// An iterator over the double precision float numbers.
-    public static final class Iter implements Iterator<Double> {
+    private static final class Iter implements Iterator<Double> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

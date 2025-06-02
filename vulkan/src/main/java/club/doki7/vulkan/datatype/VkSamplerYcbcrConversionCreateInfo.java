@@ -143,12 +143,12 @@ public record VkSamplerYcbcrConversionCreateInfo(@NotNull MemorySegment segment)
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerYcbcrConversionCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerYcbcrConversionCreateInfo> {
+        private static final class Iter implements Iterator<VkSamplerYcbcrConversionCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

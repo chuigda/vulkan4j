@@ -136,12 +136,12 @@ public record VkPhysicalDeviceVideoFormatInfoKHR(@NotNull MemorySegment segment)
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceVideoFormatInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceVideoFormatInfoKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceVideoFormatInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

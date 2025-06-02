@@ -124,12 +124,12 @@ public record StdVideoAV1GlobalMotion(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoAV1GlobalMotion> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoAV1GlobalMotion> {
+        private static final class Iter implements Iterator<StdVideoAV1GlobalMotion> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

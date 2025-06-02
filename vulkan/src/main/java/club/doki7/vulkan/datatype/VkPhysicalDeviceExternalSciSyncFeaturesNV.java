@@ -139,12 +139,12 @@ public record VkPhysicalDeviceExternalSciSyncFeaturesNV(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExternalSciSyncFeaturesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExternalSciSyncFeaturesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExternalSciSyncFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

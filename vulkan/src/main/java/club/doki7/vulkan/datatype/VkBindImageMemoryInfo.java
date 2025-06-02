@@ -138,12 +138,12 @@ public record VkBindImageMemoryInfo(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBindImageMemoryInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBindImageMemoryInfo> {
+        private static final class Iter implements Iterator<VkBindImageMemoryInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

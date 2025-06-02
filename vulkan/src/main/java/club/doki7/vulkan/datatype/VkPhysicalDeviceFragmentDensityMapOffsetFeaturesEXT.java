@@ -136,12 +136,12 @@ public record VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT(@NotNull Memor
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

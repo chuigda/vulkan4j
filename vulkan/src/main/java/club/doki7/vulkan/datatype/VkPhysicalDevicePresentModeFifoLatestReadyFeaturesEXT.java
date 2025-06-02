@@ -136,12 +136,12 @@ public record VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

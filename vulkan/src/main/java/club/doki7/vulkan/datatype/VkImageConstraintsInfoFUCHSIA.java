@@ -139,12 +139,12 @@ public record VkImageConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageConstraintsInfoFUCHSIA> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageConstraintsInfoFUCHSIA> {
+        private static final class Iter implements Iterator<VkImageConstraintsInfoFUCHSIA> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

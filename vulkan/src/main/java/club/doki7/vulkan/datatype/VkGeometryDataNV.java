@@ -126,12 +126,12 @@ public record VkGeometryDataNV(@NotNull MemorySegment segment) implements IVkGeo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkGeometryDataNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkGeometryDataNV> {
+        private static final class Iter implements Iterator<VkGeometryDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -146,12 +146,12 @@ public record VkPipelineRasterizationStateCreateInfo(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineRasterizationStateCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineRasterizationStateCreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineRasterizationStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

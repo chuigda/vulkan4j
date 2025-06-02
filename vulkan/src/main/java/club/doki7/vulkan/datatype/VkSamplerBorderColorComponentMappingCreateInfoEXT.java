@@ -137,12 +137,12 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerBorderColorComponentMappingCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerBorderColorComponentMappingCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkSamplerBorderColorComponentMappingCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

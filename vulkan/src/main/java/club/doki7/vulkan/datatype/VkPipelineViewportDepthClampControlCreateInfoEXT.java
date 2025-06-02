@@ -137,12 +137,12 @@ public record VkPipelineViewportDepthClampControlCreateInfoEXT(@NotNull MemorySe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineViewportDepthClampControlCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineViewportDepthClampControlCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkPipelineViewportDepthClampControlCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

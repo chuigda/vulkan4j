@@ -136,12 +136,12 @@ public record VkSurfaceFormat2KHR(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSurfaceFormat2KHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSurfaceFormat2KHR> {
+        private static final class Iter implements Iterator<VkSurfaceFormat2KHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

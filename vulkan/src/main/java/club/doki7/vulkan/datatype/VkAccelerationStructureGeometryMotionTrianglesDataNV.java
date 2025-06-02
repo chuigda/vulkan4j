@@ -136,12 +136,12 @@ public record VkAccelerationStructureGeometryMotionTrianglesDataNV(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureGeometryMotionTrianglesDataNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureGeometryMotionTrianglesDataNV> {
+        private static final class Iter implements Iterator<VkAccelerationStructureGeometryMotionTrianglesDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

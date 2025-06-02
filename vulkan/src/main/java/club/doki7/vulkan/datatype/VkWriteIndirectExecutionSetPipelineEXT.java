@@ -137,12 +137,12 @@ public record VkWriteIndirectExecutionSetPipelineEXT(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkWriteIndirectExecutionSetPipelineEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkWriteIndirectExecutionSetPipelineEXT> {
+        private static final class Iter implements Iterator<VkWriteIndirectExecutionSetPipelineEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

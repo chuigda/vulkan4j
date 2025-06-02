@@ -125,12 +125,12 @@ public record VkBindShaderGroupIndirectCommandNV(@NotNull MemorySegment segment)
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBindShaderGroupIndirectCommandNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBindShaderGroupIndirectCommandNV> {
+        private static final class Iter implements Iterator<VkBindShaderGroupIndirectCommandNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

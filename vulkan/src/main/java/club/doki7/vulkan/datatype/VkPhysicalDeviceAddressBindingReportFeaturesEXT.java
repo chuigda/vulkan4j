@@ -136,12 +136,12 @@ public record VkPhysicalDeviceAddressBindingReportFeaturesEXT(@NotNull MemorySeg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceAddressBindingReportFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceAddressBindingReportFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceAddressBindingReportFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

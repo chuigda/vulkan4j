@@ -136,12 +136,12 @@ public record VkSamplerYcbcrConversionImageFormatProperties(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerYcbcrConversionImageFormatProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerYcbcrConversionImageFormatProperties> {
+        private static final class Iter implements Iterator<VkSamplerYcbcrConversionImageFormatProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

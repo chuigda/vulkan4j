@@ -138,12 +138,12 @@ public record VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(@NotNull Memor
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkGeneratedCommandsShaderInfoEXT(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkGeneratedCommandsShaderInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkGeneratedCommandsShaderInfoEXT> {
+        private static final class Iter implements Iterator<VkGeneratedCommandsShaderInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -139,12 +139,12 @@ public record VkRenderingInputAttachmentIndexInfo(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderingInputAttachmentIndexInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderingInputAttachmentIndexInfo> {
+        private static final class Iter implements Iterator<VkRenderingInputAttachmentIndexInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

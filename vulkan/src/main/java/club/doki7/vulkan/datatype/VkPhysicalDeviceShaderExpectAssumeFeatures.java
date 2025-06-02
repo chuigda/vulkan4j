@@ -136,12 +136,12 @@ public record VkPhysicalDeviceShaderExpectAssumeFeatures(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderExpectAssumeFeatures> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderExpectAssumeFeatures> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderExpectAssumeFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

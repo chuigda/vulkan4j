@@ -138,12 +138,12 @@ public record VkPhysicalDeviceFragmentShadingRateFeaturesKHR(@NotNull MemorySegm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceFragmentShadingRateFeaturesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceFragmentShadingRateFeaturesKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceFragmentShadingRateFeaturesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

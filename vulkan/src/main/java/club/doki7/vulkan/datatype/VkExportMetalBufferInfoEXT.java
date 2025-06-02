@@ -137,12 +137,12 @@ public record VkExportMetalBufferInfoEXT(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExportMetalBufferInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExportMetalBufferInfoEXT> {
+        private static final class Iter implements Iterator<VkExportMetalBufferInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkImportMemoryMetalHandleInfoEXT(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImportMemoryMetalHandleInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImportMemoryMetalHandleInfoEXT> {
+        private static final class Iter implements Iterator<VkImportMemoryMetalHandleInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

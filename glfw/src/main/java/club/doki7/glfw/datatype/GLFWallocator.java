@@ -151,12 +151,12 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<GLFWallocator> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<GLFWallocator> {
+        private static final class Iter implements Iterator<GLFWallocator> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

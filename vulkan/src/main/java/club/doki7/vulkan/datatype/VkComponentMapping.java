@@ -128,12 +128,12 @@ public record VkComponentMapping(@NotNull MemorySegment segment) implements IVkC
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkComponentMapping> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkComponentMapping> {
+        private static final class Iter implements Iterator<VkComponentMapping> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

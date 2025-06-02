@@ -126,12 +126,12 @@ public record VkMemoryType(@NotNull MemorySegment segment) implements IVkMemoryT
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryType> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryType> {
+        private static final class Iter implements Iterator<VkMemoryType> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

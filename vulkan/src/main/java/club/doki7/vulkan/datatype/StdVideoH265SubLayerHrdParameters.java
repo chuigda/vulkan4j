@@ -127,12 +127,12 @@ public record StdVideoH265SubLayerHrdParameters(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH265SubLayerHrdParameters> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH265SubLayerHrdParameters> {
+        private static final class Iter implements Iterator<StdVideoH265SubLayerHrdParameters> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

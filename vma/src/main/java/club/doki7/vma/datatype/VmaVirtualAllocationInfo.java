@@ -146,12 +146,12 @@ public record VmaVirtualAllocationInfo(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VmaVirtualAllocationInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VmaVirtualAllocationInfo> {
+        private static final class Iter implements Iterator<VmaVirtualAllocationInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

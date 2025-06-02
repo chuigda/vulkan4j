@@ -129,12 +129,12 @@ public record VkLayerSettingEXT(@NotNull MemorySegment segment) implements IVkLa
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkLayerSettingEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkLayerSettingEXT> {
+        private static final class Iter implements Iterator<VkLayerSettingEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

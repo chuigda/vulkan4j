@@ -136,12 +136,12 @@ public record VkPhysicalDeviceTimelineSemaphoreProperties(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceTimelineSemaphoreProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceTimelineSemaphoreProperties> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceTimelineSemaphoreProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

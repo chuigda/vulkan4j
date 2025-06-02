@@ -136,12 +136,12 @@ public record VkVideoDecodeAV1InlineSessionParametersInfoKHR(@NotNull MemorySegm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoDecodeAV1InlineSessionParametersInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoDecodeAV1InlineSessionParametersInfoKHR> {
+        private static final class Iter implements Iterator<VkVideoDecodeAV1InlineSessionParametersInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(@NotNull Memor
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

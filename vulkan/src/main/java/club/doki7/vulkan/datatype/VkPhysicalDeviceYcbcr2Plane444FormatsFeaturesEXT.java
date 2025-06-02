@@ -136,12 +136,12 @@ public record VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(@NotNull MemorySe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

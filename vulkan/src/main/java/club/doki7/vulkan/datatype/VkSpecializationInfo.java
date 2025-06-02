@@ -128,12 +128,12 @@ public record VkSpecializationInfo(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSpecializationInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSpecializationInfo> {
+        private static final class Iter implements Iterator<VkSpecializationInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

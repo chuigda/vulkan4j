@@ -136,12 +136,12 @@ public record VkTileMemoryBindInfoQCOM(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkTileMemoryBindInfoQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkTileMemoryBindInfoQCOM> {
+        private static final class Iter implements Iterator<VkTileMemoryBindInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

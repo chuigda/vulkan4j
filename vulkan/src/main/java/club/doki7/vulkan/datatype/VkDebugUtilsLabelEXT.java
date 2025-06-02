@@ -137,12 +137,12 @@ public record VkDebugUtilsLabelEXT(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDebugUtilsLabelEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDebugUtilsLabelEXT> {
+        private static final class Iter implements Iterator<VkDebugUtilsLabelEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -127,12 +127,12 @@ public record VkDrmFormatModifierPropertiesEXT(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDrmFormatModifierPropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDrmFormatModifierPropertiesEXT> {
+        private static final class Iter implements Iterator<VkDrmFormatModifierPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

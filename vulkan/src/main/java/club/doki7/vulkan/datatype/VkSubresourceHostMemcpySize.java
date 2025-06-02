@@ -136,12 +136,12 @@ public record VkSubresourceHostMemcpySize(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSubresourceHostMemcpySize> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSubresourceHostMemcpySize> {
+        private static final class Iter implements Iterator<VkSubresourceHostMemcpySize> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

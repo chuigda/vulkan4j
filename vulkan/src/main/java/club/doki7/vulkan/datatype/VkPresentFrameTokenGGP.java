@@ -136,12 +136,12 @@ public record VkPresentFrameTokenGGP(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPresentFrameTokenGGP> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPresentFrameTokenGGP> {
+        private static final class Iter implements Iterator<VkPresentFrameTokenGGP> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

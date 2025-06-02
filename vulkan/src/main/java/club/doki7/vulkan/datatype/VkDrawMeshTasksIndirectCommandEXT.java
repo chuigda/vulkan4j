@@ -127,12 +127,12 @@ public record VkDrawMeshTasksIndirectCommandEXT(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDrawMeshTasksIndirectCommandEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDrawMeshTasksIndirectCommandEXT> {
+        private static final class Iter implements Iterator<VkDrawMeshTasksIndirectCommandEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

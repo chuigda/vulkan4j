@@ -140,12 +140,12 @@ public record VkPipelineCoverageModulationStateCreateInfoNV(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineCoverageModulationStateCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineCoverageModulationStateCreateInfoNV> {
+        private static final class Iter implements Iterator<VkPipelineCoverageModulationStateCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

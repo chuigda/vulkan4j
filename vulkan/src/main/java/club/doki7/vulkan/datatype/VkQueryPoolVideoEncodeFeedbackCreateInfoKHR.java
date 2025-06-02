@@ -136,12 +136,12 @@ public record VkQueryPoolVideoEncodeFeedbackCreateInfoKHR(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkQueryPoolVideoEncodeFeedbackCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkQueryPoolVideoEncodeFeedbackCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkQueryPoolVideoEncodeFeedbackCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

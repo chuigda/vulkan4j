@@ -137,12 +137,12 @@ public record VkSetPresentConfigNV(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSetPresentConfigNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSetPresentConfigNV> {
+        private static final class Iter implements Iterator<VkSetPresentConfigNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

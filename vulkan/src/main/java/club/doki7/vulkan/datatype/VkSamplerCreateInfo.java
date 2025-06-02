@@ -151,12 +151,12 @@ public record VkSamplerCreateInfo(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerCreateInfo> {
+        private static final class Iter implements Iterator<VkSamplerCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

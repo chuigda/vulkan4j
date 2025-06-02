@@ -113,6 +113,7 @@ public record VkCudaFunctionNV(@NotNull MemorySegment segment) implements IPoint
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -157,12 +158,12 @@ public record VkCudaFunctionNV(@NotNull MemorySegment segment) implements IPoint
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCudaFunctionNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkCudaFunctionNV> {
+        private static class Iter implements Iterator<VkCudaFunctionNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

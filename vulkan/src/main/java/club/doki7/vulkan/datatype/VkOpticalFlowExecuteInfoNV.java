@@ -138,12 +138,12 @@ public record VkOpticalFlowExecuteInfoNV(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkOpticalFlowExecuteInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkOpticalFlowExecuteInfoNV> {
+        private static final class Iter implements Iterator<VkOpticalFlowExecuteInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

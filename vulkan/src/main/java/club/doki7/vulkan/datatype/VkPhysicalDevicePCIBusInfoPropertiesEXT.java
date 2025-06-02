@@ -139,12 +139,12 @@ public record VkPhysicalDevicePCIBusInfoPropertiesEXT(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePCIBusInfoPropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePCIBusInfoPropertiesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePCIBusInfoPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

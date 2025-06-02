@@ -136,12 +136,12 @@ public record VkMemoryMapPlacedInfoEXT(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryMapPlacedInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryMapPlacedInfoEXT> {
+        private static final class Iter implements Iterator<VkMemoryMapPlacedInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

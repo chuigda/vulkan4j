@@ -137,12 +137,12 @@ public record VkPhysicalDeviceCudaKernelLaunchPropertiesNV(@NotNull MemorySegmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceCudaKernelLaunchPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceCudaKernelLaunchPropertiesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceCudaKernelLaunchPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

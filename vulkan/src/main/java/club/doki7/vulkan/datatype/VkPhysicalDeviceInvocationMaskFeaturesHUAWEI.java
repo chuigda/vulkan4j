@@ -136,12 +136,12 @@ public record VkPhysicalDeviceInvocationMaskFeaturesHUAWEI(@NotNull MemorySegmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceInvocationMaskFeaturesHUAWEI> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceInvocationMaskFeaturesHUAWEI> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceInvocationMaskFeaturesHUAWEI> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

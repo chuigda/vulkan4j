@@ -136,12 +136,12 @@ public record VkPhysicalDeviceScalarBlockLayoutFeatures(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceScalarBlockLayoutFeatures> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceScalarBlockLayoutFeatures> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceScalarBlockLayoutFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

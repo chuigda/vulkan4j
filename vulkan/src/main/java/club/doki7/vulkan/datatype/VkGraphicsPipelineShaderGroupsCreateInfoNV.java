@@ -139,12 +139,12 @@ public record VkGraphicsPipelineShaderGroupsCreateInfoNV(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkGraphicsPipelineShaderGroupsCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkGraphicsPipelineShaderGroupsCreateInfoNV> {
+        private static final class Iter implements Iterator<VkGraphicsPipelineShaderGroupsCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

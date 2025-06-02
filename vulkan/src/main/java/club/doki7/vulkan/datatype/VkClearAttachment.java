@@ -127,12 +127,12 @@ public record VkClearAttachment(@NotNull MemorySegment segment) implements IVkCl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClearAttachment> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClearAttachment> {
+        private static final class Iter implements Iterator<VkClearAttachment> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

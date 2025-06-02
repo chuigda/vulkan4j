@@ -137,12 +137,12 @@ public record VkSemaphoreTypeCreateInfo(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSemaphoreTypeCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSemaphoreTypeCreateInfo> {
+        private static final class Iter implements Iterator<VkSemaphoreTypeCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

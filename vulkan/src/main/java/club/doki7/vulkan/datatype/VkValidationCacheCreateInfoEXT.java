@@ -138,12 +138,12 @@ public record VkValidationCacheCreateInfoEXT(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkValidationCacheCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkValidationCacheCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkValidationCacheCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

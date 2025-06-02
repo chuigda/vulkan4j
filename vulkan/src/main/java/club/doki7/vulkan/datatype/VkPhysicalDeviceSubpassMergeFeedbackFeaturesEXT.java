@@ -136,12 +136,12 @@ public record VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(@NotNull MemorySeg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

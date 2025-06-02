@@ -138,12 +138,12 @@ public record VkPhysicalDeviceShaderTileImageFeaturesEXT(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderTileImageFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderTileImageFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderTileImageFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

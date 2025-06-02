@@ -136,12 +136,12 @@ public record VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(@Not
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -138,12 +138,12 @@ public record VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(@NotNull Me
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

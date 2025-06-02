@@ -142,12 +142,12 @@ public record VmaDefragmentationMove(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VmaDefragmentationMove> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VmaDefragmentationMove> {
+        private static final class Iter implements Iterator<VmaDefragmentationMove> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

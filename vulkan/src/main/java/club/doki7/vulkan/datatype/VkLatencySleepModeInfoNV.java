@@ -138,12 +138,12 @@ public record VkLatencySleepModeInfoNV(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkLatencySleepModeInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkLatencySleepModeInfoNV> {
+        private static final class Iter implements Iterator<VkLatencySleepModeInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -138,12 +138,12 @@ public record VkDeviceGroupRenderPassBeginInfo(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceGroupRenderPassBeginInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceGroupRenderPassBeginInfo> {
+        private static final class Iter implements Iterator<VkDeviceGroupRenderPassBeginInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

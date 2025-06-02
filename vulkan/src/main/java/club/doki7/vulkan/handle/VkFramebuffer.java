@@ -113,6 +113,7 @@ public record VkFramebuffer(@NotNull MemorySegment segment) implements IPointer 
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -157,12 +158,12 @@ public record VkFramebuffer(@NotNull MemorySegment segment) implements IPointer 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkFramebuffer> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkFramebuffer> {
+        private static class Iter implements Iterator<VkFramebuffer> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

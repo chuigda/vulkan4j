@@ -142,12 +142,12 @@ public record GLFWgamepadstate(@NotNull MemorySegment segment) implements IGLFWg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<GLFWgamepadstate> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<GLFWgamepadstate> {
+        private static final class Iter implements Iterator<GLFWgamepadstate> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

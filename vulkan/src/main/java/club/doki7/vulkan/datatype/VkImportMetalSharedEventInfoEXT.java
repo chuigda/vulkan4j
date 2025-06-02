@@ -136,12 +136,12 @@ public record VkImportMetalSharedEventInfoEXT(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImportMetalSharedEventInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImportMetalSharedEventInfoEXT> {
+        private static final class Iter implements Iterator<VkImportMetalSharedEventInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

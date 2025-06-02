@@ -181,12 +181,12 @@ public record VmaPoolCreateInfo(@NotNull MemorySegment segment) implements IVmaP
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VmaPoolCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VmaPoolCreateInfo> {
+        private static final class Iter implements Iterator<VmaPoolCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

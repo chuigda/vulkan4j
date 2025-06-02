@@ -135,12 +135,12 @@ public record VkPerTileBeginInfoQCOM(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPerTileBeginInfoQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPerTileBeginInfoQCOM> {
+        private static final class Iter implements Iterator<VkPerTileBeginInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

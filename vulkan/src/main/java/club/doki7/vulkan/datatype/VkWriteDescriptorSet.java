@@ -143,12 +143,12 @@ public record VkWriteDescriptorSet(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkWriteDescriptorSet> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkWriteDescriptorSet> {
+        private static final class Iter implements Iterator<VkWriteDescriptorSet> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

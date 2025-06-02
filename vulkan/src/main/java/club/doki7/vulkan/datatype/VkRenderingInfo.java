@@ -143,12 +143,12 @@ public record VkRenderingInfo(@NotNull MemorySegment segment) implements IVkRend
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderingInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderingInfo> {
+        private static final class Iter implements Iterator<VkRenderingInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

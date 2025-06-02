@@ -136,12 +136,12 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExternalImageFormatProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExternalImageFormatProperties> {
+        private static final class Iter implements Iterator<VkExternalImageFormatProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

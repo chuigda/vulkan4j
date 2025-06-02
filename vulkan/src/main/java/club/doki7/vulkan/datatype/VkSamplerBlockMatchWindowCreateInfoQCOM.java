@@ -137,12 +137,12 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerBlockMatchWindowCreateInfoQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerBlockMatchWindowCreateInfoQCOM> {
+        private static final class Iter implements Iterator<VkSamplerBlockMatchWindowCreateInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

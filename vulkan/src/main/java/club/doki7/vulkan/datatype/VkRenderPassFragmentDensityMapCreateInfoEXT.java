@@ -136,12 +136,12 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderPassFragmentDensityMapCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderPassFragmentDensityMapCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkRenderPassFragmentDensityMapCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

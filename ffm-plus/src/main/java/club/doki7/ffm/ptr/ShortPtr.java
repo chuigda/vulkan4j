@@ -92,7 +92,7 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Short> iterator() {
         return new Iter(segment);
     }
 
@@ -206,7 +206,7 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     /// An iterator over the short integers.
-    public static final class Iter implements Iterator<Short> {
+    private static final class Iter implements Iterator<Short> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

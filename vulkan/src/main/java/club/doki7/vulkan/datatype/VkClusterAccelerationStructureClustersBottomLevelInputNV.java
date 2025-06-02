@@ -137,12 +137,12 @@ public record VkClusterAccelerationStructureClustersBottomLevelInputNV(@NotNull 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClusterAccelerationStructureClustersBottomLevelInputNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClusterAccelerationStructureClustersBottomLevelInputNV> {
+        private static final class Iter implements Iterator<VkClusterAccelerationStructureClustersBottomLevelInputNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

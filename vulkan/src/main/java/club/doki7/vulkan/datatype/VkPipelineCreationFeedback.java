@@ -126,12 +126,12 @@ public record VkPipelineCreationFeedback(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineCreationFeedback> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineCreationFeedback> {
+        private static final class Iter implements Iterator<VkPipelineCreationFeedback> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

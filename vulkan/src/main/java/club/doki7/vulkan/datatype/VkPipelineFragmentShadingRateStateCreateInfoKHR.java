@@ -137,12 +137,12 @@ public record VkPipelineFragmentShadingRateStateCreateInfoKHR(@NotNull MemorySeg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineFragmentShadingRateStateCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineFragmentShadingRateStateCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkPipelineFragmentShadingRateStateCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

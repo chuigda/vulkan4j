@@ -126,12 +126,12 @@ public record VkPresentRegionKHR(@NotNull MemorySegment segment) implements IVkP
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPresentRegionKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPresentRegionKHR> {
+        private static final class Iter implements Iterator<VkPresentRegionKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

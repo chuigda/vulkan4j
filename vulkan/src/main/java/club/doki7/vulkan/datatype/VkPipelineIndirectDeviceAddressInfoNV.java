@@ -137,12 +137,12 @@ public record VkPipelineIndirectDeviceAddressInfoNV(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineIndirectDeviceAddressInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineIndirectDeviceAddressInfoNV> {
+        private static final class Iter implements Iterator<VkPipelineIndirectDeviceAddressInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

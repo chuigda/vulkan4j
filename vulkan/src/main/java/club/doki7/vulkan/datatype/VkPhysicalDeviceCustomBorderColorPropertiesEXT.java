@@ -136,12 +136,12 @@ public record VkPhysicalDeviceCustomBorderColorPropertiesEXT(@NotNull MemorySegm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceCustomBorderColorPropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceCustomBorderColorPropertiesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceCustomBorderColorPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

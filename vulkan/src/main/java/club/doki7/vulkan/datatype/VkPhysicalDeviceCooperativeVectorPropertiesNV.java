@@ -139,12 +139,12 @@ public record VkPhysicalDeviceCooperativeVectorPropertiesNV(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceCooperativeVectorPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceCooperativeVectorPropertiesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceCooperativeVectorPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

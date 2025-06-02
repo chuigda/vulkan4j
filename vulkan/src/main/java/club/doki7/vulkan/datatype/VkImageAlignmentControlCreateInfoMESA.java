@@ -136,12 +136,12 @@ public record VkImageAlignmentControlCreateInfoMESA(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageAlignmentControlCreateInfoMESA> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageAlignmentControlCreateInfoMESA> {
+        private static final class Iter implements Iterator<VkImageAlignmentControlCreateInfoMESA> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

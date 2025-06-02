@@ -136,12 +136,12 @@ public record VkDisplayPlaneProperties2KHR(@NotNull MemorySegment segment) imple
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDisplayPlaneProperties2KHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDisplayPlaneProperties2KHR> {
+        private static final class Iter implements Iterator<VkDisplayPlaneProperties2KHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

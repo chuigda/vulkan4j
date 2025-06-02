@@ -126,12 +126,12 @@ public record VkSampleLocationEXT(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSampleLocationEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSampleLocationEXT> {
+        private static final class Iter implements Iterator<VkSampleLocationEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

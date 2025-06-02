@@ -129,12 +129,12 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoEncodeAV1OperatingPointInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoEncodeAV1OperatingPointInfo> {
+        private static final class Iter implements Iterator<StdVideoEncodeAV1OperatingPointInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

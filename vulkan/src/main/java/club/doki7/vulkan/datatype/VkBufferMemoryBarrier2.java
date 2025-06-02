@@ -144,12 +144,12 @@ public record VkBufferMemoryBarrier2(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBufferMemoryBarrier2> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBufferMemoryBarrier2> {
+        private static final class Iter implements Iterator<VkBufferMemoryBarrier2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

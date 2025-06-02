@@ -136,12 +136,12 @@ public record VkPhysicalDeviceAmigoProfilingFeaturesSEC(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceAmigoProfilingFeaturesSEC> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceAmigoProfilingFeaturesSEC> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceAmigoProfilingFeaturesSEC> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

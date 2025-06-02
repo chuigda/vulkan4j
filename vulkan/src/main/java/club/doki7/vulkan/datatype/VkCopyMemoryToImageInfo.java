@@ -140,12 +140,12 @@ public record VkCopyMemoryToImageInfo(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCopyMemoryToImageInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCopyMemoryToImageInfo> {
+        private static final class Iter implements Iterator<VkCopyMemoryToImageInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

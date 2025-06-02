@@ -145,12 +145,12 @@ public record VkGeneratedCommandsInfoEXT(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkGeneratedCommandsInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkGeneratedCommandsInfoEXT> {
+        private static final class Iter implements Iterator<VkGeneratedCommandsInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

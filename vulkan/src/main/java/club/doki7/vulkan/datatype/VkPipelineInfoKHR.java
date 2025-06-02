@@ -136,12 +136,12 @@ public record VkPipelineInfoKHR(@NotNull MemorySegment segment) implements IVkPi
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineInfoKHR> {
+        private static final class Iter implements Iterator<VkPipelineInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkDeviceImageMemoryRequirements(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceImageMemoryRequirements> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceImageMemoryRequirements> {
+        private static final class Iter implements Iterator<VkDeviceImageMemoryRequirements> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

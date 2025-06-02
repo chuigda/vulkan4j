@@ -136,12 +136,12 @@ public record VkExportFenceCreateInfo(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExportFenceCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExportFenceCreateInfo> {
+        private static final class Iter implements Iterator<VkExportFenceCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

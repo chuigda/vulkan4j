@@ -136,12 +136,12 @@ public record VkExternalBufferProperties(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExternalBufferProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExternalBufferProperties> {
+        private static final class Iter implements Iterator<VkExternalBufferProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

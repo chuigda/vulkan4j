@@ -127,12 +127,12 @@ public record VkSpecializationMapEntry(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSpecializationMapEntry> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSpecializationMapEntry> {
+        private static final class Iter implements Iterator<VkSpecializationMapEntry> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

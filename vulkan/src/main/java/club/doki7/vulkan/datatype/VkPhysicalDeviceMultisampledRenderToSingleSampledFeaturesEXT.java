@@ -136,12 +136,12 @@ public record VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(@NotN
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

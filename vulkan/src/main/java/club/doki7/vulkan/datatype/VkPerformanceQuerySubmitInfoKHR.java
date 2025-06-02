@@ -136,12 +136,12 @@ public record VkPerformanceQuerySubmitInfoKHR(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPerformanceQuerySubmitInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPerformanceQuerySubmitInfoKHR> {
+        private static final class Iter implements Iterator<VkPerformanceQuerySubmitInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

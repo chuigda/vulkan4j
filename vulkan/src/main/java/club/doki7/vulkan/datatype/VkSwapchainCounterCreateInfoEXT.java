@@ -136,12 +136,12 @@ public record VkSwapchainCounterCreateInfoEXT(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSwapchainCounterCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSwapchainCounterCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkSwapchainCounterCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

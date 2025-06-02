@@ -143,12 +143,12 @@ public record VkDescriptorUpdateTemplateCreateInfo(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorUpdateTemplateCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorUpdateTemplateCreateInfo> {
+        private static final class Iter implements Iterator<VkDescriptorUpdateTemplateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

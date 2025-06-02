@@ -136,12 +136,12 @@ public record VkExportMetalObjectCreateInfoEXT(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExportMetalObjectCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExportMetalObjectCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkExportMetalObjectCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

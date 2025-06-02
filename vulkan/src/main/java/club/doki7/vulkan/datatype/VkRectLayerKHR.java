@@ -127,12 +127,12 @@ public record VkRectLayerKHR(@NotNull MemorySegment segment) implements IVkRectL
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRectLayerKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRectLayerKHR> {
+        private static final class Iter implements Iterator<VkRectLayerKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

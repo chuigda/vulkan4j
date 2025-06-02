@@ -136,12 +136,12 @@ public record VkSparseImageFormatProperties2(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSparseImageFormatProperties2> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSparseImageFormatProperties2> {
+        private static final class Iter implements Iterator<VkSparseImageFormatProperties2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

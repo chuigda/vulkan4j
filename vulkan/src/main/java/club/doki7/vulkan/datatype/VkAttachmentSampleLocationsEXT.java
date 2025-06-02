@@ -126,12 +126,12 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAttachmentSampleLocationsEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAttachmentSampleLocationsEXT> {
+        private static final class Iter implements Iterator<VkAttachmentSampleLocationsEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

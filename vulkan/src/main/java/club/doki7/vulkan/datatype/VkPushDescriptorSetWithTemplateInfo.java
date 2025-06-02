@@ -139,12 +139,12 @@ public record VkPushDescriptorSetWithTemplateInfo(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPushDescriptorSetWithTemplateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPushDescriptorSetWithTemplateInfo> {
+        private static final class Iter implements Iterator<VkPushDescriptorSetWithTemplateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

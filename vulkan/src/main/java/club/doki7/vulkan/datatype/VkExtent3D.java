@@ -127,12 +127,12 @@ public record VkExtent3D(@NotNull MemorySegment segment) implements IVkExtent3D 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExtent3D> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExtent3D> {
+        private static final class Iter implements Iterator<VkExtent3D> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

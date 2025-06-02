@@ -142,12 +142,12 @@ public record GLFWimage(@NotNull MemorySegment segment) implements IGLFWimage {
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<GLFWimage> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<GLFWimage> {
+        private static final class Iter implements Iterator<GLFWimage> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

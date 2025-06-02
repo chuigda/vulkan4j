@@ -136,12 +136,12 @@ public record VkPhysicalDevicePointClippingProperties(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePointClippingProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePointClippingProperties> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePointClippingProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

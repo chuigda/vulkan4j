@@ -138,12 +138,12 @@ public record VkPipelineFragmentShadingRateEnumStateCreateInfoNV(@NotNull Memory
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineFragmentShadingRateEnumStateCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineFragmentShadingRateEnumStateCreateInfoNV> {
+        private static final class Iter implements Iterator<VkPipelineFragmentShadingRateEnumStateCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

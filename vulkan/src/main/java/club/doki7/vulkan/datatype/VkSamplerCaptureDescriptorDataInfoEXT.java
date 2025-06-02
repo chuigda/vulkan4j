@@ -136,12 +136,12 @@ public record VkSamplerCaptureDescriptorDataInfoEXT(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerCaptureDescriptorDataInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerCaptureDescriptorDataInfoEXT> {
+        private static final class Iter implements Iterator<VkSamplerCaptureDescriptorDataInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

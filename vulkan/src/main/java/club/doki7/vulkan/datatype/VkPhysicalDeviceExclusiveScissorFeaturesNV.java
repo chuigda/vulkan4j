@@ -136,12 +136,12 @@ public record VkPhysicalDeviceExclusiveScissorFeaturesNV(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExclusiveScissorFeaturesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExclusiveScissorFeaturesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExclusiveScissorFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

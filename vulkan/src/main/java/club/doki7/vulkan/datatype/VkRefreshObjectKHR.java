@@ -127,12 +127,12 @@ public record VkRefreshObjectKHR(@NotNull MemorySegment segment) implements IVkR
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRefreshObjectKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRefreshObjectKHR> {
+        private static final class Iter implements Iterator<VkRefreshObjectKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkQueueFamilyVideoPropertiesKHR(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkQueueFamilyVideoPropertiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkQueueFamilyVideoPropertiesKHR> {
+        private static final class Iter implements Iterator<VkQueueFamilyVideoPropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

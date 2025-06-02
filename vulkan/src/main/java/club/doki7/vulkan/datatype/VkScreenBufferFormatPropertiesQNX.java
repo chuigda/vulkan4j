@@ -144,12 +144,12 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkScreenBufferFormatPropertiesQNX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkScreenBufferFormatPropertiesQNX> {
+        private static final class Iter implements Iterator<VkScreenBufferFormatPropertiesQNX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

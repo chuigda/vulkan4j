@@ -138,12 +138,12 @@ public record VkDirectDriverLoadingListLUNARG(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDirectDriverLoadingListLUNARG> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDirectDriverLoadingListLUNARG> {
+        private static final class Iter implements Iterator<VkDirectDriverLoadingListLUNARG> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

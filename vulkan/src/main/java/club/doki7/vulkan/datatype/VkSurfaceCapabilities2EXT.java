@@ -146,12 +146,12 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSurfaceCapabilities2EXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSurfaceCapabilities2EXT> {
+        private static final class Iter implements Iterator<VkSurfaceCapabilities2EXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

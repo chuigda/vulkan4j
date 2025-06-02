@@ -138,12 +138,12 @@ public record VkPipelineCacheCreateInfo(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineCacheCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineCacheCreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineCacheCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

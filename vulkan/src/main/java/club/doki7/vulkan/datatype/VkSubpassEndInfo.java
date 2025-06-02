@@ -135,12 +135,12 @@ public record VkSubpassEndInfo(@NotNull MemorySegment segment) implements IVkSub
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSubpassEndInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSubpassEndInfo> {
+        private static final class Iter implements Iterator<VkSubpassEndInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkPhysicalDeviceDynamicRenderingLocalReadFeatures(@NotNull MemoryS
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceDynamicRenderingLocalReadFeatures> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceDynamicRenderingLocalReadFeatures> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceDynamicRenderingLocalReadFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

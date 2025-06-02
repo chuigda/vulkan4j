@@ -139,12 +139,12 @@ public record VkVertexInputBindingDescription2EXT(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVertexInputBindingDescription2EXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVertexInputBindingDescription2EXT> {
+        private static final class Iter implements Iterator<VkVertexInputBindingDescription2EXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

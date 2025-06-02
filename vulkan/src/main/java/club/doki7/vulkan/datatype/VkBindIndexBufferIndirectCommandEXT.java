@@ -127,12 +127,12 @@ public record VkBindIndexBufferIndirectCommandEXT(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBindIndexBufferIndirectCommandEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBindIndexBufferIndirectCommandEXT> {
+        private static final class Iter implements Iterator<VkBindIndexBufferIndirectCommandEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

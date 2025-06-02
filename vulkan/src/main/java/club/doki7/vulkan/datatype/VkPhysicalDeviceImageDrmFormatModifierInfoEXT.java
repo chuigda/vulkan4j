@@ -139,12 +139,12 @@ public record VkPhysicalDeviceImageDrmFormatModifierInfoEXT(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

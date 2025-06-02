@@ -136,12 +136,12 @@ public record VkDedicatedAllocationImageCreateInfoNV(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDedicatedAllocationImageCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDedicatedAllocationImageCreateInfoNV> {
+        private static final class Iter implements Iterator<VkDedicatedAllocationImageCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

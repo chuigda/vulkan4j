@@ -138,12 +138,12 @@ public record VkWin32SurfaceCreateInfoKHR(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkWin32SurfaceCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkWin32SurfaceCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkWin32SurfaceCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

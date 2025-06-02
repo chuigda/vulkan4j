@@ -137,12 +137,12 @@ public record VkCommandBufferSubmitInfo(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCommandBufferSubmitInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCommandBufferSubmitInfo> {
+        private static final class Iter implements Iterator<VkCommandBufferSubmitInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

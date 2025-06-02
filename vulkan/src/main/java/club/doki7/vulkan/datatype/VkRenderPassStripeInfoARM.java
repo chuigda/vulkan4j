@@ -136,12 +136,12 @@ public record VkRenderPassStripeInfoARM(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderPassStripeInfoARM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderPassStripeInfoARM> {
+        private static final class Iter implements Iterator<VkRenderPassStripeInfoARM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

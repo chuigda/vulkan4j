@@ -142,12 +142,12 @@ public record VkPhysicalDeviceShaderEnqueuePropertiesAMDX(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderEnqueuePropertiesAMDX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderEnqueuePropertiesAMDX> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderEnqueuePropertiesAMDX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

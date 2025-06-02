@@ -136,12 +136,12 @@ public record VkPipelineCreateFlags2CreateInfo(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineCreateFlags2CreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineCreateFlags2CreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineCreateFlags2CreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkPhysicalDevicePipelineOpacityMicromapFeaturesARM(@NotNull Memory
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePipelineOpacityMicromapFeaturesARM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePipelineOpacityMicromapFeaturesARM> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePipelineOpacityMicromapFeaturesARM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

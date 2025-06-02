@@ -145,12 +145,12 @@ public record VkCooperativeMatrixFlexibleDimensionsPropertiesNV(@NotNull MemoryS
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCooperativeMatrixFlexibleDimensionsPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCooperativeMatrixFlexibleDimensionsPropertiesNV> {
+        private static final class Iter implements Iterator<VkCooperativeMatrixFlexibleDimensionsPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

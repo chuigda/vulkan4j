@@ -136,12 +136,12 @@ public record VkBufferOpaqueCaptureAddressCreateInfo(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBufferOpaqueCaptureAddressCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBufferOpaqueCaptureAddressCreateInfo> {
+        private static final class Iter implements Iterator<VkBufferOpaqueCaptureAddressCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

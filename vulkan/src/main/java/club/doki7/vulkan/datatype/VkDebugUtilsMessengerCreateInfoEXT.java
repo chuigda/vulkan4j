@@ -140,12 +140,12 @@ public record VkDebugUtilsMessengerCreateInfoEXT(@NotNull MemorySegment segment)
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDebugUtilsMessengerCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDebugUtilsMessengerCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkDebugUtilsMessengerCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

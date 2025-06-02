@@ -136,12 +136,12 @@ public record VkImportMetalIOSurfaceInfoEXT(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImportMetalIOSurfaceInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImportMetalIOSurfaceInfoEXT> {
+        private static final class Iter implements Iterator<VkImportMetalIOSurfaceInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

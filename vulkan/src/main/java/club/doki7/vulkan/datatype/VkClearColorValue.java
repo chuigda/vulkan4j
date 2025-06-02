@@ -127,12 +127,12 @@ public record VkClearColorValue(@NotNull MemorySegment segment) implements IVkCl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClearColorValue> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClearColorValue> {
+        private static final class Iter implements Iterator<VkClearColorValue> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

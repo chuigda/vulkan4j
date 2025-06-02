@@ -136,12 +136,12 @@ public record VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(@NotNull Me
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> {
+        private static final class Iter implements Iterator<VkDescriptorBufferBindingPushDescriptorBufferHandleEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

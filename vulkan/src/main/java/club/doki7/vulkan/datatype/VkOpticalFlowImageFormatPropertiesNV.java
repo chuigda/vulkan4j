@@ -136,12 +136,12 @@ public record VkOpticalFlowImageFormatPropertiesNV(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkOpticalFlowImageFormatPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkOpticalFlowImageFormatPropertiesNV> {
+        private static final class Iter implements Iterator<VkOpticalFlowImageFormatPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

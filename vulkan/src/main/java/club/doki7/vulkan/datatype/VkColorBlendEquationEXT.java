@@ -130,12 +130,12 @@ public record VkColorBlendEquationEXT(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkColorBlendEquationEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkColorBlendEquationEXT> {
+        private static final class Iter implements Iterator<VkColorBlendEquationEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

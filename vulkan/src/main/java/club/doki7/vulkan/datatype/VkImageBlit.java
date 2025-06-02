@@ -128,12 +128,12 @@ public record VkImageBlit(@NotNull MemorySegment segment) implements IVkImageBli
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageBlit> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageBlit> {
+        private static final class Iter implements Iterator<VkImageBlit> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

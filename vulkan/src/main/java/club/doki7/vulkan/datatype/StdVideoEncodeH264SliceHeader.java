@@ -132,12 +132,12 @@ public record StdVideoEncodeH264SliceHeader(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoEncodeH264SliceHeader> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoEncodeH264SliceHeader> {
+        private static final class Iter implements Iterator<StdVideoEncodeH264SliceHeader> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

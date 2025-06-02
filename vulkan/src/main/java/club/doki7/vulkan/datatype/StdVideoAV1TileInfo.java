@@ -132,12 +132,12 @@ public record StdVideoAV1TileInfo(@NotNull MemorySegment segment) implements ISt
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoAV1TileInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoAV1TileInfo> {
+        private static final class Iter implements Iterator<StdVideoAV1TileInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -189,12 +189,12 @@ public record VmaAllocationInfo(@NotNull MemorySegment segment) implements IVmaA
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VmaAllocationInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VmaAllocationInfo> {
+        private static final class Iter implements Iterator<VmaAllocationInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

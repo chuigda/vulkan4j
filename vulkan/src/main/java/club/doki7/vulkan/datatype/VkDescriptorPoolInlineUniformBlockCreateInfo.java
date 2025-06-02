@@ -136,12 +136,12 @@ public record VkDescriptorPoolInlineUniformBlockCreateInfo(@NotNull MemorySegmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorPoolInlineUniformBlockCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorPoolInlineUniformBlockCreateInfo> {
+        private static final class Iter implements Iterator<VkDescriptorPoolInlineUniformBlockCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -130,12 +130,12 @@ public record VkDescriptorUpdateTemplateEntry(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorUpdateTemplateEntry> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorUpdateTemplateEntry> {
+        private static final class Iter implements Iterator<VkDescriptorUpdateTemplateEntry> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

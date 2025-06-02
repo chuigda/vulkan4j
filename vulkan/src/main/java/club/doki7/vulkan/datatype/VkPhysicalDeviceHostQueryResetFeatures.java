@@ -136,12 +136,12 @@ public record VkPhysicalDeviceHostQueryResetFeatures(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceHostQueryResetFeatures> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceHostQueryResetFeatures> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceHostQueryResetFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkExportMetalDeviceInfoEXT(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExportMetalDeviceInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExportMetalDeviceInfoEXT> {
+        private static final class Iter implements Iterator<VkExportMetalDeviceInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

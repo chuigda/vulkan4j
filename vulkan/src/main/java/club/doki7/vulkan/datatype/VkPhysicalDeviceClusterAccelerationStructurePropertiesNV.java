@@ -143,12 +143,12 @@ public record VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(@NotNull 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceClusterAccelerationStructurePropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceClusterAccelerationStructurePropertiesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceClusterAccelerationStructurePropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

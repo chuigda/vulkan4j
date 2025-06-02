@@ -136,12 +136,12 @@ public record VkExternalMemoryImageCreateInfo(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExternalMemoryImageCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExternalMemoryImageCreateInfo> {
+        private static final class Iter implements Iterator<VkExternalMemoryImageCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

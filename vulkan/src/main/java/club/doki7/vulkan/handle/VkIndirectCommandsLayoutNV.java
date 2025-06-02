@@ -113,6 +113,7 @@ public record VkIndirectCommandsLayoutNV(@NotNull MemorySegment segment) impleme
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -157,12 +158,12 @@ public record VkIndirectCommandsLayoutNV(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkIndirectCommandsLayoutNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkIndirectCommandsLayoutNV> {
+        private static class Iter implements Iterator<VkIndirectCommandsLayoutNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

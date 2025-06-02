@@ -126,12 +126,12 @@ public record VkIndirectExecutionSetInfoEXT(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkIndirectExecutionSetInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkIndirectExecutionSetInfoEXT> {
+        private static final class Iter implements Iterator<VkIndirectExecutionSetInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

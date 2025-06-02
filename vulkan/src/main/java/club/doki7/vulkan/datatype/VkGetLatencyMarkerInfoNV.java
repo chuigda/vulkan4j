@@ -137,12 +137,12 @@ public record VkGetLatencyMarkerInfoNV(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkGetLatencyMarkerInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkGetLatencyMarkerInfoNV> {
+        private static final class Iter implements Iterator<VkGetLatencyMarkerInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

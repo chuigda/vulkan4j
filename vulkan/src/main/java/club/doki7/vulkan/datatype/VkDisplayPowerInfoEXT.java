@@ -136,12 +136,12 @@ public record VkDisplayPowerInfoEXT(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDisplayPowerInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDisplayPowerInfoEXT> {
+        private static final class Iter implements Iterator<VkDisplayPowerInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

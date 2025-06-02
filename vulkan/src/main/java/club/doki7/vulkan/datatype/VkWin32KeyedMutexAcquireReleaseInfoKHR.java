@@ -142,12 +142,12 @@ public record VkWin32KeyedMutexAcquireReleaseInfoKHR(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkWin32KeyedMutexAcquireReleaseInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkWin32KeyedMutexAcquireReleaseInfoKHR> {
+        private static final class Iter implements Iterator<VkWin32KeyedMutexAcquireReleaseInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

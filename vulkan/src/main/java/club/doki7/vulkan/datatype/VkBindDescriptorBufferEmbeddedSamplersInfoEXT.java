@@ -138,12 +138,12 @@ public record VkBindDescriptorBufferEmbeddedSamplersInfoEXT(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBindDescriptorBufferEmbeddedSamplersInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBindDescriptorBufferEmbeddedSamplersInfoEXT> {
+        private static final class Iter implements Iterator<VkBindDescriptorBufferEmbeddedSamplersInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

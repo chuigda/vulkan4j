@@ -136,12 +136,12 @@ public record VkDeviceQueueGlobalPriorityCreateInfo(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceQueueGlobalPriorityCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceQueueGlobalPriorityCreateInfo> {
+        private static final class Iter implements Iterator<VkDeviceQueueGlobalPriorityCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

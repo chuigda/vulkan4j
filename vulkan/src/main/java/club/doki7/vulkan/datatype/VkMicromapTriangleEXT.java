@@ -127,12 +127,12 @@ public record VkMicromapTriangleEXT(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMicromapTriangleEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMicromapTriangleEXT> {
+        private static final class Iter implements Iterator<VkMicromapTriangleEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

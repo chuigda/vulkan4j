@@ -140,12 +140,12 @@ public record VkPhysicalDeviceAccelerationStructureFeaturesKHR(@NotNull MemorySe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceAccelerationStructureFeaturesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceAccelerationStructureFeaturesKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceAccelerationStructureFeaturesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

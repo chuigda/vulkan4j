@@ -136,12 +136,12 @@ public record VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

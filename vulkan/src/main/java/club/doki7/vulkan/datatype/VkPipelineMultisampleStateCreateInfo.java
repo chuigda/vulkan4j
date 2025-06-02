@@ -142,12 +142,12 @@ public record VkPipelineMultisampleStateCreateInfo(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineMultisampleStateCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineMultisampleStateCreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineMultisampleStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

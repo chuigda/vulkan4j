@@ -136,12 +136,12 @@ public record VkDevicePipelineBinaryInternalCacheControlKHR(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDevicePipelineBinaryInternalCacheControlKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDevicePipelineBinaryInternalCacheControlKHR> {
+        private static final class Iter implements Iterator<VkDevicePipelineBinaryInternalCacheControlKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

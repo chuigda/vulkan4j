@@ -136,12 +136,12 @@ public record VkOpaqueCaptureDescriptorDataCreateInfoEXT(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkOpaqueCaptureDescriptorDataCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkOpaqueCaptureDescriptorDataCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkOpaqueCaptureDescriptorDataCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

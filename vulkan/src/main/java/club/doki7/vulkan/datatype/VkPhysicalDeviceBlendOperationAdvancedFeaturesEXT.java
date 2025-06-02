@@ -136,12 +136,12 @@ public record VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT(@NotNull MemoryS
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

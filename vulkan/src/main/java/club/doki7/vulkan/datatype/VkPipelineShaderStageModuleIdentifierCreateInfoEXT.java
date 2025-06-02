@@ -137,12 +137,12 @@ public record VkPipelineShaderStageModuleIdentifierCreateInfoEXT(@NotNull Memory
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineShaderStageModuleIdentifierCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineShaderStageModuleIdentifierCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkPipelineShaderStageModuleIdentifierCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

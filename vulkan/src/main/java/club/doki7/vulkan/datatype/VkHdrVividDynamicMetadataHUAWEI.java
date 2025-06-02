@@ -137,12 +137,12 @@ public record VkHdrVividDynamicMetadataHUAWEI(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkHdrVividDynamicMetadataHUAWEI> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkHdrVividDynamicMetadataHUAWEI> {
+        private static final class Iter implements Iterator<VkHdrVividDynamicMetadataHUAWEI> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

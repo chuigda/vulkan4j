@@ -126,12 +126,12 @@ public record StdVideoAV1QuantizationFlags(@NotNull MemorySegment segment) imple
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoAV1QuantizationFlags> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoAV1QuantizationFlags> {
+        private static final class Iter implements Iterator<StdVideoAV1QuantizationFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

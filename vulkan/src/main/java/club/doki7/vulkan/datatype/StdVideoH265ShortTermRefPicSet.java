@@ -136,12 +136,12 @@ public record StdVideoH265ShortTermRefPicSet(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH265ShortTermRefPicSet> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH265ShortTermRefPicSet> {
+        private static final class Iter implements Iterator<StdVideoH265ShortTermRefPicSet> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

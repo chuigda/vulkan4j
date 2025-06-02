@@ -126,12 +126,12 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IVkClearVa
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClearValue> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClearValue> {
+        private static final class Iter implements Iterator<VkClearValue> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

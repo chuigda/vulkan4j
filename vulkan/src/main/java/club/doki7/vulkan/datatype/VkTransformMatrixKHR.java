@@ -125,12 +125,12 @@ public record VkTransformMatrixKHR(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkTransformMatrixKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkTransformMatrixKHR> {
+        private static final class Iter implements Iterator<VkTransformMatrixKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

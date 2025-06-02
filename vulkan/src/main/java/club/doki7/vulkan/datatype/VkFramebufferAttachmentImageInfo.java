@@ -142,12 +142,12 @@ public record VkFramebufferAttachmentImageInfo(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkFramebufferAttachmentImageInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkFramebufferAttachmentImageInfo> {
+        private static final class Iter implements Iterator<VkFramebufferAttachmentImageInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

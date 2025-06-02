@@ -136,12 +136,12 @@ public record VkPhysicalDeviceProtectedMemoryProperties(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceProtectedMemoryProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceProtectedMemoryProperties> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceProtectedMemoryProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

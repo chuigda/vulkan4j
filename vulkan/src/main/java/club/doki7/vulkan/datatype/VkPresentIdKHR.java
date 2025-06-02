@@ -137,12 +137,12 @@ public record VkPresentIdKHR(@NotNull MemorySegment segment) implements IVkPrese
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPresentIdKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPresentIdKHR> {
+        private static final class Iter implements Iterator<VkPresentIdKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

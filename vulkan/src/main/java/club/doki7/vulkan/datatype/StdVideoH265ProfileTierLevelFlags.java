@@ -128,12 +128,12 @@ public record StdVideoH265ProfileTierLevelFlags(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH265ProfileTierLevelFlags> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH265ProfileTierLevelFlags> {
+        private static final class Iter implements Iterator<StdVideoH265ProfileTierLevelFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

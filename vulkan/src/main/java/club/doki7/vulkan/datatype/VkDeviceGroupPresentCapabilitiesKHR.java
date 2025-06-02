@@ -137,12 +137,12 @@ public record VkDeviceGroupPresentCapabilitiesKHR(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceGroupPresentCapabilitiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceGroupPresentCapabilitiesKHR> {
+        private static final class Iter implements Iterator<VkDeviceGroupPresentCapabilitiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

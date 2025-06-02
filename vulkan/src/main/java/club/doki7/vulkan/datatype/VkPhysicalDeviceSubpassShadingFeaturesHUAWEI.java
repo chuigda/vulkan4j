@@ -136,12 +136,12 @@ public record VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(@NotNull MemorySegmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceSubpassShadingFeaturesHUAWEI> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -138,12 +138,12 @@ public record VkBufferCopy2(@NotNull MemorySegment segment) implements IVkBuffer
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBufferCopy2> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBufferCopy2> {
+        private static final class Iter implements Iterator<VkBufferCopy2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -131,12 +131,12 @@ public record StdVideoAV1ColorConfig(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoAV1ColorConfig> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoAV1ColorConfig> {
+        private static final class Iter implements Iterator<StdVideoAV1ColorConfig> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkImportMemoryBufferCollectionFUCHSIA(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImportMemoryBufferCollectionFUCHSIA> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImportMemoryBufferCollectionFUCHSIA> {
+        private static final class Iter implements Iterator<VkImportMemoryBufferCollectionFUCHSIA> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

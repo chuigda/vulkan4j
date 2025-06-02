@@ -126,12 +126,12 @@ public record StdVideoH264ScalingLists(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH264ScalingLists> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH264ScalingLists> {
+        private static final class Iter implements Iterator<StdVideoH264ScalingLists> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

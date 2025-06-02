@@ -136,12 +136,12 @@ public record VkPipelinePropertiesIdentifierEXT(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelinePropertiesIdentifierEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelinePropertiesIdentifierEXT> {
+        private static final class Iter implements Iterator<VkPipelinePropertiesIdentifierEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

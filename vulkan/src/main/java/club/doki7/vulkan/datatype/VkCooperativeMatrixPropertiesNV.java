@@ -143,12 +143,12 @@ public record VkCooperativeMatrixPropertiesNV(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCooperativeMatrixPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCooperativeMatrixPropertiesNV> {
+        private static final class Iter implements Iterator<VkCooperativeMatrixPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

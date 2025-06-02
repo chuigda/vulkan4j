@@ -136,12 +136,12 @@ public record VkMemoryMetalHandlePropertiesEXT(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryMetalHandlePropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryMetalHandlePropertiesEXT> {
+        private static final class Iter implements Iterator<VkMemoryMetalHandlePropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

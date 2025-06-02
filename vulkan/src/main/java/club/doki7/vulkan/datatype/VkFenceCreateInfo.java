@@ -136,12 +136,12 @@ public record VkFenceCreateInfo(@NotNull MemorySegment segment) implements IVkFe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkFenceCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkFenceCreateInfo> {
+        private static final class Iter implements Iterator<VkFenceCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

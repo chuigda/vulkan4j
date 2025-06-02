@@ -141,12 +141,12 @@ public record VkRenderPassMultiviewCreateInfo(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderPassMultiviewCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderPassMultiviewCreateInfo> {
+        private static final class Iter implements Iterator<VkRenderPassMultiviewCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

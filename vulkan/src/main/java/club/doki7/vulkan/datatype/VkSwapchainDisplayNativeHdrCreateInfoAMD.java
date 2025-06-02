@@ -136,12 +136,12 @@ public record VkSwapchainDisplayNativeHdrCreateInfoAMD(@NotNull MemorySegment se
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSwapchainDisplayNativeHdrCreateInfoAMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSwapchainDisplayNativeHdrCreateInfoAMD> {
+        private static final class Iter implements Iterator<VkSwapchainDisplayNativeHdrCreateInfoAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

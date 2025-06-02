@@ -136,12 +136,12 @@ public record VkExportMemoryAllocateInfo(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExportMemoryAllocateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExportMemoryAllocateInfo> {
+        private static final class Iter implements Iterator<VkExportMemoryAllocateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

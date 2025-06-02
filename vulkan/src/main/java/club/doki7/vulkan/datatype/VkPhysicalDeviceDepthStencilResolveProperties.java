@@ -139,12 +139,12 @@ public record VkPhysicalDeviceDepthStencilResolveProperties(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceDepthStencilResolveProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceDepthStencilResolveProperties> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceDepthStencilResolveProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

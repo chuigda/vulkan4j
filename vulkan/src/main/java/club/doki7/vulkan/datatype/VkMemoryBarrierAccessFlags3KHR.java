@@ -137,12 +137,12 @@ public record VkMemoryBarrierAccessFlags3KHR(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryBarrierAccessFlags3KHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryBarrierAccessFlags3KHR> {
+        private static final class Iter implements Iterator<VkMemoryBarrierAccessFlags3KHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

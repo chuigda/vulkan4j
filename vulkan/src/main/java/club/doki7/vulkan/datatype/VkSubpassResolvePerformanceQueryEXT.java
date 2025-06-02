@@ -136,12 +136,12 @@ public record VkSubpassResolvePerformanceQueryEXT(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSubpassResolvePerformanceQueryEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSubpassResolvePerformanceQueryEXT> {
+        private static final class Iter implements Iterator<VkSubpassResolvePerformanceQueryEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

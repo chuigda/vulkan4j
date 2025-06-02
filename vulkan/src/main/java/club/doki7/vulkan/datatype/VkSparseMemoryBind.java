@@ -129,12 +129,12 @@ public record VkSparseMemoryBind(@NotNull MemorySegment segment) implements IVkS
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSparseMemoryBind> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSparseMemoryBind> {
+        private static final class Iter implements Iterator<VkSparseMemoryBind> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

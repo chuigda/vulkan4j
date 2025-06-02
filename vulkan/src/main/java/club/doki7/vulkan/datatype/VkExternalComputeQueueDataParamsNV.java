@@ -136,12 +136,12 @@ public record VkExternalComputeQueueDataParamsNV(@NotNull MemorySegment segment)
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExternalComputeQueueDataParamsNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExternalComputeQueueDataParamsNV> {
+        private static final class Iter implements Iterator<VkExternalComputeQueueDataParamsNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

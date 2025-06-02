@@ -137,12 +137,12 @@ public record VkPhysicalDeviceShaderCoreProperties2AMD(@NotNull MemorySegment se
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderCoreProperties2AMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderCoreProperties2AMD> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderCoreProperties2AMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

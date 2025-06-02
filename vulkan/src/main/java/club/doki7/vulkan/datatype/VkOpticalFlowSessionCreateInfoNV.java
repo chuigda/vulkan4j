@@ -144,12 +144,12 @@ public record VkOpticalFlowSessionCreateInfoNV(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkOpticalFlowSessionCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkOpticalFlowSessionCreateInfoNV> {
+        private static final class Iter implements Iterator<VkOpticalFlowSessionCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

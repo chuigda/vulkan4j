@@ -138,12 +138,12 @@ public record VkImageCompressionControlEXT(@NotNull MemorySegment segment) imple
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageCompressionControlEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageCompressionControlEXT> {
+        private static final class Iter implements Iterator<VkImageCompressionControlEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

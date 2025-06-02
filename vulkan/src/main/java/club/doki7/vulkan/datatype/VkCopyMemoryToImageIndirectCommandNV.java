@@ -130,12 +130,12 @@ public record VkCopyMemoryToImageIndirectCommandNV(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCopyMemoryToImageIndirectCommandNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCopyMemoryToImageIndirectCommandNV> {
+        private static final class Iter implements Iterator<VkCopyMemoryToImageIndirectCommandNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

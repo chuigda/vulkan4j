@@ -140,12 +140,12 @@ public record VkSRTDataNV(@NotNull MemorySegment segment) implements IVkSRTDataN
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSRTDataNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSRTDataNV> {
+        private static final class Iter implements Iterator<VkSRTDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

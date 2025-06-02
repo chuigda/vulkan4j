@@ -148,12 +148,12 @@ public record VkPhysicalDeviceMeshShaderPropertiesNV(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceMeshShaderPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceMeshShaderPropertiesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceMeshShaderPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

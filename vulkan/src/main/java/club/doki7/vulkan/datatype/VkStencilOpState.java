@@ -131,12 +131,12 @@ public record VkStencilOpState(@NotNull MemorySegment segment) implements IVkSte
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkStencilOpState> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkStencilOpState> {
+        private static final class Iter implements Iterator<VkStencilOpState> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

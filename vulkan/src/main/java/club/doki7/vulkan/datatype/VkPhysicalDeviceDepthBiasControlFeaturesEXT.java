@@ -139,12 +139,12 @@ public record VkPhysicalDeviceDepthBiasControlFeaturesEXT(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceDepthBiasControlFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceDepthBiasControlFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceDepthBiasControlFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

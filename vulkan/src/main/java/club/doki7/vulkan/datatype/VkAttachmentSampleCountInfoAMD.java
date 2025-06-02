@@ -138,12 +138,12 @@ public record VkAttachmentSampleCountInfoAMD(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAttachmentSampleCountInfoAMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAttachmentSampleCountInfoAMD> {
+        private static final class Iter implements Iterator<VkAttachmentSampleCountInfoAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

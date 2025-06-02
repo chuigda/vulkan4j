@@ -142,12 +142,12 @@ public record VkDependencyInfo(@NotNull MemorySegment segment) implements IVkDep
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDependencyInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDependencyInfo> {
+        private static final class Iter implements Iterator<VkDependencyInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

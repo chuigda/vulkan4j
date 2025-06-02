@@ -136,12 +136,12 @@ public record VkPhysicalDeviceInheritedViewportScissorFeaturesNV(@NotNull Memory
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceInheritedViewportScissorFeaturesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceInheritedViewportScissorFeaturesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceInheritedViewportScissorFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

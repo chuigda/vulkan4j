@@ -137,12 +137,12 @@ public record VkWriteDescriptorSetAccelerationStructureNV(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkWriteDescriptorSetAccelerationStructureNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkWriteDescriptorSetAccelerationStructureNV> {
+        private static final class Iter implements Iterator<VkWriteDescriptorSetAccelerationStructureNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

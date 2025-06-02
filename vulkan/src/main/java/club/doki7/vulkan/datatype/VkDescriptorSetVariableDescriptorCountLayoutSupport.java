@@ -136,12 +136,12 @@ public record VkDescriptorSetVariableDescriptorCountLayoutSupport(@NotNull Memor
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorSetVariableDescriptorCountLayoutSupport> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorSetVariableDescriptorCountLayoutSupport> {
+        private static final class Iter implements Iterator<VkDescriptorSetVariableDescriptorCountLayoutSupport> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

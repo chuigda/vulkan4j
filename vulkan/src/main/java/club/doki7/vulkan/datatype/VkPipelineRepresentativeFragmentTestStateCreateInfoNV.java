@@ -136,12 +136,12 @@ public record VkPipelineRepresentativeFragmentTestStateCreateInfoNV(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineRepresentativeFragmentTestStateCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineRepresentativeFragmentTestStateCreateInfoNV> {
+        private static final class Iter implements Iterator<VkPipelineRepresentativeFragmentTestStateCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

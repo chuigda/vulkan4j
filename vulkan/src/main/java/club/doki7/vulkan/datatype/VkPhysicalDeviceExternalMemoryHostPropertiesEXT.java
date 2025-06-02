@@ -136,12 +136,12 @@ public record VkPhysicalDeviceExternalMemoryHostPropertiesEXT(@NotNull MemorySeg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExternalMemoryHostPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

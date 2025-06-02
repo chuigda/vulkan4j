@@ -138,12 +138,12 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkIndirectCommandsLayoutTokenEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkIndirectCommandsLayoutTokenEXT> {
+        private static final class Iter implements Iterator<VkIndirectCommandsLayoutTokenEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

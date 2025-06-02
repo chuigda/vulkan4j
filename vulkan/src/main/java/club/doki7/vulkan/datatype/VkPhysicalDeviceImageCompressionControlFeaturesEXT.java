@@ -136,12 +136,12 @@ public record VkPhysicalDeviceImageCompressionControlFeaturesEXT(@NotNull Memory
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceImageCompressionControlFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceImageCompressionControlFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceImageCompressionControlFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

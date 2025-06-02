@@ -129,12 +129,12 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPastPresentationTimingGOOGLE> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPastPresentationTimingGOOGLE> {
+        private static final class Iter implements Iterator<VkPastPresentationTimingGOOGLE> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -125,12 +125,12 @@ public record VkIndirectCommandsIndexBufferTokenEXT(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkIndirectCommandsIndexBufferTokenEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkIndirectCommandsIndexBufferTokenEXT> {
+        private static final class Iter implements Iterator<VkIndirectCommandsIndexBufferTokenEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

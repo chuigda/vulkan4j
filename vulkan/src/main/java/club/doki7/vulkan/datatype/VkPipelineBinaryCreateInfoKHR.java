@@ -138,12 +138,12 @@ public record VkPipelineBinaryCreateInfoKHR(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineBinaryCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineBinaryCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkPipelineBinaryCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkRenderPassAttachmentBeginInfo(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderPassAttachmentBeginInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderPassAttachmentBeginInfo> {
+        private static final class Iter implements Iterator<VkRenderPassAttachmentBeginInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

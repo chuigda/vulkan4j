@@ -136,12 +136,12 @@ public record VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

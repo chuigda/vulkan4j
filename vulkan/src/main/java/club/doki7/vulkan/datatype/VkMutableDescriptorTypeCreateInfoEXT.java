@@ -137,12 +137,12 @@ public record VkMutableDescriptorTypeCreateInfoEXT(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMutableDescriptorTypeCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMutableDescriptorTypeCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkMutableDescriptorTypeCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkDescriptorSetVariableDescriptorCountAllocateInfo(@NotNull Memory
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorSetVariableDescriptorCountAllocateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorSetVariableDescriptorCountAllocateInfo> {
+        private static final class Iter implements Iterator<VkDescriptorSetVariableDescriptorCountAllocateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

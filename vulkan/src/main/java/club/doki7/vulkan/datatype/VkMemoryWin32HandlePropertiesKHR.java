@@ -136,12 +136,12 @@ public record VkMemoryWin32HandlePropertiesKHR(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryWin32HandlePropertiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryWin32HandlePropertiesKHR> {
+        private static final class Iter implements Iterator<VkMemoryWin32HandlePropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

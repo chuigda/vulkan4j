@@ -139,12 +139,12 @@ public record VkTimelineSemaphoreSubmitInfo(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkTimelineSemaphoreSubmitInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkTimelineSemaphoreSubmitInfo> {
+        private static final class Iter implements Iterator<VkTimelineSemaphoreSubmitInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

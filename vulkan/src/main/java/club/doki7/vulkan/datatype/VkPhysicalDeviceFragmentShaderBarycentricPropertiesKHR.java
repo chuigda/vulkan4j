@@ -136,12 +136,12 @@ public record VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR(@NotNull Me
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

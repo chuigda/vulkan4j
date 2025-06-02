@@ -117,7 +117,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Byte> iterator() {
         return new Iter(segment);
     }
 
@@ -223,7 +223,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     /// An iterator over the bytes.
-    public static final class Iter implements Iterator<Byte> {
+    private static final class Iter implements Iterator<Byte> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

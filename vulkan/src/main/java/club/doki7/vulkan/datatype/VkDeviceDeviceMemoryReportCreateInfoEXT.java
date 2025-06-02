@@ -138,12 +138,12 @@ public record VkDeviceDeviceMemoryReportCreateInfoEXT(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceDeviceMemoryReportCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceDeviceMemoryReportCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkDeviceDeviceMemoryReportCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

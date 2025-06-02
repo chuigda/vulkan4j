@@ -128,12 +128,12 @@ public record StdVideoAV1FilmGrainFlags(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoAV1FilmGrainFlags> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoAV1FilmGrainFlags> {
+        private static final class Iter implements Iterator<StdVideoAV1FilmGrainFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

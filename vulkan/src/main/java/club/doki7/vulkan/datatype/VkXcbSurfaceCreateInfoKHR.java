@@ -138,12 +138,12 @@ public record VkXcbSurfaceCreateInfoKHR(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkXcbSurfaceCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkXcbSurfaceCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkXcbSurfaceCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

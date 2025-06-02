@@ -136,12 +136,12 @@ public record VkQueueFamilyCheckpointPropertiesNV(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkQueueFamilyCheckpointPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkQueueFamilyCheckpointPropertiesNV> {
+        private static final class Iter implements Iterator<VkQueueFamilyCheckpointPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

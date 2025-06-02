@@ -137,12 +137,12 @@ public record VkCuFunctionCreateInfoNVX(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCuFunctionCreateInfoNVX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCuFunctionCreateInfoNVX> {
+        private static final class Iter implements Iterator<VkCuFunctionCreateInfoNVX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

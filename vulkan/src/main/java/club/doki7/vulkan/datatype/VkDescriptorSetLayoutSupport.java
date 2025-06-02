@@ -136,12 +136,12 @@ public record VkDescriptorSetLayoutSupport(@NotNull MemorySegment segment) imple
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorSetLayoutSupport> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorSetLayoutSupport> {
+        private static final class Iter implements Iterator<VkDescriptorSetLayoutSupport> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

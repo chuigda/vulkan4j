@@ -136,12 +136,12 @@ public record VkPhysicalDeviceExternalFenceInfo(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExternalFenceInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExternalFenceInfo> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExternalFenceInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

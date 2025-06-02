@@ -136,12 +136,12 @@ public record VkHeadlessSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkHeadlessSurfaceCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkHeadlessSurfaceCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkHeadlessSurfaceCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

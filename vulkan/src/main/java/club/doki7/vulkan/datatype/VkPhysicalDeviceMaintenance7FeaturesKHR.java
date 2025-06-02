@@ -136,12 +136,12 @@ public record VkPhysicalDeviceMaintenance7FeaturesKHR(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceMaintenance7FeaturesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceMaintenance7FeaturesKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceMaintenance7FeaturesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

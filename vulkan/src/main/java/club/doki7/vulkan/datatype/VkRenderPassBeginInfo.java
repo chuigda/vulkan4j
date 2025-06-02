@@ -140,12 +140,12 @@ public record VkRenderPassBeginInfo(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderPassBeginInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderPassBeginInfo> {
+        private static final class Iter implements Iterator<VkRenderPassBeginInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

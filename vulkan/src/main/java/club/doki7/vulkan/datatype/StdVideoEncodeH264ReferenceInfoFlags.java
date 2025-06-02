@@ -125,12 +125,12 @@ public record StdVideoEncodeH264ReferenceInfoFlags(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoEncodeH264ReferenceInfoFlags> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoEncodeH264ReferenceInfoFlags> {
+        private static final class Iter implements Iterator<StdVideoEncodeH264ReferenceInfoFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

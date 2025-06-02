@@ -137,12 +137,12 @@ public record VkAmigoProfilingSubmitInfoSEC(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAmigoProfilingSubmitInfoSEC> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAmigoProfilingSubmitInfoSEC> {
+        private static final class Iter implements Iterator<VkAmigoProfilingSubmitInfoSEC> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

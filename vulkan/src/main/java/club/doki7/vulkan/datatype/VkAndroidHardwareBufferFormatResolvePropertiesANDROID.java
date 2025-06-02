@@ -136,12 +136,12 @@ public record VkAndroidHardwareBufferFormatResolvePropertiesANDROID(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAndroidHardwareBufferFormatResolvePropertiesANDROID> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAndroidHardwareBufferFormatResolvePropertiesANDROID> {
+        private static final class Iter implements Iterator<VkAndroidHardwareBufferFormatResolvePropertiesANDROID> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

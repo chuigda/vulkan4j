@@ -140,12 +140,12 @@ public record VkAcquireNextImageInfoKHR(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAcquireNextImageInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAcquireNextImageInfoKHR> {
+        private static final class Iter implements Iterator<VkAcquireNextImageInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

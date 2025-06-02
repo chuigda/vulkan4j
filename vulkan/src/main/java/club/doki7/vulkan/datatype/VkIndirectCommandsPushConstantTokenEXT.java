@@ -125,12 +125,12 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkIndirectCommandsPushConstantTokenEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkIndirectCommandsPushConstantTokenEXT> {
+        private static final class Iter implements Iterator<VkIndirectCommandsPushConstantTokenEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

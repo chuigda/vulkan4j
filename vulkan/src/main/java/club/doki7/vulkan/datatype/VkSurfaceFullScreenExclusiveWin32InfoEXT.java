@@ -136,12 +136,12 @@ public record VkSurfaceFullScreenExclusiveWin32InfoEXT(@NotNull MemorySegment se
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSurfaceFullScreenExclusiveWin32InfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSurfaceFullScreenExclusiveWin32InfoEXT> {
+        private static final class Iter implements Iterator<VkSurfaceFullScreenExclusiveWin32InfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

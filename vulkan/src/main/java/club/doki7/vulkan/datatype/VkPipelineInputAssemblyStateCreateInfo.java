@@ -138,12 +138,12 @@ public record VkPipelineInputAssemblyStateCreateInfo(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineInputAssemblyStateCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineInputAssemblyStateCreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineInputAssemblyStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

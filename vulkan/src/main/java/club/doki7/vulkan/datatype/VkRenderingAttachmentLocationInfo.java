@@ -137,12 +137,12 @@ public record VkRenderingAttachmentLocationInfo(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderingAttachmentLocationInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderingAttachmentLocationInfo> {
+        private static final class Iter implements Iterator<VkRenderingAttachmentLocationInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

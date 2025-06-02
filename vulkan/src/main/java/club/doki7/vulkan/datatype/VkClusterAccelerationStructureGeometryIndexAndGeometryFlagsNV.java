@@ -128,12 +128,12 @@ public record VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(@Not
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> {
+        private static final class Iter implements Iterator<VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

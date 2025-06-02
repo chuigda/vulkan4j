@@ -142,12 +142,12 @@ public record VkCopyDescriptorSet(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCopyDescriptorSet> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCopyDescriptorSet> {
+        private static final class Iter implements Iterator<VkCopyDescriptorSet> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

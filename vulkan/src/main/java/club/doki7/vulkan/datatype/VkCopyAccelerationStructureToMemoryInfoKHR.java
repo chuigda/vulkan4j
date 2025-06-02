@@ -138,12 +138,12 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCopyAccelerationStructureToMemoryInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCopyAccelerationStructureToMemoryInfoKHR> {
+        private static final class Iter implements Iterator<VkCopyAccelerationStructureToMemoryInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

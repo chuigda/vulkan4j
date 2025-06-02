@@ -136,12 +136,12 @@ public record VkBindImagePlaneMemoryInfo(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBindImagePlaneMemoryInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBindImagePlaneMemoryInfo> {
+        private static final class Iter implements Iterator<VkBindImagePlaneMemoryInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

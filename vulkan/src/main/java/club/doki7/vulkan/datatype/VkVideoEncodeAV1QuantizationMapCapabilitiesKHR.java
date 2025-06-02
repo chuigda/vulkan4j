@@ -137,12 +137,12 @@ public record VkVideoEncodeAV1QuantizationMapCapabilitiesKHR(@NotNull MemorySegm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoEncodeAV1QuantizationMapCapabilitiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoEncodeAV1QuantizationMapCapabilitiesKHR> {
+        private static final class Iter implements Iterator<VkVideoEncodeAV1QuantizationMapCapabilitiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

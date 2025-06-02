@@ -135,12 +135,12 @@ public record VkDeviceFaultVendorBinaryHeaderVersionOneEXT(@NotNull MemorySegmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> {
+        private static final class Iter implements Iterator<VkDeviceFaultVendorBinaryHeaderVersionOneEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

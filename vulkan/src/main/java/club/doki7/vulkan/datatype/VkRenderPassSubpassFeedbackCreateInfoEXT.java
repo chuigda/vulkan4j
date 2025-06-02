@@ -136,12 +136,12 @@ public record VkRenderPassSubpassFeedbackCreateInfoEXT(@NotNull MemorySegment se
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderPassSubpassFeedbackCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderPassSubpassFeedbackCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkRenderPassSubpassFeedbackCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

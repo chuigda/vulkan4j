@@ -141,12 +141,12 @@ public record VkBufferCreateInfo(@NotNull MemorySegment segment) implements IVkB
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBufferCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBufferCreateInfo> {
+        private static final class Iter implements Iterator<VkBufferCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkMemoryAllocateInfo(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryAllocateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryAllocateInfo> {
+        private static final class Iter implements Iterator<VkMemoryAllocateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

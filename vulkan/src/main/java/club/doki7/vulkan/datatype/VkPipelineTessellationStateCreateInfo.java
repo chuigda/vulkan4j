@@ -137,12 +137,12 @@ public record VkPipelineTessellationStateCreateInfo(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineTessellationStateCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineTessellationStateCreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineTessellationStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

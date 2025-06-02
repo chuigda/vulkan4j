@@ -127,12 +127,12 @@ public record VkAccelerationStructureMotionInstanceNV(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureMotionInstanceNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureMotionInstanceNV> {
+        private static final class Iter implements Iterator<VkAccelerationStructureMotionInstanceNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

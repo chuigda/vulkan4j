@@ -136,12 +136,12 @@ public record VkExternalComputeQueueCreateInfoNV(@NotNull MemorySegment segment)
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExternalComputeQueueCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExternalComputeQueueCreateInfoNV> {
+        private static final class Iter implements Iterator<VkExternalComputeQueueCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

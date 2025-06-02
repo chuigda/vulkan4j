@@ -137,12 +137,12 @@ public record VkMultiviewPerViewAttributesInfoNVX(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMultiviewPerViewAttributesInfoNVX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMultiviewPerViewAttributesInfoNVX> {
+        private static final class Iter implements Iterator<VkMultiviewPerViewAttributesInfoNVX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

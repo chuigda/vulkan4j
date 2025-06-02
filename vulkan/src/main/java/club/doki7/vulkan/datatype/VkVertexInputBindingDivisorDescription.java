@@ -126,12 +126,12 @@ public record VkVertexInputBindingDivisorDescription(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVertexInputBindingDivisorDescription> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVertexInputBindingDivisorDescription> {
+        private static final class Iter implements Iterator<VkVertexInputBindingDivisorDescription> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

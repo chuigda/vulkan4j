@@ -138,12 +138,12 @@ public record VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(@NotNull MemorySe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExtendedDynamicState2FeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExtendedDynamicState2FeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExtendedDynamicState2FeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

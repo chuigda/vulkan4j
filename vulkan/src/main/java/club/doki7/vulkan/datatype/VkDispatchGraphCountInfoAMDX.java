@@ -127,12 +127,12 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDispatchGraphCountInfoAMDX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDispatchGraphCountInfoAMDX> {
+        private static final class Iter implements Iterator<VkDispatchGraphCountInfoAMDX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

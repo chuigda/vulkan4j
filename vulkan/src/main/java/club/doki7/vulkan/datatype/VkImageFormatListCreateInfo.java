@@ -137,12 +137,12 @@ public record VkImageFormatListCreateInfo(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageFormatListCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageFormatListCreateInfo> {
+        private static final class Iter implements Iterator<VkImageFormatListCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

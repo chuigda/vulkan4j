@@ -128,12 +128,12 @@ public record VkVertexInputAttributeDescription(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVertexInputAttributeDescription> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVertexInputAttributeDescription> {
+        private static final class Iter implements Iterator<VkVertexInputAttributeDescription> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

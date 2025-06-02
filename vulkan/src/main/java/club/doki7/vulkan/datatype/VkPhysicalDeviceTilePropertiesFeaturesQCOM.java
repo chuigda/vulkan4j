@@ -136,12 +136,12 @@ public record VkPhysicalDeviceTilePropertiesFeaturesQCOM(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceTilePropertiesFeaturesQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceTilePropertiesFeaturesQCOM> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceTilePropertiesFeaturesQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

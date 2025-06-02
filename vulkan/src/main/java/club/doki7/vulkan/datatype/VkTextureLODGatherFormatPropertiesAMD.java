@@ -136,12 +136,12 @@ public record VkTextureLODGatherFormatPropertiesAMD(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkTextureLODGatherFormatPropertiesAMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkTextureLODGatherFormatPropertiesAMD> {
+        private static final class Iter implements Iterator<VkTextureLODGatherFormatPropertiesAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

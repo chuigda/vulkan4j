@@ -136,12 +136,12 @@ public record VkPhysicalDeviceColorWriteEnableFeaturesEXT(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceColorWriteEnableFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceColorWriteEnableFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceColorWriteEnableFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

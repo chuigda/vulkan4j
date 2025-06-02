@@ -146,12 +146,12 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> {
+        private static final class Iter implements Iterator<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

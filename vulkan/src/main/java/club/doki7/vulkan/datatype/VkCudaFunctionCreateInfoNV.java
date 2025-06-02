@@ -137,12 +137,12 @@ public record VkCudaFunctionCreateInfoNV(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCudaFunctionCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCudaFunctionCreateInfoNV> {
+        private static final class Iter implements Iterator<VkCudaFunctionCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

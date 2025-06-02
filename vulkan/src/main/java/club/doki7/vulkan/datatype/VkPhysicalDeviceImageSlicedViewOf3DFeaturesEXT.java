@@ -136,12 +136,12 @@ public record VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(@NotNull MemorySegm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

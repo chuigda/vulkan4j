@@ -138,12 +138,12 @@ public record StdVideoH264SequenceParameterSetVui(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH264SequenceParameterSetVui> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH264SequenceParameterSetVui> {
+        private static final class Iter implements Iterator<StdVideoH264SequenceParameterSetVui> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

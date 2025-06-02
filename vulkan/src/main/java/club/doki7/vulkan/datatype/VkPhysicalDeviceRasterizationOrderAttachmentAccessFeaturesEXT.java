@@ -138,12 +138,12 @@ public record VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(@Not
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

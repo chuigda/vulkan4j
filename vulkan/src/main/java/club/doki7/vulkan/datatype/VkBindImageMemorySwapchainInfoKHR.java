@@ -137,12 +137,12 @@ public record VkBindImageMemorySwapchainInfoKHR(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBindImageMemorySwapchainInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBindImageMemorySwapchainInfoKHR> {
+        private static final class Iter implements Iterator<VkBindImageMemorySwapchainInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

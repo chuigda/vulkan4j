@@ -138,12 +138,12 @@ public record VkExportSemaphoreWin32HandleInfoKHR(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExportSemaphoreWin32HandleInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExportSemaphoreWin32HandleInfoKHR> {
+        private static final class Iter implements Iterator<VkExportSemaphoreWin32HandleInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

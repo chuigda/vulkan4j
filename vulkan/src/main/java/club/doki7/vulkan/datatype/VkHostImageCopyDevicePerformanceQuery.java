@@ -137,12 +137,12 @@ public record VkHostImageCopyDevicePerformanceQuery(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkHostImageCopyDevicePerformanceQuery> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkHostImageCopyDevicePerformanceQuery> {
+        private static final class Iter implements Iterator<VkHostImageCopyDevicePerformanceQuery> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -138,12 +138,12 @@ public record VkDirectFBSurfaceCreateInfoEXT(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDirectFBSurfaceCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDirectFBSurfaceCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkDirectFBSurfaceCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

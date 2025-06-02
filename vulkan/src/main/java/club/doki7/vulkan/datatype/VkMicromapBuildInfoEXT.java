@@ -146,12 +146,12 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMicromapBuildInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMicromapBuildInfoEXT> {
+        private static final class Iter implements Iterator<VkMicromapBuildInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

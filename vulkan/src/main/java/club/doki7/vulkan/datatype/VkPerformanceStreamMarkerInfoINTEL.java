@@ -136,12 +136,12 @@ public record VkPerformanceStreamMarkerInfoINTEL(@NotNull MemorySegment segment)
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPerformanceStreamMarkerInfoINTEL> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPerformanceStreamMarkerInfoINTEL> {
+        private static final class Iter implements Iterator<VkPerformanceStreamMarkerInfoINTEL> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

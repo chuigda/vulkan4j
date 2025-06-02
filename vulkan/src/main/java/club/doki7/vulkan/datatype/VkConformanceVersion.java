@@ -128,12 +128,12 @@ public record VkConformanceVersion(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkConformanceVersion> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkConformanceVersion> {
+        private static final class Iter implements Iterator<VkConformanceVersion> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

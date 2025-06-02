@@ -136,12 +136,12 @@ public record VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD(@NotNul
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

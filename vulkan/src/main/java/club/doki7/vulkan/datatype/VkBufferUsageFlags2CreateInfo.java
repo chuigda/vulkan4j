@@ -136,12 +136,12 @@ public record VkBufferUsageFlags2CreateInfo(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBufferUsageFlags2CreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBufferUsageFlags2CreateInfo> {
+        private static final class Iter implements Iterator<VkBufferUsageFlags2CreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

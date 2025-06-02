@@ -136,12 +136,12 @@ public record VkDeviceQueueShaderCoreControlCreateInfoARM(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceQueueShaderCoreControlCreateInfoARM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceQueueShaderCoreControlCreateInfoARM> {
+        private static final class Iter implements Iterator<VkDeviceQueueShaderCoreControlCreateInfoARM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

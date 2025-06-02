@@ -136,12 +136,12 @@ public record VkDeviceEventInfoEXT(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceEventInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceEventInfoEXT> {
+        private static final class Iter implements Iterator<VkDeviceEventInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

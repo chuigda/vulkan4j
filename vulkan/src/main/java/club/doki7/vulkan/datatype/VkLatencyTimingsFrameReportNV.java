@@ -149,12 +149,12 @@ public record VkLatencyTimingsFrameReportNV(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkLatencyTimingsFrameReportNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkLatencyTimingsFrameReportNV> {
+        private static final class Iter implements Iterator<VkLatencyTimingsFrameReportNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

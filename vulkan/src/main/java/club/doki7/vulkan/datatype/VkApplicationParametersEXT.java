@@ -139,12 +139,12 @@ public record VkApplicationParametersEXT(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkApplicationParametersEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkApplicationParametersEXT> {
+        private static final class Iter implements Iterator<VkApplicationParametersEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

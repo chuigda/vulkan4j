@@ -126,12 +126,12 @@ public record VkClearDepthStencilValue(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClearDepthStencilValue> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClearDepthStencilValue> {
+        private static final class Iter implements Iterator<VkClearDepthStencilValue> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkMacOSSurfaceCreateInfoMVK(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMacOSSurfaceCreateInfoMVK> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMacOSSurfaceCreateInfoMVK> {
+        private static final class Iter implements Iterator<VkMacOSSurfaceCreateInfoMVK> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -129,12 +129,12 @@ public record VkPerformanceValueDataINTEL(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPerformanceValueDataINTEL> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPerformanceValueDataINTEL> {
+        private static final class Iter implements Iterator<VkPerformanceValueDataINTEL> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

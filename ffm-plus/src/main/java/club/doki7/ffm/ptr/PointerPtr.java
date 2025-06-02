@@ -101,7 +101,7 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<MemorySegment> iterator() {
         return new Iter(segment);
     }
 
@@ -174,7 +174,7 @@ public record PointerPtr(@NotNull MemorySegment segment) implements IPointer, It
     }
 
     /// An iterator over the pointers.
-    public static final class Iter implements Iterator<MemorySegment> {
+    private static final class Iter implements Iterator<MemorySegment> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

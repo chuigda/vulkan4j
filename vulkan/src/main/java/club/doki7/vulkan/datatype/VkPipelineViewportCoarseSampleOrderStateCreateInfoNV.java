@@ -138,12 +138,12 @@ public record VkPipelineViewportCoarseSampleOrderStateCreateInfoNV(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> {
+        private static final class Iter implements Iterator<VkPipelineViewportCoarseSampleOrderStateCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

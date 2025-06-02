@@ -126,12 +126,12 @@ public record VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPartitionedAccelerationStructureWritePartitionTranslationDataNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPartitionedAccelerationStructureWritePartitionTranslationDataNV> {
+        private static final class Iter implements Iterator<VkPartitionedAccelerationStructureWritePartitionTranslationDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

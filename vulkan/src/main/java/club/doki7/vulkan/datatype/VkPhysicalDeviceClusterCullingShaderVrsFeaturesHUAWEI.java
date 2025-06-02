@@ -136,12 +136,12 @@ public record VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

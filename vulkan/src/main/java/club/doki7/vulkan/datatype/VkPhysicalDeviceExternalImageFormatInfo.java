@@ -136,12 +136,12 @@ public record VkPhysicalDeviceExternalImageFormatInfo(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExternalImageFormatInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExternalImageFormatInfo> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExternalImageFormatInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

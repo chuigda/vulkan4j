@@ -136,12 +136,12 @@ public record VkQueueFamilyQueryResultStatusPropertiesKHR(@NotNull MemorySegment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkQueueFamilyQueryResultStatusPropertiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkQueueFamilyQueryResultStatusPropertiesKHR> {
+        private static final class Iter implements Iterator<VkQueueFamilyQueryResultStatusPropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

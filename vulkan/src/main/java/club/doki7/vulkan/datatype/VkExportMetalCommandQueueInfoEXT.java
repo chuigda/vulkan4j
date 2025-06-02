@@ -137,12 +137,12 @@ public record VkExportMetalCommandQueueInfoEXT(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExportMetalCommandQueueInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExportMetalCommandQueueInfoEXT> {
+        private static final class Iter implements Iterator<VkExportMetalCommandQueueInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

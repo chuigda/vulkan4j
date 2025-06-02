@@ -126,12 +126,12 @@ public record VkExtensionProperties(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExtensionProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExtensionProperties> {
+        private static final class Iter implements Iterator<VkExtensionProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

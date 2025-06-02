@@ -136,12 +136,12 @@ public record VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(@NotNul
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

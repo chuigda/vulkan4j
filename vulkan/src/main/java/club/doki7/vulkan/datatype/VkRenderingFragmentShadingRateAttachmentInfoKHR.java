@@ -138,12 +138,12 @@ public record VkRenderingFragmentShadingRateAttachmentInfoKHR(@NotNull MemorySeg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderingFragmentShadingRateAttachmentInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderingFragmentShadingRateAttachmentInfoKHR> {
+        private static final class Iter implements Iterator<VkRenderingFragmentShadingRateAttachmentInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

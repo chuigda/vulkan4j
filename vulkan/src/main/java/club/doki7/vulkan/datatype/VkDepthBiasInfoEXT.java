@@ -138,12 +138,12 @@ public record VkDepthBiasInfoEXT(@NotNull MemorySegment segment) implements IVkD
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDepthBiasInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDepthBiasInfoEXT> {
+        private static final class Iter implements Iterator<VkDepthBiasInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

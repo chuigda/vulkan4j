@@ -91,7 +91,7 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Float> iterator() {
         return new Iter(segment);
     }
 
@@ -203,7 +203,7 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     /// An iterator over the float numbers.
-    public static final class Iter implements Iterator<Float> {
+    private static final class Iter implements Iterator<Float> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

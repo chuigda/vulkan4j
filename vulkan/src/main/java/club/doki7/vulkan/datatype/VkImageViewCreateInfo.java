@@ -141,12 +141,12 @@ public record VkImageViewCreateInfo(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageViewCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageViewCreateInfo> {
+        private static final class Iter implements Iterator<VkImageViewCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

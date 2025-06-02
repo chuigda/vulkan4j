@@ -136,12 +136,12 @@ public record VkExternalFormatQNX(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExternalFormatQNX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExternalFormatQNX> {
+        private static final class Iter implements Iterator<VkExternalFormatQNX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

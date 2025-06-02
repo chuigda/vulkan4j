@@ -127,12 +127,12 @@ public record StdVideoDecodeAV1ReferenceInfo(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoDecodeAV1ReferenceInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoDecodeAV1ReferenceInfo> {
+        private static final class Iter implements Iterator<StdVideoDecodeAV1ReferenceInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

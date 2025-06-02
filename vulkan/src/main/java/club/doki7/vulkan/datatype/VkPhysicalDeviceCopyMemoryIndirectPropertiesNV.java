@@ -136,12 +136,12 @@ public record VkPhysicalDeviceCopyMemoryIndirectPropertiesNV(@NotNull MemorySegm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceCopyMemoryIndirectPropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceCopyMemoryIndirectPropertiesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceCopyMemoryIndirectPropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(@NotNull Memor
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV> {
+        private static final class Iter implements Iterator<VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

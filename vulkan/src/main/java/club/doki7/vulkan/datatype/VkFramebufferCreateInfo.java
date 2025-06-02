@@ -142,12 +142,12 @@ public record VkFramebufferCreateInfo(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkFramebufferCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkFramebufferCreateInfo> {
+        private static final class Iter implements Iterator<VkFramebufferCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

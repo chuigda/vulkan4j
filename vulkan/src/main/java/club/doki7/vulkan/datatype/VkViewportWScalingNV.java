@@ -126,12 +126,12 @@ public record VkViewportWScalingNV(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkViewportWScalingNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkViewportWScalingNV> {
+        private static final class Iter implements Iterator<VkViewportWScalingNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -123,12 +123,12 @@ public record StdVideoH265PredictorPaletteEntries(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH265PredictorPaletteEntries> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH265PredictorPaletteEntries> {
+        private static final class Iter implements Iterator<StdVideoH265PredictorPaletteEntries> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

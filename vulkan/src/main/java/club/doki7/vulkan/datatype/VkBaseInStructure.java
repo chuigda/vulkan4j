@@ -126,12 +126,12 @@ public record VkBaseInStructure(@NotNull MemorySegment segment) implements IVkBa
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBaseInStructure> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBaseInStructure> {
+        private static final class Iter implements Iterator<VkBaseInStructure> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

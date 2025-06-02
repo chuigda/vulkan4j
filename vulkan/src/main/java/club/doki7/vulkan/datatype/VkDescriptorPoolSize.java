@@ -126,12 +126,12 @@ public record VkDescriptorPoolSize(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorPoolSize> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorPoolSize> {
+        private static final class Iter implements Iterator<VkDescriptorPoolSize> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

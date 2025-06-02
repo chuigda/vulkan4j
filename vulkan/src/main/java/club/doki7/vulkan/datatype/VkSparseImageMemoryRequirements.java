@@ -129,12 +129,12 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSparseImageMemoryRequirements> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSparseImageMemoryRequirements> {
+        private static final class Iter implements Iterator<VkSparseImageMemoryRequirements> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

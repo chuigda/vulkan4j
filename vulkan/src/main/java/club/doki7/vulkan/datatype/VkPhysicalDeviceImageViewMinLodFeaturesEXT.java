@@ -136,12 +136,12 @@ public record VkPhysicalDeviceImageViewMinLodFeaturesEXT(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceImageViewMinLodFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceImageViewMinLodFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceImageViewMinLodFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

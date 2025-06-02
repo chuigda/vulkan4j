@@ -138,12 +138,12 @@ public record VkExecutionGraphPipelineScratchSizeAMDX(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExecutionGraphPipelineScratchSizeAMDX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExecutionGraphPipelineScratchSizeAMDX> {
+        private static final class Iter implements Iterator<VkExecutionGraphPipelineScratchSizeAMDX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

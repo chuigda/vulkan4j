@@ -140,12 +140,12 @@ public record VkBufferCollectionConstraintsInfoFUCHSIA(@NotNull MemorySegment se
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBufferCollectionConstraintsInfoFUCHSIA> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBufferCollectionConstraintsInfoFUCHSIA> {
+        private static final class Iter implements Iterator<VkBufferCollectionConstraintsInfoFUCHSIA> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

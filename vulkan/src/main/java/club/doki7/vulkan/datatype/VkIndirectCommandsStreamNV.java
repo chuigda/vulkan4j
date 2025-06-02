@@ -126,12 +126,12 @@ public record VkIndirectCommandsStreamNV(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkIndirectCommandsStreamNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkIndirectCommandsStreamNV> {
+        private static final class Iter implements Iterator<VkIndirectCommandsStreamNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

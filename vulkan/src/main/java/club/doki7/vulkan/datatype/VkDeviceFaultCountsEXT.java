@@ -138,12 +138,12 @@ public record VkDeviceFaultCountsEXT(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceFaultCountsEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceFaultCountsEXT> {
+        private static final class Iter implements Iterator<VkDeviceFaultCountsEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

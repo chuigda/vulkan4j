@@ -137,12 +137,12 @@ public record VkCheckpointData2NV(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCheckpointData2NV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCheckpointData2NV> {
+        private static final class Iter implements Iterator<VkCheckpointData2NV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

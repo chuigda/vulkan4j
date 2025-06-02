@@ -136,12 +136,12 @@ public record VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

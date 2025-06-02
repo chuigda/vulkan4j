@@ -137,12 +137,12 @@ public record VkPhysicalDeviceProvokingVertexFeaturesEXT(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceProvokingVertexFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceProvokingVertexFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceProvokingVertexFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

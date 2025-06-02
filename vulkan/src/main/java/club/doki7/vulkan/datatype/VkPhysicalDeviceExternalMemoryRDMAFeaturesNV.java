@@ -136,12 +136,12 @@ public record VkPhysicalDeviceExternalMemoryRDMAFeaturesNV(@NotNull MemorySegmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExternalMemoryRDMAFeaturesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

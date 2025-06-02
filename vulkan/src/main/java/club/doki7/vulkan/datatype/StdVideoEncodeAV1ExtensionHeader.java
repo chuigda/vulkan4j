@@ -124,12 +124,12 @@ public record StdVideoEncodeAV1ExtensionHeader(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoEncodeAV1ExtensionHeader> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoEncodeAV1ExtensionHeader> {
+        private static final class Iter implements Iterator<StdVideoEncodeAV1ExtensionHeader> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

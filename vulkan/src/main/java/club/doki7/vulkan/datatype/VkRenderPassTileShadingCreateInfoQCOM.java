@@ -137,12 +137,12 @@ public record VkRenderPassTileShadingCreateInfoQCOM(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderPassTileShadingCreateInfoQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderPassTileShadingCreateInfoQCOM> {
+        private static final class Iter implements Iterator<VkRenderPassTileShadingCreateInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

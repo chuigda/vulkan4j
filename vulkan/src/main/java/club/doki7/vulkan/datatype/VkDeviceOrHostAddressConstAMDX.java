@@ -126,12 +126,12 @@ public record VkDeviceOrHostAddressConstAMDX(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceOrHostAddressConstAMDX> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceOrHostAddressConstAMDX> {
+        private static final class Iter implements Iterator<VkDeviceOrHostAddressConstAMDX> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

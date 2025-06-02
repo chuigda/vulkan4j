@@ -148,12 +148,12 @@ public record GLFWvidmode(@NotNull MemorySegment segment) implements IGLFWvidmod
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<GLFWvidmode> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<GLFWvidmode> {
+        private static final class Iter implements Iterator<GLFWvidmode> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -140,12 +140,12 @@ public record VkPipelineViewportStateCreateInfo(@NotNull MemorySegment segment) 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineViewportStateCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineViewportStateCreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineViewportStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

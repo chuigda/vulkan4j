@@ -113,6 +113,7 @@ public record VkPipelineBinaryKHR(@NotNull MemorySegment segment) implements IPo
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -157,12 +158,12 @@ public record VkPipelineBinaryKHR(@NotNull MemorySegment segment) implements IPo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineBinaryKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkPipelineBinaryKHR> {
+        private static class Iter implements Iterator<VkPipelineBinaryKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

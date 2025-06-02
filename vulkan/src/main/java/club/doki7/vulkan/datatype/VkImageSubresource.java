@@ -127,12 +127,12 @@ public record VkImageSubresource(@NotNull MemorySegment segment) implements IVkI
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageSubresource> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageSubresource> {
+        private static final class Iter implements Iterator<VkImageSubresource> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

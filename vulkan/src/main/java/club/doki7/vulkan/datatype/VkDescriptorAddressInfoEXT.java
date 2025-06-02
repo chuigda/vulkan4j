@@ -138,12 +138,12 @@ public record VkDescriptorAddressInfoEXT(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorAddressInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorAddressInfoEXT> {
+        private static final class Iter implements Iterator<VkDescriptorAddressInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

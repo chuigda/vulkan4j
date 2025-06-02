@@ -137,12 +137,12 @@ public record VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> {
+        private static final class Iter implements Iterator<VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

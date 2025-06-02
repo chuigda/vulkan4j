@@ -129,12 +129,12 @@ public record VkColorBlendAdvancedEXT(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkColorBlendAdvancedEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkColorBlendAdvancedEXT> {
+        private static final class Iter implements Iterator<VkColorBlendAdvancedEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

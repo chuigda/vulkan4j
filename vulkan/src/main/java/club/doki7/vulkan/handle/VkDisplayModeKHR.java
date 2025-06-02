@@ -113,6 +113,7 @@ public record VkDisplayModeKHR(@NotNull MemorySegment segment) implements IPoint
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -157,12 +158,12 @@ public record VkDisplayModeKHR(@NotNull MemorySegment segment) implements IPoint
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDisplayModeKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkDisplayModeKHR> {
+        private static class Iter implements Iterator<VkDisplayModeKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

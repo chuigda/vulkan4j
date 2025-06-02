@@ -136,12 +136,12 @@ public record VkMemoryRequirements2(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryRequirements2> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryRequirements2> {
+        private static final class Iter implements Iterator<VkMemoryRequirements2> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

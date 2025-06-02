@@ -140,12 +140,12 @@ public record VkApplicationInfo(@NotNull MemorySegment segment) implements IVkAp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkApplicationInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkApplicationInfo> {
+        private static final class Iter implements Iterator<VkApplicationInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

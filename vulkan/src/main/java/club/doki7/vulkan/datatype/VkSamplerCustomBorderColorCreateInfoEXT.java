@@ -137,12 +137,12 @@ public record VkSamplerCustomBorderColorCreateInfoEXT(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerCustomBorderColorCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerCustomBorderColorCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkSamplerCustomBorderColorCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

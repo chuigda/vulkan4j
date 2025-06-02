@@ -126,12 +126,12 @@ public record StdVideoEncodeH265WeightTableFlags(@NotNull MemorySegment segment)
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoEncodeH265WeightTableFlags> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoEncodeH265WeightTableFlags> {
+        private static final class Iter implements Iterator<StdVideoEncodeH265WeightTableFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

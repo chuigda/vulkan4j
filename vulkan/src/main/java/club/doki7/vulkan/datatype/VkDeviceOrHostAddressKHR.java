@@ -126,12 +126,12 @@ public record VkDeviceOrHostAddressKHR(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDeviceOrHostAddressKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDeviceOrHostAddressKHR> {
+        private static final class Iter implements Iterator<VkDeviceOrHostAddressKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

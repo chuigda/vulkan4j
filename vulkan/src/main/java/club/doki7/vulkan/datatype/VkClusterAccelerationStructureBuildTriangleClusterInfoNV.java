@@ -142,12 +142,12 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkClusterAccelerationStructureBuildTriangleClusterInfoNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkClusterAccelerationStructureBuildTriangleClusterInfoNV> {
+        private static final class Iter implements Iterator<VkClusterAccelerationStructureBuildTriangleClusterInfoNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

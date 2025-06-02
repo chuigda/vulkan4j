@@ -169,12 +169,12 @@ public record VmaVulkanFunctions(@NotNull MemorySegment segment) implements IVma
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VmaVulkanFunctions> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VmaVulkanFunctions> {
+        private static final class Iter implements Iterator<VmaVulkanFunctions> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

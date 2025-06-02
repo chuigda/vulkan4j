@@ -92,7 +92,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Long> iterator() {
         return new Iter(segment);
     }
 
@@ -208,7 +208,7 @@ public record LongPtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     /// An iterator over the long integers.
-    public static final class Iter implements Iterator<Long> {
+    private static final class Iter implements Iterator<Long> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

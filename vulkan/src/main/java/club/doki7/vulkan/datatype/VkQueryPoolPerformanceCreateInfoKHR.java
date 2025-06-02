@@ -138,12 +138,12 @@ public record VkQueryPoolPerformanceCreateInfoKHR(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkQueryPoolPerformanceCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkQueryPoolPerformanceCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkQueryPoolPerformanceCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

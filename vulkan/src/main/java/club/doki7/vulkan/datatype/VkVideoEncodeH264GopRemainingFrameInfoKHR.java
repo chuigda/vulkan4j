@@ -139,12 +139,12 @@ public record VkVideoEncodeH264GopRemainingFrameInfoKHR(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoEncodeH264GopRemainingFrameInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoEncodeH264GopRemainingFrameInfoKHR> {
+        private static final class Iter implements Iterator<VkVideoEncodeH264GopRemainingFrameInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

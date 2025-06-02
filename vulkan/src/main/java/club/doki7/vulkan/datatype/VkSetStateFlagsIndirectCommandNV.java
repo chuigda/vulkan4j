@@ -125,12 +125,12 @@ public record VkSetStateFlagsIndirectCommandNV(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSetStateFlagsIndirectCommandNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSetStateFlagsIndirectCommandNV> {
+        private static final class Iter implements Iterator<VkSetStateFlagsIndirectCommandNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

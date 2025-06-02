@@ -135,12 +135,12 @@ public record StdVideoH264SpsVuiFlags(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoH264SpsVuiFlags> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoH264SpsVuiFlags> {
+        private static final class Iter implements Iterator<StdVideoH264SpsVuiFlags> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -127,12 +127,12 @@ public record VkDescriptorBufferInfo(@NotNull MemorySegment segment) implements 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorBufferInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorBufferInfo> {
+        private static final class Iter implements Iterator<VkDescriptorBufferInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

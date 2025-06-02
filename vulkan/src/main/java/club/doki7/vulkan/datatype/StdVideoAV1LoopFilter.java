@@ -129,12 +129,12 @@ public record StdVideoAV1LoopFilter(@NotNull MemorySegment segment) implements I
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoAV1LoopFilter> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoAV1LoopFilter> {
+        private static final class Iter implements Iterator<StdVideoAV1LoopFilter> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

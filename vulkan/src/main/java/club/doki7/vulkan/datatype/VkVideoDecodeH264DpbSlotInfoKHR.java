@@ -136,12 +136,12 @@ public record VkVideoDecodeH264DpbSlotInfoKHR(@NotNull MemorySegment segment) im
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoDecodeH264DpbSlotInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoDecodeH264DpbSlotInfoKHR> {
+        private static final class Iter implements Iterator<VkVideoDecodeH264DpbSlotInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

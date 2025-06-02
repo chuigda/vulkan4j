@@ -129,12 +129,12 @@ public record VkShaderResourceUsageAMD(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkShaderResourceUsageAMD> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkShaderResourceUsageAMD> {
+        private static final class Iter implements Iterator<VkShaderResourceUsageAMD> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

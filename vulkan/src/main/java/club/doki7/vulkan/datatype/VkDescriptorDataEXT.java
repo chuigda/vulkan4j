@@ -134,12 +134,12 @@ public record VkDescriptorDataEXT(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDescriptorDataEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDescriptorDataEXT> {
+        private static final class Iter implements Iterator<VkDescriptorDataEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

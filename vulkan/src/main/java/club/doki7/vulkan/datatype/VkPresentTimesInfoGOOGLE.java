@@ -137,12 +137,12 @@ public record VkPresentTimesInfoGOOGLE(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPresentTimesInfoGOOGLE> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPresentTimesInfoGOOGLE> {
+        private static final class Iter implements Iterator<VkPresentTimesInfoGOOGLE> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

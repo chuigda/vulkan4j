@@ -137,12 +137,12 @@ public record VkCommandBufferInheritanceRenderPassTransformInfoQCOM(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCommandBufferInheritanceRenderPassTransformInfoQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCommandBufferInheritanceRenderPassTransformInfoQCOM> {
+        private static final class Iter implements Iterator<VkCommandBufferInheritanceRenderPassTransformInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

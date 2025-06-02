@@ -139,12 +139,12 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoPictureResourceInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoPictureResourceInfoKHR> {
+        private static final class Iter implements Iterator<VkVideoPictureResourceInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

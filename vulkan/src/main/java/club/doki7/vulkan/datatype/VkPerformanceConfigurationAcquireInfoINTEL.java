@@ -136,12 +136,12 @@ public record VkPerformanceConfigurationAcquireInfoINTEL(@NotNull MemorySegment 
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPerformanceConfigurationAcquireInfoINTEL> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPerformanceConfigurationAcquireInfoINTEL> {
+        private static final class Iter implements Iterator<VkPerformanceConfigurationAcquireInfoINTEL> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

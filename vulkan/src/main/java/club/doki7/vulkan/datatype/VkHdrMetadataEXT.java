@@ -143,12 +143,12 @@ public record VkHdrMetadataEXT(@NotNull MemorySegment segment) implements IVkHdr
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkHdrMetadataEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkHdrMetadataEXT> {
+        private static final class Iter implements Iterator<VkHdrMetadataEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

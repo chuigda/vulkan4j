@@ -128,12 +128,12 @@ public record VkImageSubresourceLayers(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageSubresourceLayers> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageSubresourceLayers> {
+        private static final class Iter implements Iterator<VkImageSubresourceLayers> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -137,12 +137,12 @@ public record VkPhysicalDeviceExternalComputeQueuePropertiesNV(@NotNull MemorySe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceExternalComputeQueuePropertiesNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceExternalComputeQueuePropertiesNV> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceExternalComputeQueuePropertiesNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

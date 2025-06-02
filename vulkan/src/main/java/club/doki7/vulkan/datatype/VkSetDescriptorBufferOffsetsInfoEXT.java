@@ -141,12 +141,12 @@ public record VkSetDescriptorBufferOffsetsInfoEXT(@NotNull MemorySegment segment
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSetDescriptorBufferOffsetsInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSetDescriptorBufferOffsetsInfoEXT> {
+        private static final class Iter implements Iterator<VkSetDescriptorBufferOffsetsInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

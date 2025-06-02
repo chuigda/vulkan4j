@@ -147,12 +147,12 @@ public record VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(@NotNull Memo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

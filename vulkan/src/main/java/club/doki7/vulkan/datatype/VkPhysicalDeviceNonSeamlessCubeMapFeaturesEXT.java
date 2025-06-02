@@ -136,12 +136,12 @@ public record VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

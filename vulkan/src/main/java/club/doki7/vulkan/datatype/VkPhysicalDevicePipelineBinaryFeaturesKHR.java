@@ -136,12 +136,12 @@ public record VkPhysicalDevicePipelineBinaryFeaturesKHR(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDevicePipelineBinaryFeaturesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDevicePipelineBinaryFeaturesKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDevicePipelineBinaryFeaturesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

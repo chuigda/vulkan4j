@@ -133,12 +133,12 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VmaTotalStatistics> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VmaTotalStatistics> {
+        private static final class Iter implements Iterator<VmaTotalStatistics> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

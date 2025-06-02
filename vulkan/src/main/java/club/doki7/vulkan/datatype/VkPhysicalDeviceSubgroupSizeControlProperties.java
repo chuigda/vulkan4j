@@ -139,12 +139,12 @@ public record VkPhysicalDeviceSubgroupSizeControlProperties(@NotNull MemorySegme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceSubgroupSizeControlProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceSubgroupSizeControlProperties> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceSubgroupSizeControlProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

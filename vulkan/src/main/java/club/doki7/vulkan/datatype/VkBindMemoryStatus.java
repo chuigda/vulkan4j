@@ -136,12 +136,12 @@ public record VkBindMemoryStatus(@NotNull MemorySegment segment) implements IVkB
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkBindMemoryStatus> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkBindMemoryStatus> {
+        private static final class Iter implements Iterator<VkBindMemoryStatus> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

@@ -136,12 +136,12 @@ public record VkMemoryHostPointerPropertiesEXT(@NotNull MemorySegment segment) i
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkMemoryHostPointerPropertiesEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkMemoryHostPointerPropertiesEXT> {
+        private static final class Iter implements Iterator<VkMemoryHostPointerPropertiesEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

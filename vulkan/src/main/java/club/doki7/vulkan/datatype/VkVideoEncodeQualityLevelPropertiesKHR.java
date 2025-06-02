@@ -137,12 +137,12 @@ public record VkVideoEncodeQualityLevelPropertiesKHR(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoEncodeQualityLevelPropertiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoEncodeQualityLevelPropertiesKHR> {
+        private static final class Iter implements Iterator<VkVideoEncodeQualityLevelPropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

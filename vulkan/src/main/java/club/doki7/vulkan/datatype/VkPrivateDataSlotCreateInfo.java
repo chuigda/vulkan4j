@@ -136,12 +136,12 @@ public record VkPrivateDataSlotCreateInfo(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPrivateDataSlotCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPrivateDataSlotCreateInfo> {
+        private static final class Iter implements Iterator<VkPrivateDataSlotCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
