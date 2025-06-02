@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -217,6 +218,11 @@ public record VkSubresourceLayout2(@NotNull MemorySegment segment) implements IV
 
     public VkSubresourceLayout2 subresourceLayout(@NotNull VkSubresourceLayout value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceLayout, SIZE$subresourceLayout);
+        return this;
+    }
+
+    public VkSubresourceLayout2 subresourceLayout(Consumer<@NotNull VkSubresourceLayout> consumer) {
+        consumer.accept(subresourceLayout());
         return this;
     }
 

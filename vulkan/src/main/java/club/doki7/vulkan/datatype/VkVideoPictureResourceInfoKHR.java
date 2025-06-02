@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -223,12 +224,22 @@ public record VkVideoPictureResourceInfoKHR(@NotNull MemorySegment segment) impl
         return this;
     }
 
+    public VkVideoPictureResourceInfoKHR codedOffset(Consumer<@NotNull VkOffset2D> consumer) {
+        consumer.accept(codedOffset());
+        return this;
+    }
+
     public @NotNull VkExtent2D codedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$codedExtent, LAYOUT$codedExtent));
     }
 
     public VkVideoPictureResourceInfoKHR codedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$codedExtent, SIZE$codedExtent);
+        return this;
+    }
+
+    public VkVideoPictureResourceInfoKHR codedExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(codedExtent());
         return this;
     }
 

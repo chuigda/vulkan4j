@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -217,6 +218,11 @@ public record VkRenderPassFragmentDensityMapCreateInfoEXT(@NotNull MemorySegment
 
     public VkRenderPassFragmentDensityMapCreateInfoEXT fragmentDensityMapAttachment(@NotNull VkAttachmentReference value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fragmentDensityMapAttachment, SIZE$fragmentDensityMapAttachment);
+        return this;
+    }
+
+    public VkRenderPassFragmentDensityMapCreateInfoEXT fragmentDensityMapAttachment(Consumer<@NotNull VkAttachmentReference> consumer) {
+        consumer.accept(fragmentDensityMapAttachment());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -255,6 +256,11 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
+    public VkVideoCapabilitiesKHR pictureAccessGranularity(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(pictureAccessGranularity());
+        return this;
+    }
+
     public @NotNull VkExtent2D minCodedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minCodedExtent, LAYOUT$minCodedExtent));
     }
@@ -264,12 +270,22 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
         return this;
     }
 
+    public VkVideoCapabilitiesKHR minCodedExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(minCodedExtent());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxCodedExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxCodedExtent, LAYOUT$maxCodedExtent));
     }
 
     public VkVideoCapabilitiesKHR maxCodedExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxCodedExtent, SIZE$maxCodedExtent);
+        return this;
+    }
+
+    public VkVideoCapabilitiesKHR maxCodedExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxCodedExtent());
         return this;
     }
 
@@ -297,6 +313,11 @@ public record VkVideoCapabilitiesKHR(@NotNull MemorySegment segment) implements 
 
     public VkVideoCapabilitiesKHR stdHeaderVersion(@NotNull VkExtensionProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stdHeaderVersion, SIZE$stdHeaderVersion);
+        return this;
+    }
+
+    public VkVideoCapabilitiesKHR stdHeaderVersion(Consumer<@NotNull VkExtensionProperties> consumer) {
+        consumer.accept(stdHeaderVersion());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -222,6 +223,11 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
         return this;
     }
 
+    public VkBufferConstraintsInfoFUCHSIA createInfo(Consumer<@NotNull VkBufferCreateInfo> consumer) {
+        consumer.accept(createInfo());
+        return this;
+    }
+
     public @EnumType(VkFormatFeatureFlags.class) int requiredFormatFeatures() {
         return segment.get(LAYOUT$requiredFormatFeatures, OFFSET$requiredFormatFeatures);
     }
@@ -237,6 +243,11 @@ public record VkBufferConstraintsInfoFUCHSIA(@NotNull MemorySegment segment) imp
 
     public VkBufferConstraintsInfoFUCHSIA bufferCollectionConstraints(@NotNull VkBufferCollectionConstraintsInfoFUCHSIA value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$bufferCollectionConstraints, SIZE$bufferCollectionConstraints);
+        return this;
+    }
+
+    public VkBufferConstraintsInfoFUCHSIA bufferCollectionConstraints(Consumer<@NotNull VkBufferCollectionConstraintsInfoFUCHSIA> consumer) {
+        consumer.accept(bufferCollectionConstraints());
         return this;
     }
 

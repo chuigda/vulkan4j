@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -210,6 +211,11 @@ public record StdVideoH265SequenceParameterSet(@NotNull MemorySegment segment) i
 
     public StdVideoH265SequenceParameterSet flags(@NotNull StdVideoH265SpsFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
+    }
+
+    public StdVideoH265SequenceParameterSet flags(Consumer<@NotNull StdVideoH265SpsFlags> consumer) {
+        consumer.accept(flags());
         return this;
     }
 

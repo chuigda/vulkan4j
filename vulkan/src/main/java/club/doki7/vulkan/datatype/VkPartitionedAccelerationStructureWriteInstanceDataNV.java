@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -182,6 +183,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
 
     public VkPartitionedAccelerationStructureWriteInstanceDataNV transform(@NotNull VkTransformMatrixKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, SIZE$transform);
+        return this;
+    }
+
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV transform(Consumer<@NotNull VkTransformMatrixKHR> consumer) {
+        consumer.accept(transform());
         return this;
     }
 

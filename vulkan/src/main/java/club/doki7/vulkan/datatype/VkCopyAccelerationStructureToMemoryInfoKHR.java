@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -232,6 +233,11 @@ public record VkCopyAccelerationStructureToMemoryInfoKHR(@NotNull MemorySegment 
 
     public VkCopyAccelerationStructureToMemoryInfoKHR dst(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dst, SIZE$dst);
+        return this;
+    }
+
+    public VkCopyAccelerationStructureToMemoryInfoKHR dst(Consumer<@NotNull VkDeviceOrHostAddressKHR> consumer) {
+        consumer.accept(dst());
         return this;
     }
 

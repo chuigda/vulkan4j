@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -311,6 +312,11 @@ public record VkImageMemoryBarrier2(@NotNull MemorySegment segment) implements I
 
     public VkImageMemoryBarrier2 subresourceRange(@NotNull VkImageSubresourceRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
+        return this;
+    }
+
+    public VkImageMemoryBarrier2 subresourceRange(Consumer<@NotNull VkImageSubresourceRange> consumer) {
+        consumer.accept(subresourceRange());
         return this;
     }
 

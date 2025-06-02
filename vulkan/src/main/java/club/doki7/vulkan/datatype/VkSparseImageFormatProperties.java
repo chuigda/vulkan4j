@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -185,6 +186,11 @@ public record VkSparseImageFormatProperties(@NotNull MemorySegment segment) impl
 
     public VkSparseImageFormatProperties imageGranularity(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageGranularity, SIZE$imageGranularity);
+        return this;
+    }
+
+    public VkSparseImageFormatProperties imageGranularity(Consumer<@NotNull VkExtent3D> consumer) {
+        consumer.accept(imageGranularity());
         return this;
     }
 

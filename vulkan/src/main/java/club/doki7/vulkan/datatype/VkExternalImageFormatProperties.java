@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -217,6 +218,11 @@ public record VkExternalImageFormatProperties(@NotNull MemorySegment segment) im
 
     public VkExternalImageFormatProperties externalMemoryProperties(@NotNull VkExternalMemoryProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$externalMemoryProperties, SIZE$externalMemoryProperties);
+        return this;
+    }
+
+    public VkExternalImageFormatProperties externalMemoryProperties(Consumer<@NotNull VkExternalMemoryProperties> consumer) {
+        consumer.accept(externalMemoryProperties());
         return this;
     }
 

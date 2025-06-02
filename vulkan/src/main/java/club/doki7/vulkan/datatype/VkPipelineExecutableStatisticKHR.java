@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -255,6 +256,11 @@ public record VkPipelineExecutableStatisticKHR(@NotNull MemorySegment segment) i
 
     public VkPipelineExecutableStatisticKHR value(@NotNull VkPipelineExecutableStatisticValueKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$value, SIZE$value);
+        return this;
+    }
+
+    public VkPipelineExecutableStatisticKHR value(Consumer<@NotNull VkPipelineExecutableStatisticValueKHR> consumer) {
+        consumer.accept(value());
         return this;
     }
 

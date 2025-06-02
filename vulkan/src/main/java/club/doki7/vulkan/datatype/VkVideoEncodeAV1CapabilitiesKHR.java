@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -261,12 +262,22 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
+    public VkVideoEncodeAV1CapabilitiesKHR codedPictureAlignment(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(codedPictureAlignment());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxTiles() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTiles, LAYOUT$maxTiles));
     }
 
     public VkVideoEncodeAV1CapabilitiesKHR maxTiles(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTiles, SIZE$maxTiles);
+        return this;
+    }
+
+    public VkVideoEncodeAV1CapabilitiesKHR maxTiles(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxTiles());
         return this;
     }
 
@@ -279,12 +290,22 @@ public record VkVideoEncodeAV1CapabilitiesKHR(@NotNull MemorySegment segment) im
         return this;
     }
 
+    public VkVideoEncodeAV1CapabilitiesKHR minTileSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(minTileSize());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxTileSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxTileSize, LAYOUT$maxTileSize));
     }
 
     public VkVideoEncodeAV1CapabilitiesKHR maxTileSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTileSize, SIZE$maxTileSize);
+        return this;
+    }
+
+    public VkVideoEncodeAV1CapabilitiesKHR maxTileSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxTileSize());
         return this;
     }
 

@@ -134,8 +134,13 @@ public record VkAccelerationStructureKHR(@NotNull MemorySegment segment) impleme
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable VkAccelerationStructureKHR ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable VkAccelerationStructureKHR value0, @Nullable VkAccelerationStructureKHR ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override

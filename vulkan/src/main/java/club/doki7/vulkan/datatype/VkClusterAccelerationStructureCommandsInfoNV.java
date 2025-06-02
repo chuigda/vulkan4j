@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -227,6 +228,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return this;
     }
 
+    public VkClusterAccelerationStructureCommandsInfoNV input(Consumer<@NotNull VkClusterAccelerationStructureInputInfoNV> consumer) {
+        consumer.accept(input());
+        return this;
+    }
+
     public @NativeType("VkDeviceAddress") @Unsigned long dstImplicitData() {
         return segment.get(LAYOUT$dstImplicitData, OFFSET$dstImplicitData);
     }
@@ -254,6 +260,11 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return this;
     }
 
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray(Consumer<@NotNull VkStridedDeviceAddressRegionKHR> consumer) {
+        consumer.accept(dstAddressesArray());
+        return this;
+    }
+
     public @NotNull VkStridedDeviceAddressRegionKHR dstSizesArray() {
         return new VkStridedDeviceAddressRegionKHR(segment.asSlice(OFFSET$dstSizesArray, LAYOUT$dstSizesArray));
     }
@@ -263,12 +274,22 @@ public record VkClusterAccelerationStructureCommandsInfoNV(@NotNull MemorySegmen
         return this;
     }
 
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray(Consumer<@NotNull VkStridedDeviceAddressRegionKHR> consumer) {
+        consumer.accept(dstSizesArray());
+        return this;
+    }
+
     public @NotNull VkStridedDeviceAddressRegionKHR srcInfosArray() {
         return new VkStridedDeviceAddressRegionKHR(segment.asSlice(OFFSET$srcInfosArray, LAYOUT$srcInfosArray));
     }
 
     public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray(@NotNull VkStridedDeviceAddressRegionKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcInfosArray, SIZE$srcInfosArray);
+        return this;
+    }
+
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray(Consumer<@NotNull VkStridedDeviceAddressRegionKHR> consumer) {
+        consumer.accept(srcInfosArray());
         return this;
     }
 

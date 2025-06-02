@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -179,6 +180,11 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         return this;
     }
 
+    public VkAccelerationStructureMotionInstanceDataNV staticInstance(Consumer<@NotNull VkAccelerationStructureInstanceKHR> consumer) {
+        consumer.accept(staticInstance());
+        return this;
+    }
+
     public @NotNull VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance() {
         return new VkAccelerationStructureMatrixMotionInstanceNV(segment.asSlice(OFFSET$matrixMotionInstance, LAYOUT$matrixMotionInstance));
     }
@@ -188,12 +194,22 @@ public record VkAccelerationStructureMotionInstanceDataNV(@NotNull MemorySegment
         return this;
     }
 
+    public VkAccelerationStructureMotionInstanceDataNV matrixMotionInstance(Consumer<@NotNull VkAccelerationStructureMatrixMotionInstanceNV> consumer) {
+        consumer.accept(matrixMotionInstance());
+        return this;
+    }
+
     public @NotNull VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance() {
         return new VkAccelerationStructureSRTMotionInstanceNV(segment.asSlice(OFFSET$srtMotionInstance, LAYOUT$srtMotionInstance));
     }
 
     public VkAccelerationStructureMotionInstanceDataNV srtMotionInstance(@NotNull VkAccelerationStructureSRTMotionInstanceNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srtMotionInstance, SIZE$srtMotionInstance);
+        return this;
+    }
+
+    public VkAccelerationStructureMotionInstanceDataNV srtMotionInstance(Consumer<@NotNull VkAccelerationStructureSRTMotionInstanceNV> consumer) {
+        consumer.accept(srtMotionInstance());
         return this;
     }
 

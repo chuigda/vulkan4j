@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -227,6 +228,11 @@ public record VkVideoDecodeH264CapabilitiesKHR(@NotNull MemorySegment segment) i
 
     public VkVideoDecodeH264CapabilitiesKHR fieldOffsetGranularity(@NotNull VkOffset2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$fieldOffsetGranularity, SIZE$fieldOffsetGranularity);
+        return this;
+    }
+
+    public VkVideoDecodeH264CapabilitiesKHR fieldOffsetGranularity(Consumer<@NotNull VkOffset2D> consumer) {
+        consumer.accept(fieldOffsetGranularity());
         return this;
     }
 

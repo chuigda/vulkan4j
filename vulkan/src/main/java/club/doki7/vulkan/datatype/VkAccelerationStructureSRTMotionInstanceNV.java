@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -184,12 +185,22 @@ public record VkAccelerationStructureSRTMotionInstanceNV(@NotNull MemorySegment 
         return this;
     }
 
+    public VkAccelerationStructureSRTMotionInstanceNV transformT0(Consumer<@NotNull VkSRTDataNV> consumer) {
+        consumer.accept(transformT0());
+        return this;
+    }
+
     public @NotNull VkSRTDataNV transformT1() {
         return new VkSRTDataNV(segment.asSlice(OFFSET$transformT1, LAYOUT$transformT1));
     }
 
     public VkAccelerationStructureSRTMotionInstanceNV transformT1(@NotNull VkSRTDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformT1, SIZE$transformT1);
+        return this;
+    }
+
+    public VkAccelerationStructureSRTMotionInstanceNV transformT1(Consumer<@NotNull VkSRTDataNV> consumer) {
+        consumer.accept(transformT1());
         return this;
     }
 

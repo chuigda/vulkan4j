@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -234,6 +235,11 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         return this;
     }
 
+    public VkVideoEncodeH265RateControlLayerInfoKHR minQp(Consumer<@NotNull VkVideoEncodeH265QpKHR> consumer) {
+        consumer.accept(minQp());
+        return this;
+    }
+
     public @NativeType("VkBool32") @Unsigned int useMaxQp() {
         return segment.get(LAYOUT$useMaxQp, OFFSET$useMaxQp);
     }
@@ -252,6 +258,11 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
         return this;
     }
 
+    public VkVideoEncodeH265RateControlLayerInfoKHR maxQp(Consumer<@NotNull VkVideoEncodeH265QpKHR> consumer) {
+        consumer.accept(maxQp());
+        return this;
+    }
+
     public @NativeType("VkBool32") @Unsigned int useMaxFrameSize() {
         return segment.get(LAYOUT$useMaxFrameSize, OFFSET$useMaxFrameSize);
     }
@@ -267,6 +278,11 @@ public record VkVideoEncodeH265RateControlLayerInfoKHR(@NotNull MemorySegment se
 
     public VkVideoEncodeH265RateControlLayerInfoKHR maxFrameSize(@NotNull VkVideoEncodeH265FrameSizeKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFrameSize, SIZE$maxFrameSize);
+        return this;
+    }
+
+    public VkVideoEncodeH265RateControlLayerInfoKHR maxFrameSize(Consumer<@NotNull VkVideoEncodeH265FrameSizeKHR> consumer) {
+        consumer.accept(maxFrameSize());
         return this;
     }
 

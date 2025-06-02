@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -174,6 +175,11 @@ public record StdVideoH265ProfileTierLevel(@NotNull MemorySegment segment) imple
 
     public StdVideoH265ProfileTierLevel flags(@NotNull StdVideoH265ProfileTierLevelFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
+    }
+
+    public StdVideoH265ProfileTierLevel flags(Consumer<@NotNull StdVideoH265ProfileTierLevelFlags> consumer) {
+        consumer.accept(flags());
         return this;
     }
 

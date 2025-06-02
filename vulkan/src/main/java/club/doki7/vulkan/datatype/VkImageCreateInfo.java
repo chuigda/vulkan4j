@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -256,6 +257,11 @@ public record VkImageCreateInfo(@NotNull MemorySegment segment) implements IVkIm
 
     public VkImageCreateInfo extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+        return this;
+    }
+
+    public VkImageCreateInfo extent(Consumer<@NotNull VkExtent3D> consumer) {
+        consumer.accept(extent());
         return this;
     }
 

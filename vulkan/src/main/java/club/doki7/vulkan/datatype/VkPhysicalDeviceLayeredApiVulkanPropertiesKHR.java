@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -217,6 +218,11 @@ public record VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(@NotNull MemorySegme
 
     public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties(@NotNull VkPhysicalDeviceProperties2 value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$properties, SIZE$properties);
+        return this;
+    }
+
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR properties(Consumer<@NotNull VkPhysicalDeviceProperties2> consumer) {
+        consumer.accept(properties());
         return this;
     }
 

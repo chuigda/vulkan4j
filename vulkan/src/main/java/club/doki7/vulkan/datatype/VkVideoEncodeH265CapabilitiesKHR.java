@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -259,6 +260,11 @@ public record VkVideoEncodeH265CapabilitiesKHR(@NotNull MemorySegment segment) i
 
     public VkVideoEncodeH265CapabilitiesKHR maxTiles(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxTiles, SIZE$maxTiles);
+        return this;
+    }
+
+    public VkVideoEncodeH265CapabilitiesKHR maxTiles(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxTiles());
         return this;
     }
 

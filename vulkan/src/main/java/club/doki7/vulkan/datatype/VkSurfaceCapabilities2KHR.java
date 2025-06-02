@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -217,6 +218,11 @@ public record VkSurfaceCapabilities2KHR(@NotNull MemorySegment segment) implemen
 
     public VkSurfaceCapabilities2KHR surfaceCapabilities(@NotNull VkSurfaceCapabilitiesKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$surfaceCapabilities, SIZE$surfaceCapabilities);
+        return this;
+    }
+
+    public VkSurfaceCapabilities2KHR surfaceCapabilities(Consumer<@NotNull VkSurfaceCapabilitiesKHR> consumer) {
+        consumer.accept(surfaceCapabilities());
         return this;
     }
 

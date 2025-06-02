@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -217,6 +218,11 @@ public record VkPhysicalDeviceImageProcessing2PropertiesQCOM(@NotNull MemorySegm
 
     public VkPhysicalDeviceImageProcessing2PropertiesQCOM maxBlockMatchWindow(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxBlockMatchWindow, SIZE$maxBlockMatchWindow);
+        return this;
+    }
+
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM maxBlockMatchWindow(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxBlockMatchWindow());
         return this;
     }
 

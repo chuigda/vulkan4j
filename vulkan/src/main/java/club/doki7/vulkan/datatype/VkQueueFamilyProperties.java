@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -204,6 +205,11 @@ public record VkQueueFamilyProperties(@NotNull MemorySegment segment) implements
 
     public VkQueueFamilyProperties minImageTransferGranularity(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$minImageTransferGranularity, SIZE$minImageTransferGranularity);
+        return this;
+    }
+
+    public VkQueueFamilyProperties minImageTransferGranularity(Consumer<@NotNull VkExtent3D> consumer) {
+        consumer.accept(minImageTransferGranularity());
         return this;
     }
 

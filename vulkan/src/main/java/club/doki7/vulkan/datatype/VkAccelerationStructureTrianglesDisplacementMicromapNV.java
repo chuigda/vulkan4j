@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -253,6 +254,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return this;
     }
 
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementBiasAndScaleBuffer(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(displacementBiasAndScaleBuffer());
+        return this;
+    }
+
     public @NativeType("VkDeviceSize") @Unsigned long displacementBiasAndScaleStride() {
         return segment.get(LAYOUT$displacementBiasAndScaleStride, OFFSET$displacementBiasAndScaleStride);
     }
@@ -271,6 +277,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
         return this;
     }
 
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementVectorBuffer(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(displacementVectorBuffer());
+        return this;
+    }
+
     public @NativeType("VkDeviceSize") @Unsigned long displacementVectorStride() {
         return segment.get(LAYOUT$displacementVectorStride, OFFSET$displacementVectorStride);
     }
@@ -286,6 +297,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
 
     public VkAccelerationStructureTrianglesDisplacementMicromapNV displacedMicromapPrimitiveFlags(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$displacedMicromapPrimitiveFlags, SIZE$displacedMicromapPrimitiveFlags);
+        return this;
+    }
+
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacedMicromapPrimitiveFlags(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(displacedMicromapPrimitiveFlags());
         return this;
     }
 
@@ -313,6 +329,11 @@ public record VkAccelerationStructureTrianglesDisplacementMicromapNV(@NotNull Me
 
     public VkAccelerationStructureTrianglesDisplacementMicromapNV indexBuffer(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
+        return this;
+    }
+
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV indexBuffer(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(indexBuffer());
         return this;
     }
 

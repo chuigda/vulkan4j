@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -219,6 +220,11 @@ public record VkPhysicalDeviceShadingRateImagePropertiesNV(@NotNull MemorySegmen
 
     public VkPhysicalDeviceShadingRateImagePropertiesNV shadingRateTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$shadingRateTexelSize, SIZE$shadingRateTexelSize);
+        return this;
+    }
+
+    public VkPhysicalDeviceShadingRateImagePropertiesNV shadingRateTexelSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(shadingRateTexelSize());
         return this;
     }
 

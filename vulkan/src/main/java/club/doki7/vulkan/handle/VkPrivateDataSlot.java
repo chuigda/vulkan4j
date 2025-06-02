@@ -134,8 +134,13 @@ public record VkPrivateDataSlot(@NotNull MemorySegment segment) implements IPoin
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable VkPrivateDataSlot ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable VkPrivateDataSlot value0, @Nullable VkPrivateDataSlot ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override

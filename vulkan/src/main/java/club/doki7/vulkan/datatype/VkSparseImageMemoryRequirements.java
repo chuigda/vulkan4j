@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -178,6 +179,11 @@ public record VkSparseImageMemoryRequirements(@NotNull MemorySegment segment) im
 
     public VkSparseImageMemoryRequirements formatProperties(@NotNull VkSparseImageFormatProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$formatProperties, SIZE$formatProperties);
+        return this;
+    }
+
+    public VkSparseImageMemoryRequirements formatProperties(Consumer<@NotNull VkSparseImageFormatProperties> consumer) {
+        consumer.accept(formatProperties());
         return this;
     }
 

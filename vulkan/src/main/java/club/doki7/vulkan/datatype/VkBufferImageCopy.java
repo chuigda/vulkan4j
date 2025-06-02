@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -209,6 +210,11 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
         return this;
     }
 
+    public VkBufferImageCopy imageSubresource(Consumer<@NotNull VkImageSubresourceLayers> consumer) {
+        consumer.accept(imageSubresource());
+        return this;
+    }
+
     public @NotNull VkOffset3D imageOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$imageOffset, LAYOUT$imageOffset));
     }
@@ -218,12 +224,22 @@ public record VkBufferImageCopy(@NotNull MemorySegment segment) implements IVkBu
         return this;
     }
 
+    public VkBufferImageCopy imageOffset(Consumer<@NotNull VkOffset3D> consumer) {
+        consumer.accept(imageOffset());
+        return this;
+    }
+
     public @NotNull VkExtent3D imageExtent() {
         return new VkExtent3D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
     }
 
     public VkBufferImageCopy imageExtent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+        return this;
+    }
+
+    public VkBufferImageCopy imageExtent(Consumer<@NotNull VkExtent3D> consumer) {
+        consumer.accept(imageExtent());
         return this;
     }
 

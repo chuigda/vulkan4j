@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -268,6 +269,11 @@ public record VkVideoEncodeCapabilitiesKHR(@NotNull MemorySegment segment) imple
 
     public VkVideoEncodeCapabilitiesKHR encodeInputPictureGranularity(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$encodeInputPictureGranularity, SIZE$encodeInputPictureGranularity);
+        return this;
+    }
+
+    public VkVideoEncodeCapabilitiesKHR encodeInputPictureGranularity(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(encodeInputPictureGranularity());
         return this;
     }
 

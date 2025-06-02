@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -189,6 +190,11 @@ public record VkShaderStatisticsInfoAMD(@NotNull MemorySegment segment) implemen
 
     public VkShaderStatisticsInfoAMD resourceUsage(@NotNull VkShaderResourceUsageAMD value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$resourceUsage, SIZE$resourceUsage);
+        return this;
+    }
+
+    public VkShaderStatisticsInfoAMD resourceUsage(Consumer<@NotNull VkShaderResourceUsageAMD> consumer) {
+        consumer.accept(resourceUsage());
         return this;
     }
 

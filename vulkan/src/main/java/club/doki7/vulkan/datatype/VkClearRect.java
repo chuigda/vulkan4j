@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -176,6 +177,11 @@ public record VkClearRect(@NotNull MemorySegment segment) implements IVkClearRec
 
     public VkClearRect rect(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$rect, SIZE$rect);
+        return this;
+    }
+
+    public VkClearRect rect(Consumer<@NotNull VkRect2D> consumer) {
+        consumer.accept(rect());
         return this;
     }
 

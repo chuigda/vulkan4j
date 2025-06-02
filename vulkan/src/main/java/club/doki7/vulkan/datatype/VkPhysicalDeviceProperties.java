@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -256,12 +257,22 @@ public record VkPhysicalDeviceProperties(@NotNull MemorySegment segment) impleme
         return this;
     }
 
+    public VkPhysicalDeviceProperties limits(Consumer<@NotNull VkPhysicalDeviceLimits> consumer) {
+        consumer.accept(limits());
+        return this;
+    }
+
     public @NotNull VkPhysicalDeviceSparseProperties sparseProperties() {
         return new VkPhysicalDeviceSparseProperties(segment.asSlice(OFFSET$sparseProperties, LAYOUT$sparseProperties));
     }
 
     public VkPhysicalDeviceProperties sparseProperties(@NotNull VkPhysicalDeviceSparseProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sparseProperties, SIZE$sparseProperties);
+        return this;
+    }
+
+    public VkPhysicalDeviceProperties sparseProperties(Consumer<@NotNull VkPhysicalDeviceSparseProperties> consumer) {
+        consumer.accept(sparseProperties());
         return this;
     }
 

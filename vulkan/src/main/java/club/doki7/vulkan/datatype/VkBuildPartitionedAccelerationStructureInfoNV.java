@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -222,6 +223,11 @@ public record VkBuildPartitionedAccelerationStructureInfoNV(@NotNull MemorySegme
 
     public VkBuildPartitionedAccelerationStructureInfoNV input(@NotNull VkPartitionedAccelerationStructureInstancesInputNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$input, SIZE$input);
+        return this;
+    }
+
+    public VkBuildPartitionedAccelerationStructureInfoNV input(Consumer<@NotNull VkPartitionedAccelerationStructureInstancesInputNV> consumer) {
+        consumer.accept(input());
         return this;
     }
 

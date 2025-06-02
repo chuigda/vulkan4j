@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -230,6 +231,11 @@ public record VmaTotalStatistics(@NotNull MemorySegment segment) implements IVma
 
     public VmaTotalStatistics total(@NotNull VmaDetailedStatistics value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$total, SIZE$total);
+        return this;
+    }
+
+    public VmaTotalStatistics total(Consumer<@NotNull VmaDetailedStatistics> consumer) {
+        consumer.accept(total());
         return this;
     }
 

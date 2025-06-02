@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -228,6 +229,11 @@ public record VkGeometryNV(@NotNull MemorySegment segment) implements IVkGeometr
 
     public VkGeometryNV geometry(@NotNull VkGeometryDataNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$geometry, SIZE$geometry);
+        return this;
+    }
+
+    public VkGeometryNV geometry(Consumer<@NotNull VkGeometryDataNV> consumer) {
+        consumer.accept(geometry());
         return this;
     }
 

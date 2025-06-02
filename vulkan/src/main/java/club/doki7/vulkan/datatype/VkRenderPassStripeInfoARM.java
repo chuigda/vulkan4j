@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -217,6 +218,11 @@ public record VkRenderPassStripeInfoARM(@NotNull MemorySegment segment) implemen
 
     public VkRenderPassStripeInfoARM stripeArea(@NotNull VkRect2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stripeArea, SIZE$stripeArea);
+        return this;
+    }
+
+    public VkRenderPassStripeInfoARM stripeArea(Consumer<@NotNull VkRect2D> consumer) {
+        consumer.accept(stripeArea());
         return this;
     }
 

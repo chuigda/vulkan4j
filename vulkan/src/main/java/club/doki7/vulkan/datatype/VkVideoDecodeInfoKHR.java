@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -264,6 +265,11 @@ public record VkVideoDecodeInfoKHR(@NotNull MemorySegment segment) implements IV
 
     public VkVideoDecodeInfoKHR dstPictureResource(@NotNull VkVideoPictureResourceInfoKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstPictureResource, SIZE$dstPictureResource);
+        return this;
+    }
+
+    public VkVideoDecodeInfoKHR dstPictureResource(Consumer<@NotNull VkVideoPictureResourceInfoKHR> consumer) {
+        consumer.accept(dstPictureResource());
         return this;
     }
 

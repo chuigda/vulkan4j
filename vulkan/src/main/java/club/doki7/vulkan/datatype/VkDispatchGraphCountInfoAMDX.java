@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -185,6 +186,11 @@ public record VkDispatchGraphCountInfoAMDX(@NotNull MemorySegment segment) imple
 
     public VkDispatchGraphCountInfoAMDX infos(@NotNull VkDeviceOrHostAddressConstAMDX value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$infos, SIZE$infos);
+        return this;
+    }
+
+    public VkDispatchGraphCountInfoAMDX infos(Consumer<@NotNull VkDeviceOrHostAddressConstAMDX> consumer) {
+        consumer.accept(infos());
         return this;
     }
 

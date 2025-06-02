@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -269,6 +270,11 @@ public record VkVideoEncodeH265QualityLevelPropertiesKHR(@NotNull MemorySegment 
 
     public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp(@NotNull VkVideoEncodeH265QpKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$preferredConstantQp, SIZE$preferredConstantQp);
+        return this;
+    }
+
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp(Consumer<@NotNull VkVideoEncodeH265QpKHR> consumer) {
+        consumer.accept(preferredConstantQp());
         return this;
     }
 

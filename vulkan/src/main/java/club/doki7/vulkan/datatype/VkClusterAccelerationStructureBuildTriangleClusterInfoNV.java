@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -264,6 +265,11 @@ public record VkClusterAccelerationStructureBuildTriangleClusterInfoNV(@NotNull 
 
     public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlags(@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$baseGeometryIndexAndGeometryFlags, SIZE$baseGeometryIndexAndGeometryFlags);
+        return this;
+    }
+
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlags(Consumer<@NotNull VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> consumer) {
+        consumer.accept(baseGeometryIndexAndGeometryFlags());
         return this;
     }
 

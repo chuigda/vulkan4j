@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -178,12 +179,22 @@ public record VkClearValue(@NotNull MemorySegment segment) implements IVkClearVa
         return this;
     }
 
+    public VkClearValue color(Consumer<@NotNull VkClearColorValue> consumer) {
+        consumer.accept(color());
+        return this;
+    }
+
     public @NotNull VkClearDepthStencilValue depthStencil() {
         return new VkClearDepthStencilValue(segment.asSlice(OFFSET$depthStencil, LAYOUT$depthStencil));
     }
 
     public VkClearValue depthStencil(@NotNull VkClearDepthStencilValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$depthStencil, SIZE$depthStencil);
+        return this;
+    }
+
+    public VkClearValue depthStencil(Consumer<@NotNull VkClearDepthStencilValue> consumer) {
+        consumer.accept(depthStencil());
         return this;
     }
 

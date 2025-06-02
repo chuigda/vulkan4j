@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -251,12 +252,22 @@ public record VkSurfacePresentScalingCapabilitiesEXT(@NotNull MemorySegment segm
         return this;
     }
 
+    public VkSurfacePresentScalingCapabilitiesEXT minScaledImageExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(minScaledImageExtent());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxScaledImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxScaledImageExtent, LAYOUT$maxScaledImageExtent));
     }
 
     public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxScaledImageExtent, SIZE$maxScaledImageExtent);
+        return this;
+    }
+
+    public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxScaledImageExtent());
         return this;
     }
 

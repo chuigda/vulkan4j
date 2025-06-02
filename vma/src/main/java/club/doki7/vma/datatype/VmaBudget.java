@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -204,6 +205,11 @@ public record VmaBudget(@NotNull MemorySegment segment) implements IVmaBudget {
 
     public VmaBudget statistics(@NotNull VmaStatistics value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$statistics, SIZE$statistics);
+        return this;
+    }
+
+    public VmaBudget statistics(Consumer<@NotNull VmaStatistics> consumer) {
+        consumer.accept(statistics());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -178,6 +179,11 @@ public record StdVideoEncodeAV1OperatingPointInfo(@NotNull MemorySegment segment
 
     public StdVideoEncodeAV1OperatingPointInfo flags(@NotNull StdVideoEncodeAV1OperatingPointInfoFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
+    }
+
+    public StdVideoEncodeAV1OperatingPointInfo flags(Consumer<@NotNull StdVideoEncodeAV1OperatingPointInfoFlags> consumer) {
+        consumer.accept(flags());
         return this;
     }
 

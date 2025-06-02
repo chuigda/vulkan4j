@@ -109,6 +109,7 @@ fun generateStructure(
     imports("java.util.List")
     imports("java.util.Iterator")
     imports("java.util.NoSuchElementException")
+    imports("java.util.function.Consumer")
 
     +""
     imports("org.jetbrains.annotations.Nullable")

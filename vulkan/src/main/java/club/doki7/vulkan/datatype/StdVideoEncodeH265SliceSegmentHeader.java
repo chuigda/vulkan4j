@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -186,6 +187,11 @@ public record StdVideoEncodeH265SliceSegmentHeader(@NotNull MemorySegment segmen
 
     public StdVideoEncodeH265SliceSegmentHeader flags(@NotNull StdVideoEncodeH265SliceSegmentHeaderFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
+    }
+
+    public StdVideoEncodeH265SliceSegmentHeader flags(Consumer<@NotNull StdVideoEncodeH265SliceSegmentHeaderFlags> consumer) {
+        consumer.accept(flags());
         return this;
     }
 

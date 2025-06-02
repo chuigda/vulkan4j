@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -255,6 +256,11 @@ public record VkPhysicalDeviceDriverProperties(@NotNull MemorySegment segment) i
 
     public VkPhysicalDeviceDriverProperties conformanceVersion(@NotNull VkConformanceVersion value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$conformanceVersion, SIZE$conformanceVersion);
+        return this;
+    }
+
+    public VkPhysicalDeviceDriverProperties conformanceVersion(Consumer<@NotNull VkConformanceVersion> consumer) {
+        consumer.accept(conformanceVersion());
         return this;
     }
 

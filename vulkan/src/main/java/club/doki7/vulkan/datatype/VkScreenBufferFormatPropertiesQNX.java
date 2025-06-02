@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -261,6 +262,11 @@ public record VkScreenBufferFormatPropertiesQNX(@NotNull MemorySegment segment) 
 
     public VkScreenBufferFormatPropertiesQNX samplerYcbcrConversionComponents(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$samplerYcbcrConversionComponents, SIZE$samplerYcbcrConversionComponents);
+        return this;
+    }
+
+    public VkScreenBufferFormatPropertiesQNX samplerYcbcrConversionComponents(Consumer<@NotNull VkComponentMapping> consumer) {
+        consumer.accept(samplerYcbcrConversionComponents());
         return this;
     }
 

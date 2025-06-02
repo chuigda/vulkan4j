@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -336,6 +337,11 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
+    public VkMicromapBuildInfoEXT data(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(data());
+        return this;
+    }
+
     public @NotNull VkDeviceOrHostAddressKHR scratchData() {
         return new VkDeviceOrHostAddressKHR(segment.asSlice(OFFSET$scratchData, LAYOUT$scratchData));
     }
@@ -345,12 +351,22 @@ public record VkMicromapBuildInfoEXT(@NotNull MemorySegment segment) implements 
         return this;
     }
 
+    public VkMicromapBuildInfoEXT scratchData(Consumer<@NotNull VkDeviceOrHostAddressKHR> consumer) {
+        consumer.accept(scratchData());
+        return this;
+    }
+
     public @NotNull VkDeviceOrHostAddressConstKHR triangleArray() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$triangleArray, LAYOUT$triangleArray));
     }
 
     public VkMicromapBuildInfoEXT triangleArray(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$triangleArray, SIZE$triangleArray);
+        return this;
+    }
+
+    public VkMicromapBuildInfoEXT triangleArray(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(triangleArray());
         return this;
     }
 

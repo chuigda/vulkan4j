@@ -134,8 +134,13 @@ public record VkBuffer(@NotNull MemorySegment segment) implements IPointer {
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable VkBuffer ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable VkBuffer value0, @Nullable VkBuffer ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override

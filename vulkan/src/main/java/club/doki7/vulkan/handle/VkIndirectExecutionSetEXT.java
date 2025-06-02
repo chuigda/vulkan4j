@@ -134,8 +134,13 @@ public record VkIndirectExecutionSetEXT(@NotNull MemorySegment segment) implemen
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable VkIndirectExecutionSetEXT ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable VkIndirectExecutionSetEXT value0, @Nullable VkIndirectExecutionSetEXT ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override

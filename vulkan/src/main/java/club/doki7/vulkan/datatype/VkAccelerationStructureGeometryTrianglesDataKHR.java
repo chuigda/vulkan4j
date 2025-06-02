@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -235,6 +236,11 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         return this;
     }
 
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexData(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(vertexData());
+        return this;
+    }
+
     public @NativeType("VkDeviceSize") @Unsigned long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
@@ -271,12 +277,22 @@ public record VkAccelerationStructureGeometryTrianglesDataKHR(@NotNull MemorySeg
         return this;
     }
 
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexData(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(indexData());
+        return this;
+    }
+
     public @NotNull VkDeviceOrHostAddressConstKHR transformData() {
         return new VkDeviceOrHostAddressConstKHR(segment.asSlice(OFFSET$transformData, LAYOUT$transformData));
     }
 
     public VkAccelerationStructureGeometryTrianglesDataKHR transformData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transformData, SIZE$transformData);
+        return this;
+    }
+
+    public VkAccelerationStructureGeometryTrianglesDataKHR transformData(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(transformData());
         return this;
     }
 

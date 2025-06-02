@@ -134,8 +134,13 @@ public record VkBufferCollectionFUCHSIA(@NotNull MemorySegment segment) implemen
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable VkBufferCollectionFUCHSIA ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable VkBufferCollectionFUCHSIA value0, @Nullable VkBufferCollectionFUCHSIA ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -184,6 +185,11 @@ public record VkAttachmentSampleLocationsEXT(@NotNull MemorySegment segment) imp
 
     public VkAttachmentSampleLocationsEXT sampleLocationsInfo(@NotNull VkSampleLocationsInfoEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$sampleLocationsInfo, SIZE$sampleLocationsInfo);
+        return this;
+    }
+
+    public VkAttachmentSampleLocationsEXT sampleLocationsInfo(Consumer<@NotNull VkSampleLocationsInfoEXT> consumer) {
+        consumer.accept(sampleLocationsInfo());
         return this;
     }
 

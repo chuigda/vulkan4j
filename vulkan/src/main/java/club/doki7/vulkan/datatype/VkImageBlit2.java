@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -223,6 +224,11 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
         return this;
     }
 
+    public VkImageBlit2 srcSubresource(Consumer<@NotNull VkImageSubresourceLayers> consumer) {
+        consumer.accept(srcSubresource());
+        return this;
+    }
+
     public VkOffset3D.Ptr srcOffsets() {
         return new VkOffset3D.Ptr(srcOffsetsRaw());
     }
@@ -253,6 +259,11 @@ public record VkImageBlit2(@NotNull MemorySegment segment) implements IVkImageBl
 
     public VkImageBlit2 dstSubresource(@NotNull VkImageSubresourceLayers value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dstSubresource, SIZE$dstSubresource);
+        return this;
+    }
+
+    public VkImageBlit2 dstSubresource(Consumer<@NotNull VkImageSubresourceLayers> consumer) {
+        consumer.accept(dstSubresource());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -228,6 +229,11 @@ public record VkIndirectCommandsLayoutTokenEXT(@NotNull MemorySegment segment) i
 
     public VkIndirectCommandsLayoutTokenEXT data(@NotNull VkIndirectCommandsTokenDataEXT value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
+    }
+
+    public VkIndirectCommandsLayoutTokenEXT data(Consumer<@NotNull VkIndirectCommandsTokenDataEXT> consumer) {
+        consumer.accept(data());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -196,6 +197,11 @@ public record VmaAllocationInfo2(@NotNull MemorySegment segment) implements IVma
 
     public VmaAllocationInfo2 allocationInfo(@NotNull VmaAllocationInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$allocationInfo, SIZE$allocationInfo);
+        return this;
+    }
+
+    public VmaAllocationInfo2 allocationInfo(Consumer<@NotNull VmaAllocationInfo> consumer) {
+        consumer.accept(allocationInfo());
         return this;
     }
 

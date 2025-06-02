@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -218,6 +219,11 @@ public record VkAccelerationStructureGeometryAabbsDataKHR(@NotNull MemorySegment
 
     public VkAccelerationStructureGeometryAabbsDataKHR data(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$data, SIZE$data);
+        return this;
+    }
+
+    public VkAccelerationStructureGeometryAabbsDataKHR data(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(data());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -174,6 +175,11 @@ public record VkIndirectCommandsPushConstantTokenEXT(@NotNull MemorySegment segm
 
     public VkIndirectCommandsPushConstantTokenEXT updateRange(@NotNull VkPushConstantRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$updateRange, SIZE$updateRange);
+        return this;
+    }
+
+    public VkIndirectCommandsPushConstantTokenEXT updateRange(Consumer<@NotNull VkPushConstantRange> consumer) {
+        consumer.accept(updateRange());
         return this;
     }
 

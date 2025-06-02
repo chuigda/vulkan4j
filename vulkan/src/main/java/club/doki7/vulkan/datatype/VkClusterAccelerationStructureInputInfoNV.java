@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -257,6 +258,11 @@ public record VkClusterAccelerationStructureInputInfoNV(@NotNull MemorySegment s
 
     public VkClusterAccelerationStructureInputInfoNV opInput(@NotNull VkClusterAccelerationStructureOpInputNV value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$opInput, SIZE$opInput);
+        return this;
+    }
+
+    public VkClusterAccelerationStructureInputInfoNV opInput(Consumer<@NotNull VkClusterAccelerationStructureOpInputNV> consumer) {
+        consumer.accept(opInput());
         return this;
     }
 

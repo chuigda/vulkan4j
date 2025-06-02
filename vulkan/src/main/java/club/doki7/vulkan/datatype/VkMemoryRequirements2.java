@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -217,6 +218,11 @@ public record VkMemoryRequirements2(@NotNull MemorySegment segment) implements I
 
     public VkMemoryRequirements2 memoryRequirements(@NotNull VkMemoryRequirements value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$memoryRequirements, SIZE$memoryRequirements);
+        return this;
+    }
+
+    public VkMemoryRequirements2 memoryRequirements(Consumer<@NotNull VkMemoryRequirements> consumer) {
+        consumer.accept(memoryRequirements());
         return this;
     }
 

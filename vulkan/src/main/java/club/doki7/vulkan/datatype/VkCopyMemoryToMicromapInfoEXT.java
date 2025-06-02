@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -219,6 +220,11 @@ public record VkCopyMemoryToMicromapInfoEXT(@NotNull MemorySegment segment) impl
 
     public VkCopyMemoryToMicromapInfoEXT src(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$src, SIZE$src);
+        return this;
+    }
+
+    public VkCopyMemoryToMicromapInfoEXT src(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(src());
         return this;
     }
 

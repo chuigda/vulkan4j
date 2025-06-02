@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -222,6 +223,11 @@ public record VkImageFormatConstraintsInfoFUCHSIA(@NotNull MemorySegment segment
 
     public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(@NotNull VkImageCreateInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageCreateInfo, SIZE$imageCreateInfo);
+        return this;
+    }
+
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(Consumer<@NotNull VkImageCreateInfo> consumer) {
+        consumer.accept(imageCreateInfo());
         return this;
     }
 

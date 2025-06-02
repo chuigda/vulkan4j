@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -248,6 +249,11 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         return this;
     }
 
+    public VkSurfaceCapabilities2EXT currentExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(currentExtent());
+        return this;
+    }
+
     public @NotNull VkExtent2D minImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minImageExtent, LAYOUT$minImageExtent));
     }
@@ -257,12 +263,22 @@ public record VkSurfaceCapabilities2EXT(@NotNull MemorySegment segment) implemen
         return this;
     }
 
+    public VkSurfaceCapabilities2EXT minImageExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(minImageExtent());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxImageExtent, LAYOUT$maxImageExtent));
     }
 
     public VkSurfaceCapabilities2EXT maxImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxImageExtent, SIZE$maxImageExtent);
+        return this;
+    }
+
+    public VkSurfaceCapabilities2EXT maxImageExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxImageExtent());
         return this;
     }
 
