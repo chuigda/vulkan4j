@@ -9,6 +9,7 @@ import club.doki7.babel.registry.PointerType
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.registry.Structure
 import club.doki7.babel.registry.Type
+import club.doki7.babel.registry.tryFindIdentifierType
 import club.doki7.babel.util.Doc
 import club.doki7.babel.util.buildDoc
 
@@ -691,10 +692,4 @@ private fun tryFindRootNonPlainType(cType: CType): String? = when (cType) {
     is CEnumType -> cType.name
     is CStructType -> cType.name
     is CVoidType, is CFixedIntType, is CFloatType, is CPlatformDependentIntType -> null
-}
-
-private fun tryFindIdentifierType(type: Type): String? = when (type) {
-    is ArrayType -> tryFindIdentifierType(type.element)
-    is PointerType -> tryFindIdentifierType(type.pointee)
-    is IdentifierType -> type.ident.toString()
 }

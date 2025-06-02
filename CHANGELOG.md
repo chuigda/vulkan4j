@@ -19,6 +19,10 @@
     outer.inner(it -> it.a(1).b(2));
     ```
 
+### Bugfixes
+
+- Fixed issue (#12), where some instance level commands are wrongly categorized as device commands.
+
 ## v0.3.1
 
 - Fixed a issue (#63) causing incorrect generation of `StructureType.Ptr.reinterpret` series methods.

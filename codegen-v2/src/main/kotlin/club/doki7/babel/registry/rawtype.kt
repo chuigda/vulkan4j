@@ -21,3 +21,9 @@ data class PointerType(
 ) : Type {
     override val cDisplay = "${pointee.cDisplay}${if (const) " const" else ""}*"
 }
+
+fun tryFindIdentifierType(type: Type): String? = when (type) {
+    is ArrayType -> tryFindIdentifierType(type.element)
+    is PointerType -> tryFindIdentifierType(type.pointee)
+    is IdentifierType -> type.ident.toString()
+}
