@@ -1,5 +1,6 @@
 package club.doki7.babel.drv
 
+import club.doki7.babel.extract.opengl.extractOpenGLRegistry
 import club.doki7.babel.extract.vulkan.extractVulkanRegistry
 import club.doki7.babel.extract.vulkanAdditionalRegistry
 import club.doki7.babel.util.setupLog
@@ -37,11 +38,13 @@ internal val log = Logger.getLogger("c.d.b.drv")
 fun main() {
     setupLog()
 
-    gles2Main()
+    openglMain()
 
-    val vulkanRegistry = vulkanMain()
-
-    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
-    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
-    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
+//    gles2Main()
+//
+//    val vulkanRegistry = vulkanMain()
+//
+//    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
+//    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
+//    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
 }

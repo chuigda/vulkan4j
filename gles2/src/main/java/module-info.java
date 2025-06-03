@@ -1,4 +1,4 @@
-/// OpenGL ES2 Java bindings implemented with Java22 FFM (Project Panama) APIs.
+/// OpenGL ES 2.0 Java bindings implemented with Java22 FFM (Project Panama) APIs.
 ///
 /// OpenGL ES is royalty-free, cross-platform API for full-function 2D and 3D graphics on embedded
 /// systems - including consoles, phones, appliances and vehicles. It consists of well-defined

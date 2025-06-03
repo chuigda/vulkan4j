@@ -74,6 +74,8 @@ abstract class Entity(val name: Identifier, var doc: List<String>? = null) {
         this._ext = extra
     }
 
+    fun hasExt(): Boolean = this._ext != null
+
     @Suppress("UNCHECKED_CAST")
     fun <T> ext(): T = this._ext as T
 
@@ -281,6 +283,8 @@ class Typedef(
     name: String,
     val type: IdentifierType
 ) : Entity(name) {
+    constructor(name: String, aliasTo: String) : this(name, IdentifierType(aliasTo))
+
     override fun toStringImpl() = "Typedef(name=\"$name\", type=$type"
 }
 
