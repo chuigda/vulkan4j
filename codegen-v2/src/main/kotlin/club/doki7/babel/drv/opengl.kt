@@ -2,6 +2,7 @@ package club.doki7.babel.drv
 
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateConstants
+import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.extract.opengl.GLCommandMetadata
 import club.doki7.babel.extract.opengl.extractOpenGLRegistry
 import club.doki7.babel.util.render
@@ -24,6 +25,12 @@ fun openglMain() {
     File("$packageDir/${codegenOptions.constantClassName}.java")
         .writeText(render(constantsDoc))
 
+    for (handle in openglRegistry.opaqueHandleTypedefs.values) {
+        val handleDoc = generateHandle(openglRegistry, handle, codegenOptions)
+        File("$packageDir/handle/${handle.name.value}.java")
+            .writeText(render(handleDoc))
+    }
+
     val (compatibilityCommands, coreCommands) = openglRegistry.commands.values
         .sortedBy { it.name }
         .partition { it.ext<GLCommandMetadata>().isCompatibility }
@@ -35,6 +42,21 @@ fun openglMain() {
         codegenOptions,
         null
     )
-    File("$packageDir/GL.java")
-        .writeText(render(coreCommandsDoc))
+    val coreCommandsDocText = render(coreCommandsDoc)
+        .replace("public final class GL {", "public sealed class GL permits GLCompatibility {")
+    File("$packageDir/GL.java").writeText(coreCommandsDocText)
+
+    val compatibilityDoc = club.doki7.babel.codegen.generateCommandFile(
+        openglRegistry,
+        "GLCompatibility",
+        compatibilityCommands,
+        codegenOptions,
+        null
+    )
+    val compatibilityDocText = render(compatibilityDoc)
+        .replace("public final class GLCompatibility {", "public final class GLCompatibility extends GL {")
+        .replace("public GLCompatibility(RawFunctionLoader loader) {",
+            """public GLCompatibility(RawFunctionLoader loader) {
+    super(loader);""")
+    File("$packageDir/GLCompatibility.java").writeText(compatibilityDocText)
 }

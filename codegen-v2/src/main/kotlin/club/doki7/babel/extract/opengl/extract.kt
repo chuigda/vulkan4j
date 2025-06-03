@@ -1,6 +1,9 @@
 package club.doki7.babel.extract.opengl
 
+import club.doki7.babel.cdecl.RawFunctionType
+import club.doki7.babel.cdecl.TypedefDecl
 import club.doki7.babel.cdecl.parseType
+import club.doki7.babel.cdecl.parseTypedefDecl
 import club.doki7.babel.cdecl.toType
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.asSequence
@@ -76,7 +79,7 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
     val extensionElements = e.query("extensions/extension")
     for (extensionElement in extensionElements) {
         val name = extensionElement.getAttributeText("name")!!
-        if (!keptOpenGLExtensions.contains(name)) {
+        if (!keptOpenGLExtensions.contains(name.removePrefix("GL_"))) {
             continue
         }
 
@@ -120,15 +123,48 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
         }
     }
 
+    val functionTypedefs = mutableMapOf<Identifier, FunctionTypedef>()
+    for (apiEntryElement in e.query("types/type/apientry")) {
+        val typedefElement = apiEntryElement.parentNode as Element
+        val typedef = typedefElement.textContent
+        val rawTypedefDecl = parseTypedefDecl(listOf(typedef), 0).first
+        functionTypedefs.putEntityIfAbsent(morphFunctionTypedef(rawTypedefDecl))
+    }
+
+    val opaqueTypedefs = mutableMapOf<Identifier, OpaqueTypedef>()
+    opaqueTypedefs.putEntityIfAbsent(OpaqueTypedef("_cl_context"))
+    opaqueTypedefs.putEntityIfAbsent(OpaqueTypedef("_cl_event"));
+
+    val handles = mutableMapOf<Identifier, OpaqueHandleTypedef>()
+    handles.putEntityIfAbsent(OpaqueHandleTypedef("GLeglClientBufferEXT"))
+    handles.putEntityIfAbsent(OpaqueHandleTypedef("GLeglImageOES"))
+    handles.putEntityIfAbsent(OpaqueHandleTypedef("GLsync"))
+
+    val aliases = mutableMapOf<Identifier, Typedef>()
+    aliases.putEntityIfAbsent(Typedef("GLcharARB", "GLchar"))
+    aliases.putEntityIfAbsent(Typedef("GLhalfARB", "GLhalf"))
+    aliases.putEntityIfAbsent(Typedef("GLintptrARB", "GLintptr"))
+    aliases.putEntityIfAbsent(Typedef("GLsizeiptrARB", "GLsizeiptr"))
+    aliases.putEntityIfAbsent(Typedef("GLint64EXT", "GLint64"))
+    aliases.putEntityIfAbsent(Typedef("GLuint64EXT", "GLuint64"))
+    aliases.putEntityIfAbsent(Typedef("GLhalfNV", "GLushort"))
+    aliases.putEntityIfAbsent(Typedef("GLvdpauSurfaceNV", "GLintptr"))
+
+    // On most platforms, GLhandleARB is an alias for GLuint. However, on macOS, it is defined as
+    // void*. LWJGL did this so we also do this. What's more, the ARB extensions requiring
+    // GLhandleARB types already have modern OpenGL replacements, so users won't use them
+    // so this should not cause issues under common circumstances.
+    aliases.putEntityIfAbsent(Typedef("GLhandleARB", "GLuint"))
+
     return Registry(
-        aliases = mutableMapOf(),
+        aliases = aliases,
         bitmasks = mutableMapOf(),
         constants = constants,
         commands = commands,
         enumerations = mutableMapOf(),
-        functionTypedefs = mutableMapOf(),
-        opaqueHandleTypedefs = mutableMapOf(),
-        opaqueTypedefs = mutableMapOf(),
+        functionTypedefs = functionTypedefs,
+        opaqueHandleTypedefs = handles,
+        opaqueTypedefs = opaqueTypedefs,
         structures = mutableMapOf(),
         unions = mutableMapOf(),
         ext = EmptyMergeable()
@@ -141,9 +177,20 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
  */
 private fun extractEnumConstant(e: Element, constants: MutableMap<Identifier, Constant>) {
     val name = e.getAttributeText("name")!!
-    val value = e.getAttributeText("value")!!
+    var value = e.getAttributeText("value")!!
 
-    constants.putEntityIfAbsent(Constant(name, IdentifierType("GLenum"), value))
+    val type = e.getAttributeText("type")
+    val constantType = when (type) {
+        "ull" -> {
+            value = "${value}L"
+            IdentifierType("GLuint64")
+        }
+        "u" -> IdentifierType("GLuint")
+        null -> IdentifierType("GLenum")
+        else -> throw IllegalArgumentException("Unknown enum type '$type' for constant '$name'.")
+    }
+
+    constants.putEntityIfAbsent(Constant(name, constantType, value))
 }
 
 /// endregion constant
@@ -196,3 +243,9 @@ private fun extractParam(e: Element): Param {
 }
 
 /// endregion command
+
+private fun morphFunctionTypedef(typedef: TypedefDecl) = FunctionTypedef(
+    name = typedef.name,
+    params = (typedef.aliasedType as RawFunctionType).params.map { it.second.toType() },
+    result = typedef.aliasedType.returnType.toType()
+)

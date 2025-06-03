@@ -283,6 +283,8 @@ class Typedef(
     name: String,
     val type: IdentifierType
 ) : Entity(name) {
+    constructor(name: String, aliasTo: String) : this(name, IdentifierType(aliasTo))
+
     override fun toStringImpl() = "Typedef(name=\"$name\", type=$type"
 }
 

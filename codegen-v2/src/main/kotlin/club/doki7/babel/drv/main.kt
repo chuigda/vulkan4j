@@ -38,7 +38,7 @@ internal val log = Logger.getLogger("c.d.b.drv")
 fun main() {
     setupLog()
 
-    extractOpenGLRegistry()
+    openglMain()
 
 //    gles2Main()
 //
