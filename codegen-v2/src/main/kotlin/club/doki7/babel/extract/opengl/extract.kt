@@ -38,18 +38,85 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
     val commands = mutableMapOf<Identifier, Command>()
     val constants = mutableMapOf<Identifier, Constant>()
 
-    val featureElement = e.query("feature[@api='gles2' and @number='2.0']").first()
-    for (require in featureElement.getElementSeq(TAG_REQUIRE)) {
-        for (commandRequire in require.getElementSeq(TAG_COMMAND)) {
-            val name = commandRequire.getAttributeText(ATTR_NAME)!!
-            val command = allCommands[name.intern()]!!
-            commands.putEntityIfAbsent(command)
+    val featureElements = e.query("feature[@api='gl']")
+    for (featureElement in featureElements) {
+        for (require in featureElement.getElementSeq("require")) {
+            val profile = require.getAttributeText("profile")
+            val isCompatibility = profile == "compatibility"
+
+            for (commandRequire in require.getElementSeq("command")) {
+                val name = commandRequire.getAttributeText("name")!!
+                val command = allCommands[name.intern()]!!
+                command.setExt(GLCommandMetadata(isCompatibility, isExtension = false))
+                commands.putEntityIfAbsent(command)
+            }
+
+            for (enumRequire in require.getElementSeq("enum")) {
+                val name = enumRequire.getAttributeText("name")!!
+                val constant = allConstants[name.intern()]!!
+                constant.setExt(GLBaseMetadata(isExtension = false))
+                constants.putEntityIfAbsent(constant)
+            }
         }
 
-        for (enumRequire in require.getElementSeq(TAG_ENUM)) {
-            val name = enumRequire.getAttributeText(ATTR_NAME)!!
-            val constant = allConstants[name.intern()]!!
-            constants.putEntityIfAbsent(constant)
+        for (remove in featureElement.getElementSeq("remove")) {
+            val profile = remove.getAttributeText("profile")
+            assert(profile == "core") {
+                "unexpected profile '$profile' in remove element, expected 'core'."
+            }
+
+            for (commandRemove in remove.getElementSeq("command")) {
+                val name = commandRemove.getAttributeText("name")!!
+                val command = allCommands[name.intern()]!!
+                command.ext<GLCommandMetadata>().isCompatibility = true
+            }
+        }
+    }
+
+    val extensionElements = e.query("extensions/extension")
+    for (extensionElement in extensionElements) {
+        val name = extensionElement.getAttributeText("name")!!
+        if (!keptOpenGLExtensions.contains(name)) {
+            continue
+        }
+
+        val supported = (extensionElement.getAttributeText("supported") ?: continue).split("|")
+        if ("gl" !in supported && "glcore" !in supported) {
+            continue
+        }
+
+        val extensionIsCompatibility = "gl" in supported && "glcore" !in supported
+        for (require in extensionElement.getElementSeq("require")) {
+            val requireIsCompatibility = require.getAttributeText("profile") == "compatibility"
+            val isCompatibility = requireIsCompatibility || extensionIsCompatibility
+
+            for (commandRequire in require.getElementSeq("command")) {
+                val name = commandRequire.getAttributeText("name")!!
+                val command = allCommands[name.intern()]!!
+                if (command.hasExt()) {
+                    val ext = command.ext<GLMetadata>()
+                    if (ext.isExtension == null) {
+                        ext.isExtension = true
+                    }
+                } else {
+                    command.setExt(GLCommandMetadata(isCompatibility, isExtension = true))
+                }
+                commands.putEntityIfAbsent(command)
+            }
+
+            for (enumRequire in require.getElementSeq("enum")) {
+                val name = enumRequire.getAttributeText("name")!!
+                val constant = allConstants[name.intern()]!!
+                if (constant.hasExt()) {
+                    val ext = constant.ext<GLMetadata>()
+                    if (ext.isExtension == null) {
+                        ext.isExtension = true
+                    }
+                } else {
+                    constant.setExt(GLBaseMetadata(isExtension = true))
+                }
+                constants.putEntityIfAbsent(constant)
+            }
         }
     }
 
@@ -68,23 +135,13 @@ private fun Element.extractEntities(): Registry<EmptyMergeable> {
     )
 }
 
-private const val ATTR_VALUE = "value"
-private const val ATTR_NAME = "name"
-private const val TAG_PROTO = "proto"
-private const val TAG_NAME = "name"
-private const val TAG_PARAM = "param"
-private const val TAG_ENUM = "enum"
-private const val TAG_COMMAND = "command"
-private const val TAG_REQUIRE = "require"
-
 /// region constant
-
 /**
  * @param e in form of `<enum value="..." name="...">`
  */
 private fun extractEnumConstant(e: Element, constants: MutableMap<Identifier, Constant>) {
-    val name = e.getAttributeText(ATTR_NAME)!!
-    val value = e.getAttributeText(ATTR_VALUE)!!
+    val name = e.getAttributeText("name")!!
+    val value = e.getAttributeText("value")!!
 
     constants.putEntityIfAbsent(Constant(name, IdentifierType("GLenum"), value))
 }
@@ -98,7 +155,7 @@ private fun extractEnumConstant(e: Element, constants: MutableMap<Identifier, Co
  */
 private fun getElementTextWithoutName(e: Element): String {
     return e.childNodes.asSequence()
-        .filter { !(it is Element && it.tagName == TAG_NAME) }
+        .filter { !(it is Element && it.tagName == "name") }
         .joinToString(separator = " ") { it.textContent.trim() }
 }
 
@@ -106,7 +163,7 @@ private fun getElementTextWithoutName(e: Element): String {
  * Extract type and name from element of form `some_type <name>some_name</name>`
  */
 private fun extractTypeJudgement(e: Element): Pair<String, Type> {
-    val name = e.getElementsByTagName(TAG_NAME).item(0).textContent.trim()
+    val name = e.getElementsByTagName("name").item(0).textContent.trim()
     val rawType = getElementTextWithoutName(e)
     val type = parseType(rawType).toType()
     return name to type
@@ -114,10 +171,10 @@ private fun extractTypeJudgement(e: Element): Pair<String, Type> {
 
 private fun extractCommand(e: Element): Command {
     // a proto is supposed to be: `<proto>return_type <name>command_name</name></proto>`
-    val rawProto = e.getElementsByTagName(TAG_PROTO).item(0) as Element
+    val rawProto = e.getElementsByTagName("proto").item(0) as Element
     val (name, type) = extractTypeJudgement(rawProto)
 
-    val params = e.getElementSeq(TAG_PARAM)
+    val params = e.getElementSeq("param")
         .map(::extractParam)
         .toMutableList()
 
