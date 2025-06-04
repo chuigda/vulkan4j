@@ -122,6 +122,17 @@ Let's start with the following code:
 import club.doki7.glfw.GLFW;
 import club.doki7.opengl.GL;
 
+class Application {
+    private GLFW glfw;
+    
+    public Application(GLFW glfw) {
+        this.glfw = glfw;
+    }
+    
+    public void run() {
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
     }
@@ -165,13 +176,15 @@ public class Main {
 }
 ```
 
-Finally, call `applicationStart`:
+Finally, create an instance of `Application` and call its `run` method:
 
 ```java
 public class Main {
     public static void main(String[] args) {
         GLFW glfw = ...;
-        applicationStart(glfw);
+        
+        Application app = new Application(glfw);
+        app.run();
     }
 }
 ```

@@ -181,7 +181,7 @@ private static @NativeType("VkBool32") @Unsigned int debugCallback(
 }
 ```
 
-> Note1: since Vulkan will directly call our callback function, it is not possible to use wrapper types like `VkDebugUtilsMessengerCallbackDataEXT` directly. Instead, we'll use the `MemorySegment` type to accept the raw pointer and then wrap it in the `VkDebugUtilsMessengerCallbackDataEXT` class on ourselves. To convince that the `MemorySegment` is a pointer to the correct struct, we'll use the `reinterpret` method to cast it to the correct size, so JVM won't complain about buffer overflow in future accesses.
+> Note1: since Vulkan will directly call our callback function, it is not possible to use wrapper types like `VkDebugUtilsMessengerCallbackDataEXT` class here. Instead, we have to use the `MemorySegment` type to accept the raw pointer and then wrap it in the `VkDebugUtilsMessengerCallbackDataEXT` class on ourselves. To convince that the `MemorySegment` is a pointer to the correct struct, we'll use the `reinterpret` method to cast it to the correct size, so JVM won't complain about buffer overflow in future accesses.
 
 > Note2: the `@EnumType` annotations are completely optional, but useful indicating the expected type of the integer values. Also, this makes Ctrl-clicking navigation in IDEs work. `@NativeType` is also optional.
 
