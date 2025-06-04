@@ -143,15 +143,15 @@ class Application {
         while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
             processInput(window);
 
-            glfw.swapBuffers(window);
-            glfw.pollEvents();
-
             gl.clearColor(0.2f, 0.3f, 0.3f, 1.0f);
             gl.clear(GLConstants.COLOR_BUFFER_BIT);
 
             gl.useProgram(shaderProgram);
             gl.bindVertexArray(vao);
             gl.drawArrays(GLConstants.TRIANGLES, 0, 3);
+
+            glfw.swapBuffers(window);
+            glfw.pollEvents();
         }
 
         glfw.terminate();
