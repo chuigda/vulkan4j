@@ -1,7 +1,11 @@
 package tutorial.opengl.part01.ch03;
 
 import club.doki7.ffm.annotation.Pointer;
+import club.doki7.ffm.annotation.Unsigned;
 import club.doki7.ffm.ptr.BytePtr;
+import club.doki7.ffm.ptr.FloatPtr;
+import club.doki7.ffm.ptr.IntPtr;
+import club.doki7.ffm.ptr.PointerPtr;
 import club.doki7.glfw.GLFW;
 import club.doki7.glfw.GLFWConstants;
 import club.doki7.glfw.GLFWFunctionTypes;
@@ -53,7 +57,8 @@ class Application {
         gl.viewport(0, 0, 800, 600);
 
         try {
-            MethodHandle mh = MethodHandles.lookup()
+            MethodHandle mh = MethodHandles
+                    .lookup()
                     .findVirtual(
                             Application.class,
                             "framebufferResizeCallback",
@@ -68,14 +73,85 @@ class Application {
             throw new RuntimeException("Failed to find framebufferResizeCallback method handle",e);
         }
 
+        @Unsigned int vao;
+        @Unsigned int vbo;
+        @Unsigned int shaderProgram;
+        try(Arena arena = Arena.ofConfined()) {
+            IntPtr pVAO = IntPtr.allocate(arena);
+            gl.genVertexArrays(1, pVAO);
+            vao = pVAO.read();
+
+            IntPtr pVBO = IntPtr.allocate(arena);
+            gl.genBuffers(1, pVBO);
+            vbo = pVBO.read();
+
+            gl.bindVertexArray(vao);
+            gl.bindBuffer(GLConstants.ARRAY_BUFFER, vbo);
+            FloatPtr pVertices = FloatPtr.allocate(arena, VERTICES);
+            gl.bufferData(
+                    GLConstants.ARRAY_BUFFER,
+                    pVertices.segment().byteSize(),
+                    pVertices.segment(),
+                    GLConstants.STATIC_DRAW
+            );
+            gl.vertexAttribPointer(
+                    0,
+                    3,
+                    GLConstants.FLOAT,
+                    (byte) GLFWConstants.FALSE,
+                    3 * Float.BYTES,
+                    MemorySegment.NULL
+            );
+            gl.enableVertexAttribArray(0);
+
+            IntPtr pSuccess = IntPtr.allocate(arena);
+            BytePtr pInfoLog = BytePtr.allocate(arena, 512);
+            @Unsigned int vertexShader = gl.createShader(GLConstants.VERTEX_SHADER);
+            var pVertexShaderSource = PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VERTEX_SHADER_SOURCE));
+            gl.shaderSource(vertexShader, 1, pVertexShaderSource, null);
+            gl.compileShader(vertexShader);
+            gl.getShaderiv(vertexShader, GLConstants.COMPILE_STATUS, pSuccess);
+            if (pSuccess.read() == GLFWConstants.FALSE) {
+                gl.getShaderInfoLog(vertexShader, 512, null, pInfoLog);
+                throw new RuntimeException("Failed to compile vertex shader: " + pInfoLog.readString());
+            }
+
+            @Unsigned int fragmentShader = gl.createShader(GLConstants.FRAGMENT_SHADER);
+            var pFragmentShaderSource = PointerPtr.allocateV(arena, BytePtr.allocateString(arena, FRAGMENT_SHADER_SOURCE));
+            gl.shaderSource(fragmentShader, 1, pFragmentShaderSource, null);
+            gl.compileShader(fragmentShader);
+            gl.getShaderiv(fragmentShader, GLConstants.COMPILE_STATUS, pSuccess);
+            if (pSuccess.read() == GLFWConstants.FALSE) {
+                gl.getShaderInfoLog(fragmentShader, 512, null, pInfoLog);
+                throw new RuntimeException("Failed to compile fragment shader: " + pInfoLog.readString());
+            }
+
+            shaderProgram = gl.createProgram();
+            gl.attachShader(shaderProgram, vertexShader);
+            gl.attachShader(shaderProgram, fragmentShader);
+            gl.linkProgram(shaderProgram);
+            gl.getProgramiv(shaderProgram, GLConstants.LINK_STATUS, pSuccess);
+            if (pSuccess.read() == GLFWConstants.FALSE) {
+                gl.getProgramInfoLog(shaderProgram, 512, null, pInfoLog);
+                throw new RuntimeException("Failed to link shader program: " + pInfoLog.readString());
+            }
+
+            gl.deleteShader(vertexShader);
+            gl.deleteShader(fragmentShader);
+        }
+
         while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
             processInput(window);
+
+            glfw.swapBuffers(window);
+            glfw.pollEvents();
 
             gl.clearColor(0.2f, 0.3f, 0.3f, 1.0f);
             gl.clear(GLConstants.COLOR_BUFFER_BIT);
 
-            glfw.swapBuffers(window);
-            glfw.pollEvents();
+            gl.useProgram(shaderProgram);
+            gl.bindVertexArray(vao);
+            gl.drawArrays(GLConstants.TRIANGLES, 0, 3);
         }
 
         glfw.terminate();
@@ -94,6 +170,32 @@ class Application {
             glfw.setWindowShouldClose(window, GLFWConstants.TRUE);
         }
     }
+
+    private static final float[] VERTICES = {
+            -0.5f, -0.5f, 0.0f,
+            0.5f, -0.5f, 0.0f,
+            0.0f,  0.5f, 0.0f
+    };
+
+    private static final String VERTEX_SHADER_SOURCE =
+            """
+            #version 330 core
+            layout (location = 0) in vec3 aPos;
+        
+            void main() {
+                gl_Position = vec4(aPos, 1.0f);
+            }
+            """;
+
+    private static final String FRAGMENT_SHADER_SOURCE =
+            """
+            #version 330 core
+            out vec4 FragColor;
+            
+            void main() {
+                FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+            }
+            """;
 }
 
 public class Main {

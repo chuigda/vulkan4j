@@ -108,7 +108,8 @@ Now our `framebufferResizeCallback` is a Java function. In order to make it a re
 
 ```java
 try {
-    MethodHandle mh = MethodHandles.lookup()
+    MethodHandle mh = MethodHandles
+            .lookup()
             .findVirtual(
                     Application.class,
                     "framebufferResizeCallback",
