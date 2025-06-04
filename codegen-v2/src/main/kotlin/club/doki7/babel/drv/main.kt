@@ -40,9 +40,12 @@ fun main() {
 
     openglMain()
 
-    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
-    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
-    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
-
+//    gles2Main()
+//
+//    val vulkanRegistry = vulkanMain()
+//
+//    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
+//    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
+//    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
     openalMain()
 }
