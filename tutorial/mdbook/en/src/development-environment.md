@@ -40,7 +40,13 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 
 ## GLFW
 
-Unlike `lwjgl-glfw` and other Java bindings for GLFW, `club.doki7.glfw` does not come up with the native binaries. You'll need to download the GLFW binaries for your operating system and architecture, either from the [official website](https://www.glfw.org/download.html), or using your favorite package manager. 
+Unlike `lwjgl-glfw` and other Java bindings for GLFW, `club.doki7.glfw` does not come up with the native binaries.
+
+> Chuigda did not bundle the native libraries with `club.doki7.glfw` because he doesn't know what's the best practice in Java world, <del>definitely not because he's lazy</del>. If you have a good idea, a pull request is always welcome.
+
+### Setup it on yourself
+
+To setup GLFW on yourself, you need to download the GLFW binaries for your operating system and architecture, either from the [official website](https://www.glfw.org/download.html), or using your favorite package manager.
 
 If you're using a package manager, all things should be set up for you automatically. However, if you're downloading the binaries manually, you'll need a bit more effort to make JVM find the native libraries. There are two ways to do this:
 
@@ -49,7 +55,60 @@ If you're using a package manager, all things should be set up for you automatic
 
 In realworld production you may want to bundle the native libraries with your application (usually a JAR file), in that case you may use some solution like [native-utils](https://github.com/adamheinrich/native-utils).
 
-> Chuigda did not bundle the native libraries with `club.doki7.glfw` because he doesn't know what's the best practice in Java world, <del>definitely not because he's lazy</del>. If you have a good idea, a pull request is always welcome.
+### Using `lwjgl-natives`
+
+LWJGL comes with a handy bundle of native library binaries, which can also be used by `vulkan4j`. The setup is a little bit tricky, but also helps avoiding some complications.
+
+Open the [Customize LWJGL](https://www.lwjgl.org/customize) page, choose Maven mode, and pick natives from the left column according to your need. Select only `GLFW` from contents. After doing these, the web page may look like such:
+
+![](../../images/lwjgl_natives_setup.png)
+
+And you will get your Maven configuration below:
+
+![](../../images/lwjgl_generated_maven_config.png)
+
+Copy the configuration to your project's `pom.xml`, but remove the `org.lwjgl.lwjgl-glfw` dependency: we only need the native binaries and library loader provided by LWJGL, not the GLFW wrapper. The content you need to copy may look like:
+
+```xml
+<properties>
+    <lwjgl.version>3.3.4</lwjgl.version>
+</properties>
+
+<profiles>
+    <!-- your selected profiles here -->
+</profiles>
+
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.lwjgl</groupId>
+            <artifactId>lwjgl-bom</artifactId>
+            <version>${lwjgl.version}</version>
+            <scope>import</scope>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+<dependencies>
+    <dependency>
+        <groupId>org.lwjgl</groupId>
+        <artifactId>lwjgl</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.lwjgl</groupId>
+        <artifactId>lwjgl</artifactId>
+        <classifier>${lwjgl.natives}</classifier>
+    </dependency>
+    <dependency>
+        <groupId>org.lwjgl</groupId>
+        <artifactId>lwjgl-glfw</artifactId>
+        <classifier>${lwjgl.natives}</classifier>
+    </dependency>
+</dependencies>
+```
+
+Then you can load GLFW from `lwjgl-natives`. We'll come back to this topic in the [Base code](./01-setup/instance.md) chapter.
 
 ## Vulkan SDK
 
