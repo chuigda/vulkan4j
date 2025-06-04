@@ -48,9 +48,9 @@ Unlike `lwjgl-glfw` and other Java bindings for GLFW, `club.doki7.glfw` does not
 
 > Chuigda did not bundle the native libraries with `club.doki7.glfw` because he doesn't know what's the best practice in Java world, <del>definitely not because he's lazy</del>. If you have a good idea, a pull request is always welcome.
 
-### Setup it on yourself
+### Set up GLFW yourself
 
-To setup GLFW on yourself, you need to download the GLFW binaries for your operating system and architecture, either from the [official website](https://www.glfw.org/download.html), or using your favorite package manager.Add commentMore actions
+To set up GLFW yourself, you need to download the GLFW binaries for your operating system and architecture, either from the [official website](https://www.glfw.org/download.html), or using your favorite package manager.Add commentMore actions
 
 If you're using a package manager, all things should be set up for you automatically. However, if you're downloading the binaries manually, you'll need a bit more effort to make JVM find the native libraries. There are two ways to do this:
 
