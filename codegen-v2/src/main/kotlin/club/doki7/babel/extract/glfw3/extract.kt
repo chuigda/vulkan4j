@@ -137,7 +137,7 @@ class Glfw3StructParser<P : HeaderParser<*>>(delegate: P) :
         return savedDoc
     }
 
-    class ParsedStruct(val name: String, val members: List<Member>)
+    class ParsedStruct(val name: String, val members: MutableList<Member>)
 
     override fun collect(): ParsedStruct {
         assert(name != null)

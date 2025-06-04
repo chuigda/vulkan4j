@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -133,12 +134,12 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSurfaceCapabilitiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSurfaceCapabilitiesKHR> {
+        private static final class Iter implements Iterator<VkSurfaceCapabilitiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -204,6 +205,11 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
         return this;
     }
 
+    public VkSurfaceCapabilitiesKHR currentExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(currentExtent());
+        return this;
+    }
+
     public @NotNull VkExtent2D minImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$minImageExtent, LAYOUT$minImageExtent));
     }
@@ -213,12 +219,22 @@ public record VkSurfaceCapabilitiesKHR(@NotNull MemorySegment segment) implement
         return this;
     }
 
+    public VkSurfaceCapabilitiesKHR minImageExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(minImageExtent());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxImageExtent() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxImageExtent, LAYOUT$maxImageExtent));
     }
 
     public VkSurfaceCapabilitiesKHR maxImageExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxImageExtent, SIZE$maxImageExtent);
+        return this;
+    }
+
+    public VkSurfaceCapabilitiesKHR maxImageExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxImageExtent());
         return this;
     }
 

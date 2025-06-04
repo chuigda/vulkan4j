@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -136,12 +137,12 @@ public record VkDisplayModeCreateInfoKHR(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDisplayModeCreateInfoKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDisplayModeCreateInfoKHR> {
+        private static final class Iter implements Iterator<VkDisplayModeCreateInfoKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -227,6 +228,11 @@ public record VkDisplayModeCreateInfoKHR(@NotNull MemorySegment segment) impleme
 
     public VkDisplayModeCreateInfoKHR parameters(@NotNull VkDisplayModeParametersKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$parameters, SIZE$parameters);
+        return this;
+    }
+
+    public VkDisplayModeCreateInfoKHR parameters(Consumer<@NotNull VkDisplayModeParametersKHR> consumer) {
+        consumer.accept(parameters());
         return this;
     }
 

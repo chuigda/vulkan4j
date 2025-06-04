@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -144,12 +145,12 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineDepthStencilStateCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPipelineDepthStencilStateCreateInfo> {
+        private static final class Iter implements Iterator<VkPipelineDepthStencilStateCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -283,12 +284,22 @@ public record VkPipelineDepthStencilStateCreateInfo(@NotNull MemorySegment segme
         return this;
     }
 
+    public VkPipelineDepthStencilStateCreateInfo front(Consumer<@NotNull VkStencilOpState> consumer) {
+        consumer.accept(front());
+        return this;
+    }
+
     public @NotNull VkStencilOpState back() {
         return new VkStencilOpState(segment.asSlice(OFFSET$back, LAYOUT$back));
     }
 
     public VkPipelineDepthStencilStateCreateInfo back(@NotNull VkStencilOpState value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$back, SIZE$back);
+        return this;
+    }
+
+    public VkPipelineDepthStencilStateCreateInfo back(Consumer<@NotNull VkStencilOpState> consumer) {
+        consumer.accept(back());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -132,12 +133,12 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPartitionedAccelerationStructureWriteInstanceDataNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPartitionedAccelerationStructureWriteInstanceDataNV> {
+        private static final class Iter implements Iterator<VkPartitionedAccelerationStructureWriteInstanceDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -182,6 +183,11 @@ public record VkPartitionedAccelerationStructureWriteInstanceDataNV(@NotNull Mem
 
     public VkPartitionedAccelerationStructureWriteInstanceDataNV transform(@NotNull VkTransformMatrixKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$transform, SIZE$transform);
+        return this;
+    }
+
+    public VkPartitionedAccelerationStructureWriteInstanceDataNV transform(Consumer<@NotNull VkTransformMatrixKHR> consumer) {
+        consumer.accept(transform());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -140,12 +141,12 @@ public record VkPhysicalDeviceLineRasterizationFeatures(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceLineRasterizationFeatures> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceLineRasterizationFeatures> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceLineRasterizationFeatures> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

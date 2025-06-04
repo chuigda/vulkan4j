@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -136,12 +137,12 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerBlockMatchWindowCreateInfoQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerBlockMatchWindowCreateInfoQCOM> {
+        private static final class Iter implements Iterator<VkSamplerBlockMatchWindowCreateInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -218,6 +219,11 @@ public record VkSamplerBlockMatchWindowCreateInfoQCOM(@NotNull MemorySegment seg
 
     public VkSamplerBlockMatchWindowCreateInfoQCOM windowExtent(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$windowExtent, SIZE$windowExtent);
+        return this;
+    }
+
+    public VkSamplerBlockMatchWindowCreateInfoQCOM windowExtent(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(windowExtent());
         return this;
     }
 

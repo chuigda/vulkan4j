@@ -31,7 +31,7 @@ public record VkPipelineBinaryKHR(@NotNull MemorySegment segment) implements IPo
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
     /// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
@@ -68,6 +68,19 @@ public record VkPipelineBinaryKHR(@NotNull MemorySegment segment) implements IPo
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable VkPipelineBinaryKHR[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable VkPipelineBinaryKHR value0, @Nullable VkPipelineBinaryKHR ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }
@@ -100,6 +113,7 @@ public record VkPipelineBinaryKHR(@NotNull MemorySegment segment) implements IPo
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -134,17 +148,22 @@ public record VkPipelineBinaryKHR(@NotNull MemorySegment segment) implements IPo
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable VkPipelineBinaryKHR ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable VkPipelineBinaryKHR value0, @Nullable VkPipelineBinaryKHR ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPipelineBinaryKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<VkPipelineBinaryKHR> {
+        private static class Iter implements Iterator<VkPipelineBinaryKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

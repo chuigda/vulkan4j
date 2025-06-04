@@ -82,7 +82,7 @@ public record CLongPtr(MemorySegment segment) implements IPointer, Iterable<Long
         return new CLongPtr(segment.asSlice(0, end * NativeLayout.C_LONG_SIZE));
     }
 
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Long> iterator() {
         return new Iter(segment);
     }
 
@@ -125,7 +125,7 @@ public record CLongPtr(MemorySegment segment) implements IPointer, Iterable<Long
     }
 
     /// An iterator over the integers.
-    public static final class Iter implements Iterator<Long> {
+    private static final class Iter implements Iterator<Long> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

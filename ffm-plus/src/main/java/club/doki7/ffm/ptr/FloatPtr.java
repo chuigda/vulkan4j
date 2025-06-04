@@ -50,6 +50,15 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
         segment.set(ValueLayout.JAVA_FLOAT, index * Float.BYTES, value);
     }
 
+    public void write(float @NotNull [] array) {
+        segment.copyFrom(MemorySegment.ofArray(array));
+    }
+
+    public void writeV(float value0, float @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link FloatPtr} is capable of holding at least {@code newSize} floats, create
     /// a new view {@link FloatPtr} that uses the same backing storage as this {@link FloatPtr}, but
     /// with the new size. Since there is actually no way to really check whether the new size is
@@ -82,7 +91,7 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Float> iterator() {
         return new Iter(segment);
     }
 
@@ -164,8 +173,11 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
         return new FloatPtr(arena.allocateFrom(ValueLayout.JAVA_FLOAT, array));
     }
 
-    public static @NotNull FloatPtr allocateV(@NotNull Arena arena, float ...array) {
-        return allocate(arena, array);
+    public static @NotNull FloatPtr allocateV(@NotNull Arena arena, float value0, float ...values) {
+        FloatPtr ret = allocate(arena, values.length + 1);
+        ret.write(value0);
+        ret.offset(1).segment.copyFrom(MemorySegment.ofArray(values));
+        return ret;
     }
 
     /// Allocate a new {@link FloatPtr} in {@code arena} and copy the contents of {@code buffer} into
@@ -191,7 +203,7 @@ public record FloatPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     /// An iterator over the float numbers.
-    public static final class Iter implements Iterator<Float> {
+    private static final class Iter implements Iterator<Float> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

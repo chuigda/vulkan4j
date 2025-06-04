@@ -50,6 +50,15 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
         segment.set(ValueLayout.JAVA_BYTE, index, value);
     }
 
+    public void write(byte @NotNull [] bytes) {
+        segment.copyFrom(MemorySegment.ofArray(bytes));
+    }
+
+    public void writeV(byte value0, byte @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link BytePtr} is a null-terminated string, reads the string from the beginning
     /// of the underlying memory segment, until the first NUL byte is encountered or the end of the
     /// segment is reached.
@@ -108,7 +117,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Byte> iterator() {
         return new Iter(segment);
     }
 
@@ -176,8 +185,11 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
         return new BytePtr(arena.allocateFrom(ValueLayout.JAVA_BYTE, bytes));
     }
 
-    public static @NotNull BytePtr allocateV(@NotNull Arena arena, byte ...bytes) {
-        return allocate(arena, bytes);
+    public static @NotNull BytePtr allocateV(@NotNull Arena arena, byte value0, byte ...values) {
+        BytePtr ret = allocate(arena, values.length + 1);
+        ret.write(value0);
+        ret.offset(1).segment.copyFrom(MemorySegment.ofArray(values));
+        return ret;
     }
 
     /// Allocate a new {@link BytePtr} in {@code arena} and copy the contents of {@code buffer} into
@@ -211,7 +223,7 @@ public record BytePtr(@NotNull MemorySegment segment) implements IPointer, Itera
     }
 
     /// An iterator over the bytes.
-    public static final class Iter implements Iterator<Byte> {
+    private static final class Iter implements Iterator<Byte> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

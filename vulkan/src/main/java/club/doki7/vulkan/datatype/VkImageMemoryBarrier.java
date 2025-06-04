@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -142,12 +143,12 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageMemoryBarrier> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageMemoryBarrier> {
+        private static final class Iter implements Iterator<VkImageMemoryBarrier> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -291,6 +292,11 @@ public record VkImageMemoryBarrier(@NotNull MemorySegment segment) implements IV
 
     public VkImageMemoryBarrier subresourceRange(@NotNull VkImageSubresourceRange value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$subresourceRange, SIZE$subresourceRange);
+        return this;
+    }
+
+    public VkImageMemoryBarrier subresourceRange(Consumer<@NotNull VkImageSubresourceRange> consumer) {
+        consumer.accept(subresourceRange());
         return this;
     }
 

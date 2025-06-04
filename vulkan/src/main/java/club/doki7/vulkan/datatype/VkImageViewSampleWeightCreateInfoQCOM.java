@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -137,12 +138,12 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageViewSampleWeightCreateInfoQCOM> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageViewSampleWeightCreateInfoQCOM> {
+        private static final class Iter implements Iterator<VkImageViewSampleWeightCreateInfoQCOM> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -222,12 +223,22 @@ public record VkImageViewSampleWeightCreateInfoQCOM(@NotNull MemorySegment segme
         return this;
     }
 
+    public VkImageViewSampleWeightCreateInfoQCOM filterCenter(Consumer<@NotNull VkOffset2D> consumer) {
+        consumer.accept(filterCenter());
+        return this;
+    }
+
     public @NotNull VkExtent2D filterSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$filterSize, LAYOUT$filterSize));
     }
 
     public VkImageViewSampleWeightCreateInfoQCOM filterSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$filterSize, SIZE$filterSize);
+        return this;
+    }
+
+    public VkImageViewSampleWeightCreateInfoQCOM filterSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(filterSize());
         return this;
     }
 

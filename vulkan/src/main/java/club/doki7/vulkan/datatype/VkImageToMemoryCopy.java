@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -140,12 +141,12 @@ public record VkImageToMemoryCopy(@NotNull MemorySegment segment) implements IVk
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageToMemoryCopy> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageToMemoryCopy> {
+        private static final class Iter implements Iterator<VkImageToMemoryCopy> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -256,6 +257,11 @@ public record VkImageToMemoryCopy(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
+    public VkImageToMemoryCopy imageSubresource(Consumer<@NotNull VkImageSubresourceLayers> consumer) {
+        consumer.accept(imageSubresource());
+        return this;
+    }
+
     public @NotNull VkOffset3D imageOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$imageOffset, LAYOUT$imageOffset));
     }
@@ -265,12 +271,22 @@ public record VkImageToMemoryCopy(@NotNull MemorySegment segment) implements IVk
         return this;
     }
 
+    public VkImageToMemoryCopy imageOffset(Consumer<@NotNull VkOffset3D> consumer) {
+        consumer.accept(imageOffset());
+        return this;
+    }
+
     public @NotNull VkExtent3D imageExtent() {
         return new VkExtent3D(segment.asSlice(OFFSET$imageExtent, LAYOUT$imageExtent));
     }
 
     public VkImageToMemoryCopy imageExtent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$imageExtent, SIZE$imageExtent);
+        return this;
+    }
+
+    public VkImageToMemoryCopy imageExtent(Consumer<@NotNull VkExtent3D> consumer) {
+        consumer.accept(imageExtent());
         return this;
     }
 

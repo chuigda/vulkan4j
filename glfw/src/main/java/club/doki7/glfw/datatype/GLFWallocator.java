@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -150,12 +151,12 @@ public record GLFWallocator(@NotNull MemorySegment segment) implements IGLFWallo
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<GLFWallocator> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<GLFWallocator> {
+        private static final class Iter implements Iterator<GLFWallocator> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

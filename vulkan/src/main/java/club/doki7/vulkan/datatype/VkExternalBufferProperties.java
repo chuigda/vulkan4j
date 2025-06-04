@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -135,12 +136,12 @@ public record VkExternalBufferProperties(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkExternalBufferProperties> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkExternalBufferProperties> {
+        private static final class Iter implements Iterator<VkExternalBufferProperties> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -217,6 +218,11 @@ public record VkExternalBufferProperties(@NotNull MemorySegment segment) impleme
 
     public VkExternalBufferProperties externalMemoryProperties(@NotNull VkExternalMemoryProperties value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$externalMemoryProperties, SIZE$externalMemoryProperties);
+        return this;
+    }
+
+    public VkExternalBufferProperties externalMemoryProperties(Consumer<@NotNull VkExternalMemoryProperties> consumer) {
+        consumer.accept(externalMemoryProperties());
         return this;
     }
 

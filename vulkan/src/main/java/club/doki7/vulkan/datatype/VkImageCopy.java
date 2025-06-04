@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -128,12 +129,12 @@ public record VkImageCopy(@NotNull MemorySegment segment) implements IVkImageCop
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkImageCopy> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkImageCopy> {
+        private static final class Iter implements Iterator<VkImageCopy> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -181,12 +182,22 @@ public record VkImageCopy(@NotNull MemorySegment segment) implements IVkImageCop
         return this;
     }
 
+    public VkImageCopy srcSubresource(Consumer<@NotNull VkImageSubresourceLayers> consumer) {
+        consumer.accept(srcSubresource());
+        return this;
+    }
+
     public @NotNull VkOffset3D srcOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$srcOffset, LAYOUT$srcOffset));
     }
 
     public VkImageCopy srcOffset(@NotNull VkOffset3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$srcOffset, SIZE$srcOffset);
+        return this;
+    }
+
+    public VkImageCopy srcOffset(Consumer<@NotNull VkOffset3D> consumer) {
+        consumer.accept(srcOffset());
         return this;
     }
 
@@ -199,6 +210,11 @@ public record VkImageCopy(@NotNull MemorySegment segment) implements IVkImageCop
         return this;
     }
 
+    public VkImageCopy dstSubresource(Consumer<@NotNull VkImageSubresourceLayers> consumer) {
+        consumer.accept(dstSubresource());
+        return this;
+    }
+
     public @NotNull VkOffset3D dstOffset() {
         return new VkOffset3D(segment.asSlice(OFFSET$dstOffset, LAYOUT$dstOffset));
     }
@@ -208,12 +224,22 @@ public record VkImageCopy(@NotNull MemorySegment segment) implements IVkImageCop
         return this;
     }
 
+    public VkImageCopy dstOffset(Consumer<@NotNull VkOffset3D> consumer) {
+        consumer.accept(dstOffset());
+        return this;
+    }
+
     public @NotNull VkExtent3D extent() {
         return new VkExtent3D(segment.asSlice(OFFSET$extent, LAYOUT$extent));
     }
 
     public VkImageCopy extent(@NotNull VkExtent3D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$extent, SIZE$extent);
+        return this;
+    }
+
+    public VkImageCopy extent(Consumer<@NotNull VkExtent3D> consumer) {
+        consumer.accept(extent());
         return this;
     }
 

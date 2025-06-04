@@ -18,5 +18,12 @@ fun generateStructureTypeAccessor(className: String, type: CStructType, member: 
             +"MemorySegment.copy(value.segment(), 0, segment, ${member.offsetName}, ${member.sizeName});"
             +"return this;"
         }
+
+        +""
+
+        defun("public", className, member.name, "Consumer<@NotNull ${type.name}> consumer") {
+            +"consumer.accept(${member.name}());"
+            +"return this;"
+        }
     }
 }

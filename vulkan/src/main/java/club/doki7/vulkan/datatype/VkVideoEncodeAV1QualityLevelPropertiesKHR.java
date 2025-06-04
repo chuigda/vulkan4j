@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -149,12 +150,12 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkVideoEncodeAV1QualityLevelPropertiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkVideoEncodeAV1QualityLevelPropertiesKHR> {
+        private static final class Iter implements Iterator<VkVideoEncodeAV1QualityLevelPropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -276,6 +277,11 @@ public record VkVideoEncodeAV1QualityLevelPropertiesKHR(@NotNull MemorySegment s
 
     public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConstantQIndex(@NotNull VkVideoEncodeAV1QIndexKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$preferredConstantQIndex, SIZE$preferredConstantQIndex);
+        return this;
+    }
+
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConstantQIndex(Consumer<@NotNull VkVideoEncodeAV1QIndexKHR> consumer) {
+        consumer.accept(preferredConstantQIndex());
         return this;
     }
 

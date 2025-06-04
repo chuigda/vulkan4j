@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -128,12 +129,12 @@ public record VkDecompressMemoryRegionNV(@NotNull MemorySegment segment) impleme
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDecompressMemoryRegionNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDecompressMemoryRegionNV> {
+        private static final class Iter implements Iterator<VkDecompressMemoryRegionNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

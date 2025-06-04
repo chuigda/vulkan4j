@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -144,12 +145,12 @@ public record VkDebugUtilsMessengerCallbackDataEXT(@NotNull MemorySegment segmen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkDebugUtilsMessengerCallbackDataEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkDebugUtilsMessengerCallbackDataEXT> {
+        private static final class Iter implements Iterator<VkDebugUtilsMessengerCallbackDataEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

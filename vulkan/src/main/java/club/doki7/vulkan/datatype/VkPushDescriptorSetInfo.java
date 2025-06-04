@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -139,12 +140,12 @@ public record VkPushDescriptorSetInfo(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPushDescriptorSetInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPushDescriptorSetInfo> {
+        private static final class Iter implements Iterator<VkPushDescriptorSetInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

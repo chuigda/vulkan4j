@@ -63,6 +63,28 @@ fun extractVMAHeader(): Registry<EmptyMergeable> {
         headerFile,
         0
     )
+
+    val reservedMember = Member(
+        name = "reserved",
+        type = ArrayType(
+            element = PointerType(
+                pointee = IdentifierType("void")
+            ),
+            length = "8".intern()
+        ),
+        values = null,
+        len = null,
+        altLen = null,
+        optional = false,
+        bits = null
+    )
+
+    val vmaVulkanFunctions = registry.structures["VmaVulkanFunctions".intern()]!!
+    vmaVulkanFunctions.members.add(reservedMember)
+
+    val vmaAllocatorCreateInfo = registry.structures["VmaAllocatorCreateInfo".intern()]!!
+    vmaAllocatorCreateInfo.members.add(reservedMember)
+
     postprocessDoc(registry)
     registry.renameEntities()
     return registry

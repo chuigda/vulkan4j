@@ -50,6 +50,15 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
         segment.set(ValueLayout.JAVA_SHORT, index * Short.BYTES, value);
     }
 
+    public void write(short @NotNull [] values) {
+        segment.copyFrom(MemorySegment.ofArray(values));
+    }
+
+    public void writeV(short value0, short @NotNull ...values) {
+        write(value0);
+        offset(1).write(values);
+    }
+
     /// Assume the {@link ShortPtr} is capable of holding at least {@code newSize} short integers,
     /// create a new view {@link ShortPtr} that uses the same backing storage as this
     /// {@link ShortPtr}, but with the new size. Since there is actually no way to really check
@@ -83,7 +92,7 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     @Override
-    public @NotNull Iter iterator() {
+    public @NotNull Iterator<Short> iterator() {
         return new Iter(segment);
     }
 
@@ -166,8 +175,11 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
         return new ShortPtr(arena.allocateFrom(ValueLayout.JAVA_SHORT, array));
     }
 
-    public static @NotNull ShortPtr allocateV(@NotNull Arena arena, short ...array) {
-        return allocate(arena, array);
+    public static @NotNull ShortPtr allocateV(@NotNull Arena arena, short value0, short ...values) {
+        ShortPtr ret = allocate(arena, values.length + 1);
+        ret.write(value0);
+        ret.offset(1).segment.copyFrom(MemorySegment.ofArray(values));
+        return ret;
     }
 
     /// Allocate a new {@link ShortPtr} in {@code arena} and copy the contents of {@code buffer} into
@@ -194,7 +206,7 @@ public record ShortPtr(@NotNull MemorySegment segment) implements IPointer, Iter
     }
 
     /// An iterator over the short integers.
-    public static final class Iter implements Iterator<Short> {
+    private static final class Iter implements Iterator<Short> {
         Iter(@NotNull MemorySegment segment) {
             this.segment = segment;
         }

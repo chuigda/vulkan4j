@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -139,12 +140,12 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkComputePipelineCreateInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkComputePipelineCreateInfo> {
+        private static final class Iter implements Iterator<VkComputePipelineCreateInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -230,6 +231,11 @@ public record VkComputePipelineCreateInfo(@NotNull MemorySegment segment) implem
 
     public VkComputePipelineCreateInfo stage(@NotNull VkPipelineShaderStageCreateInfo value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$stage, SIZE$stage);
+        return this;
+    }
+
+    public VkComputePipelineCreateInfo stage(Consumer<@NotNull VkPipelineShaderStageCreateInfo> consumer) {
+        consumer.accept(stage());
         return this;
     }
 

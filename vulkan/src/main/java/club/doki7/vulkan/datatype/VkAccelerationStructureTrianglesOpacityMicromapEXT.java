@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -142,12 +143,12 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureTrianglesOpacityMicromapEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureTrianglesOpacityMicromapEXT> {
+        private static final class Iter implements Iterator<VkAccelerationStructureTrianglesOpacityMicromapEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -233,6 +234,11 @@ public record VkAccelerationStructureTrianglesOpacityMicromapEXT(@NotNull Memory
 
     public VkAccelerationStructureTrianglesOpacityMicromapEXT indexBuffer(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexBuffer, SIZE$indexBuffer);
+        return this;
+    }
+
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexBuffer(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(indexBuffer());
         return this;
     }
 

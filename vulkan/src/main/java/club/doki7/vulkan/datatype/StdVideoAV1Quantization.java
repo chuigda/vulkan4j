@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -131,12 +132,12 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoAV1Quantization> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoAV1Quantization> {
+        private static final class Iter implements Iterator<StdVideoAV1Quantization> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -181,6 +182,11 @@ public record StdVideoAV1Quantization(@NotNull MemorySegment segment) implements
 
     public StdVideoAV1Quantization flags(@NotNull StdVideoAV1QuantizationFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
+    }
+
+    public StdVideoAV1Quantization flags(Consumer<@NotNull StdVideoAV1QuantizationFlags> consumer) {
+        consumer.accept(flags());
         return this;
     }
 

@@ -63,6 +63,7 @@
         <module>openal</module>
         <module>glfw</module>
         <module>tutorial</module>
+        <module>opengl</module>
     </modules>
 
     <build>

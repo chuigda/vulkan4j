@@ -67,7 +67,7 @@ fun generateHandle(
         +"/// ## Contracts"
         +"///"
         +"/// The property {@link #segment()} should always be not-null"
-        +"/// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to"
+        +"/// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to"
         +"/// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java"
         +"/// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details."
         +"///"
@@ -115,6 +115,25 @@ fun generateHandle(
             }
             +""
 
+            defun("public", "void", "write", "@Nullable $className[] values") {
+                +"for (int i = 0; i < values.length; i++) {"
+                indent {
+                    +"write(i, values[i]);"
+                }
+                +"}"
+            }
+            +""
+
+            defun("public", "void", "writeV", "@Nullable $className value0", "@Nullable $className ...values") {
+                +"write(value0);"
+                +"for (int i = 0; i < values.length; i++) {"
+                indent {
+                    +"write(i + 1, values[i]);"
+                }
+                +"}"
+            }
+            +""
+
             defun("public", "MemorySegment", "readRaw") {
                 +"return segment.get(ValueLayout.ADDRESS, 0);"
             }
@@ -151,6 +170,7 @@ fun generateHandle(
             defun("public", "Ptr", "reinterpret", "long newSize") {
                 +"return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));"
             }
+            +""
 
             defun("public", "Ptr", "offset", "long offset") {
                 +"return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));"
@@ -196,19 +216,33 @@ fun generateHandle(
             }
             +""
 
-            defun("public static", "Ptr", "allocateV", "Arena arena", "@Nullable $className ...values") {
-                +"return allocate(arena, values);";
+            defun(
+                "public static",
+                "Ptr",
+                "allocateV",
+                "Arena arena",
+                "@Nullable $className value0",
+                "@Nullable $className ...values"
+            ) {
+                +"Ptr ret = allocate(arena, values.length + 1);"
+                +"ret.write(0, value0);"
+                +"for (int i = 0; i < values.length; i++) {"
+                indent {
+                    +"ret.write(i + 1, values[i]);"
+                }
+                +"}"
+                +"return ret;"
             }
             +""
 
             +"@Override"
-            defun("public", "@NotNull Iter", "iterator") {
+            defun("public", "@NotNull Iterator<$className>", "iterator") {
                 +"return new Iter(this.segment());"
             }
             +""
 
             +"/// An iterator over the handles."
-            +"public static class Iter implements Iterator<$className> {"
+            +"private static class Iter implements Iterator<$className> {"
             indent {
                 +"Iter(@NotNull MemorySegment segment) {"
                 indent {

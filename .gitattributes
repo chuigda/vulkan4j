@@ -4,6 +4,11 @@ vulkan/src/main/java/club/doki7/vulkan/datatype/*.java linguist-generated
 vulkan/src/main/java/club/doki7/vulkan/enumtype/*.java linguist-generated
 vulkan/src/main/java/club/doki7/vulkan/handle/*.java linguist-generated
 
+opengl/src/main/java/club/doki7/opengl/handle/*.java linguist-generated
+opengl/src/main/java/club/doki7/opengl/GL.java linguist-generated
+opengl/src/main/java/club/doki7/opengl/GLCompatibility.java linguist-generated
+opengl/src/main/java/club/doki7/opengl/GLConstants.java linguist-generated
+
 gles2/src/main/java/club/doki7/gles2/GLES2.java linguist-generated
 gles2/src/main/java/club/doki7/gles2/GLES2Constants.java linguist-generated
 

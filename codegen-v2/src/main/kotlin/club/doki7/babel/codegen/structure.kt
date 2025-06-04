@@ -9,6 +9,7 @@ import club.doki7.babel.registry.PointerType
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.registry.Structure
 import club.doki7.babel.registry.Type
+import club.doki7.babel.registry.tryFindIdentifierType
 import club.doki7.babel.util.Doc
 import club.doki7.babel.util.buildDoc
 
@@ -109,6 +110,7 @@ fun generateStructure(
     imports("java.util.List")
     imports("java.util.Iterator")
     imports("java.util.NoSuchElementException")
+    imports("java.util.function.Consumer")
 
     +""
     imports("org.jetbrains.annotations.Nullable")
@@ -350,13 +352,13 @@ fun generateStructure(
             +""
 
             +"@Override"
-            defun("public", "@NotNull Iter", "iterator") {
+            defun("public", "@NotNull Iterator<$className>", "iterator") {
                 +"return new Iter(this.segment());"
             }
             +""
 
             +"/// An iterator over the structures."
-            +"public static final class Iter implements Iterator<$className> {"
+            +"private static final class Iter implements Iterator<$className> {"
             indent {
                 +"Iter(@NotNull MemorySegment segment) {"
                 indent {
@@ -690,10 +692,4 @@ private fun tryFindRootNonPlainType(cType: CType): String? = when (cType) {
     is CEnumType -> cType.name
     is CStructType -> cType.name
     is CVoidType, is CFixedIntType, is CFloatType, is CPlatformDependentIntType -> null
-}
-
-private fun tryFindIdentifierType(type: Type): String? = when (type) {
-    is ArrayType -> tryFindIdentifierType(type.element)
-    is PointerType -> tryFindIdentifierType(type.pointee)
-    is IdentifierType -> type.ident.toString()
 }

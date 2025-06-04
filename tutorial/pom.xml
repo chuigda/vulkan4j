@@ -29,6 +29,22 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>club.doki7</groupId>
+            <artifactId>opengl</artifactId>
+            <version>0.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>club.doki7</groupId>
+            <artifactId>vulkan</artifactId>
+            <version>0.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>club.doki7</groupId>
+            <artifactId>vma</artifactId>
+            <version>0.3.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.joml</groupId>
             <artifactId>joml</artifactId>
             <version>1.10.8</version>
@@ -37,12 +53,6 @@
             <groupId>de.javagl</groupId>
             <artifactId>obj</artifactId>
             <version>0.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>club.doki7</groupId>
-            <artifactId>vma</artifactId>
-            <version>0.3.1</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

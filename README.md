@@ -2,37 +2,57 @@
 
 [![CI status](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml)
 
-> [Discord](https://discord.gg/UsmRvrt4gg)
+> [Website](https://vulkan4j.doki7.club) | [Discord](https://discord.gg/UsmRvrt4gg) | [Vulkan Tutorial](https://vulkan4j.doki7.club/tutorial/en/)
 
-[Vulkan](https://www.vulkan.org/) Binding for Java using [Project Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs.
+*This project is heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
 
-*Heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
+`vulkan4j` is a series of graphics and relevant API binding for Java, implemented with Java 22 [Project Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs. This project initially focuses on [Vulkan](https://www.vulkan.org/), but soon we expanded to other graphics APIs such as [OpenGL](https://www.opengl.org/) and [OpenGL ES](https://www.khronos.org/opengles/). More APIs will be added in the future, feature requests and contributions are welcome!
 
-## [Vulkan tutorial](https://vulkan4j.doki7.club/tutorial/en/)
+## Bindings Available
+
+- [Vulkan](https://www.khronos.org/vulkan/)([`vulkan`](https://github.com/chuigda/vulkan4j/tree/master/vulkan) module): Generated from [`vk.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) and [`video.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/video.xml).
+- [OpenGL](https://www.opengl.org/)([`opengl`](https://github.com/chuigda/vulkan4j/tree/master/opengl) module): Generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml). Our supported extension list is copied from LWJGL, and not all extensions are included (since some OpenGL extensions are completely useless nowadays). Name your desired extension in the issue tracker!
+- [GLFW](https://www.glfw.org/)([`glfw`](https://github.com/chuigda/vulkan4j/tree/master/glfw) module): Generated from GLFW header files.
+- [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator)([`vma`](https://github.com/chuigda/vulkan4j/tree/master/vma) module): Generated from [`vk_mem_alloc.h`](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h). If you use a specific build supporting `vk4jSetJavaTrace`, you can enjoy Java stacktrace on VMA assertion failures. Check out the [`vma_build`](https://github.com/chuigda/vulkan4j/tree/master/vma/vma_build) directory for more information.
+
+<details>
+<summary>Obsolete bindings</summary>
+
+- [OpenGL ES 2.0](https://www.khronos.org/opengles/)([`gles2`](https://github.com/chuigda/vulkan4j/tree/master/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was here for the Chuigda's own use initially. This package will still get maintained since Chuigda wants.
+
+</details>
+
+## `ffm-plus`
+
+To improve development experience using Java 22 FFM APIs, we created a small library [`ffm-plus`](https://github.com/chuigda/vulkan4j/tree/master/ffm-plus) that encapsulates most commonly used facilities, such as typed pointers and bitfield operations. All our bindings use `ffm-plus`.
+
+## Documentation and Tutorials
+
+### [JavaDoc](https://vulkan4j.doki7.club/)
+
+*Our website itself is generated with JavaDoc, with a custom `overview.html`.*
+
+### [Vulkan tutorial](https://vulkan4j.doki7.club/tutorial/en/)
 For users new to Vulkan, there is a (almost) complete adaptation of [https://vulkan-tutorial.com](https://vulkan-tutorial.com) by [Alexander Overvoorde](https://github.com/Overv) to use Java and vulkan4j instead of C++. The published version of this tutorial can be found [here](https://vulkan4j.doki7.club/tutorial/en/), and the sources for the tutorial (including standalone working code examples for each chapter) can be found under the `tutorial` directory.
 
-## Overview
-[`ffm-plus`](https://github.com/chuigda/vulkan4j/tree/master/ffm-plus) is a small utility library that gives a thin wrapper over Project Panama `java.lang.foreign` APIs to make them easier and more type-safe to use. It is used by other components to provide a more Java-friendly APIs.
-
-[`vulkan`](https://github.com/chuigda/vulkan4j/tree/master/vulkan) is the binding to Vulkan. Bindings are generated from [`vk.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) (also `video.xml`) using `codegen-v2` module.
-
-[`vma`](https://github.com/chuigda/vulkan4j/tree/master/vma) is the binding to the Vulkan Memory Allocator library. It is generated from [`vk_mem_alloc.h`](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h) using the `codegen-v2` module.
-
-[`glfw`](https://github.com/chuigda/vulkan4j/tree/master/glfw) is the binding to the GLFW library that provides a more Java-friendly API for creating windows and handling input. It is generated from [GLFW header files](https://github.com/glfw/glfw/tree/master/include/GLFW) using the `codegen-v2` module.
-
-[`gles2`](https://github.com/chuigda/vulkan4j/tree/master/gles2) provides OpenGL ES2 bindings. Bindings are generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml) using the `codegen-v2` module. 
+### LearnOpenGL tutorial port
+*Now under development!*
 
 ## Roadmap
-- [x] Generate fundamental Vulkan API bindings using `vkxml2java` from `vk.xml`
-- [x] Take off!
-- [x] Vulkan tutorial
-  - [ ] Chinese translation
-- [x] Generate GLFW bindings using `codegen`
-- [x] Generate OpenGL ES2 bindings using `codegen`
-- [x] Generate or write Vulkan Memory Allocator API bindings
-- [x] Switch to `codegen` for Vulkan bindings
-- [x] Generate Vulkan Video API bindings
+- [x] v0.3.0 rewrite, new namespace, new `ffm-plus` module, use `codegen-v2` module for all registry extraction and code generation.
+- [x] API enhancements: chaining `set` methods for structures, LWJGL style `set` methods for structure members, `allocateV` and `writeV` series functions for `Ptr` types.
+- [x] Full OpenGL bindings
+  - [ ] Tutorial porting
+- [ ] Full OpenGL ES bindings
+- [ ] OpenAL bindings
+- [ ] WebGPU bindings
+- [ ] SDL3 bindings
+- [ ] LLVM bindings (*is this graphics anymore?*)
 
-## *Development history before 0.3.0?*
+### *Development history before 0.3.0?*
 
 See [vulkan4j-legacy](https://github.com/CousinZe/vulkan4j-legacy).
+
+## Donation
+
+Doki Doki 7th Design Club! is not accepting any donation at the moment <del>though Chuigda thinks that the whole world owes him 27 billion 30 million CHF</del>. If you like this project, either using in production or got some inspiration, just star and thank author.

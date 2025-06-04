@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -126,12 +127,12 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureGeometryDataKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureGeometryDataKHR> {
+        private static final class Iter implements Iterator<VkAccelerationStructureGeometryDataKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -179,6 +180,11 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
         return this;
     }
 
+    public VkAccelerationStructureGeometryDataKHR triangles(Consumer<@NotNull VkAccelerationStructureGeometryTrianglesDataKHR> consumer) {
+        consumer.accept(triangles());
+        return this;
+    }
+
     public @NotNull VkAccelerationStructureGeometryAabbsDataKHR aabbs() {
         return new VkAccelerationStructureGeometryAabbsDataKHR(segment.asSlice(OFFSET$aabbs, LAYOUT$aabbs));
     }
@@ -188,12 +194,22 @@ public record VkAccelerationStructureGeometryDataKHR(@NotNull MemorySegment segm
         return this;
     }
 
+    public VkAccelerationStructureGeometryDataKHR aabbs(Consumer<@NotNull VkAccelerationStructureGeometryAabbsDataKHR> consumer) {
+        consumer.accept(aabbs());
+        return this;
+    }
+
     public @NotNull VkAccelerationStructureGeometryInstancesDataKHR instances() {
         return new VkAccelerationStructureGeometryInstancesDataKHR(segment.asSlice(OFFSET$instances, LAYOUT$instances));
     }
 
     public VkAccelerationStructureGeometryDataKHR instances(@NotNull VkAccelerationStructureGeometryInstancesDataKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$instances, SIZE$instances);
+        return this;
+    }
+
+    public VkAccelerationStructureGeometryDataKHR instances(Consumer<@NotNull VkAccelerationStructureGeometryInstancesDataKHR> consumer) {
+        consumer.accept(instances());
         return this;
     }
 

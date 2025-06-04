@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -137,12 +138,12 @@ public record VkCopyMicromapToMemoryInfoEXT(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkCopyMicromapToMemoryInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkCopyMicromapToMemoryInfoEXT> {
+        private static final class Iter implements Iterator<VkCopyMicromapToMemoryInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -232,6 +233,11 @@ public record VkCopyMicromapToMemoryInfoEXT(@NotNull MemorySegment segment) impl
 
     public VkCopyMicromapToMemoryInfoEXT dst(@NotNull VkDeviceOrHostAddressKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$dst, SIZE$dst);
+        return this;
+    }
+
+    public VkCopyMicromapToMemoryInfoEXT dst(Consumer<@NotNull VkDeviceOrHostAddressKHR> consumer) {
+        consumer.accept(dst());
         return this;
     }
 

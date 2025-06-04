@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -145,12 +146,12 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> {
+        private static final class Iter implements Iterator<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -239,6 +240,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         return this;
     }
 
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV vertexData(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(vertexData());
+        return this;
+    }
+
     public @NativeType("VkDeviceSize") @Unsigned long vertexStride() {
         return segment.get(LAYOUT$vertexStride, OFFSET$vertexStride);
     }
@@ -266,6 +272,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
         return this;
     }
 
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV radiusData(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(radiusData());
+        return this;
+    }
+
     public @NativeType("VkDeviceSize") @Unsigned long radiusStride() {
         return segment.get(LAYOUT$radiusStride, OFFSET$radiusStride);
     }
@@ -290,6 +301,11 @@ public record VkAccelerationStructureGeometryLinearSweptSpheresDataNV(@NotNull M
 
     public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexData(@NotNull VkDeviceOrHostAddressConstKHR value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$indexData, SIZE$indexData);
+        return this;
+    }
+
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexData(Consumer<@NotNull VkDeviceOrHostAddressConstKHR> consumer) {
+        consumer.accept(indexData());
         return this;
     }
 

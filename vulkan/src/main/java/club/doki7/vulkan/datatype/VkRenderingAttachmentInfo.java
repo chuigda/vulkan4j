@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -142,12 +143,12 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkRenderingAttachmentInfo> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkRenderingAttachmentInfo> {
+        private static final class Iter implements Iterator<VkRenderingAttachmentInfo> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -295,6 +296,11 @@ public record VkRenderingAttachmentInfo(@NotNull MemorySegment segment) implemen
 
     public VkRenderingAttachmentInfo clearValue(@NotNull VkClearValue value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$clearValue, SIZE$clearValue);
+        return this;
+    }
+
+    public VkRenderingAttachmentInfo clearValue(Consumer<@NotNull VkClearValue> consumer) {
+        consumer.accept(clearValue());
         return this;
     }
 

@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -132,12 +133,12 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<StdVideoEncodeH265WeightTable> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<StdVideoEncodeH265WeightTable> {
+        private static final class Iter implements Iterator<StdVideoEncodeH265WeightTable> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -182,6 +183,11 @@ public record StdVideoEncodeH265WeightTable(@NotNull MemorySegment segment) impl
 
     public StdVideoEncodeH265WeightTable flags(@NotNull StdVideoEncodeH265WeightTableFlags value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$flags, SIZE$flags);
+        return this;
+    }
+
+    public StdVideoEncodeH265WeightTable flags(Consumer<@NotNull StdVideoEncodeH265WeightTableFlags> consumer) {
+        consumer.accept(flags());
         return this;
     }
 

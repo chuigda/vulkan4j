@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -136,12 +137,12 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkSamplerBorderColorComponentMappingCreateInfoEXT> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkSamplerBorderColorComponentMappingCreateInfoEXT> {
+        private static final class Iter implements Iterator<VkSamplerBorderColorComponentMappingCreateInfoEXT> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -218,6 +219,11 @@ public record VkSamplerBorderColorComponentMappingCreateInfoEXT(@NotNull MemoryS
 
     public VkSamplerBorderColorComponentMappingCreateInfoEXT components(@NotNull VkComponentMapping value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$components, SIZE$components);
+        return this;
+    }
+
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT components(Consumer<@NotNull VkComponentMapping> consumer) {
+        consumer.accept(components());
         return this;
     }
 

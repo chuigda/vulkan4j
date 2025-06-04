@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -128,12 +129,12 @@ public record VkPastPresentationTimingGOOGLE(@NotNull MemorySegment segment) imp
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPastPresentationTimingGOOGLE> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPastPresentationTimingGOOGLE> {
+        private static final class Iter implements Iterator<VkPastPresentationTimingGOOGLE> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

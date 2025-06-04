@@ -5,6 +5,7 @@ import static java.lang.foreign.ValueLayout.*;
 import java.util.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
@@ -151,12 +152,12 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<VkPhysicalDeviceFragmentShadingRatePropertiesKHR> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the structures.
-        public static final class Iter implements Iterator<VkPhysicalDeviceFragmentShadingRatePropertiesKHR> {
+        private static final class Iter implements Iterator<VkPhysicalDeviceFragmentShadingRatePropertiesKHR> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }
@@ -236,12 +237,22 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
         return this;
     }
 
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR minFragmentShadingRateAttachmentTexelSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(minFragmentShadingRateAttachmentTexelSize());
+        return this;
+    }
+
     public @NotNull VkExtent2D maxFragmentShadingRateAttachmentTexelSize() {
         return new VkExtent2D(segment.asSlice(OFFSET$maxFragmentShadingRateAttachmentTexelSize, LAYOUT$maxFragmentShadingRateAttachmentTexelSize));
     }
 
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentShadingRateAttachmentTexelSize, SIZE$maxFragmentShadingRateAttachmentTexelSize);
+        return this;
+    }
+
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxFragmentShadingRateAttachmentTexelSize());
         return this;
     }
 
@@ -287,6 +298,11 @@ public record VkPhysicalDeviceFragmentShadingRatePropertiesKHR(@NotNull MemorySe
 
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSize(@NotNull VkExtent2D value) {
         MemorySegment.copy(value.segment(), 0, segment, OFFSET$maxFragmentSize, SIZE$maxFragmentSize);
+        return this;
+    }
+
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSize(Consumer<@NotNull VkExtent2D> consumer) {
+        consumer.accept(maxFragmentSize());
         return this;
     }
 
