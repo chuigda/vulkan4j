@@ -42,9 +42,9 @@ fun main() {
 
 //    gles2Main()
 //
-    val vulkanRegistry = extractVulkanRegistry()
-    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
-    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
-    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
+//    val vulkanRegistry = extractVulkanRegistry()
+//    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
+//    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
+//    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
     openalMain()
 }

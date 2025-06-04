@@ -2,7 +2,6 @@ package club.doki7.openal;
 
 import java.lang.foreign.*;
 import club.doki7.ffm.NativeLayout;
-import club.doki7.openal.datatype.*;
 
 public final class OpenALFunctionTypes {
     public static final FunctionDescriptor ALBUFFERCALLBACKTYPESOFT = FunctionDescriptor.of(
