@@ -98,7 +98,7 @@ First, create a `static final` field to store the GLFW shared library itself:
 private static final libGLFW = Library.loadNative(Library.class, "org.lwjgl.glfw", "glfw", true);
 ```
 
-Here we use the LWJGL `org.lwjgl.system.Library` class to load shared library from `lwjgl-natives`. Once the library is loaded, we can pull functions from it using:
+Here we use the LWJGL `org.lwjgl.system.Library` class to load shared library from `lwjgl-natives`. Once the library is loaded, we can load functions into `GLFW` class from it, using the following code:
 
 ```java
 private void initWindow() {
