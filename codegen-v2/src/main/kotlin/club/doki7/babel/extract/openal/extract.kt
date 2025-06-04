@@ -121,10 +121,6 @@ private fun <E : IMergeable<E>> parseConstant(
     val parts = codePart
         .removePrefix("#define")
         .trim()
-        .removePrefix("AL_")
-        .trim()
-        .removePrefix("ALC_")
-        .trim()
         .split(Regex("\\s+"))
 
     if (parts.size != 2) {
@@ -133,19 +129,40 @@ private fun <E : IMergeable<E>> parseConstant(
     }
 
     val name = parts[0]
-    val value = parts[1]
+    var value = parts[1]
 
-    val constant = Constant(
-        name,
-        IdentifierType(when {
-            value.contains("ULL") -> "uint64_t"
-            value.contains("U") -> "uint32_t"
-            value.endsWith("f") -> "float"
-            value.contains(".") && !value.contains("f") -> "double"
-            else -> "int32_t"
-        }),
-        value
-    )
+    if (name in setOf(
+            "AL_API",
+            "AL_APIENTRY",
+            "AL_API_NOEXCEPT",
+            "AL_API_NOEXCEPT17",
+            "AL_APIENTRY",
+            "ALC_APIENTRY",
+            "AL_CPLUSPLUS"
+    )) {
+        cx.remove("doxygen")
+        return index + 1
+    }
+
+    val type = IdentifierType(when {
+        value in setOf("FLT_MIN", "FLT_MAX") -> "float"
+        value in setOf("AL_TRUE", "AL_FALSE") -> "int8_t"
+        value.contains("ULL") -> "uint64_t"
+        value.contains("U") -> "uint32_t"
+        value.endsWith("f") || value.endsWith("f)") -> "float"
+        value.contains(".") && !value.contains("f") -> "double"
+        else -> "int32_t"
+    })
+
+    if (value.startsWith("AL_") || value.startsWith("ALC_")) {
+        value = value.removePrefix("AL_").removePrefix("ALC_")
+    } else if (value == "FLT_MIN") {
+        value = "Float.MIN_VALUE"
+    } else if (value == "FLT_MAX") {
+        value = "Float.MAX_VALUE"
+    }
+
+    val constant = Constant(name, type, value)
 
     // 合并 doc 注释
     val doc = mutableListOf<String>()

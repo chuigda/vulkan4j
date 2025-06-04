@@ -29,6 +29,9 @@ internal fun Registry<EmptyMergeable>.renameEntities() {
     })
 }
 
-private fun renameConstant(name: String) = name.removePrefix("AL_").removePrefix("ALC_")
+private fun renameConstant(name: String) = name
+    .removePrefix("AL_")
+    .removePrefix("ALC_")
+    .let { if (it[0].isDigit()) "_${it}" else it }
 
 private fun renameCommand(name: String) = name.removePrefix("al").removeSuffix("alc").ensureLowerCamelCase()
