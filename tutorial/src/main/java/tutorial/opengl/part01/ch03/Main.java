@@ -154,6 +154,10 @@ class Application {
             glfw.pollEvents();
         }
 
+        // Cleanup OpenGL resources
+        gl.deleteVertexArrays(vao);
+        gl.deleteBuffers(vbo);
+        gl.deleteProgram(shaderProgram);
         glfw.terminate();
     }
 
