@@ -71,6 +71,41 @@ class TestParseType {
         assertEquals(TokenKind.IDENT, nextToken.kind)
         assertEquals("red", nextToken.value)
     }
+
+    @Test
+    fun test4() {
+        val tokenizer = Tokenizer(listOf("signed short* blue;"), 0)
+        val type = parseType(tokenizer)
+
+        assertTrue(type is RawPointerType)
+        assertFalse(type.const)
+        assertEquals(0, type.trivia.size)
+
+        val pointee = type.pointee as RawIdentifierType
+        assertEquals("short", pointee.ident)
+        assertTrue(pointee.signed)
+        assertEquals(0, type.pointee.trivia.size)
+
+        val nextToken = tokenizer.next()
+        assertEquals(TokenKind.IDENT, nextToken.kind)
+        assertEquals("blue", nextToken.value)
+    }
+
+    @Test
+    fun test5() {
+        val tokenizer = Tokenizer(listOf("AL_API void AL_APIENTRY alDistanceModel(ALenum distanceModel) AL_API_NOEXCEPT;"), 0)
+        val type = parseType(tokenizer)
+
+        assertTrue(type is RawIdentifierType)
+        assertEquals("void", type.ident)
+        assertEquals(2, type.trivia.size)
+        assertEquals("AL_API", type.trivia[0])
+        assertEquals("AL_APIENTRY", type.trivia[1])
+
+        val nextToken = tokenizer.next()
+        assertEquals(TokenKind.IDENT, nextToken.kind)
+        assertEquals("alDistanceModel", nextToken.value)
+    }
 }
 
 class TestParseStructField {
@@ -450,6 +485,52 @@ class TestParseTypedef {
         assertEquals("char", param2ElementPointee.ident)
         assertFalse(param2ElementPointee.unsigned)
         assertTrue(param2ElementPointee.trivia.isEmpty())
+
+        assertEquals(TokenKind.EOI, tokenizer.next().kind)
+    }
+
+    @Test
+    fun test4() {
+        val tokenizer = Tokenizer(listOf("typedef void (* ALTestF)(ALuint*, long long int);"), 0)
+        val typedefDecl = parseTypedefDecl(tokenizer)
+
+        assertEquals("ALTestF", typedefDecl.name)
+        assertTrue(typedefDecl.aliasedType is RawFunctionType)
+        assertTrue(typedefDecl.trivia.isEmpty())
+
+        val functionType = typedefDecl.aliasedType
+        assertTrue(functionType.trivia.isEmpty())
+
+        // Assert return type: void
+        assertTrue(functionType.returnType is RawIdentifierType)
+        val returnType = functionType.returnType as RawIdentifierType
+        assertEquals("void", returnType.ident)
+        assertFalse(returnType.unsigned)
+        assertTrue(returnType.trivia.isEmpty())
+
+        // Assert parameters
+        assertEquals(2, functionType.params.size)
+        val params = functionType.params
+
+        // Param 0: ALuint*
+        assertEquals("", params[0].first)
+        assertTrue(params[0].second is RawPointerType)
+        val param0Type = params[0].second as RawPointerType
+        assertFalse(param0Type.const)
+        assertTrue(param0Type.trivia.isEmpty())
+        assertTrue(param0Type.pointee is RawIdentifierType)
+        val param0Pointee = param0Type.pointee as RawIdentifierType
+        assertEquals("ALuint", param0Pointee.ident)
+        assertFalse(param0Pointee.unsigned)
+        assertTrue(param0Pointee.trivia.isEmpty())
+
+        // Param 1: long long int
+        assertEquals("", params[1].first)
+        assertTrue(params[1].second is RawIdentifierType)
+        val param1Type = params[1].second as RawIdentifierType
+        assertEquals("long long int", param1Type.ident)
+        assertFalse(param1Type.unsigned)
+        assertTrue(param1Type.trivia.isEmpty())
 
         assertEquals(TokenKind.EOI, tokenizer.next().kind)
     }
