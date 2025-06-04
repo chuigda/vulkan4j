@@ -45,7 +45,8 @@ public class Main {
                     return glfw.getProcAddress(BytePtr.allocateString(arena1, name));
                 }
             });
-            System.out.println(gl.getString(GLConstants.EXTENSIONS).readString());
+
+            gl.viewport(0, 0, 800, 600);
         }
     }
 }
