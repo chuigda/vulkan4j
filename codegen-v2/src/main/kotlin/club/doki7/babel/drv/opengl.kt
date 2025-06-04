@@ -16,7 +16,7 @@ fun openglMain() {
     val codegenOptions = CodegenOptions(
         packageName = "club.doki7.opengl",
         extraImport = listOf(),
-        constantClassName = "GLEConstants",
+        constantClassName = "GLConstants",
         functionTypeClassName = "GLFunctionTypes",
         refRegistries = emptyList()
     )

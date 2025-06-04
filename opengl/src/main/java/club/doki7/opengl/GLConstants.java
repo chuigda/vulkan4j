@@ -2,7 +2,7 @@ package club.doki7.opengl;
 
 import club.doki7.ffm.annotation.*;
 
-public final class GLEConstants {
+public final class GLConstants {
     public static final @NativeType("GLenum") int _2D = 0x0600;
     public static final @NativeType("GLenum") int _2_BYTES = 0x1407;
     public static final @NativeType("GLenum") int _2_BYTES_NV = 0x1407;
@@ -3725,5 +3725,5 @@ public final class GLEConstants {
     public static final @NativeType("GLuint64") @Unsigned long TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFFL;
 
     /// Constructing this class is nonsense so the constructor is made private.
-    private GLEConstants() {}
+    private GLConstants() {}
 }

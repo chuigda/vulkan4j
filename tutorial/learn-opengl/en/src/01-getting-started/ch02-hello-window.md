@@ -25,4 +25,19 @@ Since the focus of this book is on OpenGL version 3.3 we'd like to tell GLFW tha
 Next we're required to create a window object. This window object holds all the windowing data and is required by most of GLFW's other functions.
 
 ```java
+GLFWwindow window = glfw.createWindow(
+        800,
+        600,
+        BytePtr.allocateString(arena, "LearnOpenGL"),
+        null,
+        null
+);
+if (window == null) {
+    throw new RuntimeException("Failed to create GLFW window");
+}
+glfw.makeContextCurrent(window);
 ```
+
+The `GLFW::createWindow` function requires the window width and height as its first two arguments respectively. The third argument allows us to create a name for the window; for now we call it `"LearnOpenGL"` but you're allowed to name it however you like. We can ignore the last 2 parameters. The function returns a `GLFWwindow` handle object that we'll later need for other GLFW operations. After that we tell GLFW to make the context of our window the main context on the current thread. 
+
+## Loading OpenGL functions
