@@ -4,7 +4,9 @@
 
 This tutorial is an adaptation of <https://learnopengl.com/> to use Java instead of C++. The majority of the credit for this tutorial should go the author of the original tutorial and the other contributors.
 
-Not all chapters of the original tutorial are included in this adaptation, but the most important ones are. The ported part mainly focuses on the interaction of OpenGL and Java within `vulkan4j` ecosystem. The original tutorial is a great resource for learning OpenGL concepts, and you can refer to it for more in-depth explanations of more topics covered here.
+By this moment, only the first several chapters (from setting up environment to the first triangle) are ported. This should be adequate for you to get started with OpenGL in Java with `vulkan4j` ecosystem. After finishing these chapters, you can continue with the original tutorial while using `vulkan4j` as a Java binding for OpenGL.
+
+The rest part of the tutorial will be ported in the future, so stay tuned!
 
 ---
 
