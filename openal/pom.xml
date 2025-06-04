@@ -9,7 +9,7 @@
         <version>${revision}</version>
     </parent>
 
-    <name>vma</name>
+    <name>openal</name>
     <description>Java bindings for OpenAL using Project Panama</description>
     <url>https://github.com/chuigda/vulkan4j</url>
 
@@ -27,6 +27,12 @@
     </licenses>
 
     <developers>
+        <developer>
+            <name>whiterasbk</name>
+            <email>whiterasbk@qq.com</email>
+            <organization>WhiterOrganization</organization>
+            <organizationUrl>https://github.com/WhiterOrganization</organizationUrl>
+        </developer>
         <developer>
             <name>Chuigda Whitegive</name>
             <email>chuigda@doki7.tech</email>
@@ -54,12 +60,6 @@
             <groupId>club.doki7</groupId>
             <artifactId>ffm-plus</artifactId>
             <version>0.2.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>club.doki7</groupId>
-            <artifactId>vulkan</artifactId>
-            <version>0.3.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

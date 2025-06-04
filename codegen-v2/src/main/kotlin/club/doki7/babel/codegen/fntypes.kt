@@ -15,7 +15,9 @@ fun generateFunctionTypedefs(
     +""
     imports("java.lang.foreign.*")
     imports("club.doki7.ffm.NativeLayout")
-    imports("$packageName.datatype.*")
+    if (registry.structures.isNotEmpty() && registry.unions.isNotEmpty()) {
+        imports("$packageName.datatype.*")
+    }
     +""
     +"public final class ${codegenOptions.functionTypeClassName} {"
 

@@ -17,9 +17,8 @@ private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.openal")
 
 fun extractOpenALHeader(): Registry<EmptyMergeable> {
-
     val headerFileContent = buildString {
-        for (headerFilename in listOf("al.h", "alc.h", "alext.h", "efx.h", "efx-presets.h")) {
+        for (headerFilename in listOf("al.h", "alc.h", "alext.h", "efx.h")) {
             append(inputDir.resolve(headerFilename).toFile().readText())
             append("\n")
         }
@@ -83,7 +82,7 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     // todo add structure parsing
 
     addRule(20, ::detectOpaqueTypedefStruct,  ::parseOpaqueTypedefStruct)
-    addRule(20, ::detectConstance, ::parseConstance)
+    addRule(20, ::detectConstant, ::parseConstant)
     addRule(20, ::detectFunctionTypeDecl, ::parseFunctionTypeDecl)
     addRule(20, ::detectFunctionDecl, ::parseFunctionDecl)
     addRule(21, ::detectTypeAlias, ::parseTypeAlias)
@@ -91,7 +90,7 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(30, ::detectPreprocessor, ::nextLine)
 }
 
-private fun detectConstance(line: String): ControlFlow {
+private fun detectConstant(line: String): ControlFlow {
     return if ((line.startsWith("#define AL_") || line.startsWith("#define AL_"))
         && line.split(Regex("\\s+"))
             .last()
@@ -108,7 +107,7 @@ private fun detectConstance(line: String): ControlFlow {
     ) ControlFlow.ACCEPT else ControlFlow.NEXT
 }
 
-private fun <E : IMergeable<E>> parseConstance(
+private fun <E : IMergeable<E>> parseConstant(
     registry: Registry<E>,
     cx: MutableMap<String, Any>,
     lines: List<String>,
@@ -129,14 +128,14 @@ private fun <E : IMergeable<E>> parseConstance(
         .split(Regex("\\s+"))
 
     if (parts.size != 2) {
-        log.warning("unhandled constance define at line $index: ${lines[index]}")
+        log.warning("unhandled constant definition at line $index: ${lines[index]}")
         return index + 1
     }
 
     val name = parts[0]
     val value = parts[1]
 
-    val constance = Constant(
+    val constant = Constant(
         name,
         IdentifierType(when {
             value.contains("ULL") -> "uint64_t"
@@ -158,10 +157,10 @@ private fun <E : IMergeable<E>> parseConstance(
         doc += commentPart
     }
     if (doc.isNotEmpty()) {
-        constance.doc = doc
+        constant.doc = doc
     }
 
-    registry.constants.putEntityIfAbsent(constance)
+    registry.constants.putEntityIfAbsent(constant)
 
     return index + 1
 }

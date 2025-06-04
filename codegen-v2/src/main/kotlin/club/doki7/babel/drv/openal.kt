@@ -2,6 +2,7 @@ package club.doki7.babel.drv
 
 import club.doki7.babel.codegen.CodegenOptions
 import club.doki7.babel.codegen.generateCommandFile
+import club.doki7.babel.codegen.generateConstants
 import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.extract.openal.extractOpenALHeader
@@ -12,7 +13,6 @@ import java.io.File
 private const val packageDir = "openal/src/main/java/club/doki7/openal"
 
 fun openalMain() {
-
     val registry = extractOpenALHeader()
 
     val codegenOptions = CodegenOptions(
@@ -22,6 +22,10 @@ fun openalMain() {
         functionTypeClassName = "OpenALFunctionTypes",
         refRegistries = emptyList(),
     )
+
+    val constantDoc = generateConstants(registry, codegenOptions)
+    File("$packageDir/${codegenOptions.constantClassName}.java")
+        .writeText(render(constantDoc))
 
     val functionTypeDoc = generateFunctionTypedefs(registry, codegenOptions)
     File("$packageDir/${codegenOptions.functionTypeClassName}.java")

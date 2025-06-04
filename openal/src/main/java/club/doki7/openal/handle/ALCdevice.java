@@ -29,7 +29,7 @@ public record ALCdevice(@NotNull MemorySegment segment) implements IPointer {
     /// ## Contracts
     ///
     /// The property {@link #segment()} should always be not-null
-    /// (({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
+    /// ({@code segment != NULL && !segment.equals(MemorySegment.NULL)}), and properly aligned to
     /// {@link AddressLayout#byteAlignment()} bytes. To represent null pointer, you may use a Java
     /// {@code null} instead. See the documentation of {@link IPointer#segment()} for more details.
     ///
@@ -66,6 +66,19 @@ public record ALCdevice(@NotNull MemorySegment segment) implements IPointer {
             writeRaw(index, value == null ? MemorySegment.NULL : value.segment());
         }
 
+        public void write(@Nullable ALCdevice[] values) {
+            for (int i = 0; i < values.length; i++) {
+                write(i, values[i]);
+            }
+        }
+
+        public void writeV(@Nullable ALCdevice value0, @Nullable ALCdevice ...values) {
+            write(value0);
+            for (int i = 0; i < values.length; i++) {
+                write(i + 1, values[i]);
+            }
+        }
+
         public MemorySegment readRaw() {
             return segment.get(ValueLayout.ADDRESS, 0);
         }
@@ -98,6 +111,7 @@ public record ALCdevice(@NotNull MemorySegment segment) implements IPointer {
         public Ptr reinterpret(long newSize) {
             return new Ptr(segment.reinterpret(newSize * ValueLayout.ADDRESS.byteSize()));
         }
+
         public Ptr offset(long offset) {
             return new Ptr(segment.asSlice(offset * ValueLayout.ADDRESS.byteSize()));
         }
@@ -132,17 +146,22 @@ public record ALCdevice(@NotNull MemorySegment segment) implements IPointer {
             return ret;
         }
 
-        public static Ptr allocateV(Arena arena, @Nullable ALCdevice ...values) {
-            return allocate(arena, values);
+        public static Ptr allocateV(Arena arena, @Nullable ALCdevice value0, @Nullable ALCdevice ...values) {
+            Ptr ret = allocate(arena, values.length + 1);
+            ret.write(0, value0);
+            for (int i = 0; i < values.length; i++) {
+                ret.write(i + 1, values[i]);
+            }
+            return ret;
         }
 
         @Override
-        public @NotNull Iter iterator() {
+        public @NotNull Iterator<ALCdevice> iterator() {
             return new Iter(this.segment());
         }
 
         /// An iterator over the handles.
-        public static class Iter implements Iterator<ALCdevice> {
+        private static class Iter implements Iterator<ALCdevice> {
             Iter(@NotNull MemorySegment segment) {
                 this.segment = segment;
             }

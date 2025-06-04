@@ -163,7 +163,7 @@ fun <E: IMergeable<E>> skipBlockComment(
     index: Int
 ): Int {
     assert(lines[index].startsWith("/*")) { "Expected block comment start at line $index" }
-    var i = index + 1
+    var i = index
     while (i < lines.size && !lines[i].contains("*/")) {
         i++
     }

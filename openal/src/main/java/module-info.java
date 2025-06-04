@@ -1,26 +1,24 @@
-/// Vulkan Memory Allocator (VMA) Java Bindings implemented with Java 22 FFM (Project Panama) APIs.
+/// OpenAL Java Bindings implemented with Java 22 FFM (Project Panama) APIs.
 ///
-/// Vulkan Memory Allocator (VMA) is an easy to integrate library that help game developers to
-/// manage memory allocations and resource creation.
+/// OpenAL is a cross-platform 3D audio API appropriate for use with gaming applications and many
+/// other types of audio applications.
 ///
-/// For actual API documentation, see packages documentation. For Vulkan Memory Allocator
-/// documentation, see <a href="https://gpuopen-librariesandsdks.github.io/VulkanMemoryAllocator/html/">VMA Doxygen documentation</a>.
+/// For more information about OpenAL, please refer to the official documentation:
+/// - [OpenAL Official Documentation](https://www.openal.org/documentation/)
+/// - [OpenAL Soft](https://www.openal-soft.org/)
 ///
 /// ## Use in Maven
 ///
 /// ```
 /// <dependency>
 ///     <groupId>club.doki7</groupId>
-///     <artifactId>vma</artifactId>
+///     <artifactId>openal</artifactId>
 ///     <version>0.3.1</version>
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```
 module club.doki7.vma {
     exports club.doki7.openal;
-    // exports club.doki7.openal.bitmask;
-    // exports club.doki7.openal.datatype;
-    // exports club.doki7.openal.enumtype;
     exports club.doki7.openal.handle;
 
     requires org.jetbrains.annotations;
