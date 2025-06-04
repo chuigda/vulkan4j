@@ -65,7 +65,7 @@ class Application {
                     .upcallStub(mh, GLFWFunctionTypes.GLFWframebuffersizefun, Arena.global());
             glfw.setFramebufferSizeCallback(window, callback);
         } catch(Exception e) {
-            throw new RuntimeException("Failed to find debugCallback method handle",e);
+            throw new RuntimeException("Failed to find framebufferResizeCallback method handle",e);
         }
 
         while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
