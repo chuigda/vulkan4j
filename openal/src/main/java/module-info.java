@@ -18,9 +18,9 @@
 /// ```
 module club.doki7.vma {
     exports club.doki7.openal;
-    exports club.doki7.openal.bitmask;
-    exports club.doki7.openal.datatype;
-    exports club.doki7.openal.enumtype;
+    // exports club.doki7.openal.bitmask;
+    // exports club.doki7.openal.datatype;
+    // exports club.doki7.openal.enumtype;
     exports club.doki7.openal.handle;
 
     requires org.jetbrains.annotations;
