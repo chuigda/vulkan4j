@@ -61,7 +61,7 @@ fun openglMain() {
     val compatibilityDocText = render(compatibilityDoc)
         .replace(
             "public final class GLCompatibility {",
-            "public final class GLCompatibility extends GL implements GLConstants {"
+            "public final class GLCompatibility extends GL {"
         ).replace(
             "public GLCompatibility(RawFunctionLoader loader) {",
             """public GLCompatibility(RawFunctionLoader loader) {
