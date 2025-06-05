@@ -2,7 +2,7 @@ package club.doki7.opengl;
 
 import club.doki7.ffm.annotation.*;
 
-public final class GLConstants {
+public interface GLConstants {
     public static final @NativeType("GLenum") int _2D = 0x0600;
     public static final @NativeType("GLenum") int _2_BYTES = 0x1407;
     public static final @NativeType("GLenum") int _2_BYTES_NV = 0x1407;
@@ -3717,13 +3717,10 @@ public final class GLConstants {
     public static final @NativeType("GLenum") int ZERO_TO_ONE = 0x935F;
     public static final @NativeType("GLenum") int ZOOM_X = 0x0D16;
     public static final @NativeType("GLenum") int ZOOM_Y = 0x0D17;
-    public static final @NativeType("GLenum") int NEXT_BUFFER_NV = -2;
-    public static final @NativeType("GLenum") int SKIP_COMPONENTS1_NV = -6;
-    public static final @NativeType("GLenum") int SKIP_COMPONENTS2_NV = -5;
-    public static final @NativeType("GLenum") int SKIP_COMPONENTS3_NV = -4;
-    public static final @NativeType("GLenum") int SKIP_COMPONENTS4_NV = -3;
-    public static final @NativeType("GLuint64") @Unsigned long TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFFL;
-
-    /// Constructing this class is nonsense so the constructor is made private.
-    private GLConstants() {}
+    @NativeType("GLenum") int NEXT_BUFFER_NV = -2;
+    @NativeType("GLenum") int SKIP_COMPONENTS1_NV = -6;
+    @NativeType("GLenum") int SKIP_COMPONENTS2_NV = -5;
+    @NativeType("GLenum") int SKIP_COMPONENTS3_NV = -4;
+    @NativeType("GLenum") int SKIP_COMPONENTS4_NV = -3;
+    @NativeType("GLuint64") @Unsigned long TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFFL;
 }

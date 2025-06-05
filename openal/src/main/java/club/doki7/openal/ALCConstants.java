@@ -2,7 +2,7 @@ package club.doki7.openal;
 
 import club.doki7.ffm.annotation.*;
 
-public final class ALCConstants {
+public interface ALCConstants {
     public static final int _5POINT1_SOFT = 0x1504;
     public static final int _6POINT1_SOFT = 0x1505;
     public static final int _7POINT1_SOFT = 0x1506;
@@ -108,7 +108,4 @@ public final class ALCConstants {
     public static final int UNSIGNED_INT_SOFT = 0x1405;
     public static final int UNSIGNED_SHORT_SOFT = 0x1403;
     public static final int VERSION_0_1 = 1;
-
-    /// Constructing this class is nonsense so the constructor is made private.
-    private ALCConstants() {}
 }

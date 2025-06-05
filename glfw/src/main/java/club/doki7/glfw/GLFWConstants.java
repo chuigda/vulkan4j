@@ -2,7 +2,7 @@ package club.doki7.glfw;
 
 import club.doki7.ffm.annotation.*;
 
-public final class GLFWConstants {
+public interface GLFWConstants {
     public static final int ACCUM_ALPHA_BITS = 0x0002100A;
     public static final int ACCUM_BLUE_BITS = 0x00021009;
     public static final int ACCUM_GREEN_BITS = 0x00021008;
@@ -300,42 +300,39 @@ public final class GLFWConstants {
     public static final int X11_CLASS_NAME = 0x00024001;
     public static final int X11_INSTANCE_NAME = 0x00024002;
     public static final int X11_XCB_VULKAN_SURFACE = 0x00052001;
-    public static final int DONT_CARE = -1;
-    public static final int GAMEPAD_AXIS_LAST = GAMEPAD_AXIS_RIGHT_TRIGGER;
-    public static final int GAMEPAD_BUTTON_CIRCLE = GAMEPAD_BUTTON_B;
-    public static final int GAMEPAD_BUTTON_CROSS = GAMEPAD_BUTTON_A;
-    public static final int GAMEPAD_BUTTON_LAST = GAMEPAD_BUTTON_DPAD_LEFT;
-    public static final int GAMEPAD_BUTTON_SQUARE = GAMEPAD_BUTTON_X;
-    public static final int GAMEPAD_BUTTON_TRIANGLE = GAMEPAD_BUTTON_Y;
-    public static final int HAND_CURSOR = POINTING_HAND_CURSOR;
-    public static final int HAT_LEFT_DOWN = (HAT_LEFT  | HAT_DOWN);
-    public static final int HAT_LEFT_UP = (HAT_LEFT  | HAT_UP);
-    public static final int HAT_RIGHT_DOWN = (HAT_RIGHT | HAT_DOWN);
-    public static final int HAT_RIGHT_UP = (HAT_RIGHT | HAT_UP);
-    public static final int HRESIZE_CURSOR = RESIZE_EW_CURSOR;
-    public static final int JOYSTICK_LAST = JOYSTICK_16;
-    public static final int KEY_APOSTROPHE = 39  /* ' */;
-    public static final int KEY_BACKSLASH = 92  /* \ */;
-    public static final int KEY_COMMA = 44  /* , */;
-    public static final int KEY_EQUAL = 61  /* = */;
-    public static final int KEY_GRAVE_ACCENT = 96  /* ` */;
-    public static final int KEY_LAST = KEY_MENU;
-    public static final int KEY_LEFT_BRACKET = 91  /* [ */;
-    public static final int KEY_MINUS = 45  /* - */;
-    public static final int KEY_PERIOD = 46  /* . */;
-    public static final int KEY_RIGHT_BRACKET = 93  /* ] */;
-    public static final int KEY_SEMICOLON = 59  /* ; */;
-    public static final int KEY_SLASH = 47  /* / */;
-    public static final int KEY_UNKNOWN = -1;
-    public static final int KEY_WORLD_1 = 161 /* non-US #1 */;
-    public static final int KEY_WORLD_2 = 162 /* non-US #2 */;
-    public static final int MOUSE_BUTTON_LAST = MOUSE_BUTTON_8;
-    public static final int MOUSE_BUTTON_LEFT = MOUSE_BUTTON_1;
-    public static final int MOUSE_BUTTON_MIDDLE = MOUSE_BUTTON_3;
-    public static final int MOUSE_BUTTON_RIGHT = MOUSE_BUTTON_2;
-    public static final int OPENGL_DEBUG_CONTEXT = CONTEXT_DEBUG;
-    public static final int VRESIZE_CURSOR = RESIZE_NS_CURSOR;
-
-    /// Constructing this class is nonsense so the constructor is made private.
-    private GLFWConstants() {}
+    int DONT_CARE = -1;
+    int GAMEPAD_AXIS_LAST = GAMEPAD_AXIS_RIGHT_TRIGGER;
+    int GAMEPAD_BUTTON_CIRCLE = GAMEPAD_BUTTON_B;
+    int GAMEPAD_BUTTON_CROSS = GAMEPAD_BUTTON_A;
+    int GAMEPAD_BUTTON_LAST = GAMEPAD_BUTTON_DPAD_LEFT;
+    int GAMEPAD_BUTTON_SQUARE = GAMEPAD_BUTTON_X;
+    int GAMEPAD_BUTTON_TRIANGLE = GAMEPAD_BUTTON_Y;
+    int HAND_CURSOR = POINTING_HAND_CURSOR;
+    int HAT_LEFT_DOWN = (HAT_LEFT  | HAT_DOWN);
+    int HAT_LEFT_UP = (HAT_LEFT  | HAT_UP);
+    int HAT_RIGHT_DOWN = (HAT_RIGHT | HAT_DOWN);
+    int HAT_RIGHT_UP = (HAT_RIGHT | HAT_UP);
+    int HRESIZE_CURSOR = RESIZE_EW_CURSOR;
+    int JOYSTICK_LAST = JOYSTICK_16;
+    int KEY_APOSTROPHE = 39  /* ' */;
+    int KEY_BACKSLASH = 92  /* \ */;
+    int KEY_COMMA = 44  /* , */;
+    int KEY_EQUAL = 61  /* = */;
+    int KEY_GRAVE_ACCENT = 96  /* ` */;
+    int KEY_LAST = KEY_MENU;
+    int KEY_LEFT_BRACKET = 91  /* [ */;
+    int KEY_MINUS = 45  /* - */;
+    int KEY_PERIOD = 46  /* . */;
+    int KEY_RIGHT_BRACKET = 93  /* ] */;
+    int KEY_SEMICOLON = 59  /* ; */;
+    int KEY_SLASH = 47  /* / */;
+    int KEY_UNKNOWN = -1;
+    int KEY_WORLD_1 = 161 /* non-US #1 */;
+    int KEY_WORLD_2 = 162 /* non-US #2 */;
+    int MOUSE_BUTTON_LAST = MOUSE_BUTTON_8;
+    int MOUSE_BUTTON_LEFT = MOUSE_BUTTON_1;
+    int MOUSE_BUTTON_MIDDLE = MOUSE_BUTTON_3;
+    int MOUSE_BUTTON_RIGHT = MOUSE_BUTTON_2;
+    int OPENGL_DEBUG_CONTEXT = CONTEXT_DEBUG;
+    int VRESIZE_CURSOR = RESIZE_NS_CURSOR;
 }

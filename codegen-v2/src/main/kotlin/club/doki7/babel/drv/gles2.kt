@@ -11,6 +11,10 @@ import java.io.File
 
 private const val packageDir = "gles2/src/main/java/club/doki7/gles2"
 
+fun main() {
+    gles2Main()
+}
+
 fun gles2Main() {
     val gles2Registry = extractGLES2Registry()
 

@@ -2,7 +2,7 @@ package club.doki7.gles2;
 
 import club.doki7.ffm.annotation.*;
 
-public final class GLES2Constants {
+public interface GLES2Constants {
     public static final @NativeType("GLenum") int ACTIVE_ATTRIBUTES = 0x8B89;
     public static final @NativeType("GLenum") int ACTIVE_ATTRIBUTE_MAX_LENGTH = 0x8B8A;
     public static final @NativeType("GLenum") int ACTIVE_TEXTURE = 0x84E0;
@@ -304,7 +304,4 @@ public final class GLES2Constants {
     public static final @NativeType("GLenum") int VERTEX_SHADER = 0x8B31;
     public static final @NativeType("GLenum") int VIEWPORT = 0x0BA2;
     public static final @NativeType("GLenum") int ZERO = 0;
-
-    /// Constructing this class is nonsense so the constructor is made private.
-    private GLES2Constants() {}
 }
