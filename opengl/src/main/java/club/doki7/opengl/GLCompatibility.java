@@ -11,7 +11,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.opengl.handle.*;
 
-public final class GLCompatibility extends GL implements GLConstants {
+public final class GLCompatibility extends GL {
     public GLCompatibility(RawFunctionLoader loader) {
     super(loader);
         SEGMENT$glAccum = loader.apply("glAccum");
