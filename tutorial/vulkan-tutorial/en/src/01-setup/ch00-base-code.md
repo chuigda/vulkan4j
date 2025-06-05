@@ -112,7 +112,7 @@ private void initWindow() {
 Then we can call `GLFW::init()` to initialize the GLFW library. If it fails, we'll throw an exception:
 
 ```java
-if (glfw.init() != GLFWConstants.TRUE) {
+if (glfw.init() != GLFW.TRUE) {
     throw new RuntimeException("Failed to initialize GLFW");
 }
 ```
@@ -120,7 +120,7 @@ if (glfw.init() != GLFWConstants.TRUE) {
 Then we will check Vulkan support with `GLFW::vulkanSupported()`:
 
 ```java
-if (glfw.vulkanSupported() != GLFWConstants.TRUE) {
+if (glfw.vulkanSupported() != GLFW.TRUE) {
     throw new RuntimeException("Vulkan is not supported");
 }
 ```
@@ -128,13 +128,13 @@ if (glfw.vulkanSupported() != GLFWConstants.TRUE) {
 Then we start giving GLFW hints about the window we want to create. Because GLFW was originally designed to create an OpenGL context, we need to tell it to not create an OpenGL context with a subsequent call:
 
 ```java
-glfw.windowHint(GLFWConstants.CLIENT_API, GLFWConstants.NO_API);
+glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
 ```
 
 Because handling resized windows takes special care that we'll look into later, disable it for now with another window hint call:
 
 ```java
-glfw.windowHint(GLFWConstants.RESIZABLE, GLFWConstants.FALSE);
+glfw.windowHint(GLFW.RESIZABLE, GLFW.FALSE);
 ```
 
 All that's left now is creating the actual window. Add a private class member to store the window handle:
@@ -172,16 +172,16 @@ private void initWindow() {
     GLFWLoader.loadGLFWLibrary();
     glfw = GLFWLoader.loadGLFW();
 
-    if (glfw.init() != GLFWConstants.TRUE) {
+    if (glfw.init() != GLFW.TRUE) {
         throw new RuntimeException("Failed to initialize GLFW");
     }
 
-    if (glfw.vulkanSupported() != GLFWConstants.TRUE) {
+    if (glfw.vulkanSupported() != GLFW.TRUE) {
         throw new RuntimeException("Vulkan is not supported");
     }
 
-    glfw.windowHint(GLFWConstants.CLIENT_API, GLFWConstants.NO_API);
-    glfw.windowHint(GLFWConstants.RESIZABLE, GLFWConstants.FALSE);
+    glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
+    glfw.windowHint(GLFW.RESIZABLE, GLFW.FALSE);
     window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
 }
 ```
@@ -190,7 +190,7 @@ To keep the application running until either an error occurs or the window is cl
 
 ```java
 private void mainLoop() {
-    while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+    while (glfw.windowShouldClose(window) == GLFW.FALSE) {
         glfw.pollEvents();
     }
 }

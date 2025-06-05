@@ -22,7 +22,7 @@ fun generateConstants(
     }
     +""
 
-    +"public final class ${codegenOptions.constantClassName} {"
+    +"public interface ${codegenOptions.constantClassName} {"
     indent {
         val (stringConstants, nonStringConstants) = constants
             .partition { it.type.ident.value == "CONSTANTS_JavaString" }
@@ -37,7 +37,7 @@ fun generateConstants(
             }
 
             val ctype = lowerIdentifierType(registry, codegenOptions.refRegistries, constant.type)
-            +"public static final ${ctype.jType} ${constant.name} = ${constant.expr};"
+            +"${ctype.jType} ${constant.name} = ${constant.expr};"
         }
 
         for (constant in aliasConstants.sortedBy { it.name }) {
@@ -47,7 +47,7 @@ fun generateConstants(
             }
 
             val ctype = lowerIdentifierType(registry, codegenOptions.refRegistries, constant.type)
-            +"public static final ${ctype.jType} ${constant.name} = ${constant.expr};"
+            +"${ctype.jType} ${constant.name} = ${constant.expr};"
         }
 
         if (stringConstants.isNotEmpty() && nonStringConstants.isNotEmpty()) {
@@ -60,14 +60,8 @@ fun generateConstants(
                 +"/// @see $docLink"
             }
 
-            +"public static final String ${constant.name} = ${constant.expr};"
+            +"String ${constant.name} = ${constant.expr};"
         }
-
-        if (stringConstants.isNotEmpty() || nonStringConstants.isNotEmpty()) {
-            +""
-        }
-
-        +prohibitUserConstruct(codegenOptions.constantClassName)
     }
     +"}"
 }

@@ -11,7 +11,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.openal.handle.*;
 
-public final class AL {
+public final class AL implements ALConstants {
     public AL(RawFunctionLoader loader) {
         SEGMENT$alEnable = loader.apply("alEnable");
         HANDLE$alEnable = RawFunctionLoader.link(SEGMENT$alEnable, Descriptors.DESCRIPTOR$alEnable);

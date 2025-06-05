@@ -11,7 +11,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.opengl.handle.*;
 
-public sealed class GL permits GLCompatibility {
+public sealed class GL implements GLConstants permits GLCompatibility {
     public GL(RawFunctionLoader loader) {
         SEGMENT$glActiveProgramEXT = loader.apply("glActiveProgramEXT");
         HANDLE$glActiveProgramEXT = RawFunctionLoader.link(SEGMENT$glActiveProgramEXT, Descriptors.DESCRIPTOR$glActiveProgramEXT);

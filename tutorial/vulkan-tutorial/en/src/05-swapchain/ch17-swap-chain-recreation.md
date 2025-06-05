@@ -204,7 +204,7 @@ And, although this is a non-static function which requires an implicit `this` pa
 private void initWindow() {
     // ...
 
-    glfw.windowHint(GLFWConstants.CLIENT_API, GLFWConstants.NO_API);
+    glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
     // now the line disabling window resizing is removed
     window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
 

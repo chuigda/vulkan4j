@@ -38,13 +38,10 @@ internal val log = Logger.getLogger("c.d.b.drv")
 fun main() {
     setupLog()
 
-    // openglMain()
-
-//    gles2Main()
-//
-//    val vulkanRegistry = extractVulkanRegistry()
-//    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
-//    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
-//    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
+    openglMain()
+    val vulkanRegistry = vulkanMain()
+    val vulkanAdditionalRegistry = vulkanAdditionalRegistry()
+    vmaMain(vulkanRegistry, vulkanAdditionalRegistry)
+    glfw3Main(vulkanRegistry, vulkanAdditionalRegistry)
     openalMain()
 }

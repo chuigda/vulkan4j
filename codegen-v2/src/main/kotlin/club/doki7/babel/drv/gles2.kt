@@ -11,6 +11,10 @@ import java.io.File
 
 private const val packageDir = "gles2/src/main/java/club/doki7/gles2"
 
+fun main() {
+    gles2Main()
+}
+
 fun gles2Main() {
     val gles2Registry = extractGLES2Registry()
 
@@ -32,7 +36,8 @@ fun gles2Main() {
         "GLES2",
         gles2Registry.commands.values.sortedBy { it.name },
         codegenOptions,
-        null
+        implConstantClass = true,
+        subpackage = null
     )
     File("$packageDir/GLES2.java")
         .writeText(render(commandsDoc))

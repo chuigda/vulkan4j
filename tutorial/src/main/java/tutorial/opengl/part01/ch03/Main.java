@@ -29,13 +29,13 @@ class Application {
     }
 
     public void run() {
-        if (glfw.init() != GLFWConstants.TRUE) {
+        if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
 
-        glfw.windowHint(GLFWConstants.CONTEXT_VERSION_MAJOR, 3);
-        glfw.windowHint(GLFWConstants.CONTEXT_VERSION_MINOR, 3);
-        glfw.windowHint(GLFWConstants.OPENGL_PROFILE, GLFWConstants.OPENGL_CORE_PROFILE);
+        glfw.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
+        glfw.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
+        glfw.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
 
         GLFWwindow window = glfw.createWindow(
                 800,
@@ -86,19 +86,19 @@ class Application {
             vbo = pVBO.read();
 
             gl.bindVertexArray(vao);
-            gl.bindBuffer(GLConstants.ARRAY_BUFFER, vbo);
+            gl.bindBuffer(GL.ARRAY_BUFFER, vbo);
             FloatPtr pVertices = FloatPtr.allocate(arena, VERTICES);
             gl.bufferData(
-                    GLConstants.ARRAY_BUFFER,
+                    GL.ARRAY_BUFFER,
                     pVertices.segment().byteSize(),
                     pVertices.segment(),
-                    GLConstants.STATIC_DRAW
+                    GL.STATIC_DRAW
             );
             gl.vertexAttribPointer(
                     0,
                     3,
-                    GLConstants.FLOAT,
-                    (byte) GLFWConstants.FALSE,
+                    GL.FLOAT,
+                    (byte) GLFW.FALSE,
                     3 * Float.BYTES,
                     MemorySegment.NULL
             );
@@ -106,22 +106,22 @@ class Application {
 
             IntPtr pSuccess = IntPtr.allocate(arena);
             BytePtr pInfoLog = BytePtr.allocate(arena, 512);
-            @Unsigned int vertexShader = gl.createShader(GLConstants.VERTEX_SHADER);
+            @Unsigned int vertexShader = gl.createShader(GL.VERTEX_SHADER);
             var pVertexShaderSource = PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VERTEX_SHADER_SOURCE));
             gl.shaderSource(vertexShader, 1, pVertexShaderSource, null);
             gl.compileShader(vertexShader);
-            gl.getShaderiv(vertexShader, GLConstants.COMPILE_STATUS, pSuccess);
-            if (pSuccess.read() == GLFWConstants.FALSE) {
+            gl.getShaderiv(vertexShader, GL.COMPILE_STATUS, pSuccess);
+            if (pSuccess.read() == GLFW.FALSE) {
                 gl.getShaderInfoLog(vertexShader, 512, null, pInfoLog);
                 throw new RuntimeException("Failed to compile vertex shader: " + pInfoLog.readString());
             }
 
-            @Unsigned int fragmentShader = gl.createShader(GLConstants.FRAGMENT_SHADER);
+            @Unsigned int fragmentShader = gl.createShader(GL.FRAGMENT_SHADER);
             var pFragmentShaderSource = PointerPtr.allocateV(arena, BytePtr.allocateString(arena, FRAGMENT_SHADER_SOURCE));
             gl.shaderSource(fragmentShader, 1, pFragmentShaderSource, null);
             gl.compileShader(fragmentShader);
-            gl.getShaderiv(fragmentShader, GLConstants.COMPILE_STATUS, pSuccess);
-            if (pSuccess.read() == GLFWConstants.FALSE) {
+            gl.getShaderiv(fragmentShader, GL.COMPILE_STATUS, pSuccess);
+            if (pSuccess.read() == GLFW.FALSE) {
                 gl.getShaderInfoLog(fragmentShader, 512, null, pInfoLog);
                 throw new RuntimeException("Failed to compile fragment shader: " + pInfoLog.readString());
             }
@@ -130,8 +130,8 @@ class Application {
             gl.attachShader(shaderProgram, vertexShader);
             gl.attachShader(shaderProgram, fragmentShader);
             gl.linkProgram(shaderProgram);
-            gl.getProgramiv(shaderProgram, GLConstants.LINK_STATUS, pSuccess);
-            if (pSuccess.read() == GLFWConstants.FALSE) {
+            gl.getProgramiv(shaderProgram, GL.LINK_STATUS, pSuccess);
+            if (pSuccess.read() == GLFW.FALSE) {
                 gl.getProgramInfoLog(shaderProgram, 512, null, pInfoLog);
                 throw new RuntimeException("Failed to link shader program: " + pInfoLog.readString());
             }
@@ -140,15 +140,15 @@ class Application {
             gl.deleteShader(fragmentShader);
         }
 
-        while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+        while (glfw.windowShouldClose(window) == GLFW.FALSE) {
             processInput(window);
 
             gl.clearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            gl.clear(GLConstants.COLOR_BUFFER_BIT);
+            gl.clear(GL.COLOR_BUFFER_BIT);
 
             gl.useProgram(shaderProgram);
             gl.bindVertexArray(vao);
-            gl.drawArrays(GLConstants.TRIANGLES, 0, 3);
+            gl.drawArrays(GL.TRIANGLES, 0, 3);
 
             glfw.swapBuffers(window);
             glfw.pollEvents();
@@ -166,8 +166,8 @@ class Application {
     }
 
     private void processInput(GLFWwindow window) {
-        if (glfw.getKey(window, GLFWConstants.KEY_ESCAPE) == GLFWConstants.PRESS) {
-            glfw.setWindowShouldClose(window, GLFWConstants.TRUE);
+        if (glfw.getKey(window, GLFW.KEY_ESCAPE) == GLFW.PRESS) {
+            glfw.setWindowShouldClose(window, GLFW.TRUE);
         }
     }
 

@@ -42,7 +42,8 @@ fun glfw3Main(vulkanRegistry: RegistryBase, vulkanAdditionalRegistry: RegistryBa
         "GLFW",
         registry.commands.values.sortedBy { it.name },
         commandCodegenOptions,
-        null
+        implConstantClass = true,
+        subpackage = null
     )
     File("$packageDir/GLFW.java")
         .writeText(render(commandsDoc))

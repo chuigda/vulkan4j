@@ -6,19 +6,19 @@ Let's see if we can get GLFW up and running. First, let's initialize GLFW and in
 
 ```java
 public void run() {
-    if (glfw.init() != GLFWConstants.TRUE) {
+    if (glfw.init() != GLFW.TRUE) {
         throw new RuntimeException("Failed to initialize GLFW");
     }
 
-    glfw.windowHint(GLFWConstants.CONTEXT_VERSION_MAJOR, 3);
-    glfw.windowHint(GLFWConstants.CONTEXT_VERSION_MINOR, 3);
-    glfw.windowHint(GLFWConstants.OPENGL_PROFILE, GLFWConstants.OPENGL_CORE_PROFILE);
+    glfw.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
+    glfw.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
+    glfw.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
 }
 ```
 
 In the main function we first initialize GLFW with `GLFW::init`, after which we can configure GLFW using `GLFW::windowHint`. The first argument of `GLFW::windowHint` tells us what option we want to configure, where we can select the option from a constant class `GLFWConstants`. The second argument is an integer that sets the value of our option. A list of all the possible options and its corresponding values can be found at [GLFW's window handling](http://www.glfw.org/docs/latest/window.html#window_hints) documentation. If you try to run the application now and it gives a lot of undefined reference errors it means you didn't successfully link the GLFW library. 
 
-Since the focus of this book is on OpenGL version 3.3 we'd like to tell GLFW that 3.3 is the OpenGL version we want to use. This way GLFW can make the proper arrangements when creating the OpenGL context. This ensures that when a user does not have the proper OpenGL version GLFW fails to run. We set the major and minor version both to `3`. We also tell GLFW we want to explicitly use the core-profile. Telling GLFW we want to use the core-profile means we'll get access to a smaller subset of OpenGL features without backwards-compatible features we no longer need. Note that on Mac OS X you need to add `glfw.windowHint(GLFWConstants.OPENGL_FORWARD_COMPAT, GLConstants.TRUE);` to your initialization code for it to work.
+Since the focus of this book is on OpenGL version 3.3 we'd like to tell GLFW that 3.3 is the OpenGL version we want to use. This way GLFW can make the proper arrangements when creating the OpenGL context. This ensures that when a user does not have the proper OpenGL version GLFW fails to run. We set the major and minor version both to `3`. We also tell GLFW we want to explicitly use the core-profile. Telling GLFW we want to use the core-profile means we'll get access to a smaller subset of OpenGL features without backwards-compatible features we no longer need. Note that on Mac OS X you need to add `glfw.windowHint(GLFW.OPENGL_FORWARD_COMPAT, GL.TRUE);` to your initialization code for it to work.
 
 > Make sure you have OpenGL versions 3.3 or higher installed on your system/hardware otherwise the application will crash or display undefined behavior. To find the OpenGL version on your machine either call `glxinfo` on Linux machines or use a utility like the [OpenGL Extension Viewer](http://download.cnet.com/OpenGL-Extensions-Viewer/3000-18487_4-34442.html) for Windows. If your supported version is lower try to check if your video card supports OpenGL 3.3+ (otherwise it's antique) and/or update your drivers. 
 
@@ -151,7 +151,7 @@ There are many callbacks functions we can set to register our own functions. For
 We don't want the application to draw a single image and then immediately quit and close the window. We want the application to keep drawing images and handling user input until the program has been explicitly told to stop. For this reason we have to create a while loop, that we now call the **render loop**, that keeps on running until we tell GLFW to stop. The following code shows a very simple render loop: 
 
 ```java
-while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+while (glfw.windowShouldClose(window) == GLFW.FALSE) {
     glfw.swapBuffers(window);
     glfw.pollEvents();
 }
@@ -185,8 +185,8 @@ We also want to have some form of input control in GLFW and we can achieve this 
 
 ```java
 private void processInput(GLFWwindow window) {
-    if (glfw.getKey(window, GLFWConstants.KEY_ESCAPE) == GLFWConstants.PRESS) {
-        glfw.setWindowShouldClose(window, GLFWConstants.TRUE);
+    if (glfw.getKey(window, GLFW.KEY_ESCAPE) == GLFW.PRESS) {
+        glfw.setWindowShouldClose(window, GLFW.TRUE);
     }
 }
 ```
@@ -196,7 +196,7 @@ Here we check whether the user has pressed the escape key (if it's not pressed, 
 We then call `processInput` every iteration of the render loop: 
 
 ```java
-while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+while (glfw.windowShouldClose(window) == GLFW.FALSE) {
     processInput(window);
 
     glfw.swapBuffers(window);
@@ -211,7 +211,7 @@ This gives us an easy way to check for specific key presses and react accordingl
 We want to place all the rendering commands in the render loop, since we want to execute all the rendering commands each iteration or frame of the loop. This would look a bit like this: 
 
 ```java
-while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+while (glfw.windowShouldClose(window) == GLFW.FALSE) {
     // input
     processInput(window);
     
@@ -224,11 +224,11 @@ while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
 }
 ```
 
-Just to test if things actually work we want to clear the screen with a color of our choice. At the start of frame we want to clear the screen. Otherwise, we would still see the results from the previous frame (this could be the effect you're looking for, but usually you don't). We can clear the screen's color buffer using glClear where we pass in buffer bits to specify which buffer we would like to clear. The possible bits we can set are `GLConstants.COLOR_BUFFER_BIT`, `GLConstants.DEPTH_BUFFER_BIT` and `GLConstants.STENCIL_BUFFER_BIT`. Right now we only care about the color values so we only clear the color buffer. 
+Just to test if things actually work we want to clear the screen with a color of our choice. At the start of frame we want to clear the screen. Otherwise, we would still see the results from the previous frame (this could be the effect you're looking for, but usually you don't). We can clear the screen's color buffer using glClear where we pass in buffer bits to specify which buffer we would like to clear. The possible bits we can set are `GL.COLOR_BUFFER_BIT`, `GL.DEPTH_BUFFER_BIT` and `GL.STENCIL_BUFFER_BIT`. Right now we only care about the color values so we only clear the color buffer. 
 
 ```java
 gl.clearColor(0.2f, 0.3f, 0.3f, 1.0f);
-gl.clear(GLConstants.COLOR_BUFFER_BIT);
+gl.clear(GL.COLOR_BUFFER_BIT);
 ```
 
 Note that we also specify the color to clear the screen with using `GL::clearColor`. Whenever we call `GL::clear` and clear the color buffer, the entire color buffer will be filled with the color as configured by `GL::clearColor`. This will result in a dark green-blueish color. 

@@ -24,12 +24,14 @@ fun openalMain() {
         refRegistries = emptyList(),
     )
 
+    val alcCodegenOptions = codegenOptions.copy(constantClassName = "ALCConstants")
+
     val (alcConstants, alConstants) = registry
         .constants
         .values
         .partition { it.name.original.startsWith("ALC_") }
 
-    val alcConstantsDoc = generateConstants(registry, codegenOptions.copy(constantClassName="ALCConstants"), alcConstants)
+    val alcConstantsDoc = generateConstants(registry, alcCodegenOptions, alcConstants)
     File("$packageDir/ALCConstants.java").writeText(render(alcConstantsDoc))
     val alConstantsDoc = generateConstants(registry, codegenOptions, alConstants)
     File("$packageDir/ALConstants.java").writeText(render(alConstantsDoc))
@@ -50,9 +52,23 @@ fun openalMain() {
         .commands
         .values
         .partition { it.name.original.startsWith("alc") }
-    val alcCommandFile = generateCommandFile(registry, "AL", alCommands, codegenOptions, null)
+    val alcCommandFile = generateCommandFile(
+        registry,
+        "AL",
+        alCommands,
+        codegenOptions,
+        implConstantClass = true,
+        subpackage = null
+    )
     File("$packageDir/AL.java").writeText(render(alcCommandFile))
-    val alCommandFile = generateCommandFile(registry, "ALC", alcCommands, codegenOptions, null)
+    val alCommandFile = generateCommandFile(
+        registry,
+        "ALC",
+        alcCommands,
+        alcCodegenOptions,
+        implConstantClass = true,
+        subpackage = null
+    )
     File("$packageDir/ALC.java").writeText(render(alCommandFile))
 
     val efxPresets = extractEFXEAXPresets()

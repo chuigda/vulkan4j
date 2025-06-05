@@ -40,10 +40,14 @@ fun openglMain() {
         "GL",
         coreCommands,
         codegenOptions,
-        null
+        implConstantClass = false,
+        subpackage = null
     )
     val coreCommandsDocText = render(coreCommandsDoc)
-        .replace("public final class GL {", "public sealed class GL permits GLCompatibility {")
+        .replace(
+            "public final class GL {",
+            "public sealed class GL implements GLConstants permits GLCompatibility {"
+        )
     File("$packageDir/GL.java").writeText(coreCommandsDocText)
 
     val compatibilityDoc = club.doki7.babel.codegen.generateCommandFile(
@@ -51,11 +55,15 @@ fun openglMain() {
         "GLCompatibility",
         compatibilityCommands,
         codegenOptions,
-        null
+        implConstantClass = false,
+        subpackage = null
     )
     val compatibilityDocText = render(compatibilityDoc)
-        .replace("public final class GLCompatibility {", "public final class GLCompatibility extends GL {")
-        .replace("public GLCompatibility(RawFunctionLoader loader) {",
+        .replace(
+            "public final class GLCompatibility {",
+            "public final class GLCompatibility extends GL {"
+        ).replace(
+            "public GLCompatibility(RawFunctionLoader loader) {",
             """public GLCompatibility(RawFunctionLoader loader) {
     super(loader);""")
     File("$packageDir/GLCompatibility.java").writeText(compatibilityDocText)

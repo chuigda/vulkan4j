@@ -79,32 +79,32 @@ try(Arena arena = Arena.ofConfined()) {
 
 > Note: Java does not really have unsigned integers. In Java's design, signedness is associated with operations (`Integer.toString` vs `Integer.toUnsignedString`) rather than types. The `@Unsigned` annotation is used to indicate that the value should be treated as an unsigned integer, so you could remember to use unsigned series methods when dealing with them as soon as you see the annotation.
 
-OpenGL has many types of buffer objects, and the buffer type of the vertex buffer object is `GLConstants.ARRAY_BUFFER`. OpenGL allows us to bind to several buffers at once as long as they have a different buffer type. We can bind the newly created buffer to the `GLConstants.ARRAY_BUFFER` target with the `GL::bindBuffer` function: 
+OpenGL has many types of buffer objects, and the buffer type of the vertex buffer object is `GL.ARRAY_BUFFER`. OpenGL allows us to bind to several buffers at once as long as they have a different buffer type. We can bind the newly created buffer to the `GL.ARRAY_BUFFER` target with the `GL::bindBuffer` function: 
 
 ```java
-gl.bindBuffer(GLConstants.ARRAY_BUFFER, vbo);
+gl.bindBuffer(GL.ARRAY_BUFFER, vbo);
 ```
 
-From that point on any buffer calls we make (on the `GLConstants.ARRAY_BUFFER` target) will be used to configure the currently bound buffer, which is `VBO`. Then we can make a call to the `GL::bufferData` function that copies the previously defined vertex data into the buffer's memory: 
+From that point on any buffer calls we make (on the `GL.ARRAY_BUFFER` target) will be used to configure the currently bound buffer, which is `VBO`. Then we can make a call to the `GL::bufferData` function that copies the previously defined vertex data into the buffer's memory: 
 
 ```java
 gl.bufferData(
-        GLConstants.ARRAY_BUFFER,
+        GL.ARRAY_BUFFER,
         pVertices.segment().byteSize(),
         pVertices.segment(),
-        GLConstants.STATIC_DRAW
+        GL.STATIC_DRAW
 );
 ```
 
-`GL::bufferData` is a function specifically targeted to copy user-defined data into the currently bound buffer. Its first argument is the type of the buffer we want to copy data into: the vertex buffer object currently bound to the `GLConstants.ARRAY_BUFFER` target. The second argument specifies the size of the data (in bytes) we want to pass to the buffer; a simple sizeof of the vertex data suffices. The third parameter is the actual data we want to send.
+`GL::bufferData` is a function specifically targeted to copy user-defined data into the currently bound buffer. Its first argument is the type of the buffer we want to copy data into: the vertex buffer object currently bound to the `GL.ARRAY_BUFFER` target. The second argument specifies the size of the data (in bytes) we want to pass to the buffer; a simple sizeof of the vertex data suffices. The third parameter is the actual data we want to send.
 
 The fourth parameter specifies how we want the graphics card to manage the given data. This can take 3 forms:
 
-- `GLConstants.STREAM_DRAW`: the data is set only once and used by the GPU at most a few times.
-- `GLConstants.STATIC_DRAW`: the data is set only once and used many times.
-- `GLConstants.DYNAMIC_DRAW`: the data is changed a lot and used many times.
+- `GL.STREAM_DRAW`: the data is set only once and used by the GPU at most a few times.
+- `GL.STATIC_DRAW`: the data is set only once and used many times.
+- `GL.DYNAMIC_DRAW`: the data is changed a lot and used many times.
 
-The position data of the triangle does not change, is used a lot, and stays the same for every render call so its usage type should best be `GLConstants.STATIC_DRAW`. If, for instance, one would have a buffer with data that is likely to change frequently, a usage type of `GLConstants.DYNAMIC_DRAW` ensures the graphics card will place the data in memory that allows for faster writes.
+The position data of the triangle does not change, is used a lot, and stays the same for every render call so its usage type should best be `GL.STATIC_DRAW`. If, for instance, one would have a buffer with data that is likely to change frequently, a usage type of `GL.DYNAMIC_DRAW` ensures the graphics card will place the data in memory that allows for faster writes.
 
 As of now we stored the vertex data within memory on the graphics card as managed by a vertex buffer object named `VBO`. Next we want to create a vertex and fragment shader that actually processes this data, so let's start building those.
 
@@ -155,15 +155,15 @@ In order for OpenGL to use the shader it has to dynamically compile it at run-ti
 
 ```java
 @Unsigned int vertexShader;
-vertexShader = gl.createShader(GLConstants.VERTEX_SHADER);
+vertexShader = gl.createShader(GL.VERTEX_SHADER);
 ```
 
-We provide the type of shader we want to create as an argument to `GL::createShader`. Since we're creating a vertex shader we pass in `GLConstants.VERTEX_SHADER`.
+We provide the type of shader we want to create as an argument to `GL::createShader`. Since we're creating a vertex shader we pass in `GL.VERTEX_SHADER`.
 
 Next we attach the shader source code to the shader object and compile the shader:
 
 ```java
-vertexShader = gl.createShader(GLConstants.VERTEX_SHADER);
+vertexShader = gl.createShader(GL.VERTEX_SHADER);
 var pVertexShaderSource = PointerPtr.allocateV(arena, BytePtr.allocateString(arena, VERTEX_SHADER_SOURCE));
 gl.shaderSource(vertexShader, 1, pVertexShaderSource, null);
 gl.compileShader(vertexShader);
@@ -176,13 +176,13 @@ The `GL::shaderSource` function takes the shader object to compile to as its fir
 > ```java
 > IntPtr pSuccess = IntPtr.allocate(arena);
 > BytePtr infoLog = BytePtr.allocate(arena, 512);
-> gl.getShaderiv(vertexShader, GLConstants.COMPILE_STATUS, pSuccess);
+> gl.getShaderiv(vertexShader, GL.COMPILE_STATUS, pSuccess);
 > ```
 > 
 > First we define an integer to indicate success and a storage container for the error messages (if any). Then we check if compilation was successful with `GL::getShaderiv`. If compilation failed, we should retrieve the error message with `GL::getShaderInfoLog` and print the error message.
 > 
 > ```java
-> if (pSuccess.read() == GLConstants.FALSE) {
+> if (pSuccess.read() == GL.FALSE) {
 >     gl.getShaderInfoLog(vertexShader, infoLog);
 >     throw new RuntimeException("Vertex shader compilation failed: " + infoLog.readString());
 > }
@@ -207,11 +207,11 @@ void main() {
 
 The fragment shader only requires one output variable and that is a vector of size 4 that defines the final color output that we should calculate ourselves. We can declare output values with the out keyword, that we here promptly named `FragColor`. Next we simply assign a `vec4` to the color output as an orange color with an alpha value of `1.0` (`1.0` being completely opaque). 
 
-The process for compiling a fragment shader is similar to the vertex shader, although this time we use the `GLConstants.FRAGMENT_SHADER` constant as the shader type:
+The process for compiling a fragment shader is similar to the vertex shader, although this time we use the `GL.FRAGMENT_SHADER` constant as the shader type:
 
 ```java
 @Unsigned int fragmentShader;
-fragmentShader = gl.createShader(GLConstants.FRAGMENT_SHADER);
+fragmentShader = gl.createShader(GL.FRAGMENT_SHADER);
 var pFragmentShaderSource = PointerPtr.allocateV(arena, BytePtr.allocateString(arena, FRAGMENT_SHADER_SOURCE));
 gl.shaderSource(fragmentShader, 1, pFragmentShaderSource, null);
 gl.compileShader(fragmentShader);
@@ -245,8 +245,8 @@ The code should be pretty self-explanatory, we attach the shaders to the program
 > Just like shader compilation we can also check if linking a shader program failed and retrieve the corresponding log. However, instead of using `GL::getShaderiv` and `GL::getShaderInfoLog` we now use:
 > 
 > ```java
-> gl.getProgramiv(shaderProgram, GLConstants.LINK_STATUS, pSuccess);
-> if (pSuccess.read() == GLConstants.FALSE) {
+> gl.getProgramiv(shaderProgram, GL.LINK_STATUS, pSuccess);
+> if (pSuccess.read() == GL.FALSE) {
 >     gl.getProgramInfoLog(shaderProgram, infoLog);
 >     throw new RuntimeException("Shader program linking failed: " + infoLog.readString());
 > }
@@ -288,8 +288,8 @@ With this knowledge we can tell OpenGL how it should interpret the vertex data (
 gl.vertexAttribPointer(
         0,
         3,
-        GLConstants.FLOAT,
-        (byte) GLFWConstants.FALSE,
+        GL.FLOAT,
+        (byte) GLFW.FALSE,
         3 * Float.BYTES,
         MemorySegment.NULL
 );
@@ -300,31 +300,31 @@ The function `GL::vertexAttribPointer` has quite a few parameters so let's caref
 
 - The first parameter specifies which vertex attribute we want to configure. Remember that we specified the location of the `position` vertex attribute in the vertex shader with `layout (location = 0)`. This sets the location of the vertex attribute to `0` and since we want to pass data to this vertex attribute, we pass in `0`.
 - The next argument specifies the size of the vertex attribute. The vertex attribute is a `vec3` so it is composed of `3` values.
-- The third argument specifies the type of the data which is `GLConstants.FLOAT` (a `vec*` in GLSL consists of floating point values).
-- The next argument specifies if we want the data to be normalized. If we're inputting integer data types (int, byte) and we've set this to `GLConstants.TRUE`, the integer data is normalized to `0` (or `-1` for signed data) and `1` when converted to float. This is not relevant for us so we'll leave this at `GLConstants.FALSE`.
+- The third argument specifies the type of the data which is `GL.FLOAT` (a `vec*` in GLSL consists of floating point values).
+- The next argument specifies if we want the data to be normalized. If we're inputting integer data types (int, byte) and we've set this to `GL.TRUE`, the integer data is normalized to `0` (or `-1` for signed data) and `1` when converted to float. This is not relevant for us so we'll leave this at `GL.FALSE`.
 - The fifth argument is known as the **stride** and tells us the space between consecutive vertex attributes. Since the next set of position data is located exactly 3 times the size of a float away we specify that value as the stride. Note that since we know that the array is tightly packed (there is no space between the next vertex attribute value) we could've also specified the stride as `0` to let OpenGL determine the stride (this only works when values are tightly packed). Whenever we have more vertex attributes we have to carefully define the spacing between each vertex attribute, but we'll get to see more examples of that later on.
 - The last parameter is of type `void*` and thus requires the weird `MemorySegment.NULL`. This is the offset of where the position data begins in the buffer. Since the position data is at the start of the data array this value is just `0`. We will explore this parameter in more detail later on
 
-> Each vertex attribute takes its data from memory managed by a VBO and which VBO it takes its data from (you can have multiple VBOs) is determined by the VBO currently bound to `GLConstants.ARRAY_BUFFER` when calling `GL::vertexAttribPointer`. Since the previously defined VBO is still bound before calling `GL::vertexAttribPointer` vertex attribute `0` is now associated with its vertex data. 
+> Each vertex attribute takes its data from memory managed by a VBO and which VBO it takes its data from (you can have multiple VBOs) is determined by the VBO currently bound to `GL.ARRAY_BUFFER` when calling `GL::vertexAttribPointer`. Since the previously defined VBO is still bound before calling `GL::vertexAttribPointer` vertex attribute `0` is now associated with its vertex data. 
 
 Now that we specified how OpenGL should interpret the vertex data we should also enable the vertex attribute with `GL::enableVertexAttribArray` giving the vertex attribute location as its argument; vertex attributes are disabled by default. From that point on we have everything set up: we initialized the vertex data in a buffer using a vertex buffer object, set up a vertex and fragment shader and told OpenGL how to link the vertex data to the vertex shader's vertex attributes. Drawing an object in OpenGL would now look something like this: 
 
 ```java
 // 0. copy our vertices array into a buffer for OpenGL to use
-gl.bindBuffer(GLConstants.ARRAY_BUFFER, vbo);
+gl.bindBuffer(GL.ARRAY_BUFFER, vbo);
 gl.bufferData(
-        GLConstants.ARRAY_BUFFER,
+        GL.ARRAY_BUFFER,
         pVertices.segment().byteSize(),
         pVertices.segment(),
-        GLConstants.STATIC_DRAW
+        GL.STATIC_DRAW
 );
 
 // 1. then set the vertex attribute pointers
 gl.vertexAttribPointer(
         0,
         3,
-        GLConstants.FLOAT,
-        (byte) GLFWConstants.FALSE,
+        GL.FLOAT,
+        (byte) GLFW.FALSE,
         3 * Float.BYTES,
         MemorySegment.NULL
 );
@@ -369,19 +369,19 @@ To use a VAO all you have to do is bind the VAO using `GL::bindVertexArray`. Fro
 // 1. bind Vertex Array Object
 gl.bindVertexArray(vao);
 // 2. copy our vertices array into a buffer for OpenGL to use
-gl.bindBuffer(GLConstants.ARRAY_BUFFER, vbo);
+gl.bindBuffer(GL.ARRAY_BUFFER, vbo);
 gl.bufferData(
-        GLConstants.ARRAY_BUFFER,
+        GL.ARRAY_BUFFER,
         pVertices.segment().byteSize(),
         pVertices.segment(),
-        GLConstants.STATIC_DRAW
+        GL.STATIC_DRAW
 );
 // 3. then set our vertex attribute pointers
 gl.vertexAttribPointer(
         0,
         3,
-        GLConstants.FLOAT,
-        (byte) GLFWConstants.FALSE,
+        GL.FLOAT,
+        (byte) GLFW.FALSE,
         3 * Float.BYTES,
         MemorySegment.NULL
 );
@@ -405,9 +405,9 @@ To draw our objects of choice, OpenGL provides us with the `GL::drawArrays` func
 ```java
 gl.useProgram(shaderProgram);
 gl.bindVertexArray(vao);
-gl.drawArrays(GLConstants.TRIANGLES, 0, 3);
+gl.drawArrays(GL.TRIANGLES, 0, 3);
 ```
 
-The `GL::drawArrays` function takes as its first argument the OpenGL primitive type we would like to draw. Since I said at the start we wanted to draw a triangle, and I don't like lying to you, we pass in `GLConstants.TRIANGLES`. The second argument specifies the starting index of the vertex array we'd like to draw; we just leave this at 0. The last argument specifies how many vertices we want to draw, which is 3 (we only render 1 triangle from our data, which is exactly 3 vertices long).
+The `GL::drawArrays` function takes as its first argument the OpenGL primitive type we would like to draw. Since I said at the start we wanted to draw a triangle, and I don't like lying to you, we pass in `GL.TRIANGLES`. The second argument specifies the starting index of the vertex array we'd like to draw; we just leave this at 0. The last argument specifies how many vertices we want to draw, which is 3 (we only render 1 triangle from our data, which is exactly 3 vertices long).
 
 Now try to compile the code and work your way backwards if any errors popped up. As soon as your application compiles, you should see the following result:

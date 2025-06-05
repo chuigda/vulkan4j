@@ -25,13 +25,13 @@ class Application {
     }
 
     public void run() {
-        if (glfw.init() != GLFWConstants.TRUE) {
+        if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
 
-        glfw.windowHint(GLFWConstants.CONTEXT_VERSION_MAJOR, 3);
-        glfw.windowHint(GLFWConstants.CONTEXT_VERSION_MINOR, 3);
-        glfw.windowHint(GLFWConstants.OPENGL_PROFILE, GLFWConstants.OPENGL_CORE_PROFILE);
+        glfw.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
+        glfw.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
+        glfw.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
 
         GLFWwindow window = glfw.createWindow(
                 800,
@@ -68,11 +68,11 @@ class Application {
             throw new RuntimeException("Failed to find framebufferResizeCallback method handle",e);
         }
 
-        while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+        while (glfw.windowShouldClose(window) == GLFW.FALSE) {
             processInput(window);
 
             gl.clearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            gl.clear(GLConstants.COLOR_BUFFER_BIT);
+            gl.clear(GL.COLOR_BUFFER_BIT);
 
             glfw.swapBuffers(window);
             glfw.pollEvents();
@@ -90,8 +90,8 @@ class Application {
     }
 
     private void processInput(GLFWwindow window) {
-        if (glfw.getKey(window, GLFWConstants.KEY_ESCAPE) == GLFWConstants.PRESS) {
-            glfw.setWindowShouldClose(window, GLFWConstants.TRUE);
+        if (glfw.getKey(window, GLFW.KEY_ESCAPE) == GLFW.PRESS) {
+            glfw.setWindowShouldClose(window, GLFW.TRUE);
         }
     }
 }

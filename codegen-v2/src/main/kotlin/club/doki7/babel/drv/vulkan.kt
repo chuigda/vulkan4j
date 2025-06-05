@@ -104,28 +104,32 @@ internal fun vulkanMain(): Registry<VulkanRegistryExt> {
         "VkStaticCommands",
         staticCommands,
         codegenOptions,
-        "command"
+        implConstantClass = false,
+        subpackage = "command"
     )
     val entryCommandsDoc = generateCommandFile(
         vulkanRegistry,
         "VkEntryCommands",
         entryCommands,
         codegenOptions,
-        "command"
+        implConstantClass = false,
+        subpackage = "command"
     )
     val instanceCommandsDoc = generateCommandFile(
         vulkanRegistry,
         "VkInstanceCommands",
         instanceCommands,
         codegenOptions,
-        "command"
+        implConstantClass = false,
+        subpackage = "command"
     )
     val deviceCommandsDoc = generateCommandFile(
         vulkanRegistry,
         "VkDeviceCommands",
         deviceCommands,
         codegenOptions,
-        "command"
+        implConstantClass = false,
+        subpackage = "command"
     )
 
     File("$packageDir/command/VkStaticCommands.java")
