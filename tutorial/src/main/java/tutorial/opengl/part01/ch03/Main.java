@@ -29,13 +29,13 @@ class Application {
     }
 
     public void run() {
-        if (glfw.init() != GLFWConstants.TRUE) {
+        if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
 
-        glfw.windowHint(GLFWConstants.CONTEXT_VERSION_MAJOR, 3);
-        glfw.windowHint(GLFWConstants.CONTEXT_VERSION_MINOR, 3);
-        glfw.windowHint(GLFWConstants.OPENGL_PROFILE, GLFWConstants.OPENGL_CORE_PROFILE);
+        glfw.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
+        glfw.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
+        glfw.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
 
         GLFWwindow window = glfw.createWindow(
                 800,
@@ -98,7 +98,7 @@ class Application {
                     0,
                     3,
                     GL.FLOAT,
-                    (byte) GLFWConstants.FALSE,
+                    (byte) GLFW.FALSE,
                     3 * Float.BYTES,
                     MemorySegment.NULL
             );
@@ -111,7 +111,7 @@ class Application {
             gl.shaderSource(vertexShader, 1, pVertexShaderSource, null);
             gl.compileShader(vertexShader);
             gl.getShaderiv(vertexShader, GL.COMPILE_STATUS, pSuccess);
-            if (pSuccess.read() == GLFWConstants.FALSE) {
+            if (pSuccess.read() == GLFW.FALSE) {
                 gl.getShaderInfoLog(vertexShader, 512, null, pInfoLog);
                 throw new RuntimeException("Failed to compile vertex shader: " + pInfoLog.readString());
             }
@@ -121,7 +121,7 @@ class Application {
             gl.shaderSource(fragmentShader, 1, pFragmentShaderSource, null);
             gl.compileShader(fragmentShader);
             gl.getShaderiv(fragmentShader, GL.COMPILE_STATUS, pSuccess);
-            if (pSuccess.read() == GLFWConstants.FALSE) {
+            if (pSuccess.read() == GLFW.FALSE) {
                 gl.getShaderInfoLog(fragmentShader, 512, null, pInfoLog);
                 throw new RuntimeException("Failed to compile fragment shader: " + pInfoLog.readString());
             }
@@ -131,7 +131,7 @@ class Application {
             gl.attachShader(shaderProgram, fragmentShader);
             gl.linkProgram(shaderProgram);
             gl.getProgramiv(shaderProgram, GL.LINK_STATUS, pSuccess);
-            if (pSuccess.read() == GLFWConstants.FALSE) {
+            if (pSuccess.read() == GLFW.FALSE) {
                 gl.getProgramInfoLog(shaderProgram, 512, null, pInfoLog);
                 throw new RuntimeException("Failed to link shader program: " + pInfoLog.readString());
             }
@@ -140,7 +140,7 @@ class Application {
             gl.deleteShader(fragmentShader);
         }
 
-        while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+        while (glfw.windowShouldClose(window) == GLFW.FALSE) {
             processInput(window);
 
             gl.clearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -166,8 +166,8 @@ class Application {
     }
 
     private void processInput(GLFWwindow window) {
-        if (glfw.getKey(window, GLFWConstants.KEY_ESCAPE) == GLFWConstants.PRESS) {
-            glfw.setWindowShouldClose(window, GLFWConstants.TRUE);
+        if (glfw.getKey(window, GLFW.KEY_ESCAPE) == GLFW.PRESS) {
+            glfw.setWindowShouldClose(window, GLFW.TRUE);
         }
     }
 

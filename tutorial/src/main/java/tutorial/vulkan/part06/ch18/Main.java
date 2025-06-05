@@ -42,15 +42,15 @@ class Application {
     private void initWindow() {
         GLFWLoader.loadGLFWLibrary();
         glfw = GLFWLoader.loadGLFW();
-        if (glfw.init() != GLFWConstants.TRUE) {
+        if (glfw.init() != GLFW.TRUE) {
             throw new RuntimeException("Failed to initialize GLFW");
         }
 
-        if (glfw.vulkanSupported() != GLFWConstants.TRUE) {
+        if (glfw.vulkanSupported() != GLFW.TRUE) {
             throw new RuntimeException("Vulkan is not supported");
         }
 
-        glfw.windowHint(GLFWConstants.CLIENT_API, GLFWConstants.NO_API);
+        glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
         window = glfw.createWindow(WIDTH, HEIGHT, WINDOW_TITLE, null, null);
 
         try {
@@ -89,7 +89,7 @@ class Application {
     }
 
     private void mainLoop() {
-        while (glfw.windowShouldClose(window) == GLFWConstants.FALSE) {
+        while (glfw.windowShouldClose(window) == GLFW.FALSE) {
             glfw.pollEvents();
             drawFrame();
         }

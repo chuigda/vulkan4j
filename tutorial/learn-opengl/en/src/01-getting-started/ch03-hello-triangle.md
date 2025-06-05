@@ -289,7 +289,7 @@ gl.vertexAttribPointer(
         0,
         3,
         GL.FLOAT,
-        (byte) GLFWConstants.FALSE,
+        (byte) GLFW.FALSE,
         3 * Float.BYTES,
         MemorySegment.NULL
 );
@@ -324,7 +324,7 @@ gl.vertexAttribPointer(
         0,
         3,
         GL.FLOAT,
-        (byte) GLFWConstants.FALSE,
+        (byte) GLFW.FALSE,
         3 * Float.BYTES,
         MemorySegment.NULL
 );
@@ -381,7 +381,7 @@ gl.vertexAttribPointer(
         0,
         3,
         GL.FLOAT,
-        (byte) GLFWConstants.FALSE,
+        (byte) GLFW.FALSE,
         3 * Float.BYTES,
         MemorySegment.NULL
 );
