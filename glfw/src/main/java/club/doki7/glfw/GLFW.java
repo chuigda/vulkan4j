@@ -11,9 +11,6 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.glfw.datatype.*;
 import club.doki7.glfw.handle.*;
-import club.doki7.vulkan.datatype.*;
-import club.doki7.vulkan.enumtype.*;
-import club.doki7.vulkan.handle.*;
 
 public final class GLFW {
     public GLFW(RawFunctionLoader loader) {
@@ -661,18 +658,18 @@ public final class GLFW {
     ///  @since Added in version 3.2.
     ///
     ///  @ingroup vulkan
-    public @EnumType(VkResult.class) int createWindowSurface(
-        @Nullable VkInstance instance,
+    public @NativeType("VkResult") @Unsigned int createWindowSurface(
+        @Pointer(comment="VkInstance") MemorySegment instance,
         @Nullable GLFWwindow window,
-        @Nullable @Pointer IVkAllocationCallbacks allocator,
-        @Nullable @Pointer VkSurfaceKHR.Ptr surface
+        @Pointer(comment="VkAllocationCallbacks*") MemorySegment allocator,
+        @Nullable PointerPtr surface
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwCreateWindowSurface);
         try {
             return (int) hFunction.invokeExact(
-                (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
+                instance,
                 (MemorySegment) (window != null ? window.segment() : MemorySegment.NULL),
-                (MemorySegment) (allocator != null ? allocator.segment() : MemorySegment.NULL),
+                allocator,
                 (MemorySegment) (surface != null ? surface.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
@@ -1515,13 +1512,13 @@ public final class GLFW {
     ///
     ///  @ingroup vulkan
     public @Pointer(comment="GLFWvkproc") MemorySegment getInstanceProcAddress(
-        @Nullable VkInstance instance,
+        @Pointer(comment="VkInstance") MemorySegment instance,
         @Nullable BytePtr procname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetInstanceProcAddress);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
+                instance,
                 (MemorySegment) (procname != null ? procname.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
@@ -2507,15 +2504,15 @@ public final class GLFW {
     ///
     ///  @ingroup vulkan
     public int getPhysicalDevicePresentationSupport(
-        @Nullable VkInstance instance,
-        @Nullable VkPhysicalDevice device,
+        @Pointer(comment="VkInstance") MemorySegment instance,
+        @Pointer(comment="VkPhysicalDevice") MemorySegment device,
         @Unsigned int queuefamily
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$glfwGetPhysicalDevicePresentationSupport);
         try {
             return (int) hFunction.invokeExact(
-                (MemorySegment) (instance != null ? instance.segment() : MemorySegment.NULL),
-                (MemorySegment) (device != null ? device.segment() : MemorySegment.NULL),
+                instance,
+                device,
                 queuefamily
             );
         } catch (Throwable e) {
@@ -7147,7 +7144,7 @@ public final class GLFW {
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(VkAllocationCallbacks.LAYOUT),
+            ValueLayout.ADDRESS,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
         );
 

@@ -281,7 +281,7 @@ class Member(
 
 class Typedef(
     name: String,
-    val type: IdentifierType
+    val type: Type
 ) : Entity(name) {
     constructor(name: String, aliasTo: String) : this(name, IdentifierType(aliasTo))
 

@@ -15,7 +15,7 @@ import java.io.File
 
 private const val packageDir = "glfw/src/main/java/club/doki7/glfw"
 
-fun glfw3Main(vulkanRegistry: RegistryBase, vulkanAdditionalRegistry: RegistryBase) {
+fun glfw3Main(vulkanAdditionalRegistry: RegistryBase) {
     val registry = extractGLFWHeader()
 
     val codegenOptions = CodegenOptions(
@@ -23,25 +23,18 @@ fun glfw3Main(vulkanRegistry: RegistryBase, vulkanAdditionalRegistry: RegistryBa
         extraImport = listOf(),
         constantClassName = "GLFWConstants",
         functionTypeClassName = "GLFWFunctionTypes",
-        refRegistries = listOf(vulkanRegistry, vulkanAdditionalRegistry)
+        refRegistries = listOf(vulkanAdditionalRegistry)
     )
 
     val constantsDoc = generateConstants(registry, codegenOptions)
     File("$packageDir/${codegenOptions.constantClassName}.java")
         .writeText(render(constantsDoc))
 
-    val commandCodegenOptions = codegenOptions.copy(
-        extraImport = listOf(
-            "club.doki7.vulkan.datatype.*",
-            "club.doki7.vulkan.enumtype.*",
-            "club.doki7.vulkan.handle.*"
-        )
-    )
     val commandsDoc = generateCommandFile(
         registry,
         "GLFW",
         registry.commands.values.sortedBy { it.name },
-        commandCodegenOptions,
+        codegenOptions,
         null
     )
     File("$packageDir/GLFW.java")

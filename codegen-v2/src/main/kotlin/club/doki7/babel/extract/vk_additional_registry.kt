@@ -4,15 +4,43 @@ import club.doki7.babel.registry.EmptyMergeable
 import club.doki7.babel.registry.FunctionTypedef
 import club.doki7.babel.registry.Identifier
 import club.doki7.babel.registry.IdentifierType
+import club.doki7.babel.registry.OpaqueTypedef
+import club.doki7.babel.registry.PointerType
 import club.doki7.babel.registry.Registry
+import club.doki7.babel.registry.Typedef
 import club.doki7.babel.registry.intern
+import club.doki7.babel.registry.putEntityIfAbsent
 
 fun vulkanAdditionalRegistry(): Registry<EmptyMergeable> {
+    val additionalTypedefs = mutableMapOf<Identifier, Typedef>()
+
+    additionalTypedefs.putEntityIfAbsent(Typedef("VkResult", "uint32_t"))
+
+    fun pvoid(s: String) {
+        additionalTypedefs.putEntityIfAbsent(Typedef(s, PointerType(IdentifierType("void"))))
+    }
+
+    pvoid("VkInstance")
+    pvoid("VkDevice")
+    pvoid("VkSurfaceKHR")
+    pvoid("VkPhysicalDevice")
+
+    val additionalOpaqueTypedefs = mutableMapOf<Identifier, OpaqueTypedef>()
+
+    fun opaque(s: String) {
+        additionalOpaqueTypedefs.putEntityIfAbsent(OpaqueTypedef(s))
+    }
+
+    opaque("VkAllocationCallbacks");
+
     val additionalFunctionTypedefs = mutableMapOf<Identifier, FunctionTypedef>()
 
     fun pfn(s: String) {
-        val name = s.intern()
-        additionalFunctionTypedefs[name] = FunctionTypedef(name, emptyList(), IdentifierType("void".intern()))
+        additionalFunctionTypedefs.putEntityIfAbsent(FunctionTypedef(
+            s,
+            emptyList(),
+            IdentifierType("void".intern())
+        ))
     }
 
     pfn("PFN_vkGetInstanceProcAddr")
@@ -44,14 +72,14 @@ fun vulkanAdditionalRegistry(): Registry<EmptyMergeable> {
     pfn("PFN_vkGetMemoryWin32HandleKHR")
 
     return Registry(
-        aliases = mutableMapOf(),
+        aliases = additionalTypedefs,
         bitmasks = mutableMapOf(),
         constants = mutableMapOf(),
         commands = mutableMapOf(),
         enumerations = mutableMapOf(),
         functionTypedefs = additionalFunctionTypedefs,
         opaqueHandleTypedefs = mutableMapOf(),
-        opaqueTypedefs = mutableMapOf(),
+        opaqueTypedefs = additionalOpaqueTypedefs,
         structures = mutableMapOf(),
         unions = mutableMapOf(),
         ext = EmptyMergeable()
