@@ -19,7 +19,7 @@
 <details>
 <summary>Obsolete bindings</summary>
 
-- [OpenGL ES 2.0](https://www.khronos.org/opengles/)([`gles2`](https://github.com/chuigda/vulkan4j/tree/master/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was here for the Chuigda's own use initially. This package will still get maintained since Chuigda wants.
+- [OpenGL ES 2.0](https://www.khronos.org/opengles/) ([`gles2`](https://github.com/chuigda/vulkan4j/tree/master/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was initially created for the Chuigda's own use. This package will still get maintained since Chuigda wants.
 
 </details>
 
@@ -33,7 +33,7 @@ To improve development experience using Java 22 FFM APIs, we created a small lib
 
 *Our website itself is generated with JavaDoc, with a custom `overview.html`.*
 
-### [Vulkan tutorial](https://vulkan4j.doki7.club/tutorial/en/)
+### [Vulkan tutorial port](https://vulkan4j.doki7.club/tutorial/en/)
 For users new to Vulkan, there is a (almost) complete adaptation of [https://vulkan-tutorial.com](https://vulkan-tutorial.com) by [Alexander Overvoorde](https://github.com/Overv) to use Java and `vulkan4j` instead of C++. The published version of this tutorial can be found [here](https://vulkan4j.doki7.club/tutorial/en/), and the sources for the tutorial (including standalone working code examples for each chapter) can be found under the `tutorial` directory.
 
 ### [LearnOpenGL tutorial port](https://vulkan4j.doki7.club/learnopengl/en/)
