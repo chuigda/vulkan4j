@@ -10,7 +10,6 @@ import club.doki7.babel.registry.OpaqueHandleTypedef
 import club.doki7.babel.util.buildDoc
 import club.doki7.babel.util.render
 import java.io.File
-import kotlin.io.path.Path
 
 private const val packageDir = "openal/src/main/java/club/doki7/openal"
 

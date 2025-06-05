@@ -7,7 +7,7 @@
 ### New bindings
 
 - Added `opengl` module, which provides bindings for OpenGL 1.0 - 4.6 (both Core and Compatibility profiles).
-- Added `openal` module, which provides bidnings based on OpenAL-soft (1.2).
+- Added `openal` module, which provides bindings based on OpenAL-soft (1.2).
 
 ### Functionality updates
 
