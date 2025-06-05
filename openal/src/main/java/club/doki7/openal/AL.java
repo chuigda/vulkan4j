@@ -9,9 +9,10 @@ import club.doki7.ffm.NativeLayout;
 import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
+import club.doki7.openal.handle.*;
 
-public final class OpenAL {
-    public OpenAL(RawFunctionLoader loader) {
+public final class AL {
+    public AL(RawFunctionLoader loader) {
         SEGMENT$alEnable = loader.apply("alEnable");
         HANDLE$alEnable = RawFunctionLoader.link(SEGMENT$alEnable, Descriptors.DESCRIPTOR$alEnable);
         SEGMENT$alDisable = loader.apply("alDisable");
@@ -158,52 +159,8 @@ public final class OpenAL {
         HANDLE$alGetBuffer3i = RawFunctionLoader.link(SEGMENT$alGetBuffer3i, Descriptors.DESCRIPTOR$alGetBuffer3i);
         SEGMENT$alGetBufferiv = loader.apply("alGetBufferiv");
         HANDLE$alGetBufferiv = RawFunctionLoader.link(SEGMENT$alGetBufferiv, Descriptors.DESCRIPTOR$alGetBufferiv);
-        SEGMENT$alcCreateContext = loader.apply("alcCreateContext");
-        HANDLE$alcCreateContext = RawFunctionLoader.link(SEGMENT$alcCreateContext, Descriptors.DESCRIPTOR$alcCreateContext);
-        SEGMENT$alcMakeContextCurrent = loader.apply("alcMakeContextCurrent");
-        HANDLE$alcMakeContextCurrent = RawFunctionLoader.link(SEGMENT$alcMakeContextCurrent, Descriptors.DESCRIPTOR$alcMakeContextCurrent);
-        SEGMENT$alcProcessContext = loader.apply("alcProcessContext");
-        HANDLE$alcProcessContext = RawFunctionLoader.link(SEGMENT$alcProcessContext, Descriptors.DESCRIPTOR$alcProcessContext);
-        SEGMENT$alcSuspendContext = loader.apply("alcSuspendContext");
-        HANDLE$alcSuspendContext = RawFunctionLoader.link(SEGMENT$alcSuspendContext, Descriptors.DESCRIPTOR$alcSuspendContext);
-        SEGMENT$alcDestroyContext = loader.apply("alcDestroyContext");
-        HANDLE$alcDestroyContext = RawFunctionLoader.link(SEGMENT$alcDestroyContext, Descriptors.DESCRIPTOR$alcDestroyContext);
-        SEGMENT$alcGetCurrentContext = loader.apply("alcGetCurrentContext");
-        HANDLE$alcGetCurrentContext = RawFunctionLoader.link(SEGMENT$alcGetCurrentContext, Descriptors.DESCRIPTOR$alcGetCurrentContext);
-        SEGMENT$alcGetContextsDevice = loader.apply("alcGetContextsDevice");
-        HANDLE$alcGetContextsDevice = RawFunctionLoader.link(SEGMENT$alcGetContextsDevice, Descriptors.DESCRIPTOR$alcGetContextsDevice);
-        SEGMENT$alcOpenDevice = loader.apply("alcOpenDevice");
-        HANDLE$alcOpenDevice = RawFunctionLoader.link(SEGMENT$alcOpenDevice, Descriptors.DESCRIPTOR$alcOpenDevice);
-        SEGMENT$alcCloseDevice = loader.apply("alcCloseDevice");
-        HANDLE$alcCloseDevice = RawFunctionLoader.link(SEGMENT$alcCloseDevice, Descriptors.DESCRIPTOR$alcCloseDevice);
-        SEGMENT$alcGetError = loader.apply("alcGetError");
-        HANDLE$alcGetError = RawFunctionLoader.link(SEGMENT$alcGetError, Descriptors.DESCRIPTOR$alcGetError);
-        SEGMENT$alcIsExtensionPresent = loader.apply("alcIsExtensionPresent");
-        HANDLE$alcIsExtensionPresent = RawFunctionLoader.link(SEGMENT$alcIsExtensionPresent, Descriptors.DESCRIPTOR$alcIsExtensionPresent);
-        SEGMENT$alcGetProcAddress = loader.apply("alcGetProcAddress");
-        HANDLE$alcGetProcAddress = RawFunctionLoader.link(SEGMENT$alcGetProcAddress, Descriptors.DESCRIPTOR$alcGetProcAddress);
-        SEGMENT$alcGetEnumValue = loader.apply("alcGetEnumValue");
-        HANDLE$alcGetEnumValue = RawFunctionLoader.link(SEGMENT$alcGetEnumValue, Descriptors.DESCRIPTOR$alcGetEnumValue);
-        SEGMENT$alcGetString = loader.apply("alcGetString");
-        HANDLE$alcGetString = RawFunctionLoader.link(SEGMENT$alcGetString, Descriptors.DESCRIPTOR$alcGetString);
-        SEGMENT$alcGetIntegerv = loader.apply("alcGetIntegerv");
-        HANDLE$alcGetIntegerv = RawFunctionLoader.link(SEGMENT$alcGetIntegerv, Descriptors.DESCRIPTOR$alcGetIntegerv);
-        SEGMENT$alcCaptureOpenDevice = loader.apply("alcCaptureOpenDevice");
-        HANDLE$alcCaptureOpenDevice = RawFunctionLoader.link(SEGMENT$alcCaptureOpenDevice, Descriptors.DESCRIPTOR$alcCaptureOpenDevice);
-        SEGMENT$alcCaptureCloseDevice = loader.apply("alcCaptureCloseDevice");
-        HANDLE$alcCaptureCloseDevice = RawFunctionLoader.link(SEGMENT$alcCaptureCloseDevice, Descriptors.DESCRIPTOR$alcCaptureCloseDevice);
-        SEGMENT$alcCaptureStart = loader.apply("alcCaptureStart");
-        HANDLE$alcCaptureStart = RawFunctionLoader.link(SEGMENT$alcCaptureStart, Descriptors.DESCRIPTOR$alcCaptureStart);
-        SEGMENT$alcCaptureStop = loader.apply("alcCaptureStop");
-        HANDLE$alcCaptureStop = RawFunctionLoader.link(SEGMENT$alcCaptureStop, Descriptors.DESCRIPTOR$alcCaptureStop);
-        SEGMENT$alcCaptureSamples = loader.apply("alcCaptureSamples");
-        HANDLE$alcCaptureSamples = RawFunctionLoader.link(SEGMENT$alcCaptureSamples, Descriptors.DESCRIPTOR$alcCaptureSamples);
         SEGMENT$alBufferDataStatic = loader.apply("alBufferDataStatic");
         HANDLE$alBufferDataStatic = RawFunctionLoader.link(SEGMENT$alBufferDataStatic, Descriptors.DESCRIPTOR$alBufferDataStatic);
-        SEGMENT$alcSetThreadContext = loader.apply("alcSetThreadContext");
-        HANDLE$alcSetThreadContext = RawFunctionLoader.link(SEGMENT$alcSetThreadContext, Descriptors.DESCRIPTOR$alcSetThreadContext);
-        SEGMENT$alcGetThreadContext = loader.apply("alcGetThreadContext");
-        HANDLE$alcGetThreadContext = RawFunctionLoader.link(SEGMENT$alcGetThreadContext, Descriptors.DESCRIPTOR$alcGetThreadContext);
         SEGMENT$alBufferSubDataSOFT = loader.apply("alBufferSubDataSOFT");
         HANDLE$alBufferSubDataSOFT = RawFunctionLoader.link(SEGMENT$alBufferSubDataSOFT, Descriptors.DESCRIPTOR$alBufferSubDataSOFT);
         SEGMENT$alRequestFoldbackStart = loader.apply("alRequestFoldbackStart");
@@ -218,12 +175,6 @@ public final class OpenAL {
         HANDLE$alGetBufferSamplesSOFT = RawFunctionLoader.link(SEGMENT$alGetBufferSamplesSOFT, Descriptors.DESCRIPTOR$alGetBufferSamplesSOFT);
         SEGMENT$alIsBufferFormatSupportedSOFT = loader.apply("alIsBufferFormatSupportedSOFT");
         HANDLE$alIsBufferFormatSupportedSOFT = RawFunctionLoader.link(SEGMENT$alIsBufferFormatSupportedSOFT, Descriptors.DESCRIPTOR$alIsBufferFormatSupportedSOFT);
-        SEGMENT$alcLoopbackOpenDeviceSOFT = loader.apply("alcLoopbackOpenDeviceSOFT");
-        HANDLE$alcLoopbackOpenDeviceSOFT = RawFunctionLoader.link(SEGMENT$alcLoopbackOpenDeviceSOFT, Descriptors.DESCRIPTOR$alcLoopbackOpenDeviceSOFT);
-        SEGMENT$alcIsRenderFormatSupportedSOFT = loader.apply("alcIsRenderFormatSupportedSOFT");
-        HANDLE$alcIsRenderFormatSupportedSOFT = RawFunctionLoader.link(SEGMENT$alcIsRenderFormatSupportedSOFT, Descriptors.DESCRIPTOR$alcIsRenderFormatSupportedSOFT);
-        SEGMENT$alcRenderSamplesSOFT = loader.apply("alcRenderSamplesSOFT");
-        HANDLE$alcRenderSamplesSOFT = RawFunctionLoader.link(SEGMENT$alcRenderSamplesSOFT, Descriptors.DESCRIPTOR$alcRenderSamplesSOFT);
         SEGMENT$alSourcedSOFT = loader.apply("alSourcedSOFT");
         HANDLE$alSourcedSOFT = RawFunctionLoader.link(SEGMENT$alSourcedSOFT, Descriptors.DESCRIPTOR$alSourcedSOFT);
         SEGMENT$alSource3dSOFT = loader.apply("alSource3dSOFT");
@@ -252,18 +203,8 @@ public final class OpenAL {
         HANDLE$alDeferUpdatesSOFT = RawFunctionLoader.link(SEGMENT$alDeferUpdatesSOFT, Descriptors.DESCRIPTOR$alDeferUpdatesSOFT);
         SEGMENT$alProcessUpdatesSOFT = loader.apply("alProcessUpdatesSOFT");
         HANDLE$alProcessUpdatesSOFT = RawFunctionLoader.link(SEGMENT$alProcessUpdatesSOFT, Descriptors.DESCRIPTOR$alProcessUpdatesSOFT);
-        SEGMENT$alcDevicePauseSOFT = loader.apply("alcDevicePauseSOFT");
-        HANDLE$alcDevicePauseSOFT = RawFunctionLoader.link(SEGMENT$alcDevicePauseSOFT, Descriptors.DESCRIPTOR$alcDevicePauseSOFT);
-        SEGMENT$alcDeviceResumeSOFT = loader.apply("alcDeviceResumeSOFT");
-        HANDLE$alcDeviceResumeSOFT = RawFunctionLoader.link(SEGMENT$alcDeviceResumeSOFT, Descriptors.DESCRIPTOR$alcDeviceResumeSOFT);
-        SEGMENT$alcGetStringiSOFT = loader.apply("alcGetStringiSOFT");
-        HANDLE$alcGetStringiSOFT = RawFunctionLoader.link(SEGMENT$alcGetStringiSOFT, Descriptors.DESCRIPTOR$alcGetStringiSOFT);
-        SEGMENT$alcResetDeviceSOFT = loader.apply("alcResetDeviceSOFT");
-        HANDLE$alcResetDeviceSOFT = RawFunctionLoader.link(SEGMENT$alcResetDeviceSOFT, Descriptors.DESCRIPTOR$alcResetDeviceSOFT);
         SEGMENT$alGetStringiSOFT = loader.apply("alGetStringiSOFT");
         HANDLE$alGetStringiSOFT = RawFunctionLoader.link(SEGMENT$alGetStringiSOFT, Descriptors.DESCRIPTOR$alGetStringiSOFT);
-        SEGMENT$alcGetInteger64vSOFT = loader.apply("alcGetInteger64vSOFT");
-        HANDLE$alcGetInteger64vSOFT = RawFunctionLoader.link(SEGMENT$alcGetInteger64vSOFT, Descriptors.DESCRIPTOR$alcGetInteger64vSOFT);
         SEGMENT$alEventControlSOFT = loader.apply("alEventControlSOFT");
         HANDLE$alEventControlSOFT = RawFunctionLoader.link(SEGMENT$alEventControlSOFT, Descriptors.DESCRIPTOR$alEventControlSOFT);
         SEGMENT$alEventCallbackSOFT = loader.apply("alEventCallbackSOFT");
@@ -272,8 +213,6 @@ public final class OpenAL {
         HANDLE$alGetPointerSOFT = RawFunctionLoader.link(SEGMENT$alGetPointerSOFT, Descriptors.DESCRIPTOR$alGetPointerSOFT);
         SEGMENT$alGetPointervSOFT = loader.apply("alGetPointervSOFT");
         HANDLE$alGetPointervSOFT = RawFunctionLoader.link(SEGMENT$alGetPointervSOFT, Descriptors.DESCRIPTOR$alGetPointervSOFT);
-        SEGMENT$alcReopenDeviceSOFT = loader.apply("alcReopenDeviceSOFT");
-        HANDLE$alcReopenDeviceSOFT = RawFunctionLoader.link(SEGMENT$alcReopenDeviceSOFT, Descriptors.DESCRIPTOR$alcReopenDeviceSOFT);
         SEGMENT$alBufferCallbackSOFT = loader.apply("alBufferCallbackSOFT");
         HANDLE$alBufferCallbackSOFT = RawFunctionLoader.link(SEGMENT$alBufferCallbackSOFT, Descriptors.DESCRIPTOR$alBufferCallbackSOFT);
         SEGMENT$alGetBufferPtrSOFT = loader.apply("alGetBufferPtrSOFT");
@@ -306,14 +245,6 @@ public final class OpenAL {
         HANDLE$alGetPointerEXT = RawFunctionLoader.link(SEGMENT$alGetPointerEXT, Descriptors.DESCRIPTOR$alGetPointerEXT);
         SEGMENT$alGetPointervEXT = loader.apply("alGetPointervEXT");
         HANDLE$alGetPointervEXT = RawFunctionLoader.link(SEGMENT$alGetPointervEXT, Descriptors.DESCRIPTOR$alGetPointervEXT);
-        SEGMENT$alcEventIsSupportedSOFT = loader.apply("alcEventIsSupportedSOFT");
-        HANDLE$alcEventIsSupportedSOFT = RawFunctionLoader.link(SEGMENT$alcEventIsSupportedSOFT, Descriptors.DESCRIPTOR$alcEventIsSupportedSOFT);
-        SEGMENT$alcEventControlSOFT = loader.apply("alcEventControlSOFT");
-        HANDLE$alcEventControlSOFT = RawFunctionLoader.link(SEGMENT$alcEventControlSOFT, Descriptors.DESCRIPTOR$alcEventControlSOFT);
-        SEGMENT$alcEventCallbackSOFT = loader.apply("alcEventCallbackSOFT");
-        HANDLE$alcEventCallbackSOFT = RawFunctionLoader.link(SEGMENT$alcEventCallbackSOFT, Descriptors.DESCRIPTOR$alcEventCallbackSOFT);
-        SEGMENT$alcGetProcAddress2 = loader.apply("alcGetProcAddress2");
-        HANDLE$alcGetProcAddress2 = RawFunctionLoader.link(SEGMENT$alcGetProcAddress2, Descriptors.DESCRIPTOR$alcGetProcAddress2);
         SEGMENT$alEnableDirect = loader.apply("alEnableDirect");
         HANDLE$alEnableDirect = RawFunctionLoader.link(SEGMENT$alEnableDirect, Descriptors.DESCRIPTOR$alEnableDirect);
         SEGMENT$alDisableDirect = loader.apply("alDisableDirect");
@@ -787,13 +718,13 @@ public final class OpenAL {
 
     public void getBooleanv(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALboolean") BytePtr values
+        @Nullable @Pointer(comment="ALboolean") BytePtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBooleanv);
         try {
             hFunction.invokeExact(
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -802,13 +733,13 @@ public final class OpenAL {
 
     public void getIntegerv(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetIntegerv);
         try {
             hFunction.invokeExact(
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -817,13 +748,13 @@ public final class OpenAL {
 
     public void getFloatv(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFloatv);
         try {
             hFunction.invokeExact(
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -832,13 +763,13 @@ public final class OpenAL {
 
     public void getDoublev(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr values
+        @Nullable @Pointer(comment="ALdouble") DoublePtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetDoublev);
         try {
             hFunction.invokeExact(
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -911,12 +842,12 @@ public final class OpenAL {
 
     ///  Query for the presence of an extension on the AL context.
     public @NativeType("ALboolean") byte isExtensionPresent(
-        @Pointer(comment="ALchar") BytePtr extname
+        @Nullable @Pointer(comment="ALchar") BytePtr extname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alIsExtensionPresent);
         try {
             return (byte) hFunction.invokeExact(
-                extname.segment()
+                (MemorySegment) (extname != null ? extname.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -926,12 +857,12 @@ public final class OpenAL {
     /// Retrieve the address of a function. The returned function may be context-
     /// specific.
     public @Pointer(comment="void*") MemorySegment getProcAddress(
-        @Pointer(comment="ALchar") BytePtr fname
+        @Nullable @Pointer(comment="ALchar") BytePtr fname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetProcAddress);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                fname.segment()
+                (MemorySegment) (fname != null ? fname.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -940,12 +871,12 @@ public final class OpenAL {
 
     /// Retrieve the value of an enum. The returned value may be context-specific.
     public @NativeType("ALenum") int getEnumValue(
-        @Pointer(comment="ALchar") BytePtr ename
+        @Nullable @Pointer(comment="ALchar") BytePtr ename
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEnumValue);
         try {
             return (int) hFunction.invokeExact(
-                ename.segment()
+                (MemorySegment) (ename != null ? ename.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -988,13 +919,13 @@ public final class OpenAL {
 
     public void listenerfv(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alListenerfv);
         try {
             hFunction.invokeExact(
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1037,13 +968,13 @@ public final class OpenAL {
 
     public void listeneriv(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alListeneriv);
         try {
             hFunction.invokeExact(
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1052,13 +983,13 @@ public final class OpenAL {
 
     public void getListenerf(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListenerf);
         try {
             hFunction.invokeExact(
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1067,17 +998,17 @@ public final class OpenAL {
 
     public void getListener3f(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value1,
-        @Pointer(comment="ALfloat") FloatPtr value2,
-        @Pointer(comment="ALfloat") FloatPtr value3
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value1,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value2,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListener3f);
         try {
             hFunction.invokeExact(
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1086,13 +1017,13 @@ public final class OpenAL {
 
     public void getListenerfv(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListenerfv);
         try {
             hFunction.invokeExact(
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1101,13 +1032,13 @@ public final class OpenAL {
 
     public void getListeneri(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value
+        @Nullable @Pointer(comment="ALint") IntPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListeneri);
         try {
             hFunction.invokeExact(
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1116,17 +1047,17 @@ public final class OpenAL {
 
     public void getListener3i(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value1,
-        @Pointer(comment="ALint") IntPtr value2,
-        @Pointer(comment="ALint") IntPtr value3
+        @Nullable @Pointer(comment="ALint") IntPtr value1,
+        @Nullable @Pointer(comment="ALint") IntPtr value2,
+        @Nullable @Pointer(comment="ALint") IntPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListener3i);
         try {
             hFunction.invokeExact(
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1135,13 +1066,13 @@ public final class OpenAL {
 
     public void getListeneriv(
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListeneriv);
         try {
             hFunction.invokeExact(
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1151,13 +1082,13 @@ public final class OpenAL {
     ///  Create source objects.
     public void genSources(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenSources);
         try {
             hFunction.invokeExact(
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1167,13 +1098,13 @@ public final class OpenAL {
     ///  Delete source objects.
     public void deleteSources(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteSources);
         try {
             hFunction.invokeExact(
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1235,14 +1166,14 @@ public final class OpenAL {
     public void sourcefv(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcefv);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1290,14 +1221,14 @@ public final class OpenAL {
     public void sourceiv(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceiv);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1307,14 +1238,14 @@ public final class OpenAL {
     public void getSourcef(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcef);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1324,18 +1255,18 @@ public final class OpenAL {
     public void getSource3f(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value1,
-        @Pointer(comment="ALfloat") FloatPtr value2,
-        @Pointer(comment="ALfloat") FloatPtr value3
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value1,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value2,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSource3f);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1345,14 +1276,14 @@ public final class OpenAL {
     public void getSourcefv(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcefv);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1362,14 +1293,14 @@ public final class OpenAL {
     public void getSourcei(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value
+        @Nullable @Pointer(comment="ALint") IntPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcei);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1379,18 +1310,18 @@ public final class OpenAL {
     public void getSource3i(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value1,
-        @Pointer(comment="ALint") IntPtr value2,
-        @Pointer(comment="ALint") IntPtr value3
+        @Nullable @Pointer(comment="ALint") IntPtr value1,
+        @Nullable @Pointer(comment="ALint") IntPtr value2,
+        @Nullable @Pointer(comment="ALint") IntPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSource3i);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1400,14 +1331,14 @@ public final class OpenAL {
     public void getSourceiv(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourceiv);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1473,13 +1404,13 @@ public final class OpenAL {
     ///  Play, restart, or resume a list of sources atomically.
     public void sourcePlayv(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePlayv);
         try {
             hFunction.invokeExact(
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1489,13 +1420,13 @@ public final class OpenAL {
     ///  Stop a list of sources atomically.
     public void sourceStopv(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceStopv);
         try {
             hFunction.invokeExact(
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1505,13 +1436,13 @@ public final class OpenAL {
     ///  Rewind a list of sources atomically.
     public void sourceRewindv(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceRewindv);
         try {
             hFunction.invokeExact(
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1521,13 +1452,13 @@ public final class OpenAL {
     ///  Pause a list of sources atomically.
     public void sourcePausev(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePausev);
         try {
             hFunction.invokeExact(
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1538,14 +1469,14 @@ public final class OpenAL {
     public void sourceQueueBuffers(
         @NativeType("ALuint") int source,
         @NativeType("ALsizei") int nb,
-        @Pointer(comment="ALuint") IntPtr buffers
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceQueueBuffers);
         try {
             hFunction.invokeExact(
                 source,
                 nb,
-                buffers.segment()
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1556,14 +1487,14 @@ public final class OpenAL {
     public void sourceUnqueueBuffers(
         @NativeType("ALuint") int source,
         @NativeType("ALsizei") int nb,
-        @Pointer(comment="ALuint") IntPtr buffers
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceUnqueueBuffers);
         try {
             hFunction.invokeExact(
                 source,
                 nb,
-                buffers.segment()
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1573,13 +1504,13 @@ public final class OpenAL {
     ///  Create buffer objects
     public void genBuffers(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr buffers
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenBuffers);
         try {
             hFunction.invokeExact(
                 n,
-                buffers.segment()
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1589,13 +1520,13 @@ public final class OpenAL {
     ///  Delete buffer objects
     public void deleteBuffers(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr buffers
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteBuffers);
         try {
             hFunction.invokeExact(
                 n,
-                buffers.segment()
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1680,14 +1611,14 @@ public final class OpenAL {
     public void bufferfv(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferfv);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1735,14 +1666,14 @@ public final class OpenAL {
     public void bufferiv(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferiv);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1752,14 +1683,14 @@ public final class OpenAL {
     public void getBufferf(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferf);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1769,18 +1700,18 @@ public final class OpenAL {
     public void getBuffer3f(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value1,
-        @Pointer(comment="ALfloat") FloatPtr value2,
-        @Pointer(comment="ALfloat") FloatPtr value3
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value1,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value2,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBuffer3f);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1790,14 +1721,14 @@ public final class OpenAL {
     public void getBufferfv(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferfv);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1807,14 +1738,14 @@ public final class OpenAL {
     public void getBufferi(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value
+        @Nullable @Pointer(comment="ALint") IntPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferi);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1824,18 +1755,18 @@ public final class OpenAL {
     public void getBuffer3i(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value1,
-        @Pointer(comment="ALint") IntPtr value2,
-        @Pointer(comment="ALint") IntPtr value3
+        @Nullable @Pointer(comment="ALint") IntPtr value1,
+        @Nullable @Pointer(comment="ALint") IntPtr value2,
+        @Nullable @Pointer(comment="ALint") IntPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBuffer3i);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -1845,323 +1776,14 @@ public final class OpenAL {
     public void getBufferiv(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferiv);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                values.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Create and attach a context to the given device.
-    public @Pointer(comment="ALCcontext*") MemorySegment cCreateContext(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="ALCint") IntPtr attrlist
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcCreateContext);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                device,
-                attrlist.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// Makes the given context the active process-wide context. Passing NULL clears
-    /// the active context.
-    public @NativeType("ALCboolean") byte cMakeContextCurrent(
-        @Pointer(comment="ALCcontext*") MemorySegment context
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcMakeContextCurrent);
-        try {
-            return (byte) hFunction.invokeExact(
-                context
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Resumes processing updates for the given context.
-    public void cProcessContext(
-        @Pointer(comment="ALCcontext*") MemorySegment context
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcProcessContext);
-        try {
-            hFunction.invokeExact(
-                context
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Suspends updates for the given context.
-    public void cSuspendContext(
-        @Pointer(comment="ALCcontext*") MemorySegment context
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcSuspendContext);
-        try {
-            hFunction.invokeExact(
-                context
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Remove a context from its device and destroys it.
-    public void cDestroyContext(
-        @Pointer(comment="ALCcontext*") MemorySegment context
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcDestroyContext);
-        try {
-            hFunction.invokeExact(
-                context
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Returns the currently active context.
-    public @Pointer(comment="ALCcontext*") MemorySegment cGetCurrentContext() {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetCurrentContext);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Returns the device that a particular context is attached to.
-    public @Pointer(comment="ALCdevice*") MemorySegment cGetContextsDevice(
-        @Pointer(comment="ALCcontext*") MemorySegment context
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetContextsDevice);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                context
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Opens the named playback device.
-    public @Pointer(comment="ALCdevice*") MemorySegment cOpenDevice(
-        @Pointer(comment="ALCchar") BytePtr devicename
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcOpenDevice);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                devicename.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Closes the given playback device.
-    public @NativeType("ALCboolean") byte cCloseDevice(
-        @Pointer(comment="ALCdevice*") MemorySegment device
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcCloseDevice);
-        try {
-            return (byte) hFunction.invokeExact(
-                device
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Obtain the most recent Device error.
-    public @NativeType("ALCenum") int cGetError(
-        @Pointer(comment="ALCdevice*") MemorySegment device
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetError);
-        try {
-            return (int) hFunction.invokeExact(
-                device
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// Query for the presence of an extension on the device. Pass a NULL device to
-    /// query a device-inspecific extension.
-    public @NativeType("ALCboolean") byte cIsExtensionPresent(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="ALCchar") BytePtr extname
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcIsExtensionPresent);
-        try {
-            return (byte) hFunction.invokeExact(
-                device,
-                extname.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// Retrieve the address of a function. Given a non-NULL device, the returned
-    /// function may be device-specific.
-    public @Pointer(comment="void*") MemorySegment cGetProcAddress(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="ALCchar") BytePtr funcname
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetProcAddress);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                device,
-                funcname.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// Retrieve the value of an enum. Given a non-NULL device, the returned value
-    /// may be device-specific.
-    public @NativeType("ALCenum") int cGetEnumValue(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="ALCchar") BytePtr enumname
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetEnumValue);
-        try {
-            return (int) hFunction.invokeExact(
-                device,
-                enumname.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Returns information about the device, and error strings.
-    public @Pointer(comment="ALCchar") BytePtr cGetString(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @NativeType("ALCenum") int param
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetString);
-        try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                device,
-                param
-            );
-            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Returns information about the device and the version of OpenAL.
-    public void cGetIntegerv(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @NativeType("ALCenum") int param,
-        @NativeType("ALCsizei") int size,
-        @Pointer(comment="ALCint") IntPtr values
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetIntegerv);
-        try {
-            hFunction.invokeExact(
-                device,
-                param,
-                size,
-                values.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /// Opens the named capture device with the given frequency, format, and buffer
-    /// size.
-    public @Pointer(comment="ALCdevice*") MemorySegment cCaptureOpenDevice(
-        @Pointer(comment="ALCchar") BytePtr devicename,
-        @NativeType("ALCuint") int frequency,
-        @NativeType("ALCenum") int format,
-        @NativeType("ALCsizei") int buffersize
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcCaptureOpenDevice);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                devicename.segment(),
-                frequency,
-                format,
-                buffersize
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Closes the given capture device.
-    public @NativeType("ALCboolean") byte cCaptureCloseDevice(
-        @Pointer(comment="ALCdevice*") MemorySegment device
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcCaptureCloseDevice);
-        try {
-            return (byte) hFunction.invokeExact(
-                device
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Starts capturing samples into the device buffer.
-    public void cCaptureStart(
-        @Pointer(comment="ALCdevice*") MemorySegment device
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcCaptureStart);
-        try {
-            hFunction.invokeExact(
-                device
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Stops capturing samples. Samples in the device buffer remain available.
-    public void cCaptureStop(
-        @Pointer(comment="ALCdevice*") MemorySegment device
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcCaptureStop);
-        try {
-            hFunction.invokeExact(
-                device
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    ///  Reads samples from the device buffer.
-    public void cCaptureSamples(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="void*") MemorySegment buffer,
-        @NativeType("ALCsizei") int samples
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcCaptureSamples);
-        try {
-            hFunction.invokeExact(
-                device,
-                buffer,
-                samples
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2183,29 +1805,6 @@ public final class OpenAL {
                 data,
                 size,
                 freq
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @NativeType("ALCboolean") byte cSetThreadContext(
-        @Pointer(comment="ALCcontext*") MemorySegment context
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcSetThreadContext);
-        try {
-            return (byte) hFunction.invokeExact(
-                context
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @Pointer(comment="ALCcontext*") MemorySegment cGetThreadContext() {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetThreadContext);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2237,7 +1836,7 @@ public final class OpenAL {
         @NativeType("ALenum") int mode,
         @NativeType("ALsizei") int count,
         @NativeType("ALsizei") int length,
-        @Pointer(comment="ALfloat") FloatPtr mem,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr mem,
         @Pointer(comment="LPALFOLDBACKCALLBACK") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alRequestFoldbackStart);
@@ -2246,7 +1845,7 @@ public final class OpenAL {
                 mode,
                 count,
                 length,
-                mem.segment(),
+                (MemorySegment) (mem != null ? mem.segment() : MemorySegment.NULL),
                 callback
             );
         } catch (Throwable e) {
@@ -2348,55 +1947,6 @@ public final class OpenAL {
         }
     }
 
-    public @Pointer(comment="ALCdevice*") MemorySegment cLoopbackOpenDeviceSOFT(
-        @Pointer(comment="ALCchar") BytePtr deviceName
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcLoopbackOpenDeviceSOFT);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                deviceName.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @NativeType("ALCboolean") byte cIsRenderFormatSupportedSOFT(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @NativeType("ALCsizei") int freq,
-        @NativeType("ALCenum") int channels,
-        @NativeType("ALCenum") int type
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcIsRenderFormatSupportedSOFT);
-        try {
-            return (byte) hFunction.invokeExact(
-                device,
-                freq,
-                channels,
-                type
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void cRenderSamplesSOFT(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="void*") MemorySegment buffer,
-        @NativeType("ALCsizei") int samples
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcRenderSamplesSOFT);
-        try {
-            hFunction.invokeExact(
-                device,
-                buffer,
-                samples
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void sourcedSOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
@@ -2438,14 +1988,14 @@ public final class OpenAL {
     public void sourcedvSOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr values
+        @Nullable @Pointer(comment="ALdouble") DoublePtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcedvSOFT);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2455,14 +2005,14 @@ public final class OpenAL {
     public void getSourcedSOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr value
+        @Nullable @Pointer(comment="ALdouble") DoublePtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcedSOFT);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2472,18 +2022,18 @@ public final class OpenAL {
     public void getSource3dSOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr value1,
-        @Pointer(comment="ALdouble") DoublePtr value2,
-        @Pointer(comment="ALdouble") DoublePtr value3
+        @Nullable @Pointer(comment="ALdouble") DoublePtr value1,
+        @Nullable @Pointer(comment="ALdouble") DoublePtr value2,
+        @Nullable @Pointer(comment="ALdouble") DoublePtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSource3dSOFT);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2493,14 +2043,14 @@ public final class OpenAL {
     public void getSourcedvSOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr values
+        @Nullable @Pointer(comment="ALdouble") DoublePtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcedvSOFT);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2548,14 +2098,14 @@ public final class OpenAL {
     public void sourcei64vSOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint64SOFT") LongPtr values
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcei64vSOFT);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2565,14 +2115,14 @@ public final class OpenAL {
     public void getSourcei64SOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint64SOFT") LongPtr value
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcei64SOFT);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2582,18 +2132,18 @@ public final class OpenAL {
     public void getSource3i64SOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint64SOFT") LongPtr value1,
-        @Pointer(comment="ALint64SOFT") LongPtr value2,
-        @Pointer(comment="ALint64SOFT") LongPtr value3
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr value1,
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr value2,
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSource3i64SOFT);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2603,14 +2153,14 @@ public final class OpenAL {
     public void getSourcei64vSOFT(
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint64SOFT") LongPtr values
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcei64vSOFT);
         try {
             hFunction.invokeExact(
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2637,65 +2187,6 @@ public final class OpenAL {
         }
     }
 
-    public void cDevicePauseSOFT(
-        @Pointer(comment="ALCdevice*") MemorySegment device
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcDevicePauseSOFT);
-        try {
-            hFunction.invokeExact(
-                device
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void cDeviceResumeSOFT(
-        @Pointer(comment="ALCdevice*") MemorySegment device
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcDeviceResumeSOFT);
-        try {
-            hFunction.invokeExact(
-                device
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @Pointer(comment="ALCchar") BytePtr cGetStringiSOFT(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @NativeType("ALCenum") int paramName,
-        @NativeType("ALCsizei") int index
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetStringiSOFT);
-        try {
-            MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                device,
-                paramName,
-                index
-            );
-            return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @NativeType("ALCboolean") byte cResetDeviceSOFT(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="ALCint") IntPtr attribs
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcResetDeviceSOFT);
-        try {
-            return (byte) hFunction.invokeExact(
-                device,
-                attribs.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public @Pointer(comment="ALchar") BytePtr getStringiSOFT(
         @NativeType("ALenum") int pname,
         @NativeType("ALsizei") int index
@@ -2712,35 +2203,16 @@ public final class OpenAL {
         }
     }
 
-    public void cGetInteger64vSOFT(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @NativeType("ALCenum") int pname,
-        @NativeType("ALsizei") int size,
-        @Pointer(comment="ALCint64SOFT") LongPtr values
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetInteger64vSOFT);
-        try {
-            hFunction.invokeExact(
-                device,
-                pname,
-                size,
-                values.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void eventControlSOFT(
         @NativeType("ALsizei") int count,
-        @Pointer(comment="ALenum") IntPtr types,
+        @Nullable @Pointer(comment="ALenum") IntPtr types,
         @NativeType("ALboolean") byte enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEventControlSOFT);
         try {
             hFunction.invokeExact(
                 count,
-                types.segment(),
+                (MemorySegment) (types != null ? types.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -2778,30 +2250,13 @@ public final class OpenAL {
 
     public void getPointervSOFT(
         @NativeType("ALenum") int pname,
-        PointerPtr values
+        @Nullable PointerPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetPointervSOFT);
         try {
             hFunction.invokeExact(
                 pname,
-                values.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @NativeType("ALCboolean") byte cReopenDeviceSOFT(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="ALCchar") BytePtr deviceName,
-        @Pointer(comment="ALCint") IntPtr attribs
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcReopenDeviceSOFT);
-        try {
-            return (byte) hFunction.invokeExact(
-                device,
-                deviceName.segment(),
-                attribs.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2832,14 +2287,14 @@ public final class OpenAL {
     public void getBufferPtrSOFT(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        PointerPtr ptr
+        @Nullable PointerPtr ptr
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferPtrSOFT);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                ptr.segment()
+                (MemorySegment) (ptr != null ? ptr.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2849,18 +2304,18 @@ public final class OpenAL {
     public void getBuffer3PtrSOFT(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        PointerPtr ptr0,
-        PointerPtr ptr1,
-        PointerPtr ptr2
+        @Nullable PointerPtr ptr0,
+        @Nullable PointerPtr ptr1,
+        @Nullable PointerPtr ptr2
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBuffer3PtrSOFT);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                ptr0.segment(),
-                ptr1.segment(),
-                ptr2.segment()
+                (MemorySegment) (ptr0 != null ? ptr0.segment() : MemorySegment.NULL),
+                (MemorySegment) (ptr1 != null ? ptr1.segment() : MemorySegment.NULL),
+                (MemorySegment) (ptr2 != null ? ptr2.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2870,14 +2325,14 @@ public final class OpenAL {
     public void getBufferPtrvSOFT(
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        PointerPtr ptr
+        @Nullable PointerPtr ptr
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferPtrvSOFT);
         try {
             hFunction.invokeExact(
                 buffer,
                 param,
-                ptr.segment()
+                (MemorySegment) (ptr != null ? ptr.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2901,14 +2356,14 @@ public final class OpenAL {
 
     public void sourcePlayAtTimevSOFT(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources,
+        @Nullable @Pointer(comment="ALuint") IntPtr sources,
         @NativeType("ALint64SOFT") long start_time
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePlayAtTimevSOFT);
         try {
             hFunction.invokeExact(
                 n,
-                sources.segment(),
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL),
                 start_time
             );
         } catch (Throwable e) {
@@ -2937,7 +2392,7 @@ public final class OpenAL {
         @NativeType("ALuint") int id,
         @NativeType("ALenum") int severity,
         @NativeType("ALsizei") int length,
-        @Pointer(comment="ALchar") BytePtr message
+        @Nullable @Pointer(comment="ALchar") BytePtr message
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDebugMessageInsertEXT);
         try {
@@ -2947,7 +2402,7 @@ public final class OpenAL {
                 id,
                 severity,
                 length,
-                message.segment()
+                (MemorySegment) (message != null ? message.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -2959,7 +2414,7 @@ public final class OpenAL {
         @NativeType("ALenum") int type,
         @NativeType("ALenum") int severity,
         @NativeType("ALsizei") int count,
-        @Pointer(comment="ALuint") IntPtr ids,
+        @Nullable @Pointer(comment="ALuint") IntPtr ids,
         @NativeType("ALboolean") byte enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDebugMessageControlEXT);
@@ -2969,7 +2424,7 @@ public final class OpenAL {
                 type,
                 severity,
                 count,
-                ids.segment(),
+                (MemorySegment) (ids != null ? ids.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -2981,7 +2436,7 @@ public final class OpenAL {
         @NativeType("ALenum") int source,
         @NativeType("ALuint") int id,
         @NativeType("ALsizei") int length,
-        @Pointer(comment="ALchar") BytePtr message
+        @Nullable @Pointer(comment="ALchar") BytePtr message
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alPushDebugGroupEXT);
         try {
@@ -2989,7 +2444,7 @@ public final class OpenAL {
                 source,
                 id,
                 length,
-                message.segment()
+                (MemorySegment) (message != null ? message.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3009,24 +2464,24 @@ public final class OpenAL {
     public @NativeType("ALuint") int getDebugMessageLogEXT(
         @NativeType("ALuint") int count,
         @NativeType("ALsizei") int logBufSize,
-        @Pointer(comment="ALenum") IntPtr sources,
-        @Pointer(comment="ALenum") IntPtr types,
-        @Pointer(comment="ALuint") IntPtr ids,
-        @Pointer(comment="ALenum") IntPtr severities,
-        @Pointer(comment="ALsizei") IntPtr lengths,
-        @Pointer(comment="ALchar") BytePtr logBuf
+        @Nullable @Pointer(comment="ALenum") IntPtr sources,
+        @Nullable @Pointer(comment="ALenum") IntPtr types,
+        @Nullable @Pointer(comment="ALuint") IntPtr ids,
+        @Nullable @Pointer(comment="ALenum") IntPtr severities,
+        @Nullable @Pointer(comment="ALsizei") IntPtr lengths,
+        @Nullable @Pointer(comment="ALchar") BytePtr logBuf
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetDebugMessageLogEXT);
         try {
             return (int) hFunction.invokeExact(
                 count,
                 logBufSize,
-                sources.segment(),
-                types.segment(),
-                ids.segment(),
-                severities.segment(),
-                lengths.segment(),
-                logBuf.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL),
+                (MemorySegment) (types != null ? types.segment() : MemorySegment.NULL),
+                (MemorySegment) (ids != null ? ids.segment() : MemorySegment.NULL),
+                (MemorySegment) (severities != null ? severities.segment() : MemorySegment.NULL),
+                (MemorySegment) (lengths != null ? lengths.segment() : MemorySegment.NULL),
+                (MemorySegment) (logBuf != null ? logBuf.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3037,7 +2492,7 @@ public final class OpenAL {
         @NativeType("ALenum") int identifier,
         @NativeType("ALuint") int name,
         @NativeType("ALsizei") int length,
-        @Pointer(comment="ALchar") BytePtr label
+        @Nullable @Pointer(comment="ALchar") BytePtr label
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alObjectLabelEXT);
         try {
@@ -3045,7 +2500,7 @@ public final class OpenAL {
                 identifier,
                 name,
                 length,
-                label.segment()
+                (MemorySegment) (label != null ? label.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3056,8 +2511,8 @@ public final class OpenAL {
         @NativeType("ALenum") int identifier,
         @NativeType("ALuint") int name,
         @NativeType("ALsizei") int bufSize,
-        @Pointer(comment="ALsizei") IntPtr length,
-        @Pointer(comment="ALchar") BytePtr label
+        @Nullable @Pointer(comment="ALsizei") IntPtr length,
+        @Nullable @Pointer(comment="ALchar") BytePtr label
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetObjectLabelEXT);
         try {
@@ -3065,8 +2520,8 @@ public final class OpenAL {
                 identifier,
                 name,
                 bufSize,
-                length.segment(),
-                label.segment()
+                (MemorySegment) (length != null ? length.segment() : MemorySegment.NULL),
+                (MemorySegment) (label != null ? label.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3088,75 +2543,13 @@ public final class OpenAL {
 
     public void getPointervEXT(
         @NativeType("ALenum") int pname,
-        PointerPtr values
+        @Nullable PointerPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetPointervEXT);
         try {
             hFunction.invokeExact(
                 pname,
-                values.segment()
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @NativeType("ALCenum") int cEventIsSupportedSOFT(
-        @NativeType("ALCenum") int eventType,
-        @NativeType("ALCenum") int deviceType
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcEventIsSupportedSOFT);
-        try {
-            return (int) hFunction.invokeExact(
-                eventType,
-                deviceType
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @NativeType("ALCboolean") byte cEventControlSOFT(
-        @NativeType("ALCsizei") int count,
-        @Pointer(comment="ALCenum") IntPtr events,
-        @NativeType("ALCboolean") byte enable
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcEventControlSOFT);
-        try {
-            return (byte) hFunction.invokeExact(
-                count,
-                events.segment(),
-                enable
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void cEventCallbackSOFT(
-        @Pointer(comment="ALCEVENTPROCTYPESOFT") MemorySegment callback,
-        @Pointer(comment="void*") MemorySegment userParam
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcEventCallbackSOFT);
-        try {
-            hFunction.invokeExact(
-                callback,
-                userParam
-            );
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public @Pointer(comment="void*") MemorySegment cGetProcAddress2(
-        @Pointer(comment="ALCdevice*") MemorySegment device,
-        @Pointer(comment="ALCchar") BytePtr funcName
-    ) {
-        MethodHandle hFunction = Objects.requireNonNull(HANDLE$alcGetProcAddress2);
-        try {
-            return (MemorySegment) hFunction.invokeExact(
-                device,
-                funcName.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3164,13 +2557,13 @@ public final class OpenAL {
     }
 
     public void enableDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int capability
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEnableDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 capability
             );
         } catch (Throwable e) {
@@ -3179,13 +2572,13 @@ public final class OpenAL {
     }
 
     public void disableDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int capability
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDisableDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 capability
             );
         } catch (Throwable e) {
@@ -3194,13 +2587,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte isEnabledDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int capability
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alIsEnabledDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 capability
             );
         } catch (Throwable e) {
@@ -3209,13 +2602,13 @@ public final class OpenAL {
     }
 
     public void dopplerFactorDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALfloat") float value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDopplerFactorDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 value
             );
         } catch (Throwable e) {
@@ -3224,13 +2617,13 @@ public final class OpenAL {
     }
 
     public void speedOfSoundDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALfloat") float value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSpeedOfSoundDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 value
             );
         } catch (Throwable e) {
@@ -3239,13 +2632,13 @@ public final class OpenAL {
     }
 
     public void distanceModelDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int distanceModel
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDistanceModelDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 distanceModel
             );
         } catch (Throwable e) {
@@ -3254,13 +2647,13 @@ public final class OpenAL {
     }
 
     public @Pointer(comment="ALchar") BytePtr getStringDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetStringDirect);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param
             );
             return s.equals(MemorySegment.NULL) ? null : new BytePtr(s);
@@ -3270,16 +2663,16 @@ public final class OpenAL {
     }
 
     public void getBooleanvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALboolean") BytePtr values
+        @Nullable @Pointer(comment="ALboolean") BytePtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBooleanvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3287,16 +2680,16 @@ public final class OpenAL {
     }
 
     public void getIntegervDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetIntegervDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3304,16 +2697,16 @@ public final class OpenAL {
     }
 
     public void getFloatvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFloatvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3321,16 +2714,16 @@ public final class OpenAL {
     }
 
     public void getDoublevDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr values
+        @Nullable @Pointer(comment="ALdouble") DoublePtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetDoublevDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3338,13 +2731,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte getBooleanDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBooleanDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param
             );
         } catch (Throwable e) {
@@ -3353,13 +2746,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALint") int getIntegerDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetIntegerDirect);
         try {
             return (int) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param
             );
         } catch (Throwable e) {
@@ -3368,13 +2761,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALfloat") float getFloatDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFloatDirect);
         try {
             return (float) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param
             );
         } catch (Throwable e) {
@@ -3383,13 +2776,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALdouble") double getDoubleDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetDoubleDirect);
         try {
             return (double) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param
             );
         } catch (Throwable e) {
@@ -3398,12 +2791,12 @@ public final class OpenAL {
     }
 
     public @NativeType("ALenum") int getErrorDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context
+        @Nullable ALCcontext context
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetErrorDirect);
         try {
             return (int) hFunction.invokeExact(
-                context
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3411,14 +2804,14 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte isExtensionPresentDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
-        @Pointer(comment="ALchar") BytePtr extname
+        @Nullable ALCcontext context,
+        @Nullable @Pointer(comment="ALchar") BytePtr extname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alIsExtensionPresentDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
-                extname.segment()
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
+                (MemorySegment) (extname != null ? extname.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3426,14 +2819,14 @@ public final class OpenAL {
     }
 
     public @Pointer(comment="void*") MemorySegment getProcAddressDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
-        @Pointer(comment="ALchar") BytePtr fname
+        @Nullable ALCcontext context,
+        @Nullable @Pointer(comment="ALchar") BytePtr fname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetProcAddressDirect);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                context,
-                fname.segment()
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
+                (MemorySegment) (fname != null ? fname.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3441,14 +2834,14 @@ public final class OpenAL {
     }
 
     public @NativeType("ALenum") int getEnumValueDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
-        @Pointer(comment="ALchar") BytePtr ename
+        @Nullable ALCcontext context,
+        @Nullable @Pointer(comment="ALchar") BytePtr ename
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEnumValueDirect);
         try {
             return (int) hFunction.invokeExact(
-                context,
-                ename.segment()
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
+                (MemorySegment) (ename != null ? ename.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3456,14 +2849,14 @@ public final class OpenAL {
     }
 
     public void listenerfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alListenerfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
                 value
             );
@@ -3473,7 +2866,7 @@ public final class OpenAL {
     }
 
     public void listener3fDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float value1,
         @NativeType("ALfloat") float value2,
@@ -3482,7 +2875,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alListener3fDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
                 value1,
                 value2,
@@ -3494,16 +2887,16 @@ public final class OpenAL {
     }
 
     public void listenerfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alListenerfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3511,14 +2904,14 @@ public final class OpenAL {
     }
 
     public void listeneriDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alListeneriDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
                 value
             );
@@ -3528,7 +2921,7 @@ public final class OpenAL {
     }
 
     public void listener3iDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int value1,
         @NativeType("ALint") int value2,
@@ -3537,7 +2930,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alListener3iDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
                 value1,
                 value2,
@@ -3549,16 +2942,16 @@ public final class OpenAL {
     }
 
     public void listenerivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alListenerivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3566,16 +2959,16 @@ public final class OpenAL {
     }
 
     public void getListenerfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListenerfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3583,20 +2976,20 @@ public final class OpenAL {
     }
 
     public void getListener3fDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value1,
-        @Pointer(comment="ALfloat") FloatPtr value2,
-        @Pointer(comment="ALfloat") FloatPtr value3
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value1,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value2,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListener3fDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3604,16 +2997,16 @@ public final class OpenAL {
     }
 
     public void getListenerfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListenerfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3621,16 +3014,16 @@ public final class OpenAL {
     }
 
     public void getListeneriDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value
+        @Nullable @Pointer(comment="ALint") IntPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListeneriDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3638,20 +3031,20 @@ public final class OpenAL {
     }
 
     public void getListener3iDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value1,
-        @Pointer(comment="ALint") IntPtr value2,
-        @Pointer(comment="ALint") IntPtr value3
+        @Nullable @Pointer(comment="ALint") IntPtr value1,
+        @Nullable @Pointer(comment="ALint") IntPtr value2,
+        @Nullable @Pointer(comment="ALint") IntPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListener3iDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3659,16 +3052,16 @@ public final class OpenAL {
     }
 
     public void getListenerivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetListenerivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3676,16 +3069,16 @@ public final class OpenAL {
     }
 
     public void genSourcesDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenSourcesDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3693,16 +3086,16 @@ public final class OpenAL {
     }
 
     public void deleteSourcesDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteSourcesDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3710,13 +3103,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte isSourceDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alIsSourceDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source
             );
         } catch (Throwable e) {
@@ -3725,7 +3118,7 @@ public final class OpenAL {
     }
 
     public void sourcefDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float value
@@ -3733,7 +3126,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcefDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
                 value
@@ -3744,7 +3137,7 @@ public final class OpenAL {
     }
 
     public void source3fDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float value1,
@@ -3754,7 +3147,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSource3fDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
                 value1,
@@ -3767,18 +3160,18 @@ public final class OpenAL {
     }
 
     public void sourcefvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcefvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3786,7 +3179,7 @@ public final class OpenAL {
     }
 
     public void sourceiDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int value
@@ -3794,7 +3187,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceiDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
                 value
@@ -3805,7 +3198,7 @@ public final class OpenAL {
     }
 
     public void source3iDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int value1,
@@ -3815,7 +3208,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSource3iDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
                 value1,
@@ -3828,18 +3221,18 @@ public final class OpenAL {
     }
 
     public void sourceivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3847,18 +3240,18 @@ public final class OpenAL {
     }
 
     public void getSourcefDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcefDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3866,22 +3259,22 @@ public final class OpenAL {
     }
 
     public void getSource3fDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value1,
-        @Pointer(comment="ALfloat") FloatPtr value2,
-        @Pointer(comment="ALfloat") FloatPtr value3
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value1,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value2,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSource3fDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3889,18 +3282,18 @@ public final class OpenAL {
     }
 
     public void getSourcefvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcefvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3908,18 +3301,18 @@ public final class OpenAL {
     }
 
     public void getSourceiDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value
+        @Nullable @Pointer(comment="ALint") IntPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourceiDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3927,22 +3320,22 @@ public final class OpenAL {
     }
 
     public void getSource3iDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value1,
-        @Pointer(comment="ALint") IntPtr value2,
-        @Pointer(comment="ALint") IntPtr value3
+        @Nullable @Pointer(comment="ALint") IntPtr value1,
+        @Nullable @Pointer(comment="ALint") IntPtr value2,
+        @Nullable @Pointer(comment="ALint") IntPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSource3iDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3950,18 +3343,18 @@ public final class OpenAL {
     }
 
     public void getSourceivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourceivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -3969,13 +3362,13 @@ public final class OpenAL {
     }
 
     public void sourcePlayDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePlayDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source
             );
         } catch (Throwable e) {
@@ -3984,13 +3377,13 @@ public final class OpenAL {
     }
 
     public void sourceStopDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceStopDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source
             );
         } catch (Throwable e) {
@@ -3999,13 +3392,13 @@ public final class OpenAL {
     }
 
     public void sourceRewindDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceRewindDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source
             );
         } catch (Throwable e) {
@@ -4014,13 +3407,13 @@ public final class OpenAL {
     }
 
     public void sourcePauseDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePauseDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source
             );
         } catch (Throwable e) {
@@ -4029,16 +3422,16 @@ public final class OpenAL {
     }
 
     public void sourcePlayvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePlayvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4046,16 +3439,16 @@ public final class OpenAL {
     }
 
     public void sourceStopvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceStopvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4063,16 +3456,16 @@ public final class OpenAL {
     }
 
     public void sourceRewindvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceRewindvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4080,16 +3473,16 @@ public final class OpenAL {
     }
 
     public void sourcePausevDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources
+        @Nullable @Pointer(comment="ALuint") IntPtr sources
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePausevDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                sources.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4097,18 +3490,18 @@ public final class OpenAL {
     }
 
     public void sourceQueueBuffersDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALsizei") int nb,
-        @Pointer(comment="ALuint") IntPtr buffers
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceQueueBuffersDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 nb,
-                buffers.segment()
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4116,18 +3509,18 @@ public final class OpenAL {
     }
 
     public void sourceUnqueueBuffersDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALsizei") int nb,
-        @Pointer(comment="ALuint") IntPtr buffers
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourceUnqueueBuffersDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 nb,
-                buffers.segment()
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4135,16 +3528,16 @@ public final class OpenAL {
     }
 
     public void genBuffersDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr buffers
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenBuffersDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                buffers.segment()
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4152,16 +3545,16 @@ public final class OpenAL {
     }
 
     public void deleteBuffersDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr buffers
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteBuffersDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                buffers.segment()
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4169,13 +3562,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte isBufferDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alIsBufferDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer
             );
         } catch (Throwable e) {
@@ -4184,7 +3577,7 @@ public final class OpenAL {
     }
 
     public void bufferDataDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
         @Pointer(comment="void*") MemorySegment data,
@@ -4194,7 +3587,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferDataDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 format,
                 data,
@@ -4207,7 +3600,7 @@ public final class OpenAL {
     }
 
     public void bufferfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float value
@@ -4215,7 +3608,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
                 value
@@ -4226,7 +3619,7 @@ public final class OpenAL {
     }
 
     public void buffer3fDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float value1,
@@ -4236,7 +3629,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBuffer3fDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
                 value1,
@@ -4249,18 +3642,18 @@ public final class OpenAL {
     }
 
     public void bufferfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4268,7 +3661,7 @@ public final class OpenAL {
     }
 
     public void bufferiDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int value
@@ -4276,7 +3669,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferiDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
                 value
@@ -4287,7 +3680,7 @@ public final class OpenAL {
     }
 
     public void buffer3iDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int value1,
@@ -4297,7 +3690,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBuffer3iDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
                 value1,
@@ -4310,18 +3703,18 @@ public final class OpenAL {
     }
 
     public void bufferivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4329,18 +3722,18 @@ public final class OpenAL {
     }
 
     public void getBufferfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4348,22 +3741,22 @@ public final class OpenAL {
     }
 
     public void getBuffer3fDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr value1,
-        @Pointer(comment="ALfloat") FloatPtr value2,
-        @Pointer(comment="ALfloat") FloatPtr value3
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value1,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value2,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBuffer3fDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4371,18 +3764,18 @@ public final class OpenAL {
     }
 
     public void getBufferfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr values
+        @Nullable @Pointer(comment="ALfloat") FloatPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4390,18 +3783,18 @@ public final class OpenAL {
     }
 
     public void getBufferiDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value
+        @Nullable @Pointer(comment="ALint") IntPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferiDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4409,22 +3802,22 @@ public final class OpenAL {
     }
 
     public void getBuffer3iDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr value1,
-        @Pointer(comment="ALint") IntPtr value2,
-        @Pointer(comment="ALint") IntPtr value3
+        @Nullable @Pointer(comment="ALint") IntPtr value1,
+        @Nullable @Pointer(comment="ALint") IntPtr value2,
+        @Nullable @Pointer(comment="ALint") IntPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBuffer3iDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4432,18 +3825,18 @@ public final class OpenAL {
     }
 
     public void getBufferivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr values
+        @Nullable @Pointer(comment="ALint") IntPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4451,16 +3844,16 @@ public final class OpenAL {
     }
 
     public void genEffectsDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr effects
+        @Nullable @Pointer(comment="ALuint") IntPtr effects
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenEffectsDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                effects.segment()
+                (MemorySegment) (effects != null ? effects.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4468,16 +3861,16 @@ public final class OpenAL {
     }
 
     public void deleteEffectsDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr effects
+        @Nullable @Pointer(comment="ALuint") IntPtr effects
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteEffectsDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                effects.segment()
+                (MemorySegment) (effects != null ? effects.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4485,13 +3878,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte isEffectDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alIsEffectDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect
             );
         } catch (Throwable e) {
@@ -4500,7 +3893,7 @@ public final class OpenAL {
     }
 
     public void effectiDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int iValue
@@ -4508,7 +3901,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEffectiDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect,
                 param,
                 iValue
@@ -4519,18 +3912,18 @@ public final class OpenAL {
     }
 
     public void effectivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEffectivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4538,7 +3931,7 @@ public final class OpenAL {
     }
 
     public void effectfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float flValue
@@ -4546,7 +3939,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEffectfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect,
                 param,
                 flValue
@@ -4557,18 +3950,18 @@ public final class OpenAL {
     }
 
     public void effectfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEffectfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4576,18 +3969,18 @@ public final class OpenAL {
     }
 
     public void getEffectiDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValue
+        @Nullable @Pointer(comment="ALint") IntPtr piValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEffectiDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect,
                 param,
-                piValue.segment()
+                (MemorySegment) (piValue != null ? piValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4595,18 +3988,18 @@ public final class OpenAL {
     }
 
     public void getEffectivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEffectivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4614,18 +4007,18 @@ public final class OpenAL {
     }
 
     public void getEffectfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValue
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEffectfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect,
                 param,
-                pflValue.segment()
+                (MemorySegment) (pflValue != null ? pflValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4633,18 +4026,18 @@ public final class OpenAL {
     }
 
     public void getEffectfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEffectfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effect,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4652,16 +4045,16 @@ public final class OpenAL {
     }
 
     public void genFiltersDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr filters
+        @Nullable @Pointer(comment="ALuint") IntPtr filters
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenFiltersDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                filters.segment()
+                (MemorySegment) (filters != null ? filters.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4669,16 +4062,16 @@ public final class OpenAL {
     }
 
     public void deleteFiltersDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr filters
+        @Nullable @Pointer(comment="ALuint") IntPtr filters
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteFiltersDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                filters.segment()
+                (MemorySegment) (filters != null ? filters.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4686,13 +4079,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte isFilterDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alIsFilterDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter
             );
         } catch (Throwable e) {
@@ -4701,7 +4094,7 @@ public final class OpenAL {
     }
 
     public void filteriDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int iValue
@@ -4709,7 +4102,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alFilteriDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter,
                 param,
                 iValue
@@ -4720,18 +4113,18 @@ public final class OpenAL {
     }
 
     public void filterivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alFilterivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4739,7 +4132,7 @@ public final class OpenAL {
     }
 
     public void filterfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float flValue
@@ -4747,7 +4140,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alFilterfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter,
                 param,
                 flValue
@@ -4758,18 +4151,18 @@ public final class OpenAL {
     }
 
     public void filterfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alFilterfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4777,18 +4170,18 @@ public final class OpenAL {
     }
 
     public void getFilteriDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValue
+        @Nullable @Pointer(comment="ALint") IntPtr piValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFilteriDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter,
                 param,
-                piValue.segment()
+                (MemorySegment) (piValue != null ? piValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4796,18 +4189,18 @@ public final class OpenAL {
     }
 
     public void getFilterivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFilterivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4815,18 +4208,18 @@ public final class OpenAL {
     }
 
     public void getFilterfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValue
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFilterfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter,
                 param,
-                pflValue.segment()
+                (MemorySegment) (pflValue != null ? pflValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4834,18 +4227,18 @@ public final class OpenAL {
     }
 
     public void getFilterfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFilterfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 filter,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4853,16 +4246,16 @@ public final class OpenAL {
     }
 
     public void genAuxiliaryEffectSlotsDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr effectslots
+        @Nullable @Pointer(comment="ALuint") IntPtr effectslots
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenAuxiliaryEffectSlotsDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                effectslots.segment()
+                (MemorySegment) (effectslots != null ? effectslots.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4870,16 +4263,16 @@ public final class OpenAL {
     }
 
     public void deleteAuxiliaryEffectSlotsDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr effectslots
+        @Nullable @Pointer(comment="ALuint") IntPtr effectslots
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteAuxiliaryEffectSlotsDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                effectslots.segment()
+                (MemorySegment) (effectslots != null ? effectslots.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4887,13 +4280,13 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte isAuxiliaryEffectSlotDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alIsAuxiliaryEffectSlotDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot
             );
         } catch (Throwable e) {
@@ -4902,7 +4295,7 @@ public final class OpenAL {
     }
 
     public void auxiliaryEffectSlotiDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
         @NativeType("ALint") int iValue
@@ -4910,7 +4303,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alAuxiliaryEffectSlotiDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot,
                 param,
                 iValue
@@ -4921,18 +4314,18 @@ public final class OpenAL {
     }
 
     public void auxiliaryEffectSlotivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alAuxiliaryEffectSlotivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4940,7 +4333,7 @@ public final class OpenAL {
     }
 
     public void auxiliaryEffectSlotfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
         @NativeType("ALfloat") float flValue
@@ -4948,7 +4341,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alAuxiliaryEffectSlotfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot,
                 param,
                 flValue
@@ -4959,18 +4352,18 @@ public final class OpenAL {
     }
 
     public void auxiliaryEffectSlotfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alAuxiliaryEffectSlotfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4978,18 +4371,18 @@ public final class OpenAL {
     }
 
     public void getAuxiliaryEffectSlotiDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValue
+        @Nullable @Pointer(comment="ALint") IntPtr piValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetAuxiliaryEffectSlotiDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot,
                 param,
-                piValue.segment()
+                (MemorySegment) (piValue != null ? piValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -4997,18 +4390,18 @@ public final class OpenAL {
     }
 
     public void getAuxiliaryEffectSlotivDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetAuxiliaryEffectSlotivDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5016,18 +4409,18 @@ public final class OpenAL {
     }
 
     public void getAuxiliaryEffectSlotfDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValue
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetAuxiliaryEffectSlotfDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot,
                 param,
-                pflValue.segment()
+                (MemorySegment) (pflValue != null ? pflValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5035,18 +4428,18 @@ public final class OpenAL {
     }
 
     public void getAuxiliaryEffectSlotfvDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetAuxiliaryEffectSlotfvDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 effectslot,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5054,7 +4447,7 @@ public final class OpenAL {
     }
 
     public void bufferDataStaticDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
         @Pointer(comment="void*") MemorySegment data,
@@ -5064,7 +4457,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferDataStaticDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 format,
                 data,
@@ -5077,14 +4470,14 @@ public final class OpenAL {
     }
 
     public void debugMessageCallbackDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @Pointer(comment="ALDEBUGPROCEXT") MemorySegment callback,
         @Pointer(comment="void*") MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDebugMessageCallbackDirectEXT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 callback,
                 userParam
             );
@@ -5094,24 +4487,24 @@ public final class OpenAL {
     }
 
     public void debugMessageInsertDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int source,
         @NativeType("ALenum") int type,
         @NativeType("ALuint") int id,
         @NativeType("ALenum") int severity,
         @NativeType("ALsizei") int length,
-        @Pointer(comment="ALchar") BytePtr message
+        @Nullable @Pointer(comment="ALchar") BytePtr message
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDebugMessageInsertDirectEXT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 type,
                 id,
                 severity,
                 length,
-                message.segment()
+                (MemorySegment) (message != null ? message.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5119,23 +4512,23 @@ public final class OpenAL {
     }
 
     public void debugMessageControlDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int source,
         @NativeType("ALenum") int type,
         @NativeType("ALenum") int severity,
         @NativeType("ALsizei") int count,
-        @Pointer(comment="ALuint") IntPtr ids,
+        @Nullable @Pointer(comment="ALuint") IntPtr ids,
         @NativeType("ALboolean") byte enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDebugMessageControlDirectEXT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 type,
                 severity,
                 count,
-                ids.segment(),
+                (MemorySegment) (ids != null ? ids.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -5144,20 +4537,20 @@ public final class OpenAL {
     }
 
     public void pushDebugGroupDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int source,
         @NativeType("ALuint") int id,
         @NativeType("ALsizei") int length,
-        @Pointer(comment="ALchar") BytePtr message
+        @Nullable @Pointer(comment="ALchar") BytePtr message
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alPushDebugGroupDirectEXT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 id,
                 length,
-                message.segment()
+                (MemorySegment) (message != null ? message.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5165,12 +4558,12 @@ public final class OpenAL {
     }
 
     public void popDebugGroupDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context
+        @Nullable ALCcontext context
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alPopDebugGroupDirectEXT);
         try {
             hFunction.invokeExact(
-                context
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5178,28 +4571,28 @@ public final class OpenAL {
     }
 
     public @NativeType("ALuint") int getDebugMessageLogDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int count,
         @NativeType("ALsizei") int logBufSize,
-        @Pointer(comment="ALenum") IntPtr sources,
-        @Pointer(comment="ALenum") IntPtr types,
-        @Pointer(comment="ALuint") IntPtr ids,
-        @Pointer(comment="ALenum") IntPtr severities,
-        @Pointer(comment="ALsizei") IntPtr lengths,
-        @Pointer(comment="ALchar") BytePtr logBuf
+        @Nullable @Pointer(comment="ALenum") IntPtr sources,
+        @Nullable @Pointer(comment="ALenum") IntPtr types,
+        @Nullable @Pointer(comment="ALuint") IntPtr ids,
+        @Nullable @Pointer(comment="ALenum") IntPtr severities,
+        @Nullable @Pointer(comment="ALsizei") IntPtr lengths,
+        @Nullable @Pointer(comment="ALchar") BytePtr logBuf
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetDebugMessageLogDirectEXT);
         try {
             return (int) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 count,
                 logBufSize,
-                sources.segment(),
-                types.segment(),
-                ids.segment(),
-                severities.segment(),
-                lengths.segment(),
-                logBuf.segment()
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL),
+                (MemorySegment) (types != null ? types.segment() : MemorySegment.NULL),
+                (MemorySegment) (ids != null ? ids.segment() : MemorySegment.NULL),
+                (MemorySegment) (severities != null ? severities.segment() : MemorySegment.NULL),
+                (MemorySegment) (lengths != null ? lengths.segment() : MemorySegment.NULL),
+                (MemorySegment) (logBuf != null ? logBuf.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5207,20 +4600,20 @@ public final class OpenAL {
     }
 
     public void objectLabelDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int identifier,
         @NativeType("ALuint") int name,
         @NativeType("ALsizei") int length,
-        @Pointer(comment="ALchar") BytePtr label
+        @Nullable @Pointer(comment="ALchar") BytePtr label
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alObjectLabelDirectEXT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 identifier,
                 name,
                 length,
-                label.segment()
+                (MemorySegment) (label != null ? label.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5228,22 +4621,22 @@ public final class OpenAL {
     }
 
     public void getObjectLabelDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int identifier,
         @NativeType("ALuint") int name,
         @NativeType("ALsizei") int bufSize,
-        @Pointer(comment="ALsizei") IntPtr length,
-        @Pointer(comment="ALchar") BytePtr label
+        @Nullable @Pointer(comment="ALsizei") IntPtr length,
+        @Nullable @Pointer(comment="ALchar") BytePtr label
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetObjectLabelDirectEXT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 identifier,
                 name,
                 bufSize,
-                length.segment(),
-                label.segment()
+                (MemorySegment) (length != null ? length.segment() : MemorySegment.NULL),
+                (MemorySegment) (label != null ? label.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5251,13 +4644,13 @@ public final class OpenAL {
     }
 
     public @Pointer(comment="void*") MemorySegment getPointerDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int pname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetPointerDirectEXT);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 pname
             );
         } catch (Throwable e) {
@@ -5266,16 +4659,16 @@ public final class OpenAL {
     }
 
     public void getPointervDirectEXT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int pname,
-        PointerPtr values
+        @Nullable PointerPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetPointervDirectEXT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 pname,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5283,21 +4676,21 @@ public final class OpenAL {
     }
 
     public void requestFoldbackStartDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int mode,
         @NativeType("ALsizei") int count,
         @NativeType("ALsizei") int length,
-        @Pointer(comment="ALfloat") FloatPtr mem,
+        @Nullable @Pointer(comment="ALfloat") FloatPtr mem,
         @Pointer(comment="LPALFOLDBACKCALLBACK") MemorySegment callback
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alRequestFoldbackStartDirect);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 mode,
                 count,
                 length,
-                mem.segment(),
+                (MemorySegment) (mem != null ? mem.segment() : MemorySegment.NULL),
                 callback
             );
         } catch (Throwable e) {
@@ -5306,12 +4699,12 @@ public final class OpenAL {
     }
 
     public void requestFoldbackStopDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context
+        @Nullable ALCcontext context
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alRequestFoldbackStopDirect);
         try {
             hFunction.invokeExact(
-                context
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5319,7 +4712,7 @@ public final class OpenAL {
     }
 
     public void bufferSubDataDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
         @Pointer(comment="void*") MemorySegment data,
@@ -5329,7 +4722,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferSubDataDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 format,
                 data,
@@ -5342,7 +4735,7 @@ public final class OpenAL {
     }
 
     public void sourcedDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
         @NativeType("ALdouble") double value
@@ -5350,7 +4743,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcedDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
                 value
@@ -5361,7 +4754,7 @@ public final class OpenAL {
     }
 
     public void source3dDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
         @NativeType("ALdouble") double value1,
@@ -5371,7 +4764,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSource3dDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
                 value1,
@@ -5384,18 +4777,18 @@ public final class OpenAL {
     }
 
     public void sourcedvDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr values
+        @Nullable @Pointer(comment="ALdouble") DoublePtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcedvDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5403,18 +4796,18 @@ public final class OpenAL {
     }
 
     public void getSourcedDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr value
+        @Nullable @Pointer(comment="ALdouble") DoublePtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcedDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5422,22 +4815,22 @@ public final class OpenAL {
     }
 
     public void getSource3dDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr value1,
-        @Pointer(comment="ALdouble") DoublePtr value2,
-        @Pointer(comment="ALdouble") DoublePtr value3
+        @Nullable @Pointer(comment="ALdouble") DoublePtr value1,
+        @Nullable @Pointer(comment="ALdouble") DoublePtr value2,
+        @Nullable @Pointer(comment="ALdouble") DoublePtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSource3dDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5445,18 +4838,18 @@ public final class OpenAL {
     }
 
     public void getSourcedvDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALdouble") DoublePtr values
+        @Nullable @Pointer(comment="ALdouble") DoublePtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcedvDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5464,7 +4857,7 @@ public final class OpenAL {
     }
 
     public void sourcei64DirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
         @NativeType("ALint64SOFT") long value
@@ -5472,7 +4865,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcei64DirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
                 value
@@ -5483,7 +4876,7 @@ public final class OpenAL {
     }
 
     public void source3i64DirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
         @NativeType("ALint64SOFT") long value1,
@@ -5493,7 +4886,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSource3i64DirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
                 value1,
@@ -5506,18 +4899,18 @@ public final class OpenAL {
     }
 
     public void sourcei64vDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint64SOFT") LongPtr values
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcei64vDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5525,18 +4918,18 @@ public final class OpenAL {
     }
 
     public void getSourcei64DirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint64SOFT") LongPtr value
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcei64DirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                value.segment()
+                (MemorySegment) (value != null ? value.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5544,22 +4937,22 @@ public final class OpenAL {
     }
 
     public void getSource3i64DirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint64SOFT") LongPtr value1,
-        @Pointer(comment="ALint64SOFT") LongPtr value2,
-        @Pointer(comment="ALint64SOFT") LongPtr value3
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr value1,
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr value2,
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr value3
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSource3i64DirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                value1.segment(),
-                value2.segment(),
-                value3.segment()
+                (MemorySegment) (value1 != null ? value1.segment() : MemorySegment.NULL),
+                (MemorySegment) (value2 != null ? value2.segment() : MemorySegment.NULL),
+                (MemorySegment) (value3 != null ? value3.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5567,18 +4960,18 @@ public final class OpenAL {
     }
 
     public void getSourcei64vDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint64SOFT") LongPtr values
+        @Nullable @Pointer(comment="ALint64SOFT") LongPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetSourcei64vDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 param,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5586,12 +4979,12 @@ public final class OpenAL {
     }
 
     public void deferUpdatesDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context
+        @Nullable ALCcontext context
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeferUpdatesDirectSOFT);
         try {
             hFunction.invokeExact(
-                context
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5599,12 +4992,12 @@ public final class OpenAL {
     }
 
     public void processUpdatesDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context
+        @Nullable ALCcontext context
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alProcessUpdatesDirectSOFT);
         try {
             hFunction.invokeExact(
-                context
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5612,14 +5005,14 @@ public final class OpenAL {
     }
 
     public @Pointer(comment="ALchar") BytePtr getStringiDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int pname,
         @NativeType("ALsizei") int index
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetStringiDirectSOFT);
         try {
             MemorySegment s = (MemorySegment) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 pname,
                 index
             );
@@ -5630,17 +5023,17 @@ public final class OpenAL {
     }
 
     public void eventControlDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int count,
-        @Pointer(comment="ALenum") IntPtr types,
+        @Nullable @Pointer(comment="ALenum") IntPtr types,
         @NativeType("ALboolean") byte enable
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEventControlDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 count,
-                types.segment(),
+                (MemorySegment) (types != null ? types.segment() : MemorySegment.NULL),
                 enable
             );
         } catch (Throwable e) {
@@ -5649,14 +5042,14 @@ public final class OpenAL {
     }
 
     public void eventCallbackDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @Pointer(comment="ALEVENTPROCSOFT") MemorySegment callback,
         @Pointer(comment="void*") MemorySegment userParam
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEventCallbackDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 callback,
                 userParam
             );
@@ -5666,13 +5059,13 @@ public final class OpenAL {
     }
 
     public @Pointer(comment="void*") MemorySegment getPointerDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int pname
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetPointerDirectSOFT);
         try {
             return (MemorySegment) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 pname
             );
         } catch (Throwable e) {
@@ -5681,16 +5074,16 @@ public final class OpenAL {
     }
 
     public void getPointervDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALenum") int pname,
-        PointerPtr values
+        @Nullable PointerPtr values
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetPointervDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 pname,
-                values.segment()
+                (MemorySegment) (values != null ? values.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5698,7 +5091,7 @@ public final class OpenAL {
     }
 
     public void bufferCallbackDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int format,
         @NativeType("ALsizei") int freq,
@@ -5708,7 +5101,7 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alBufferCallbackDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 format,
                 freq,
@@ -5721,18 +5114,18 @@ public final class OpenAL {
     }
 
     public void getBufferPtrDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        PointerPtr ptr
+        @Nullable PointerPtr ptr
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferPtrDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                ptr.segment()
+                (MemorySegment) (ptr != null ? ptr.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5740,22 +5133,22 @@ public final class OpenAL {
     }
 
     public void getBuffer3PtrDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        PointerPtr ptr0,
-        PointerPtr ptr1,
-        PointerPtr ptr2
+        @Nullable PointerPtr ptr0,
+        @Nullable PointerPtr ptr1,
+        @Nullable PointerPtr ptr2
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBuffer3PtrDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                ptr0.segment(),
-                ptr1.segment(),
-                ptr2.segment()
+                (MemorySegment) (ptr0 != null ? ptr0.segment() : MemorySegment.NULL),
+                (MemorySegment) (ptr1 != null ? ptr1.segment() : MemorySegment.NULL),
+                (MemorySegment) (ptr2 != null ? ptr2.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5763,18 +5156,18 @@ public final class OpenAL {
     }
 
     public void getBufferPtrvDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
         @NativeType("ALenum") int param,
-        PointerPtr ptr
+        @Nullable PointerPtr ptr
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetBufferPtrvDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
                 param,
-                ptr.segment()
+                (MemorySegment) (ptr != null ? ptr.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5782,14 +5175,14 @@ public final class OpenAL {
     }
 
     public void sourcePlayAtTimeDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int source,
         @NativeType("ALint64SOFT") long start_time
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePlayAtTimeDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 source,
                 start_time
             );
@@ -5799,17 +5192,17 @@ public final class OpenAL {
     }
 
     public void sourcePlayAtTimevDirectSOFT(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr sources,
+        @Nullable @Pointer(comment="ALuint") IntPtr sources,
         @NativeType("ALint64SOFT") long start_time
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alSourcePlayAtTimevDirectSOFT);
         try {
             hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                sources.segment(),
+                (MemorySegment) (sources != null ? sources.segment() : MemorySegment.NULL),
                 start_time
             );
         } catch (Throwable e) {
@@ -5818,8 +5211,8 @@ public final class OpenAL {
     }
 
     public @NativeType("ALenum") int EAXSetDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
-        @Pointer(comment="_GUID*") MemorySegment property_set_id,
+        @Nullable ALCcontext context,
+        @Nullable _GUID property_set_id,
         @NativeType("ALuint") int property_id,
         @NativeType("ALuint") int source_id,
         @Pointer(comment="void*") MemorySegment value,
@@ -5828,8 +5221,8 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$EAXSetDirect);
         try {
             return (int) hFunction.invokeExact(
-                context,
-                property_set_id,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
+                (MemorySegment) (property_set_id != null ? property_set_id.segment() : MemorySegment.NULL),
                 property_id,
                 source_id,
                 value,
@@ -5841,8 +5234,8 @@ public final class OpenAL {
     }
 
     public @NativeType("ALenum") int EAXGetDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
-        @Pointer(comment="_GUID*") MemorySegment property_set_id,
+        @Nullable ALCcontext context,
+        @Nullable _GUID property_set_id,
         @NativeType("ALuint") int property_id,
         @NativeType("ALuint") int source_id,
         @Pointer(comment="void*") MemorySegment value,
@@ -5851,8 +5244,8 @@ public final class OpenAL {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$EAXGetDirect);
         try {
             return (int) hFunction.invokeExact(
-                context,
-                property_set_id,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
+                (MemorySegment) (property_set_id != null ? property_set_id.segment() : MemorySegment.NULL),
                 property_id,
                 source_id,
                 value,
@@ -5864,17 +5257,17 @@ public final class OpenAL {
     }
 
     public @NativeType("ALboolean") byte EAXSetBufferModeDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr buffers,
+        @Nullable @Pointer(comment="ALuint") IntPtr buffers,
         @NativeType("ALint") int value
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$EAXSetBufferModeDirect);
         try {
             return (byte) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 n,
-                buffers.segment(),
+                (MemorySegment) (buffers != null ? buffers.segment() : MemorySegment.NULL),
                 value
             );
         } catch (Throwable e) {
@@ -5883,16 +5276,16 @@ public final class OpenAL {
     }
 
     public @NativeType("ALenum") int EAXGetBufferModeDirect(
-        @Pointer(comment="ALCcontext*") MemorySegment context,
+        @Nullable ALCcontext context,
         @NativeType("ALuint") int buffer,
-        @Pointer(comment="ALint") IntPtr pReserved
+        @Nullable @Pointer(comment="ALint") IntPtr pReserved
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$EAXGetBufferModeDirect);
         try {
             return (int) hFunction.invokeExact(
-                context,
+                (MemorySegment) (context != null ? context.segment() : MemorySegment.NULL),
                 buffer,
-                pReserved.segment()
+                (MemorySegment) (pReserved != null ? pReserved.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5901,13 +5294,13 @@ public final class OpenAL {
 
     public void genEffects(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr effects
+        @Nullable @Pointer(comment="ALuint") IntPtr effects
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenEffects);
         try {
             hFunction.invokeExact(
                 n,
-                effects.segment()
+                (MemorySegment) (effects != null ? effects.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5916,13 +5309,13 @@ public final class OpenAL {
 
     public void deleteEffects(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr effects
+        @Nullable @Pointer(comment="ALuint") IntPtr effects
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteEffects);
         try {
             hFunction.invokeExact(
                 n,
-                effects.segment()
+                (MemorySegment) (effects != null ? effects.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5962,14 +5355,14 @@ public final class OpenAL {
     public void effectiv(
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEffectiv);
         try {
             hFunction.invokeExact(
                 effect,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -5996,14 +5389,14 @@ public final class OpenAL {
     public void effectfv(
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alEffectfv);
         try {
             hFunction.invokeExact(
                 effect,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6013,14 +5406,14 @@ public final class OpenAL {
     public void getEffecti(
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValue
+        @Nullable @Pointer(comment="ALint") IntPtr piValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEffecti);
         try {
             hFunction.invokeExact(
                 effect,
                 param,
-                piValue.segment()
+                (MemorySegment) (piValue != null ? piValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6030,14 +5423,14 @@ public final class OpenAL {
     public void getEffectiv(
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEffectiv);
         try {
             hFunction.invokeExact(
                 effect,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6047,14 +5440,14 @@ public final class OpenAL {
     public void getEffectf(
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValue
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEffectf);
         try {
             hFunction.invokeExact(
                 effect,
                 param,
-                pflValue.segment()
+                (MemorySegment) (pflValue != null ? pflValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6064,14 +5457,14 @@ public final class OpenAL {
     public void getEffectfv(
         @NativeType("ALuint") int effect,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetEffectfv);
         try {
             hFunction.invokeExact(
                 effect,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6080,13 +5473,13 @@ public final class OpenAL {
 
     public void genFilters(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr filters
+        @Nullable @Pointer(comment="ALuint") IntPtr filters
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenFilters);
         try {
             hFunction.invokeExact(
                 n,
-                filters.segment()
+                (MemorySegment) (filters != null ? filters.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6095,13 +5488,13 @@ public final class OpenAL {
 
     public void deleteFilters(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr filters
+        @Nullable @Pointer(comment="ALuint") IntPtr filters
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteFilters);
         try {
             hFunction.invokeExact(
                 n,
-                filters.segment()
+                (MemorySegment) (filters != null ? filters.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6141,14 +5534,14 @@ public final class OpenAL {
     public void filteriv(
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alFilteriv);
         try {
             hFunction.invokeExact(
                 filter,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6175,14 +5568,14 @@ public final class OpenAL {
     public void filterfv(
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alFilterfv);
         try {
             hFunction.invokeExact(
                 filter,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6192,14 +5585,14 @@ public final class OpenAL {
     public void getFilteri(
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValue
+        @Nullable @Pointer(comment="ALint") IntPtr piValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFilteri);
         try {
             hFunction.invokeExact(
                 filter,
                 param,
-                piValue.segment()
+                (MemorySegment) (piValue != null ? piValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6209,14 +5602,14 @@ public final class OpenAL {
     public void getFilteriv(
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFilteriv);
         try {
             hFunction.invokeExact(
                 filter,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6226,14 +5619,14 @@ public final class OpenAL {
     public void getFilterf(
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValue
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFilterf);
         try {
             hFunction.invokeExact(
                 filter,
                 param,
-                pflValue.segment()
+                (MemorySegment) (pflValue != null ? pflValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6243,14 +5636,14 @@ public final class OpenAL {
     public void getFilterfv(
         @NativeType("ALuint") int filter,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetFilterfv);
         try {
             hFunction.invokeExact(
                 filter,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6259,13 +5652,13 @@ public final class OpenAL {
 
     public void genAuxiliaryEffectSlots(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr effectslots
+        @Nullable @Pointer(comment="ALuint") IntPtr effectslots
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGenAuxiliaryEffectSlots);
         try {
             hFunction.invokeExact(
                 n,
-                effectslots.segment()
+                (MemorySegment) (effectslots != null ? effectslots.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6274,13 +5667,13 @@ public final class OpenAL {
 
     public void deleteAuxiliaryEffectSlots(
         @NativeType("ALsizei") int n,
-        @Pointer(comment="ALuint") IntPtr effectslots
+        @Nullable @Pointer(comment="ALuint") IntPtr effectslots
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alDeleteAuxiliaryEffectSlots);
         try {
             hFunction.invokeExact(
                 n,
-                effectslots.segment()
+                (MemorySegment) (effectslots != null ? effectslots.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6320,14 +5713,14 @@ public final class OpenAL {
     public void auxiliaryEffectSlotiv(
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alAuxiliaryEffectSlotiv);
         try {
             hFunction.invokeExact(
                 effectslot,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6354,14 +5747,14 @@ public final class OpenAL {
     public void auxiliaryEffectSlotfv(
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alAuxiliaryEffectSlotfv);
         try {
             hFunction.invokeExact(
                 effectslot,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6371,14 +5764,14 @@ public final class OpenAL {
     public void getAuxiliaryEffectSloti(
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValue
+        @Nullable @Pointer(comment="ALint") IntPtr piValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetAuxiliaryEffectSloti);
         try {
             hFunction.invokeExact(
                 effectslot,
                 param,
-                piValue.segment()
+                (MemorySegment) (piValue != null ? piValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6388,14 +5781,14 @@ public final class OpenAL {
     public void getAuxiliaryEffectSlotiv(
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALint") IntPtr piValues
+        @Nullable @Pointer(comment="ALint") IntPtr piValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetAuxiliaryEffectSlotiv);
         try {
             hFunction.invokeExact(
                 effectslot,
                 param,
-                piValues.segment()
+                (MemorySegment) (piValues != null ? piValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6405,14 +5798,14 @@ public final class OpenAL {
     public void getAuxiliaryEffectSlotf(
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValue
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValue
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetAuxiliaryEffectSlotf);
         try {
             hFunction.invokeExact(
                 effectslot,
                 param,
-                pflValue.segment()
+                (MemorySegment) (pflValue != null ? pflValue.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6422,14 +5815,14 @@ public final class OpenAL {
     public void getAuxiliaryEffectSlotfv(
         @NativeType("ALuint") int effectslot,
         @NativeType("ALenum") int param,
-        @Pointer(comment="ALfloat") FloatPtr pflValues
+        @Nullable @Pointer(comment="ALfloat") FloatPtr pflValues
     ) {
         MethodHandle hFunction = Objects.requireNonNull(HANDLE$alGetAuxiliaryEffectSlotfv);
         try {
             hFunction.invokeExact(
                 effectslot,
                 param,
-                pflValues.segment()
+                (MemorySegment) (pflValues != null ? pflValues.segment() : MemorySegment.NULL)
             );
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -6511,29 +5904,7 @@ public final class OpenAL {
     public final @Nullable MemorySegment SEGMENT$alGetBufferi;
     public final @Nullable MemorySegment SEGMENT$alGetBuffer3i;
     public final @Nullable MemorySegment SEGMENT$alGetBufferiv;
-    public final @Nullable MemorySegment SEGMENT$alcCreateContext;
-    public final @Nullable MemorySegment SEGMENT$alcMakeContextCurrent;
-    public final @Nullable MemorySegment SEGMENT$alcProcessContext;
-    public final @Nullable MemorySegment SEGMENT$alcSuspendContext;
-    public final @Nullable MemorySegment SEGMENT$alcDestroyContext;
-    public final @Nullable MemorySegment SEGMENT$alcGetCurrentContext;
-    public final @Nullable MemorySegment SEGMENT$alcGetContextsDevice;
-    public final @Nullable MemorySegment SEGMENT$alcOpenDevice;
-    public final @Nullable MemorySegment SEGMENT$alcCloseDevice;
-    public final @Nullable MemorySegment SEGMENT$alcGetError;
-    public final @Nullable MemorySegment SEGMENT$alcIsExtensionPresent;
-    public final @Nullable MemorySegment SEGMENT$alcGetProcAddress;
-    public final @Nullable MemorySegment SEGMENT$alcGetEnumValue;
-    public final @Nullable MemorySegment SEGMENT$alcGetString;
-    public final @Nullable MemorySegment SEGMENT$alcGetIntegerv;
-    public final @Nullable MemorySegment SEGMENT$alcCaptureOpenDevice;
-    public final @Nullable MemorySegment SEGMENT$alcCaptureCloseDevice;
-    public final @Nullable MemorySegment SEGMENT$alcCaptureStart;
-    public final @Nullable MemorySegment SEGMENT$alcCaptureStop;
-    public final @Nullable MemorySegment SEGMENT$alcCaptureSamples;
     public final @Nullable MemorySegment SEGMENT$alBufferDataStatic;
-    public final @Nullable MemorySegment SEGMENT$alcSetThreadContext;
-    public final @Nullable MemorySegment SEGMENT$alcGetThreadContext;
     public final @Nullable MemorySegment SEGMENT$alBufferSubDataSOFT;
     public final @Nullable MemorySegment SEGMENT$alRequestFoldbackStart;
     public final @Nullable MemorySegment SEGMENT$alRequestFoldbackStop;
@@ -6541,9 +5912,6 @@ public final class OpenAL {
     public final @Nullable MemorySegment SEGMENT$alBufferSubSamplesSOFT;
     public final @Nullable MemorySegment SEGMENT$alGetBufferSamplesSOFT;
     public final @Nullable MemorySegment SEGMENT$alIsBufferFormatSupportedSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcLoopbackOpenDeviceSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcIsRenderFormatSupportedSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcRenderSamplesSOFT;
     public final @Nullable MemorySegment SEGMENT$alSourcedSOFT;
     public final @Nullable MemorySegment SEGMENT$alSource3dSOFT;
     public final @Nullable MemorySegment SEGMENT$alSourcedvSOFT;
@@ -6558,17 +5926,11 @@ public final class OpenAL {
     public final @Nullable MemorySegment SEGMENT$alGetSourcei64vSOFT;
     public final @Nullable MemorySegment SEGMENT$alDeferUpdatesSOFT;
     public final @Nullable MemorySegment SEGMENT$alProcessUpdatesSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcDevicePauseSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcDeviceResumeSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcGetStringiSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcResetDeviceSOFT;
     public final @Nullable MemorySegment SEGMENT$alGetStringiSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcGetInteger64vSOFT;
     public final @Nullable MemorySegment SEGMENT$alEventControlSOFT;
     public final @Nullable MemorySegment SEGMENT$alEventCallbackSOFT;
     public final @Nullable MemorySegment SEGMENT$alGetPointerSOFT;
     public final @Nullable MemorySegment SEGMENT$alGetPointervSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcReopenDeviceSOFT;
     public final @Nullable MemorySegment SEGMENT$alBufferCallbackSOFT;
     public final @Nullable MemorySegment SEGMENT$alGetBufferPtrSOFT;
     public final @Nullable MemorySegment SEGMENT$alGetBuffer3PtrSOFT;
@@ -6585,10 +5947,6 @@ public final class OpenAL {
     public final @Nullable MemorySegment SEGMENT$alGetObjectLabelEXT;
     public final @Nullable MemorySegment SEGMENT$alGetPointerEXT;
     public final @Nullable MemorySegment SEGMENT$alGetPointervEXT;
-    public final @Nullable MemorySegment SEGMENT$alcEventIsSupportedSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcEventControlSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcEventCallbackSOFT;
-    public final @Nullable MemorySegment SEGMENT$alcGetProcAddress2;
     public final @Nullable MemorySegment SEGMENT$alEnableDirect;
     public final @Nullable MemorySegment SEGMENT$alDisableDirect;
     public final @Nullable MemorySegment SEGMENT$alIsEnabledDirect;
@@ -6843,29 +6201,7 @@ public final class OpenAL {
     public final @Nullable MethodHandle HANDLE$alGetBufferi;
     public final @Nullable MethodHandle HANDLE$alGetBuffer3i;
     public final @Nullable MethodHandle HANDLE$alGetBufferiv;
-    public final @Nullable MethodHandle HANDLE$alcCreateContext;
-    public final @Nullable MethodHandle HANDLE$alcMakeContextCurrent;
-    public final @Nullable MethodHandle HANDLE$alcProcessContext;
-    public final @Nullable MethodHandle HANDLE$alcSuspendContext;
-    public final @Nullable MethodHandle HANDLE$alcDestroyContext;
-    public final @Nullable MethodHandle HANDLE$alcGetCurrentContext;
-    public final @Nullable MethodHandle HANDLE$alcGetContextsDevice;
-    public final @Nullable MethodHandle HANDLE$alcOpenDevice;
-    public final @Nullable MethodHandle HANDLE$alcCloseDevice;
-    public final @Nullable MethodHandle HANDLE$alcGetError;
-    public final @Nullable MethodHandle HANDLE$alcIsExtensionPresent;
-    public final @Nullable MethodHandle HANDLE$alcGetProcAddress;
-    public final @Nullable MethodHandle HANDLE$alcGetEnumValue;
-    public final @Nullable MethodHandle HANDLE$alcGetString;
-    public final @Nullable MethodHandle HANDLE$alcGetIntegerv;
-    public final @Nullable MethodHandle HANDLE$alcCaptureOpenDevice;
-    public final @Nullable MethodHandle HANDLE$alcCaptureCloseDevice;
-    public final @Nullable MethodHandle HANDLE$alcCaptureStart;
-    public final @Nullable MethodHandle HANDLE$alcCaptureStop;
-    public final @Nullable MethodHandle HANDLE$alcCaptureSamples;
     public final @Nullable MethodHandle HANDLE$alBufferDataStatic;
-    public final @Nullable MethodHandle HANDLE$alcSetThreadContext;
-    public final @Nullable MethodHandle HANDLE$alcGetThreadContext;
     public final @Nullable MethodHandle HANDLE$alBufferSubDataSOFT;
     public final @Nullable MethodHandle HANDLE$alRequestFoldbackStart;
     public final @Nullable MethodHandle HANDLE$alRequestFoldbackStop;
@@ -6873,9 +6209,6 @@ public final class OpenAL {
     public final @Nullable MethodHandle HANDLE$alBufferSubSamplesSOFT;
     public final @Nullable MethodHandle HANDLE$alGetBufferSamplesSOFT;
     public final @Nullable MethodHandle HANDLE$alIsBufferFormatSupportedSOFT;
-    public final @Nullable MethodHandle HANDLE$alcLoopbackOpenDeviceSOFT;
-    public final @Nullable MethodHandle HANDLE$alcIsRenderFormatSupportedSOFT;
-    public final @Nullable MethodHandle HANDLE$alcRenderSamplesSOFT;
     public final @Nullable MethodHandle HANDLE$alSourcedSOFT;
     public final @Nullable MethodHandle HANDLE$alSource3dSOFT;
     public final @Nullable MethodHandle HANDLE$alSourcedvSOFT;
@@ -6890,17 +6223,11 @@ public final class OpenAL {
     public final @Nullable MethodHandle HANDLE$alGetSourcei64vSOFT;
     public final @Nullable MethodHandle HANDLE$alDeferUpdatesSOFT;
     public final @Nullable MethodHandle HANDLE$alProcessUpdatesSOFT;
-    public final @Nullable MethodHandle HANDLE$alcDevicePauseSOFT;
-    public final @Nullable MethodHandle HANDLE$alcDeviceResumeSOFT;
-    public final @Nullable MethodHandle HANDLE$alcGetStringiSOFT;
-    public final @Nullable MethodHandle HANDLE$alcResetDeviceSOFT;
     public final @Nullable MethodHandle HANDLE$alGetStringiSOFT;
-    public final @Nullable MethodHandle HANDLE$alcGetInteger64vSOFT;
     public final @Nullable MethodHandle HANDLE$alEventControlSOFT;
     public final @Nullable MethodHandle HANDLE$alEventCallbackSOFT;
     public final @Nullable MethodHandle HANDLE$alGetPointerSOFT;
     public final @Nullable MethodHandle HANDLE$alGetPointervSOFT;
-    public final @Nullable MethodHandle HANDLE$alcReopenDeviceSOFT;
     public final @Nullable MethodHandle HANDLE$alBufferCallbackSOFT;
     public final @Nullable MethodHandle HANDLE$alGetBufferPtrSOFT;
     public final @Nullable MethodHandle HANDLE$alGetBuffer3PtrSOFT;
@@ -6917,10 +6244,6 @@ public final class OpenAL {
     public final @Nullable MethodHandle HANDLE$alGetObjectLabelEXT;
     public final @Nullable MethodHandle HANDLE$alGetPointerEXT;
     public final @Nullable MethodHandle HANDLE$alGetPointervEXT;
-    public final @Nullable MethodHandle HANDLE$alcEventIsSupportedSOFT;
-    public final @Nullable MethodHandle HANDLE$alcEventControlSOFT;
-    public final @Nullable MethodHandle HANDLE$alcEventCallbackSOFT;
-    public final @Nullable MethodHandle HANDLE$alcGetProcAddress2;
     public final @Nullable MethodHandle HANDLE$alEnableDirect;
     public final @Nullable MethodHandle HANDLE$alDisableDirect;
     public final @Nullable MethodHandle HANDLE$alIsEnabledDirect;
@@ -7512,126 +6835,12 @@ public final class OpenAL {
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$alcCreateContext = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcMakeContextCurrent = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcProcessContext = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcSuspendContext = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcDestroyContext = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetCurrentContext = FunctionDescriptor.of(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetContextsDevice = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcOpenDevice = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcCloseDevice = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetError = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcIsExtensionPresent = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetProcAddress = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetEnumValue = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetString = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetIntegerv = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcCaptureOpenDevice = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcCaptureCloseDevice = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcCaptureStart = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcCaptureStop = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcCaptureSamples = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$alBufferDataStatic = FunctionDescriptor.ofVoid(
             ValueLayout.JAVA_INT,
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT,
             ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcSetThreadContext = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetThreadContext = FunctionDescriptor.of(
-            ValueLayout.ADDRESS
         );
 
         public static final FunctionDescriptor DESCRIPTOR$alBufferSubDataSOFT = FunctionDescriptor.ofVoid(
@@ -7683,25 +6892,6 @@ public final class OpenAL {
 
         public static final FunctionDescriptor DESCRIPTOR$alIsBufferFormatSupportedSOFT = FunctionDescriptor.of(
             ValueLayout.JAVA_BYTE,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcLoopbackOpenDeviceSOFT = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcIsRenderFormatSupportedSOFT = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcRenderSamplesSOFT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT
         );
 
@@ -7791,38 +6981,10 @@ public final class OpenAL {
         public static final FunctionDescriptor DESCRIPTOR$alProcessUpdatesSOFT = FunctionDescriptor.ofVoid(
         );
 
-        public static final FunctionDescriptor DESCRIPTOR$alcDevicePauseSOFT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcDeviceResumeSOFT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetStringiSOFT = FunctionDescriptor.of(
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcResetDeviceSOFT = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
-        );
-
         public static final FunctionDescriptor DESCRIPTOR$alGetStringiSOFT = FunctionDescriptor.of(
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
             ValueLayout.JAVA_INT,
             ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetInteger64vSOFT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_LONG)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$alEventControlSOFT = FunctionDescriptor.ofVoid(
@@ -7844,13 +7006,6 @@ public final class OpenAL {
         public static final FunctionDescriptor DESCRIPTOR$alGetPointervSOFT = FunctionDescriptor.ofVoid(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcReopenDeviceSOFT = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE),
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$alBufferCallbackSOFT = FunctionDescriptor.ofVoid(
@@ -7960,30 +7115,6 @@ public final class OpenAL {
         public static final FunctionDescriptor DESCRIPTOR$alGetPointervEXT = FunctionDescriptor.ofVoid(
             ValueLayout.JAVA_INT,
             ValueLayout.ADDRESS.withTargetLayout(ValueLayout.ADDRESS)
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcEventIsSupportedSOFT = FunctionDescriptor.of(
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT,
-            ValueLayout.JAVA_INT
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcEventControlSOFT = FunctionDescriptor.of(
-            ValueLayout.JAVA_BYTE,
-            ValueLayout.JAVA_INT,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_INT),
-            ValueLayout.JAVA_BYTE
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcEventCallbackSOFT = FunctionDescriptor.ofVoid(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS
-        );
-
-        public static final FunctionDescriptor DESCRIPTOR$alcGetProcAddress2 = FunctionDescriptor.of(
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS,
-            ValueLayout.ADDRESS.withTargetLayout(ValueLayout.JAVA_BYTE)
         );
 
         public static final FunctionDescriptor DESCRIPTOR$alEnableDirect = FunctionDescriptor.ofVoid(

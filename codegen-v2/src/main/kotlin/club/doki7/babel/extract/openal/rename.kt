@@ -34,4 +34,7 @@ private fun renameConstant(name: String) = name
     .removePrefix("ALC_")
     .let { if (it[0].isDigit()) "_${it}" else it }
 
-private fun renameCommand(name: String) = name.removePrefix("al").removeSuffix("alc").ensureLowerCamelCase()
+private fun renameCommand(name: String) = name
+    .removePrefix("alc")
+    .removePrefix("al")
+    .ensureLowerCamelCase()

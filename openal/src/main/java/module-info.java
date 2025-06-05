@@ -23,5 +23,4 @@ module club.doki7.vma {
 
     requires org.jetbrains.annotations;
     requires club.doki7.ffm;
-    requires club.doki7.vulkan;
 }

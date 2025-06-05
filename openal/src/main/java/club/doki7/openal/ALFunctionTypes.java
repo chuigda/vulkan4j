@@ -3,7 +3,7 @@ package club.doki7.openal;
 import java.lang.foreign.*;
 import club.doki7.ffm.NativeLayout;
 
-public final class OpenALFunctionTypes {
+public final class ALFunctionTypes {
     public static final FunctionDescriptor ALBUFFERCALLBACKTYPESOFT = FunctionDescriptor.of(
         ValueLayout.JAVA_INT,
         ValueLayout.ADDRESS,
@@ -2131,5 +2131,5 @@ public final class OpenALFunctionTypes {
     );
 
     /// Constructing this class is nonsense so the constructor is made private.
-    private OpenALFunctionTypes() {}
+    private ALFunctionTypes() {}
 }

@@ -2,7 +2,7 @@ package club.doki7.openal;
 
 import club.doki7.ffm.annotation.*;
 
-public final class OpenALConstants {
+public final class ALConstants {
     public static final int _5POINT1_16_SOFT = 0x120B;
     public static final int _5POINT1_32F_SOFT = 0x120C;
     public static final int _5POINT1_8_SOFT = 0x120A;
@@ -770,5 +770,5 @@ public final class OpenALConstants {
     public static final int VOCAL_MORPHER_WAVEFORM_TRIANGLE = (1);
 
     /// Constructing this class is nonsense so the constructor is made private.
-    private OpenALConstants() {}
+    private ALConstants() {}
 }

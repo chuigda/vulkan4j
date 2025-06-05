@@ -51,9 +51,7 @@ fun extractOpenALHeader(): Registry<EmptyMergeable> {
         0
     )
 
-    // todo: remove
-    registry.opaqueTypedefs.putEntityIfAbsent(OpaqueTypedef("_GUID"))
-    // todo postprocessDoc(registry)
+    registry.opaqueHandleTypedefs.putEntityIfAbsent(OpaqueHandleTypedef("__Placeholder"))
     registry.renameEntities()
 
     return registry
@@ -79,8 +77,6 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(10, ::detectLineComment, ::nextLine)
     addRule(10, ::detectBlockComment, ::tweakedSkipBlockComment)
 
-    // todo add structure parsing
-
     addRule(20, ::detectOpaqueTypedefStruct,  ::parseOpaqueTypedefStruct)
     addRule(20, ::detectConstant, ::parseConstant)
     addRule(20, ::detectFunctionTypeDecl, ::parseFunctionTypeDecl)
@@ -91,7 +87,7 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
 }
 
 private fun detectConstant(line: String): ControlFlow {
-    return if ((line.startsWith("#define AL_") || line.startsWith("#define AL_"))
+    return if ((line.startsWith("#define AL_") || line.startsWith("#define ALC_"))
         && line.split(Regex("\\s+"))
             .last()
             .let {
@@ -137,8 +133,12 @@ private fun <E : IMergeable<E>> parseConstant(
             "AL_API_NOEXCEPT",
             "AL_API_NOEXCEPT17",
             "AL_APIENTRY",
+            "AL_CPLUSPLUS",
+            "ALC_API",
             "ALC_APIENTRY",
-            "AL_CPLUSPLUS"
+            "ALC_API_NOEXCEPT",
+            "ALC_API_NOEXCEPT17",
+            "ALC_CPLUSPLUS"
     )) {
         cx.remove("doxygen")
         return index + 1
@@ -194,7 +194,7 @@ fun <E: IMergeable<E>> tweakedSkipBlockComment(
         i++
     }
     if (i >= lines.size) {
-        club.doki7.babel.hparse.log.warning("Unterminated block comment starting at line $index")
+        log.warning("Unterminated block comment starting at line $index")
     }
     return i + 1
 }
@@ -266,6 +266,7 @@ private fun <E : IMergeable<E>> parseOpaqueTypedefStruct(
         cx.remove("doxygen")
     }
 
+    struct.isHandle = true;
     registry.opaqueTypedefs.putEntityIfAbsent(struct)
 
     return index + 1
@@ -345,7 +346,7 @@ private fun morphFunctionDecl(functionDecl: FunctionDecl) = Command(
             type = it.type.toType(),
             len = null,
             argLen = null,
-            optional = it.type.trivia.any { trivia -> trivia.startsWith("VMA_NULLABLE") },
+            optional = true,
         )
     },
     result = functionDecl.returnType.toType(),

@@ -18,14 +18,20 @@ fun openalMain() {
     val codegenOptions = CodegenOptions(
         packageName = "club.doki7.openal",
         extraImport = emptyList(),
-        constantClassName = "OpenALConstants",
-        functionTypeClassName = "OpenALFunctionTypes",
+        constantClassName = "ALConstants",
+        functionTypeClassName = "ALFunctionTypes",
         refRegistries = emptyList(),
     )
 
-    val constantDoc = generateConstants(registry, codegenOptions)
-    File("$packageDir/${codegenOptions.constantClassName}.java")
-        .writeText(render(constantDoc))
+    val (alcConstants, alConstants) = registry
+        .constants
+        .values
+        .partition { it.name.original.startsWith("ALC_") }
+
+    val alcConstantsDoc = generateConstants(registry, codegenOptions.copy(constantClassName="ALCConstants"), alcConstants)
+    File("$packageDir/ALCConstants.java").writeText(render(alcConstantsDoc))
+    val alConstantsDoc = generateConstants(registry, codegenOptions, alConstants)
+    File("$packageDir/ALConstants.java").writeText(render(alConstantsDoc))
 
     val functionTypeDoc = generateFunctionTypedefs(registry, codegenOptions)
     File("$packageDir/${codegenOptions.functionTypeClassName}.java")
@@ -41,13 +47,12 @@ fun openalMain() {
             .writeText(render(handleDoc))
     }
 
-    val commandFile = generateCommandFile(
-        registry,
-        "OpenAL",
-        registry.commands.values.toList(),
-        codegenOptions,
-        null
-    )
-    File("$packageDir/OpenAL.java")
-        .writeText(render(commandFile))
+    val (alcCommands, alCommands) = registry
+        .commands
+        .values
+        .partition { it.name.original.startsWith("alc") }
+    val alcCommandFile = generateCommandFile(registry, "AL", alCommands, codegenOptions, null)
+    File("$packageDir/AL.java").writeText(render(alcCommandFile))
+    val alCommandFile = generateCommandFile(registry, "ALC", alcCommands, codegenOptions, null)
+    File("$packageDir/ALC.java").writeText(render(alCommandFile))
 }
