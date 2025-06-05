@@ -34,15 +34,22 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Generate JavaDoc
         run: mvn -B site --file pom.xml || true
-      - name: Build mdbook
+      - name: Build vulkan-tutorial mdbook
         run: ../../../mdbook build
-        working-directory: ./tutorial/mdbook/en
+        working-directory: ./tutorial/vulkan-tutorial/en
+      - name: Build learn-opengl mdbook
+        run: ../../../mdbook build
+        working-directory: ./tutorial/learn-opengl/en
       - name: Copy mdbook output to JavaDoc directory
         run: |
           mkdir -p ./target/site/apidocs/tutorial
           mkdir -p ./target/site/apidocs/tutorial/en
-          cp -r ./tutorial/mdbook/en/book/* ./target/site/apidocs/tutorial/en/
-          cp -r ./tutorial/mdbook/images ./target/site/apidocs/tutorial/
+          cp -r ./tutorial/vulkan-tutorial/en/book/* ./target/site/apidocs/tutorial/en/
+          cp -r ./tutorial/vulkan-tutorial/images ./target/site/apidocs/tutorial/
+          mkdir -p ./target/site/apidocs/learnopengl
+          mkdir -p ./target/site/apidocs/learnopengl/en
+          cp -r ./tutorial/learn-opengl/en/book/* ./target/site/apidocs/learnopengl/en/
+          cp -r ./tutorial/learn-opengl/images ./target/site/apidocs/learnopengl/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
