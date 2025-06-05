@@ -60,6 +60,7 @@
         <module>vulkan</module>
         <module>gles2</module>
         <module>vma</module>
+        <module>openal</module>
         <module>glfw</module>
         <module>tutorial</module>
         <module>opengl</module>

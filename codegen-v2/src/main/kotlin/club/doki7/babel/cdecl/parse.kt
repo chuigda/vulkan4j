@@ -177,6 +177,13 @@ private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {
             break
         }
 
+        if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == ",") {
+            // 没有提供具名参数
+            tokenizer.next()
+            params.add(VarDecl("", paramType, paramTriviaList))
+            continue
+        }
+
         val paramName = expectAndConsume(TokenKind.IDENT, tokenizer)
         skipTrivia(tokenizer, paramTriviaList)
 
@@ -210,6 +217,7 @@ private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {
 
 internal fun parseType(tokenizer: Tokenizer): RawType {
     var isUnsigned = false
+    var isSigned = false
     var isConst = false
     var triviaList = mutableListOf<String>()
     skipTrivia(tokenizer, triviaList)
@@ -227,6 +235,10 @@ internal fun parseType(tokenizer: Tokenizer): RawType {
         isUnsigned = true
         skipTrivia(tokenizer, triviaList)
         token = tokenizer.next()
+    } else if (token.kind == TokenKind.IDENT && token.value == "signed") {
+        isSigned = true
+        skipTrivia(tokenizer, triviaList)
+        token = tokenizer.next()
     }
 
     if (token.kind == TokenKind.IDENT && token.value == "struct") {
@@ -234,11 +246,13 @@ internal fun parseType(tokenizer: Tokenizer): RawType {
         token = tokenizer.next()
     }
 
+    token = tryMergeLongSequences(token, tokenizer)
+
     if (token.kind != TokenKind.IDENT) {
         syntaxError("Expected identifier but got ${token.kind}", token)
     }
 
-    var ty: RawType = RawIdentifierType(token.value, isUnsigned, triviaList)
+    var ty: RawType = RawIdentifierType(token.value, isUnsigned, isSigned, triviaList)
     triviaList = mutableListOf()
 
     skipTrivia(tokenizer, triviaList)
@@ -265,6 +279,25 @@ internal fun parseType(tokenizer: Tokenizer): RawType {
 
     ty.trivia.addAll(triviaList)
     return ty
+}
+
+internal fun tryMergeLongSequences(token: Token, tokenizer: Tokenizer): Token {
+    if (token.kind == TokenKind.IDENT && token.value == "long") {
+        val nextToken = tokenizer.peek()
+        if (nextToken.kind == TokenKind.IDENT && nextToken.value == "long") {
+            tokenizer.next()
+            val third = tokenizer.peek()
+            if (third.kind == TokenKind.IDENT && (third.value == "int" || third.value == "double")) {
+                tokenizer.next()
+                return Token(TokenKind.IDENT, "long long ${third.value}", token.line, token.col)
+            }
+            return Token(TokenKind.IDENT, "long long", token.line, token.col)
+        } else if (nextToken.kind == TokenKind.IDENT && (nextToken.value == "int" || nextToken.value == "double")) {
+            tokenizer.next()
+            return Token(TokenKind.IDENT, "long ${nextToken.value}", token.line, token.col)
+        }
+    }
+    return token
 }
 
 internal fun parseSimpleExpr(tokenizer: Tokenizer, trivia: MutableList<String>): String {

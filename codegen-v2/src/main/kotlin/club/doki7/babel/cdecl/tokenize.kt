@@ -210,7 +210,15 @@ internal val knownMacros = setOf(
     "VMA_NOT_NULL_NON_DISPATCHABLE",
     "VMA_NULLABLE_NON_DISPATCHABLE",
     "VKAPI_PTR",
-    "GLFWAPI"
+    "GLFWAPI",
+    "AL_APIENTRY",
+    "AL_API_NOEXCEPT17",
+    "AL_API",
+    "AL_API_NOEXCEPT",
+    "ALC_APIENTRY",
+    "ALC_API_NOEXCEPT17",
+    "ALC_API",
+    "ALC_API_NOEXCEPT"
 )
 
 private val knownCallLikeMacros = setOf(

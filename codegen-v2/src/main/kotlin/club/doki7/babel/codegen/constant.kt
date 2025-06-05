@@ -1,13 +1,16 @@
 package club.doki7.babel.codegen
 
 import club.doki7.babel.ctype.lowerIdentifierType
+import club.doki7.babel.registry.Constant
 import club.doki7.babel.registry.RegistryBase
 import club.doki7.babel.util.buildDoc
 import club.doki7.babel.util.isDecOrHexNumber
 
-fun generateConstants(registry: RegistryBase, codegenOptions: CodegenOptions) = buildDoc {
-    val constants = registry.constants.values
-
+fun generateConstants(
+    registry: RegistryBase,
+    codegenOptions: CodegenOptions,
+    constants: List<Constant> = registry.constants.values.toList()
+) = buildDoc {
     +"package ${codegenOptions.packageName};"
     +""
 
