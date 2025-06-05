@@ -17,7 +17,7 @@
 ///     <scope>compile</scope>
 /// </dependency>
 /// ```
-module club.doki7.vma {
+module club.doki7.openal {
     exports club.doki7.openal;
     exports club.doki7.openal.handle;
 
