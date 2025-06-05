@@ -9,7 +9,7 @@
 - Added `opengl` module, which provides bindings for OpenGL 1.0 - 4.6 (both Core and Compatibility profiles).
 - Added `openal` module, which provides bindings based on OpenAL-soft (1.2).
 
-### Functionality updates
+### Quality of Life updates
 
 - Added `allocateV` and `writeV` series functions for `Ptr` types (both `ffm-plus` and other generated code), utilizing Java varargs to simplify specific write operations.
 - Supported chaining `set` methods for structure types.
@@ -23,6 +23,7 @@
     ```java
     outer.inner(it -> it.a(1).b(2));
     ```
+- For OpenGL, OpenAL and GLFW, we now allow accessing global constants via command wrapper classes (`GLConstants.COLOR_BUFFER_BIT` -> `GL.COLOR_BUFFER_BIT`, etc.) to avoid repetitive strain injury.
 
 ### Bugfixes
 
