@@ -2,7 +2,7 @@
 
 [![CI status](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml)
 
-> [Website](https://vulkan4j.doki7.club) | [Discord](https://discord.gg/UsmRvrt4gg) | [Vulkan Tutorial](https://vulkan4j.doki7.club/tutorial/en/)
+> [Website & JavaDoc](https://vulkan4j.doki7.club) | [Vulkan Tutorial port](https://vulkan4j.doki7.club/tutorial/en/) | [LearnOpenGL port](https://vulkan4j.doki7.club/learnopengl/en/) | [Discord](https://discord.gg/UsmRvrt4gg)
 
 *This project is heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
 
