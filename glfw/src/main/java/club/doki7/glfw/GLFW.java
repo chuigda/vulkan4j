@@ -15,7 +15,7 @@ import club.doki7.vulkan.datatype.*;
 import club.doki7.vulkan.enumtype.*;
 import club.doki7.vulkan.handle.*;
 
-public final class GLFW {
+public final class GLFW implements GLFWConstants {
     public GLFW(RawFunctionLoader loader) {
         SEGMENT$glfwCreateCursor = loader.apply("glfwCreateCursor");
         HANDLE$glfwCreateCursor = RawFunctionLoader.link(SEGMENT$glfwCreateCursor, Descriptors.DESCRIPTOR$glfwCreateCursor);

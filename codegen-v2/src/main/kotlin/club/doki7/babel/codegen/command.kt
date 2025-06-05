@@ -20,8 +20,9 @@ fun generateCommandFile(
     className: String,
     commands: List<Command>,
     codegenOptions: CodegenOptions,
+    implConstantClass: Boolean,
     subpackage: String?,
-    javaDoc: Doc? = null
+    javaDoc: Doc? = null,
 ) = buildDoc {
     val packageName = codegenOptions.packageName
 
@@ -63,7 +64,11 @@ fun generateCommandFile(
     if (javaDoc != null) {
         +javaDoc
     }
-    +"public final class $className {"
+    if (implConstantClass) {
+        +"public final class $className implements ${codegenOptions.constantClassName} {"
+    } else {
+        +"public final class $className {"
+    }
     indent {
         val locallySuppliedCommands = commands.map { it.name.original }.toSet()
         val loweredCommand = commands.map { lowerCommand(it, registry, codegenOptions) }.toList()

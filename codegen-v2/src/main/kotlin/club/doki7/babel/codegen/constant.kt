@@ -37,7 +37,7 @@ fun generateConstants(
             }
 
             val ctype = lowerIdentifierType(registry, codegenOptions.refRegistries, constant.type)
-            +"public static final ${ctype.jType} ${constant.name} = ${constant.expr};"
+            +"${ctype.jType} ${constant.name} = ${constant.expr};"
         }
 
         for (constant in aliasConstants.sortedBy { it.name }) {

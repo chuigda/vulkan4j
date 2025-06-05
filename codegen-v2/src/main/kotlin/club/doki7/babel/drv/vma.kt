@@ -103,7 +103,8 @@ fun vmaMain(vulkanRegistry: RegistryBase, vulkanAdditionalRegistry: RegistryBase
         "VMA",
         registry.commands.values.toList(),
         codegenOptions,
-        null
+        implConstantClass = false,
+        subpackage = null
     )
     File("$packageDir/VMA.java")
         .writeText(render(commandFile))

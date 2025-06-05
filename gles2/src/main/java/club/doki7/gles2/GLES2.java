@@ -10,7 +10,7 @@ import club.doki7.ffm.RawFunctionLoader;
 import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 
-public final class GLES2 {
+public final class GLES2 implements GLES2Constants {
     public GLES2(RawFunctionLoader loader) {
         SEGMENT$glActiveTexture = loader.apply("glActiveTexture");
         HANDLE$glActiveTexture = RawFunctionLoader.link(SEGMENT$glActiveTexture, Descriptors.DESCRIPTOR$glActiveTexture);

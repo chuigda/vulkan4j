@@ -36,7 +36,8 @@ fun gles2Main() {
         "GLES2",
         gles2Registry.commands.values.sortedBy { it.name },
         codegenOptions,
-        null
+        implConstantClass = true,
+        subpackage = null
     )
     File("$packageDir/GLES2.java")
         .writeText(render(commandsDoc))

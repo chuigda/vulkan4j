@@ -11,7 +11,7 @@ import club.doki7.ffm.annotation.*;
 import club.doki7.ffm.ptr.*;
 import club.doki7.openal.handle.*;
 
-public final class ALC {
+public final class ALC implements ALCConstants {
     public ALC(RawFunctionLoader loader) {
         SEGMENT$alcCreateContext = loader.apply("alcCreateContext");
         HANDLE$alcCreateContext = RawFunctionLoader.link(SEGMENT$alcCreateContext, Descriptors.DESCRIPTOR$alcCreateContext);
