@@ -1,4 +1,8 @@
-## UNRELEASED v0.3.2
+## v0.3.2
+
+Upgrade `ffm-plus` to v0.2.1 and other modules to v0.3.2
+
+Quality of Life update
 
 ### Breaking changes
 

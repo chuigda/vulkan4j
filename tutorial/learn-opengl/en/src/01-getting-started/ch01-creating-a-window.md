@@ -16,17 +16,17 @@ Create a Maven project and add the following dependencies to your `pom.xml` file
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>ffm-plus</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
 </dependency>
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>opengl</artifactId>
-    <version>0.3.1</version>
+    <version>0.3.2</version>
 </dependency>
 <dependency>
     <groupId>club.doki7</groupId>
     <artifactId>glfw</artifactId>
-    <version>0.3.1</version>
+    <version>0.3.2</version>
 </dependency>
 <dependency>
     <groupId>org.joml</groupId>
