@@ -11,9 +11,10 @@
 ## Bindings Available
 
 - [Vulkan](https://www.khronos.org/vulkan/)([`vulkan`](https://github.com/chuigda/vulkan4j/tree/master/vulkan) module): Generated from [`vk.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) and [`video.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/video.xml).
-- [OpenGL](https://www.opengl.org/)([`opengl`](https://github.com/chuigda/vulkan4j/tree/master/opengl) module): Generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml). Our supported extension list is copied from LWJGL, and not all extensions are included (since some OpenGL extensions are completely useless nowadays). Name your desired extension in the issue tracker!
-- [GLFW](https://www.glfw.org/)([`glfw`](https://github.com/chuigda/vulkan4j/tree/master/glfw) module): Generated from GLFW header files.
 - [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator)([`vma`](https://github.com/chuigda/vulkan4j/tree/master/vma) module): Generated from [`vk_mem_alloc.h`](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h). If you use a specific build supporting `vk4jSetJavaTrace`, you can enjoy Java stacktrace on VMA assertion failures. Check out the [`vma_build`](https://github.com/chuigda/vulkan4j/tree/master/vma/vma_build) directory for more information.
+- [OpenGL](https://www.opengl.org/)([`opengl`](https://github.com/chuigda/vulkan4j/tree/master/opengl) module): Generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml). Our supported extension list is copied from LWJGL, and not all extensions are included (since some OpenGL extensions are completely useless nowadays). Name your desired extension in the issue tracker!
+- [OpenAL](https://www.openal.org/)([`openal`](https://github.com/chuigda/vulkan4j/tree/master/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
+- [GLFW](https://www.glfw.org/)([`glfw`](https://github.com/chuigda/vulkan4j/tree/master/glfw) module): Generated from GLFW header files.
 
 <details>
 <summary>Obsolete bindings</summary>

@@ -7,6 +7,7 @@ import club.doki7.babel.codegen.generateFunctionTypedefs
 import club.doki7.babel.codegen.generateHandle
 import club.doki7.babel.extract.openal.extractOpenALHeader
 import club.doki7.babel.registry.OpaqueHandleTypedef
+import club.doki7.babel.util.buildDoc
 import club.doki7.babel.util.render
 import java.io.File
 
@@ -37,8 +38,6 @@ fun openalMain() {
     File("$packageDir/${codegenOptions.functionTypeClassName}.java")
         .writeText(render(functionTypeDoc))
 
-    // todo add structure generator
-
     for (opaqueTypedef in registry.opaqueTypedefs.values) {
         val handleTypedef = OpaqueHandleTypedef(opaqueTypedef.name)
         handleTypedef.doc = opaqueTypedef.doc
@@ -55,4 +54,46 @@ fun openalMain() {
     File("$packageDir/AL.java").writeText(render(alcCommandFile))
     val alCommandFile = generateCommandFile(registry, "ALC", alcCommands, codegenOptions, null)
     File("$packageDir/ALC.java").writeText(render(alCommandFile))
+
+    val efxPresets = extractEFXEAXPresets()
+    File("$packageDir/EFXReverbPresets.java").writeText(render(buildDoc {
+        +"package club.doki7.openal;"
+        +""
+        +"public interface EFXReverbPresets {"
+        indent {
+            for ((name, value) in efxPresets) {
+                +"EFXEAXReverbProperties $name = new EFXEAXReverbProperties($value);"
+            }
+        }
+        +"}"
+    }))
+}
+
+private fun extractEFXEAXPresets(): List<Pair<String, String>> {
+    val presets = File("codegen-v2/input/efx-presets.h").readText()
+
+    val ret = mutableListOf<Pair<String, String>>()
+    val lines = presets.splitToSequence("\n").map(String::trim).toList()
+    var index = 0
+    while (index < lines.size) {
+        val line = lines[index]
+        if (line.startsWith("#define") && line.endsWith('\\')) {
+            val presetName = line
+                .removePrefix("#define")
+                .removeSuffix("\\")
+                .trim()
+                .removePrefix("EFX_REVERB_PRESET_")
+            val presetValue = lines[index + 1]
+                .removePrefix("{")
+                .removeSuffix("}")
+                .trim()
+                .replace("{", "new float[] {")
+            ret.add(presetName to presetValue)
+            index += 2
+        } else {
+            index++
+        }
+    }
+
+    return ret
 }
