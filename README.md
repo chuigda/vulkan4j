@@ -44,8 +44,8 @@ For OpenGL users, we ported the [LearnOpenGL](https://learnopengl.com) tutorial 
 - [x] API enhancements: chaining `set` methods for structures, LWJGL style `set` methods for structure members, `allocateV` and `writeV` series functions for `Ptr` types.
 - [x] Full OpenGL bindings
   - [ ] Tutorial porting
+- [x] OpenAL bindings
 - [ ] Full OpenGL ES bindings
-- [ ] OpenAL bindings
 - [ ] WebGPU bindings
 - [ ] SDL3 bindings
 - [ ] LLVM bindings (*is this graphics anymore?*)
