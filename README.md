@@ -19,7 +19,7 @@
 <details>
 <summary>Obsolete bindings</summary>
 
-- [OpenGL ES 2.0](https://www.khronos.org/opengles/) ([`gles2`](https://github.com/chuigda/vulkan4j/tree/master/packages/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was initially created for the Chuigda's own use. This package will still get maintained since Chuigda wants.
+- [OpenGL ES **2.0 only**](https://www.khronos.org/opengles/) ([`gles2`](https://github.com/chuigda/vulkan4j/tree/master/packages/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was initially created for the Chuigda's own use. This package will still get maintained since Chuigda wants.
 
 </details>
 
