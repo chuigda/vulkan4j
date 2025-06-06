@@ -1,6 +1,10 @@
+## v0.3.3
+
+- Fixed a issue (#93) causing incorrect generation of `HandleType.Ptr.Iter.next` series methods.
+
 ## v0.3.2
 
-Upgrade `ffm-plus` to v0.2.1, and other wrapper modules to v0.3.2
+Upgrade `ffm-plus` to v0.2.1, and other wrapper modules to v0.3.2,
 
 ### Breaking changes
 

@@ -174,13 +174,13 @@ public record VkFramebuffer(@NotNull MemorySegment segment) implements IPointer 
             }
 
             @Override
-            public VkFramebuffer next() {
+            public @Nullable VkFramebuffer next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkFramebuffer(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkFramebuffer(s);
             }
 
             private @NotNull MemorySegment segment;

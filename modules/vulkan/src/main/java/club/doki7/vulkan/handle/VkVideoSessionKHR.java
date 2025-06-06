@@ -174,13 +174,13 @@ public record VkVideoSessionKHR(@NotNull MemorySegment segment) implements IPoin
             }
 
             @Override
-            public VkVideoSessionKHR next() {
+            public @Nullable VkVideoSessionKHR next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkVideoSessionKHR(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkVideoSessionKHR(s);
             }
 
             private @NotNull MemorySegment segment;

@@ -180,13 +180,13 @@ public record GLFWmonitor(@NotNull MemorySegment segment) implements IPointer {
             }
 
             @Override
-            public GLFWmonitor next() {
+            public @Nullable GLFWmonitor next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new GLFWmonitor(s);
+                return s.equals(MemorySegment.NULL) ? null : new GLFWmonitor(s);
             }
 
             private @NotNull MemorySegment segment;

@@ -174,13 +174,13 @@ public record VkDeviceMemory(@NotNull MemorySegment segment) implements IPointer
             }
 
             @Override
-            public VkDeviceMemory next() {
+            public @Nullable VkDeviceMemory next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkDeviceMemory(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkDeviceMemory(s);
             }
 
             private @NotNull MemorySegment segment;

@@ -174,13 +174,13 @@ public record VkCuFunctionNVX(@NotNull MemorySegment segment) implements IPointe
             }
 
             @Override
-            public VkCuFunctionNVX next() {
+            public @Nullable VkCuFunctionNVX next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkCuFunctionNVX(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkCuFunctionNVX(s);
             }
 
             private @NotNull MemorySegment segment;

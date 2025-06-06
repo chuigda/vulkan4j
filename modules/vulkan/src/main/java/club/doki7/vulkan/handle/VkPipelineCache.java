@@ -174,13 +174,13 @@ public record VkPipelineCache(@NotNull MemorySegment segment) implements IPointe
             }
 
             @Override
-            public VkPipelineCache next() {
+            public @Nullable VkPipelineCache next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkPipelineCache(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkPipelineCache(s);
             }
 
             private @NotNull MemorySegment segment;

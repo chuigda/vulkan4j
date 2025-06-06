@@ -172,13 +172,13 @@ public record GLeglImageOES(@NotNull MemorySegment segment) implements IPointer 
             }
 
             @Override
-            public GLeglImageOES next() {
+            public @Nullable GLeglImageOES next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new GLeglImageOES(s);
+                return s.equals(MemorySegment.NULL) ? null : new GLeglImageOES(s);
             }
 
             private @NotNull MemorySegment segment;

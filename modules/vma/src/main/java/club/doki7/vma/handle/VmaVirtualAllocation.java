@@ -176,13 +176,13 @@ public record VmaVirtualAllocation(@NotNull MemorySegment segment) implements IP
             }
 
             @Override
-            public VmaVirtualAllocation next() {
+            public @Nullable VmaVirtualAllocation next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VmaVirtualAllocation(s);
+                return s.equals(MemorySegment.NULL) ? null : new VmaVirtualAllocation(s);
             }
 
             private @NotNull MemorySegment segment;

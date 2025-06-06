@@ -174,13 +174,13 @@ public record VkCudaFunctionNV(@NotNull MemorySegment segment) implements IPoint
             }
 
             @Override
-            public VkCudaFunctionNV next() {
+            public @Nullable VkCudaFunctionNV next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkCudaFunctionNV(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkCudaFunctionNV(s);
             }
 
             private @NotNull MemorySegment segment;

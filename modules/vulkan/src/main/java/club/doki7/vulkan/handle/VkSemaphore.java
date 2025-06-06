@@ -174,13 +174,13 @@ public record VkSemaphore(@NotNull MemorySegment segment) implements IPointer {
             }
 
             @Override
-            public VkSemaphore next() {
+            public @Nullable VkSemaphore next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkSemaphore(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkSemaphore(s);
             }
 
             private @NotNull MemorySegment segment;

@@ -258,7 +258,7 @@ fun generateHandle(
                 +""
 
                 +"@Override"
-                defun("public", className, "next") {
+                defun("public", "@Nullable $className", "next") {
                     +"if (!hasNext()) {"
                     indent {
                         +"throw new NoSuchElementException();"
@@ -266,7 +266,7 @@ fun generateHandle(
                     +"}"
                     +"MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);"
                     +"segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());"
-                    +"return new $className(s);"
+                    +"return s.equals(MemorySegment.NULL) ? null : new $className(s);"
                 }
                 +""
 

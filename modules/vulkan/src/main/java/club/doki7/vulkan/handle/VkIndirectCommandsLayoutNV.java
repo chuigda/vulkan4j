@@ -174,13 +174,13 @@ public record VkIndirectCommandsLayoutNV(@NotNull MemorySegment segment) impleme
             }
 
             @Override
-            public VkIndirectCommandsLayoutNV next() {
+            public @Nullable VkIndirectCommandsLayoutNV next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkIndirectCommandsLayoutNV(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkIndirectCommandsLayoutNV(s);
             }
 
             private @NotNull MemorySegment segment;

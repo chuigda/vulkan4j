@@ -172,13 +172,13 @@ public record ALCdevice(@NotNull MemorySegment segment) implements IPointer {
             }
 
             @Override
-            public ALCdevice next() {
+            public @Nullable ALCdevice next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new ALCdevice(s);
+                return s.equals(MemorySegment.NULL) ? null : new ALCdevice(s);
             }
 
             private @NotNull MemorySegment segment;
