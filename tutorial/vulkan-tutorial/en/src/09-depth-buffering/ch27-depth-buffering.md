@@ -1,6 +1,6 @@
 # Depth buffering
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/packages/tutorial/src/main/java/tutorial/vulkan/part09/ch27/Main.java) | [C++ version](https://vulkan-tutorial.com/Depth_buffering)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part09/ch27/Main.java) | [C++ version](https://vulkan-tutorial.com/Depth_buffering)
 
 ## Introduction
 

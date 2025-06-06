@@ -1,6 +1,6 @@
 # Frames in flight
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/packages/tutorial/src/main/java/tutorial/vulkan/part04/ch16/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Frames_in_flight)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part04/ch16/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Frames_in_flight)
 
 > About `VUID-vkQueueSubmit-pSignalSemaphores-00067`:
 > 

@@ -1,6 +1,6 @@
 # Combined image sampler
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/packages/tutorial/src/main/java/tutorial/vulkan/part08/ch26/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Combined_image_sampler)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part08/ch26/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Combined_image_sampler)
 
 ## Introduction
 

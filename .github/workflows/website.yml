@@ -34,7 +34,7 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Generate JavaDoc
         run: mvn -B site --file pom.xml || true
-        working-directory: ./packages
+        working-directory: ./modules
       - name: Build vulkan-tutorial mdbook
         run: ../../../mdbook build
         working-directory: ./tutorial/vulkan-tutorial/en
@@ -49,7 +49,7 @@ jobs:
           mkdir -p ./website-output/learnopengl
           mkdir -p ./website-output/learnopengl/en
       - name: Copy JavaDoc output to website directory
-        run: cp -r ./packages/target/site/apidocs/* ./website-output
+        run: cp -r ./modules/target/site/apidocs/* ./website-output
       - name: Copy mdbook output to website directory
         run: |
           cp -r ./tutorial/vulkan-tutorial/en/book/* ./website-output/tutorial/en/

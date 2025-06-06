@@ -1,6 +1,6 @@
 # Framebuffers
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/packages/tutorial/src/main/java/tutorial/vulkan/part04/ch13/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Framebuffers)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part04/ch13/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Framebuffers)
 
 We've talked a lot about framebuffers in the past few chapters, and we've set up the render pass to expect a single framebuffer with the same format as the swap chain images, but we haven't actually created any yet.
 

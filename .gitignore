@@ -56,7 +56,7 @@ tutorial/dependency-reduced-pom.xml
 **/.flattened-pom.xml
 
 # VMA build input
-packages/vma/vma_build/vk_mem_alloc.h
+modules/vma/vma_build/vk_mem_alloc.h
 
 # Python __pycache__
 **/__pycache__/

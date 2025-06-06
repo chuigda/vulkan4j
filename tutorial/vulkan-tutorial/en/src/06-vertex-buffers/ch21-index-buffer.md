@@ -1,6 +1,6 @@
 # Index buffer
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/packages/tutorial/src/main/java/tutorial/vulkan/part06/ch21/Main.java) | [C++ version](https://vulkan-tutorial.com/Vertex_buffers/Index_buffer)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part06/ch21/Main.java) | [C++ version](https://vulkan-tutorial.com/Vertex_buffers/Index_buffer)
 
 ## Introduction
 
