@@ -88,6 +88,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.11.2</version>
                 <configuration>
+                    <doclint>none</doclint>
                     <bottom><![CDATA[Copyright &copy; ${project.inceptionYear}-{currentYear} ${project.organization.name}. Licensed under the BSD 3-Clause License.]]></bottom>
                 </configuration>
                 <reportSets>
@@ -116,6 +117,9 @@
                         <reports>
                             <report>javadoc</report>
                         </reports>
+                        <configuration>
+                            <doclint>none</doclint>
+                        </configuration>
                     </reportSet>
                 </reportSets>
             </plugin>
