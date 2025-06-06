@@ -21,7 +21,7 @@ jobs:
         cache: maven
     - name: Setup GCC
       uses: egor-tensin/setup-gcc@v1
-    - name: Give build.sh priviledge to run
+    - name: Give build.sh privilege to run
       working-directory: ./misc/test_binary/
       run: chmod +x ./build.sh
     - name: Build testing-use native binaries
@@ -29,3 +29,4 @@ jobs:
       run: ./build.sh
     - name: Run test with maven
       run: mvn -B test --file pom.xml
+      working-directory: ./packages

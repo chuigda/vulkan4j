@@ -34,26 +34,32 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Generate JavaDoc
         run: mvn -B site --file pom.xml || true
+        working-directory: ./packages
       - name: Build vulkan-tutorial mdbook
         run: ../../../mdbook build
         working-directory: ./tutorial/vulkan-tutorial/en
       - name: Build learn-opengl mdbook
         run: ../../../mdbook build
         working-directory: ./tutorial/learn-opengl/en
-      - name: Copy mdbook output to JavaDoc directory
+      - name: Make output directory
         run: |
-          mkdir -p ./target/site/apidocs/tutorial
-          mkdir -p ./target/site/apidocs/tutorial/en
-          cp -r ./tutorial/vulkan-tutorial/en/book/* ./target/site/apidocs/tutorial/en/
-          cp -r ./tutorial/vulkan-tutorial/images ./target/site/apidocs/tutorial/
-          mkdir -p ./target/site/apidocs/learnopengl
-          mkdir -p ./target/site/apidocs/learnopengl/en
-          cp -r ./tutorial/learn-opengl/en/book/* ./target/site/apidocs/learnopengl/en/
-          cp -r ./tutorial/learn-opengl/images ./target/site/apidocs/learnopengl/
+          mkdir -p ./website-output
+          mkdir -p ./website-output/tutorial
+          mkdir -p ./website-output/tutorial/en
+          mkdir -p ./website-output/learnopengl
+          mkdir -p ./website-output/learnopengl/en
+      - name: Copy JavaDoc output to website directory
+        run: cp -r ./packages/target/site/apidocs/* ./website-output
+      - name: Copy mdbook output to website directory
+        run: |
+          cp -r ./tutorial/vulkan-tutorial/en/book/* ./website-output/tutorial/en/
+          cp -r ./tutorial/vulkan-tutorial/images ./website-output/tutorial/
+          cp -r ./tutorial/learn-opengl/en/book/* ./website-output/learnopengl/en/
+          cp -r ./tutorial/learn-opengl/images ./website-output/learnopengl/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./target/site/apidocs
+          path: ./website-output
 
   deploy:
     environment:
