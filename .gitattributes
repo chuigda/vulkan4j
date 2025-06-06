@@ -1,36 +1,35 @@
-vulkan/src/main/java/club/doki7/vulkan/bitmask/*.java linguist-generated
-vulkan/src/main/java/club/doki7/vulkan/command/*.java linguist-generated
-vulkan/src/main/java/club/doki7/vulkan/datatype/*.java linguist-generated
-vulkan/src/main/java/club/doki7/vulkan/enumtype/*.java linguist-generated
-vulkan/src/main/java/club/doki7/vulkan/handle/*.java linguist-generated
+packages/vulkan/src/main/java/club/doki7/vulkan/bitmask/*.java linguist-generated
+packages/vulkan/src/main/java/club/doki7/vulkan/command/*.java linguist-generated
+packages/vulkan/src/main/java/club/doki7/vulkan/datatype/*.java linguist-generated
+packages/vulkan/src/main/java/club/doki7/vulkan/enumtype/*.java linguist-generated
+packages/vulkan/src/main/java/club/doki7/vulkan/handle/*.java linguist-generated
 
-opengl/src/main/java/club/doki7/opengl/handle/*.java linguist-generated
-opengl/src/main/java/club/doki7/opengl/GL.java linguist-generated
-opengl/src/main/java/club/doki7/opengl/GLCompatibility.java linguist-generated
-opengl/src/main/java/club/doki7/opengl/GLConstants.java linguist-generated
+packages/opengl/src/main/java/club/doki7/opengl/handle/*.java linguist-generated
+packages/opengl/src/main/java/club/doki7/opengl/GL.java linguist-generated
+packages/opengl/src/main/java/club/doki7/opengl/GLCompatibility.java linguist-generated
+packages/opengl/src/main/java/club/doki7/opengl/GLConstants.java linguist-generated
 
-openal/src/main/java/club/doki7/openal/handle/*.java linguist-generated
-openal/src/main/java/club/doki7/openal/AL.java linguist-generated
-openal/src/main/java/club/doki7/openal/ALC.java linguist-generated
-openal/src/main/java/club/doki7/openal/ALConstants.java linguist-generated
-openal/src/main/java/club/doki7/openal/ALCConstants.java linguist-generated
-openal/src/main/java/club/doki7/openal/ALFunctionTypes.java linguist-generated
-openal/src/main/java/club/doki7/openal/EFXReverbPresets.java linguist-generated
+packages/openal/src/main/java/club/doki7/openal/handle/*.java linguist-generated
+packages/openal/src/main/java/club/doki7/openal/AL.java linguist-generated
+packages/openal/src/main/java/club/doki7/openal/ALC.java linguist-generated
+packages/openal/src/main/java/club/doki7/openal/ALConstants.java linguist-generated
+packages/openal/src/main/java/club/doki7/openal/ALCConstants.java linguist-generated
+packages/openal/src/main/java/club/doki7/openal/ALFunctionTypes.java linguist-generated
+packages/openal/src/main/java/club/doki7/openal/EFXReverbPresets.java linguist-generated
 
-gles2/src/main/java/club/doki7/gles2/GLES2.java linguist-generated
-gles2/src/main/java/club/doki7/gles2/GLES2Constants.java linguist-generated
+packages/gles2/src/main/java/club/doki7/gles2/GLES2.java linguist-generated
+packages/gles2/src/main/java/club/doki7/gles2/GLES2Constants.java linguist-generated
 
-glfw/src/main/java/club/doki7/glfw/datatype/*.java linguist-generated
-glfw/src/main/java/club/doki7/glfw/handle/*.java linguist-generated
-glfw/src/main/java/club/doki7/glfw/GLFW.java linguist-generated
-glfw/src/main/java/club/doki7/glfw/GLFWConstants.java linguist-generated
-glfw/src/main/java/club/doki7/glfw/GLFWFunctionTypes.java linguist-generated
+packages/glfw/src/main/java/club/doki7/glfw/datatype/*.java linguist-generated
+packages/glfw/src/main/java/club/doki7/glfw/handle/*.java linguist-generated
+packages/glfw/src/main/java/club/doki7/glfw/GLFW.java linguist-generated
+packages/glfw/src/main/java/club/doki7/glfw/GLFWConstants.java linguist-generated
+packages/glfw/src/main/java/club/doki7/glfw/GLFWFunctionTypes.java linguist-generated
 
-vma/src/main/java/club/doki7/vma/VMA.java linguist-generated
-vma/src/main/java/club/doki7/vma/bitmask/*.java linguist-generated
-vma/src/main/java/club/doki7/vma/datatype/*.java linguist-generated
-vma/src/main/java/club/doki7/vma/enumtype/*.java linguist-generated
-vma/src/main/java/club/doki7/vma/handle/*.java linguist-generated
+packages/vma/src/main/java/club/doki7/vma/VMA.java linguist-generated
+packages/vma/src/main/java/club/doki7/vma/bitmask/*.java linguist-generated
+packages/vma/src/main/java/club/doki7/vma/datatype/*.java linguist-generated
+packages/vma/src/main/java/club/doki7/vma/enumtype/*.java linguist-generated
+packages/vma/src/main/java/club/doki7/vma/handle/*.java linguist-generated
 
-tutorial/src/main/java/* linguist-documentation
-tutorial/src/main/java/ch28/Main.java -linguist-documentation
+packages/tutorial/src/main/java/**/*.java linguist-documentation
