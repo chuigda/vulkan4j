@@ -3,6 +3,8 @@ modules/vulkan/src/main/java/club/doki7/vulkan/command/*.java linguist-generated
 modules/vulkan/src/main/java/club/doki7/vulkan/datatype/*.java linguist-generated
 modules/vulkan/src/main/java/club/doki7/vulkan/enumtype/*.java linguist-generated
 modules/vulkan/src/main/java/club/doki7/vulkan/handle/*.java linguist-generated
+modules/vulkan/src/main/java/club/doki7/vulkan/VkConstants.java linguist-generated
+modules/vulkan/src/main/java/club/doki7/vulkan/VkFunctionTypes.java linguist-generated
 
 modules/opengl/src/main/java/club/doki7/opengl/handle/*.java linguist-generated
 modules/opengl/src/main/java/club/doki7/opengl/GL.java linguist-generated
@@ -27,6 +29,7 @@ modules/glfw/src/main/java/club/doki7/glfw/GLFWConstants.java linguist-generated
 modules/glfw/src/main/java/club/doki7/glfw/GLFWFunctionTypes.java linguist-generated
 
 modules/vma/src/main/java/club/doki7/vma/VMA.java linguist-generated
+modules/vma/src/main/java/club/doki7/vma/VMAFunctionTypes.java linguist-generated
 modules/vma/src/main/java/club/doki7/vma/bitmask/*.java linguist-generated
 modules/vma/src/main/java/club/doki7/vma/datatype/*.java linguist-generated
 modules/vma/src/main/java/club/doki7/vma/enumtype/*.java linguist-generated
