@@ -34,9 +34,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
-# Downloaded vk.xml
-/vk4j/vkxml2java/vk.xml
-
 # Generated auxiliary programs
 *.exe
 
@@ -58,13 +55,8 @@ tutorial/dependency-reduced-pom.xml
 # Flatten plugin produced files
 **/.flattened-pom.xml
 
-# Code Generator Input
-codegen/input/*
-!codegen/input/download.sh
-!codegen/input/Doxyfile.vma
-
 # VMA build input
-vma/vma_build/vk_mem_alloc.h
+packages/vma/vma_build/vk_mem_alloc.h
 
 # Python __pycache__
 **/__pycache__/

@@ -1,6 +1,6 @@
 # Images
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part08/ch24/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Images) 
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/packages/tutorial/src/main/java/tutorial/vulkan/part08/ch24/Main.java) | [C++ version](https://vulkan-tutorial.com/Texture_mapping/Images) 
 
 ## Introduction
 

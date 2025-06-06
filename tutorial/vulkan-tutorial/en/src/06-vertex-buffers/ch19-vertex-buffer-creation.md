@@ -1,6 +1,6 @@
 # Vertex buffer creation
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part06/ch19/Main.java) | [C++ version](https://vulkan-tutorial.com/Vertex_buffers/Vertex_buffer_creation)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/packages/tutorial/src/main/java/tutorial/vulkan/part06/ch19/Main.java) | [C++ version](https://vulkan-tutorial.com/Vertex_buffers/Vertex_buffer_creation)
 
 ## Introduction
 

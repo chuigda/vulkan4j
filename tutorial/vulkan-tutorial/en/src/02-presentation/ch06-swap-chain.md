@@ -1,6 +1,6 @@
 # Swap chain
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part02/ch06/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Swap_chain)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/packages/tutorial/src/main/java/tutorial/vulkan/part02/ch06/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Swap_chain)
 
 Vulkan does not have the concept of a "default framebuffer", hence it requires an infrastructure that will own the buffers we will render to before we visualize them on the screen. This infrastructure is known as the swap chain and must be created explicitly in Vulkan. The swap chain is essentially a queue of images that are waiting to be presented to the screen. Our application will acquire such an image to draw to it, and then return it to the queue. How exactly the queue works and the conditions for presenting an image from the queue depend on how the swap chain is set up, but the general purpose of the swap chain is to synchronize the presentation of images with the refresh rate of the screen.
 
