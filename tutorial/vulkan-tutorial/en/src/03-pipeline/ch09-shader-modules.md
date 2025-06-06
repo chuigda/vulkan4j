@@ -1,6 +1,6 @@
 # Shader modules
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part03/ch09/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Shader_modules)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part03/ch09/Main.java) | [C++ version](https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Shader_modules)
 
 Unlike earlier APIs, shader code in Vulkan has to be specified in a bytecode format as opposed to human-readable syntax like [GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) and [HLSL](https://en.wikipedia.org/wiki/High-Level_Shading_Language). This bytecode format is called [SPIR-V](https://www.khronos.org/spir) and is designed to be used with both Vulkan and OpenCL (both Khronos APIs). It is a format that can be used to write graphics and compute shaders, but we will focus on shaders used in Vulkan's graphics pipelines in this tutorial.
 

@@ -6,26 +6,26 @@
 
 *This project is heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
 
-`vulkan4j` is a series of graphics and relevant API binding for Java, implemented with Java 22 [Project Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs. This project initially focuses on [Vulkan](https://www.vulkan.org/), but soon we expanded to other graphics APIs such as [OpenGL](https://www.opengl.org/) and [OpenGL ES](https://www.khronos.org/opengles/). More APIs will be added in the future, feature requests and contributions are welcome!
+`vulkan4j` is a series of graphics and relevant API binding for Java, implemented with Java 22 [Project Panama](https://openjdk.org/projects/panama/) `java.lang.foreign` APIs. This project initially focuses on [Vulkan](https://www.vulkan.org/), but soon we expanded to other graphics APIs such as [OpenGL](https://www.opengl.org/) and [OpenGL ES](https://www.khronos.org/opengles/). More APIs will be added in the future, **feature requests and contributions are welcome!**
 
 ## Bindings Available
 
-- [Vulkan](https://www.khronos.org/vulkan/) ([`vulkan`](https://github.com/chuigda/vulkan4j/tree/master/vulkan) module): Generated from [`vk.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) and [`video.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/video.xml).
-- [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) ([`vma`](https://github.com/chuigda/vulkan4j/tree/master/vma) module): Generated from [`vk_mem_alloc.h`](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h). If you use a specific build supporting `vk4jSetJavaTrace`, you can enjoy Java stacktrace on VMA assertion failures. Check out the [`vma_build`](https://github.com/chuigda/vulkan4j/tree/master/vma/vma_build) directory for more information.
-- [OpenGL](https://www.opengl.org/) ([`opengl`](https://github.com/chuigda/vulkan4j/tree/master/opengl) module): Generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml). Our supported extension list is copied from LWJGL, and not all extensions are included (since some OpenGL extensions are completely useless nowadays). Name your desired extension in the issue tracker!
-- [OpenAL](https://www.openal.org/) ([`openal`](https://github.com/chuigda/vulkan4j/tree/master/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
-- [GLFW](https://www.glfw.org/) ([`glfw`](https://github.com/chuigda/vulkan4j/tree/master/glfw) module): Generated from GLFW header files.
+- [Vulkan](https://www.khronos.org/vulkan/) ([`vulkan`](https://github.com/chuigda/vulkan4j/tree/master/modules/vulkan) module): Generated from [`vk.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/vk.xml) and [`video.xml`](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/xml/video.xml).
+- [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) ([`vma`](https://github.com/chuigda/vulkan4j/tree/master/modules/vma) module): Generated from [`vk_mem_alloc.h`](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h). If you use a specific build supporting `vk4jSetJavaTrace`, you can enjoy Java stacktrace on VMA assertion failures. Check out the [`vma_build`](https://github.com/chuigda/vulkan4j/tree/master/modules/vma/vma_build) directory for more information.
+- [OpenGL](https://www.opengl.org/) ([`opengl`](https://github.com/chuigda/vulkan4j/tree/master/modules/opengl) module): Generated from [`gl.xml`](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml). Our supported extension list is copied from LWJGL, and not all extensions are included (since some OpenGL extensions are completely useless nowadays). Name your desired extension in the issue tracker!
+- [OpenAL](https://www.openal.org/) ([`openal`](https://github.com/chuigda/vulkan4j/tree/master/modules/openal) module): Generated from OpenAL-soft header files. This module is based on OpenAL-soft 1.2, and provides a complete set of OpenAL features, including all extensions supported by OpenAL-soft.
+- [GLFW](https://www.glfw.org/) ([`glfw`](https://github.com/chuigda/vulkan4j/tree/master/modules/glfw) module): Generated from GLFW header files.
 
 <details>
 <summary>Obsolete bindings</summary>
 
-- [OpenGL ES 2.0](https://www.khronos.org/opengles/) ([`gles2`](https://github.com/chuigda/vulkan4j/tree/master/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was initially created for the Chuigda's own use. This package will still get maintained since Chuigda wants.
+- [OpenGL ES **2.0 only**](https://www.khronos.org/opengles/) ([`gles2`](https://github.com/chuigda/vulkan4j/tree/master/modules/gles2) module): Also generated from `gl.xml`. This module only provides most fundamental OpenGL ES 2.0 features, and does not include any extensions. This package was initially created for the Chuigda's own use. This package will still get maintained since Chuigda wants.
 
 </details>
 
 ## `ffm-plus`
 
-To improve development experience using Java 22 FFM APIs, we created a small library [`ffm-plus`](https://github.com/chuigda/vulkan4j/tree/master/ffm-plus) that encapsulates most commonly used facilities, such as typed pointers and bitfield operations. All our bindings use `ffm-plus`.
+To improve development experience using Java 22 FFM APIs, we created a small library [`ffm-plus`](https://github.com/chuigda/vulkan4j/tree/master/modules/ffm-plus) that encapsulates most commonly used facilities, such as typed pointers and bitfield operations. All our bindings use `ffm-plus`.
 
 ## Documentation and Tutorials
 
@@ -45,8 +45,8 @@ For OpenGL users, we ported the [LearnOpenGL](https://learnopengl.com) tutorial 
 - [x] Full OpenGL bindings
   - [ ] Tutorial porting
 - [x] OpenAL bindings
-- [ ] Full OpenGL ES bindings
 - [ ] WebGPU bindings
+- [ ] Full OpenGL ES bindings
 - [ ] SDL3 bindings
 - [ ] LLVM bindings (*is this graphics anymore?*)
 

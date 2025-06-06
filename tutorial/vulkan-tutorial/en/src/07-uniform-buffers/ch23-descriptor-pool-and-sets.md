@@ -1,6 +1,6 @@
 # Descriptor pool and sets
 
-> [Java code](https://github.com/chuigda/vulkan4j/tree/master/tutorial/src/main/java/tutorial/vulkan/part07/ch23/Main.java) | [C++ version](https://vulkan-tutorial.com/Uniform_buffers/Descriptor_pool_and_sets)
+> [Java code](https://github.com/chuigda/vulkan4j/tree/master/modules/tutorial/src/main/java/tutorial/vulkan/part07/ch23/Main.java) | [C++ version](https://vulkan-tutorial.com/Uniform_buffers/Descriptor_pool_and_sets)
 
 ## Introduction
 
