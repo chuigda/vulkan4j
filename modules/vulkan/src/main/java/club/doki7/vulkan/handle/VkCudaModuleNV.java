@@ -174,13 +174,13 @@ public record VkCudaModuleNV(@NotNull MemorySegment segment) implements IPointer
             }
 
             @Override
-            public VkCudaModuleNV next() {
+            public @Nullable VkCudaModuleNV next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkCudaModuleNV(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkCudaModuleNV(s);
             }
 
             private @NotNull MemorySegment segment;

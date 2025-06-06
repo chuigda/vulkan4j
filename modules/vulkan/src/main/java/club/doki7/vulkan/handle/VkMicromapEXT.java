@@ -174,13 +174,13 @@ public record VkMicromapEXT(@NotNull MemorySegment segment) implements IPointer 
             }
 
             @Override
-            public VkMicromapEXT next() {
+            public @Nullable VkMicromapEXT next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkMicromapEXT(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkMicromapEXT(s);
             }
 
             private @NotNull MemorySegment segment;

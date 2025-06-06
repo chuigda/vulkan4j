@@ -174,13 +174,13 @@ public record VkDebugReportCallbackEXT(@NotNull MemorySegment segment) implement
             }
 
             @Override
-            public VkDebugReportCallbackEXT next() {
+            public @Nullable VkDebugReportCallbackEXT next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkDebugReportCallbackEXT(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkDebugReportCallbackEXT(s);
             }
 
             private @NotNull MemorySegment segment;

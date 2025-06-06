@@ -174,13 +174,13 @@ public record VkPipelineLayout(@NotNull MemorySegment segment) implements IPoint
             }
 
             @Override
-            public VkPipelineLayout next() {
+            public @Nullable VkPipelineLayout next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkPipelineLayout(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkPipelineLayout(s);
             }
 
             private @NotNull MemorySegment segment;

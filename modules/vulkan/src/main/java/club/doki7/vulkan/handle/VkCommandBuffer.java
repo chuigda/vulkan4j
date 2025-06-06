@@ -174,13 +174,13 @@ public record VkCommandBuffer(@NotNull MemorySegment segment) implements IPointe
             }
 
             @Override
-            public VkCommandBuffer next() {
+            public @Nullable VkCommandBuffer next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkCommandBuffer(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkCommandBuffer(s);
             }
 
             private @NotNull MemorySegment segment;

@@ -174,13 +174,13 @@ public record VkSemaphoreSciSyncPoolNV(@NotNull MemorySegment segment) implement
             }
 
             @Override
-            public VkSemaphoreSciSyncPoolNV next() {
+            public @Nullable VkSemaphoreSciSyncPoolNV next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkSemaphoreSciSyncPoolNV(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkSemaphoreSciSyncPoolNV(s);
             }
 
             private @NotNull MemorySegment segment;

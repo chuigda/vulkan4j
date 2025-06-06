@@ -174,13 +174,13 @@ public record VkBuffer(@NotNull MemorySegment segment) implements IPointer {
             }
 
             @Override
-            public VkBuffer next() {
+            public @Nullable VkBuffer next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkBuffer(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkBuffer(s);
             }
 
             private @NotNull MemorySegment segment;

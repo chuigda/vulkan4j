@@ -174,13 +174,13 @@ public record VkValidationCacheEXT(@NotNull MemorySegment segment) implements IP
             }
 
             @Override
-            public VkValidationCacheEXT next() {
+            public @Nullable VkValidationCacheEXT next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkValidationCacheEXT(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkValidationCacheEXT(s);
             }
 
             private @NotNull MemorySegment segment;

@@ -174,13 +174,13 @@ public record VkSwapchainKHR(@NotNull MemorySegment segment) implements IPointer
             }
 
             @Override
-            public VkSwapchainKHR next() {
+            public @Nullable VkSwapchainKHR next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkSwapchainKHR(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkSwapchainKHR(s);
             }
 
             private @NotNull MemorySegment segment;

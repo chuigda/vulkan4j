@@ -174,13 +174,13 @@ public record VkDescriptorPool(@NotNull MemorySegment segment) implements IPoint
             }
 
             @Override
-            public VkDescriptorPool next() {
+            public @Nullable VkDescriptorPool next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkDescriptorPool(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkDescriptorPool(s);
             }
 
             private @NotNull MemorySegment segment;

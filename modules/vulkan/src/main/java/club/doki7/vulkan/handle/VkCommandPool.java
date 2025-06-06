@@ -174,13 +174,13 @@ public record VkCommandPool(@NotNull MemorySegment segment) implements IPointer 
             }
 
             @Override
-            public VkCommandPool next() {
+            public @Nullable VkCommandPool next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkCommandPool(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkCommandPool(s);
             }
 
             private @NotNull MemorySegment segment;

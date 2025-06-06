@@ -177,13 +177,13 @@ public record VmaVirtualBlock(@NotNull MemorySegment segment) implements IPointe
             }
 
             @Override
-            public VmaVirtualBlock next() {
+            public @Nullable VmaVirtualBlock next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VmaVirtualBlock(s);
+                return s.equals(MemorySegment.NULL) ? null : new VmaVirtualBlock(s);
             }
 
             private @NotNull MemorySegment segment;

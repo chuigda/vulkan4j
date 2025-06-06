@@ -174,13 +174,13 @@ public record VkSurfaceKHR(@NotNull MemorySegment segment) implements IPointer {
             }
 
             @Override
-            public VkSurfaceKHR next() {
+            public @Nullable VkSurfaceKHR next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkSurfaceKHR(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkSurfaceKHR(s);
             }
 
             private @NotNull MemorySegment segment;

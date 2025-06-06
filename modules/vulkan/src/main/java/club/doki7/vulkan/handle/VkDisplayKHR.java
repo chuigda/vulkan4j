@@ -174,13 +174,13 @@ public record VkDisplayKHR(@NotNull MemorySegment segment) implements IPointer {
             }
 
             @Override
-            public VkDisplayKHR next() {
+            public @Nullable VkDisplayKHR next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VkDisplayKHR(s);
+                return s.equals(MemorySegment.NULL) ? null : new VkDisplayKHR(s);
             }
 
             private @NotNull MemorySegment segment;

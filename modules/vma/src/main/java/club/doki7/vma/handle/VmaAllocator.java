@@ -178,13 +178,13 @@ public record VmaAllocator(@NotNull MemorySegment segment) implements IPointer {
             }
 
             @Override
-            public VmaAllocator next() {
+            public @Nullable VmaAllocator next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
                 MemorySegment s = segment.get(ValueLayout.ADDRESS, 0);
                 segment = segment.asSlice(ValueLayout.ADDRESS.byteSize());
-                return new VmaAllocator(s);
+                return s.equals(MemorySegment.NULL) ? null : new VmaAllocator(s);
             }
 
             private @NotNull MemorySegment segment;
