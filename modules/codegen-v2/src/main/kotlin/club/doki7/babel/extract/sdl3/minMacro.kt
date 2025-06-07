@@ -29,7 +29,7 @@ internal val knownMacros = mapOf<String, (String) -> String>(
 )
 
 private fun sdl_button_mask(button: String): String =
-    when (button.removePrefix("SDL_BUTTON_MASK").removeSuffix(")").trim()) {
+    when (button.removePrefix("SDL_BUTTON_MASK(").removeSuffix(")").trim()) {
         "SDL_BUTTON_LEFT" -> "(1 << 0)"
         "SDL_BUTTON_MIDDLE" -> "(1 << 1)"
         "SDL_BUTTON_RIGHT" -> "(1 << 2)"

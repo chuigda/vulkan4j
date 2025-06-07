@@ -3,11 +3,6 @@
 package club.doki7.babel.extract.sdl3
 
 import club.doki7.babel.cdecl.*
-import club.doki7.babel.extract.*
-import club.doki7.babel.extract.vma.enumerationParseConfig
-import club.doki7.babel.extract.vma.parseEnumerator
-import club.doki7.babel.extract.vma.parseStructField
-import club.doki7.babel.extract.vma.structureParseConfig
 import club.doki7.babel.hparse.ControlFlow
 import club.doki7.babel.hparse.ParseConfig
 import club.doki7.babel.hparse.detectBlockComment
@@ -26,6 +21,7 @@ import club.doki7.babel.hparse.skipPreprocessor
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.isDecOrHexNumber
 import club.doki7.babel.util.parseDecOrHex
+import club.doki7.babel.util.setupLog
 import java.util.logging.Logger
 import kotlin.io.path.Path
 
@@ -33,6 +29,8 @@ private val inputDir = Path("codegen-v2/input")
 internal val log = Logger.getLogger("c.d.b.extract.sdl3")
 
 fun main() {
+    setupLog()
+
     val indexFileContent = inputDir.resolve("SDL3-3.2.14/include/SDL3/SDL.h")
         .toFile()
         .readText()
@@ -122,6 +120,11 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
         { if (it.startsWith("extern SDL_DECLSPEC")) ControlFlow.ACCEPT else ControlFlow.NEXT },
         ::parseAndSaveFunctionDecl
     )
+    addRule(
+        20,
+        { if (it == "typedef union _XEvent XEvent;") ControlFlow.ACCEPT else ControlFlow.NEXT },
+        ::nextLine
+    )
 
     addRule(
         30,
@@ -142,7 +145,7 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
     addRule(
         40,
         { if (it.startsWith("typedef") && it.endsWith(";")) ControlFlow.ACCEPT else ControlFlow.NEXT },
-        ::parseTypeAlias
+        ::parseAndSaveTypedef
     )
 }
 
@@ -161,6 +164,10 @@ private fun parseConstDef(
         Triple(name, lines[index + 1], index + 2)
     } else {
         val parts = line.removePrefix("#define").trim().split(" ", limit = 2)
+        if (parts.size < 2) {
+            log.warning("skipping empty constant definition at line ${index + 1}: $line")
+            return index + 1
+        }
         Triple(parts[0].trim(), parts[1].trim(), index + 1)
     }
 
@@ -342,6 +349,15 @@ private fun parseAndSaveStructure(
     }
 
     val structureName = lines[index].removePrefix("typedef struct").trim()
+    if (structureName in knownTroublesomeStructures) {
+        // directly skip to the `}` + ';' line
+        var index1 = index + 1
+        while (index1 < lines.size && !(lines[index1].startsWith("}") && lines[index1].endsWith(";"))) {
+            index1++
+        }
+        return index1 + 1
+    }
+
     val next = hparse(structureParseConfig, registry, cx, lines, index + 2)
     val fields = cx["fields"] as MutableList<Member>
     cx.remove("fields")
@@ -456,12 +472,15 @@ private fun parseAndSaveEnumeration(
 private val enumerationParseConfig = ParseConfig<EmptyMergeable>().apply {
     addInit { it["enumerators"] = mutableListOf<Pair<EnumeratorDecl, List<String>?>>() }
 
+    addRule(10, {
+        if (it.startsWith("#if") && it.contains("SDL_BYTEORDER")) ControlFlow.ACCEPT else ControlFlow.NEXT
+    }, ::skipEndiannessSpecific)
     addRule(0, { line -> if (line.startsWith("}")) ControlFlow.RETURN else ControlFlow.NEXT }, ::dummyAction)
     addRule(0, ::detectBlockDoxygen, ::parseAndSaveBlockDoxygen)
     addRule(0, ::detectTriSlashDoxygen, ::parseAndSaveTriSlashDoxygen)
-    addRule(10, ::detectLineComment, ::nextLine)
-    addRule(10, ::detectPreprocessor, ::nextLine)
-    addRule(10, ::detectBlockComment, ::skipBlockComment)
+    addRule(20, ::detectLineComment, ::nextLine)
+    addRule(20, ::detectPreprocessor, ::nextLine)
+    addRule(20, ::detectBlockComment, ::skipBlockComment)
     addRule(99, { _ -> ControlFlow.ACCEPT }, ::parseEnumerator)
 }
 
@@ -482,5 +501,70 @@ private fun parseEnumerator(
     }
 
     (cx["enumerators"] as MutableList<Pair<EnumeratorDecl, List<String>?>>).add(Pair(enumDecl, enumeratorDoc))
+    return nextIndex
+}
+
+private fun skipEndiannessSpecific(
+    @Suppress("unused") registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    var index1 = index + 1
+    while (index1 < lines.size && !lines[index1].startsWith("#endif")) {
+        index1++
+    }
+    return index1 + 1
+}
+
+private fun parseAndSaveTypedef(
+    registry: Registry<EmptyMergeable>,
+    cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    val parseResult = parseTypedefDecl(lines, index)
+    val typedef = parseResult.first
+    val nextIndex = parseResult.second
+
+    val entity = when (typedef.name) {
+        in knownEnumTypes -> {
+            val enumeration = Enumeration(
+                name = typedef.name,
+                variants = mutableListOf()
+            )
+            registry.enumerations.putEntityIfAbsent(enumeration)
+            enumeration
+        }
+        in knownBitmaskTypes -> {
+            val bitmask = Bitmask(
+                name = typedef.name,
+                bitwidth = when ((typedef.aliasedType as RawIdentifierType).ident.lowercase()) {
+                    "uint8" -> 8
+                    "uint16" -> 16
+                    "uint32" -> 32
+                    "uint64" -> 64
+                    else -> error("Unknown bitmask type: ${typedef.aliasedType}")
+                },
+                bitflags = mutableListOf()
+            )
+            registry.bitmasks.putEntityIfAbsent(bitmask)
+            bitmask
+        }
+        else -> {
+            val typedef = Typedef(
+                name = typedef.name,
+                type = typedef.aliasedType.toType()
+            )
+            registry.aliases.putEntityIfAbsent(typedef)
+            typedef
+        }
+    }
+
+    if ("doxygen" in cx) {
+        entity.doc = cx["doxygen"] as List<String>
+        cx.remove("doxygen")
+    }
+
     return nextIndex
 }

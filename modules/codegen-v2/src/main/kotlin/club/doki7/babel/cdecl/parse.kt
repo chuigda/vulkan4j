@@ -162,10 +162,23 @@ private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {
     while (true) {
         val paramTriviaList = mutableListOf<String>()
 
+        var peekedToken = tokenizer.peek()
+        if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == "...") {
+            tokenizer.next()
+            skipTrivia(tokenizer, paramTriviaList)
+            params.add(VarDecl(
+                "...",
+                RawIdentifierType("", signed=false, unsigned=false, trivia=mutableListOf()),
+                paramTriviaList
+            ))
+            expectAndConsume(TokenKind.SYMBOL, tokenizer, ")")
+            return params
+        }
+
         var paramType = parseType(tokenizer)
         skipTrivia(tokenizer, paramTriviaList)
 
-        var peekedToken = tokenizer.peek()
+        peekedToken = tokenizer.peek()
         if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == ")") {
             if (paramType is RawIdentifierType && paramType.ident == "void") {
                 if (params.isNotEmpty()) {
@@ -178,7 +191,6 @@ private fun parseFunctionParamList(tokenizer: Tokenizer): MutableList<VarDecl> {
         }
 
         if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == ",") {
-            // 没有提供具名参数
             tokenizer.next()
             params.add(VarDecl("", paramType, paramTriviaList))
             continue
@@ -301,7 +313,19 @@ internal fun tryMergeLongSequences(token: Token, tokenizer: Tokenizer): Token {
 }
 
 internal fun parseSimpleExpr(tokenizer: Tokenizer, trivia: MutableList<String>): String {
+    var isNegative = false
+
     skipTrivia(tokenizer, trivia)
+    val peekedToken = tokenizer.peek()
+    if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == "-") {
+        isNegative = true
+        tokenizer.next()
+        skipTrivia(tokenizer, trivia)
+    } else if (peekedToken.kind == TokenKind.SYMBOL && peekedToken.value == "+") {
+        tokenizer.next()
+        skipTrivia(tokenizer, trivia)
+    }
+
     val firstToken = tokenizer.next()
     var result: String
     when (firstToken.kind) {
@@ -325,5 +349,10 @@ internal fun parseSimpleExpr(tokenizer: Tokenizer, trivia: MutableList<String>):
             break
         }
     }
-    return result
+
+    return if (isNegative) {
+        "-$result"
+    } else {
+        result
+    }
 }

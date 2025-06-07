@@ -36,6 +36,15 @@ internal val knownBitmaskTypes = mapOf(
 
     // SDL_video.h
     "SDL_WindowFlags" to "SDL_WINDOW_",
+    "SDL_GLContextReleaseFlag" to "SDL_GL_CONTEXT_RELEASE_",
+    "SDL_GLContextResetNotification" to "SDL_GL_CONTEXT_RESET_",
+    "SDL_GLContextFlag" to "SDL_GL_CONTEXT_"
+)
+
+internal val bitmaskExplicitBelongship = mapOf(
+    // if we use the mapping above, this fucking constant will be mapped to
+    // `SDL_GLContextResetNotification` type, but it should belong to `SDL_GLContextFlag`
+    "SDL_GL_CONTEXT_RESET_ISOLATION_FLAG" to "SDL_GLContextFlag"
 )
 
 internal val knownEnumTypes = mapOf(
@@ -50,11 +59,14 @@ internal val knownEnumTypes = mapOf(
     "SDL_Keymod" to "SDL_KMOD_",
 
     // SDL_video.h
-    "SDL_GLProfile" to "SDL_GL_CONTEXT_PROFILE_",
-    "SDL_GLContextResetNotification" to "SDL_GL_CONTEXT_RESET_"
+    "SDL_GLProfile" to "SDL_GL_CONTEXT_PROFILE_"
 )
 
 internal fun tryFindKnownBitmaskType(constantName: String): String? {
+    if (constantName in bitmaskExplicitBelongship) {
+        return bitmaskExplicitBelongship[constantName]
+    }
+
     for ((type, prefix) in knownBitmaskTypes) {
         if (constantName.startsWith(prefix)) {
             return type

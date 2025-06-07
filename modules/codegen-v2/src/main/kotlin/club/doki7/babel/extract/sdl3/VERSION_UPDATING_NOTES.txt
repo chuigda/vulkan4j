@@ -3,7 +3,9 @@ When updating SDL3 version, please follow these steps:
 - Make a diff between the current SDL3 headers and the new ones;
 - Figure out newly-added bitmask and enum types;
 - Add them to `knownEnumAndBitmask.kt`;
-- Figure out newly added non-trivial macros;
-- Add them and proper expansion to `knownMacros.kt`.
+- Figure out newly-added non-trivial macros;
+- Add them and proper expansion to `knownMacros.kt`;
+- Figure out newly-added troublesome structures (nested structs with anonymous structure names, etc);
+- Add them to `knownTroublesomeStructures.kt` and provide a proper workaround;
 
 See the comment in `knownEnumAndBitmask.kt` for more details.
