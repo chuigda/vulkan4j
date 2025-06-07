@@ -2,7 +2,7 @@
 
 [![CI status](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/chuigda/vulkan4j/actions/workflows/ci.yml)
 
-> [Website & JavaDoc](https://vulkan4j.doki7.club) | [Vulkan Tutorial port](https://vulkan4j.doki7.club/tutorial/en/) | [LearnOpenGL port](https://vulkan4j.doki7.club/learnopengl/en/) | [Discord](https://discord.gg/UsmRvrt4gg)
+> [Website & JavaDoc](https://vulkan4j.doki7.club) | [Vulkan Tutorial port](https://vulkan4j.doki7.club/tutorial/en/) | [LearnOpenGL port](https://vulkan4j.doki7.club/learnopengl/en/) | [Examples](https://github.com/chuigda/vulkan4j/tree/master/modules/example/src/main/java/example) | [Discord](https://discord.gg/UsmRvrt4gg)
 
 *This project is heavily inspired by the [`vulkanalia`](https://github.com/KyleMayes/vulkanalia) crate.*
 
@@ -38,6 +38,9 @@ For users new to Vulkan, there is a (almost) complete adaptation of [https://vul
 
 ### [LearnOpenGL tutorial port](https://vulkan4j.doki7.club/learnopengl/en/)
 For OpenGL users, we ported the [LearnOpenGL](https://learnopengl.com) tutorial to use Java and `vulkan4j`. The published version of this tutorial can be found [here](https://vulkan4j.doki7.club/learnopengl/en/), and the sources for the tutorial can be found under the `tutorial` directory. Till now only the first several chapters are ported, which should be adequate to get you started with OpenGL in Java. The rest of the chapters will be ported in the future.
+
+### [Examples](https://github.com/chuigda/vulkan4j/tree/master/modules/example/src/main/java/example)
+We provide a set of examples, which can be found under the `example` directory. These examples are intended to demonstrate how to use the bindings in practice, and can be used as a reference for your own projects.
 
 ## Roadmap
 - [x] v0.3.0 rewrite, new namespace, new `ffm-plus` module, use `codegen-v2` module for all registry extraction and code generation.
