@@ -25,7 +25,8 @@ internal fun maybeExpandConstValue(value: String): String {
 }
 
 internal val knownMacros = mapOf<String, (String) -> String>(
-    "SDL_BUTTON_MASK(*)" to ::sdl_button_mask
+    "SDL_BUTTON_MASK(*)" to ::sdl_button_mask,
+    "SDL_UINT64_C(*)" to ::sdl_uint64_c
 )
 
 private fun sdl_button_mask(button: String): String =
@@ -37,3 +38,7 @@ private fun sdl_button_mask(button: String): String =
         "SDL_BUTTON_X2" -> "(1 << 4)"
         else -> error("Unknown SDL button: $button")
     }
+
+private fun sdl_uint64_c(value: String): String {
+    return value.removePrefix("SDL_UINT64_C(").removeSuffix(")").trim() + "LL"
+}

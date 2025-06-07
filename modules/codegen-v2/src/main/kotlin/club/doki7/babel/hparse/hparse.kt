@@ -218,3 +218,27 @@ fun <E: IMergeable<E>> dummyAction(
     log.warning("dummy operation at line $index called, did you correctly set ControlFlow.RETURN?")
     return index + 1
 }
+
+fun detectIfdefCplusplus(line: String) =
+    if (line.startsWith("#ifdef __cplusplus")) {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+
+fun <E: IMergeable<E>> skipIfdefCplusplusExternC(
+    @Suppress("unused") registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    assert(lines[index].startsWith("#ifdef __cplusplus")) { "Expected #ifdef __cplusplus at line $index" }
+    var i = index + 1
+    while (i < lines.size && !lines[i].startsWith("#endif")) {
+        i++
+    }
+    if (i >= lines.size) {
+        log.warning("Unterminated #ifdef __cplusplus starting at line $index")
+    }
+    return i + 1
+}

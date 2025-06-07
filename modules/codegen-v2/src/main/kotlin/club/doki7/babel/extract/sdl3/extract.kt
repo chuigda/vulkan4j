@@ -8,6 +8,7 @@ import club.doki7.babel.hparse.ParseConfig
 import club.doki7.babel.hparse.detectBlockComment
 import club.doki7.babel.hparse.detectBlockDoxygen
 import club.doki7.babel.hparse.detectFunctionAlikeMacro
+import club.doki7.babel.hparse.detectIfdefCplusplus
 import club.doki7.babel.hparse.detectLineComment
 import club.doki7.babel.hparse.detectPreprocessor
 import club.doki7.babel.hparse.detectTriSlashDoxygen
@@ -17,6 +18,7 @@ import club.doki7.babel.hparse.nextLine
 import club.doki7.babel.hparse.parseAndSaveBlockDoxygen
 import club.doki7.babel.hparse.parseAndSaveTriSlashDoxygen
 import club.doki7.babel.hparse.skipBlockComment
+import club.doki7.babel.hparse.skipIfdefCplusplusExternC
 import club.doki7.babel.hparse.skipPreprocessor
 import club.doki7.babel.registry.*
 import club.doki7.babel.util.isDecOrHexNumber
@@ -147,6 +149,9 @@ private val headerParseConfig = ParseConfig<EmptyMergeable>().apply {
         { if (it.startsWith("typedef") && it.endsWith(";")) ControlFlow.ACCEPT else ControlFlow.NEXT },
         ::parseAndSaveTypedef
     )
+
+    addRule(50, ::detectIfdefCplusplus, ::skipIfdefCplusplusExternC)
+    addRule(99, ::detectPreprocessor, ::skipPreprocessor)
 }
 
 private fun parseConstDef(
@@ -165,7 +170,9 @@ private fun parseConstDef(
     } else {
         val parts = line.removePrefix("#define").trim().split(" ", limit = 2)
         if (parts.size < 2) {
-            log.warning("skipping empty constant definition at line ${index + 1}: $line")
+            if (!parts[0].lowercase().endsWith("_h") && !parts[0].lowercase().endsWith("_h_")) {
+                log.warning("skipping empty constant definition at line ${index + 1}: $line")
+            }
             return index + 1
         }
         Triple(parts[0].trim(), parts[1].trim(), index + 1)
@@ -352,7 +359,11 @@ private fun parseAndSaveStructure(
     if (structureName in knownTroublesomeStructures) {
         // directly skip to the `}` + ';' line
         var index1 = index + 1
-        while (index1 < lines.size && !(lines[index1].startsWith("}") && lines[index1].endsWith(";"))) {
+        while (index1 < lines.size
+            && !(lines[index1].startsWith("}")
+                    && lines[index1].endsWith(";")
+                    && lines[index1].contains(structureName))
+        ) {
             index1++
         }
         return index1 + 1
