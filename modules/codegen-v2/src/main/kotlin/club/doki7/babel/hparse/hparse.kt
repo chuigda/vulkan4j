@@ -142,6 +142,42 @@ fun detectPreprocessor(line: String) =
         ControlFlow.NEXT
     }
 
+fun detectFunctionAlikeMacro(line: String): ControlFlow {
+    if (!line.startsWith("#define")) {
+        return ControlFlow.NEXT
+    }
+
+    val trimmed = line.removePrefix("#define").trimStart()
+    var index = 0
+    while (index < trimmed.length && trimmed[index].isLetterOrDigit()) {
+        index++
+    }
+
+    return if (index < trimmed.length && trimmed[index] == '(') {
+        ControlFlow.ACCEPT
+    } else {
+        ControlFlow.NEXT
+    }
+}
+
+fun <E: IMergeable<E>> skipPreprocessor(
+    @Suppress("unused") registry: Registry<E>,
+    @Suppress("unused") cx: MutableMap<String, Any>,
+    lines: List<String>,
+    index: Int
+): Int {
+    assert(lines[index].startsWith("#")) { "Expected preprocessor directive at line $index" }
+    if (!lines[index].endsWith("\\")) {
+        return index + 1
+    }
+
+    var index1 = index
+    while (index1 < lines.size && lines[index1].endsWith("\\")) {
+        index1++
+    }
+    return index1 + 1
+}
+
 fun <E: IMergeable<E>> nextLine(
     @Suppress("unused") registry: Registry<E>,
     @Suppress("unused") cx: MutableMap<String, Any>,

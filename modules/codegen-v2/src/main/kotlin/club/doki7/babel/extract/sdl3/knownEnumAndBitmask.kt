@@ -53,3 +53,21 @@ internal val knownEnumTypes = mapOf(
     "SDL_GLProfile" to "SDL_GL_CONTEXT_PROFILE_",
     "SDL_GLContextResetNotification" to "SDL_GL_CONTEXT_RESET_"
 )
+
+internal fun tryFindKnownBitmaskType(constantName: String): String? {
+    for ((type, prefix) in knownBitmaskTypes) {
+        if (constantName.startsWith(prefix)) {
+            return type
+        }
+    }
+    return null
+}
+
+internal fun tryFindKnownEnumType(constantName: String): String? {
+    for ((type, prefix) in knownEnumTypes) {
+        if (constantName.startsWith(prefix)) {
+            return type
+        }
+    }
+    return null
+}

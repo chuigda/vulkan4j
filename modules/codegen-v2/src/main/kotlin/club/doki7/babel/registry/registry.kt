@@ -230,6 +230,8 @@ class OpaqueTypedef(
 ) : Entity(name) {
     constructor(name: String) : this(name.intern())
 
+    constructor(name: String, isHandle: Boolean) : this(name.intern(), isHandle)
+
     override fun toStringImpl() = "OpaqueTypedef(name=\"$name\""
 }
 

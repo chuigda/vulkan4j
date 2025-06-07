@@ -207,7 +207,7 @@ private fun parseAndSaveStructure(
     )
     if ("structureDoc" in cx) {
         structure.doc = cx["structureDoc"] as List<String>
-        cx.remove("doxygen")
+        cx.remove("structureDoc")
     }
     registry.structures.putEntityIfAbsent(structure)
 
